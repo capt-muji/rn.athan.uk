@@ -1,0 +1,1763 @@
+{
+ "job": "O1l-8 Oman second cities",
+ "cities": {
+  "salalah": {
+   "name": "salalah",
+   "cityId": 55,
+   "lat": 17.0151,
+   "lng": 54.0924,
+   "rows": 730,
+   "span": {
+    "from": "2026-01-01",
+    "to": "2031-12-31"
+   },
+   "freeFit": {
+    "fajr": {
+     "theta": 18.1,
+     "pad": 1,
+     "mode": "floor",
+     "score": {
+      "exactPct": 98.1,
+      "w1Pct": 100,
+      "mae": 0.019,
+      "max": 1,
+      "n": 730
+     }
+    },
+    "isha": {
+     "theta": 17.75,
+     "pad": 1,
+     "mode": "round",
+     "score": {
+      "exactPct": 72.3,
+      "w1Pct": 100,
+      "mae": 0.277,
+      "max": 1,
+      "n": 730
+     }
+    },
+    "sunrise": {
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 95.2,
+      "w1Pct": 100,
+      "mae": 0.048,
+      "max": 1,
+      "n": 730
+     }
+    },
+    "dhuhr": {
+     "pad": 5,
+     "mode": "round",
+     "score": {
+      "exactPct": 89.6,
+      "w1Pct": 100,
+      "mae": 0.104,
+      "max": 1,
+      "n": 730
+     }
+    },
+    "asr_shafi": {
+     "pad": 5,
+     "mode": "round",
+     "score": {
+      "exactPct": 73,
+      "w1Pct": 100,
+      "mae": 0.27,
+      "max": 1,
+      "n": 730
+     }
+    },
+    "asr_hanafi": {
+     "pad": 2,
+     "mode": "floor",
+     "score": {
+      "exactPct": 0,
+      "w1Pct": 0,
+      "mae": 57.832,
+      "max": 75,
+      "n": 730
+     }
+    },
+    "maghrib": {
+     "pad": 5,
+     "mode": "round",
+     "score": {
+      "exactPct": 76,
+      "w1Pct": 100,
+      "mae": 0.24,
+      "max": 1,
+      "n": 730
+     }
+    }
+   },
+   "held": {
+    "all": {
+     "perColumn": {
+      "fajr": {
+       "exactPct": 53.4,
+       "w1Pct": 100,
+       "mae": 0.466,
+       "max": 1,
+       "n": 730
+      },
+      "sunrise": {
+       "exactPct": 54.5,
+       "w1Pct": 100,
+       "mae": 0.455,
+       "max": 1,
+       "n": 730
+      },
+      "dhuhr": {
+       "exactPct": 54,
+       "w1Pct": 100,
+       "mae": 0.46,
+       "max": 1,
+       "n": 730
+      },
+      "asr": {
+       "exactPct": 52.6,
+       "w1Pct": 100,
+       "mae": 0.474,
+       "max": 1,
+       "n": 730
+      },
+      "maghrib": {
+       "exactPct": 55.9,
+       "w1Pct": 100,
+       "mae": 0.441,
+       "max": 1,
+       "n": 730
+      },
+      "isha": {
+       "exactPct": 51,
+       "w1Pct": 100,
+       "mae": 0.49,
+       "max": 1,
+       "n": 730
+      }
+     },
+     "total": {
+      "exactPct": 53.6,
+      "w1Pct": 100,
+      "mae": 0.464,
+      "max": 1,
+      "n": 4380
+     }
+    },
+    "byYear": {
+     "2026": {
+      "perColumn": {
+       "fajr": {
+        "exactPct": 54,
+        "w1Pct": 100,
+        "mae": 0.46,
+        "max": 1,
+        "n": 365
+       },
+       "sunrise": {
+        "exactPct": 53.4,
+        "w1Pct": 100,
+        "mae": 0.466,
+        "max": 1,
+        "n": 365
+       },
+       "dhuhr": {
+        "exactPct": 54.8,
+        "w1Pct": 100,
+        "mae": 0.452,
+        "max": 1,
+        "n": 365
+       },
+       "asr": {
+        "exactPct": 52.6,
+        "w1Pct": 100,
+        "mae": 0.474,
+        "max": 1,
+        "n": 365
+       },
+       "maghrib": {
+        "exactPct": 55.3,
+        "w1Pct": 100,
+        "mae": 0.447,
+        "max": 1,
+        "n": 365
+       },
+       "isha": {
+        "exactPct": 51.5,
+        "w1Pct": 100,
+        "mae": 0.485,
+        "max": 1,
+        "n": 365
+       }
+      },
+      "total": {
+       "exactPct": 53.6,
+       "w1Pct": 100,
+       "mae": 0.464,
+       "max": 1,
+       "n": 2190
+      }
+     },
+     "2031": {
+      "perColumn": {
+       "fajr": {
+        "exactPct": 52.9,
+        "w1Pct": 100,
+        "mae": 0.471,
+        "max": 1,
+        "n": 365
+       },
+       "sunrise": {
+        "exactPct": 55.6,
+        "w1Pct": 100,
+        "mae": 0.444,
+        "max": 1,
+        "n": 365
+       },
+       "dhuhr": {
+        "exactPct": 53.2,
+        "w1Pct": 100,
+        "mae": 0.468,
+        "max": 1,
+        "n": 365
+       },
+       "asr": {
+        "exactPct": 52.6,
+        "w1Pct": 100,
+        "mae": 0.474,
+        "max": 1,
+        "n": 365
+       },
+       "maghrib": {
+        "exactPct": 56.4,
+        "w1Pct": 100,
+        "mae": 0.436,
+        "max": 1,
+        "n": 365
+       },
+       "isha": {
+        "exactPct": 50.4,
+        "w1Pct": 100,
+        "mae": 0.496,
+        "max": 1,
+        "n": 365
+       }
+      },
+      "total": {
+       "exactPct": 53.5,
+       "w1Pct": 100,
+       "mae": 0.465,
+       "max": 1,
+       "n": 2190
+      }
+     }
+    }
+   },
+   "amplitude": {
+    "fajr": {
+     "peakToPeak": 73,
+     "jan": 340,
+     "jul": 278,
+     "janJul": -62
+    },
+    "sunrise": {
+     "peakToPeak": 68,
+     "jan": 416,
+     "jul": 358,
+     "janJul": -58
+    },
+    "dhuhr": {
+     "peakToPeak": 31,
+     "jan": 758,
+     "jul": 755,
+     "janJul": -3
+    },
+    "asr": {
+     "peakToPeak": 35,
+     "jan": 951,
+     "jul": 954,
+     "janJul": 3
+    },
+    "maghrib": {
+     "peakToPeak": 74,
+     "jan": 1095,
+     "jul": 1146,
+     "janJul": 51
+    },
+    "isha": {
+     "peakToPeak": 80,
+     "jan": 1166,
+     "jul": 1221,
+     "janJul": 55
+    }
+   }
+  },
+  "sohar": {
+   "name": "sohar",
+   "cityId": 51,
+   "lat": 24.3419,
+   "lng": 56.7298,
+   "rows": 730,
+   "span": {
+    "from": "2026-01-01",
+    "to": "2031-12-31"
+   },
+   "freeFit": {
+    "fajr": {
+     "theta": 18,
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 97.5,
+      "w1Pct": 100,
+      "mae": 0.025,
+      "max": 1,
+      "n": 730
+     }
+    },
+    "isha": {
+     "theta": 18.25,
+     "pad": -1,
+     "mode": "floor",
+     "score": {
+      "exactPct": 62.1,
+      "w1Pct": 97.5,
+      "mae": 0.404,
+      "max": 2,
+      "n": 730
+     }
+    },
+    "sunrise": {
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 93,
+      "w1Pct": 100,
+      "mae": 0.07,
+      "max": 1,
+      "n": 730
+     }
+    },
+    "dhuhr": {
+     "pad": 5,
+     "mode": "round",
+     "score": {
+      "exactPct": 91.2,
+      "w1Pct": 100,
+      "mae": 0.088,
+      "max": 1,
+      "n": 730
+     }
+    },
+    "asr_shafi": {
+     "pad": 5,
+     "mode": "round",
+     "score": {
+      "exactPct": 64.9,
+      "w1Pct": 100,
+      "mae": 0.351,
+      "max": 1,
+      "n": 730
+     }
+    },
+    "asr_hanafi": {
+     "pad": 2,
+     "mode": "floor",
+     "score": {
+      "exactPct": 0,
+      "w1Pct": 0,
+      "mae": 56.048,
+      "max": 79,
+      "n": 730
+     }
+    },
+    "maghrib": {
+     "pad": 5,
+     "mode": "round",
+     "score": {
+      "exactPct": 69,
+      "w1Pct": 100,
+      "mae": 0.31,
+      "max": 1,
+      "n": 730
+     }
+    }
+   },
+   "held": {
+    "all": {
+     "perColumn": {
+      "fajr": {
+       "exactPct": 50.1,
+       "w1Pct": 100,
+       "mae": 0.499,
+       "max": 1,
+       "n": 730
+      },
+      "sunrise": {
+       "exactPct": 50.4,
+       "w1Pct": 100,
+       "mae": 0.496,
+       "max": 1,
+       "n": 730
+      },
+      "dhuhr": {
+       "exactPct": 52.9,
+       "w1Pct": 100,
+       "mae": 0.471,
+       "max": 1,
+       "n": 730
+      },
+      "asr": {
+       "exactPct": 49,
+       "w1Pct": 99.2,
+       "mae": 0.518,
+       "max": 2,
+       "n": 730
+      },
+      "maghrib": {
+       "exactPct": 47.5,
+       "w1Pct": 100,
+       "mae": 0.525,
+       "max": 1,
+       "n": 730
+      },
+      "isha": {
+       "exactPct": 39.6,
+       "w1Pct": 100,
+       "mae": 0.604,
+       "max": 1,
+       "n": 730
+      }
+     },
+     "total": {
+      "exactPct": 48.3,
+      "w1Pct": 99.9,
+      "mae": 0.519,
+      "max": 2,
+      "n": 4380
+     }
+    },
+    "byYear": {
+     "2026": {
+      "perColumn": {
+       "fajr": {
+        "exactPct": 51,
+        "w1Pct": 100,
+        "mae": 0.49,
+        "max": 1,
+        "n": 365
+       },
+       "sunrise": {
+        "exactPct": 45.5,
+        "w1Pct": 100,
+        "mae": 0.545,
+        "max": 1,
+        "n": 365
+       },
+       "dhuhr": {
+        "exactPct": 51.2,
+        "w1Pct": 100,
+        "mae": 0.488,
+        "max": 1,
+        "n": 365
+       },
+       "asr": {
+        "exactPct": 47.7,
+        "w1Pct": 99.2,
+        "mae": 0.532,
+        "max": 2,
+        "n": 365
+       },
+       "maghrib": {
+        "exactPct": 46.3,
+        "w1Pct": 100,
+        "mae": 0.537,
+        "max": 1,
+        "n": 365
+       },
+       "isha": {
+        "exactPct": 40,
+        "w1Pct": 100,
+        "mae": 0.6,
+        "max": 1,
+        "n": 365
+       }
+      },
+      "total": {
+       "exactPct": 46.9,
+       "w1Pct": 99.9,
+       "mae": 0.532,
+       "max": 2,
+       "n": 2190
+      }
+     },
+     "2031": {
+      "perColumn": {
+       "fajr": {
+        "exactPct": 49.3,
+        "w1Pct": 100,
+        "mae": 0.507,
+        "max": 1,
+        "n": 365
+       },
+       "sunrise": {
+        "exactPct": 55.3,
+        "w1Pct": 100,
+        "mae": 0.447,
+        "max": 1,
+        "n": 365
+       },
+       "dhuhr": {
+        "exactPct": 54.5,
+        "w1Pct": 100,
+        "mae": 0.455,
+        "max": 1,
+        "n": 365
+       },
+       "asr": {
+        "exactPct": 50.4,
+        "w1Pct": 99.2,
+        "mae": 0.504,
+        "max": 2,
+        "n": 365
+       },
+       "maghrib": {
+        "exactPct": 48.8,
+        "w1Pct": 100,
+        "mae": 0.512,
+        "max": 1,
+        "n": 365
+       },
+       "isha": {
+        "exactPct": 39.2,
+        "w1Pct": 100,
+        "mae": 0.608,
+        "max": 1,
+        "n": 365
+       }
+      },
+      "total": {
+       "exactPct": 49.6,
+       "w1Pct": 99.9,
+       "mae": 0.505,
+       "max": 2,
+       "n": 2190
+      }
+     }
+    }
+   },
+   "amplitude": {
+    "fajr": {
+     "peakToPeak": 103,
+     "jan": 338,
+     "jul": 248,
+     "janJul": -90
+    },
+    "sunrise": {
+     "peakToPeak": 95,
+     "jan": 418,
+     "jul": 334,
+     "janJul": -84
+    },
+    "dhuhr": {
+     "peakToPeak": 30,
+     "jan": 748,
+     "jul": 744,
+     "janJul": -4
+    },
+    "asr": {
+     "peakToPeak": 43,
+     "jan": 931,
+     "jul": 946,
+     "janJul": 15
+    },
+    "maghrib": {
+     "peakToPeak": 102,
+     "jan": 1072,
+     "jul": 1149,
+     "janJul": 77
+    },
+    "isha": {
+     "peakToPeak": 110,
+     "jan": 1146,
+     "jul": 1230,
+     "janJul": 84
+    }
+   }
+  },
+  "nizwa": {
+   "name": "nizwa",
+   "cityId": 78,
+   "lat": 22.9333,
+   "lng": 57.5333,
+   "rows": 730,
+   "span": {
+    "from": "2026-01-01",
+    "to": "2031-12-31"
+   },
+   "freeFit": {
+    "fajr": {
+     "theta": 18.1,
+     "pad": 1,
+     "mode": "floor",
+     "score": {
+      "exactPct": 97.1,
+      "w1Pct": 100,
+      "mae": 0.029,
+      "max": 1,
+      "n": 730
+     }
+    },
+    "isha": {
+     "theta": 18.05,
+     "pad": -1,
+     "mode": "ceil",
+     "score": {
+      "exactPct": 62.3,
+      "w1Pct": 99.9,
+      "mae": 0.378,
+      "max": 2,
+      "n": 730
+     }
+    },
+    "sunrise": {
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 94.8,
+      "w1Pct": 100,
+      "mae": 0.052,
+      "max": 1,
+      "n": 730
+     }
+    },
+    "dhuhr": {
+     "pad": 5,
+     "mode": "round",
+     "score": {
+      "exactPct": 93.7,
+      "w1Pct": 100,
+      "mae": 0.063,
+      "max": 1,
+      "n": 730
+     }
+    },
+    "asr_shafi": {
+     "pad": 5,
+     "mode": "round",
+     "score": {
+      "exactPct": 63.4,
+      "w1Pct": 100,
+      "mae": 0.366,
+      "max": 1,
+      "n": 730
+     }
+    },
+    "asr_hanafi": {
+     "pad": 2,
+     "mode": "floor",
+     "score": {
+      "exactPct": 0,
+      "w1Pct": 0,
+      "mae": 56.725,
+      "max": 79,
+      "n": 730
+     }
+    },
+    "maghrib": {
+     "pad": 5,
+     "mode": "round",
+     "score": {
+      "exactPct": 72.2,
+      "w1Pct": 100,
+      "mae": 0.278,
+      "max": 1,
+      "n": 730
+     }
+    }
+   },
+   "held": {
+    "all": {
+     "perColumn": {
+      "fajr": {
+       "exactPct": 54.1,
+       "w1Pct": 100,
+       "mae": 0.459,
+       "max": 1,
+       "n": 730
+      },
+      "sunrise": {
+       "exactPct": 54.4,
+       "w1Pct": 100,
+       "mae": 0.456,
+       "max": 1,
+       "n": 730
+      },
+      "dhuhr": {
+       "exactPct": 51,
+       "w1Pct": 100,
+       "mae": 0.49,
+       "max": 1,
+       "n": 730
+      },
+      "asr": {
+       "exactPct": 51.4,
+       "w1Pct": 99.6,
+       "mae": 0.49,
+       "max": 2,
+       "n": 730
+      },
+      "maghrib": {
+       "exactPct": 48.9,
+       "w1Pct": 100,
+       "mae": 0.511,
+       "max": 1,
+       "n": 730
+      },
+      "isha": {
+       "exactPct": 48.8,
+       "w1Pct": 100,
+       "mae": 0.512,
+       "max": 1,
+       "n": 730
+      }
+     },
+     "total": {
+      "exactPct": 51.4,
+      "w1Pct": 99.9,
+      "mae": 0.487,
+      "max": 2,
+      "n": 4380
+     }
+    },
+    "byYear": {
+     "2026": {
+      "perColumn": {
+       "fajr": {
+        "exactPct": 52.6,
+        "w1Pct": 100,
+        "mae": 0.474,
+        "max": 1,
+        "n": 365
+       },
+       "sunrise": {
+        "exactPct": 55.1,
+        "w1Pct": 100,
+        "mae": 0.449,
+        "max": 1,
+        "n": 365
+       },
+       "dhuhr": {
+        "exactPct": 51,
+        "w1Pct": 100,
+        "mae": 0.49,
+        "max": 1,
+        "n": 365
+       },
+       "asr": {
+        "exactPct": 51.2,
+        "w1Pct": 99.7,
+        "mae": 0.49,
+        "max": 2,
+        "n": 365
+       },
+       "maghrib": {
+        "exactPct": 49.9,
+        "w1Pct": 100,
+        "mae": 0.501,
+        "max": 1,
+        "n": 365
+       },
+       "isha": {
+        "exactPct": 49.3,
+        "w1Pct": 100,
+        "mae": 0.507,
+        "max": 1,
+        "n": 365
+       }
+      },
+      "total": {
+       "exactPct": 51.5,
+       "w1Pct": 100,
+       "mae": 0.485,
+       "max": 2,
+       "n": 2190
+      }
+     },
+     "2031": {
+      "perColumn": {
+       "fajr": {
+        "exactPct": 55.6,
+        "w1Pct": 100,
+        "mae": 0.444,
+        "max": 1,
+        "n": 365
+       },
+       "sunrise": {
+        "exactPct": 53.7,
+        "w1Pct": 100,
+        "mae": 0.463,
+        "max": 1,
+        "n": 365
+       },
+       "dhuhr": {
+        "exactPct": 51,
+        "w1Pct": 100,
+        "mae": 0.49,
+        "max": 1,
+        "n": 365
+       },
+       "asr": {
+        "exactPct": 51.5,
+        "w1Pct": 99.5,
+        "mae": 0.49,
+        "max": 2,
+        "n": 365
+       },
+       "maghrib": {
+        "exactPct": 47.9,
+        "w1Pct": 100,
+        "mae": 0.521,
+        "max": 1,
+        "n": 365
+       },
+       "isha": {
+        "exactPct": 48.2,
+        "w1Pct": 100,
+        "mae": 0.518,
+        "max": 1,
+        "n": 365
+       }
+      },
+      "total": {
+       "exactPct": 51.3,
+       "w1Pct": 99.9,
+       "mae": 0.488,
+       "max": 2,
+       "n": 2190
+      }
+     }
+    }
+   },
+   "amplitude": {
+    "fajr": {
+     "peakToPeak": 97,
+     "jan": 334,
+     "jul": 249,
+     "janJul": -85
+    },
+    "sunrise": {
+     "peakToPeak": 89,
+     "jan": 412,
+     "jul": 334,
+     "janJul": -78
+    },
+    "dhuhr": {
+     "peakToPeak": 31,
+     "jan": 744,
+     "jul": 741,
+     "janJul": -3
+    },
+    "asr": {
+     "peakToPeak": 41,
+     "jan": 930,
+     "jul": 939,
+     "janJul": 9
+    },
+    "maghrib": {
+     "peakToPeak": 95,
+     "jan": 1071,
+     "jul": 1143,
+     "janJul": 72
+    },
+    "isha": {
+     "peakToPeak": 103,
+     "jan": 1145,
+     "jul": 1223,
+     "janJul": 78
+    }
+   }
+  },
+  "sur": {
+   "name": "sur",
+   "cityId": 56,
+   "lat": 22.5667,
+   "lng": 59.5289,
+   "rows": 730,
+   "span": {
+    "from": "2026-01-01",
+    "to": "2031-12-31"
+   },
+   "freeFit": {
+    "fajr": {
+     "theta": 18,
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 97.8,
+      "w1Pct": 100,
+      "mae": 0.022,
+      "max": 1,
+      "n": 730
+     }
+    },
+    "isha": {
+     "theta": 18.05,
+     "pad": 0,
+     "mode": "floor",
+     "score": {
+      "exactPct": 64.4,
+      "w1Pct": 100,
+      "mae": 0.356,
+      "max": 1,
+      "n": 730
+     }
+    },
+    "sunrise": {
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 93.8,
+      "w1Pct": 100,
+      "mae": 0.062,
+      "max": 1,
+      "n": 730
+     }
+    },
+    "dhuhr": {
+     "pad": 5,
+     "mode": "round",
+     "score": {
+      "exactPct": 93.4,
+      "w1Pct": 100,
+      "mae": 0.066,
+      "max": 1,
+      "n": 730
+     }
+    },
+    "asr_shafi": {
+     "pad": 5,
+     "mode": "round",
+     "score": {
+      "exactPct": 63.6,
+      "w1Pct": 100,
+      "mae": 0.364,
+      "max": 1,
+      "n": 730
+     }
+    },
+    "asr_hanafi": {
+     "pad": 2,
+     "mode": "floor",
+     "score": {
+      "exactPct": 0,
+      "w1Pct": 0,
+      "mae": 56.896,
+      "max": 79,
+      "n": 730
+     }
+    },
+    "maghrib": {
+     "pad": 5,
+     "mode": "round",
+     "score": {
+      "exactPct": 71.6,
+      "w1Pct": 100,
+      "mae": 0.284,
+      "max": 1,
+      "n": 730
+     }
+    }
+   },
+   "held": {
+    "all": {
+     "perColumn": {
+      "fajr": {
+       "exactPct": 52.3,
+       "w1Pct": 100,
+       "mae": 0.477,
+       "max": 1,
+       "n": 730
+      },
+      "sunrise": {
+       "exactPct": 50.5,
+       "w1Pct": 100,
+       "mae": 0.495,
+       "max": 1,
+       "n": 730
+      },
+      "dhuhr": {
+       "exactPct": 49,
+       "w1Pct": 100,
+       "mae": 0.51,
+       "max": 1,
+       "n": 730
+      },
+      "asr": {
+       "exactPct": 45.8,
+       "w1Pct": 99.6,
+       "mae": 0.547,
+       "max": 2,
+       "n": 730
+      },
+      "maghrib": {
+       "exactPct": 51.9,
+       "w1Pct": 100,
+       "mae": 0.481,
+       "max": 1,
+       "n": 730
+      },
+      "isha": {
+       "exactPct": 43.6,
+       "w1Pct": 100,
+       "mae": 0.564,
+       "max": 1,
+       "n": 730
+      }
+     },
+     "total": {
+      "exactPct": 48.9,
+      "w1Pct": 99.9,
+      "mae": 0.512,
+      "max": 2,
+      "n": 4380
+     }
+    },
+    "byYear": {
+     "2026": {
+      "perColumn": {
+       "fajr": {
+        "exactPct": 51.8,
+        "w1Pct": 100,
+        "mae": 0.482,
+        "max": 1,
+        "n": 365
+       },
+       "sunrise": {
+        "exactPct": 51,
+        "w1Pct": 100,
+        "mae": 0.49,
+        "max": 1,
+        "n": 365
+       },
+       "dhuhr": {
+        "exactPct": 49.3,
+        "w1Pct": 100,
+        "mae": 0.507,
+        "max": 1,
+        "n": 365
+       },
+       "asr": {
+        "exactPct": 45.2,
+        "w1Pct": 99.7,
+        "mae": 0.551,
+        "max": 2,
+        "n": 365
+       },
+       "maghrib": {
+        "exactPct": 52.3,
+        "w1Pct": 100,
+        "mae": 0.477,
+        "max": 1,
+        "n": 365
+       },
+       "isha": {
+        "exactPct": 43.3,
+        "w1Pct": 100,
+        "mae": 0.567,
+        "max": 1,
+        "n": 365
+       }
+      },
+      "total": {
+       "exactPct": 48.8,
+       "w1Pct": 100,
+       "mae": 0.512,
+       "max": 2,
+       "n": 2190
+      }
+     },
+     "2031": {
+      "perColumn": {
+       "fajr": {
+        "exactPct": 52.9,
+        "w1Pct": 100,
+        "mae": 0.471,
+        "max": 1,
+        "n": 365
+       },
+       "sunrise": {
+        "exactPct": 50.1,
+        "w1Pct": 100,
+        "mae": 0.499,
+        "max": 1,
+        "n": 365
+       },
+       "dhuhr": {
+        "exactPct": 48.8,
+        "w1Pct": 100,
+        "mae": 0.512,
+        "max": 1,
+        "n": 365
+       },
+       "asr": {
+        "exactPct": 46.3,
+        "w1Pct": 99.5,
+        "mae": 0.542,
+        "max": 2,
+        "n": 365
+       },
+       "maghrib": {
+        "exactPct": 51.5,
+        "w1Pct": 100,
+        "mae": 0.485,
+        "max": 1,
+        "n": 365
+       },
+       "isha": {
+        "exactPct": 43.8,
+        "w1Pct": 100,
+        "mae": 0.562,
+        "max": 1,
+        "n": 365
+       }
+      },
+      "total": {
+       "exactPct": 48.9,
+       "w1Pct": 99.9,
+       "mae": 0.512,
+       "max": 2,
+       "n": 2190
+      }
+     }
+    }
+   },
+   "amplitude": {
+    "fajr": {
+     "peakToPeak": 95,
+     "jan": 325,
+     "jul": 242,
+     "janJul": -83
+    },
+    "sunrise": {
+     "peakToPeak": 87,
+     "jan": 404,
+     "jul": 327,
+     "janJul": -77
+    },
+    "dhuhr": {
+     "peakToPeak": 31,
+     "jan": 736,
+     "jul": 733,
+     "janJul": -3
+    },
+    "asr": {
+     "peakToPeak": 41,
+     "jan": 922,
+     "jul": 930,
+     "janJul": 8
+    },
+    "maghrib": {
+     "peakToPeak": 95,
+     "jan": 1064,
+     "jul": 1134,
+     "janJul": 70
+    },
+    "isha": {
+     "peakToPeak": 102,
+     "jan": 1137,
+     "jul": 1214,
+     "janJul": 77
+    }
+   }
+  },
+  "ibri": {
+   "name": "ibri",
+   "cityId": 60,
+   "lat": 23.2254,
+   "lng": 56.5155,
+   "rows": 730,
+   "span": {
+    "from": "2026-01-01",
+    "to": "2031-12-31"
+   },
+   "freeFit": {
+    "fajr": {
+     "theta": 18,
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 96.7,
+      "w1Pct": 100,
+      "mae": 0.033,
+      "max": 1,
+      "n": 730
+     }
+    },
+    "isha": {
+     "theta": 18.05,
+     "pad": 0,
+     "mode": "floor",
+     "score": {
+      "exactPct": 63.3,
+      "w1Pct": 99.7,
+      "mae": 0.37,
+      "max": 2,
+      "n": 730
+     }
+    },
+    "sunrise": {
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 94.9,
+      "w1Pct": 100,
+      "mae": 0.051,
+      "max": 1,
+      "n": 730
+     }
+    },
+    "dhuhr": {
+     "pad": 5,
+     "mode": "round",
+     "score": {
+      "exactPct": 92.6,
+      "w1Pct": 100,
+      "mae": 0.074,
+      "max": 1,
+      "n": 730
+     }
+    },
+    "asr_shafi": {
+     "pad": 5,
+     "mode": "round",
+     "score": {
+      "exactPct": 64.4,
+      "w1Pct": 100,
+      "mae": 0.356,
+      "max": 1,
+      "n": 730
+     }
+    },
+    "asr_hanafi": {
+     "pad": 2,
+     "mode": "floor",
+     "score": {
+      "exactPct": 0,
+      "w1Pct": 0,
+      "mae": 56.63,
+      "max": 79,
+      "n": 730
+     }
+    },
+    "maghrib": {
+     "pad": 5,
+     "mode": "round",
+     "score": {
+      "exactPct": 72.9,
+      "w1Pct": 100,
+      "mae": 0.271,
+      "max": 1,
+      "n": 730
+     }
+    }
+   },
+   "held": {
+    "all": {
+     "perColumn": {
+      "fajr": {
+       "exactPct": 49.3,
+       "w1Pct": 100,
+       "mae": 0.507,
+       "max": 1,
+       "n": 730
+      },
+      "sunrise": {
+       "exactPct": 50.8,
+       "w1Pct": 100,
+       "mae": 0.492,
+       "max": 1,
+       "n": 730
+      },
+      "dhuhr": {
+       "exactPct": 52.7,
+       "w1Pct": 100,
+       "mae": 0.473,
+       "max": 1,
+       "n": 730
+      },
+      "asr": {
+       "exactPct": 45.3,
+       "w1Pct": 99.3,
+       "mae": 0.553,
+       "max": 2,
+       "n": 730
+      },
+      "maghrib": {
+       "exactPct": 47.9,
+       "w1Pct": 100,
+       "mae": 0.521,
+       "max": 1,
+       "n": 730
+      },
+      "isha": {
+       "exactPct": 43.6,
+       "w1Pct": 100,
+       "mae": 0.564,
+       "max": 1,
+       "n": 730
+      }
+     },
+     "total": {
+      "exactPct": 48.3,
+      "w1Pct": 99.9,
+      "mae": 0.518,
+      "max": 2,
+      "n": 4380
+     }
+    },
+    "byYear": {
+     "2026": {
+      "perColumn": {
+       "fajr": {
+        "exactPct": 47.7,
+        "w1Pct": 100,
+        "mae": 0.523,
+        "max": 1,
+        "n": 365
+       },
+       "sunrise": {
+        "exactPct": 50.7,
+        "w1Pct": 100,
+        "mae": 0.493,
+        "max": 1,
+        "n": 365
+       },
+       "dhuhr": {
+        "exactPct": 52.9,
+        "w1Pct": 100,
+        "mae": 0.471,
+        "max": 1,
+        "n": 365
+       },
+       "asr": {
+        "exactPct": 45.5,
+        "w1Pct": 98.6,
+        "mae": 0.559,
+        "max": 2,
+        "n": 365
+       },
+       "maghrib": {
+        "exactPct": 49.3,
+        "w1Pct": 100,
+        "mae": 0.507,
+        "max": 1,
+        "n": 365
+       },
+       "isha": {
+        "exactPct": 42.7,
+        "w1Pct": 100,
+        "mae": 0.573,
+        "max": 1,
+        "n": 365
+       }
+      },
+      "total": {
+       "exactPct": 48.1,
+       "w1Pct": 99.8,
+       "mae": 0.521,
+       "max": 2,
+       "n": 2190
+      }
+     },
+     "2031": {
+      "perColumn": {
+       "fajr": {
+        "exactPct": 51,
+        "w1Pct": 100,
+        "mae": 0.49,
+        "max": 1,
+        "n": 365
+       },
+       "sunrise": {
+        "exactPct": 51,
+        "w1Pct": 100,
+        "mae": 0.49,
+        "max": 1,
+        "n": 365
+       },
+       "dhuhr": {
+        "exactPct": 52.6,
+        "w1Pct": 100,
+        "mae": 0.474,
+        "max": 1,
+        "n": 365
+       },
+       "asr": {
+        "exactPct": 45.2,
+        "w1Pct": 100,
+        "mae": 0.548,
+        "max": 1,
+        "n": 365
+       },
+       "maghrib": {
+        "exactPct": 46.6,
+        "w1Pct": 100,
+        "mae": 0.534,
+        "max": 1,
+        "n": 365
+       },
+       "isha": {
+        "exactPct": 44.4,
+        "w1Pct": 100,
+        "mae": 0.556,
+        "max": 1,
+        "n": 365
+       }
+      },
+      "total": {
+       "exactPct": 48.4,
+       "w1Pct": 100,
+       "mae": 0.516,
+       "max": 1,
+       "n": 2190
+      }
+     }
+    }
+   },
+   "amplitude": {
+    "fajr": {
+     "peakToPeak": 98,
+     "jan": 338,
+     "jul": 252,
+     "janJul": -86
+    },
+    "sunrise": {
+     "peakToPeak": 90,
+     "jan": 417,
+     "jul": 337,
+     "janJul": -80
+    },
+    "dhuhr": {
+     "peakToPeak": 31,
+     "jan": 749,
+     "jul": 745,
+     "janJul": -4
+    },
+    "asr": {
+     "peakToPeak": 42,
+     "jan": 934,
+     "jul": 944,
+     "janJul": 10
+    },
+    "maghrib": {
+     "peakToPeak": 97,
+     "jan": 1075,
+     "jul": 1148,
+     "janJul": 73
+    },
+    "isha": {
+     "peakToPeak": 105,
+     "jan": 1149,
+     "jul": 1228,
+     "janJul": 79
+    }
+   }
+  },
+  "buraimi": {
+   "name": "buraimi",
+   "cityId": 5,
+   "lat": 24.25,
+   "lng": 55.7833,
+   "rows": 730,
+   "span": {
+    "from": "2026-01-01",
+    "to": "2031-12-31"
+   },
+   "freeFit": {
+    "fajr": {
+     "theta": 18,
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 97.3,
+      "w1Pct": 100,
+      "mae": 0.027,
+      "max": 1,
+      "n": 730
+     }
+    },
+    "isha": {
+     "theta": 18.05,
+     "pad": 0,
+     "mode": "floor",
+     "score": {
+      "exactPct": 64,
+      "w1Pct": 99.3,
+      "mae": 0.367,
+      "max": 2,
+      "n": 730
+     }
+    },
+    "sunrise": {
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 95.3,
+      "w1Pct": 100,
+      "mae": 0.047,
+      "max": 1,
+      "n": 730
+     }
+    },
+    "dhuhr": {
+     "pad": 5,
+     "mode": "round",
+     "score": {
+      "exactPct": 93.6,
+      "w1Pct": 100,
+      "mae": 0.064,
+      "max": 1,
+      "n": 730
+     }
+    },
+    "asr_shafi": {
+     "pad": 5,
+     "mode": "round",
+     "score": {
+      "exactPct": 57.9,
+      "w1Pct": 100,
+      "mae": 0.421,
+      "max": 1,
+      "n": 730
+     }
+    },
+    "asr_hanafi": {
+     "pad": 2,
+     "mode": "floor",
+     "score": {
+      "exactPct": 0,
+      "w1Pct": 0,
+      "mae": 56.105,
+      "max": 79,
+      "n": 730
+     }
+    },
+    "maghrib": {
+     "pad": 5,
+     "mode": "round",
+     "score": {
+      "exactPct": 63.8,
+      "w1Pct": 100,
+      "mae": 0.362,
+      "max": 1,
+      "n": 730
+     }
+    }
+   },
+   "held": {
+    "all": {
+     "perColumn": {
+      "fajr": {
+       "exactPct": 51.9,
+       "w1Pct": 100,
+       "mae": 0.481,
+       "max": 1,
+       "n": 730
+      },
+      "sunrise": {
+       "exactPct": 46.8,
+       "w1Pct": 100,
+       "mae": 0.532,
+       "max": 1,
+       "n": 730
+      },
+      "dhuhr": {
+       "exactPct": 51,
+       "w1Pct": 100,
+       "mae": 0.49,
+       "max": 1,
+       "n": 730
+      },
+      "asr": {
+       "exactPct": 44.9,
+       "w1Pct": 98.9,
+       "mae": 0.562,
+       "max": 2,
+       "n": 730
+      },
+      "maghrib": {
+       "exactPct": 47.7,
+       "w1Pct": 100,
+       "mae": 0.523,
+       "max": 1,
+       "n": 730
+      },
+      "isha": {
+       "exactPct": 41.1,
+       "w1Pct": 100,
+       "mae": 0.589,
+       "max": 1,
+       "n": 730
+      }
+     },
+     "total": {
+      "exactPct": 47.2,
+      "w1Pct": 99.8,
+      "mae": 0.529,
+      "max": 2,
+      "n": 4380
+     }
+    },
+    "byYear": {
+     "2026": {
+      "perColumn": {
+       "fajr": {
+        "exactPct": 49.9,
+        "w1Pct": 100,
+        "mae": 0.501,
+        "max": 1,
+        "n": 365
+       },
+       "sunrise": {
+        "exactPct": 46.8,
+        "w1Pct": 100,
+        "mae": 0.532,
+        "max": 1,
+        "n": 365
+       },
+       "dhuhr": {
+        "exactPct": 51,
+        "w1Pct": 100,
+        "mae": 0.49,
+        "max": 1,
+        "n": 365
+       },
+       "asr": {
+        "exactPct": 44.7,
+        "w1Pct": 99.2,
+        "mae": 0.562,
+        "max": 2,
+        "n": 365
+       },
+       "maghrib": {
+        "exactPct": 47.4,
+        "w1Pct": 100,
+        "mae": 0.526,
+        "max": 1,
+        "n": 365
+       },
+       "isha": {
+        "exactPct": 40.5,
+        "w1Pct": 100,
+        "mae": 0.595,
+        "max": 1,
+        "n": 365
+       }
+      },
+      "total": {
+       "exactPct": 46.7,
+       "w1Pct": 99.9,
+       "mae": 0.534,
+       "max": 2,
+       "n": 2190
+      }
+     },
+     "2031": {
+      "perColumn": {
+       "fajr": {
+        "exactPct": 54,
+        "w1Pct": 100,
+        "mae": 0.46,
+        "max": 1,
+        "n": 365
+       },
+       "sunrise": {
+        "exactPct": 46.8,
+        "w1Pct": 100,
+        "mae": 0.532,
+        "max": 1,
+        "n": 365
+       },
+       "dhuhr": {
+        "exactPct": 51,
+        "w1Pct": 100,
+        "mae": 0.49,
+        "max": 1,
+        "n": 365
+       },
+       "asr": {
+        "exactPct": 45.2,
+        "w1Pct": 98.6,
+        "mae": 0.562,
+        "max": 2,
+        "n": 365
+       },
+       "maghrib": {
+        "exactPct": 47.9,
+        "w1Pct": 100,
+        "mae": 0.521,
+        "max": 1,
+        "n": 365
+       },
+       "isha": {
+        "exactPct": 41.6,
+        "w1Pct": 100,
+        "mae": 0.584,
+        "max": 1,
+        "n": 365
+       }
+      },
+      "total": {
+       "exactPct": 47.8,
+       "w1Pct": 99.8,
+       "mae": 0.525,
+       "max": 2,
+       "n": 2190
+      }
+     }
+    }
+   },
+   "amplitude": {
+    "fajr": {
+     "peakToPeak": 103,
+     "jan": 342,
+     "jul": 252,
+     "janJul": -90
+    },
+    "sunrise": {
+     "peakToPeak": 94,
+     "jan": 422,
+     "jul": 338,
+     "janJul": -84
+    },
+    "dhuhr": {
+     "peakToPeak": 31,
+     "jan": 751,
+     "jul": 748,
+     "janJul": -3
+    },
+    "asr": {
+     "peakToPeak": 43,
+     "jan": 935,
+     "jul": 950,
+     "janJul": 15
+    },
+    "maghrib": {
+     "peakToPeak": 101,
+     "jan": 1076,
+     "jul": 1153,
+     "janJul": 77
+    },
+    "isha": {
+     "peakToPeak": 109,
+     "jan": 1150,
+     "jul": 1234,
+     "janJul": 84
+    }
+   }
+  }
+ }
+}

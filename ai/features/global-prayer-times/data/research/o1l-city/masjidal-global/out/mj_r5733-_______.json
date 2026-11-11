@@ -1,0 +1,34 @@
+{
+ "label": "r5733-رومانيا",
+ "file": "captures/masjidi_region_5733.json",
+ "rows": 366,
+ "lat": 44.3,
+ "k": 0,
+ "geoRms": 8.026,
+ "fajr": {
+  "kind": "angle",
+  "n": 366,
+  "angle": 16.83,
+  "darkIqr": 0.09
+ },
+ "isha": {
+  "kind": "angle",
+  "n": 366,
+  "angle": 14.82,
+  "darkIqr": 0.1,
+  "gap": 85
+ },
+ "asr": {
+  "school": "Shafi",
+  "shafiMae": 0.8,
+  "hanafiMae": 53.6
+ },
+ "clock": {
+  "lonImplied": -1.38,
+  "offsetMin": -6,
+  "driftRms": 0.2,
+  "runs": 1,
+  "steps": []
+ },
+ "amplitude": -213
+}

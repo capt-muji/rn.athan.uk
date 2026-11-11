@@ -1,0 +1,8688 @@
+{
+ "engine": "adhan 4.4.6",
+ "rounding": "none",
+ "tz": "Asia/Shanghai",
+ "params": {
+  "fajr": 15,
+  "isha": 15,
+  "madhab": "Hanafi",
+  "sunrise_sunset": "-0.833 deg"
+ },
+ "residual": "printed (24h normalised) minus computed, minutes",
+ "years_tested": [
+  2004,
+  2026
+ ],
+ "cities": {
+  "aksu": {
+   "city": "阿克苏",
+   "lon": 80.29,
+   "lat": 41.15,
+   "rows": 136,
+   "years": {
+    "2004": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 136,
+       "mean": 0.018,
+       "rms": 0.302,
+       "min": -0.65,
+       "p05": -0.45,
+       "p95": 0.52,
+       "max": 0.65,
+       "within_one": 136,
+       "rounding_matches": {
+        "ceil": 65,
+        "floor": 72,
+        "nearest": 123
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 136,
+       "mean": -0.033,
+       "rms": 0.325,
+       "min": -0.75,
+       "p05": -0.5,
+       "p95": 0.5,
+       "max": 0.72,
+       "within_one": 136,
+       "rounding_matches": {
+        "ceil": 61,
+        "floor": 77,
+        "nearest": 122
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 136,
+       "mean": 0.07,
+       "rms": 0.349,
+       "min": -0.7,
+       "p05": -0.52,
+       "p95": 0.63,
+       "max": 0.73,
+       "within_one": 136,
+       "rounding_matches": {
+        "ceil": 79,
+        "floor": 60,
+        "nearest": 112
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 136,
+       "mean": 0.12,
+       "rms": 0.708,
+       "min": -0.98,
+       "p05": -0.88,
+       "p95": 1.27,
+       "max": 1.5,
+       "within_one": 118,
+       "rounding_matches": {
+        "ceil": 53,
+        "floor": 67,
+        "nearest": 55
+       },
+       "rounding_verdict": "floor"
+      },
+      "sunset": {
+       "n": 136,
+       "mean": 0.145,
+       "rms": 0.728,
+       "min": -1.08,
+       "p05": -0.88,
+       "p95": 1.38,
+       "max": 1.55,
+       "within_one": 114,
+       "rounding_matches": {
+        "ceil": 50,
+        "floor": 64,
+        "nearest": 53
+       },
+       "rounding_verdict": "floor"
+      },
+      "isha": {
+       "n": 136,
+       "mean": 0.12,
+       "rms": 0.926,
+       "min": -1.4,
+       "p05": -1.18,
+       "p95": 1.58,
+       "max": 1.68,
+       "within_one": 87,
+       "rounding_matches": {
+        "ceil": 26,
+        "floor": 61,
+        "nearest": 32
+       },
+       "rounding_verdict": "floor"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 136,
+       "mean": 18.65,
+       "rms": 18.922,
+       "min": 15.6,
+       "p05": 15.78,
+       "p95": 25.83,
+       "max": 27.48,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 65,
+        "floor": 72,
+        "nearest": 123
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 136,
+       "mean": -12.217,
+       "rms": 12.445,
+       "min": -18.3,
+       "p05": -17.32,
+       "p95": -9.42,
+       "max": -9.12,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 26,
+        "floor": 61,
+        "nearest": 32
+       },
+       "rounding_verdict": "floor"
+      }
+     }
+    },
+    "2026": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 136,
+       "mean": 0.09,
+       "rms": 0.558,
+       "min": -1.08,
+       "p05": -0.82,
+       "p95": 0.9,
+       "max": 1.3,
+       "within_one": 133,
+       "rounding_matches": {
+        "ceil": 78,
+        "floor": 56,
+        "nearest": 73
+       },
+       "rounding_verdict": "ceil"
+      },
+      "sunrise": {
+       "n": 136,
+       "mean": 0.06,
+       "rms": 0.48,
+       "min": -0.83,
+       "p05": -0.68,
+       "p95": 1,
+       "max": 1.48,
+       "within_one": 130,
+       "rounding_matches": {
+        "ceil": 62,
+        "floor": 74,
+        "nearest": 97
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 136,
+       "mean": 0.03,
+       "rms": 0.319,
+       "min": -0.7,
+       "p05": -0.42,
+       "p95": 0.55,
+       "max": 0.65,
+       "within_one": 136,
+       "rounding_matches": {
+        "ceil": 73,
+        "floor": 66,
+        "nearest": 123
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 136,
+       "mean": -0.05,
+       "rms": 0.61,
+       "min": -1.72,
+       "p05": -1.45,
+       "p95": 0.83,
+       "max": 1.03,
+       "within_one": 122,
+       "rounding_matches": {
+        "ceil": 68,
+        "floor": 53,
+        "nearest": 79
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 136,
+       "mean": -0.029,
+       "rms": 0.589,
+       "min": -1.82,
+       "p05": -1.4,
+       "p95": 0.82,
+       "max": 0.98,
+       "within_one": 125,
+       "rounding_matches": {
+        "ceil": 80,
+        "floor": 47,
+        "nearest": 90
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 136,
+       "mean": -0.033,
+       "rms": 0.672,
+       "min": -1.68,
+       "p05": -1.32,
+       "p95": 1,
+       "max": 1.1,
+       "within_one": 120,
+       "rounding_matches": {
+        "ceil": 62,
+        "floor": 56,
+        "nearest": 66
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 136,
+       "mean": 18.719,
+       "rms": 18.976,
+       "min": 15.43,
+       "p05": 15.93,
+       "p95": 25.72,
+       "max": 27.45,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 78,
+        "floor": 56,
+        "nearest": 73
+       },
+       "rounding_verdict": "ceil"
+      },
+      "isha": {
+       "n": 136,
+       "mean": -12.368,
+       "rms": 12.556,
+       "min": -18.33,
+       "p05": -17.12,
+       "p95": -9.93,
+       "max": -9.65,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 62,
+        "floor": 56,
+        "nearest": 66
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    }
+   },
+   "measured_angles": {
+    "fajr": {
+     "angle": 15,
+     "mae": 0.26
+    },
+    "isha": {
+     "angle": 14.9,
+     "mae": 0.73
+    },
+    "mae_fajr_at_15": 0.26,
+    "mae_isha_at_15": 0.76,
+    "sample_rows": 68
+   }
+  },
+  "baoji": {
+   "city": "宝鸡",
+   "lon": 107.15,
+   "lat": 34.38,
+   "rows": 144,
+   "years": {
+    "2004": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.08,
+       "rms": 0.327,
+       "min": -0.58,
+       "p05": -0.5,
+       "p95": 0.53,
+       "max": 0.72,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 81,
+        "floor": 64,
+        "nearest": 125
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.093,
+       "rms": 0.344,
+       "min": -0.68,
+       "p05": -0.45,
+       "p95": 0.6,
+       "max": 0.8,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 86,
+        "floor": 58,
+        "nearest": 123
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.119,
+       "rms": 0.348,
+       "min": -0.73,
+       "p05": -0.45,
+       "p95": 0.63,
+       "max": 0.75,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 94,
+        "floor": 54,
+        "nearest": 118
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": 0.069,
+       "rms": 0.547,
+       "min": -0.95,
+       "p05": -0.77,
+       "p95": 0.98,
+       "max": 1.2,
+       "within_one": 137,
+       "rounding_matches": {
+        "ceil": 69,
+        "floor": 69,
+        "nearest": 84
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": 0.084,
+       "rms": 0.552,
+       "min": -0.95,
+       "p05": -0.68,
+       "p95": 0.97,
+       "max": 1.3,
+       "within_one": 137,
+       "rounding_matches": {
+        "ceil": 69,
+        "floor": 72,
+        "nearest": 84
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": 0.095,
+       "rms": 0.684,
+       "min": -1.1,
+       "p05": -0.9,
+       "p95": 1.2,
+       "max": 1.3,
+       "within_one": 121,
+       "rounding_matches": {
+        "ceil": 50,
+        "floor": 68,
+        "nearest": 62
+       },
+       "rounding_verdict": "floor"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 16.135,
+       "rms": 16.221,
+       "min": 14,
+       "p05": 14.42,
+       "p95": 19.55,
+       "max": 20.58,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 81,
+        "floor": 64,
+        "nearest": 125
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -10.576,
+       "rms": 10.677,
+       "min": -14.28,
+       "p05": -13.57,
+       "p95": -8.7,
+       "max": -8.57,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 50,
+        "floor": 68,
+        "nearest": 62
+       },
+       "rounding_verdict": "floor"
+      }
+     }
+    },
+    "2026": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.127,
+       "rms": 0.536,
+       "min": -1.02,
+       "p05": -0.73,
+       "p95": 0.87,
+       "max": 1.02,
+       "within_one": 141,
+       "rounding_matches": {
+        "ceil": 86,
+        "floor": 57,
+        "nearest": 78
+       },
+       "rounding_verdict": "ceil"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.158,
+       "rms": 0.513,
+       "min": -0.8,
+       "p05": -0.65,
+       "p95": 0.92,
+       "max": 1.23,
+       "within_one": 140,
+       "rounding_matches": {
+        "ceil": 83,
+        "floor": 58,
+        "nearest": 88
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.071,
+       "rms": 0.309,
+       "min": -0.62,
+       "p05": -0.43,
+       "p95": 0.53,
+       "max": 0.67,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 88,
+        "floor": 58,
+        "nearest": 129
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": -0.089,
+       "rms": 0.498,
+       "min": -1.45,
+       "p05": -0.93,
+       "p95": 0.65,
+       "max": 0.82,
+       "within_one": 138,
+       "rounding_matches": {
+        "ceil": 72,
+        "floor": 66,
+        "nearest": 103
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": -0.076,
+       "rms": 0.482,
+       "min": -1.43,
+       "p05": -0.87,
+       "p95": 0.55,
+       "max": 0.83,
+       "within_one": 139,
+       "rounding_matches": {
+        "ceil": 70,
+        "floor": 71,
+        "nearest": 106
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -0.047,
+       "rms": 0.515,
+       "min": -1.42,
+       "p05": -0.82,
+       "p95": 0.72,
+       "max": 0.8,
+       "within_one": 138,
+       "rounding_matches": {
+        "ceil": 67,
+        "floor": 74,
+        "nearest": 88
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 16.18,
+       "rms": 16.262,
+       "min": 13.93,
+       "p05": 14.47,
+       "p95": 19.43,
+       "max": 20.48,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 86,
+        "floor": 57,
+        "nearest": 78
+       },
+       "rounding_verdict": "ceil"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -10.716,
+       "rms": 10.796,
+       "min": -14.25,
+       "p05": -13.4,
+       "p95": -9.13,
+       "max": -9,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 67,
+        "floor": 74,
+        "nearest": 88
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    }
+   },
+   "measured_angles": {
+    "fajr": {
+     "angle": 15,
+     "mae": 0.29
+    },
+    "isha": {
+     "angle": 15,
+     "mae": 0.58
+    },
+    "mae_fajr_at_15": 0.29,
+    "mae_isha_at_15": 0.58,
+    "sample_rows": 72
+   }
+  },
+  "baotou": {
+   "city": "包头",
+   "lon": 110,
+   "lat": 40.58,
+   "rows": 144,
+   "years": {
+    "2004": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.063,
+       "rms": 0.372,
+       "min": -0.75,
+       "p05": -0.57,
+       "p95": 0.63,
+       "max": 0.83,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 82,
+        "floor": 62,
+        "nearest": 112
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.088,
+       "rms": 0.345,
+       "min": -0.62,
+       "p05": -0.47,
+       "p95": 0.6,
+       "max": 0.68,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 89,
+        "floor": 60,
+        "nearest": 123
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.053,
+       "rms": 0.352,
+       "min": -0.68,
+       "p05": -0.5,
+       "p95": 0.63,
+       "max": 0.75,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 79,
+        "floor": 68,
+        "nearest": 119
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": 0.062,
+       "rms": 0.603,
+       "min": -0.95,
+       "p05": -0.77,
+       "p95": 1.17,
+       "max": 1.33,
+       "within_one": 133,
+       "rounding_matches": {
+        "ceil": 62,
+        "floor": 72,
+        "nearest": 74
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": 0.083,
+       "rms": 0.639,
+       "min": -0.98,
+       "p05": -0.85,
+       "p95": 1.03,
+       "max": 1.37,
+       "within_one": 135,
+       "rounding_matches": {
+        "ceil": 60,
+        "floor": 71,
+        "nearest": 62
+       },
+       "rounding_verdict": "floor"
+      },
+      "isha": {
+       "n": 144,
+       "mean": 0.103,
+       "rms": 0.769,
+       "min": -1.18,
+       "p05": -0.97,
+       "p95": 1.3,
+       "max": 1.63,
+       "within_one": 117,
+       "rounding_matches": {
+        "ceil": 49,
+        "floor": 67,
+        "nearest": 52
+       },
+       "rounding_verdict": "floor"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 18.31,
+       "rms": 18.542,
+       "min": 15.22,
+       "p05": 15.6,
+       "p95": 24.57,
+       "max": 26.33,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 82,
+        "floor": 62,
+        "nearest": 112
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -11.99,
+       "rms": 12.194,
+       "min": -17.95,
+       "p05": -16.82,
+       "p95": -9.52,
+       "max": -9.28,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 49,
+        "floor": 67,
+        "nearest": 52
+       },
+       "rounding_verdict": "floor"
+      }
+     }
+    },
+    "2026": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.136,
+       "rms": 0.647,
+       "min": -1.18,
+       "p05": -0.93,
+       "p95": 1,
+       "max": 1.17,
+       "within_one": 133,
+       "rounding_matches": {
+        "ceil": 80,
+        "floor": 51,
+        "nearest": 59
+       },
+       "rounding_verdict": "ceil"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.181,
+       "rms": 0.585,
+       "min": -0.95,
+       "p05": -0.73,
+       "p95": 0.98,
+       "max": 1.25,
+       "within_one": 138,
+       "rounding_matches": {
+        "ceil": 79,
+        "floor": 59,
+        "nearest": 77
+       },
+       "rounding_verdict": "ceil"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.005,
+       "rms": 0.325,
+       "min": -0.62,
+       "p05": -0.52,
+       "p95": 0.52,
+       "max": 0.65,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 69,
+        "floor": 75,
+        "nearest": 128
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": -0.124,
+       "rms": 0.564,
+       "min": -1.7,
+       "p05": -1.27,
+       "p95": 0.72,
+       "max": 0.87,
+       "within_one": 130,
+       "rounding_matches": {
+        "ceil": 64,
+        "floor": 68,
+        "nearest": 98
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": -0.106,
+       "rms": 0.549,
+       "min": -1.6,
+       "p05": -1.27,
+       "p95": 0.6,
+       "max": 0.82,
+       "within_one": 134,
+       "rounding_matches": {
+        "ceil": 71,
+        "floor": 65,
+        "nearest": 103
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -0.065,
+       "rms": 0.562,
+       "min": -1.62,
+       "p05": -1.03,
+       "p95": 0.73,
+       "max": 1.02,
+       "within_one": 134,
+       "rounding_matches": {
+        "ceil": 67,
+        "floor": 68,
+        "nearest": 90
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 18.378,
+       "rms": 18.598,
+       "min": 15.15,
+       "p05": 15.62,
+       "p95": 24.28,
+       "max": 26.4,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 80,
+        "floor": 51,
+        "nearest": 59
+       },
+       "rounding_verdict": "ceil"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -12.156,
+       "rms": 12.325,
+       "min": -17.72,
+       "p05": -16.5,
+       "p95": -10.02,
+       "max": -9.8,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 67,
+        "floor": 68,
+        "nearest": 90
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    }
+   },
+   "measured_angles": {
+    "fajr": {
+     "angle": 15,
+     "mae": 0.32
+    },
+    "isha": {
+     "angle": 15,
+     "mae": 0.63
+    },
+    "mae_fajr_at_15": 0.32,
+    "mae_isha_at_15": 0.63,
+    "sample_rows": 72
+   }
+  },
+  "cangzhou": {
+   "city": "沧州",
+   "lon": 116.83,
+   "lat": 38.33,
+   "rows": 144,
+   "years": {
+    "2004": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.064,
+       "rms": 0.36,
+       "min": -0.65,
+       "p05": -0.48,
+       "p95": 0.62,
+       "max": 0.8,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 82,
+        "floor": 63,
+        "nearest": 121
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.069,
+       "rms": 0.338,
+       "min": -0.67,
+       "p05": -0.48,
+       "p95": 0.6,
+       "max": 0.72,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 84,
+        "floor": 60,
+        "nearest": 120
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.031,
+       "rms": 0.324,
+       "min": -0.77,
+       "p05": -0.48,
+       "p95": 0.57,
+       "max": 0.68,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 76,
+        "floor": 74,
+        "nearest": 126
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": 0.107,
+       "rms": 0.559,
+       "min": -1,
+       "p05": -0.72,
+       "p95": 1.1,
+       "max": 1.23,
+       "within_one": 134,
+       "rounding_matches": {
+        "ceil": 76,
+        "floor": 58,
+        "nearest": 83
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": 0.059,
+       "rms": 0.55,
+       "min": -0.9,
+       "p05": -0.75,
+       "p95": 1.03,
+       "max": 1.25,
+       "within_one": 135,
+       "rounding_matches": {
+        "ceil": 61,
+        "floor": 75,
+        "nearest": 89
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": 0.094,
+       "rms": 0.647,
+       "min": -1.15,
+       "p05": -0.87,
+       "p95": 1.15,
+       "max": 1.47,
+       "within_one": 126,
+       "rounding_matches": {
+        "ceil": 55,
+        "floor": 72,
+        "nearest": 76
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 17.386,
+       "rms": 17.542,
+       "min": 14.8,
+       "p05": 15.18,
+       "p95": 22.23,
+       "max": 24.02,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 82,
+        "floor": 63,
+        "nearest": 121
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -11.401,
+       "rms": 11.546,
+       "min": -16.33,
+       "p05": -15.1,
+       "p95": -9.32,
+       "max": -9.03,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 55,
+        "floor": 72,
+        "nearest": 76
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    },
+    "2026": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.127,
+       "rms": 0.621,
+       "min": -1.2,
+       "p05": -0.97,
+       "p95": 0.95,
+       "max": 1.12,
+       "within_one": 135,
+       "rounding_matches": {
+        "ceil": 85,
+        "floor": 50,
+        "nearest": 67
+       },
+       "rounding_verdict": "ceil"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.152,
+       "rms": 0.571,
+       "min": -0.93,
+       "p05": -0.72,
+       "p95": 0.93,
+       "max": 1.22,
+       "within_one": 140,
+       "rounding_matches": {
+        "ceil": 79,
+        "floor": 61,
+        "nearest": 75
+       },
+       "rounding_verdict": "ceil"
+      },
+      "noon": {
+       "n": 144,
+       "mean": -0.016,
+       "rms": 0.3,
+       "min": -0.7,
+       "p05": -0.48,
+       "p95": 0.48,
+       "max": 0.58,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 64,
+        "floor": 81,
+        "nearest": 132
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": -0.069,
+       "rms": 0.52,
+       "min": -1.58,
+       "p05": -1.17,
+       "p95": 0.65,
+       "max": 0.8,
+       "within_one": 135,
+       "rounding_matches": {
+        "ceil": 77,
+        "floor": 59,
+        "nearest": 100
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": -0.119,
+       "rms": 0.511,
+       "min": -1.55,
+       "p05": -1.12,
+       "p95": 0.58,
+       "max": 0.75,
+       "within_one": 133,
+       "rounding_matches": {
+        "ceil": 63,
+        "floor": 73,
+        "nearest": 104
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -0.064,
+       "rms": 0.481,
+       "min": -1.2,
+       "p05": -0.93,
+       "p95": 0.63,
+       "max": 0.9,
+       "within_one": 142,
+       "rounding_matches": {
+        "ceil": 77,
+        "floor": 69,
+        "nearest": 96
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 17.446,
+       "rms": 17.594,
+       "min": 14.45,
+       "p05": 15.12,
+       "p95": 22.33,
+       "max": 23.98,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 85,
+        "floor": 50,
+        "nearest": 67
+       },
+       "rounding_verdict": "ceil"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -11.557,
+       "rms": 11.676,
+       "min": -16.3,
+       "p05": -14.95,
+       "p95": -9.73,
+       "max": -9.57,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 77,
+        "floor": 69,
+        "nearest": 96
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    }
+   },
+   "measured_angles": {
+    "fajr": {
+     "angle": 15,
+     "mae": 0.32
+    },
+    "isha": {
+     "angle": 15,
+     "mae": 0.53
+    },
+    "mae_fajr_at_15": 0.32,
+    "mae_isha_at_15": 0.53,
+    "sample_rows": 72
+   }
+  },
+  "changji": {
+   "city": "昌吉",
+   "lon": 87.31,
+   "lat": 44.05,
+   "rows": 144,
+   "years": {
+    "2004": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.041,
+       "rms": 0.361,
+       "min": -0.73,
+       "p05": -0.58,
+       "p95": 0.6,
+       "max": 0.68,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 80,
+        "floor": 69,
+        "nearest": 118
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.079,
+       "rms": 0.356,
+       "min": -0.72,
+       "p05": -0.5,
+       "p95": 0.62,
+       "max": 0.78,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 91,
+        "floor": 55,
+        "nearest": 119
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.061,
+       "rms": 0.333,
+       "min": -0.67,
+       "p05": -0.45,
+       "p95": 0.63,
+       "max": 0.72,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 80,
+        "floor": 66,
+        "nearest": 124
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": 0.091,
+       "rms": 0.705,
+       "min": -1.17,
+       "p05": -0.85,
+       "p95": 1.27,
+       "max": 1.52,
+       "within_one": 121,
+       "rounding_matches": {
+        "ceil": 50,
+        "floor": 75,
+        "nearest": 58
+       },
+       "rounding_verdict": "floor"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": 0.116,
+       "rms": 0.745,
+       "min": -1.12,
+       "p05": -0.9,
+       "p95": 1.33,
+       "max": 1.62,
+       "within_one": 119,
+       "rounding_matches": {
+        "ceil": 46,
+        "floor": 72,
+        "nearest": 54
+       },
+       "rounding_verdict": "floor"
+      },
+      "isha": {
+       "n": 144,
+       "mean": 0.09,
+       "rms": 0.882,
+       "min": -1.4,
+       "p05": -1.15,
+       "p95": 1.33,
+       "max": 1.82,
+       "within_one": 95,
+       "rounding_matches": {
+        "ceil": 34,
+        "floor": 62,
+        "nearest": 41
+       },
+       "rounding_verdict": "floor"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 20.201,
+       "rms": 20.674,
+       "min": 16.33,
+       "p05": 16.6,
+       "p95": 29.83,
+       "max": 33.63,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 80,
+        "floor": 69,
+        "nearest": 118
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -13.222,
+       "rms": 13.577,
+       "min": -21.95,
+       "p05": -20.05,
+       "p95": -9.97,
+       "max": -9.58,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 34,
+        "floor": 62,
+        "nearest": 41
+       },
+       "rounding_verdict": "floor"
+      }
+     }
+    },
+    "2026": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.129,
+       "rms": 0.693,
+       "min": -1.22,
+       "p05": -1.05,
+       "p95": 1.1,
+       "max": 1.48,
+       "within_one": 119,
+       "rounding_matches": {
+        "ceil": 71,
+        "floor": 48,
+        "nearest": 67
+       },
+       "rounding_verdict": "ceil"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.194,
+       "rms": 0.657,
+       "min": -1,
+       "p05": -0.83,
+       "p95": 1.23,
+       "max": 1.62,
+       "within_one": 131,
+       "rounding_matches": {
+        "ceil": 76,
+        "floor": 55,
+        "nearest": 73
+       },
+       "rounding_verdict": "ceil"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.013,
+       "rms": 0.308,
+       "min": -0.62,
+       "p05": -0.43,
+       "p95": 0.52,
+       "max": 0.63,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 76,
+        "floor": 69,
+        "nearest": 130
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": -0.115,
+       "rms": 0.647,
+       "min": -1.95,
+       "p05": -1.48,
+       "p95": 0.8,
+       "max": 0.98,
+       "within_one": 128,
+       "rounding_matches": {
+        "ceil": 73,
+        "floor": 55,
+        "nearest": 89
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": -0.095,
+       "rms": 0.628,
+       "min": -1.98,
+       "p05": -1.33,
+       "p95": 0.73,
+       "max": 1,
+       "within_one": 130,
+       "rounding_matches": {
+        "ceil": 80,
+        "floor": 53,
+        "nearest": 95
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -0.094,
+       "rms": 0.657,
+       "min": -1.95,
+       "p05": -1.3,
+       "p95": 0.78,
+       "max": 1.15,
+       "within_one": 126,
+       "rounding_matches": {
+        "ceil": 71,
+        "floor": 54,
+        "nearest": 79
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 20.283,
+       "rms": 20.734,
+       "min": 16.1,
+       "p05": 16.82,
+       "p95": 30.1,
+       "max": 33.7,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 71,
+        "floor": 48,
+        "nearest": 67
+       },
+       "rounding_verdict": "ceil"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -13.403,
+       "rms": 13.709,
+       "min": -21.9,
+       "p05": -20,
+       "p95": -10.55,
+       "max": -10.13,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 71,
+        "floor": 54,
+        "nearest": 79
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    }
+   },
+   "measured_angles": {
+    "fajr": {
+     "angle": 15,
+     "mae": 0.3
+    },
+    "isha": {
+     "angle": 15.1,
+     "mae": 0.79
+    },
+    "mae_fajr_at_15": 0.3,
+    "mae_isha_at_15": 0.81,
+    "sample_rows": 72
+   }
+  },
+  "dalian": {
+   "city": "大连",
+   "lon": 121.62,
+   "lat": 38.92,
+   "rows": 144,
+   "years": {
+    "2004": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.041,
+       "rms": 0.37,
+       "min": -0.77,
+       "p05": -0.55,
+       "p95": 0.62,
+       "max": 0.77,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 78,
+        "floor": 68,
+        "nearest": 115
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.038,
+       "rms": 0.304,
+       "min": -0.65,
+       "p05": -0.4,
+       "p95": 0.57,
+       "max": 0.75,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 74,
+        "floor": 72,
+        "nearest": 131
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.1,
+       "rms": 0.323,
+       "min": -0.6,
+       "p05": -0.4,
+       "p95": 0.58,
+       "max": 0.72,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 90,
+        "floor": 58,
+        "nearest": 125
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": 0.03,
+       "rms": 0.532,
+       "min": -1,
+       "p05": -0.75,
+       "p95": 0.97,
+       "max": 1.22,
+       "within_one": 137,
+       "rounding_matches": {
+        "ceil": 65,
+        "floor": 72,
+        "nearest": 87
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": 0.054,
+       "rms": 0.554,
+       "min": -0.97,
+       "p05": -0.78,
+       "p95": 0.98,
+       "max": 1.25,
+       "within_one": 138,
+       "rounding_matches": {
+        "ceil": 64,
+        "floor": 75,
+        "nearest": 89
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": 0.061,
+       "rms": 0.658,
+       "min": -1.17,
+       "p05": -0.85,
+       "p95": 1.07,
+       "max": 1.48,
+       "within_one": 126,
+       "rounding_matches": {
+        "ceil": 58,
+        "floor": 68,
+        "nearest": 64
+       },
+       "rounding_verdict": "floor"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 17.587,
+       "rms": 17.758,
+       "min": 14.92,
+       "p05": 15.23,
+       "p95": 22.72,
+       "max": 24.13,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 78,
+        "floor": 68,
+        "nearest": 115
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -11.58,
+       "rms": 11.731,
+       "min": -16.48,
+       "p05": -15.57,
+       "p95": -9.37,
+       "max": -9.2,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 58,
+        "floor": 68,
+        "nearest": 64
+       },
+       "rounding_verdict": "floor"
+      }
+     }
+    },
+    "2026": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.106,
+       "rms": 0.654,
+       "min": -1.2,
+       "p05": -0.98,
+       "p95": 0.95,
+       "max": 1.07,
+       "within_one": 133,
+       "rounding_matches": {
+        "ceil": 79,
+        "floor": 53,
+        "nearest": 61
+       },
+       "rounding_verdict": "ceil"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.123,
+       "rms": 0.562,
+       "min": -0.92,
+       "p05": -0.8,
+       "p95": 0.9,
+       "max": 1.27,
+       "within_one": 142,
+       "rounding_matches": {
+        "ceil": 86,
+        "floor": 58,
+        "nearest": 69
+       },
+       "rounding_verdict": "ceil"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.053,
+       "rms": 0.291,
+       "min": -0.58,
+       "p05": -0.37,
+       "p95": 0.5,
+       "max": 0.63,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 82,
+        "floor": 66,
+        "nearest": 135
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": -0.149,
+       "rms": 0.546,
+       "min": -1.63,
+       "p05": -1.37,
+       "p95": 0.58,
+       "max": 0.8,
+       "within_one": 131,
+       "rounding_matches": {
+        "ceil": 61,
+        "floor": 70,
+        "nearest": 114
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": -0.127,
+       "rms": 0.495,
+       "min": -1.55,
+       "p05": -1.17,
+       "p95": 0.53,
+       "max": 0.73,
+       "within_one": 135,
+       "rounding_matches": {
+        "ceil": 66,
+        "floor": 69,
+        "nearest": 109
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -0.1,
+       "rms": 0.513,
+       "min": -1.5,
+       "p05": -1.1,
+       "p95": 0.58,
+       "max": 0.92,
+       "within_one": 133,
+       "rounding_matches": {
+        "ceil": 66,
+        "floor": 67,
+        "nearest": 98
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 17.65,
+       "rms": 17.813,
+       "min": 14.58,
+       "p05": 15.07,
+       "p95": 22.8,
+       "max": 24.1,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 79,
+        "floor": 53,
+        "nearest": 61
+       },
+       "rounding_verdict": "ceil"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -11.739,
+       "rms": 11.862,
+       "min": -16.52,
+       "p05": -15.52,
+       "p95": -9.87,
+       "max": -9.62,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 66,
+        "floor": 67,
+        "nearest": 98
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    }
+   },
+   "measured_angles": {
+    "fajr": {
+     "angle": 15,
+     "mae": 0.31
+    },
+    "isha": {
+     "angle": 15,
+     "mae": 0.57
+    },
+    "mae_fajr_at_15": 0.31,
+    "mae_isha_at_15": 0.57,
+    "sample_rows": 72
+   }
+  },
+  "datong": {
+   "city": "大同",
+   "lon": 113.3,
+   "lat": 40.12,
+   "rows": 144,
+   "years": {
+    "2004": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.053,
+       "rms": 0.332,
+       "min": -0.77,
+       "p05": -0.5,
+       "p95": 0.55,
+       "max": 0.78,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 79,
+        "floor": 68,
+        "nearest": 125
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.058,
+       "rms": 0.32,
+       "min": -0.67,
+       "p05": -0.38,
+       "p95": 0.62,
+       "max": 0.77,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 79,
+        "floor": 67,
+        "nearest": 128
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.071,
+       "rms": 0.341,
+       "min": -0.65,
+       "p05": -0.43,
+       "p95": 0.63,
+       "max": 0.73,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 82,
+        "floor": 63,
+        "nearest": 120
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": 0.092,
+       "rms": 0.595,
+       "min": -0.97,
+       "p05": -0.73,
+       "p95": 1.1,
+       "max": 1.35,
+       "within_one": 131,
+       "rounding_matches": {
+        "ceil": 60,
+        "floor": 70,
+        "nearest": 74
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": 0.06,
+       "rms": 0.57,
+       "min": -0.93,
+       "p05": -0.73,
+       "p95": 0.98,
+       "max": 1.37,
+       "within_one": 137,
+       "rounding_matches": {
+        "ceil": 66,
+        "floor": 73,
+        "nearest": 76
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": 0.082,
+       "rms": 0.761,
+       "min": -1.23,
+       "p05": -1.03,
+       "p95": 1.42,
+       "max": 1.58,
+       "within_one": 114,
+       "rounding_matches": {
+        "ceil": 46,
+        "floor": 70,
+        "nearest": 53
+       },
+       "rounding_verdict": "floor"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 18.095,
+       "rms": 18.313,
+       "min": 15.25,
+       "p05": 15.6,
+       "p95": 24.45,
+       "max": 26.03,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 79,
+        "floor": 68,
+        "nearest": 125
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -11.88,
+       "rms": 12.067,
+       "min": -17.57,
+       "p05": -16.67,
+       "p95": -9.48,
+       "max": -9.25,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 46,
+        "floor": 70,
+        "nearest": 53
+       },
+       "rounding_verdict": "floor"
+      }
+     }
+    },
+    "2026": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.123,
+       "rms": 0.618,
+       "min": -1.25,
+       "p05": -1.05,
+       "p95": 0.9,
+       "max": 1.17,
+       "within_one": 130,
+       "rounding_matches": {
+        "ceil": 83,
+        "floor": 47,
+        "nearest": 68
+       },
+       "rounding_verdict": "ceil"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.15,
+       "rms": 0.576,
+       "min": -0.88,
+       "p05": -0.77,
+       "p95": 1.02,
+       "max": 1.28,
+       "within_one": 136,
+       "rounding_matches": {
+        "ceil": 83,
+        "floor": 54,
+        "nearest": 77
+       },
+       "rounding_verdict": "ceil"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.025,
+       "rms": 0.317,
+       "min": -0.63,
+       "p05": -0.42,
+       "p95": 0.55,
+       "max": 0.67,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 77,
+        "floor": 68,
+        "nearest": 129
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": -0.094,
+       "rms": 0.538,
+       "min": -1.55,
+       "p05": -0.98,
+       "p95": 0.68,
+       "max": 0.88,
+       "within_one": 137,
+       "rounding_matches": {
+        "ceil": 71,
+        "floor": 72,
+        "nearest": 91
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": -0.126,
+       "rms": 0.521,
+       "min": -1.67,
+       "p05": -1.17,
+       "p95": 0.55,
+       "max": 0.82,
+       "within_one": 132,
+       "rounding_matches": {
+        "ceil": 68,
+        "floor": 67,
+        "nearest": 112
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -0.084,
+       "rms": 0.592,
+       "min": -1.72,
+       "p05": -1.22,
+       "p95": 0.83,
+       "max": 0.98,
+       "within_one": 133,
+       "rounding_matches": {
+        "ceil": 72,
+        "floor": 61,
+        "nearest": 95
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 18.162,
+       "rms": 18.369,
+       "min": 15.08,
+       "p05": 15.58,
+       "p95": 24.22,
+       "max": 26.08,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 83,
+        "floor": 47,
+        "nearest": 68
+       },
+       "rounding_verdict": "ceil"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -12.043,
+       "rms": 12.198,
+       "min": -17.35,
+       "p05": -16.37,
+       "p95": -9.98,
+       "max": -9.72,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 72,
+        "floor": 61,
+        "nearest": 95
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    }
+   },
+   "measured_angles": {
+    "fajr": {
+     "angle": 15,
+     "mae": 0.29
+    },
+    "isha": {
+     "angle": 15,
+     "mae": 0.69
+    },
+    "mae_fajr_at_15": 0.29,
+    "mae_isha_at_15": 0.69,
+    "sample_rows": 72
+   }
+  },
+  "guilin": {
+   "city": "桂林",
+   "lon": 110.28,
+   "lat": 25.29,
+   "rows": 144,
+   "years": {
+    "2004": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.031,
+       "rms": 0.33,
+       "min": -0.68,
+       "p05": -0.47,
+       "p95": 0.55,
+       "max": 0.68,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 75,
+        "floor": 71,
+        "nearest": 125
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.051,
+       "rms": 0.311,
+       "min": -0.52,
+       "p05": -0.4,
+       "p95": 0.58,
+       "max": 0.72,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 77,
+        "floor": 71,
+        "nearest": 130
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.02,
+       "rms": 0.332,
+       "min": -0.73,
+       "p05": -0.52,
+       "p95": 0.57,
+       "max": 0.67,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 75,
+        "floor": 71,
+        "nearest": 123
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": 0.061,
+       "rms": 0.45,
+       "min": -0.72,
+       "p05": -0.62,
+       "p95": 0.85,
+       "max": 1.07,
+       "within_one": 142,
+       "rounding_matches": {
+        "ceil": 74,
+        "floor": 68,
+        "nearest": 99
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": 0.074,
+       "rms": 0.454,
+       "min": -0.77,
+       "p05": -0.67,
+       "p95": 0.87,
+       "max": 1.1,
+       "within_one": 141,
+       "rounding_matches": {
+        "ceil": 84,
+        "floor": 58,
+        "nearest": 101
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": 0.086,
+       "rms": 0.512,
+       "min": -0.95,
+       "p05": -0.72,
+       "p95": 0.93,
+       "max": 1.22,
+       "within_one": 138,
+       "rounding_matches": {
+        "ceil": 65,
+        "floor": 74,
+        "nearest": 94
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 14.205,
+       "rms": 14.234,
+       "min": 12.85,
+       "p05": 13.07,
+       "p95": 15.82,
+       "max": 16.7,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 75,
+        "floor": 71,
+        "nearest": 125
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -9.351,
+       "rms": 9.394,
+       "min": -11.82,
+       "p05": -10.98,
+       "p95": -8.07,
+       "max": -7.7,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 65,
+        "floor": 74,
+        "nearest": 94
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    },
+    "2026": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.046,
+       "rms": 0.435,
+       "min": -0.87,
+       "p05": -0.72,
+       "p95": 0.72,
+       "max": 0.98,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 82,
+        "floor": 63,
+        "nearest": 99
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.08,
+       "rms": 0.411,
+       "min": -0.68,
+       "p05": -0.6,
+       "p95": 0.75,
+       "max": 1.03,
+       "within_one": 142,
+       "rounding_matches": {
+        "ceil": 80,
+        "floor": 63,
+        "nearest": 107
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": -0.027,
+       "rms": 0.314,
+       "min": -0.72,
+       "p05": -0.45,
+       "p95": 0.47,
+       "max": 0.6,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 68,
+        "floor": 78,
+        "nearest": 133
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": -0.062,
+       "rms": 0.438,
+       "min": -1.15,
+       "p05": -0.88,
+       "p95": 0.62,
+       "max": 0.77,
+       "within_one": 141,
+       "rounding_matches": {
+        "ceil": 67,
+        "floor": 74,
+        "nearest": 107
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": -0.05,
+       "rms": 0.401,
+       "min": -1.08,
+       "p05": -0.65,
+       "p95": 0.58,
+       "max": 0.75,
+       "within_one": 141,
+       "rounding_matches": {
+        "ceil": 67,
+        "floor": 75,
+        "nearest": 112
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -0.024,
+       "rms": 0.416,
+       "min": -1.03,
+       "p05": -0.7,
+       "p95": 0.62,
+       "max": 0.83,
+       "within_one": 143,
+       "rounding_matches": {
+        "ceil": 71,
+        "floor": 72,
+        "nearest": 106
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 14.219,
+       "rms": 14.246,
+       "min": 12.53,
+       "p05": 12.98,
+       "p95": 15.82,
+       "max": 16.68,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 82,
+        "floor": 63,
+        "nearest": 99
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -9.459,
+       "rms": 9.493,
+       "min": -11.75,
+       "p05": -10.95,
+       "p95": -8.33,
+       "max": -8.07,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 71,
+        "floor": 72,
+        "nearest": 106
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    }
+   },
+   "measured_angles": {
+    "fajr": {
+     "angle": 15,
+     "mae": 0.3
+    },
+    "isha": {
+     "angle": 15,
+     "mae": 0.46
+    },
+    "mae_fajr_at_15": 0.3,
+    "mae_isha_at_15": 0.46,
+    "sample_rows": 72
+   }
+  },
+  "guyuan": {
+   "city": "固原",
+   "lon": 106.28,
+   "lat": 36.01,
+   "rows": 144,
+   "years": {
+    "2004": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.086,
+       "rms": 0.366,
+       "min": -0.7,
+       "p05": -0.5,
+       "p95": 0.68,
+       "max": 0.83,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 82,
+        "floor": 65,
+        "nearest": 117
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.015,
+       "rms": 0.33,
+       "min": -0.68,
+       "p05": -0.47,
+       "p95": 0.55,
+       "max": 0.65,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 71,
+        "floor": 75,
+        "nearest": 127
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.021,
+       "rms": 0.333,
+       "min": -0.73,
+       "p05": -0.52,
+       "p95": 0.57,
+       "max": 0.67,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 75,
+        "floor": 71,
+        "nearest": 123
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": 0.068,
+       "rms": 0.532,
+       "min": -0.85,
+       "p05": -0.67,
+       "p95": 0.92,
+       "max": 1.25,
+       "within_one": 139,
+       "rounding_matches": {
+        "ceil": 73,
+        "floor": 69,
+        "nearest": 80
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": 0.071,
+       "rms": 0.569,
+       "min": -0.98,
+       "p05": -0.73,
+       "p95": 1.08,
+       "max": 1.25,
+       "within_one": 135,
+       "rounding_matches": {
+        "ceil": 61,
+        "floor": 75,
+        "nearest": 81
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": 0.066,
+       "rms": 0.667,
+       "min": -1.02,
+       "p05": -0.88,
+       "p95": 1.28,
+       "max": 1.48,
+       "within_one": 126,
+       "rounding_matches": {
+        "ceil": 51,
+        "floor": 73,
+        "nearest": 73
+       },
+       "rounding_verdict": "floor"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 16.619,
+       "rms": 16.726,
+       "min": 14.48,
+       "p05": 14.7,
+       "p95": 20.57,
+       "max": 21.78,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 82,
+        "floor": 65,
+        "nearest": 117
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -10.916,
+       "rms": 11.029,
+       "min": -14.82,
+       "p05": -14.22,
+       "p95": -8.88,
+       "max": -8.6,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 51,
+        "floor": 73,
+        "nearest": 73
+       },
+       "rounding_verdict": "floor"
+      }
+     }
+    },
+    "2026": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.141,
+       "rms": 0.59,
+       "min": -0.98,
+       "p05": -0.87,
+       "p95": 0.95,
+       "max": 1.15,
+       "within_one": 140,
+       "rounding_matches": {
+        "ceil": 85,
+        "floor": 57,
+        "nearest": 69
+       },
+       "rounding_verdict": "ceil"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.088,
+       "rms": 0.508,
+       "min": -0.85,
+       "p05": -0.77,
+       "p95": 0.87,
+       "max": 1.27,
+       "within_one": 140,
+       "rounding_matches": {
+        "ceil": 83,
+        "floor": 58,
+        "nearest": 85
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": -0.026,
+       "rms": 0.316,
+       "min": -0.73,
+       "p05": -0.47,
+       "p95": 0.48,
+       "max": 0.6,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 68,
+        "floor": 77,
+        "nearest": 132
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": -0.097,
+       "rms": 0.495,
+       "min": -1.45,
+       "p05": -1.17,
+       "p95": 0.62,
+       "max": 0.85,
+       "within_one": 135,
+       "rounding_matches": {
+        "ceil": 65,
+        "floor": 73,
+        "nearest": 107
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": -0.096,
+       "rms": 0.485,
+       "min": -1.52,
+       "p05": -0.85,
+       "p95": 0.63,
+       "max": 0.78,
+       "within_one": 140,
+       "rounding_matches": {
+        "ceil": 68,
+        "floor": 73,
+        "nearest": 96
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -0.083,
+       "rms": 0.53,
+       "min": -1.47,
+       "p05": -0.98,
+       "p95": 0.82,
+       "max": 0.95,
+       "within_one": 137,
+       "rounding_matches": {
+        "ceil": 61,
+        "floor": 78,
+        "nearest": 94
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 16.67,
+       "rms": 16.772,
+       "min": 14.07,
+       "p05": 14.88,
+       "p95": 20.33,
+       "max": 21.68,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 85,
+        "floor": 57,
+        "nearest": 69
+       },
+       "rounding_verdict": "ceil"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -11.064,
+       "rms": 11.155,
+       "min": -14.85,
+       "p05": -14.03,
+       "p95": -9.3,
+       "max": -9.03,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 61,
+        "floor": 78,
+        "nearest": 94
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    }
+   },
+   "measured_angles": {
+    "fajr": {
+     "angle": 15,
+     "mae": 0.33
+    },
+    "isha": {
+     "angle": 15,
+     "mae": 0.53
+    },
+    "mae_fajr_at_15": 0.33,
+    "mae_isha_at_15": 0.53,
+    "sample_rows": 72
+   }
+  },
+  "hotan": {
+   "city": "和田",
+   "lon": 79.94,
+   "lat": 37.12,
+   "rows": 144,
+   "years": {
+    "2004": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.074,
+       "rms": 0.34,
+       "min": -0.72,
+       "p05": -0.43,
+       "p95": 0.63,
+       "max": 0.68,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 83,
+        "floor": 61,
+        "nearest": 119
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.077,
+       "rms": 0.357,
+       "min": -0.65,
+       "p05": -0.48,
+       "p95": 0.62,
+       "max": 0.82,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 85,
+        "floor": 61,
+        "nearest": 121
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.088,
+       "rms": 0.334,
+       "min": -0.65,
+       "p05": -0.42,
+       "p95": 0.57,
+       "max": 0.75,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 89,
+        "floor": 56,
+        "nearest": 125
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": 0.128,
+       "rms": 0.614,
+       "min": -1.03,
+       "p05": -0.8,
+       "p95": 1.12,
+       "max": 1.32,
+       "within_one": 129,
+       "rounding_matches": {
+        "ceil": 59,
+        "floor": 69,
+        "nearest": 77
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": 0.16,
+       "rms": 0.657,
+       "min": -1,
+       "p05": -0.72,
+       "p95": 1.3,
+       "max": 1.45,
+       "within_one": 121,
+       "rounding_matches": {
+        "ceil": 48,
+        "floor": 71,
+        "nearest": 77
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": 0.083,
+       "rms": 0.793,
+       "min": -1.3,
+       "p05": -1,
+       "p95": 1.32,
+       "max": 1.6,
+       "within_one": 109,
+       "rounding_matches": {
+        "ceil": 39,
+        "floor": 67,
+        "nearest": 51
+       },
+       "rounding_verdict": "floor"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 16.966,
+       "rms": 17.099,
+       "min": 14.55,
+       "p05": 14.95,
+       "p95": 21.45,
+       "max": 22.8,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 83,
+        "floor": 61,
+        "nearest": 119
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -11.134,
+       "rms": 11.27,
+       "min": -15.7,
+       "p05": -14.92,
+       "p95": -8.83,
+       "max": -8.72,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 39,
+        "floor": 67,
+        "nearest": 51
+       },
+       "rounding_verdict": "floor"
+      }
+     }
+    },
+    "2026": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.133,
+       "rms": 0.554,
+       "min": -0.95,
+       "p05": -0.8,
+       "p95": 0.92,
+       "max": 1.27,
+       "within_one": 141,
+       "rounding_matches": {
+        "ceil": 87,
+        "floor": 57,
+        "nearest": 83
+       },
+       "rounding_verdict": "ceil"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.153,
+       "rms": 0.543,
+       "min": -0.88,
+       "p05": -0.72,
+       "p95": 0.95,
+       "max": 1.38,
+       "within_one": 138,
+       "rounding_matches": {
+        "ceil": 87,
+        "floor": 51,
+        "nearest": 85
+       },
+       "rounding_verdict": "ceil"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.041,
+       "rms": 0.302,
+       "min": -0.63,
+       "p05": -0.45,
+       "p95": 0.52,
+       "max": 0.62,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 82,
+        "floor": 63,
+        "nearest": 133
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": -0.041,
+       "rms": 0.553,
+       "min": -1.65,
+       "p05": -1.05,
+       "p95": 0.75,
+       "max": 0.93,
+       "within_one": 136,
+       "rounding_matches": {
+        "ceil": 71,
+        "floor": 66,
+        "nearest": 89
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": -0.013,
+       "rms": 0.53,
+       "min": -1.52,
+       "p05": -1.03,
+       "p95": 0.82,
+       "max": 0.97,
+       "within_one": 136,
+       "rounding_matches": {
+        "ceil": 78,
+        "floor": 62,
+        "nearest": 96
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -0.07,
+       "rms": 0.611,
+       "min": -1.6,
+       "p05": -1.18,
+       "p95": 0.87,
+       "max": 1.07,
+       "within_one": 132,
+       "rounding_matches": {
+        "ceil": 66,
+        "floor": 68,
+        "nearest": 80
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 17.022,
+       "rms": 17.146,
+       "min": 14.58,
+       "p05": 14.87,
+       "p95": 21.55,
+       "max": 22.78,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 87,
+        "floor": 57,
+        "nearest": 83
+       },
+       "rounding_verdict": "ceil"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -11.285,
+       "rms": 11.393,
+       "min": -15.67,
+       "p05": -14.7,
+       "p95": -9.33,
+       "max": -9.12,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 66,
+        "floor": 68,
+        "nearest": 80
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    }
+   },
+   "measured_angles": {
+    "fajr": {
+     "angle": 15,
+     "mae": 0.27
+    },
+    "isha": {
+     "angle": 15,
+     "mae": 0.69
+    },
+    "mae_fajr_at_15": 0.27,
+    "mae_isha_at_15": 0.69,
+    "sample_rows": 72
+   }
+  },
+  "kaifeng": {
+   "city": "开封",
+   "lon": 114.35,
+   "lat": 34.79,
+   "rows": 144,
+   "years": {
+    "2004": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.083,
+       "rms": 0.373,
+       "min": -0.77,
+       "p05": -0.48,
+       "p95": 0.62,
+       "max": 0.82,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 82,
+        "floor": 63,
+        "nearest": 111
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.026,
+       "rms": 0.328,
+       "min": -0.7,
+       "p05": -0.47,
+       "p95": 0.53,
+       "max": 0.68,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 77,
+        "floor": 69,
+        "nearest": 127
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.083,
+       "rms": 0.34,
+       "min": -0.68,
+       "p05": -0.45,
+       "p95": 0.65,
+       "max": 0.77,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 85,
+        "floor": 60,
+        "nearest": 124
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": 0.087,
+       "rms": 0.505,
+       "min": -0.95,
+       "p05": -0.7,
+       "p95": 0.92,
+       "max": 1.15,
+       "within_one": 139,
+       "rounding_matches": {
+        "ceil": 75,
+        "floor": 65,
+        "nearest": 91
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": 0.068,
+       "rms": 0.568,
+       "min": -0.88,
+       "p05": -0.75,
+       "p95": 1.02,
+       "max": 1.3,
+       "within_one": 136,
+       "rounding_matches": {
+        "ceil": 65,
+        "floor": 71,
+        "nearest": 76
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": 0.057,
+       "rms": 0.635,
+       "min": -1.15,
+       "p05": -0.8,
+       "p95": 1.13,
+       "max": 1.43,
+       "within_one": 129,
+       "rounding_matches": {
+        "ceil": 56,
+        "floor": 74,
+        "nearest": 64
+       },
+       "rounding_verdict": "floor"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 16.254,
+       "rms": 16.354,
+       "min": 14.13,
+       "p05": 14.47,
+       "p95": 20.15,
+       "max": 20.95,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 82,
+        "floor": 63,
+        "nearest": 111
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -10.689,
+       "rms": 10.789,
+       "min": -14.52,
+       "p05": -13.73,
+       "p95": -8.8,
+       "max": -8.45,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 56,
+        "floor": 74,
+        "nearest": 64
+       },
+       "rounding_verdict": "floor"
+      }
+     }
+    },
+    "2026": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.132,
+       "rms": 0.578,
+       "min": -1.02,
+       "p05": -0.87,
+       "p95": 0.88,
+       "max": 1.05,
+       "within_one": 141,
+       "rounding_matches": {
+        "ceil": 85,
+        "floor": 56,
+        "nearest": 75
+       },
+       "rounding_verdict": "ceil"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.093,
+       "rms": 0.498,
+       "min": -0.97,
+       "p05": -0.7,
+       "p95": 0.88,
+       "max": 1.23,
+       "within_one": 140,
+       "rounding_matches": {
+        "ceil": 82,
+        "floor": 61,
+        "nearest": 90
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.037,
+       "rms": 0.307,
+       "min": -0.67,
+       "p05": -0.43,
+       "p95": 0.57,
+       "max": 0.65,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 75,
+        "floor": 72,
+        "nearest": 128
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": -0.073,
+       "rms": 0.479,
+       "min": -1.45,
+       "p05": -1,
+       "p95": 0.57,
+       "max": 0.77,
+       "within_one": 137,
+       "rounding_matches": {
+        "ceil": 71,
+        "floor": 67,
+        "nearest": 104
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": -0.094,
+       "rms": 0.525,
+       "min": -1.47,
+       "p05": -1.23,
+       "p95": 0.58,
+       "max": 0.82,
+       "within_one": 130,
+       "rounding_matches": {
+        "ceil": 71,
+        "floor": 61,
+        "nearest": 103
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -0.086,
+       "rms": 0.497,
+       "min": -1.37,
+       "p05": -0.92,
+       "p95": 0.7,
+       "max": 0.92,
+       "within_one": 139,
+       "rounding_matches": {
+        "ceil": 67,
+        "floor": 75,
+        "nearest": 99
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 16.3,
+       "rms": 16.396,
+       "min": 13.87,
+       "p05": 14.45,
+       "p95": 20.07,
+       "max": 21,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 85,
+        "floor": 56,
+        "nearest": 75
+       },
+       "rounding_verdict": "ceil"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -10.831,
+       "rms": 10.911,
+       "min": -14.48,
+       "p05": -13.58,
+       "p95": -9.22,
+       "max": -8.93,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 67,
+        "floor": 75,
+        "nearest": 99
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    }
+   },
+   "measured_angles": {
+    "fajr": {
+     "angle": 15,
+     "mae": 0.33
+    },
+    "isha": {
+     "angle": 15,
+     "mae": 0.49
+    },
+    "mae_fajr_at_15": 0.33,
+    "mae_isha_at_15": 0.49,
+    "sample_rows": 72
+   }
+  },
+  "korla": {
+   "city": "库尔勒",
+   "lon": 86.06,
+   "lat": 41.68,
+   "rows": 144,
+   "years": {
+    "2004": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.031,
+       "rms": 0.332,
+       "min": -0.7,
+       "p05": -0.52,
+       "p95": 0.55,
+       "max": 0.77,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 76,
+        "floor": 72,
+        "nearest": 123
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.07,
+       "rms": 0.302,
+       "min": -0.67,
+       "p05": -0.42,
+       "p95": 0.57,
+       "max": 0.72,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 86,
+        "floor": 62,
+        "nearest": 128
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.061,
+       "rms": 0.334,
+       "min": -0.67,
+       "p05": -0.45,
+       "p95": 0.63,
+       "max": 0.72,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 80,
+        "floor": 66,
+        "nearest": 123
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": 0.069,
+       "rms": 0.691,
+       "min": -1.13,
+       "p05": -0.92,
+       "p95": 1.18,
+       "max": 1.47,
+       "within_one": 126,
+       "rounding_matches": {
+        "ceil": 57,
+        "floor": 68,
+        "nearest": 59
+       },
+       "rounding_verdict": "floor"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": 0.111,
+       "rms": 0.679,
+       "min": -1.08,
+       "p05": -0.85,
+       "p95": 1.27,
+       "max": 1.47,
+       "within_one": 124,
+       "rounding_matches": {
+        "ceil": 48,
+        "floor": 75,
+        "nearest": 62
+       },
+       "rounding_verdict": "floor"
+      },
+      "isha": {
+       "n": 144,
+       "mean": 0.096,
+       "rms": 0.876,
+       "min": -1.43,
+       "p05": -1.1,
+       "p95": 1.47,
+       "max": 1.72,
+       "within_one": 108,
+       "rounding_matches": {
+        "ceil": 40,
+        "floor": 64,
+        "nearest": 37
+       },
+       "rounding_verdict": "floor"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 18.807,
+       "rms": 19.089,
+       "min": 15.77,
+       "p05": 15.93,
+       "p95": 25.95,
+       "max": 28.02,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 76,
+        "floor": 72,
+        "nearest": 123
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -12.338,
+       "rms": 12.58,
+       "min": -18.87,
+       "p05": -17.67,
+       "p95": -9.53,
+       "max": -9.37,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 40,
+        "floor": 64,
+        "nearest": 37
+       },
+       "rounding_verdict": "floor"
+      }
+     }
+    },
+    "2026": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.108,
+       "rms": 0.626,
+       "min": -1.23,
+       "p05": -1.03,
+       "p95": 0.97,
+       "max": 1.12,
+       "within_one": 132,
+       "rounding_matches": {
+        "ceil": 82,
+        "floor": 48,
+        "nearest": 66
+       },
+       "rounding_verdict": "ceil"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.17,
+       "rms": 0.513,
+       "min": -0.8,
+       "p05": -0.7,
+       "p95": 0.92,
+       "max": 1.33,
+       "within_one": 141,
+       "rounding_matches": {
+        "ceil": 90,
+        "floor": 53,
+        "nearest": 89
+       },
+       "rounding_verdict": "ceil"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.013,
+       "rms": 0.309,
+       "min": -0.62,
+       "p05": -0.43,
+       "p95": 0.52,
+       "max": 0.63,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 76,
+        "floor": 69,
+        "nearest": 130
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": -0.125,
+       "rms": 0.64,
+       "min": -1.87,
+       "p05": -1.43,
+       "p95": 0.77,
+       "max": 1.02,
+       "within_one": 128,
+       "rounding_matches": {
+        "ceil": 75,
+        "floor": 53,
+        "nearest": 86
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": -0.085,
+       "rms": 0.558,
+       "min": -1.7,
+       "p05": -1.3,
+       "p95": 0.77,
+       "max": 0.92,
+       "within_one": 133,
+       "rounding_matches": {
+        "ceil": 70,
+        "floor": 65,
+        "nearest": 102
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -0.077,
+       "rms": 0.642,
+       "min": -1.67,
+       "p05": -1.22,
+       "p95": 0.87,
+       "max": 1.08,
+       "within_one": 130,
+       "rounding_matches": {
+        "ceil": 66,
+        "floor": 62,
+        "nearest": 73
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 18.88,
+       "rms": 19.148,
+       "min": 15.38,
+       "p05": 16.07,
+       "p95": 25.9,
+       "max": 27.98,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 82,
+        "floor": 48,
+        "nearest": 66
+       },
+       "rounding_verdict": "ceil"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -12.508,
+       "rms": 12.709,
+       "min": -18.82,
+       "p05": -17.32,
+       "p95": -10.1,
+       "max": -9.92,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 66,
+        "floor": 62,
+        "nearest": 73
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    }
+   },
+   "measured_angles": {
+    "fajr": {
+     "angle": 15,
+     "mae": 0.27
+    },
+    "isha": {
+     "angle": 15.1,
+     "mae": 0.75
+    },
+    "mae_fajr_at_15": 0.27,
+    "mae_isha_at_15": 0.77,
+    "sample_rows": 72
+   }
+  },
+  "linxia": {
+   "city": "临夏",
+   "lon": 103.22,
+   "lat": 35.62,
+   "rows": 144,
+   "years": {
+    "2004": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.002,
+       "rms": 0.339,
+       "min": -0.73,
+       "p05": -0.48,
+       "p95": 0.58,
+       "max": 0.68,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 67,
+        "floor": 79,
+        "nearest": 127
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.052,
+       "rms": 0.311,
+       "min": -0.65,
+       "p05": -0.48,
+       "p95": 0.57,
+       "max": 0.72,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 82,
+        "floor": 65,
+        "nearest": 127
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.101,
+       "rms": 0.344,
+       "min": -0.68,
+       "p05": -0.45,
+       "p95": 0.6,
+       "max": 0.73,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 87,
+        "floor": 59,
+        "nearest": 122
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": 0.089,
+       "rms": 0.507,
+       "min": -0.88,
+       "p05": -0.7,
+       "p95": 0.98,
+       "max": 1.15,
+       "within_one": 140,
+       "rounding_matches": {
+        "ceil": 76,
+        "floor": 63,
+        "nearest": 89
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": 0.069,
+       "rms": 0.562,
+       "min": -0.93,
+       "p05": -0.78,
+       "p95": 1,
+       "max": 1.33,
+       "within_one": 137,
+       "rounding_matches": {
+        "ceil": 71,
+        "floor": 67,
+        "nearest": 79
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": 0.137,
+       "rms": 0.693,
+       "min": -1.05,
+       "p05": -0.87,
+       "p95": 1.3,
+       "max": 1.45,
+       "within_one": 119,
+       "rounding_matches": {
+        "ceil": 48,
+        "floor": 71,
+        "nearest": 69
+       },
+       "rounding_verdict": "floor"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 16.415,
+       "rms": 16.521,
+       "min": 14.4,
+       "p05": 14.63,
+       "p95": 20.07,
+       "max": 21.4,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 67,
+        "floor": 79,
+        "nearest": 127
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -10.767,
+       "rms": 10.878,
+       "min": -14.73,
+       "p05": -13.92,
+       "p95": -8.73,
+       "max": -8.55,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 48,
+        "floor": 71,
+        "nearest": 69
+       },
+       "rounding_verdict": "floor"
+      }
+     }
+    },
+    "2026": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.054,
+       "rms": 0.587,
+       "min": -1.1,
+       "p05": -0.87,
+       "p95": 0.9,
+       "max": 1.1,
+       "within_one": 141,
+       "rounding_matches": {
+        "ceil": 83,
+        "floor": 57,
+        "nearest": 68
+       },
+       "rounding_verdict": "ceil"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.122,
+       "rms": 0.503,
+       "min": -0.9,
+       "p05": -0.7,
+       "p95": 0.87,
+       "max": 1.2,
+       "within_one": 141,
+       "rounding_matches": {
+        "ceil": 86,
+        "floor": 57,
+        "nearest": 83
+       },
+       "rounding_verdict": "ceil"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.053,
+       "rms": 0.315,
+       "min": -0.67,
+       "p05": -0.5,
+       "p95": 0.52,
+       "max": 0.65,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 83,
+        "floor": 63,
+        "nearest": 128
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": -0.074,
+       "rms": 0.447,
+       "min": -1.42,
+       "p05": -0.72,
+       "p95": 0.6,
+       "max": 0.82,
+       "within_one": 140,
+       "rounding_matches": {
+        "ceil": 63,
+        "floor": 79,
+        "nearest": 103
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": -0.097,
+       "rms": 0.515,
+       "min": -1.53,
+       "p05": -1.17,
+       "p95": 0.57,
+       "max": 0.85,
+       "within_one": 134,
+       "rounding_matches": {
+        "ceil": 72,
+        "floor": 64,
+        "nearest": 101
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -0.01,
+       "rms": 0.534,
+       "min": -1.43,
+       "p05": -0.98,
+       "p95": 0.8,
+       "max": 0.93,
+       "within_one": 137,
+       "rounding_matches": {
+        "ceil": 78,
+        "floor": 61,
+        "nearest": 89
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 16.465,
+       "rms": 16.568,
+       "min": 14.02,
+       "p05": 14.33,
+       "p95": 20.17,
+       "max": 21.3,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 83,
+        "floor": 57,
+        "nearest": 68
+       },
+       "rounding_verdict": "ceil"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -10.912,
+       "rms": 11,
+       "min": -14.62,
+       "p05": -14.02,
+       "p95": -9.2,
+       "max": -9.05,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 78,
+        "floor": 61,
+        "nearest": 89
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    }
+   },
+   "measured_angles": {
+    "fajr": {
+     "angle": 15,
+     "mae": 0.26
+    },
+    "isha": {
+     "angle": 15,
+     "mae": 0.61
+    },
+    "mae_fajr_at_15": 0.26,
+    "mae_isha_at_15": 0.61,
+    "sample_rows": 72
+   }
+  },
+  "luoyang": {
+   "city": "洛阳",
+   "lon": 112.44,
+   "lat": 34.7,
+   "rows": 144,
+   "years": {
+    "2004": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.061,
+       "rms": 0.342,
+       "min": -0.63,
+       "p05": -0.48,
+       "p95": 0.63,
+       "max": 0.83,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 80,
+        "floor": 68,
+        "nearest": 122
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.026,
+       "rms": 0.313,
+       "min": -0.67,
+       "p05": -0.48,
+       "p95": 0.53,
+       "max": 0.68,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 75,
+        "floor": 73,
+        "nearest": 127
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.083,
+       "rms": 0.329,
+       "min": -0.62,
+       "p05": -0.42,
+       "p95": 0.58,
+       "max": 0.72,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 89,
+        "floor": 57,
+        "nearest": 126
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": 0.077,
+       "rms": 0.507,
+       "min": -0.82,
+       "p05": -0.65,
+       "p95": 0.98,
+       "max": 1.23,
+       "within_one": 137,
+       "rounding_matches": {
+        "ceil": 70,
+        "floor": 70,
+        "nearest": 97
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": 0.076,
+       "rms": 0.535,
+       "min": -0.92,
+       "p05": -0.65,
+       "p95": 1.08,
+       "max": 1.27,
+       "within_one": 136,
+       "rounding_matches": {
+        "ceil": 65,
+        "floor": 71,
+        "nearest": 95
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": 0.085,
+       "rms": 0.631,
+       "min": -1.1,
+       "p05": -0.87,
+       "p95": 1.08,
+       "max": 1.23,
+       "within_one": 125,
+       "rounding_matches": {
+        "ceil": 51,
+        "floor": 72,
+        "nearest": 73
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 16.206,
+       "rms": 16.302,
+       "min": 14.1,
+       "p05": 14.45,
+       "p95": 20.17,
+       "max": 20.85,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 80,
+        "floor": 68,
+        "nearest": 122
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -10.645,
+       "rms": 10.74,
+       "min": -14.23,
+       "p05": -13.72,
+       "p95": -8.87,
+       "max": -8.58,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 51,
+        "floor": 72,
+        "nearest": 73
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    },
+    "2026": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.109,
+       "rms": 0.546,
+       "min": -1.02,
+       "p05": -0.85,
+       "p95": 0.9,
+       "max": 1.02,
+       "within_one": 142,
+       "rounding_matches": {
+        "ceil": 85,
+        "floor": 57,
+        "nearest": 79
+       },
+       "rounding_verdict": "ceil"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.091,
+       "rms": 0.486,
+       "min": -0.87,
+       "p05": -0.72,
+       "p95": 0.8,
+       "max": 1.1,
+       "within_one": 141,
+       "rounding_matches": {
+        "ceil": 83,
+        "floor": 60,
+        "nearest": 90
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.036,
+       "rms": 0.3,
+       "min": -0.62,
+       "p05": -0.42,
+       "p95": 0.52,
+       "max": 0.58,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 81,
+        "floor": 66,
+        "nearest": 133
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": -0.083,
+       "rms": 0.476,
+       "min": -1.4,
+       "p05": -0.9,
+       "p95": 0.62,
+       "max": 0.83,
+       "within_one": 138,
+       "rounding_matches": {
+        "ceil": 65,
+        "floor": 77,
+        "nearest": 102
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": -0.086,
+       "rms": 0.484,
+       "min": -1.47,
+       "p05": -1.07,
+       "p95": 0.65,
+       "max": 0.8,
+       "within_one": 132,
+       "rounding_matches": {
+        "ceil": 66,
+        "floor": 66,
+        "nearest": 109
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -0.06,
+       "rms": 0.508,
+       "min": -1.47,
+       "p05": -1.03,
+       "p95": 0.62,
+       "max": 0.75,
+       "within_one": 136,
+       "rounding_matches": {
+        "ceil": 74,
+        "floor": 65,
+        "nearest": 95
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 16.252,
+       "rms": 16.343,
+       "min": 13.73,
+       "p05": 14.35,
+       "p95": 20.05,
+       "max": 20.88,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 85,
+        "floor": 57,
+        "nearest": 79
+       },
+       "rounding_verdict": "ceil"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -10.786,
+       "rms": 10.863,
+       "min": -14.05,
+       "p05": -13.47,
+       "p95": -9.33,
+       "max": -9.03,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 74,
+        "floor": 65,
+        "nearest": 95
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    }
+   },
+   "measured_angles": {
+    "fajr": {
+     "angle": 15,
+     "mae": 0.32
+    },
+    "isha": {
+     "angle": 15,
+     "mae": 0.57
+    },
+    "mae_fajr_at_15": 0.32,
+    "mae_isha_at_15": 0.57,
+    "sample_rows": 72
+   }
+  },
+  "mudanjiang": {
+   "city": "牡丹江",
+   "lon": 129.58,
+   "lat": 44.6,
+   "rows": 144,
+   "years": {
+    "2004": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.082,
+       "rms": 0.433,
+       "min": -0.88,
+       "p05": -0.6,
+       "p95": 0.75,
+       "max": 0.92,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 82,
+        "floor": 63,
+        "nearest": 105
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.054,
+       "rms": 0.356,
+       "min": -0.72,
+       "p05": -0.52,
+       "p95": 0.65,
+       "max": 0.8,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 82,
+        "floor": 64,
+        "nearest": 119
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.03,
+       "rms": 0.32,
+       "min": -0.75,
+       "p05": -0.48,
+       "p95": 0.55,
+       "max": 0.67,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 73,
+        "floor": 73,
+        "nearest": 127
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": 0.059,
+       "rms": 0.542,
+       "min": -0.88,
+       "p05": -0.72,
+       "p95": 1.12,
+       "max": 1.27,
+       "within_one": 132,
+       "rounding_matches": {
+        "ceil": 63,
+        "floor": 70,
+        "nearest": 93
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": 0.084,
+       "rms": 0.597,
+       "min": -1.07,
+       "p05": -0.78,
+       "p95": 1.07,
+       "max": 1.45,
+       "within_one": 133,
+       "rounding_matches": {
+        "ceil": 64,
+        "floor": 69,
+        "nearest": 81
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": 0.082,
+       "rms": 0.829,
+       "min": -1.47,
+       "p05": -1.07,
+       "p95": 1.4,
+       "max": 1.68,
+       "within_one": 108,
+       "rounding_matches": {
+        "ceil": 41,
+        "floor": 66,
+        "nearest": 44
+       },
+       "rounding_verdict": "floor"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 20.625,
+       "rms": 21.176,
+       "min": 16.23,
+       "p05": 16.73,
+       "p95": 31.27,
+       "max": 35.17,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 82,
+        "floor": 63,
+        "nearest": 105
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -13.472,
+       "rms": 13.857,
+       "min": -22.92,
+       "p05": -20.55,
+       "p95": -10.35,
+       "max": -9.98,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 41,
+        "floor": 66,
+        "nearest": 44
+       },
+       "rounding_verdict": "floor"
+      }
+     }
+    },
+    "2026": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.171,
+       "rms": 0.83,
+       "min": -1.42,
+       "p05": -1.18,
+       "p95": 1.2,
+       "max": 1.35,
+       "within_one": 105,
+       "rounding_matches": {
+        "ceil": 68,
+        "floor": 35,
+        "nearest": 35
+       },
+       "rounding_verdict": "ceil"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.171,
+       "rms": 0.681,
+       "min": -1.1,
+       "p05": -0.97,
+       "p95": 1.05,
+       "max": 1.35,
+       "within_one": 128,
+       "rounding_matches": {
+        "ceil": 75,
+        "floor": 50,
+        "nearest": 57
+       },
+       "rounding_verdict": "ceil"
+      },
+      "noon": {
+       "n": 144,
+       "mean": -0.018,
+       "rms": 0.298,
+       "min": -0.7,
+       "p05": -0.47,
+       "p95": 0.47,
+       "max": 0.58,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 63,
+        "floor": 82,
+        "nearest": 133
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": -0.15,
+       "rms": 0.572,
+       "min": -1.72,
+       "p05": -1.43,
+       "p95": 0.62,
+       "max": 0.75,
+       "within_one": 128,
+       "rounding_matches": {
+        "ceil": 61,
+        "floor": 67,
+        "nearest": 106
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": -0.129,
+       "rms": 0.526,
+       "min": -1.62,
+       "p05": -1.15,
+       "p95": 0.5,
+       "max": 0.83,
+       "within_one": 130,
+       "rounding_matches": {
+        "ceil": 70,
+        "floor": 63,
+        "nearest": 108
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -0.104,
+       "rms": 0.604,
+       "min": -1.88,
+       "p05": -1.22,
+       "p95": 0.77,
+       "max": 0.98,
+       "within_one": 130,
+       "rounding_matches": {
+        "ceil": 67,
+        "floor": 63,
+        "nearest": 93
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 20.711,
+       "rms": 21.241,
+       "min": 15.67,
+       "p05": 16.63,
+       "p95": 31.55,
+       "max": 35.23,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 68,
+        "floor": 35,
+        "nearest": 35
+       },
+       "rounding_verdict": "ceil"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -13.655,
+       "rms": 13.989,
+       "min": -22.9,
+       "p05": -20.18,
+       "p95": -10.78,
+       "max": -10.55,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 67,
+        "floor": 63,
+        "nearest": 93
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    }
+   },
+   "measured_angles": {
+    "fajr": {
+     "angle": 15,
+     "mae": 0.38
+    },
+    "isha": {
+     "angle": 15.1,
+     "mae": 0.72
+    },
+    "mae_fajr_at_15": 0.38,
+    "mae_isha_at_15": 0.75,
+    "sample_rows": 72
+   }
+  },
+  "nanyang": {
+   "city": "南阳",
+   "lon": 112.53,
+   "lat": 33.01,
+   "rows": 144,
+   "years": {
+    "2004": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.055,
+       "rms": 0.331,
+       "min": -0.72,
+       "p05": -0.45,
+       "p95": 0.58,
+       "max": 0.8,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 84,
+        "floor": 64,
+        "nearest": 126
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.049,
+       "rms": 0.322,
+       "min": -0.65,
+       "p05": -0.47,
+       "p95": 0.55,
+       "max": 0.75,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 80,
+        "floor": 67,
+        "nearest": 128
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.019,
+       "rms": 0.331,
+       "min": -0.73,
+       "p05": -0.52,
+       "p95": 0.57,
+       "max": 0.67,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 75,
+        "floor": 72,
+        "nearest": 123
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": 0.106,
+       "rms": 0.532,
+       "min": -0.83,
+       "p05": -0.67,
+       "p95": 1.03,
+       "max": 1.23,
+       "within_one": 136,
+       "rounding_matches": {
+        "ceil": 70,
+        "floor": 67,
+        "nearest": 89
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": 0.077,
+       "rms": 0.522,
+       "min": -0.88,
+       "p05": -0.68,
+       "p95": 0.93,
+       "max": 1.23,
+       "within_one": 138,
+       "rounding_matches": {
+        "ceil": 72,
+        "floor": 68,
+        "nearest": 87
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": 0.075,
+       "rms": 0.608,
+       "min": -1.02,
+       "p05": -0.82,
+       "p95": 1.07,
+       "max": 1.3,
+       "within_one": 132,
+       "rounding_matches": {
+        "ceil": 61,
+        "floor": 73,
+        "nearest": 73
+       },
+       "rounding_verdict": "floor"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 15.749,
+       "rms": 15.821,
+       "min": 13.82,
+       "p05": 14.22,
+       "p95": 18.78,
+       "max": 20.05,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 84,
+        "floor": 64,
+        "nearest": 126
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -10.359,
+       "rms": 10.439,
+       "min": -13.77,
+       "p05": -12.95,
+       "p95": -8.62,
+       "max": -8.43,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 61,
+        "floor": 73,
+        "nearest": 73
+       },
+       "rounding_verdict": "floor"
+      }
+     }
+    },
+    "2026": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.096,
+       "rms": 0.536,
+       "min": -1,
+       "p05": -0.85,
+       "p95": 0.87,
+       "max": 1.12,
+       "within_one": 143,
+       "rounding_matches": {
+        "ceil": 87,
+        "floor": 60,
+        "nearest": 81
+       },
+       "rounding_verdict": "ceil"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.109,
+       "rms": 0.467,
+       "min": -0.9,
+       "p05": -0.77,
+       "p95": 0.75,
+       "max": 1.08,
+       "within_one": 142,
+       "rounding_matches": {
+        "ceil": 87,
+        "floor": 56,
+        "nearest": 93
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": -0.028,
+       "rms": 0.313,
+       "min": -0.72,
+       "p05": -0.45,
+       "p95": 0.47,
+       "max": 0.58,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 68,
+        "floor": 79,
+        "nearest": 133
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": -0.046,
+       "rms": 0.474,
+       "min": -1.27,
+       "p05": -0.95,
+       "p95": 0.67,
+       "max": 0.85,
+       "within_one": 139,
+       "rounding_matches": {
+        "ceil": 68,
+        "floor": 70,
+        "nearest": 98
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": -0.078,
+       "rms": 0.454,
+       "min": -1.3,
+       "p05": -0.9,
+       "p95": 0.57,
+       "max": 0.8,
+       "within_one": 138,
+       "rounding_matches": {
+        "ceil": 70,
+        "floor": 69,
+        "nearest": 106
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -0.062,
+       "rms": 0.48,
+       "min": -1.33,
+       "p05": -0.9,
+       "p95": 0.67,
+       "max": 0.83,
+       "within_one": 139,
+       "rounding_matches": {
+        "ceil": 69,
+        "floor": 70,
+        "nearest": 97
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 15.789,
+       "rms": 15.859,
+       "min": 13.45,
+       "p05": 14.03,
+       "p95": 18.83,
+       "max": 20.03,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 87,
+        "floor": 60,
+        "nearest": 81
+       },
+       "rounding_verdict": "ceil"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -10.496,
+       "rms": 10.558,
+       "min": -13.67,
+       "p05": -12.8,
+       "p95": -9.03,
+       "max": -8.87,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 69,
+        "floor": 70,
+        "nearest": 97
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    }
+   },
+   "measured_angles": {
+    "fajr": {
+     "angle": 15,
+     "mae": 0.27
+    },
+    "isha": {
+     "angle": 15,
+     "mae": 0.53
+    },
+    "mae_fajr_at_15": 0.27,
+    "mae_isha_at_15": 0.53,
+    "sample_rows": 72
+   }
+  },
+  "ningbo": {
+   "city": "宁波",
+   "lon": 121.56,
+   "lat": 29.86,
+   "rows": 144,
+   "years": {
+    "2004": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.074,
+       "rms": 0.348,
+       "min": -0.58,
+       "p05": -0.45,
+       "p95": 0.62,
+       "max": 0.77,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 79,
+        "floor": 65,
+        "nearest": 122
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.07,
+       "rms": 0.334,
+       "min": -0.62,
+       "p05": -0.48,
+       "p95": 0.57,
+       "max": 0.73,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 86,
+        "floor": 60,
+        "nearest": 123
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.054,
+       "rms": 0.324,
+       "min": -0.63,
+       "p05": -0.43,
+       "p95": 0.6,
+       "max": 0.7,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 78,
+        "floor": 66,
+        "nearest": 126
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": 0.069,
+       "rms": 0.391,
+       "min": -0.72,
+       "p05": -0.55,
+       "p95": 0.73,
+       "max": 0.93,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 80,
+        "floor": 66,
+        "nearest": 111
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": 0.085,
+       "rms": 0.453,
+       "min": -0.8,
+       "p05": -0.58,
+       "p95": 0.85,
+       "max": 1.05,
+       "within_one": 141,
+       "rounding_matches": {
+        "ceil": 84,
+        "floor": 59,
+        "nearest": 99
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": 0.086,
+       "rms": 0.515,
+       "min": -0.8,
+       "p05": -0.65,
+       "p95": 1,
+       "max": 1.28,
+       "within_one": 137,
+       "rounding_matches": {
+        "ceil": 67,
+        "floor": 70,
+        "nearest": 95
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 15.056,
+       "rms": 15.107,
+       "min": 13.42,
+       "p05": 13.7,
+       "p95": 17.62,
+       "max": 18.4,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 79,
+        "floor": 65,
+        "nearest": 122
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -9.884,
+       "rms": 9.944,
+       "min": -12.58,
+       "p05": -12.18,
+       "p95": -8.33,
+       "max": -8.05,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 67,
+        "floor": 70,
+        "nearest": 95
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    },
+    "2026": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.104,
+       "rms": 0.51,
+       "min": -0.97,
+       "p05": -0.78,
+       "p95": 0.83,
+       "max": 1.02,
+       "within_one": 143,
+       "rounding_matches": {
+        "ceil": 86,
+        "floor": 59,
+        "nearest": 84
+       },
+       "rounding_verdict": "ceil"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.114,
+       "rms": 0.488,
+       "min": -0.8,
+       "p05": -0.67,
+       "p95": 0.85,
+       "max": 1.08,
+       "within_one": 142,
+       "rounding_matches": {
+        "ceil": 85,
+        "floor": 60,
+        "nearest": 91
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.007,
+       "rms": 0.301,
+       "min": -0.6,
+       "p05": -0.45,
+       "p95": 0.5,
+       "max": 0.6,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 75,
+        "floor": 70,
+        "nearest": 132
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": -0.07,
+       "rms": 0.38,
+       "min": -1.13,
+       "p05": -0.65,
+       "p95": 0.53,
+       "max": 0.65,
+       "within_one": 142,
+       "rounding_matches": {
+        "ceil": 69,
+        "floor": 78,
+        "nearest": 118
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": -0.057,
+       "rms": 0.408,
+       "min": -1.22,
+       "p05": -0.78,
+       "p95": 0.53,
+       "max": 0.73,
+       "within_one": 139,
+       "rounding_matches": {
+        "ceil": 66,
+        "floor": 75,
+        "nearest": 116
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -0.042,
+       "rms": 0.411,
+       "min": -1.08,
+       "p05": -0.8,
+       "p95": 0.65,
+       "max": 0.85,
+       "within_one": 142,
+       "rounding_matches": {
+        "ceil": 64,
+        "floor": 80,
+        "nearest": 114
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 15.084,
+       "rms": 15.133,
+       "min": 13.05,
+       "p05": 13.57,
+       "p95": 17.58,
+       "max": 18.48,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 86,
+        "floor": 59,
+        "nearest": 84
+       },
+       "rounding_verdict": "ceil"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -10.008,
+       "rms": 10.055,
+       "min": -12.55,
+       "p05": -11.97,
+       "p95": -8.7,
+       "max": -8.47,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 64,
+        "floor": 80,
+        "nearest": 114
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    }
+   },
+   "measured_angles": {
+    "fajr": {
+     "angle": 15,
+     "mae": 0.3
+    },
+    "isha": {
+     "angle": 15,
+     "mae": 0.42
+    },
+    "mae_fajr_at_15": 0.3,
+    "mae_isha_at_15": 0.42,
+    "sample_rows": 72
+   }
+  },
+  "pingliang": {
+   "city": "平凉",
+   "lon": 106.68,
+   "lat": 35.51,
+   "rows": 144,
+   "years": {
+    "2004": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.087,
+       "rms": 0.324,
+       "min": -0.57,
+       "p05": -0.42,
+       "p95": 0.57,
+       "max": 0.7,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 85,
+        "floor": 61,
+        "nearest": 125
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.054,
+       "rms": 0.323,
+       "min": -0.62,
+       "p05": -0.52,
+       "p95": 0.58,
+       "max": 0.63,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 82,
+        "floor": 64,
+        "nearest": 124
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.044,
+       "rms": 0.322,
+       "min": -0.67,
+       "p05": -0.47,
+       "p95": 0.55,
+       "max": 0.68,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 83,
+        "floor": 64,
+        "nearest": 128
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": 0.103,
+       "rms": 0.523,
+       "min": -0.93,
+       "p05": -0.63,
+       "p95": 0.97,
+       "max": 1.23,
+       "within_one": 138,
+       "rounding_matches": {
+        "ceil": 71,
+        "floor": 66,
+        "nearest": 92
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": 0.087,
+       "rms": 0.538,
+       "min": -0.92,
+       "p05": -0.7,
+       "p95": 0.98,
+       "max": 1.32,
+       "within_one": 138,
+       "rounding_matches": {
+        "ceil": 69,
+        "floor": 69,
+        "nearest": 88
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": 0.12,
+       "rms": 0.703,
+       "min": -1.12,
+       "p05": -0.87,
+       "p95": 1.28,
+       "max": 1.47,
+       "within_one": 118,
+       "rounding_matches": {
+        "ceil": 47,
+        "floor": 72,
+        "nearest": 68
+       },
+       "rounding_verdict": "floor"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 16.467,
+       "rms": 16.574,
+       "min": 14.22,
+       "p05": 14.58,
+       "p95": 20.25,
+       "max": 21.48,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 85,
+        "floor": 61,
+        "nearest": 125
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -10.763,
+       "rms": 10.869,
+       "min": -14.58,
+       "p05": -14,
+       "p95": -8.77,
+       "max": -8.6,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 47,
+        "floor": 72,
+        "nearest": 68
+       },
+       "rounding_verdict": "floor"
+      }
+     }
+    },
+    "2026": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.138,
+       "rms": 0.497,
+       "min": -1.05,
+       "p05": -0.67,
+       "p95": 0.83,
+       "max": 1.05,
+       "within_one": 141,
+       "rounding_matches": {
+        "ceil": 85,
+        "floor": 57,
+        "nearest": 91
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.124,
+       "rms": 0.5,
+       "min": -0.93,
+       "p05": -0.67,
+       "p95": 0.85,
+       "max": 1.15,
+       "within_one": 141,
+       "rounding_matches": {
+        "ceil": 88,
+        "floor": 57,
+        "nearest": 91
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": -0.003,
+       "rms": 0.298,
+       "min": -0.67,
+       "p05": -0.47,
+       "p95": 0.48,
+       "max": 0.55,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 76,
+        "floor": 72,
+        "nearest": 132
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": -0.06,
+       "rms": 0.504,
+       "min": -1.5,
+       "p05": -1.05,
+       "p95": 0.6,
+       "max": 0.85,
+       "within_one": 134,
+       "rounding_matches": {
+        "ceil": 76,
+        "floor": 59,
+        "nearest": 102
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": -0.079,
+       "rms": 0.452,
+       "min": -1.52,
+       "p05": -0.87,
+       "p95": 0.55,
+       "max": 0.83,
+       "within_one": 141,
+       "rounding_matches": {
+        "ceil": 68,
+        "floor": 75,
+        "nearest": 106
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -0.028,
+       "rms": 0.53,
+       "min": -1.35,
+       "p05": -0.95,
+       "p95": 0.8,
+       "max": 0.93,
+       "within_one": 138,
+       "rounding_matches": {
+        "ceil": 73,
+        "floor": 66,
+        "nearest": 85
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 16.516,
+       "rms": 16.617,
+       "min": 13.93,
+       "p05": 14.78,
+       "p95": 20.45,
+       "max": 21.47,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 85,
+        "floor": 57,
+        "nearest": 91
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -10.908,
+       "rms": 10.99,
+       "min": -14.6,
+       "p05": -13.87,
+       "p95": -9.28,
+       "max": -8.97,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 73,
+        "floor": 66,
+        "nearest": 85
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    }
+   },
+   "measured_angles": {
+    "fajr": {
+     "angle": 15,
+     "mae": 0.27
+    },
+    "isha": {
+     "angle": 15,
+     "mae": 0.62
+    },
+    "mae_fajr_at_15": 0.27,
+    "mae_isha_at_15": 0.62,
+    "sample_rows": 72
+   }
+  },
+  "qingdao": {
+   "city": "青岛",
+   "lon": 120.33,
+   "lat": 36.07,
+   "rows": 144,
+   "years": {
+    "2004": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.038,
+       "rms": 0.344,
+       "min": -0.73,
+       "p05": -0.55,
+       "p95": 0.65,
+       "max": 0.78,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 79,
+        "floor": 67,
+        "nearest": 122
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.036,
+       "rms": 0.304,
+       "min": -0.53,
+       "p05": -0.4,
+       "p95": 0.55,
+       "max": 0.68,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 76,
+        "floor": 72,
+        "nearest": 126
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.03,
+       "rms": 0.322,
+       "min": -0.77,
+       "p05": -0.48,
+       "p95": 0.57,
+       "max": 0.68,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 75,
+        "floor": 74,
+        "nearest": 127
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": 0.065,
+       "rms": 0.521,
+       "min": -0.93,
+       "p05": -0.65,
+       "p95": 1.03,
+       "max": 1.18,
+       "within_one": 135,
+       "rounding_matches": {
+        "ceil": 59,
+        "floor": 75,
+        "nearest": 91
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": 0.063,
+       "rms": 0.533,
+       "min": -0.9,
+       "p05": -0.68,
+       "p95": 0.97,
+       "max": 1.22,
+       "within_one": 137,
+       "rounding_matches": {
+        "ceil": 73,
+        "floor": 67,
+        "nearest": 83
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": 0.059,
+       "rms": 0.629,
+       "min": -1,
+       "p05": -0.9,
+       "p95": 1.23,
+       "max": 1.45,
+       "within_one": 130,
+       "rounding_matches": {
+        "ceil": 58,
+        "floor": 72,
+        "nearest": 82
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 16.589,
+       "rms": 16.704,
+       "min": 14.25,
+       "p05": 14.65,
+       "p95": 20.65,
+       "max": 21.88,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 79,
+        "floor": 67,
+        "nearest": 122
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -10.936,
+       "rms": 11.05,
+       "min": -14.93,
+       "p05": -14.32,
+       "p95": -8.88,
+       "max": -8.58,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 58,
+        "floor": 72,
+        "nearest": 82
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    },
+    "2026": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.092,
+       "rms": 0.57,
+       "min": -1.18,
+       "p05": -0.92,
+       "p95": 0.93,
+       "max": 1.08,
+       "within_one": 139,
+       "rounding_matches": {
+        "ceil": 83,
+        "floor": 57,
+        "nearest": 78
+       },
+       "rounding_verdict": "ceil"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.108,
+       "rms": 0.492,
+       "min": -0.88,
+       "p05": -0.77,
+       "p95": 0.85,
+       "max": 1.25,
+       "within_one": 142,
+       "rounding_matches": {
+        "ceil": 90,
+        "floor": 57,
+        "nearest": 90
+       },
+       "rounding_verdict": "ceil"
+      },
+      "noon": {
+       "n": 144,
+       "mean": -0.018,
+       "rms": 0.3,
+       "min": -0.7,
+       "p05": -0.48,
+       "p95": 0.48,
+       "max": 0.58,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 64,
+        "floor": 81,
+        "nearest": 133
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": -0.1,
+       "rms": 0.496,
+       "min": -1.45,
+       "p05": -1.08,
+       "p95": 0.63,
+       "max": 0.82,
+       "within_one": 135,
+       "rounding_matches": {
+        "ceil": 63,
+        "floor": 72,
+        "nearest": 107
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": -0.105,
+       "rms": 0.481,
+       "min": -1.53,
+       "p05": -1.02,
+       "p95": 0.55,
+       "max": 0.77,
+       "within_one": 136,
+       "rounding_matches": {
+        "ceil": 64,
+        "floor": 74,
+        "nearest": 109
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -0.092,
+       "rms": 0.492,
+       "min": -1.5,
+       "p05": -0.93,
+       "p95": 0.72,
+       "max": 0.92,
+       "within_one": 137,
+       "rounding_matches": {
+        "ceil": 63,
+        "floor": 76,
+        "nearest": 99
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 16.64,
+       "rms": 16.75,
+       "min": 13.9,
+       "p05": 14.42,
+       "p95": 20.78,
+       "max": 21.92,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 83,
+        "floor": 57,
+        "nearest": 78
+       },
+       "rounding_verdict": "ceil"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -11.083,
+       "rms": 11.175,
+       "min": -14.97,
+       "p05": -14.08,
+       "p95": -9.35,
+       "max": -9.07,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 63,
+        "floor": 76,
+        "nearest": 99
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    }
+   },
+   "measured_angles": {
+    "fajr": {
+     "angle": 15,
+     "mae": 0.28
+    },
+    "isha": {
+     "angle": 15,
+     "mae": 0.5
+    },
+    "mae_fajr_at_15": 0.28,
+    "mae_isha_at_15": 0.5,
+    "sample_rows": 72
+   }
+  },
+  "qiqihar": {
+   "city": "齐齐哈尔",
+   "lon": 123.97,
+   "lat": 47.33,
+   "rows": 144,
+   "years": {
+    "2004": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.03,
+       "rms": 0.459,
+       "min": -0.92,
+       "p05": -0.78,
+       "p95": 0.8,
+       "max": 0.92,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 77,
+        "floor": 68,
+        "nearest": 100
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.022,
+       "rms": 0.365,
+       "min": -0.75,
+       "p05": -0.48,
+       "p95": 0.67,
+       "max": 0.8,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 74,
+        "floor": 70,
+        "nearest": 119
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.097,
+       "rms": 0.34,
+       "min": -0.67,
+       "p05": -0.45,
+       "p95": 0.58,
+       "max": 0.75,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 87,
+        "floor": 61,
+        "nearest": 122
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": 0.081,
+       "rms": 0.628,
+       "min": -0.98,
+       "p05": -0.8,
+       "p95": 1.08,
+       "max": 1.43,
+       "within_one": 131,
+       "rounding_matches": {
+        "ceil": 53,
+        "floor": 79,
+        "nearest": 72
+       },
+       "rounding_verdict": "floor"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": 0.113,
+       "rms": 0.688,
+       "min": -1.12,
+       "p05": -0.85,
+       "p95": 1.12,
+       "max": 1.48,
+       "within_one": 125,
+       "rounding_matches": {
+        "ceil": 53,
+        "floor": 72,
+        "nearest": 58
+       },
+       "rounding_verdict": "floor"
+      },
+      "isha": {
+       "n": 144,
+       "mean": 0.062,
+       "rms": 0.969,
+       "min": -1.67,
+       "p05": -1.42,
+       "p95": 1.57,
+       "max": 1.82,
+       "within_one": 90,
+       "rounding_matches": {
+        "ceil": 35,
+        "floor": 54,
+        "nearest": 35
+       },
+       "rounding_verdict": "floor"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 23.178,
+       "rms": 24.462,
+       "min": 17,
+       "p05": 17.58,
+       "p95": 40.63,
+       "max": 51.52,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 77,
+        "floor": 68,
+        "nearest": 100
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -15.058,
+       "rms": 15.85,
+       "min": -31.32,
+       "p05": -26.48,
+       "p95": -10.72,
+       "max": -10.43,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 35,
+        "floor": 54,
+        "nearest": 35
+       },
+       "rounding_verdict": "floor"
+      }
+     }
+    },
+    "2026": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.132,
+       "rms": 0.931,
+       "min": -1.63,
+       "p05": -1.42,
+       "p95": 1.33,
+       "max": 1.42,
+       "within_one": 89,
+       "rounding_matches": {
+        "ceil": 65,
+        "floor": 24,
+        "nearest": 32
+       },
+       "rounding_verdict": "ceil"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.158,
+       "rms": 0.731,
+       "min": -1.2,
+       "p05": -1.03,
+       "p95": 1.13,
+       "max": 1.52,
+       "within_one": 117,
+       "rounding_matches": {
+        "ceil": 71,
+        "floor": 43,
+        "nearest": 54
+       },
+       "rounding_verdict": "ceil"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.05,
+       "rms": 0.312,
+       "min": -0.65,
+       "p05": -0.5,
+       "p95": 0.5,
+       "max": 0.63,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 83,
+        "floor": 62,
+        "nearest": 129
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": -0.145,
+       "rms": 0.619,
+       "min": -1.92,
+       "p05": -1.52,
+       "p95": 0.62,
+       "max": 0.85,
+       "within_one": 126,
+       "rounding_matches": {
+        "ceil": 70,
+        "floor": 58,
+        "nearest": 103
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": -0.119,
+       "rms": 0.59,
+       "min": -1.97,
+       "p05": -1.37,
+       "p95": 0.6,
+       "max": 0.82,
+       "within_one": 130,
+       "rounding_matches": {
+        "ceil": 74,
+        "floor": 58,
+        "nearest": 107
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -0.136,
+       "rms": 0.677,
+       "min": -1.88,
+       "p05": -1.35,
+       "p95": 0.82,
+       "max": 1.07,
+       "within_one": 125,
+       "rounding_matches": {
+        "ceil": 67,
+        "floor": 60,
+        "nearest": 81
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 23.271,
+       "rms": 24.518,
+       "min": 16.93,
+       "p05": 17.43,
+       "p95": 41.27,
+       "max": 51.4,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 65,
+        "floor": 24,
+        "nearest": 32
+       },
+       "rounding_verdict": "ceil"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -15.251,
+       "rms": 15.967,
+       "min": -31.23,
+       "p05": -26.67,
+       "p95": -11.38,
+       "max": -11.02,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 67,
+        "floor": 60,
+        "nearest": 81
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    }
+   },
+   "measured_angles": {
+    "fajr": {
+     "angle": 15,
+     "mae": 0.37
+    },
+    "isha": {
+     "angle": 15.1,
+     "mae": 0.84
+    },
+    "mae_fajr_at_15": 0.37,
+    "mae_isha_at_15": 0.85,
+    "sample_rows": 72
+   }
+  },
+  "quanzhou": {
+   "city": "泉州",
+   "lon": 118.58,
+   "lat": 24.93,
+   "rows": 144,
+   "years": {
+    "2004": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.055,
+       "rms": 0.324,
+       "min": -0.62,
+       "p05": -0.45,
+       "p95": 0.6,
+       "max": 0.7,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 81,
+        "floor": 65,
+        "nearest": 125
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.035,
+       "rms": 0.347,
+       "min": -0.63,
+       "p05": -0.53,
+       "p95": 0.6,
+       "max": 0.83,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 80,
+        "floor": 67,
+        "nearest": 117
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.031,
+       "rms": 0.323,
+       "min": -0.77,
+       "p05": -0.48,
+       "p95": 0.57,
+       "max": 0.68,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 75,
+        "floor": 74,
+        "nearest": 126
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": 0.094,
+       "rms": 0.41,
+       "min": -0.77,
+       "p05": -0.53,
+       "p95": 0.75,
+       "max": 1.02,
+       "within_one": 143,
+       "rounding_matches": {
+        "ceil": 87,
+        "floor": 57,
+        "nearest": 110
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": 0.127,
+       "rms": 0.417,
+       "min": -0.83,
+       "p05": -0.68,
+       "p95": 0.77,
+       "max": 1.07,
+       "within_one": 142,
+       "rounding_matches": {
+        "ceil": 94,
+        "floor": 50,
+        "nearest": 109
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": 0.077,
+       "rms": 0.528,
+       "min": -0.88,
+       "p05": -0.67,
+       "p95": 0.98,
+       "max": 1.18,
+       "within_one": 139,
+       "rounding_matches": {
+        "ceil": 68,
+        "floor": 69,
+        "nearest": 87
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 14.175,
+       "rms": 14.204,
+       "min": 12.78,
+       "p05": 12.95,
+       "p95": 15.93,
+       "max": 16.67,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 81,
+        "floor": 65,
+        "nearest": 125
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -9.323,
+       "rms": 9.367,
+       "min": -11.73,
+       "p05": -11.13,
+       "p95": -8,
+       "max": -7.77,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 68,
+        "floor": 69,
+        "nearest": 87
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    },
+    "2026": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.069,
+       "rms": 0.423,
+       "min": -0.9,
+       "p05": -0.65,
+       "p95": 0.75,
+       "max": 0.95,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 78,
+        "floor": 68,
+        "nearest": 101
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.062,
+       "rms": 0.396,
+       "min": -0.83,
+       "p05": -0.68,
+       "p95": 0.7,
+       "max": 0.87,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 82,
+        "floor": 63,
+        "nearest": 108
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": -0.017,
+       "rms": 0.3,
+       "min": -0.7,
+       "p05": -0.48,
+       "p95": 0.48,
+       "max": 0.58,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 64,
+        "floor": 81,
+        "nearest": 132
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": -0.028,
+       "rms": 0.376,
+       "min": -0.98,
+       "p05": -0.63,
+       "p95": 0.52,
+       "max": 0.75,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 69,
+        "floor": 75,
+        "nearest": 121
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": 0.004,
+       "rms": 0.391,
+       "min": -1.12,
+       "p05": -0.75,
+       "p95": 0.52,
+       "max": 0.7,
+       "within_one": 143,
+       "rounding_matches": {
+        "ceil": 82,
+        "floor": 62,
+        "nearest": 116
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -0.031,
+       "rms": 0.432,
+       "min": -0.98,
+       "p05": -0.8,
+       "p95": 0.62,
+       "max": 0.8,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 74,
+        "floor": 70,
+        "nearest": 106
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 14.185,
+       "rms": 14.214,
+       "min": 12.48,
+       "p05": 12.87,
+       "p95": 15.78,
+       "max": 16.65,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 78,
+        "floor": 68,
+        "nearest": 101
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -9.431,
+       "rms": 9.465,
+       "min": -11.63,
+       "p05": -10.95,
+       "p95": -8.25,
+       "max": -8.13,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 74,
+        "floor": 70,
+        "nearest": 106
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    }
+   },
+   "measured_angles": {
+    "fajr": {
+     "angle": 15,
+     "mae": 0.27
+    },
+    "isha": {
+     "angle": 15,
+     "mae": 0.44
+    },
+    "mae_fajr_at_15": 0.27,
+    "mae_isha_at_15": 0.44,
+    "sample_rows": 72
+   }
+  },
+  "shaoyang": {
+   "city": "邵阳",
+   "lon": 111.5,
+   "lat": 27.22,
+   "rows": 144,
+   "years": {
+    "2004": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.066,
+       "rms": 0.294,
+       "min": -0.65,
+       "p05": -0.42,
+       "p95": 0.48,
+       "max": 0.67,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 91,
+        "floor": 56,
+        "nearest": 135
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.058,
+       "rms": 0.283,
+       "min": -0.72,
+       "p05": -0.38,
+       "p95": 0.48,
+       "max": 0.73,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 83,
+        "floor": 65,
+        "nearest": 135
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.059,
+       "rms": 0.349,
+       "min": -0.68,
+       "p05": -0.48,
+       "p95": 0.63,
+       "max": 0.73,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 79,
+        "floor": 67,
+        "nearest": 120
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": 0.109,
+       "rms": 0.454,
+       "min": -0.88,
+       "p05": -0.57,
+       "p95": 0.82,
+       "max": 1.07,
+       "within_one": 141,
+       "rounding_matches": {
+        "ceil": 82,
+        "floor": 58,
+        "nearest": 101
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": 0.069,
+       "rms": 0.439,
+       "min": -0.82,
+       "p05": -0.65,
+       "p95": 0.78,
+       "max": 1.08,
+       "within_one": 143,
+       "rounding_matches": {
+        "ceil": 85,
+        "floor": 57,
+        "nearest": 106
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": 0.124,
+       "rms": 0.501,
+       "min": -0.97,
+       "p05": -0.6,
+       "p95": 0.97,
+       "max": 1.28,
+       "within_one": 139,
+       "rounding_matches": {
+        "ceil": 80,
+        "floor": 59,
+        "nearest": 97
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 14.552,
+       "rms": 14.593,
+       "min": 13.08,
+       "p05": 13.32,
+       "p95": 16.87,
+       "max": 17.5,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 91,
+        "floor": 56,
+        "nearest": 135
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -9.518,
+       "rms": 9.567,
+       "min": -11.97,
+       "p05": -11.58,
+       "p95": -8.3,
+       "max": -7.93,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 80,
+        "floor": 59,
+        "nearest": 97
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    },
+    "2026": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.087,
+       "rms": 0.424,
+       "min": -0.87,
+       "p05": -0.7,
+       "p95": 0.73,
+       "max": 0.83,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 89,
+        "floor": 56,
+        "nearest": 103
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.095,
+       "rms": 0.394,
+       "min": -0.77,
+       "p05": -0.58,
+       "p95": 0.65,
+       "max": 1,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 93,
+        "floor": 51,
+        "nearest": 108
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.012,
+       "rms": 0.325,
+       "min": -0.62,
+       "p05": -0.48,
+       "p95": 0.52,
+       "max": 0.65,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 70,
+        "floor": 74,
+        "nearest": 129
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": -0.019,
+       "rms": 0.414,
+       "min": -1.15,
+       "p05": -0.68,
+       "p95": 0.6,
+       "max": 0.77,
+       "within_one": 142,
+       "rounding_matches": {
+        "ceil": 70,
+        "floor": 72,
+        "nearest": 117
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": -0.063,
+       "rms": 0.399,
+       "min": -1.15,
+       "p05": -0.75,
+       "p95": 0.55,
+       "max": 0.68,
+       "within_one": 141,
+       "rounding_matches": {
+        "ceil": 66,
+        "floor": 76,
+        "nearest": 113
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": 0.007,
+       "rms": 0.37,
+       "min": -0.98,
+       "p05": -0.62,
+       "p95": 0.62,
+       "max": 0.87,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 75,
+        "floor": 72,
+        "nearest": 118
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 14.572,
+       "rms": 14.612,
+       "min": 12.78,
+       "p05": 13.02,
+       "p95": 16.77,
+       "max": 17.5,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 89,
+        "floor": 56,
+        "nearest": 103
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -9.633,
+       "rms": 9.671,
+       "min": -11.78,
+       "p05": -11.5,
+       "p95": -8.57,
+       "max": -8.32,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 75,
+        "floor": 72,
+        "nearest": 118
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    }
+   },
+   "measured_angles": {
+    "fajr": {
+     "angle": 15,
+     "mae": 0.24
+    },
+    "isha": {
+     "angle": 15.1,
+     "mae": 0.39
+    },
+    "mae_fajr_at_15": 0.24,
+    "mae_isha_at_15": 0.42,
+    "sample_rows": 72
+   }
+  },
+  "shenzhen": {
+   "city": "深圳",
+   "lon": 114.07,
+   "lat": 22.62,
+   "rows": 144,
+   "years": {
+    "2004": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.038,
+       "rms": 0.331,
+       "min": -0.57,
+       "p05": -0.42,
+       "p95": 0.57,
+       "max": 0.7,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 75,
+        "floor": 72,
+        "nearest": 127
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.049,
+       "rms": 0.338,
+       "min": -0.58,
+       "p05": -0.48,
+       "p95": 0.57,
+       "max": 0.73,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 78,
+        "floor": 69,
+        "nearest": 126
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.096,
+       "rms": 0.335,
+       "min": -0.6,
+       "p05": -0.4,
+       "p95": 0.65,
+       "max": 0.73,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 80,
+        "floor": 64,
+        "nearest": 122
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": 0.061,
+       "rms": 0.426,
+       "min": -0.8,
+       "p05": -0.65,
+       "p95": 0.77,
+       "max": 0.98,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 83,
+        "floor": 64,
+        "nearest": 107
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": 0.103,
+       "rms": 0.432,
+       "min": -0.7,
+       "p05": -0.5,
+       "p95": 0.9,
+       "max": 1.02,
+       "within_one": 143,
+       "rounding_matches": {
+        "ceil": 84,
+        "floor": 61,
+        "nearest": 107
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": 0.071,
+       "rms": 0.453,
+       "min": -0.87,
+       "p05": -0.68,
+       "p95": 0.87,
+       "max": 1.13,
+       "within_one": 141,
+       "rounding_matches": {
+        "ceil": 80,
+        "floor": 62,
+        "nearest": 102
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 13.837,
+       "rms": 13.865,
+       "min": 12.62,
+       "p05": 12.77,
+       "p95": 15.57,
+       "max": 16.03,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 75,
+        "floor": 72,
+        "nearest": 127
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -9.118,
+       "rms": 9.153,
+       "min": -11.25,
+       "p05": -10.65,
+       "p95": -8.02,
+       "max": -7.63,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 80,
+        "floor": 62,
+        "nearest": 102
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    },
+    "2026": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.044,
+       "rms": 0.411,
+       "min": -0.82,
+       "p05": -0.68,
+       "p95": 0.7,
+       "max": 0.78,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 81,
+        "floor": 70,
+        "nearest": 98
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.069,
+       "rms": 0.401,
+       "min": -0.75,
+       "p05": -0.57,
+       "p95": 0.7,
+       "max": 0.98,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 83,
+        "floor": 66,
+        "nearest": 107
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.048,
+       "rms": 0.307,
+       "min": -0.57,
+       "p05": -0.4,
+       "p95": 0.55,
+       "max": 0.65,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 77,
+        "floor": 67,
+        "nearest": 131
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": -0.053,
+       "rms": 0.405,
+       "min": -0.95,
+       "p05": -0.75,
+       "p95": 0.55,
+       "max": 0.73,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 67,
+        "floor": 83,
+        "nearest": 108
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": -0.011,
+       "rms": 0.37,
+       "min": -0.95,
+       "p05": -0.63,
+       "p95": 0.57,
+       "max": 0.68,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 70,
+        "floor": 76,
+        "nearest": 114
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -0.031,
+       "rms": 0.38,
+       "min": -0.93,
+       "p05": -0.65,
+       "p95": 0.58,
+       "max": 0.78,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 69,
+        "floor": 77,
+        "nearest": 111
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 13.841,
+       "rms": 13.868,
+       "min": 12.37,
+       "p05": 12.6,
+       "p95": 15.52,
+       "max": 16.03,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 81,
+        "floor": 70,
+        "nearest": 98
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -9.217,
+       "rms": 9.245,
+       "min": -11.23,
+       "p05": -10.55,
+       "p95": -8.2,
+       "max": -7.93,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 69,
+        "floor": 77,
+        "nearest": 111
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    }
+   },
+   "measured_angles": {
+    "fajr": {
+     "angle": 15,
+     "mae": 0.31
+    },
+    "isha": {
+     "angle": 15,
+     "mae": 0.36
+    },
+    "mae_fajr_at_15": 0.31,
+    "mae_isha_at_15": 0.36,
+    "sample_rows": 72
+   }
+  },
+  "suzhou": {
+   "city": "苏州",
+   "lon": 120.62,
+   "lat": 31.32,
+   "rows": 144,
+   "years": {
+    "2004": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.041,
+       "rms": 0.329,
+       "min": -0.72,
+       "p05": -0.45,
+       "p95": 0.63,
+       "max": 0.73,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 76,
+        "floor": 69,
+        "nearest": 125
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.073,
+       "rms": 0.34,
+       "min": -0.63,
+       "p05": -0.47,
+       "p95": 0.62,
+       "max": 0.75,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 84,
+        "floor": 62,
+        "nearest": 122
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.1,
+       "rms": 0.324,
+       "min": -0.6,
+       "p05": -0.4,
+       "p95": 0.58,
+       "max": 0.73,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 90,
+        "floor": 58,
+        "nearest": 125
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": 0.099,
+       "rms": 0.459,
+       "min": -0.78,
+       "p05": -0.63,
+       "p95": 0.92,
+       "max": 1.05,
+       "within_one": 141,
+       "rounding_matches": {
+        "ceil": 82,
+        "floor": 62,
+        "nearest": 102
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": 0.111,
+       "rms": 0.499,
+       "min": -0.8,
+       "p05": -0.62,
+       "p95": 0.88,
+       "max": 1.22,
+       "within_one": 138,
+       "rounding_matches": {
+        "ceil": 72,
+        "floor": 68,
+        "nearest": 95
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": 0.099,
+       "rms": 0.581,
+       "min": -1,
+       "p05": -0.7,
+       "p95": 1.08,
+       "max": 1.35,
+       "within_one": 133,
+       "rounding_matches": {
+        "ceil": 65,
+        "floor": 68,
+        "nearest": 79
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 15.336,
+       "rms": 15.397,
+       "min": 13.57,
+       "p05": 13.83,
+       "p95": 18.2,
+       "max": 19.03,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 76,
+        "floor": 69,
+        "nearest": 125
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -10.075,
+       "rms": 10.147,
+       "min": -13.13,
+       "p05": -12.57,
+       "p95": -8.58,
+       "max": -8.23,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 65,
+        "floor": 68,
+        "nearest": 79
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    },
+    "2026": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.076,
+       "rms": 0.493,
+       "min": -1,
+       "p05": -0.77,
+       "p95": 0.82,
+       "max": 0.97,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 81,
+        "floor": 63,
+        "nearest": 91
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.124,
+       "rms": 0.468,
+       "min": -0.85,
+       "p05": -0.63,
+       "p95": 0.82,
+       "max": 0.97,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 88,
+        "floor": 59,
+        "nearest": 88
+       },
+       "rounding_verdict": "ceil"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.054,
+       "rms": 0.292,
+       "min": -0.58,
+       "p05": -0.37,
+       "p95": 0.5,
+       "max": 0.63,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 82,
+        "floor": 66,
+        "nearest": 135
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": -0.047,
+       "rms": 0.44,
+       "min": -1.23,
+       "p05": -0.82,
+       "p95": 0.58,
+       "max": 0.73,
+       "within_one": 139,
+       "rounding_matches": {
+        "ceil": 71,
+        "floor": 70,
+        "nearest": 106
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": -0.036,
+       "rms": 0.439,
+       "min": -1.2,
+       "p05": -0.87,
+       "p95": 0.58,
+       "max": 0.78,
+       "within_one": 139,
+       "rounding_matches": {
+        "ceil": 75,
+        "floor": 65,
+        "nearest": 108
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -0.032,
+       "rms": 0.463,
+       "min": -1.13,
+       "p05": -0.8,
+       "p95": 0.63,
+       "max": 0.9,
+       "within_one": 139,
+       "rounding_matches": {
+        "ceil": 77,
+        "floor": 64,
+        "nearest": 100
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 15.369,
+       "rms": 15.427,
+       "min": 13.22,
+       "p05": 13.87,
+       "p95": 18.2,
+       "max": 18.95,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 81,
+        "floor": 63,
+        "nearest": 91
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -10.204,
+       "rms": 10.262,
+       "min": -13.15,
+       "p05": -12.35,
+       "p95": -8.9,
+       "max": -8.65,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 77,
+        "floor": 64,
+        "nearest": 100
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    }
+   },
+   "measured_angles": {
+    "fajr": {
+     "angle": 15,
+     "mae": 0.29
+    },
+    "isha": {
+     "angle": 15,
+     "mae": 0.48
+    },
+    "mae_fajr_at_15": 0.29,
+    "mae_isha_at_15": 0.48,
+    "sample_rows": 72
+   }
+  },
+  "tianshui": {
+   "city": "天水",
+   "lon": 105.69,
+   "lat": 34.6,
+   "rows": 144,
+   "years": {
+    "2004": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.084,
+       "rms": 0.335,
+       "min": -0.67,
+       "p05": -0.43,
+       "p95": 0.6,
+       "max": 0.73,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 88,
+        "floor": 58,
+        "nearest": 125
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.024,
+       "rms": 0.32,
+       "min": -0.6,
+       "p05": -0.48,
+       "p95": 0.55,
+       "max": 0.65,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 79,
+        "floor": 69,
+        "nearest": 125
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.084,
+       "rms": 0.33,
+       "min": -0.62,
+       "p05": -0.43,
+       "p95": 0.58,
+       "max": 0.73,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 89,
+        "floor": 56,
+        "nearest": 126
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": 0.079,
+       "rms": 0.544,
+       "min": -1,
+       "p05": -0.72,
+       "p95": 1.03,
+       "max": 1.2,
+       "within_one": 135,
+       "rounding_matches": {
+        "ceil": 65,
+        "floor": 69,
+        "nearest": 89
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": 0.05,
+       "rms": 0.555,
+       "min": -1,
+       "p05": -0.72,
+       "p95": 1.07,
+       "max": 1.3,
+       "within_one": 134,
+       "rounding_matches": {
+        "ceil": 66,
+        "floor": 69,
+        "nearest": 81
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": 0.076,
+       "rms": 0.672,
+       "min": -1.03,
+       "p05": -0.83,
+       "p95": 1.22,
+       "max": 1.42,
+       "within_one": 121,
+       "rounding_matches": {
+        "ceil": 53,
+        "floor": 68,
+        "nearest": 66
+       },
+       "rounding_verdict": "floor"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 16.202,
+       "rms": 16.29,
+       "min": 14.13,
+       "p05": 14.5,
+       "p95": 19.77,
+       "max": 20.65,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 88,
+        "floor": 58,
+        "nearest": 125
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -10.634,
+       "rms": 10.733,
+       "min": -14.47,
+       "p05": -13.45,
+       "p95": -8.73,
+       "max": -8.5,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 53,
+        "floor": 68,
+        "nearest": 66
+       },
+       "rounding_verdict": "floor"
+      }
+     }
+    },
+    "2026": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.133,
+       "rms": 0.563,
+       "min": -1.03,
+       "p05": -0.8,
+       "p95": 0.9,
+       "max": 1.05,
+       "within_one": 140,
+       "rounding_matches": {
+        "ceil": 87,
+        "floor": 54,
+        "nearest": 74
+       },
+       "rounding_verdict": "ceil"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.09,
+       "rms": 0.502,
+       "min": -0.87,
+       "p05": -0.77,
+       "p95": 0.88,
+       "max": 1.23,
+       "within_one": 141,
+       "rounding_matches": {
+        "ceil": 80,
+        "floor": 63,
+        "nearest": 92
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.037,
+       "rms": 0.301,
+       "min": -0.63,
+       "p05": -0.42,
+       "p95": 0.52,
+       "max": 0.6,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 82,
+        "floor": 66,
+        "nearest": 133
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": -0.079,
+       "rms": 0.52,
+       "min": -1.52,
+       "p05": -1.12,
+       "p95": 0.67,
+       "max": 0.8,
+       "within_one": 133,
+       "rounding_matches": {
+        "ceil": 68,
+        "floor": 68,
+        "nearest": 101
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": -0.111,
+       "rms": 0.512,
+       "min": -1.3,
+       "p05": -1.25,
+       "p95": 0.63,
+       "max": 0.82,
+       "within_one": 132,
+       "rounding_matches": {
+        "ceil": 70,
+        "floor": 63,
+        "nearest": 104
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -0.066,
+       "rms": 0.511,
+       "min": -1.35,
+       "p05": -0.93,
+       "p95": 0.72,
+       "max": 0.92,
+       "within_one": 138,
+       "rounding_matches": {
+        "ceil": 66,
+        "floor": 73,
+        "nearest": 92
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 16.247,
+       "rms": 16.332,
+       "min": 13.73,
+       "p05": 14.48,
+       "p95": 19.63,
+       "max": 20.63,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 87,
+        "floor": 54,
+        "nearest": 74
+       },
+       "rounding_verdict": "ceil"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -10.776,
+       "rms": 10.853,
+       "min": -14.32,
+       "p05": -13.42,
+       "p95": -9.23,
+       "max": -8.95,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 66,
+        "floor": 73,
+        "nearest": 92
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    }
+   },
+   "measured_angles": {
+    "fajr": {
+     "angle": 15,
+     "mae": 0.3
+    },
+    "isha": {
+     "angle": 15,
+     "mae": 0.56
+    },
+    "mae_fajr_at_15": 0.3,
+    "mae_isha_at_15": 0.56,
+    "sample_rows": 72
+   }
+  },
+  "turpan": {
+   "city": "吐鲁番",
+   "lon": 89.19,
+   "lat": 42.91,
+   "rows": 144,
+   "years": {
+    "2004": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.058,
+       "rms": 0.337,
+       "min": -0.78,
+       "p05": -0.47,
+       "p95": 0.62,
+       "max": 0.73,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 76,
+        "floor": 70,
+        "nearest": 123
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.041,
+       "rms": 0.334,
+       "min": -0.62,
+       "p05": -0.45,
+       "p95": 0.6,
+       "max": 0.77,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 77,
+        "floor": 69,
+        "nearest": 124
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.087,
+       "rms": 0.332,
+       "min": -0.63,
+       "p05": -0.43,
+       "p95": 0.58,
+       "max": 0.75,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 89,
+        "floor": 55,
+        "nearest": 125
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": 0.037,
+       "rms": 0.696,
+       "min": -1.08,
+       "p05": -0.92,
+       "p95": 1.25,
+       "max": 1.53,
+       "within_one": 127,
+       "rounding_matches": {
+        "ceil": 52,
+        "floor": 75,
+        "nearest": 58
+       },
+       "rounding_verdict": "floor"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": 0.095,
+       "rms": 0.685,
+       "min": -1,
+       "p05": -0.83,
+       "p95": 1.28,
+       "max": 1.57,
+       "within_one": 127,
+       "rounding_matches": {
+        "ceil": 57,
+        "floor": 71,
+        "nearest": 63
+       },
+       "rounding_verdict": "floor"
+      },
+      "isha": {
+       "n": 144,
+       "mean": 0.087,
+       "rms": 0.889,
+       "min": -1.43,
+       "p05": -1.17,
+       "p95": 1.53,
+       "max": 1.78,
+       "within_one": 96,
+       "rounding_matches": {
+        "ceil": 37,
+        "floor": 61,
+        "nearest": 42
+       },
+       "rounding_verdict": "floor"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 19.503,
+       "rms": 19.873,
+       "min": 15.98,
+       "p05": 16.28,
+       "p95": 28.1,
+       "max": 30.82,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 76,
+        "floor": 70,
+        "nearest": 123
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -12.775,
+       "rms": 13.066,
+       "min": -20.42,
+       "p05": -19.17,
+       "p95": -9.8,
+       "max": -9.52,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 37,
+        "floor": 61,
+        "nearest": 42
+       },
+       "rounding_verdict": "floor"
+      }
+     }
+    },
+    "2026": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.14,
+       "rms": 0.655,
+       "min": -1.22,
+       "p05": -1.05,
+       "p95": 1.03,
+       "max": 1.28,
+       "within_one": 125,
+       "rounding_matches": {
+        "ceil": 79,
+        "floor": 43,
+        "nearest": 68
+       },
+       "rounding_verdict": "ceil"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.148,
+       "rms": 0.567,
+       "min": -0.93,
+       "p05": -0.73,
+       "p95": 0.97,
+       "max": 1.4,
+       "within_one": 138,
+       "rounding_matches": {
+        "ceil": 81,
+        "floor": 60,
+        "nearest": 75
+       },
+       "rounding_verdict": "ceil"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.039,
+       "rms": 0.301,
+       "min": -0.63,
+       "p05": -0.45,
+       "p95": 0.52,
+       "max": 0.62,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 82,
+        "floor": 65,
+        "nearest": 133
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": -0.163,
+       "rms": 0.648,
+       "min": -1.85,
+       "p05": -1.4,
+       "p95": 0.77,
+       "max": 1.02,
+       "within_one": 126,
+       "rounding_matches": {
+        "ceil": 66,
+        "floor": 62,
+        "nearest": 90
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": -0.108,
+       "rms": 0.598,
+       "min": -1.63,
+       "p05": -1.5,
+       "p95": 0.73,
+       "max": 0.98,
+       "within_one": 129,
+       "rounding_matches": {
+        "ceil": 71,
+        "floor": 60,
+        "nearest": 104
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -0.092,
+       "rms": 0.655,
+       "min": -1.78,
+       "p05": -1.35,
+       "p95": 0.9,
+       "max": 1.15,
+       "within_one": 126,
+       "rounding_matches": {
+        "ceil": 67,
+        "floor": 59,
+        "nearest": 80
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 19.581,
+       "rms": 19.933,
+       "min": 15.72,
+       "p05": 16.28,
+       "p95": 27.7,
+       "max": 30.78,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 79,
+        "floor": 43,
+        "nearest": 68
+       },
+       "rounding_verdict": "ceil"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -12.95,
+       "rms": 13.196,
+       "min": -20.23,
+       "p05": -18.85,
+       "p95": -10.43,
+       "max": -10.05,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 67,
+        "floor": 59,
+        "nearest": 80
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    }
+   },
+   "measured_angles": {
+    "fajr": {
+     "angle": 15,
+     "mae": 0.28
+    },
+    "isha": {
+     "angle": 15,
+     "mae": 0.81
+    },
+    "mae_fajr_at_15": 0.28,
+    "mae_isha_at_15": 0.81,
+    "sample_rows": 72
+   }
+  },
+  "wuzhong": {
+   "city": "吴忠",
+   "lon": 106.21,
+   "lat": 37.99,
+   "rows": 144,
+   "years": {
+    "2004": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.061,
+       "rms": 0.347,
+       "min": -0.77,
+       "p05": -0.48,
+       "p95": 0.6,
+       "max": 0.75,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 83,
+        "floor": 62,
+        "nearest": 126
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.099,
+       "rms": 0.34,
+       "min": -0.57,
+       "p05": -0.45,
+       "p95": 0.57,
+       "max": 0.72,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 89,
+        "floor": 58,
+        "nearest": 122
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.059,
+       "rms": 0.333,
+       "min": -0.72,
+       "p05": -0.48,
+       "p95": 0.55,
+       "max": 0.68,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 81,
+        "floor": 66,
+        "nearest": 122
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": 0.136,
+       "rms": 0.567,
+       "min": -1.03,
+       "p05": -0.75,
+       "p95": 1.1,
+       "max": 1.3,
+       "within_one": 132,
+       "rounding_matches": {
+        "ceil": 76,
+        "floor": 61,
+        "nearest": 87
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": 0.102,
+       "rms": 0.625,
+       "min": -0.88,
+       "p05": -0.73,
+       "p95": 1.15,
+       "max": 1.35,
+       "within_one": 130,
+       "rounding_matches": {
+        "ceil": 58,
+        "floor": 73,
+        "nearest": 64
+       },
+       "rounding_verdict": "floor"
+      },
+      "isha": {
+       "n": 144,
+       "mean": 0.073,
+       "rms": 0.723,
+       "min": -1.25,
+       "p05": -1,
+       "p95": 1.23,
+       "max": 1.47,
+       "within_one": 118,
+       "rounding_matches": {
+        "ceil": 49,
+        "floor": 68,
+        "nearest": 55
+       },
+       "rounding_verdict": "floor"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 17.257,
+       "rms": 17.409,
+       "min": 14.68,
+       "p05": 15.03,
+       "p95": 22.17,
+       "max": 23.32,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 83,
+        "floor": 62,
+        "nearest": 126
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -11.341,
+       "rms": 11.483,
+       "min": -15.98,
+       "p05": -15.38,
+       "p95": -9.25,
+       "max": -8.83,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 49,
+        "floor": 68,
+        "nearest": 55
+       },
+       "rounding_verdict": "floor"
+      }
+     }
+    },
+    "2026": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.122,
+       "rms": 0.575,
+       "min": -1.18,
+       "p05": -0.88,
+       "p95": 0.88,
+       "max": 0.98,
+       "within_one": 143,
+       "rounding_matches": {
+        "ceil": 91,
+        "floor": 52,
+        "nearest": 76
+       },
+       "rounding_verdict": "ceil"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.179,
+       "rms": 0.555,
+       "min": -0.93,
+       "p05": -0.82,
+       "p95": 0.92,
+       "max": 1.28,
+       "within_one": 138,
+       "rounding_matches": {
+        "ceil": 92,
+        "floor": 49,
+        "nearest": 78
+       },
+       "rounding_verdict": "ceil"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.013,
+       "rms": 0.31,
+       "min": -0.7,
+       "p05": -0.53,
+       "p95": 0.47,
+       "max": 0.6,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 79,
+        "floor": 68,
+        "nearest": 131
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": -0.039,
+       "rms": 0.535,
+       "min": -1.62,
+       "p05": -1.02,
+       "p95": 0.7,
+       "max": 0.87,
+       "within_one": 135,
+       "rounding_matches": {
+        "ceil": 86,
+        "floor": 51,
+        "nearest": 98
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": -0.075,
+       "rms": 0.532,
+       "min": -1.52,
+       "p05": -1.13,
+       "p95": 0.67,
+       "max": 0.83,
+       "within_one": 134,
+       "rounding_matches": {
+        "ceil": 72,
+        "floor": 65,
+        "nearest": 98
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -0.084,
+       "rms": 0.535,
+       "min": -1.55,
+       "p05": -0.87,
+       "p95": 0.75,
+       "max": 0.93,
+       "within_one": 139,
+       "rounding_matches": {
+        "ceil": 66,
+        "floor": 74,
+        "nearest": 93
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 17.315,
+       "rms": 17.458,
+       "min": 14.38,
+       "p05": 14.97,
+       "p95": 22.08,
+       "max": 23.3,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 91,
+        "floor": 52,
+        "nearest": 76
+       },
+       "rounding_verdict": "ceil"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -11.496,
+       "rms": 11.61,
+       "min": -15.85,
+       "p05": -15.17,
+       "p95": -9.63,
+       "max": -9.37,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 66,
+        "floor": 74,
+        "nearest": 93
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    }
+   },
+   "measured_angles": {
+    "fajr": {
+     "angle": 15,
+     "mae": 0.31
+    },
+    "isha": {
+     "angle": 15,
+     "mae": 0.64
+    },
+    "mae_fajr_at_15": 0.31,
+    "mae_isha_at_15": 0.64,
+    "sample_rows": 72
+   }
+  },
+  "xiamen": {
+   "city": "厦门",
+   "lon": 118.1,
+   "lat": 24.46,
+   "rows": 144,
+   "years": {
+    "2004": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.074,
+       "rms": 0.338,
+       "min": -0.62,
+       "p05": -0.45,
+       "p95": 0.58,
+       "max": 0.85,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 81,
+        "floor": 64,
+        "nearest": 125
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.04,
+       "rms": 0.33,
+       "min": -0.55,
+       "p05": -0.45,
+       "p95": 0.55,
+       "max": 0.72,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 79,
+        "floor": 66,
+        "nearest": 130
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.104,
+       "rms": 0.336,
+       "min": -0.68,
+       "p05": -0.42,
+       "p95": 0.63,
+       "max": 0.77,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 88,
+        "floor": 57,
+        "nearest": 123
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": 0.063,
+       "rms": 0.413,
+       "min": -0.75,
+       "p05": -0.57,
+       "p95": 0.8,
+       "max": 0.98,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 74,
+        "floor": 71,
+        "nearest": 110
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": 0.102,
+       "rms": 0.44,
+       "min": -0.83,
+       "p05": -0.63,
+       "p95": 0.8,
+       "max": 1.12,
+       "within_one": 140,
+       "rounding_matches": {
+        "ceil": 85,
+        "floor": 56,
+        "nearest": 109
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": 0.108,
+       "rms": 0.482,
+       "min": -0.93,
+       "p05": -0.67,
+       "p95": 0.92,
+       "max": 1.2,
+       "within_one": 139,
+       "rounding_matches": {
+        "ceil": 80,
+        "floor": 62,
+        "nearest": 104
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 14.124,
+       "rms": 14.151,
+       "min": 12.78,
+       "p05": 13.03,
+       "p95": 15.75,
+       "max": 16.42,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 81,
+        "floor": 64,
+        "nearest": 125
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -9.247,
+       "rms": 9.287,
+       "min": -11.22,
+       "p05": -11,
+       "p95": -7.97,
+       "max": -7.67,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 80,
+        "floor": 62,
+        "nearest": 104
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    },
+    "2026": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.086,
+       "rms": 0.429,
+       "min": -0.88,
+       "p05": -0.68,
+       "p95": 0.72,
+       "max": 0.87,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 84,
+        "floor": 62,
+        "nearest": 103
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.065,
+       "rms": 0.374,
+       "min": -0.75,
+       "p05": -0.55,
+       "p95": 0.68,
+       "max": 0.85,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 81,
+        "floor": 66,
+        "nearest": 109
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.057,
+       "rms": 0.304,
+       "min": -0.62,
+       "p05": -0.4,
+       "p95": 0.57,
+       "max": 0.67,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 77,
+        "floor": 69,
+        "nearest": 130
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": -0.056,
+       "rms": 0.407,
+       "min": -1.05,
+       "p05": -0.78,
+       "p95": 0.57,
+       "max": 0.72,
+       "within_one": 142,
+       "rounding_matches": {
+        "ceil": 64,
+        "floor": 78,
+        "nearest": 115
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": -0.02,
+       "rms": 0.426,
+       "min": -1.03,
+       "p05": -0.85,
+       "p95": 0.63,
+       "max": 0.77,
+       "within_one": 142,
+       "rounding_matches": {
+        "ceil": 81,
+        "floor": 63,
+        "nearest": 107
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": 0,
+       "rms": 0.384,
+       "min": -1.03,
+       "p05": -0.57,
+       "p95": 0.6,
+       "max": 0.83,
+       "within_one": 143,
+       "rounding_matches": {
+        "ceil": 74,
+        "floor": 71,
+        "nearest": 114
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 14.134,
+       "rms": 14.161,
+       "min": 12.48,
+       "p05": 12.93,
+       "p95": 15.83,
+       "max": 16.52,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 84,
+        "floor": 62,
+        "nearest": 103
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -9.353,
+       "rms": 9.384,
+       "min": -11.18,
+       "p05": -10.85,
+       "p95": -8.28,
+       "max": -8,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 74,
+        "floor": 71,
+        "nearest": 114
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    }
+   },
+   "measured_angles": {
+    "fajr": {
+     "angle": 15,
+     "mae": 0.29
+    },
+    "isha": {
+     "angle": 15,
+     "mae": 0.4
+    },
+    "mae_fajr_at_15": 0.29,
+    "mae_isha_at_15": 0.4,
+    "sample_rows": 72
+   }
+  },
+  "yining": {
+   "city": "伊宁",
+   "lon": 81.33,
+   "lat": 43.91,
+   "rows": 124,
+   "years": {
+    "2004": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 124,
+       "mean": 0.105,
+       "rms": 0.338,
+       "min": -0.65,
+       "p05": -0.43,
+       "p95": 0.58,
+       "max": 0.72,
+       "within_one": 124,
+       "rounding_matches": {
+        "ceil": 79,
+        "floor": 47,
+        "nearest": 106
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 124,
+       "mean": 0.088,
+       "rms": 0.301,
+       "min": -0.53,
+       "p05": -0.38,
+       "p95": 0.52,
+       "max": 0.7,
+       "within_one": 124,
+       "rounding_matches": {
+        "ceil": 77,
+        "floor": 53,
+        "nearest": 115
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 124,
+       "mean": 0.073,
+       "rms": 0.33,
+       "min": -0.77,
+       "p05": -0.42,
+       "p95": 0.6,
+       "max": 0.72,
+       "within_one": 124,
+       "rounding_matches": {
+        "ceil": 74,
+        "floor": 55,
+        "nearest": 108
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 124,
+       "mean": 0.203,
+       "rms": 0.809,
+       "min": -1.1,
+       "p05": -0.97,
+       "p95": 1.4,
+       "max": 1.55,
+       "within_one": 92,
+       "rounding_matches": {
+        "ceil": 39,
+        "floor": 51,
+        "nearest": 47
+       },
+       "rounding_verdict": "floor"
+      },
+      "sunset": {
+       "n": 124,
+       "mean": 0.168,
+       "rms": 0.814,
+       "min": -1.17,
+       "p05": -0.98,
+       "p95": 1.38,
+       "max": 1.65,
+       "within_one": 95,
+       "rounding_matches": {
+        "ceil": 39,
+        "floor": 57,
+        "nearest": 41
+       },
+       "rounding_verdict": "floor"
+      },
+      "isha": {
+       "n": 124,
+       "mean": 0.169,
+       "rms": 1.057,
+       "min": -1.53,
+       "p05": -1.27,
+       "p95": 1.6,
+       "max": 1.83,
+       "within_one": 65,
+       "rounding_matches": {
+        "ceil": 23,
+        "floor": 40,
+        "nearest": 21
+       },
+       "rounding_verdict": "floor"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 124,
+       "mean": 19.696,
+       "rms": 20,
+       "min": 16.32,
+       "p05": 16.57,
+       "p95": 26.8,
+       "max": 29.6,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 79,
+        "floor": 47,
+        "nearest": 106
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 124,
+       "mean": -12.793,
+       "rms": 13.069,
+       "min": -20.13,
+       "p05": -18.57,
+       "p95": -9.92,
+       "max": -9.7,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 23,
+        "floor": 40,
+        "nearest": 21
+       },
+       "rounding_verdict": "floor"
+      }
+     }
+    },
+    "2026": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 124,
+       "mean": 0.182,
+       "rms": 0.67,
+       "min": -1.2,
+       "p05": -0.92,
+       "p95": 1.08,
+       "max": 1.55,
+       "within_one": 107,
+       "rounding_matches": {
+        "ceil": 63,
+        "floor": 44,
+        "nearest": 55
+       },
+       "rounding_verdict": "ceil"
+      },
+      "sunrise": {
+       "n": 124,
+       "mean": 0.191,
+       "rms": 0.577,
+       "min": -0.93,
+       "p05": -0.77,
+       "p95": 0.98,
+       "max": 1.6,
+       "within_one": 119,
+       "rounding_matches": {
+        "ceil": 74,
+        "floor": 45,
+        "nearest": 68
+       },
+       "rounding_verdict": "ceil"
+      },
+      "noon": {
+       "n": 124,
+       "mean": 0.027,
+       "rms": 0.302,
+       "min": -0.6,
+       "p05": -0.43,
+       "p95": 0.52,
+       "max": 0.6,
+       "within_one": 124,
+       "rounding_matches": {
+        "ceil": 62,
+        "floor": 64,
+        "nearest": 112
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 124,
+       "mean": 0.012,
+       "rms": 0.701,
+       "min": -1.92,
+       "p05": -1.67,
+       "p95": 0.88,
+       "max": 1.03,
+       "within_one": 110,
+       "rounding_matches": {
+        "ceil": 70,
+        "floor": 40,
+        "nearest": 71
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 124,
+       "mean": -0.026,
+       "rms": 0.613,
+       "min": -1.87,
+       "p05": -1.27,
+       "p95": 0.82,
+       "max": 1.05,
+       "within_one": 111,
+       "rounding_matches": {
+        "ceil": 67,
+        "floor": 45,
+        "nearest": 79
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 124,
+       "mean": -0.001,
+       "rms": 0.726,
+       "min": -1.88,
+       "p05": -1.23,
+       "p95": 0.97,
+       "max": 1.15,
+       "within_one": 109,
+       "rounding_matches": {
+        "ceil": 62,
+        "floor": 46,
+        "nearest": 54
+       },
+       "rounding_verdict": "ceil"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 124,
+       "mean": 19.77,
+       "rms": 20.052,
+       "min": 16.03,
+       "p05": 16.72,
+       "p95": 27.12,
+       "max": 29.15,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 63,
+        "floor": 44,
+        "nearest": 55
+       },
+       "rounding_verdict": "ceil"
+      },
+      "isha": {
+       "n": 124,
+       "mean": -12.96,
+       "rms": 13.182,
+       "min": -19.72,
+       "p05": -18.03,
+       "p95": -10.33,
+       "max": -10.25,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 62,
+        "floor": 46,
+        "nearest": 54
+       },
+       "rounding_verdict": "ceil"
+      }
+     }
+    }
+   },
+   "measured_angles": {
+    "fajr": {
+     "angle": 15,
+     "mae": 0.29
+    },
+    "isha": {
+     "angle": 14.9,
+     "mae": 0.87
+    },
+    "mae_fajr_at_15": 0.29,
+    "mae_isha_at_15": 0.92,
+    "sample_rows": 62
+   }
+  },
+  "zhangye": {
+   "city": "张掖",
+   "lon": 100.46,
+   "lat": 38.93,
+   "rows": 144,
+   "years": {
+    "2004": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.017,
+       "rms": 0.328,
+       "min": -0.67,
+       "p05": -0.53,
+       "p95": 0.55,
+       "max": 0.82,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 77,
+        "floor": 72,
+        "nearest": 125
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.084,
+       "rms": 0.324,
+       "min": -0.65,
+       "p05": -0.43,
+       "p95": 0.5,
+       "max": 0.85,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 92,
+        "floor": 54,
+        "nearest": 131
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.06,
+       "rms": 0.334,
+       "min": -0.72,
+       "p05": -0.5,
+       "p95": 0.57,
+       "max": 0.68,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 81,
+        "floor": 66,
+        "nearest": 121
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": 0.129,
+       "rms": 0.607,
+       "min": -0.93,
+       "p05": -0.72,
+       "p95": 1.2,
+       "max": 1.42,
+       "within_one": 130,
+       "rounding_matches": {
+        "ceil": 60,
+        "floor": 70,
+        "nearest": 78
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": 0.098,
+       "rms": 0.607,
+       "min": -0.98,
+       "p05": -0.8,
+       "p95": 1.1,
+       "max": 1.43,
+       "within_one": 132,
+       "rounding_matches": {
+        "ceil": 62,
+        "floor": 73,
+        "nearest": 75
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": 0.084,
+       "rms": 0.759,
+       "min": -1.3,
+       "p05": -0.97,
+       "p95": 1.37,
+       "max": 1.57,
+       "within_one": 117,
+       "rounding_matches": {
+        "ceil": 44,
+        "floor": 71,
+        "nearest": 58
+       },
+       "rounding_verdict": "floor"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 17.568,
+       "rms": 17.745,
+       "min": 14.88,
+       "p05": 15.37,
+       "p95": 23.05,
+       "max": 24.55,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 77,
+        "floor": 72,
+        "nearest": 125
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -11.561,
+       "rms": 11.725,
+       "min": -16.8,
+       "p05": -15.97,
+       "p95": -9.28,
+       "max": -8.92,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 44,
+        "floor": 71,
+        "nearest": 58
+       },
+       "rounding_verdict": "floor"
+      }
+     }
+    },
+    "2026": {
+     "at_15_15_hanafi": {
+      "fajr": {
+       "n": 144,
+       "mean": 0.083,
+       "rms": 0.585,
+       "min": -1.2,
+       "p05": -0.95,
+       "p95": 0.95,
+       "max": 1.27,
+       "within_one": 137,
+       "rounding_matches": {
+        "ceil": 82,
+        "floor": 54,
+        "nearest": 79
+       },
+       "rounding_verdict": "ceil"
+      },
+      "sunrise": {
+       "n": 144,
+       "mean": 0.17,
+       "rms": 0.56,
+       "min": -0.88,
+       "p05": -0.75,
+       "p95": 1,
+       "max": 1.32,
+       "within_one": 137,
+       "rounding_matches": {
+        "ceil": 75,
+        "floor": 63,
+        "nearest": 82
+       },
+       "rounding_verdict": "nearest"
+      },
+      "noon": {
+       "n": 144,
+       "mean": 0.014,
+       "rms": 0.31,
+       "min": -0.7,
+       "p05": -0.53,
+       "p95": 0.47,
+       "max": 0.6,
+       "within_one": 144,
+       "rounding_matches": {
+        "ceil": 78,
+        "floor": 66,
+        "nearest": 130
+       },
+       "rounding_verdict": "nearest"
+      },
+      "asr": {
+       "n": 144,
+       "mean": -0.049,
+       "rms": 0.561,
+       "min": -1.63,
+       "p05": -1.23,
+       "p95": 0.78,
+       "max": 0.95,
+       "within_one": 132,
+       "rounding_matches": {
+        "ceil": 76,
+        "floor": 56,
+        "nearest": 94
+       },
+       "rounding_verdict": "nearest"
+      },
+      "sunset": {
+       "n": 144,
+       "mean": -0.084,
+       "rms": 0.534,
+       "min": -1.6,
+       "p05": -1.13,
+       "p95": 0.67,
+       "max": 0.9,
+       "within_one": 135,
+       "rounding_matches": {
+        "ceil": 74,
+        "floor": 63,
+        "nearest": 102
+       },
+       "rounding_verdict": "nearest"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -0.077,
+       "rms": 0.579,
+       "min": -1.55,
+       "p05": -1.1,
+       "p95": 0.82,
+       "max": 1,
+       "within_one": 135,
+       "rounding_matches": {
+        "ceil": 71,
+        "floor": 69,
+        "nearest": 90
+       },
+       "rounding_verdict": "nearest"
+      }
+     },
+     "at_18_17": {
+      "fajr": {
+       "n": 144,
+       "mean": 17.63,
+       "rms": 17.798,
+       "min": 14.88,
+       "p05": 15.28,
+       "p95": 22.93,
+       "max": 24.53,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 82,
+        "floor": 54,
+        "nearest": 79
+       },
+       "rounding_verdict": "ceil"
+      },
+      "isha": {
+       "n": 144,
+       "mean": -11.719,
+       "rms": 11.853,
+       "min": -16.65,
+       "p05": -15.7,
+       "p95": -9.78,
+       "max": -9.42,
+       "within_one": 0,
+       "rounding_matches": {
+        "ceil": 71,
+        "floor": 69,
+        "nearest": 90
+       },
+       "rounding_verdict": "nearest"
+      }
+     }
+    }
+   },
+   "measured_angles": {
+    "fajr": {
+     "angle": 15,
+     "mae": 0.25
+    },
+    "isha": {
+     "angle": 15,
+     "mae": 0.65
+    },
+    "mae_fajr_at_15": 0.25,
+    "mae_isha_at_15": 0.65,
+    "sample_rows": 72
+   }
+  }
+ }
+}

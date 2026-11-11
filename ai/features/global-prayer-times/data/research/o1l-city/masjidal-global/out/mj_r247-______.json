@@ -1,0 +1,34 @@
+{
+ "label": "r247-الأردن",
+ "file": "captures/masjidi_region_247.json",
+ "rows": 366,
+ "lat": 31.88,
+ "k": 0,
+ "geoRms": 6.282,
+ "fajr": {
+  "kind": "angle",
+  "n": 366,
+  "angle": 15.02,
+  "darkIqr": 0.14
+ },
+ "isha": {
+  "kind": "angle",
+  "n": 366,
+  "angle": 15.02,
+  "darkIqr": 0.14,
+  "gap": 71
+ },
+ "asr": {
+  "school": "Shafi",
+  "shafiMae": 0.8,
+  "hanafiMae": 56.2
+ },
+ "clock": {
+  "lonImplied": -9.1,
+  "offsetMin": -36,
+  "driftRms": 0.3,
+  "runs": 1,
+  "steps": []
+ },
+ "amplitude": -122
+}

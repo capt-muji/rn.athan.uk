@@ -1,0 +1,404 @@
+{
+ "Ashburton-1": {
+  "rows": 30,
+  "incomplete": [],
+  "log": [
+   [
+    19,
+    "isha",
+    "19:27",
+    "09:27"
+   ]
+  ],
+  "date_mismatch": []
+ },
+ "Auckland": {
+  "rows": 30,
+  "incomplete": [],
+  "log": [
+   [
+    19,
+    "isha",
+    "19:18",
+    "09:18"
+   ]
+  ],
+  "date_mismatch": []
+ },
+ "Balclutha": {
+  "rows": 30,
+  "incomplete": [],
+  "log": [],
+  "date_mismatch": []
+ },
+ "Blenheim": {
+  "rows": 30,
+  "incomplete": [],
+  "log": [],
+  "date_mismatch": []
+ },
+ "Christchurch": {
+  "rows": 30,
+  "incomplete": [],
+  "log": [
+   [
+    19,
+    "isha",
+    "19:23",
+    "09:23"
+   ]
+  ],
+  "date_mismatch": []
+ },
+ "Dannevirke": {
+  "rows": 30,
+  "incomplete": [],
+  "log": [
+   [
+    19,
+    "isha",
+    "19:13",
+    "09:13"
+   ]
+  ],
+  "date_mismatch": []
+ },
+ "Dargaville": {
+  "rows": 30,
+  "incomplete": [],
+  "log": [
+   [
+    19,
+    "isha",
+    "19:14",
+    "09:14"
+   ]
+  ],
+  "date_mismatch": []
+ },
+ "Dunedin": {
+  "rows": 30,
+  "incomplete": [],
+  "log": [
+   [
+    19,
+    "isha",
+    "19:37",
+    "09:37"
+   ]
+  ],
+  "date_mismatch": []
+ },
+ "Fielding": {
+  "rows": 30,
+  "incomplete": [],
+  "log": [
+   [
+    19,
+    "isha",
+    "19:15",
+    "09:15"
+   ]
+  ],
+  "date_mismatch": []
+ },
+ "Gisborne": {
+  "rows": 30,
+  "incomplete": [],
+  "log": [
+   [
+    19,
+    "isha",
+    "19:01",
+    "09:01"
+   ]
+  ],
+  "date_mismatch": []
+ },
+ "Gore": {
+  "rows": 30,
+  "incomplete": [],
+  "log": [
+   [
+    19,
+    "isha",
+    "19:45",
+    "09:45"
+   ]
+  ],
+  "date_mismatch": []
+ },
+ "Greymouth": {
+  "rows": 30,
+  "incomplete": [],
+  "log": [
+   [
+    19,
+    "isha",
+    "19:26",
+    "09:26"
+   ]
+  ],
+  "date_mismatch": []
+ },
+ "Hamilton": {
+  "rows": 30,
+  "incomplete": [],
+  "log": [
+   [
+    19,
+    "isha",
+    "19:17",
+    "09:17"
+   ]
+  ],
+  "date_mismatch": []
+ },
+ "Hastings": {
+  "rows": 30,
+  "incomplete": [],
+  "log": [],
+  "date_mismatch": []
+ },
+ "Hawera": {
+  "rows": 30,
+  "incomplete": [],
+  "log": [
+   [
+    19,
+    "isha",
+    "19:20",
+    "09:20"
+   ]
+  ],
+  "date_mismatch": []
+ },
+ "Invercargill": {
+  "rows": 30,
+  "incomplete": [],
+  "log": [
+   [
+    19,
+    "isha",
+    "19:47",
+    "09:47"
+   ]
+  ],
+  "date_mismatch": []
+ },
+ "Masterton": {
+  "rows": 30,
+  "incomplete": [],
+  "log": [
+   [
+    19,
+    "isha",
+    "19:18",
+    "09:18"
+   ]
+  ],
+  "date_mismatch": []
+ },
+ "Napier": {
+  "rows": 30,
+  "incomplete": [],
+  "log": [],
+  "date_mismatch": []
+ },
+ "Nelson": {
+  "rows": 30,
+  "incomplete": [],
+  "log": [
+   [
+    19,
+    "isha",
+    "19:16",
+    "09:16"
+   ]
+  ],
+  "date_mismatch": []
+ },
+ "New-Plymouth": {
+  "rows": 30,
+  "incomplete": [],
+  "log": [],
+  "date_mismatch": []
+ },
+ "Oamaru": {
+  "rows": 30,
+  "incomplete": [],
+  "log": [
+   [
+    19,
+    "isha",
+    "19:33",
+    "09:33"
+   ]
+  ],
+  "date_mismatch": []
+ },
+ "Palmerston-North": {
+  "rows": 30,
+  "incomplete": [],
+  "log": [
+   [
+    19,
+    "isha",
+    "19:15",
+    "09:15"
+   ]
+  ],
+  "date_mismatch": []
+ },
+ "Queenstown": {
+  "rows": 30,
+  "incomplete": [],
+  "log": [
+   [
+    19,
+    "isha",
+    "19:44",
+    "09:44"
+   ]
+  ],
+  "date_mismatch": []
+ },
+ "Rotorua": {
+  "rows": 30,
+  "incomplete": [
+   30
+  ],
+  "log": [
+   [
+    19,
+    "isha",
+    "19:09",
+    "09:09"
+   ]
+  ],
+  "date_mismatch": []
+ },
+ "Taihape": {
+  "rows": 30,
+  "incomplete": [],
+  "log": [
+   [
+    19,
+    "isha",
+    "19:15",
+    "09:15"
+   ]
+  ],
+  "date_mismatch": []
+ },
+ "Taupo": {
+  "rows": 30,
+  "incomplete": [],
+  "log": [
+   [
+    19,
+    "isha",
+    "19:12",
+    "09:12"
+   ]
+  ],
+  "date_mismatch": []
+ },
+ "Tauranga": {
+  "rows": 30,
+  "incomplete": [],
+  "log": [],
+  "date_mismatch": []
+ },
+ "Te-Kuiti": {
+  "rows": 30,
+  "incomplete": [],
+  "log": [
+   [
+    19,
+    "isha",
+    "19:13",
+    "09:13"
+   ]
+  ],
+  "date_mismatch": []
+ },
+ "Te-Puke": {
+  "rows": 30,
+  "incomplete": [],
+  "log": [
+   [
+    19,
+    "isha",
+    "19:08",
+    "09:08"
+   ]
+  ],
+  "date_mismatch": []
+ },
+ "Timaru": {
+  "rows": 30,
+  "incomplete": [],
+  "log": [
+   [
+    19,
+    "isha",
+    "19:30",
+    "09:30"
+   ]
+  ],
+  "date_mismatch": []
+ },
+ "Wairoa": {
+  "rows": 30,
+  "incomplete": [],
+  "log": [
+   [
+    19,
+    "isha",
+    "19:06",
+    "09:06"
+   ]
+  ],
+  "date_mismatch": []
+ },
+ "Wanganui": {
+  "rows": 30,
+  "incomplete": [],
+  "log": [
+   [
+    19,
+    "isha",
+    "19:17",
+    "09:17"
+   ]
+  ],
+  "date_mismatch": []
+ },
+ "Wellington": {
+  "rows": 30,
+  "incomplete": [],
+  "log": [
+   [
+    19,
+    "isha",
+    "19:10",
+    "09:10"
+   ]
+  ],
+  "date_mismatch": []
+ },
+ "Whangarei": {
+  "rows": 30,
+  "incomplete": [],
+  "log": [
+   [
+    19,
+    "isha",
+    "19:20",
+    "09:20"
+   ]
+  ],
+  "date_mismatch": []
+ }
+}

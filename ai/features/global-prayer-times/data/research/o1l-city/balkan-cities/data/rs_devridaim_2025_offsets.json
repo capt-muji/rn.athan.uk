@@ -1,0 +1,62 @@
+[
+ {
+  "grad": "BEOGRAD",
+  "zora_sunrise": 2,
+  "podne": 0,
+  "ikindija_aksam_jacija": -2
+ },
+ {
+  "grad": "NOVISAD",
+  "zora_sunrise": 0,
+  "podne": 2,
+  "ikindija_aksam_jacija": -1
+ },
+ {
+  "grad": "SUBOTICA",
+  "zora_sunrise": 10,
+  "podne": 3,
+  "ikindija_aksam_jacija": -3
+ },
+ {
+  "grad": "PREŠEVO",
+  "zora_sunrise": -1,
+  "podne": -5,
+  "ikindija_aksam_jacija": -7
+ },
+ {
+  "grad": "NIŠ",
+  "zora_sunrise": -5,
+  "podne": -6,
+  "ikindija_aksam_jacija": -5
+ },
+ {
+  "grad": "TUTIN, SJENICA, BERANE, PLAV, GUSINJE",
+  "zora_sunrise": 2,
+  "podne": 2,
+  "ikindija_aksam_jacija": 3
+ },
+ {
+  "grad": "ROŽAJE",
+  "zora_sunrise": 1,
+  "podne": 1,
+  "ikindija_aksam_jacija": 2
+ },
+ {
+  "grad": "PRIBOJ, PRIJEPOLJE, BIJELO POLJE",
+  "zora_sunrise": 4,
+  "podne": 4,
+  "ikindija_aksam_jacija": 5
+ },
+ {
+  "grad": "NOVAVAROŠ",
+  "zora_sunrise": 3,
+  "podne": 3,
+  "ikindija_aksam_jacija": 4
+ },
+ {
+  "grad": "PODGORICA, BAR, ULCINJ, PLJEVLJA",
+  "zora_sunrise": 5,
+  "podne": 5,
+  "ikindija_aksam_jacija": 6
+ }
+]

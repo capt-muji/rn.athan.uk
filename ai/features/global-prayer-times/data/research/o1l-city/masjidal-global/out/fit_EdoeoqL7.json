@@ -1,0 +1,456 @@
+{
+ "id": "EdoeoqL7",
+ "tz": "Indian/Mauritius",
+ "years": {
+  "2024": {
+   "famUsed": "isna",
+   "rows": 366,
+   "parsed": 366,
+   "iqRows": 366,
+   "geo": {
+    "lat": -20.19,
+    "lon": 57.503,
+    "k": 0,
+    "resid": 0.349
+   },
+   "fajrAngle": {
+    "kind": "angle",
+    "n": 366,
+    "angle": 15,
+    "winter": 15,
+    "summer": 15,
+    "darkIqr": 0.11,
+    "iqrGap": 4,
+    "gapMedian": 63,
+    "residRms": null,
+    "darkRms": null
+   },
+   "ishaAngleVsSunset": {
+    "kind": "angle",
+    "n": 366,
+    "angle": 15,
+    "winter": 14.99,
+    "summer": 15.02,
+    "darkIqr": 0.11,
+    "iqrGap": 4,
+    "gapMedian": 63,
+    "residRms": null,
+    "darkRms": null
+   },
+   "ishaGapToMaghrib": {
+    "med": 63
+   },
+   "isna": {
+    "days": 366,
+    "exact": 214,
+    "within1": 0,
+    "worst": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    },
+    "worstCol": null,
+    "asrHanafiBetter": null,
+    "fajr": {
+     "exact": 350,
+     "exactPct": 95.6,
+     "within1Pct": 100,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 353,
+     "exactPct": 96.4,
+     "within1Pct": 100,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 365,
+     "exactPct": 99.7,
+     "within1Pct": 100,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 252,
+     "exactPct": 68.9,
+     "within1Pct": 100,
+     "worst": -1
+    },
+    "maghrib": {
+     "exact": 354,
+     "exactPct": 96.7,
+     "within1Pct": 100,
+     "worst": -1
+    },
+    "isha": {
+     "exact": 350,
+     "exactPct": 95.6,
+     "within1Pct": 100,
+     "worst": -1
+    }
+   },
+   "mwl": {
+    "days": 366,
+    "exact": 0,
+    "within1": 0,
+    "worst": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    },
+    "worstCol": null,
+    "asrHanafiBetter": null,
+    "fajr": {
+     "exact": 0,
+     "exactPct": 0,
+     "within1Pct": 0,
+     "worst": 16
+    },
+    "sunrise": {
+     "exact": 353,
+     "exactPct": 96.4,
+     "within1Pct": 100,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 365,
+     "exactPct": 99.7,
+     "within1Pct": 100,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 252,
+     "exactPct": 68.9,
+     "within1Pct": 100,
+     "worst": -1
+    },
+    "maghrib": {
+     "exact": 354,
+     "exactPct": 96.7,
+     "within1Pct": 100,
+     "worst": -1
+    },
+    "isha": {
+     "exact": 0,
+     "exactPct": 0,
+     "within1Pct": 0,
+     "worst": -11
+    }
+   },
+   "asr": {
+    "shafiMae": 0.31,
+    "hanafiMae": 60.4,
+    "school": "Shafi"
+   },
+   "dst": [],
+   "amplitudeFajrJanJul": 65,
+   "fajrJan": 276,
+   "fajrJul": 341
+  },
+  "2025": {
+   "famUsed": "isna",
+   "rows": 365,
+   "parsed": 365,
+   "iqRows": 365,
+   "geo": {
+    "lat": -20.18,
+    "lon": 57.501,
+    "k": 0,
+    "resid": 0.353
+   },
+   "fajrAngle": {
+    "kind": "angle",
+    "n": 365,
+    "angle": 15,
+    "winter": 14.99,
+    "summer": 15,
+    "darkIqr": 0.1,
+    "iqrGap": 4,
+    "gapMedian": 63,
+    "residRms": null,
+    "darkRms": null
+   },
+   "ishaAngleVsSunset": {
+    "kind": "angle",
+    "n": 365,
+    "angle": 14.99,
+    "winter": 14.99,
+    "summer": 15,
+    "darkIqr": 0.1,
+    "iqrGap": 4,
+    "gapMedian": 63,
+    "residRms": null,
+    "darkRms": null
+   },
+   "ishaGapToMaghrib": {
+    "med": 63
+   },
+   "isna": {
+    "days": 365,
+    "exact": 214,
+    "within1": 0,
+    "worst": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    },
+    "worstCol": null,
+    "asrHanafiBetter": null,
+    "fajr": {
+     "exact": 351,
+     "exactPct": 96.2,
+     "within1Pct": 100,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 354,
+     "exactPct": 97,
+     "within1Pct": 100,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 363,
+     "exactPct": 99.5,
+     "within1Pct": 100,
+     "worst": -1
+    },
+    "asr": {
+     "exact": 252,
+     "exactPct": 69,
+     "within1Pct": 100,
+     "worst": -1
+    },
+    "maghrib": {
+     "exact": 354,
+     "exactPct": 97,
+     "within1Pct": 100,
+     "worst": -1
+    },
+    "isha": {
+     "exact": 348,
+     "exactPct": 95.3,
+     "within1Pct": 100,
+     "worst": 1
+    }
+   },
+   "mwl": {
+    "days": 365,
+    "exact": 0,
+    "within1": 0,
+    "worst": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    },
+    "worstCol": null,
+    "asrHanafiBetter": null,
+    "fajr": {
+     "exact": 0,
+     "exactPct": 0,
+     "within1Pct": 0,
+     "worst": 16
+    },
+    "sunrise": {
+     "exact": 354,
+     "exactPct": 97,
+     "within1Pct": 100,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 363,
+     "exactPct": 99.5,
+     "within1Pct": 100,
+     "worst": -1
+    },
+    "asr": {
+     "exact": 252,
+     "exactPct": 69,
+     "within1Pct": 100,
+     "worst": -1
+    },
+    "maghrib": {
+     "exact": 354,
+     "exactPct": 97,
+     "within1Pct": 100,
+     "worst": -1
+    },
+    "isha": {
+     "exact": 0,
+     "exactPct": 0,
+     "within1Pct": 0,
+     "worst": -11
+    }
+   },
+   "asr": {
+    "shafiMae": 0.31,
+    "hanafiMae": 60.36,
+    "school": "Shafi"
+   },
+   "dst": [],
+   "amplitudeFajrJanJul": 65,
+   "fajrJan": 276,
+   "fajrJul": 341
+  },
+  "2026": {
+   "famUsed": "isna",
+   "rows": 365,
+   "parsed": 365,
+   "iqRows": 365,
+   "geo": {
+    "lat": -20.19,
+    "lon": 57.5,
+    "k": 0,
+    "resid": 0.356
+   },
+   "fajrAngle": {
+    "kind": "angle",
+    "n": 365,
+    "angle": 14.99,
+    "winter": 14.99,
+    "summer": 14.99,
+    "darkIqr": 0.1,
+    "iqrGap": 4,
+    "gapMedian": 63,
+    "residRms": null,
+    "darkRms": null
+   },
+   "ishaAngleVsSunset": {
+    "kind": "angle",
+    "n": 365,
+    "angle": 14.99,
+    "winter": 14.98,
+    "summer": 15,
+    "darkIqr": 0.1,
+    "iqrGap": 4,
+    "gapMedian": 63,
+    "residRms": null,
+    "darkRms": null
+   },
+   "ishaGapToMaghrib": {
+    "med": 63
+   },
+   "isna": {
+    "days": 365,
+    "exact": 217,
+    "within1": 0,
+    "worst": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    },
+    "worstCol": null,
+    "asrHanafiBetter": null,
+    "fajr": {
+     "exact": 355,
+     "exactPct": 97.3,
+     "within1Pct": 100,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 355,
+     "exactPct": 97.3,
+     "within1Pct": 100,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 363,
+     "exactPct": 99.5,
+     "within1Pct": 100,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 256,
+     "exactPct": 70.1,
+     "within1Pct": 100,
+     "worst": -1
+    },
+    "maghrib": {
+     "exact": 349,
+     "exactPct": 95.6,
+     "within1Pct": 100,
+     "worst": -1
+    },
+    "isha": {
+     "exact": 346,
+     "exactPct": 94.8,
+     "within1Pct": 100,
+     "worst": -1
+    }
+   },
+   "mwl": {
+    "days": 365,
+    "exact": 0,
+    "within1": 0,
+    "worst": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    },
+    "worstCol": null,
+    "asrHanafiBetter": null,
+    "fajr": {
+     "exact": 0,
+     "exactPct": 0,
+     "within1Pct": 0,
+     "worst": 16
+    },
+    "sunrise": {
+     "exact": 355,
+     "exactPct": 97.3,
+     "within1Pct": 100,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 363,
+     "exactPct": 99.5,
+     "within1Pct": 100,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 256,
+     "exactPct": 70.1,
+     "within1Pct": 100,
+     "worst": -1
+    },
+    "maghrib": {
+     "exact": 349,
+     "exactPct": 95.6,
+     "within1Pct": 100,
+     "worst": -1
+    },
+    "isha": {
+     "exact": 0,
+     "exactPct": 0,
+     "within1Pct": 0,
+     "worst": -11
+    }
+   },
+   "asr": {
+    "shafiMae": 0.3,
+    "hanafiMae": 60.35,
+    "school": "Shafi"
+   },
+   "dst": [],
+   "amplitudeFajrJanJul": 65,
+   "fajrJan": 276,
+   "fajrJul": 341
+  }
+ }
+}

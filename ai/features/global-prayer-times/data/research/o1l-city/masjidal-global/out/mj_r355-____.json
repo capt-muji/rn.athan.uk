@@ -1,0 +1,34 @@
+{
+ "label": "r355-تونس",
+ "file": "captures/masjidi_region_355.json",
+ "rows": 366,
+ "lat": 35.48,
+ "k": 0,
+ "geoRms": 6.359,
+ "fajr": {
+  "kind": "angle",
+  "n": 366,
+  "angle": 18,
+  "darkIqr": 0.11
+ },
+ "isha": {
+  "kind": "angle",
+  "n": 366,
+  "angle": 17.65,
+  "darkIqr": 0.11,
+  "gap": 88
+ },
+ "asr": {
+  "school": "Shafi",
+  "shafiMae": 6.9,
+  "hanafiMae": 62
+ },
+ "clock": {
+  "lonImplied": -4.18,
+  "offsetMin": -17,
+  "driftRms": 0.3,
+  "runs": 1,
+  "steps": []
+ },
+ "amplitude": -146
+}

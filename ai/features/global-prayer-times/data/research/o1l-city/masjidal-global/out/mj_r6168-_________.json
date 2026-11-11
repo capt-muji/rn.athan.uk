@@ -1,0 +1,34 @@
+{
+ "label": "r6168-أندونيسيا",
+ "file": "captures/masjidi_region_6168.json",
+ "rows": 366,
+ "lat": -6.94,
+ "k": 0,
+ "geoRms": 6.566,
+ "fajr": {
+  "kind": "angle",
+  "n": 366,
+  "angle": 18.65,
+  "darkIqr": 0.13
+ },
+ "isha": {
+  "kind": "angle",
+  "n": 366,
+  "angle": 17.84,
+  "darkIqr": 0.14,
+  "gap": 72
+ },
+ "asr": {
+  "school": "Shafi",
+  "shafiMae": 1.1,
+  "hanafiMae": 62.5
+ },
+ "clock": {
+  "lonImplied": 5.45,
+  "offsetMin": 22,
+  "driftRms": 0.2,
+  "runs": 1,
+  "steps": []
+ },
+ "amplitude": 20
+}

@@ -1,0 +1,612 @@
+[
+ {
+  "place": "Banja Luka",
+  "lat": 44.7722,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 949,
+  "true06": 936,
+  "pub12": 538,
+  "true12": 528
+ },
+ {
+  "place": "Bihać",
+  "lat": 44.8169,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 949,
+  "true06": 936,
+  "pub12": 538,
+  "true12": 527
+ },
+ {
+  "place": "Bijeljina",
+  "lat": 44.7575,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 949,
+  "true06": 936,
+  "pub12": 539,
+  "true12": 528
+ },
+ {
+  "place": "Bileća",
+  "lat": 42.8758,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 947,
+  "true06": 921,
+  "pub12": 540,
+  "true12": 541
+ },
+ {
+  "place": "Bosanski Brod",
+  "lat": 45.1333,
+  "pub03": 741,
+  "true03": 732,
+  "pub06": 952,
+  "true06": 938,
+  "pub12": 536,
+  "true12": 525
+ },
+ {
+  "place": "Brčko",
+  "lat": 44.8728,
+  "pub03": 741,
+  "true03": 732,
+  "pub06": 950,
+  "true06": 936,
+  "pub12": 538,
+  "true12": 527
+ },
+ {
+  "place": "Bugojno",
+  "lat": 44.0531,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 943,
+  "true06": 930,
+  "pub12": 544,
+  "true12": 533
+ },
+ {
+  "place": "Cazin",
+  "lat": 44.9667,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 951,
+  "true06": 936,
+  "pub12": 538,
+  "true12": 526
+ },
+ {
+  "place": "Čajniče",
+  "lat": 43.5567,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 944,
+  "true06": 926,
+  "pub12": 544,
+  "true12": 536
+ },
+ {
+  "place": "Čapljina",
+  "lat": 43.1194,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 947,
+  "true06": 922,
+  "pub12": 541,
+  "true12": 539
+ },
+ {
+  "place": "Čitluk",
+  "lat": 43.2333,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 945,
+  "true06": 924,
+  "pub12": 542,
+  "true12": 539
+ },
+ {
+  "place": "Doboj",
+  "lat": 44.7308,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 948,
+  "true06": 935,
+  "pub12": 539,
+  "true12": 528
+ },
+ {
+  "place": "Fojnica",
+  "lat": 43.9608,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 942,
+  "true06": 929,
+  "pub12": 545,
+  "true12": 533
+ },
+ {
+  "place": "Glamoč",
+  "lat": 44.0475,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 942,
+  "true06": 929,
+  "pub12": 545,
+  "true12": 533
+ },
+ {
+  "place": "Goražde",
+  "lat": 43.6667,
+  "pub03": 742,
+  "true03": 731,
+  "pub06": 943,
+  "true06": 926,
+  "pub12": 545,
+  "true12": 536
+ },
+ {
+  "place": "Gornji Vakuf",
+  "lat": 43.9392,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 942,
+  "true06": 929,
+  "pub12": 545,
+  "true12": 534
+ },
+ {
+  "place": "Han-Pijesak",
+  "lat": 44.0667,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 943,
+  "true06": 930,
+  "pub12": 544,
+  "true12": 533
+ },
+ {
+  "place": "Hlivno",
+  "lat": 43.8269,
+  "pub03": 742,
+  "true03": 731,
+  "pub06": 941,
+  "true06": 928,
+  "pub12": 546,
+  "true12": 534
+ },
+ {
+  "place": "Ilijaš",
+  "lat": 43.9519,
+  "pub03": 742,
+  "true03": 731,
+  "pub06": 942,
+  "true06": 929,
+  "pub12": 545,
+  "true12": 534
+ },
+ {
+  "place": "Jajce",
+  "lat": 44.3394,
+  "pub03": 742,
+  "true03": 731,
+  "pub06": 945,
+  "true06": 932,
+  "pub12": 542,
+  "true12": 530
+ },
+ {
+  "place": "Kakanj",
+  "lat": 44.1286,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 943,
+  "true06": 931,
+  "pub12": 544,
+  "true12": 533
+ },
+ {
+  "place": "Kalesija",
+  "lat": 44.45,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 946,
+  "true06": 933,
+  "pub12": 541,
+  "true12": 530
+ },
+ {
+  "place": "Ključ",
+  "lat": 44.5333,
+  "pub03": 742,
+  "true03": 731,
+  "pub06": 947,
+  "true06": 933,
+  "pub12": 541,
+  "true12": 530
+ },
+ {
+  "place": "Konjic",
+  "lat": 43.6514,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 943,
+  "true06": 926,
+  "pub12": 544,
+  "true12": 536
+ },
+ {
+  "place": "Kupres",
+  "lat": 43.9833,
+  "pub03": 742,
+  "true03": 731,
+  "pub06": 942,
+  "true06": 929,
+  "pub12": 545,
+  "true12": 534
+ },
+ {
+  "place": "Lopare",
+  "lat": 44.6333,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 948,
+  "true06": 935,
+  "pub12": 540,
+  "true12": 529
+ },
+ {
+  "place": "Ljubinje",
+  "lat": 42.95,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 948,
+  "true06": 921,
+  "pub12": 540,
+  "true12": 541
+ },
+ {
+  "place": "Maglaj",
+  "lat": 44.5497,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 947,
+  "true06": 933,
+  "pub12": 541,
+  "true12": 529
+ },
+ {
+  "place": "Mostar",
+  "lat": 43.3438,
+  "pub03": 741,
+  "true03": 731,
+  "pub06": 944,
+  "true06": 925,
+  "pub12": 543,
+  "true12": 538
+ },
+ {
+  "place": "Nevesinje",
+  "lat": 43.2581,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 945,
+  "true06": 923,
+  "pub12": 542,
+  "true12": 539
+ },
+ {
+  "place": "Novi Travnik",
+  "lat": 44.1667,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 943,
+  "true06": 931,
+  "pub12": 544,
+  "true12": 532
+ },
+ {
+  "place": "Odžak",
+  "lat": 45,
+  "pub03": 741,
+  "true03": 732,
+  "pub06": 951,
+  "true06": 937,
+  "pub12": 537,
+  "true12": 526
+ },
+ {
+  "place": "Orašje",
+  "lat": 45.0333,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 951,
+  "true06": 938,
+  "pub12": 536,
+  "true12": 526
+ },
+ {
+  "place": "Prijedor",
+  "lat": 44.98,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 951,
+  "true06": 937,
+  "pub12": 537,
+  "true12": 526
+ },
+ {
+  "place": "Prozor",
+  "lat": 43.8167,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 941,
+  "true06": 928,
+  "pub12": 546,
+  "true12": 535
+ },
+ {
+  "place": "Sarajevo",
+  "lat": 43.8563,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 941,
+  "true06": 928,
+  "pub12": 546,
+  "true12": 535
+ },
+ {
+  "place": "Skender-Vakuf",
+  "lat": 44.4667,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 946,
+  "true06": 933,
+  "pub12": 541,
+  "true12": 530
+ },
+ {
+  "place": "Sokolac",
+  "lat": 43.9333,
+  "pub03": 742,
+  "true03": 731,
+  "pub06": 942,
+  "true06": 929,
+  "pub12": 545,
+  "true12": 534
+ },
+ {
+  "place": "Šekovići",
+  "lat": 44.2833,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 945,
+  "true06": 931,
+  "pub12": 543,
+  "true12": 531
+ },
+ {
+  "place": "Tešanj",
+  "lat": 44.6103,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 947,
+  "true06": 934,
+  "pub12": 540,
+  "true12": 529
+ },
+ {
+  "place": "Travnik",
+  "lat": 44.2269,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 944,
+  "true06": 931,
+  "pub12": 543,
+  "true12": 531
+ },
+ {
+  "place": "Trebinje",
+  "lat": 42.7111,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 949,
+  "true06": 919,
+  "pub12": 539,
+  "true12": 542
+ },
+ {
+  "place": "Tuzla",
+  "lat": 44.5384,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 947,
+  "true06": 934,
+  "pub12": 540,
+  "true12": 529
+ },
+ {
+  "place": "Vareš",
+  "lat": 44.1611,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 944,
+  "true06": 931,
+  "pub12": 543,
+  "true12": 532
+ },
+ {
+  "place": "Velika Kladuša",
+  "lat": 45.1833,
+  "pub03": 741,
+  "true03": 732,
+  "pub06": 952,
+  "true06": 939,
+  "pub12": 535,
+  "true12": 524
+ },
+ {
+  "place": "Visoko",
+  "lat": 44,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 943,
+  "true06": 930,
+  "pub12": 546,
+  "true12": 533
+ },
+ {
+  "place": "Višegrad",
+  "lat": 43.7856,
+  "pub03": 742,
+  "true03": 731,
+  "pub06": 942,
+  "true06": 927,
+  "pub12": 545,
+  "true12": 535
+ },
+ {
+  "place": "Vitez",
+  "lat": 44.15,
+  "pub03": 742,
+  "true03": 731,
+  "pub06": 944,
+  "true06": 931,
+  "pub12": 543,
+  "true12": 532
+ },
+ {
+  "place": "Zenica",
+  "lat": 44.2036,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 944,
+  "true06": 931,
+  "pub12": 544,
+  "true12": 531
+ },
+ {
+  "place": "Zvornik",
+  "lat": 44.3831,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 946,
+  "true06": 933,
+  "pub12": 542,
+  "true12": 531
+ },
+ {
+  "place": "Bijelo Polje",
+  "lat": 43.0386,
+  "pub03": 742,
+  "true03": 731,
+  "pub06": 941,
+  "true06": 922,
+  "pub12": 546,
+  "true12": 540
+ },
+ {
+  "place": "Gusinje",
+  "lat": 42.563667,
+  "pub03": 742,
+  "true03": 731,
+  "pub06": 941,
+  "true06": 919,
+  "pub12": 546,
+  "true12": 543
+ },
+ {
+  "place": "Nova Varoš",
+  "lat": 43.4597,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 946,
+  "true06": 925,
+  "pub12": 544,
+  "true12": 537
+ },
+ {
+  "place": "Novi Pazar",
+  "lat": 43.1367,
+  "pub03": 742,
+  "true03": 731,
+  "pub06": 948,
+  "true06": 923,
+  "pub12": 542,
+  "true12": 540
+ },
+ {
+  "place": "Plav",
+  "lat": 42.5967,
+  "pub03": 742,
+  "true03": 731,
+  "pub06": 941,
+  "true06": 918,
+  "pub12": 546,
+  "true12": 543
+ },
+ {
+  "place": "Pljevlja",
+  "lat": 43.3572,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 941,
+  "true06": 925,
+  "pub12": 546,
+  "true12": 537
+ },
+ {
+  "place": "Priboj",
+  "lat": 43.5842,
+  "pub03": 742,
+  "true03": 731,
+  "pub06": 945,
+  "true06": 926,
+  "pub12": 544,
+  "true12": 536
+ },
+ {
+  "place": "Prijepolje",
+  "lat": 43.3867,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 945,
+  "true06": 925,
+  "pub12": 544,
+  "true12": 537
+ },
+ {
+  "place": "Rožaje",
+  "lat": 42.8397,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 941,
+  "true06": 920,
+  "pub12": 546,
+  "true12": 541
+ },
+ {
+  "place": "Sjenica",
+  "lat": 43.2722,
+  "pub03": 742,
+  "true03": 731,
+  "pub06": 946,
+  "true06": 924,
+  "pub12": 544,
+  "true12": 538
+ },
+ {
+  "place": "Tutin",
+  "lat": 42.9917,
+  "pub03": 742,
+  "true03": 732,
+  "pub06": 946,
+  "true06": 921,
+  "pub12": 544,
+  "true12": 540
+ }
+]

@@ -1,0 +1,1120 @@
+[
+ {
+  "file": "mawaqit-adamou-ngaoundere.json",
+  "source": "ALH ADAMOU - Ngaoundéré",
+  "lat": 7.3381488,
+  "lon": 13.5668302,
+  "tz": "Africa/Douala",
+  "tz_offset": 1,
+  "rows": 365,
+  "gate": {
+   "date": "2026-11-11",
+   "pass": true
+  },
+  "engine": "PrayTimes-v2 family (o1f-london/praytimes.cjs)",
+  "rounding": "nearest",
+  "sunrise_mae": 0.29,
+  "recipe": {
+   "fajr_angle": 18.03,
+   "isha_angle": 16.99,
+   "asr_factor": 1,
+   "dhuhr_offset_min": 0,
+   "maghrib_offset_min": 3,
+   "sunrise_offset_min": 0
+  },
+  "offset_ranges": {
+   "sunrise": {
+    "min": -60,
+    "median": 0,
+    "max": 1
+   },
+   "dhuhr": {
+    "min": -1,
+    "median": 0,
+    "max": 0
+   },
+   "maghrib": {
+    "min": 2,
+    "median": 3,
+    "max": 4
+   }
+  },
+  "scores": {
+   "fajr": {
+    "exact": 336,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.08,
+    "n": 365
+   },
+   "sunrise": {
+    "exact": 318,
+    "within1": 364,
+    "worst": -60,
+    "mae": 0.29,
+    "n": 365
+   },
+   "dhuhr": {
+    "exact": 341,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.07,
+    "n": 365
+   },
+   "asr": {
+    "exact": 315,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.14,
+    "n": 365
+   },
+   "maghrib": {
+    "exact": 325,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.11,
+    "n": 365
+   },
+   "isha": {
+    "exact": 340,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.07,
+    "n": 365
+   }
+  },
+  "amplitude_fajr_min": 35
+ },
+ {
+  "file": "mawaqit-ar-rahma-mosque-27000-douala-cameroon.json",
+  "source": "مسجد الرحمة - DOUALA",
+  "lat": 7.3668461828255,
+  "lon": 12.353345622149,
+  "tz": "Africa/Douala",
+  "tz_offset": 1,
+  "rows": 365,
+  "gate": {
+   "date": "2026-11-11",
+   "pass": true
+  },
+  "engine": "PrayTimes-v2 family (o1f-london/praytimes.cjs)",
+  "rounding": "nearest",
+  "sunrise_mae": 0,
+  "recipe": {
+   "fajr_angle": 18,
+   "isha_angle": 17,
+   "asr_factor": 1,
+   "dhuhr_offset_min": 0,
+   "maghrib_offset_min": 0,
+   "sunrise_offset_min": 0
+  },
+  "offset_ranges": {
+   "sunrise": {
+    "min": 0,
+    "median": 0,
+    "max": 0
+   },
+   "dhuhr": {
+    "min": 0,
+    "median": 0,
+    "max": 0
+   },
+   "maghrib": {
+    "min": 0,
+    "median": 0,
+    "max": 0
+   }
+  },
+  "scores": {
+   "fajr": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "sunrise": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "dhuhr": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "asr": {
+    "exact": 125,
+    "within1": 363,
+    "worst": -2,
+    "mae": 0.66,
+    "n": 365
+   },
+   "maghrib": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "isha": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   }
+  },
+  "amplitude_fajr_min": 35
+ },
+ {
+  "file": "mawaqit-daarus-salaam-goma-00-congo-kinshasa.json",
+  "source": "Daaru-ssalaam - GOMA",
+  "lat": -1.6737319296932,
+  "lon": 29.217226877693,
+  "tz": "Africa/Lubumbashi",
+  "tz_offset": 2,
+  "rows": 365,
+  "gate": {
+   "date": "2026-11-11",
+   "pass": true
+  },
+  "engine": "PrayTimes-v2 family (o1f-london/praytimes.cjs)",
+  "rounding": "nearest",
+  "sunrise_mae": 0,
+  "recipe": {
+   "fajr_angle": 19.5,
+   "isha_angle": 17.5,
+   "asr_factor": 1,
+   "dhuhr_offset_min": 0,
+   "maghrib_offset_min": 0,
+   "sunrise_offset_min": 0
+  },
+  "offset_ranges": {
+   "sunrise": {
+    "min": 0,
+    "median": 0,
+    "max": 0
+   },
+   "dhuhr": {
+    "min": 0,
+    "median": 0,
+    "max": 0
+   },
+   "maghrib": {
+    "min": 0,
+    "median": 0,
+    "max": 0
+   }
+  },
+  "scores": {
+   "fajr": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "sunrise": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "dhuhr": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "asr": {
+    "exact": 231,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.37,
+    "n": 365
+   },
+   "maghrib": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "isha": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   }
+  },
+  "amplitude_fajr_min": 7
+ },
+ {
+  "file": "mawaqit-houriya-brazzaville-99324-congo-brazzaville.json",
+  "source": "Mosquee Houriya - BRAZZAVILLE",
+  "lat": -4.2744405,
+  "lon": 15.2812803,
+  "tz": "Africa/Brazzaville",
+  "tz_offset": 1,
+  "rows": 365,
+  "gate": {
+   "date": "2026-11-11",
+   "pass": true
+  },
+  "engine": "PrayTimes-v2 family (o1f-london/praytimes.cjs)",
+  "rounding": "nearest",
+  "sunrise_mae": 0,
+  "recipe": {
+   "fajr_angle": 12.3,
+   "isha_angle": 18.19,
+   "asr_factor": 0.955,
+   "dhuhr_offset_min": 60,
+   "maghrib_offset_min": 4,
+   "sunrise_offset_min": 0
+  },
+  "offset_ranges": {
+   "sunrise": {
+    "min": 0,
+    "median": 0,
+    "max": 0
+   },
+   "dhuhr": {
+    "min": 60,
+    "median": 60,
+    "max": 60
+   },
+   "maghrib": {
+    "min": 4,
+    "median": 4,
+    "max": 4
+   }
+  },
+  "scores": {
+   "fajr": {
+    "exact": 113,
+    "within1": 351,
+    "worst": -2,
+    "mae": 0.73,
+    "n": 365
+   },
+   "sunrise": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "dhuhr": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "asr": {
+    "exact": 192,
+    "within1": 320,
+    "worst": 3,
+    "mae": 0.6,
+    "n": 365
+   },
+   "maghrib": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "isha": {
+    "exact": 307,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.16,
+    "n": 365
+   }
+  },
+  "amplitude_fajr_min": -1
+ },
+ {
+  "file": "mawaqit-issa-obama-home-malabo-8163-equatorial-guinea.json",
+  "source": "Maison de la famille Obama",
+  "lat": 3.755,
+  "lon": 8.782,
+  "tz": "Africa/Malabo",
+  "tz_offset": 1,
+  "rows": 365,
+  "gate": {
+   "date": "2026-11-11",
+   "pass": true
+  },
+  "engine": "PrayTimes-v2 family (o1f-london/praytimes.cjs)",
+  "rounding": "nearest",
+  "sunrise_mae": 0,
+  "recipe": {
+   "fajr_angle": 18,
+   "isha_angle": 17,
+   "asr_factor": 1,
+   "dhuhr_offset_min": 0,
+   "maghrib_offset_min": 0,
+   "sunrise_offset_min": 0
+  },
+  "offset_ranges": {
+   "sunrise": {
+    "min": 0,
+    "median": 0,
+    "max": 0
+   },
+   "dhuhr": {
+    "min": 0,
+    "median": 0,
+    "max": 0
+   },
+   "maghrib": {
+    "min": 0,
+    "median": 0,
+    "max": 0
+   }
+  },
+  "scores": {
+   "fajr": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "sunrise": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "dhuhr": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "asr": {
+    "exact": 217,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.41,
+    "n": 365
+   },
+   "maghrib": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "isha": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   }
+  },
+  "amplitude_fajr_min": 24
+ },
+ {
+  "file": "mawaqit-masjid-abu-bakr-siddiq-ndjamena-526hhrv-chad.json",
+  "source": "مسجد أبو بكر الصديق - أم سنينة",
+  "lat": 12.1191352,
+  "lon": 15.0502875,
+  "tz": "Africa/Ndjamena",
+  "tz_offset": 1,
+  "rows": 365,
+  "gate": {
+   "date": "2026-11-11",
+   "pass": true
+  },
+  "engine": "PrayTimes-v2 family (o1f-london/praytimes.cjs)",
+  "rounding": "nearest",
+  "sunrise_mae": 0,
+  "recipe": {
+   "fajr_angle": 18,
+   "isha_angle": 17,
+   "asr_factor": 1,
+   "dhuhr_offset_min": 0,
+   "maghrib_offset_min": 0,
+   "sunrise_offset_min": 0
+  },
+  "offset_ranges": {
+   "sunrise": {
+    "min": 0,
+    "median": 0,
+    "max": 0
+   },
+   "dhuhr": {
+    "min": 0,
+    "median": 0,
+    "max": 0
+   },
+   "maghrib": {
+    "min": 0,
+    "median": 0,
+    "max": 0
+   }
+  },
+  "scores": {
+   "fajr": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "sunrise": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "dhuhr": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "asr": {
+    "exact": 120,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.67,
+    "n": 365
+   },
+   "maghrib": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "isha": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   }
+  },
+  "amplitude_fajr_min": 52
+ },
+ {
+  "file": "mawaqit-mbamyanga-ngaoundere.json",
+  "source": "G M MBAMYANGA - Ngaoundéré",
+  "lat": 7.301163,
+  "lon": 13.578473,
+  "tz": "Africa/Douala",
+  "tz_offset": 1,
+  "rows": 365,
+  "gate": {
+   "date": "2026-11-11",
+   "pass": true
+  },
+  "engine": "PrayTimes-v2 family (o1f-london/praytimes.cjs)",
+  "rounding": "nearest",
+  "sunrise_mae": 0.26,
+  "recipe": {
+   "fajr_angle": 18.01,
+   "isha_angle": 16.98,
+   "asr_factor": 1,
+   "dhuhr_offset_min": 0,
+   "maghrib_offset_min": 3,
+   "sunrise_offset_min": 0
+  },
+  "offset_ranges": {
+   "sunrise": {
+    "min": -60,
+    "median": 0,
+    "max": 1
+   },
+   "dhuhr": {
+    "min": -1,
+    "median": 0,
+    "max": 1
+   },
+   "maghrib": {
+    "min": 2,
+    "median": 3,
+    "max": 4
+   }
+  },
+  "scores": {
+   "fajr": {
+    "exact": 340,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.07,
+    "n": 365
+   },
+   "sunrise": {
+    "exact": 329,
+    "within1": 364,
+    "worst": -60,
+    "mae": 0.26,
+    "n": 365
+   },
+   "dhuhr": {
+    "exact": 342,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.06,
+    "n": 365
+   },
+   "asr": {
+    "exact": 325,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.11,
+    "n": 365
+   },
+   "maghrib": {
+    "exact": 327,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.1,
+    "n": 365
+   },
+   "isha": {
+    "exact": 332,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.09,
+    "n": 365
+   }
+  },
+  "amplitude_fajr_min": 35
+ },
+ {
+  "file": "mawaqit-mosquee-de-bellevue-3-libreville-0000-gabon.json",
+  "source": "Mosquée de Plein-Ciel / Bellevue 3",
+  "lat": 0.39535447140436,
+  "lon": 9.4759547710419,
+  "tz": "Africa/Libreville",
+  "tz_offset": 1,
+  "rows": 365,
+  "gate": {
+   "date": "2026-11-11",
+   "pass": true
+  },
+  "engine": "PrayTimes-v2 family (o1f-london/praytimes.cjs)",
+  "rounding": "nearest",
+  "sunrise_mae": 0,
+  "recipe": {
+   "fajr_angle": 18,
+   "isha_angle": 17,
+   "asr_factor": 1,
+   "dhuhr_offset_min": 0,
+   "maghrib_offset_min": 0,
+   "sunrise_offset_min": 0
+  },
+  "offset_ranges": {
+   "sunrise": {
+    "min": 0,
+    "median": 0,
+    "max": 0
+   },
+   "dhuhr": {
+    "min": 0,
+    "median": 0,
+    "max": 0
+   },
+   "maghrib": {
+    "min": 0,
+    "median": 0,
+    "max": 0
+   }
+  },
+  "scores": {
+   "fajr": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "sunrise": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "dhuhr": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "asr": {
+    "exact": 165,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.55,
+    "n": 365
+   },
+   "maghrib": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "isha": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   }
+  },
+  "amplitude_fajr_min": 13
+ },
+ {
+  "file": "mawaqit-mosquee-de-kinguele-msjd-alhq-libreville-0000-gabon.json",
+  "source": "Mosquée de Kinguélé - مسجد الحق - LIBREVILLE",
+  "lat": 0.3988758551646,
+  "lon": 9.4710900404671,
+  "tz": "Africa/Libreville",
+  "tz_offset": 1,
+  "rows": 365,
+  "gate": {
+   "date": "2026-11-11",
+   "pass": true
+  },
+  "engine": "PrayTimes-v2 family (o1f-london/praytimes.cjs)",
+  "rounding": "nearest",
+  "sunrise_mae": 0,
+  "recipe": {
+   "fajr_angle": 18,
+   "isha_angle": 17,
+   "asr_factor": 1,
+   "dhuhr_offset_min": 0,
+   "maghrib_offset_min": 0,
+   "sunrise_offset_min": 0
+  },
+  "offset_ranges": {
+   "sunrise": {
+    "min": 0,
+    "median": 0,
+    "max": 0
+   },
+   "dhuhr": {
+    "min": 0,
+    "median": 0,
+    "max": 0
+   },
+   "maghrib": {
+    "min": 0,
+    "median": 0,
+    "max": 0
+   }
+  },
+  "scores": {
+   "fajr": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "sunrise": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "dhuhr": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "asr": {
+    "exact": 246,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.33,
+    "n": 365
+   },
+   "maghrib": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "isha": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   }
+  },
+  "amplitude_fajr_min": 13
+ },
+ {
+  "file": "mawaqit-mosquee-du-roi-faisal-msjd-almlk-fysl-port-gentil-2110-gabon.json",
+  "source": "Mosquée du Roi Faisal - مسجد الملك فيصل - PORT-GENTIL",
+  "lat": -0.72755515050611,
+  "lon": 8.782538845713,
+  "tz": "Africa/Libreville",
+  "tz_offset": 1,
+  "rows": 365,
+  "gate": {
+   "date": "2026-11-11",
+   "pass": true
+  },
+  "engine": "PrayTimes-v2 family (o1f-london/praytimes.cjs)",
+  "rounding": "nearest",
+  "sunrise_mae": 0,
+  "recipe": {
+   "fajr_angle": 18,
+   "isha_angle": 17,
+   "asr_factor": 1,
+   "dhuhr_offset_min": 0,
+   "maghrib_offset_min": 0,
+   "sunrise_offset_min": 0
+  },
+  "offset_ranges": {
+   "sunrise": {
+    "min": 0,
+    "median": 0,
+    "max": 0
+   },
+   "dhuhr": {
+    "min": 0,
+    "median": 0,
+    "max": 0
+   },
+   "maghrib": {
+    "min": 0,
+    "median": 0,
+    "max": 0
+   }
+  },
+  "scores": {
+   "fajr": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "sunrise": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "dhuhr": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "asr": {
+    "exact": 119,
+    "within1": 354,
+    "worst": -2,
+    "mae": 0.7,
+    "n": 365
+   },
+   "maghrib": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "isha": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   }
+  },
+  "amplitude_fajr_min": 10
+ },
+ {
+  "file": "mawaqit-mosquee-saina-youssuf-avenue-udeac-bangui-central-african-republic.json",
+  "source": "Mosquée saina Youssuf - BANGUI",
+  "lat": 4.3585649,
+  "lon": 18.5373133,
+  "tz": "Africa/Bangui",
+  "tz_offset": 1,
+  "rows": 365,
+  "gate": {
+   "date": "2026-11-11",
+   "pass": true
+  },
+  "engine": "PrayTimes-v2 family (o1f-london/praytimes.cjs)",
+  "rounding": "nearest",
+  "sunrise_mae": 0,
+  "recipe": {
+   "fajr_angle": 15,
+   "isha_angle": 15,
+   "asr_factor": 1,
+   "dhuhr_offset_min": 74,
+   "maghrib_offset_min": 0,
+   "sunrise_offset_min": 0
+  },
+  "offset_ranges": {
+   "sunrise": {
+    "min": 0,
+    "median": 0,
+    "max": 0
+   },
+   "dhuhr": {
+    "min": 60,
+    "median": 74,
+    "max": 91
+   },
+   "maghrib": {
+    "min": 0,
+    "median": 0,
+    "max": 0
+   }
+  },
+  "scores": {
+   "fajr": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "sunrise": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "dhuhr": {
+    "exact": 15,
+    "within1": 44,
+    "worst": 17,
+    "mae": 7.18,
+    "n": 365
+   },
+   "asr": {
+    "exact": 132,
+    "within1": 363,
+    "worst": -2,
+    "mae": 0.64,
+    "n": 365
+   },
+   "maghrib": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "isha": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   }
+  },
+  "amplitude_fajr_min": 26
+ },
+ {
+  "file": "mawaqit-sabongari-ngaoundere.json",
+  "source": "SABONGARI - Ngaoundéré",
+  "lat": 7.3425339,
+  "lon": 13.5957596,
+  "tz": "Africa/Douala",
+  "tz_offset": 1,
+  "rows": 365,
+  "gate": {
+   "date": "2026-11-11",
+   "pass": true
+  },
+  "engine": "PrayTimes-v2 family (o1f-london/praytimes.cjs)",
+  "rounding": "nearest",
+  "sunrise_mae": 0.266,
+  "recipe": {
+   "fajr_angle": 18,
+   "isha_angle": 17.02,
+   "asr_factor": 1,
+   "dhuhr_offset_min": 0,
+   "maghrib_offset_min": 3,
+   "sunrise_offset_min": 0
+  },
+  "offset_ranges": {
+   "sunrise": {
+    "min": -60,
+    "median": 0,
+    "max": 1
+   },
+   "dhuhr": {
+    "min": -1,
+    "median": 0,
+    "max": 1
+   },
+   "maghrib": {
+    "min": 2,
+    "median": 3,
+    "max": 4
+   }
+  },
+  "scores": {
+   "fajr": {
+    "exact": 336,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.08,
+    "n": 365
+   },
+   "sunrise": {
+    "exact": 327,
+    "within1": 364,
+    "worst": -60,
+    "mae": 0.27,
+    "n": 365
+   },
+   "dhuhr": {
+    "exact": 338,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.07,
+    "n": 365
+   },
+   "asr": {
+    "exact": 330,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.1,
+    "n": 365
+   },
+   "maghrib": {
+    "exact": 338,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.07,
+    "n": 365
+   },
+   "isha": {
+    "exact": 335,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.08,
+    "n": 365
+   }
+  },
+  "amplitude_fajr_min": 35
+ },
+ {
+  "file": "mawaqit-taqwa-mosque-ibb-boulevard-sake-105-16-gis-goma-congo-kinshasa.json",
+  "source": "Taqwa (IBB) - GOMA",
+  "lat": -1.6790343704734,
+  "lon": 29.227846562862,
+  "tz": "Africa/Lubumbashi",
+  "tz_offset": 2,
+  "rows": 365,
+  "gate": {
+   "date": "2026-11-11",
+   "pass": true
+  },
+  "engine": "PrayTimes-v2 family (o1f-london/praytimes.cjs)",
+  "rounding": "nearest",
+  "sunrise_mae": 0,
+  "recipe": {
+   "fajr_angle": 18,
+   "isha_angle": 17,
+   "asr_factor": 1,
+   "dhuhr_offset_min": 0,
+   "maghrib_offset_min": 0,
+   "sunrise_offset_min": 0
+  },
+  "offset_ranges": {
+   "sunrise": {
+    "min": 0,
+    "median": 0,
+    "max": 0
+   },
+   "dhuhr": {
+    "min": 0,
+    "median": 0,
+    "max": 0
+   },
+   "maghrib": {
+    "min": 0,
+    "median": 0,
+    "max": 0
+   }
+  },
+  "scores": {
+   "fajr": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "sunrise": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "dhuhr": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "asr": {
+    "exact": 254,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.3,
+    "n": 365
+   },
+   "maghrib": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   },
+   "isha": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0,
+    "n": 365
+   }
+  },
+  "amplitude_fajr_min": 8
+ }
+]

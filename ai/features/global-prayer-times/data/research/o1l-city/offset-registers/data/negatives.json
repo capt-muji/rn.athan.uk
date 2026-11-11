@@ -1,0 +1,78 @@
+{
+  "file": "negatives",
+  "note": "Surfaces probed for a published per-city or per-zone offset register and found to carry none. Each entry states the language searched, the surface closed and the evidence.",
+  "entries": [
+    {
+      "country": "IQ",
+      "publisher": "ديوان الوقف السني (Sunni Endowment Diwan)",
+      "surface": "https://dws.gov.iq/ (Vite SPA) -> API https://eldwanapp.jeeteak.com/api/prayer-times",
+      "searched": "Arabic",
+      "result": "NO place parameter. The API answers /api/prayer-times with one national table (Baghdad) and silently ignores city, city_id, governorate and governorate_id. It DOES accept ?date=YYYY-MM-DD, so the surface is date-addressable and forward/backward harvestable, but not place-addressable.",
+      "evidence": "captures/iq-dws-home.html (SPA shell), captures/iq-dws-app.js (the only call is Ce.get('/prayer-times') with no params), and five probed query strings all returning 05:05/06:29/11:51/14:45/17:06/18:23",
+      "record": "The record's IQ-DIWAN object already says 'the app serves per-city feeds, which the record does not enumerate'. That remains true; the public web API does not expose them."
+    },
+    {
+      "country": "SY",
+      "publisher": "وزارة الأوقاف (Syrian Ministry of Awqaf)",
+      "surface": "awqaf.gov.sy",
+      "searched": "Arabic",
+      "result": "DNS does not resolve for awqaf.gov.sy and www.awqaf.gov.sy (curl: could not resolve host). No ministry prayer-times surface reachable.",
+      "evidence": "two curl attempts, exit 6",
+      "note": "The record's p2-mk-sy archive may hold an older ministry artifact; nothing live was reachable this session."
+    },
+    {
+      "country": "CY (north)",
+      "publisher": "KKTC Din İşleri Başkanlığı",
+      "surface": "https://www.kktcdinisleri.com/namaz-vakitleri",
+      "searched": "Turkish",
+      "result": "ONE national table, no place selector and no place delta. The page carries a month table for Lefkoşa only.",
+      "evidence": "captures/cy-kktc-namaz.html: zero <option> elements, one month table, one 'Bugün' block",
+      "record": "Confirms the record's CY-KKTC note ('the site publishes one national table and no city table'). The mission's 'Cyprus-north 7 place offsets' is not on the publisher's public site."
+    },
+    {
+      "country": "BH",
+      "publisher": "وزارة العدل والشؤون الإسلامية (Ministry of Justice, Islamic Affairs and Waqf)",
+      "surface": "https://www.moj.gov.bh/ar/",
+      "searched": "Arabic",
+      "result": "No prayer-times service on the ministry portal. The homepage service list is legal and endowment services only; the official times live in the iGA Bahrain app, which is not a public page.",
+      "evidence": "captures/bh-moj-home.txt (service list transcribed from the fetch)",
+      "note": "No BH object exists in the policy layer at all."
+    },
+    {
+      "country": "DZ",
+      "publisher": "وزارة الشؤون الدينية والأوقاف",
+      "surface": "https://marw.dz/ and https://marw.gov.dz/media/calendrier/1447/",
+      "searched": "Arabic, French",
+      "result": "marw.dz timed out and then answered HTTP 504 across four attempts. No live fetch this session.",
+      "evidence": "curl exit 28 then 504, recorded in the run log",
+      "record": "Algeria's layer is per-wilaya BOOKS (three 1447 books already banked at o1l-city/algeria-1447/), not an offset register, so the class does not apply even when the site answers."
+    },
+    {
+      "country": "TR",
+      "publisher": "Diyanet İşleri Başkanlığı",
+      "surface": "https://namazvakitleri.diyanet.gov.tr/tr-TR",
+      "searched": "Turkish",
+      "result": "MEASURED, NOT PUBLISHED. The ilçe layer is a selector of 307 options keyed by ilceId; each ilçe gets its own computed table and the publisher states no delta between them.",
+      "evidence": "captures/tr-diyanet-home.html: 307 <option> elements, ilceId present in the inline script",
+      "consequence": "Any Turkish place register must be measured from the tables, never read as a stated ladder."
+    },
+    {
+      "country": "TW",
+      "publisher": "Chinese Muslim Association / Taipei Grand Mosque",
+      "surface": "https://www.taipeimosque.org.tw/ and https://www.islamtaiwan.com/prayer-times",
+      "searched": "Traditional Chinese, English",
+      "result": "No stated per-city register. The Grand Mosque embeds a third-party widget (prayer-times.mosqueprayers.workers.dev). The community platform islamtaiwan.com serves 20 county/city pages, each its own table, with no stated delta.",
+      "evidence": "captures/tw-taipei-mosque.html (widget href), captures/tw-prayer-times.html (20 /prayer-times/<county> links)",
+      "record": "The record grades Taiwan FALLBACK for exactly this reason. The '8-city table' in the mission list is not on either public surface."
+    },
+    {
+      "country": "MU",
+      "publisher": "Jummah Masjid, Port Louis",
+      "surface": "jummahmasjid.org",
+      "searched": "English, French",
+      "result": "The llms.txt that carried the tier statement is gone (404) and the site now serves mosque pages only (/prayer-times, /namaz, /prayer, /times, /namaaz all 404). The record's three symmetric tiers (+2/-2, +3/-3, +4/-4) cannot be resolved to town names from the publisher.",
+      "evidence": "captures/mu-home.html, five 404 probes",
+      "record": "The record holds the tier VALUES and town COUNTS (7, 8, 8) but not the names."
+    }
+  ]
+}

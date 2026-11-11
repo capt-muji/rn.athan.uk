@@ -1,0 +1,20 @@
+province	lat	n	exact%	within1%	MAE	worst	fajrMAE	asrMAE	ishaMAE
+istanbul	41.0064	2190	58.04	96.07	0.459	2	0.10	0.79	0.88
+ankara	39.9208	2190	59.04	97.03	0.439	2	0.09	0.76	0.83
+izmir	38.4193	2190	61.32	97.95	0.407	2	0.12	0.75	0.77
+antalya	36.8866	2190	62.74	97.17	0.401	2	0.16	0.68	0.76
+trabzon	41.0055	2190	57.17	95.57	0.473	2	0.22	0.75	0.84
+sinop	42.0266	2190	58.54	95.53	0.459	2	0.08	0.83	0.93
+hatay	36.2025	2190	64.57	98.22	0.372	2	0.09	0.67	0.70
+van	38.5009	2190	65.16	98.04	0.368	2	0.10	0.70	0.71
+kars	40.6071	2190	60.91	97.58	0.415	2	0.09	0.71	0.81
+igdir	39.9219	2190	61.42	97.99	0.406	2	0.08	0.72	0.82
+
+POOLED n=21900 exact=60.89% within1=97.11%
+PER-PRAYER pooled MAE:
+fajr	MAE 0.113	within1 100.00%	exact 88.7%
+sunrise	MAE 0.146	within1 100.00%	exact 85.4%
+dhuhr	MAE 0.104	within1 100.00%	exact 89.6%
+asr	MAE 0.735	within1 93.32%	exact 33.2%
+maghrib	MAE 0.616	within1 98.36%	exact 40.1%
+isha	MAE 0.806	within1 91.01%	exact 28.4%

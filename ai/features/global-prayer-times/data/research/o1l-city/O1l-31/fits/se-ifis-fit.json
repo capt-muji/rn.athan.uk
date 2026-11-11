@@ -1,0 +1,930 @@
+{
+ "job": "o1l-31-se-ifis",
+ "meta": {
+  "engine": "adhan 4.4.6",
+  "claim": "IF 18/16 + high-latitude substitution"
+ },
+ "cities": [
+  {
+   "city": "malmo",
+   "lat": 55.605,
+   "lng": 13.0038,
+   "rows": 365,
+   "fajr": {
+    "claim": {
+     "margin": 0.5,
+     "mode": "floor",
+     "exact": 154,
+     "within1": 220,
+     "worst": 118,
+     "coverage": 271
+    },
+    "honest": {
+     "margin": 0.5,
+     "mode": "floor",
+     "exact": 154,
+     "within1": 220,
+     "worst": 1,
+     "coverage": 220
+    },
+    "honestDays": 220,
+    "frozen45": {
+     "margin": 12,
+     "mode": "floor",
+     "exact": 10,
+     "within1": 15,
+     "worst": 67,
+     "coverage": 145
+    },
+    "subDays": 145,
+    "windows": [
+     {
+      "from": "2026-04-12",
+      "to": "2026-09-03",
+      "days": 145
+     }
+    ]
+   },
+   "isha": {
+    "claim": {
+     "margin": -1,
+     "mode": "floor",
+     "exact": 64,
+     "within1": 118,
+     "worst": 159,
+     "coverage": 287
+    },
+    "honest": {
+     "margin": -1,
+     "mode": "floor",
+     "exact": 64,
+     "within1": 94,
+     "worst": 2,
+     "coverage": 122
+    },
+    "honestDays": 122,
+    "frozen45": {
+     "margin": 6,
+     "mode": "floor",
+     "exact": 11,
+     "within1": 30,
+     "worst": 50,
+     "coverage": 243
+    },
+    "subDays": 243,
+    "windows": [
+     {
+      "from": "2026-03-30",
+      "to": "2026-08-27",
+      "days": 151
+     },
+     {
+      "from": "2026-08-29",
+      "to": "2026-11-05",
+      "days": 69
+     },
+     {
+      "from": "2026-11-07",
+      "to": "2026-11-10",
+      "days": 4
+     },
+     {
+      "from": "2026-11-20",
+      "to": "2026-11-23",
+      "days": 4
+     }
+    ]
+   },
+   "solar": {
+    "sunrise": {
+     "margin": -6.5,
+     "mode": "floor",
+     "exact": 248,
+     "within1": 365,
+     "worst": 1,
+     "coverage": 365
+    },
+    "dhuhr": {
+     "margin": 5.5,
+     "mode": "floor",
+     "exact": 320,
+     "within1": 365,
+     "worst": 1,
+     "coverage": 365
+    },
+    "asr1": {
+     "margin": 2.5,
+     "mode": "floor",
+     "exact": 95,
+     "within1": 164,
+     "worst": 5,
+     "coverage": 365
+    },
+    "asr2": {
+     "margin": -15,
+     "mode": "floor",
+     "exact": 0,
+     "within1": 0,
+     "worst": 57,
+     "coverage": 365
+    },
+    "maghrib": {
+     "margin": 6,
+     "mode": "floor",
+     "exact": 137,
+     "within1": 189,
+     "worst": 4,
+     "coverage": 365
+    }
+   }
+  },
+  {
+   "city": "linkoping",
+   "lat": 58.4108,
+   "lng": 15.6214,
+   "rows": 365,
+   "fajr": {
+    "claim": {
+     "margin": 0.5,
+     "mode": "floor",
+     "exact": 144,
+     "within1": 204,
+     "worst": 135,
+     "coverage": 253
+    },
+    "honest": {
+     "margin": 0.5,
+     "mode": "floor",
+     "exact": 144,
+     "within1": 203,
+     "worst": 1,
+     "coverage": 203
+    },
+    "honestDays": 203,
+    "frozen45": {
+     "margin": 1,
+     "mode": "floor",
+     "exact": 12,
+     "within1": 18,
+     "worst": 63,
+     "coverage": 162
+    },
+    "subDays": 162,
+    "windows": [
+     {
+      "from": "2026-04-04",
+      "to": "2026-09-12",
+      "days": 162
+     }
+    ]
+   },
+   "isha": {
+    "claim": {
+     "margin": -1,
+     "mode": "floor",
+     "exact": 76,
+     "within1": 119,
+     "worst": 140,
+     "coverage": 265
+    },
+    "honest": {
+     "margin": -1,
+     "mode": "floor",
+     "exact": 76,
+     "within1": 103,
+     "worst": 2,
+     "coverage": 127
+    },
+    "honestDays": 127,
+    "frozen45": {
+     "margin": 0,
+     "mode": "floor",
+     "exact": 3,
+     "within1": 5,
+     "worst": 64,
+     "coverage": 238
+    },
+    "subDays": 238,
+    "windows": [
+     {
+      "from": "2026-03-27",
+      "to": "2026-03-30",
+      "days": 4
+     },
+     {
+      "from": "2026-04-02",
+      "to": "2026-09-04",
+      "days": 156
+     },
+     {
+      "from": "2026-09-06",
+      "to": "2026-11-06",
+      "days": 62
+     }
+    ]
+   },
+   "solar": {
+    "sunrise": {
+     "margin": -7,
+     "mode": "floor",
+     "exact": 195,
+     "within1": 324,
+     "worst": 2,
+     "coverage": 365
+    },
+    "dhuhr": {
+     "margin": 5.5,
+     "mode": "floor",
+     "exact": 328,
+     "within1": 365,
+     "worst": 1,
+     "coverage": 365
+    },
+    "asr1": {
+     "margin": 6.5,
+     "mode": "floor",
+     "exact": 98,
+     "within1": 154,
+     "worst": 6,
+     "coverage": 365
+    },
+    "asr2": {
+     "margin": -15,
+     "mode": "floor",
+     "exact": 0,
+     "within1": 0,
+     "worst": 59,
+     "coverage": 365
+    },
+    "maghrib": {
+     "margin": 6,
+     "mode": "floor",
+     "exact": 119,
+     "within1": 189,
+     "worst": 4,
+     "coverage": 365
+    }
+   }
+  },
+  {
+   "city": "orebro",
+   "lat": 59.2741,
+   "lng": 15.2066,
+   "rows": 365,
+   "fajr": {
+    "claim": {
+     "margin": 0.5,
+     "mode": "floor",
+     "exact": 142,
+     "within1": 202,
+     "worst": 122,
+     "coverage": 247
+    },
+    "honest": {
+     "margin": 0.5,
+     "mode": "floor",
+     "exact": 142,
+     "within1": 202,
+     "worst": 1,
+     "coverage": 202
+    },
+    "honestDays": 202,
+    "frozen45": {
+     "margin": -7.5,
+     "mode": "floor",
+     "exact": 13,
+     "within1": 18,
+     "worst": 60,
+     "coverage": 163
+    },
+    "subDays": 163,
+    "windows": [
+     {
+      "from": "2026-04-03",
+      "to": "2026-09-12",
+      "days": 163
+     }
+    ]
+   },
+   "isha": {
+    "claim": {
+     "margin": -1.5,
+     "mode": "floor",
+     "exact": 52,
+     "within1": 100,
+     "worst": 222,
+     "coverage": 261
+    },
+    "honest": {
+     "margin": -1,
+     "mode": "floor",
+     "exact": 49,
+     "within1": 79,
+     "worst": 2,
+     "coverage": 105
+    },
+    "honestDays": 105,
+    "frozen45": {
+     "margin": 15,
+     "mode": "floor",
+     "exact": 3,
+     "within1": 4,
+     "worst": 52,
+     "coverage": 260
+    },
+    "subDays": 260,
+    "windows": [
+     {
+      "from": "2026-03-16",
+      "to": "2026-03-18",
+      "days": 3
+     },
+     {
+      "from": "2026-03-20",
+      "to": "2026-09-05",
+      "days": 170
+     },
+     {
+      "from": "2026-09-07",
+      "to": "2026-11-06",
+      "days": 61
+     },
+     {
+      "from": "2026-11-08",
+      "to": "2026-11-11",
+      "days": 4
+     }
+    ]
+   },
+   "solar": {
+    "sunrise": {
+     "margin": -6.5,
+     "mode": "floor",
+     "exact": 209,
+     "within1": 365,
+     "worst": 1,
+     "coverage": 365
+    },
+    "dhuhr": {
+     "margin": 5.5,
+     "mode": "floor",
+     "exact": 328,
+     "within1": 365,
+     "worst": 1,
+     "coverage": 365
+    },
+    "asr1": {
+     "margin": 7,
+     "mode": "floor",
+     "exact": 84,
+     "within1": 145,
+     "worst": 6,
+     "coverage": 365
+    },
+    "asr2": {
+     "margin": -15,
+     "mode": "floor",
+     "exact": 17,
+     "within1": 28,
+     "worst": 60,
+     "coverage": 365
+    },
+    "maghrib": {
+     "margin": 6,
+     "mode": "floor",
+     "exact": 119,
+     "within1": 192,
+     "worst": 4,
+     "coverage": 365
+    }
+   }
+  },
+  {
+   "city": "vasteras",
+   "lat": 59.6099,
+   "lng": 16.5448,
+   "rows": 365,
+   "fajr": {
+    "claim": {
+     "margin": 0.5,
+     "mode": "floor",
+     "exact": 133,
+     "within1": 200,
+     "worst": 124,
+     "coverage": 245
+    },
+    "honest": {
+     "margin": 0.5,
+     "mode": "floor",
+     "exact": 133,
+     "within1": 200,
+     "worst": 1,
+     "coverage": 200
+    },
+    "honestDays": 200,
+    "frozen45": {
+     "margin": -7,
+     "mode": "floor",
+     "exact": 6,
+     "within1": 12,
+     "worst": 62,
+     "coverage": 165
+    },
+    "subDays": 165,
+    "windows": [
+     {
+      "from": "2026-04-02",
+      "to": "2026-09-13",
+      "days": 165
+     }
+    ]
+   },
+   "isha": {
+    "claim": {
+     "margin": -1,
+     "mode": "floor",
+     "exact": 54,
+     "within1": 108,
+     "worst": 136,
+     "coverage": 257
+    },
+    "honest": {
+     "margin": -1,
+     "mode": "floor",
+     "exact": 54,
+     "within1": 81,
+     "worst": 2,
+     "coverage": 107
+    },
+    "honestDays": 107,
+    "frozen45": {
+     "margin": 4,
+     "mode": "floor",
+     "exact": 3,
+     "within1": 3,
+     "worst": 65,
+     "coverage": 258
+    },
+    "subDays": 258,
+    "windows": [
+     {
+      "from": "2026-03-15",
+      "to": "2026-03-19",
+      "days": 5
+     },
+     {
+      "from": "2026-03-22",
+      "to": "2026-09-06",
+      "days": 169
+     },
+     {
+      "from": "2026-09-08",
+      "to": "2026-11-10",
+      "days": 64
+     }
+    ]
+   },
+   "solar": {
+    "sunrise": {
+     "margin": -6.5,
+     "mode": "floor",
+     "exact": 209,
+     "within1": 351,
+     "worst": 4,
+     "coverage": 365
+    },
+    "dhuhr": {
+     "margin": 5.5,
+     "mode": "floor",
+     "exact": 333,
+     "within1": 365,
+     "worst": 1,
+     "coverage": 365
+    },
+    "asr1": {
+     "margin": 7,
+     "mode": "floor",
+     "exact": 92,
+     "within1": 137,
+     "worst": 6,
+     "coverage": 365
+    },
+    "asr2": {
+     "margin": -15,
+     "mode": "floor",
+     "exact": 18,
+     "within1": 32,
+     "worst": 60,
+     "coverage": 365
+    },
+    "maghrib": {
+     "margin": 6,
+     "mode": "floor",
+     "exact": 123,
+     "within1": 190,
+     "worst": 4,
+     "coverage": 365
+    }
+   }
+  },
+  {
+   "city": "umea",
+   "lat": 63.8258,
+   "lng": 20.263,
+   "rows": 365,
+   "fajr": {
+    "claim": {
+     "margin": 0.5,
+     "mode": "floor",
+     "exact": 115,
+     "within1": 180,
+     "worst": 135,
+     "coverage": 221
+    },
+    "honest": {
+     "margin": 0.5,
+     "mode": "floor",
+     "exact": 115,
+     "within1": 176,
+     "worst": 1,
+     "coverage": 176
+    },
+    "honestDays": 176,
+    "frozen45": {
+     "margin": -5.5,
+     "mode": "floor",
+     "exact": 9,
+     "within1": 15,
+     "worst": 72,
+     "coverage": 189
+    },
+    "subDays": 189,
+    "windows": [
+     {
+      "from": "2026-03-23",
+      "to": "2026-09-24",
+      "days": 186
+     }
+    ]
+   },
+   "isha": {
+    "claim": {
+     "margin": -1.5,
+     "mode": "floor",
+     "exact": 46,
+     "within1": 88,
+     "worst": 170,
+     "coverage": 233
+    },
+    "honest": {
+     "margin": -1,
+     "mode": "floor",
+     "exact": 37,
+     "within1": 63,
+     "worst": 2,
+     "coverage": 83
+    },
+    "honestDays": 83,
+    "frozen45": {
+     "margin": 15,
+     "mode": "ceil",
+     "exact": 2,
+     "within1": 4,
+     "worst": 60,
+     "coverage": 282
+    },
+    "subDays": 282,
+    "windows": [
+     {
+      "from": "2026-02-16",
+      "to": "2026-02-18",
+      "days": 3
+     },
+     {
+      "from": "2026-02-22",
+      "to": "2026-09-16",
+      "days": 207
+     },
+     {
+      "from": "2026-09-18",
+      "to": "2026-11-16",
+      "days": 60
+     },
+     {
+      "from": "2026-11-18",
+      "to": "2026-11-22",
+      "days": 5
+     }
+    ]
+   },
+   "solar": {
+    "sunrise": {
+     "margin": -7,
+     "mode": "floor",
+     "exact": 125,
+     "within1": 240,
+     "worst": 69,
+     "coverage": 365
+    },
+    "dhuhr": {
+     "margin": 5.5,
+     "mode": "floor",
+     "exact": 315,
+     "within1": 365,
+     "worst": 1,
+     "coverage": 365
+    },
+    "asr1": {
+     "margin": 8,
+     "mode": "floor",
+     "exact": 58,
+     "within1": 120,
+     "worst": 9,
+     "coverage": 365
+    },
+    "asr2": {
+     "margin": -4,
+     "mode": "floor",
+     "exact": 13,
+     "within1": 21,
+     "worst": 75,
+     "coverage": 365
+    },
+    "maghrib": {
+     "margin": 5.5,
+     "mode": "floor",
+     "exact": 115,
+     "within1": 136,
+     "worst": 57,
+     "coverage": 365
+    }
+   }
+  },
+  {
+   "city": "lulea",
+   "lat": 65.5848,
+   "lng": 22.1547,
+   "rows": 365,
+   "fajr": {
+    "claim": {
+     "margin": 0.5,
+     "mode": "floor",
+     "exact": 116,
+     "within1": 167,
+     "worst": 158,
+     "coverage": 212
+    },
+    "honest": {
+     "margin": 0.5,
+     "mode": "floor",
+     "exact": 116,
+     "within1": 167,
+     "worst": 1,
+     "coverage": 167
+    },
+    "honestDays": 167,
+    "frozen45": {
+     "margin": -1,
+     "mode": "floor",
+     "exact": 9,
+     "within1": 15,
+     "worst": 74,
+     "coverage": 198
+    },
+    "subDays": 198,
+    "windows": [
+     {
+      "from": "2026-03-17",
+      "to": "2026-09-30",
+      "days": 198
+     }
+    ]
+   },
+   "isha": {
+    "claim": {
+     "margin": -1.5,
+     "mode": "floor",
+     "exact": 35,
+     "within1": 85,
+     "worst": 175,
+     "coverage": 223
+    },
+    "honest": {
+     "margin": -1,
+     "mode": "floor",
+     "exact": 34,
+     "within1": 56,
+     "worst": 2,
+     "coverage": 72
+    },
+    "honestDays": 72,
+    "frozen45": {
+     "margin": -9,
+     "mode": "floor",
+     "exact": 3,
+     "within1": 3,
+     "worst": 81,
+     "coverage": 293
+    },
+    "subDays": 293,
+    "windows": [
+     {
+      "from": "2026-02-06",
+      "to": "2026-02-08",
+      "days": 3
+     },
+     {
+      "from": "2026-02-12",
+      "to": "2026-09-23",
+      "days": 224
+     },
+     {
+      "from": "2026-09-25",
+      "to": "2026-11-21",
+      "days": 58
+     }
+    ]
+   },
+   "solar": {
+    "sunrise": {
+     "margin": -7,
+     "mode": "floor",
+     "exact": 111,
+     "within1": 207,
+     "worst": 136,
+     "coverage": 365
+    },
+    "dhuhr": {
+     "margin": 5.5,
+     "mode": "floor",
+     "exact": 333,
+     "within1": 365,
+     "worst": 1,
+     "coverage": 365
+    },
+    "asr1": {
+     "margin": 2,
+     "mode": "floor",
+     "exact": 46,
+     "within1": 104,
+     "worst": 10,
+     "coverage": 365
+    },
+    "asr2": {
+     "margin": 4,
+     "mode": "floor",
+     "exact": 8,
+     "within1": 13,
+     "worst": 85,
+     "coverage": 365
+    },
+    "maghrib": {
+     "margin": 5,
+     "mode": "floor",
+     "exact": 94,
+     "within1": 120,
+     "worst": 1322,
+     "coverage": 365
+    }
+   }
+  },
+  {
+   "city": "kiruna",
+   "lat": 67.8558,
+   "lng": 20.2253,
+   "rows": 365,
+   "fajr": {
+    "claim": {
+     "margin": -11,
+     "mode": "floor",
+     "exact": 20,
+     "within1": 34,
+     "worst": 182,
+     "coverage": 200
+    },
+    "honest": {
+     "margin": -1,
+     "mode": "floor",
+     "exact": 6,
+     "within1": 10,
+     "worst": 2,
+     "coverage": 15
+    },
+    "honestDays": 15,
+    "frozen45": {
+     "margin": -3.5,
+     "mode": "floor",
+     "exact": 14,
+     "within1": 19,
+     "worst": 73,
+     "coverage": 350
+    },
+    "subDays": 350,
+    "windows": [
+     {
+      "from": "2026-01-01",
+      "to": "2026-01-28",
+      "days": 28
+     },
+     {
+      "from": "2026-02-06",
+      "to": "2026-11-04",
+      "days": 272
+     },
+     {
+      "from": "2026-11-12",
+      "to": "2026-12-31",
+      "days": 50
+     }
+    ]
+   },
+   "isha": {
+    "claim": {
+     "margin": 15,
+     "mode": "floor",
+     "exact": 17,
+     "within1": 32,
+     "worst": 205,
+     "coverage": 211
+    },
+    "honest": {
+     "margin": 0,
+     "mode": "floor",
+     "exact": 5,
+     "within1": 13,
+     "worst": 1,
+     "coverage": 13
+    },
+    "honestDays": 13,
+    "frozen45": {
+     "margin": -2.5,
+     "mode": "floor",
+     "exact": 3,
+     "within1": 4,
+     "worst": 76,
+     "coverage": 352
+    },
+    "subDays": 352,
+    "windows": [
+     {
+      "from": "2026-01-01",
+      "to": "2026-02-02",
+      "days": 33
+     },
+     {
+      "from": "2026-02-10",
+      "to": "2026-10-23",
+      "days": 256
+     },
+     {
+      "from": "2026-10-30",
+      "to": "2026-12-31",
+      "days": 63
+     }
+    ]
+   },
+   "solar": {
+    "sunrise": {
+     "margin": 3.5,
+     "mode": "floor",
+     "exact": 5,
+     "within1": 9,
+     "worst": 140,
+     "coverage": 293
+    },
+    "dhuhr": {
+     "margin": 5.5,
+     "mode": "floor",
+     "exact": 322,
+     "within1": 365,
+     "worst": 1,
+     "coverage": 365
+    },
+    "asr1": {
+     "margin": -8,
+     "mode": "floor",
+     "exact": 25,
+     "within1": 48,
+     "worst": 433,
+     "coverage": 365
+    },
+    "asr2": {
+     "margin": 9,
+     "mode": "floor",
+     "exact": 10,
+     "within1": 20,
+     "worst": 342,
+     "coverage": 365
+    },
+    "maghrib": {
+     "margin": 0.5,
+     "mode": "floor",
+     "exact": 5,
+     "within1": 10,
+     "worst": 1331,
+     "coverage": 293
+    }
+   }
+  }
+ ]
+}

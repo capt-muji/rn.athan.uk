@@ -1,0 +1,83 @@
+{
+ "file": "data/mawaqit_sv_sansalvador_daribrahim.json",
+ "name": "Mezquita Dar Ibrahim - SAN SALVADOR",
+ "lat": 13.699356912413,
+ "lon": -89.209790714085,
+ "tz": "America/El_Salvador",
+ "days": 365,
+ "candidates": [
+  {
+   "method": "MWL",
+   "madhab": "shafi",
+   "totalMae": 1.91
+  },
+  {
+   "method": "Turkey",
+   "madhab": "shafi",
+   "totalMae": 1.91
+  },
+  {
+   "method": "Kuwait",
+   "madhab": "shafi",
+   "totalMae": 3.86
+  }
+ ],
+ "refined": {
+  "method": "MWL",
+  "madhab": "shafi",
+  "fajrAngle": 17.75,
+  "ishaAngle": 17,
+  "offsets": {
+   "fajr": -1,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "scores": {
+   "fajr": {
+    "med": -0.1,
+    "exact": 336,
+    "w1": 365,
+    "mae": 0.26,
+    "worst": 0.7
+   },
+   "sunrise": {
+    "med": 0,
+    "exact": 363,
+    "w1": 365,
+    "mae": 0.26,
+    "worst": 0.5
+   },
+   "dhuhr": {
+    "med": 0,
+    "exact": 357,
+    "w1": 365,
+    "mae": 0.25,
+    "worst": 0.5
+   },
+   "asr": {
+    "med": -0.1,
+    "exact": 88,
+    "w1": 316,
+    "mae": 0.91,
+    "worst": 1.9
+   },
+   "maghrib": {
+    "med": 0,
+    "exact": 360,
+    "w1": 365,
+    "mae": 0.25,
+    "worst": 0.5
+   },
+   "isha": {
+    "med": 0,
+    "exact": 354,
+    "w1": 365,
+    "mae": 0.24,
+    "worst": 0.5
+   }
+  }
+ }
+}

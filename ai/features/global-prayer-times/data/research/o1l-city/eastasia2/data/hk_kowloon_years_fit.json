@@ -1,0 +1,138 @@
+{
+ "engine": "adhan 4.4.6",
+ "tz": "Asia/Hong_Kong",
+ "years": {
+  "2024": {
+   "rows": 366,
+   "fajr_angle": {
+    "angle": 17.9,
+    "mae": 0.5
+   },
+   "isha_angle": {
+    "angle": 18.3,
+    "mae": 0.82
+   },
+   "asr": {
+    "Shafi": {
+     "mean": 61.32,
+     "mae": 61.32,
+     "within1": 0
+    },
+    "Hanafi": {
+     "mean": 0.9,
+     "mae": 0.9,
+     "within1": 0.598
+    }
+   },
+   "dhuhr_margin": {
+    "mean": 4.9,
+    "mae": 4.9,
+    "within1": 0
+   },
+   "maghrib_margin": {
+    "mean": 3.19,
+    "mae": 3.19,
+    "within1": 0
+   }
+  },
+  "2025": {
+   "rows": 365,
+   "fajr_angle": {
+    "angle": 18,
+    "mae": 0.25
+   },
+   "isha_angle": {
+    "angle": 18.4,
+    "mae": 0.29
+   },
+   "asr": {
+    "Shafi": {
+     "mean": 61.35,
+     "mae": 61.35,
+     "within1": 0
+    },
+    "Hanafi": {
+     "mean": 0.89,
+     "mae": 0.89,
+     "within1": 0.597
+    }
+   },
+   "dhuhr_margin": {
+    "mean": 4.91,
+    "mae": 4.91,
+    "within1": 0
+   },
+   "maghrib_margin": {
+    "mean": 2.88,
+    "mae": 2.88,
+    "within1": 0
+   }
+  },
+  "2026": {
+   "rows": 365,
+   "fajr_angle": {
+    "angle": 18,
+    "mae": 0.26
+   },
+   "isha_angle": {
+    "angle": 18.4,
+    "mae": 0.29
+   },
+   "asr": {
+    "Shafi": {
+     "mean": 61.33,
+     "mae": 61.33,
+     "within1": 0
+    },
+    "Hanafi": {
+     "mean": 0.87,
+     "mae": 0.87,
+     "within1": 0.636
+    }
+   },
+   "dhuhr_margin": {
+    "mean": 4.9,
+    "mae": 4.9,
+    "within1": 0
+   },
+   "maghrib_margin": {
+    "mean": 2.89,
+    "mae": 2.89,
+    "within1": 0
+   }
+  },
+  "2027": {
+   "rows": 365,
+   "fajr_angle": {
+    "angle": 18,
+    "mae": 0.27
+   },
+   "isha_angle": {
+    "angle": 18.4,
+    "mae": 0.29
+   },
+   "asr": {
+    "Shafi": {
+     "mean": 61.35,
+     "mae": 61.35,
+     "within1": 0
+    },
+    "Hanafi": {
+     "mean": 0.89,
+     "mae": 0.89,
+     "within1": 0.614
+    }
+   },
+   "dhuhr_margin": {
+    "mean": 4.88,
+    "mae": 4.88,
+    "within1": 0
+   },
+   "maghrib_margin": {
+    "mean": 2.86,
+    "mae": 2.86,
+    "within1": 0
+   }
+  }
+ }
+}

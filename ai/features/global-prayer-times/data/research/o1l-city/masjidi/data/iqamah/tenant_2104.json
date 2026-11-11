@@ -1,0 +1,50 @@
+{
+ "tenantId": "2104",
+ "name": "جامع الرحمة الرقبة تطاوين",
+ "city": "تطاوين",
+ "country": "تونس",
+ "timezone": "Africa/Tunis",
+ "timingsType": "table-api",
+ "tableId": 364,
+ "iqamah": {
+  "Fajr": {
+   "iqamaWaitDuration": 20,
+   "timeOffset": 0
+  },
+  "Sunrise": {
+   "iqamaWaitDuration": 0,
+   "timeOffset": 0
+  },
+  "Dhuhr": {
+   "iqamaWaitDuration": 20,
+   "timeOffset": 0
+  },
+  "Asr": {
+   "iqamaWaitDuration": 15,
+   "timeOffset": 0
+  },
+  "Maghrib": {
+   "iqamaWaitDuration": 15,
+   "timeOffset": 0
+  },
+  "Isha": {
+   "iqamaWaitDuration": 15,
+   "timeOffset": 0
+  }
+ },
+ "overrides": {
+  "Dhuhr": [
+   {
+    "name": "الجمعة",
+    "iqamaWaitDuration": 0,
+    "duration": 20,
+    "date": {
+     "gregorian": {
+      "dayOfWeek": 6
+     }
+    }
+   }
+  ]
+ },
+ "note": "athan times come from the regional table; the iqamah layer is the wait in minutes after the athan, plus Friday (Jumu'ah) overrides."
+}

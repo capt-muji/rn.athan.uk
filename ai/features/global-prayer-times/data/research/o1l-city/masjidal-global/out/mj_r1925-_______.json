@@ -1,0 +1,34 @@
+{
+ "label": "r1925-إيطاليا",
+ "file": "captures/masjidi_region_1925.json",
+ "rows": 366,
+ "lat": 43.3,
+ "k": 0,
+ "geoRms": 6.33,
+ "fajr": {
+  "kind": "angle",
+  "n": 366,
+  "angle": 17.93,
+  "darkIqr": 0.15
+ },
+ "isha": {
+  "kind": "angle",
+  "n": 366,
+  "angle": 17.01,
+  "darkIqr": 0.14,
+  "gap": 96
+ },
+ "asr": {
+  "school": "Shafi",
+  "shafiMae": 12.8,
+  "hanafiMae": 60
+ },
+ "clock": {
+  "lonImplied": -4.59,
+  "offsetMin": -18,
+  "driftRms": 0.4,
+  "runs": 1,
+  "steps": []
+ },
+ "amplitude": -204
+}

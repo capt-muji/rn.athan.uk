@@ -1,0 +1,34 @@
+{
+ "label": "r46-عمان",
+ "file": "captures/masjidi_region_46.json",
+ "rows": 366,
+ "lat": 17.1,
+ "k": 0,
+ "geoRms": 6.43,
+ "fajr": {
+  "kind": "angle",
+  "n": 366,
+  "angle": 18,
+  "darkIqr": 0.14
+ },
+ "isha": {
+  "kind": "angle",
+  "n": 366,
+  "angle": 16.85,
+  "darkIqr": 0.12,
+  "gap": 70
+ },
+ "asr": {
+  "school": "Shafi",
+  "shafiMae": 0.4,
+  "hanafiMae": 61.3
+ },
+ "clock": {
+  "lonImplied": -6.55,
+  "offsetMin": -26,
+  "driftRms": 0.2,
+  "runs": 1,
+  "steps": []
+ },
+ "amplitude": -61
+}

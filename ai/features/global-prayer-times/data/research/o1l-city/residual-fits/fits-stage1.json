@@ -1,0 +1,638 @@
+{
+ "byIslambel": {
+  "surface": "Muslim Religious Association of Belarus, islambel.by/vremya-namazov",
+  "tier": "authority-tier national association",
+  "point": {
+   "lat": 53.9,
+   "lon": 27.5667,
+   "scheme": "gazetteer, corroborated by a second table"
+  },
+  "span": "2025-01-01..2025-12-31",
+  "rows": 365,
+  "recipe": {
+   "fajrAngle": 17.85,
+   "ishaAngle": 14.8,
+   "ishaInterval": null,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": -1,
+    "sunrise": 0,
+    "dhuhr": 4,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 8
+   },
+   "rounding": {
+    "fajr": "nearest",
+    "sunrise": "nearest",
+    "dhuhr": "nearest",
+    "asr": "floor",
+    "maghrib": "nearest",
+    "isha": "nearest"
+   },
+   "ceil": {
+    "fajr": 436,
+    "isha": 1386
+   }
+  },
+  "cols": {
+   "fajr": {
+    "exact": 191,
+    "within1": 231,
+    "n": 365,
+    "worst": 248,
+    "capped": 82,
+    "signedMean": 45.42
+   },
+   "sunrise": {
+    "exact": 0,
+    "within1": 0,
+    "n": 365,
+    "worst": 8,
+    "capped": 0,
+    "signedMean": 6.9
+   },
+   "dhuhr": {
+    "exact": 324,
+    "within1": 365,
+    "n": 365,
+    "worst": 1,
+    "capped": 0,
+    "signedMean": -0.07
+   },
+   "asr": {
+    "exact": 67,
+    "within1": 220,
+    "n": 365,
+    "worst": 3,
+    "capped": 0,
+    "signedMean": -0.56
+   },
+   "maghrib": {
+    "exact": 50,
+    "within1": 291,
+    "n": 365,
+    "worst": 2,
+    "capped": 0,
+    "signedMean": -0.08
+   },
+   "isha": {
+    "exact": 67,
+    "within1": 190,
+    "n": 365,
+    "worst": 134,
+    "capped": 82,
+    "signedMean": -55.12
+   }
+  },
+  "joint": {
+   "exact": 2,
+   "within1": 108,
+   "of": 365,
+   "worst": 248
+  },
+  "years": {
+   "2025": {
+    "rows": 365,
+    "exact": 2,
+    "within1": 108,
+    "of": 365,
+    "worst": 248
+   }
+  },
+  "amplitude": {
+   "fajrJan": 432.5,
+   "fajrJul": null,
+   "fajrAmplitude": null
+  }
+ },
+ "lbDarAlFatwa": {
+  "surface": "Dar al-Fatwa annual tables via the masjidi display platform",
+  "tier": "authority",
+  "url": "tv.masjidi.app/upload/json_prayers_times/prayer_times_region_json_{1..5}.json",
+  "clock": "fixed UTC+2 year-round (rendering shift)",
+  "yearBasis": "leap-shaped payload, 29 February seam after row 59: 2028, inferred not stated",
+  "regions": {
+   "region1": {
+    "point": {
+     "lat": 33.85,
+     "lon": 37.8,
+     "dip": 0,
+     "mae": 0.976,
+     "worst": 3.1,
+     "scheme": "derived from the table's own solar columns"
+    },
+    "rows": 366,
+    "recipe": {
+     "fajrAngle": 17.45,
+     "ishaAngle": 17.3,
+     "ishaInterval": null,
+     "asr": "Shafi",
+     "margins": {
+      "fajr": 10,
+      "sunrise": 10,
+      "dhuhr": 10,
+      "asr": 8,
+      "maghrib": 10,
+      "isha": 4
+     },
+     "rounding": {
+      "fajr": "nearest",
+      "sunrise": "nearest",
+      "dhuhr": "nearest",
+      "asr": "nearest",
+      "maghrib": "ceil",
+      "isha": "nearest"
+     },
+     "ceil": null
+    },
+    "cols": {
+     "fajr": {
+      "exact": 45,
+      "within1": 198,
+      "n": 366,
+      "worst": 6,
+      "capped": 0,
+      "signedMean": 1.12
+     },
+     "sunrise": {
+      "exact": 94,
+      "within1": 324,
+      "n": 366,
+      "worst": 2,
+      "capped": 0,
+      "signedMean": 0.31
+     },
+     "dhuhr": {
+      "exact": 253,
+      "within1": 366,
+      "n": 366,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": 0.13
+     },
+     "asr": {
+      "exact": 76,
+      "within1": 296,
+      "n": 366,
+      "worst": 2,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "maghrib": {
+      "exact": 106,
+      "within1": 263,
+      "n": 366,
+      "worst": 3,
+      "capped": 0,
+      "signedMean": -0.54
+     },
+     "isha": {
+      "exact": 111,
+      "within1": 231,
+      "n": 366,
+      "worst": 4,
+      "capped": 0,
+      "signedMean": -0.72
+     }
+    },
+    "joint": {
+     "exact": 2,
+     "within1": 132,
+     "of": 366,
+     "worst": 6
+    },
+    "years": {
+     "2028": {
+      "rows": 366,
+      "exact": 2,
+      "within1": 132,
+      "of": 366,
+      "worst": 6
+     }
+    },
+    "amplitude": {
+     "fajrJan": 308.7,
+     "fajrJul": 172.1,
+     "fajrAmplitude": 136.6
+    }
+   },
+   "region2": {
+    "point": {
+     "lat": 33.85,
+     "lon": 37.8,
+     "dip": 0,
+     "mae": 0.976,
+     "worst": 3.1,
+     "scheme": "derived from the table's own solar columns"
+    },
+    "rows": 366,
+    "recipe": {
+     "fajrAngle": 19.8,
+     "ishaAngle": 17.3,
+     "ishaInterval": null,
+     "asr": "Shafi",
+     "margins": {
+      "fajr": 10,
+      "sunrise": 8,
+      "dhuhr": 8,
+      "asr": 8,
+      "maghrib": 0,
+      "isha": 10
+     },
+     "rounding": {
+      "fajr": "floor",
+      "sunrise": "ceil",
+      "dhuhr": "nearest",
+      "asr": "ceil",
+      "maghrib": "nearest",
+      "isha": "nearest"
+     },
+     "ceil": null
+    },
+    "cols": {
+     "fajr": {
+      "exact": 43,
+      "within1": 231,
+      "n": 366,
+      "worst": 3,
+      "capped": 0,
+      "signedMean": -0.23
+     },
+     "sunrise": {
+      "exact": 116,
+      "within1": 318,
+      "n": 366,
+      "worst": 3,
+      "capped": 0,
+      "signedMean": -0.25
+     },
+     "dhuhr": {
+      "exact": 253,
+      "within1": 366,
+      "n": 366,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": 0.13
+     },
+     "asr": {
+      "exact": 164,
+      "within1": 274,
+      "n": 366,
+      "worst": 3,
+      "capped": 0,
+      "signedMean": -0.48
+     },
+     "maghrib": {
+      "exact": 0,
+      "within1": 0,
+      "n": 366,
+      "worst": 17,
+      "capped": 0,
+      "signedMean": -14.01
+     },
+     "isha": {
+      "exact": 111,
+      "within1": 231,
+      "n": 366,
+      "worst": 4,
+      "capped": 0,
+      "signedMean": -0.72
+     }
+    },
+    "joint": {
+     "exact": 0,
+     "within1": 0,
+     "of": 366,
+     "worst": 17
+    },
+    "years": {
+     "2028": {
+      "rows": 366,
+      "exact": 0,
+      "within1": 0,
+      "of": 366,
+      "worst": 17
+     }
+    },
+    "amplitude": {
+     "fajrJan": 297.1,
+     "fajrJul": 156.5,
+     "fajrAmplitude": 140.6
+    }
+   },
+   "region3": {
+    "point": {
+     "lat": 34.3,
+     "lon": 36.75,
+     "dip": 0.35,
+     "mae": 0.602,
+     "worst": 3.9,
+     "scheme": "derived from the table's own solar columns"
+    },
+    "rows": 366,
+    "recipe": {
+     "fajrAngle": 17.7,
+     "ishaAngle": 18.1,
+     "ishaInterval": null,
+     "asr": "Shafi",
+     "margins": {
+      "fajr": 1,
+      "sunrise": 5,
+      "dhuhr": 5,
+      "asr": 7,
+      "maghrib": 7,
+      "isha": 3
+     },
+     "rounding": {
+      "fajr": "ceil",
+      "sunrise": "nearest",
+      "dhuhr": "floor",
+      "asr": "floor",
+      "maghrib": "nearest",
+      "isha": "nearest"
+     },
+     "ceil": null
+    },
+    "cols": {
+     "fajr": {
+      "exact": 199,
+      "within1": 366,
+      "n": 366,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": -0.04
+     },
+     "sunrise": {
+      "exact": 253,
+      "within1": 366,
+      "n": 366,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": -0.11
+     },
+     "dhuhr": {
+      "exact": 38,
+      "within1": 222,
+      "n": 366,
+      "worst": 5,
+      "capped": 0,
+      "signedMean": -1.19
+     },
+     "asr": {
+      "exact": 57,
+      "within1": 261,
+      "n": 366,
+      "worst": 5,
+      "capped": 0,
+      "signedMean": -0.62
+     },
+     "maghrib": {
+      "exact": 280,
+      "within1": 366,
+      "n": 366,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": 0.2
+     },
+     "isha": {
+      "exact": 284,
+      "within1": 366,
+      "n": 366,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": -0.05
+     }
+    },
+    "joint": {
+     "exact": 1,
+     "within1": 180,
+     "of": 366,
+     "worst": 5
+    },
+    "years": {
+     "2028": {
+      "rows": 366,
+      "exact": 1,
+      "within1": 180,
+      "of": 366,
+      "worst": 5
+     }
+    },
+    "amplitude": {
+     "fajrJan": 312.2,
+     "fajrJul": 172.7,
+     "fajrAmplitude": 139.5
+    }
+   },
+   "region4": {
+    "point": {
+     "lat": 34.3,
+     "lon": 36.75,
+     "dip": 0.35,
+     "mae": 0.602,
+     "worst": 3.9,
+     "scheme": "derived from the table's own solar columns"
+    },
+    "rows": 366,
+    "recipe": {
+     "fajrAngle": 17.7,
+     "ishaAngle": 18.1,
+     "ishaInterval": null,
+     "asr": "Shafi",
+     "margins": {
+      "fajr": 1,
+      "sunrise": 5,
+      "dhuhr": 5,
+      "asr": 7,
+      "maghrib": 10,
+      "isha": 3
+     },
+     "rounding": {
+      "fajr": "ceil",
+      "sunrise": "nearest",
+      "dhuhr": "floor",
+      "asr": "floor",
+      "maghrib": "ceil",
+      "isha": "nearest"
+     },
+     "ceil": null
+    },
+    "cols": {
+     "fajr": {
+      "exact": 199,
+      "within1": 366,
+      "n": 366,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": -0.04
+     },
+     "sunrise": {
+      "exact": 253,
+      "within1": 366,
+      "n": 366,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": -0.11
+     },
+     "dhuhr": {
+      "exact": 38,
+      "within1": 222,
+      "n": 366,
+      "worst": 5,
+      "capped": 0,
+      "signedMean": -1.19
+     },
+     "asr": {
+      "exact": 57,
+      "within1": 261,
+      "n": 366,
+      "worst": 5,
+      "capped": 0,
+      "signedMean": -0.62
+     },
+     "maghrib": {
+      "exact": 2,
+      "within1": 261,
+      "n": 366,
+      "worst": 2,
+      "capped": 0,
+      "signedMean": -1.28
+     },
+     "isha": {
+      "exact": 284,
+      "within1": 366,
+      "n": 366,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": -0.05
+     }
+    },
+    "joint": {
+     "exact": 0,
+     "within1": 123,
+     "of": 366,
+     "worst": 5
+    },
+    "years": {
+     "2028": {
+      "rows": 366,
+      "exact": 0,
+      "within1": 123,
+      "of": 366,
+      "worst": 5
+     }
+    },
+    "amplitude": {
+     "fajrJan": 312.2,
+     "fajrJul": 172.7,
+     "fajrAmplitude": 139.5
+    }
+   },
+   "region5": {
+    "point": {
+     "lat": 34.3,
+     "lon": 36.75,
+     "dip": 0.35,
+     "mae": 0.602,
+     "worst": 3.9,
+     "scheme": "derived from the table's own solar columns"
+    },
+    "rows": 366,
+    "recipe": {
+     "fajrAngle": 17.7,
+     "ishaAngle": 18.1,
+     "ishaInterval": null,
+     "asr": "Shafi",
+     "margins": {
+      "fajr": 1,
+      "sunrise": 5,
+      "dhuhr": 5,
+      "asr": 7,
+      "maghrib": 10,
+      "isha": 3
+     },
+     "rounding": {
+      "fajr": "ceil",
+      "sunrise": "nearest",
+      "dhuhr": "floor",
+      "asr": "floor",
+      "maghrib": "ceil",
+      "isha": "nearest"
+     },
+     "ceil": null
+    },
+    "cols": {
+     "fajr": {
+      "exact": 199,
+      "within1": 366,
+      "n": 366,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": -0.04
+     },
+     "sunrise": {
+      "exact": 253,
+      "within1": 366,
+      "n": 366,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": -0.11
+     },
+     "dhuhr": {
+      "exact": 38,
+      "within1": 222,
+      "n": 366,
+      "worst": 5,
+      "capped": 0,
+      "signedMean": -1.19
+     },
+     "asr": {
+      "exact": 57,
+      "within1": 261,
+      "n": 366,
+      "worst": 5,
+      "capped": 0,
+      "signedMean": -0.62
+     },
+     "maghrib": {
+      "exact": 259,
+      "within1": 366,
+      "n": 366,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": -0.28
+     },
+     "isha": {
+      "exact": 284,
+      "within1": 366,
+      "n": 366,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": -0.05
+     }
+    },
+    "joint": {
+     "exact": 1,
+     "within1": 180,
+     "of": 366,
+     "worst": 5
+    },
+    "years": {
+     "2028": {
+      "rows": 366,
+      "exact": 1,
+      "within1": 180,
+      "of": 366,
+      "worst": 5
+     }
+    },
+    "amplitude": {
+     "fajrJan": 312.2,
+     "fajrJul": 172.7,
+     "fajrAmplitude": 139.5
+    }
+   }
+  }
+ }
+}

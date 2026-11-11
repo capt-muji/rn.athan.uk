@@ -1,0 +1,227 @@
+{
+ "job": "O1l-8 Kuwait Al-Ojeiri full year",
+ "rows": 365,
+ "span": {
+  "from": "2026-01-01",
+  "to": "2026-12-31"
+ },
+ "lat": 29.3759,
+ "lng": 47.9774,
+ "freeFit": {
+  "fajr": {
+   "theta": 17.85,
+   "pad": -1,
+   "mode": "round",
+   "score": {
+    "exactPct": 74.8,
+    "w1Pct": 100,
+    "mae": 0.252,
+    "max": 1,
+    "n": 365
+   }
+  },
+  "isha": {
+   "theta": 17.35,
+   "pad": 1,
+   "mode": "floor",
+   "score": {
+    "exactPct": 70.7,
+    "w1Pct": 100,
+    "mae": 0.293,
+    "max": 1,
+    "n": 365
+   }
+  },
+  "sunrise": {
+   "pad": 0,
+   "mode": "round",
+   "score": {
+    "exactPct": 72.3,
+    "w1Pct": 99.5,
+    "mae": 1.181,
+    "max": 330,
+    "n": 365
+   }
+  },
+  "dhuhr": {
+   "pad": 0,
+   "mode": "round",
+   "score": {
+    "exactPct": 84.9,
+    "w1Pct": 100,
+    "mae": 0.151,
+    "max": 1,
+    "n": 365
+   }
+  },
+  "asr_shafi": {
+   "pad": 0,
+   "mode": "round",
+   "score": {
+    "exactPct": 64.9,
+    "w1Pct": 100,
+    "mae": 0.351,
+    "max": 1,
+    "n": 365
+   }
+  },
+  "maghrib": {
+   "pad": 0,
+   "mode": "round",
+   "score": {
+    "exactPct": 72.6,
+    "w1Pct": 99.7,
+    "mae": 0.277,
+    "max": 2,
+    "n": 365
+   }
+  }
+ },
+ "recordedRecipe": {
+  "perColumn": {
+   "fajr": {
+    "exactPct": 55.1,
+    "w1Pct": 100,
+    "mae": 0.449,
+    "max": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "exactPct": 59.9,
+    "w1Pct": 99.2,
+    "mae": 0.409,
+    "max": 2,
+    "n": 364
+   },
+   "dhuhr": {
+    "exactPct": 84.9,
+    "w1Pct": 100,
+    "mae": 0.151,
+    "max": 1,
+    "n": 365
+   },
+   "asr": {
+    "exactPct": 64.9,
+    "w1Pct": 100,
+    "mae": 0.351,
+    "max": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "exactPct": 72.6,
+    "w1Pct": 99.7,
+    "mae": 0.277,
+    "max": 2,
+    "n": 365
+   },
+   "isha": {
+    "exactPct": 64.7,
+    "w1Pct": 100,
+    "mae": 0.353,
+    "max": 1,
+    "n": 365
+   }
+  },
+  "total": {
+   "exactPct": 67,
+   "w1Pct": 99.8,
+   "mae": 0.332,
+   "max": 2,
+   "n": 2189
+  }
+ },
+ "dhuhrAsrFloor": {
+  "perColumn": {
+   "fajr": {
+    "exactPct": 55.1,
+    "w1Pct": 100,
+    "mae": 0.449,
+    "max": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "exactPct": 59.9,
+    "w1Pct": 99.2,
+    "mae": 0.409,
+    "max": 2,
+    "n": 364
+   },
+   "dhuhr": {
+    "exactPct": 60.8,
+    "w1Pct": 99.7,
+    "mae": 0.395,
+    "max": 2,
+    "n": 365
+   },
+   "asr": {
+    "exactPct": 53.7,
+    "w1Pct": 97.3,
+    "mae": 0.49,
+    "max": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "exactPct": 72.6,
+    "w1Pct": 99.7,
+    "mae": 0.277,
+    "max": 2,
+    "n": 365
+   },
+   "isha": {
+    "exactPct": 64.7,
+    "w1Pct": 100,
+    "mae": 0.353,
+    "max": 1,
+    "n": 365
+   }
+  },
+  "total": {
+   "exactPct": 61.1,
+   "w1Pct": 99.3,
+   "mae": 0.396,
+   "max": 2,
+   "n": 2189
+  }
+ },
+ "perYear": {
+  "2026": {
+   "exactPct": 67,
+   "w1Pct": 99.8,
+   "mae": 0.332,
+   "max": 2,
+   "n": 2189
+  }
+ },
+ "amplitude": {
+  "fajr": {
+   "peakToPeak": 127,
+   "jan": 319,
+   "jul": 206
+  },
+  "sunrise": {
+   "peakToPeak": 404,
+   "jan": 403,
+   "jul": 299
+  },
+  "dhuhr": {
+   "peakToPeak": 30,
+   "jan": 718,
+   "jul": 714
+  },
+  "asr": {
+   "peakToPeak": 60,
+   "jan": 893,
+   "jul": 929
+  },
+  "maghrib": {
+   "peakToPeak": 123,
+   "jan": 1032,
+   "jul": 1129
+  },
+  "isha": {
+   "peakToPeak": 133,
+   "jan": 1113,
+   "jul": 1219
+  }
+ }
+}

@@ -1,0 +1,8370 @@
+{
+ "job": "O1l-3 Indonesia city-level: 38 provincial capitals, Kemenag SIHAT + Muhammadiyah KHGT",
+ "engine": "adhan 4.4.6, second resolution, explicit rounding per column",
+ "cities": {
+  "KOTA BANDA ACEH": {
+   "province": "ACEH",
+   "city": "KOTA BANDA ACEH",
+   "lat": 5.558704376220703,
+   "lng": 95.32771301269531,
+   "elevation": 8,
+   "tz": "Asia/Jakarta",
+   "sihat": {
+    "file": "data/sihat-2026-banda-aceh.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 364,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 35,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 363,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 36,
+     "ishaSpanMin": 41,
+     "fajrJan1": "05:26",
+     "fajrJul1": "05:06"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 7,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 197,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 81,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 172,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 4,
+         "within1": 147,
+         "worst": 2,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 67,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 187,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 8
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 7,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 200,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 86,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 180,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 3,
+         "within1": 156,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 82,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 190,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 12
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 7,
+     "max": 9,
+     "med": 8
+    },
+    "isha": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    },
+    "maghrib": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    }
+   }
+  },
+  "KOTA DENPASAR": {
+   "province": "BALI",
+   "city": "KOTA DENPASAR",
+   "lat": -8.668355941772461,
+   "lng": 115.22081756591797,
+   "elevation": 25,
+   "tz": "Asia/Makassar",
+   "sihat": {
+    "file": "data/sihat-2026-denpasar.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 363,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 27,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 364,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 48,
+     "ishaSpanMin": 42,
+     "fajrJan1": "04:40",
+     "fajrJul1": "05:12"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 8,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 195,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 352,
+         "worst": 2,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 193,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 16,
+         "within1": 168,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 3,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 184,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 0
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 8,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 195,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 347,
+         "worst": 2,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 193,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 13,
+         "within1": 172,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 3,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 174,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 0
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 7,
+     "max": 9,
+     "med": 8
+    },
+    "isha": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    },
+    "maghrib": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    }
+   }
+  },
+  "KOTA SERANG": {
+   "province": "BANTEN",
+   "city": "KOTA SERANG",
+   "lat": -6.123323440551758,
+   "lng": 106.166748046875,
+   "elevation": 29,
+   "tz": "Asia/Jakarta",
+   "sihat": {
+    "file": "data/sihat-2026-serang.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 363,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 32,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 363,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 40,
+     "ishaSpanMin": 35,
+     "fajrJan1": "04:21",
+     "fajrJul1": "04:44"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 7,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 182,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 298,
+         "worst": 2,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 197,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 13,
+         "within1": 171,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 3,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 191,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 0
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 7,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 183,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 305,
+         "worst": 2,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 195,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 17,
+         "within1": 171,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 3,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 195,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 0
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 7,
+     "max": 9,
+     "med": 8
+    },
+    "isha": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    },
+    "maghrib": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    }
+   }
+  },
+  "KOTA BENGKULU": {
+   "province": "BENGKULU",
+   "city": "KOTA BENGKULU",
+   "lat": -3.8413968086242676,
+   "lng": 102.30815887451172,
+   "elevation": 17,
+   "tz": "Asia/Jakarta",
+   "sihat": {
+    "file": "data/sihat-2026-bengkulu.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 364,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 27,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 361,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 35,
+     "ishaSpanMin": 33,
+     "fajrJan1": "04:41",
+     "fajrJul1": "04:56"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 7,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 174,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 37,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 180,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 9,
+         "within1": 151,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 64,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 180,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 15
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 7,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 168,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 35,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 179,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 14,
+         "within1": 149,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 52,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 179,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 14
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 7,
+     "max": 9,
+     "med": 8
+    },
+    "isha": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": 0
+    },
+    "maghrib": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    }
+   }
+  },
+  "KOTA YOGYAKARTA": {
+   "province": "D.I. YOGYAKARTA",
+   "city": "KOTA YOGYAKARTA",
+   "lat": -7.803297519683838,
+   "lng": 110.37435913085938,
+   "elevation": 116,
+   "tz": "Asia/Jakarta",
+   "sihat": {
+    "file": "data/sihat-2026-yogyakarta.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 364,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 34,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 362,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 45,
+     "ishaSpanMin": 38,
+     "fajrJan1": "04:01",
+     "fajrJul1": "04:30"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 7,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 179,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 92,
+         "worst": 2,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 184,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 15,
+         "within1": 161,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 3,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 206,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 0
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 7,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 174,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 35,
+         "within1": 144,
+         "worst": 2,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 185,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 17,
+         "within1": 168,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 30,
+         "worst": 3,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 203,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 1
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 7,
+     "max": 9,
+     "med": 8
+    },
+    "isha": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    },
+    "maghrib": {
+     "n": 365,
+     "min": 0,
+     "max": 1,
+     "med": 0
+    }
+   }
+  },
+  "KOTA JAKARTA PUSAT": {
+   "province": "DKI JAKARTA",
+   "city": "KOTA JAKARTA PUSAT",
+   "lat": -6.18120002746582,
+   "lng": 106.83512115478516,
+   "elevation": 6,
+   "tz": "Asia/Jakarta",
+   "sihat": {
+    "file": "data/sihat-2026-jakarta-pusat.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 364,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 40,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 361,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 40,
+     "ishaSpanMin": 35,
+     "fajrJan1": "04:19",
+     "fajrJul1": "04:42"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 7,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 176,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 44,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 175,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 20,
+         "within1": 162,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 62,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 208,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 18
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 7,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 174,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 38,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 175,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 13,
+         "within1": 146,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 40,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 207,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 10
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 7,
+     "max": 9,
+     "med": 8
+    },
+    "isha": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    },
+    "maghrib": {
+     "n": 365,
+     "min": -2,
+     "max": 0,
+     "med": -1
+    }
+   }
+  },
+  "KOTA GORONTALO": {
+   "province": "GORONTALO",
+   "city": "KOTA GORONTALO",
+   "lat": 0.5384085178375244,
+   "lng": 123.0552978515625,
+   "elevation": 8,
+   "tz": "Asia/Makassar",
+   "sihat": {
+    "file": "data/sihat-2026-gorontalo.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 364,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 25,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 360,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 32,
+     "ishaSpanMin": 31,
+     "fajrJan1": "04:27",
+     "fajrJul1": "04:25"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 8,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 195,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 81,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 181,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 15,
+         "within1": 161,
+         "worst": 2,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 92,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 175,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 25
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 8,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 195,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 74,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 183,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 11,
+         "within1": 159,
+         "worst": 2,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 86,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 174,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 21
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 7,
+     "max": 9,
+     "med": 8
+    },
+    "isha": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": 0
+    },
+    "maghrib": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    }
+   }
+  },
+  "KOTA JAMBI": {
+   "province": "JAMBI",
+   "city": "KOTA JAMBI",
+   "lat": -1.6181774139404297,
+   "lng": 103.59979248046875,
+   "elevation": 22,
+   "tz": "Asia/Jakarta",
+   "sihat": {
+    "file": "data/sihat-2026-jambi.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 365,
+       "within1": 365,
+       "worst": 0,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 25,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 364,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 33,
+     "ishaSpanMin": 32,
+     "fajrJan1": "04:41",
+     "fajrJul1": "04:47"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 7,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 182,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 343,
+         "worst": 2,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 184,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 12,
+         "within1": 152,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 3,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 191,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 0
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 7,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 183,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 346,
+         "worst": 2,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 176,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 6,
+         "within1": 150,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 3,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 195,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 0
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 7,
+     "max": 9,
+     "med": 8
+    },
+    "isha": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    },
+    "maghrib": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    }
+   }
+  },
+  "KOTA BANDUNG": {
+   "province": "JAWA BARAT",
+   "city": "KOTA BANDUNG",
+   "lat": -6.919241428375244,
+   "lng": 107.63660430908203,
+   "elevation": 720,
+   "tz": "Asia/Jakarta",
+   "sihat": {
+    "file": "data/sihat-2026-bandung.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 365,
+       "within1": 365,
+       "worst": 0,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 8,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 28,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 8,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 362,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 43,
+     "ishaSpanMin": 36,
+     "fajrJan1": "04:14",
+     "fajrJul1": "04:40"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 7,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 182,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 4,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 192,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 14,
+         "within1": 180,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 5,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 196,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 0
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 7,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 181,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 4,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 190,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 18,
+         "within1": 176,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 5,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 200,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 0
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 7,
+     "max": 9,
+     "med": 8
+    },
+    "isha": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    },
+    "maghrib": {
+     "n": 365,
+     "min": -3,
+     "max": -2,
+     "med": -2
+    }
+   }
+  },
+  "KOTA SEMARANG": {
+   "province": "JAWA TENGAH",
+   "city": "KOTA SEMARANG",
+   "lat": -7.023898601531982,
+   "lng": 110.39152526855469,
+   "elevation": 5,
+   "tz": "Asia/Jakarta",
+   "sihat": {
+    "file": "data/sihat-2026-semarang.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 365,
+       "within1": 365,
+       "worst": 0,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 37,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 363,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 43,
+     "ishaSpanMin": 37,
+     "fajrJan1": "04:03",
+     "fajrJul1": "04:29"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 7,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 177,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 270,
+         "worst": 2,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 201,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 15,
+         "within1": 175,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 3,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 198,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 0
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 7,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 177,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 264,
+         "worst": 2,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 191,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 16,
+         "within1": 172,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 3,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 192,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 0
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 7,
+     "max": 9,
+     "med": 8
+    },
+    "isha": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    },
+    "maghrib": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    }
+   }
+  },
+  "KOTA SURABAYA": {
+   "province": "JAWA TIMUR",
+   "city": "KOTA SURABAYA",
+   "lat": -7.274322986602783,
+   "lng": 112.72358703613281,
+   "elevation": 9,
+   "tz": "Asia/Jakarta",
+   "sihat": {
+    "file": "data/sihat-2026-surabaya.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 361,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 39,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 365,
+       "within1": 365,
+       "worst": 0,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 44,
+     "ishaSpanMin": 37,
+     "fajrJan1": "03:53",
+     "fajrJul1": "04:20"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 7,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 165,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 27,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 191,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 18,
+         "within1": 156,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 29,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 201,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 5
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 7,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 158,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 14,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 197,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 14,
+         "within1": 155,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 38,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 205,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 11
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 7,
+     "max": 9,
+     "med": 8
+    },
+    "isha": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    },
+    "maghrib": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    }
+   }
+  },
+  "KOTA PONTIANAK": {
+   "province": "KALIMANTAN BARAT",
+   "city": "KOTA PONTIANAK",
+   "lat": -0.025780638679862022,
+   "lng": 109.33169555664062,
+   "elevation": 3,
+   "tz": "Asia/Jakarta",
+   "sihat": {
+    "file": "data/sihat-2026-pontianak.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 365,
+       "within1": 365,
+       "worst": 0,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 52,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 363,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 32,
+     "ishaSpanMin": 32,
+     "fajrJan1": "04:21",
+     "fajrJul1": "04:21"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 7,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 167,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 68,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 175,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 13,
+         "within1": 159,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 86,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 197,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 11
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 7,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 170,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 64,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 176,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 18,
+         "within1": 153,
+         "worst": 2,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 78,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 189,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 8
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 7,
+     "max": 9,
+     "med": 8
+    },
+    "isha": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    },
+    "maghrib": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    }
+   }
+  },
+  "KOTA BANJARMASIN": {
+   "province": "KALIMANTAN SELATAN",
+   "city": "KOTA BANJARMASIN",
+   "lat": -3.3291215896606445,
+   "lng": 114.591796875,
+   "elevation": 10,
+   "tz": "Asia/Makassar",
+   "sihat": {
+    "file": "data/sihat-2026-banjarmasin.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 363,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 27,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 362,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 34,
+     "ishaSpanMin": 33,
+     "fajrJan1": "04:53",
+     "fajrJul1": "05:06"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 8,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 172,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 191,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 177,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 11,
+         "within1": 160,
+         "worst": 2,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 189,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 196,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 50
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 8,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 169,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 189,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 173,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 8,
+         "within1": 155,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 187,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 189,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 50
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 7,
+     "max": 9,
+     "med": 8
+    },
+    "isha": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    },
+    "maghrib": {
+     "n": 365,
+     "min": -2,
+     "max": -1,
+     "med": -1
+    }
+   }
+  },
+  "KOTA PALANGKARAYA": {
+   "province": "KALIMANTAN TENGAH",
+   "city": "KOTA PALANGKARAYA",
+   "lat": -2.0074641704559326,
+   "lng": 113.76747131347656,
+   "elevation": 16,
+   "tz": "Asia/Jakarta",
+   "sihat": {
+    "file": "data/sihat-2026-palangkaraya.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 363,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 32,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 364,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 34,
+     "ishaSpanMin": 32,
+     "fajrJan1": "03:59",
+     "fajrJul1": "04:07"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 7,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 193,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 17,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 175,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 12,
+         "within1": 145,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 20,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 189,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 5
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 7,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 193,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 17,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 175,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 6,
+         "within1": 147,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 21,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 183,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 7
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 7,
+     "max": 9,
+     "med": 8
+    },
+    "isha": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    },
+    "maghrib": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    }
+   }
+  },
+  "KOTA SAMARINDA": {
+   "province": "KALIMANTAN TIMUR",
+   "city": "KOTA SAMARINDA",
+   "lat": -0.5002797245979309,
+   "lng": 117.17706298828125,
+   "elevation": 4,
+   "tz": "Asia/Makassar",
+   "sihat": {
+    "file": "data/sihat-2026-samarinda.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 362,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 28,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 360,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 32,
+     "ishaSpanMin": 31,
+     "fajrJan1": "04:48",
+     "fajrJul1": "04:51"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 8,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 173,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 249,
+         "worst": 2,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 189,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 19,
+         "within1": 152,
+         "worst": 2,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 3,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 206,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 0
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 8,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 172,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 273,
+         "worst": 2,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 188,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 8,
+         "within1": 160,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 3,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 204,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 0
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 7,
+     "max": 9,
+     "med": 8
+    },
+    "isha": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    },
+    "maghrib": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": 0
+    }
+   }
+  },
+  "KAB. BULUNGAN": {
+   "province": "KALIMANTAN UTARA",
+   "city": "KAB. BULUNGAN",
+   "lat": 2.7974820137023926,
+   "lng": 117.031982421875,
+   "elevation": 7,
+   "tz": "Asia/Makassar",
+   "sihat": {
+    "file": "data/sihat-2026-bulungan.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 365,
+       "within1": 365,
+       "worst": 0,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 27,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 361,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 31,
+     "ishaSpanMin": 33,
+     "fajrJan1": "04:55",
+     "fajrJul1": "04:45"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 8,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 190,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 292,
+         "worst": 2,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 176,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 7,
+         "within1": 153,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 3,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 184,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 0
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 8,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 189,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 287,
+         "worst": 2,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 162,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 11,
+         "within1": 142,
+         "worst": 2,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 3,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 190,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 0
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 7,
+     "max": 9,
+     "med": 8
+    },
+    "isha": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    },
+    "maghrib": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": 0
+    }
+   }
+  },
+  "KOTA PANGKAL PINANG": {
+   "province": "KEPULAUAN BANGKA BELITUNG",
+   "city": "KOTA PANGKAL PINANG",
+   "lat": -2.110513210296631,
+   "lng": 106.11321258544922,
+   "elevation": 7,
+   "tz": "Asia/Jakarta",
+   "sihat": {
+    "file": "data/sihat-2026-pangkal-pinang.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 364,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 26,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 364,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 34,
+     "ishaSpanMin": 32,
+     "fajrJan1": "04:30",
+     "fajrJul1": "04:38"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 7,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 184,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 52,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 181,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 18,
+         "within1": 156,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 59,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 188,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 8
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 7,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 184,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 72,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 180,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 12,
+         "within1": 148,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 65,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 185,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 11
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 7,
+     "max": 9,
+     "med": 8
+    },
+    "isha": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    },
+    "maghrib": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    }
+   }
+  },
+  "KOTA TANJUNG PINANG": {
+   "province": "KEPULAUAN RIAU",
+   "city": "KOTA TANJUNG PINANG",
+   "lat": 0.9195814728736877,
+   "lng": 104.487060546875,
+   "elevation": 9,
+   "tz": "Asia/Jakarta",
+   "sihat": {
+    "file": "data/sihat-2026-tanjung-pinang.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 363,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 31,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 365,
+       "within1": 365,
+       "worst": 0,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 32,
+     "ishaSpanMin": 31,
+     "fajrJan1": "04:42",
+     "fajrJul1": "04:39"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 7,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 183,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 24,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 187,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 10,
+         "within1": 157,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 39,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 192,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 8
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 7,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 175,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 26,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 187,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 13,
+         "within1": 159,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 35,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 191,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 4
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 7,
+     "max": 9,
+     "med": 8
+    },
+    "isha": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    },
+    "maghrib": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    }
+   }
+  },
+  "KOTA BANDAR LAMPUNG": {
+   "province": "LAMPUNG",
+   "city": "KOTA BANDAR LAMPUNG",
+   "lat": -5.414196968078613,
+   "lng": 105.26213073730469,
+   "elevation": 98,
+   "tz": "Asia/Jakarta",
+   "sihat": {
+    "file": "data/sihat-2026-bandar-lampung.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 363,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 35,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 365,
+       "within1": 365,
+       "worst": 0,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 38,
+     "ishaSpanMin": 35,
+     "fajrJan1": "04:27",
+     "fajrJul1": "04:47"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 7,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 192,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 94,
+         "worst": 2,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 180,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 15,
+         "within1": 175,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 3,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 184,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 0
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 7,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 186,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 96,
+         "worst": 2,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 180,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 18,
+         "within1": 177,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 3,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 172,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 0
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 7,
+     "max": 9,
+     "med": 8
+    },
+    "isha": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    },
+    "maghrib": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": 0
+    }
+   }
+  },
+  "KOTA AMBON": {
+   "province": "MALUKU",
+   "city": "KOTA AMBON",
+   "lat": -3.685356616973877,
+   "lng": 128.19497680664062,
+   "elevation": 10,
+   "tz": "Asia/Jayapura",
+   "sihat": {
+    "file": "data/sihat-2026-ambon.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 364,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 20,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 359,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 35,
+     "ishaSpanMin": 33,
+     "fajrJan1": "04:58",
+     "fajrJul1": "05:12"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 9,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 188,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 230,
+         "worst": 2,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 190,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 5,
+         "within1": 169,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 3,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 186,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 0
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 9,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 184,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 229,
+         "worst": 2,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 190,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 17,
+         "within1": 161,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 3,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 195,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 0
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 7,
+     "max": 9,
+     "med": 8
+    },
+    "isha": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    },
+    "maghrib": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": 0
+    }
+   }
+  },
+  "KOTA TERNATE": {
+   "province": "MALUKU UTARA",
+   "city": "KOTA TERNATE",
+   "lat": 0.838480532169342,
+   "lng": 127.17252349853516,
+   "elevation": 9,
+   "tz": "Asia/Jayapura",
+   "sihat": {
+    "file": "data/sihat-2026-ternate.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 365,
+       "within1": 365,
+       "worst": 0,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 23,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 363,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 32,
+     "ishaSpanMin": 31,
+     "fajrJan1": "05:11",
+     "fajrJul1": "05:08"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 9,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 197,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 184,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 191,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 16,
+         "within1": 152,
+         "worst": 2,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 189,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 177,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 47
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 9,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 193,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 191,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 189,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 9,
+         "within1": 136,
+         "worst": 2,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 190,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 170,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 48
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 7,
+     "max": 9,
+     "med": 8
+    },
+    "isha": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": 0
+    },
+    "maghrib": {
+     "n": 365,
+     "min": -2,
+     "max": -1,
+     "med": -1
+    }
+   }
+  },
+  "KOTA MATARAM": {
+   "province": "NUSA TENGGARA BARAT",
+   "city": "KOTA MATARAM",
+   "lat": -8.590154647827148,
+   "lng": 116.1109619140625,
+   "elevation": 16,
+   "tz": "Asia/Jakarta",
+   "sihat": {
+    "file": "data/sihat-2026-mataram.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 362,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 29,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 363,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 48,
+     "ishaSpanMin": 41,
+     "fajrJan1": "03:36",
+     "fajrJul1": "04:09"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 8,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 176,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 2,
+         "within1": 357,
+         "worst": 2,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 185,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 13,
+         "within1": 177,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 1,
+         "worst": 3,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 201,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 0
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 8,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 174,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 1,
+         "within1": 350,
+         "worst": 2,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 180,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 18,
+         "within1": 168,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 2,
+         "worst": 3,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 204,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 1
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 67,
+     "max": 69,
+     "med": 68
+    },
+    "isha": {
+     "n": 365,
+     "min": 59,
+     "max": 60,
+     "med": 59
+    },
+    "maghrib": {
+     "n": 365,
+     "min": 59,
+     "max": 60,
+     "med": 59
+    }
+   }
+  },
+  "KOTA KUPANG": {
+   "province": "NUSA TENGGARA TIMUR",
+   "city": "KOTA KUPANG",
+   "lat": -10.204505920410156,
+   "lng": 123.60454559326172,
+   "elevation": 14,
+   "tz": "Asia/Jakarta",
+   "sihat": {
+    "file": "data/sihat-2026-kupang.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 363,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 31,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 364,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 53,
+     "ishaSpanMin": 47,
+     "fajrJan1": "03:03",
+     "fajrJul1": "03:41"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 8,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 194,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 3,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 179,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 11,
+         "within1": 178,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 4,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 189,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 0
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 8,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 190,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 3,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 179,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 12,
+         "within1": 172,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 4,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 186,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 0
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 67,
+     "max": 69,
+     "med": 68
+    },
+    "isha": {
+     "n": 365,
+     "min": 59,
+     "max": 60,
+     "med": 59
+    },
+    "maghrib": {
+     "n": 365,
+     "min": 60,
+     "max": 61,
+     "med": 61
+    }
+   }
+  },
+  "KOTA JAYAPURA": {
+   "province": "PAPUA",
+   "city": "KOTA JAYAPURA",
+   "lat": -2.6645259857177734,
+   "lng": 140.80014038085938,
+   "elevation": 19,
+   "tz": "Asia/Jayapura",
+   "sihat": {
+    "file": "data/sihat-2026-jayapura.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 364,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 15,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 364,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 34,
+     "ishaSpanMin": 32,
+     "fajrJan1": "04:10",
+     "fajrJul1": "04:20"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 9,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 195,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 83,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 179,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 8,
+         "within1": 152,
+         "worst": 2,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 88,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 176,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 19
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 9,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 197,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 81,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 179,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 5,
+         "within1": 160,
+         "worst": 2,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 82,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 180,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 17
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 7,
+     "max": 9,
+     "med": 8
+    },
+    "isha": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": 0
+    },
+    "maghrib": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    }
+   },
+   "highlandCheck": {
+    "elevation": 19,
+    "checks": [
+     {
+      "date": "2026-01-15",
+      "fajrDepth": 19.647418412804818,
+      "ishaDepth": 18.468682337851344
+     },
+     {
+      "date": "2026-04-15",
+      "fajrDepth": 19.40078435360673,
+      "ishaDepth": 18.4497749867031
+     },
+     {
+      "date": "2026-07-15",
+      "fajrDepth": 19.51201901967861,
+      "ishaDepth": 18.455290091153696
+     },
+     {
+      "date": "2026-10-15",
+      "fajrDepth": 19.500099314034507,
+      "ishaDepth": 18.43614427558674
+     }
+    ],
+    "class": "20/18"
+   }
+  },
+  "KAB. MANOKWARI": {
+   "province": "PAPUA BARAT",
+   "city": "KAB. MANOKWARI",
+   "lat": -0.9357239603996277,
+   "lng": 133.8004150390625,
+   "elevation": 11,
+   "tz": "Asia/Jayapura",
+   "sihat": {
+    "file": "data/sihat-2026-manokwari.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 365,
+       "within1": 365,
+       "worst": 0,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 27,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 363,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 33,
+     "ishaSpanMin": 32,
+     "fajrJan1": "04:41",
+     "fajrJul1": "04:45"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 9,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 175,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 3,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 179,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 9,
+         "within1": 149,
+         "worst": 2,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 4,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 206,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 0
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 9,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 170,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 3,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 180,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 10,
+         "within1": 151,
+         "worst": 2,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 4,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 206,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 0
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 7,
+     "max": 9,
+     "med": 8
+    },
+    "isha": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    },
+    "maghrib": {
+     "n": 365,
+     "min": 0,
+     "max": 1,
+     "med": 1
+    }
+   },
+   "highlandCheck": {
+    "elevation": 11,
+    "checks": [
+     {
+      "date": "2026-01-15",
+      "fajrDepth": 19.64239049096109,
+      "ishaDepth": 18.453917062127672
+     },
+     {
+      "date": "2026-04-15",
+      "fajrDepth": 19.60221210358007,
+      "ishaDepth": 18.408623554565064
+     },
+     {
+      "date": "2026-07-15",
+      "fajrDepth": 19.551047439982163,
+      "ishaDepth": 18.49760191612327
+     },
+     {
+      "date": "2026-10-15",
+      "fajrDepth": 19.541015929706166,
+      "ishaDepth": 18.476846420716278
+     }
+    ],
+    "class": "20/18"
+   }
+  },
+  "KOTA SORONG": {
+   "province": "PAPUA BARAT DAYA",
+   "city": "KOTA SORONG",
+   "lat": -0.8734962940216064,
+   "lng": 131.262939453125,
+   "elevation": 8,
+   "tz": "Asia/Jayapura",
+   "sihat": {
+    "file": "data/sihat-2026-sorong.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 362,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 31,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 363,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 32,
+     "ishaSpanMin": 31,
+     "fajrJan1": "04:51",
+     "fajrJul1": "04:55"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 9,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 180,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 263,
+         "worst": 2,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 178,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 6,
+         "within1": 159,
+         "worst": 2,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 3,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 198,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 0
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 9,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 175,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 276,
+         "worst": 2,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 179,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 10,
+         "within1": 154,
+         "worst": 2,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 3,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 193,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 0
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 7,
+     "max": 9,
+     "med": 8
+    },
+    "isha": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    },
+    "maghrib": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": 0
+    }
+   },
+   "highlandCheck": {
+    "elevation": 8,
+    "checks": [
+     {
+      "date": "2026-01-15",
+      "fajrDepth": 19.471369543401323,
+      "ishaDepth": 18.44278215527175
+     },
+     {
+      "date": "2026-04-15",
+      "fajrDepth": 19.38173021641768,
+      "ishaDepth": 18.361415355135755
+     },
+     {
+      "date": "2026-07-15",
+      "fajrDepth": 19.561897071570055,
+      "ishaDepth": 18.439032027519165
+     },
+     {
+      "date": "2026-10-15",
+      "fajrDepth": 19.587647489285704,
+      "ishaDepth": 18.45020834310896
+     }
+    ],
+    "class": "20/18"
+   }
+  },
+  "KAB. JAYAWIJAYA": {
+   "province": "PAPUA PEGUNUNGAN",
+   "city": "KAB. JAYAWIJAYA",
+   "lat": -4.133299827575684,
+   "lng": 138.9333038330078,
+   "elevation": 1668,
+   "tz": "Asia/Jayapura",
+   "sihat": {
+    "file": "data/sihat-2026-jayawijaya.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 364,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 8,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 20,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 8,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 363,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 35,
+     "ishaSpanMin": 33,
+     "fajrJan1": "04:14",
+     "fajrJul1": "04:30"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 9,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 176,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 6,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 186,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 8,
+         "within1": 165,
+         "worst": 2,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 7,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 176,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 0
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 9,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 170,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 6,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 190,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 16,
+         "within1": 174,
+         "worst": 2,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 7,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 183,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 0
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 7,
+     "max": 9,
+     "med": 8
+    },
+    "isha": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": 0
+    },
+    "maghrib": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": 0
+    }
+   },
+   "highlandCheck": {
+    "elevation": 1668,
+    "checks": [
+     {
+      "date": "2026-01-15",
+      "fajrDepth": 19.615739750987778,
+      "ishaDepth": 18.458137932670482
+     },
+     {
+      "date": "2026-04-15",
+      "fajrDepth": 19.50119601706506,
+      "ishaDepth": 18.567022391803658
+     },
+     {
+      "date": "2026-07-15",
+      "fajrDepth": 19.467275870015776,
+      "ishaDepth": 18.423329249464285
+     },
+     {
+      "date": "2026-10-15",
+      "fajrDepth": 19.600037376371084,
+      "ishaDepth": 18.55609125641268
+     }
+    ],
+    "class": "20/18"
+   }
+  },
+  "KAB. MERAUKE": {
+   "province": "PAPUA SELATAN",
+   "city": "KAB. MERAUKE",
+   "lat": -8.48330020904541,
+   "lng": 140.38330078125,
+   "elevation": 5,
+   "tz": "Asia/Jayapura",
+   "sihat": {
+    "file": "data/sihat-2026-merauke.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 363,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 24,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 365,
+       "within1": 365,
+       "worst": 0,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 48,
+     "ishaSpanMin": 41,
+     "fajrJan1": "04:00",
+     "fajrJul1": "04:31"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 9,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 181,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 92,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 191,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 12,
+         "within1": 173,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 79,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 192,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 28
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 9,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 173,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 87,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 185,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 11,
+         "within1": 172,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 97,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 196,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 29
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 7,
+     "max": 9,
+     "med": 8
+    },
+    "isha": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    },
+    "maghrib": {
+     "n": 365,
+     "min": -2,
+     "max": 0,
+     "med": -1
+    }
+   },
+   "highlandCheck": {
+    "elevation": 5,
+    "checks": [
+     {
+      "date": "2026-01-15",
+      "fajrDepth": 19.609957747013333,
+      "ishaDepth": 18.391059322252868
+     },
+     {
+      "date": "2026-04-15",
+      "fajrDepth": 19.42465504115694,
+      "ishaDepth": 18.396409415237404
+     },
+     {
+      "date": "2026-07-15",
+      "fajrDepth": 19.654584100619616,
+      "ishaDepth": 18.516864424739534
+     },
+     {
+      "date": "2026-10-15",
+      "fajrDepth": 19.526805026979204,
+      "ishaDepth": 18.400135677865144
+     }
+    ],
+    "class": "20/18"
+   }
+  },
+  "KAB. NABIRE": {
+   "province": "PAPUA TENGAH",
+   "city": "KAB. NABIRE",
+   "lat": -3.3666999340057373,
+   "lng": 135.48330688476562,
+   "elevation": 12,
+   "tz": "Asia/Jayapura",
+   "sihat": {
+    "file": "data/sihat-2026-nabire.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 362,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 29,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 364,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 35,
+     "ishaSpanMin": 33,
+     "fajrJan1": "04:30",
+     "fajrJul1": "04:43"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 9,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 191,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 178,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 191,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 16,
+         "within1": 158,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 181,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 188,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 51
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 9,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 190,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 178,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 188,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 17,
+         "within1": 163,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 177,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 189,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 55
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 7,
+     "max": 9,
+     "med": 8
+    },
+    "isha": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    },
+    "maghrib": {
+     "n": 365,
+     "min": -2,
+     "max": -1,
+     "med": -1
+    }
+   },
+   "highlandCheck": {
+    "elevation": 12,
+    "checks": [
+     {
+      "date": "2026-01-15",
+      "fajrDepth": 19.655499861130117,
+      "ishaDepth": 18.355418813288026
+     },
+     {
+      "date": "2026-04-15",
+      "fajrDepth": 19.57829860477151,
+      "ishaDepth": 18.497269609573614
+     },
+     {
+      "date": "2026-07-15",
+      "fajrDepth": 19.603523406732467,
+      "ishaDepth": 18.420957187536263
+     },
+     {
+      "date": "2026-10-15",
+      "fajrDepth": 19.442454575456424,
+      "ishaDepth": 18.49596963532631
+     }
+    ],
+    "class": "20/18"
+   }
+  },
+  "KOTA PEKANBARU": {
+   "province": "RIAU",
+   "city": "KOTA PEKANBARU",
+   "lat": 0.5512765645980835,
+   "lng": 101.46572875976562,
+   "elevation": 22,
+   "tz": "Asia/Jakarta",
+   "sihat": {
+    "file": "data/sihat-2026-pekanbaru.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 363,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 29,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 362,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 32,
+     "ishaSpanMin": 31,
+     "fajrJan1": "04:53",
+     "fajrJul1": "04:52"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 7,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 180,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 81,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 195,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 10,
+         "within1": 154,
+         "worst": 2,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 77,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 195,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 21
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 7,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 178,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 81,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 198,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 6,
+         "within1": 139,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 69,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 189,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 22
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 7,
+     "max": 9,
+     "med": 8
+    },
+    "isha": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    },
+    "maghrib": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    }
+   }
+  },
+  "KAB. MAMUJU": {
+   "province": "SULAWESI BARAT",
+   "city": "KAB. MAMUJU",
+   "lat": -2.519697904586792,
+   "lng": 119.34457397460938,
+   "elevation": 20,
+   "tz": "Asia/Makassar",
+   "sihat": {
+    "file": "data/sihat-2026-mamuju.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 364,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 33,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 363,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 34,
+     "ishaSpanMin": 32,
+     "fajrJan1": "04:36",
+     "fajrJul1": "04:46"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 8,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 174,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 180,
+         "worst": 2,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 181,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 17,
+         "within1": 155,
+         "worst": 2,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 3,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 197,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 0
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 8,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 183,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 182,
+         "worst": 2,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 174,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 18,
+         "within1": 152,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 3,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 200,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 0
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 7,
+     "max": 9,
+     "med": 8
+    },
+    "isha": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    },
+    "maghrib": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": 0
+    }
+   }
+  },
+  "KOTA MAKASSAR": {
+   "province": "SULAWESI SELATAN",
+   "city": "KOTA MAKASSAR",
+   "lat": -5.135610103607178,
+   "lng": 119.46389770507812,
+   "elevation": 9,
+   "tz": "Asia/Makassar",
+   "sihat": {
+    "file": "data/sihat-2026-makassar.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 362,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 24,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 362,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 37,
+     "ishaSpanMin": 35,
+     "fajrJan1": "04:30",
+     "fajrJul1": "04:50"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 8,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 186,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 110,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 201,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 12,
+         "within1": 168,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 97,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 202,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 27
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 8,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 182,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 107,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 200,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 12,
+         "within1": 171,
+         "worst": 2,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 93,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 198,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 29
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 7,
+     "max": 9,
+     "med": 8
+    },
+    "isha": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    },
+    "maghrib": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    }
+   }
+  },
+  "KOTA PALU": {
+   "province": "SULAWESI TENGAH",
+   "city": "KOTA PALU",
+   "lat": -0.8369318246841431,
+   "lng": 119.9119644165039,
+   "elevation": 13,
+   "tz": "Asia/Makassar",
+   "sihat": {
+    "file": "data/sihat-2026-palu.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 363,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 32,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 363,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 33,
+     "ishaSpanMin": 31,
+     "fajrJan1": "04:37",
+     "fajrJul1": "04:40"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 8,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 192,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 4,
+         "worst": 3,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 199,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 12,
+         "within1": 165,
+         "worst": 2,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 4,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 169,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 0
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 8,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 187,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 7,
+         "worst": 3,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 201,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 17,
+         "within1": 143,
+         "worst": 2,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 4,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 181,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 0
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 7,
+     "max": 9,
+     "med": 8
+    },
+    "isha": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": 0
+    },
+    "maghrib": {
+     "n": 365,
+     "min": 0,
+     "max": 1,
+     "med": 0
+    }
+   }
+  },
+  "KOTA KENDARI": {
+   "province": "SULAWESI TENGGARA",
+   "city": "KOTA KENDARI",
+   "lat": -3.9977076053619385,
+   "lng": 122.53288269042969,
+   "elevation": 16,
+   "tz": "Asia/Makassar",
+   "sihat": {
+    "file": "data/sihat-2026-kendari.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 363,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 37,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 363,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 35,
+     "ishaSpanMin": 33,
+     "fajrJan1": "04:20",
+     "fajrJul1": "04:35"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 8,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 194,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 94,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 177,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 16,
+         "within1": 156,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 99,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 174,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 22
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 8,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 189,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 105,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 165,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 20,
+         "within1": 144,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 106,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 177,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 16
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 7,
+     "max": 9,
+     "med": 8
+    },
+    "isha": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": 0
+    },
+    "maghrib": {
+     "n": 365,
+     "min": -2,
+     "max": 0,
+     "med": -1
+    }
+   }
+  },
+  "KOTA MANADO": {
+   "province": "SULAWESI UTARA",
+   "city": "KOTA MANADO",
+   "lat": 1.52492094039917,
+   "lng": 124.847900390625,
+   "elevation": 24,
+   "tz": "Asia/Makassar",
+   "sihat": {
+    "file": "data/sihat-2026-manado.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 363,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 28,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 363,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 31,
+     "ishaSpanMin": 31,
+     "fajrJan1": "04:21",
+     "fajrJul1": "04:16"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 8,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 181,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 116,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 180,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 8,
+         "within1": 153,
+         "worst": 2,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 127,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 187,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 27
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 8,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 169,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 116,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 174,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 3,
+         "within1": 157,
+         "worst": 2,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 116,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 194,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 27
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 7,
+     "max": 9,
+     "med": 8
+    },
+    "isha": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    },
+    "maghrib": {
+     "n": 365,
+     "min": -2,
+     "max": -1,
+     "med": -1
+    }
+   }
+  },
+  "KOTA PADANG": {
+   "province": "SUMATERA BARAT",
+   "city": "KOTA PADANG",
+   "lat": -0.8988718390464783,
+   "lng": 100.4376449584961,
+   "elevation": 6,
+   "tz": "Asia/Jakarta",
+   "sihat": {
+    "file": "data/sihat-2026-padang.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 364,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 39,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 363,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 33,
+     "ishaSpanMin": 31,
+     "fajrJan1": "04:55",
+     "fajrJul1": "04:58"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 7,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 181,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 3,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 192,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 13,
+         "within1": 160,
+         "worst": 2,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 4,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 176,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 0
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 7,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 188,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 3,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 187,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 17,
+         "within1": 166,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 4,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 170,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 0
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 7,
+     "max": 9,
+     "med": 8
+    },
+    "isha": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": 0
+    },
+    "maghrib": {
+     "n": 365,
+     "min": 0,
+     "max": 1,
+     "med": 1
+    }
+   }
+  },
+  "KOTA PALEMBANG": {
+   "province": "SUMATERA SELATAN",
+   "city": "KOTA PALEMBANG",
+   "lat": -2.97171950340271,
+   "lng": 104.74131774902344,
+   "elevation": 19,
+   "tz": "Asia/Jakarta",
+   "sihat": {
+    "file": "data/sihat-2026-palembang.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 361,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 35,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 364,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 34,
+     "ishaSpanMin": 33,
+     "fajrJan1": "04:33",
+     "fajrJul1": "04:45"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 7,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 177,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 39,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 183,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 19,
+         "within1": 164,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 41,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 191,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 9
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 7,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 179,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 48,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 184,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 11,
+         "within1": 147,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 52,
+         "worst": 2,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 193,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 13
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 7,
+     "max": 9,
+     "med": 8
+    },
+    "isha": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    },
+    "maghrib": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    }
+   }
+  },
+  "KOTA MEDAN": {
+   "province": "SUMATERA UTARA",
+   "city": "KOTA MEDAN",
+   "lat": 3.6290409564971924,
+   "lng": 98.66719818115234,
+   "elevation": 31,
+   "tz": "Asia/Jakarta",
+   "sihat": {
+    "file": "data/sihat-2026-medan.json",
+    "rows": 365,
+    "recipe": "Kemenag SIHAT 20/18 +2.0 ihtyati, floor",
+    "fit2026": {
+     "n": 365,
+     "scores": {
+      "fajr": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 365,
+       "within1": 365,
+       "worst": 0,
+       "n": 365
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 32,
+       "worst": 3,
+       "n": 365
+      },
+      "maghrib": {
+       "margin": 0,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 3,
+       "n": 365
+      },
+      "isha": {
+       "margin": 2,
+       "mode": "floor",
+       "exact": 364,
+       "within1": 365,
+       "worst": 1,
+       "n": 365
+      }
+     },
+     "allSixWithin1": 0
+    },
+    "amplitude": {
+     "fajrSpanMin": 31,
+     "ishaSpanMin": 35,
+     "fajrJan1": "05:10",
+     "fajrJul1": "04:57"
+    }
+   },
+   "khgt": {
+    "years": {
+     "2026": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 7,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 185,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 344,
+         "worst": 2,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 196,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 9,
+         "within1": 151,
+         "worst": 2,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 3,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 185,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 0
+      }
+     },
+     "2027": {
+      "rows": 365,
+      "recipe": "KHGT 18/18 +1.0, ceil",
+      "tzMeta": 7,
+      "fit": {
+       "n": 365,
+       "scores": {
+        "fajr": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 187,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        },
+        "sunrise": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 347,
+         "worst": 2,
+         "n": 365
+        },
+        "dhuhr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 197,
+         "worst": 2,
+         "n": 365
+        },
+        "asr": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 11,
+         "within1": 145,
+         "worst": 3,
+         "n": 365
+        },
+        "maghrib": {
+         "margin": 0,
+         "mode": "ceil",
+         "exact": 0,
+         "within1": 0,
+         "worst": 3,
+         "n": 365
+        },
+        "isha": {
+         "margin": 1,
+         "mode": "ceil",
+         "exact": 189,
+         "within1": 365,
+         "worst": 1,
+         "n": 365
+        }
+       },
+       "allSixWithin1": 0
+      }
+     }
+    }
+   },
+   "gap": {
+    "n": 365,
+    "fajr": {
+     "n": 365,
+     "min": 7,
+     "max": 9,
+     "med": 8
+    },
+    "isha": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    },
+    "maghrib": {
+     "n": 365,
+     "min": -1,
+     "max": 0,
+     "med": -1
+    }
+   }
+  }
+ }
+}

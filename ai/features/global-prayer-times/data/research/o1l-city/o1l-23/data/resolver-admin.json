@@ -1,0 +1,1008 @@
+{
+ "İstanbul": [
+  {
+   "district": "Arnavutköy",
+   "ilce": 9541,
+   "result": "ok"
+  },
+  {
+   "district": "Avcılar",
+   "ilce": 17865,
+   "result": "ok"
+  },
+  {
+   "district": "Bağcılar",
+   "ilce": 9541,
+   "result": "ok"
+  },
+  {
+   "district": "Bahçelievler",
+   "ilce": 9541,
+   "result": "ok"
+  },
+  {
+   "district": "Bakırköy",
+   "ilce": 9541,
+   "result": "ok"
+  },
+  {
+   "district": "Başakşehir",
+   "ilce": 17866,
+   "result": "ok"
+  },
+  {
+   "district": "Bayrampaşa",
+   "ilce": 9541,
+   "result": "ok"
+  },
+  {
+   "district": "Beşiktaş",
+   "ilce": 9541,
+   "result": "ok"
+  },
+  {
+   "district": "Beylikdüzü",
+   "ilce": 9536,
+   "result": "ok"
+  },
+  {
+   "district": "Beyoğlu",
+   "ilce": 9541,
+   "result": "ok"
+  },
+  {
+   "district": "Büyükçekmece",
+   "ilce": 9537,
+   "result": "ok"
+  },
+  {
+   "district": "Çatalca",
+   "ilce": 9538,
+   "result": "ok"
+  },
+  {
+   "district": "Esenler",
+   "ilce": 9541,
+   "result": "ok"
+  },
+  {
+   "district": "Esenyurt",
+   "ilce": 9540,
+   "result": "ok"
+  },
+  {
+   "district": "Eyüpsultan",
+   "ilce": 9541,
+   "result": "ok"
+  },
+  {
+   "district": "Fatih",
+   "ilce": 9541,
+   "result": "ok"
+  },
+  {
+   "district": "Gaziosmanpaşa",
+   "ilce": 9541,
+   "result": "ok"
+  },
+  {
+   "district": "Güngören",
+   "ilce": 9541,
+   "result": "ok"
+  },
+  {
+   "district": "Kâğıthane",
+   "ilce": 9541,
+   "result": "ok"
+  },
+  {
+   "district": "Küçükçekmece",
+   "ilce": 9543,
+   "result": "ok"
+  },
+  {
+   "district": "Sarıyer",
+   "ilce": 9541,
+   "result": "ok"
+  },
+  {
+   "district": "Silivri",
+   "ilce": 9548,
+   "result": "ok"
+  },
+  {
+   "district": "Sultangazi",
+   "ilce": 9550,
+   "result": "ok"
+  },
+  {
+   "district": "Şişli",
+   "ilce": 9541,
+   "result": "ok"
+  },
+  {
+   "district": "Zeytinburnu",
+   "ilce": 9541,
+   "result": "ok"
+  },
+  {
+   "district": "Adalar",
+   "ilce": 9541,
+   "result": "ok"
+  },
+  {
+   "district": "Ataşehir",
+   "ilce": 9541,
+   "result": "ok"
+  },
+  {
+   "district": "Beykoz",
+   "ilce": 9541,
+   "result": "ok"
+  },
+  {
+   "district": "Çekmeköy",
+   "ilce": 9539,
+   "result": "ok"
+  },
+  {
+   "district": "Kadıköy",
+   "ilce": 9541,
+   "result": "ok"
+  },
+  {
+   "district": "Kartal",
+   "ilce": 9542,
+   "result": "ok"
+  },
+  {
+   "district": "Maltepe",
+   "ilce": 9544,
+   "result": "ok"
+  },
+  {
+   "district": "Pendik",
+   "ilce": 9545,
+   "result": "ok"
+  },
+  {
+   "district": "Sancaktepe",
+   "ilce": 9546,
+   "result": "ok"
+  },
+  {
+   "district": "Sultanbeyli",
+   "ilce": 9549,
+   "result": "ok"
+  },
+  {
+   "district": "Şile",
+   "ilce": 9547,
+   "result": "ok"
+  },
+  {
+   "district": "Tuzla",
+   "ilce": 9551,
+   "result": "ok"
+  },
+  {
+   "district": "Ümraniye",
+   "ilce": 9541,
+   "result": "ok"
+  },
+  {
+   "district": "Üsküdar",
+   "ilce": 9541,
+   "result": "ok"
+  }
+ ],
+ "Ankara": [
+  {
+   "district": "Akyurt",
+   "ilce": 9205,
+   "result": "ok"
+  },
+  {
+   "district": "Altındağ",
+   "ilce": 9206,
+   "result": "ok"
+  },
+  {
+   "district": "Ayaş",
+   "ilce": 9207,
+   "result": "ok"
+  },
+  {
+   "district": "Balâ",
+   "ilce": 9206,
+   "result": "ok"
+  },
+  {
+   "district": "Beypazarı",
+   "ilce": 9209,
+   "result": "ok"
+  },
+  {
+   "district": "Çamlıdere",
+   "ilce": 9210,
+   "result": "ok"
+  },
+  {
+   "district": "Çankaya",
+   "ilce": 9206,
+   "result": "ok"
+  },
+  {
+   "district": "Çubuk",
+   "ilce": 9206,
+   "result": "ok"
+  },
+  {
+   "district": "Elmadağ",
+   "ilce": 9212,
+   "result": "ok"
+  },
+  {
+   "district": "Etimesgut",
+   "ilce": 9206,
+   "result": "ok"
+  },
+  {
+   "district": "Evren",
+   "ilce": 9213,
+   "result": "ok"
+  },
+  {
+   "district": "Gölbaşı",
+   "ilce": 9206,
+   "result": "ok"
+  },
+  {
+   "district": "Güdül",
+   "ilce": 9214,
+   "result": "ok"
+  },
+  {
+   "district": "Haymana",
+   "ilce": 9215,
+   "result": "ok"
+  },
+  {
+   "district": "Kahramankazan",
+   "ilce": 9217,
+   "result": "ok"
+  },
+  {
+   "district": "Kalecik",
+   "ilce": 9216,
+   "result": "ok"
+  },
+  {
+   "district": "Keçiören",
+   "ilce": 9206,
+   "result": "ok"
+  },
+  {
+   "district": "Kızılcahamam",
+   "ilce": 9218,
+   "result": "ok"
+  },
+  {
+   "district": "Mamak",
+   "ilce": 9206,
+   "result": "ok"
+  },
+  {
+   "district": "Nallıhan",
+   "ilce": 9219,
+   "result": "ok"
+  },
+  {
+   "district": "Polatlı",
+   "ilce": 9220,
+   "result": "ok"
+  },
+  {
+   "district": "Pursaklar",
+   "ilce": 9206,
+   "result": "ok"
+  },
+  {
+   "district": "Sincan",
+   "ilce": 9206,
+   "result": "ok"
+  },
+  {
+   "district": "Şereflikoçhisar",
+   "ilce": 9221,
+   "result": "ok"
+  },
+  {
+   "district": "Yenimahalle",
+   "ilce": 9206,
+   "result": "ok"
+  }
+ ],
+ "İzmir": [
+  {
+   "district": "Aliağa",
+   "ilce": 9552,
+   "result": "ok"
+  },
+  {
+   "district": "Balçova",
+   "ilce": 9560,
+   "result": "ok"
+  },
+  {
+   "district": "Bayındır",
+   "ilce": 9553,
+   "result": "ok"
+  },
+  {
+   "district": "Bayraklı",
+   "ilce": 9560,
+   "result": "ok"
+  },
+  {
+   "district": "Bergama",
+   "ilce": 9554,
+   "result": "ok"
+  },
+  {
+   "district": "Beydağ",
+   "ilce": 9555,
+   "result": "ok"
+  },
+  {
+   "district": "Bornova",
+   "ilce": 9560,
+   "result": "ok"
+  },
+  {
+   "district": "Buca",
+   "ilce": 9560,
+   "result": "ok"
+  },
+  {
+   "district": "Çeşme",
+   "ilce": 9560,
+   "result": "ok"
+  },
+  {
+   "district": "Çiğli",
+   "ilce": 9560,
+   "result": "ok"
+  },
+  {
+   "district": "Dikili",
+   "ilce": 9557,
+   "result": "ok"
+  },
+  {
+   "district": "Foça",
+   "ilce": 9558,
+   "result": "ok"
+  },
+  {
+   "district": "Gaziemir",
+   "ilce": 9560,
+   "result": "ok"
+  },
+  {
+   "district": "Güzelbahçe",
+   "ilce": 9559,
+   "result": "ok"
+  },
+  {
+   "district": "Karabağlar",
+   "ilce": 9560,
+   "result": "ok"
+  },
+  {
+   "district": "Karaburun",
+   "ilce": 9561,
+   "result": "ok"
+  },
+  {
+   "district": "Karşıyaka",
+   "ilce": 9560,
+   "result": "ok"
+  },
+  {
+   "district": "Kemalpaşa",
+   "ilce": 9562,
+   "result": "ok"
+  },
+  {
+   "district": "Kınık",
+   "ilce": 9563,
+   "result": "ok"
+  },
+  {
+   "district": "Kiraz",
+   "ilce": 9564,
+   "result": "ok"
+  },
+  {
+   "district": "Konak",
+   "ilce": 9560,
+   "result": "ok"
+  },
+  {
+   "district": "Menderes",
+   "ilce": 17868,
+   "result": "ok"
+  },
+  {
+   "district": "Menemen",
+   "ilce": 17869,
+   "result": "ok"
+  },
+  {
+   "district": "Narlıdere",
+   "ilce": 9560,
+   "result": "ok"
+  },
+  {
+   "district": "Ödemiş",
+   "ilce": 9565,
+   "result": "ok"
+  },
+  {
+   "district": "Seferihisar",
+   "ilce": 9560,
+   "result": "ok"
+  },
+  {
+   "district": "Selçuk",
+   "ilce": 9567,
+   "result": "ok"
+  },
+  {
+   "district": "Tire",
+   "ilce": 9568,
+   "result": "ok"
+  },
+  {
+   "district": "Torbalı",
+   "ilce": 9569,
+   "result": "ok"
+  },
+  {
+   "district": "Urla",
+   "ilce": 9570,
+   "result": "ok"
+  }
+ ],
+ "Konya": [
+  {
+   "district": "Ahırlı",
+   "ilce": 9656,
+   "result": "ok"
+  },
+  {
+   "district": "Akören",
+   "ilce": 9657,
+   "result": "ok"
+  },
+  {
+   "district": "Akşehir",
+   "ilce": 9658,
+   "result": "ok"
+  },
+  {
+   "district": "Altınekin",
+   "ilce": 9659,
+   "result": "ok"
+  },
+  {
+   "district": "Beyşehir",
+   "ilce": 9660,
+   "result": "ok"
+  },
+  {
+   "district": "Bozkır",
+   "ilce": 9661,
+   "result": "ok"
+  },
+  {
+   "district": "Cihanbeyli",
+   "ilce": 9663,
+   "result": "ok"
+  },
+  {
+   "district": "Çeltik",
+   "ilce": 9662,
+   "result": "ok"
+  },
+  {
+   "district": "Çumra",
+   "ilce": 9664,
+   "result": "ok"
+  },
+  {
+   "district": "Derbent",
+   "ilce": 9665,
+   "result": "ok"
+  },
+  {
+   "district": "Derebucak",
+   "ilce": 9666,
+   "result": "ok"
+  },
+  {
+   "district": "Doğanhisar",
+   "ilce": 9667,
+   "result": "ok"
+  },
+  {
+   "district": "Emirgazi",
+   "ilce": 9668,
+   "result": "ok"
+  },
+  {
+   "district": "Ereğli",
+   "ilce": 9669,
+   "result": "ok"
+  },
+  {
+   "district": "Güneysınır",
+   "ilce": 9670,
+   "result": "ok"
+  },
+  {
+   "district": "Hadim",
+   "ilce": 16704,
+   "result": "ok"
+  },
+  {
+   "district": "Halkapınar",
+   "ilce": 9671,
+   "result": "ok"
+  },
+  {
+   "district": "Hüyük",
+   "ilce": 9672,
+   "result": "ok"
+  },
+  {
+   "district": "Ilgın",
+   "ilce": 9673,
+   "result": "ok"
+  },
+  {
+   "district": "Kadınhanı",
+   "ilce": 9674,
+   "result": "ok"
+  },
+  {
+   "district": "Karapınar",
+   "ilce": 9675,
+   "result": "ok"
+  },
+  {
+   "district": "Karatay",
+   "ilce": 17872,
+   "result": "ok"
+  },
+  {
+   "district": "Kulu",
+   "ilce": 9677,
+   "result": "ok"
+  },
+  {
+   "district": "Meram",
+   "ilce": 17870,
+   "result": "ok"
+  },
+  {
+   "district": "Sarayönü",
+   "ilce": 17874,
+   "result": "ok"
+  },
+  {
+   "district": "Selçuklu",
+   "ilce": 17871,
+   "result": "ok"
+  },
+  {
+   "district": "Seydişehir",
+   "ilce": 9678,
+   "result": "ok"
+  },
+  {
+   "district": "Taşkent",
+   "ilce": 17873,
+   "result": "ok"
+  },
+  {
+   "district": "Tuzlukçu",
+   "ilce": 9679,
+   "result": "ok"
+  },
+  {
+   "district": "Yalıhüyük",
+   "ilce": 9680,
+   "result": "ok"
+  },
+  {
+   "district": "Yunak",
+   "ilce": 9681,
+   "result": "ok"
+  }
+ ],
+ "Bursa": [
+  {
+   "district": "Büyükorhan",
+   "ilce": 9335,
+   "result": "ok"
+  },
+  {
+   "district": "Gemlik",
+   "ilce": 9337,
+   "result": "ok"
+  },
+  {
+   "district": "Gürsu",
+   "ilce": 9335,
+   "result": "ok"
+  },
+  {
+   "district": "Harmancık",
+   "ilce": 9338,
+   "result": "ok"
+  },
+  {
+   "district": "İnegöl",
+   "ilce": 9339,
+   "result": "ok"
+  },
+  {
+   "district": "İznik",
+   "ilce": 9340,
+   "result": "ok"
+  },
+  {
+   "district": "Karacabey",
+   "ilce": 9341,
+   "result": "ok"
+  },
+  {
+   "district": "Keles",
+   "ilce": 9342,
+   "result": "ok"
+  },
+  {
+   "district": "Kestel",
+   "ilce": 17893,
+   "result": "ok"
+  },
+  {
+   "district": "Mudanya",
+   "ilce": 9343,
+   "result": "ok"
+  },
+  {
+   "district": "Mustafakemalpaşa",
+   "ilce": 9335,
+   "result": "ok"
+  },
+  {
+   "district": "Nilüfer",
+   "ilce": 9335,
+   "result": "ok"
+  },
+  {
+   "district": "Orhaneli",
+   "ilce": 17894,
+   "result": "ok"
+  },
+  {
+   "district": "Orhangazi",
+   "ilce": 9345,
+   "result": "ok"
+  },
+  {
+   "district": "Osmangazi",
+   "ilce": 9335,
+   "result": "ok"
+  },
+  {
+   "district": "Yenişehir",
+   "ilce": 9346,
+   "result": "ok"
+  },
+  {
+   "district": "Yıldırım",
+   "ilce": 9335,
+   "result": "ok"
+  }
+ ],
+ "Antalya": [
+  {
+   "district": "Akseki",
+   "ilce": 9222,
+   "result": "ok"
+  },
+  {
+   "district": "Aksu",
+   "ilce": 9223,
+   "result": "ok"
+  },
+  {
+   "district": "Alanya",
+   "ilce": 9224,
+   "result": "ok"
+  },
+  {
+   "district": "Demre",
+   "ilce": 9226,
+   "result": "ok"
+  },
+  {
+   "district": "Döşemealtı",
+   "ilce": 9225,
+   "result": "ok"
+  },
+  {
+   "district": "Elmalı",
+   "ilce": 9227,
+   "result": "ok"
+  },
+  {
+   "district": "Finike",
+   "ilce": 9228,
+   "result": "ok"
+  },
+  {
+   "district": "Gazipaşa",
+   "ilce": 9229,
+   "result": "ok"
+  },
+  {
+   "district": "Gündoğmuş",
+   "ilce": 9230,
+   "result": "ok"
+  },
+  {
+   "district": "İbradı",
+   "ilce": 9231,
+   "result": "ok"
+  },
+  {
+   "district": "Kaş",
+   "ilce": 9232,
+   "result": "ok"
+  },
+  {
+   "district": "Kemer",
+   "ilce": 9233,
+   "result": "ok"
+  },
+  {
+   "district": "Kepez",
+   "ilce": 9225,
+   "result": "ok"
+  },
+  {
+   "district": "Konyaaltı",
+   "ilce": 9225,
+   "result": "ok"
+  },
+  {
+   "district": "Korkuteli",
+   "ilce": 9234,
+   "result": "ok"
+  },
+  {
+   "district": "Kumluca",
+   "ilce": 9235,
+   "result": "ok"
+  },
+  {
+   "district": "Manavgat",
+   "ilce": 9236,
+   "result": "ok"
+  },
+  {
+   "district": "Muratpaşa",
+   "ilce": 9225,
+   "result": "ok"
+  },
+  {
+   "district": "Serik",
+   "ilce": 9237,
+   "result": "ok"
+  }
+ ],
+ "Diyarbakır": [
+  {
+   "district": "Bağlar",
+   "ilce": 9402,
+   "result": "ok"
+  },
+  {
+   "district": "Bismil",
+   "ilce": 9397,
+   "result": "ok"
+  },
+  {
+   "district": "Çermik",
+   "ilce": 9398,
+   "result": "ok"
+  },
+  {
+   "district": "Çınar",
+   "ilce": 9399,
+   "result": "ok"
+  },
+  {
+   "district": "Çüngüş",
+   "ilce": 9400,
+   "result": "ok"
+  },
+  {
+   "district": "Dicle",
+   "ilce": 9401,
+   "result": "ok"
+  },
+  {
+   "district": "Eğil",
+   "ilce": 9403,
+   "result": "ok"
+  },
+  {
+   "district": "Ergani",
+   "ilce": 9404,
+   "result": "ok"
+  },
+  {
+   "district": "Hani",
+   "ilce": 9405,
+   "result": "ok"
+  },
+  {
+   "district": "Hazro",
+   "ilce": 9406,
+   "result": "ok"
+  },
+  {
+   "district": "Kayapınar",
+   "ilce": 9402,
+   "result": "ok"
+  },
+  {
+   "district": "Kocaköy",
+   "ilce": 9407,
+   "result": "ok"
+  },
+  {
+   "district": "Kulp",
+   "ilce": 9408,
+   "result": "ok"
+  },
+  {
+   "district": "Lice",
+   "ilce": 9409,
+   "result": "ok"
+  },
+  {
+   "district": "Silvan",
+   "ilce": 9410,
+   "result": "ok"
+  },
+  {
+   "district": "Sur",
+   "ilce": 9402,
+   "result": "ok"
+  },
+  {
+   "district": "Yenişehir",
+   "ilce": 9402,
+   "result": "ok"
+  }
+ ],
+ "Erzurum": [
+  {
+   "district": "Aşkale",
+   "ilce": 9448,
+   "result": "ok"
+  },
+  {
+   "district": "Aziziye",
+   "ilce": 9449,
+   "result": "ok"
+  },
+  {
+   "district": "Çat",
+   "ilce": 9450,
+   "result": "ok"
+  },
+  {
+   "district": "Hınıs",
+   "ilce": 9452,
+   "result": "ok"
+  },
+  {
+   "district": "Horasan",
+   "ilce": 9453,
+   "result": "ok"
+  },
+  {
+   "district": "İspir",
+   "ilce": 9454,
+   "result": "ok"
+  },
+  {
+   "district": "Karaçoban",
+   "ilce": 9455,
+   "result": "ok"
+  },
+  {
+   "district": "Karayazı",
+   "ilce": 9456,
+   "result": "ok"
+  },
+  {
+   "district": "Köprüköy",
+   "ilce": 9457,
+   "result": "ok"
+  },
+  {
+   "district": "Narman",
+   "ilce": 9458,
+   "result": "ok"
+  },
+  {
+   "district": "Oltu",
+   "ilce": 9459,
+   "result": "ok"
+  },
+  {
+   "district": "Olur",
+   "ilce": 9460,
+   "result": "ok"
+  },
+  {
+   "district": "Palandöken",
+   "ilce": 9451,
+   "result": "ok"
+  },
+  {
+   "district": "Pasinler",
+   "ilce": 9461,
+   "result": "ok"
+  },
+  {
+   "district": "Pazaryolu",
+   "ilce": 9462,
+   "result": "ok"
+  },
+  {
+   "district": "Şenkaya",
+   "ilce": 9463,
+   "result": "ok"
+  },
+  {
+   "district": "Tekman",
+   "ilce": 9464,
+   "result": "ok"
+  },
+  {
+   "district": "Tortum",
+   "ilce": 9465,
+   "result": "ok"
+  },
+  {
+   "district": "Uzundere",
+   "ilce": 9466,
+   "result": "ok"
+  },
+  {
+   "district": "Yakutiye",
+   "ilce": 9451,
+   "result": "ok"
+  }
+ ]
+}

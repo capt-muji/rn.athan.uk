@@ -1,0 +1,5816 @@
+{
+ "banda-aceh": {
+  "elevation_ref": 8,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 364,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 248,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 294,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 269,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 363,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 197,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 284,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 193,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 218,
+    "w1": 361,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 298,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 187,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 200,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 279,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 185,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 208,
+    "w1": 362,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 283,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 190,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "denpasar": {
+  "elevation_ref": 25,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 363,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 265,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 363,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 295,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 267,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 364,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 195,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 352,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 193,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 191,
+    "w1": 349,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 355,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 184,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 195,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 347,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 193,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 186,
+    "w1": 352,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 361,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 191,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "serang": {
+  "elevation_ref": 29,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 363,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 259,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 364,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 303,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 252,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 363,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 183,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 298,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 197,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 189,
+    "w1": 352,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 307,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 191,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 183,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 305,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 195,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 184,
+    "w1": 348,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 295,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 195,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "bengkulu": {
+  "elevation_ref": 17,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 364,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 250,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 305,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 226,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 361,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 191,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 328,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 185,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 210,
+    "w1": 356,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 301,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 185,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 197,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 330,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 186,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 215,
+    "w1": 351,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 313,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 186,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "yogyakarta": {
+  "elevation_ref": 116,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 364,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 250,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 364,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 304,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 247,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 362,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 186,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -2,
+    "exact": 273,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 184,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 198,
+    "w1": 350,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 263,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 206,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 191,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -2,
+    "exact": 221,
+    "w1": 330,
+    "worst": 2,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 185,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 191,
+    "w1": 348,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 227,
+    "w1": 335,
+    "worst": 2,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 203,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "jakarta-pusat": {
+  "elevation_ref": 6,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 364,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 249,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 363,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 292,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 236,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 361,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 189,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 321,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 190,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 198,
+    "w1": 345,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 303,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 208,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 191,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 327,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 190,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 216,
+    "w1": 352,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 325,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 207,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "gorontalo": {
+  "elevation_ref": 8,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 364,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 259,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 311,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 254,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 360,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 195,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 284,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 184,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 204,
+    "w1": 350,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 273,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 190,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 195,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 291,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 183,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 206,
+    "w1": 354,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 279,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 191,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "jambi": {
+  "elevation_ref": 22,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 269,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 364,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 306,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 253,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 364,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 183,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 343,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 184,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 211,
+    "w1": 353,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 356,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 191,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 183,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 346,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 189,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 214,
+    "w1": 359,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 348,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 195,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "bandung": {
+  "elevation_ref": 720,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -6,
+    "exact": 43,
+    "w1": 351,
+    "worst": 2,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 295,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 7,
+    "exact": 311,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 362,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 183,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -4,
+    "exact": 274,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 192,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 176,
+    "w1": 351,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 5,
+    "exact": 259,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 196,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 184,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -4,
+    "exact": 278,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 190,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 181,
+    "w1": 347,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 5,
+    "exact": 251,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 200,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "semarang": {
+  "elevation_ref": 5,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 264,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 363,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 283,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 274,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 363,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 188,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 270,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 201,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 184,
+    "w1": 350,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 277,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 198,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 188,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 264,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 191,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 191,
+    "w1": 349,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 276,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 192,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "surabaya": {
+  "elevation_ref": 9,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 361,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 264,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 302,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 259,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 200,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 338,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 191,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 205,
+    "w1": 347,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 336,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 201,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 207,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 351,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 197,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 208,
+    "w1": 351,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 327,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 205,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "pontianak": {
+  "elevation_ref": 3,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 252,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 364,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 284,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 240,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 363,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 198,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 297,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 190,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 205,
+    "w1": 352,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 279,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 197,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 195,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 301,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 189,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 212,
+    "w1": 347,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 287,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 189,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "banjarmasin": {
+  "elevation_ref": 10,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 363,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 249,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 310,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 261,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 362,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 193,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": 0,
+    "exact": 191,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 188,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 205,
+    "w1": 354,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 189,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 196,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 196,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": 0,
+    "exact": 189,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 192,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 209,
+    "w1": 357,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 187,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 189,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "palangkaraya": {
+  "elevation_ref": 16,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 363,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 262,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 299,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 260,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 364,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 193,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 348,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 190,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 219,
+    "w1": 353,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 345,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 189,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 193,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 348,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 190,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 217,
+    "w1": 359,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 344,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 183,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "samarinda": {
+  "elevation_ref": 4,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 362,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 268,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 364,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 310,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 253,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 360,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 192,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 249,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 189,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 213,
+    "w1": 346,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 258,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 206,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 193,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 273,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 188,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 204,
+    "w1": 357,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 255,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 204,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "bulungan": {
+  "elevation_ref": 7,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 259,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 310,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 250,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 361,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 190,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 292,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 189,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 211,
+    "w1": 358,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 288,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 184,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 189,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 287,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 203,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 223,
+    "w1": 354,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 295,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 190,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "pangkal-pinang": {
+  "elevation_ref": 7,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 364,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 249,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 308,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 246,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 364,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 184,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 313,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 184,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 208,
+    "w1": 347,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 306,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 188,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 184,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 293,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 185,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 216,
+    "w1": 353,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 300,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 185,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "tanjung-pinang": {
+  "elevation_ref": 9,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 363,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 255,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 305,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 254,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 183,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 341,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 187,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 207,
+    "w1": 355,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 326,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 192,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 190,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 339,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 187,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 205,
+    "w1": 352,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 330,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 191,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "bandar-lampung": {
+  "elevation_ref": 98,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 363,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 272,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 283,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 253,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 192,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -2,
+    "exact": 271,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 185,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 185,
+    "w1": 350,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 248,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 184,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 186,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -2,
+    "exact": 269,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 185,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 186,
+    "w1": 347,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 256,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 193,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "ambon": {
+  "elevation_ref": 10,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 364,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 258,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 318,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 265,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 359,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 188,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 230,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 190,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 195,
+    "w1": 360,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 243,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 186,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 184,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 229,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 190,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 202,
+    "w1": 348,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 244,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 195,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "ternate": {
+  "elevation_ref": 9,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 254,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 317,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 256,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 363,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 197,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": 0,
+    "exact": 184,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 191,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 213,
+    "w1": 349,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 189,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 188,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 193,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": 0,
+    "exact": 191,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 189,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 229,
+    "w1": 356,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 190,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 195,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "mataram": {
+  "elevation_ref": 16,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 362,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 262,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 312,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 269,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 363,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 189,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 355,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 185,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 179,
+    "w1": 352,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 363,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 201,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 191,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 349,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 185,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 191,
+    "w1": 347,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 360,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 204,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "kupang": {
+  "elevation_ref": 14,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 363,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 254,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 305,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 269,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 364,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 194,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -2,
+    "exact": 271,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 186,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 177,
+    "w1": 354,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 274,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 189,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 190,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -2,
+    "exact": 270,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 186,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 182,
+    "w1": 353,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 274,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 186,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "jayapura": {
+  "elevation_ref": 19,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 364,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 252,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 333,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 258,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 364,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 195,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 282,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 186,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 213,
+    "w1": 357,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 277,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 189,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 197,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 284,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 186,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 205,
+    "w1": 360,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 283,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 185,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "manokwari": {
+  "elevation_ref": 11,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 260,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 317,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 252,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 363,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 190,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 183,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 186,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 216,
+    "w1": 356,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 192,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 206,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 195,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 183,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 185,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 214,
+    "w1": 355,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 186,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 206,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "sorong": {
+  "elevation_ref": 8,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 362,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 267,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 362,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 310,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 248,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 363,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 185,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 263,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 187,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 206,
+    "w1": 359,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 278,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 198,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 190,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 276,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 186,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 211,
+    "w1": 355,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 267,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 193,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "jayawijaya": {
+  "elevation_ref": 1668,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 364,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -6,
+    "exact": 58,
+    "w1": 359,
+    "worst": 2,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 364,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 319,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 7,
+    "exact": 305,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 363,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 189,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -6,
+    "exact": 194,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 186,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 200,
+    "w1": 357,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 7,
+    "exact": 198,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 189,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 195,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -6,
+    "exact": 206,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 190,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 191,
+    "w1": 349,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 7,
+    "exact": 206,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 183,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "merauke": {
+  "elevation_ref": 5,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 363,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 258,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 318,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 277,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 184,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 273,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 191,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 184,
+    "w1": 353,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 286,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 192,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 192,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 278,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 185,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 188,
+    "w1": 354,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 268,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 196,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "nabire": {
+  "elevation_ref": 12,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 362,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 241,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 313,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 254,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 364,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 191,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 187,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 191,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 206,
+    "w1": 349,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 184,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 188,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 190,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 187,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 188,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 200,
+    "w1": 348,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 188,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 189,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "pekanbaru": {
+  "elevation_ref": 22,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 363,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 233,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 305,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 251,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 362,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 185,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 284,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 195,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 211,
+    "w1": 355,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 288,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 195,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 187,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 284,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 198,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 225,
+    "w1": 359,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 296,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 189,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "mamuju": {
+  "elevation_ref": 20,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 364,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 255,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 364,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 310,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 261,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 363,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 191,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -2,
+    "exact": 185,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 184,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 210,
+    "w1": 348,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 189,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 197,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 183,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -2,
+    "exact": 183,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 191,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 212,
+    "w1": 347,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 189,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 200,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "makassar": {
+  "elevation_ref": 9,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 362,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 237,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 318,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 258,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 362,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 186,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 255,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 201,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 194,
+    "w1": 353,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 268,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 202,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 183,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 258,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 200,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 194,
+    "w1": 353,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 272,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 198,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "palu": {
+  "elevation_ref": 13,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 363,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 250,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 364,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 306,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 268,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 363,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 192,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -2,
+    "exact": 336,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 199,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 200,
+    "w1": 353,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 351,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 196,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 187,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -2,
+    "exact": 345,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 201,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 222,
+    "w1": 348,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 344,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 184,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "kendari": {
+  "elevation_ref": 16,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 363,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 268,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 303,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 266,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 363,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 194,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 271,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 188,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 207,
+    "w1": 349,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 266,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 191,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 189,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 260,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 200,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 219,
+    "w1": 345,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 259,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 188,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "manado": {
+  "elevation_ref": 24,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 363,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 245,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 312,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 240,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 363,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 184,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 249,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 185,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 212,
+    "w1": 357,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 238,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 187,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 196,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 249,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 191,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 208,
+    "w1": 362,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 249,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 194,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "padang": {
+  "elevation_ref": 6,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 364,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 247,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 288,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 257,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 363,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 184,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 214,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 192,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 205,
+    "w1": 352,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 4,
+    "exact": 222,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 189,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 188,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 210,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 187,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 197,
+    "w1": 348,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 4,
+    "exact": 229,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 195,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "palembang": {
+  "elevation_ref": 19,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 361,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 266,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 364,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 301,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 263,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 364,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 188,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 326,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 183,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 200,
+    "w1": 346,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 324,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 191,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 186,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 317,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 184,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 216,
+    "w1": 354,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 313,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 193,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ },
+ "medan": {
+  "elevation_ref": 31,
+  "sihat-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -3,
+    "exact": 248,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 365,
+    "w1": 365,
+    "worst": 0,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 300,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 3,
+    "exact": 239,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 364,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2026": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 185,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 344,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 196,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 214,
+    "w1": 356,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 346,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 185,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  },
+  "khgt-2027": {
+   "fajr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 187,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "sunrise": {
+    "mode": "floor",
+    "margin": -1,
+    "exact": 347,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "dhuhr": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 197,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "asr": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 218,
+    "w1": 354,
+    "worst": 2,
+    "n": 365
+   },
+   "maghrib": {
+    "mode": "floor",
+    "margin": 2,
+    "exact": 343,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   },
+   "isha": {
+    "mode": "floor",
+    "margin": 1,
+    "exact": 189,
+    "w1": 365,
+    "worst": 1,
+    "n": 365
+   }
+  }
+ }
+}

@@ -1,0 +1,34 @@
+{
+ "label": "r211-ماليزيا",
+ "file": "captures/masjidi_region_211.json",
+ "rows": 366,
+ "lat": 6.44,
+ "k": 0,
+ "geoRms": 6.209,
+ "fajr": {
+  "kind": "angle",
+  "n": 366,
+  "angle": 17.84,
+  "darkIqr": 0.18
+ },
+ "isha": {
+  "kind": "angle",
+  "n": 366,
+  "angle": 17.97,
+  "darkIqr": 0.14,
+  "gap": 72
+ },
+ "asr": {
+  "school": "Shafi",
+  "shafiMae": 1.1,
+  "hanafiMae": 62.7
+ },
+ "clock": {
+  "lonImplied": -19.88,
+  "offsetMin": -80,
+  "driftRms": 0.2,
+  "runs": 1,
+  "steps": []
+ },
+ "amplitude": -26
+}

@@ -1,0 +1,34 @@
+{
+ "label": "r8306-المغرب",
+ "file": "captures/masjidi_region_8306.json",
+ "rows": 366,
+ "lat": 34.24,
+ "k": 0,
+ "geoRms": 6.549,
+ "fajr": {
+  "kind": "angle",
+  "n": 366,
+  "angle": 18.99,
+  "darkIqr": 0.11
+ },
+ "isha": {
+  "kind": "angle",
+  "n": 366,
+  "angle": 16.06,
+  "darkIqr": 0.13,
+  "gap": 78
+ },
+ "asr": {
+  "school": "Shafi",
+  "shafiMae": 4.9,
+  "hanafiMae": 60.4
+ },
+ "clock": {
+  "lonImplied": -2.92,
+  "offsetMin": -12,
+  "driftRms": 0.3,
+  "runs": 1,
+  "steps": []
+ },
+ "amplitude": -140
+}

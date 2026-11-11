@@ -1,0 +1,212 @@
+{
+ "shenzhen": {
+  "status": "200",
+  "bytes": 217734,
+  "rows": 144,
+  "lon": "114.07",
+  "lat": "22.62"
+ },
+ "xiamen": {
+  "status": "200",
+  "bytes": 217731,
+  "rows": 144,
+  "lon": "118.1",
+  "lat": "24.46"
+ },
+ "quanzhou": {
+  "status": "200",
+  "bytes": 217734,
+  "rows": 144,
+  "lon": "118.58",
+  "lat": "24.93"
+ },
+ "ningbo": {
+  "status": "200",
+  "bytes": 217734,
+  "rows": 144,
+  "lon": "121.56",
+  "lat": "29.86"
+ },
+ "suzhou": {
+  "status": "200",
+  "bytes": 217734,
+  "rows": 144,
+  "lon": "120.62",
+  "lat": "31.32"
+ },
+ "qingdao": {
+  "status": "200",
+  "bytes": 217734,
+  "rows": 144,
+  "lon": "120.33",
+  "lat": "36.07"
+ },
+ "dalian": {
+  "status": "200",
+  "bytes": 217734,
+  "rows": 144,
+  "lon": "121.62",
+  "lat": "38.92"
+ },
+ "qiqihar": {
+  "status": "200",
+  "bytes": 217734,
+  "rows": 144,
+  "lon": "123.97",
+  "lat": "47.33"
+ },
+ "mudanjiang": {
+  "status": "200",
+  "bytes": 217731,
+  "rows": 144,
+  "lon": "129.58",
+  "lat": "44.6"
+ },
+ "baotou": {
+  "status": "200",
+  "bytes": 217723,
+  "rows": 144,
+  "lon": "110",
+  "lat": "40.58"
+ },
+ "cangzhou": {
+  "status": "200",
+  "bytes": 217734,
+  "rows": 144,
+  "lon": "116.83",
+  "lat": "38.33"
+ },
+ "datong": {
+  "status": "200",
+  "bytes": 217729,
+  "rows": 144,
+  "lon": "113.3",
+  "lat": "40.12"
+ },
+ "baoji": {
+  "status": "200",
+  "bytes": 217732,
+  "rows": 144,
+  "lon": "107.15",
+  "lat": "34.38"
+ },
+ "kaifeng": {
+  "status": "200",
+  "bytes": 217734,
+  "rows": 144,
+  "lon": "114.35",
+  "lat": "34.79"
+ },
+ "luoyang": {
+  "status": "200",
+  "bytes": 217729,
+  "rows": 144,
+  "lon": "112.44",
+  "lat": "34.7"
+ },
+ "nanyang": {
+  "status": "200",
+  "bytes": 217734,
+  "rows": 144,
+  "lon": "112.53",
+  "lat": "33.01"
+ },
+ "shaoyang": {
+  "status": "200",
+  "bytes": 217731,
+  "rows": 144,
+  "lon": "111.5",
+  "lat": "27.22"
+ },
+ "pingliang": {
+  "status": "200",
+  "bytes": 217732,
+  "rows": 144,
+  "lon": "106.68",
+  "lat": "35.51"
+ },
+ "tianshui": {
+  "status": "200",
+  "bytes": 217729,
+  "rows": 144,
+  "lon": "105.69",
+  "lat": "34.6"
+ },
+ "linxia": {
+  "status": "200",
+  "bytes": 217732,
+  "rows": 144,
+  "lon": "103.22",
+  "lat": "35.62"
+ },
+ "zhangye": {
+  "status": "200",
+  "bytes": 217732,
+  "rows": 144,
+  "lon": "100.46",
+  "lat": "38.93"
+ },
+ "wuzhong": {
+  "status": "200",
+  "bytes": 217732,
+  "rows": 144,
+  "lon": "106.21",
+  "lat": "37.99"
+ },
+ "guyuan": {
+  "status": "200",
+  "bytes": 217732,
+  "rows": 144,
+  "lon": "106.28",
+  "lat": "36.01"
+ },
+ "turpan": {
+  "status": "200",
+  "bytes": 217731,
+  "rows": 144,
+  "lon": "89.19",
+  "lat": "42.91"
+ },
+ "korla": {
+  "status": "200",
+  "bytes": 217731,
+  "rows": 144,
+  "lon": "86.06",
+  "lat": "41.68"
+ },
+ "hotan": {
+  "status": "200",
+  "bytes": 217731,
+  "rows": 144,
+  "lon": "79.94",
+  "lat": "37.12"
+ },
+ "aksu": {
+  "status": "200",
+  "bytes": 217731,
+  "rows": 136,
+  "lon": "80.29",
+  "lat": "41.15"
+ },
+ "changji": {
+  "status": "200",
+  "bytes": 217731,
+  "rows": 144,
+  "lon": "87.31",
+  "lat": "44.05"
+ },
+ "yining": {
+  "status": "200",
+  "bytes": 217731,
+  "rows": 124,
+  "lon": "81.33",
+  "lat": "43.91"
+ },
+ "guilin": {
+  "status": "200",
+  "bytes": 217734,
+  "rows": 144,
+  "lon": "110.28",
+  "lat": "25.29"
+ }
+}

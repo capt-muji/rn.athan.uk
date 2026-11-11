@@ -1,0 +1,295 @@
+[
+ {
+  "city": "Челябинск",
+  "rows": 365,
+  "note": "no derived position"
+ },
+ {
+  "city": "Казань",
+  "rows": 365,
+  "note": "no derived position"
+ },
+ {
+  "city": "Курган",
+  "rows": 365,
+  "note": "no derived position"
+ },
+ {
+  "city": "Москва",
+  "rows": 365,
+  "note": "no derived position"
+ },
+ {
+  "city": "Ростов-на-Дону",
+  "rows": 365,
+  "note": "no derived position"
+ },
+ {
+  "city": "Санкт-Петербург",
+  "rows": 365,
+  "note": "no derived position"
+ },
+ {
+  "city": "Салехард",
+  "rows": 365,
+  "note": "no derived position"
+ },
+ {
+  "city": "Ульяновск",
+  "rows": 365,
+  "note": "no derived position"
+ },
+ {
+  "city": "Астрахань",
+  "rows": 365,
+  "note": "no derived position"
+ },
+ {
+  "city": "Чебоксары",
+  "rows": 365,
+  "note": "no derived position"
+ },
+ {
+  "city": "Екатеринбург",
+  "rows": 365,
+  "note": "no derived position"
+ },
+ {
+  "city": "Ижевск",
+  "rows": 365,
+  "note": "no derived position"
+ },
+ {
+  "city": "Хабаровск",
+  "rows": 365,
+  "note": "no derived position"
+ },
+ {
+  "city": "Оренбург",
+  "rows": 365,
+  "note": "no derived position"
+ },
+ {
+  "city": "Самара",
+  "rows": 365,
+  "note": "no derived position"
+ },
+ {
+  "city": "Уфа",
+  "rows": 0,
+  "note": "image-only page, no text table"
+ },
+ {
+  "city": "Йошкар-Ола",
+  "rows": 365,
+  "note": "no derived position"
+ },
+ {
+  "city": "Волгоград",
+  "rows": 352,
+  "tz": "Europe/Moscow",
+  "lat": 48.735,
+  "lon": 44.359,
+  "days": 339,
+  "cols": {
+   "fajr": {
+    "n": 339,
+    "exact": 0,
+    "w1": 0.6,
+    "max": 3.2,
+    "mae": 2.47
+   },
+   "sunrise": {
+    "n": 339,
+    "exact": 0,
+    "w1": 0,
+    "max": 3.3,
+    "mae": 2.61
+   },
+   "dhuhr": {
+    "n": 339,
+    "exact": 0,
+    "w1": 17.1,
+    "max": 1.9,
+    "mae": 1.35
+   },
+   "asr": {
+    "n": 339,
+    "exact": 1.8,
+    "w1": 26.3,
+    "max": 2.5,
+    "mae": 1.42
+   },
+   "maghrib": {
+    "n": 339,
+    "exact": 0,
+    "w1": 16.2,
+    "max": 2.1,
+    "mae": 1.36
+   },
+   "isha": {
+    "n": 339,
+    "exact": 7.7,
+    "w1": 23.9,
+    "max": 2.1,
+    "mae": 1.27
+   }
+  }
+ },
+ {
+  "city": "Киров",
+  "rows": 365,
+  "tz": "Europe/Moscow",
+  "lat": 58.616,
+  "lon": 49.492,
+  "days": 248,
+  "cols": {
+   "fajr": {
+    "n": 248,
+    "exact": 0.4,
+    "w1": 0.8,
+    "max": 4.6,
+    "mae": 2.66
+   },
+   "sunrise": {
+    "n": 248,
+    "exact": 0,
+    "w1": 0,
+    "max": 3.5,
+    "mae": 2.75
+   },
+   "dhuhr": {
+    "n": 248,
+    "exact": 0,
+    "w1": 23.4,
+    "max": 1.8,
+    "mae": 1.3
+   },
+   "asr": {
+    "n": 248,
+    "exact": 20.2,
+    "w1": 41.9,
+    "max": 2.7,
+    "mae": 1.37
+   },
+   "maghrib": {
+    "n": 248,
+    "exact": 0,
+    "w1": 19,
+    "max": 2.1,
+    "mae": 1.35
+   },
+   "isha": {
+    "n": 248,
+    "exact": 6,
+    "w1": 26.2,
+    "max": 3.3,
+    "mae": 1.3
+   }
+  }
+ },
+ {
+  "city": "Пенза",
+  "rows": 365,
+  "tz": "Europe/Moscow",
+  "lat": 53.213,
+  "lon": 44.855,
+  "days": 286,
+  "cols": {
+   "fajr": {
+    "n": 286,
+    "exact": 0.3,
+    "w1": 0.7,
+    "max": 3.8,
+    "mae": 2.58
+   },
+   "sunrise": {
+    "n": 286,
+    "exact": 0,
+    "w1": 0,
+    "max": 3.3,
+    "mae": 2.66
+   },
+   "dhuhr": {
+    "n": 286,
+    "exact": 0,
+    "w1": 15.4,
+    "max": 1.9,
+    "mae": 1.35
+   },
+   "asr": {
+    "n": 286,
+    "exact": 8.4,
+    "w1": 32.2,
+    "max": 2.6,
+    "mae": 1.4
+   },
+   "maghrib": {
+    "n": 286,
+    "exact": 0,
+    "w1": 12.6,
+    "max": 2,
+    "mae": 1.39
+   },
+   "isha": {
+    "n": 286,
+    "exact": 5.6,
+    "w1": 23.1,
+    "max": 2.7,
+    "mae": 1.35
+   }
+  }
+ },
+ {
+  "city": "Пермь",
+  "rows": 365,
+  "tz": "Asia/Yekaterinburg",
+  "lat": 58.029,
+  "lon": 56.047,
+  "days": 252,
+  "cols": {
+   "fajr": {
+    "n": 252,
+    "exact": 0.4,
+    "w1": 1.2,
+    "max": 4.5,
+    "mae": 2.69
+   },
+   "sunrise": {
+    "n": 252,
+    "exact": 0,
+    "w1": 0,
+    "max": 3.5,
+    "mae": 2.78
+   },
+   "dhuhr": {
+    "n": 252,
+    "exact": 0,
+    "w1": 22.2,
+    "max": 1.8,
+    "mae": 1.27
+   },
+   "asr": {
+    "n": 252,
+    "exact": 20.6,
+    "w1": 41.3,
+    "max": 2.7,
+    "mae": 1.37
+   },
+   "maghrib": {
+    "n": 252,
+    "exact": 0,
+    "w1": 19.8,
+    "max": 2,
+    "mae": 1.33
+   },
+   "isha": {
+    "n": 251,
+    "exact": 7.6,
+    "w1": 29.5,
+    "max": 2.9,
+    "mae": 1.27
+   }
+  }
+ }
+]

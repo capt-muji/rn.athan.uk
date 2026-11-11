@@ -1,0 +1,50 @@
+{
+ "tenantId": "790",
+ "name": "Aasiya Musallah",
+ "city": "ريجينا",
+ "country": "كندا",
+ "timezone": "America/Toronto",
+ "timingsType": "aladhan-api",
+ "tableId": null,
+ "iqamah": {
+  "Fajr": {
+   "iqamaWaitDuration": 20,
+   "timeOffset": 15
+  },
+  "Sunrise": {
+   "iqamaWaitDuration": 0,
+   "timeOffset": 0
+  },
+  "Dhuhr": {
+   "iqamaWaitDuration": 30,
+   "timeOffset": 10
+  },
+  "Asr": {
+   "iqamaWaitDuration": 60,
+   "timeOffset": 30
+  },
+  "Maghrib": {
+   "iqamaWaitDuration": 15,
+   "timeOffset": 10
+  },
+  "Isha": {
+   "iqamaWaitDuration": 30,
+   "timeOffset": 40
+  }
+ },
+ "overrides": {
+  "Dhuhr": [
+   {
+    "name": "Jumaa",
+    "iqamaWaitDuration": 0,
+    "duration": 0,
+    "date": {
+     "gregorian": {
+      "dayOfWeek": 6
+     }
+    }
+   }
+  ]
+ },
+ "note": "athan times come from the regional table; the iqamah layer is the wait in minutes after the athan, plus Friday (Jumu'ah) overrides."
+}

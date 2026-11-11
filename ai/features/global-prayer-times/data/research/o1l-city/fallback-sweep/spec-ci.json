@@ -1,0 +1,9 @@
+[
+ {"label":"ci-abidjan-mouaz","file":"data/ci-abidjan-mouaz-2026.json","tz":"Africa/Abidjan","lat":5.3693666095994,"lon":-3.9319547607409},
+ {"label":"ci-abidjan-aghien","file":"data/ci-abidjan-aghien-2026.json","tz":"Africa/Abidjan","lat":5.3822233,"lon":-3.9932946},
+ {"label":"ci-abidjan-ibrahim","file":"data/ci-abidjan-ibrahim-2026.json","tz":"Africa/Abidjan","lat":5.25777,"lon":-3.90455},
+ {"label":"ci-abidjan-rayyane","file":"data/ci-abidjan-rayyane-2026.json","tz":"Africa/Abidjan","lat":5.361106889531,"lon":-3.9577174186707},
+ {"label":"ci-abidjan-omar-bingerville","file":"data/ci-abidjan-omar-bingerville-2026.json","tz":"Africa/Abidjan","lat":5.357650809359,"lon":-3.8829274717316},
+ {"label":"ci-abidjan-firad","file":"data/ci-abidjan-firad-2026.json","tz":"Africa/Abidjan","lat":5.4071625,"lon":-3.9762031},
+ {"label":"ci-abidjan-riadh","file":"data/ci-abidjan-riadh-2026.json","tz":"Africa/Abidjan","lat":5.3521184,"lon":-3.9229219}
+]

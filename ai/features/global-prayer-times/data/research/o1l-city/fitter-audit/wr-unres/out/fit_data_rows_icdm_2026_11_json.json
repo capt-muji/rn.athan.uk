@@ -1,0 +1,139 @@
+{
+ "id": "--rows=data/rows_icdm_2026_11.json",
+ "tz": "America/Chicago",
+ "years": {
+  "2026": {
+   "rows": 30,
+   "parsed": 30,
+   "iqRows": 0,
+   "geo": {
+    "lat": 41.49,
+    "lon": -93.82,
+    "k": 0,
+    "resid": 0
+   },
+   "fajrAngle": {
+    "kind": "unmeasurable",
+    "n": 30
+   },
+   "ishaAngleVsSunset": {
+    "kind": "unmeasurable",
+    "n": 30
+   },
+   "ishaGapToMaghrib": {
+    "med": 84.5
+   },
+   "isna": {
+    "days": 30,
+    "exact": 0,
+    "within1": 0,
+    "worst": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    },
+    "worstCol": null,
+    "asrHanafiBetter": null,
+    "fajr": {
+     "exact": 0,
+     "exactPct": 0,
+     "within1Pct": 0,
+     "worst": -16
+    },
+    "sunrise": {
+     "exact": 10,
+     "exactPct": 33.3,
+     "within1Pct": 100,
+     "worst": -1
+    },
+    "dhuhr": {
+     "exact": 0,
+     "exactPct": 0,
+     "within1Pct": 0,
+     "worst": 5
+    },
+    "asr": {
+     "exact": 26,
+     "exactPct": 86.7,
+     "within1Pct": 100,
+     "worst": -1
+    },
+    "maghrib": {
+     "exact": 0,
+     "exactPct": 0,
+     "within1Pct": 20,
+     "worst": 2
+    },
+    "isha": {
+     "exact": 0,
+     "exactPct": 0,
+     "within1Pct": 0,
+     "worst": 7
+    }
+   },
+   "mwl": {
+    "days": 30,
+    "exact": 0,
+    "within1": 0,
+    "worst": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    },
+    "worstCol": null,
+    "asrHanafiBetter": null,
+    "fajr": {
+     "exact": 2,
+     "exactPct": 6.7,
+     "within1Pct": 36.7,
+     "worst": 3
+    },
+    "sunrise": {
+     "exact": 10,
+     "exactPct": 33.3,
+     "within1Pct": 100,
+     "worst": -1
+    },
+    "dhuhr": {
+     "exact": 0,
+     "exactPct": 0,
+     "within1Pct": 0,
+     "worst": 5
+    },
+    "asr": {
+     "exact": 26,
+     "exactPct": 86.7,
+     "within1Pct": 100,
+     "worst": -1
+    },
+    "maghrib": {
+     "exact": 0,
+     "exactPct": 0,
+     "within1Pct": 20,
+     "worst": 2
+    },
+    "isha": {
+     "exact": 0,
+     "exactPct": 0,
+     "within1Pct": 0,
+     "worst": -5
+    }
+   },
+   "asr": {
+    "shafiMae": 0.13,
+    "hanafiMae": 40.23,
+    "school": "Shafi"
+   },
+   "dst": [],
+   "amplitudeFajrJanJul": null,
+   "fajrJan": null,
+   "fajrJul": null
+  }
+ }
+}

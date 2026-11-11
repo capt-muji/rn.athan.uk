@@ -1,0 +1,74 @@
+{
+ "place": "data/me_vaktijame_grp0_2026.json",
+ "lat": 42.4304,
+ "lon": 19.2594,
+ "tz": "Europe/Podgorica",
+ "params": {
+  "fajr": 19.5,
+  "isha": 17.5
+ },
+ "margins": {
+  "fajr": {
+   "m": -0.5,
+   "mode": "floor",
+   "exact": 30,
+   "within1": 65,
+   "mae": 4.63,
+   "sd": 6.82,
+   "n": 365
+  },
+  "sunrise": {
+   "m": -7.5,
+   "mode": "floor",
+   "exact": 19,
+   "within1": 74,
+   "mae": 3.81,
+   "sd": 5.98,
+   "n": 365
+  },
+  "dhuhr": {
+   "m": -0.5,
+   "mode": "floor",
+   "exact": 238,
+   "within1": 362,
+   "mae": 0.67,
+   "sd": 4.47,
+   "n": 365
+  },
+  "asr": {
+   "m": -1.5,
+   "mode": "floor",
+   "exact": 36,
+   "within1": 108,
+   "mae": 2.83,
+   "sd": 5.3,
+   "n": 365
+  },
+  "maghrib": {
+   "m": 4.5,
+   "mode": "round",
+   "exact": 27,
+   "within1": 82,
+   "mae": 3.46,
+   "sd": 5.64,
+   "n": 365
+  },
+  "isha": {
+   "m": -0.5,
+   "mode": "floor",
+   "exact": 26,
+   "within1": 82,
+   "mae": 4.11,
+   "sd": 6.22,
+   "n": 365
+  }
+ },
+ "perYear": [
+  {
+   "year": "2026",
+   "exact": 376,
+   "within1": 773,
+   "n": 2190
+  }
+ ]
+}

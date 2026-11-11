@@ -1,0 +1,66 @@
+{
+  "register": "ps-awqaf-alquds-city-offset",
+  "publisher": "Awqaf al-Quds / Dar al-Ifta (Waqf al-Aqsa)",
+  "country": "PS/IL (the 1967 territory + the 1948 coastal and Galilee towns the print names)",
+  "base": "Jerusalem (al-Masjid al-Aqsa), winter clock as printed",
+  "unit": "minutes",
+  "columns": "one delta on every prayer column (fajr, sunrise, dhuhr, asr, maghrib, isha)",
+  "artifact": "captures/ps-awqaf-dahri-2012.pdf, page 2, printed Arabic prose, extracted with pypdf",
+  "artifactVerbatimAr": [
+    "1. القدس ويتبعها رام الله، بيت لحم، جنين، نابلس، الناصرة، أم الفحم بلا فارق زمني",
+    "2. أريحا، طبريا، صفد، بيسان، قبل القدس بدقيقة واحدة",
+    "3. الخليل، إذنا، دورا، بيت عوا، حيفا، عكا، طولكرم، كفر قاسم، الطيبة، بعد القدس بدقيقة",
+    "4. اللد، الرملة، قلقيلية، بعد القدس بدقيقة ونصف",
+    "5. بئر السبع، يافا، بعد القدس بدقيقتين",
+    "6. غزة بعد القدس بثلاث دقائق",
+    "7. رفح، خانيونس، دير البلح، بعد القدس بأربع دقائق",
+    "8. يبدأ وقت صلاة العيد بعد الشروق بخمس وثلاثين دقيقة"
+  ],
+  "provenance": "O1l-46 il-ps §1.4 transcribed the rule from page 2 of the same 2012 print; this file re-reads page 2 from the raw PDF and banks it as data. Independent confirmation in O1l-46: four mawaqit city payloads reproduce the print at a constant integer band equal to the offset assigned here (Bethlehem 0/207 days, Haifa +1/208, Jaffa +2/208, Nablus 0/349 of 366).",
+  "rows": [
+    {"city": "Jerusalem", "cityAr": "القدس", "deltaMin": 0, "tier": 1},
+    {"city": "Ramallah", "cityAr": "رام الله", "deltaMin": 0, "tier": 1},
+    {"city": "Bethlehem", "cityAr": "بيت لحم", "deltaMin": 0, "tier": 1},
+    {"city": "Jenin", "cityAr": "جنين", "deltaMin": 0, "tier": 1},
+    {"city": "Nablus", "cityAr": "نابلس", "deltaMin": 0, "tier": 1},
+    {"city": "Nazareth", "cityAr": "الناصرة", "deltaMin": 0, "tier": 1},
+    {"city": "Umm al-Fahm", "cityAr": "أم الفحم", "deltaMin": 0, "tier": 1},
+
+    {"city": "Jericho", "cityAr": "أريحا", "deltaMin": -1, "tier": 2},
+    {"city": "Tiberias", "cityAr": "طبريا", "deltaMin": -1, "tier": 2},
+    {"city": "Safed", "cityAr": "صفد", "deltaMin": -1, "tier": 2},
+    {"city": "Beit She'an", "cityAr": "بيسان", "deltaMin": -1, "tier": 2},
+
+    {"city": "Hebron", "cityAr": "الخليل", "deltaMin": 1, "tier": 3},
+    {"city": "Idhna", "cityAr": "إذنا", "deltaMin": 1, "tier": 3},
+    {"city": "Dura", "cityAr": "دورا", "deltaMin": 1, "tier": 3},
+    {"city": "Beit Awwa", "cityAr": "بيت عوا", "deltaMin": 1, "tier": 3},
+    {"city": "Haifa", "cityAr": "حيفا", "deltaMin": 1, "tier": 3},
+    {"city": "Acre", "cityAr": "عكا", "deltaMin": 1, "tier": 3},
+    {"city": "Tulkarem", "cityAr": "طولكرم", "deltaMin": 1, "tier": 3},
+    {"city": "Kafr Qasim", "cityAr": "كفر قاسم", "deltaMin": 1, "tier": 3},
+    {"city": "Tayibe", "cityAr": "الطيبة", "deltaMin": 1, "tier": 3},
+
+    {"city": "Lodd", "cityAr": "اللد", "deltaMin": 1.5, "tier": 4},
+    {"city": "Ramla", "cityAr": "الرملة", "deltaMin": 1.5, "tier": 4},
+    {"city": "Qalqilya", "cityAr": "قلقيلية", "deltaMin": 1.5, "tier": 4},
+
+    {"city": "Be'er Sheva", "cityAr": "بئر السبع", "deltaMin": 2, "tier": 5},
+    {"city": "Jaffa", "cityAr": "يافا", "deltaMin": 2, "tier": 5},
+
+    {"city": "Gaza", "cityAr": "غزة", "deltaMin": 3, "tier": 6},
+
+    {"city": "Rafah", "cityAr": "رفح", "deltaMin": 4, "tier": 7},
+    {"city": "Khan Younis", "cityAr": "خانيونس", "deltaMin": 4, "tier": 7},
+    {"city": "Deir al-Balah", "cityAr": "دير البلح", "deltaMin": 4, "tier": 7}
+  ],
+  "extraRules": [
+    {"rule": "eidPrayer", "value": "sunrise + 35 minutes", "verbatimAr": "يبدأ وقت صلاة العيد بعد الشروق بخمس وثلاثين دقيقة"}
+  ],
+  "rowCount": 29,
+  "notes": [
+    "The print states seven tiers, not thirteen: 29 named places in 7 bands. O1l-46's '13-city table' counted the cities its mosque surfaces returned, not the tiers.",
+    "Tier 4 is the only half-minute band (1.5 min). A whole-minute timetable cannot express it; the print's own table rounds it per day.",
+    "Delta sign is relative to Jerusalem: negative = earlier than Jerusalem."
+  ]
+}

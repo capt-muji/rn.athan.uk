@@ -1,0 +1,64 @@
+{
+ "meta": {
+  "address": "Masjid Al-Nour, Avenida Francia, Santo Domingo, Dominican Republic",
+  "source": "captures/masjidbox_do_santodomingo_alnoor.html"
+ },
+ "rows": {
+  "2026-11-10": {
+   "fajr": "05:29",
+   "sunrise": "06:44",
+   "dhuhr": "12:24",
+   "asr": "15:38",
+   "maghrib": "18:03",
+   "isha": "19:14"
+  },
+  "2026-11-11": {
+   "fajr": "05:29",
+   "sunrise": "06:44",
+   "dhuhr": "12:24",
+   "asr": "15:38",
+   "maghrib": "18:03",
+   "isha": "19:14"
+  },
+  "2026-11-12": {
+   "fajr": "05:29",
+   "sunrise": "06:45",
+   "dhuhr": "12:24",
+   "asr": "15:38",
+   "maghrib": "18:03",
+   "isha": "19:14"
+  },
+  "2026-11-13": {
+   "fajr": "05:30",
+   "sunrise": "06:45",
+   "dhuhr": "12:24",
+   "asr": "15:38",
+   "maghrib": "18:03",
+   "isha": "19:14"
+  },
+  "2026-11-14": {
+   "fajr": "05:30",
+   "sunrise": "06:46",
+   "dhuhr": "12:24",
+   "asr": "15:38",
+   "maghrib": "18:02",
+   "isha": "19:13"
+  },
+  "2026-11-15": {
+   "fajr": "05:31",
+   "sunrise": "06:46",
+   "dhuhr": "12:24",
+   "asr": "15:38",
+   "maghrib": "18:02",
+   "isha": "19:13"
+  },
+  "2026-11-16": {
+   "fajr": "05:31",
+   "sunrise": "06:47",
+   "dhuhr": "12:24",
+   "asr": "15:38",
+   "maghrib": "18:02",
+   "isha": "19:13"
+  }
+ }
+}

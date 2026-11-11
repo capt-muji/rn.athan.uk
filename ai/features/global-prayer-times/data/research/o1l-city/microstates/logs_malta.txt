@@ -1,0 +1,19 @@
+malta 2026-01: 31
+malta 2026-02: 28
+malta 2026-03: 31
+malta 2026-04: 30
+  http 502
+  http 503
+malta 2026-05: 31
+malta 2026-06: 30
+malta 2026-07: 31
+  http 502
+  http 503
+malta 2026-08: 31
+malta 2026-09: 30
+malta 2026-10: 31
+  http 502
+  http 503
+malta 2026-11: 30
+malta 2026-12: 31
+malta 2026: 365 rows written

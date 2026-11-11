@@ -1,0 +1,100 @@
+{
+ "label": "SL Freetown Al Ansaar",
+ "file": "sl-freetown-ansaar-2026.json",
+ "tz": "Africa/Freetown",
+ "lat": 8.460859,
+ "lon": -12.682281,
+ "days": 365,
+ "span": [
+  "2026-01-01",
+  "2026-12-31"
+ ],
+ "engine": "adhan 4.4.6 Rounding.None MiddleOfTheNight",
+ "recipe": {
+  "fajrAngle": 17.65,
+  "ishaAngle": 16.9,
+  "madhab": "Shafi",
+  "offsets": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": -2,
+   "maghrib": 2,
+   "isha": 0
+  }
+ },
+ "angleSearch": {
+  "fajr": {
+   "angle": 17.65,
+   "exact": 351,
+   "w1": 365,
+   "worst": 1,
+   "score": 365351
+  },
+  "isha": {
+   "angle": 16.9,
+   "exact": 335,
+   "w1": 365,
+   "worst": 1,
+   "score": 365335
+  }
+ },
+ "asrMadhab": {
+  "shafi": {
+   "exact": 41,
+   "w1": 173,
+   "worst": 3,
+   "n": 365
+  },
+  "hanafi": {
+   "exact": 0,
+   "w1": 0,
+   "worst": 77,
+   "n": 365
+  }
+ },
+ "perColumn": {
+  "fajr": {
+   "exact": 351,
+   "w1": 365,
+   "worst": 1,
+   "n": 365
+  },
+  "sunrise": {
+   "exact": 199,
+   "w1": 365,
+   "worst": 1,
+   "n": 365
+  },
+  "dhuhr": {
+   "exact": 198,
+   "w1": 365,
+   "worst": 1,
+   "n": 365
+  },
+  "asr": {
+   "exact": 151,
+   "w1": 324,
+   "worst": 2,
+   "n": 365
+  },
+  "maghrib": {
+   "exact": 186,
+   "w1": 365,
+   "worst": 1,
+   "n": 365
+  },
+  "isha": {
+   "exact": 335,
+   "w1": 365,
+   "worst": 1,
+   "n": 365
+  }
+ },
+ "totals": {
+  "within1": 2149,
+  "of": 2190,
+  "exact": 1420,
+  "worst": 2
+ }
+}

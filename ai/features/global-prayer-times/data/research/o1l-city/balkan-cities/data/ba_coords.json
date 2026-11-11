@@ -1,0 +1,307 @@
+{
+ "102": {
+  "lat": 44.2036,
+  "lon": 17.9078,
+  "source": "api.vaktija.eu/v4/locations id=235 slug=zenica country=BA"
+ },
+ "103": {
+  "lat": 44.3831,
+  "lon": 19.1019,
+  "source": "api.vaktija.eu/v4/locations id=236 slug=zvornik country=BA"
+ },
+ "107": {
+  "lat": 43.0386,
+  "lon": 19.7461,
+  "source": "api.vaktija.eu/v4/locations id=467 slug=bijelo-polje country=ME"
+ },
+ "108": {
+  "lat": 42.563667,
+  "lon": 19.832955,
+  "source": "api.vaktija.eu/v4/locations id=1537 slug=gusinje country=ME"
+ },
+ "109": {
+  "lat": 43.4597,
+  "lon": 19.8231,
+  "source": "api.vaktija.eu/v4/locations id=462 slug=nova-varos country=RS"
+ },
+ "110": {
+  "lat": 43.1367,
+  "lon": 20.5122,
+  "source": "api.vaktija.eu/v4/locations id=452 slug=novi-pazar country=RS"
+ },
+ "111": {
+  "lat": 42.5967,
+  "lon": 19.9419,
+  "source": "api.vaktija.eu/v4/locations id=475 slug=plav country=ME"
+ },
+ "112": {
+  "lat": 43.3572,
+  "lon": 19.3592,
+  "source": "api.vaktija.eu/v4/locations id=476 slug=pljevlja country=ME"
+ },
+ "113": {
+  "lat": 43.5842,
+  "lon": 19.5244,
+  "source": "api.vaktija.eu/v4/locations id=460 slug=priboj country=RS"
+ },
+ "114": {
+  "lat": 43.3867,
+  "lon": 19.6461,
+  "source": "api.vaktija.eu/v4/locations id=461 slug=prijepolje country=RS"
+ },
+ "115": {
+  "lat": 42.8397,
+  "lon": 20.1667,
+  "source": "api.vaktija.eu/v4/locations id=478 slug=rozaje country=ME"
+ },
+ "116": {
+  "lat": 43.2722,
+  "lon": 20.0017,
+  "source": "api.vaktija.eu/v4/locations id=458 slug=sjenica country=RS"
+ },
+ "117": {
+  "lat": 42.9917,
+  "lon": 20.3333,
+  "source": "api.vaktija.eu/v4/locations id=459 slug=tutin country=RS"
+ },
+ "14": {
+  "lat": 44.8728,
+  "lon": 18.8106,
+  "source": "api.vaktija.eu/v4/locations id=147 slug=brcko country=BA"
+ },
+ "16": {
+  "lat": 44.0531,
+  "lon": 17.4508,
+  "source": "api.vaktija.eu/v4/locations id=149 slug=bugojno country=BA"
+ },
+ "19": {
+  "lat": 44.9667,
+  "lon": 15.9431,
+  "source": "api.vaktija.eu/v4/locations id=152 slug=cazin country=BA"
+ },
+ "1": {
+  "lat": 44.7722,
+  "lon": 17.191,
+  "source": "api.vaktija.eu/v4/locations id=134 slug=banja-luka country=BA"
+ },
+ "20": {
+  "lat": 43.5567,
+  "lon": 19.0722,
+  "source": "api.vaktija.eu/v4/locations id=153 slug=cajnice country=BA"
+ },
+ "21": {
+  "lat": 43.1194,
+  "lon": 17.6853,
+  "source": "api.vaktija.eu/v4/locations id=154 slug=capljina country=BA"
+ },
+ "24": {
+  "lat": 43.2333,
+  "lon": 17.7,
+  "source": "api.vaktija.eu/v4/locations id=157 slug=citluk country=BA"
+ },
+ "26": {
+  "lat": 44.7308,
+  "lon": 18.0856,
+  "source": "api.vaktija.eu/v4/locations id=159 slug=doboj country=BA"
+ },
+ "2": {
+  "lat": 44.8169,
+  "lon": 15.87,
+  "source": "api.vaktija.eu/v4/locations id=135 slug=bihac country=BA"
+ },
+ "30": {
+  "lat": 43.9608,
+  "lon": 17.8953,
+  "source": "api.vaktija.eu/v4/locations id=163 slug=fojnica country=BA"
+ },
+ "32": {
+  "lat": 44.0475,
+  "lon": 16.8506,
+  "source": "api.vaktija.eu/v4/locations id=165 slug=glamoc country=BA"
+ },
+ "33": {
+  "lat": 43.6667,
+  "lon": 18.9764,
+  "source": "api.vaktija.eu/v4/locations id=166 slug=gorazde country=BA"
+ },
+ "34": {
+  "lat": 43.9392,
+  "lon": 17.5908,
+  "source": "api.vaktija.eu/v4/locations id=167 slug=gornji-vakuf country=BA"
+ },
+ "39": {
+  "lat": 44.0667,
+  "lon": 18.95,
+  "source": "api.vaktija.eu/v4/locations id=172 slug=han-pijesak country=BA"
+ },
+ "3": {
+  "lat": 44.7575,
+  "lon": 19.2144,
+  "source": "api.vaktija.eu/v4/locations id=136 slug=bijeljina country=BA"
+ },
+ "40": {
+  "lat": 43.8269,
+  "lon": 17.0075,
+  "source": "api.vaktija.eu/v4/locations id=173 slug=hlivno country=BA"
+ },
+ "41": {
+  "lat": 43.9519,
+  "lon": 18.2736,
+  "source": "api.vaktija.eu/v4/locations id=174 slug=ilijas country=BA"
+ },
+ "43": {
+  "lat": 44.3394,
+  "lon": 17.2697,
+  "source": "api.vaktija.eu/v4/locations id=176 slug=jajce country=BA"
+ },
+ "44": {
+  "lat": 44.1286,
+  "lon": 18.1144,
+  "source": "api.vaktija.eu/v4/locations id=177 slug=kakanj country=BA"
+ },
+ "45": {
+  "lat": 44.45,
+  "lon": 18.8667,
+  "source": "api.vaktija.eu/v4/locations id=178 slug=kalesija country=BA"
+ },
+ "49": {
+  "lat": 44.5333,
+  "lon": 16.7833,
+  "source": "api.vaktija.eu/v4/locations id=182 slug=kljuc country=BA"
+ },
+ "4": {
+  "lat": 42.8758,
+  "lon": 18.4297,
+  "source": "api.vaktija.eu/v4/locations id=137 slug=bileca country=BA"
+ },
+ "50": {
+  "lat": 43.6514,
+  "lon": 17.96,
+  "source": "api.vaktija.eu/v4/locations id=183 slug=konjic country=BA"
+ },
+ "53": {
+  "lat": 43.9833,
+  "lon": 17.3,
+  "source": "api.vaktija.eu/v4/locations id=186 slug=kupres country=BA"
+ },
+ "55": {
+  "lat": 44.6333,
+  "lon": 18.85,
+  "source": "api.vaktija.eu/v4/locations id=188 slug=lopare country=BA"
+ },
+ "57": {
+  "lat": 42.95,
+  "lon": 18.0833,
+  "source": "api.vaktija.eu/v4/locations id=190 slug=ljubinje country=BA"
+ },
+ "59": {
+  "lat": 44.5497,
+  "lon": 18.0997,
+  "source": "api.vaktija.eu/v4/locations id=192 slug=maglaj country=BA"
+ },
+ "5": {
+  "lat": 45.1333,
+  "lon": 18,
+  "source": "api.vaktija.eu/v4/locations id=138 slug=bosanski-brod country=BA"
+ },
+ "61": {
+  "lat": 43.3438,
+  "lon": 17.8078,
+  "source": "api.vaktija.eu/v4/locations id=194 slug=mostar country=BA"
+ },
+ "64": {
+  "lat": 43.2581,
+  "lon": 18.1133,
+  "source": "api.vaktija.eu/v4/locations id=197 slug=nevesinje country=BA"
+ },
+ "65": {
+  "lat": 44.1667,
+  "lon": 17.65,
+  "source": "api.vaktija.eu/v4/locations id=198 slug=novi-travnik country=BA"
+ },
+ "66": {
+  "lat": 45,
+  "lon": 18.3333,
+  "source": "api.vaktija.eu/v4/locations id=199 slug=odzak country=BA"
+ },
+ "68": {
+  "lat": 45.0333,
+  "lon": 18.7,
+  "source": "api.vaktija.eu/v4/locations id=201 slug=orasje country=BA"
+ },
+ "71": {
+  "lat": 44.98,
+  "lon": 16.7133,
+  "source": "api.vaktija.eu/v4/locations id=204 slug=prijedor country=BA"
+ },
+ "73": {
+  "lat": 43.8167,
+  "lon": 17.6,
+  "source": "api.vaktija.eu/v4/locations id=206 slug=prozor country=BA"
+ },
+ "77": {
+  "lat": 43.8563,
+  "lon": 18.4131,
+  "source": "api.vaktija.eu/v4/locations id=132 slug=sarajevo country=BA"
+ },
+ "78": {
+  "lat": 44.4667,
+  "lon": 17.55,
+  "source": "api.vaktija.eu/v4/locations id=210 slug=skender-vakuf country=BA"
+ },
+ "79": {
+  "lat": 43.9333,
+  "lon": 18.7833,
+  "source": "api.vaktija.eu/v4/locations id=211 slug=sokolac country=BA"
+ },
+ "84": {
+  "lat": 44.2833,
+  "lon": 18.85,
+  "source": "api.vaktija.eu/v4/locations id=216 slug=sekovici country=BA"
+ },
+ "88": {
+  "lat": 44.6103,
+  "lon": 17.9833,
+  "source": "api.vaktija.eu/v4/locations id=220 slug=tesanj country=BA"
+ },
+ "90": {
+  "lat": 44.2269,
+  "lon": 17.6656,
+  "source": "api.vaktija.eu/v4/locations id=222 slug=travnik country=BA"
+ },
+ "91": {
+  "lat": 42.7111,
+  "lon": 18.3436,
+  "source": "api.vaktija.eu/v4/locations id=223 slug=trebinje country=BA"
+ },
+ "93": {
+  "lat": 44.5384,
+  "lon": 18.6763,
+  "source": "api.vaktija.eu/v4/locations id=225 slug=tuzla country=BA"
+ },
+ "95": {
+  "lat": 44.1611,
+  "lon": 18.3289,
+  "source": "api.vaktija.eu/v4/locations id=228 slug=vares country=BA"
+ },
+ "96": {
+  "lat": 45.1833,
+  "lon": 15.8,
+  "source": "api.vaktija.eu/v4/locations id=229 slug=velika-kladusa country=BA"
+ },
+ "97": {
+  "lat": 44,
+  "lon": 18.1833,
+  "source": "api.vaktija.eu/v4/locations id=230 slug=visoko country=BA"
+ },
+ "98": {
+  "lat": 43.7856,
+  "lon": 19.2933,
+  "source": "api.vaktija.eu/v4/locations id=231 slug=visegrad country=BA"
+ },
+ "99": {
+  "lat": 44.15,
+  "lon": 17.7833,
+  "source": "api.vaktija.eu/v4/locations id=232 slug=vitez country=BA"
+ }
+}

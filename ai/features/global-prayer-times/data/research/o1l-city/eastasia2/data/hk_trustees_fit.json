@@ -1,0 +1,75 @@
+{
+ "engine": "adhan 4.4.6",
+ "tz": "Asia/Hong_Kong",
+ "rows": 22,
+ "point": {
+  "lon": 114.161,
+  "lat": 22.34
+ },
+ "solar_columns": {
+  "sunrise": {
+   "n": 22,
+   "mean": -0.95,
+   "mae": 0.95,
+   "within1": 0.591
+  },
+  "sunset": {
+   "n": 22,
+   "mean": 0.65,
+   "mae": 0.66,
+   "within1": 0.773
+  },
+  "noon": {
+   "n": 22,
+   "mean": 0.04,
+   "mae": 0.33,
+   "within1": 1
+  }
+ },
+ "fajr_angle": {
+  "angle": 18.7,
+  "mae": 1.85
+ },
+ "isha_angle": {
+  "angle": 21.2,
+  "mae": 1.26
+ },
+ "asr": {
+  "Shafee": {
+   "n": 22,
+   "mean": 4.68,
+   "mae": 4.68,
+   "within1": 0
+  },
+  "Hanafee": {
+   "n": 22,
+   "mean": 1.89,
+   "mae": 1.89,
+   "within1": 0
+  }
+ },
+ "zuhr_minus_noon": {
+  "n": 22,
+  "mean": 15.04,
+  "mae": 15.04,
+  "within1": 0
+ },
+ "maghrib_minus_sunset": {
+  "n": 22,
+  "mean": 6.83,
+  "mae": 6.83,
+  "within1": 0
+ },
+ "isha_minus_maghrib": {
+  "n": 22,
+  "mean": 88.09,
+  "mae": 88.09,
+  "within1": 0
+ },
+ "fajr_minus_sunrise": {
+  "n": 22,
+  "mean": -81.86,
+  "mae": 81.86,
+  "within1": 0
+ }
+}

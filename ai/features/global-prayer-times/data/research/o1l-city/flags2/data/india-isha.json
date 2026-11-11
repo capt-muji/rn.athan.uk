@@ -1,0 +1,332 @@
+[
+ {
+  "slug": "hyderabad-madinatul-ilm",
+  "lat": 17.37,
+  "lon": 78.37,
+  "rows": 365,
+  "gapMean": 71.3,
+  "gapSd": 2.9,
+  "gapSpread": 10,
+  "a17": {
+   "exact": 180,
+   "within1": 365,
+   "mean": -0.5068493150684932,
+   "worst": 1
+  },
+  "a18": {
+   "exact": 0,
+   "within1": 0,
+   "mean": -4.93972602739726,
+   "worst": 6
+  },
+  "best": {
+   "a": 16.7,
+   "w": 365,
+   "exact": 58,
+   "within1": 365,
+   "mean": 0.8410958904109589,
+   "worst": 1
+  },
+  "sepMean": 4.45,
+  "medGap": 71,
+  "intervalExact": 35,
+  "intervalW1": 112
+ },
+ {
+  "slug": "mumbai-anjuman-risalat",
+  "lat": 19.09,
+  "lon": 72.77,
+  "rows": 365,
+  "gapMean": 72.2,
+  "gapSd": 3.1,
+  "gapSpread": 11,
+  "a17": {
+   "exact": 173,
+   "within1": 365,
+   "mean": -0.5260273972602739,
+   "worst": 1
+  },
+  "a18": {
+   "exact": 0,
+   "within1": 0,
+   "mean": -5.043835616438356,
+   "worst": 6
+  },
+  "best": {
+   "a": 16.7,
+   "w": 365,
+   "exact": 64,
+   "within1": 365,
+   "mean": 0.8246575342465754,
+   "worst": 1
+  },
+  "sepMean": 4.51,
+  "medGap": 72,
+  "intervalExact": 32,
+  "intervalW1": 111
+ },
+ {
+  "slug": "mumbai-sunni-pathan",
+  "lat": 18.97,
+  "lon": 72.75,
+  "rows": 365,
+  "gapMean": 72.2,
+  "gapSd": 3.09,
+  "gapSpread": 10,
+  "a17": {
+   "exact": 261,
+   "within1": 365,
+   "mean": -0.28493150684931506,
+   "worst": 1
+  },
+  "a18": {
+   "exact": 0,
+   "within1": 0,
+   "mean": -4.794520547945205,
+   "worst": 6
+  },
+  "best": {
+   "a": 16.75,
+   "w": 365,
+   "exact": 67,
+   "within1": 365,
+   "mean": 0.8164383561643835,
+   "worst": 1
+  },
+  "sepMean": 4.51,
+  "medGap": 72,
+  "intervalExact": 33,
+  "intervalW1": 112
+ },
+ {
+  "slug": "bengaluru-rahmania",
+  "lat": 13.06,
+  "lon": 77.44,
+  "rows": 365,
+  "gapMean": 74,
+  "gapSd": 2.76,
+  "gapSpread": 10,
+  "a17": {
+   "exact": 0,
+   "within1": 0,
+   "mean": 3.8273972602739725,
+   "worst": 5
+  },
+  "a18": {
+   "exact": 181,
+   "within1": 365,
+   "mean": -0.5041095890410959,
+   "worst": 1
+  },
+  "best": {
+   "a": 17.7,
+   "w": 365,
+   "exact": 73,
+   "within1": 365,
+   "mean": 0.8,
+   "worst": 1
+  },
+  "sepMean": 4.34,
+  "medGap": 74,
+  "intervalExact": 36,
+  "intervalW1": 110
+ },
+ {
+  "slug": "kolkata-rafah",
+  "lat": 22.68,
+  "lon": 88.25,
+  "rows": 365,
+  "gapMean": 74.2,
+  "gapSd": 3.48,
+  "gapSpread": 12,
+  "a17": {
+   "exact": 173,
+   "within1": 365,
+   "mean": -0.5260273972602739,
+   "worst": 1
+  },
+  "a18": {
+   "exact": 0,
+   "within1": 0,
+   "mean": -5.142465753424657,
+   "worst": 6
+  },
+  "best": {
+   "a": 16.75,
+   "w": 365,
+   "exact": 115,
+   "within1": 365,
+   "mean": 0.684931506849315,
+   "worst": 1
+  },
+  "sepMean": 4.66,
+  "medGap": 74,
+  "intervalExact": 37,
+  "intervalW1": 112
+ },
+ {
+  "slug": "kolkata-nandanpur",
+  "lat": 22.48,
+  "lon": 88.07,
+  "rows": 365,
+  "gapMean": 74.1,
+  "gapSd": 3.46,
+  "gapSpread": 12,
+  "a17": {
+   "exact": 177,
+   "within1": 365,
+   "mean": -0.5150684931506849,
+   "worst": 1
+  },
+  "a18": {
+   "exact": 0,
+   "within1": 0,
+   "mean": -5.13972602739726,
+   "worst": 6
+  },
+  "best": {
+   "a": 16.75,
+   "w": 365,
+   "exact": 123,
+   "within1": 365,
+   "mean": 0.663013698630137,
+   "worst": 1
+  },
+  "sepMean": 4.65,
+  "medGap": 73,
+  "intervalExact": 32,
+  "intervalW1": 106
+ },
+ {
+  "slug": "srinagar-soqte",
+  "lat": 34.09,
+  "lon": 74.68,
+  "rows": 365,
+  "gapMean": 90.1,
+  "gapSd": 6.92,
+  "gapSpread": 22,
+  "a17": {
+   "exact": 0,
+   "within1": 0,
+   "mean": 4.923287671232877,
+   "worst": 7
+  },
+  "a18": {
+   "exact": 180,
+   "within1": 365,
+   "mean": -0.5068493150684932,
+   "worst": 1
+  },
+  "best": {
+   "a": 17.8,
+   "w": 365,
+   "exact": 158,
+   "within1": 365,
+   "mean": 0.5671232876712329,
+   "worst": 1
+  },
+  "sepMean": 5.44,
+  "medGap": 88,
+  "intervalExact": 22,
+  "intervalW1": 85
+ },
+ {
+  "slug": "ramban-noorani",
+  "lat": 33.12,
+  "lon": 75.2,
+  "rows": 365,
+  "gapMean": 83.5,
+  "gapSd": 5.84,
+  "gapSpread": 19,
+  "a17": {
+   "exact": 171,
+   "within1": 365,
+   "mean": -0.5315068493150685,
+   "worst": 1
+  },
+  "a18": {
+   "exact": 0,
+   "within1": 0,
+   "mean": -5.843835616438356,
+   "worst": 8
+  },
+  "best": {
+   "a": 16.8,
+   "w": 365,
+   "exact": 167,
+   "within1": 365,
+   "mean": 0.5424657534246575,
+   "worst": 1
+  },
+  "sepMean": 5.34,
+  "medGap": 82,
+  "intervalExact": 27,
+  "intervalW1": 90
+ },
+ {
+  "slug": "baharampur-fazle-elahi",
+  "lat": 24.1,
+  "lon": 88.14,
+  "rows": 365,
+  "gapMean": 75.2,
+  "gapSd": 3.7,
+  "gapSpread": 13,
+  "a17": {
+   "exact": 181,
+   "within1": 365,
+   "mean": -0.5041095890410959,
+   "worst": 1
+  },
+  "a18": {
+   "exact": 0,
+   "within1": 0,
+   "mean": -5.219178082191781,
+   "worst": 6
+  },
+  "best": {
+   "a": 16.75,
+   "w": 365,
+   "exact": 119,
+   "within1": 365,
+   "mean": 0.673972602739726,
+   "worst": 1
+  },
+  "sepMean": 4.72,
+  "medGap": 74,
+  "intervalExact": 34,
+  "intervalW1": 106
+ },
+ {
+  "slug": "moradabad-chand",
+  "lat": 29.19,
+  "lon": 78.73,
+  "rows": 365,
+  "gapMean": 79.3,
+  "gapSd": 4.74,
+  "gapSpread": 16,
+  "a17": {
+   "exact": 184,
+   "within1": 365,
+   "mean": -0.4958904109589041,
+   "worst": 1
+  },
+  "a18": {
+   "exact": 0,
+   "within1": 0,
+   "mean": -5.504109589041096,
+   "worst": 7
+  },
+  "best": {
+   "a": 16.75,
+   "w": 365,
+   "exact": 93,
+   "within1": 365,
+   "mean": 0.7452054794520548,
+   "worst": 1
+  },
+  "sepMean": 5.03,
+  "medGap": 78,
+  "intervalExact": 28,
+  "intervalW1": 88
+ }
+]

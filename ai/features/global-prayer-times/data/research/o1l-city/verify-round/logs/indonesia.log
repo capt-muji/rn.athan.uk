@@ -1,0 +1,23 @@
+city	tz	n	exact%	within1%	MAE	worst	fajrExact	fajrW1	ishaExact	ishaW1	dhuhrW1	asrW1
+jakarta-pusat	Asia/Jakarta	1460	94.2	100.00	0.058	1	99.2	100.00	98.1	100.00	100.00	100.00
+banda-aceh	Asia/Jakarta	1460	94.6	100.00	0.054	1	99.7	100.00	99.2	100.00	100.00	100.00
+medan	Asia/Jakarta	1460	94.7	100.00	0.053	1	99.5	100.00	98.9	100.00	100.00	100.00
+bandung	Asia/Jakarta	1460	94.2	100.00	0.058	1	97.0	100.00	99.5	100.00	100.00	100.00
+surabaya	Asia/Jakarta	1460	94.9	100.00	0.051	1	99.2	100.00	98.6	100.00	100.00	100.00
+makassar	Asia/Makassar	1460	95.3	100.00	0.047	1	98.9	100.00	98.4	100.00	100.00	100.00
+kupang	Asia/Jakarta	1460	95.1	100.00	0.049	1	98.6	100.00	99.5	100.00	100.00	100.00
+jayapura	Asia/Jayapura	1460	96.6	100.00	0.034	1	98.1	100.00	98.6	100.00	100.00	100.00
+
+POOLED n=11680 exact=94.94% within1=100.00% worst=1
+cells >1 min: 0
+
+KHGT minus SIHAT fajr (minutes):
+jakarta-pusat	mean 7.95	band [7..9]	n=365
+banda-aceh	mean 7.97	band [7..9]	n=365
+medan	mean 7.92	band [7..9]	n=365
+bandung	mean 7.93	band [7..9]	n=365
+surabaya	mean 7.99	band [7..9]	n=365
+makassar	mean 7.95	band [7..9]	n=365
+kupang	mean 68.06	band [67..69]	n=365
+jayapura	mean 7.90	band [7..9]	n=365
+pooled mean 15.46

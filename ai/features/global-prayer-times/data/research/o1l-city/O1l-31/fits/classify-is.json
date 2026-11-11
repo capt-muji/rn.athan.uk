@@ -1,0 +1,74 @@
+[
+ {
+  "tag": "is-reykjavik",
+  "file": "is-felag-reykjavik-2026.json",
+  "lat": 64.1466,
+  "lng": -21.9426,
+  "fa": 14.2,
+  "is": 14.0
+ },
+ {
+  "tag": "is-keflavik",
+  "file": "is-felag-keflavik-2026.json",
+  "lat": 64.0011,
+  "lng": -22.5626,
+  "fa": 14.2,
+  "is": 14.0
+ },
+ {
+  "tag": "is-akureyri",
+  "file": "is-felag-akureyri-2026.json",
+  "lat": 65.6835,
+  "lng": -18.0878,
+  "fa": 14.2,
+  "is": 14.0
+ },
+ {
+  "tag": "is-akranes",
+  "file": "is-felag-akranes-2026.json",
+  "lat": 64.3218,
+  "lng": -22.0749,
+  "fa": 14.2,
+  "is": 14.0
+ },
+ {
+  "tag": "is-borgarnes",
+  "file": "is-felag-borgarnes-2026.json",
+  "lat": 64.5383,
+  "lng": -21.9206,
+  "fa": 14.2,
+  "is": 14.0
+ },
+ {
+  "tag": "is-hofsos",
+  "file": "is-felag-hofsos-2026.json",
+  "lat": 65.9,
+  "lng": -19.4,
+  "fa": 14.2,
+  "is": 14.0
+ },
+ {
+  "tag": "is-husavik",
+  "file": "is-felag-husavik-2026.json",
+  "lat": 66.0449,
+  "lng": -17.3389,
+  "fa": 14.2,
+  "is": 14.0
+ },
+ {
+  "tag": "is-hvolsvollur",
+  "file": "is-felag-hvolsvollur-2026.json",
+  "lat": 63.75,
+  "lng": -20.22,
+  "fa": 14.2,
+  "is": 14.0
+ },
+ {
+  "tag": "is-hella",
+  "file": "is-felag-hella-2026.json",
+  "lat": 63.83,
+  "lng": -20.4,
+  "fa": 14.2,
+  "is": 14.0
+ }
+]

@@ -1,0 +1,362 @@
+{
+ "delegations": 258,
+ "governors": 24,
+ "days_total": 5144,
+ "score_flat": {
+  "meanAll1": 58.261351052048724,
+  "medianAll1": 85,
+  "delegationsAt100": 40
+ },
+ "score_fit": {
+  "meanAll1": 92.71317829457364,
+  "medianAll1": 95,
+  "delegationsAt95": 158
+ },
+ "score_dem": {
+  "n": 258,
+  "meanAll1": 92.14839424141749,
+  "delegationsAt95": 155
+ },
+ "perColumnFit": {
+  "fajr": {
+   "w1Pct": 98.6046511627907,
+   "exactPct": 91.28737541528238,
+   "mae": 0.12375415282392034,
+   "meanSigned": -0.05730897009966776
+  },
+  "dhuhr": {
+   "w1Pct": 100,
+   "exactPct": 90.81672203765227,
+   "mae": 0.09183277962347755,
+   "meanSigned": 0.002131782945736433
+  },
+  "asr": {
+   "w1Pct": 94.18604651162791,
+   "exactPct": 30.033222591362126,
+   "mae": 0.7578073089700997,
+   "meanSigned": 0.03433001107419709
+  },
+  "maghrib": {
+   "w1Pct": 100,
+   "exactPct": 91.60575858250277,
+   "mae": 0.08394241417497243,
+   "meanSigned": -0.01107419712070875
+  },
+  "isha": {
+   "w1Pct": 98.68217054263566,
+   "exactPct": 91.81893687707641,
+   "mae": 0.11688815060908092,
+   "meanSigned": 0.0637873754152824
+  }
+ },
+ "perColumnFlat": {
+  "fajr": {
+   "w1Pct": 66.99889258028793,
+   "meanSigned": 1.2462070874861568
+  },
+  "dhuhr": {
+   "w1Pct": 100,
+   "meanSigned": 0.002131782945736433
+  },
+  "asr": {
+   "w1Pct": 94.18604651162791,
+   "meanSigned": 0.03433001107419709
+  },
+  "maghrib": {
+   "w1Pct": 66.72757475083057,
+   "meanSigned": -1.2249723145071982
+  },
+  "isha": {
+   "w1Pct": 67.34496124031008,
+   "meanSigned": -1.2240310077519387
+  }
+ },
+ "ladder": [
+  {
+   "lo": 0,
+   "hi": 25,
+   "n": 80,
+   "meanElev": 12,
+   "meanDipFit": 0.015,
+   "meanDipDem": 0.107,
+   "meanFajrFlatMin": 0.01,
+   "meanMaghribFlatMin": -0.01,
+   "meanAll1Flat": 93.9,
+   "meanAll1Fit": 93.9,
+   "meanAll1Dem": 93.8
+  },
+  {
+   "lo": 25,
+   "hi": 50,
+   "n": 40,
+   "meanElev": 37,
+   "meanDipFit": 0.092,
+   "meanDipDem": 0.194,
+   "meanFajrFlatMin": 0.57,
+   "meanMaghribFlatMin": -0.52,
+   "meanAll1Flat": 94.3,
+   "meanAll1Fit": 94.3,
+   "meanAll1Dem": 94.3
+  },
+  {
+   "lo": 50,
+   "hi": 100,
+   "n": 38,
+   "meanElev": 68,
+   "meanDipFit": 0.151,
+   "meanDipDem": 0.263,
+   "meanFajrFlatMin": 0.88,
+   "meanMaghribFlatMin": -0.84,
+   "meanAll1Flat": 83.7,
+   "meanAll1Fit": 92.4,
+   "meanAll1Dem": 91.1
+  },
+  {
+   "lo": 100,
+   "hi": 200,
+   "n": 27,
+   "meanElev": 144,
+   "meanDipFit": 0.24,
+   "meanDipDem": 0.384,
+   "meanFajrFlatMin": 1.43,
+   "meanMaghribFlatMin": -1.47,
+   "meanAll1Flat": 21,
+   "meanAll1Fit": 92.2,
+   "meanAll1Dem": 89.2
+  },
+  {
+   "lo": 200,
+   "hi": 300,
+   "n": 18,
+   "meanElev": 255,
+   "meanDipFit": 0.402,
+   "meanDipDem": 0.511,
+   "meanFajrFlatMin": 2.21,
+   "meanMaghribFlatMin": -2.13,
+   "meanAll1Flat": 0,
+   "meanAll1Fit": 93.6,
+   "meanAll1Dem": 93.6
+  },
+  {
+   "lo": 300,
+   "hi": 500,
+   "n": 29,
+   "meanElev": 404,
+   "meanDipFit": 0.54,
+   "meanDipDem": 0.643,
+   "meanFajrFlatMin": 2.63,
+   "meanMaghribFlatMin": -2.84,
+   "meanAll1Flat": 0,
+   "meanAll1Fit": 86.4,
+   "meanAll1Dem": 86.4
+  },
+  {
+   "lo": 500,
+   "hi": 700,
+   "n": 16,
+   "meanElev": 627,
+   "meanDipFit": 0.703,
+   "meanDipDem": 0.804,
+   "meanFajrFlatMin": 4,
+   "meanMaghribFlatMin": -3.7,
+   "meanAll1Flat": 0,
+   "meanAll1Fit": 94.4,
+   "meanAll1Dem": 94.4
+  },
+  {
+   "lo": 700,
+   "hi": 1200,
+   "n": 10,
+   "meanElev": 839,
+   "meanDipFit": 0.826,
+   "meanDipDem": 0.928,
+   "meanFajrFlatMin": 4.63,
+   "meanMaghribFlatMin": -4.3,
+   "meanAll1Flat": 0,
+   "meanAll1Fit": 93.5,
+   "meanAll1Dem": 93.5
+  }
+ ],
+ "ladderReg": {
+  "dipOnSqrtElev": {
+   "slope": 0.03156,
+   "intercept": -0.09988,
+   "r2": 0.97981
+  },
+  "dipOnElev": {
+   "slope": 0.001066,
+   "intercept": 0.050085,
+   "r2": 0.941757
+  },
+  "demDipOnSqrtElev": {
+   "slope": 0.0321,
+   "intercept": 0.00006,
+   "r2": 1
+  },
+  "physicsSlopeDegPerSqrtM": 0.0321,
+  "residualMinOnSqrtElev": {
+   "slope": 0.16574,
+   "intercept": -0.43236,
+   "r2": 0.94837
+  },
+  "residualMinOnElev": {
+   "slope": 0.00567,
+   "intercept": 0.34258,
+   "r2": 0.93592
+  },
+  "residualOnElevAndLng": {
+   "intercept": 1.9864,
+   "coefs": [
+    0.00548,
+    -0.16853
+   ],
+   "r2": 0.927
+  },
+  "lngWithinLowElevation": {
+   "slope": -0.16673,
+   "intercept": 1.91149,
+   "r2": 0.10087
+  },
+  "lowElevationN": 120
+ },
+ "residualControls": {
+  "elev": {
+   "slope": 0.00586,
+   "intercept": 0.25542,
+   "r2": 0.92093
+  },
+  "absLat": {
+   "slope": -0.17791,
+   "intercept": 7.58914,
+   "r2": 0.02631
+  },
+  "lng": {
+   "slope": -1.1178,
+   "intercept": 12.30379,
+   "r2": 0.43322
+  }
+ },
+ "governorates": 24,
+ "modalColumnBest": {
+  "fajr": [
+   [
+    "0/round",
+    219
+   ],
+   [
+    "-0.5/ceil",
+    18
+   ],
+   [
+    "0.5/round",
+    9
+   ],
+   [
+    "-1/round",
+    8
+   ],
+   [
+    "0/ceil",
+    3
+   ]
+  ],
+  "dhuhr": [
+   [
+    "7/round",
+    225
+   ],
+   [
+    "6.5/ceil",
+    33
+   ]
+  ],
+  "asr": [
+   [
+    "-0.5/round",
+    114
+   ],
+   [
+    "-1/round",
+    71
+   ],
+   [
+    "0/round",
+    35
+   ],
+   [
+    "-1/ceil",
+    25
+   ],
+   [
+    "-0.5/ceil",
+    8
+   ]
+  ],
+  "maghrib": [
+   [
+    "2.5/round",
+    205
+   ],
+   [
+    "2/ceil",
+    33
+   ],
+   [
+    "2/round",
+    11
+   ],
+   [
+    "3.5/round",
+    6
+   ],
+   [
+    "3/ceil",
+    1
+   ]
+  ],
+  "isha": [
+   [
+    "0/round",
+    215
+   ],
+   [
+    "-0.5/ceil",
+    21
+   ],
+   [
+    "-0.5/round",
+    13
+   ],
+   [
+    "1/round",
+    6
+   ],
+   [
+    "0.5/round",
+    3
+   ]
+  ]
+ },
+ "amplitude": {
+  "n": 257,
+  "fajr": [
+   125,
+   169
+  ],
+  "isha": [
+   123,
+   166
+  ],
+  "dhuhr": [
+   0,
+   1
+  ]
+ },
+ "seasonInvariance": {
+  "n": 256,
+  "meanSpreadDeg": 0.049,
+  "medianSpreadDeg": 0.02,
+  "maxSpreadDeg": 0.61,
+  "withinHalfDegree": 250
+ }
+}

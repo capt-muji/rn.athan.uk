@@ -1,0 +1,34 @@
+{
+ "label": "r1142-البوسنة والهرسك",
+ "file": "captures/masjidi_region_1142.json",
+ "rows": 366,
+ "lat": 44.74,
+ "k": 0,
+ "geoRms": 7.745,
+ "fajr": {
+  "kind": "angle",
+  "n": 366,
+  "angle": 16.79,
+  "darkIqr": 0.2
+ },
+ "isha": {
+  "kind": "angle",
+  "n": 366,
+  "angle": 14.79,
+  "darkIqr": 0.11,
+  "gap": 85
+ },
+ "asr": {
+  "school": "Shafi",
+  "shafiMae": 0.6,
+  "hanafiMae": 53.1
+ },
+ "clock": {
+  "lonImplied": 2.97,
+  "offsetMin": 12,
+  "driftRms": 0.7,
+  "runs": 1,
+  "steps": []
+ },
+ "amplitude": -214
+}

@@ -1,0 +1,155 @@
+{
+ "id": "--rows=data/rows_mawaqit_masjid-tawheed.json",
+ "tz": "America/Los_Angeles",
+ "years": {
+  "2026": {
+   "rows": 365,
+   "parsed": 365,
+   "iqRows": 0,
+   "geo": {
+    "lat": 35.87,
+    "lon": -115.12,
+    "k": 1,
+    "resid": 1.674
+   },
+   "fajrAngle": {
+    "kind": "angle",
+    "n": 365,
+    "angle": 13.29,
+    "winter": 14.98,
+    "summer": 3.54,
+    "darkIqr": 0.83,
+    "iqrGap": 38,
+    "gapMedian": 64,
+    "residRms": null,
+    "darkRms": null
+   },
+   "ishaAngleVsSunset": {
+    "kind": "angle",
+    "n": 365,
+    "angle": 15.26,
+    "winter": 16.3,
+    "summer": 15.22,
+    "darkIqr": 1.72,
+    "iqrGap": 13,
+    "gapMedian": 77,
+    "residRms": null,
+    "darkRms": null
+   },
+   "ishaGapToMaghrib": {
+    "med": 76
+   },
+   "isna": {
+    "days": 365,
+    "exact": 0,
+    "within1": 0,
+    "worst": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    },
+    "worstCol": null,
+    "asrHanafiBetter": null,
+    "fajr": {
+     "exact": 71,
+     "exactPct": 19.5,
+     "within1Pct": 42.2,
+     "worst": 79
+    },
+    "sunrise": {
+     "exact": 185,
+     "exactPct": 50.7,
+     "within1Pct": 98.6,
+     "worst": 2
+    },
+    "dhuhr": {
+     "exact": 181,
+     "exactPct": 49.6,
+     "within1Pct": 83.6,
+     "worst": 21
+    },
+    "asr": {
+     "exact": 40,
+     "exactPct": 11,
+     "within1Pct": 38.9,
+     "worst": 22
+    },
+    "maghrib": {
+     "exact": 166,
+     "exactPct": 45.5,
+     "within1Pct": 88.2,
+     "worst": 8
+    },
+    "isha": {
+     "exact": 73,
+     "exactPct": 20,
+     "within1Pct": 66,
+     "worst": 18
+    }
+   },
+   "mwl": {
+    "days": 365,
+    "exact": 0,
+    "within1": 0,
+    "worst": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    },
+    "worstCol": null,
+    "asrHanafiBetter": null,
+    "fajr": {
+     "exact": 0,
+     "exactPct": 0,
+     "within1Pct": 0,
+     "worst": 101
+    },
+    "sunrise": {
+     "exact": 185,
+     "exactPct": 50.7,
+     "within1Pct": 98.6,
+     "worst": 2
+    },
+    "dhuhr": {
+     "exact": 181,
+     "exactPct": 49.6,
+     "within1Pct": 83.6,
+     "worst": 21
+    },
+    "asr": {
+     "exact": 40,
+     "exactPct": 11,
+     "within1Pct": 38.9,
+     "worst": 22
+    },
+    "maghrib": {
+     "exact": 166,
+     "exactPct": 45.5,
+     "within1Pct": 88.2,
+     "worst": 8
+    },
+    "isha": {
+     "exact": 2,
+     "exactPct": 0.5,
+     "within1Pct": 2.7,
+     "worst": -13
+    }
+   },
+   "asr": {
+    "shafiMae": 4.32,
+    "hanafiMae": 51.44,
+    "school": "Shafi"
+   },
+   "dst": [],
+   "amplitudeFajrJanJul": -21,
+   "fajrJan": 336,
+   "fajrJul": 315
+  }
+ }
+}

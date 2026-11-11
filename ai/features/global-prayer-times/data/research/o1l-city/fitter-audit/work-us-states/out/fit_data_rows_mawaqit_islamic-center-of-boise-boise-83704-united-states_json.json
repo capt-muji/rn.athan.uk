@@ -1,0 +1,155 @@
+{
+ "id": "--rows=data/rows_mawaqit_islamic-center-of-boise-boise-83704-united-states.json",
+ "tz": "America/Boise",
+ "years": {
+  "2026": {
+   "rows": 365,
+   "parsed": 365,
+   "iqRows": 0,
+   "geo": {
+    "lat": 43.61,
+    "lon": -116.299,
+    "k": 0,
+    "resid": 1.076
+   },
+   "fajrAngle": {
+    "kind": "angle",
+    "n": 365,
+    "angle": 15.01,
+    "winter": 15,
+    "summer": 15,
+    "darkIqr": 0.13,
+    "iqrGap": 14,
+    "gapMedian": 85,
+    "residRms": null,
+    "darkRms": null
+   },
+   "ishaAngleVsSunset": {
+    "kind": "angle",
+    "n": 365,
+    "angle": 15,
+    "winter": 15.01,
+    "summer": 15,
+    "darkIqr": 0.11,
+    "iqrGap": 13,
+    "gapMedian": 85,
+    "residRms": null,
+    "darkRms": null
+   },
+   "ishaGapToMaghrib": {
+    "med": 85
+   },
+   "isna": {
+    "days": 365,
+    "exact": 23,
+    "within1": 0,
+    "worst": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    },
+    "worstCol": null,
+    "asrHanafiBetter": null,
+    "fajr": {
+     "exact": 310,
+     "exactPct": 84.9,
+     "within1Pct": 100,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 340,
+     "exactPct": 93.2,
+     "within1Pct": 100,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 349,
+     "exactPct": 95.6,
+     "within1Pct": 100,
+     "worst": -1
+    },
+    "asr": {
+     "exact": 36,
+     "exactPct": 9.9,
+     "within1Pct": 37.8,
+     "worst": -3
+    },
+    "maghrib": {
+     "exact": 342,
+     "exactPct": 93.7,
+     "within1Pct": 100,
+     "worst": -1
+    },
+    "isha": {
+     "exact": 301,
+     "exactPct": 82.5,
+     "within1Pct": 100,
+     "worst": -1
+    }
+   },
+   "mwl": {
+    "days": 365,
+    "exact": 0,
+    "within1": 0,
+    "worst": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    },
+    "worstCol": null,
+    "asrHanafiBetter": null,
+    "fajr": {
+     "exact": 0,
+     "exactPct": 0,
+     "within1Pct": 0,
+     "worst": 32
+    },
+    "sunrise": {
+     "exact": 340,
+     "exactPct": 93.2,
+     "within1Pct": 100,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 349,
+     "exactPct": 95.6,
+     "within1Pct": 100,
+     "worst": -1
+    },
+    "asr": {
+     "exact": 36,
+     "exactPct": 9.9,
+     "within1Pct": 37.8,
+     "worst": -3
+    },
+    "maghrib": {
+     "exact": 342,
+     "exactPct": 93.7,
+     "within1Pct": 100,
+     "worst": -1
+    },
+    "isha": {
+     "exact": 0,
+     "exactPct": 0,
+     "within1Pct": 0,
+     "worst": -21
+    }
+   },
+   "asr": {
+    "shafiMae": 1.69,
+    "hanafiMae": 53.07,
+    "school": "Shafi"
+   },
+   "dst": [],
+   "amplitudeFajrJanJul": -136,
+   "fajrJan": 411,
+   "fajrJul": 275
+  }
+ }
+}

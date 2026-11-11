@@ -1,0 +1,34 @@
+{
+ "label": "r2905-ألمانيا",
+ "file": "captures/masjidi_region_2905.json",
+ "rows": 366,
+ "lat": 48.36,
+ "k": 0,
+ "geoRms": 7.977,
+ "fajr": {
+  "kind": "interval",
+  "n": 366,
+  "angle": 16.56,
+  "darkIqr": 1.04
+ },
+ "isha": {
+  "kind": "interval",
+  "n": 366,
+  "angle": 14.46,
+  "darkIqr": 0.88,
+  "gap": 90
+ },
+ "asr": {
+  "school": "Shafi",
+  "shafiMae": 1.2,
+  "hanafiMae": 52.9
+ },
+ "clock": {
+  "lonImplied": -5.21,
+  "offsetMin": -21,
+  "driftRms": 0.4,
+  "runs": 1,
+  "steps": []
+ },
+ "amplitude": -211
+}

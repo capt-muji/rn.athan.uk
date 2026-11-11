@@ -1,0 +1,259 @@
+Kébili/Kebili 33.687,8.97 n=20 dem=34 dipFit=0.09 dipDem=0.187 all1 flat=100.0 fit=100.0 dem=100.0
+Kébili/Souk El Ahad 33.776,8.86 n=20 dem=47 dipFit=0.12 dipDem=0.22 all1 flat=95.0 fit=95.0 dem=95.0
+Kébili/Douz 33.461,9.029 n=20 dem=72 dipFit=0.17 dipDem=0.272 all1 flat=85.0 fit=100.0 dem=100.0
+Kébili/El Faouar 33.364,8.676 n=20 dem=49 dipFit=0.14 dipDem=0.225 all1 flat=100.0 fit=100.0 dem=100.0
+Kébili/Matrouha 33.35,7.775 n=20 dem=50 dipFit=0.12 dipDem=0.227 all1 flat=95.0 fit=95.0 dem=95.0
+Kébili/Rjim Maatoug 33.325,8.014 n=20 dem=39 dipFit=0.11 dipDem=0.2 all1 flat=95.0 fit=95.0 dem=95.0
+Tunis/La Marsa 36.876,10.325 n=20 dem=13 dipFit=0.03 dipDem=0.116 all1 flat=85.0 fit=85.0 dem=85.0
+Tunis/Carthage 36.853,10.329 n=20 dem=23 dipFit=0.03 dipDem=0.154 all1 flat=85.0 fit=85.0 dem=85.0
+Tunis/La Goulette 36.818,10.305 n=20 dem=4 dipFit=0 dipDem=0.064 all1 flat=90.0 fit=90.0 dem=90.0
+Tunis/Cite El Khadhra 36.83,10.197 n=20 dem=9 dipFit=0 dipDem=0.096 all1 flat=95.0 fit=95.0 dem=95.0
+Tunis/El Menzah 36.847,10.173 n=20 dem=46 dipFit=0.11 dipDem=0.218 all1 flat=95.0 fit=95.0 dem=95.0
+Tunis/Omrane 36.818,10.168 n=20 dem=25 dipFit=0.05 dipDem=0.161 all1 flat=90.0 fit=90.0 dem=90.0
+Tunis/Omrane Superieur 36.834,10.14 n=20 dem=90 dipFit=0.21 dipDem=0.305 all1 flat=65.0 fit=95.0 dem=95.0
+Tunis/Ettahrir 36.823,10.133 n=20 dem=50 dipFit=0.12 dipDem=0.227 all1 flat=90.0 fit=90.0 dem=90.0
+Tunis/Bardo 36.814,10.141 n=20 dem=31 dipFit=0.07 dipDem=0.179 all1 flat=95.0 fit=95.0 dem=95.0
+Tunis/Bab Souika 36.809,10.166 n=20 dem=11 dipFit=0 dipDem=0.106 all1 flat=90.0 fit=90.0 dem=90.0
+Tunis/Ezzouhour 36.799,10.135 n=20 dem=15 dipFit=0.02 dipDem=0.124 all1 flat=85.0 fit=85.0 dem=85.0
+Tunis/El Hrairia 36.79,10.107 n=20 dem=19 dipFit=0.03 dipDem=0.14 all1 flat=85.0 fit=85.0 dem=85.0
+Tunis/Sidi Hassine 36.77,10.116 n=20 dem=13 dipFit=0.01 dipDem=0.116 all1 flat=85.0 fit=85.0 dem=85.0
+Tunis/El Ouardia 36.766,10.19 n=20 dem=52 dipFit=0.14 dipDem=0.231 all1 flat=90.0 fit=90.0 dem=90.0
+Tunis/El Kabaria 36.76,10.191 n=20 dem=42 dipFit=0.09 dipDem=0.208 all1 flat=90.0 fit=90.0 dem=90.0
+Tunis/Jebel Jelloud 36.767,10.209 n=20 dem=7 dipFit=0 dipDem=0.085 all1 flat=95.0 fit=95.0 dem=95.0
+Tunis/Sidi El Bechir 36.793,10.179 n=20 dem=13 dipFit=0.01 dipDem=0.116 all1 flat=90.0 fit=90.0 dem=90.0
+Tunis/La Medina 36.798,10.172 n=20 dem=22 dipFit=0.05 dipDem=0.151 all1 flat=90.0 fit=90.0 dem=90.0
+Tunis/Bab Bhar 36.797,10.177 n=20 dem=9 dipFit=0 dipDem=0.096 all1 flat=90.0 fit=90.0 dem=90.0
+Tunis/Sijoumi 36.785,10.165 n=20 dem=13 dipFit=0.02 dipDem=0.116 all1 flat=95.0 fit=95.0 dem=95.0
+Tunis/Le Kram 36.833,10.317 n=20 dem=4 dipFit=0 dipDem=0.064 all1 flat=90.0 fit=90.0 dem=90.0
+Tunis/Tunis 36.8,10.183 n=20 dem=12 dipFit=0 dipDem=0.111 all1 flat=95.0 fit=95.0 dem=95.0
+Zaghouan/Zeriba 36.353,10.206 n=20 dem=160 dipFit=0.3 dipDem=0.406 all1 flat=5.0 fit=90.0 dem=90.0
+Zaghouan/Bir Mcherga 36.517,9.957 n=20 dem=152 dipFit=0.3 dipDem=0.396 all1 flat=5.0 fit=80.0 dem=80.0
+Zaghouan/El Fahs 36.377,9.91 n=20 dem=197 dipFit=0.35 dipDem=0.451 all1 flat=0.0 fit=95.0 dem=95.0
+Zaghouan/Nadhour 36.12,10.094 n=20 dem=114 dipFit=0.24 dipDem=0.343 all1 flat=10.0 fit=95.0 dem=95.0
+Zaghouan/Saouaf 36.227,10.17 n=20 dem=154 dipFit=0.29 dipDem=0.398 all1 flat=15.0 fit=100.0 dem=100.0
+Zaghouan/Zaghouan 36.399,10.147 n=20 dem=209 dipFit=0.35 dipDem=0.464 all1 flat=0.0 fit=95.0 dem=95.0
+Siliana/Kesra 35.814,9.365 n=20 dem=1021 dipFit=0.91 dipDem=1.026 all1 flat=0.0 fit=85.0 dem=85.0
+Siliana/Makther 35.861,9.206 n=20 dem=890 dipFit=0.85 dipDem=0.958 all1 flat=0.0 fit=95.0 dem=95.0
+Siliana/Rouhia 35.65,9.05 n=20 dem=633 dipFit=0.71 dipDem=0.808 all1 flat=0.0 fit=95.0 dem=95.0
+Siliana/Bargou 36.091,9.566 n=20 dem=585 dipFit=0.67 dipDem=0.776 all1 flat=0.0 fit=90.0 dem=90.0
+Siliana/Gaafour 36.32,9.32 n=20 dem=270 dipFit=0.43 dipDem=0.527 all1 flat=0.0 fit=100.0 dem=100.0
+Siliana/El Aroussa 36.379,9.452 n=20 dem=186 dipFit=0.33 dipDem=0.438 all1 flat=0.0 fit=90.0 dem=90.0
+Siliana/Bouarada 36.351,9.622 n=20 dem=251 dipFit=0.41 dipDem=0.509 all1 flat=0.0 fit=100.0 dem=100.0
+Siliana/Le Krib 36.328,9.136 n=20 dem=482 dipFit=0.61 dipDem=0.705 all1 flat=0.0 fit=100.0 dem=100.0
+Siliana/Sidi Bou Rouis 36.177,9.126 n=20 dem=408 dipFit=0.54 dipDem=0.648 all1 flat=0.0 fit=95.0 dem=95.0
+Siliana/Siliana 36.085,9.371 n=20 dem=428 dipFit=0.56 dipDem=0.664 all1 flat=0.0 fit=95.0 dem=95.0
+Mahdia/Rejiche 35.465,11.041 n=20 dem=7 dipFit=0 dipDem=0.085 all1 flat=100.0 fit=100.0 dem=100.0
+Mahdia/Ksour Essef 35.421,10.987 n=20 dem=9 dipFit=0 dipDem=0.096 all1 flat=95.0 fit=95.0 dem=95.0
+Mahdia/Chebba 35.234,11.111 n=20 dem=8 dipFit=0 dipDem=0.091 all1 flat=100.0 fit=100.0 dem=100.0
+Mahdia/Malloulech 35.166,11.034 n=20 dem=10 dipFit=0 dipDem=0.102 all1 flat=95.0 fit=95.0 dem=95.0
+Mahdia/Sidi Alouane 35.376,10.937 n=20 dem=62 dipFit=0.14 dipDem=0.253 all1 flat=90.0 fit=90.0 dem=90.0
+Mahdia/Boumerdes 35.46,10.727 n=20 dem=68 dipFit=0.16 dipDem=0.265 all1 flat=85.0 fit=90.0 dem=90.0
+Mahdia/Souassi 35.341,10.549 n=20 dem=50 dipFit=0.12 dipDem=0.227 all1 flat=95.0 fit=95.0 dem=95.0
+Mahdia/Chorbane 35.285,10.386 n=20 dem=109 dipFit=0.24 dipDem=0.335 all1 flat=35.0 fit=95.0 dem=95.0
+Mahdia/Hbira 35.17,10.23 n=20 dem=143 dipFit=0.28 dipDem=0.384 all1 flat=15.0 fit=90.0 dem=90.0
+Mahdia/Ouled Chamekh 35.491,10.319 n=20 dem=46 dipFit=0.12 dipDem=0.218 all1 flat=95.0 fit=95.0 dem=95.0
+Mahdia/Mahdia 35.508,11.075 n=20 dem=0 dipFit=0 dipDem=0 all1 flat=100.0 fit=100.0 dem=100.0
+Mahdia/El Jem 35.301,10.708 n=20 dem=103 dipFit=0.23 dipDem=0.326 all1 flat=45.0 fit=90.0 dem=90.0
+Gabes/Ghannouch 33.94,10.065 n=20 dem=20 dipFit=0.03 dipDem=0.144 all1 flat=95.0 fit=95.0 dem=95.0
+Gabes/Mareth 33.62,10.288 n=20 dem=48 dipFit=0.13 dipDem=0.222 all1 flat=95.0 fit=95.0 dem=95.0
+Gabes/Menzel Habib 34.23,9.597 n=20 dem=86 dipFit=0.2 dipDem=0.298 all1 flat=75.0 fit=95.0 dem=95.0
+Gabes/Matmata 33.546,9.967 n=20 dem=372 dipFit=0.51 dipDem=0.619 all1 flat=0.0 fit=90.0 dem=90.0
+Gabes/Matmata Nouvelle 33.668,10.015 n=20 dem=131 dipFit=0.28 dipDem=0.367 all1 flat=15.0 fit=100.0 dem=100.0
+Gabes/El Hamma 33.884,9.972 n=20 dem=64 dipFit=0.16 dipDem=0.257 all1 flat=95.0 fit=100.0 dem=100.0
+Gabes/Metouia 33.959,10.005 n=20 dem=25 dipFit=0.07 dipDem=0.161 all1 flat=95.0 fit=95.0 dem=95.0
+Gabes/Gabes 33.893,10.103 n=20 dem=8 dipFit=0 dipDem=0.091 all1 flat=100.0 fit=100.0 dem=100.0
+Sousse/Bouficha 36.299,10.454 n=20 dem=12 dipFit=0 dipDem=0.111 all1 flat=80.0 fit=80.0 dem=80.0
+Sousse/Enfida 36.135,10.381 n=20 dem=21 dipFit=0.05 dipDem=0.147 all1 flat=100.0 fit=100.0 dem=100.0
+Sousse/Hergla 36.029,10.507 n=20 dem=11 dipFit=0.02 dipDem=0.106 all1 flat=95.0 fit=95.0 dem=95.0
+Sousse/Sidi Bouali 35.955,10.47 n=20 dem=16 dipFit=0.05 dipDem=0.128 all1 flat=100.0 fit=100.0 dem=100.0
+Sousse/Akouda 35.871,10.569 n=20 dem=23 dipFit=0.04 dipDem=0.154 all1 flat=90.0 fit=90.0 dem=90.0
+Sousse/Hammam Sousse 35.858,10.594 n=20 dem=19 dipFit=0.04 dipDem=0.14 all1 flat=85.0 fit=85.0 dem=85.0
+Sousse/Kalaa Kebira 35.867,10.533 n=20 dem=36 dipFit=0.13 dipDem=0.193 all1 flat=95.0 fit=95.0 dem=95.0
+Sousse/Msaken 35.733,10.583 n=20 dem=47 dipFit=0.11 dipDem=0.22 all1 flat=90.0 fit=90.0 dem=90.0
+Sousse/Sidi Elheni 35.681,10.31 n=20 dem=78 dipFit=0.18 dipDem=0.284 all1 flat=95.0 fit=100.0 dem=100.0
+Sousse/Koundar 35.932,10.3 n=20 dem=30 dipFit=0.07 dipDem=0.176 all1 flat=90.0 fit=90.0 dem=90.0
+Sousse/Kalaa Seghira 35.824,10.558 n=20 dem=43 dipFit=0.13 dipDem=0.211 all1 flat=90.0 fit=90.0 dem=90.0
+Sousse/Sousse 35.833,10.639 n=20 dem=13 dipFit=0.02 dipDem=0.116 all1 flat=95.0 fit=95.0 dem=95.0
+Ben Arous/Mornag 36.685,10.288 n=20 dem=28 dipFit=0.05 dipDem=0.17 all1 flat=100.0 fit=100.0 dem=100.0
+Ben Arous/Mohamedia 36.68,10.156 n=20 dem=59 dipFit=0.13 dipDem=0.247 all1 flat=85.0 fit=85.0 dem=85.0
+Ben Arous/Fouchana 36.7,10.169 n=20 dem=21 dipFit=0.03 dipDem=0.147 all1 flat=90.0 fit=90.0 dem=90.0
+Ben Arous/El Mourouj 36.721,10.216 n=20 dem=15 dipFit=0.03 dipDem=0.124 all1 flat=90.0 fit=90.0 dem=90.0
+Ben Arous/Megrine 36.766,10.233 n=20 dem=6 dipFit=0 dipDem=0.079 all1 flat=100.0 fit=100.0 dem=100.0
+Ben Arous/Rades 36.767,10.283 n=20 dem=2 dipFit=0 dipDem=0.045 all1 flat=100.0 fit=100.0 dem=100.0
+Ben Arous/Ezzahra 36.743,10.308 n=20 dem=3 dipFit=0 dipDem=0.056 all1 flat=100.0 fit=100.0 dem=100.0
+Ben Arous/Hammam Lif 36.733,10.333 n=20 dem=4 dipFit=0 dipDem=0.064 all1 flat=90.0 fit=90.0 dem=90.0
+Ben Arous/Hammam Chatt 36.718,10.369 n=20 dem=4 dipFit=0 dipDem=0.064 all1 flat=90.0 fit=90.0 dem=90.0
+Ben Arous/Boumhel Bassatine 36.709,10.29 n=20 dem=19 dipFit=0.03 dipDem=0.14 all1 flat=95.0 fit=95.0 dem=95.0
+Ben Arous/Medina Jedida 36.745,10.246 n=20 dem=25 dipFit=0.06 dipDem=0.161 all1 flat=100.0 fit=100.0 dem=100.0
+Ben Arous/Ben Arous 36.738,10.281 n=20 dem=6 dipFit=0 dipDem=0.079 all1 flat=95.0 fit=95.0 dem=95.0
+Nabeul/Kelibia 36.85,11.1 n=20 dem=19 dipFit=0.01 dipDem=0.14 all1 flat=90.0 fit=90.0 dem=90.0
+Nabeul/Menzel Temime 36.784,10.986 n=20 dem=25 dipFit=0.03 dipDem=0.161 all1 flat=100.0 fit=100.0 dem=100.0
+Nabeul/El Mida 36.725,10.855 n=20 dem=54 dipFit=0.14 dipDem=0.236 all1 flat=85.0 fit=85.0 dem=85.0
+Nabeul/Menzel Bouzelfa 36.685,10.585 n=20 dem=48 dipFit=0.12 dipDem=0.222 all1 flat=95.0 fit=95.0 dem=95.0
+Nabeul/Korba 36.581,10.862 n=20 dem=17 dipFit=0.01 dipDem=0.132 all1 flat=100.0 fit=100.0 dem=100.0
+Nabeul/Beni Khiar 36.467,10.782 n=20 dem=14 dipFit=0.02 dipDem=0.12 all1 flat=100.0 fit=100.0 dem=100.0
+Nabeul/Hammamet 36.401,10.615 n=20 dem=19 dipFit=0.02 dipDem=0.14 all1 flat=100.0 fit=100.0 dem=100.0
+Nabeul/Takelsa 36.792,10.629 n=20 dem=96 dipFit=0.21 dipDem=0.315 all1 flat=45.0 fit=90.0 dem=90.0
+Nabeul/Bou Argoub 36.535,10.552 n=20 dem=70 dipFit=0.18 dipDem=0.269 all1 flat=85.0 fit=100.0 dem=100.0
+Nabeul/Grombalia 36.6,10.5 n=20 dem=48 dipFit=0.12 dipDem=0.222 all1 flat=100.0 fit=100.0 dem=100.0
+Nabeul/Slimane 36.699,10.489 n=20 dem=11 dipFit=0 dipDem=0.106 all1 flat=100.0 fit=100.0 dem=100.0
+Nabeul/El Haouaria 37.055,11.013 n=20 dem=55 dipFit=0.12 dipDem=0.238 all1 flat=85.0 fit=85.0 dem=85.0
+Nabeul/Beni Khalled 36.649,10.592 n=20 dem=51 dipFit=0.13 dipDem=0.229 all1 flat=100.0 fit=100.0 dem=100.0
+Nabeul/Dar Chaabane Elfehri 36.463,10.747 n=20 dem=17 dipFit=0.03 dipDem=0.132 all1 flat=90.0 fit=90.0 dem=90.0
+Nabeul/Hammam Ghezaz 36.874,11.108 n=20 dem=21 dipFit=0.04 dipDem=0.147 all1 flat=90.0 fit=90.0 dem=90.0
+Nabeul/Nabeul 36.451,10.735 n=20 dem=11 dipFit=0.02 dipDem=0.106 all1 flat=85.0 fit=85.0 dem=85.0
+Tataouine/Bni Mhira 32.869,10.818 n=20 dem=100 dipFit=0.21 dipDem=0.321 all1 flat=85.0 fit=100.0 dem=100.0
+Tataouine/Dehiba 32.01,10.702 n=20 dem=314 dipFit=0.47 dipDem=0.569 all1 flat=0.0 fit=100.0 dem=100.0
+Tataouine/Remada 32.316,10.4 n=20 dem=295 dipFit=0.45 dipDem=0.551 all1 flat=0.0 fit=100.0 dem=100.0
+Tataouine/Smar 32.872,10.89 n=20 dem=92 dipFit=0.21 dipDem=0.308 all1 flat=55.0 fit=95.0 dem=95.0
+Tataouine/Ghomrassen 33.067,10.33 n=20 dem=312 dipFit=0.43 dipDem=0.567 all1 flat=0.0 fit=95.0 dem=95.0
+Tataouine/Bir Lahmar 33.179,10.442 n=20 dem=177 dipFit=0.27 dipDem=0.427 all1 flat=35.0 fit=100.0 dem=100.0
+Tataouine/Borj El Khadra 30.25,9.555 n=20 dem=296 dipFit=0.46 dipDem=0.552 all1 flat=0.0 fit=100.0 dem=100.0
+Tataouine/El Borma 31.69,9.211 n=20 dem=259 dipFit=0.42 dipDem=0.517 all1 flat=0.0 fit=100.0 dem=100.0
+Tataouine/Tataouine 32.933,10.45 n=20 dem=236 dipFit=0.39 dipDem=0.493 all1 flat=0.0 fit=95.0 dem=95.0
+Tozeur/Nefta 33.877,7.884 n=20 dem=90 dipFit=0.19 dipDem=0.305 all1 flat=70.0 fit=90.0 dem=90.0
+Tozeur/Degueche 34.016,8.273 n=20 dem=52 dipFit=0.12 dipDem=0.231 all1 flat=100.0 fit=100.0 dem=100.0
+Tozeur/Hazoua 33.738,7.603 n=20 dem=38 dipFit=0.1 dipDem=0.198 all1 flat=100.0 fit=100.0 dem=100.0
+Tozeur/Tameghza 34.385,7.939 n=20 dem=292 dipFit=0.44 dipDem=0.549 all1 flat=0.0 fit=95.0 dem=95.0
+Tozeur/Hammat Al Jarid 33.999,8.161 n=20 dem=44 dipFit=0.12 dipDem=0.213 all1 flat=95.0 fit=95.0 dem=95.0
+Tozeur/Tozeur 33.924,8.131 n=20 dem=40 dipFit=0.12 dipDem=0.203 all1 flat=90.0 fit=90.0 dem=90.0
+Medenine/Ben Guerdene 33.139,11.215 n=20 dem=14 dipFit=0.01 dipDem=0.12 all1 flat=100.0 fit=100.0 dem=100.0
+Medenine/Beni Khedach 33.246,10.204 n=20 dem=468 dipFit=0.62 dipDem=0.694 all1 flat=0.0 fit=100.0 dem=100.0
+Medenine/Zarzis 33.503,11.115 n=20 dem=4 dipFit=0 dipDem=0.064 all1 flat=100.0 fit=100.0 dem=100.0
+Medenine/Djerba El May 33.802,10.882 n=20 dem=26 dipFit=0.05 dipDem=0.164 all1 flat=100.0 fit=100.0 dem=100.0
+Medenine/Djerba Midoun 33.821,10.997 n=20 dem=6 dipFit=0 dipDem=0.079 all1 flat=95.0 fit=95.0 dem=95.0
+Medenine/Djerba Ajim 33.725,10.749 n=20 dem=7 dipFit=0 dipDem=0.085 all1 flat=100.0 fit=100.0 dem=100.0
+Medenine/Djerba Houmt Souk 33.866,10.85 n=20 dem=13 dipFit=0 dipDem=0.116 all1 flat=100.0 fit=100.0 dem=100.0
+Medenine/Sidi Makhlouf 33.506,10.479 n=20 dem=49 dipFit=0.12 dipDem=0.225 all1 flat=90.0 fit=90.0 dem=90.0
+Medenine/Medenine 33.345,10.494 n=20 dem=89 dipFit=0.22 dipDem=0.303 all1 flat=60.0 fit=90.0 dem=90.0
+Jendouba/Tabarka 36.952,8.758 n=20 dem=13 dipFit=0.04 dipDem=0.116 all1 flat=95.0 fit=95.0 dem=95.0
+Jendouba/Ain Drahem 36.776,8.686 n=20 dem=694 dipFit=0.74 dipDem=0.846 all1 flat=0.0 fit=90.0 dem=90.0
+Jendouba/Bou Salem 36.609,8.968 n=20 dem=129 dipFit=0.26 dipDem=0.365 all1 flat=20.0 fit=95.0 dem=95.0
+Jendouba/Oued Mliz 36.467,8.552 n=20 dem=174 dipFit=0.32 dipDem=0.423 all1 flat=0.0 fit=100.0 dem=100.0
+Jendouba/Ghardimaou 36.448,8.436 n=20 dem=201 dipFit=0.35 dipDem=0.455 all1 flat=0.0 fit=90.0 dem=90.0
+Jendouba/Fernana 36.657,8.693 n=20 dem=294 dipFit=0.45 dipDem=0.55 all1 flat=0.0 fit=95.0 dem=95.0
+Jendouba/Balta Bou Aouane 36.706,8.944 n=20 dem=472 dipFit=0.6 dipDem=0.697 all1 flat=0.0 fit=95.0 dem=95.0
+Jendouba/Jendouba 36.5,8.783 n=20 dem=145 dipFit=0.28 dipDem=0.387 all1 flat=10.0 fit=100.0 dem=100.0
+Sidi Bouzid/Hichria 34.829,9.376 n=20 dem=367 dipFit=0.51 dipDem=0.615 all1 flat=0.0 fit=70.0 dem=70.0
+Sidi Bouzid/Regueb 34.859,9.787 n=20 dem=194 dipFit=0.18 dipDem=0.447 all1 flat=5.0 fit=70.0 dem=70.0
+Sidi Bouzid/Meknassi 34.607,9.607 n=20 dem=256 dipFit=0.39 dipDem=0.514 all1 flat=0.0 fit=60.0 dem=60.0
+Sidi Bouzid/Jelma 35.274,9.425 n=20 dem=366 dipFit=0.51 dipDem=0.614 all1 flat=0.0 fit=70.0 dem=70.0
+Sidi Bouzid/Sabbalet Ouled Asker 35.177,9.278 n=20 dem=402 dipFit=0.54 dipDem=0.644 all1 flat=0.0 fit=70.0 dem=70.0
+Sidi Bouzid/Bir El Hafey 34.932,9.196 n=20 dem=433 dipFit=0.56 dipDem=0.668 all1 flat=0.0 fit=75.0 dem=75.0
+Sidi Bouzid/Sidi Ali Ben Aoun 34.853,9.145 n=20 dem=463 dipFit=0.58 dipDem=0.691 all1 flat=0.0 fit=95.0 dem=95.0
+Sidi Bouzid/Menzel Bouzayane 34.572,9.425 n=20 dem=316 dipFit=0.46 dipDem=0.571 all1 flat=0.0 fit=75.0 dem=75.0
+Sidi Bouzid/Mezouna 34.581,9.843 n=20 dem=169 dipFit=0.13 dipDem=0.417 all1 flat=20.0 fit=75.0 dem=70.0
+Sidi Bouzid/Ouled Haffouz 35.082,9.872 n=20 dem=202 dipFit=0.19 dipDem=0.456 all1 flat=0.0 fit=75.0 dem=75.0
+Sidi Bouzid/Souk Jedid 34.944,9.565 n=20 dem=335 dipFit=0.48 dipDem=0.588 all1 flat=0.0 fit=100.0 dem=100.0
+Sidi Bouzid/Sidi Bouzid 35.036,9.485 n=20 dem=332 dipFit=0.48 dipDem=0.585 all1 flat=0.0 fit=65.0 dem=65.0
+Béja/Nefza 36.976,9.081 n=20 dem=35 dipFit=0.09 dipDem=0.19 all1 flat=90.0 fit=90.0 dem=90.0
+Béja/Amdoun 36.768,9.089 n=20 dem=447 dipFit=0.57 dipDem=0.679 all1 flat=0.0 fit=85.0 dem=85.0
+Béja/Tibar 36.522,9.106 n=20 dem=358 dipFit=0.49 dipDem=0.607 all1 flat=0.0 fit=100.0 dem=100.0
+Béja/Testour 36.552,9.443 n=20 dem=87 dipFit=0.2 dipDem=0.299 all1 flat=50.0 fit=80.0 dem=80.0
+Béja/Teboursouk 36.459,9.246 n=20 dem=419 dipFit=0.55 dipDem=0.657 all1 flat=0.0 fit=85.0 dem=85.0
+Béja/Goubellat 36.542,9.663 n=20 dem=142 dipFit=0.28 dipDem=0.383 all1 flat=15.0 fit=90.0 dem=90.0
+Béja/Mejez El Bab 36.653,9.611 n=20 dem=54 dipFit=0.13 dipDem=0.236 all1 flat=90.0 fit=90.0 dem=90.0
+Béja/Beja 36.726,9.192 n=20 dem=209 dipFit=0.41 dipDem=0.464 all1 flat=0.0 fit=95.0 dem=95.0
+Kairouan/Sebikha 35.933,10.022 n=20 dem=70 dipFit=0.04 dipDem=0.269 all1 flat=100.0 fit=100.0 dem=75.0
+Kairouan/Chebika 35.619,9.926 n=20 dem=123 dipFit=0.08 dipDem=0.356 all1 flat=40.0 fit=85.0 dem=70.0
+Kairouan/Haffouz 35.637,9.676 n=20 dem=301 dipFit=0.45 dipDem=0.557 all1 flat=0.0 fit=70.0 dem=70.0
+Kairouan/El Alaa 35.615,9.562 n=20 dem=463 dipFit=0.6 dipDem=0.691 all1 flat=0.0 fit=75.0 dem=75.0
+Kairouan/Oueslatia 35.849,9.592 n=20 dem=474 dipFit=0.6 dipDem=0.699 all1 flat=0.0 fit=60.0 dem=60.0
+Kairouan/Hajeb El Ayoun 35.397,9.543 n=20 dem=351 dipFit=0.51 dipDem=0.601 all1 flat=0.0 fit=75.0 dem=75.0
+Kairouan/Nasrallah 35.356,9.829 n=20 dem=159 dipFit=0.11 dipDem=0.405 all1 flat=10.0 fit=80.0 dem=70.0
+Kairouan/Bou Hajla 35.395,10.05 n=20 dem=118 dipFit=0.07 dipDem=0.349 all1 flat=40.0 fit=90.0 dem=75.0
+Kairouan/Chrarda 35.119,10.032 n=14 dem=117 dipFit=0.07 dipDem=0.347 all1 flat=71.4 fit=100.0 dem=64.3
+Kairouan/Kairouan 35.677,10.097 n=20 dem=66 dipFit=0.06 dipDem=0.261 all1 flat=90.0 fit=90.0 dem=65.0
+Ariana/Kalaat El Andalous 37.062,10.118 n=20 dem=18 dipFit=0 dipDem=0.136 all1 flat=95.0 fit=95.0 dem=85.0
+Ariana/Raoued 36.953,10.188 n=20 dem=4 dipFit=0 dipDem=0.064 all1 flat=90.0 fit=90.0 dem=90.0
+Ariana/Soukra 36.868,10.265 n=20 dem=5 dipFit=0 dipDem=0.072 all1 flat=95.0 fit=95.0 dem=95.0
+Ariana/Mnihla 36.875,10.113 n=20 dem=94 dipFit=0.2 dipDem=0.311 all1 flat=70.0 fit=95.0 dem=95.0
+Ariana/Attadhamon 36.831,10.111 n=20 dem=61 dipFit=0.14 dipDem=0.251 all1 flat=90.0 fit=90.0 dem=90.0
+Ariana/Sidi Thabet 36.908,10.042 n=20 dem=20 dipFit=0.03 dipDem=0.144 all1 flat=95.0 fit=95.0 dem=95.0
+Ariana/Ariana 36.891,10.182 n=20 dem=6 dipFit=0 dipDem=0.079 all1 flat=95.0 fit=95.0 dem=95.0
+Sfax/Jebiniana 35.035,10.907 n=20 dem=37 dipFit=0.08 dipDem=0.195 all1 flat=100.0 fit=100.0 dem=100.0
+Sfax/Mahres 34.526,10.49 n=20 dem=5 dipFit=0 dipDem=0.072 all1 flat=100.0 fit=100.0 dem=100.0
+Sfax/Bir Ali Ben Khelifa 34.735,10.093 n=20 dem=174 dipFit=0.32 dipDem=0.423 all1 flat=5.0 fit=95.0 dem=95.0
+Sfax/Ghraiba 34.5,10.204 n=20 dem=41 dipFit=0.1 dipDem=0.206 all1 flat=95.0 fit=95.0 dem=95.0
+Sfax/Agareb 34.742,10.527 n=20 dem=83 dipFit=0.17 dipDem=0.292 all1 flat=80.0 fit=90.0 dem=90.0
+Sfax/El Hencha 35.121,10.742 n=20 dem=56 dipFit=0.14 dipDem=0.24 all1 flat=90.0 fit=90.0 dem=90.0
+Sfax/Menzel Chaker 34.965,10.369 n=20 dem=107 dipFit=0.23 dipDem=0.332 all1 flat=50.0 fit=95.0 dem=95.0
+Sfax/Kerkennah El Attaya 34.744,11.294 n=20 dem=2 dipFit=0 dipDem=0.045 all1 flat=95.0 fit=95.0 dem=95.0
+Sfax/Kerkennah Mellita 34.65,11.034 n=20 dem=2 dipFit=0 dipDem=0.045 all1 flat=95.0 fit=95.0 dem=95.0
+Sfax/El Amra 34.983,10.898 n=20 dem=18 dipFit=0.01 dipDem=0.136 all1 flat=100.0 fit=100.0 dem=100.0
+Sfax/Skhira 34.298,10.075 n=20 dem=31 dipFit=0.07 dipDem=0.179 all1 flat=95.0 fit=95.0 dem=95.0
+Sfax/Sakiet Ezzit 34.8,10.77 n=20 dem=21 dipFit=0.03 dipDem=0.147 all1 flat=95.0 fit=95.0 dem=95.0
+Sfax/Sakiet Eddaier 34.793,10.806 n=20 dem=10 dipFit=0 dipDem=0.102 all1 flat=90.0 fit=90.0 dem=90.0
+Sfax/Tina 34.686,10.706 n=10 dem=13 dipFit=0 dipDem=0.116 all1 flat=100.0 fit=100.0 dem=100.0
+Sfax/Sfax 34.733,10.75 n=20 dem=4 dipFit=0.05 dipDem=0.064 all1 flat=95.0 fit=95.0 dem=95.0
+Manouba/Jedaida 36.85,9.935 n=20 dem=22 dipFit=0.04 dipDem=0.151 all1 flat=95.0 fit=95.0 dem=95.0
+Manouba/El Battan 36.804,9.844 n=20 dem=35 dipFit=0.08 dipDem=0.19 all1 flat=85.0 fit=85.0 dem=85.0
+Manouba/Borj El Amri 36.713,9.882 n=20 dem=54 dipFit=0.12 dipDem=0.236 all1 flat=85.0 fit=85.0 dem=85.0
+Manouba/Oued Ellil 36.836,10.041 n=20 dem=63 dipFit=0.15 dipDem=0.255 all1 flat=90.0 fit=90.0 dem=90.0
+Manouba/Douar Hicher 36.828,10.089 n=20 dem=69 dipFit=0.16 dipDem=0.267 all1 flat=75.0 fit=85.0 dem=85.0
+Manouba/Mornaguia 36.761,10.016 n=20 dem=49 dipFit=0.13 dipDem=0.225 all1 flat=95.0 fit=95.0 dem=95.0
+Manouba/Tebourba 36.833,9.833 n=20 dem=65 dipFit=0.12 dipDem=0.259 all1 flat=85.0 fit=85.0 dem=85.0
+Manouba/Manouba 36.824,10.069 n=20 dem=41 dipFit=0.11 dipDem=0.206 all1 flat=90.0 fit=90.0 dem=90.0
+Bizerte/Sejnane 37.06,9.24 n=20 dem=129 dipFit=0.27 dipDem=0.365 all1 flat=5.0 fit=95.0 dem=95.0
+Bizerte/Joumine 36.926,9.387 n=20 dem=318 dipFit=0.48 dipDem=0.572 all1 flat=0.0 fit=95.0 dem=95.0
+Bizerte/Mateur 37.04,9.665 n=20 dem=27 dipFit=0.07 dipDem=0.167 all1 flat=90.0 fit=90.0 dem=90.0
+Bizerte/Ghezala 37.075,9.537 n=20 dem=60 dipFit=0.14 dipDem=0.249 all1 flat=80.0 fit=90.0 dem=90.0
+Bizerte/Menzel Jemil 37.235,9.91 n=20 dem=29 dipFit=0.05 dipDem=0.173 all1 flat=100.0 fit=100.0 dem=100.0
+Bizerte/Menzel Bourguiba 37.15,9.783 n=20 dem=12 dipFit=0.01 dipDem=0.111 all1 flat=95.0 fit=95.0 dem=95.0
+Bizerte/Ghar El Melh 37.169,10.187 n=20 dem=13 dipFit=0 dipDem=0.116 all1 flat=95.0 fit=95.0 dem=95.0
+Bizerte/Ras Jebel 37.215,10.12 n=20 dem=62 dipFit=0.12 dipDem=0.253 all1 flat=95.0 fit=95.0 dem=95.0
+Bizerte/Tinja 37.16,9.764 n=20 dem=10 dipFit=0 dipDem=0.102 all1 flat=95.0 fit=95.0 dem=95.0
+Bizerte/El Alia 37.167,10.033 n=20 dem=70 dipFit=0.16 dipDem=0.269 all1 flat=90.0 fit=95.0 dem=95.0
+Bizerte/Utique 36.978,9.957 n=20 dem=15 dipFit=0.01 dipDem=0.124 all1 flat=95.0 fit=95.0 dem=95.0
+Bizerte/Zarzouna 37.259,9.877 n=20 dem=15 dipFit=0.02 dipDem=0.124 all1 flat=100.0 fit=100.0 dem=100.0
+Bizerte/Al Matlin 37.244,10.051 n=20 dem=167 dipFit=0.32 dipDem=0.415 all1 flat=0.0 fit=95.0 dem=95.0
+Bizerte/Zouaouine 37.127,10.057 n=20 dem=12 dipFit=0 dipDem=0.111 all1 flat=95.0 fit=95.0 dem=95.0
+Bizerte/Aousja 37.142,10.102 n=20 dem=10 dipFit=0 dipDem=0.102 all1 flat=95.0 fit=95.0 dem=95.0
+Bizerte/Al Khitmin 37.145,9.986 n=20 dem=45 dipFit=0.11 dipDem=0.215 all1 flat=80.0 fit=80.0 dem=80.0
+Bizerte/Bizerte 37.276,9.873 n=20 dem=9 dipFit=0.06 dipDem=0.096 all1 flat=100.0 fit=100.0 dem=100.0
+Kasserine/Tala 35.572,8.67 n=20 dem=963 dipFit=0.89 dipDem=0.996 all1 flat=0.0 fit=80.0 dem=80.0
+Kasserine/Hidra 35.568,8.443 n=20 dem=846 dipFit=0.84 dipDem=0.934 all1 flat=0.0 fit=95.0 dem=95.0
+Kasserine/Sbitla 35.23,9.129 n=20 dem=529 dipFit=0.64 dipDem=0.738 all1 flat=0.0 fit=100.0 dem=100.0
+Kasserine/Sbiba 35.545,9.072 n=20 dem=626 dipFit=0.7 dipDem=0.803 all1 flat=0.0 fit=100.0 dem=100.0
+Kasserine/Feriana 34.943,8.555 n=20 dem=741 dipFit=0.77 dipDem=0.874 all1 flat=0.0 fit=95.0 dem=95.0
+Kasserine/Foussana 35.348,8.63 n=20 dem=722 dipFit=0.77 dipDem=0.863 all1 flat=0.0 fit=100.0 dem=100.0
+Kasserine/El Ayoun 35.541,8.884 n=20 dem=940 dipFit=0.88 dipDem=0.984 all1 flat=0.0 fit=90.0 dem=90.0
+Kasserine/Majel Bel Abbes 34.748,8.52 n=20 dem=641 dipFit=0.71 dipDem=0.813 all1 flat=0.0 fit=95.0 dem=95.0
+Kasserine/Jedliane 35.593,9.059 n=20 dem=625 dipFit=0.7 dipDem=0.803 all1 flat=0.0 fit=100.0 dem=100.0
+Kasserine/Hassi Ferid 34.978,8.949 n=20 dem=612 dipFit=0.7 dipDem=0.794 all1 flat=0.0 fit=100.0 dem=100.0
+Kasserine/Kasserine 35.168,8.836 n=20 dem=674 dipFit=0.73 dipDem=0.833 all1 flat=0.0 fit=100.0 dem=100.0
+Le kef/Tourief 36.339,8.58 n=20 dem=475 dipFit=0.6 dipDem=0.7 all1 flat=0.0 fit=100.0 dem=100.0
+Le kef/El Ksour 35.899,8.881 n=20 dem=703 dipFit=0.76 dipDem=0.851 all1 flat=0.0 fit=100.0 dem=100.0
+Le kef/Le Sers 36.078,9.021 n=20 dem=492 dipFit=0.61 dipDem=0.712 all1 flat=0.0 fit=85.0 dem=85.0
+Le kef/Jerissa 35.843,8.628 n=20 dem=631 dipFit=0.7 dipDem=0.806 all1 flat=0.0 fit=90.0 dem=90.0
+Le kef/Tejerouine 35.892,8.553 n=20 dem=660 dipFit=0.73 dipDem=0.825 all1 flat=0.0 fit=90.0 dem=90.0
+Le kef/Kalâa El Khasba 35.666,8.584 n=20 dem=672 dipFit=0.73 dipDem=0.832 all1 flat=0.0 fit=95.0 dem=95.0
+Le kef/Kalaat Sinane 35.768,8.342 n=20 dem=659 dipFit=0.72 dipDem=0.824 all1 flat=0.0 fit=85.0 dem=85.0
+Le kef/Nebeur 36.298,8.768 n=20 dem=386 dipFit=0.53 dipDem=0.631 all1 flat=0.0 fit=95.0 dem=95.0
+Le kef/Dahmani 35.944,8.828 n=20 dem=623 dipFit=0.7 dipDem=0.801 all1 flat=0.0 fit=85.0 dem=85.0
+Le kef/Sakiet Sidi Youssef 36.224,8.355 n=20 dem=811 dipFit=0.81 dipDem=0.914 all1 flat=0.0 fit=95.0 dem=95.0
+Le kef/Le Kef 36.184,8.715 n=20 dem=750 dipFit=0.78 dipDem=0.879 all1 flat=0.0 fit=100.0 dem=100.0
+Monastir/Sahline 35.751,10.711 n=20 dem=18 dipFit=0.04 dipDem=0.136 all1 flat=100.0 fit=100.0 dem=100.0
+Monastir/Ouerdanine 35.708,10.675 n=20 dem=60 dipFit=0.14 dipDem=0.249 all1 flat=100.0 fit=100.0 dem=100.0
+Monastir/Teboulba 35.64,10.965 n=20 dem=23 dipFit=0.06 dipDem=0.154 all1 flat=95.0 fit=95.0 dem=95.0
+Monastir/Jammel 35.628,10.759 n=20 dem=25 dipFit=0.06 dipDem=0.161 all1 flat=95.0 fit=95.0 dem=95.0
+Monastir/Zeramdine 35.577,10.73 n=20 dem=73 dipFit=0.17 dipDem=0.274 all1 flat=90.0 fit=100.0 dem=100.0
+Monastir/Beni Hassan 35.569,10.81 n=20 dem=45 dipFit=0.11 dipDem=0.215 all1 flat=100.0 fit=100.0 dem=100.0
+Monastir/Moknine 35.632,10.901 n=20 dem=15 dipFit=0 dipDem=0.124 all1 flat=80.0 fit=80.0 dem=80.0
+Monastir/Ksibet Medyouni 35.689,10.842 n=20 dem=30 dipFit=0.07 dipDem=0.176 all1 flat=90.0 fit=90.0 dem=90.0
+Monastir/Sayada Lamta Bouhjar 35.666,10.888 n=20 dem=20 dipFit=0.06 dipDem=0.144 all1 flat=80.0 fit=80.0 dem=80.0
+Monastir/Bekalta 35.617,11 n=20 dem=6 dipFit=0 dipDem=0.079 all1 flat=100.0 fit=100.0 dem=100.0
+Monastir/Ksar Helal 35.65,10.9 n=20 dem=25 dipFit=0.06 dipDem=0.161 all1 flat=85.0 fit=85.0 dem=85.0
+Monastir/Benbla 35.694,10.79 n=20 dem=29 dipFit=0.07 dipDem=0.173 all1 flat=100.0 fit=100.0 dem=100.0
+Monastir/Monastir 35.775,10.831 n=20 dem=13 dipFit=0 dipDem=0.116 all1 flat=85.0 fit=85.0 dem=80.0
+Gafsa/Moulares 34.49,8.266 n=20 dem=462 dipFit=0.58 dipDem=0.69 all1 flat=0.0 fit=100.0 dem=100.0
+Gafsa/Redyef 34.383,8.15 n=20 dem=574 dipFit=0.67 dipDem=0.769 all1 flat=0.0 fit=95.0 dem=95.0
+Gafsa/Metlaoui 34.316,8.402 n=20 dem=214 dipFit=0.37 dipDem=0.47 all1 flat=0.0 fit=95.0 dem=95.0
+Gafsa/Mdhilla 34.293,8.751 n=20 dem=258 dipFit=0.41 dipDem=0.516 all1 flat=0.0 fit=100.0 dem=100.0
+Gafsa/El Ksar 34.402,8.804 n=20 dem=292 dipFit=0.45 dipDem=0.549 all1 flat=0.0 fit=95.0 dem=95.0
+Gafsa/Sened 34.462,9.262 n=20 dem=601 dipFit=0.69 dipDem=0.787 all1 flat=0.0 fit=100.0 dem=100.0
+Gafsa/Sidi Aich 34.733,8.784 n=20 dem=499 dipFit=0.62 dipDem=0.717 all1 flat=0.0 fit=90.0 dem=90.0
+Gafsa/El Guettar 34.337,8.953 n=20 dem=248 dipFit=0.4 dipDem=0.506 all1 flat=0.0 fit=95.0 dem=95.0
+Gafsa/Belkhir 34.274,9.391 n=20 dem=125 dipFit=0.25 dipDem=0.359 all1 flat=10.0 fit=100.0 dem=100.0
+Gafsa/Gafsa 34.421,8.787 n=20 dem=299 dipFit=0.47 dipDem=0.555 all1 flat=0.0 fit=100.0 dem=100.0
+wrote 258 delegations

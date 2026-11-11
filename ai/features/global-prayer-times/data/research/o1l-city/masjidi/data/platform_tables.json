@@ -1,0 +1,3962 @@
+[
+ {
+  "id": "23",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "رأس بيروت",
+  "name": "مسجد ومركز العثمان - شانيه"
+ },
+ {
+  "id": "24",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "رأس بيروت",
+  "name": "مسجد المجيدية"
+ },
+ {
+  "id": "29",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "رأس بيروت",
+  "name": "مسجد حمزة بن عبد المطّلب"
+ },
+ {
+  "id": "32",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "رأس بيروت",
+  "name": "مسجد الدعوة"
+ },
+ {
+  "id": "35",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "رأس بيروت",
+  "name": "مسجد السلطان محمد الفاتح"
+ },
+ {
+  "id": "44",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "رأس بيروت",
+  "name": "مسجد العرب - الحرج"
+ },
+ {
+  "id": "58",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "رأس بيروت",
+  "name": "مسجد راس بيروت"
+ },
+ {
+  "id": "69",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "رأس بيروت",
+  "name": "مسجد السلام"
+ },
+ {
+  "id": "92",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "رأس بيروت",
+  "name": "مركز الفاروق الإسلامي"
+ },
+ {
+  "id": "93",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "رأس بيروت",
+  "name": "مسجد أبو بكر الصديق"
+ },
+ {
+  "id": "95",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "رأس بيروت",
+  "name": "مسجد خاتم الأنبياء والمرسلين محمد الأمين"
+ },
+ {
+  "id": "97",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "رأس بيروت",
+  "name": "مسجد عمّاش"
+ },
+ {
+  "id": "114",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "رأس بيروت",
+  "name": "مسجد البرجاوي"
+ },
+ {
+  "id": "117",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "رأس بيروت",
+  "name": "مسجد الإمام الشافعي"
+ },
+ {
+  "id": "118",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "رأس بيروت",
+  "name": "مسجد المجذوب"
+ },
+ {
+  "id": "333",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "رأس بيروت",
+  "name": "مسجد الرحمن"
+ },
+ {
+  "id": "392",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "رأس بيروت",
+  "name": "مسجد خالد بن الوليد"
+ },
+ {
+  "id": "687",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "رأس بيروت",
+  "name": "مسجد الشهداء"
+ },
+ {
+  "id": "720",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "رأس بيروت",
+  "name": "جامع الامير عساف"
+ },
+ {
+  "id": "1077",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "رأس بيروت",
+  "name": "مسجد القنطاري"
+ },
+ {
+  "id": "1203",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "رأس بيروت",
+  "name": "مسجد الخليفة الصدّيق أبي بكر رضي الله عنه"
+ },
+ {
+  "id": "1318",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "رأس بيروت",
+  "name": "مسجد و خلية خليل شهاب"
+ },
+ {
+  "id": "1321",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "رأس بيروت",
+  "name": "مسجد عائشة بكار"
+ },
+ {
+  "id": "1920",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "رأس بيروت",
+  "name": "عمر بن الخطاب خلدة"
+ },
+ {
+  "id": "1997",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "رأس بيروت",
+  "name": "مسجد الحاج محمد البساتنة"
+ },
+ {
+  "id": "2",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "صيدا",
+  "name": "مسجد الإيمان"
+ },
+ {
+  "id": "8",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "صيدا",
+  "name": "مسجد المجذوب"
+ },
+ {
+  "id": "10",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "صيدا",
+  "name": "مسجد الحسين"
+ },
+ {
+  "id": "14",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "صيدا",
+  "name": "مسجد البزري"
+ },
+ {
+  "id": "16",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "صيدا",
+  "name": "مسجد قطيش"
+ },
+ {
+  "id": "18",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "صيدا",
+  "name": "مسجد دار الأرقم"
+ },
+ {
+  "id": "30",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "صيدا",
+  "name": "مسجد الروضة"
+ },
+ {
+  "id": "36",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "صيدا",
+  "name": "جامع الزعتري"
+ },
+ {
+  "id": "40",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "صيدا",
+  "name": "مجمع مسجد الحاج بهاء الدين الحريري"
+ },
+ {
+  "id": "48",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "صيدا",
+  "name": "مسجد باب السراي"
+ },
+ {
+  "id": "49",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "صيدا",
+  "name": "مسجد الكيخيا"
+ },
+ {
+  "id": "67",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "صيدا",
+  "name": "مسجد الزيتونة"
+ },
+ {
+  "id": "82",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "صيدا",
+  "name": "مصلى شهداء القياعة"
+ },
+ {
+  "id": "98",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "صيدا",
+  "name": "مسجد السيدة عائشة أم المؤمنين"
+ },
+ {
+  "id": "110",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "صيدا",
+  "name": "مسجد الشهداء"
+ },
+ {
+  "id": "116",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "صيدا",
+  "name": "مسجد الرضوان"
+ },
+ {
+  "id": "134",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "صيدا",
+  "name": "مسجد نحّولي"
+ },
+ {
+  "id": "139",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "صيدا",
+  "name": "مصلى الإمام النووي رحمه الله"
+ },
+ {
+  "id": "216",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "صيدا",
+  "name": "مسجد المصطفى  ﷺ"
+ },
+ {
+  "id": "679",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "صيدا",
+  "name": "مسجد ومجمع علي بن أبي طالب"
+ },
+ {
+  "id": "716",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "صيدا",
+  "name": "مسجد الصحابة"
+ },
+ {
+  "id": "1162",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "صيدا",
+  "name": "مسجد الصديق"
+ },
+ {
+  "id": "1228",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "صيدا",
+  "name": "مسجد صلاح الدين"
+ },
+ {
+  "id": "1962",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "صيدا",
+  "name": "مسجد أبو نخلة"
+ },
+ {
+  "id": "39",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "الجية",
+  "name": "مسجد العرب"
+ },
+ {
+  "id": "664",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "الجية",
+  "name": "مسجد العكاوي"
+ },
+ {
+  "id": "710",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "الجية",
+  "name": "مسجد الخطيب اشفا"
+ },
+ {
+  "id": "925",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "الجية",
+  "name": "مسجد الامام علي"
+ },
+ {
+  "id": "959",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "الجية",
+  "name": "مسجد الضيعة القديم"
+ },
+ {
+  "id": "1322",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "الجية",
+  "name": "مسجد الرحمـٰن"
+ },
+ {
+  "id": "1655",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "الجية",
+  "name": "جامع النُّعمان"
+ },
+ {
+  "id": "1712",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "الجية",
+  "name": "مسجد الشيخ عمار"
+ },
+ {
+  "id": "1741",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "الجية",
+  "name": "مسجد ابو بكر الصديق"
+ },
+ {
+  "id": "1978",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "الجية",
+  "name": "مسجد النبي يونس عليه السلام"
+ },
+ {
+  "id": "22",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "المزرعة",
+  "name": "مسجد الإمام علي علي بن أبي طالب"
+ },
+ {
+  "id": "79",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "المزرعة",
+  "name": "مسجد جماعة عباد الرحمن"
+ },
+ {
+  "id": "120",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "المزرعة",
+  "name": "مسجد السمّان"
+ },
+ {
+  "id": "572",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "المزرعة",
+  "name": "مسجد الخلية السعودية - عمر بن الخطّاب"
+ },
+ {
+  "id": "719",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "المزرعة",
+  "name": "مسجد راشد الحوري"
+ },
+ {
+  "id": "1167",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "المزرعة",
+  "name": "مسجد صلاح الدين الأيوبي"
+ },
+ {
+  "id": "1314",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "المزرعة",
+  "name": "مسجد وخلية المكاوي"
+ },
+ {
+  "id": "2146",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "المزرعة",
+  "name": "مسجد عمر بن عبد العزيز"
+ },
+ {
+  "id": "2148",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "المزرعة",
+  "name": "مسجد بوبس"
+ },
+ {
+  "id": "17",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "صور",
+  "name": "مسجد الإمام الرفاعي"
+ },
+ {
+  "id": "54",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "صور",
+  "name": "مسجد الخالصة"
+ },
+ {
+  "id": "77",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "صور",
+  "name": "مصلى الرحمة"
+ },
+ {
+  "id": "80",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "صور",
+  "name": "مسجد صور القديم"
+ },
+ {
+  "id": "129",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "صور",
+  "name": "مسجد السيدة فاطمة الزهراء رضي الله عنها"
+ },
+ {
+  "id": "131",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "صور",
+  "name": "مسجد سيدنا إبراهيم الخليل"
+ },
+ {
+  "id": "132",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "صور",
+  "name": "مسجد فاطمة الزهراء"
+ },
+ {
+  "id": "1887",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "صور",
+  "name": "مسجد عبدالله بن عباس"
+ },
+ {
+  "id": "50",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "الشوف",
+  "name": "مسجد بنواتي"
+ },
+ {
+  "id": "128",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "الشوف",
+  "name": "مسجد الحاج ناجي العلي"
+ },
+ {
+  "id": "141",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "الشوف",
+  "name": "مسجد البصة"
+ },
+ {
+  "id": "458",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "الشوف",
+  "name": "مسجد السلام"
+ },
+ {
+  "id": "596",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "الشوف",
+  "name": "مسجد أبي بكر الصديق"
+ },
+ {
+  "id": "897",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "الشوف",
+  "name": "مصلى محمد حمدان"
+ },
+ {
+  "id": "1137",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "الشوف",
+  "name": "مسجد السعديات"
+ },
+ {
+  "id": "1853",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "الشوف",
+  "name": "مسجد السيدة عائشة ام المؤمنين رضي الله عنها"
+ },
+ {
+  "id": "13",
+  "tableId": 3,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "وادي خالد",
+  "name": "مسجد الإمام علي - الكنيسة-وادي خالد"
+ },
+ {
+  "id": "265",
+  "tableId": 3,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "وادي خالد",
+  "name": "مسجد عمر المختار - الكنيسة - وادي خالد"
+ },
+ {
+  "id": "1315",
+  "tableId": 3,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "وادي خالد",
+  "name": "مصلى البراء بن مالك"
+ },
+ {
+  "id": "1848",
+  "tableId": 3,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "وادي خالد",
+  "name": "مسجد الراما"
+ },
+ {
+  "id": "1849",
+  "tableId": 3,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "وادي خالد",
+  "name": "مسجد الرامة "
+ },
+ {
+  "id": "1893",
+  "tableId": 3,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "وادي خالد",
+  "name": "مسجد المجدل وادي خالد"
+ },
+ {
+  "id": "1906",
+  "tableId": 3,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "وادي خالد",
+  "name": "مسجد النورين"
+ },
+ {
+  "id": "45",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "عين الحلوة",
+  "name": "مسجد خالد بن الوليد"
+ },
+ {
+  "id": "64",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "عين الحلوة",
+  "name": "مسجد ومجمع الفاروق عمر بن الخطاب"
+ },
+ {
+  "id": "83",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "عين الحلوة",
+  "name": "مسجد زيد بن ثابت"
+ },
+ {
+  "id": "112",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "عين الحلوة",
+  "name": "مصلى بلال بن رباح"
+ },
+ {
+  "id": "126",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "عين الحلوة",
+  "name": "مصلى الرأس الأحمر"
+ },
+ {
+  "id": "547",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "عين الحلوة",
+  "name": "مسجد زين العابدين"
+ },
+ {
+  "id": "730",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "عين الحلوة",
+  "name": "مسجد النور"
+ },
+ {
+  "id": "41",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "مخيم برج البراجنة",
+  "name": "مسجد فلسطين"
+ },
+ {
+  "id": "51",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "مخيم برج البراجنة",
+  "name": "مسجد خاتم الأنبياء"
+ },
+ {
+  "id": "68",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "مخيم برج البراجنة",
+  "name": "مسجد ومجمع الريّان"
+ },
+ {
+  "id": "96",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "مخيم برج البراجنة",
+  "name": "مسجد المهتدين"
+ },
+ {
+  "id": "1364",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "مخيم برج البراجنة",
+  "name": "مسجد ومجمع الفرقان"
+ },
+ {
+  "id": "1412",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "مخيم برج البراجنة",
+  "name": "مسجد غزة"
+ },
+ {
+  "id": "2048",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "مخيم برج البراجنة",
+  "name": "مسجد سيدنا حمزة"
+ },
+ {
+  "id": "303",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "برجا",
+  "name": "مسجد الإمام أحمد بن حنبل"
+ },
+ {
+  "id": "826",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "برجا",
+  "name": "مسجد الشيخ محمد الديماسي"
+ },
+ {
+  "id": "829",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "برجا",
+  "name": "مسجد الرحمة"
+ },
+ {
+  "id": "1668",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "برجا",
+  "name": "مسجد النبي يوسف عليه السلام"
+ },
+ {
+  "id": "1901",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "برجا",
+  "name": "مسجد فضل الرحمن برجا"
+ },
+ {
+  "id": "2066",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "برجا",
+  "name": "جامع برجا الكبير"
+ },
+ {
+  "id": "86",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "مخيم الرشيدية",
+  "name": "مسجد التقوى"
+ },
+ {
+  "id": "87",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "مخيم الرشيدية",
+  "name": "مسجد التوبة"
+ },
+ {
+  "id": "89",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "مخيم الرشيدية",
+  "name": "مسجد الرحمة"
+ },
+ {
+  "id": "94",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "مخيم الرشيدية",
+  "name": "مسجد فلسطين"
+ },
+ {
+  "id": "109",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "مخيم الرشيدية",
+  "name": "مسجد الفاروق عمر بن الخطاب"
+ },
+ {
+  "id": "756",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "مخيم الرشيدية",
+  "name": "مسجد العودة"
+ },
+ {
+  "id": "85",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "المصيطبة",
+  "name": "مسجد المصيطبة"
+ },
+ {
+  "id": "204",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "المصيطبة",
+  "name": "مسجد سعد بن أبي وقاص"
+ },
+ {
+  "id": "697",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "المصيطبة",
+  "name": "مسجد دار الحديث"
+ },
+ {
+  "id": "935",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "المصيطبة",
+  "name": "مسجد الشيخ احمد كفتارو"
+ },
+ {
+  "id": "1212",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "المصيطبة",
+  "name": "مسجد سليم سلام"
+ },
+ {
+  "id": "1287",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "المصيطبة",
+  "name": "مسجد الفتوة المؤقت"
+ },
+ {
+  "id": "38",
+  "tableId": 7508,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "طرابلس",
+  "name": "مسجد السلام"
+ },
+ {
+  "id": "366",
+  "tableId": 7508,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "طرابلس",
+  "name": "مسجد التقوى"
+ },
+ {
+  "id": "705",
+  "tableId": 7508,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "طرابلس",
+  "name": "مسجد الأبرار"
+ },
+ {
+  "id": "1652",
+  "tableId": 7508,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "طرابلس",
+  "name": "مسجد الرحمن"
+ },
+ {
+  "id": "1729",
+  "tableId": 7508,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "طرابلس",
+  "name": "مسجد الناصرة"
+ },
+ {
+  "id": "33",
+  "tableId": 7203,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "عاليه",
+  "name": "مسجد أنس بن مالك"
+ },
+ {
+  "id": "555",
+  "tableId": 7203,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "عاليه",
+  "name": "مسجد الفرقان"
+ },
+ {
+  "id": "601",
+  "tableId": 7203,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "عاليه",
+  "name": "مسجد الأمين"
+ },
+ {
+  "id": "886",
+  "tableId": 7203,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "عاليه",
+  "name": "مسجد عبد الله بن عباس"
+ },
+ {
+  "id": "1805",
+  "tableId": 7203,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "عاليه",
+  "name": "مسجد البايرقدار"
+ },
+ {
+  "id": "718",
+  "tableId": 7202,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "عرمون",
+  "name": "مسجد العلا"
+ },
+ {
+  "id": "724",
+  "tableId": 7202,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "عرمون",
+  "name": "مسجد المكحل"
+ },
+ {
+  "id": "1273",
+  "tableId": 7202,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "عرمون",
+  "name": "مسجد الحياة"
+ },
+ {
+  "id": "1278",
+  "tableId": 7202,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "عرمون",
+  "name": "مسجد الايمان عرمون"
+ },
+ {
+  "id": "1346",
+  "tableId": 7202,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "عرمون",
+  "name": "مسجد المصطفى ﷺ"
+ },
+ {
+  "id": "6",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "الفوار",
+  "name": "مسجد الحسنين"
+ },
+ {
+  "id": "66",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "الفوار",
+  "name": "مسجد سيدنا إبراهيم عليه السلام"
+ },
+ {
+  "id": "111",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "الفوار",
+  "name": "مسجد حبر الأمة عبدالله بن عباس"
+ },
+ {
+  "id": "145",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "الفوار",
+  "name": "مسجد عزالدين القسّام"
+ },
+ {
+  "id": "1865",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "الفوار",
+  "name": "مصلى الرّيان"
+ },
+ {
+  "id": "1",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "عبرا",
+  "name": "مسجد الرحمة"
+ },
+ {
+  "id": "4",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "عبرا",
+  "name": "سيد الشهداء حمزة بن عبد المطلب"
+ },
+ {
+  "id": "7",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "عبرا",
+  "name": "مسجد بلال بن رباح"
+ },
+ {
+  "id": "146",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "عبرا",
+  "name": "مسجد التقوى"
+ },
+ {
+  "id": "11",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "سيروب",
+  "name": "مسجد العثمان"
+ },
+ {
+  "id": "43",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "سيروب",
+  "name": "مسجد الأحمد"
+ },
+ {
+  "id": "59",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "سيروب",
+  "name": "مصلى المعروف"
+ },
+ {
+  "id": "1681",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "سيروب",
+  "name": "مسجد العبدالله"
+ },
+ {
+  "id": "12",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "بقسطا",
+  "name": "مسجد هند حجازي"
+ },
+ {
+  "id": "27",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "بقسطا",
+  "name": "مسجد شرحبيل بن حسنة"
+ },
+ {
+  "id": "55",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "بقسطا",
+  "name": "مسجد سيدنا عثمان بن عفان"
+ },
+ {
+  "id": "1660",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "بقسطا",
+  "name": "مسجد المصطفى الامين"
+ },
+ {
+  "id": "808",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "مخيم الواسطة",
+  "name": "مسجد  الامام الحسين"
+ },
+ {
+  "id": "1040",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "مخيم الواسطة",
+  "name": "مسجد الإمام الحسين"
+ },
+ {
+  "id": "2081",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "مخيم الواسطة",
+  "name": "مسجد الجليل كفربدا"
+ },
+ {
+  "id": "25",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "بعبدا",
+  "name": "مسجد حمانا"
+ },
+ {
+  "id": "708",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "بعبدا",
+  "name": "جامع سبنيه"
+ },
+ {
+  "id": "1900",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "بعبدا",
+  "name": "بلال بن رباح"
+ },
+ {
+  "id": "56",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "الباشورة",
+  "name": "مسجد أمير المؤمنين عثمان بن عفان ذي النورين"
+ },
+ {
+  "id": "1187",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "الباشورة",
+  "name": "مسجد عبد الرحمن بن عوف رضي الله عنه"
+ },
+ {
+  "id": "1325",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "الباشورة",
+  "name": "مسجد البسطة التحتا"
+ },
+ {
+  "id": "1301",
+  "tableId": 7199,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "مزبود",
+  "name": "مسجد الإمام علي"
+ },
+ {
+  "id": "1421",
+  "tableId": 7199,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "مزبود",
+  "name": "مسجد الشيخ خالد احمد ضاهر"
+ },
+ {
+  "id": "2058",
+  "tableId": 7199,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "مزبود",
+  "name": "مسجد مزبود/ الساحة"
+ },
+ {
+  "id": "65",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "مخيم البرج الشمالي",
+  "name": "مسجد النور"
+ },
+ {
+  "id": "84",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "مخيم البرج الشمالي",
+  "name": "مسجد الصحابة"
+ },
+ {
+  "id": "90",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "مخيم البرج الشمالي",
+  "name": "مسجد أُبي بن كعب"
+ },
+ {
+  "id": "47",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "مخيم البص",
+  "name": "مسجد حمزة"
+ },
+ {
+  "id": "81",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "مخيم البص",
+  "name": "مسجد أبو بكر الصديق"
+ },
+ {
+  "id": "526",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "مخيم البص",
+  "name": "مسجد الشيخ احمد الجشي"
+ },
+ {
+  "id": "113",
+  "tableId": 7199,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "كترمايا",
+  "name": "مسجد عمر بن الخطاب"
+ },
+ {
+  "id": "1401",
+  "tableId": 7199,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "كترمايا",
+  "name": "مسجد الشهداء - كترمايا"
+ },
+ {
+  "id": "1710",
+  "tableId": 7199,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "كترمايا",
+  "name": "مسجد الفاروق عمر"
+ },
+ {
+  "id": "46",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "مخيم شاتيلا",
+  "name": "مسجد شاتيلا"
+ },
+ {
+  "id": "72",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "مخيم شاتيلا",
+  "name": "مسجد جنين"
+ },
+ {
+  "id": "930",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "مخيم شاتيلا",
+  "name": "مسجد الحبيب"
+ },
+ {
+  "id": "621",
+  "tableId": 7199,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "سبلين",
+  "name": "مسجد ﷴ الراس"
+ },
+ {
+  "id": "1166",
+  "tableId": 7199,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "سبلين",
+  "name": "مصلى أبو عبيدة"
+ },
+ {
+  "id": "2237",
+  "tableId": 7213,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "كامد اللوز",
+  "name": "مسجد أبي بكر الصديق رضي الله عنه (الكبير) "
+ },
+ {
+  "id": "2238",
+  "tableId": 7213,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "كامد اللوز",
+  "name": "مسجد أنس بن مالك رضي الله عنه (القديم)"
+ },
+ {
+  "id": "1763",
+  "tableId": 7199,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "شحيم",
+  "name": "مسجد البدوي"
+ },
+ {
+  "id": "2154",
+  "tableId": 7199,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "شحيم",
+  "name": "مسجد حمزة"
+ },
+ {
+  "id": "52",
+  "tableId": 3,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "مخيم نهر البارد",
+  "name": "مجمع القدس الخيري (مرشد)"
+ },
+ {
+  "id": "861",
+  "tableId": 3,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "مخيم نهر البارد",
+  "name": "مسجد ومجمع التقوى"
+ },
+ {
+  "id": "100",
+  "tableId": 7200,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "عانوت",
+  "name": "مسجد الضيعة"
+ },
+ {
+  "id": "101",
+  "tableId": 7200,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "عانوت",
+  "name": "مسجد خالد بن الواليد"
+ },
+ {
+  "id": "31",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "مجدليون",
+  "name": "مسجد ميسر"
+ },
+ {
+  "id": "764",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "مجدليون",
+  "name": "مسجد الرحمن"
+ },
+ {
+  "id": "1680",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "دير قوبل",
+  "name": "مسجد الطّبش"
+ },
+ {
+  "id": "1720",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "دير قوبل",
+  "name": "مسجد السيدة عاىشة رضي الله عنها"
+ },
+ {
+  "id": "1497",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "الأوزاعي",
+  "name": "مسجد الإمام الاوزاعي"
+ },
+ {
+  "id": "1498",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "الأوزاعي",
+  "name": "مقام الامام الاوزاعي"
+ },
+ {
+  "id": "607",
+  "tableId": 7213,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "خربة روحا",
+  "name": "مسجد خربة روحا"
+ },
+ {
+  "id": "1231",
+  "tableId": 7213,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "خربة روحا",
+  "name": "مسجد محمد الأمين"
+ },
+ {
+  "id": "208",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "الشويفات",
+  "name": "مجمع بلال بن رباح"
+ },
+ {
+  "id": "1135",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "الشويفات",
+  "name": "مسجد سيّدنا الحسن بن علي"
+ },
+ {
+  "id": "19",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "المعشوق",
+  "name": "مسجد ذي النورين"
+ },
+ {
+  "id": "71",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "المعشوق",
+  "name": "جامع المعشوق"
+ },
+ {
+  "id": "37",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "النجارية",
+  "name": "مسجد زاد الرحيل"
+ },
+ {
+  "id": "42",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "النجارية",
+  "name": "مسجد البدر"
+ },
+ {
+  "id": "3",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "الهلالية",
+  "name": "مسجد الفرقان"
+ },
+ {
+  "id": "61",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "الهلالية",
+  "name": "مسجد السنّة"
+ },
+ {
+  "id": "103",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "القاسمية",
+  "name": "مصلى مشعل"
+ },
+ {
+  "id": "235",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "القاسمية",
+  "name": "مسجد الرسول الأكرم"
+ },
+ {
+  "id": "70",
+  "tableId": 7202,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "بشامون",
+  "name": "مسجد السيّدة خديجة رضي الله عنها"
+ },
+ {
+  "id": "1753",
+  "tableId": 7202,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "بشامون",
+  "name": "مسجد النور"
+ },
+ {
+  "id": "1861",
+  "tableId": 7509,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "البقاع الغربي",
+  "name": "مسجد علي بن أبي طالب رضي الله عنه"
+ },
+ {
+  "id": "2091",
+  "tableId": 7509,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "البقاع الغربي",
+  "name": "مركز ومسجد النور"
+ },
+ {
+  "id": "1532",
+  "tableId": 8166,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "الزعرورية",
+  "name": "مسجد الزعرورية"
+ },
+ {
+  "id": "1541",
+  "tableId": 8166,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "الزعرورية",
+  "name": "مسجد الحمد"
+ },
+ {
+  "id": "1654",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "مخيم المية ومية",
+  "name": "مسجد عمر بن الخطاب رضي الله عنه"
+ },
+ {
+  "id": "53",
+  "tableId": 7199,
+  "type": "table-api",
+  "timezone": null,
+  "city": "الدبية",
+  "name": "مسجد النور"
+ },
+ {
+  "id": "2016",
+  "tableId": 3,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "قشلق",
+  "name": "مسجد عبدالله ابن عباس (قشلق)"
+ },
+ {
+  "id": "2014",
+  "tableId": 3,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "الشيخ عياش",
+  "name": "مسجد السيدة عائشة"
+ },
+ {
+  "id": "2032",
+  "tableId": 3,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "العبودية",
+  "name": "مَسجِد_فاطمة"
+ },
+ {
+  "id": "247",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "البداوي",
+  "name": "مسجد أم المؤمنين خديجة"
+ },
+ {
+  "id": "1915",
+  "tableId": 7508,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "البترون",
+  "name": "مسجد البترون"
+ },
+ {
+  "id": "787",
+  "tableId": 7213,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "مجدل عنجر",
+  "name": "مسجد الأزهر"
+ },
+ {
+  "id": "711",
+  "tableId": 4,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "مشمش",
+  "name": "مسجد ابي عبيدة بن الجراح رضي الله عنه"
+ },
+ {
+  "id": "105",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "كفرجرة",
+  "name": "مسجد عيسى بن مريم"
+ },
+ {
+  "id": "295",
+  "tableId": 4,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "القرنة",
+  "name": "مسجد عمر بن الخطاب رضي الله عنه"
+ },
+ {
+  "id": "2060",
+  "tableId": 8390,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "اللقلوق",
+  "name": "مسجد خالد بن الوليد"
+ },
+ {
+  "id": "20",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "جوار النخل",
+  "name": "مسجد جوار النخل"
+ },
+ {
+  "id": "1846",
+  "tableId": 7213,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "قرعون",
+  "name": "مسجد ابو بكر الصديق (القرعون)"
+ },
+ {
+  "id": "102",
+  "tableId": 7213,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "سعدنايل",
+  "name": "مسجد الإمام علي بن أبي طالب"
+ },
+ {
+  "id": "1649",
+  "tableId": 5,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "جرد عين الدبة",
+  "name": "جامع ابو علي مهيد"
+ },
+ {
+  "id": "1366",
+  "tableId": 7200,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "داريا",
+  "name": "مسجد عمر بن الخطاب"
+ },
+ {
+  "id": "1875",
+  "tableId": 7199,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "دلهون",
+  "name": "مسجد دلهون"
+ },
+ {
+  "id": "106",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "جدرا",
+  "name": "مجمع ومسجد الصديقة مريم"
+ },
+ {
+  "id": "1327",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "تعمير عين الحلوة",
+  "name": "مسجد أبي عبيدة بن الجراح"
+ },
+ {
+  "id": "2037",
+  "tableId": 8389,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "تعلبايا",
+  "name": "مسجد أبي بكر الصّدّيق الكبير"
+ },
+ {
+  "id": "2098",
+  "tableId": 3,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "بيت الحاج",
+  "name": "مسجد بيت الحاج"
+ },
+ {
+  "id": "1134",
+  "tableId": 7204,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "قبيع",
+  "name": "مسجد محمد الخطيب"
+ },
+ {
+  "id": "1907",
+  "tableId": 3,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "برقايل",
+  "name": "مسجد عثمان بن عفان"
+ },
+ {
+  "id": "1512",
+  "tableId": 4,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "الولي عز الدين",
+  "name": "مسجد عمر بن الخطاب رضي الله عنه"
+ },
+ {
+  "id": "1164",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "ضهر العين",
+  "name": "مسجد بيت الرحمن"
+ },
+ {
+  "id": "115",
+  "tableId": 7199,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "المغيرية",
+  "name": "جامع المغيرية"
+ },
+ {
+  "id": "107",
+  "tableId": 8140,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "المرج",
+  "name": "مسجد الإمام الشافعي"
+ },
+ {
+  "id": "88",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "المدور",
+  "name": "مسجد خالد بن الوليد"
+ },
+ {
+  "id": "2115",
+  "tableId": 7200,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "حصروت",
+  "name": "مسجد السلام - حصروت"
+ },
+ {
+  "id": "99",
+  "tableId": 2,
+  "type": "table-api",
+  "timezone": "Asia/Beirut",
+  "city": "عين المريسة",
+  "name": "مسجد عين المريسة"
+ },
+ {
+  "id": "214",
+  "tableId": 1051,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "الدمام",
+  "name": "مسجد سليمان الشارخي"
+ },
+ {
+  "id": "294",
+  "tableId": 1051,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "الدمام",
+  "name": "الواحة"
+ },
+ {
+  "id": "505",
+  "tableId": 1051,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "الدمام",
+  "name": "جامع الشيخ سالم بن صالح العجيمي"
+ },
+ {
+  "id": "739",
+  "tableId": 1051,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "الدمام",
+  "name": "‏مسجد هيفاء بنت صالح الصقير"
+ },
+ {
+  "id": "800",
+  "tableId": 1051,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "الدمام",
+  "name": "جامع النعمان بن بشير"
+ },
+ {
+  "id": "984",
+  "tableId": 1051,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "الدمام",
+  "name": "مسجد الطفيل"
+ },
+ {
+  "id": "2100",
+  "tableId": 1051,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "الدمام",
+  "name": "هيفاء بنت صالح الصقير"
+ },
+ {
+  "id": "133",
+  "tableId": 157,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "مكة المكرمة",
+  "name": "مسجد خديجة بنت خويلد"
+ },
+ {
+  "id": "1093",
+  "tableId": 157,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "مكة المكرمة",
+  "name": "مسجد الشيخ سويدي"
+ },
+ {
+  "id": "1396",
+  "tableId": 157,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "مكة المكرمة",
+  "name": "مسجد الزمان"
+ },
+ {
+  "id": "1535",
+  "tableId": 157,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "مكة المكرمة",
+  "name": "مسجد بن لادن"
+ },
+ {
+  "id": "1557",
+  "tableId": 157,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "مكة المكرمة",
+  "name": "المسجد الحرام"
+ },
+ {
+  "id": "1896",
+  "tableId": 157,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "مكة المكرمة",
+  "name": "جامع دوس ال عياش"
+ },
+ {
+  "id": "167",
+  "tableId": 1007,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "جدة",
+  "name": "جامع سعيد حويس"
+ },
+ {
+  "id": "1540",
+  "tableId": 1007,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "جدة",
+  "name": "مسجد ابي عبيدة"
+ },
+ {
+  "id": "1644",
+  "tableId": 1007,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "جدة",
+  "name": "جامع عبداللطيف ونفيسة"
+ },
+ {
+  "id": "1792",
+  "tableId": 1007,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "جدة",
+  "name": "جامع الشيخ محمد بن عثيمين"
+ },
+ {
+  "id": "2092",
+  "tableId": 1007,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "جدة",
+  "name": "Masjid Musarrat مسجد المسرات"
+ },
+ {
+  "id": "163",
+  "tableId": 1047,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "الرياض",
+  "name": "مسجد غروس"
+ },
+ {
+  "id": "863",
+  "tableId": 1047,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "الرياض",
+  "name": "مسجد الأنصار"
+ },
+ {
+  "id": "962",
+  "tableId": 1047,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "الرياض",
+  "name": "جامع العروة الوثقى"
+ },
+ {
+  "id": "1585",
+  "tableId": 1047,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "الرياض",
+  "name": "مسجد التقوى"
+ },
+ {
+  "id": "1682",
+  "tableId": 1047,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "الرياض",
+  "name": "جامع سلطان بن مطلق الحناكي"
+ },
+ {
+  "id": "1037",
+  "tableId": 1016,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "محايل عسير",
+  "name": "جامع أبو بكر الصديق بآل مسهر"
+ },
+ {
+  "id": "1817",
+  "tableId": 1016,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "محايل عسير",
+  "name": "مسجد   بر الوالدين"
+ },
+ {
+  "id": "124",
+  "tableId": 1011,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "خميس مشيط",
+  "name": "مسجد شركة أصالة بلس التجارية"
+ },
+ {
+  "id": "870",
+  "tableId": 1011,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "خميس مشيط",
+  "name": "جامع العز بن عبدالسلام"
+ },
+ {
+  "id": "142",
+  "tableId": 1056,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "جازان",
+  "name": "جامع العطاس"
+ },
+ {
+  "id": "362",
+  "tableId": 1056,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "جازان",
+  "name": "مسجد حسين بحري"
+ },
+ {
+  "id": "804",
+  "tableId": 155,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "أبها",
+  "name": "مسجد خالد بن الوليد"
+ },
+ {
+  "id": "1408",
+  "tableId": 155,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "أبها",
+  "name": "جامع الياقوت بأبها"
+ },
+ {
+  "id": "745",
+  "tableId": 1008,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "الجبيل",
+  "name": "مسجد جامع الرضوان"
+ },
+ {
+  "id": "885",
+  "tableId": 1008,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "الجبيل",
+  "name": "حمزة بن عبدالمطلب"
+ },
+ {
+  "id": "315",
+  "tableId": 980,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "الرس",
+  "name": "ثامر"
+ },
+ {
+  "id": "1932",
+  "tableId": 1013,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "الخبر",
+  "name": "خالد بن الوليد"
+ },
+ {
+  "id": "394",
+  "tableId": 1058,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "الباحة",
+  "name": "جامع البشرى"
+ },
+ {
+  "id": "1149",
+  "tableId": 1019,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "عنيزة",
+  "name": "عنيزة"
+ },
+ {
+  "id": "1526",
+  "tableId": 967,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "دغيبجة",
+  "name": "مسجد مهيضة"
+ },
+ {
+  "id": "143",
+  "tableId": 1003,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "حفر الباطن",
+  "name": "جامع الأبرار"
+ },
+ {
+  "id": "213",
+  "tableId": 1054,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "حائل",
+  "name": "مسجد سليمان الفنيدل رحمه الله"
+ },
+ {
+  "id": "818",
+  "tableId": 966,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "الخرج",
+  "name": "مسجد العقلاء"
+ },
+ {
+  "id": "1271",
+  "tableId": 977,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "الدرب",
+  "name": "مسجد الوالدين رحمهما الله"
+ },
+ {
+  "id": "614",
+  "tableId": 1053,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "تبوك",
+  "name": "جــامــع الــســحــلــي"
+ },
+ {
+  "id": "1599",
+  "tableId": 992,
+  "type": "table-api",
+  "timezone": "Asia / Riyadh",
+  "city": "بلقرن",
+  "name": "مسجد عقبة السمحان"
+ },
+ {
+  "id": "1556",
+  "tableId": 163,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "المدينة المنورة",
+  "name": "المسجد النبوي"
+ },
+ {
+  "id": "1988",
+  "tableId": 1049,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "أبيار علي",
+  "name": "مسجد بنية فالح السراني"
+ },
+ {
+  "id": "1604",
+  "tableId": 976,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "العلا",
+  "name": "مسجد التوفيق"
+ },
+ {
+  "id": "1013",
+  "tableId": 1036,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "الطائف",
+  "name": "مسجد الإحسان بالرميدة"
+ },
+ {
+  "id": "2264",
+  "tableId": 968,
+  "type": "table-api",
+  "timezone": "Asia/Riyadh",
+  "city": "الليث",
+  "name": "مسجد العصيمي"
+ },
+ {
+  "id": "191",
+  "tableId": 3551,
+  "type": "table-api",
+  "timezone": "Africa/Algiers",
+  "city": "الجلفة",
+  "name": "مسجد البركة"
+ },
+ {
+  "id": "618",
+  "tableId": 3551,
+  "type": "table-api",
+  "timezone": "Africa/Algiers",
+  "city": "الجلفة",
+  "name": "المسجد الجديد"
+ },
+ {
+  "id": "848",
+  "tableId": 3551,
+  "type": "table-api",
+  "timezone": "Africa/Algiers",
+  "city": "الجلفة",
+  "name": "مسجد التوبة"
+ },
+ {
+  "id": "845",
+  "tableId": 3612,
+  "type": "table-api",
+  "timezone": "Africa/Algiers",
+  "city": "ورقلة",
+  "name": "حذيفة بن اليمان"
+ },
+ {
+  "id": "2176",
+  "tableId": 3612,
+  "type": "table-api",
+  "timezone": "Africa/Algiers",
+  "city": "ورقلة",
+  "name": "مسجد الإمام الشافعي"
+ },
+ {
+  "id": "914",
+  "tableId": 3568,
+  "type": "table-api",
+  "timezone": "Africa/Algiers",
+  "city": "معسكر",
+  "name": "مسجد علي ابن أبي طالب رضي الله عنه"
+ },
+ {
+  "id": "1840",
+  "tableId": 3568,
+  "type": "table-api",
+  "timezone": "Africa/Algiers",
+  "city": "معسكر",
+  "name": "مسجد الأرقم بن أبي الأرقم"
+ },
+ {
+  "id": "123",
+  "tableId": 3581,
+  "type": "table-api",
+  "timezone": "Africa/Algiers",
+  "city": "طمطماط",
+  "name": "مسجد سلمان الفارسي طمطماط"
+ },
+ {
+  "id": "138",
+  "tableId": 3581,
+  "type": "table-api",
+  "timezone": "Africa/Algiers",
+  "city": "طمطماط",
+  "name": "مسجد الرحمن"
+ },
+ {
+  "id": "1856",
+  "tableId": 3597,
+  "type": "table-api",
+  "timezone": "Africa/Algiers",
+  "city": "أم البواقي",
+  "name": "مسجد حذيفة بن اليمان"
+ },
+ {
+  "id": "1553",
+  "tableId": 3605,
+  "type": "table-api",
+  "timezone": "Africa/Algiers",
+  "city": "تيميمون",
+  "name": "مسجد قصر الشيخ العتيق"
+ },
+ {
+  "id": "663",
+  "tableId": 3611,
+  "type": "table-api",
+  "timezone": "Africa/Algiers",
+  "city": "غرداية",
+  "name": "مسجد الوئام"
+ },
+ {
+  "id": "1146",
+  "tableId": 3563,
+  "type": "table-api",
+  "timezone": "Africa/Algiers",
+  "city": "عين وسارة",
+  "name": "عقبة بن نافع حد الصحاري"
+ },
+ {
+  "id": "1854",
+  "tableId": 3609,
+  "type": "table-api",
+  "timezone": "Africa/Algiers",
+  "city": "عين صالح",
+  "name": "مسجد قاعد الحياة التاق"
+ },
+ {
+  "id": "751",
+  "tableId": 3581,
+  "type": "table-api",
+  "timezone": "Africa/Algiers",
+  "city": "عين الدفلى",
+  "name": "مسجد التقوى"
+ },
+ {
+  "id": "1222",
+  "tableId": 3576,
+  "type": "table-api",
+  "timezone": "Africa/Algiers",
+  "city": "دويرة",
+  "name": "مسجد الإصلاح حي المجاهد موسى شرشالي عدل 3000 مسكن بابا حسن الجزائر"
+ },
+ {
+  "id": "1559",
+  "tableId": 3551,
+  "type": "table-api",
+  "timezone": "Africa/Algiers",
+  "city": "دار الشيوخ",
+  "name": "جامع عبدالرحمن نعاس - المسجد العتيق"
+ },
+ {
+  "id": "1021",
+  "tableId": 3593,
+  "type": "table-api",
+  "timezone": "Africa/Algiers",
+  "city": "جيجل",
+  "name": "مسجد الفرقان حي بن أعماروش"
+ },
+ {
+  "id": "540",
+  "tableId": 3582,
+  "type": "table-api",
+  "timezone": "Africa/Algiers",
+  "city": "تيبازة",
+  "name": "مسجد بلال بن رباح"
+ },
+ {
+  "id": "717",
+  "tableId": 3562,
+  "type": "table-api",
+  "timezone": "Africa/Algiers",
+  "city": "الأغواط",
+  "name": "مسجد عمر بن الخطاب"
+ },
+ {
+  "id": "1060",
+  "tableId": 3565,
+  "type": "table-api",
+  "timezone": "Africa/Algiers",
+  "city": "تيارت",
+  "name": "على ابن أبي طالب"
+ },
+ {
+  "id": "583",
+  "tableId": 3572,
+  "type": "table-api",
+  "timezone": "Africa/Algiers",
+  "city": "تلمسان",
+  "name": "مسجد معاذ بن جبل"
+ },
+ {
+  "id": "1618",
+  "tableId": 3584,
+  "type": "table-api",
+  "timezone": "Africa/Algiers",
+  "city": "بوفاريك",
+  "name": "مسجد علي بن أبي طالب بوفاريك"
+ },
+ {
+  "id": "1151",
+  "tableId": 3604,
+  "type": "table-api",
+  "timezone": "Africa/Algiers",
+  "city": "بشار",
+  "name": "ابي هريرة رضي الله عنه"
+ },
+ {
+  "id": "946",
+  "tableId": 3558,
+  "type": "table-api",
+  "timezone": "Africa/Algiers",
+  "city": "بسكرة",
+  "name": "مسجد السلام"
+ },
+ {
+  "id": "587",
+  "tableId": 3590,
+  "type": "table-api",
+  "timezone": "Africa/Algiers",
+  "city": "برج بوعريريج",
+  "name": "مسجد الانبياء"
+ },
+ {
+  "id": "1339",
+  "tableId": 3581,
+  "type": "table-api",
+  "timezone": "Africa/Algiers",
+  "city": "العطاف",
+  "name": "مسجد الفرقان"
+ },
+ {
+  "id": "954",
+  "tableId": 3580,
+  "type": "table-api",
+  "timezone": "Africa/Algiers",
+  "city": "الشلف",
+  "name": "مسجد الامام مالك"
+ },
+ {
+  "id": "839",
+  "tableId": 3557,
+  "type": "table-api",
+  "timezone": "Africa/Algiers",
+  "city": "الحجيرة",
+  "name": "مسجد عمرو بن العاص"
+ },
+ {
+  "id": "1519",
+  "tableId": 3576,
+  "type": "table-api",
+  "timezone": "Africa/Algiers",
+  "city": "الجزائر",
+  "name": "مسجد التوبة"
+ },
+ {
+  "id": "147",
+  "tableId": 3577,
+  "type": "table-api",
+  "timezone": "Africa/Algiers",
+  "city": "وهران",
+  "name": "مسجد مسعود فضيل"
+ },
+ {
+  "id": "877",
+  "tableId": 7617,
+  "type": "table-api",
+  "timezone": "Asia/Damascus",
+  "city": "برامكة",
+  "name": "جامع الكنجلية"
+ },
+ {
+  "id": "1044",
+  "tableId": 7617,
+  "type": "table-api",
+  "timezone": "Asia/Damascus",
+  "city": "برامكة",
+  "name": "مسجد الإمام الشافعي"
+ },
+ {
+  "id": "1094",
+  "tableId": 7617,
+  "type": "table-api",
+  "timezone": "Asia/Damascus",
+  "city": "برامكة",
+  "name": "جامع الشيخ علي الدقر"
+ },
+ {
+  "id": "1470",
+  "tableId": 7617,
+  "type": "table-api",
+  "timezone": "Asia/Damascus",
+  "city": "برامكة",
+  "name": "سيدنا عمر بن الخطاب"
+ },
+ {
+  "id": "1527",
+  "tableId": 7617,
+  "type": "table-api",
+  "timezone": "Asia/Damascus",
+  "city": "برامكة",
+  "name": "جامع النعمان بن بشير"
+ },
+ {
+  "id": "1700",
+  "tableId": 7617,
+  "type": "table-api",
+  "timezone": "Asia/Damascus",
+  "city": "برامكة",
+  "name": "ذات النطاقين"
+ },
+ {
+  "id": "1444",
+  "tableId": 7518,
+  "type": "table-api",
+  "timezone": "Asia/Damascus",
+  "city": "حرستا",
+  "name": "مسجد محاسنه"
+ },
+ {
+  "id": "1487",
+  "tableId": 7518,
+  "type": "table-api",
+  "timezone": "Asia/Damascus",
+  "city": "حرستا",
+  "name": "مسجد صلاح الدين"
+ },
+ {
+  "id": "1531",
+  "tableId": 7614,
+  "type": "table-api",
+  "timezone": "Asia/Damascus",
+  "city": "إدلب",
+  "name": "مسجد علي بن أبي طالب"
+ },
+ {
+  "id": "689",
+  "tableId": null,
+  "type": "aladhan-api",
+  "timezone": "Asia/Damascus",
+  "city": "دير الزور",
+  "name": "مسجد شهداء التركي"
+ },
+ {
+  "id": "2015",
+  "tableId": null,
+  "type": "aladhan-api",
+  "timezone": "Asia/Damascus",
+  "city": "معرشحور",
+  "name": "مسجد الرحمن"
+ },
+ {
+  "id": "1624",
+  "tableId": 7655,
+  "type": "table-api",
+  "timezone": "Asia/Damascus",
+  "city": "معرة النعمان",
+  "name": "المسجد الكبير"
+ },
+ {
+  "id": "2168",
+  "tableId": 8414,
+  "type": "table-api",
+  "timezone": "Asia/Damascus",
+  "city": "مضايا",
+  "name": "مسجد مضايا الشمالي"
+ },
+ {
+  "id": "104",
+  "tableId": 7617,
+  "type": "table-api",
+  "timezone": "Asia/Damascus",
+  "city": "شارع بغداد",
+  "name": "مسجد لالا باشا"
+ },
+ {
+  "id": "639",
+  "tableId": 8086,
+  "type": "table-api",
+  "timezone": "Asia/Damascus",
+  "city": "دير حافر",
+  "name": "مسجد علي بن أبي طالب"
+ },
+ {
+  "id": "2063",
+  "tableId": 7510,
+  "type": "table-api",
+  "timezone": "Asia/Damascus",
+  "city": "حماة",
+  "name": "مسجد رستم باشا"
+ },
+ {
+  "id": "2169",
+  "tableId": null,
+  "type": "aladhan-api",
+  "timezone": "Asia/Damascus",
+  "city": "حمص المدينة",
+  "name": "السيدة فاطمة"
+ },
+ {
+  "id": "1828",
+  "tableId": null,
+  "type": "aladhan-api",
+  "timezone": "Asia/Damascus",
+  "city": "البجاع",
+  "name": "مسجد سيدنا ابو بكر"
+ },
+ {
+  "id": "1579",
+  "tableId": 8082,
+  "type": "table-api",
+  "timezone": "Asia/Damascus",
+  "city": "حلب",
+  "name": "مسجد الأنصار"
+ },
+ {
+  "id": "1686",
+  "tableId": 7609,
+  "type": "table-api",
+  "timezone": "Asia/Damascus",
+  "city": "جبلة",
+  "name": "الخلفاء الراشدين"
+ },
+ {
+  "id": "1400",
+  "tableId": 7525,
+  "type": "table-api",
+  "timezone": "Asia/Damascus",
+  "city": "المليحة",
+  "name": "مسجد النور"
+ },
+ {
+  "id": "395",
+  "tableId": 7943,
+  "type": "table-api",
+  "timezone": "Asia/Damascus",
+  "city": "المدينة",
+  "name": "مسجد سيدنا حمزة بن عبد المطلب"
+ },
+ {
+  "id": "1208",
+  "tableId": 7930,
+  "type": "table-api",
+  "timezone": "Asia/Damascus",
+  "city": "القصير",
+  "name": "مسجد زيد بن الحارثة"
+ },
+ {
+  "id": "1171",
+  "tableId": 8091,
+  "type": "table-api",
+  "timezone": "Asia/Damascus",
+  "city": "منبج",
+  "name": "خالد بن الوليد"
+ },
+ {
+  "id": "2069",
+  "tableId": 6127,
+  "type": "table-api",
+  "timezone": "Asia/Jakarta",
+  "city": "Bogor",
+  "name": "Mahad Tahfidz Bukaka"
+ },
+ {
+  "id": "1850",
+  "tableId": 6102,
+  "type": "table-api",
+  "timezone": "Asia/Jakarta",
+  "city": "Kabupaten Tangerang",
+  "name": "Masjid Jami' Harapan Kita"
+ },
+ {
+  "id": "2097",
+  "tableId": 6168,
+  "type": "table-api",
+  "timezone": "Asia/Jakarta",
+  "city": "Semarang",
+  "name": "Masjid Ulul Albab UNNES"
+ },
+ {
+  "id": "1456",
+  "tableId": 6305,
+  "type": "table-api",
+  "timezone": "Asia/Makassar",
+  "city": "Samarinda",
+  "name": "Masjid Jami' Al-Ma'ruf Samarinda"
+ },
+ {
+  "id": "993",
+  "tableId": 6026,
+  "type": "table-api",
+  "timezone": "Asia/Jakarta",
+  "city": "Pekanbaru",
+  "name": "Al muttaqin"
+ },
+ {
+  "id": "1717",
+  "tableId": 6009,
+  "type": "table-api",
+  "timezone": "Asia/Jakarta",
+  "city": "Padang",
+  "name": "Masjid Al-Hidayah Siteba"
+ },
+ {
+  "id": "1219",
+  "tableId": 6338,
+  "type": "table-api",
+  "timezone": "Asia/Makassar",
+  "city": "Makassar",
+  "name": "MASJID DARUN NA'IM"
+ },
+ {
+  "id": "2006",
+  "tableId": 6106,
+  "type": "table-api",
+  "timezone": "Asia/Jakarta",
+  "city": "Kota Tangerang Selatan",
+  "name": "Masjid Al-Jannah"
+ },
+ {
+  "id": "2064",
+  "tableId": 6097,
+  "type": "table-api",
+  "timezone": "Asia/Jakarta",
+  "city": "Kota",
+  "name": "Masjid jaami' Al mabrur"
+ },
+ {
+  "id": "857",
+  "tableId": 5990,
+  "type": "table-api",
+  "timezone": "Asia/Jakarta",
+  "city": "Ketika",
+  "name": "Masjid Taqwa Ranting Muhammadiyah Padang Bulan"
+ },
+ {
+  "id": "1237",
+  "tableId": 6046,
+  "type": "table-api",
+  "timezone": "Asia/Jakarta",
+  "city": "Kabupaten Tanjung Jabung Timur",
+  "name": "Surau Al-Ikhlas"
+ },
+ {
+  "id": "1944",
+  "tableId": 6221,
+  "type": "table-api",
+  "timezone": "Asia/Makassar",
+  "city": "Kabupaten Tabanan",
+  "name": "Musholla Al-Ma'ruf"
+ },
+ {
+  "id": "1714",
+  "tableId": 6131,
+  "type": "table-api",
+  "timezone": "Asia/Jakarta",
+  "city": "Depok",
+  "name": "Masjid Al-Hijrah"
+ },
+ {
+  "id": "1225",
+  "tableId": 6174,
+  "type": "table-api",
+  "timezone": "Asia/Jakarta",
+  "city": "Kabupaten Sleman",
+  "name": "Al-Munir"
+ },
+ {
+  "id": "1925",
+  "tableId": 6189,
+  "type": "table-api",
+  "timezone": "Asia/Jakarta",
+  "city": "Kabupaten Malang",
+  "name": "Nurul Qur'an"
+ },
+ {
+  "id": "1927",
+  "tableId": 6185,
+  "type": "table-api",
+  "timezone": "Asia/Jakarta",
+  "city": "Kabupaten Lamongan",
+  "name": "Al-Mubarokah"
+ },
+ {
+  "id": "1718",
+  "tableId": 6146,
+  "type": "table-api",
+  "timezone": "Asia/Jakarta",
+  "city": "Kabupaten Karanganyar",
+  "name": "MASJID BESAR AL MUKARROMAH KARANGANYAR"
+ },
+ {
+  "id": "971",
+  "tableId": 6048,
+  "type": "table-api",
+  "timezone": "Asia/Jakarta",
+  "city": "Jambi City",
+  "name": "Al Mughni"
+ },
+ {
+  "id": "1340",
+  "tableId": 6134,
+  "type": "table-api",
+  "timezone": "Asia/Jakarta",
+  "city": "Jakarta Selatan",
+  "name": "Masjid AL Ibadah"
+ },
+ {
+  "id": "1600",
+  "tableId": 6134,
+  "type": "table-api",
+  "timezone": "Asia/Jakarta",
+  "city": "Jakarta Pusat",
+  "name": "Masjid Baiturrahim"
+ },
+ {
+  "id": "2250",
+  "tableId": 6115,
+  "type": "table-api",
+  "timezone": "Asia/Jakarta",
+  "city": "Indramayu",
+  "name": "MASJID NURUL JADID"
+ },
+ {
+  "id": "1689",
+  "tableId": 6316,
+  "type": "table-api",
+  "timezone": "Asia/Makassar",
+  "city": "Gorontalo",
+  "name": "Masjid Ar-Rahman"
+ },
+ {
+  "id": "1038",
+  "tableId": 6133,
+  "type": "table-api",
+  "timezone": "Asia/Jakarta",
+  "city": "Tasikmalaya",
+  "name": "Al Muhajirin Universitas Siliwangi"
+ },
+ {
+  "id": "612",
+  "tableId": 46,
+  "type": "table-api",
+  "timezone": "Asia/Muscat",
+  "city": "صلالة",
+  "name": "جامع الإيمان"
+ },
+ {
+  "id": "623",
+  "tableId": 46,
+  "type": "table-api",
+  "timezone": "Asia/Muscat",
+  "city": "صلالة",
+  "name": "جامع الشيخه سلمى بنت أحمد المعشنيه"
+ },
+ {
+  "id": "1330",
+  "tableId": 46,
+  "type": "table-api",
+  "timezone": "Asia/Muscat",
+  "city": "صلالة",
+  "name": "جامع الشيخ العفيف"
+ },
+ {
+  "id": "783",
+  "tableId": 95,
+  "type": "table-api",
+  "timezone": "Asia/Muscat",
+  "city": "سمائل",
+  "name": "جامع هيل"
+ },
+ {
+  "id": "1955",
+  "tableId": 95,
+  "type": "table-api",
+  "timezone": "Asia/Muscat",
+  "city": "سمائل",
+  "name": "مسجد الهدى"
+ },
+ {
+  "id": "681",
+  "tableId": 63,
+  "type": "table-api",
+  "timezone": "Asia/Muscat",
+  "city": "الخابورة",
+  "name": "مسجد العوان"
+ },
+ {
+  "id": "853",
+  "tableId": 63,
+  "type": "table-api",
+  "timezone": "Asia/Muscat",
+  "city": "الخابورة",
+  "name": "جامع قصبية البوسعيد"
+ },
+ {
+  "id": "335",
+  "tableId": 45,
+  "type": "table-api",
+  "timezone": "Asia/Muscat",
+  "city": "مسقط",
+  "name": "جامع حذيفةً بن اليمان"
+ },
+ {
+  "id": "1726",
+  "tableId": 45,
+  "type": "table-api",
+  "timezone": "Asia/Muscat",
+  "city": "مسقط",
+  "name": "جامع الفلاح"
+ },
+ {
+  "id": "545",
+  "tableId": 53,
+  "type": "table-api",
+  "timezone": "Asia/Muscat",
+  "city": "إبراء",
+  "name": "مسجد الشريعة (العلوي)"
+ },
+ {
+  "id": "390",
+  "tableId": 98,
+  "type": "table-api",
+  "timezone": "Asia/Muscat",
+  "city": "السويق",
+  "name": "مسجد المحاربي"
+ },
+ {
+  "id": "1954",
+  "tableId": 71,
+  "type": "table-api",
+  "timezone": "Asia/Muscat",
+  "city": "الكامل والوافي",
+  "name": "مسجدنا"
+ },
+ {
+  "id": "322",
+  "tableId": 78,
+  "type": "table-api",
+  "timezone": "Asia/Muscat",
+  "city": "بدبد",
+  "name": "الخوبي الشرقية"
+ },
+ {
+  "id": "891",
+  "tableId": 80,
+  "type": "table-api",
+  "timezone": "Asia/Muscat",
+  "city": "بركاء",
+  "name": "مسجد المصطفى"
+ },
+ {
+  "id": "231",
+  "tableId": 50,
+  "type": "table-api",
+  "timezone": "Asia/Muscat",
+  "city": "صحار",
+  "name": "جامع البديع"
+ },
+ {
+  "id": "1255",
+  "tableId": 103,
+  "type": "table-api",
+  "timezone": "Asia/Muscat",
+  "city": "صحم",
+  "name": "جامع مُخيليف"
+ },
+ {
+  "id": "227",
+  "tableId": 247,
+  "type": "table-api",
+  "timezone": "Asia/Amman",
+  "city": "عمان",
+  "name": "مسجد مخيمر ابو جاموس / ماركا الشماليه"
+ },
+ {
+  "id": "549",
+  "tableId": 247,
+  "type": "table-api",
+  "timezone": "Asia/Amman",
+  "city": "عمان",
+  "name": "مسجد ابو صلاح"
+ },
+ {
+  "id": "772",
+  "tableId": 247,
+  "type": "table-api",
+  "timezone": "Asia/Amman",
+  "city": "عمان",
+  "name": "مسجد محمد عبده ابو قوره"
+ },
+ {
+  "id": "1227",
+  "tableId": 247,
+  "type": "table-api",
+  "timezone": "Asia/Amman",
+  "city": "عمان",
+  "name": "مسجد ابراهيم الخليل"
+ },
+ {
+  "id": "1233",
+  "tableId": 247,
+  "type": "table-api",
+  "timezone": "Asia/Amman",
+  "city": "عمان",
+  "name": "مسجد سليم عيسى الجمل"
+ },
+ {
+  "id": "1397",
+  "tableId": 247,
+  "type": "table-api",
+  "timezone": "Asia/Amman",
+  "city": "عمان",
+  "name": "مسجد المرابطين"
+ },
+ {
+  "id": "289",
+  "tableId": 248,
+  "type": "table-api",
+  "timezone": "Asia/Amman",
+  "city": "إربد",
+  "name": "مسجد الشهيد محمد زيد العزام"
+ },
+ {
+  "id": "311",
+  "tableId": 248,
+  "type": "table-api",
+  "timezone": "Asia/Amman",
+  "city": "إربد",
+  "name": "مسجد آل المقري"
+ },
+ {
+  "id": "443",
+  "tableId": 248,
+  "type": "table-api",
+  "timezone": "Asia/Amman",
+  "city": "إربد",
+  "name": "خليل الرحمن"
+ },
+ {
+  "id": "1447",
+  "tableId": 248,
+  "type": "table-api",
+  "timezone": "Asia/Amman",
+  "city": "إربد",
+  "name": "مسجد المهاجرين"
+ },
+ {
+  "id": "1076",
+  "tableId": 247,
+  "type": "table-api",
+  "timezone": "Asia/Amman",
+  "city": "الجيزة",
+  "name": "خالد بن الوليد "
+ },
+ {
+  "id": "1246",
+  "tableId": 247,
+  "type": "table-api",
+  "timezone": "Asia/Amman",
+  "city": "الجيزة",
+  "name": "مسجد ممدوح كريشان"
+ },
+ {
+  "id": "2043",
+  "tableId": 255,
+  "type": "table-api",
+  "timezone": "Asia/Amman",
+  "city": "أم القطين",
+  "name": "اصحاب الحق"
+ },
+ {
+  "id": "1276",
+  "tableId": 247,
+  "type": "table-api",
+  "timezone": "Asia/Amman",
+  "city": "الزرقاء",
+  "name": "قثم  ابن  العباس"
+ },
+ {
+  "id": "1126",
+  "tableId": 250,
+  "type": "table-api",
+  "timezone": "Asia/Amman",
+  "city": "بصيرا",
+  "name": "مسجد عبدالرحمن بن عوف رضِي اللَّه عنه"
+ },
+ {
+  "id": "819",
+  "tableId": 8306,
+  "type": "table-api",
+  "timezone": "Etc/GMT",
+  "city": "وجدة أنجاد",
+  "name": "مسجد الإمام مالك (الصابوني)"
+ },
+ {
+  "id": "867",
+  "tableId": 8306,
+  "type": "table-api",
+  "timezone": "Etc/GMT",
+  "city": "وجدة أنجاد",
+  "name": "مسجد أم سلمة"
+ },
+ {
+  "id": "439",
+  "tableId": 8221,
+  "type": "table-api",
+  "timezone": "Etc/GMT",
+  "city": "الدار البيضاء",
+  "name": "مسجد ابي هريرة"
+ },
+ {
+  "id": "2009",
+  "tableId": 8221,
+  "type": "table-api",
+  "timezone": "Etc/GMT",
+  "city": "الدار البيضاء",
+  "name": "مسجد الوحدة"
+ },
+ {
+  "id": "741",
+  "tableId": 8235,
+  "type": "table-api",
+  "timezone": "Etc/GMT",
+  "city": "الجديدة",
+  "name": "مسجد السلسبيل"
+ },
+ {
+  "id": "1066",
+  "tableId": 8167,
+  "type": "table-api",
+  "timezone": "Etc/GMT",
+  "city": "الرباط",
+  "name": "دعاة الخير"
+ },
+ {
+  "id": "2107",
+  "tableId": 8274,
+  "type": "table-api",
+  "timezone": "Etc/GMT",
+  "city": "القصر الكبير",
+  "name": "مسجد سوق سبتة"
+ },
+ {
+  "id": "347",
+  "tableId": 8367,
+  "type": "table-api",
+  "timezone": "Etc/GMT",
+  "city": "تمارة",
+  "name": "مسجد الإمام مالك بن أنس"
+ },
+ {
+  "id": "548",
+  "tableId": 8262,
+  "type": "table-api",
+  "timezone": "Etc/GMT",
+  "city": "جرادة",
+  "name": "مسجد عمر بن عبد العزيز"
+ },
+ {
+  "id": "1007",
+  "tableId": 8383,
+  "type": "table-api",
+  "timezone": "Etc/GMT",
+  "city": "زاوية النواصر",
+  "name": "اولاد عامر"
+ },
+ {
+  "id": "1975",
+  "tableId": 8333,
+  "type": "table-api",
+  "timezone": "Etc/GMT",
+  "city": "سيدي سليمان",
+  "name": "مسجد الحاج موسى"
+ },
+ {
+  "id": "1032",
+  "tableId": 8354,
+  "type": "table-api",
+  "timezone": "Etc/GMT",
+  "city": "طنجة",
+  "name": "مسجد الرحمة"
+ },
+ {
+  "id": "1634",
+  "tableId": 8279,
+  "type": "table-api",
+  "timezone": "Etc/GMT",
+  "city": "مراكش",
+  "name": "مسجد زينب أم المؤمنين"
+ },
+ {
+  "id": "1251",
+  "tableId": 228,
+  "type": "table-api",
+  "timezone": "Asia/Kuala_Lumpur",
+  "city": "Beaufort",
+  "name": "Masjid Nurhidayah"
+ },
+ {
+  "id": "684",
+  "tableId": 211,
+  "type": "table-api",
+  "timezone": "Asia/Kuala_Lumpur",
+  "city": "Kangar",
+  "name": "Surau Aspura"
+ },
+ {
+  "id": "1275",
+  "tableId": 198,
+  "type": "table-api",
+  "timezone": "Asia/Kuala_Lumpur",
+  "city": "Kota Bharu",
+  "name": "Surau Pak Do Pa"
+ },
+ {
+  "id": "1811",
+  "tableId": 207,
+  "type": "table-api",
+  "timezone": "Asia/Kuala_Lumpur",
+  "city": "Kuala Lipis",
+  "name": "SURAU RAUDHATUL FIRDAUS"
+ },
+ {
+  "id": "1320",
+  "tableId": 211,
+  "type": "table-api",
+  "timezone": "Asia/Kuala_Lumpur",
+  "city": "Kuala Perlis",
+  "name": "Musholla Al-Irfan"
+ },
+ {
+  "id": "1685",
+  "tableId": 235,
+  "type": "table-api",
+  "timezone": "Asia/Kuala_Lumpur",
+  "city": "Mukah",
+  "name": "Masjid Darul Huda"
+ },
+ {
+  "id": "1728",
+  "tableId": 220,
+  "type": "table-api",
+  "timezone": "Asia/Kuala_Lumpur",
+  "city": "Sandakan",
+  "name": "Masjid Al-Falah Kg. Karamunting"
+ },
+ {
+  "id": "1406",
+  "tableId": 188,
+  "type": "table-api",
+  "timezone": "Asia/Kuala_Lumpur",
+  "city": "Skudai",
+  "name": "Masjid Ubudiyyah Mukim Bendang Nyior"
+ },
+ {
+  "id": "1075",
+  "tableId": 223,
+  "type": "table-api",
+  "timezone": "Asia/Kuala_Lumpur",
+  "city": "Tawau",
+  "name": "SURAU AL FURQAN SMK KUHARA TAWAU"
+ },
+ {
+  "id": "1697",
+  "tableId": 364,
+  "type": "table-api",
+  "timezone": "Africa/Tunis",
+  "city": "تطاوين",
+  "name": "جامع السلام ذهيبة"
+ },
+ {
+  "id": "2104",
+  "tableId": 364,
+  "type": "table-api",
+  "timezone": "Africa/Tunis",
+  "city": "تطاوين",
+  "name": "جامع الرحمة الرقبة تطاوين"
+ },
+ {
+  "id": "1938",
+  "tableId": 355,
+  "type": "table-api",
+  "timezone": "Africa/Tunis",
+  "city": "المهدية",
+  "name": "مسجد بيت الله - المهدية"
+ },
+ {
+  "id": "1528",
+  "tableId": 346,
+  "type": "table-api",
+  "timezone": "Africa/Tunis",
+  "city": "بن عروس",
+  "name": "جامع الحرمين الشريفين المروج الثالث"
+ },
+ {
+  "id": "945",
+  "tableId": 366,
+  "type": "table-api",
+  "timezone": "Africa/Tunis",
+  "city": "تونس",
+  "name": "مسجد الأحمدي باب الخضراء"
+ },
+ {
+  "id": "645",
+  "tableId": 350,
+  "type": "table-api",
+  "timezone": "Africa/Tunis",
+  "city": "جندوبة",
+  "name": "جابر بن عبد الله الانصاري لعشايشية بوعوان"
+ },
+ {
+  "id": "943",
+  "tableId": 363,
+  "type": "table-api",
+  "timezone": "Africa/Tunis",
+  "city": "سوسة",
+  "name": "مسجد الصحابة -القلعة الكبرى"
+ },
+ {
+  "id": "122",
+  "tableId": 359,
+  "type": "table-api",
+  "timezone": "Africa/Tunis",
+  "city": "نابل",
+  "name": "مسجد السلام"
+ },
+ {
+  "id": "168",
+  "tableId": 3109,
+  "type": "table-api",
+  "timezone": "Africa/Cairo",
+  "city": "القاهرة",
+  "name": "مسجد أبو المعاطي"
+ },
+ {
+  "id": "609",
+  "tableId": 3109,
+  "type": "table-api",
+  "timezone": "Africa/Cairo",
+  "city": "القاهرة",
+  "name": "مسجد الرحمن - المداح - كفرالديب"
+ },
+ {
+  "id": "1683",
+  "tableId": 3109,
+  "type": "table-api",
+  "timezone": "Africa/Cairo",
+  "city": "القاهرة",
+  "name": "مسجد الهداية - مدينة العبور"
+ },
+ {
+  "id": "1832",
+  "tableId": 3109,
+  "type": "table-api",
+  "timezone": "Africa/Cairo",
+  "city": "الجيزة",
+  "name": "مسجد البدر"
+ },
+ {
+  "id": "2267",
+  "tableId": 3034,
+  "type": "table-api",
+  "timezone": "Africa/Cairo",
+  "city": "المنصورة",
+  "name": "جامع نور الهدى"
+ },
+ {
+  "id": "941",
+  "tableId": 3046,
+  "type": "table-api",
+  "timezone": "Africa/Cairo",
+  "city": "دمياط",
+  "name": "مسجد الدعوة بدمياط الجديدة"
+ },
+ {
+  "id": "1781",
+  "tableId": 3046,
+  "type": "table-api",
+  "timezone": "Africa/Cairo",
+  "city": "فارسكور",
+  "name": "مسجد السقا"
+ },
+ {
+  "id": "910",
+  "tableId": null,
+  "type": "aladhan-api",
+  "timezone": "America/New_York",
+  "city": "أبفيل",
+  "name": "Islamic Caltural Center"
+ },
+ {
+  "id": "1205",
+  "tableId": null,
+  "type": "aladhan-api",
+  "timezone": "America/Chicago",
+  "city": "أتلانتا",
+  "name": "Masjid Al-Etihad Al-Ittihad"
+ },
+ {
+  "id": "1232",
+  "tableId": null,
+  "type": "aladhan-api",
+  "timezone": "America/Los_Angeles",
+  "city": "تورانس",
+  "name": "Darul Arqam"
+ },
+ {
+  "id": "1056",
+  "tableId": null,
+  "type": "aladhan-api",
+  "timezone": "America/New_York",
+  "city": "ديترويت",
+  "name": "Masjid Muath Bin Jabal"
+ },
+ {
+  "id": "1768",
+  "tableId": null,
+  "type": "aladhan-api",
+  "timezone": "America/Chicago",
+  "city": "مقاطعة كانكاكي",
+  "name": "KANKAKEE ISLAMIC CENTER"
+ },
+ {
+  "id": "771",
+  "tableId": null,
+  "type": "aladhan-api",
+  "timezone": "America/Chicago",
+  "city": "هيوستن",
+  "name": "Masjid Gul"
+ },
+ {
+  "id": "1517",
+  "tableId": 173,
+  "type": "table-api",
+  "timezone": null,
+  "city": "الحويجة",
+  "name": "جامع الحاجة مريم"
+ },
+ {
+  "id": "1628",
+  "tableId": 173,
+  "type": "table-api",
+  "timezone": null,
+  "city": "الحويجة",
+  "name": "جامع المصطفى"
+ },
+ {
+  "id": "1916",
+  "tableId": 8145,
+  "type": "table-api",
+  "timezone": "Asia/Baghdad",
+  "city": "السليمانية",
+  "name": "Masjid qalam - مزگەوتی قەڵەم"
+ },
+ {
+  "id": "2247",
+  "tableId": 8145,
+  "type": "table-api",
+  "timezone": "Asia/Baghdad",
+  "city": "السليمانية",
+  "name": "مزگەوتی سروشت"
+ },
+ {
+  "id": "888",
+  "tableId": 7208,
+  "type": "table-api",
+  "timezone": "Asia/Baghdad",
+  "city": "بيجي",
+  "name": "جامع الامين"
+ },
+ {
+  "id": "130",
+  "tableId": 9,
+  "type": "table-api",
+  "timezone": "Asia/Baghdad",
+  "city": "حرير",
+  "name": "مسجد التوحيد (مزگەوتی تەوحید)"
+ },
+ {
+  "id": "769",
+  "tableId": null,
+  "type": "aladhan-api",
+  "timezone": "Europe/London",
+  "city": "لندن الكبرى",
+  "name": "جامع العزيزية"
+ },
+ {
+  "id": "1857",
+  "tableId": null,
+  "type": "aladhan-api",
+  "timezone": "Europe/London",
+  "city": "لندن الكبرى",
+  "name": "Baitul Aman Mosque & Culture Centre"
+ },
+ {
+  "id": "1799",
+  "tableId": null,
+  "type": "aladhan-api",
+  "timezone": "Europe/London",
+  "city": "ستوك أون ترينت",
+  "name": "Masjid Abi Hurairah"
+ },
+ {
+  "id": "1646",
+  "tableId": 156,
+  "type": "table-api",
+  "timezone": null,
+  "city": "كستون",
+  "name": "Al-Emaan Centre"
+ },
+ {
+  "id": "2036",
+  "tableId": null,
+  "type": "aladhan-api",
+  "timezone": "Europe/London",
+  "city": "نيوبورت",
+  "name": "Ummah Masjid"
+ },
+ {
+  "id": "1449",
+  "tableId": 40,
+  "type": "table-api",
+  "timezone": "Africa/Tripoli",
+  "city": "طرابلس",
+  "name": "مسجد بن زهرة العتيق"
+ },
+ {
+  "id": "2252",
+  "tableId": 40,
+  "type": "table-api",
+  "timezone": "Africa/Tripoli",
+  "city": "طرابلس",
+  "name": "الامام مسلم"
+ },
+ {
+  "id": "1949",
+  "tableId": 20,
+  "type": "table-api",
+  "timezone": "Africa/Tripoli",
+  "city": "الزاوية",
+  "name": "مسجد الإخلاص"
+ },
+ {
+  "id": "1073",
+  "tableId": 42,
+  "type": "table-api",
+  "timezone": "Africa/Tripoli",
+  "city": "غريان",
+  "name": "ابوبكر الصديق"
+ },
+ {
+  "id": "1142",
+  "tableId": 44,
+  "type": "table-api",
+  "timezone": "Africa/Tripoli",
+  "city": "مصراته",
+  "name": "                                                                                     علي مفتاح ملودة."
+ },
+ {
+  "id": "932",
+  "tableId": 144,
+  "type": "table-api",
+  "timezone": "Asia/Kuwait",
+  "city": "السالمية",
+  "name": "محمد عبدالوهاب التركيت"
+ },
+ {
+  "id": "1264",
+  "tableId": 144,
+  "type": "table-api",
+  "timezone": "Asia/Kuwait",
+  "city": "الفروانية",
+  "name": "فهد سند العبدالهادي العجمي"
+ },
+ {
+  "id": "1373",
+  "tableId": 144,
+  "type": "table-api",
+  "timezone": "Asia/Kuwait",
+  "city": "بيان",
+  "name": "مسجد أبوسنان الأسدي"
+ },
+ {
+  "id": "1742",
+  "tableId": 144,
+  "type": "table-api",
+  "timezone": "Asia/Kuwait",
+  "city": "ميناء عبد الله",
+  "name": "جامع الرمال"
+ },
+ {
+  "id": "790",
+  "tableId": null,
+  "type": "aladhan-api",
+  "timezone": "America/Toronto",
+  "city": "ريجينا",
+  "name": "Aasiya Musallah"
+ },
+ {
+  "id": "1064",
+  "tableId": null,
+  "type": "aladhan-api",
+  "timezone": "America/St_Johns",
+  "city": "سانت جون",
+  "name": "ICNL"
+ },
+ {
+  "id": "140",
+  "tableId": null,
+  "type": "aladhan-api",
+  "timezone": "America/Toronto",
+  "city": "كامبريدج",
+  "name": "Ontario Muslim Academy"
+ },
+ {
+  "id": "344",
+  "tableId": null,
+  "type": "aladhan-api",
+  "timezone": "America/Toronto",
+  "city": "موردن",
+  "name": "MORDEN MOSQUE"
+ },
+ {
+  "id": "1929",
+  "tableId": 5885,
+  "type": "table-api",
+  "timezone": "Asia/Gaza",
+  "city": "جنين",
+  "name": "مسجد التوحيد اليامون"
+ },
+ {
+  "id": "1971",
+  "tableId": 5885,
+  "type": "table-api",
+  "timezone": "Asia/Gaza",
+  "city": "جنين",
+  "name": "مسجد عمر بن الخطاب"
+ },
+ {
+  "id": "1267",
+  "tableId": 5886,
+  "type": "table-api",
+  "timezone": "Asia/Gaza",
+  "city": "طولكرم",
+  "name": "مسجد الرحمة"
+ },
+ {
+  "id": "1772",
+  "tableId": 5886,
+  "type": "table-api",
+  "timezone": "Asia/Gaza",
+  "city": "طولكرم",
+  "name": "مسجد الهدي"
+ },
+ {
+  "id": "1465",
+  "tableId": 2905,
+  "type": "table-api",
+  "timezone": "Europe/Berlin",
+  "city": "Biberach an der Riß",
+  "name": "مسجد التقوى"
+ },
+ {
+  "id": "119",
+  "tableId": 2448,
+  "type": "table-api",
+  "timezone": "Europe/Berlin",
+  "city": "برلين",
+  "name": "Masjid Ibrahim Khalil"
+ },
+ {
+  "id": "1260",
+  "tableId": 2772,
+  "type": "table-api",
+  "timezone": "Europe/Berlin",
+  "city": "مولهايم",
+  "name": "ATİB Mülheim Merkez Cami"
+ },
+ {
+  "id": "1306",
+  "tableId": null,
+  "type": "aladhan-api",
+  "timezone": "Australia/Sydney",
+  "city": "لاكيمبا",
+  "name": "Masjid As Sunnah"
+ },
+ {
+  "id": "1984",
+  "tableId": null,
+  "type": "aladhan-api",
+  "timezone": "Australia/Sydney",
+  "city": "هوبارت",
+  "name": "House of Guidance Mosque"
+ },
+ {
+  "id": "682",
+  "tableId": 5587,
+  "type": "table-api",
+  "timezone": "Europe/Stockholm",
+  "city": "فاجيرستا",
+  "name": "Fagersta Moské"
+ },
+ {
+  "id": "1136",
+  "tableId": 5622,
+  "type": "table-api",
+  "timezone": "Europe/Stockholm",
+  "city": "ليدكوبينغ",
+  "name": "Lidköpings Moské"
+ },
+ {
+  "id": "1825",
+  "tableId": 394,
+  "type": "table-api",
+  "timezone": "Europe/Oslo",
+  "city": "Asker",
+  "name": "Masjid Badar"
+ },
+ {
+  "id": "136",
+  "tableId": 444,
+  "type": "table-api",
+  "timezone": "Europe/Oslo",
+  "city": "Fredrikstad",
+  "name": "Masjid Darussalam Norge"
+ },
+ {
+  "id": "512",
+  "tableId": null,
+  "type": "aladhan-api",
+  "timezone": "Europe/Madrid",
+  "city": "سوريا",
+  "name": "مسجد السلام olvega"
+ },
+ {
+  "id": "890",
+  "tableId": null,
+  "type": "aladhan-api",
+  "timezone": "Europe/Madrid",
+  "city": "كريفيلينتي",
+  "name": "centro islamico crevillente"
+ },
+ {
+  "id": "2177",
+  "tableId": null,
+  "type": "aladhan-api",
+  "timezone": "Asia/Kolkata",
+  "city": "تاليبارامبا",
+  "name": "MASJID AL EMAN"
+ },
+ {
+  "id": "1597",
+  "tableId": null,
+  "type": "aladhan-api",
+  "timezone": "Asia/Kolkata",
+  "city": "हैदराबाद",
+  "name": "Masjid Ayesha"
+ },
+ {
+  "id": "579",
+  "tableId": null,
+  "type": "aladhan-api",
+  "timezone": "Europe/Istanbul",
+  "city": "Suruç",
+  "name": "Mustafa Masjid"
+ },
+ {
+  "id": "186",
+  "tableId": 1641,
+  "type": "table-api",
+  "timezone": "Europe/Brussels",
+  "city": "شارلروا",
+  "name": "Sakina Masjid"
+ },
+ {
+  "id": "1099",
+  "tableId": null,
+  "type": "aladhan-api",
+  "timezone": "Europe/Moscow",
+  "city": "بالاكوفو",
+  "name": "Ramadan"
+ },
+ {
+  "id": "1390",
+  "tableId": 5733,
+  "type": "table-api",
+  "timezone": "Europe/Bucharest",
+  "city": "Constanţa",
+  "name": "المركز الإسلامي الثقافي (طيبة) كونستانتا"
+ },
+ {
+  "id": "2002",
+  "tableId": null,
+  "type": "aladhan-api",
+  "timezone": "Asia/Karachi",
+  "city": "مهرابور",
+  "name": "Madina masjid"
+ },
+ {
+  "id": "755",
+  "tableId": 164,
+  "type": "table-api",
+  "timezone": "Asia/Qatar",
+  "city": "الريان",
+  "name": "مسجد غانم ناصر ال علي المعاضيد"
+ },
+ {
+  "id": "1374",
+  "tableId": 1142,
+  "type": "table-api",
+  "timezone": "Europe/Sarajevo",
+  "city": "Srebrenik",
+  "name": "Dzamija Luka"
+ },
+ {
+  "id": "125",
+  "tableId": 5883,
+  "type": "table-api",
+  "timezone": "Asia/Bahrain",
+  "city": "المنامة",
+  "name": "مركز سبيكة بنت ابراهيم الأنصاري الإسلامي"
+ },
+ {
+  "id": "1016",
+  "tableId": 1925,
+  "type": "table-api",
+  "timezone": "Europe/Rome",
+  "city": "دونوراتيكو",
+  "name": "Moschea Donoratico"
+ }
+]

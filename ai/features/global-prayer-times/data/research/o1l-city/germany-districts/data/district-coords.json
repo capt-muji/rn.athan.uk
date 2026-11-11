@@ -1,0 +1,8818 @@
+[
+ {
+  "id": "10000",
+  "name": "BISMARCK",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.5,
+  "lon": 7.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10001",
+  "name": "ERLE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.8,
+  "lon": 6.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10002",
+  "name": "HASSEL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.6,
+  "lon": 7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10005",
+  "name": "GENGENBACH",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.4,
+  "lon": 8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10006",
+  "name": "GENTHIN",
+  "state": "SACHSEN ANHALT",
+  "lat": 52.4,
+  "lon": 12.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10007",
+  "name": "GEORGSMARIENHUTTE",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.2,
+  "lon": 8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10008",
+  "name": "GERA",
+  "state": "THURINGEN",
+  "lat": 50.9,
+  "lon": 12.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10009",
+  "name": "GERMERING",
+  "state": "BAYERN",
+  "lat": 48.1,
+  "lon": 11.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10010",
+  "name": "GEROLSTEIN",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50.2,
+  "lon": 6.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10011",
+  "name": "GESEKE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.6,
+  "lon": 8.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10012",
+  "name": "GEVELSBERG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.3,
+  "lon": 7.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10013",
+  "name": "GILCHING",
+  "state": "BAYERN",
+  "lat": 48.1,
+  "lon": 11.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10014",
+  "name": "GLADBECK",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.6,
+  "lon": 7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10015",
+  "name": "GLADENBACH",
+  "state": "HESSEN",
+  "lat": 50.8,
+  "lon": 8.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10016",
+  "name": "GLUCKSTADT",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 53.8,
+  "lon": 9.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10017",
+  "name": "GORLITZ",
+  "state": "SACHSEN",
+  "lat": 51.2,
+  "lon": 15,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10018",
+  "name": "GRABEN-NEUDORF",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49.2,
+  "lon": 8.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10019",
+  "name": "GRASELLENBACH",
+  "state": "HESSEN",
+  "lat": 49.6,
+  "lon": 8.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10020",
+  "name": "GREVEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 52.1,
+  "lon": 7.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10021",
+  "name": "GREVENBROICH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.1,
+  "lon": 6.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10023",
+  "name": "GRUNSTADT",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 49.6,
+  "lon": 8.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10025",
+  "name": "GUMMERSBACH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51,
+  "lon": 7.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10026",
+  "name": "GUTERSLOH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.9,
+  "lon": 8.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10027",
+  "name": "HASPE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.4,
+  "lon": 7.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10028",
+  "name": "HOHENLIMBURG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.4,
+  "lon": 7.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10029",
+  "name": "HAIGER",
+  "state": "HESSEN",
+  "lat": 50.8,
+  "lon": 8.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10030",
+  "name": "HALVER",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.2,
+  "lon": 7.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10031",
+  "name": "FINKENWERDER",
+  "state": "HAMBURG",
+  "lat": 53.5,
+  "lon": 9.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10032",
+  "name": "HARBURG",
+  "state": "HAMBURG",
+  "lat": 53.5,
+  "lon": 10,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10033",
+  "name": "KIRCHDORF",
+  "state": "NIEDERSACHSEN",
+  "lat": 53.7,
+  "lon": 8.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10034",
+  "name": "WILHELMSBURG",
+  "state": "HAMBURG",
+  "lat": 53.5,
+  "lon": 10,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10035",
+  "name": "HAMELN",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.1,
+  "lon": 9.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10036",
+  "name": "HEESSEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.7,
+  "lon": 7.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10037",
+  "name": "HERRINGEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.7,
+  "lon": 7.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10039",
+  "name": "PELKUM",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.6,
+  "lon": 7.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10040",
+  "name": "HANAU",
+  "state": "HESSEN",
+  "lat": 50.1,
+  "lon": 8.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10041",
+  "name": "HARSEWINKEL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 52,
+  "lon": 8.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10042",
+  "name": "HASLACH",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.6,
+  "lon": 8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10043",
+  "name": "HATTINGEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.4,
+  "lon": 7.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10044",
+  "name": "ALSFELD",
+  "state": "HESSEN",
+  "lat": 50.8,
+  "lon": 9.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10045",
+  "name": "ALLENSBACH",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.7,
+  "lon": 9.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10046",
+  "name": "ALTDORF B. NURNBERG",
+  "state": "BAYERN",
+  "lat": 49.4,
+  "lon": 11.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10050",
+  "name": "BACKNANG",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49,
+  "lon": 9.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10051",
+  "name": "BAD OLDESLOE",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 53.8,
+  "lon": 10.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10053",
+  "name": "BAD URACH",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.5,
+  "lon": 9.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10054",
+  "name": "BAD WALDSEE",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.9,
+  "lon": 9.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10055",
+  "name": "BAD WURZACH",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.9,
+  "lon": 9.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10056",
+  "name": "BAD-SCHUSSENRIED",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48,
+  "lon": 9.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10057",
+  "name": "BEBRA",
+  "state": "HESSEN",
+  "lat": 51,
+  "lon": 9.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10058",
+  "name": "BEELITZ",
+  "state": "BRANDENBURG",
+  "lat": 52.2,
+  "lon": 13,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10059",
+  "name": "BERNAU",
+  "state": "BRANDENBURG",
+  "lat": 52.7,
+  "lon": 13.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10061",
+  "name": "BISSINGEN AN DER ENZ",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.9,
+  "lon": 9.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10062",
+  "name": "BLAUBEUREN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.4,
+  "lon": 9.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10063",
+  "name": "BOPFINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.9,
+  "lon": 10.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10064",
+  "name": "BRANDENBURG/HAVEL",
+  "state": "BRANDENBURG",
+  "lat": 52.4,
+  "lon": 12.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10065",
+  "name": "BRUCKMUHL",
+  "state": "BAYERN",
+  "lat": 47.9,
+  "lon": 11.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10066",
+  "name": "BUCHEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49.5,
+  "lon": 9.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10067",
+  "name": "BUCHLOE",
+  "state": "BAYERN",
+  "lat": 48,
+  "lon": 10.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10068",
+  "name": "BURGAU",
+  "state": "BAYERN",
+  "lat": 48.4,
+  "lon": 10.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10069",
+  "name": "BURGDORF",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.5,
+  "lon": 10,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10070",
+  "name": "BURGHAUSEN",
+  "state": "BAYERN",
+  "lat": 48.2,
+  "lon": 12.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10071",
+  "name": "BURGKIRCHEN AN DER ALZ",
+  "state": "BAYERN",
+  "lat": 48.2,
+  "lon": 12.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10072",
+  "name": "BURGLENGENFELD",
+  "state": "BAYERN",
+  "lat": 49.2,
+  "lon": 12,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10073",
+  "name": "BURLADINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.3,
+  "lon": 9.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10074",
+  "name": "CELLE",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.6,
+  "lon": 10.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10075",
+  "name": "COBURG",
+  "state": "BAYERN",
+  "lat": 50.3,
+  "lon": 11,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10076",
+  "name": "CRAILSHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49.1,
+  "lon": 10.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10077",
+  "name": "DEGGENDORF",
+  "state": "BAYERN",
+  "lat": 48.8,
+  "lon": 13,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10078",
+  "name": "DETTINGEN AN DER ERMS",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.5,
+  "lon": 9.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10079",
+  "name": "DIETENHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.2,
+  "lon": 10.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10080",
+  "name": "DINGOLFING",
+  "state": "BAYERN",
+  "lat": 48.6,
+  "lon": 12.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10081",
+  "name": "DITZINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.8,
+  "lon": 9.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10082",
+  "name": "EBERBACH",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49.5,
+  "lon": 9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10083",
+  "name": "EBERSWALDE",
+  "state": "BRANDENBURG",
+  "lat": 52.8,
+  "lon": 13.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10084",
+  "name": "EBINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.2,
+  "lon": 9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10085",
+  "name": "EHINGEN (DONAU)",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.3,
+  "lon": 9.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10086",
+  "name": "EICHSTATT",
+  "state": "BAYERN",
+  "lat": 48.9,
+  "lon": 11.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10087",
+  "name": "ELLWANGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49,
+  "lon": 10.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10088",
+  "name": "EPPINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49.1,
+  "lon": 8.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10089",
+  "name": "ERLENBACH AM MAIN",
+  "state": "BAYERN",
+  "lat": 49.8,
+  "lon": 9.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10090",
+  "name": "EUTIN",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 54.1,
+  "lon": 10.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10092",
+  "name": "FELSBERG",
+  "state": "HESSEN",
+  "lat": 51.1,
+  "lon": 9.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10093",
+  "name": "FILDERSTADT",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.7,
+  "lon": 9.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10095",
+  "name": "FREIBERG",
+  "state": "SACHSEN",
+  "lat": 50.9,
+  "lon": 13.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10096",
+  "name": "FREISING",
+  "state": "BAYERN",
+  "lat": 48.4,
+  "lon": 11.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10097",
+  "name": "FURSTENWALDE",
+  "state": "BRANDENBURG",
+  "lat": 52.4,
+  "lon": 14.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10098",
+  "name": "FUSSEN",
+  "state": "BAYERN",
+  "lat": 47.6,
+  "lon": 10.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10099",
+  "name": "GAILDORF",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49,
+  "lon": 9.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10100",
+  "name": "GAMMERTINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.3,
+  "lon": 9.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10101",
+  "name": "GIFHORN",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.5,
+  "lon": 10.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10102",
+  "name": "GEESTHACHT",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 53.4,
+  "lon": 10.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10103",
+  "name": "GEISLINGEN AN DER STEIGE",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.6,
+  "lon": 9.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10104",
+  "name": "GELNHAUSEN",
+  "state": "HESSEN",
+  "lat": 50.2,
+  "lon": 9.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10105",
+  "name": "GERSTHOFEN",
+  "state": "BAYERN",
+  "lat": 48.4,
+  "lon": 10.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10106",
+  "name": "GIENGEN AN DER BRENZ",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.6,
+  "lon": 10.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10107",
+  "name": "GLAUCHAU",
+  "state": "SACHSEN",
+  "lat": 50.8,
+  "lon": 12.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10108",
+  "name": "GOSLAR",
+  "state": "NIEDERSACHSEN",
+  "lat": 51.9,
+  "lon": 10.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10109",
+  "name": "GOTTMADINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.7,
+  "lon": 8.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10110",
+  "name": "GROMITZ",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 54.2,
+  "lon": 11,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10111",
+  "name": "GUNDELSHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49.3,
+  "lon": 9.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10112",
+  "name": "GUNZBURG",
+  "state": "BAYERN",
+  "lat": 48.5,
+  "lon": 10.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10113",
+  "name": "GUNZENHAUSEN",
+  "state": "BAYERN",
+  "lat": 49.1,
+  "lon": 10.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10114",
+  "name": "HAIGERLOCH",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.4,
+  "lon": 8.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10115",
+  "name": "BERGEDORF",
+  "state": "HAMBURG",
+  "lat": 53.5,
+  "lon": 10.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10116",
+  "name": "BILLSTEDT",
+  "state": "HAMBURG",
+  "lat": 53.6,
+  "lon": 10.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10117",
+  "name": "HEIDE",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 54.2,
+  "lon": 9.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10118",
+  "name": "HEILIGENHAUS",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.3,
+  "lon": 7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10119",
+  "name": "HEINSBERG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.1,
+  "lon": 6.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10120",
+  "name": "HELMBRECHTS",
+  "state": "BAYERN",
+  "lat": 50.2,
+  "lon": 11.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10121",
+  "name": "HEMER",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.4,
+  "lon": 7.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10122",
+  "name": "HEPPENHEIM A.D.BERG.",
+  "state": "HESSEN",
+  "lat": 49.6,
+  "lon": 8.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10123",
+  "name": "HERBORN",
+  "state": "HESSEN",
+  "lat": 50.7,
+  "lon": 8.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10124",
+  "name": "HERFORD",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 52.1,
+  "lon": 8.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10125",
+  "name": "HERTEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.6,
+  "lon": 7.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10126",
+  "name": "WESTERHOLT",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.6,
+  "lon": 7.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10127",
+  "name": "HERZOGENRATH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.9,
+  "lon": 6.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10128",
+  "name": "HESSISCH OLDENDORF",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.2,
+  "lon": 9.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10129",
+  "name": "HILDEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.2,
+  "lon": 6.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10130",
+  "name": "HIRSCHHORN (HESSEN)",
+  "state": "HESSEN",
+  "lat": 49.5,
+  "lon": 8.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10131",
+  "name": "HOCHHEIM AM MAIN",
+  "state": "HESSEN",
+  "lat": 50,
+  "lon": 8.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10132",
+  "name": "HOCKENHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49.3,
+  "lon": 8.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10134",
+  "name": "HOFHEIM",
+  "state": "HESSEN",
+  "lat": 49.7,
+  "lon": 8.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10135",
+  "name": "HOHR -GRENZHAUSEN",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50.4,
+  "lon": 7.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10136",
+  "name": "HOMBRUCH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.4,
+  "lon": 7.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10137",
+  "name": "HOMBURG-SAAR",
+  "state": "SAARLAND",
+  "lat": 49.3,
+  "lon": 7.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10139",
+  "name": "HORN - BAD MEINBERG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.9,
+  "lon": 8.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10140",
+  "name": "HOXTER",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.8,
+  "lon": 9.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10141",
+  "name": "HUCKELHOVEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.1,
+  "lon": 6.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10142",
+  "name": "HUNGEN",
+  "state": "HESSEN",
+  "lat": 50.5,
+  "lon": 8.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10143",
+  "name": "HUNTEBURG",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.4,
+  "lon": 8.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10144",
+  "name": "HURTH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.9,
+  "lon": 6.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10145",
+  "name": "HUSUM",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 54.5,
+  "lon": 9.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10146",
+  "name": "IBBENBUREN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 52.3,
+  "lon": 7.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10147",
+  "name": "IDSTEIN",
+  "state": "HESSEN",
+  "lat": 50.2,
+  "lon": 8.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10148",
+  "name": "INGELHEIM",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50,
+  "lon": 8.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10149",
+  "name": "ISERLOHN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.4,
+  "lon": 7.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10150",
+  "name": "ITZEHOE",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 53.9,
+  "lon": 9.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10151",
+  "name": "JUCHEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.1,
+  "lon": 6.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10152",
+  "name": "JUNKERATH",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50.3,
+  "lon": 6.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10153",
+  "name": "KALTENKIRCHEN",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 53.8,
+  "lon": 10,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10154",
+  "name": "KAMEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.6,
+  "lon": 7.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10155",
+  "name": "KAMP -LINTFORT",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.5,
+  "lon": 6.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10156",
+  "name": "KARBEN",
+  "state": "HESSEN",
+  "lat": 50.2,
+  "lon": 8.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10158",
+  "name": "KELHEIM",
+  "state": "BAYERN",
+  "lat": 48.9,
+  "lon": 11.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10159",
+  "name": "KELSTERBACH",
+  "state": "HESSEN",
+  "lat": 50.1,
+  "lon": 8.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10160",
+  "name": "KERPEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.9,
+  "lon": 6.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10161",
+  "name": "SINDORF",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.9,
+  "lon": 6.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10162",
+  "name": "KIPFENBERG",
+  "state": "BAYERN",
+  "lat": 48.9,
+  "lon": 11.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10163",
+  "name": "KIRCHHAIN",
+  "state": "HESSEN",
+  "lat": 50.8,
+  "lon": 9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10164",
+  "name": "KIRN",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 49.8,
+  "lon": 7.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10165",
+  "name": "KONIGSWINTER",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.7,
+  "lon": 7.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10166",
+  "name": "KONZ",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 49.7,
+  "lon": 6.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10167",
+  "name": "KORBACH",
+  "state": "HESSEN",
+  "lat": 51.3,
+  "lon": 8.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10169",
+  "name": "KREUZTAL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51,
+  "lon": 8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10170",
+  "name": "KRONSHAGEN",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 54.3,
+  "lon": 10.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10171",
+  "name": "LADENBURG",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49.5,
+  "lon": 8.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10172",
+  "name": "LAGE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 52,
+  "lon": 8.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10174",
+  "name": "LAMPERTHEIM",
+  "state": "HESSEN",
+  "lat": 49.6,
+  "lon": 8.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10175",
+  "name": "LANDAU IN DER PFALZ",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 49.2,
+  "lon": 8.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10176",
+  "name": "LANDSTUHL",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 49.4,
+  "lon": 7.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10177",
+  "name": "LANGEN",
+  "state": "HESSEN",
+  "lat": 50,
+  "lon": 8.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10178",
+  "name": "LANGENFELD",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.1,
+  "lon": 7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10179",
+  "name": "LEICHLINGEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.1,
+  "lon": 7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10180",
+  "name": "LEMWERDER",
+  "state": "NIEDERSACHSEN",
+  "lat": 53.2,
+  "lon": 8.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10181",
+  "name": "LENGERICH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 52.2,
+  "lon": 7.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10182",
+  "name": "LENNESTADT",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.1,
+  "lon": 8.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10183",
+  "name": "LEVERKUSEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51,
+  "lon": 7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10184",
+  "name": "LEIMEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49.4,
+  "lon": 8.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10186",
+  "name": "LINDLAR",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51,
+  "lon": 7.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10187",
+  "name": "LINZ AM RHEIN",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50.6,
+  "lon": 7.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10188",
+  "name": "LIPPSTADT",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.7,
+  "lon": 8.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10189",
+  "name": "LOHMAR",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.8,
+  "lon": 7.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10190",
+  "name": "LOHNE",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.7,
+  "lon": 8.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10191",
+  "name": "LORRACH",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.6,
+  "lon": 7.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10194",
+  "name": "LUGDE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 52,
+  "lon": 9.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10195",
+  "name": "LUNEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.6,
+  "lon": 7.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10196",
+  "name": "BRAMBAUER (LUNEN)",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.6,
+  "lon": 7.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10197",
+  "name": "LUSTADT",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 49.2,
+  "lon": 8.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10198",
+  "name": "MAINBURG",
+  "state": "BAYERN",
+  "lat": 48.7,
+  "lon": 11.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10199",
+  "name": "MARL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.7,
+  "lon": 7.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10200",
+  "name": "HAMM (MARL)",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.7,
+  "lon": 7.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10201",
+  "name": "MARSBERG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.5,
+  "lon": 8.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10202",
+  "name": "MAXDORF",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 49.5,
+  "lon": 8.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10203",
+  "name": "MEINERZHAGEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.1,
+  "lon": 7.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10205",
+  "name": "MENDEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.4,
+  "lon": 7.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10206",
+  "name": "MERZIG",
+  "state": "SAARLAND",
+  "lat": 49.4,
+  "lon": 6.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10207",
+  "name": "MESCHEDE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.4,
+  "lon": 8.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10208",
+  "name": "METTMANN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.3,
+  "lon": 7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10209",
+  "name": "MINDEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 52.3,
+  "lon": 8.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10210",
+  "name": "MOERS",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.5,
+  "lon": 6.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10211",
+  "name": "REPELEN (MOERS)",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.5,
+  "lon": 6.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10212",
+  "name": "MONHEIM",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.1,
+  "lon": 6.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10213",
+  "name": "MONTABAUR",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50.4,
+  "lon": 7.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10214",
+  "name": "MORFELDEN - WALLDORF",
+  "state": "HESSEN",
+  "lat": 50,
+  "lon": 8.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10215",
+  "name": "MUHLHEIM",
+  "state": "HESSEN",
+  "lat": 50.1,
+  "lon": 8.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10216",
+  "name": "MUNCHBERG",
+  "state": "BAYERN",
+  "lat": 50.2,
+  "lon": 11.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10217",
+  "name": "MUTTERSTADT",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 49.5,
+  "lon": 8.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10218",
+  "name": "NACHRODT",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.3,
+  "lon": 7.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10219",
+  "name": "NASSAU",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50.3,
+  "lon": 7.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10220",
+  "name": "LOBBERICH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.3,
+  "lon": 6.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10221",
+  "name": "NEU-ISENBURG",
+  "state": "HESSEN",
+  "lat": 50.1,
+  "lon": 8.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10223",
+  "name": "NEUMUNSTER",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 54.1,
+  "lon": 10,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10225",
+  "name": "NEUNKIRCHEN",
+  "state": "SAARLAND",
+  "lat": 49.4,
+  "lon": 7.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10226",
+  "name": "NEUSS - NORF",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.2,
+  "lon": 6.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10227",
+  "name": "NEUSTADT A.D. WEINSTRASSE",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 49.4,
+  "lon": 8.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10228",
+  "name": "NEUSTADT IN HESSEN",
+  "state": "HESSEN",
+  "lat": 50.9,
+  "lon": 9.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10229",
+  "name": "NEUWIED",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50.4,
+  "lon": 7.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10230",
+  "name": "NIDDA",
+  "state": "HESSEN",
+  "lat": 50.4,
+  "lon": 9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10231",
+  "name": "NIEDERKASSEL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.8,
+  "lon": 7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10232",
+  "name": "NIENBURG (WESER)",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.6,
+  "lon": 9.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10233",
+  "name": "NIENHAGEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 52,
+  "lon": 8.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10234",
+  "name": "NORDENHAM",
+  "state": "NIEDERSACHSEN",
+  "lat": 53.5,
+  "lon": 8.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10235",
+  "name": "OBERDERDINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49.1,
+  "lon": 8.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10236",
+  "name": "OBERTSHAUSEN",
+  "state": "HESSEN",
+  "lat": 50.1,
+  "lon": 8.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10237",
+  "name": "OBERURSEL",
+  "state": "HESSEN",
+  "lat": 50.2,
+  "lon": 8.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10238",
+  "name": "ODENTHAL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51,
+  "lon": 7.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10239",
+  "name": "OELDE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.8,
+  "lon": 8.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10240",
+  "name": "OER-ERKENSCHWICK",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.6,
+  "lon": 7.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10241",
+  "name": "OLCHING",
+  "state": "BAYERN",
+  "lat": 48.2,
+  "lon": 11.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10242",
+  "name": "OLPE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51,
+  "lon": 7.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10243",
+  "name": "OSTERHOLZ-SCHARMBECK",
+  "state": "NIEDERSACHSEN",
+  "lat": 53.2,
+  "lon": 8.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10244",
+  "name": "OTTERSBERG",
+  "state": "NIEDERSACHSEN",
+  "lat": 53.1,
+  "lon": 9.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10245",
+  "name": "OVERATH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51,
+  "lon": 7.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10246",
+  "name": "PARSBERG",
+  "state": "BAYERN",
+  "lat": 49.2,
+  "lon": 11.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10247",
+  "name": "PETERSHAGEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 52.4,
+  "lon": 9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10248",
+  "name": "PFUNGSTADT",
+  "state": "HESSEN",
+  "lat": 49.8,
+  "lon": 8.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10249",
+  "name": "PHILIPPSBURG",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49.2,
+  "lon": 8.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10250",
+  "name": "PINNEBERG",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 53.7,
+  "lon": 9.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10251",
+  "name": "PIRMASENS",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 49.2,
+  "lon": 7.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10252",
+  "name": "PULHEIM",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51,
+  "lon": 6.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10253",
+  "name": "QUICKBORN",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 53.7,
+  "lon": 9.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10254",
+  "name": "RANSBACH-BAUMBACH",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50.5,
+  "lon": 7.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10255",
+  "name": "RASTATT",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.9,
+  "lon": 8.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10256",
+  "name": "RATINGEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.3,
+  "lon": 6.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10257",
+  "name": "REHBURG-LOCCUM",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.5,
+  "lon": 9.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10258",
+  "name": "REMAGEN",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50.6,
+  "lon": 7.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10259",
+  "name": "RENDSBURG",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 54.3,
+  "lon": 9.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10260",
+  "name": "RHEDA-WIEDENBRUCK",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.9,
+  "lon": 8.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10261",
+  "name": "RHEINBACH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.6,
+  "lon": 7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10262",
+  "name": "RHEINBERG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.6,
+  "lon": 6.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10263",
+  "name": "RHEINE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 52.3,
+  "lon": 7.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10264",
+  "name": "RHEINFELDEN-KARSAU",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.6,
+  "lon": 7.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10265",
+  "name": "RIETBERG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.8,
+  "lon": 8.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10266",
+  "name": "RINTELN",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.2,
+  "lon": 9.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10267",
+  "name": "ROCKENHAUSEN",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 49.6,
+  "lon": 7.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10268",
+  "name": "ROSRATH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.9,
+  "lon": 7.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10269",
+  "name": "ROTENBURG",
+  "state": "NIEDERSACHSEN",
+  "lat": 53.1,
+  "lon": 9.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10270",
+  "name": "ROTH",
+  "state": "BAYERN",
+  "lat": 49.2,
+  "lon": 11.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10271",
+  "name": "ROTHENBACH -A.D.PEGNITZ",
+  "state": "BAYERN",
+  "lat": 49.5,
+  "lon": 11.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10272",
+  "name": "SALZKOTTEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.7,
+  "lon": 8.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10273",
+  "name": "SARSTEDT",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.2,
+  "lon": 9.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10274",
+  "name": "SCHIFFERSTADT",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 49.4,
+  "lon": 8.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10275",
+  "name": "SCHLESWIG",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 54.5,
+  "lon": 9.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10276",
+  "name": "SCHMELZ",
+  "state": "SAARLAND",
+  "lat": 49.4,
+  "lon": 6.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10277",
+  "name": "SCHOPFHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.7,
+  "lon": 7.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10278",
+  "name": "SCHROBENHAUSEN",
+  "state": "BAYERN",
+  "lat": 48.6,
+  "lon": 11.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10279",
+  "name": "SCHUTTORF",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.3,
+  "lon": 7.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10280",
+  "name": "SCHWANINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.8,
+  "lon": 8.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10281",
+  "name": "SCHWELM",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.3,
+  "lon": 7.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10282",
+  "name": "SCHWERTE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.4,
+  "lon": 7.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10283",
+  "name": "SCHWETZINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49.4,
+  "lon": 8.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10284",
+  "name": "SELBITZ",
+  "state": "BAYERN",
+  "lat": 50.3,
+  "lon": 11.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10285",
+  "name": "SELTERS",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50.5,
+  "lon": 7.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10286",
+  "name": "SENDENHORST",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.8,
+  "lon": 7.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10287",
+  "name": "SIEGBURG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.8,
+  "lon": 7.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10288",
+  "name": "SIMMERN",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50,
+  "lon": 7.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10289",
+  "name": "SINZIG",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50.6,
+  "lon": 7.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10290",
+  "name": "SOEST",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.6,
+  "lon": 8.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10291",
+  "name": "SOLINGEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.2,
+  "lon": 7.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10292",
+  "name": "SOLTAU",
+  "state": "NIEDERSACHSEN",
+  "lat": 53,
+  "lon": 9.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10293",
+  "name": "SPENGE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 52.1,
+  "lon": 8.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10294",
+  "name": "SPEYER",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 49.3,
+  "lon": 8.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10295",
+  "name": "SPROCKHOVEL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.4,
+  "lon": 7.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10296",
+  "name": "ST. AUGUSTIN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.8,
+  "lon": 7.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10297",
+  "name": "ST.WENDEL",
+  "state": "SAARLAND",
+  "lat": 49.5,
+  "lon": 7.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10298",
+  "name": "ST.INGBERT",
+  "state": "SAARLAND",
+  "lat": 49.3,
+  "lon": 7.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10299",
+  "name": "STADE-BUTZFLETH",
+  "state": "NIEDERSACHSEN",
+  "lat": 53.6,
+  "lon": 9.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10300",
+  "name": "STADTALLENDORF",
+  "state": "HESSEN",
+  "lat": 50.8,
+  "lon": 9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10301",
+  "name": "STADTHAGEN",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.3,
+  "lon": 9.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10302",
+  "name": "STADTLOHN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 52,
+  "lon": 6.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10303",
+  "name": "STEINFURT",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 52.2,
+  "lon": 7.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10304",
+  "name": "STEINHAGEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 52,
+  "lon": 8.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10305",
+  "name": "STEINHEIM",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.9,
+  "lon": 9.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10306",
+  "name": "STEMWEDE-OPPENWEHE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 52.5,
+  "lon": 8.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10307",
+  "name": "STERZHAUSEN",
+  "state": "HESSEN",
+  "lat": 50.9,
+  "lon": 8.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10308",
+  "name": "STOLBERG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.8,
+  "lon": 6.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10309",
+  "name": "SULINGEN",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.7,
+  "lon": 8.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10310",
+  "name": "SULZBACH",
+  "state": "SAARLAND",
+  "lat": 49.3,
+  "lon": 7.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10311",
+  "name": "TELGTE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 52,
+  "lon": 7.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10312",
+  "name": "TROISDORF",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.8,
+  "lon": 7.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10313",
+  "name": "TROSSINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.1,
+  "lon": 8.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10314",
+  "name": "UBACH-PALENBERG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.9,
+  "lon": 6.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10315",
+  "name": "UCHTE",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.5,
+  "lon": 8.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10316",
+  "name": "UETERSEN",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 53.7,
+  "lon": 9.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10317",
+  "name": "ULMEN",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50.2,
+  "lon": 7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10318",
+  "name": "UNNA",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.5,
+  "lon": 7.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10320",
+  "name": "USINGEN",
+  "state": "HESSEN",
+  "lat": 50.3,
+  "lon": 8.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10321",
+  "name": "WAGENFELD",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.6,
+  "lon": 8.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10322",
+  "name": "VECHTA",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.7,
+  "lon": 8.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10323",
+  "name": "VELBERT",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.3,
+  "lon": 7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10324",
+  "name": "VERDEN",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.9,
+  "lon": 9.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10325",
+  "name": "VIERNHEIM",
+  "state": "HESSEN",
+  "lat": 49.5,
+  "lon": 8.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10326",
+  "name": "VIERSEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.3,
+  "lon": 6.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10328",
+  "name": "VLOTHO",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 52.2,
+  "lon": 8.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10329",
+  "name": "VOERDE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.6,
+  "lon": 6.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10330",
+  "name": "VOLKLINGEN",
+  "state": "SAARLAND",
+  "lat": 49.3,
+  "lon": 6.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10332",
+  "name": "WALDBROL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.9,
+  "lon": 7.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10333",
+  "name": "WALLDORF",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49.3,
+  "lon": 8.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10334",
+  "name": "WALTROP",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.6,
+  "lon": 7.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10336",
+  "name": "WARENDORF",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 52,
+  "lon": 8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10337",
+  "name": "WARSTEIN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.5,
+  "lon": 8.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10338",
+  "name": "WASSENBERG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.1,
+  "lon": 6.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10339",
+  "name": "WEDEL",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 53.6,
+  "lon": 9.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10340",
+  "name": "WEGBERG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.2,
+  "lon": 6.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10341",
+  "name": "WEIL AM RHEIN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.6,
+  "lon": 7.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10342",
+  "name": "WEILBURG",
+  "state": "HESSEN",
+  "lat": 50.5,
+  "lon": 8.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10343",
+  "name": "WEILERWIST",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.8,
+  "lon": 6.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10344",
+  "name": "WELVER",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.6,
+  "lon": 8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10345",
+  "name": "WENDELSTEIN",
+  "state": "BAYERN",
+  "lat": 49.4,
+  "lon": 11.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10346",
+  "name": "WERL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.6,
+  "lon": 7.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10347",
+  "name": "WERMELSKIRCHEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.2,
+  "lon": 7.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10348",
+  "name": "WERNE A.D.LIPPE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.7,
+  "lon": 7.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10349",
+  "name": "WESEL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.7,
+  "lon": 6.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10350",
+  "name": "WESSELING",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.8,
+  "lon": 7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10351",
+  "name": "WESTERSTEDE",
+  "state": "NIEDERSACHSEN",
+  "lat": 53.3,
+  "lon": 7.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10352",
+  "name": "WIEBELSKIRCHEN",
+  "state": "SAARLAND",
+  "lat": 49.4,
+  "lon": 7.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10353",
+  "name": "WIEDENBRUCK",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.6,
+  "lon": 8.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10354",
+  "name": "WIESLOCH",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49.3,
+  "lon": 8.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10355",
+  "name": "WILDESHAUSEN",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.9,
+  "lon": 8.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10356",
+  "name": "WILHELMSHAVEN",
+  "state": "NIEDERSACHSEN",
+  "lat": 53.5,
+  "lon": 8.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10357",
+  "name": "WILLICH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.3,
+  "lon": 6.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10358",
+  "name": "WIPPERFURTH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.1,
+  "lon": 7.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10359",
+  "name": "WITTEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.4,
+  "lon": 7.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10361",
+  "name": "WITTLICH",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50,
+  "lon": 6.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10362",
+  "name": "WOLFHAGEN",
+  "state": "HESSEN",
+  "lat": 51.3,
+  "lon": 9.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10363",
+  "name": "WULFRATH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.3,
+  "lon": 7.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10364",
+  "name": "WUNSTORF",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.4,
+  "lon": 9.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10365",
+  "name": "BARMEN(Wuppertal)",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.3,
+  "lon": 7.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10366",
+  "name": "VOHWINKEL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.2,
+  "lon": 7.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10367",
+  "name": "WURSELEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.9,
+  "lon": 6.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10368",
+  "name": "ZULPICH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.7,
+  "lon": 6.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10369",
+  "name": "ZWEIBRUCKEN",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 49.3,
+  "lon": 7.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10371",
+  "name": "HECHINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.4,
+  "lon": 9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10372",
+  "name": "HELMSTEDT",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.2,
+  "lon": 11,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10373",
+  "name": "HERSBRUCK",
+  "state": "BAYERN",
+  "lat": 49.5,
+  "lon": 11.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10374",
+  "name": "HERZBERG AM HARZ",
+  "state": "NIEDERSACHSEN",
+  "lat": 51.7,
+  "lon": 10.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10375",
+  "name": "HERZOGENAURACH",
+  "state": "BAYERN",
+  "lat": 49.6,
+  "lon": 10.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10376",
+  "name": "HESSISCH LICHTENAU",
+  "state": "HESSEN",
+  "lat": 51.2,
+  "lon": 9.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10377",
+  "name": "HEUBACH",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.8,
+  "lon": 9.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10378",
+  "name": "HOCHST IM ODENWALD",
+  "state": "HESSEN",
+  "lat": 49.8,
+  "lon": 9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10380",
+  "name": "HOLZMINDEN",
+  "state": "NIEDERSACHSEN",
+  "lat": 51.8,
+  "lon": 9.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10381",
+  "name": "HORGAU",
+  "state": "BAYERN",
+  "lat": 48.4,
+  "lon": 10.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10382",
+  "name": "HOYERSWERDA",
+  "state": "SACHSEN",
+  "lat": 51.4,
+  "lon": 14.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10383",
+  "name": "HUFINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.9,
+  "lon": 8.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10384",
+  "name": "ICHENHAUSEN",
+  "state": "BAYERN",
+  "lat": 48.4,
+  "lon": 10.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10385",
+  "name": "ILLERTISSEN",
+  "state": "BAYERN",
+  "lat": 48.2,
+  "lon": 10.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10386",
+  "name": "IMMENSTADT",
+  "state": "BAYERN",
+  "lat": 47.6,
+  "lon": 10.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10387",
+  "name": "INNINGEN",
+  "state": "BAYERN",
+  "lat": 48.3,
+  "lon": 10.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10388",
+  "name": "ISNY",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.7,
+  "lon": 10,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10390",
+  "name": "KARLSTADT",
+  "state": "BAYERN",
+  "lat": 50,
+  "lon": 9.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10391",
+  "name": "BETTENHAUSEN",
+  "state": "HESSEN",
+  "lat": 51.3,
+  "lon": 9.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10392",
+  "name": "KAUFBEUREN",
+  "state": "BAYERN",
+  "lat": 47.9,
+  "lon": 10.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10395",
+  "name": "KIRCHHEIM  UNTER TECK",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.7,
+  "lon": 9.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10396",
+  "name": "KITZINGEN",
+  "state": "BAYERN",
+  "lat": 49.7,
+  "lon": 10.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10397",
+  "name": "KOLBERMOOR",
+  "state": "BAYERN",
+  "lat": 47.9,
+  "lon": 12.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10398",
+  "name": "KONGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.7,
+  "lon": 9.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10399",
+  "name": "KONIGSBRUNN",
+  "state": "BAYERN",
+  "lat": 48.3,
+  "lon": 10.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10400",
+  "name": "KONIGSLUTTER",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.3,
+  "lon": 10.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10401",
+  "name": "LAATZEN",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.3,
+  "lon": 9.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10402",
+  "name": "KORNWESTHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.9,
+  "lon": 9.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10403",
+  "name": "KREMMEN",
+  "state": "BRANDENBURG",
+  "lat": 52.8,
+  "lon": 13,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10404",
+  "name": "KULMBACH",
+  "state": "BAYERN",
+  "lat": 50.1,
+  "lon": 11.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10405",
+  "name": "LAICHINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.5,
+  "lon": 9.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10406",
+  "name": "LANDSBERG AM LECH",
+  "state": "BAYERN",
+  "lat": 48.1,
+  "lon": 10.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10407",
+  "name": "LANDSHUT",
+  "state": "BAYERN",
+  "lat": 48.5,
+  "lon": 12.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10408",
+  "name": "LANGENARGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.6,
+  "lon": 9.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10410",
+  "name": "LANGENHAGEN",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.4,
+  "lon": 9.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10411",
+  "name": "LAPPERSDORF",
+  "state": "BAYERN",
+  "lat": 49.1,
+  "lon": 12.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10412",
+  "name": "LAUCHHAMMER",
+  "state": "BRANDENBURG",
+  "lat": 51.5,
+  "lon": 13.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10413",
+  "name": "LAUDA",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49.6,
+  "lon": 9.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10414",
+  "name": "LAUENBURG",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 53.4,
+  "lon": 10.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10417",
+  "name": "LAUFACH",
+  "state": "BAYERN",
+  "lat": 50,
+  "lon": 9.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10418",
+  "name": "LAUINGEN",
+  "state": "BAYERN",
+  "lat": 48.6,
+  "lon": 10.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10419",
+  "name": "LAUPHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.2,
+  "lon": 9.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10420",
+  "name": "LAUTERBACH",
+  "state": "HESSEN",
+  "lat": 50.6,
+  "lon": 9.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10421",
+  "name": "LEHRTE",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.4,
+  "lon": 10,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10422",
+  "name": "LEONBERG",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.8,
+  "lon": 9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10423",
+  "name": "LEUTKIRCH",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.8,
+  "lon": 10,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10424",
+  "name": "LICHTENFELS",
+  "state": "BAYERN",
+  "lat": 50.2,
+  "lon": 11.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10426",
+  "name": "LINDENBERG IM ALLGAU",
+  "state": "BAYERN",
+  "lat": 47.6,
+  "lon": 9.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10427",
+  "name": "LIPBACH",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.7,
+  "lon": 9.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10429",
+  "name": "LONSEE",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.5,
+  "lon": 9.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10430",
+  "name": "LORCH",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.8,
+  "lon": 9.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10431",
+  "name": "LUBBEN",
+  "state": "BRANDENBURG",
+  "lat": 51.9,
+  "lon": 13.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10432",
+  "name": "LUCKENWALDE",
+  "state": "BRANDENBURG",
+  "lat": 52.1,
+  "lon": 13.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10433",
+  "name": "MAGSTADT",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.7,
+  "lon": 9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10434",
+  "name": "MARKDORF",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.7,
+  "lon": 9.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10435",
+  "name": "MARKT ERLBACH",
+  "state": "BAYERN",
+  "lat": 49.5,
+  "lon": 10.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10436",
+  "name": "MARKT SCHWABEN",
+  "state": "BAYERN",
+  "lat": 48.2,
+  "lon": 11.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10437",
+  "name": "MARKTHEIDENFELD",
+  "state": "BAYERN",
+  "lat": 49.9,
+  "lon": 9.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10438",
+  "name": "MARKTOBERDORF",
+  "state": "BAYERN",
+  "lat": 47.8,
+  "lon": 10.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10439",
+  "name": "MARKTREDWITZ",
+  "state": "BAYERN",
+  "lat": 50,
+  "lon": 12.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10441",
+  "name": "MELSUNGEN",
+  "state": "HESSEN",
+  "lat": 51.1,
+  "lon": 9.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10442",
+  "name": "MEMMINGEN",
+  "state": "BAYERN",
+  "lat": 48,
+  "lon": 10.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10444",
+  "name": "MESSKIRCH",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48,
+  "lon": 9.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10445",
+  "name": "METZINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.5,
+  "lon": 9.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10446",
+  "name": "MICHELSTADT",
+  "state": "HESSEN",
+  "lat": 49.7,
+  "lon": 9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10447",
+  "name": "MIESBACH",
+  "state": "BAYERN",
+  "lat": 47.8,
+  "lon": 11.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10448",
+  "name": "MILTENBERG",
+  "state": "BAYERN",
+  "lat": 49.7,
+  "lon": 9.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10449",
+  "name": "MINDELHEIM",
+  "state": "BAYERN",
+  "lat": 48.1,
+  "lon": 10.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10450",
+  "name": "MOLLN",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 53.6,
+  "lon": 10.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10451",
+  "name": "MOOSBURG",
+  "state": "BAYERN",
+  "lat": 48.5,
+  "lon": 11.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10452",
+  "name": "MOSBACH",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49.4,
+  "lon": 9.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10453",
+  "name": "MUHLHOFEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.8,
+  "lon": 9.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10454",
+  "name": "MUNDERKINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.2,
+  "lon": 9.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10455",
+  "name": "MUNSINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.4,
+  "lon": 9.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10456",
+  "name": "MURNAU",
+  "state": "BAYERN",
+  "lat": 47.7,
+  "lon": 11.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10457",
+  "name": "MURRHARDT",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49,
+  "lon": 9.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10458",
+  "name": "NAGOLD",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.6,
+  "lon": 8.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10459",
+  "name": "NAUEN",
+  "state": "BRANDENBURG",
+  "lat": 52.6,
+  "lon": 12.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10460",
+  "name": "NERESHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.8,
+  "lon": 10.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10461",
+  "name": "NERSINGEN",
+  "state": "BAYERN",
+  "lat": 48.4,
+  "lon": 10.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10462",
+  "name": "NEUFAHRN IN NIEDERBAYERN",
+  "state": "BAYERN",
+  "lat": 48.7,
+  "lon": 12.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10464",
+  "name": "NEUSTADT B. COBURG",
+  "state": "BAYERN",
+  "lat": 50.3,
+  "lon": 11.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10465",
+  "name": "NEUTRAUBLING",
+  "state": "BAYERN",
+  "lat": 49,
+  "lon": 12.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10466",
+  "name": "NORDERSTEDT",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 53.7,
+  "lon": 10,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10467",
+  "name": "NORDLINGEN",
+  "state": "BAYERN",
+  "lat": 48.9,
+  "lon": 10.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10468",
+  "name": "NORTHEIM",
+  "state": "NIEDERSACHSEN",
+  "lat": 51.7,
+  "lon": 10,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10469",
+  "name": "OBERNDORF A.N.",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.3,
+  "lon": 8.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10470",
+  "name": "OBERASBACH",
+  "state": "BAYERN",
+  "lat": 49.4,
+  "lon": 11,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10471",
+  "name": "OBERSTENFELD / WURTT",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49,
+  "lon": 9.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10472",
+  "name": "OHRINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49.2,
+  "lon": 9.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10473",
+  "name": "ORANIENBURG",
+  "state": "BRANDENBURG",
+  "lat": 52.7,
+  "lon": 13.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10474",
+  "name": "OSTERODE AM HARZ",
+  "state": "NIEDERSACHSEN",
+  "lat": 51.7,
+  "lon": 10.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10475",
+  "name": "NELLINGEN A.D.FILDER",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.7,
+  "lon": 9.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10476",
+  "name": "PEINE",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.3,
+  "lon": 10.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10477",
+  "name": "PFULLENDORF",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.9,
+  "lon": 9.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10479",
+  "name": "PREETZ",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 54.2,
+  "lon": 10.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10480",
+  "name": "RADOLFZELL",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.7,
+  "lon": 9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10481",
+  "name": "RAISDORF",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 54.3,
+  "lon": 10.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10483",
+  "name": "REDWITZ A.D.RODACH",
+  "state": "BAYERN",
+  "lat": 50.2,
+  "lon": 11.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10484",
+  "name": "REHAU",
+  "state": "BAYERN",
+  "lat": 50.2,
+  "lon": 12,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10485",
+  "name": "RODACH",
+  "state": "BAYERN",
+  "lat": 50.3,
+  "lon": 10.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10486",
+  "name": "ROSENHEIM",
+  "state": "BAYERN",
+  "lat": 47.9,
+  "lon": 12.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10488",
+  "name": "SACHSENHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49,
+  "lon": 9.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10489",
+  "name": "SALZGITTER BAD",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.1,
+  "lon": 10.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10490",
+  "name": "SALZWEDEL",
+  "state": "SACHSEN ANHALT",
+  "lat": 52.9,
+  "lon": 11.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10491",
+  "name": "SAULGAU",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48,
+  "lon": 9.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10492",
+  "name": "SCHIRNDING",
+  "state": "BAYERN",
+  "lat": 50.1,
+  "lon": 12.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10493",
+  "name": "SCHLUCHTERN",
+  "state": "HESSEN",
+  "lat": 50.4,
+  "lon": 9.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10494",
+  "name": "SCHONGAU",
+  "state": "BAYERN",
+  "lat": 47.8,
+  "lon": 10.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10495",
+  "name": "SCHORNDORF",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.8,
+  "lon": 9.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10496",
+  "name": "SCHWABACH",
+  "state": "BAYERN",
+  "lat": 49.3,
+  "lon": 11,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10497",
+  "name": "SCHWANDORF",
+  "state": "BAYERN",
+  "lat": 49.3,
+  "lon": 12.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10498",
+  "name": "SCHWARZENBACH AM WALD",
+  "state": "BAYERN",
+  "lat": 50.3,
+  "lon": 11.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10499",
+  "name": "SCHWARZENBEK",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 53.5,
+  "lon": 10.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10500",
+  "name": "SEESEN",
+  "state": "NIEDERSACHSEN",
+  "lat": 51.9,
+  "lon": 10.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10501",
+  "name": "SELB",
+  "state": "BAYERN",
+  "lat": 50.2,
+  "lon": 12.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10503",
+  "name": "SINSHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49.3,
+  "lon": 8.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10504",
+  "name": "SONTHEIM AN DER BRENZ",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.6,
+  "lon": 10.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10505",
+  "name": "SPAICHINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.1,
+  "lon": 8.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10506",
+  "name": "STADTOLDENDORF",
+  "state": "NIEDERSACHSEN",
+  "lat": 51.9,
+  "lon": 9.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10507",
+  "name": "STADTPROZELTEN",
+  "state": "BAYERN",
+  "lat": 49.8,
+  "lon": 9.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10508",
+  "name": "STRAUBING",
+  "state": "BAYERN",
+  "lat": 48.9,
+  "lon": 12.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10509",
+  "name": "STRAUSBERG",
+  "state": "BRANDENBURG",
+  "lat": 52.6,
+  "lon": 13.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10511",
+  "name": "TETTAU",
+  "state": "BAYERN",
+  "lat": 50.5,
+  "lon": 11.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10512",
+  "name": "TROSTBERG AN DER ALZ",
+  "state": "BAYERN",
+  "lat": 48,
+  "lon": 12.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10514",
+  "name": "UELZEN",
+  "state": "NIEDERSACHSEN",
+  "lat": 53,
+  "lon": 10.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10515",
+  "name": "UHINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.7,
+  "lon": 9.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10516",
+  "name": "URBACH",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.8,
+  "lon": 9.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10517",
+  "name": "VAIHINGEN AN DER ENZ",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.9,
+  "lon": 9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10518",
+  "name": "VILSBIBURG",
+  "state": "BAYERN",
+  "lat": 48.5,
+  "lon": 12.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10519",
+  "name": "VOHRINGEN",
+  "state": "BAYERN",
+  "lat": 48.3,
+  "lon": 10.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10521",
+  "name": "WACHTERSBACH",
+  "state": "HESSEN",
+  "lat": 50.3,
+  "lon": 9.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10522",
+  "name": "WALDENBUCH",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.6,
+  "lon": 9.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10523",
+  "name": "WALDKRAIBURG",
+  "state": "BAYERN",
+  "lat": 48.2,
+  "lon": 12.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10525",
+  "name": "WALSRODE",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.9,
+  "lon": 9.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10527",
+  "name": "WASSERBURG ",
+  "state": "BAYERN",
+  "lat": 48.1,
+  "lon": 12.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10528",
+  "name": "WEHINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.1,
+  "lon": 8.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10529",
+  "name": "WEIDEN",
+  "state": "BAYERN",
+  "lat": 49.7,
+  "lon": 12.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10530",
+  "name": "WEILHEIM",
+  "state": "BAYERN",
+  "lat": 47.8,
+  "lon": 11.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10532",
+  "name": "WEINHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49.6,
+  "lon": 8.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10534",
+  "name": "WELZHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.9,
+  "lon": 9.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10535",
+  "name": "WERNAU",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.7,
+  "lon": 9.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10536",
+  "name": "WERTHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49.8,
+  "lon": 9.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10537",
+  "name": "WERTINGEN",
+  "state": "BAYERN",
+  "lat": 48.6,
+  "lon": 10.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10539",
+  "name": "WINNENDEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.9,
+  "lon": 9.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10540",
+  "name": "WINSEN-LUHE",
+  "state": "NIEDERSACHSEN",
+  "lat": 53.4,
+  "lon": 10.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10541",
+  "name": "WITTENBERGE",
+  "state": "BRANDENBURG",
+  "lat": 53,
+  "lon": 11.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10542",
+  "name": "WITZENHAUSEN",
+  "state": "HESSEN",
+  "lat": 51.3,
+  "lon": 9.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10543",
+  "name": "WOLFSBURG",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.4,
+  "lon": 10.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10544",
+  "name": "WURZEN",
+  "state": "SACHSEN",
+  "lat": 51.4,
+  "lon": 12.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10545",
+  "name": "ZEITZ",
+  "state": "SACHSEN ANHALT",
+  "lat": 51.1,
+  "lon": 12.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10547",
+  "name": "ZWICKAU",
+  "state": "SACHSEN",
+  "lat": 50.7,
+  "lon": 12.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10548",
+  "name": "WEMDING",
+  "state": "BAYERN",
+  "lat": 48.9,
+  "lon": 10.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10550",
+  "name": "NURTINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.6,
+  "lon": 9.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10551",
+  "name": "ROSTOCK",
+  "state": "MECKLENBURG-VORPOMMERN",
+  "lat": 54.1,
+  "lon": 12.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10552",
+  "name": "ORTENBURG",
+  "state": "BAYERN",
+  "lat": 48.6,
+  "lon": 13.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10554",
+  "name": "BURSTADT",
+  "state": "HESSEN",
+  "lat": 49.6,
+  "lon": 8.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10555",
+  "name": "OLDENBURG",
+  "state": "NIEDERSACHSEN",
+  "lat": 53.2,
+  "lon": 8.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10556",
+  "name": "GERMERSHEIM",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 49.2,
+  "lon": 8.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10557",
+  "name": "OFFENBURG",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.5,
+  "lon": 7.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10558",
+  "name": "SINDELFINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.7,
+  "lon": 9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10559",
+  "name": "NEU ULM",
+  "state": "BAYERN",
+  "lat": 48.4,
+  "lon": 10,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10561",
+  "name": "ERLANGEN",
+  "state": "BAYERN",
+  "lat": 49.6,
+  "lon": 11,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10562",
+  "name": "NEUBURG AN DER DONAU",
+  "state": "BAYERN",
+  "lat": 48.7,
+  "lon": 11.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10563",
+  "name": "UBERLINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.8,
+  "lon": 9.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10564",
+  "name": "GREIFSWALD",
+  "state": "MECKLENBURG-VORPOMMERN",
+  "lat": 54.1,
+  "lon": 13.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10565",
+  "name": "HERNE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.5,
+  "lon": 7.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10566",
+  "name": "PAPENBURG",
+  "state": "NIEDERSACHSEN",
+  "lat": 53.1,
+  "lon": 7.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10567",
+  "name": "BAD LAUTERBERG",
+  "state": "NIEDERSACHSEN",
+  "lat": 51.7,
+  "lon": 10.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10568",
+  "name": "MOGLINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.9,
+  "lon": 9.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10569",
+  "name": "OFFENBACH",
+  "state": "HESSEN",
+  "lat": 50.1,
+  "lon": 8.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10570",
+  "name": "WINTERLINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.2,
+  "lon": 9.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10571",
+  "name": "LOLLAR",
+  "state": "HESSEN",
+  "lat": 50.7,
+  "lon": 8.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10572",
+  "name": "BOBLINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.7,
+  "lon": 9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10573",
+  "name": "BAD KREUZNACH",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 49.8,
+  "lon": 7.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10574",
+  "name": "LAUBACH (HESSEN)",
+  "state": "HESSEN",
+  "lat": 50.6,
+  "lon": 9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10575",
+  "name": "NEUSS",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.2,
+  "lon": 6.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10576",
+  "name": "BAD HERSFELD",
+  "state": "HESSEN",
+  "lat": 50.9,
+  "lon": 9.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10577",
+  "name": "NORDHORN",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.4,
+  "lon": 7.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10579",
+  "name": "SCHOMBERG",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.8,
+  "lon": 8.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10580",
+  "name": "WANGEN IM ALLGAU",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.7,
+  "lon": 9.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10581",
+  "name": "KAISERSLAUTERN",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 49.4,
+  "lon": 7.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10583",
+  "name": "RECKLINGHAUSEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.6,
+  "lon": 7.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10584",
+  "name": "BAYREUTH",
+  "state": "BAYERN",
+  "lat": 50,
+  "lon": 11.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10585",
+  "name": "SIMBACH AM INN",
+  "state": "BAYERN",
+  "lat": 48.3,
+  "lon": 13,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10586",
+  "name": "OEBISFELDE",
+  "state": "SACHSEN ANHALT",
+  "lat": 52.4,
+  "lon": 11,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10587",
+  "name": "STEDERDORF (PEINE)",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.4,
+  "lon": 10.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10588",
+  "name": "WATENSTEDT",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.1,
+  "lon": 10.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10589",
+  "name": "BASSUM",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.9,
+  "lon": 8.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10590",
+  "name": "ELSFETH",
+  "state": "NIEDERSACHSEN",
+  "lat": 53.2,
+  "lon": 8.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10591",
+  "name": "GANDERKESEE",
+  "state": "NIEDERSACHSEN",
+  "lat": 53,
+  "lon": 8.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10592",
+  "name": "GARREL",
+  "state": "NIEDERSACHSEN",
+  "lat": 53,
+  "lon": 8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10593",
+  "name": "OYTEN",
+  "state": "NIEDERSACHSEN",
+  "lat": 53.1,
+  "lon": 9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10594",
+  "name": "RASTEDE",
+  "state": "NIEDERSACHSEN",
+  "lat": 53.2,
+  "lon": 8.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10595",
+  "name": "STUHR",
+  "state": "NIEDERSACHSEN",
+  "lat": 53,
+  "lon": 8.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10596",
+  "name": "SYKE",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.9,
+  "lon": 8.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10597",
+  "name": "ZEVEN",
+  "state": "NIEDERSACHSEN",
+  "lat": 53.3,
+  "lon": 9.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10599",
+  "name": "HOHENSTEIN ERNSTTHAL",
+  "state": "SACHSEN",
+  "lat": 50.8,
+  "lon": 12.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10600",
+  "name": "MITTWEIDA",
+  "state": "SACHSEN ANHALT",
+  "lat": 51,
+  "lon": 13,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10601",
+  "name": "OELSNITZ (CHEMNITZ)",
+  "state": "SACHSEN",
+  "lat": 50.7,
+  "lon": 12.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10602",
+  "name": "RONNEBURG",
+  "state": "THURINGEN",
+  "lat": 50.9,
+  "lon": 12.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10605",
+  "name": "COTTBUS",
+  "state": "BRANDENBURG",
+  "lat": 51.8,
+  "lon": 14.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10606",
+  "name": "CALAU",
+  "state": "BRANDENBURG",
+  "lat": 51.7,
+  "lon": 14,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10607",
+  "name": "FINSTERWALDE",
+  "state": "BRANDENBURG",
+  "lat": 51.6,
+  "lon": 13.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10608",
+  "name": "FORST (COTTBUS)",
+  "state": "BRANDENBURG",
+  "lat": 51.7,
+  "lon": 14.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10609",
+  "name": "GUBEN",
+  "state": "BRANDENBURG",
+  "lat": 52,
+  "lon": 14.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10611",
+  "name": "LUBBENAU",
+  "state": "BRANDENBURG",
+  "lat": 51.9,
+  "lon": 14,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10612",
+  "name": "SPREMBERG",
+  "state": "BRANDENBURG",
+  "lat": 51.6,
+  "lon": 14.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10613",
+  "name": "VETSCHAU",
+  "state": "BRANDENBURG",
+  "lat": 51.8,
+  "lon": 14.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10615",
+  "name": "DOBELN",
+  "state": "SACHSEN",
+  "lat": 51.1,
+  "lon": 13.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10616",
+  "name": "OLBERNHAU",
+  "state": "SACHSEN",
+  "lat": 50.7,
+  "lon": 13.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10617",
+  "name": "PIRNA",
+  "state": "SACHSEN",
+  "lat": 51,
+  "lon": 13.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10618",
+  "name": "RADEBEUL",
+  "state": "SACHSEN",
+  "lat": 51.1,
+  "lon": 13.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10619",
+  "name": "RADEBURG",
+  "state": "SACHSEN",
+  "lat": 51.2,
+  "lon": 13.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10620",
+  "name": "RIESA",
+  "state": "SACHSEN",
+  "lat": 51.3,
+  "lon": 13.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10621",
+  "name": "APOLDA",
+  "state": "THURINGEN",
+  "lat": 51,
+  "lon": 11.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10622",
+  "name": "ARNSTADT",
+  "state": "THURINGEN",
+  "lat": 50.8,
+  "lon": 11,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10624",
+  "name": "EISENACH",
+  "state": "THURINGEN",
+  "lat": 51,
+  "lon": 10.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10627",
+  "name": "JENA",
+  "state": "THURINGEN",
+  "lat": 50.9,
+  "lon": 11.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10628",
+  "name": "SAALFELD",
+  "state": "THURINGEN",
+  "lat": 50.6,
+  "lon": 11.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10629",
+  "name": "SOMMERDA",
+  "state": "THURINGEN",
+  "lat": 51.2,
+  "lon": 11.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10630",
+  "name": "SUHL",
+  "state": "THURINGEN",
+  "lat": 50.6,
+  "lon": 10.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10631",
+  "name": "BREDSTEDT",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 54.6,
+  "lon": 9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10632",
+  "name": "GLUCKSBURG",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 54.8,
+  "lon": 9.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10633",
+  "name": "KAPPELN",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 54.7,
+  "lon": 9.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10634",
+  "name": "LECK",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 54.8,
+  "lon": 9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10635",
+  "name": "NIEBULL",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 54.8,
+  "lon": 8.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10636",
+  "name": "TARP",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 54.7,
+  "lon": 9.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10637",
+  "name": "WESTERLAND",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 54.9,
+  "lon": 8.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10638",
+  "name": "WYK",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 54.7,
+  "lon": 8.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10639",
+  "name": "FRANKFURT  ODER",
+  "state": "BRANDENBURG",
+  "lat": 52.3,
+  "lon": 14.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10640",
+  "name": "BEESKOW",
+  "state": "BRANDENBURG",
+  "lat": 52.2,
+  "lon": 14.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10641",
+  "name": "EISENHUTTENSTADT",
+  "state": "BRANDENBURG",
+  "lat": 52.2,
+  "lon": 14.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10642",
+  "name": "SEELOW",
+  "state": "BRANDENBURG",
+  "lat": 52.5,
+  "lon": 14.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10643",
+  "name": "ADELEBSEN",
+  "state": "NIEDERSACHSEN",
+  "lat": 51.6,
+  "lon": 9.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10644",
+  "name": "BOVENDEN",
+  "state": "NIEDERSACHSEN",
+  "lat": 51.6,
+  "lon": 9.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10645",
+  "name": "DUDERSTADT",
+  "state": "NIEDERSACHSEN",
+  "lat": 51.5,
+  "lon": 10.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10646",
+  "name": "HARDEGSEN",
+  "state": "NIEDERSACHSEN",
+  "lat": 51.7,
+  "lon": 9.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10648",
+  "name": "LEINEFELDE",
+  "state": "THURINGEN",
+  "lat": 51.4,
+  "lon": 10.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10650",
+  "name": "MORINGEN",
+  "state": "NIEDERSACHSEN",
+  "lat": 51.7,
+  "lon": 9.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10651",
+  "name": "ROSDORF",
+  "state": "NIEDERSACHSEN",
+  "lat": 51.5,
+  "lon": 9.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10652",
+  "name": "BOIZENBURG",
+  "state": "MECKLENBURG-VORPOMMERN",
+  "lat": 53.4,
+  "lon": 10.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10653",
+  "name": "BUXTEHUDE",
+  "state": "NIEDERSACHSEN",
+  "lat": 53.5,
+  "lon": 9.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10655",
+  "name": "SEEVETAL",
+  "state": "NIEDERSACHSEN",
+  "lat": 53.4,
+  "lon": 10,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10656",
+  "name": "RATZEBURG",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 53.7,
+  "lon": 10.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10657",
+  "name": "REINBEK",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 53.5,
+  "lon": 10.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10659",
+  "name": "BARSINGHAUSEN",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.3,
+  "lon": 9.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10660",
+  "name": "BENNEMUHLEN",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.6,
+  "lon": 9.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10661",
+  "name": "BRUNSWICK (BRAUNSCHWEIG)",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.3,
+  "lon": 10.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10662",
+  "name": "BUTZFLETH",
+  "state": "NIEDERSACHSEN",
+  "lat": 53.6,
+  "lon": 9.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10663",
+  "name": "ISERNHAGEN F.B.",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.5,
+  "lon": 9.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10665",
+  "name": "SEHNDE",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.3,
+  "lon": 10,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10666",
+  "name": "SEELZE",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.4,
+  "lon": 9.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10667",
+  "name": "SPRINGE",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.2,
+  "lon": 9.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10668",
+  "name": "BRUNSBUTTEL",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 53.9,
+  "lon": 9.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10669",
+  "name": "HOHENWESTEDT",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 54.1,
+  "lon": 9.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10670",
+  "name": "KELLINGHUSEN",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 54,
+  "lon": 9.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10671",
+  "name": "MARNE",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 54,
+  "lon": 9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10672",
+  "name": "MELDORF",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 54.1,
+  "lon": 9.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10673",
+  "name": "LENSAHN",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 54.2,
+  "lon": 10.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10674",
+  "name": "LUTJENBURG",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 54.3,
+  "lon": 10.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10675",
+  "name": "MALENTE",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 54.2,
+  "lon": 10.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10676",
+  "name": "PLON",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 54.2,
+  "lon": 10.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10677",
+  "name": "DELITZSCH",
+  "state": "SACHSEN",
+  "lat": 51.5,
+  "lon": 12.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10680",
+  "name": "OSCHATZ",
+  "state": "SACHSEN",
+  "lat": 51.3,
+  "lon": 13.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10681",
+  "name": "PEGAU",
+  "state": "SACHSEN",
+  "lat": 51.2,
+  "lon": 12.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10682",
+  "name": "BAD SEGEBERG",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 53.9,
+  "lon": 10.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10683",
+  "name": "BAD SCHWARTAU",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 53.9,
+  "lon": 10.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10684",
+  "name": "GREVESMUHLEN",
+  "state": "MECKLENBURG-VORPOMMERN",
+  "lat": 53.9,
+  "lon": 11.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10685",
+  "name": "STOCKELSDORF",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 53.9,
+  "lon": 10.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10686",
+  "name": "WAHLSTEDT",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 54,
+  "lon": 10.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10688",
+  "name": "HALBERSTADT",
+  "state": "SACHSEN ANHALT",
+  "lat": 51.9,
+  "lon": 11.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10689",
+  "name": "BARLEBEN",
+  "state": "SACHSEN ANHALT",
+  "lat": 52.2,
+  "lon": 11.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10690",
+  "name": "BELZIG",
+  "state": "BRANDENBURG",
+  "lat": 52.1,
+  "lon": 12.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10692",
+  "name": "CALBE",
+  "state": "SACHSEN ANHALT",
+  "lat": 51.9,
+  "lon": 11.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10693",
+  "name": "DESSAU",
+  "state": "SACHSEN ANHALT",
+  "lat": 51.8,
+  "lon": 12.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10694",
+  "name": "GOMMERN",
+  "state": "SACHSEN ANHALT",
+  "lat": 52.1,
+  "lon": 11.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10695",
+  "name": "HALDENSLEBEN",
+  "state": "SACHSEN ANHALT",
+  "lat": 52.3,
+  "lon": 11.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10696",
+  "name": "OSCHERSLEBEN",
+  "state": "SACHSEN ANHALT",
+  "lat": 52,
+  "lon": 11.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10699",
+  "name": "STRASSFURT",
+  "state": "THURINGEN",
+  "lat": 51.2,
+  "lon": 11,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10700",
+  "name": "ZERBST",
+  "state": "SACHSEN ANHALT",
+  "lat": 52,
+  "lon": 12.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10701",
+  "name": "BAD ZWISCHENAHN",
+  "state": "NIEDERSACHSEN",
+  "lat": 53.2,
+  "lon": 8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10702",
+  "name": "BAD BENTHEIM",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.3,
+  "lon": 7.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10703",
+  "name": "DAMME",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.5,
+  "lon": 8.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10705",
+  "name": "BARDENBERG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.9,
+  "lon": 6.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10706",
+  "name": "GURZENICH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.8,
+  "lon": 6.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10707",
+  "name": "JULICH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.9,
+  "lon": 6.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10708",
+  "name": "KOHLSCHEID",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.8,
+  "lon": 6.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10709",
+  "name": "BAD MEINBERG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.9,
+  "lon": 9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10710",
+  "name": "BAD OEYNHAUSEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 52.2,
+  "lon": 8.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10711",
+  "name": "BAD PYRMONT",
+  "state": "NIEDERSACHSEN",
+  "lat": 52,
+  "lon": 9.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10712",
+  "name": "HIDDENHAUSEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 52.2,
+  "lon": 8.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10713",
+  "name": "GELSDORF",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.6,
+  "lon": 7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10714",
+  "name": "GLADBACH (NRW)",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.8,
+  "lon": 6.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10715",
+  "name": "HENNEF",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.8,
+  "lon": 7.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10716",
+  "name": "MECHERNICH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.6,
+  "lon": 6.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10718",
+  "name": "BUTTELBORN",
+  "state": "HESSEN",
+  "lat": 49.9,
+  "lon": 8.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10723",
+  "name": "WEITERSTADT",
+  "state": "HESSEN",
+  "lat": 49.9,
+  "lon": 8.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10724",
+  "name": "ASSELN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.7,
+  "lon": 8.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10725",
+  "name": "FRONDENBERG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.5,
+  "lon": 7.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10726",
+  "name": "STRAELEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.5,
+  "lon": 6.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10727",
+  "name": "BRUGGEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.2,
+  "lon": 6.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10728",
+  "name": "ENNEPETAL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.3,
+  "lon": 7.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10729",
+  "name": "KORSCHENBROICH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.2,
+  "lon": 6.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10730",
+  "name": "NETTETAL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.3,
+  "lon": 6.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10731",
+  "name": "ALZENAU",
+  "state": "BAYERN",
+  "lat": 50.1,
+  "lon": 9.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10732",
+  "name": "BRUCHK\u00d6BEL",
+  "state": "HESSEN",
+  "lat": 50.2,
+  "lon": 8.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10733",
+  "name": "KELKHEIM",
+  "state": "HESSEN",
+  "lat": 50.1,
+  "lon": 8.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10734",
+  "name": "LANGENSELBOLD",
+  "state": "HESSEN",
+  "lat": 50.2,
+  "lon": 9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10735",
+  "name": "VILLINGEN",
+  "state": "HESSEN",
+  "lat": 50.5,
+  "lon": 8.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10736",
+  "name": "ANNWEILER",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 49.2,
+  "lon": 8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10737",
+  "name": "BELLHEIM",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 49.2,
+  "lon": 8.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10738",
+  "name": "MAIKAMMER",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 49.3,
+  "lon": 8.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10739",
+  "name": "NEUDORF (Germersheim)",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49.2,
+  "lon": 8.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10741",
+  "name": "RULZHEIM",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 49.2,
+  "lon": 8.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10742",
+  "name": "HERDECKE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.4,
+  "lon": 7.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10743",
+  "name": "LETMATHE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.4,
+  "lon": 7.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10744",
+  "name": "WESTHOFEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.4,
+  "lon": 7.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10745",
+  "name": "NORDKIRCHEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.7,
+  "lon": 7.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10746",
+  "name": "BAUNATAL",
+  "state": "HESSEN",
+  "lat": 51.3,
+  "lon": 9.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10747",
+  "name": "LOHFELDEN",
+  "state": "HESSEN",
+  "lat": 51.3,
+  "lon": 9.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10748",
+  "name": "MUNDEN",
+  "state": "HESSEN",
+  "lat": 51.2,
+  "lon": 8.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10749",
+  "name": "BOPPARD",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50.2,
+  "lon": 7.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10750",
+  "name": "ETTRINGEN",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50.4,
+  "lon": 7.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10751",
+  "name": "HADAMAR",
+  "state": "HESSEN",
+  "lat": 50.5,
+  "lon": 8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10752",
+  "name": "KAISERSESCH",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50.2,
+  "lon": 7.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10753",
+  "name": "LAHNSTEIN",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50.3,
+  "lon": 7.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10754",
+  "name": "MAYEN",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50.3,
+  "lon": 7.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10755",
+  "name": "BEDBURG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51,
+  "lon": 6.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10756",
+  "name": "GEILENKIRCHEN (NRW)",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51,
+  "lon": 6.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10757",
+  "name": "HUTZEMERT",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51,
+  "lon": 7.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10758",
+  "name": "KURTEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.1,
+  "lon": 7.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10759",
+  "name": "WIEHL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.9,
+  "lon": 7.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10760",
+  "name": "KALDENKIRCHEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.3,
+  "lon": 6.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10761",
+  "name": "KEMPEN (NRW)",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.4,
+  "lon": 6.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10762",
+  "name": "OEDT",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.3,
+  "lon": 6.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10763",
+  "name": "TONISVORST",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.3,
+  "lon": 6.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10764",
+  "name": "ALSENBORN",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 49.5,
+  "lon": 7.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10765",
+  "name": "ELTVILLE",
+  "state": "HESSEN",
+  "lat": 50,
+  "lon": 8.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10766",
+  "name": "FLORSHEIM",
+  "state": "HESSEN",
+  "lat": 50,
+  "lon": 8.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10767",
+  "name": "GINSHEIM",
+  "state": "HESSEN",
+  "lat": 50,
+  "lon": 8.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10768",
+  "name": "HOFHEIM A. TAUNUS",
+  "state": "HESSEN",
+  "lat": 50.1,
+  "lon": 8.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10769",
+  "name": "RAUNHEIM",
+  "state": "HESSEN",
+  "lat": 50,
+  "lon": 8.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10771",
+  "name": "SONTRA",
+  "state": "HESSEN",
+  "lat": 51.1,
+  "lon": 9.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10772",
+  "name": "SPRENDLINGEN",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 49.9,
+  "lon": 8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10773",
+  "name": "HALLE (NRW)",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 52.1,
+  "lon": 8.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10774",
+  "name": "LUDINGHAUSEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.8,
+  "lon": 7.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10775",
+  "name": "BLIESKASTEL",
+  "state": "SAARLAND",
+  "lat": 49.2,
+  "lon": 7.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10776",
+  "name": "LEBACH",
+  "state": "SAARLAND",
+  "lat": 49.4,
+  "lon": 6.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10777",
+  "name": "PUTTLINGEN",
+  "state": "SAARLAND",
+  "lat": 49.3,
+  "lon": 6.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10778",
+  "name": "QUIERSCHEID",
+  "state": "SAARLAND",
+  "lat": 49.3,
+  "lon": 7.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10780",
+  "name": "DUDENHOFEN",
+  "state": "HESSEN",
+  "lat": 50,
+  "lon": 8.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10781",
+  "name": "EPPERTSHAUSEN",
+  "state": "HESSEN",
+  "lat": 49.9,
+  "lon": 8.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10784",
+  "name": "HOSBACH",
+  "state": "BAYERN",
+  "lat": 50,
+  "lon": 9.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10786",
+  "name": "STOCKSTADT AM MAIN",
+  "state": "BAYERN",
+  "lat": 50,
+  "lon": 9.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10787",
+  "name": "URBERACH",
+  "state": "HESSEN",
+  "lat": 50,
+  "lon": 8.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10788",
+  "name": "LANGWEID",
+  "state": "BAYERN",
+  "lat": 48.5,
+  "lon": 10.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10789",
+  "name": "NEUSES",
+  "state": "BAYERN",
+  "lat": 48.4,
+  "lon": 10.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10790",
+  "name": "BAD DURRHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48,
+  "lon": 8.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10791",
+  "name": "BAD KROZINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.9,
+  "lon": 7.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10792",
+  "name": "DONAUESCHINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48,
+  "lon": 8.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10793",
+  "name": "TITISEE-NEUSTADT",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.9,
+  "lon": 8.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10794",
+  "name": "WALDKIRCH (Freiburg)",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.1,
+  "lon": 8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10797",
+  "name": "MARKNEUKIRCHEN",
+  "state": "SACHSEN ANHALT",
+  "lat": 50.3,
+  "lon": 12.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10798",
+  "name": "NAILA",
+  "state": "BAYERN",
+  "lat": 50.3,
+  "lon": 11.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10799",
+  "name": "OBERKOTZAU",
+  "state": "BAYERN",
+  "lat": 50.3,
+  "lon": 11.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10800",
+  "name": "OLSNITZ",
+  "state": "BAYERN",
+  "lat": 50.3,
+  "lon": 11.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10801",
+  "name": "PLAUEN",
+  "state": "SACHSEN",
+  "lat": 50.5,
+  "lon": 12.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10802",
+  "name": "FORBACH",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.7,
+  "lon": 8.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10803",
+  "name": "MUHLACKER",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49,
+  "lon": 8.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10804",
+  "name": "OSTRINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49.2,
+  "lon": 8.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10805",
+  "name": "WORTH AM RHEIN",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 49.1,
+  "lon": 8.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10806",
+  "name": "IMMENSTAAD",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.7,
+  "lon": 9.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10807",
+  "name": "KRESSBRONN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.6,
+  "lon": 9.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10808",
+  "name": "MECKENBEUREN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.7,
+  "lon": 9.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10809",
+  "name": "MENGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.1,
+  "lon": 9.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10810",
+  "name": "SALEM",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.8,
+  "lon": 9.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10811",
+  "name": "STOCKACH (Konstanz)",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.9,
+  "lon": 9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10812",
+  "name": "TETTNANG",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.7,
+  "lon": 9.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10814",
+  "name": "ESSENBACH (Landshut)",
+  "state": "BAYERN",
+  "lat": 48.6,
+  "lon": 12.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10815",
+  "name": "PFARRKIRCHEN",
+  "state": "BAYERN",
+  "lat": 48.4,
+  "lon": 12.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10816",
+  "name": "SCHRIESHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49.5,
+  "lon": 8.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10818",
+  "name": "ERDING",
+  "state": "BAYERN",
+  "lat": 48.3,
+  "lon": 11.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10819",
+  "name": "FURSTENFELDBRUCK",
+  "state": "BAYERN",
+  "lat": 48.2,
+  "lon": 11.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10820",
+  "name": "GAUTING",
+  "state": "BAYERN",
+  "lat": 48.1,
+  "lon": 11.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10821",
+  "name": "GRUNWALD",
+  "state": "BAYERN",
+  "lat": 48.1,
+  "lon": 11.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10823",
+  "name": "OTTOBRUNN",
+  "state": "BAYERN",
+  "lat": 48.1,
+  "lon": 11.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10824",
+  "name": "STARNBERG",
+  "state": "BAYERN",
+  "lat": 48,
+  "lon": 11.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10825",
+  "name": "BAD WINDSHEIM",
+  "state": "BAYERN",
+  "lat": 49.5,
+  "lon": 10.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10826",
+  "name": "PEGNITZ",
+  "state": "BAYERN",
+  "lat": 49.8,
+  "lon": 11.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10828",
+  "name": "BAIERSBRONN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.5,
+  "lon": 8.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10829",
+  "name": "LOSSBURG",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.4,
+  "lon": 8.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10831",
+  "name": "RENCHEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.6,
+  "lon": 8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10832",
+  "name": "SCHUTTERWALD",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.5,
+  "lon": 7.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10833",
+  "name": "WILLSTATT",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.5,
+  "lon": 7.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10834",
+  "name": "ERGOLDSBACH",
+  "state": "BAYERN",
+  "lat": 48.7,
+  "lon": 12.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10836",
+  "name": "PLATTLING",
+  "state": "BAYERN",
+  "lat": 48.8,
+  "lon": 12.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10838",
+  "name": "RODING",
+  "state": "BAYERN",
+  "lat": 49.2,
+  "lon": 12.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10840",
+  "name": "ALPIRSBACH",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.3,
+  "lon": 8.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10841",
+  "name": "GOMARINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.5,
+  "lon": 9.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10842",
+  "name": "KUSTERDINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.5,
+  "lon": 9.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10843",
+  "name": "PFULLINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.5,
+  "lon": 9.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10845",
+  "name": "URACH",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48,
+  "lon": 8.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10846",
+  "name": "AIDLINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.7,
+  "lon": 8.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10847",
+  "name": "ALTHENGSTETT",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.7,
+  "lon": 8.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10848",
+  "name": "LEINFELDEN-ECHTERDINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.7,
+  "lon": 9.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10849",
+  "name": "EHNINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.7,
+  "lon": 8.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10850",
+  "name": "MAICHINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.7,
+  "lon": 9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10851",
+  "name": "WILDBERG",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.6,
+  "lon": 8.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10852",
+  "name": "BIETIGHEIM-BISSINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49,
+  "lon": 9.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10853",
+  "name": "DETTINGEN UNTER TECK",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.6,
+  "lon": 9.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10854",
+  "name": "EBERSBACH AN DER FILS",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.7,
+  "lon": 9.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10855",
+  "name": "EISLINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.7,
+  "lon": 9.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10856",
+  "name": "OSTFILDERN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.7,
+  "lon": 9.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10857",
+  "name": "PLOCHINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.7,
+  "lon": 9.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10858",
+  "name": "AY",
+  "state": "BAYERN",
+  "lat": 48.3,
+  "lon": 10,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10859",
+  "name": "DILLINGEN AN DER DONAU",
+  "state": "BAYERN",
+  "lat": 48.6,
+  "lon": 10.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10860",
+  "name": "EBRACH (Wurzburg)",
+  "state": "BAYERN",
+  "lat": 49.8,
+  "lon": 10.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10862",
+  "name": "MOMLINGEN",
+  "state": "BAYERN",
+  "lat": 49.9,
+  "lon": 9.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10863",
+  "name": "OCHSENFURT",
+  "state": "BAYERN",
+  "lat": 49.7,
+  "lon": 10.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10864",
+  "name": "TAUBERBISCHOFSHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49.6,
+  "lon": 9.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10865",
+  "name": "WALLDURN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49.6,
+  "lon": 9.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10866",
+  "name": "LANDAU AN DER ISAR",
+  "state": "BAYERN",
+  "lat": 48.7,
+  "lon": 12.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10867",
+  "name": "LUDENSCHEID",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.2,
+  "lon": 7.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10868",
+  "name": "SINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.8,
+  "lon": 8.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10869",
+  "name": "WERDOHL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.3,
+  "lon": 7.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10870",
+  "name": "ACHERN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.6,
+  "lon": 8.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10871",
+  "name": "ANKUM",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.5,
+  "lon": 7.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10872",
+  "name": "DANNSTADT",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 49.4,
+  "lon": 8.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10873",
+  "name": "AHAUS",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 52.1,
+  "lon": 7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10874",
+  "name": "ERFURT",
+  "state": "THURINGEN",
+  "lat": 51,
+  "lon": 11,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10875",
+  "name": "MAGDEBURG",
+  "state": "SACHSEN ANHALT",
+  "lat": 52.1,
+  "lon": 11.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10877",
+  "name": "ALDENHOVEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.9,
+  "lon": 6.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10878",
+  "name": "ALFTER",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.7,
+  "lon": 7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10879",
+  "name": "HOFGEISMAR",
+  "state": "HESSEN",
+  "lat": 51.5,
+  "lon": 9.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10880",
+  "name": "OSTSTEINBEK",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 53.5,
+  "lon": 10.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10881",
+  "name": "ELSENFELD",
+  "state": "BAYERN",
+  "lat": 49.8,
+  "lon": 9.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10883",
+  "name": "ALLERSBERG",
+  "state": "BAYERN",
+  "lat": 49.3,
+  "lon": 11.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10884",
+  "name": "ALSDORF",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.9,
+  "lon": 6.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10886",
+  "name": "ALTENA",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.3,
+  "lon": 7.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10887",
+  "name": "ALTENERDING",
+  "state": "BAYERN",
+  "lat": 48.3,
+  "lon": 11.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10888",
+  "name": "ALTENKIRCHEN",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50.7,
+  "lon": 7.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10889",
+  "name": "ALZEY",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 49.8,
+  "lon": 8.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10890",
+  "name": "AMBERG",
+  "state": "BAYERN",
+  "lat": 49.5,
+  "lon": 11.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10891",
+  "name": "ANDERNACH",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50.4,
+  "lon": 7.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10892",
+  "name": "ARNSBERG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.4,
+  "lon": 8.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10893",
+  "name": "AROLSEN",
+  "state": "HESSEN",
+  "lat": 51.4,
+  "lon": 9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10894",
+  "name": "ASCHAFFENBURG",
+  "state": "BAYERN",
+  "lat": 50,
+  "lon": 9.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10895",
+  "name": "ASCHEBERG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.8,
+  "lon": 7.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10896",
+  "name": "ATTENDORN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.1,
+  "lon": 7.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10897",
+  "name": "AUGUSTDORF",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.9,
+  "lon": 8.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10899",
+  "name": "BAD BRAMSTEDT",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 53.9,
+  "lon": 9.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10900",
+  "name": "BAD CAMBERG",
+  "state": "HESSEN",
+  "lat": 50.3,
+  "lon": 8.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10901",
+  "name": "BAD DURKHEIM",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 49.5,
+  "lon": 8.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10902",
+  "name": "BADENDORF",
+  "state": "BAYERN",
+  "lat": 48.5,
+  "lon": 11.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10903",
+  "name": "BAD ESSEN",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.3,
+  "lon": 8.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10904",
+  "name": "BAD HONNEF AM RHEIN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.7,
+  "lon": 7.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10905",
+  "name": "BAD HOMBURG",
+  "state": "HESSEN",
+  "lat": 50.2,
+  "lon": 8.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10906",
+  "name": "BAD LIPPSPRINGE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.8,
+  "lon": 8.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10907",
+  "name": "BAD NAUHEIM",
+  "state": "HESSEN",
+  "lat": 50.4,
+  "lon": 8.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10908",
+  "name": "BAD SACKINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.6,
+  "lon": 7.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10909",
+  "name": "BAD SALZUFLEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 52.1,
+  "lon": 8.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10910",
+  "name": "BAD SCHWALBACH",
+  "state": "HESSEN",
+  "lat": 50.1,
+  "lon": 8.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10911",
+  "name": "BAD VILBEL",
+  "state": "HESSEN",
+  "lat": 50.2,
+  "lon": 8.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10912",
+  "name": "BAD WILDUNGEN",
+  "state": "HESSEN",
+  "lat": 51.1,
+  "lon": 9.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10913",
+  "name": "BADEN-BADEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.8,
+  "lon": 8.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10914",
+  "name": "BAESWEILER",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.9,
+  "lon": 6.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10915",
+  "name": "BALVE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.3,
+  "lon": 7.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10916",
+  "name": "BECKUM",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.8,
+  "lon": 8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10917",
+  "name": "BEERFELDEN",
+  "state": "HESSEN",
+  "lat": 49.6,
+  "lon": 9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10919",
+  "name": "BENSHEIM",
+  "state": "HESSEN",
+  "lat": 49.7,
+  "lon": 8.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10920",
+  "name": "BERGHEIM",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51,
+  "lon": 6.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10923",
+  "name": "BERGNEUSTADT",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51,
+  "lon": 7.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10924",
+  "name": "BESTWIG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.4,
+  "lon": 8.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10925",
+  "name": "BETZDORF",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50.8,
+  "lon": 7.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10926",
+  "name": "BEXBACH",
+  "state": "SAARLAND",
+  "lat": 49.4,
+  "lon": 7.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10927",
+  "name": "BIEBESHEIM AM RHEIN",
+  "state": "HESSEN",
+  "lat": 49.8,
+  "lon": 8.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10928",
+  "name": "BIEDENKOPF",
+  "state": "HESSEN",
+  "lat": 50.9,
+  "lon": 8.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10929",
+  "name": "BINGEN",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50,
+  "lon": 7.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10930",
+  "name": "BISCHOFSHEIM",
+  "state": "HESSEN",
+  "lat": 49.9,
+  "lon": 8.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10931",
+  "name": "BLANKENHEIM",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.4,
+  "lon": 6.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10932",
+  "name": "BLOMBERG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 52,
+  "lon": 9.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10935",
+  "name": "WATTENSCHEID",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.5,
+  "lon": 7.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10936",
+  "name": "BOFFZEN",
+  "state": "NIEDERSACHSEN",
+  "lat": 51.8,
+  "lon": 9.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10937",
+  "name": "BOHMTE",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.4,
+  "lon": 8.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10938",
+  "name": "BONEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.6,
+  "lon": 7.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10939",
+  "name": "BONNDORF",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.8,
+  "lon": 8.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10940",
+  "name": "BORKEN (HESSEN)",
+  "state": "HESSEN",
+  "lat": 51.1,
+  "lon": 9.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10941",
+  "name": "BORNHEIM",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.8,
+  "lon": 7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10942",
+  "name": "BOTTROP",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.5,
+  "lon": 6.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10943",
+  "name": "BOTZINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.1,
+  "lon": 7.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10944",
+  "name": "BRAKE",
+  "state": "NIEDERSACHSEN",
+  "lat": 53.3,
+  "lon": 8.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10945",
+  "name": "BRAKEL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.7,
+  "lon": 9.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10946",
+  "name": "BRAMSCHE",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.4,
+  "lon": 8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10947",
+  "name": "BREIDENBACH",
+  "state": "HESSEN",
+  "lat": 50.9,
+  "lon": 8.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10948",
+  "name": "BLUMENTHAL",
+  "state": "NIEDERSACHSEN",
+  "lat": 53.2,
+  "lon": 8.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10949",
+  "name": "FINDORF",
+  "state": "BREMEN",
+  "lat": 53.1,
+  "lon": 8.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10950",
+  "name": "BRETTEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49,
+  "lon": 8.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10951",
+  "name": "BREUBERG",
+  "state": "HESSEN",
+  "lat": 49.8,
+  "lon": 9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10952",
+  "name": "BRILON",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.4,
+  "lon": 8.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10953",
+  "name": "BRUCHSAL",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49.1,
+  "lon": 8.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10954",
+  "name": "BRUHL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.8,
+  "lon": 6.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10956",
+  "name": "BUCKEBURG",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.3,
+  "lon": 9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10958",
+  "name": "BUDINGEN",
+  "state": "HESSEN",
+  "lat": 50.3,
+  "lon": 9.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10959",
+  "name": "BUGGINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.9,
+  "lon": 7.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10960",
+  "name": "BULLAY",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50.1,
+  "lon": 7.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10961",
+  "name": "BUNDE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 52.2,
+  "lon": 8.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10962",
+  "name": "BURSCHEID",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.1,
+  "lon": 7.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10963",
+  "name": "BUTZBACH",
+  "state": "HESSEN",
+  "lat": 50.4,
+  "lon": 8.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10964",
+  "name": "CASTROP-RAUXEL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.6,
+  "lon": 7.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10966",
+  "name": "COESFELD",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.9,
+  "lon": 7.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10967",
+  "name": "DACHAU",
+  "state": "BAYERN",
+  "lat": 48.3,
+  "lon": 11.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10968",
+  "name": "DATTELN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.7,
+  "lon": 7.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10969",
+  "name": "DELBRUCK",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.8,
+  "lon": 8.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10970",
+  "name": "DELMENHORST",
+  "state": "NIEDERSACHSEN",
+  "lat": 53.1,
+  "lon": 8.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10971",
+  "name": "DENZLINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.1,
+  "lon": 7.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10972",
+  "name": "DIEBURG",
+  "state": "HESSEN",
+  "lat": 49.9,
+  "lon": 8.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10973",
+  "name": "DIETZENBACH",
+  "state": "HESSEN",
+  "lat": 50,
+  "lon": 8.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10974",
+  "name": "DILLENBURG",
+  "state": "HESSEN",
+  "lat": 50.7,
+  "lon": 8.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10975",
+  "name": "DINSLAKEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.6,
+  "lon": 6.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10976",
+  "name": "DISSEN",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.1,
+  "lon": 8.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10977",
+  "name": "DORMAGEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.1,
+  "lon": 6.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10978",
+  "name": "DORSTEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.7,
+  "lon": 7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10980",
+  "name": "DRENSTEINFURT",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.8,
+  "lon": 7.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10984",
+  "name": "DULMEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.8,
+  "lon": 7.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10985",
+  "name": "ECKERNFORDE",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 54.5,
+  "lon": 9.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10986",
+  "name": "EHRINGSHAUSEN",
+  "state": "HESSEN",
+  "lat": 50.6,
+  "lon": 8.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10987",
+  "name": "EISENBERG",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 49.6,
+  "lon": 8.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10988",
+  "name": "EITORF",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.8,
+  "lon": 7.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10989",
+  "name": "ELMSHORN",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 53.7,
+  "lon": 9.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10990",
+  "name": "ELSDORF",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.9,
+  "lon": 6.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10991",
+  "name": "EMDEN",
+  "state": "NIEDERSACHSEN",
+  "lat": 53.4,
+  "lon": 7.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10992",
+  "name": "EMMELSHAUSEN",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50.2,
+  "lon": 7.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10993",
+  "name": "EMMENDINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.1,
+  "lon": 7.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10994",
+  "name": "EMMERTHAL",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.1,
+  "lon": 9.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10995",
+  "name": "ENGELSKIRCHEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51,
+  "lon": 7.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10996",
+  "name": "ERBACH",
+  "state": "HESSEN",
+  "lat": 49.7,
+  "lon": 9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10997",
+  "name": "ERFTSTADT",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.8,
+  "lon": 6.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10998",
+  "name": "ERKELENZ",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.1,
+  "lon": 6.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "10999",
+  "name": "ERKRATH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.2,
+  "lon": 6.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11000",
+  "name": "ESCHBORN",
+  "state": "HESSEN",
+  "lat": 50.1,
+  "lon": 8.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11001",
+  "name": "ESCHWEILER",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.8,
+  "lon": 6.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11002",
+  "name": "BERLIN",
+  "state": "BERLIN",
+  "lat": 52.5,
+  "lon": 13.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11003",
+  "name": "BIELEFELD",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 52,
+  "lon": 8.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11004",
+  "name": "BONN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.7,
+  "lon": 7.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11005",
+  "name": "BREMEN",
+  "state": "BREMEN",
+  "lat": 53.1,
+  "lon": 8.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11006",
+  "name": "DORTMUND",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.5,
+  "lon": 7.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11008",
+  "name": "DUSSELDORF",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.3,
+  "lon": 6.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11009",
+  "name": "ESSEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.5,
+  "lon": 7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11010",
+  "name": "FRANKFURT",
+  "state": "HESSEN",
+  "lat": 50.1,
+  "lon": 8.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11011",
+  "name": "FREIBURG",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48,
+  "lon": 7.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11012",
+  "name": "HAMBURG",
+  "state": "HAMBURG",
+  "lat": 53.6,
+  "lon": 10,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11013",
+  "name": "HANNOVER",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.4,
+  "lon": 9.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11014",
+  "name": "KARLSRUHE",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49,
+  "lon": 8.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11015",
+  "name": "KASSEL",
+  "state": "HESSEN",
+  "lat": 51.3,
+  "lon": 9.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11016",
+  "name": "KIEL",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 54.3,
+  "lon": 10.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11017",
+  "name": "KOBLENZ",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50.4,
+  "lon": 7.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11018",
+  "name": "KONSTANZ",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.7,
+  "lon": 9.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11019",
+  "name": "KOLN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.9,
+  "lon": 6.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11020",
+  "name": "MAINZ",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50,
+  "lon": 8.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11021",
+  "name": "MANNHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49.5,
+  "lon": 8.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11022",
+  "name": "MUNCHEN",
+  "state": "BAYERN",
+  "lat": 48.1,
+  "lon": 11.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11023",
+  "name": "MUNSTER",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 52,
+  "lon": 7.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11024",
+  "name": "NURNBERG",
+  "state": "BAYERN",
+  "lat": 49.5,
+  "lon": 11.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11025",
+  "name": "REGENSBURG",
+  "state": "BAYERN",
+  "lat": 49,
+  "lon": 12.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11026",
+  "name": "SAARBRUCKEN",
+  "state": "SAARLAND",
+  "lat": 49.2,
+  "lon": 7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11027",
+  "name": "STUTTGART",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.8,
+  "lon": 9.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11028",
+  "name": "ULM",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.4,
+  "lon": 10,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11029",
+  "name": "WURZBURG",
+  "state": "BAYERN",
+  "lat": 49.8,
+  "lon": 9.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11030",
+  "name": "FULDA",
+  "state": "HESSEN",
+  "lat": 50.6,
+  "lon": 9.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11031",
+  "name": "WUPPERTAL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.3,
+  "lon": 7.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11032",
+  "name": "GIESSEN",
+  "state": "HESSEN",
+  "lat": 50.6,
+  "lon": 8.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11033",
+  "name": "HEIDELBERG",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49.4,
+  "lon": 8.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11034",
+  "name": "PASSAU",
+  "state": "BAYERN",
+  "lat": 48.6,
+  "lon": 13.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11035",
+  "name": "DRESDEN",
+  "state": "SACHSEN",
+  "lat": 51.1,
+  "lon": 13.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11036",
+  "name": "AUGSBURG",
+  "state": "BAYERN",
+  "lat": 48.4,
+  "lon": 10.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11037",
+  "name": "GELSENKIRCHEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.5,
+  "lon": 7.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11038",
+  "name": "MUTLANGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.8,
+  "lon": 9.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11039",
+  "name": "BOBINGEN",
+  "state": "BAYERN",
+  "lat": 48.3,
+  "lon": 10.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11041",
+  "name": "WAIBLINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.8,
+  "lon": 9.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11042",
+  "name": "REUTLINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.5,
+  "lon": 9.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11043",
+  "name": "TUBINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.5,
+  "lon": 9.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11044",
+  "name": "GOPPINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.7,
+  "lon": 9.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11045",
+  "name": "RAVENSBURG",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.8,
+  "lon": 9.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11046",
+  "name": "FRIEDRICHSHAFEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.7,
+  "lon": 9.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11047",
+  "name": "SIGMARINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.1,
+  "lon": 9.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11048",
+  "name": "LUDWIGSBURG",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.9,
+  "lon": 9.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11049",
+  "name": "SCHWABISCH GMUND",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.8,
+  "lon": 9.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11050",
+  "name": "SCHWABISCH HALL",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49.1,
+  "lon": 9.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11051",
+  "name": "HEILBRONN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49.2,
+  "lon": 9.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11052",
+  "name": "EMMERICH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.9,
+  "lon": 6.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11053",
+  "name": "ROTTWEIL",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.2,
+  "lon": 8.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11054",
+  "name": "HILDESHEIM",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.2,
+  "lon": 9.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11055",
+  "name": "OSNABRUCK",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.3,
+  "lon": 8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11056",
+  "name": "WIESBADEN",
+  "state": "HESSEN",
+  "lat": 50.1,
+  "lon": 8.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11057",
+  "name": "AHLEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.8,
+  "lon": 7.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11058",
+  "name": "RONSDORF",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.2,
+  "lon": 7.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11059",
+  "name": "WOLFENBUTTEL",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.2,
+  "lon": 10.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11062",
+  "name": "MULHEIM AN DER RUHR",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.4,
+  "lon": 6.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11063",
+  "name": "MULLHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.8,
+  "lon": 7.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11064",
+  "name": "PADERBORN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.7,
+  "lon": 8.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11065",
+  "name": "DETMOLD",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.9,
+  "lon": 8.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11066",
+  "name": "KREFELD",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.3,
+  "lon": 6.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11067",
+  "name": "BAMBERG",
+  "state": "BAYERN",
+  "lat": 49.9,
+  "lon": 10.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11068",
+  "name": "SAARLOUIS",
+  "state": "SAARLAND",
+  "lat": 49.3,
+  "lon": 6.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11070",
+  "name": "RHEINDAHLEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.2,
+  "lon": 6.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11071",
+  "name": "KRUMBACH",
+  "state": "BAYERN",
+  "lat": 48.3,
+  "lon": 10.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11072",
+  "name": "ROTTENBURG",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.5,
+  "lon": 8.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11073",
+  "name": "PFALZGRAFENWEILER",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.5,
+  "lon": 8.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11074",
+  "name": "RUSSELSHEIM",
+  "state": "HESSEN",
+  "lat": 50,
+  "lon": 8.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11075",
+  "name": "HAMMINKELN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.7,
+  "lon": 6.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11076",
+  "name": "REMSCHEID",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.2,
+  "lon": 7.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11078",
+  "name": "SALZGITTER",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.2,
+  "lon": 10.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11079",
+  "name": "DARMSTADT",
+  "state": "HESSEN",
+  "lat": 49.9,
+  "lon": 8.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11080",
+  "name": "HERRENBERG",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.6,
+  "lon": 8.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11081",
+  "name": "FURTH",
+  "state": "BAYERN",
+  "lat": 49.5,
+  "lon": 11,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11082",
+  "name": "WALDSHUT-TIENGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.6,
+  "lon": 8.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11083",
+  "name": "TUTTLINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48,
+  "lon": 8.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11084",
+  "name": "BERGKAMEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.6,
+  "lon": 7.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11085",
+  "name": "HOF",
+  "state": "BAYERN",
+  "lat": 50.3,
+  "lon": 11.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11086",
+  "name": "ALBSTADT",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.2,
+  "lon": 9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11087",
+  "name": "PLETTENBERG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.2,
+  "lon": 7.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11088",
+  "name": "WORMS",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 49.6,
+  "lon": 8.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11090",
+  "name": "LEMGO",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 52,
+  "lon": 8.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11092",
+  "name": "BAD EMS",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50.3,
+  "lon": 7.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11093",
+  "name": "MAULBRONN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49,
+  "lon": 8.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11094",
+  "name": "LUDWIGSHAFEN",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 49.5,
+  "lon": 8.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11095",
+  "name": "BOCHOLT",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.8,
+  "lon": 6.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11096",
+  "name": "BAUTZEN",
+  "state": "SACHSEN",
+  "lat": 51.2,
+  "lon": 14.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11097",
+  "name": "WEIMAR",
+  "state": "THURINGEN",
+  "lat": 51,
+  "lon": 11.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11098",
+  "name": "RADEVORMWALD",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.2,
+  "lon": 7.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11099",
+  "name": "CHEMNITZ",
+  "state": "SACHSEN",
+  "lat": 50.8,
+  "lon": 12.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11100",
+  "name": "LEIPZIG",
+  "state": "SACHSEN",
+  "lat": 51.4,
+  "lon": 12.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11101",
+  "name": "LUNEBURG",
+  "state": "NIEDERSACHSEN",
+  "lat": 53.3,
+  "lon": 10.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11102",
+  "name": "SIEGEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.9,
+  "lon": 8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11103",
+  "name": "HEMMINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.9,
+  "lon": 9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11104",
+  "name": "KEMPTEN",
+  "state": "BAYERN",
+  "lat": 47.7,
+  "lon": 10.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11105",
+  "name": "GOTTINGEN",
+  "state": "NIEDERSACHSEN",
+  "lat": 51.5,
+  "lon": 9.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11106",
+  "name": "ANSBACH",
+  "state": "BAYERN",
+  "lat": 49.3,
+  "lon": 10.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11107",
+  "name": "SCHWEINFURT",
+  "state": "BAYERN",
+  "lat": 50.1,
+  "lon": 10.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11108",
+  "name": "INGOLSTADT",
+  "state": "BAYERN",
+  "lat": 48.8,
+  "lon": 11.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11110",
+  "name": "ALLACH",
+  "state": "BAYERN",
+  "lat": 48.2,
+  "lon": 11.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11112",
+  "name": "DILLINGEN(SAAR)",
+  "state": "SAARLAND",
+  "lat": 49.4,
+  "lon": 6.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11114",
+  "name": "GRONAU",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 52.2,
+  "lon": 7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11115",
+  "name": "DONAUWORTH",
+  "state": "BAYERN",
+  "lat": 48.7,
+  "lon": 10.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11116",
+  "name": "BREMERHAVEN",
+  "state": "BREMEN",
+  "lat": 53.6,
+  "lon": 8.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11117",
+  "name": "LUBECK",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 53.9,
+  "lon": 10.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11118",
+  "name": "FLENSBURG",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 54.8,
+  "lon": 9.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11119",
+  "name": "PFORZHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.9,
+  "lon": 8.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11120",
+  "name": "BALINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.3,
+  "lon": 8.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11122",
+  "name": "DUREN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.8,
+  "lon": 6.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11123",
+  "name": "KEHL",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.6,
+  "lon": 7.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11124",
+  "name": "WETZLAR",
+  "state": "HESSEN",
+  "lat": 50.6,
+  "lon": 8.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11125",
+  "name": "TRIER",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 49.8,
+  "lon": 6.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11126",
+  "name": "BOCHUM",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.5,
+  "lon": 7.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11127",
+  "name": "HAMM",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.7,
+  "lon": 7.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11128",
+  "name": "MONCHENGLADBACH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.2,
+  "lon": 6.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "11129",
+  "name": "CUXHAVEN",
+  "state": "NIEDERSACHSEN",
+  "lat": 53.9,
+  "lon": 8.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "16705",
+  "name": "OBERHAUSEN ",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.5,
+  "lon": 6.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "16733",
+  "name": "WERNIGERODE",
+  "state": "SACHSEN ANHALT",
+  "lat": 51.8,
+  "lon": 10.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "16740",
+  "name": "ASBACH(LANZING)",
+  "state": "BAYERN",
+  "lat": 48.5,
+  "lon": 13,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "16752",
+  "name": "KIRCHSEEON",
+  "state": "BAYERN",
+  "lat": 48.1,
+  "lon": 11.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "16754",
+  "name": "BRAUNSCHWEIG",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.3,
+  "lon": 10.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "16755",
+  "name": "GREFFERN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.8,
+  "lon": 8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "16756",
+  "name": "WEISENTHURM",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50.4,
+  "lon": 7.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "16757",
+  "name": "LEIPHEIM",
+  "state": "BAYERN",
+  "lat": 48.5,
+  "lon": 10.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "16758",
+  "name": "ESPELKAMP/RAHDEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 52.4,
+  "lon": 8.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "16759",
+  "name": "SCHRAMBERG",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.2,
+  "lon": 8.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "16760",
+  "name": "WEIL DER STADT",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.8,
+  "lon": 8.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "16761",
+  "name": "WEINGARTEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.8,
+  "lon": 9.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "16762",
+  "name": "WENDLINGEN AM NECKAR",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.8,
+  "lon": 9.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "16764",
+  "name": "WIRGES",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50.5,
+  "lon": 7.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "16795",
+  "name": "LUDWIGSLUST",
+  "state": "MECKLENBURG-VORPOMMERN",
+  "lat": 53.3,
+  "lon": 11.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "17802",
+  "name": "NORDEN",
+  "state": "NIEDERSACHSEN",
+  "lat": 53.6,
+  "lon": 7.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "17807",
+  "name": "BUDENHEIM",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50,
+  "lon": 8.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "17843",
+  "name": "HANNOVERSCH MUNDEN",
+  "state": "NIEDERSACHSEN",
+  "lat": 51.4,
+  "lon": 9.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "17915",
+  "name": "SENDEN(NRW)",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.9,
+  "lon": 7.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "17924",
+  "name": "BAD NEUENAHR-AHRWEILER",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50.5,
+  "lon": 7.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "17925",
+  "name": "WITTERSCHLICK",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.7,
+  "lon": 7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "17929",
+  "name": "SCHWARZENBACH A.D.SAALE",
+  "state": "BAYERN",
+  "lat": 50.2,
+  "lon": 11.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "17930",
+  "name": "RETHEM",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.8,
+  "lon": 9.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "17931",
+  "name": "CLAUSTHAL-ZELLERFELD",
+  "state": "NIEDERSACHSEN",
+  "lat": 51.8,
+  "lon": 10.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "17932",
+  "name": "WITTEN-HERBEDE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.4,
+  "lon": 7.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "17933",
+  "name": "NOTTULN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.9,
+  "lon": 7.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "17934",
+  "name": "APPELHULSEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.9,
+  "lon": 7.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "17935",
+  "name": "NEUBECKUM",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.8,
+  "lon": 8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "17936",
+  "name": "PARCHIM",
+  "state": "MECKLENBURG-VORPOMMERN",
+  "lat": 53.4,
+  "lon": 11.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "17937",
+  "name": "HIRSAU",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.7,
+  "lon": 8.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "18944",
+  "name": "MECKENHEIM",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.6,
+  "lon": 7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "18946",
+  "name": "KIERSPE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.1,
+  "lon": 7.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "18947",
+  "name": "BURGBROHL",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50.5,
+  "lon": 7.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "18948",
+  "name": "WORRSTADT",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 49.8,
+  "lon": 8.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "18950",
+  "name": "RENNINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.8,
+  "lon": 8.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "18951",
+  "name": "HEIDENHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.7,
+  "lon": 10.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "18954",
+  "name": "TRIBERG",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.1,
+  "lon": 8.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "18955",
+  "name": "RAHDEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 52.4,
+  "lon": 8.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "18957",
+  "name": "ACHIM",
+  "state": "NIEDERSACHSEN",
+  "lat": 53,
+  "lon": 9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "18959",
+  "name": "NECKARSULM",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49.1,
+  "lon": 9.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "18961",
+  "name": "BUHL(BADEN-BADEN)",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.7,
+  "lon": 8.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "18962",
+  "name": "SULZ AM NECKAR",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.4,
+  "lon": 8.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "18963",
+  "name": "DREIEICH",
+  "state": "HESSEN",
+  "lat": 50,
+  "lon": 8.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "18966",
+  "name": "MARBACH AM NECKAR",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.9,
+  "lon": 9.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "18989",
+  "name": "GARTRINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.7,
+  "lon": 8.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "19015",
+  "name": "SONTHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 49.1,
+  "lon": 9.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "20024",
+  "name": "RENNEROD",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50.6,
+  "lon": 8.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "20025",
+  "name": "HACHENBURG",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50.7,
+  "lon": 7.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "20026",
+  "name": "ADENAU",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50.4,
+  "lon": 6.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "20027",
+  "name": "VERL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.9,
+  "lon": 8.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "20028",
+  "name": "SUNDERN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.3,
+  "lon": 8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "20030",
+  "name": "WENDEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51,
+  "lon": 7.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "20031",
+  "name": "AHRENSBURG",
+  "state": "SCHLESWIG HOLSTEIN",
+  "lat": 53.7,
+  "lon": 10.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "20090",
+  "name": "MEPPEN",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.7,
+  "lon": 7.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "20103",
+  "name": "ERDMANNHAUSEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.9,
+  "lon": 9.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "20131",
+  "name": "ALLENDORF/EDER",
+  "state": "HESSEN",
+  "lat": 51,
+  "lon": 8.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "21148",
+  "name": "AKEN ",
+  "state": "SACHSEN ANHALT",
+  "lat": 51.9,
+  "lon": 12,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "21149",
+  "name": "EMSDETTEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 52.2,
+  "lon": 7.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "21150",
+  "name": "FEUCHTWANGEN",
+  "state": "BAYERN",
+  "lat": 49.2,
+  "lon": 10.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "21151",
+  "name": "DIETENHOFEN",
+  "state": "BAYERN",
+  "lat": 49.4,
+  "lon": 10.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "21152",
+  "name": "NEUNBURG VORM WALD",
+  "state": "BAYERN",
+  "lat": 49.3,
+  "lon": 12.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "21153",
+  "name": "BEILNGRIES",
+  "state": "BAYERN",
+  "lat": 49,
+  "lon": 11.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "21155",
+  "name": "MARKGR\u00d6NINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.9,
+  "lon": 9.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "21156",
+  "name": "SCHWAIKHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.9,
+  "lon": 9.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "21157",
+  "name": "M\u00d6SSINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.4,
+  "lon": 9.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "21160",
+  "name": "FINNENTROP",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.2,
+  "lon": 8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "21161",
+  "name": "GERETSRIED",
+  "state": "BAYERN",
+  "lat": 47.9,
+  "lon": 11.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "21162",
+  "name": "LANGQUAID",
+  "state": "BAYERN",
+  "lat": 48.8,
+  "lon": 12.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "21165",
+  "name": "SCHWINDEGG",
+  "state": "BAYERN",
+  "lat": 48.3,
+  "lon": 12.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "21166",
+  "name": "UNTERNEUKIRCHEN",
+  "state": "BAYERN",
+  "lat": 48.2,
+  "lon": 12.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "21167",
+  "name": "WOLNZACH",
+  "state": "BAYERN",
+  "lat": 48.6,
+  "lon": 11.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "21168",
+  "name": "RAIN",
+  "state": "BAYERN",
+  "lat": 48.7,
+  "lon": 10.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "21169",
+  "name": "AALEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.9,
+  "lon": 10.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "21174",
+  "name": "AICHACH",
+  "state": "BAYERN",
+  "lat": 48.5,
+  "lon": 11.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "22183",
+  "name": "BLUMBERG",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 47.8,
+  "lon": 8.5,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "33305",
+  "name": "AACHEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.8,
+  "lon": 6.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "33306",
+  "name": "WALDBROL",
+  "state": "NIEDERSACHSEN",
+  "lat": 50.9,
+  "lon": 7.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "33347",
+  "name": "ARNSTORF",
+  "state": "BAYERN",
+  "lat": 48.6,
+  "lon": 12.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "33367",
+  "name": "TREUCHTLINGEN",
+  "state": "BAYERN",
+  "lat": 49,
+  "lon": 10.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "33369",
+  "name": "ESTERWEGEN",
+  "state": "NIEDERSACHSEN",
+  "lat": 53,
+  "lon": 7.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "33370",
+  "name": "SATERLAND",
+  "state": "NIEDERSACHSEN",
+  "lat": 53.1,
+  "lon": 7.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "9975",
+  "name": "ESLOHE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.3,
+  "lon": 8.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "9976",
+  "name": "ESPELKAMP",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 52.4,
+  "lon": 8.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "9977",
+  "name": "DELLWIG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.5,
+  "lon": 6.9,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "9978",
+  "name": "KRAY",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.5,
+  "lon": 7.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "9979",
+  "name": "STEELE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.5,
+  "lon": 7.1,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "9980",
+  "name": "ETTLINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.9,
+  "lon": 8.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "9981",
+  "name": "EUSKIRCHEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.7,
+  "lon": 6.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "9982",
+  "name": "FRANKENBERG /EDER",
+  "state": "HESSEN",
+  "lat": 51.1,
+  "lon": 8.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "9983",
+  "name": "FRANKENTHAL",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 49.5,
+  "lon": 8.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "9984",
+  "name": "FRECHEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 50.9,
+  "lon": 6.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "9985",
+  "name": "FREUDENSTADT",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.5,
+  "lon": 8.4,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "9986",
+  "name": "FREYSTADT",
+  "state": "BAYERN",
+  "lat": 49.2,
+  "lon": 11.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "9988",
+  "name": "FRIEDBERG (HESSEN)",
+  "state": "HESSEN",
+  "lat": 50.3,
+  "lon": 8.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "9991",
+  "name": "FURTHEN (SIEG)",
+  "state": "RHEINLAND-PFALZ",
+  "lat": 50.8,
+  "lon": 7.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "9992",
+  "name": "FURTH ODW. (HESSEN)",
+  "state": "HESSEN",
+  "lat": 49.7,
+  "lon": 8.8,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "9993",
+  "name": "FURTWANGEN",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.1,
+  "lon": 8.2,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "9994",
+  "name": "GAGGENAU",
+  "state": "BADEN WURTTEMBERG",
+  "lat": 48.8,
+  "lon": 8.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "9995",
+  "name": "GARBSEN",
+  "state": "NIEDERSACHSEN",
+  "lat": 52.4,
+  "lon": 9.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "9996",
+  "name": "GARCHING",
+  "state": "BAYERN",
+  "lat": 48.2,
+  "lon": 11.7,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "9998",
+  "name": "GEISENFELD",
+  "state": "BAYERN",
+  "lat": 48.7,
+  "lon": 11.6,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ },
+ {
+  "id": "9999",
+  "name": "GELDERN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "lat": 51.5,
+  "lon": 6.3,
+  "source": "igmg gazetteer sun point, 0.1 deg"
+ }
+]

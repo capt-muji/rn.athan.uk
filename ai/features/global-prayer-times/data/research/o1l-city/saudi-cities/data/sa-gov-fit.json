@@ -1,0 +1,7153 @@
+{
+ "job": "O1l-40 Saudi governorate sweep",
+ "recipe": {
+  "fajr": "18.5 deg",
+  "isha": "maghrib + 90 min; + 120 on the API's own Ramadan days (hijri month 9)",
+  "offsets": {
+   "fajr": 1,
+   "sunrise": 0,
+   "dhuhr": 1,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": "inherits maghrib"
+  },
+  "rounding": "floor(raw + 1) single formulation; sunrise floor(raw)",
+  "madhab": "Shafi",
+  "highLat": "MiddleOfTheNight",
+  "clock": "UTC+3 (zone=3)",
+  "engine": "adhan-js 4.4.6 CalculationParameters Other(18.5,18) Rounding.None"
+ },
+ "cities": {
+  "yanbu": {
+   "gov": "Al Madinah",
+   "lat": 24.0895,
+   "lon": 38.0618,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 84.2,
+      "w1Pct": 100,
+      "mae": 0.158,
+      "max": 1
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 86.2,
+      "w1Pct": 100,
+      "mae": 0.138,
+      "max": 1
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 57.1,
+      "w1Pct": 100,
+      "mae": 0.429,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 94.6,
+      "w1Pct": 100,
+      "mae": 0.054,
+      "max": 1,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 97.7,
+      "w1Pct": 100,
+      "mae": 0.023,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 68.8,
+      "w1Pct": 100,
+      "mae": 0.312,
+      "max": 1,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 96.3,
+      "w1Pct": 100,
+      "mae": 0.037,
+      "max": 1,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 96.3,
+      "w1Pct": 100,
+      "mae": 0.037,
+      "max": 1,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 85.2,
+     "w1Pct": 100,
+     "mae": 0.148,
+     "max": 1
+    },
+    "outliers": []
+   },
+   "freeFit": {
+    "angle": 18.46,
+    "mae": 0.425
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 102,
+    "sunrise": 93,
+    "dhuhr": 30,
+    "asr": 43,
+    "maghrib": 100,
+    "isha": 100
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 348,
+     "julMax": 272,
+     "span": -76
+    },
+    "isha": {
+     "janMin": 1162,
+     "julMax": 1250,
+     "span": 88
+    }
+   },
+   "outliers": []
+  },
+  "jubail": {
+   "gov": "Ash Sharqiyah",
+   "lat": 27.0046,
+   "lon": 49.646,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 83.7,
+      "w1Pct": 100,
+      "mae": 0.163,
+      "max": 1
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 84.2,
+      "w1Pct": 99.9,
+      "mae": 0.159,
+      "max": 2
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 47.4,
+      "w1Pct": 100,
+      "mae": 0.526,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 94.8,
+      "w1Pct": 100,
+      "mae": 0.052,
+      "max": 1,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 97.3,
+      "w1Pct": 100,
+      "mae": 0.027,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 72.1,
+      "w1Pct": 100,
+      "mae": 0.279,
+      "max": 1,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 96.1,
+      "w1Pct": 99.9,
+      "mae": 0.041,
+      "max": 2,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 96.1,
+      "w1Pct": 99.9,
+      "mae": 0.041,
+      "max": 2,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 83.9,
+     "w1Pct": 100,
+     "mae": 0.161,
+     "max": 2
+    },
+    "outliers": [
+     {
+      "date": "2027-09-03",
+      "hm": 4,
+      "col": "maghrib",
+      "err": -2
+     },
+     {
+      "date": "2027-09-03",
+      "hm": 4,
+      "col": "isha",
+      "err": -2
+     }
+    ]
+   },
+   "freeFit": {
+    "angle": 18.46,
+    "mae": 0.495
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 115,
+    "sunrise": 106,
+    "dhuhr": 31,
+    "asr": 51,
+    "maghrib": 112,
+    "isha": 112
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 306,
+     "julMax": 217,
+     "span": -89
+    },
+    "isha": {
+     "janMin": 1109,
+     "julMax": 1210,
+     "span": 101
+    }
+   },
+   "outliers": [
+    {
+     "date": "2027-09-03",
+     "hm": 4,
+     "col": "maghrib",
+     "err": -2
+    },
+    {
+     "date": "2027-09-03",
+     "hm": 4,
+     "col": "isha",
+     "err": -2
+    }
+   ]
+  },
+  "khamis-mushait": {
+   "gov": "Asir",
+   "lat": 18.3,
+   "lon": 42.7333,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 86.4,
+      "w1Pct": 100,
+      "mae": 0.136,
+      "max": 1
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 87.2,
+      "w1Pct": 100,
+      "mae": 0.128,
+      "max": 1
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 69.8,
+      "w1Pct": 100,
+      "mae": 0.302,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 94.9,
+      "w1Pct": 100,
+      "mae": 0.051,
+      "max": 1,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 98,
+      "w1Pct": 100,
+      "mae": 0.02,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 64.9,
+      "w1Pct": 100,
+      "mae": 0.351,
+      "max": 1,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 96.6,
+      "w1Pct": 100,
+      "mae": 0.034,
+      "max": 1,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 96.6,
+      "w1Pct": 100,
+      "mae": 0.034,
+      "max": 1,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 86.8,
+     "w1Pct": 100,
+     "mae": 0.132,
+     "max": 1
+    },
+    "outliers": []
+   },
+   "freeFit": {
+    "angle": 18.48,
+    "mae": 0.291
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 78,
+    "sunrise": 72,
+    "dhuhr": 31,
+    "asr": 36,
+    "maghrib": 79,
+    "isha": 79
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 321,
+     "julMax": 267,
+     "span": -54
+    },
+    "isha": {
+     "janMin": 1155,
+     "julMax": 1220,
+     "span": 65
+    }
+   },
+   "outliers": []
+  },
+  "najran": {
+   "gov": "Najran",
+   "lat": 17.52,
+   "lon": 44.2,
+   "anchor": "publisher-anchor",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 86.9,
+      "w1Pct": 100,
+      "mae": 0.131,
+      "max": 1
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 86.8,
+      "w1Pct": 100,
+      "mae": 0.132,
+      "max": 1
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 67,
+      "w1Pct": 100,
+      "mae": 0.33,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 95.6,
+      "w1Pct": 100,
+      "mae": 0.044,
+      "max": 1,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 98.2,
+      "w1Pct": 100,
+      "mae": 0.018,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 67.6,
+      "w1Pct": 100,
+      "mae": 0.324,
+      "max": 1,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 96.3,
+      "w1Pct": 100,
+      "mae": 0.037,
+      "max": 1,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 96.3,
+      "w1Pct": 100,
+      "mae": 0.037,
+      "max": 1,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 86.8,
+     "w1Pct": 100,
+     "mae": 0.132,
+     "max": 1
+    },
+    "outliers": []
+   },
+   "freeFit": {
+    "angle": 18.48,
+    "mae": 0.312
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 75,
+    "sunrise": 69,
+    "dhuhr": 31,
+    "asr": 35,
+    "maghrib": 76,
+    "isha": 76
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 314,
+     "julMax": 262,
+     "span": -52
+    },
+    "isha": {
+     "janMin": 1150,
+     "julMax": 1213,
+     "span": 63
+    }
+   },
+   "outliers": [],
+   "coordinateSensitivity": {
+    "altLat": 17.4917,
+    "altLon": 44.1322,
+    "altTotal": {
+     "n": 4254,
+     "exactPct": 86.9,
+     "w1Pct": 100,
+     "mae": 0.131,
+     "max": 1
+    },
+    "maxDeltaByColumn": {
+     "fajr": 1,
+     "sunrise": 1,
+     "dhuhr": 1,
+     "asr": 1,
+     "maghrib": 1,
+     "isha": 1
+    },
+    "maxDelta": 1
+   }
+  },
+  "jizan": {
+   "gov": "Jazan",
+   "lat": 16.89,
+   "lon": 42.54,
+   "anchor": "publisher-anchor",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 87.3,
+      "w1Pct": 100,
+      "mae": 0.127,
+      "max": 1
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 87.1,
+      "w1Pct": 100,
+      "mae": 0.129,
+      "max": 1
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 71.1,
+      "w1Pct": 100,
+      "mae": 0.289,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 95.6,
+      "w1Pct": 100,
+      "mae": 0.044,
+      "max": 1,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 97.7,
+      "w1Pct": 100,
+      "mae": 0.023,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 63.2,
+      "w1Pct": 100,
+      "mae": 0.368,
+      "max": 1,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 97.7,
+      "w1Pct": 100,
+      "mae": 0.023,
+      "max": 1,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 97.7,
+      "w1Pct": 100,
+      "mae": 0.023,
+      "max": 1,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 87.2,
+     "w1Pct": 100,
+     "mae": 0.128,
+     "max": 1
+    },
+    "outliers": []
+   },
+   "freeFit": {
+    "angle": 18.48,
+    "mae": 0.278
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 72,
+    "sunrise": 67,
+    "dhuhr": 31,
+    "asr": 35,
+    "maghrib": 73,
+    "isha": 73
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 320,
+     "julMax": 270,
+     "span": -50
+    },
+    "isha": {
+     "janMin": 1158,
+     "julMax": 1218,
+     "span": 60
+    }
+   },
+   "outliers": [],
+   "coordinateSensitivity": {
+    "altLat": 16.8892,
+    "altLon": 42.5511,
+    "altTotal": {
+     "n": 4254,
+     "exactPct": 87.1,
+     "w1Pct": 100,
+     "mae": 0.129,
+     "max": 1
+    },
+    "maxDeltaByColumn": {
+     "fajr": 1,
+     "sunrise": 1,
+     "dhuhr": 1,
+     "asr": 1,
+     "maghrib": 1,
+     "isha": 1
+    },
+    "maxDelta": 1
+   }
+  },
+  "arar": {
+   "gov": "Al Hudud ash Shamaliyah",
+   "lat": 30.99,
+   "lon": 41.02,
+   "anchor": "publisher-anchor",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 82.4,
+      "w1Pct": 99.9,
+      "mae": 0.177,
+      "max": 2
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 83.2,
+      "w1Pct": 100,
+      "mae": 0.168,
+      "max": 2
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 41.3,
+      "w1Pct": 100,
+      "mae": 0.587,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 93.9,
+      "w1Pct": 100,
+      "mae": 0.061,
+      "max": 1,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 98.3,
+      "w1Pct": 100,
+      "mae": 0.017,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 70.1,
+      "w1Pct": 99.7,
+      "mae": 0.302,
+      "max": 2,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 96.6,
+      "w1Pct": 99.9,
+      "mae": 0.035,
+      "max": 2,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 96.6,
+      "w1Pct": 99.9,
+      "mae": 0.035,
+      "max": 2,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 82.8,
+     "w1Pct": 99.9,
+     "mae": 0.173,
+     "max": 2
+    },
+    "outliers": [
+     {
+      "date": "2026-09-15",
+      "hm": 4,
+      "col": "asr",
+      "err": -2
+     },
+     {
+      "date": "2026-09-15",
+      "hm": 4,
+      "col": "maghrib",
+      "err": -2
+     },
+     {
+      "date": "2026-09-15",
+      "hm": 4,
+      "col": "isha",
+      "err": -2
+     },
+     {
+      "date": "2027-10-03",
+      "hm": 5,
+      "col": "asr",
+      "err": -2
+     }
+    ]
+   },
+   "freeFit": {
+    "angle": 18.46,
+    "mae": 0.566
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 137,
+    "sunrise": 124,
+    "dhuhr": 31,
+    "asr": 67,
+    "maghrib": 130,
+    "isha": 130
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 343,
+     "julMax": 239,
+     "span": -104
+    },
+    "isha": {
+     "janMin": 1135,
+     "julMax": 1254,
+     "span": 119
+    }
+   },
+   "outliers": [
+    {
+     "date": "2026-09-15",
+     "hm": 4,
+     "col": "asr",
+     "err": -2
+    },
+    {
+     "date": "2026-09-15",
+     "hm": 4,
+     "col": "maghrib",
+     "err": -2
+    },
+    {
+     "date": "2026-09-15",
+     "hm": 4,
+     "col": "isha",
+     "err": -2
+    },
+    {
+     "date": "2027-10-03",
+     "hm": 5,
+     "col": "asr",
+     "err": -2
+    }
+   ],
+   "coordinateSensitivity": {
+    "altLat": 30.9753,
+    "altLon": 41.0381,
+    "altTotal": {
+     "n": 4254,
+     "exactPct": 82.4,
+     "w1Pct": 99.9,
+     "mae": 0.177,
+     "max": 2
+    },
+    "maxDeltaByColumn": {
+     "fajr": 1,
+     "sunrise": 1,
+     "dhuhr": 1,
+     "asr": 1,
+     "maghrib": 1,
+     "isha": 1
+    },
+    "maxDelta": 1
+   }
+  },
+  "sakaka": {
+   "gov": "Al Jawf",
+   "lat": 29.97,
+   "lon": 40.2,
+   "anchor": "publisher-anchor",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 83.7,
+      "w1Pct": 99.9,
+      "mae": 0.164,
+      "max": 2
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 83.5,
+      "w1Pct": 99.8,
+      "mae": 0.168,
+      "max": 2
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 47,
+      "w1Pct": 100,
+      "mae": 0.53,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 93.5,
+      "w1Pct": 99.9,
+      "mae": 0.066,
+      "max": 2,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 98,
+      "w1Pct": 100,
+      "mae": 0.02,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 72.1,
+      "w1Pct": 99.9,
+      "mae": 0.281,
+      "max": 2,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 95.5,
+      "w1Pct": 99.6,
+      "mae": 0.049,
+      "max": 2,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 95.5,
+      "w1Pct": 99.6,
+      "mae": 0.049,
+      "max": 2,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 83.6,
+     "w1Pct": 99.8,
+     "mae": 0.166,
+     "max": 2
+    },
+    "outliers": [
+     {
+      "date": "2026-09-15",
+      "hm": 4,
+      "col": "asr",
+      "err": -2
+     },
+     {
+      "date": "2026-09-15",
+      "hm": 4,
+      "col": "maghrib",
+      "err": -2
+     },
+     {
+      "date": "2026-09-15",
+      "hm": 4,
+      "col": "isha",
+      "err": -2
+     },
+     {
+      "date": "2027-09-03",
+      "hm": 4,
+      "col": "maghrib",
+      "err": -2
+     },
+     {
+      "date": "2027-09-03",
+      "hm": 4,
+      "col": "isha",
+      "err": -2
+     },
+     {
+      "date": "2027-10-03",
+      "hm": 5,
+      "col": "maghrib",
+      "err": -2
+     },
+     {
+      "date": "2027-10-03",
+      "hm": 5,
+      "col": "isha",
+      "err": -2
+     },
+     {
+      "date": "2028-02-27",
+      "hm": 10,
+      "col": "sunrise",
+      "err": -2
+     }
+    ]
+   },
+   "freeFit": {
+    "angle": 18.48,
+    "mae": 0.53
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 131,
+    "sunrise": 119,
+    "dhuhr": 31,
+    "asr": 63,
+    "maghrib": 126,
+    "isha": 126
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 346,
+     "julMax": 246,
+     "span": -100
+    },
+    "isha": {
+     "janMin": 1141,
+     "julMax": 1255,
+     "span": 114
+    }
+   },
+   "outliers": [
+    {
+     "date": "2026-09-15",
+     "hm": 4,
+     "col": "asr",
+     "err": -2
+    },
+    {
+     "date": "2026-09-15",
+     "hm": 4,
+     "col": "maghrib",
+     "err": -2
+    },
+    {
+     "date": "2026-09-15",
+     "hm": 4,
+     "col": "isha",
+     "err": -2
+    },
+    {
+     "date": "2027-09-03",
+     "hm": 4,
+     "col": "maghrib",
+     "err": -2
+    },
+    {
+     "date": "2027-09-03",
+     "hm": 4,
+     "col": "isha",
+     "err": -2
+    },
+    {
+     "date": "2027-10-03",
+     "hm": 5,
+     "col": "maghrib",
+     "err": -2
+    },
+    {
+     "date": "2027-10-03",
+     "hm": 5,
+     "col": "isha",
+     "err": -2
+    },
+    {
+     "date": "2028-02-27",
+     "hm": 10,
+     "col": "sunrise",
+     "err": -2
+    }
+   ],
+   "coordinateSensitivity": {
+    "altLat": 29.9697,
+    "altLon": 40.2064,
+    "altTotal": {
+     "n": 4254,
+     "exactPct": 83.7,
+     "w1Pct": 99.9,
+     "mae": 0.164,
+     "max": 2
+    },
+    "maxDeltaByColumn": {
+     "fajr": 1,
+     "sunrise": 1,
+     "dhuhr": 1,
+     "asr": 1,
+     "maghrib": 1,
+     "isha": 1
+    },
+    "maxDelta": 1
+   }
+  },
+  "al-baha": {
+   "gov": "Al Bahah",
+   "lat": 20.01,
+   "lon": 41.47,
+   "anchor": "publisher-anchor",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 86.2,
+      "w1Pct": 100,
+      "mae": 0.138,
+      "max": 1
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 86.5,
+      "w1Pct": 100,
+      "mae": 0.135,
+      "max": 1
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 65.3,
+      "w1Pct": 100,
+      "mae": 0.347,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 94.6,
+      "w1Pct": 100,
+      "mae": 0.054,
+      "max": 1,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 98,
+      "w1Pct": 100,
+      "mae": 0.02,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 66.1,
+      "w1Pct": 100,
+      "mae": 0.339,
+      "max": 1,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 96.9,
+      "w1Pct": 100,
+      "mae": 0.031,
+      "max": 1,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 96.9,
+      "w1Pct": 100,
+      "mae": 0.031,
+      "max": 1,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 86.3,
+     "w1Pct": 100,
+     "mae": 0.137,
+     "max": 1
+    },
+    "outliers": []
+   },
+   "freeFit": {
+    "angle": 18.46,
+    "mae": 0.334
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 85,
+    "sunrise": 79,
+    "dhuhr": 31,
+    "asr": 38,
+    "maghrib": 84,
+    "isha": 84
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 329,
+     "julMax": 268,
+     "span": -61
+    },
+    "isha": {
+     "janMin": 1156,
+     "julMax": 1228,
+     "span": 72
+    }
+   },
+   "outliers": [],
+   "coordinateSensitivity": {
+    "altLat": 20.0129,
+    "altLon": 41.4677,
+    "altTotal": {
+     "n": 4254,
+     "exactPct": 86.2,
+     "w1Pct": 100,
+     "mae": 0.138,
+     "max": 1
+    },
+    "maxDeltaByColumn": {
+     "fajr": 1,
+     "sunrise": 1,
+     "dhuhr": 1,
+     "asr": 1,
+     "maghrib": 1,
+     "isha": 1
+    },
+    "maxDelta": 1
+   }
+  },
+  "al-khobar": {
+   "gov": "Ash Sharqiyah",
+   "lat": 26.2794,
+   "lon": 50.2083,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 84.1,
+      "w1Pct": 100,
+      "mae": 0.159,
+      "max": 1
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 84.5,
+      "w1Pct": 99.9,
+      "mae": 0.156,
+      "max": 2
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 50.6,
+      "w1Pct": 100,
+      "mae": 0.494,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 94.2,
+      "w1Pct": 100,
+      "mae": 0.058,
+      "max": 1,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 97.3,
+      "w1Pct": 100,
+      "mae": 0.027,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 71.8,
+      "w1Pct": 100,
+      "mae": 0.282,
+      "max": 1,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 95.9,
+      "w1Pct": 99.9,
+      "mae": 0.042,
+      "max": 2,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 95.9,
+      "w1Pct": 99.9,
+      "mae": 0.042,
+      "max": 2,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 84.3,
+     "w1Pct": 100,
+     "mae": 0.157,
+     "max": 2
+    },
+    "outliers": [
+     {
+      "date": "2027-10-03",
+      "hm": 5,
+      "col": "maghrib",
+      "err": -2
+     },
+     {
+      "date": "2027-10-03",
+      "hm": 5,
+      "col": "isha",
+      "err": -2
+     }
+    ]
+   },
+   "freeFit": {
+    "angle": 18.44,
+    "mae": 0.485
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 112,
+    "sunrise": 102,
+    "dhuhr": 31,
+    "asr": 49,
+    "maghrib": 109,
+    "isha": 109
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 303,
+     "julMax": 217,
+     "span": -86
+    },
+    "isha": {
+     "janMin": 1109,
+     "julMax": 1206,
+     "span": 97
+    }
+   },
+   "outliers": [
+    {
+     "date": "2027-10-03",
+     "hm": 5,
+     "col": "maghrib",
+     "err": -2
+    },
+    {
+     "date": "2027-10-03",
+     "hm": 5,
+     "col": "isha",
+     "err": -2
+    }
+   ]
+  },
+  "hofuf": {
+   "gov": "Ash Sharqiyah (Al Ahsa)",
+   "lat": 25.3647,
+   "lon": 49.5872,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 85.4,
+      "w1Pct": 99.9,
+      "mae": 0.147,
+      "max": 2
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 85.4,
+      "w1Pct": 100,
+      "mae": 0.146,
+      "max": 2
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 53.2,
+      "w1Pct": 100,
+      "mae": 0.468,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 94.9,
+      "w1Pct": 99.9,
+      "mae": 0.052,
+      "max": 2,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 97.6,
+      "w1Pct": 100,
+      "mae": 0.024,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 74.6,
+      "w1Pct": 100,
+      "mae": 0.254,
+      "max": 1,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 96.1,
+      "w1Pct": 99.9,
+      "mae": 0.041,
+      "max": 2,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 96.1,
+      "w1Pct": 99.9,
+      "mae": 0.041,
+      "max": 2,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 85.4,
+     "w1Pct": 99.9,
+     "mae": 0.147,
+     "max": 2
+    },
+    "outliers": [
+     {
+      "date": "2026-09-15",
+      "hm": 4,
+      "col": "maghrib",
+      "err": -2
+     },
+     {
+      "date": "2026-09-15",
+      "hm": 4,
+      "col": "isha",
+      "err": -2
+     },
+     {
+      "date": "2028-03-28",
+      "hm": 11,
+      "col": "sunrise",
+      "err": -2
+     }
+    ]
+   },
+   "freeFit": {
+    "angle": 18.46,
+    "mae": 0.427
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 108,
+    "sunrise": 99,
+    "dhuhr": 30,
+    "asr": 45,
+    "maghrib": 106,
+    "isha": 106
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 304,
+     "julMax": 222,
+     "span": -82
+    },
+    "isha": {
+     "janMin": 1113,
+     "julMax": 1207,
+     "span": 94
+    }
+   },
+   "outliers": [
+    {
+     "date": "2026-09-15",
+     "hm": 4,
+     "col": "maghrib",
+     "err": -2
+    },
+    {
+     "date": "2026-09-15",
+     "hm": 4,
+     "col": "isha",
+     "err": -2
+    },
+    {
+     "date": "2028-03-28",
+     "hm": 11,
+     "col": "sunrise",
+     "err": -2
+    }
+   ]
+  },
+  "hafar-al-batin": {
+   "gov": "Ash Sharqiyah",
+   "lat": 28.4328,
+   "lon": 45.9708,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 83.4,
+      "w1Pct": 100,
+      "mae": 0.166,
+      "max": 1
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 83.6,
+      "w1Pct": 100,
+      "mae": 0.164,
+      "max": 1
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 48.8,
+      "w1Pct": 100,
+      "mae": 0.512,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 94.5,
+      "w1Pct": 100,
+      "mae": 0.055,
+      "max": 1,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 97.9,
+      "w1Pct": 100,
+      "mae": 0.021,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 67.1,
+      "w1Pct": 100,
+      "mae": 0.329,
+      "max": 1,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 96.3,
+      "w1Pct": 100,
+      "mae": 0.037,
+      "max": 1,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 96.3,
+      "w1Pct": 100,
+      "mae": 0.037,
+      "max": 1,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 83.5,
+     "w1Pct": 100,
+     "mae": 0.165,
+     "max": 1
+    },
+    "outliers": []
+   },
+   "freeFit": {
+    "angle": 18.46,
+    "mae": 0.502
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 123,
+    "sunrise": 111,
+    "dhuhr": 31,
+    "asr": 57,
+    "maghrib": 118,
+    "isha": 118
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 322,
+     "julMax": 228,
+     "span": -94
+    },
+    "isha": {
+     "janMin": 1121,
+     "julMax": 1228,
+     "span": 107
+    }
+   },
+   "outliers": []
+  },
+  "al-qatif": {
+   "gov": "Ash Sharqiyah",
+   "lat": 26.5196,
+   "lon": 50.0115,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 83.6,
+      "w1Pct": 99.9,
+      "mae": 0.165,
+      "max": 2
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 84.7,
+      "w1Pct": 99.9,
+      "mae": 0.153,
+      "max": 2
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 48.9,
+      "w1Pct": 100,
+      "mae": 0.511,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 93.7,
+      "w1Pct": 99.6,
+      "mae": 0.068,
+      "max": 2,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 98.3,
+      "w1Pct": 100,
+      "mae": 0.017,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 71.2,
+      "w1Pct": 99.9,
+      "mae": 0.289,
+      "max": 2,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 96.5,
+      "w1Pct": 100,
+      "mae": 0.035,
+      "max": 1,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 96.5,
+      "w1Pct": 100,
+      "mae": 0.035,
+      "max": 1,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 84.2,
+     "w1Pct": 99.9,
+     "mae": 0.159,
+     "max": 2
+    },
+    "outliers": [
+     {
+      "date": "2027-04-09",
+      "hm": 11,
+      "col": "sunrise",
+      "err": -2
+     },
+     {
+      "date": "2027-04-10",
+      "hm": 11,
+      "col": "sunrise",
+      "err": -2
+     },
+     {
+      "date": "2027-10-03",
+      "hm": 5,
+      "col": "asr",
+      "err": -2
+     },
+     {
+      "date": "2028-03-28",
+      "hm": 11,
+      "col": "sunrise",
+      "err": -2
+     }
+    ]
+   },
+   "freeFit": {
+    "angle": 18.48,
+    "mae": 0.504
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 113,
+    "sunrise": 103,
+    "dhuhr": 31,
+    "asr": 50,
+    "maghrib": 111,
+    "isha": 111
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 304,
+     "julMax": 217,
+     "span": -87
+    },
+    "isha": {
+     "janMin": 1109,
+     "julMax": 1208,
+     "span": 99
+    }
+   },
+   "outliers": [
+    {
+     "date": "2027-04-09",
+     "hm": 11,
+     "col": "sunrise",
+     "err": -2
+    },
+    {
+     "date": "2027-04-10",
+     "hm": 11,
+     "col": "sunrise",
+     "err": -2
+    },
+    {
+     "date": "2027-10-03",
+     "hm": 5,
+     "col": "asr",
+     "err": -2
+    },
+    {
+     "date": "2028-03-28",
+     "hm": 11,
+     "col": "sunrise",
+     "err": -2
+    }
+   ]
+  },
+  "unaizah": {
+   "gov": "Al Qassim",
+   "lat": 26.084,
+   "lon": 43.9936,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 84.2,
+      "w1Pct": 100,
+      "mae": 0.158,
+      "max": 2
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 85.3,
+      "w1Pct": 100,
+      "mae": 0.147,
+      "max": 1
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 51.6,
+      "w1Pct": 100,
+      "mae": 0.484,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 94.6,
+      "w1Pct": 99.9,
+      "mae": 0.055,
+      "max": 2,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 98.3,
+      "w1Pct": 100,
+      "mae": 0.017,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 71.4,
+      "w1Pct": 100,
+      "mae": 0.286,
+      "max": 1,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 96.3,
+      "w1Pct": 100,
+      "mae": 0.037,
+      "max": 1,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 96.3,
+      "w1Pct": 100,
+      "mae": 0.037,
+      "max": 1,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 84.8,
+     "w1Pct": 100,
+     "mae": 0.153,
+     "max": 2
+    },
+    "outliers": [
+     {
+      "date": "2027-03-11",
+      "hm": 10,
+      "col": "sunrise",
+      "err": -2
+     }
+    ]
+   },
+   "freeFit": {
+    "angle": 18.46,
+    "mae": 0.463
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 111,
+    "sunrise": 101,
+    "dhuhr": 31,
+    "asr": 48,
+    "maghrib": 109,
+    "isha": 109
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 327,
+     "julMax": 243,
+     "span": -84
+    },
+    "isha": {
+     "janMin": 1134,
+     "julMax": 1231,
+     "span": 97
+    }
+   },
+   "outliers": [
+    {
+     "date": "2027-03-11",
+     "hm": 10,
+     "col": "sunrise",
+     "err": -2
+    }
+   ]
+  },
+  "al-kharj": {
+   "gov": "Ar Riyad",
+   "lat": 24.1483,
+   "lon": 47.305,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 85.5,
+      "w1Pct": 100,
+      "mae": 0.145,
+      "max": 1
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 85.3,
+      "w1Pct": 100,
+      "mae": 0.147,
+      "max": 1
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 56.6,
+      "w1Pct": 100,
+      "mae": 0.434,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 94.5,
+      "w1Pct": 100,
+      "mae": 0.055,
+      "max": 1,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 97.7,
+      "w1Pct": 100,
+      "mae": 0.023,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 72.6,
+      "w1Pct": 100,
+      "mae": 0.274,
+      "max": 1,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 95.5,
+      "w1Pct": 100,
+      "mae": 0.045,
+      "max": 1,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 95.5,
+      "w1Pct": 100,
+      "mae": 0.045,
+      "max": 1,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 85.4,
+     "w1Pct": 100,
+     "mae": 0.146,
+     "max": 1
+    },
+    "outliers": []
+   },
+   "freeFit": {
+    "angle": 18.46,
+    "mae": 0.419
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 103,
+    "sunrise": 94,
+    "dhuhr": 30,
+    "asr": 43,
+    "maghrib": 100,
+    "isha": 100
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 311,
+     "julMax": 234,
+     "span": -77
+    },
+    "isha": {
+     "janMin": 1125,
+     "julMax": 1213,
+     "span": 88
+    }
+   },
+   "outliers": []
+  },
+  "dawadmi": {
+   "gov": "Ar Riyad",
+   "lat": 24.5,
+   "lon": 44.3833,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 84.7,
+      "w1Pct": 100,
+      "mae": 0.153,
+      "max": 1
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 85.2,
+      "w1Pct": 100,
+      "mae": 0.148,
+      "max": 1
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 53.6,
+      "w1Pct": 100,
+      "mae": 0.464,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 92.8,
+      "w1Pct": 100,
+      "mae": 0.072,
+      "max": 1,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 97.7,
+      "w1Pct": 100,
+      "mae": 0.023,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 71.2,
+      "w1Pct": 100,
+      "mae": 0.288,
+      "max": 1,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 97.2,
+      "w1Pct": 100,
+      "mae": 0.028,
+      "max": 1,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 97.2,
+      "w1Pct": 100,
+      "mae": 0.028,
+      "max": 1,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 85,
+     "w1Pct": 100,
+     "mae": 0.15,
+     "max": 1
+    },
+    "outliers": []
+   },
+   "freeFit": {
+    "angle": 18.44,
+    "mae": 0.436
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 104,
+    "sunrise": 95,
+    "dhuhr": 30,
+    "asr": 44,
+    "maghrib": 102,
+    "isha": 102
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 324,
+     "julMax": 245,
+     "span": -79
+    },
+    "isha": {
+     "janMin": 1136,
+     "julMax": 1226,
+     "span": 90
+    }
+   },
+   "outliers": []
+  },
+  "wadi-ad-dawasir": {
+   "gov": "Ar Riyad",
+   "lat": 20.4667,
+   "lon": 44.8,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 86.4,
+      "w1Pct": 100,
+      "mae": 0.136,
+      "max": 1
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 87.7,
+      "w1Pct": 100,
+      "mae": 0.123,
+      "max": 1
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 65.3,
+      "w1Pct": 100,
+      "mae": 0.347,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 95.5,
+      "w1Pct": 100,
+      "mae": 0.045,
+      "max": 1,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 97.6,
+      "w1Pct": 100,
+      "mae": 0.024,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 70,
+      "w1Pct": 100,
+      "mae": 0.3,
+      "max": 1,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 97,
+      "w1Pct": 100,
+      "mae": 0.03,
+      "max": 1,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 97,
+      "w1Pct": 100,
+      "mae": 0.03,
+      "max": 1,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 87.1,
+     "w1Pct": 100,
+     "mae": 0.129,
+     "max": 1
+    },
+    "outliers": []
+   },
+   "freeFit": {
+    "angle": 18.5,
+    "mae": 0.347
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 86,
+    "sunrise": 80,
+    "dhuhr": 31,
+    "asr": 38,
+    "maghrib": 86,
+    "isha": 86
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 316,
+     "julMax": 253,
+     "span": -63
+    },
+    "isha": {
+     "janMin": 1142,
+     "julMax": 1216,
+     "span": 74
+    }
+   },
+   "outliers": []
+  },
+  "bishah": {
+   "gov": "Asir",
+   "lat": 19.9844,
+   "lon": 42.6,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 86,
+      "w1Pct": 100,
+      "mae": 0.14,
+      "max": 1
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 87.1,
+      "w1Pct": 100,
+      "mae": 0.129,
+      "max": 1
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 65.2,
+      "w1Pct": 100,
+      "mae": 0.348,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 95.1,
+      "w1Pct": 100,
+      "mae": 0.049,
+      "max": 1,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 98.2,
+      "w1Pct": 100,
+      "mae": 0.018,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 67,
+      "w1Pct": 100,
+      "mae": 0.33,
+      "max": 1,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 97,
+      "w1Pct": 100,
+      "mae": 0.03,
+      "max": 1,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 97,
+      "w1Pct": 100,
+      "mae": 0.03,
+      "max": 1,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 86.6,
+     "w1Pct": 100,
+     "mae": 0.134,
+     "max": 1
+    },
+    "outliers": []
+   },
+   "freeFit": {
+    "angle": 18.46,
+    "mae": 0.34
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 85,
+    "sunrise": 78,
+    "dhuhr": 30,
+    "asr": 37,
+    "maghrib": 85,
+    "isha": 85
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 324,
+     "julMax": 263,
+     "span": -61
+    },
+    "isha": {
+     "janMin": 1152,
+     "julMax": 1224,
+     "span": 72
+    }
+   },
+   "outliers": []
+  },
+  "al-lith": {
+   "gov": "Makkah",
+   "lat": 20.15,
+   "lon": 40.2833,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 85.8,
+      "w1Pct": 100,
+      "mae": 0.142,
+      "max": 1
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 86.5,
+      "w1Pct": 100,
+      "mae": 0.135,
+      "max": 1
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 65.9,
+      "w1Pct": 100,
+      "mae": 0.341,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 94.6,
+      "w1Pct": 100,
+      "mae": 0.054,
+      "max": 1,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 98.4,
+      "w1Pct": 100,
+      "mae": 0.016,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 63.5,
+      "w1Pct": 100,
+      "mae": 0.365,
+      "max": 1,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 97.2,
+      "w1Pct": 100,
+      "mae": 0.028,
+      "max": 1,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 97.2,
+      "w1Pct": 100,
+      "mae": 0.028,
+      "max": 1,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 86.1,
+     "w1Pct": 100,
+     "mae": 0.139,
+     "max": 1
+    },
+    "outliers": []
+   },
+   "freeFit": {
+    "angle": 18.46,
+    "mae": 0.319
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 85,
+    "sunrise": 78,
+    "dhuhr": 31,
+    "asr": 37,
+    "maghrib": 85,
+    "isha": 85
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 334,
+     "julMax": 272,
+     "span": -62
+    },
+    "isha": {
+     "janMin": 1161,
+     "julMax": 1233,
+     "span": 72
+    }
+   },
+   "outliers": []
+  },
+  "al-ula": {
+   "gov": "Al Madinah",
+   "lat": 26.6085,
+   "lon": 37.9236,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 85.2,
+      "w1Pct": 99.9,
+      "mae": 0.15,
+      "max": 2
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 85.1,
+      "w1Pct": 99.9,
+      "mae": 0.15,
+      "max": 2
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 52.6,
+      "w1Pct": 100,
+      "mae": 0.474,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 95.5,
+      "w1Pct": 100,
+      "mae": 0.045,
+      "max": 1,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 97.9,
+      "w1Pct": 100,
+      "mae": 0.021,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 71.8,
+      "w1Pct": 99.9,
+      "mae": 0.283,
+      "max": 2,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 96.5,
+      "w1Pct": 99.7,
+      "mae": 0.038,
+      "max": 2,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 96.5,
+      "w1Pct": 99.7,
+      "mae": 0.038,
+      "max": 2,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 85.1,
+     "w1Pct": 99.9,
+     "mae": 0.15,
+     "max": 2
+    },
+    "outliers": [
+     {
+      "date": "2026-09-15",
+      "hm": 4,
+      "col": "maghrib",
+      "err": -2
+     },
+     {
+      "date": "2026-09-15",
+      "hm": 4,
+      "col": "isha",
+      "err": -2
+     },
+     {
+      "date": "2026-09-16",
+      "hm": 4,
+      "col": "asr",
+      "err": -2
+     },
+     {
+      "date": "2027-10-03",
+      "hm": 5,
+      "col": "maghrib",
+      "err": -2
+     },
+     {
+      "date": "2027-10-03",
+      "hm": 5,
+      "col": "isha",
+      "err": -2
+     }
+    ]
+   },
+   "freeFit": {
+    "angle": 18.46,
+    "mae": 0.457
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 114,
+    "sunrise": 104,
+    "dhuhr": 31,
+    "asr": 49,
+    "maghrib": 110,
+    "isha": 110
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 352,
+     "julMax": 265,
+     "span": -87
+    },
+    "isha": {
+     "janMin": 1157,
+     "julMax": 1256,
+     "span": 99
+    }
+   },
+   "outliers": [
+    {
+     "date": "2026-09-15",
+     "hm": 4,
+     "col": "maghrib",
+     "err": -2
+    },
+    {
+     "date": "2026-09-15",
+     "hm": 4,
+     "col": "isha",
+     "err": -2
+    },
+    {
+     "date": "2026-09-16",
+     "hm": 4,
+     "col": "asr",
+     "err": -2
+    },
+    {
+     "date": "2027-10-03",
+     "hm": 5,
+     "col": "maghrib",
+     "err": -2
+    },
+    {
+     "date": "2027-10-03",
+     "hm": 5,
+     "col": "isha",
+     "err": -2
+    }
+   ]
+  },
+  "rafha": {
+   "gov": "Al Hudud ash Shamaliyah",
+   "lat": 29.6267,
+   "lon": 43.5014,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 84.3,
+      "w1Pct": 100,
+      "mae": 0.158,
+      "max": 2
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 84.4,
+      "w1Pct": 100,
+      "mae": 0.157,
+      "max": 2
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 46.1,
+      "w1Pct": 100,
+      "mae": 0.539,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 94.1,
+      "w1Pct": 99.9,
+      "mae": 0.061,
+      "max": 2,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 98.3,
+      "w1Pct": 100,
+      "mae": 0.017,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 75,
+      "w1Pct": 99.9,
+      "mae": 0.251,
+      "max": 2,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 96.2,
+      "w1Pct": 100,
+      "mae": 0.038,
+      "max": 1,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 96.2,
+      "w1Pct": 100,
+      "mae": 0.038,
+      "max": 1,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 84.3,
+     "w1Pct": 100,
+     "mae": 0.157,
+     "max": 2
+    },
+    "outliers": [
+     {
+      "date": "2026-09-16",
+      "hm": 4,
+      "col": "asr",
+      "err": -2
+     },
+     {
+      "date": "2028-03-28",
+      "hm": 11,
+      "col": "sunrise",
+      "err": -2
+     }
+    ]
+   },
+   "freeFit": {
+    "angle": 18.48,
+    "mae": 0.533
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 129,
+    "sunrise": 117,
+    "dhuhr": 31,
+    "asr": 61,
+    "maghrib": 124,
+    "isha": 124
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 332,
+     "julMax": 234,
+     "span": -98
+    },
+    "isha": {
+     "janMin": 1128,
+     "julMax": 1241,
+     "span": 113
+    }
+   },
+   "outliers": [
+    {
+     "date": "2026-09-16",
+     "hm": 4,
+     "col": "asr",
+     "err": -2
+    },
+    {
+     "date": "2028-03-28",
+     "hm": 11,
+     "col": "sunrise",
+     "err": -2
+    }
+   ]
+  },
+  "turaif": {
+   "gov": "Al Hudud ash Shamaliyah",
+   "lat": 31.6725,
+   "lon": 38.6636,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 81.6,
+      "w1Pct": 100,
+      "mae": 0.184,
+      "max": 2
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 82.1,
+      "w1Pct": 99.9,
+      "mae": 0.181,
+      "max": 2
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 40.9,
+      "w1Pct": 100,
+      "mae": 0.591,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 93.7,
+      "w1Pct": 99.9,
+      "mae": 0.065,
+      "max": 2,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 98,
+      "w1Pct": 100,
+      "mae": 0.02,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 68.4,
+      "w1Pct": 99.9,
+      "mae": 0.317,
+      "max": 2,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 95.1,
+      "w1Pct": 99.9,
+      "mae": 0.051,
+      "max": 2,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 95.1,
+      "w1Pct": 99.9,
+      "mae": 0.051,
+      "max": 2,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 81.9,
+     "w1Pct": 99.9,
+     "mae": 0.182,
+     "max": 2
+    },
+    "outliers": [
+     {
+      "date": "2026-09-16",
+      "hm": 4,
+      "col": "asr",
+      "err": -2
+     },
+     {
+      "date": "2027-09-04",
+      "hm": 4,
+      "col": "maghrib",
+      "err": -2
+     },
+     {
+      "date": "2027-09-04",
+      "hm": 4,
+      "col": "isha",
+      "err": -2
+     },
+     {
+      "date": "2028-03-27",
+      "hm": 11,
+      "col": "sunrise",
+      "err": -2
+     }
+    ]
+   },
+   "freeFit": {
+    "angle": 18.48,
+    "mae": 0.58
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 141,
+    "sunrise": 127,
+    "dhuhr": 31,
+    "asr": 69,
+    "maghrib": 133,
+    "isha": 133
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 353,
+     "julMax": 247,
+     "span": -106
+    },
+    "isha": {
+     "janMin": 1143,
+     "julMax": 1265,
+     "span": 122
+    }
+   },
+   "outliers": [
+    {
+     "date": "2026-09-16",
+     "hm": 4,
+     "col": "asr",
+     "err": -2
+    },
+    {
+     "date": "2027-09-04",
+     "hm": 4,
+     "col": "maghrib",
+     "err": -2
+    },
+    {
+     "date": "2027-09-04",
+     "hm": 4,
+     "col": "isha",
+     "err": -2
+    },
+    {
+     "date": "2028-03-27",
+     "hm": 11,
+     "col": "sunrise",
+     "err": -2
+    }
+   ]
+  },
+  "sharurah": {
+   "gov": "Najran",
+   "lat": 17.4833,
+   "lon": 47.1167,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 87.5,
+      "w1Pct": 100,
+      "mae": 0.125,
+      "max": 1
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 87.9,
+      "w1Pct": 100,
+      "mae": 0.121,
+      "max": 1
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 70.2,
+      "w1Pct": 100,
+      "mae": 0.298,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 96.1,
+      "w1Pct": 100,
+      "mae": 0.039,
+      "max": 1,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 98.4,
+      "w1Pct": 100,
+      "mae": 0.016,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 65.6,
+      "w1Pct": 100,
+      "mae": 0.344,
+      "max": 1,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 97.9,
+      "w1Pct": 100,
+      "mae": 0.021,
+      "max": 1,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 97.9,
+      "w1Pct": 100,
+      "mae": 0.021,
+      "max": 1,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 87.7,
+     "w1Pct": 100,
+     "mae": 0.123,
+     "max": 1
+    },
+    "outliers": []
+   },
+   "freeFit": {
+    "angle": 18.48,
+    "mae": 0.282
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 75,
+    "sunrise": 69,
+    "dhuhr": 30,
+    "asr": 35,
+    "maghrib": 76,
+    "isha": 76
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 303,
+     "julMax": 251,
+     "span": -52
+    },
+    "isha": {
+     "janMin": 1139,
+     "julMax": 1201,
+     "span": 62
+    }
+   },
+   "outliers": []
+  },
+  "al-qurayyat": {
+   "gov": "Al Jawf",
+   "lat": 31.3319,
+   "lon": 37.3428,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 82.1,
+      "w1Pct": 99.9,
+      "mae": 0.18,
+      "max": 2
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 83.4,
+      "w1Pct": 99.9,
+      "mae": 0.167,
+      "max": 2
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 41.3,
+      "w1Pct": 100,
+      "mae": 0.587,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 93.2,
+      "w1Pct": 99.9,
+      "mae": 0.069,
+      "max": 2,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 96.8,
+      "w1Pct": 100,
+      "mae": 0.032,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 72.1,
+      "w1Pct": 99.9,
+      "mae": 0.281,
+      "max": 2,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 96.6,
+      "w1Pct": 99.9,
+      "mae": 0.035,
+      "max": 2,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 96.6,
+      "w1Pct": 99.9,
+      "mae": 0.035,
+      "max": 2,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 82.8,
+     "w1Pct": 99.9,
+     "mae": 0.173,
+     "max": 2
+    },
+    "outliers": [
+     {
+      "date": "2026-09-16",
+      "hm": 4,
+      "col": "asr",
+      "err": -2
+     },
+     {
+      "date": "2027-04-10",
+      "hm": 11,
+      "col": "sunrise",
+      "err": -2
+     },
+     {
+      "date": "2027-10-03",
+      "hm": 5,
+      "col": "maghrib",
+      "err": -2
+     },
+     {
+      "date": "2027-10-03",
+      "hm": 5,
+      "col": "isha",
+      "err": -2
+     }
+    ]
+   },
+   "freeFit": {
+    "angle": 18.48,
+    "mae": 0.583
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 139,
+    "sunrise": 125,
+    "dhuhr": 30,
+    "asr": 68,
+    "maghrib": 132,
+    "isha": 132
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 358,
+     "julMax": 253,
+     "span": -105
+    },
+    "isha": {
+     "janMin": 1149,
+     "julMax": 1270,
+     "span": 121
+    }
+   },
+   "outliers": [
+    {
+     "date": "2026-09-16",
+     "hm": 4,
+     "col": "asr",
+     "err": -2
+    },
+    {
+     "date": "2027-04-10",
+     "hm": 11,
+     "col": "sunrise",
+     "err": -2
+    },
+    {
+     "date": "2027-10-03",
+     "hm": 5,
+     "col": "maghrib",
+     "err": -2
+    },
+    {
+     "date": "2027-10-03",
+     "hm": 5,
+     "col": "isha",
+     "err": -2
+    }
+   ]
+  },
+  "al-wajh": {
+   "gov": "Tabuk",
+   "lat": 26.2456,
+   "lon": 36.4667,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 84.8,
+      "w1Pct": 100,
+      "mae": 0.152,
+      "max": 1
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 84.1,
+      "w1Pct": 99.9,
+      "mae": 0.16,
+      "max": 2
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 52.5,
+      "w1Pct": 100,
+      "mae": 0.475,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 93.9,
+      "w1Pct": 100,
+      "mae": 0.061,
+      "max": 1,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 98.3,
+      "w1Pct": 100,
+      "mae": 0.017,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 69.7,
+      "w1Pct": 100,
+      "mae": 0.303,
+      "max": 1,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 96.2,
+      "w1Pct": 99.9,
+      "mae": 0.039,
+      "max": 2,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 96.2,
+      "w1Pct": 99.9,
+      "mae": 0.039,
+      "max": 2,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 84.5,
+     "w1Pct": 100,
+     "mae": 0.156,
+     "max": 2
+    },
+    "outliers": [
+     {
+      "date": "2027-10-03",
+      "hm": 5,
+      "col": "maghrib",
+      "err": -2
+     },
+     {
+      "date": "2027-10-03",
+      "hm": 5,
+      "col": "isha",
+      "err": -2
+     }
+    ]
+   },
+   "freeFit": {
+    "angle": 18.46,
+    "mae": 0.465
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 112,
+    "sunrise": 102,
+    "dhuhr": 31,
+    "asr": 49,
+    "maghrib": 109,
+    "isha": 109
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 358,
+     "julMax": 272,
+     "span": -86
+    },
+    "isha": {
+     "janMin": 1164,
+     "julMax": 1261,
+     "span": 97
+    }
+   },
+   "outliers": [
+    {
+     "date": "2027-10-03",
+     "hm": 5,
+     "col": "maghrib",
+     "err": -2
+    },
+    {
+     "date": "2027-10-03",
+     "hm": 5,
+     "col": "isha",
+     "err": -2
+    }
+   ]
+  },
+  "umluj": {
+   "gov": "Tabuk",
+   "lat": 25.05,
+   "lon": 37.2667,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 83.7,
+      "w1Pct": 100,
+      "mae": 0.163,
+      "max": 1
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 85.7,
+      "w1Pct": 100,
+      "mae": 0.144,
+      "max": 2
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 55.4,
+      "w1Pct": 100,
+      "mae": 0.446,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 94.6,
+      "w1Pct": 100,
+      "mae": 0.054,
+      "max": 1,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 98.2,
+      "w1Pct": 100,
+      "mae": 0.018,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 68.4,
+      "w1Pct": 99.9,
+      "mae": 0.317,
+      "max": 2,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 95.8,
+      "w1Pct": 100,
+      "mae": 0.042,
+      "max": 1,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 95.8,
+      "w1Pct": 100,
+      "mae": 0.042,
+      "max": 1,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 84.7,
+     "w1Pct": 100,
+     "mae": 0.153,
+     "max": 2
+    },
+    "outliers": [
+     {
+      "date": "2027-10-03",
+      "hm": 5,
+      "col": "asr",
+      "err": -2
+     }
+    ]
+   },
+   "freeFit": {
+    "angle": 18.48,
+    "mae": 0.437
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 107,
+    "sunrise": 97,
+    "dhuhr": 31,
+    "asr": 44,
+    "maghrib": 104,
+    "isha": 104
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 353,
+     "julMax": 272,
+     "span": -81
+    },
+    "isha": {
+     "janMin": 1163,
+     "julMax": 1255,
+     "span": 92
+    }
+   },
+   "outliers": [
+    {
+     "date": "2027-10-03",
+     "hm": 5,
+     "col": "asr",
+     "err": -2
+    }
+   ]
+  },
+  "duba": {
+   "gov": "Tabuk",
+   "lat": 27.35,
+   "lon": 35.7,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 84.2,
+      "w1Pct": 99.9,
+      "mae": 0.159,
+      "max": 2
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 84,
+      "w1Pct": 99.8,
+      "mae": 0.161,
+      "max": 2
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 49.8,
+      "w1Pct": 100,
+      "mae": 0.502,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 95.1,
+      "w1Pct": 99.7,
+      "mae": 0.052,
+      "max": 2,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 97.9,
+      "w1Pct": 100,
+      "mae": 0.021,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 70.1,
+      "w1Pct": 100,
+      "mae": 0.299,
+      "max": 1,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 95.9,
+      "w1Pct": 99.7,
+      "mae": 0.044,
+      "max": 2,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 95.9,
+      "w1Pct": 99.7,
+      "mae": 0.044,
+      "max": 2,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 84.1,
+     "w1Pct": 99.9,
+     "mae": 0.16,
+     "max": 2
+    },
+    "outliers": [
+     {
+      "date": "2026-09-16",
+      "hm": 4,
+      "col": "maghrib",
+      "err": -2
+     },
+     {
+      "date": "2026-09-16",
+      "hm": 4,
+      "col": "isha",
+      "err": -2
+     },
+     {
+      "date": "2027-09-03",
+      "hm": 4,
+      "col": "maghrib",
+      "err": -2
+     },
+     {
+      "date": "2027-09-03",
+      "hm": 4,
+      "col": "isha",
+      "err": -2
+     },
+     {
+      "date": "2028-03-27",
+      "hm": 11,
+      "col": "sunrise",
+      "err": -2
+     },
+     {
+      "date": "2028-03-28",
+      "hm": 11,
+      "col": "sunrise",
+      "err": -2
+     }
+    ]
+   },
+   "freeFit": {
+    "angle": 18.48,
+    "mae": 0.482
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 118,
+    "sunrise": 107,
+    "dhuhr": 31,
+    "asr": 53,
+    "maghrib": 114,
+    "isha": 114
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 362,
+     "julMax": 272,
+     "span": -90
+    },
+    "isha": {
+     "janMin": 1165,
+     "julMax": 1267,
+     "span": 102
+    }
+   },
+   "outliers": [
+    {
+     "date": "2026-09-16",
+     "hm": 4,
+     "col": "maghrib",
+     "err": -2
+    },
+    {
+     "date": "2026-09-16",
+     "hm": 4,
+     "col": "isha",
+     "err": -2
+    },
+    {
+     "date": "2027-09-03",
+     "hm": 4,
+     "col": "maghrib",
+     "err": -2
+    },
+    {
+     "date": "2027-09-03",
+     "hm": 4,
+     "col": "isha",
+     "err": -2
+    },
+    {
+     "date": "2028-03-27",
+     "hm": 11,
+     "col": "sunrise",
+     "err": -2
+    },
+    {
+     "date": "2028-03-28",
+     "hm": 11,
+     "col": "sunrise",
+     "err": -2
+    }
+   ]
+  },
+  "haql": {
+   "gov": "Tabuk",
+   "lat": 29.2833,
+   "lon": 34.9333,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 83.5,
+      "w1Pct": 100,
+      "mae": 0.165,
+      "max": 1
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 83.1,
+      "w1Pct": 100,
+      "mae": 0.169,
+      "max": 1
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 50.1,
+      "w1Pct": 100,
+      "mae": 0.499,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 93.4,
+      "w1Pct": 100,
+      "mae": 0.066,
+      "max": 1,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 97.9,
+      "w1Pct": 100,
+      "mae": 0.021,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 68.4,
+      "w1Pct": 100,
+      "mae": 0.316,
+      "max": 1,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 95.1,
+      "w1Pct": 100,
+      "mae": 0.049,
+      "max": 1,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 95.1,
+      "w1Pct": 100,
+      "mae": 0.049,
+      "max": 1,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 83.3,
+     "w1Pct": 100,
+     "mae": 0.167,
+     "max": 1
+    },
+    "outliers": []
+   },
+   "freeFit": {
+    "angle": 18.46,
+    "mae": 0.491
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 127,
+    "sunrise": 115,
+    "dhuhr": 31,
+    "asr": 60,
+    "maghrib": 122,
+    "isha": 122
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 366,
+     "julMax": 269,
+     "span": -97
+    },
+    "isha": {
+     "janMin": 1163,
+     "julMax": 1274,
+     "span": 111
+    }
+   },
+   "outliers": []
+  },
+  "tayma": {
+   "gov": "Tabuk",
+   "lat": 27.6333,
+   "lon": 38.55,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 83.8,
+      "w1Pct": 99.9,
+      "mae": 0.164,
+      "max": 2
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 84.5,
+      "w1Pct": 100,
+      "mae": 0.155,
+      "max": 1
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 50.5,
+      "w1Pct": 100,
+      "mae": 0.495,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 94.6,
+      "w1Pct": 99.9,
+      "mae": 0.055,
+      "max": 2,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 97.6,
+      "w1Pct": 100,
+      "mae": 0.024,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 69.7,
+      "w1Pct": 99.7,
+      "mae": 0.306,
+      "max": 2,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 96.2,
+      "w1Pct": 100,
+      "mae": 0.038,
+      "max": 1,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 96.2,
+      "w1Pct": 100,
+      "mae": 0.038,
+      "max": 1,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 84.1,
+     "w1Pct": 99.9,
+     "mae": 0.159,
+     "max": 2
+    },
+    "outliers": [
+     {
+      "date": "2026-09-16",
+      "hm": 4,
+      "col": "asr",
+      "err": -2
+     },
+     {
+      "date": "2026-10-15",
+      "hm": 5,
+      "col": "asr",
+      "err": -2
+     },
+     {
+      "date": "2027-04-10",
+      "hm": 11,
+      "col": "sunrise",
+      "err": -2
+     }
+    ]
+   },
+   "freeFit": {
+    "angle": 18.46,
+    "mae": 0.477
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 119,
+    "sunrise": 108,
+    "dhuhr": 31,
+    "asr": 54,
+    "maghrib": 115,
+    "isha": 115
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 351,
+     "julMax": 260,
+     "span": -91
+    },
+    "isha": {
+     "janMin": 1153,
+     "julMax": 1256,
+     "span": 103
+    }
+   },
+   "outliers": [
+    {
+     "date": "2026-09-16",
+     "hm": 4,
+     "col": "asr",
+     "err": -2
+    },
+    {
+     "date": "2026-10-15",
+     "hm": 5,
+     "col": "asr",
+     "err": -2
+    },
+    {
+     "date": "2027-04-10",
+     "hm": 11,
+     "col": "sunrise",
+     "err": -2
+    }
+   ]
+  },
+  "al-sulayyil": {
+   "gov": "Ar Riyad",
+   "lat": 20.4667,
+   "lon": 45.5833,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 86.8,
+      "w1Pct": 100,
+      "mae": 0.132,
+      "max": 1
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 87,
+      "w1Pct": 100,
+      "mae": 0.13,
+      "max": 1
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 64.2,
+      "w1Pct": 100,
+      "mae": 0.358,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 95.3,
+      "w1Pct": 100,
+      "mae": 0.047,
+      "max": 1,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 98,
+      "w1Pct": 100,
+      "mae": 0.02,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 70,
+      "w1Pct": 100,
+      "mae": 0.3,
+      "max": 1,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 96.9,
+      "w1Pct": 100,
+      "mae": 0.031,
+      "max": 1,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 96.9,
+      "w1Pct": 100,
+      "mae": 0.031,
+      "max": 1,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 86.9,
+     "w1Pct": 100,
+     "mae": 0.131,
+     "max": 1
+    },
+    "outliers": []
+   },
+   "freeFit": {
+    "angle": 18.48,
+    "mae": 0.336
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 87,
+    "sunrise": 80,
+    "dhuhr": 30,
+    "asr": 38,
+    "maghrib": 87,
+    "isha": 87
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 313,
+     "julMax": 250,
+     "span": -63
+    },
+    "isha": {
+     "janMin": 1139,
+     "julMax": 1213,
+     "span": 74
+    }
+   },
+   "outliers": []
+  },
+  "al-aflaj": {
+   "gov": "Ar Riyad",
+   "lat": 22.2833,
+   "lon": 46.7333,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 85.7,
+      "w1Pct": 100,
+      "mae": 0.143,
+      "max": 1
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 86.2,
+      "w1Pct": 100,
+      "mae": 0.138,
+      "max": 1
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 61.9,
+      "w1Pct": 100,
+      "mae": 0.381,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 95.5,
+      "w1Pct": 100,
+      "mae": 0.045,
+      "max": 1,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 98.3,
+      "w1Pct": 100,
+      "mae": 0.017,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 65.7,
+      "w1Pct": 100,
+      "mae": 0.343,
+      "max": 1,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 97,
+      "w1Pct": 100,
+      "mae": 0.03,
+      "max": 1,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 97,
+      "w1Pct": 100,
+      "mae": 0.03,
+      "max": 1,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 85.9,
+     "w1Pct": 100,
+     "mae": 0.141,
+     "max": 1
+    },
+    "outliers": []
+   },
+   "freeFit": {
+    "angle": 18.48,
+    "mae": 0.378
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 95,
+    "sunrise": 86,
+    "dhuhr": 31,
+    "asr": 40,
+    "maghrib": 93,
+    "isha": 93
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 311,
+     "julMax": 241,
+     "span": -70
+    },
+    "isha": {
+     "janMin": 1131,
+     "julMax": 1212,
+     "span": 81
+    }
+   },
+   "outliers": []
+  },
+  "ranyah": {
+   "gov": "Makkah",
+   "lat": 21.25,
+   "lon": 42.85,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 85.9,
+      "w1Pct": 100,
+      "mae": 0.141,
+      "max": 1
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 87.8,
+      "w1Pct": 100,
+      "mae": 0.122,
+      "max": 1
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 63.9,
+      "w1Pct": 100,
+      "mae": 0.361,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 95.6,
+      "w1Pct": 100,
+      "mae": 0.044,
+      "max": 1,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 98,
+      "w1Pct": 100,
+      "mae": 0.02,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 70.1,
+      "w1Pct": 100,
+      "mae": 0.299,
+      "max": 1,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 96.8,
+      "w1Pct": 100,
+      "mae": 0.032,
+      "max": 1,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 96.8,
+      "w1Pct": 100,
+      "mae": 0.032,
+      "max": 1,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 86.9,
+     "w1Pct": 100,
+     "mae": 0.131,
+     "max": 1
+    },
+    "outliers": []
+   },
+   "freeFit": {
+    "angle": 18.46,
+    "mae": 0.341
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 90,
+    "sunrise": 83,
+    "dhuhr": 30,
+    "asr": 39,
+    "maghrib": 89,
+    "isha": 89
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 325,
+     "julMax": 259,
+     "span": -66
+    },
+    "isha": {
+     "janMin": 1148,
+     "julMax": 1225,
+     "span": 77
+    }
+   },
+   "outliers": []
+  },
+  "turbah": {
+   "gov": "Makkah",
+   "lat": 21.2167,
+   "lon": 41.6333,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 86.2,
+      "w1Pct": 100,
+      "mae": 0.138,
+      "max": 1
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 86.9,
+      "w1Pct": 100,
+      "mae": 0.131,
+      "max": 1
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 62.3,
+      "w1Pct": 100,
+      "mae": 0.377,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 94.2,
+      "w1Pct": 100,
+      "mae": 0.058,
+      "max": 1,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 98,
+      "w1Pct": 100,
+      "mae": 0.02,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 70.1,
+      "w1Pct": 100,
+      "mae": 0.299,
+      "max": 1,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 97.3,
+      "w1Pct": 100,
+      "mae": 0.027,
+      "max": 1,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 97.3,
+      "w1Pct": 100,
+      "mae": 0.027,
+      "max": 1,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 86.6,
+     "w1Pct": 100,
+     "mae": 0.134,
+     "max": 1
+    },
+    "outliers": []
+   },
+   "freeFit": {
+    "angle": 18.46,
+    "mae": 0.351
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 90,
+    "sunrise": 83,
+    "dhuhr": 30,
+    "asr": 39,
+    "maghrib": 89,
+    "isha": 89
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 330,
+     "julMax": 264,
+     "span": -66
+    },
+    "isha": {
+     "janMin": 1153,
+     "julMax": 1230,
+     "span": 77
+    }
+   },
+   "outliers": []
+  },
+  "al-khurma": {
+   "gov": "Makkah",
+   "lat": 22.0833,
+   "lon": 42.0333,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 87.5,
+      "w1Pct": 100,
+      "mae": 0.125,
+      "max": 1
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 87.2,
+      "w1Pct": 100,
+      "mae": 0.128,
+      "max": 1
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 66.3,
+      "w1Pct": 100,
+      "mae": 0.337,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 95.5,
+      "w1Pct": 100,
+      "mae": 0.045,
+      "max": 1,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 98.2,
+      "w1Pct": 100,
+      "mae": 0.018,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 70.1,
+      "w1Pct": 100,
+      "mae": 0.299,
+      "max": 1,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 97,
+      "w1Pct": 100,
+      "mae": 0.03,
+      "max": 1,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 97,
+      "w1Pct": 100,
+      "mae": 0.03,
+      "max": 1,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 87.4,
+     "w1Pct": 100,
+     "mae": 0.126,
+     "max": 1
+    },
+    "outliers": []
+   },
+   "freeFit": {
+    "angle": 18.5,
+    "mae": 0.337
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 93,
+    "sunrise": 86,
+    "dhuhr": 31,
+    "asr": 40,
+    "maghrib": 92,
+    "isha": 92
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 330,
+     "julMax": 261,
+     "span": -69
+    },
+    "isha": {
+     "janMin": 1150,
+     "julMax": 1230,
+     "span": 80
+    }
+   },
+   "outliers": []
+  },
+  "mahd-adh-dhahab": {
+   "gov": "Al Madinah",
+   "lat": 23.5,
+   "lon": 40.85,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 85.5,
+      "w1Pct": 100,
+      "mae": 0.145,
+      "max": 1
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 86.3,
+      "w1Pct": 100,
+      "mae": 0.137,
+      "max": 1
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 58.8,
+      "w1Pct": 100,
+      "mae": 0.412,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 95.2,
+      "w1Pct": 100,
+      "mae": 0.048,
+      "max": 1,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 98.2,
+      "w1Pct": 100,
+      "mae": 0.018,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 70.1,
+      "w1Pct": 100,
+      "mae": 0.299,
+      "max": 1,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 96.6,
+      "w1Pct": 100,
+      "mae": 0.034,
+      "max": 1,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 96.6,
+      "w1Pct": 100,
+      "mae": 0.034,
+      "max": 1,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 85.9,
+     "w1Pct": 100,
+     "mae": 0.141,
+     "max": 1
+    },
+    "outliers": []
+   },
+   "freeFit": {
+    "angle": 18.48,
+    "mae": 0.398
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 100,
+    "sunrise": 91,
+    "dhuhr": 30,
+    "asr": 42,
+    "maghrib": 98,
+    "isha": 98
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 336,
+     "julMax": 262,
+     "span": -74
+    },
+    "isha": {
+     "janMin": 1152,
+     "julMax": 1238,
+     "span": 86
+    }
+   },
+   "outliers": []
+  },
+  "al-majmaah": {
+   "gov": "Ar Riyad",
+   "lat": 25.9,
+   "lon": 45.3667,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 84.9,
+      "w1Pct": 99.9,
+      "mae": 0.153,
+      "max": 2
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 86.4,
+      "w1Pct": 100,
+      "mae": 0.136,
+      "max": 1
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 54.3,
+      "w1Pct": 100,
+      "mae": 0.457,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 94.8,
+      "w1Pct": 99.9,
+      "mae": 0.054,
+      "max": 2,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 98.4,
+      "w1Pct": 100,
+      "mae": 0.016,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 73.3,
+      "w1Pct": 100,
+      "mae": 0.267,
+      "max": 1,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 96.5,
+      "w1Pct": 99.9,
+      "mae": 0.037,
+      "max": 2,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 96.5,
+      "w1Pct": 99.9,
+      "mae": 0.037,
+      "max": 2,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 85.6,
+     "w1Pct": 99.9,
+     "mae": 0.144,
+     "max": 2
+    },
+    "outliers": [
+     {
+      "date": "2026-09-15",
+      "hm": 4,
+      "col": "maghrib",
+      "err": -2
+     },
+     {
+      "date": "2026-09-15",
+      "hm": 4,
+      "col": "isha",
+      "err": -2
+     },
+     {
+      "date": "2027-04-09",
+      "hm": 11,
+      "col": "sunrise",
+      "err": -2
+     }
+    ]
+   },
+   "freeFit": {
+    "angle": 18.48,
+    "mae": 0.444
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 110,
+    "sunrise": 101,
+    "dhuhr": 30,
+    "asr": 47,
+    "maghrib": 108,
+    "isha": 108
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 321,
+     "julMax": 238,
+     "span": -83
+    },
+    "isha": {
+     "janMin": 1129,
+     "julMax": 1225,
+     "span": 96
+    }
+   },
+   "outliers": [
+    {
+     "date": "2026-09-15",
+     "hm": 4,
+     "col": "maghrib",
+     "err": -2
+    },
+    {
+     "date": "2026-09-15",
+     "hm": 4,
+     "col": "isha",
+     "err": -2
+    },
+    {
+     "date": "2027-04-09",
+     "hm": 11,
+     "col": "sunrise",
+     "err": -2
+    }
+   ]
+  },
+  "al-rass": {
+   "gov": "Al Qassim",
+   "lat": 25.8667,
+   "lon": 43.5,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 84.6,
+      "w1Pct": 100,
+      "mae": 0.154,
+      "max": 1
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 84.6,
+      "w1Pct": 99.9,
+      "mae": 0.155,
+      "max": 2
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 54,
+      "w1Pct": 100,
+      "mae": 0.46,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 94.8,
+      "w1Pct": 100,
+      "mae": 0.052,
+      "max": 1,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 98.3,
+      "w1Pct": 100,
+      "mae": 0.017,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 68.1,
+      "w1Pct": 100,
+      "mae": 0.319,
+      "max": 1,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 96.1,
+      "w1Pct": 99.9,
+      "mae": 0.041,
+      "max": 2,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 96.1,
+      "w1Pct": 99.9,
+      "mae": 0.041,
+      "max": 2,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 84.6,
+     "w1Pct": 100,
+     "mae": 0.155,
+     "max": 2
+    },
+    "outliers": [
+     {
+      "date": "2027-10-03",
+      "hm": 5,
+      "col": "maghrib",
+      "err": -2
+     },
+     {
+      "date": "2027-10-03",
+      "hm": 5,
+      "col": "isha",
+      "err": -2
+     }
+    ]
+   },
+   "freeFit": {
+    "angle": 18.48,
+    "mae": 0.449
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 111,
+    "sunrise": 101,
+    "dhuhr": 31,
+    "asr": 48,
+    "maghrib": 107,
+    "isha": 107
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 329,
+     "julMax": 245,
+     "span": -84
+    },
+    "isha": {
+     "janMin": 1136,
+     "julMax": 1232,
+     "span": 96
+    }
+   },
+   "outliers": [
+    {
+     "date": "2027-10-03",
+     "hm": 5,
+     "col": "maghrib",
+     "err": -2
+    },
+    {
+     "date": "2027-10-03",
+     "hm": 5,
+     "col": "isha",
+     "err": -2
+    }
+   ]
+  },
+  "al-zulfi": {
+   "gov": "Ar Riyad",
+   "lat": 26.2833,
+   "lon": 44.8,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 83.7,
+      "w1Pct": 100,
+      "mae": 0.163,
+      "max": 2
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 85.4,
+      "w1Pct": 100,
+      "mae": 0.147,
+      "max": 2
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 51.8,
+      "w1Pct": 100,
+      "mae": 0.482,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 94.6,
+      "w1Pct": 99.7,
+      "mae": 0.056,
+      "max": 2,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 97.6,
+      "w1Pct": 100,
+      "mae": 0.024,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 71.4,
+      "w1Pct": 100,
+      "mae": 0.286,
+      "max": 1,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 95.9,
+      "w1Pct": 100,
+      "mae": 0.041,
+      "max": 1,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 95.9,
+      "w1Pct": 100,
+      "mae": 0.041,
+      "max": 1,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 84.5,
+     "w1Pct": 100,
+     "mae": 0.155,
+     "max": 2
+    },
+    "outliers": [
+     {
+      "date": "2027-04-09",
+      "hm": 11,
+      "col": "sunrise",
+      "err": -2
+     },
+     {
+      "date": "2028-03-27",
+      "hm": 11,
+      "col": "sunrise",
+      "err": -2
+     }
+    ]
+   },
+   "freeFit": {
+    "angle": 18.46,
+    "mae": 0.453
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 112,
+    "sunrise": 103,
+    "dhuhr": 31,
+    "asr": 48,
+    "maghrib": 109,
+    "isha": 109
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 324,
+     "julMax": 239,
+     "span": -85
+    },
+    "isha": {
+     "janMin": 1130,
+     "julMax": 1228,
+     "span": 98
+    }
+   },
+   "outliers": [
+    {
+     "date": "2027-04-09",
+     "hm": 11,
+     "col": "sunrise",
+     "err": -2
+    },
+    {
+     "date": "2028-03-27",
+     "hm": 11,
+     "col": "sunrise",
+     "err": -2
+    }
+   ]
+  },
+  "abu-arish": {
+   "gov": "Jazan",
+   "lat": 16.9667,
+   "lon": 42.8333,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 86.4,
+      "w1Pct": 100,
+      "mae": 0.136,
+      "max": 1
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 87.1,
+      "w1Pct": 100,
+      "mae": 0.129,
+      "max": 1
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 70.5,
+      "w1Pct": 100,
+      "mae": 0.295,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 96.1,
+      "w1Pct": 100,
+      "mae": 0.039,
+      "max": 1,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 98,
+      "w1Pct": 100,
+      "mae": 0.02,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 61.9,
+      "w1Pct": 100,
+      "mae": 0.381,
+      "max": 1,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 96.9,
+      "w1Pct": 100,
+      "mae": 0.031,
+      "max": 1,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 96.9,
+      "w1Pct": 100,
+      "mae": 0.031,
+      "max": 1,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 86.7,
+     "w1Pct": 100,
+     "mae": 0.133,
+     "max": 1
+    },
+    "outliers": []
+   },
+   "freeFit": {
+    "angle": 18.46,
+    "mae": 0.289
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 73,
+    "sunrise": 67,
+    "dhuhr": 30,
+    "asr": 34,
+    "maghrib": 74,
+    "isha": 74
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 319,
+     "julMax": 269,
+     "span": -50
+    },
+    "isha": {
+     "janMin": 1157,
+     "julMax": 1217,
+     "span": 60
+    }
+   },
+   "outliers": []
+  },
+  "sabya": {
+   "gov": "Jazan",
+   "lat": 17.15,
+   "lon": 42.6333,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 87.1,
+      "w1Pct": 100,
+      "mae": 0.129,
+      "max": 1
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 87.7,
+      "w1Pct": 100,
+      "mae": 0.123,
+      "max": 1
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 71.7,
+      "w1Pct": 100,
+      "mae": 0.283,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 96.1,
+      "w1Pct": 100,
+      "mae": 0.039,
+      "max": 1,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 98,
+      "w1Pct": 100,
+      "mae": 0.02,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 64,
+      "w1Pct": 100,
+      "mae": 0.36,
+      "max": 1,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 97.3,
+      "w1Pct": 100,
+      "mae": 0.027,
+      "max": 1,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 97.3,
+      "w1Pct": 100,
+      "mae": 0.027,
+      "max": 1,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 87.4,
+     "w1Pct": 100,
+     "mae": 0.126,
+     "max": 1
+    },
+    "outliers": []
+   },
+   "freeFit": {
+    "angle": 18.5,
+    "mae": 0.283
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 74,
+    "sunrise": 68,
+    "dhuhr": 30,
+    "asr": 34,
+    "maghrib": 74,
+    "isha": 74
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 320,
+     "julMax": 269,
+     "span": -51
+    },
+    "isha": {
+     "janMin": 1157,
+     "julMax": 1218,
+     "span": 61
+    }
+   },
+   "outliers": []
+  },
+  "samtah": {
+   "gov": "Jazan",
+   "lat": 16.6,
+   "lon": 42.95,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 87.2,
+      "w1Pct": 100,
+      "mae": 0.128,
+      "max": 1
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 88,
+      "w1Pct": 100,
+      "mae": 0.12,
+      "max": 1
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 71.5,
+      "w1Pct": 100,
+      "mae": 0.285,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 94.9,
+      "w1Pct": 100,
+      "mae": 0.051,
+      "max": 1,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 98.2,
+      "w1Pct": 100,
+      "mae": 0.018,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 66.3,
+      "w1Pct": 100,
+      "mae": 0.337,
+      "max": 1,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 97.5,
+      "w1Pct": 100,
+      "mae": 0.025,
+      "max": 1,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 97.5,
+      "w1Pct": 100,
+      "mae": 0.025,
+      "max": 1,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 87.6,
+     "w1Pct": 100,
+     "mae": 0.124,
+     "max": 1
+    },
+    "outliers": []
+   },
+   "freeFit": {
+    "angle": 18.5,
+    "mae": 0.285
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 71,
+    "sunrise": 66,
+    "dhuhr": 31,
+    "asr": 34,
+    "maghrib": 73,
+    "isha": 73
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 318,
+     "julMax": 269,
+     "span": -49
+    },
+    "isha": {
+     "janMin": 1157,
+     "julMax": 1216,
+     "span": 59
+    }
+   },
+   "outliers": []
+  },
+  "farasan": {
+   "gov": "Jazan",
+   "lat": 16.7,
+   "lon": 42.1167,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 86.6,
+      "w1Pct": 100,
+      "mae": 0.134,
+      "max": 1
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 88.4,
+      "w1Pct": 100,
+      "mae": 0.116,
+      "max": 1
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 71.9,
+      "w1Pct": 100,
+      "mae": 0.281,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 97.2,
+      "w1Pct": 100,
+      "mae": 0.028,
+      "max": 1,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 98.4,
+      "w1Pct": 100,
+      "mae": 0.016,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 64.6,
+      "w1Pct": 100,
+      "mae": 0.354,
+      "max": 1,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 96.5,
+      "w1Pct": 100,
+      "mae": 0.035,
+      "max": 1,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 96.5,
+      "w1Pct": 100,
+      "mae": 0.035,
+      "max": 1,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 87.5,
+     "w1Pct": 100,
+     "mae": 0.125,
+     "max": 1
+    },
+    "outliers": []
+   },
+   "freeFit": {
+    "angle": 18.46,
+    "mae": 0.272
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 72,
+    "sunrise": 66,
+    "dhuhr": 30,
+    "asr": 34,
+    "maghrib": 72,
+    "isha": 72
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 322,
+     "julMax": 272,
+     "span": -50
+    },
+    "isha": {
+     "janMin": 1160,
+     "julMax": 1219,
+     "span": 59
+    }
+   },
+   "outliers": []
+  },
+  "al-namas": {
+   "gov": "Asir",
+   "lat": 19.15,
+   "lon": 42.2833,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 86.1,
+      "w1Pct": 100,
+      "mae": 0.139,
+      "max": 1
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 86.7,
+      "w1Pct": 100,
+      "mae": 0.133,
+      "max": 1
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 66.9,
+      "w1Pct": 100,
+      "mae": 0.331,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 94.8,
+      "w1Pct": 100,
+      "mae": 0.052,
+      "max": 1,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 98.2,
+      "w1Pct": 100,
+      "mae": 0.018,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 63.5,
+      "w1Pct": 100,
+      "mae": 0.365,
+      "max": 1,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 97.5,
+      "w1Pct": 100,
+      "mae": 0.025,
+      "max": 1,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 97.5,
+      "w1Pct": 100,
+      "mae": 0.025,
+      "max": 1,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 86.4,
+     "w1Pct": 100,
+     "mae": 0.136,
+     "max": 1
+    },
+    "outliers": []
+   },
+   "freeFit": {
+    "angle": 18.46,
+    "mae": 0.312
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 82,
+    "sunrise": 75,
+    "dhuhr": 31,
+    "asr": 36,
+    "maghrib": 81,
+    "isha": 81
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 324,
+     "julMax": 266,
+     "span": -58
+    },
+    "isha": {
+     "janMin": 1155,
+     "julMax": 1223,
+     "span": 68
+    }
+   },
+   "outliers": []
+  },
+  "baljurashi": {
+   "gov": "Al Bahah",
+   "lat": 19.8667,
+   "lon": 41.5667,
+   "anchor": "city-point",
+   "rows": 709,
+   "years": {
+    "1448": {
+     "rows": 355,
+     "from": "2026-06-16",
+     "to": "2027-06-05",
+     "total": {
+      "n": 2130,
+      "exactPct": 86.1,
+      "w1Pct": 100,
+      "mae": 0.139,
+      "max": 1
+     }
+    },
+    "1449": {
+     "rows": 354,
+     "from": "2027-06-06",
+     "to": "2028-05-24",
+     "total": {
+      "n": 2124,
+      "exactPct": 86.5,
+      "w1Pct": 100,
+      "mae": 0.135,
+      "max": 1
+     }
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 65,
+      "w1Pct": 100,
+      "mae": 0.35,
+      "max": 1,
+      "n": 709
+     },
+     "sunrise": {
+      "exactPct": 94.6,
+      "w1Pct": 100,
+      "mae": 0.054,
+      "max": 1,
+      "n": 709
+     },
+     "dhuhr": {
+      "exactPct": 97.9,
+      "w1Pct": 100,
+      "mae": 0.021,
+      "max": 1,
+      "n": 709
+     },
+     "asr": {
+      "exactPct": 68.3,
+      "w1Pct": 100,
+      "mae": 0.317,
+      "max": 1,
+      "n": 709
+     },
+     "maghrib": {
+      "exactPct": 95.9,
+      "w1Pct": 100,
+      "mae": 0.041,
+      "max": 1,
+      "n": 709
+     },
+     "isha": {
+      "exactPct": 95.9,
+      "w1Pct": 100,
+      "mae": 0.041,
+      "max": 1,
+      "n": 709
+     }
+    },
+    "total": {
+     "n": 4254,
+     "exactPct": 86.3,
+     "w1Pct": 100,
+     "mae": 0.137,
+     "max": 1
+    },
+    "outliers": []
+   },
+   "freeFit": {
+    "angle": 18.5,
+    "mae": 0.35
+   },
+   "intervals": {
+    "90": 651,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "ramadanMonthDays": {
+    "2027": 29,
+    "2028": 29
+   },
+   "monthInterval": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "intervalViolations": [],
+   "amplitude": {
+    "fajr": 85,
+    "sunrise": 78,
+    "dhuhr": 30,
+    "asr": 37,
+    "maghrib": 85,
+    "isha": 85
+   },
+   "janJul": {
+    "fajr": {
+     "janMin": 328,
+     "julMax": 268,
+     "span": -60
+    },
+    "isha": {
+     "janMin": 1156,
+     "julMax": 1228,
+     "span": 72
+    }
+   },
+   "outliers": []
+  }
+ },
+ "span": {
+  "cities": 43,
+  "cityDays": 30487,
+  "prayerCells": 182922,
+  "exactMin": 81.9,
+  "exactMax": 87.7,
+  "w1Min": 99.8,
+  "maeMin": 0.123,
+  "maeMax": 0.182,
+  "freeAngleMin": 18.44,
+  "freeAngleMax": 18.5,
+  "ampFajrMin": 71,
+  "ampFajrMax": 141,
+  "allWhollyWithin1": false,
+  "everyCityUnder100": false,
+  "oneRecipeHolds": true,
+  "outliers": 58,
+  "citiesWithOutliers": [
+   "jubail",
+   "arar",
+   "sakaka",
+   "al-khobar",
+   "hofuf",
+   "al-qatif",
+   "unaizah",
+   "al-ula",
+   "rafha",
+   "turaif",
+   "al-qurayyat",
+   "al-wajh",
+   "umluj",
+   "duba",
+   "tayma",
+   "al-majmaah",
+   "al-rass",
+   "al-zulfi"
+  ],
+  "ramadanViolations": 0,
+  "intervalValues": [
+   "90",
+   "120"
+  ]
+ },
+ "outlierLedger": [
+  {
+   "city": "jubail",
+   "date": "2027-09-03",
+   "hm": 4,
+   "col": "maghrib",
+   "err": -2
+  },
+  {
+   "city": "jubail",
+   "date": "2027-09-03",
+   "hm": 4,
+   "col": "isha",
+   "err": -2
+  },
+  {
+   "city": "arar",
+   "date": "2026-09-15",
+   "hm": 4,
+   "col": "asr",
+   "err": -2
+  },
+  {
+   "city": "arar",
+   "date": "2026-09-15",
+   "hm": 4,
+   "col": "maghrib",
+   "err": -2
+  },
+  {
+   "city": "arar",
+   "date": "2026-09-15",
+   "hm": 4,
+   "col": "isha",
+   "err": -2
+  },
+  {
+   "city": "arar",
+   "date": "2027-10-03",
+   "hm": 5,
+   "col": "asr",
+   "err": -2
+  },
+  {
+   "city": "sakaka",
+   "date": "2026-09-15",
+   "hm": 4,
+   "col": "asr",
+   "err": -2
+  },
+  {
+   "city": "sakaka",
+   "date": "2026-09-15",
+   "hm": 4,
+   "col": "maghrib",
+   "err": -2
+  },
+  {
+   "city": "sakaka",
+   "date": "2026-09-15",
+   "hm": 4,
+   "col": "isha",
+   "err": -2
+  },
+  {
+   "city": "sakaka",
+   "date": "2027-09-03",
+   "hm": 4,
+   "col": "maghrib",
+   "err": -2
+  },
+  {
+   "city": "sakaka",
+   "date": "2027-09-03",
+   "hm": 4,
+   "col": "isha",
+   "err": -2
+  },
+  {
+   "city": "sakaka",
+   "date": "2027-10-03",
+   "hm": 5,
+   "col": "maghrib",
+   "err": -2
+  },
+  {
+   "city": "sakaka",
+   "date": "2027-10-03",
+   "hm": 5,
+   "col": "isha",
+   "err": -2
+  },
+  {
+   "city": "sakaka",
+   "date": "2028-02-27",
+   "hm": 10,
+   "col": "sunrise",
+   "err": -2
+  },
+  {
+   "city": "al-khobar",
+   "date": "2027-10-03",
+   "hm": 5,
+   "col": "maghrib",
+   "err": -2
+  },
+  {
+   "city": "al-khobar",
+   "date": "2027-10-03",
+   "hm": 5,
+   "col": "isha",
+   "err": -2
+  },
+  {
+   "city": "hofuf",
+   "date": "2026-09-15",
+   "hm": 4,
+   "col": "maghrib",
+   "err": -2
+  },
+  {
+   "city": "hofuf",
+   "date": "2026-09-15",
+   "hm": 4,
+   "col": "isha",
+   "err": -2
+  },
+  {
+   "city": "hofuf",
+   "date": "2028-03-28",
+   "hm": 11,
+   "col": "sunrise",
+   "err": -2
+  },
+  {
+   "city": "al-qatif",
+   "date": "2027-04-09",
+   "hm": 11,
+   "col": "sunrise",
+   "err": -2
+  },
+  {
+   "city": "al-qatif",
+   "date": "2027-04-10",
+   "hm": 11,
+   "col": "sunrise",
+   "err": -2
+  },
+  {
+   "city": "al-qatif",
+   "date": "2027-10-03",
+   "hm": 5,
+   "col": "asr",
+   "err": -2
+  },
+  {
+   "city": "al-qatif",
+   "date": "2028-03-28",
+   "hm": 11,
+   "col": "sunrise",
+   "err": -2
+  },
+  {
+   "city": "unaizah",
+   "date": "2027-03-11",
+   "hm": 10,
+   "col": "sunrise",
+   "err": -2
+  },
+  {
+   "city": "al-ula",
+   "date": "2026-09-15",
+   "hm": 4,
+   "col": "maghrib",
+   "err": -2
+  },
+  {
+   "city": "al-ula",
+   "date": "2026-09-15",
+   "hm": 4,
+   "col": "isha",
+   "err": -2
+  },
+  {
+   "city": "al-ula",
+   "date": "2026-09-16",
+   "hm": 4,
+   "col": "asr",
+   "err": -2
+  },
+  {
+   "city": "al-ula",
+   "date": "2027-10-03",
+   "hm": 5,
+   "col": "maghrib",
+   "err": -2
+  },
+  {
+   "city": "al-ula",
+   "date": "2027-10-03",
+   "hm": 5,
+   "col": "isha",
+   "err": -2
+  },
+  {
+   "city": "rafha",
+   "date": "2026-09-16",
+   "hm": 4,
+   "col": "asr",
+   "err": -2
+  },
+  {
+   "city": "rafha",
+   "date": "2028-03-28",
+   "hm": 11,
+   "col": "sunrise",
+   "err": -2
+  },
+  {
+   "city": "turaif",
+   "date": "2026-09-16",
+   "hm": 4,
+   "col": "asr",
+   "err": -2
+  },
+  {
+   "city": "turaif",
+   "date": "2027-09-04",
+   "hm": 4,
+   "col": "maghrib",
+   "err": -2
+  },
+  {
+   "city": "turaif",
+   "date": "2027-09-04",
+   "hm": 4,
+   "col": "isha",
+   "err": -2
+  },
+  {
+   "city": "turaif",
+   "date": "2028-03-27",
+   "hm": 11,
+   "col": "sunrise",
+   "err": -2
+  },
+  {
+   "city": "al-qurayyat",
+   "date": "2026-09-16",
+   "hm": 4,
+   "col": "asr",
+   "err": -2
+  },
+  {
+   "city": "al-qurayyat",
+   "date": "2027-04-10",
+   "hm": 11,
+   "col": "sunrise",
+   "err": -2
+  },
+  {
+   "city": "al-qurayyat",
+   "date": "2027-10-03",
+   "hm": 5,
+   "col": "maghrib",
+   "err": -2
+  },
+  {
+   "city": "al-qurayyat",
+   "date": "2027-10-03",
+   "hm": 5,
+   "col": "isha",
+   "err": -2
+  },
+  {
+   "city": "al-wajh",
+   "date": "2027-10-03",
+   "hm": 5,
+   "col": "maghrib",
+   "err": -2
+  },
+  {
+   "city": "al-wajh",
+   "date": "2027-10-03",
+   "hm": 5,
+   "col": "isha",
+   "err": -2
+  },
+  {
+   "city": "umluj",
+   "date": "2027-10-03",
+   "hm": 5,
+   "col": "asr",
+   "err": -2
+  },
+  {
+   "city": "duba",
+   "date": "2026-09-16",
+   "hm": 4,
+   "col": "maghrib",
+   "err": -2
+  },
+  {
+   "city": "duba",
+   "date": "2026-09-16",
+   "hm": 4,
+   "col": "isha",
+   "err": -2
+  },
+  {
+   "city": "duba",
+   "date": "2027-09-03",
+   "hm": 4,
+   "col": "maghrib",
+   "err": -2
+  },
+  {
+   "city": "duba",
+   "date": "2027-09-03",
+   "hm": 4,
+   "col": "isha",
+   "err": -2
+  },
+  {
+   "city": "duba",
+   "date": "2028-03-27",
+   "hm": 11,
+   "col": "sunrise",
+   "err": -2
+  },
+  {
+   "city": "duba",
+   "date": "2028-03-28",
+   "hm": 11,
+   "col": "sunrise",
+   "err": -2
+  },
+  {
+   "city": "tayma",
+   "date": "2026-09-16",
+   "hm": 4,
+   "col": "asr",
+   "err": -2
+  },
+  {
+   "city": "tayma",
+   "date": "2026-10-15",
+   "hm": 5,
+   "col": "asr",
+   "err": -2
+  },
+  {
+   "city": "tayma",
+   "date": "2027-04-10",
+   "hm": 11,
+   "col": "sunrise",
+   "err": -2
+  },
+  {
+   "city": "al-majmaah",
+   "date": "2026-09-15",
+   "hm": 4,
+   "col": "maghrib",
+   "err": -2
+  },
+  {
+   "city": "al-majmaah",
+   "date": "2026-09-15",
+   "hm": 4,
+   "col": "isha",
+   "err": -2
+  },
+  {
+   "city": "al-majmaah",
+   "date": "2027-04-09",
+   "hm": 11,
+   "col": "sunrise",
+   "err": -2
+  },
+  {
+   "city": "al-rass",
+   "date": "2027-10-03",
+   "hm": 5,
+   "col": "maghrib",
+   "err": -2
+  },
+  {
+   "city": "al-rass",
+   "date": "2027-10-03",
+   "hm": 5,
+   "col": "isha",
+   "err": -2
+  },
+  {
+   "city": "al-zulfi",
+   "date": "2027-04-09",
+   "hm": 11,
+   "col": "sunrise",
+   "err": -2
+  },
+  {
+   "city": "al-zulfi",
+   "date": "2028-03-27",
+   "hm": 11,
+   "col": "sunrise",
+   "err": -2
+  }
+ ]
+}

@@ -1,0 +1,12 @@
+[
+ {"tag":"fi-turku","file":"fi-turku-2026.json","lat":60.4518,"lng":22.2666,"fa":18,"is":17},
+ {"tag":"fi-tampere","file":"fi-tampere-2026.json","lat":61.4978,"lng":23.7610,"fa":18,"is":17},
+ {"tag":"fi-jyvaskyla","file":"fi-jyvaskyla-2026.json","lat":62.2415,"lng":25.7209,"fa":18,"is":17},
+ {"tag":"dk-aarhus","file":"dk-adan-aarhus-2026.json","lat":56.1629,"lng":10.2039,"fa":18,"is":17},
+ {"tag":"dk-odense","file":"dk-adan-odense-2026.json","lat":55.4038,"lng":10.4024,"fa":18,"is":17},
+ {"tag":"dk-aalborg","file":"dk-adan-aalborg-2026.json","lat":57.0488,"lng":9.9217,"fa":18,"is":17},
+ {"tag":"dk-esbjerg","file":"dk-adan-esbjerg-2026.json","lat":55.4765,"lng":8.4594,"fa":18,"is":17},
+ {"tag":"lt-vilnius","file":"lt-vilnius-diyanet.json","lat":54.6872,"lng":25.2797,"fa":18,"is":16},
+ {"tag":"lt-kaunas","file":"lt-kaunas-diyanet.json","lat":54.8985,"lng":23.9036,"fa":18,"is":16},
+ {"tag":"lt-klaipeda","file":"lt-klaipeda-diyanet.json","lat":55.7033,"lng":21.1443,"fa":18,"is":16}
+]

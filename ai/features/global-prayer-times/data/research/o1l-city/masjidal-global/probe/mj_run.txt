@@ -1,0 +1,37 @@
+captures/masjidi_region_1051.json	r1051-المملكة العربية السعودية
+captures/masjidi_region_1142.json	r1142-البوسنة والهرسك
+captures/masjidi_region_144.json	r144-الكويت
+captures/masjidi_region_164.json	r164-قطر
+captures/masjidi_region_1641.json	r1641-بلجيكا
+captures/masjidi_region_173.json	r173-العراق
+captures/masjidi_region_1925.json	r1925-إيطاليا
+captures/masjidi_region_198.json	r198-ماليزيا
+captures/masjidi_region_2.json	r2-لبنان
+captures/masjidi_region_20.json	r20-ليبيا
+captures/masjidi_region_211.json	r211-ماليزيا
+captures/masjidi_region_228.json	r228-ماليزيا
+captures/masjidi_region_2448.json	r2448-ألمانيا
+captures/masjidi_region_247.json	r247-الأردن
+captures/masjidi_region_2772.json	r2772-ألمانيا
+captures/masjidi_region_2905.json	r2905-ألمانيا
+captures/masjidi_region_3109.json	r3109-مصر
+captures/masjidi_region_355.json	r355-تونس
+captures/masjidi_region_3551.json	r3551-الجزائر
+captures/masjidi_region_364.json	r364-تونس
+captures/masjidi_region_394.json	r394-النرويج
+captures/masjidi_region_40.json	r40-ليبيا
+captures/masjidi_region_444.json	r444-النرويج
+captures/masjidi_region_46.json	r46-عمان
+captures/masjidi_region_5587.json	r5587-السويد
+captures/masjidi_region_5622.json	r5622-السويد
+captures/masjidi_region_5733.json	r5733-رومانيا
+captures/masjidi_region_5883.json	r5883-البحرين
+captures/masjidi_region_5885.json	r5885-فلسطين
+captures/masjidi_region_5886.json	r5886-فلسطين
+captures/masjidi_region_6102.json	r6102-أندونيسيا
+captures/masjidi_region_6127.json	r6127-أندونيسيا
+captures/masjidi_region_6168.json	r6168-أندونيسيا
+captures/masjidi_region_7617.json	r7617-سوريا
+captures/masjidi_region_8145.json	r8145-العراق
+captures/masjidi_region_8221.json	r8221-المغرب
+captures/masjidi_region_8306.json	r8306-المغرب

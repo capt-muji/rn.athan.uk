@@ -1,0 +1,2498 @@
+{
+ "القـاهـرة": {
+  "fajr": {
+   "min": 0,
+   "max": 0,
+   "median": 0.0
+  },
+  "sunrise": {
+   "min": 0,
+   "max": 0,
+   "median": 0.0
+  },
+  "dhuhr": {
+   "min": 0,
+   "max": 0,
+   "median": 0.0
+  },
+  "asr": {
+   "min": 0,
+   "max": 0,
+   "median": 0.0
+  },
+  "maghrib": {
+   "min": 0,
+   "max": 0,
+   "median": 0.0
+  },
+  "isha": {
+   "min": 0,
+   "max": 0,
+   "median": 0.0
+  }
+ },
+ "الأسكندرية": {
+  "fajr": {
+   "min": 0,
+   "max": 1,
+   "median": 0.0
+  },
+  "sunrise": {
+   "min": 2,
+   "max": 3,
+   "median": 2.0
+  },
+  "dhuhr": {
+   "min": 5,
+   "max": 6,
+   "median": 5.0
+  },
+  "asr": {
+   "min": 8,
+   "max": 9,
+   "median": 8.0
+  },
+  "maghrib": {
+   "min": 8,
+   "max": 8,
+   "median": 8.0
+  },
+  "isha": {
+   "min": 10,
+   "max": 11,
+   "median": 10.0
+  }
+ },
+ "طنطــا": {
+  "fajr": {
+   "min": -3,
+   "max": -1,
+   "median": -2.0
+  },
+  "sunrise": {
+   "min": -1,
+   "max": 0,
+   "median": -1.0
+  },
+  "dhuhr": {
+   "min": 1,
+   "max": 2,
+   "median": 1.0
+  },
+  "asr": {
+   "min": 2,
+   "max": 3,
+   "median": 3.0
+  },
+  "maghrib": {
+   "min": 2,
+   "max": 3,
+   "median": 3.0
+  },
+  "isha": {
+   "min": 4,
+   "max": 5,
+   "median": 4.0
+  }
+ },
+ "المنصورة": {
+  "fajr": {
+   "min": -5,
+   "max": -4,
+   "median": -5.0
+  },
+  "sunrise": {
+   "min": -3,
+   "max": -2,
+   "median": -3.0
+  },
+  "dhuhr": {
+   "min": -1,
+   "max": 0,
+   "median": -0.5
+  },
+  "asr": {
+   "min": 1,
+   "max": 2,
+   "median": 2.0
+  },
+  "maghrib": {
+   "min": 1,
+   "max": 2,
+   "median": 2.0
+  },
+  "isha": {
+   "min": 3,
+   "max": 4,
+   "median": 3.0
+  }
+ },
+ "الزقـازيق": {
+  "fajr": {
+   "min": -4,
+   "max": -3,
+   "median": -3.0
+  },
+  "sunrise": {
+   "min": -3,
+   "max": -2,
+   "median": -2.0
+  },
+  "dhuhr": {
+   "min": -1,
+   "max": 0,
+   "median": -1.0
+  },
+  "asr": {
+   "min": 0,
+   "max": 1,
+   "median": 0.0
+  },
+  "maghrib": {
+   "min": 0,
+   "max": 1,
+   "median": 0.0
+  },
+  "isha": {
+   "min": 1,
+   "max": 2,
+   "median": 1.0
+  }
+ },
+ "أسيــوط": {
+  "fajr": {
+   "min": 11,
+   "max": 13,
+   "median": 12.0
+  },
+  "sunrise": {
+   "min": 6,
+   "max": 8,
+   "median": 7.0
+  },
+  "dhuhr": {
+   "min": 0,
+   "max": 1,
+   "median": 0.0
+  },
+  "asr": {
+   "min": -8,
+   "max": -6,
+   "median": -7.0
+  },
+  "maghrib": {
+   "min": -7,
+   "max": -6,
+   "median": -6.0
+  },
+  "isha": {
+   "min": -11,
+   "max": -10,
+   "median": -11.0
+  }
+ },
+ "سـوهاج": {
+  "fajr": {
+   "min": 11,
+   "max": 13,
+   "median": 13.0
+  },
+  "sunrise": {
+   "min": 6,
+   "max": 7,
+   "median": 6.0
+  },
+  "dhuhr": {
+   "min": -2,
+   "max": -1,
+   "median": -2.0
+  },
+  "asr": {
+   "min": -11,
+   "max": -10,
+   "median": -11.0
+  },
+  "maghrib": {
+   "min": -10,
+   "max": -9,
+   "median": -10.0
+  },
+  "isha": {
+   "min": -16,
+   "max": -14,
+   "median": -15.0
+  }
+ },
+ "بنى سويف": {
+  "fajr": {
+   "min": 4,
+   "max": 5,
+   "median": 5.0
+  },
+  "sunrise": {
+   "min": 2,
+   "max": 3,
+   "median": 3.0
+  },
+  "dhuhr": {
+   "min": 0,
+   "max": 1,
+   "median": 1.0
+  },
+  "asr": {
+   "min": -2,
+   "max": -1,
+   "median": -2.0
+  },
+  "maghrib": {
+   "min": -2,
+   "max": -1,
+   "median": -2.0
+  },
+  "isha": {
+   "min": -4,
+   "max": -3,
+   "median": -3.0
+  }
+ },
+ "المنـيـا": {
+  "fajr": {
+   "min": 10,
+   "max": 11,
+   "median": 10.0
+  },
+  "sunrise": {
+   "min": 6,
+   "max": 7,
+   "median": 7.0
+  },
+  "dhuhr": {
+   "min": 2,
+   "max": 3,
+   "median": 2.0
+  },
+  "asr": {
+   "min": -4,
+   "max": -2,
+   "median": -3.0
+  },
+  "maghrib": {
+   "min": -3,
+   "max": -2,
+   "median": -3.0
+  },
+  "isha": {
+   "min": -6,
+   "max": -5,
+   "median": -6.0
+  }
+ },
+ "قـــنا": {
+  "fajr": {
+   "min": 9,
+   "max": 11,
+   "median": 10.0
+  },
+  "sunrise": {
+   "min": 3,
+   "max": 4,
+   "median": 3.0
+  },
+  "dhuhr": {
+   "min": -6,
+   "max": -5,
+   "median": -6.0
+  },
+  "asr": {
+   "min": -17,
+   "max": -15,
+   "median": -16.0
+  },
+  "maghrib": {
+   "min": -15,
+   "max": -14,
+   "median": -15.0
+  },
+  "isha": {
+   "min": -21,
+   "max": -19,
+   "median": -20.0
+  }
+ },
+ "أســوان": {
+  "fajr": {
+   "min": 16,
+   "max": 18,
+   "median": 17.0
+  },
+  "sunrise": {
+   "min": 6,
+   "max": 8,
+   "median": 7.0
+  },
+  "dhuhr": {
+   "min": -7,
+   "max": -6,
+   "median": -7.0
+  },
+  "asr": {
+   "min": -24,
+   "max": -22,
+   "median": -23.0
+  },
+  "maghrib": {
+   "min": -21,
+   "max": -20,
+   "median": -20.0
+  },
+  "isha": {
+   "min": -29,
+   "max": -27,
+   "median": -29.0
+  }
+ },
+ "مطـروح": {
+  "fajr": {
+   "min": 10,
+   "max": 11,
+   "median": 10.0
+  },
+  "sunrise": {
+   "min": 12,
+   "max": 13,
+   "median": 13.0
+  },
+  "dhuhr": {
+   "min": 16,
+   "max": 17,
+   "median": 16.0
+  },
+  "asr": {
+   "min": 19,
+   "max": 20,
+   "median": 19.0
+  },
+  "maghrib": {
+   "min": 19,
+   "max": 20,
+   "median": 19.0
+  },
+  "isha": {
+   "min": 21,
+   "max": 22,
+   "median": 22.0
+  }
+ },
+ "الغردقـة": {
+  "fajr": {
+   "min": 1,
+   "max": 2,
+   "median": 2.0
+  },
+  "sunrise": {
+   "min": -4,
+   "max": -3,
+   "median": -3.0
+  },
+  "dhuhr": {
+   "min": -11,
+   "max": -10,
+   "median": -10.0
+  },
+  "asr": {
+   "min": -18,
+   "max": -17,
+   "median": -18.0
+  },
+  "maghrib": {
+   "min": -18,
+   "max": -17,
+   "median": -17.0
+  },
+  "isha": {
+   "min": -22,
+   "max": -20,
+   "median": -21.0
+  }
+ },
+ "الخارجـة": {
+  "fajr": {
+   "min": 21,
+   "max": 23,
+   "median": 22.0
+  },
+  "sunrise": {
+   "min": 14,
+   "max": 15,
+   "median": 15.0
+  },
+  "dhuhr": {
+   "min": 4,
+   "max": 5,
+   "median": 4.0
+  },
+  "asr": {
+   "min": -9,
+   "max": -7,
+   "median": -8.0
+  },
+  "maghrib": {
+   "min": -7,
+   "max": -6,
+   "median": -7.0
+  },
+  "isha": {
+   "min": -14,
+   "max": -12,
+   "median": -13.0
+  }
+ },
+ "الإسماعيلية": {
+  "fajr": {
+   "min": -7,
+   "max": -6,
+   "median": -6.0
+  },
+  "sunrise": {
+   "min": -6,
+   "max": -5,
+   "median": -5.0
+  },
+  "dhuhr": {
+   "min": -4,
+   "max": -3,
+   "median": -4.0
+  },
+  "asr": {
+   "min": -3,
+   "max": -2,
+   "median": -3.0
+  },
+  "maghrib": {
+   "min": -3,
+   "max": -2,
+   "median": -3.0
+  },
+  "isha": {
+   "min": -2,
+   "max": -1,
+   "median": -2.0
+  }
+ },
+ "دميـاط": {
+  "fajr": {
+   "min": -9,
+   "max": -7,
+   "median": -8.0
+  },
+  "sunrise": {
+   "min": -6,
+   "max": -5,
+   "median": -5.0
+  },
+  "dhuhr": {
+   "min": -3,
+   "max": -2,
+   "median": -2.0
+  },
+  "asr": {
+   "min": 1,
+   "max": 2,
+   "median": 1.0
+  },
+  "maghrib": {
+   "min": 1,
+   "max": 2,
+   "median": 1.0
+  },
+  "isha": {
+   "min": 3,
+   "max": 4,
+   "median": 3.0
+  }
+ },
+ "السـلوم": {
+  "fajr": {
+   "min": 17,
+   "max": 19,
+   "median": 18.0
+  },
+  "sunrise": {
+   "min": 20,
+   "max": 21,
+   "median": 21.0
+  },
+  "dhuhr": {
+   "min": 24,
+   "max": 25,
+   "median": 24.0
+  },
+  "asr": {
+   "min": 28,
+   "max": 29,
+   "median": 28.0
+  },
+  "maghrib": {
+   "min": 27,
+   "max": 28,
+   "median": 28.0
+  },
+  "isha": {
+   "min": 30,
+   "max": 31,
+   "median": 30.0
+  }
+ },
+ "نويـبع": {
+  "fajr": {
+   "min": -10,
+   "max": -9,
+   "median": -9.0
+  },
+  "sunrise": {
+   "min": -12,
+   "max": -11,
+   "median": -11.0
+  },
+  "dhuhr": {
+   "min": -14,
+   "max": -13,
+   "median": -14.0
+  },
+  "asr": {
+   "min": -17,
+   "max": -16,
+   "median": -16.0
+  },
+  "maghrib": {
+   "min": -16,
+   "max": -15,
+   "median": -16.0
+  },
+  "isha": {
+   "min": -18,
+   "max": -17,
+   "median": -17.5
+  }
+ },
+ "حلايــب": {
+  "fajr": {
+   "min": 6,
+   "max": 9,
+   "median": 8.0
+  },
+  "sunrise": {
+   "min": -5,
+   "max": -3,
+   "median": -4.0
+  },
+  "dhuhr": {
+   "min": -22,
+   "max": -21,
+   "median": -22.0
+  },
+  "asr": {
+   "min": -42,
+   "max": -38,
+   "median": -39.0
+  },
+  "maghrib": {
+   "min": -40,
+   "max": -38,
+   "median": -39.0
+  },
+  "isha": {
+   "min": -50,
+   "max": -47,
+   "median": -49.0
+  }
+ },
+ "شرم الشيخ": {
+  "fajr": {
+   "min": -4,
+   "max": -2,
+   "median": -3.0
+  },
+  "sunrise": {
+   "min": -8,
+   "max": -6,
+   "median": -7.0
+  },
+  "dhuhr": {
+   "min": -13,
+   "max": -12,
+   "median": -12.0
+  },
+  "asr": {
+   "min": -18,
+   "max": -17,
+   "median": -18.0
+  },
+  "maghrib": {
+   "min": -18,
+   "max": -17,
+   "median": -17.0
+  },
+  "isha": {
+   "min": -21,
+   "max": -20,
+   "median": -21.0
+  }
+ },
+ "الفـيــوم": {
+  "fajr": {
+   "min": 4,
+   "max": 6,
+   "median": 5.0
+  },
+  "sunrise": {
+   "min": 3,
+   "max": 4,
+   "median": 4.0
+  },
+  "dhuhr": {
+   "min": 1,
+   "max": 2,
+   "median": 2.0
+  },
+  "asr": {
+   "min": -1,
+   "max": 0,
+   "median": 0.0
+  },
+  "maghrib": {
+   "min": -1,
+   "max": 0,
+   "median": 0.0
+  },
+  "isha": {
+   "min": -2,
+   "max": -1,
+   "median": -1.0
+  }
+ },
+ "6أكتـوبر": {
+  "fajr": {
+   "min": 1,
+   "max": 2,
+   "median": 2.0
+  },
+  "sunrise": {
+   "min": 1,
+   "max": 2,
+   "median": 2.0
+  },
+  "dhuhr": {
+   "min": 1,
+   "max": 2,
+   "median": 1.0
+  },
+  "asr": {
+   "min": 1,
+   "max": 2,
+   "median": 1.0
+  },
+  "maghrib": {
+   "min": 1,
+   "max": 2,
+   "median": 1.0
+  },
+  "isha": {
+   "min": 0,
+   "max": 1,
+   "median": 1.0
+  }
+ },
+ "كفر الشيخ": {
+  "fajr": {
+   "min": -4,
+   "max": -3,
+   "median": -3.0
+  },
+  "sunrise": {
+   "min": -2,
+   "max": -1,
+   "median": -1.0
+  },
+  "dhuhr": {
+   "min": 1,
+   "max": 2,
+   "median": 1.0
+  },
+  "asr": {
+   "min": 3,
+   "max": 4,
+   "median": 4.0
+  },
+  "maghrib": {
+   "min": 3,
+   "max": 4,
+   "median": 4.0
+  },
+  "isha": {
+   "min": 5,
+   "max": 6,
+   "median": 6.0
+  }
+ },
+ "الحامول": {
+  "fajr": {
+   "min": -6,
+   "max": -4,
+   "median": -5.0
+  },
+  "sunrise": {
+   "min": -3,
+   "max": -2,
+   "median": -2.0
+  },
+  "dhuhr": {
+   "min": 0,
+   "max": 1,
+   "median": 0.0
+  },
+  "asr": {
+   "min": 3,
+   "max": 4,
+   "median": 4.0
+  },
+  "maghrib": {
+   "min": 3,
+   "max": 4,
+   "median": 4.0
+  },
+  "isha": {
+   "min": 5,
+   "max": 6,
+   "median": 6.0
+  }
+ },
+ "بلطيم": {
+  "fajr": {
+   "min": -6,
+   "max": -4,
+   "median": -5.0
+  },
+  "sunrise": {
+   "min": -3,
+   "max": -2,
+   "median": -2.0
+  },
+  "dhuhr": {
+   "min": 0,
+   "max": 1,
+   "median": 1.0
+  },
+  "asr": {
+   "min": 3,
+   "max": 4,
+   "median": 4.0
+  },
+  "maghrib": {
+   "min": 3,
+   "max": 4,
+   "median": 4.0
+  },
+  "isha": {
+   "min": 6,
+   "max": 7,
+   "median": 6.0
+  }
+ },
+ "طابا": {
+  "fajr": {
+   "min": -11,
+   "max": -9,
+   "median": -10.0
+  },
+  "sunrise": {
+   "min": -12,
+   "max": -11,
+   "median": -11.0
+  },
+  "dhuhr": {
+   "min": -13,
+   "max": -12,
+   "median": -12.0
+  },
+  "asr": {
+   "min": -14,
+   "max": -13,
+   "median": -14.0
+  },
+  "maghrib": {
+   "min": -14,
+   "max": -13,
+   "median": -14.0
+  },
+  "isha": {
+   "min": -15,
+   "max": -14,
+   "median": -15.0
+  }
+ },
+ "راس سدر": {
+  "fajr": {
+   "min": -4,
+   "max": -3,
+   "median": -3.0
+  },
+  "sunrise": {
+   "min": -5,
+   "max": -4,
+   "median": -4.0
+  },
+  "dhuhr": {
+   "min": -6,
+   "max": -5,
+   "median": -6.0
+  },
+  "asr": {
+   "min": -7,
+   "max": -6,
+   "median": -7.0
+  },
+  "maghrib": {
+   "min": -7,
+   "max": -6,
+   "median": -7.0
+  },
+  "isha": {
+   "min": -8,
+   "max": -7,
+   "median": -7.5
+  }
+ },
+ "الطور": {
+  "fajr": {
+   "min": -2,
+   "max": -1,
+   "median": -2.0
+  },
+  "sunrise": {
+   "min": -6,
+   "max": -5,
+   "median": -5.0
+  },
+  "dhuhr": {
+   "min": -10,
+   "max": -9,
+   "median": -9.0
+  },
+  "asr": {
+   "min": -15,
+   "max": -14,
+   "median": -14.0
+  },
+  "maghrib": {
+   "min": -14,
+   "max": -13,
+   "median": -14.0
+  },
+  "isha": {
+   "min": -17,
+   "max": -16,
+   "median": -17.0
+  }
+ },
+ "دهب": {
+  "fajr": {
+   "min": -7,
+   "max": -6,
+   "median": -6.0
+  },
+  "sunrise": {
+   "min": -10,
+   "max": -9,
+   "median": -9.0
+  },
+  "dhuhr": {
+   "min": -13,
+   "max": -12,
+   "median": -13.0
+  },
+  "asr": {
+   "min": -17,
+   "max": -16,
+   "median": -17.0
+  },
+  "maghrib": {
+   "min": -17,
+   "max": -16,
+   "median": -17.0
+  },
+  "isha": {
+   "min": -20,
+   "max": -18,
+   "median": -19.0
+  }
+ },
+ "ابوزنيمة": {
+  "fajr": {
+   "min": -4,
+   "max": -2,
+   "median": -3.0
+  },
+  "sunrise": {
+   "min": -5,
+   "max": -4,
+   "median": -5.0
+  },
+  "dhuhr": {
+   "min": -8,
+   "max": -7,
+   "median": -7.0
+  },
+  "asr": {
+   "min": -10,
+   "max": -9,
+   "median": -10.0
+  },
+  "maghrib": {
+   "min": -10,
+   "max": -9,
+   "median": -10.0
+  },
+  "isha": {
+   "min": -12,
+   "max": -11,
+   "median": -11.0
+  }
+ },
+ "راس غارب": {
+  "fajr": {
+   "min": -2,
+   "max": -1,
+   "median": -1.0
+  },
+  "sunrise": {
+   "min": -5,
+   "max": -4,
+   "median": -4.0
+  },
+  "dhuhr": {
+   "min": -9,
+   "max": -8,
+   "median": -8.0
+  },
+  "asr": {
+   "min": -13,
+   "max": -12,
+   "median": -12.0
+  },
+  "maghrib": {
+   "min": -13,
+   "max": -12,
+   "median": -12.0
+  },
+  "isha": {
+   "min": -15,
+   "max": -14,
+   "median": -15.0
+  }
+ },
+ "القصير": {
+  "fajr": {
+   "min": 3,
+   "max": 5,
+   "median": 4.0
+  },
+  "sunrise": {
+   "min": -4,
+   "max": -2,
+   "median": -3.0
+  },
+  "dhuhr": {
+   "min": -12,
+   "max": -12,
+   "median": -12.0
+  },
+  "asr": {
+   "min": -23,
+   "max": -22,
+   "median": -23.0
+  },
+  "maghrib": {
+   "min": -22,
+   "max": -21,
+   "median": -21.0
+  },
+  "isha": {
+   "min": -28,
+   "max": -26,
+   "median": -27.0
+  }
+ },
+ "برنيس": {
+  "fajr": {
+   "min": 6,
+   "max": 8,
+   "median": 7.0
+  },
+  "sunrise": {
+   "min": -4,
+   "max": -2,
+   "median": -3.0
+  },
+  "dhuhr": {
+   "min": -17,
+   "max": -16,
+   "median": -17.0
+  },
+  "asr": {
+   "min": -35,
+   "max": -33,
+   "median": -34.0
+  },
+  "maghrib": {
+   "min": -32,
+   "max": -30,
+   "median": -31.0
+  },
+  "isha": {
+   "min": -40,
+   "max": -38,
+   "median": -40.0
+  }
+ },
+ "سفاجة": {
+  "fajr": {
+   "min": 2,
+   "max": 4,
+   "median": 3.0
+  },
+  "sunrise": {
+   "min": -4,
+   "max": -2,
+   "median": -3.0
+  },
+  "dhuhr": {
+   "min": -11,
+   "max": -10,
+   "median": -11.0
+  },
+  "asr": {
+   "min": -20,
+   "max": -19,
+   "median": -19.0
+  },
+  "maghrib": {
+   "min": -19,
+   "max": -18,
+   "median": -18.0
+  },
+  "isha": {
+   "min": -24,
+   "max": -22,
+   "median": -23.0
+  }
+ },
+ "مرسى علم": {
+  "fajr": {
+   "min": 4,
+   "max": 6,
+   "median": 5.0
+  },
+  "sunrise": {
+   "min": -4,
+   "max": -2,
+   "median": -3.0
+  },
+  "dhuhr": {
+   "min": -15,
+   "max": -14,
+   "median": -14.0
+  },
+  "asr": {
+   "min": -28,
+   "max": -27,
+   "median": -28.0
+  },
+  "maghrib": {
+   "min": -27,
+   "max": -25,
+   "median": -26.0
+  },
+  "isha": {
+   "min": -34,
+   "max": -32,
+   "median": -33.0
+  }
+ },
+ "شلاتين": {
+  "fajr": {
+   "min": 7,
+   "max": 10,
+   "median": 9.0
+  },
+  "sunrise": {
+   "min": -3,
+   "max": -1,
+   "median": -2.0
+  },
+  "dhuhr": {
+   "min": -18,
+   "max": -17,
+   "median": -17.0
+  },
+  "asr": {
+   "min": -37,
+   "max": -35,
+   "median": -36.0
+  },
+  "maghrib": {
+   "min": -34,
+   "max": -32,
+   "median": -33.0
+  },
+  "isha": {
+   "min": -43,
+   "max": -40,
+   "median": -42.0
+  }
+ },
+ "سيدى برانى": {
+  "fajr": {
+   "min": 13,
+   "max": 15,
+   "median": 14.0
+  },
+  "sunrise": {
+   "min": 17,
+   "max": 18,
+   "median": 17.0
+  },
+  "dhuhr": {
+   "min": 21,
+   "max": 22,
+   "median": 21.0
+  },
+  "asr": {
+   "min": 25,
+   "max": 26,
+   "median": 26.0
+  },
+  "maghrib": {
+   "min": 25,
+   "max": 26,
+   "median": 26.0
+  },
+  "isha": {
+   "min": 28,
+   "max": 29,
+   "median": 28.0
+  }
+ },
+ "الضبعة": {
+  "fajr": {
+   "min": 7,
+   "max": 8,
+   "median": 7.0
+  },
+  "sunrise": {
+   "min": 8,
+   "max": 9,
+   "median": 9.0
+  },
+  "dhuhr": {
+   "min": 11,
+   "max": 12,
+   "median": 11.0
+  },
+  "asr": {
+   "min": 13,
+   "max": 14,
+   "median": 14.0
+  },
+  "maghrib": {
+   "min": 13,
+   "max": 14,
+   "median": 14.0
+  },
+  "isha": {
+   "min": 15,
+   "max": 16,
+   "median": 15.0
+  }
+ },
+ "العلمين": {
+  "fajr": {
+   "min": 5,
+   "max": 7,
+   "median": 6.0
+  },
+  "sunrise": {
+   "min": 7,
+   "max": 8,
+   "median": 7.5
+  },
+  "dhuhr": {
+   "min": 9,
+   "max": 10,
+   "median": 9.0
+  },
+  "asr": {
+   "min": 11,
+   "max": 12,
+   "median": 11.0
+  },
+  "maghrib": {
+   "min": 11,
+   "max": 12,
+   "median": 11.0
+  },
+  "isha": {
+   "min": 12,
+   "max": 13,
+   "median": 12.0
+  }
+ },
+ "واحة سيوة": {
+  "fajr": {
+   "min": 26,
+   "max": 27,
+   "median": 27.0
+  },
+  "sunrise": {
+   "min": 25,
+   "max": 25,
+   "median": 25.0
+  },
+  "dhuhr": {
+   "min": 23,
+   "max": 23,
+   "median": 23.0
+  },
+  "asr": {
+   "min": 20,
+   "max": 21,
+   "median": 21.0
+  },
+  "maghrib": {
+   "min": 20,
+   "max": 21,
+   "median": 21.0
+  },
+  "isha": {
+   "min": 19,
+   "max": 20,
+   "median": 19.5
+  }
+ },
+ "موط (الداخلة )": {
+  "fajr": {
+   "min": 26,
+   "max": 28,
+   "median": 28.0
+  },
+  "sunrise": {
+   "min": 19,
+   "max": 20,
+   "median": 20.0
+  },
+  "dhuhr": {
+   "min": 9,
+   "max": 10,
+   "median": 9.0
+  },
+  "asr": {
+   "min": -3,
+   "max": -2,
+   "median": -3.0
+  },
+  "maghrib": {
+   "min": -2,
+   "max": 0,
+   "median": -1.0
+  },
+  "isha": {
+   "min": -8,
+   "max": -6,
+   "median": -7.0
+  }
+ },
+ "الفرافرة": {
+  "fajr": {
+   "min": 24,
+   "max": 26,
+   "median": 25.0
+  },
+  "sunrise": {
+   "min": 19,
+   "max": 21,
+   "median": 20.0
+  },
+  "dhuhr": {
+   "min": 13,
+   "max": 14,
+   "median": 13.0
+  },
+  "asr": {
+   "min": 5,
+   "max": 6,
+   "median": 5.0
+  },
+  "maghrib": {
+   "min": 6,
+   "max": 7,
+   "median": 6.0
+  },
+  "isha": {
+   "min": 1,
+   "max": 3,
+   "median": 2.0
+  }
+ },
+ "البويطى": {
+  "fajr": {
+   "min": 16,
+   "max": 17,
+   "median": 17.0
+  },
+  "sunrise": {
+   "min": 13,
+   "max": 14,
+   "median": 13.0
+  },
+  "dhuhr": {
+   "min": 9,
+   "max": 10,
+   "median": 9.0
+  },
+  "asr": {
+   "min": 4,
+   "max": 5,
+   "median": 5.0
+  },
+  "maghrib": {
+   "min": 5,
+   "max": 6,
+   "median": 5.0
+  },
+  "isha": {
+   "min": 2,
+   "max": 3,
+   "median": 3.0
+  }
+ },
+ "باريس": {
+  "fajr": {
+   "min": 24,
+   "max": 26,
+   "median": 25.0
+  },
+  "sunrise": {
+   "min": 15,
+   "max": 17,
+   "median": 16.0
+  },
+  "dhuhr": {
+   "min": 3,
+   "max": 4,
+   "median": 3.0
+  },
+  "asr": {
+   "min": -13,
+   "max": -11,
+   "median": -12.0
+  },
+  "maghrib": {
+   "min": -10,
+   "max": -9,
+   "median": -10.0
+  },
+  "isha": {
+   "min": -18,
+   "max": -16,
+   "median": -17.0
+  }
+ },
+ "المحلة الكبرى": {
+  "fajr": {
+   "min": -3,
+   "max": -2,
+   "median": -3.0
+  },
+  "sunrise": {
+   "min": -1,
+   "max": 0,
+   "median": -1.0
+  },
+  "dhuhr": {
+   "min": 1,
+   "max": 2,
+   "median": 1.0
+  },
+  "asr": {
+   "min": 3,
+   "max": 4,
+   "median": 4.0
+  },
+  "maghrib": {
+   "min": 3,
+   "max": 4,
+   "median": 4.0
+  },
+  "isha": {
+   "min": 5,
+   "max": 6,
+   "median": 5.0
+  }
+ },
+ "الحمام": {
+  "fajr": {
+   "min": 4,
+   "max": 5,
+   "median": 4.0
+  },
+  "sunrise": {
+   "min": 5,
+   "max": 6,
+   "median": 6.0
+  },
+  "dhuhr": {
+   "min": 7,
+   "max": 8,
+   "median": 8.0
+  },
+  "asr": {
+   "min": 9,
+   "max": 10,
+   "median": 9.0
+  },
+  "maghrib": {
+   "min": 9,
+   "max": 10,
+   "median": 9.0
+  },
+  "isha": {
+   "min": 10,
+   "max": 11,
+   "median": 11.0
+  }
+ },
+ "نجع حمادى": {
+  "fajr": {
+   "min": 11,
+   "max": 13,
+   "median": 12.0
+  },
+  "sunrise": {
+   "min": 5,
+   "max": 6,
+   "median": 5.0
+  },
+  "dhuhr": {
+   "min": -4,
+   "max": -3,
+   "median": -4.0
+  },
+  "asr": {
+   "min": -15,
+   "max": -14,
+   "median": -14.0
+  },
+  "maghrib": {
+   "min": -14,
+   "max": -13,
+   "median": -13.0
+  },
+  "isha": {
+   "min": -20,
+   "max": -18,
+   "median": -19.0
+  }
+ },
+ "بورسعيـد": {
+  "fajr": {
+   "min": -10,
+   "max": -9,
+   "median": -9.0
+  },
+  "sunrise": {
+   "min": -8,
+   "max": -7,
+   "median": -7.0
+  },
+  "dhuhr": {
+   "min": -5,
+   "max": -4,
+   "median": -4.0
+  },
+  "asr": {
+   "min": -2,
+   "max": -1,
+   "median": -1.0
+  },
+  "maghrib": {
+   "min": -2,
+   "max": -1,
+   "median": -1.0
+  },
+  "isha": {
+   "min": 0,
+   "max": 1,
+   "median": 1.0
+  }
+ },
+ "السـويس": {
+  "fajr": {
+   "min": -5,
+   "max": -4,
+   "median": -4.0
+  },
+  "sunrise": {
+   "min": -5,
+   "max": -4,
+   "median": -5.0
+  },
+  "dhuhr": {
+   "min": -6,
+   "max": -5,
+   "median": -5.0
+  },
+  "asr": {
+   "min": -6,
+   "max": -5,
+   "median": -5.0
+  },
+  "maghrib": {
+   "min": -6,
+   "max": -5,
+   "median": -5.0
+  },
+  "isha": {
+   "min": -6,
+   "max": -5,
+   "median": -5.5
+  }
+ },
+ "العريـش": {
+  "fajr": {
+   "min": -15,
+   "max": -14,
+   "median": -15.0
+  },
+  "sunrise": {
+   "min": -13,
+   "max": -12,
+   "median": -13.0
+  },
+  "dhuhr": {
+   "min": -11,
+   "max": -10,
+   "median": -10.0
+  },
+  "asr": {
+   "min": -8,
+   "max": -7,
+   "median": -7.5
+  },
+  "maghrib": {
+   "min": -8,
+   "max": -7,
+   "median": -7.0
+  },
+  "isha": {
+   "min": -6,
+   "max": -5,
+   "median": -6.0
+  }
+ },
+ "دمنـهـور": {
+  "fajr": {
+   "min": -2,
+   "max": 0,
+   "median": -1.0
+  },
+  "sunrise": {
+   "min": 0,
+   "max": 1,
+   "median": 1.0
+  },
+  "dhuhr": {
+   "min": 3,
+   "max": 4,
+   "median": 3.0
+  },
+  "asr": {
+   "min": 5,
+   "max": 6,
+   "median": 6.0
+  },
+  "maghrib": {
+   "min": 5,
+   "max": 6,
+   "median": 6.0
+  },
+  "isha": {
+   "min": 7,
+   "max": 8,
+   "median": 7.0
+  }
+ },
+ "ادفو": {
+  "fajr": {
+   "min": 12,
+   "max": 14,
+   "median": 14.0
+  },
+  "sunrise": {
+   "min": 5,
+   "max": 6,
+   "median": 5.0
+  },
+  "dhuhr": {
+   "min": -7,
+   "max": -6,
+   "median": -6.0
+  },
+  "asr": {
+   "min": -20,
+   "max": -19,
+   "median": -20.0
+  },
+  "maghrib": {
+   "min": -18,
+   "max": -17,
+   "median": -18.0
+  },
+  "isha": {
+   "min": -26,
+   "max": -24,
+   "median": -25.0
+  }
+ },
+ "اسنا": {
+  "fajr": {
+   "min": 12,
+   "max": 14,
+   "median": 14.0
+  },
+  "sunrise": {
+   "min": 5,
+   "max": 6,
+   "median": 6.0
+  },
+  "dhuhr": {
+   "min": -6,
+   "max": -5,
+   "median": -5.0
+  },
+  "asr": {
+   "min": -18,
+   "max": -17,
+   "median": -18.0
+  },
+  "maghrib": {
+   "min": -17,
+   "max": -15,
+   "median": -16.0
+  },
+  "isha": {
+   "min": -23,
+   "max": -22,
+   "median": -23.0
+  }
+ },
+ "الأقصر": {
+  "fajr": {
+   "min": 11,
+   "max": 13,
+   "median": 12.0
+  },
+  "sunrise": {
+   "min": 4,
+   "max": 5,
+   "median": 5.0
+  },
+  "dhuhr": {
+   "min": -6,
+   "max": -5,
+   "median": -6.0
+  },
+  "asr": {
+   "min": -18,
+   "max": -16,
+   "median": -17.0
+  },
+  "maghrib": {
+   "min": -16,
+   "max": -15,
+   "median": -16.0
+  },
+  "isha": {
+   "min": -22,
+   "max": -21,
+   "median": -22.0
+  }
+ },
+ "القاهرة الجديدة": {
+  "fajr": {
+   "min": -1,
+   "max": 0,
+   "median": 0.0
+  },
+  "sunrise": {
+   "min": -1,
+   "max": 0,
+   "median": 0.0
+  },
+  "dhuhr": {
+   "min": -1,
+   "max": 0,
+   "median": -1.0
+  },
+  "asr": {
+   "min": -1,
+   "max": 0,
+   "median": -1.0
+  },
+  "maghrib": {
+   "min": -1,
+   "max": 0,
+   "median": -1.0
+  },
+  "isha": {
+   "min": -1,
+   "max": 0,
+   "median": -1.0
+  }
+ },
+ "توشكى": {
+  "fajr": {
+   "min": 25,
+   "max": 28,
+   "median": 27.0
+  },
+  "sunrise": {
+   "min": 15,
+   "max": 16,
+   "median": 16.0
+  },
+  "dhuhr": {
+   "min": -1,
+   "max": 0,
+   "median": -1.0
+  },
+  "asr": {
+   "min": -21,
+   "max": -18,
+   "median": -19.0
+  },
+  "maghrib": {
+   "min": -18,
+   "max": -16,
+   "median": -17.0
+  },
+  "isha": {
+   "min": -27,
+   "max": -25,
+   "median": -26.0
+  }
+ },
+ "الدلنجات": {
+  "fajr": {
+   "min": -1,
+   "max": 0,
+   "median": 0.0
+  },
+  "sunrise": {
+   "min": 1,
+   "max": 2,
+   "median": 1.0
+  },
+  "dhuhr": {
+   "min": 3,
+   "max": 3,
+   "median": 3.0
+  },
+  "asr": {
+   "min": 4,
+   "max": 5,
+   "median": 5.0
+  },
+  "maghrib": {
+   "min": 4,
+   "max": 5,
+   "median": 5.0
+  },
+  "isha": {
+   "min": 6,
+   "max": 7,
+   "median": 6.0
+  }
+ },
+ "كاترين": {
+  "fajr": {
+   "min": -5,
+   "max": -4,
+   "median": -4.0
+  },
+  "sunrise": {
+   "min": -8,
+   "max": -7,
+   "median": -7.0
+  },
+  "dhuhr": {
+   "min": -11,
+   "max": -10,
+   "median": -11.0
+  },
+  "asr": {
+   "min": -15,
+   "max": -14,
+   "median": -15.0
+  },
+  "maghrib": {
+   "min": -15,
+   "max": -14,
+   "median": -14.0
+  },
+  "isha": {
+   "min": -17,
+   "max": -16,
+   "median": -17.0
+  }
+ },
+ "السادات": {
+  "fajr": {
+   "min": 1,
+   "max": 2,
+   "median": 2.0
+  },
+  "sunrise": {
+   "min": 2,
+   "max": 3,
+   "median": 2.0
+  },
+  "dhuhr": {
+   "min": 3,
+   "max": 4,
+   "median": 3.0
+  },
+  "asr": {
+   "min": 3,
+   "max": 4,
+   "median": 4.0
+  },
+  "maghrib": {
+   "min": 3,
+   "max": 4,
+   "median": 4.0
+  },
+  "isha": {
+   "min": 4,
+   "max": 5,
+   "median": 4.0
+  }
+ },
+ "مدينة 15 مايو": {
+  "fajr": {
+   "min": 0,
+   "max": 1,
+   "median": 1.0
+  },
+  "sunrise": {
+   "min": 0,
+   "max": 1,
+   "median": 0.0
+  },
+  "dhuhr": {
+   "min": -1,
+   "max": 0,
+   "median": 0.0
+  },
+  "asr": {
+   "min": -1,
+   "max": -1,
+   "median": -1.0
+  },
+  "maghrib": {
+   "min": -1,
+   "max": -1,
+   "median": -1.0
+  },
+  "isha": {
+   "min": -2,
+   "max": -1,
+   "median": -1.0
+  }
+ },
+ "الصالحية الجديدة": {
+  "fajr": {
+   "min": -6,
+   "max": -4,
+   "median": -5.0
+  },
+  "sunrise": {
+   "min": -4,
+   "max": -4,
+   "median": -4.0
+  },
+  "dhuhr": {
+   "min": -3,
+   "max": -2,
+   "median": -3.0
+  },
+  "asr": {
+   "min": -2,
+   "max": -1,
+   "median": -1.0
+  },
+  "maghrib": {
+   "min": -2,
+   "max": -1,
+   "median": -1.0
+  },
+  "isha": {
+   "min": -1,
+   "max": 0,
+   "median": 0.0
+  }
+ },
+ "العاشر من رمضان": {
+  "fajr": {
+   "min": -3,
+   "max": -2,
+   "median": -3.0
+  },
+  "sunrise": {
+   "min": -3,
+   "max": -2,
+   "median": -2.0
+  },
+  "dhuhr": {
+   "min": -2,
+   "max": -1,
+   "median": -2.0
+  },
+  "asr": {
+   "min": -2,
+   "max": -1,
+   "median": -1.0
+  },
+  "maghrib": {
+   "min": -2,
+   "max": -1,
+   "median": -1.0
+  },
+  "isha": {
+   "min": -1,
+   "max": 0,
+   "median": -1.0
+  }
+ },
+ "العاصمة الادارية الجديدة": {
+  "fajr": {
+   "min": -2,
+   "max": -1,
+   "median": -2.0
+  },
+  "sunrise": {
+   "min": -2,
+   "max": -2,
+   "median": -2.0
+  },
+  "dhuhr": {
+   "min": -3,
+   "max": -2,
+   "median": -2.0
+  },
+  "asr": {
+   "min": -3,
+   "max": -2,
+   "median": -2.5
+  },
+  "maghrib": {
+   "min": -3,
+   "max": -2,
+   "median": -3.0
+  },
+  "isha": {
+   "min": -3,
+   "max": -2,
+   "median": -3.0
+  }
+ },
+ "العبور": {
+  "fajr": {
+   "min": -2,
+   "max": -1,
+   "median": -2.0
+  },
+  "sunrise": {
+   "min": -2,
+   "max": -1,
+   "median": -2.0
+  },
+  "dhuhr": {
+   "min": -2,
+   "max": -1,
+   "median": -1.0
+  },
+  "asr": {
+   "min": -1,
+   "max": 0,
+   "median": -1.0
+  },
+  "maghrib": {
+   "min": -1,
+   "max": 0,
+   "median": -1.0
+  },
+  "isha": {
+   "min": -1,
+   "max": 0,
+   "median": -0.5
+  }
+ },
+ "الفشن الجديدة": {
+  "fajr": {
+   "min": 7,
+   "max": 8,
+   "median": 8.0
+  },
+  "sunrise": {
+   "min": 5,
+   "max": 6,
+   "median": 5.0
+  },
+  "dhuhr": {
+   "min": 2,
+   "max": 3,
+   "median": 2.0
+  },
+  "asr": {
+   "min": -1,
+   "max": 0,
+   "median": -1.0
+  },
+  "maghrib": {
+   "min": -1,
+   "max": 0,
+   "median": -0.5
+  },
+  "isha": {
+   "min": -3,
+   "max": -2,
+   "median": -2.5
+  }
+ },
+ "المنصورة الجديدة": {
+  "fajr": {
+   "min": -7,
+   "max": -6,
+   "median": -7.0
+  },
+  "sunrise": {
+   "min": -5,
+   "max": -4,
+   "median": -4.0
+  },
+  "dhuhr": {
+   "min": -1,
+   "max": 0,
+   "median": -1.0
+  },
+  "asr": {
+   "min": 2,
+   "max": 3,
+   "median": 3.0
+  },
+  "maghrib": {
+   "min": 2,
+   "max": 3,
+   "median": 3.0
+  },
+  "isha": {
+   "min": 5,
+   "max": 6,
+   "median": 5.0
+  }
+ },
+ "النوبارية الجديدة": {
+  "fajr": {
+   "min": 2,
+   "max": 3,
+   "median": 2.0
+  },
+  "sunrise": {
+   "min": 3,
+   "max": 4,
+   "median": 3.0
+  },
+  "dhuhr": {
+   "min": 4,
+   "max": 5,
+   "median": 5.0
+  },
+  "asr": {
+   "min": 6,
+   "max": 7,
+   "median": 6.0
+  },
+  "maghrib": {
+   "min": 6,
+   "max": 7,
+   "median": 6.0
+  },
+  "isha": {
+   "min": 7,
+   "max": 8,
+   "median": 7.0
+  }
+ },
+ "بدر": {
+  "fajr": {
+   "min": -3,
+   "max": -2,
+   "median": -2.0
+  },
+  "sunrise": {
+   "min": -2,
+   "max": -2,
+   "median": -2.0
+  },
+  "dhuhr": {
+   "min": -2,
+   "max": -1,
+   "median": -2.0
+  },
+  "asr": {
+   "min": -2,
+   "max": -1,
+   "median": -2.0
+  },
+  "maghrib": {
+   "min": -2,
+   "max": -1,
+   "median": -2.0
+  },
+  "isha": {
+   "min": -2,
+   "max": -1,
+   "median": -2.0
+  }
+ },
+ "بنى مزار الجديدة": {
+  "fajr": {
+   "min": 7,
+   "max": 8,
+   "median": 8.0
+  },
+  "sunrise": {
+   "min": 4,
+   "max": 5,
+   "median": 5.0
+  },
+  "dhuhr": {
+   "min": 1,
+   "max": 2,
+   "median": 1.0
+  },
+  "asr": {
+   "min": -3,
+   "max": -2,
+   "median": -3.0
+  },
+  "maghrib": {
+   "min": -3,
+   "max": -2,
+   "median": -2.0
+  },
+  "isha": {
+   "min": -5,
+   "max": -4,
+   "median": -5.0
+  }
+ },
+ "بورسعيد الجديدة سلام": {
+  "fajr": {
+   "min": -10,
+   "max": -9,
+   "median": -9.5
+  },
+  "sunrise": {
+   "min": -8,
+   "max": -7,
+   "median": -8.0
+  },
+  "dhuhr": {
+   "min": -6,
+   "max": -5,
+   "median": -5.0
+  },
+  "asr": {
+   "min": -3,
+   "max": -2,
+   "median": -3.0
+  },
+  "maghrib": {
+   "min": -4,
+   "max": -3,
+   "median": -3.0
+  },
+  "isha": {
+   "min": -2,
+   "max": -1,
+   "median": -1.0
+  }
+ },
+ "بئر العبد الجديدة": {
+  "fajr": {
+   "min": -12,
+   "max": -11,
+   "median": -11.0
+  },
+  "sunrise": {
+   "min": -10,
+   "max": -9,
+   "median": -9.0
+  },
+  "dhuhr": {
+   "min": -7,
+   "max": -6,
+   "median": -7.0
+  },
+  "asr": {
+   "min": -5,
+   "max": -4,
+   "median": -4.0
+  },
+  "maghrib": {
+   "min": -5,
+   "max": -4,
+   "median": -4.0
+  },
+  "isha": {
+   "min": -3,
+   "max": -2,
+   "median": -3.0
+  }
+ },
+ "توشكى الجديدة": {
+  "fajr": {
+   "min": 24,
+   "max": 27,
+   "median": 26.0
+  },
+  "sunrise": {
+   "min": 14,
+   "max": 15,
+   "median": 15.0
+  },
+  "dhuhr": {
+   "min": -2,
+   "max": -1,
+   "median": -1.0
+  },
+  "asr": {
+   "min": -21,
+   "max": -18,
+   "median": -20.0
+  },
+  "maghrib": {
+   "min": -18,
+   "max": -16,
+   "median": -17.0
+  },
+  "isha": {
+   "min": -27,
+   "max": -25,
+   "median": -27.0
+  }
+ },
+ "حدائق العاصمة": {
+  "fajr": {
+   "min": -3,
+   "max": -2,
+   "median": -3.0
+  },
+  "sunrise": {
+   "min": -3,
+   "max": -2,
+   "median": -3.0
+  },
+  "dhuhr": {
+   "min": -3,
+   "max": -2,
+   "median": -2.5
+  },
+  "asr": {
+   "min": -3,
+   "max": -2,
+   "median": -2.0
+  },
+  "maghrib": {
+   "min": -3,
+   "max": -2,
+   "median": -2.0
+  },
+  "isha": {
+   "min": -3,
+   "max": -2,
+   "median": -2.0
+  }
+ },
+ "رشيد الجديدة": {
+  "fajr": {
+   "min": -3,
+   "max": -2,
+   "median": -2.0
+  },
+  "sunrise": {
+   "min": 0,
+   "max": 1,
+   "median": 0.0
+  },
+  "dhuhr": {
+   "min": 3,
+   "max": 4,
+   "median": 4.0
+  },
+  "asr": {
+   "min": 6,
+   "max": 7,
+   "median": 7.0
+  },
+  "maghrib": {
+   "min": 6,
+   "max": 7,
+   "median": 7.0
+  },
+  "isha": {
+   "min": 9,
+   "max": 10,
+   "median": 9.0
+  }
+ },
+ "رفح الجديدة": {
+  "fajr": {
+   "min": -17,
+   "max": -16,
+   "median": -17.0
+  },
+  "sunrise": {
+   "min": -15,
+   "max": -14,
+   "median": -14.0
+  },
+  "dhuhr": {
+   "min": -12,
+   "max": -11,
+   "median": -12.0
+  },
+  "asr": {
+   "min": -9,
+   "max": -8,
+   "median": -9.0
+  },
+  "maghrib": {
+   "min": -9,
+   "max": -8,
+   "median": -9.0
+  },
+  "isha": {
+   "min": -7,
+   "max": -6,
+   "median": -7.0
+  }
+ },
+ "سفنكس الجديدة": {
+  "fajr": {
+   "min": 2,
+   "max": 2,
+   "median": 2.0
+  },
+  "sunrise": {
+   "min": 2,
+   "max": 2,
+   "median": 2.0
+  },
+  "dhuhr": {
+   "min": 2,
+   "max": 3,
+   "median": 2.0
+  },
+  "asr": {
+   "min": 2,
+   "max": 3,
+   "median": 2.0
+  },
+  "maghrib": {
+   "min": 2,
+   "max": 3,
+   "median": 2.0
+  },
+  "isha": {
+   "min": 2,
+   "max": 3,
+   "median": 2.0
+  }
+ },
+ "شرق العوينات": {
+  "fajr": {
+   "min": 36,
+   "max": 39,
+   "median": 38.0
+  },
+  "sunrise": {
+   "min": 26,
+   "max": 27,
+   "median": 27.0
+  },
+  "dhuhr": {
+   "min": 10,
+   "max": 11,
+   "median": 10.0
+  },
+  "asr": {
+   "min": -10,
+   "max": -7,
+   "median": -8.0
+  },
+  "maghrib": {
+   "min": -7,
+   "max": -5,
+   "median": -6.0
+  },
+  "isha": {
+   "min": -16,
+   "max": -14,
+   "median": -16.0
+  }
+ },
+ "غرب النوبارية": {
+  "fajr": {
+   "min": 3,
+   "max": 4,
+   "median": 4.0
+  },
+  "sunrise": {
+   "min": 4,
+   "max": 5,
+   "median": 5.0
+  },
+  "dhuhr": {
+   "min": 6,
+   "max": 7,
+   "median": 6.0
+  },
+  "asr": {
+   "min": 7,
+   "max": 8,
+   "median": 8.0
+  },
+  "maghrib": {
+   "min": 7,
+   "max": 8,
+   "median": 8.0
+  },
+  "isha": {
+   "min": 8,
+   "max": 9,
+   "median": 9.0
+  }
+ }
+}

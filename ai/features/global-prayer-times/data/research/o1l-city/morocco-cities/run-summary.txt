@@ -1,0 +1,131 @@
+=== SURFACE ===
+months 2026-10, 2026-11 | cities 190 | identity mismatches 0 | cells 69540
+engine adhan 4.4.6 | 19/17 Shafi | Rounding.None | clock UTC+0 (fuseau GMT) | days 61
+
+=== COORDINATE SOLVE (61 days, 190 cities) ===
+national margins: fajr -0.44 | sunrise -4.77 | dhuhr 5.00 | asr 0.33 | magrib 5.50 | isha -0.07
+solved latitude 20.67 .. 35.73 | longitude -17.10 .. -1.04
+latitude-fit rms (bracket shape): median 0.41 min, worst 0.49
+
+=== PER-CITY SCORES AT ONE NATIONAL MARGIN SET (190 cities x 61 days) ===
+cells within 1 min 56394/69540 (81.10pc) | exact (census convention) 40739/69540 (58.58pc)
+cities perfect 34/190 | worst residual 4.60 min
+  fajr     within 11590/11590 (100.0pc) exact 5616/11590 (48.5pc) worst 0.97 @ c=145 أسول 2026-11-23
+  sunrise  within 4541/11590 (39.2pc) exact 2189/11590 (18.9pc) worst 4.60 @ c=145 أسول 2026-11-22
+  dhuhr    within 11590/11590 (100.0pc) exact 10947/11590 (94.5pc) worst 0.60 @ c=28 باب برد 2026-11-25
+  asr      within 11566/11590 (99.8pc) exact 9338/11590 (80.6pc) worst 1.30 @ c=308 آيت القاق 2026-11-28
+  magrib   within 5517/11590 (47.6pc) exact 2647/11590 (22.8pc) worst 3.70 @ c=145 أسول 2026-10-01
+  isha     within 11590/11590 (100.0pc) exact 10002/11590 (86.3pc) worst 0.99 @ c=46 تندرارة 2026-11-29
+
+  within-1 distribution: 366/366 34 | 360-365 7 | 350-359 7 | 340-349 4 | <340 138
+  city within-1 per 366: min 239 p05 243 median 290.5 p95 366 max 366
+  city exact per 366: min 167 median 200.5 max 314
+  city worst residual: median 1.73 p95 3.40 max 4.60
+
+=== TEN WORST CITIES (by worst residual) ===
+  c=145 أسول lat31.471 lon-5.167: within 244/366 exact 168 worst 4.6 @ 2026-11-22 sunrise | dominant sunrise 4.60 | bracket 17.54 DEM 1079 latRms 0.43 | fajr 61/61 sunrise 0/61 dhuhr 61/61 asr 61/61 magrib 0/61 isha 61/61
+  c=84 بولمان lat32.95 lon-4.758: within 242/366 exact 168 worst 4.58 @ 2026-11-26 sunrise | dominant sunrise 4.58 | bracket 17.10 DEM 1508 latRms 0.36 | fajr 61/61 sunrise 0/61 dhuhr 61/61 asr 59/61 magrib 0/61 isha 61/61
+  c=308 آيت القاق lat30.798 lon-7.804: within 239/366 exact 167 worst 4.48 @ 2026-11-30 sunrise | dominant sunrise 4.48 | bracket 16.96 DEM 1885 latRms 0.40 | fajr 61/61 sunrise 0/61 dhuhr 61/61 asr 56/61 magrib 0/61 isha 61/61
+  c=72 زاوية أحنصال lat31.381 lon-6.1: within 244/366 exact 172 worst 4.28 @ 2026-10-01 sunrise | dominant sunrise 4.28 | bracket 16.74 DEM 1596 latRms 0.42 | fajr 61/61 sunrise 0/61 dhuhr 61/61 asr 61/61 magrib 0/61 isha 61/61
+  c=317 إيكس lat30.527 lon-7.85: within 242/366 exact 177 worst 4.26 @ 2026-10-03 sunrise | dominant sunrise 4.26 | bracket 16.63 DEM 1360 latRms 0.39 | fajr 61/61 sunrise 0/61 dhuhr 61/61 asr 59/61 magrib 0/61 isha 61/61
+  c=309 أكدال أملشيل lat31.662 lon-5.508: within 244/366 exact 178 worst 4 @ 2026-10-01 sunrise | dominant sunrise 4.00 | bracket 16.17 DEM 1749 latRms 0.43 | fajr 61/61 sunrise 0/61 dhuhr 61/61 asr 61/61 magrib 0/61 isha 61/61
+  c=146 أمسمرير lat31.338 lon-5.833: within 244/366 exact 185 worst 3.76 @ 2026-11-30 sunrise | dominant sunrise 3.76 | bracket 15.86 DEM 1522 latRms 0.42 | fajr 61/61 sunrise 0/61 dhuhr 61/61 asr 61/61 magrib 0/61 isha 61/61
+  c=133 إملشيل lat31.739 lon-5.6: within 243/366 exact 173 worst 3.75 @ 2026-11-23 sunrise | dominant sunrise 3.75 | bracket 16.20 DEM 1749 latRms 0.41 | fajr 61/61 sunrise 0/61 dhuhr 61/61 asr 60/61 magrib 0/61 isha 61/61
+  c=120 إغرم lat29.717 lon-8.467: within 242/366 exact 175 worst 3.41 @ 2026-11-27 sunrise | dominant sunrise 3.41 | bracket 15.32 DEM 971 latRms 0.33 | fajr 61/61 sunrise 0/61 dhuhr 61/61 asr 59/61 magrib 0/61 isha 61/61
+  c=318 كرس lat31.169 lon-7.608: within 244/366 exact 168 worst 3.4 @ 2026-10-06 sunrise | dominant sunrise 3.40 | bracket 15.48 DEM 1965 latRms 0.40 | fajr 61/61 sunrise 0/61 dhuhr 61/61 asr 61/61 magrib 0/61 isha 61/61
+
+=== TEN WEAKEST CITIES (by within-1) ===
+  c=308 آيت القاق lat30.798 lon-7.804: within 239/366 exact 167 worst 4.48 @ 2026-11-30 sunrise | fajr 61/61 sunrise 0/61 dhuhr 61/61 asr 56/61 magrib 0/61 isha 61/61
+  c=46 تندرارة lat32.652 lon-2.025: within 242/366 exact 173 worst 2.73 @ 2026-10-06 sunrise | fajr 61/61 sunrise 0/61 dhuhr 61/61 asr 58/61 magrib 1/61 isha 61/61
+  c=76 دمنات lat31.388 lon-7.037: within 242/366 exact 181 worst 3.05 @ 2026-10-01 sunrise | fajr 61/61 sunrise 0/61 dhuhr 61/61 asr 59/61 magrib 0/61 isha 61/61
+  c=84 بولمان lat32.95 lon-4.758: within 242/366 exact 168 worst 4.58 @ 2026-11-26 sunrise | fajr 61/61 sunrise 0/61 dhuhr 61/61 asr 59/61 magrib 0/61 isha 61/61
+  c=120 إغرم lat29.717 lon-8.467: within 242/366 exact 175 worst 3.41 @ 2026-11-27 sunrise | fajr 61/61 sunrise 0/61 dhuhr 61/61 asr 59/61 magrib 0/61 isha 61/61
+  c=317 إيكس lat30.527 lon-7.85: within 242/366 exact 177 worst 4.26 @ 2026-10-03 sunrise | fajr 61/61 sunrise 0/61 dhuhr 61/61 asr 59/61 magrib 0/61 isha 61/61
+  c=92 تيزي وسلي lat34.399 lon-3.817: within 243/366 exact 173 worst 2.76 @ 2026-11-29 sunrise | fajr 61/61 sunrise 0/61 dhuhr 61/61 asr 60/61 magrib 0/61 isha 61/61
+  c=100 يفرن lat33.101 lon-5.1: within 243/366 exact 170 worst 2.55 @ 2026-10-05 sunrise | fajr 61/61 sunrise 0/61 dhuhr 61/61 asr 60/61 magrib 0/61 isha 61/61
+  c=103 آزرو lat33.109 lon-5.258: within 243/366 exact 188 worst 2.7 @ 2026-11-28 sunrise | fajr 61/61 sunrise 0/61 dhuhr 61/61 asr 60/61 magrib 0/61 isha 61/61
+  c=133 إملشيل lat31.739 lon-5.6: within 243/366 exact 173 worst 3.75 @ 2026-11-23 sunrise | fajr 61/61 sunrise 0/61 dhuhr 61/61 asr 60/61 magrib 0/61 isha 61/61
+
+=== NATIONAL OR CITY-VARYING ===
+  fajr     per-city margin sd 0.078 min | range -0.57..-0.21 | corr lat -0.03 lon 0.06
+  sunrise  per-city margin sd 1.570 min | range -8.89..-2.44 | corr lat 0.02 lon -0.29
+  dhuhr    per-city margin sd 0.036 min | range 4.95..5.07 | corr lat 0.15 lon 0.11
+  asr      per-city margin sd 0.146 min | range -0.02..0.64 | corr lat 0.07 lon -0.20
+  magrib   per-city margin sd 1.283 min | range 3.45..8.68 | corr lat 0.01 lon 0.31
+  isha     per-city margin sd 0.095 min | range -0.30..0.12 | corr lat 0.27 lon 0.09
+  bracket (maghrib-sunrise) offset: median 10.20 sd 2.851 range 5.85..17.54 | corr lat -0.01 lon 0.30
+  per-city margin set: 69540/69540 (100.00pc) vs national set 81.10pc | gain 13146 cells (18.90 pc)
+
+=== HORIZON TERM (sunrise/maghrib only) ===
+  bracket offset (maghrib - sunrise, minutes): median 10.20 sd 2.85 range 5.85..17.54
+  corr(bracket offset, DEM) 0.75 | corr with latitude -0.01 | corr with longitude 0.30
+  DEM    0-100  m:  21 cities | bracket offset median 6.56
+  DEM  100-300  m:  34 cities | bracket offset median 7.63
+  DEM  300-600  m:  41 cities | bracket offset median 9.21
+  DEM  600-1000 m:  45 cities | bracket offset median 11.46
+  DEM 1000-1500 m:  22 cities | bracket offset median 13.02
+  DEM 1500-3000 m:  27 cities | bracket offset median 13.96
+  sea-level bracket (DEM < 200 m, 40 cities): 6.93 | halfsum (mSr + mMg) 0.67
+  sea-level horizon margins: sunrise -3.13 maghrib 3.80
+
+=== GENERATOR MODEL SCORE (national on fajr/dhuhr/asr/isha, per-city horizon on sunrise/maghrib) ===
+  cells within 1 min 69496/69540 (99.94pc) | cities perfect 173/190 | worst 1.30
+    fajr     11590/11590 (100.00pc)
+    sunrise  11578/11590 (99.90pc)
+    dhuhr    11590/11590 (100.00pc)
+    asr      11566/11590 (99.79pc)
+    magrib   11582/11590 (99.93pc)
+    isha     11590/11590 (100.00pc)
+
+=== BETWEEN-MONTH STABILITY (per-city margin, October minus November, same solved point) ===
+  fajr     median -0.222 | mean -0.227 | sd 0.098 | max |delta| 0.45
+  sunrise  median -0.003 | mean -0.002 | sd 0.044 | max |delta| 0.13
+  dhuhr    median 0.002 | mean 0.006 | sd 0.060 | max |delta| 0.13
+  asr      median 0.315 | mean 0.304 | sd 0.107 | max |delta| 0.56
+  magrib   median -0.009 | mean -0.005 | sd 0.064 | max |delta| 0.17
+  isha     median 0.260 | mean 0.256 | sd 0.114 | max |delta| 0.59
+
+=== OUT OF SAMPLE (points + margins from October, scored on November) ===
+  cells within 1 min 27363/34200 (80.01pc) | cities perfect 28/190 | worst 4.76
+  October margins fajr -0.54 sunrise -4.84 dhuhr 5.00 asr 0.56 magrib 5.56 isha 0.04
+  full-window    fajr -0.44 sunrise -4.77 dhuhr 5.00 asr 0.33 magrib 5.50 isha -0.07
+    fajr     5699/5700 (100.0pc) worst 1.09
+    sunrise  2158/5700 (37.9pc) worst 4.76
+    dhuhr    5700/5700 (100.0pc) worst 0.57
+    asr      5522/5700 (96.9pc) worst 1.46
+    magrib   2592/5700 (45.5pc) worst 3.90
+    isha     5692/5700 (99.9pc) worst 1.11
+  out-of-sample with the per-city horizon term: 33960/34200 (99.30pc) | cities perfect 131/190
+
+=== REGIME DELTA (rebuilt national margin minus census-recorded margin) ===
+  fajr     rebuilt  -0.44 | recorded  -1 | delta   0.56
+  sunrise  rebuilt  -4.77 | recorded  -3 | delta  -1.77
+  dhuhr    rebuilt   5.00 | recorded   5 | delta   0.00
+  asr      rebuilt   0.33 | recorded   1 | delta  -0.67
+  magrib   rebuilt   5.50 | recorded   4 | delta   1.50
+  isha     rebuilt  -0.07 | recorded   0 | delta  -0.07
+
+=== SOLVED POINT vs WIKIDATA COORDINATE (98 matched cities) ===
+  latitude delta: median -0.21 sd 0.51 | longitude delta: median -0.01 sd 0.43
+  worst latitude mismatches:
+    c=77 القصيبة (wd القصيبة): solved 32.28,-6.07 vs 35.6940246,-5.5607057 | dlat -3.42 dlon -0.51
+    c=109 الرحامنة (wd الرحامنة): solved 32.26,-7.90 vs 35.0795654,-6.1540389 | dlat -2.82 dlon -1.74
+    c=103 آزرو (wd أزرو): solved 33.11,-5.26 vs 35.1596346,-3.7715293 | dlat -2.05 dlon -1.49
+    c=155 لمسيد (wd لمسيد): solved 27.76,-10.82 vs 26.00324,-13.29071 | dlat 1.76 dlon 2.47
+    c=102 زرهون (wd زرهون): solved 33.74,-5.55 vs 35.0607052,-5.1749259 | dlat -1.32 dlon -0.38
+    c=145 أسول (wd أسول): solved 31.47,-5.17 vs 31.94583333,-5.20833333 | dlat -0.47 dlon 0.04
+    c=72 زاوية أحنصال (wd زاوية أحنصال): solved 31.38,-6.10 vs 31.8333816,-6.1066302 | dlat -0.45 dlon 0.01
+    c=45 تالسينت (wd تالسينت): solved 32.21,-3.42 vs 32.6444,-3.48462 | dlat -0.43 dlon 0.07
+  scored at the WIKIDATA point with the same national margins: 26851/35868 (74.9pc) within 1 min | cities perfect 10/98
+    c=109 الرحامنة (wd الرحامنة): 16/366 worst 14.42 @ 2026-11-29 magrib
+    c=155 لمسيد (wd لمسيد): 0/366 worst 14.22 @ 2026-11-23 magrib
+    c=103 آزرو (wd أزرو): 29/366 worst 12.67 @ 2026-11-27 magrib
+    c=77 القصيبة (wd القصيبة): 29/366 worst 11.48 @ 2026-11-26 magrib
+    c=147 تازارين (wd تازارين): 0/366 worst 10.48 @ 2026-10-14 magrib
+    c=145 أسول (wd أسول): 244/366 worst 5.76 @ 2026-11-29 sunrise
+    c=102 زرهون (wd زرهون): 64/366 worst 5.55 @ 2026-11-26 magrib
+    c=72 زاوية أحنصال (wd زاوية أحنصال): 244/366 worst 5.11 @ 2026-11-29 sunrise
+
+=== CLOCK CHECK ===
+  printed dhuhr minus UTC solar transit over solved longitudes: median 5.00 min sd 0.29
+  a UTC+1 table would sit at +60; the observed value is the dhuhr margin on a UTC+0 clock.

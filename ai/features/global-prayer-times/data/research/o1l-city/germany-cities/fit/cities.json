@@ -1,0 +1,92 @@
+[
+ {
+  "tag": "leipzig",
+  "lat": 51.3406,
+  "lng": 12.3747
+ },
+ {
+  "tag": "dresden",
+  "lat": 51.0493,
+  "lng": 13.7381
+ },
+ {
+  "tag": "nurnberg",
+  "lat": 49.4539,
+  "lng": 11.0773
+ },
+ {
+  "tag": "bremen",
+  "lat": 53.0758,
+  "lng": 8.8072
+ },
+ {
+  "tag": "hannover",
+  "lat": 52.3745,
+  "lng": 9.7386
+ },
+ {
+  "tag": "dortmund",
+  "lat": 51.5142,
+  "lng": 7.4653
+ },
+ {
+  "tag": "essen",
+  "lat": 51.4582,
+  "lng": 7.0158
+ },
+ {
+  "tag": "duisburg",
+  "lat": 51.435,
+  "lng": 6.7596
+ },
+ {
+  "tag": "dusseldorf",
+  "lat": 51.2254,
+  "lng": 6.7763
+ },
+ {
+  "tag": "bonn",
+  "lat": 50.7353,
+  "lng": 7.1025
+ },
+ {
+  "tag": "mannheim",
+  "lat": 49.4893,
+  "lng": 8.4673
+ },
+ {
+  "tag": "karlsruhe",
+  "lat": 49.0069,
+  "lng": 8.4034
+ },
+ {
+  "tag": "freiburg",
+  "lat": 47.9961,
+  "lng": 7.8494
+ },
+ {
+  "tag": "kiel",
+  "lat": 54.3227,
+  "lng": 10.1356
+ },
+ {
+  "tag": "rostock",
+  "lat": 54.0887,
+  "lng": 12.14
+ },
+ {
+  "tag": "magdeburg",
+  "lat": 52.1315,
+  "lng": 11.6401
+ },
+ {
+  "tag": "erfurt",
+  "lat": 50.9778,
+  "lng": 11.0287
+ },
+ {
+  "tag": "saarbrucken",
+  "lat": 49.2344,
+  "lng": 6.9964
+ }
+]

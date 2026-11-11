@@ -1,0 +1,1460 @@
+[
+ {
+  "cc": "CA",
+  "city": "Ottawa",
+  "coords": {
+   "lat": 45.4215,
+   "lon": -75.6972,
+   "tz": "America/Toronto"
+  },
+  "tz": "America/Toronto",
+  "confPoint": {
+   "lat": 45.4014817,
+   "lon": -75.7413215,
+   "tz": "America/Toronto"
+  },
+  "confDeltaDeg": 0.044,
+  "recipe": {
+   "fajrAngle": 15,
+   "ishaAngle": 15,
+   "madhab": "shafi",
+   "highLatitudeRule": "middleofthenight",
+   "rounding": "none"
+  },
+  "prayers": {
+   "fajr": {
+    "K": 0.2,
+    "exact": 338,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 92.6,
+    "w1Pct": 100,
+    "meanAbs": 0.25
+   },
+   "sunrise": {
+    "K": 0.18,
+    "exact": 344,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 94.2,
+    "w1Pct": 100,
+    "meanAbs": 0.25
+   },
+   "dhuhr": {
+    "K": 0.18,
+    "exact": 364,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 99.7,
+    "w1Pct": 100,
+    "meanAbs": 0.26
+   },
+   "asr": {
+    "K": 0.13,
+    "exact": 43,
+    "within1": 152,
+    "n": 365,
+    "exactPct": 11.8,
+    "w1Pct": 41.6,
+    "meanAbs": 1.56
+   },
+   "maghrib": {
+    "K": 0.18,
+    "exact": 342,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 93.7,
+    "w1Pct": 100,
+    "meanAbs": 0.26
+   },
+   "isha": {
+    "K": 0.15,
+    "exact": 307,
+    "within1": 364,
+    "n": 365,
+    "exactPct": 84.1,
+    "w1Pct": 99.7,
+    "meanAbs": 0.45
+   }
+  },
+  "amplitudeFajrMin": -153,
+  "amplitudeIshaMin": 265
+ },
+ {
+  "cc": "PS",
+  "city": "Jerusalem",
+  "coords": {
+   "lat": 31.9038,
+   "lon": 35.2034,
+   "tz": "Asia/Hebron"
+  },
+  "tz": "Asia/Hebron",
+  "confPoint": {
+   "lat": 31.8292765,
+   "lon": 35.2265056,
+   "tz": "Asia/Jerusalem"
+  },
+  "confDeltaDeg": 0.075,
+  "recipe": {
+   "fajrAngle": 18.25,
+   "ishaAngle": 17.5,
+   "madhab": "shafi",
+   "highLatitudeRule": "middleofthenight",
+   "rounding": "none"
+  },
+  "prayers": {
+   "fajr": {
+    "K": 0.87,
+    "exact": 160,
+    "within1": 323,
+    "n": 365,
+    "exactPct": 43.8,
+    "w1Pct": 88.5,
+    "meanAbs": 1.03
+   },
+   "sunrise": {
+    "K": -2.95,
+    "exact": 169,
+    "within1": 355,
+    "n": 365,
+    "exactPct": 46.3,
+    "w1Pct": 97.3,
+    "meanAbs": 0.93
+   },
+   "dhuhr": {
+    "K": -0.55,
+    "exact": 350,
+    "within1": 363,
+    "n": 365,
+    "exactPct": 95.9,
+    "w1Pct": 99.5,
+    "meanAbs": 0.57
+   },
+   "asr": {
+    "K": -0.48,
+    "exact": 209,
+    "within1": 363,
+    "n": 365,
+    "exactPct": 57.3,
+    "w1Pct": 99.5,
+    "meanAbs": 0.77
+   },
+   "maghrib": {
+    "K": 5.92,
+    "exact": 232,
+    "within1": 363,
+    "n": 365,
+    "exactPct": 63.6,
+    "w1Pct": 99.5,
+    "meanAbs": 0.77
+   },
+   "isha": {
+    "K": 2.1,
+    "exact": 193,
+    "within1": 363,
+    "n": 365,
+    "exactPct": 52.9,
+    "w1Pct": 99.5,
+    "meanAbs": 0.82
+   }
+  },
+  "amplitudeFajrMin": -66,
+  "amplitudeIshaMin": 179
+ },
+ {
+  "cc": "CM",
+  "city": "Yaounde",
+  "coords": {
+   "lat": 3.848,
+   "lon": 11.5021,
+   "tz": "Africa/Douala"
+  },
+  "tz": "Africa/Douala",
+  "confPoint": {
+   "lat": 16.0062771,
+   "lon": -13.6912718,
+   "tz": "Africa/Dakar"
+  },
+  "confDeltaDeg": 25.193,
+  "recipe": {
+   "fajrAngle": 10.25,
+   "ishaAngle": 20,
+   "madhab": "hanafi",
+   "highLatitudeRule": "middleofthenight",
+   "rounding": "none"
+  },
+  "prayers": {
+   "fajr": {
+    "K": 19.83,
+    "exact": 15,
+    "within1": 52,
+    "n": 365,
+    "exactPct": 4.1,
+    "w1Pct": 14.2,
+    "meanAbs": 4.57
+   },
+   "sunrise": {
+    "K": 40.13,
+    "exact": 5,
+    "within1": 17,
+    "n": 365,
+    "exactPct": 1.4,
+    "w1Pct": 4.7,
+    "meanAbs": 13.52
+   },
+   "dhuhr": {
+    "K": 90.37,
+    "exact": 13,
+    "within1": 42,
+    "n": 365,
+    "exactPct": 3.6,
+    "w1Pct": 11.5,
+    "meanAbs": 7.17
+   },
+   "asr": {
+    "K": 9.58,
+    "exact": 13,
+    "within1": 43,
+    "n": 365,
+    "exactPct": 3.6,
+    "w1Pct": 11.8,
+    "meanAbs": 8.19
+   },
+   "maghrib": {
+    "K": 40.63,
+    "exact": 8,
+    "within1": 15,
+    "n": 365,
+    "exactPct": 2.2,
+    "w1Pct": 4.1,
+    "meanAbs": 13.01
+   },
+   "isha": {
+    "K": 15.8,
+    "exact": 5,
+    "within1": 17,
+    "n": 365,
+    "exactPct": 1.4,
+    "w1Pct": 4.7,
+    "meanAbs": 13.04
+   }
+  },
+  "amplitudeFajrMin": -22,
+  "amplitudeIshaMin": 51
+ },
+ {
+  "cc": "LV",
+  "city": "Riga",
+  "coords": {
+   "lat": 56.9496,
+   "lon": 24.1052,
+   "tz": "Europe/Riga"
+  },
+  "tz": "Europe/Riga",
+  "confPoint": {
+   "lat": 56.9608902,
+   "lon": 24.1339105,
+   "tz": "Europe/Riga"
+  },
+  "confDeltaDeg": 0.029,
+  "recipe": {
+   "fajrAngle": 14,
+   "ishaAngle": 15.3,
+   "madhab": "shafi",
+   "highLatitudeRule": "twilightangle",
+   "rounding": "none"
+  },
+  "prayers": {
+   "fajr": {
+    "K": -6.18,
+    "exact": 60,
+    "within1": 190,
+    "n": 365,
+    "exactPct": 16.4,
+    "w1Pct": 52.1,
+    "meanAbs": 2.65
+   },
+   "sunrise": {
+    "K": -0.42,
+    "exact": 212,
+    "within1": 249,
+    "n": 365,
+    "exactPct": 58.1,
+    "w1Pct": 68.2,
+    "meanAbs": 0.95
+   },
+   "dhuhr": {
+    "K": 0.47,
+    "exact": 312,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 85.5,
+    "w1Pct": 100,
+    "meanAbs": 0.29
+   },
+   "asr": {
+    "K": 0.48,
+    "exact": 131,
+    "within1": 243,
+    "n": 365,
+    "exactPct": 35.9,
+    "w1Pct": 66.6,
+    "meanAbs": 1.09
+   },
+   "maghrib": {
+    "K": 0.42,
+    "exact": 195,
+    "within1": 252,
+    "n": 365,
+    "exactPct": 53.4,
+    "w1Pct": 69,
+    "meanAbs": 0.91
+   },
+   "isha": {
+    "K": -3.22,
+    "exact": 80,
+    "within1": 180,
+    "n": 365,
+    "exactPct": 21.9,
+    "w1Pct": 49.3,
+    "meanAbs": 2.85
+   }
+  },
+  "amplitudeFajrMin": -217,
+  "amplitudeIshaMin": 328
+ },
+ {
+  "cc": "MK",
+  "city": "Skopje",
+  "coords": {
+   "lat": 42,
+   "lon": 21.43,
+   "tz": "Europe/Skopje"
+  },
+  "tz": "Europe/Skopje",
+  "confPoint": {
+   "lat": 42.0016061,
+   "lon": 21.3231736,
+   "tz": "Europe/Skopje"
+  },
+  "confDeltaDeg": 0.107,
+  "recipe": {
+   "fajrAngle": 16,
+   "ishaAngle": 15.5,
+   "madhab": "shafi",
+   "highLatitudeRule": "seventhofthenight",
+   "rounding": "none"
+  },
+  "prayers": {
+   "fajr": {
+    "K": 48.58,
+    "exact": 41,
+    "within1": 117,
+    "n": 365,
+    "exactPct": 11.2,
+    "w1Pct": 32.1,
+    "meanAbs": 3.31
+   },
+   "sunrise": {
+    "K": -5.22,
+    "exact": 189,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 51.8,
+    "w1Pct": 100,
+    "meanAbs": 0.54
+   },
+   "dhuhr": {
+    "K": 25.08,
+    "exact": 13,
+    "within1": 42,
+    "n": 365,
+    "exactPct": 3.6,
+    "w1Pct": 11.5,
+    "meanAbs": 7.17
+   },
+   "asr": {
+    "K": 3.83,
+    "exact": 87,
+    "within1": 282,
+    "n": 365,
+    "exactPct": 23.8,
+    "w1Pct": 77.3,
+    "meanAbs": 1.03
+   },
+   "maghrib": {
+    "K": 6.33,
+    "exact": 72,
+    "within1": 271,
+    "n": 365,
+    "exactPct": 19.7,
+    "w1Pct": 74.2,
+    "meanAbs": 1.08
+   },
+   "isha": {
+    "K": 13.73,
+    "exact": 109,
+    "within1": 242,
+    "n": 365,
+    "exactPct": 29.9,
+    "w1Pct": 66.3,
+    "meanAbs": 6.46
+   }
+  },
+  "amplitudeFajrMin": -109,
+  "amplitudeIshaMin": 241
+ },
+ {
+  "cc": "MD",
+  "city": "Chisinau",
+  "coords": {
+   "lat": 47.0105,
+   "lon": 28.8638,
+   "tz": "Europe/Chisinau"
+  },
+  "tz": "Europe/Chisinau",
+  "confPoint": {
+   "lat": 47.045,
+   "lon": 28.803,
+   "tz": "Europe/Chisinau"
+  },
+  "confDeltaDeg": 0.061,
+  "recipe": {
+   "fajrAngle": 17.75,
+   "ishaAngle": 13,
+   "madhab": "shafi",
+   "highLatitudeRule": "twilightangle",
+   "rounding": "none"
+  },
+  "prayers": {
+   "fajr": {
+    "K": -0.73,
+    "exact": 131,
+    "within1": 258,
+    "n": 365,
+    "exactPct": 35.9,
+    "w1Pct": 70.7,
+    "meanAbs": 3.19
+   },
+   "sunrise": {
+    "K": -2.45,
+    "exact": 107,
+    "within1": 345,
+    "n": 365,
+    "exactPct": 29.3,
+    "w1Pct": 94.5,
+    "meanAbs": 1.9
+   },
+   "dhuhr": {
+    "K": 0.52,
+    "exact": 320,
+    "within1": 356,
+    "n": 365,
+    "exactPct": 87.7,
+    "w1Pct": 97.5,
+    "meanAbs": 5.38
+   },
+   "asr": {
+    "K": 0.47,
+    "exact": 172,
+    "within1": 355,
+    "n": 365,
+    "exactPct": 47.1,
+    "w1Pct": 97.3,
+    "meanAbs": 1.76
+   },
+   "maghrib": {
+    "K": 2.57,
+    "exact": 81,
+    "within1": 339,
+    "n": 365,
+    "exactPct": 22.2,
+    "w1Pct": 92.9,
+    "meanAbs": 1.97
+   },
+   "isha": {
+    "K": 8.68,
+    "exact": 67,
+    "within1": 118,
+    "n": 365,
+    "exactPct": 18.4,
+    "w1Pct": 32.3,
+    "meanAbs": 8.01
+   }
+  },
+  "amplitudeFajrMin": -170,
+  "amplitudeIshaMin": 257
+ },
+ {
+  "cc": "HU",
+  "city": "Budapest",
+  "coords": {
+   "lat": 47.4979,
+   "lon": 19.0402,
+   "tz": "Europe/Budapest"
+  },
+  "tz": "Europe/Budapest",
+  "confPoint": {
+   "lat": 47.4707851,
+   "lon": 19.0442319,
+   "tz": "Europe/Budapest"
+  },
+  "confDeltaDeg": 0.027,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "madhab": "shafi",
+   "highLatitudeRule": "twilightangle",
+   "rounding": "none"
+  },
+  "prayers": {
+   "fajr": {
+    "K": 0.08,
+    "exact": 305,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 83.6,
+    "w1Pct": 100,
+    "meanAbs": 0.29
+   },
+   "sunrise": {
+    "K": -0.03,
+    "exact": 338,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 92.6,
+    "w1Pct": 100,
+    "meanAbs": 0.24
+   },
+   "dhuhr": {
+    "K": -0.03,
+    "exact": 360,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 98.6,
+    "w1Pct": 100,
+    "meanAbs": 0.25
+   },
+   "asr": {
+    "K": -0.02,
+    "exact": 51,
+    "within1": 205,
+    "n": 365,
+    "exactPct": 14,
+    "w1Pct": 56.2,
+    "meanAbs": 1.34
+   },
+   "maghrib": {
+    "K": 0.02,
+    "exact": 334,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 91.5,
+    "w1Pct": 100,
+    "meanAbs": 0.27
+   },
+   "isha": {
+    "K": -0.03,
+    "exact": 300,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 82.2,
+    "w1Pct": 100,
+    "meanAbs": 0.31
+   }
+  },
+  "amplitudeFajrMin": -186,
+  "amplitudeIshaMin": 297
+ },
+ {
+  "cc": "CZ",
+  "city": "Prague",
+  "coords": {
+   "lat": 50.0755,
+   "lon": 14.4378,
+   "tz": "Europe/Prague"
+  },
+  "tz": "Europe/Prague",
+  "confPoint": {
+   "lat": 50.0832958,
+   "lon": 14.4307213,
+   "tz": "Europe/Prague"
+  },
+  "confDeltaDeg": 0.008,
+  "recipe": {
+   "fajrAngle": 12,
+   "ishaAngle": 12,
+   "madhab": "shafi",
+   "highLatitudeRule": "middleofthenight",
+   "rounding": "none"
+  },
+  "prayers": {
+   "fajr": {
+    "K": -0.52,
+    "exact": 98,
+    "within1": 304,
+    "n": 365,
+    "exactPct": 26.8,
+    "w1Pct": 83.3,
+    "meanAbs": 1.08
+   },
+   "sunrise": {
+    "K": -3.17,
+    "exact": 107,
+    "within1": 285,
+    "n": 365,
+    "exactPct": 29.3,
+    "w1Pct": 78.1,
+    "meanAbs": 1.28
+   },
+   "dhuhr": {
+    "K": 4.47,
+    "exact": 205,
+    "within1": 359,
+    "n": 365,
+    "exactPct": 56.2,
+    "w1Pct": 98.4,
+    "meanAbs": 0.52
+   },
+   "asr": {
+    "K": -0.3,
+    "exact": 60,
+    "within1": 234,
+    "n": 365,
+    "exactPct": 16.4,
+    "w1Pct": 64.1,
+    "meanAbs": 1.24
+   },
+   "maghrib": {
+    "K": 2.68,
+    "exact": 59,
+    "within1": 268,
+    "n": 365,
+    "exactPct": 16.2,
+    "w1Pct": 73.4,
+    "meanAbs": 1.14
+   },
+   "isha": {
+    "K": -0.13,
+    "exact": 49,
+    "within1": 222,
+    "n": 365,
+    "exactPct": 13.4,
+    "w1Pct": 60.8,
+    "meanAbs": 1.36
+   }
+  },
+  "amplitudeFajrMin": -191,
+  "amplitudeIshaMin": 304
+ },
+ {
+  "cc": "PL",
+  "city": "Warsaw",
+  "coords": {
+   "lat": 52.2297,
+   "lon": 21.0122,
+   "tz": "Europe/Warsaw"
+  },
+  "tz": "Europe/Warsaw",
+  "confPoint": {
+   "lat": 52.215352055188,
+   "lon": 20.959826968611,
+   "tz": "Europe/Warsaw"
+  },
+  "confDeltaDeg": 0.052,
+  "recipe": {
+   "fajrAngle": 10,
+   "ishaAngle": 10.3,
+   "madhab": "shafi",
+   "highLatitudeRule": "twilightangle",
+   "rounding": "none"
+  },
+  "prayers": {
+   "fajr": {
+    "K": -39.63,
+    "exact": 84,
+    "within1": 174,
+    "n": 365,
+    "exactPct": 23,
+    "w1Pct": 47.7,
+    "meanAbs": 1.78
+   },
+   "sunrise": {
+    "K": -0.98,
+    "exact": 112,
+    "within1": 282,
+    "n": 365,
+    "exactPct": 30.7,
+    "w1Pct": 77.3,
+    "meanAbs": 0.98
+   },
+   "dhuhr": {
+    "K": 1.17,
+    "exact": 211,
+    "within1": 362,
+    "n": 365,
+    "exactPct": 57.8,
+    "w1Pct": 99.2,
+    "meanAbs": 0.49
+   },
+   "asr": {
+    "K": 1.65,
+    "exact": 116,
+    "within1": 277,
+    "n": 365,
+    "exactPct": 31.8,
+    "w1Pct": 75.9,
+    "meanAbs": 0.96
+   },
+   "maghrib": {
+    "K": 2.6,
+    "exact": 119,
+    "within1": 311,
+    "n": 365,
+    "exactPct": 32.6,
+    "w1Pct": 85.2,
+    "meanAbs": 0.9
+   },
+   "isha": {
+    "K": 32.02,
+    "exact": 30,
+    "within1": 74,
+    "n": 365,
+    "exactPct": 8.2,
+    "w1Pct": 20.3,
+    "meanAbs": 7.87
+   }
+  },
+  "amplitudeFajrMin": -191,
+  "amplitudeIshaMin": 279
+ },
+ {
+  "cc": "RO",
+  "city": "Bucharest",
+  "coords": {
+   "lat": 44.4268,
+   "lon": 26.1025,
+   "tz": "Europe/Bucharest"
+  },
+  "tz": "Europe/Bucharest",
+  "confPoint": {
+   "lat": 44.4484909,
+   "lon": 26.0463042,
+   "tz": "Europe/Bucharest"
+  },
+  "confDeltaDeg": 0.056,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 18,
+   "madhab": "shafi",
+   "highLatitudeRule": "middleofthenight",
+   "rounding": "none"
+  },
+  "prayers": {
+   "fajr": {
+    "K": -0.03,
+    "exact": 249,
+    "within1": 362,
+    "n": 365,
+    "exactPct": 68.2,
+    "w1Pct": 99.2,
+    "meanAbs": 0.4
+   },
+   "sunrise": {
+    "K": 0.05,
+    "exact": 266,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 72.9,
+    "w1Pct": 100,
+    "meanAbs": 0.34
+   },
+   "dhuhr": {
+    "K": 0.03,
+    "exact": 349,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 95.6,
+    "w1Pct": 100,
+    "meanAbs": 0.25
+   },
+   "asr": {
+    "K": -0.03,
+    "exact": 190,
+    "within1": 360,
+    "n": 365,
+    "exactPct": 52.1,
+    "w1Pct": 98.6,
+    "meanAbs": 0.52
+   },
+   "maghrib": {
+    "K": 0.48,
+    "exact": 254,
+    "within1": 361,
+    "n": 365,
+    "exactPct": 69.6,
+    "w1Pct": 98.9,
+    "meanAbs": 0.39
+   },
+   "isha": {
+    "K": -0.02,
+    "exact": 312,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 85.5,
+    "w1Pct": 100,
+    "meanAbs": 0.27
+   }
+  },
+  "amplitudeFajrMin": -157,
+  "amplitudeIshaMin": 269
+ },
+ {
+  "cc": "ER",
+  "city": "Asmara",
+  "coords": {
+   "lat": 15.3229,
+   "lon": 38.9251,
+   "tz": "Africa/Asmara"
+  },
+  "tz": "Africa/Asmara",
+  "confPoint": {
+   "lat": 15.3453231,
+   "lon": 38.9394081,
+   "tz": "Africa/Abidjan"
+  },
+  "confDeltaDeg": 0.022,
+  "recipe": {
+   "fajrAngle": 17.75,
+   "ishaAngle": 16.8,
+   "madhab": "shafi",
+   "highLatitudeRule": "middleofthenight",
+   "rounding": "none"
+  },
+  "prayers": {
+   "fajr": {
+    "K": -181.17,
+    "exact": 343,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 94,
+    "w1Pct": 100,
+    "meanAbs": 0.25
+   },
+   "sunrise": {
+    "K": -180.05,
+    "exact": 353,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 96.7,
+    "w1Pct": 100,
+    "meanAbs": 0.25
+   },
+   "dhuhr": {
+    "K": -180,
+    "exact": 352,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 96.4,
+    "w1Pct": 100,
+    "meanAbs": 0.25
+   },
+   "asr": {
+    "K": -180.15,
+    "exact": 65,
+    "within1": 282,
+    "n": 365,
+    "exactPct": 17.8,
+    "w1Pct": 77.3,
+    "meanAbs": 1.04
+   },
+   "maghrib": {
+    "K": -180.05,
+    "exact": 356,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 97.5,
+    "w1Pct": 100,
+    "meanAbs": 0.24
+   },
+   "isha": {
+    "K": -179.17,
+    "exact": 350,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 95.9,
+    "w1Pct": 100,
+    "meanAbs": 0.25
+   }
+  },
+  "amplitudeFajrMin": -56,
+  "amplitudeIshaMin": 49
+ },
+ {
+  "cc": "CV",
+  "city": "Praia",
+  "coords": {
+   "lat": 14.933,
+   "lon": -23.5133,
+   "tz": "Atlantic/Cape_Verde"
+  },
+  "tz": "Atlantic/Cape_Verde",
+  "confPoint": {
+   "lat": 14.9191684,
+   "lon": -23.5117241,
+   "tz": "Atlantic/Cape_Verde"
+  },
+  "confDeltaDeg": 0.014,
+  "recipe": {
+   "fajrAngle": 15,
+   "ishaAngle": 14.8,
+   "madhab": "shafi",
+   "highLatitudeRule": "middleofthenight",
+   "rounding": "none"
+  },
+  "prayers": {
+   "fajr": {
+    "K": -0.02,
+    "exact": 361,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 98.9,
+    "w1Pct": 100,
+    "meanAbs": 0.24
+   },
+   "sunrise": {
+    "K": 0,
+    "exact": 357,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 97.8,
+    "w1Pct": 100,
+    "meanAbs": 0.26
+   },
+   "dhuhr": {
+    "K": 0,
+    "exact": 364,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 99.7,
+    "w1Pct": 100,
+    "meanAbs": 0.26
+   },
+   "asr": {
+    "K": -0.02,
+    "exact": 126,
+    "within1": 364,
+    "n": 365,
+    "exactPct": 34.5,
+    "w1Pct": 99.7,
+    "meanAbs": 0.67
+   },
+   "maghrib": {
+    "K": 0,
+    "exact": 359,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 98.4,
+    "w1Pct": 100,
+    "meanAbs": 0.25
+   },
+   "isha": {
+    "K": 0.88,
+    "exact": 355,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 97.3,
+    "w1Pct": 100,
+    "meanAbs": 0.25
+   }
+  },
+  "amplitudeFajrMin": -53,
+  "amplitudeIshaMin": 46
+ },
+ {
+  "cc": "KM",
+  "city": "Moroni",
+  "coords": {
+   "lat": -11.7172,
+   "lon": 43.2473,
+   "tz": "Indian/Comoros"
+  },
+  "tz": "Indian/Comoros",
+  "confPoint": {
+   "lat": -12.1992451,
+   "lon": 44.2751395,
+   "tz": "Africa/Nairobi"
+  },
+  "confDeltaDeg": 1.028,
+  "recipe": {
+   "fajrAngle": 10,
+   "ishaAngle": 10,
+   "madhab": "hanafi",
+   "highLatitudeRule": "middleofthenight",
+   "rounding": "none"
+  },
+  "prayers": {
+   "fajr": {
+    "K": -33.6,
+    "exact": 119,
+    "within1": 259,
+    "n": 365,
+    "exactPct": 32.6,
+    "w1Pct": 71,
+    "meanAbs": 1.07
+   },
+   "sunrise": {
+    "K": -27.95,
+    "exact": 11,
+    "within1": 48,
+    "n": 365,
+    "exactPct": 3,
+    "w1Pct": 13.2,
+    "meanAbs": 14.48
+   },
+   "dhuhr": {
+    "K": 3.73,
+    "exact": 160,
+    "within1": 321,
+    "n": 365,
+    "exactPct": 43.8,
+    "w1Pct": 87.9,
+    "meanAbs": 0.81
+   },
+   "asr": {
+    "K": -60.4,
+    "exact": 8,
+    "within1": 22,
+    "n": 365,
+    "exactPct": 2.2,
+    "w1Pct": 6,
+    "meanAbs": 6.39
+   },
+   "maghrib": {
+    "K": 0.03,
+    "exact": 132,
+    "within1": 288,
+    "n": 365,
+    "exactPct": 36.2,
+    "w1Pct": 78.9,
+    "meanAbs": 1.02
+   },
+   "isha": {
+    "K": 36.07,
+    "exact": 54,
+    "within1": 153,
+    "n": 365,
+    "exactPct": 14.8,
+    "w1Pct": 41.9,
+    "meanAbs": 1.94
+   }
+  },
+  "amplitudeFajrMin": 36,
+  "amplitudeIshaMin": -42
+ },
+ {
+  "cc": "UY",
+  "city": "Montevideo",
+  "coords": {
+   "lat": -34.9011,
+   "lon": -56.1645,
+   "tz": "America/Montevideo"
+  },
+  "tz": "America/Montevideo",
+  "confPoint": {
+   "lat": -34.909210111066,
+   "lon": -56.194521188736,
+   "tz": "America/Montevideo"
+  },
+  "confDeltaDeg": 0.03,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 18,
+   "madhab": "hanafi",
+   "highLatitudeRule": "middleofthenight",
+   "rounding": "none"
+  },
+  "prayers": {
+   "fajr": {
+    "K": 0.17,
+    "exact": 351,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 96.2,
+    "w1Pct": 100,
+    "meanAbs": 0.25
+   },
+   "sunrise": {
+    "K": 0.13,
+    "exact": 357,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 97.8,
+    "w1Pct": 100,
+    "meanAbs": 0.26
+   },
+   "dhuhr": {
+    "K": 0.08,
+    "exact": 357,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 97.8,
+    "w1Pct": 100,
+    "meanAbs": 0.25
+   },
+   "asr": {
+    "K": 0.05,
+    "exact": 160,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 43.8,
+    "w1Pct": 100,
+    "meanAbs": 0.56
+   },
+   "maghrib": {
+    "K": 0.08,
+    "exact": 355,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 97.3,
+    "w1Pct": 100,
+    "meanAbs": 0.25
+   },
+   "isha": {
+    "K": 0.15,
+    "exact": 328,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 89.9,
+    "w1Pct": 100,
+    "meanAbs": 0.27
+   }
+  },
+  "amplitudeFajrMin": 136,
+  "amplitudeIshaMin": -142
+ },
+ {
+  "cc": "NI",
+  "city": "Managua",
+  "coords": {
+   "lat": 12.115,
+   "lon": -86.2362,
+   "tz": "America/Managua"
+  },
+  "tz": "America/Managua",
+  "confPoint": {
+   "lat": 12.1131841,
+   "lon": -86.27302,
+   "tz": "America/Managua"
+  },
+  "confDeltaDeg": 0.037,
+  "recipe": {
+   "fajrAngle": 14.5,
+   "ishaAngle": 14.5,
+   "madhab": "shafi",
+   "highLatitudeRule": "middleofthenight",
+   "rounding": "none"
+  },
+  "prayers": {
+   "fajr": {
+    "K": -2.03,
+    "exact": 324,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 88.8,
+    "w1Pct": 100,
+    "meanAbs": 0.25
+   },
+   "sunrise": {
+    "K": 0.13,
+    "exact": 360,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 98.6,
+    "w1Pct": 100,
+    "meanAbs": 0.27
+   },
+   "dhuhr": {
+    "K": 0.17,
+    "exact": 360,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 98.6,
+    "w1Pct": 100,
+    "meanAbs": 0.26
+   },
+   "asr": {
+    "K": 0.07,
+    "exact": 82,
+    "within1": 297,
+    "n": 365,
+    "exactPct": 22.5,
+    "w1Pct": 81.4,
+    "meanAbs": 1
+   },
+   "maghrib": {
+    "K": 2.15,
+    "exact": 363,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 99.5,
+    "w1Pct": 100,
+    "meanAbs": 0.25
+   },
+   "isha": {
+    "K": 7.3,
+    "exact": 343,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 94,
+    "w1Pct": 100,
+    "meanAbs": 0.25
+   }
+  },
+  "amplitudeFajrMin": -43,
+  "amplitudeIshaMin": 37
+ },
+ {
+  "cc": "AR",
+  "city": "Buenos Aires",
+  "coords": {
+   "lat": -34.6037,
+   "lon": -58.3816,
+   "tz": "America/Argentina/Buenos_Aires"
+  },
+  "tz": "America/Argentina/Buenos_Aires",
+  "confPoint": {
+   "lat": -34.604697623394,
+   "lon": -58.407829216999,
+   "tz": "America/Argentina/Buenos_Aires"
+  },
+  "confDeltaDeg": 0.026,
+  "recipe": {
+   "fajrAngle": 17.5,
+   "ishaAngle": 10,
+   "madhab": "shafi",
+   "highLatitudeRule": "seventhofthenight",
+   "rounding": "none"
+  },
+  "prayers": {
+   "fajr": {
+    "K": -4.63,
+    "exact": 188,
+    "within1": 251,
+    "n": 365,
+    "exactPct": 51.5,
+    "w1Pct": 68.8,
+    "meanAbs": 8.2
+   },
+   "sunrise": {
+    "K": 0.13,
+    "exact": 357,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 97.8,
+    "w1Pct": 100,
+    "meanAbs": 0.24
+   },
+   "dhuhr": {
+    "K": 20.85,
+    "exact": 15,
+    "within1": 43,
+    "n": 365,
+    "exactPct": 4.1,
+    "w1Pct": 11.8,
+    "meanAbs": 7.17
+   },
+   "asr": {
+    "K": 34.32,
+    "exact": 6,
+    "within1": 19,
+    "n": 365,
+    "exactPct": 1.6,
+    "w1Pct": 5.2,
+    "meanAbs": 21.16
+   },
+   "maghrib": {
+    "K": 0.12,
+    "exact": 356,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 97.5,
+    "w1Pct": 100,
+    "meanAbs": 0.26
+   },
+   "isha": {
+    "K": 97.02,
+    "exact": 2,
+    "within1": 7,
+    "n": 365,
+    "exactPct": 0.5,
+    "w1Pct": 1.9,
+    "meanAbs": 40.24
+   }
+  },
+  "amplitudeFajrMin": 102,
+  "amplitudeIshaMin": -19
+ },
+ {
+  "cc": "SY",
+  "city": "Damascus",
+  "coords": {
+   "lat": 33.5138,
+   "lon": 36.2765,
+   "tz": "Asia/Damascus"
+  },
+  "tz": "Asia/Damascus",
+  "confPoint": {
+   "lat": 33.4954375,
+   "lon": 36.2831406,
+   "tz": "Asia/Damascus"
+  },
+  "confDeltaDeg": 0.018,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 16.8,
+   "madhab": "shafi",
+   "highLatitudeRule": "middleofthenight",
+   "rounding": "none"
+  },
+  "prayers": {
+   "fajr": {
+    "K": 0,
+    "exact": 354,
+    "within1": 364,
+    "n": 365,
+    "exactPct": 97,
+    "w1Pct": 99.7,
+    "meanAbs": 0.75
+   },
+   "sunrise": {
+    "K": 0.02,
+    "exact": 357,
+    "within1": 364,
+    "n": 365,
+    "exactPct": 97.8,
+    "w1Pct": 99.7,
+    "meanAbs": 0.25
+   },
+   "dhuhr": {
+    "K": 0.98,
+    "exact": 358,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 98.1,
+    "w1Pct": 100,
+    "meanAbs": 0.26
+   },
+   "asr": {
+    "K": -0.02,
+    "exact": 48,
+    "within1": 212,
+    "n": 365,
+    "exactPct": 13.2,
+    "w1Pct": 58.1,
+    "meanAbs": 4.23
+   },
+   "maghrib": {
+    "K": 2.03,
+    "exact": 351,
+    "within1": 364,
+    "n": 365,
+    "exactPct": 96.2,
+    "w1Pct": 99.7,
+    "meanAbs": 0.91
+   },
+   "isha": {
+    "K": 1.07,
+    "exact": 320,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 87.7,
+    "w1Pct": 100,
+    "meanAbs": 0.27
+   }
+  },
+  "amplitudeFajrMin": -136,
+  "amplitudeIshaMin": 127
+ },
+ {
+  "cc": "AE",
+  "city": "Abu Dhabi",
+  "coords": {
+   "lat": 24.4539,
+   "lon": 54.3773,
+   "tz": "Asia/Dubai"
+  },
+  "tz": "Asia/Dubai",
+  "confPoint": {
+   "lat": 24.31848968278,
+   "lon": 55.663760975003,
+   "tz": "Asia/Dubai"
+  },
+  "confDeltaDeg": 1.286,
+  "recipe": {
+   "fajrAngle": 17,
+   "ishaAngle": 18.3,
+   "madhab": "shafi",
+   "highLatitudeRule": "middleofthenight",
+   "rounding": "none"
+  },
+  "prayers": {
+   "fajr": {
+    "K": -11.25,
+    "exact": 287,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 78.6,
+    "w1Pct": 100,
+    "meanAbs": 0.32
+   },
+   "sunrise": {
+    "K": -10.18,
+    "exact": 223,
+    "within1": 357,
+    "n": 365,
+    "exactPct": 61.1,
+    "w1Pct": 97.8,
+    "meanAbs": 0.46
+   },
+   "dhuhr": {
+    "K": -2.62,
+    "exact": 345,
+    "within1": 365,
+    "n": 365,
+    "exactPct": 94.5,
+    "w1Pct": 100,
+    "meanAbs": 0.26
+   },
+   "asr": {
+    "K": -4.57,
+    "exact": 208,
+    "within1": 358,
+    "n": 365,
+    "exactPct": 57,
+    "w1Pct": 98.1,
+    "meanAbs": 0.5
+   },
+   "maghrib": {
+    "K": -1.82,
+    "exact": 243,
+    "within1": 358,
+    "n": 365,
+    "exactPct": 66.6,
+    "w1Pct": 98.1,
+    "meanAbs": 0.45
+   },
+   "isha": {
+    "K": -6.25,
+    "exact": 201,
+    "within1": 360,
+    "n": 365,
+    "exactPct": 55.1,
+    "w1Pct": 98.6,
+    "meanAbs": 0.53
+   }
+  },
+  "amplitudeFajrMin": -90,
+  "amplitudeIshaMin": 84
+ }
+]

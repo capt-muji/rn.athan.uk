@@ -1,0 +1,43 @@
+{
+ "surfaces": 167,
+ "byClass": {
+  "DERIVED-CITY": 154,
+  "PUBLISHED": 12,
+  "DERIVED": 1
+ },
+ "byCountry": {
+  "CA": {
+   "DERIVED-CITY": 15,
+   "DERIVED": 1,
+   "PUBLISHED": 2
+  },
+  "CL": {
+   "DERIVED-CITY": 20
+  },
+  "CO": {
+   "DERIVED-CITY": 1
+  },
+  "GT": {
+   "PUBLISHED": 1
+  },
+  "HN": {
+   "PUBLISHED": 1
+  },
+  "SR": {
+   "DERIVED-CITY": 1
+  },
+  "TT": {
+   "DERIVED-CITY": 4
+  },
+  "US": {
+   "DERIVED-CITY": 113,
+   "PUBLISHED": 8
+  }
+ },
+ "unknown": 0,
+ "usable": 167,
+ "distinctPlaces": 62,
+ "distinctCities": 51,
+ "distinctPoints": 82,
+ "source": "coords-ledger/coords-ledger.json (167 Americas surfaces)"
+}

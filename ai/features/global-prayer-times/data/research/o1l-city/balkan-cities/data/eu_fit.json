@@ -1,0 +1,386 @@
+{
+ "shkodra": {
+  "lat": 42.06806,
+  "lon": 19.51194,
+  "tz": "Europe/Tirane",
+  "rows": 30,
+  "margins": {
+   "fajr": {
+    "m": -4.5,
+    "mode": "floor",
+    "exact": 14,
+    "within1": 27,
+    "mae": 0.63,
+    "sd": 0.84,
+    "n": 30
+   },
+   "sunrise": {
+    "m": -1.5,
+    "mode": "floor",
+    "exact": 11,
+    "within1": 26,
+    "mae": 0.8,
+    "sd": 0.99,
+    "n": 30
+   },
+   "dhuhr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 24,
+    "within1": 30,
+    "mae": 0.2,
+    "sd": 0.4,
+    "n": 30
+   },
+   "asr": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 15,
+    "within1": 29,
+    "mae": 0.53,
+    "sd": 0.77,
+    "n": 30
+   },
+   "maghrib": {
+    "m": 0,
+    "mode": "round",
+    "exact": 12,
+    "within1": 28,
+    "mae": 0.67,
+    "sd": 0.89,
+    "n": 30
+   },
+   "isha": {
+    "m": 2.5,
+    "mode": "round",
+    "exact": 10,
+    "within1": 22,
+    "mae": 1,
+    "sd": 1.2,
+    "n": 30
+   }
+  },
+  "within1": 162,
+  "n": 180
+ },
+ "tirana": {
+  "lat": 41.3275,
+  "lon": 19.81833,
+  "tz": "Europe/Tirane",
+  "rows": 30,
+  "margins": {
+   "fajr": {
+    "m": -4.5,
+    "mode": "floor",
+    "exact": 8,
+    "within1": 27,
+    "mae": 0.83,
+    "sd": 1,
+    "n": 30
+   },
+   "sunrise": {
+    "m": -1.5,
+    "mode": "floor",
+    "exact": 12,
+    "within1": 24,
+    "mae": 0.83,
+    "sd": 0.98,
+    "n": 30
+   },
+   "dhuhr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 20,
+    "within1": 30,
+    "mae": 0.33,
+    "sd": 0.47,
+    "n": 30
+   },
+   "asr": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 10,
+    "within1": 29,
+    "mae": 0.7,
+    "sd": 0.82,
+    "n": 30
+   },
+   "maghrib": {
+    "m": 0,
+    "mode": "round",
+    "exact": 7,
+    "within1": 21,
+    "mae": 1.1,
+    "sd": 1.23,
+    "n": 30
+   },
+   "isha": {
+    "m": 1.5,
+    "mode": "round",
+    "exact": 14,
+    "within1": 18,
+    "mae": 1.1,
+    "sd": 1.22,
+    "n": 30
+   }
+  },
+  "within1": 149,
+  "n": 180
+ },
+ "skopje": {
+  "lat": 42.013055,
+  "lon": 21.438247,
+  "tz": "Europe/Skopje",
+  "rows": 30,
+  "margins": {
+   "fajr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 11,
+    "within1": 27,
+    "mae": 0.73,
+    "sd": 0.93,
+    "n": 30
+   },
+   "sunrise": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 11,
+    "within1": 25,
+    "mae": 0.8,
+    "sd": 0.99,
+    "n": 30
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 30,
+    "within1": 30,
+    "mae": 0,
+    "sd": 0,
+    "n": 30
+   },
+   "asr": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 17,
+    "within1": 29,
+    "mae": 0.47,
+    "sd": 0.65,
+    "n": 30
+   },
+   "maghrib": {
+    "m": 0,
+    "mode": "round",
+    "exact": 9,
+    "within1": 28,
+    "mae": 0.77,
+    "sd": 0.93,
+    "n": 30
+   },
+   "isha": {
+    "m": 1.5,
+    "mode": "round",
+    "exact": 8,
+    "within1": 25,
+    "mae": 0.9,
+    "sd": 1.09,
+    "n": 30
+   }
+  },
+  "within1": 164,
+  "n": 180
+ },
+ "beograd": {
+  "lat": 44.7866,
+  "lon": 20.4489,
+  "tz": "Europe/Belgrade",
+  "rows": 30,
+  "margins": {
+   "fajr": {
+    "m": -2.5,
+    "mode": "floor",
+    "exact": 15,
+    "within1": 30,
+    "mae": 0.5,
+    "sd": 0.69,
+    "n": 30
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 22,
+    "within1": 30,
+    "mae": 0.27,
+    "sd": 0.44,
+    "n": 30
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 27,
+    "within1": 30,
+    "mae": 0.1,
+    "sd": 0.3,
+    "n": 30
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 18,
+    "within1": 30,
+    "mae": 0.4,
+    "sd": 0.49,
+    "n": 30
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 22,
+    "within1": 30,
+    "mae": 0.27,
+    "sd": 0.51,
+    "n": 30
+   },
+   "isha": {
+    "m": 3.5,
+    "mode": "round",
+    "exact": 19,
+    "within1": 30,
+    "mae": 0.37,
+    "sd": 0.6,
+    "n": 30
+   }
+  },
+  "within1": 180,
+  "n": 180
+ },
+ "nis": {
+  "lat": 43.3209,
+  "lon": 21.8958,
+  "tz": "Europe/Belgrade",
+  "rows": 30,
+  "margins": {
+   "fajr": {
+    "m": -3.5,
+    "mode": "floor",
+    "exact": 12,
+    "within1": 30,
+    "mae": 0.6,
+    "sd": 0.75,
+    "n": 30
+   },
+   "sunrise": {
+    "m": -3.5,
+    "mode": "floor",
+    "exact": 21,
+    "within1": 30,
+    "mae": 0.3,
+    "sd": 0.55,
+    "n": 30
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 27,
+    "within1": 30,
+    "mae": 0.1,
+    "sd": 0.3,
+    "n": 30
+   },
+   "asr": {
+    "m": -1.5,
+    "mode": "floor",
+    "exact": 23,
+    "within1": 30,
+    "mae": 0.23,
+    "sd": 0.48,
+    "n": 30
+   },
+   "maghrib": {
+    "m": 3.5,
+    "mode": "round",
+    "exact": 17,
+    "within1": 30,
+    "mae": 0.43,
+    "sd": 0.64,
+    "n": 30
+   },
+   "isha": {
+    "m": 3.5,
+    "mode": "round",
+    "exact": 13,
+    "within1": 26,
+    "mae": 0.7,
+    "sd": 0.88,
+    "n": 30
+   }
+  },
+  "within1": 176,
+  "n": 180
+ },
+ "podgorica": {
+  "lat": 42.4304,
+  "lon": 19.2594,
+  "tz": "Europe/Podgorica",
+  "rows": 30,
+  "margins": {
+   "fajr": {
+    "m": -4.5,
+    "mode": "floor",
+    "exact": 14,
+    "within1": 29,
+    "mae": 0.57,
+    "sd": 0.79,
+    "n": 30
+   },
+   "sunrise": {
+    "m": -2.5,
+    "mode": "floor",
+    "exact": 13,
+    "within1": 28,
+    "mae": 0.63,
+    "sd": 0.82,
+    "n": 30
+   },
+   "dhuhr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 24,
+    "within1": 30,
+    "mae": 0.2,
+    "sd": 0.4,
+    "n": 30
+   },
+   "asr": {
+    "m": -3.5,
+    "mode": "floor",
+    "exact": 16,
+    "within1": 29,
+    "mae": 0.5,
+    "sd": 0.75,
+    "n": 30
+   },
+   "maghrib": {
+    "m": 1.5,
+    "mode": "round",
+    "exact": 12,
+    "within1": 29,
+    "mae": 0.63,
+    "sd": 0.84,
+    "n": 30
+   },
+   "isha": {
+    "m": 3.5,
+    "mode": "round",
+    "exact": 7,
+    "within1": 25,
+    "mae": 0.93,
+    "sd": 1.13,
+    "n": 30
+   }
+  },
+  "within1": 170,
+  "n": 180
+ }
+}

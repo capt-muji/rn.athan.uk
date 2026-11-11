@@ -1,0 +1,1144 @@
+{
+ "engine": "adhan 4.4.6",
+ "tz": "Asia/Kuala_Lumpur",
+ "zones": {
+  "zon1": {
+   "days": 29,
+   "columns": {
+    "KotaBharu 6.1200,102.2400": {
+     "subuh": [
+      {
+       "angle": 17.65,
+       "rounding": "nearest",
+       "margin": 0,
+       "exact": 29,
+       "within1": 29,
+       "mae": 0,
+       "worst": 0,
+       "n": 29
+      },
+      {
+       "angle": 17.65,
+       "rounding": "floor",
+       "margin": 0.5,
+       "exact": 29,
+       "within1": 29,
+       "mae": 0,
+       "worst": 0,
+       "n": 29
+      },
+      {
+       "angle": 17.65,
+       "rounding": "ceil",
+       "margin": -0.5,
+       "exact": 29,
+       "within1": 29,
+       "mae": 0,
+       "worst": 0,
+       "n": 29
+      },
+      {
+       "angle": 17.9,
+       "rounding": "ceil",
+       "margin": 0.5,
+       "exact": 29,
+       "within1": 29,
+       "mae": 0,
+       "worst": 0,
+       "n": 29
+      }
+     ],
+     "syuruk": [
+      {
+       "angle": null,
+       "rounding": "ceil",
+       "margin": 0,
+       "exact": 28,
+       "within1": 29,
+       "mae": 0.03,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "nearest",
+       "margin": 0.5,
+       "exact": 26,
+       "within1": 29,
+       "mae": 0.1,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "floor",
+       "margin": 1,
+       "exact": 26,
+       "within1": 29,
+       "mae": 0.1,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "nearest",
+       "margin": 0,
+       "exact": 17,
+       "within1": 29,
+       "mae": 0.41,
+       "worst": 1,
+       "n": 29
+      }
+     ],
+     "zuhur": [
+      {
+       "angle": null,
+       "rounding": "nearest",
+       "margin": 2.5,
+       "exact": 26,
+       "within1": 29,
+       "mae": 0.1,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "floor",
+       "margin": 3,
+       "exact": 26,
+       "within1": 29,
+       "mae": 0.1,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "ceil",
+       "margin": 2,
+       "exact": 25,
+       "within1": 29,
+       "mae": 0.14,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "ceil",
+       "margin": 2.5,
+       "exact": 20,
+       "within1": 29,
+       "mae": 0.31,
+       "worst": 1,
+       "n": 29
+      }
+     ],
+     "asar": [
+      {
+       "angle": null,
+       "rounding": "ceil",
+       "margin": 1,
+       "exact": 23,
+       "within1": 29,
+       "mae": 0.21,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "nearest",
+       "margin": 1.5,
+       "exact": 23,
+       "within1": 29,
+       "mae": 0.21,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "floor",
+       "margin": 2,
+       "exact": 23,
+       "within1": 29,
+       "mae": 0.21,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "ceil",
+       "margin": 0.5,
+       "exact": 20,
+       "within1": 29,
+       "mae": 0.31,
+       "worst": 1,
+       "n": 29
+      }
+     ],
+     "maghrib": [
+      {
+       "angle": null,
+       "rounding": "nearest",
+       "margin": 1.5,
+       "exact": 28,
+       "within1": 29,
+       "mae": 0.03,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "floor",
+       "margin": 2,
+       "exact": 28,
+       "within1": 29,
+       "mae": 0.03,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "ceil",
+       "margin": 1,
+       "exact": 27,
+       "within1": 29,
+       "mae": 0.07,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "ceil",
+       "margin": 1.5,
+       "exact": 19,
+       "within1": 29,
+       "mae": 0.34,
+       "worst": 1,
+       "n": 29
+      }
+     ],
+     "isha": [
+      {
+       "angle": 17.4,
+       "rounding": "nearest",
+       "margin": 0,
+       "exact": 28,
+       "within1": 29,
+       "mae": 0.03,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": 17.15,
+       "rounding": "ceil",
+       "margin": 0.5,
+       "exact": 28,
+       "within1": 29,
+       "mae": 0.03,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": 17.4,
+       "rounding": "floor",
+       "margin": 0.5,
+       "exact": 28,
+       "within1": 29,
+       "mae": 0.03,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": 17.4,
+       "rounding": "ceil",
+       "margin": -0.5,
+       "exact": 28,
+       "within1": 29,
+       "mae": 0.03,
+       "worst": 1,
+       "n": 29
+      }
+     ]
+    },
+    "JAKIM-KTN01 6.1254,102.2381": {
+     "subuh": [
+      {
+       "angle": 17.65,
+       "rounding": "ceil",
+       "margin": -0.5,
+       "exact": 29,
+       "within1": 29,
+       "mae": 0,
+       "worst": 0,
+       "n": 29
+      },
+      {
+       "angle": 17.9,
+       "rounding": "ceil",
+       "margin": 0.5,
+       "exact": 29,
+       "within1": 29,
+       "mae": 0,
+       "worst": 0,
+       "n": 29
+      },
+      {
+       "angle": 17.9,
+       "rounding": "nearest",
+       "margin": 1,
+       "exact": 29,
+       "within1": 29,
+       "mae": 0,
+       "worst": 0,
+       "n": 29
+      },
+      {
+       "angle": 17.4,
+       "rounding": "ceil",
+       "margin": -1.5,
+       "exact": 29,
+       "within1": 29,
+       "mae": 0,
+       "worst": 0,
+       "n": 29
+      }
+     ],
+     "syuruk": [
+      {
+       "angle": null,
+       "rounding": "ceil",
+       "margin": 0,
+       "exact": 26,
+       "within1": 29,
+       "mae": 0.1,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "nearest",
+       "margin": 0.5,
+       "exact": 26,
+       "within1": 29,
+       "mae": 0.1,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "floor",
+       "margin": 1,
+       "exact": 26,
+       "within1": 29,
+       "mae": 0.1,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "nearest",
+       "margin": 0,
+       "exact": 17,
+       "within1": 29,
+       "mae": 0.41,
+       "worst": 1,
+       "n": 29
+      }
+     ],
+     "zuhur": [
+      {
+       "angle": null,
+       "rounding": "ceil",
+       "margin": 2,
+       "exact": 26,
+       "within1": 29,
+       "mae": 0.1,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "nearest",
+       "margin": 2.5,
+       "exact": 26,
+       "within1": 29,
+       "mae": 0.1,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "floor",
+       "margin": 3,
+       "exact": 26,
+       "within1": 29,
+       "mae": 0.1,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "ceil",
+       "margin": 2.5,
+       "exact": 19,
+       "within1": 29,
+       "mae": 0.34,
+       "worst": 1,
+       "n": 29
+      }
+     ],
+     "asar": [
+      {
+       "angle": null,
+       "rounding": "ceil",
+       "margin": 1,
+       "exact": 23,
+       "within1": 29,
+       "mae": 0.21,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "nearest",
+       "margin": 1.5,
+       "exact": 23,
+       "within1": 29,
+       "mae": 0.21,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "floor",
+       "margin": 2,
+       "exact": 23,
+       "within1": 29,
+       "mae": 0.21,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "nearest",
+       "margin": 1,
+       "exact": 22,
+       "within1": 29,
+       "mae": 0.24,
+       "worst": 1,
+       "n": 29
+      }
+     ],
+     "maghrib": [
+      {
+       "angle": null,
+       "rounding": "nearest",
+       "margin": 1.5,
+       "exact": 28,
+       "within1": 29,
+       "mae": 0.03,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "floor",
+       "margin": 2,
+       "exact": 28,
+       "within1": 29,
+       "mae": 0.03,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "ceil",
+       "margin": 1,
+       "exact": 27,
+       "within1": 29,
+       "mae": 0.07,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "ceil",
+       "margin": 1.5,
+       "exact": 18,
+       "within1": 29,
+       "mae": 0.38,
+       "worst": 1,
+       "n": 29
+      }
+     ],
+     "isha": [
+      {
+       "angle": 17.4,
+       "rounding": "nearest",
+       "margin": 0,
+       "exact": 28,
+       "within1": 29,
+       "mae": 0.03,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": 17.15,
+       "rounding": "ceil",
+       "margin": 0.5,
+       "exact": 28,
+       "within1": 29,
+       "mae": 0.03,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": 17.4,
+       "rounding": "floor",
+       "margin": 0.5,
+       "exact": 28,
+       "within1": 29,
+       "mae": 0.03,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": 17.4,
+       "rounding": "ceil",
+       "margin": -0.5,
+       "exact": 28,
+       "within1": 29,
+       "mae": 0.03,
+       "worst": 1,
+       "n": 29
+      }
+     ]
+    }
+   },
+   "checks": {
+    "imsakMinusSubuh": [
+     10
+    ],
+    "ishaMinusMaghrib": {
+     "min": 65,
+     "max": 66,
+     "median": 65
+    }
+   },
+   "implied": {
+    "KotaBharu 6.1200,102.2400": {
+     "subuh": {
+      "lo": 17.29,
+      "hi": 17.77,
+      "medianMid": 17.51,
+      "medianWidth": 0.248
+     },
+     "isha": {
+      "lo": 17.26,
+      "hi": 17.77,
+      "medianMid": 17.5,
+      "medianWidth": 0.248
+     }
+    },
+    "JAKIM-KTN01 6.1254,102.2381": {
+     "subuh": {
+      "lo": 17.29,
+      "hi": 17.78,
+      "medianMid": 17.51,
+      "medianWidth": 0.248
+     },
+     "isha": {
+      "lo": 17.26,
+      "hi": 17.77,
+      "medianMid": 17.5,
+      "medianWidth": 0.248
+     }
+    }
+   }
+  },
+  "zon2": {
+   "days": 29,
+   "columns": {
+    "KotaBharu 6.1200,102.2400": {
+     "subuh": [
+      {
+       "angle": 17.05,
+       "rounding": "floor",
+       "margin": 0,
+       "exact": 22,
+       "within1": 28,
+       "mae": 0.28,
+       "worst": 2,
+       "n": 29
+      },
+      {
+       "angle": 17.05,
+       "rounding": "nearest",
+       "margin": -0.5,
+       "exact": 22,
+       "within1": 28,
+       "mae": 0.28,
+       "worst": 2,
+       "n": 29
+      },
+      {
+       "angle": 16.8,
+       "rounding": "floor",
+       "margin": -1,
+       "exact": 22,
+       "within1": 28,
+       "mae": 0.28,
+       "worst": 2,
+       "n": 29
+      },
+      {
+       "angle": 16.8,
+       "rounding": "nearest",
+       "margin": -1.5,
+       "exact": 22,
+       "within1": 28,
+       "mae": 0.28,
+       "worst": 2,
+       "n": 29
+      }
+     ],
+     "syuruk": [
+      {
+       "angle": null,
+       "rounding": "ceil",
+       "margin": 2,
+       "exact": 21,
+       "within1": 29,
+       "mae": 0.28,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "nearest",
+       "margin": 2.5,
+       "exact": 21,
+       "within1": 29,
+       "mae": 0.28,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "floor",
+       "margin": 3,
+       "exact": 21,
+       "within1": 29,
+       "mae": 0.28,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "ceil",
+       "margin": 1.5,
+       "exact": 20,
+       "within1": 29,
+       "mae": 0.31,
+       "worst": 1,
+       "n": 29
+      }
+     ],
+     "zuhur": [
+      {
+       "angle": null,
+       "rounding": "ceil",
+       "margin": 4,
+       "exact": 28,
+       "within1": 29,
+       "mae": 0.03,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "nearest",
+       "margin": 4,
+       "exact": 16,
+       "within1": 29,
+       "mae": 0.45,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "ceil",
+       "margin": 3.5,
+       "exact": 12,
+       "within1": 29,
+       "mae": 0.59,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "nearest",
+       "margin": 3.5,
+       "exact": 0,
+       "within1": 29,
+       "mae": 1,
+       "worst": 1,
+       "n": 29
+      }
+     ],
+     "asar": [
+      {
+       "angle": null,
+       "rounding": "ceil",
+       "margin": 1.5,
+       "exact": 20,
+       "within1": 29,
+       "mae": 0.31,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "nearest",
+       "margin": 2,
+       "exact": 20,
+       "within1": 29,
+       "mae": 0.31,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "floor",
+       "margin": 2.5,
+       "exact": 20,
+       "within1": 29,
+       "mae": 0.31,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "ceil",
+       "margin": 1,
+       "exact": 16,
+       "within1": 29,
+       "mae": 0.45,
+       "worst": 1,
+       "n": 29
+      }
+     ],
+     "maghrib": [
+      {
+       "angle": null,
+       "rounding": "nearest",
+       "margin": 3.5,
+       "exact": 23,
+       "within1": 29,
+       "mae": 0.21,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "floor",
+       "margin": 4,
+       "exact": 23,
+       "within1": 29,
+       "mae": 0.21,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "ceil",
+       "margin": 3,
+       "exact": 22,
+       "within1": 29,
+       "mae": 0.24,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "ceil",
+       "margin": 3.5,
+       "exact": 18,
+       "within1": 29,
+       "mae": 0.38,
+       "worst": 1,
+       "n": 29
+      }
+     ],
+     "isha": [
+      {
+       "angle": 17.75,
+       "rounding": "ceil",
+       "margin": 0,
+       "exact": 22,
+       "within1": 29,
+       "mae": 0.24,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": 17.85,
+       "rounding": "nearest",
+       "margin": 0,
+       "exact": 22,
+       "within1": 29,
+       "mae": 0.24,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": 17.75,
+       "rounding": "nearest",
+       "margin": 0.5,
+       "exact": 22,
+       "within1": 29,
+       "mae": 0.24,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": 17.85,
+       "rounding": "floor",
+       "margin": 0.5,
+       "exact": 22,
+       "within1": 29,
+       "mae": 0.24,
+       "worst": 1,
+       "n": 29
+      }
+     ]
+    },
+    "JAKIM-KTN01 6.1254,102.2381": {
+     "subuh": [
+      {
+       "angle": 17.05,
+       "rounding": "floor",
+       "margin": 0,
+       "exact": 22,
+       "within1": 28,
+       "mae": 0.28,
+       "worst": 2,
+       "n": 29
+      },
+      {
+       "angle": 17.05,
+       "rounding": "nearest",
+       "margin": -0.5,
+       "exact": 22,
+       "within1": 28,
+       "mae": 0.28,
+       "worst": 2,
+       "n": 29
+      },
+      {
+       "angle": 17.3,
+       "rounding": "nearest",
+       "margin": 0.5,
+       "exact": 22,
+       "within1": 28,
+       "mae": 0.28,
+       "worst": 2,
+       "n": 29
+      },
+      {
+       "angle": 17.3,
+       "rounding": "floor",
+       "margin": 1,
+       "exact": 22,
+       "within1": 28,
+       "mae": 0.28,
+       "worst": 2,
+       "n": 29
+      }
+     ],
+     "syuruk": [
+      {
+       "angle": null,
+       "rounding": "ceil",
+       "margin": 2,
+       "exact": 21,
+       "within1": 29,
+       "mae": 0.28,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "nearest",
+       "margin": 2.5,
+       "exact": 21,
+       "within1": 29,
+       "mae": 0.28,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "floor",
+       "margin": 3,
+       "exact": 21,
+       "within1": 29,
+       "mae": 0.28,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "ceil",
+       "margin": 1.5,
+       "exact": 20,
+       "within1": 29,
+       "mae": 0.31,
+       "worst": 1,
+       "n": 29
+      }
+     ],
+     "zuhur": [
+      {
+       "angle": null,
+       "rounding": "ceil",
+       "margin": 4,
+       "exact": 29,
+       "within1": 29,
+       "mae": 0,
+       "worst": 0,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "nearest",
+       "margin": 4,
+       "exact": 16,
+       "within1": 29,
+       "mae": 0.45,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "ceil",
+       "margin": 3.5,
+       "exact": 13,
+       "within1": 29,
+       "mae": 0.55,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "ceil",
+       "margin": 3,
+       "exact": 0,
+       "within1": 29,
+       "mae": 1,
+       "worst": 1,
+       "n": 29
+      }
+     ],
+     "asar": [
+      {
+       "angle": null,
+       "rounding": "ceil",
+       "margin": 1.5,
+       "exact": 19,
+       "within1": 29,
+       "mae": 0.34,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "nearest",
+       "margin": 2,
+       "exact": 18,
+       "within1": 29,
+       "mae": 0.38,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "floor",
+       "margin": 2.5,
+       "exact": 18,
+       "within1": 29,
+       "mae": 0.38,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "ceil",
+       "margin": 1,
+       "exact": 16,
+       "within1": 29,
+       "mae": 0.45,
+       "worst": 1,
+       "n": 29
+      }
+     ],
+     "maghrib": [
+      {
+       "angle": null,
+       "rounding": "nearest",
+       "margin": 3.5,
+       "exact": 23,
+       "within1": 29,
+       "mae": 0.21,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "floor",
+       "margin": 4,
+       "exact": 23,
+       "within1": 29,
+       "mae": 0.21,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "ceil",
+       "margin": 3,
+       "exact": 22,
+       "within1": 29,
+       "mae": 0.24,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": null,
+       "rounding": "ceil",
+       "margin": 3.5,
+       "exact": 17,
+       "within1": 29,
+       "mae": 0.41,
+       "worst": 1,
+       "n": 29
+      }
+     ],
+     "isha": [
+      {
+       "angle": 17.75,
+       "rounding": "ceil",
+       "margin": 0,
+       "exact": 22,
+       "within1": 29,
+       "mae": 0.24,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": 17.5,
+       "rounding": "ceil",
+       "margin": 1,
+       "exact": 22,
+       "within1": 29,
+       "mae": 0.24,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": 17.6,
+       "rounding": "nearest",
+       "margin": 1,
+       "exact": 22,
+       "within1": 29,
+       "mae": 0.24,
+       "worst": 1,
+       "n": 29
+      },
+      {
+       "angle": 17.5,
+       "rounding": "nearest",
+       "margin": 1.5,
+       "exact": 22,
+       "within1": 29,
+       "mae": 0.24,
+       "worst": 1,
+       "n": 29
+      }
+     ]
+    }
+   },
+   "checks": {
+    "imsakMinusSubuh": [
+     10
+    ],
+    "ishaMinusMaghrib": {
+     "min": 64,
+     "max": 66,
+     "median": 65
+    },
+    "zon2MinusZon1": {
+     "subuh": {
+      "min": 1,
+      "max": 4,
+      "median": 2
+     },
+     "syuruk": {
+      "min": 1,
+      "max": 3,
+      "median": 2
+     },
+     "zuhur": {
+      "min": 1,
+      "max": 2,
+      "median": 2
+     },
+     "asar": {
+      "min": 0,
+      "max": 1,
+      "median": 1
+     },
+     "maghrib": {
+      "min": 1,
+      "max": 3,
+      "median": 2
+     },
+     "isha": {
+      "min": 1,
+      "max": 3,
+      "median": 2
+     }
+    }
+   },
+   "implied": {
+    "KotaBharu 6.1200,102.2400": {
+     "subuh": {
+      "lo": 16.35,
+      "hi": 17.37,
+      "medianMid": 17.07,
+      "medianWidth": 0.248
+     },
+     "isha": {
+      "lo": 17.68,
+      "hi": 18.32,
+      "medianMid": 18,
+      "medianWidth": 0.248
+     }
+    },
+    "JAKIM-KTN01 6.1254,102.2381": {
+     "subuh": {
+      "lo": 16.35,
+      "hi": 17.38,
+      "medianMid": 17.08,
+      "medianWidth": 0.248
+     },
+     "isha": {
+      "lo": 17.68,
+      "hi": 18.32,
+      "medianMid": 18,
+      "medianWidth": 0.248
+     }
+    }
+   }
+  }
+ }
+}

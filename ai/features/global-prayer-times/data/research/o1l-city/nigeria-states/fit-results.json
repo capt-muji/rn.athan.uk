@@ -1,0 +1,2508 @@
+{
+ "masjidway-kinkinau-central-mosque-kaduna": {
+  "egyptian-round": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 98.9,
+   "worst": 2,
+   "margins": {
+    "fajr": -0.01,
+    "sunrise": 0,
+    "dhuhr": -1.01,
+    "asr": -0.11,
+    "maghrib": 0,
+    "isha": -0.02
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 60,
+     "worst": 2,
+     "worstWhen": "2026-01-29"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 31,
+     "worst": 1,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "egyptian-floor": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 98.9,
+   "worst": 2,
+   "margins": {
+    "fajr": -0.01,
+    "sunrise": 0,
+    "dhuhr": -1.01,
+    "asr": -0.11,
+    "maghrib": 0,
+    "isha": -0.02
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 60,
+     "worst": 2,
+     "worstWhen": "2026-01-29"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 31,
+     "worst": 1,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "mwl-round": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 7,
+   "margins": {
+    "fajr": -6.49,
+    "sunrise": 0,
+    "dhuhr": -1.01,
+    "asr": -0.11,
+    "maghrib": 0,
+    "isha": 2.1
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2026-01-01"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "mwl-floor": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 7,
+   "margins": {
+    "fajr": -6.49,
+    "sunrise": 0,
+    "dhuhr": -1.01,
+    "asr": -0.11,
+    "maghrib": 0,
+    "isha": 2.1
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2026-01-01"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "umaq-round": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 20,
+   "margins": {
+    "fajr": -4.33,
+    "sunrise": 0,
+    "dhuhr": -0.01,
+    "asr": -0.11,
+    "maghrib": 0,
+    "isha": -18.3
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 0,
+     "worst": 20,
+     "worstWhen": "2026-11-01"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 0,
+     "worst": 20,
+     "worstWhen": "2027-01-30"
+    }
+   }
+  },
+  "umaq-floor": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 20,
+   "margins": {
+    "fajr": -4.33,
+    "sunrise": 0,
+    "dhuhr": -0.01,
+    "asr": -0.11,
+    "maghrib": 0,
+    "isha": -18.3
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 0,
+     "worst": 20,
+     "worstWhen": "2026-11-01"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 0,
+     "worst": 20,
+     "worstWhen": "2027-01-30"
+    }
+   }
+  }
+ },
+ "masjidway-yahya-road-jumat-mosque-kaduna": {
+  "egyptian-round": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 100,
+   "worst": 1,
+   "margins": {
+    "fajr": -0.01,
+    "sunrise": 0,
+    "dhuhr": -1,
+    "asr": -0.12,
+    "maghrib": 0,
+    "isha": -0.03
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 61,
+     "worst": 1,
+     "worstWhen": "2026-01-01"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 31,
+     "worst": 1,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "egyptian-floor": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 100,
+   "worst": 1,
+   "margins": {
+    "fajr": -0.01,
+    "sunrise": 0,
+    "dhuhr": -1,
+    "asr": -0.12,
+    "maghrib": 0,
+    "isha": -0.03
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 61,
+     "worst": 1,
+     "worstWhen": "2026-01-01"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 31,
+     "worst": 1,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "mwl-round": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 7,
+   "margins": {
+    "fajr": -6.43,
+    "sunrise": 0,
+    "dhuhr": -1,
+    "asr": -0.12,
+    "maghrib": 0,
+    "isha": 2.08
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2026-01-01"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "mwl-floor": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 7,
+   "margins": {
+    "fajr": -6.43,
+    "sunrise": 0,
+    "dhuhr": -1,
+    "asr": -0.12,
+    "maghrib": 0,
+    "isha": 2.08
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2026-01-01"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "umaq-round": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 21,
+   "margins": {
+    "fajr": -4.27,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": -0.12,
+    "maghrib": 0,
+    "isha": -18.34
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 0,
+     "worst": 21,
+     "worstWhen": "2026-11-03"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 0,
+     "worst": 20,
+     "worstWhen": "2027-01-31"
+    }
+   }
+  },
+  "umaq-floor": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 21,
+   "margins": {
+    "fajr": -4.27,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": -0.12,
+    "maghrib": 0,
+    "isha": -18.34
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 0,
+     "worst": 21,
+     "worstWhen": "2026-11-03"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 0,
+     "worst": 20,
+     "worstWhen": "2027-01-31"
+    }
+   }
+  }
+ },
+ "masjidway-misbahul-islam-mosque-kaduna": {
+  "egyptian-round": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 100,
+   "worst": 1,
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": -1,
+    "asr": -0.1,
+    "maghrib": -0.01,
+    "isha": -0.03
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 61,
+     "worst": 1,
+     "worstWhen": "2026-01-01"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 31,
+     "worst": 1,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "egyptian-floor": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 100,
+   "worst": 1,
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": -1,
+    "asr": -0.1,
+    "maghrib": -0.01,
+    "isha": -0.03
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 61,
+     "worst": 1,
+     "worstWhen": "2026-01-01"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 31,
+     "worst": 1,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "mwl-round": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 7,
+   "margins": {
+    "fajr": -6.43,
+    "sunrise": 0,
+    "dhuhr": -1,
+    "asr": -0.1,
+    "maghrib": -0.01,
+    "isha": 2.08
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2026-01-01"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "mwl-floor": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 7,
+   "margins": {
+    "fajr": -6.43,
+    "sunrise": 0,
+    "dhuhr": -1,
+    "asr": -0.1,
+    "maghrib": -0.01,
+    "isha": 2.08
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2026-01-01"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "umaq-round": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 21,
+   "margins": {
+    "fajr": -4.27,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": -0.1,
+    "maghrib": -0.01,
+    "isha": -18.32
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 0,
+     "worst": 21,
+     "worstWhen": "2026-11-03"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 0,
+     "worst": 20,
+     "worstWhen": "2027-01-31"
+    }
+   }
+  },
+  "umaq-floor": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 21,
+   "margins": {
+    "fajr": -4.27,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": -0.1,
+    "maghrib": -0.01,
+    "isha": -18.32
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 0,
+     "worst": 21,
+     "worstWhen": "2026-11-03"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 0,
+     "worst": 20,
+     "worstWhen": "2027-01-31"
+    }
+   }
+  }
+ },
+ "masjidway-kano-road-central-mosque-kaduna": {
+  "egyptian-round": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 100,
+   "worst": 1,
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": -1,
+    "asr": -0.02,
+    "maghrib": 0,
+    "isha": -0.02
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 61,
+     "worst": 1,
+     "worstWhen": "2026-01-01"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 31,
+     "worst": 1,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "egyptian-floor": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 100,
+   "worst": 1,
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": -1,
+    "asr": -0.02,
+    "maghrib": 0,
+    "isha": -0.02
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 61,
+     "worst": 1,
+     "worstWhen": "2026-01-01"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 31,
+     "worst": 1,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "mwl-round": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 7,
+   "margins": {
+    "fajr": -6.48,
+    "sunrise": 0,
+    "dhuhr": -1,
+    "asr": -0.02,
+    "maghrib": 0,
+    "isha": 2.15
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2026-01-01"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "mwl-floor": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 7,
+   "margins": {
+    "fajr": -6.48,
+    "sunrise": 0,
+    "dhuhr": -1,
+    "asr": -0.02,
+    "maghrib": 0,
+    "isha": 2.15
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2026-01-01"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "umaq-round": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 20,
+   "margins": {
+    "fajr": -4.33,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": -0.02,
+    "maghrib": 0,
+    "isha": -18.27
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 0,
+     "worst": 20,
+     "worstWhen": "2026-01-30"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 0,
+     "worst": 20,
+     "worstWhen": "2027-01-30"
+    }
+   }
+  },
+  "umaq-floor": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 20,
+   "margins": {
+    "fajr": -4.33,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": -0.02,
+    "maghrib": 0,
+    "isha": -18.27
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 0,
+     "worst": 20,
+     "worstWhen": "2026-01-30"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 0,
+     "worst": 20,
+     "worstWhen": "2027-01-30"
+    }
+   }
+  }
+ },
+ "masjidway-al-manar-mosque-kaduna": {
+  "egyptian-round": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 100,
+   "worst": 1,
+   "margins": {
+    "fajr": -0.02,
+    "sunrise": 0,
+    "dhuhr": -1,
+    "asr": -0.02,
+    "maghrib": 0,
+    "isha": -0.02
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 61,
+     "worst": 1,
+     "worstWhen": "2026-01-01"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 31,
+     "worst": 1,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "egyptian-floor": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 100,
+   "worst": 1,
+   "margins": {
+    "fajr": -0.02,
+    "sunrise": 0,
+    "dhuhr": -1,
+    "asr": -0.02,
+    "maghrib": 0,
+    "isha": -0.02
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 61,
+     "worst": 1,
+     "worstWhen": "2026-01-01"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 31,
+     "worst": 1,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "mwl-round": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 7,
+   "margins": {
+    "fajr": -6.48,
+    "sunrise": 0,
+    "dhuhr": -1,
+    "asr": -0.02,
+    "maghrib": 0,
+    "isha": 2.16
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2026-01-01"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "mwl-floor": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 7,
+   "margins": {
+    "fajr": -6.48,
+    "sunrise": 0,
+    "dhuhr": -1,
+    "asr": -0.02,
+    "maghrib": 0,
+    "isha": 2.16
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2026-01-01"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "umaq-round": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 20,
+   "margins": {
+    "fajr": -4.34,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": -0.02,
+    "maghrib": 0,
+    "isha": -18.26
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 0,
+     "worst": 20,
+     "worstWhen": "2026-01-30"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 0,
+     "worst": 20,
+     "worstWhen": "2027-01-30"
+    }
+   }
+  },
+  "umaq-floor": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 20,
+   "margins": {
+    "fajr": -4.34,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": -0.02,
+    "maghrib": 0,
+    "isha": -18.26
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 0,
+     "worst": 20,
+     "worstWhen": "2026-01-30"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 0,
+     "worst": 20,
+     "worstWhen": "2027-01-30"
+    }
+   }
+  }
+ },
+ "masjidway-alhuda-foundation-mosque-kaduna": {
+  "egyptian-round": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 100,
+   "worst": 1,
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": -1,
+    "asr": -0.16,
+    "maghrib": -0.01,
+    "isha": -0.02
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 61,
+     "worst": 1,
+     "worstWhen": "2026-01-01"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 31,
+     "worst": 1,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "egyptian-floor": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 100,
+   "worst": 1,
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": -1,
+    "asr": -0.16,
+    "maghrib": -0.01,
+    "isha": -0.02
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 61,
+     "worst": 1,
+     "worstWhen": "2026-01-01"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 31,
+     "worst": 1,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "mwl-round": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 7,
+   "margins": {
+    "fajr": -6.45,
+    "sunrise": 0,
+    "dhuhr": -1,
+    "asr": -0.16,
+    "maghrib": -0.01,
+    "isha": 2.1
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2026-01-01"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "mwl-floor": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 7,
+   "margins": {
+    "fajr": -6.45,
+    "sunrise": 0,
+    "dhuhr": -1,
+    "asr": -0.16,
+    "maghrib": -0.01,
+    "isha": 2.1
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2026-01-01"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "umaq-round": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 20,
+   "margins": {
+    "fajr": -4.29,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": -0.16,
+    "maghrib": -0.01,
+    "isha": -18.32
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 0,
+     "worst": 20,
+     "worstWhen": "2026-01-31"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 0,
+     "worst": 20,
+     "worstWhen": "2027-01-28"
+    }
+   }
+  },
+  "umaq-floor": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 20,
+   "margins": {
+    "fajr": -4.29,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": -0.16,
+    "maghrib": -0.01,
+    "isha": -18.32
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 0,
+     "worst": 20,
+     "worstWhen": "2026-01-31"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 0,
+     "worst": 20,
+     "worstWhen": "2027-01-28"
+    }
+   }
+  }
+ },
+ "masjidway-benin-city-central-mosque-benin": {
+  "egyptian-round": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 100,
+   "worst": 1,
+   "margins": {
+    "fajr": 0,
+    "sunrise": -0.01,
+    "dhuhr": -1,
+    "asr": -0.12,
+    "maghrib": 0,
+    "isha": -0.01
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 61,
+     "worst": 1,
+     "worstWhen": "2026-01-01"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 31,
+     "worst": 1,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "egyptian-floor": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 100,
+   "worst": 1,
+   "margins": {
+    "fajr": 0,
+    "sunrise": -0.01,
+    "dhuhr": -1,
+    "asr": -0.12,
+    "maghrib": 0,
+    "isha": -0.01
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 61,
+     "worst": 1,
+     "worstWhen": "2026-01-01"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 31,
+     "worst": 1,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "mwl-round": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 7,
+   "margins": {
+    "fajr": -6.39,
+    "sunrise": -0.01,
+    "dhuhr": -1,
+    "asr": -0.12,
+    "maghrib": 0,
+    "isha": 2.14
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2026-01-02"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2027-01-02"
+    }
+   }
+  },
+  "mwl-floor": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 7,
+   "margins": {
+    "fajr": -6.39,
+    "sunrise": -0.01,
+    "dhuhr": -1,
+    "asr": -0.12,
+    "maghrib": 0,
+    "isha": 2.14
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2026-01-02"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2027-01-02"
+    }
+   }
+  },
+  "umaq-round": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 21,
+   "margins": {
+    "fajr": -4.23,
+    "sunrise": -0.01,
+    "dhuhr": 0,
+    "asr": -0.12,
+    "maghrib": 0,
+    "isha": -18.83
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 0,
+     "worst": 21,
+     "worstWhen": "2026-11-01"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 0,
+     "worst": 20,
+     "worstWhen": "2027-01-25"
+    }
+   }
+  },
+  "umaq-floor": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 21,
+   "margins": {
+    "fajr": -4.23,
+    "sunrise": -0.01,
+    "dhuhr": 0,
+    "asr": -0.12,
+    "maghrib": 0,
+    "isha": -18.83
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 0,
+     "worst": 21,
+     "worstWhen": "2026-11-01"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 0,
+     "worst": 20,
+     "worstWhen": "2027-01-25"
+    }
+   }
+  }
+ },
+ "masjidway-uniben-central-mosque-benin": {
+  "egyptian-round": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 98.9,
+   "worst": 2,
+   "margins": {
+    "fajr": -0.01,
+    "sunrise": 0,
+    "dhuhr": -1.01,
+    "asr": -0.13,
+    "maghrib": 0,
+    "isha": -0.01
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 60,
+     "worst": 2,
+     "worstWhen": "2026-01-04"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 31,
+     "worst": 1,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "egyptian-floor": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 98.9,
+   "worst": 2,
+   "margins": {
+    "fajr": -0.01,
+    "sunrise": 0,
+    "dhuhr": -1.01,
+    "asr": -0.13,
+    "maghrib": 0,
+    "isha": -0.01
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 60,
+     "worst": 2,
+     "worstWhen": "2026-01-04"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 31,
+     "worst": 1,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "mwl-round": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 7,
+   "margins": {
+    "fajr": -6.37,
+    "sunrise": 0,
+    "dhuhr": -1.01,
+    "asr": -0.13,
+    "maghrib": 0,
+    "isha": 2.15
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2026-01-01"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2027-01-02"
+    }
+   }
+  },
+  "mwl-floor": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 7,
+   "margins": {
+    "fajr": -6.37,
+    "sunrise": 0,
+    "dhuhr": -1.01,
+    "asr": -0.13,
+    "maghrib": 0,
+    "isha": 2.15
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2026-01-01"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2027-01-02"
+    }
+   }
+  },
+  "umaq-round": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 21,
+   "margins": {
+    "fajr": -4.27,
+    "sunrise": 0,
+    "dhuhr": -0.01,
+    "asr": -0.13,
+    "maghrib": 0,
+    "isha": -18.83
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 0,
+     "worst": 21,
+     "worstWhen": "2026-11-01"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 0,
+     "worst": 20,
+     "worstWhen": "2027-01-22"
+    }
+   }
+  },
+  "umaq-floor": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 21,
+   "margins": {
+    "fajr": -4.27,
+    "sunrise": 0,
+    "dhuhr": -0.01,
+    "asr": -0.13,
+    "maghrib": 0,
+    "isha": -18.83
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 0,
+     "worst": 21,
+     "worstWhen": "2026-11-01"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 0,
+     "worst": 20,
+     "worstWhen": "2027-01-22"
+    }
+   }
+  }
+ },
+ "masjidway-prison-training-school-central-mosque-enugu": {
+  "egyptian-round": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 100,
+   "worst": 1,
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": -1,
+    "asr": -0.2,
+    "maghrib": -0.01,
+    "isha": -0.02
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 61,
+     "worst": 1,
+     "worstWhen": "2026-01-01"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 31,
+     "worst": 1,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "egyptian-floor": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 100,
+   "worst": 1,
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": -1,
+    "asr": -0.2,
+    "maghrib": -0.01,
+    "isha": -0.02
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 61,
+     "worst": 1,
+     "worstWhen": "2026-01-01"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 31,
+     "worst": 1,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "mwl-round": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 7,
+   "margins": {
+    "fajr": -6.39,
+    "sunrise": 0,
+    "dhuhr": -1,
+    "asr": -0.2,
+    "maghrib": -0.01,
+    "isha": 2.08
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2026-01-02"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "mwl-floor": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 7,
+   "margins": {
+    "fajr": -6.39,
+    "sunrise": 0,
+    "dhuhr": -1,
+    "asr": -0.2,
+    "maghrib": -0.01,
+    "isha": 2.08
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2026-01-02"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "umaq-round": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 21,
+   "margins": {
+    "fajr": -4.26,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": -0.2,
+    "maghrib": -0.01,
+    "isha": -18.86
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 0,
+     "worst": 21,
+     "worstWhen": "2026-11-01"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 0,
+     "worst": 20,
+     "worstWhen": "2027-01-24"
+    }
+   }
+  },
+  "umaq-floor": {
+   "n": 92,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 21,
+   "margins": {
+    "fajr": -4.26,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": -0.2,
+    "maghrib": -0.01,
+    "isha": -18.86
+   },
+   "perYear": {
+    "2026": {
+     "n": 61,
+     "exact": 0,
+     "within1": 0,
+     "worst": 21,
+     "worstWhen": "2026-11-01"
+    },
+    "2027": {
+     "n": 31,
+     "exact": 0,
+     "within1": 0,
+     "worst": 20,
+     "worstWhen": "2027-01-24"
+    }
+   }
+  }
+ },
+ "masjidbox-al-imam-osogbo": {
+  "egyptian-round": {
+   "n": 399,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 7,
+   "margins": {
+    "fajr": 6.38,
+    "sunrise": 0,
+    "dhuhr": -1,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": -2.1
+   },
+   "perYear": {
+    "2026": {
+     "n": 365,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2026-01-01"
+    },
+    "2027": {
+     "n": 34,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "egyptian-floor": {
+   "n": 399,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 7,
+   "margins": {
+    "fajr": 6.38,
+    "sunrise": 0,
+    "dhuhr": -1,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": -2.1
+   },
+   "perYear": {
+    "2026": {
+     "n": 365,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2026-01-01"
+    },
+    "2027": {
+     "n": 34,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "mwl-round": {
+   "n": 399,
+   "exactPct": 0,
+   "within1Pct": 100,
+   "worst": 1,
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": -1,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "perYear": {
+    "2026": {
+     "n": 365,
+     "exact": 0,
+     "within1": 365,
+     "worst": 1,
+     "worstWhen": "2026-01-01"
+    },
+    "2027": {
+     "n": 34,
+     "exact": 0,
+     "within1": 34,
+     "worst": 1,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "mwl-floor": {
+   "n": 399,
+   "exactPct": 0,
+   "within1Pct": 100,
+   "worst": 1,
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": -1,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "perYear": {
+    "2026": {
+     "n": 365,
+     "exact": 0,
+     "within1": 365,
+     "worst": 1,
+     "worstWhen": "2026-01-01"
+    },
+    "2027": {
+     "n": 34,
+     "exact": 0,
+     "within1": 34,
+     "worst": 1,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "umaq-round": {
+   "n": 399,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 25,
+   "margins": {
+    "fajr": 2.12,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": -21.6
+   },
+   "perYear": {
+    "2026": {
+     "n": 365,
+     "exact": 0,
+     "within1": 0,
+     "worst": 25,
+     "worstWhen": "2026-03-10"
+    },
+    "2027": {
+     "n": 34,
+     "exact": 0,
+     "within1": 0,
+     "worst": 23,
+     "worstWhen": "2027-02-03"
+    }
+   }
+  },
+  "umaq-floor": {
+   "n": 399,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 25,
+   "margins": {
+    "fajr": 2.12,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": -21.6
+   },
+   "perYear": {
+    "2026": {
+     "n": 365,
+     "exact": 0,
+     "within1": 0,
+     "worst": 25,
+     "worstWhen": "2026-03-10"
+    },
+    "2027": {
+     "n": 34,
+     "exact": 0,
+     "within1": 0,
+     "worst": 23,
+     "worstWhen": "2027-02-03"
+    }
+   }
+  }
+ },
+ "masjidbox-dabara-suleja": {
+  "egyptian-round": {
+   "n": 399,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 7,
+   "margins": {
+    "fajr": 6.38,
+    "sunrise": -0.05,
+    "dhuhr": -1.02,
+    "asr": -0.04,
+    "maghrib": -0.04,
+    "isha": -2.21
+   },
+   "perYear": {
+    "2026": {
+     "n": 365,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2026-01-01"
+    },
+    "2027": {
+     "n": 34,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "egyptian-floor": {
+   "n": 399,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 7,
+   "margins": {
+    "fajr": 6.38,
+    "sunrise": -0.05,
+    "dhuhr": -1.02,
+    "asr": -0.04,
+    "maghrib": -0.04,
+    "isha": -2.21
+   },
+   "perYear": {
+    "2026": {
+     "n": 365,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2026-01-01"
+    },
+    "2027": {
+     "n": 34,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "mwl-round": {
+   "n": 399,
+   "exactPct": 0,
+   "within1Pct": 98,
+   "worst": 2,
+   "margins": {
+    "fajr": -0.03,
+    "sunrise": -0.05,
+    "dhuhr": -1.02,
+    "asr": -0.04,
+    "maghrib": -0.04,
+    "isha": -0.06
+   },
+   "perYear": {
+    "2026": {
+     "n": 365,
+     "exact": 0,
+     "within1": 359,
+     "worst": 2,
+     "worstWhen": "2026-03-06"
+    },
+    "2027": {
+     "n": 34,
+     "exact": 0,
+     "within1": 32,
+     "worst": 2,
+     "worstWhen": "2027-01-21"
+    }
+   }
+  },
+  "mwl-floor": {
+   "n": 399,
+   "exactPct": 0,
+   "within1Pct": 98,
+   "worst": 2,
+   "margins": {
+    "fajr": -0.03,
+    "sunrise": -0.05,
+    "dhuhr": -1.02,
+    "asr": -0.04,
+    "maghrib": -0.04,
+    "isha": -0.06
+   },
+   "perYear": {
+    "2026": {
+     "n": 365,
+     "exact": 0,
+     "within1": 359,
+     "worst": 2,
+     "worstWhen": "2026-03-06"
+    },
+    "2027": {
+     "n": 34,
+     "exact": 0,
+     "within1": 32,
+     "worst": 2,
+     "worstWhen": "2027-01-21"
+    }
+   }
+  },
+  "umaq-round": {
+   "n": 399,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 25,
+   "margins": {
+    "fajr": 2.09,
+    "sunrise": -0.05,
+    "dhuhr": -0.02,
+    "asr": -0.04,
+    "maghrib": -0.04,
+    "isha": -21.35
+   },
+   "perYear": {
+    "2026": {
+     "n": 365,
+     "exact": 0,
+     "within1": 0,
+     "worst": 25,
+     "worstWhen": "2026-03-24"
+    },
+    "2027": {
+     "n": 34,
+     "exact": 0,
+     "within1": 0,
+     "worst": 22,
+     "worstWhen": "2027-01-28"
+    }
+   }
+  },
+  "umaq-floor": {
+   "n": 399,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 25,
+   "margins": {
+    "fajr": 2.09,
+    "sunrise": -0.05,
+    "dhuhr": -0.02,
+    "asr": -0.04,
+    "maghrib": -0.04,
+    "isha": -21.35
+   },
+   "perYear": {
+    "2026": {
+     "n": 365,
+     "exact": 0,
+     "within1": 0,
+     "worst": 25,
+     "worstWhen": "2026-03-24"
+    },
+    "2027": {
+     "n": 34,
+     "exact": 0,
+     "within1": 0,
+     "worst": 22,
+     "worstWhen": "2027-01-28"
+    }
+   }
+  }
+ },
+ "masjidbox-idi-omoh-ife-LAGOS": {
+  "egyptian-round": {
+   "n": 399,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 63,
+   "margins": {
+    "fajr": -53.7,
+    "sunrise": -60.05,
+    "dhuhr": -60.08,
+    "asr": -60.08,
+    "maghrib": -60.07,
+    "isha": -62.18
+   },
+   "perYear": {
+    "2026": {
+     "n": 365,
+     "exact": 0,
+     "within1": 0,
+     "worst": 63,
+     "worstWhen": "2026-01-02"
+    },
+    "2027": {
+     "n": 34,
+     "exact": 0,
+     "within1": 0,
+     "worst": 63,
+     "worstWhen": "2027-01-09"
+    }
+   }
+  },
+  "egyptian-floor": {
+   "n": 399,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 63,
+   "margins": {
+    "fajr": -53.7,
+    "sunrise": -60.05,
+    "dhuhr": -60.08,
+    "asr": -60.08,
+    "maghrib": -60.07,
+    "isha": -62.18
+   },
+   "perYear": {
+    "2026": {
+     "n": 365,
+     "exact": 0,
+     "within1": 0,
+     "worst": 63,
+     "worstWhen": "2026-01-02"
+    },
+    "2027": {
+     "n": 34,
+     "exact": 0,
+     "within1": 0,
+     "worst": 63,
+     "worstWhen": "2027-01-09"
+    }
+   }
+  },
+  "mwl-round": {
+   "n": 399,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 61,
+   "margins": {
+    "fajr": -60.06,
+    "sunrise": -60.05,
+    "dhuhr": -60.08,
+    "asr": -60.08,
+    "maghrib": -60.07,
+    "isha": -60.06
+   },
+   "perYear": {
+    "2026": {
+     "n": 365,
+     "exact": 0,
+     "within1": 0,
+     "worst": 61,
+     "worstWhen": "2026-01-05"
+    },
+    "2027": {
+     "n": 34,
+     "exact": 0,
+     "within1": 0,
+     "worst": 61,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "mwl-floor": {
+   "n": 399,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 61,
+   "margins": {
+    "fajr": -60.06,
+    "sunrise": -60.05,
+    "dhuhr": -60.08,
+    "asr": -60.08,
+    "maghrib": -60.07,
+    "isha": -60.06
+   },
+   "perYear": {
+    "2026": {
+     "n": 365,
+     "exact": 0,
+     "within1": 0,
+     "worst": 61,
+     "worstWhen": "2026-01-05"
+    },
+    "2027": {
+     "n": 34,
+     "exact": 0,
+     "within1": 0,
+     "worst": 61,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "umaq-round": {
+   "n": 399,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 85,
+   "margins": {
+    "fajr": -57.93,
+    "sunrise": -60.05,
+    "dhuhr": -59.08,
+    "asr": -60.08,
+    "maghrib": -60.07,
+    "isha": -81.71
+   },
+   "perYear": {
+    "2026": {
+     "n": 365,
+     "exact": 0,
+     "within1": 0,
+     "worst": 85,
+     "worstWhen": "2026-02-25"
+    },
+    "2027": {
+     "n": 34,
+     "exact": 0,
+     "within1": 0,
+     "worst": 82,
+     "worstWhen": "2027-01-23"
+    }
+   }
+  },
+  "umaq-floor": {
+   "n": 399,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 85,
+   "margins": {
+    "fajr": -57.93,
+    "sunrise": -60.05,
+    "dhuhr": -59.08,
+    "asr": -60.08,
+    "maghrib": -60.07,
+    "isha": -81.71
+   },
+   "perYear": {
+    "2026": {
+     "n": 365,
+     "exact": 0,
+     "within1": 0,
+     "worst": 85,
+     "worstWhen": "2026-02-25"
+    },
+    "2027": {
+     "n": 34,
+     "exact": 0,
+     "within1": 0,
+     "worst": 82,
+     "worstWhen": "2027-01-23"
+    }
+   }
+  }
+ },
+ "masjidbox-idi-omoh-ife-UTC": {
+  "egyptian-round": {
+   "n": 399,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 7,
+   "margins": {
+    "fajr": 6.3,
+    "sunrise": -0.05,
+    "dhuhr": -0.08,
+    "asr": -0.08,
+    "maghrib": -0.07,
+    "isha": -2.18
+   },
+   "perYear": {
+    "2026": {
+     "n": 365,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2026-01-01"
+    },
+    "2027": {
+     "n": 34,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2027-01-02"
+    }
+   }
+  },
+  "egyptian-floor": {
+   "n": 399,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 7,
+   "margins": {
+    "fajr": 6.3,
+    "sunrise": -0.05,
+    "dhuhr": -0.08,
+    "asr": -0.08,
+    "maghrib": -0.07,
+    "isha": -2.18
+   },
+   "perYear": {
+    "2026": {
+     "n": 365,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2026-01-01"
+    },
+    "2027": {
+     "n": 34,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2027-01-02"
+    }
+   }
+  },
+  "mwl-round": {
+   "n": 399,
+   "exactPct": 66.7,
+   "within1Pct": 100,
+   "worst": 1,
+   "margins": {
+    "fajr": -0.06,
+    "sunrise": -0.05,
+    "dhuhr": -0.08,
+    "asr": -0.08,
+    "maghrib": -0.07,
+    "isha": -0.06
+   },
+   "perYear": {
+    "2026": {
+     "n": 365,
+     "exact": 242,
+     "within1": 365,
+     "worst": 1,
+     "worstWhen": "2026-01-05"
+    },
+    "2027": {
+     "n": 34,
+     "exact": 24,
+     "within1": 34,
+     "worst": 1,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "mwl-floor": {
+   "n": 399,
+   "exactPct": 66.7,
+   "within1Pct": 100,
+   "worst": 1,
+   "margins": {
+    "fajr": -0.06,
+    "sunrise": -0.05,
+    "dhuhr": -0.08,
+    "asr": -0.08,
+    "maghrib": -0.07,
+    "isha": -0.06
+   },
+   "perYear": {
+    "2026": {
+     "n": 365,
+     "exact": 242,
+     "within1": 365,
+     "worst": 1,
+     "worstWhen": "2026-01-05"
+    },
+    "2027": {
+     "n": 34,
+     "exact": 24,
+     "within1": 34,
+     "worst": 1,
+     "worstWhen": "2027-01-01"
+    }
+   }
+  },
+  "umaq-round": {
+   "n": 399,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 25,
+   "margins": {
+    "fajr": 2.07,
+    "sunrise": -0.05,
+    "dhuhr": 0.92,
+    "asr": -0.08,
+    "maghrib": -0.07,
+    "isha": -21.71
+   },
+   "perYear": {
+    "2026": {
+     "n": 365,
+     "exact": 0,
+     "within1": 0,
+     "worst": 25,
+     "worstWhen": "2026-02-25"
+    },
+    "2027": {
+     "n": 34,
+     "exact": 0,
+     "within1": 0,
+     "worst": 22,
+     "worstWhen": "2027-01-23"
+    }
+   }
+  },
+  "umaq-floor": {
+   "n": 399,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 25,
+   "margins": {
+    "fajr": 2.07,
+    "sunrise": -0.05,
+    "dhuhr": 0.92,
+    "asr": -0.08,
+    "maghrib": -0.07,
+    "isha": -21.71
+   },
+   "perYear": {
+    "2026": {
+     "n": 365,
+     "exact": 0,
+     "within1": 0,
+     "worst": 25,
+     "worstWhen": "2026-02-25"
+    },
+    "2027": {
+     "n": 34,
+     "exact": 0,
+     "within1": 0,
+     "worst": 22,
+     "worstWhen": "2027-01-23"
+    }
+   }
+  }
+ },
+ "matw-kano-monthly": {
+  "egyptian-round": {
+   "n": 30,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 7,
+   "margins": {
+    "fajr": 6.4,
+    "sunrise": 0.03,
+    "dhuhr": -0.8,
+    "asr": 0.87,
+    "maghrib": 0.03,
+    "isha": 2.13
+   },
+   "perYear": {
+    "2026": {
+     "n": 30,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2026-11-02"
+    }
+   }
+  },
+  "egyptian-floor": {
+   "n": 30,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 7,
+   "margins": {
+    "fajr": 6.4,
+    "sunrise": 0.03,
+    "dhuhr": -0.8,
+    "asr": 0.87,
+    "maghrib": 0.03,
+    "isha": 2.13
+   },
+   "perYear": {
+    "2026": {
+     "n": 30,
+     "exact": 0,
+     "within1": 0,
+     "worst": 7,
+     "worstWhen": "2026-11-02"
+    }
+   }
+  },
+  "mwl-round": {
+   "n": 30,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 5,
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0.03,
+    "dhuhr": -0.8,
+    "asr": 0.87,
+    "maghrib": 0.03,
+    "isha": 4.3
+   },
+   "perYear": {
+    "2026": {
+     "n": 30,
+     "exact": 0,
+     "within1": 0,
+     "worst": 5,
+     "worstWhen": "2026-11-05"
+    }
+   }
+  },
+  "mwl-floor": {
+   "n": 30,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 5,
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0.03,
+    "dhuhr": -0.8,
+    "asr": 0.87,
+    "maghrib": 0.03,
+    "isha": 4.3
+   },
+   "perYear": {
+    "2026": {
+     "n": 30,
+     "exact": 0,
+     "within1": 0,
+     "worst": 5,
+     "worstWhen": "2026-11-05"
+    }
+   }
+  },
+  "umaq-round": {
+   "n": 30,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 18,
+   "margins": {
+    "fajr": 2.17,
+    "sunrise": 0.03,
+    "dhuhr": 0.2,
+    "asr": 0.87,
+    "maghrib": 0.03,
+    "isha": -16.57
+   },
+   "perYear": {
+    "2026": {
+     "n": 30,
+     "exact": 0,
+     "within1": 0,
+     "worst": 18,
+     "worstWhen": "2026-11-01"
+    }
+   }
+  },
+  "umaq-floor": {
+   "n": 30,
+   "exactPct": 0,
+   "within1Pct": 0,
+   "worst": 18,
+   "margins": {
+    "fajr": 2.17,
+    "sunrise": 0.03,
+    "dhuhr": 0.2,
+    "asr": 0.87,
+    "maghrib": 0.03,
+    "isha": -16.57
+   },
+   "perYear": {
+    "2026": {
+     "n": 30,
+     "exact": 0,
+     "within1": 0,
+     "worst": 18,
+     "worstWhen": "2026-11-01"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,3298 @@
+{
+ "stamp": "2026-11-11 07:14:18Z",
+ "totals": {
+  "workspaces": 77,
+  "files": 31209,
+  "bytes": 3505269389,
+  "dataFiles": 7707,
+  "dataBytes": 264994966,
+  "rows": 1657556,
+  "deduped": 1558861,
+  "zero": 65,
+  "jsonFiles": 17093,
+  "badData": 0,
+  "badCaptures": 86,
+  "badOther": 3
+ },
+ "ws": {
+  "O1l-27": {
+   "files": 112,
+   "bytes": 39597105,
+   "dataFiles": 11,
+   "dataBytes": 433651,
+   "rows": 730,
+   "deduped": 730,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 11,
+   "missing": [],
+   "newest": 1794373856842.993,
+   "zero": []
+  },
+  "O1l-30": {
+   "files": 67,
+   "bytes": 2961140,
+   "dataFiles": 31,
+   "dataBytes": 618006,
+   "rows": 4029,
+   "deduped": 4029,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 4,
+   "missing": [
+    "data/fit_",
+    "data/implied_"
+   ],
+   "newest": 1794375528792.486,
+   "zero": []
+  },
+  "O1l-31": {
+   "files": 3786,
+   "bytes": 30539293,
+   "dataFiles": 61,
+   "dataBytes": 3247895,
+   "rows": 25133,
+   "deduped": 25133,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 3,
+   "missing": [
+    "data/is-felag-city-2026.json"
+   ],
+   "newest": 1794376065044.0793,
+   "zero": []
+  },
+  "O1l-33": {
+   "files": 86,
+   "bytes": 6760535,
+   "dataFiles": 35,
+   "dataBytes": 1676941,
+   "rows": 12410,
+   "deduped": 12410,
+   "dupGroups": [
+    [
+     "O1l-33/data/CD-goma-daarusalaam-2026.json",
+     "O1l-33/data/relabel-2027/CD-goma-daarusalaam-2027.json"
+    ],
+    [
+     "O1l-33/data/CD-goma-taqwa-2026.json",
+     "O1l-33/data/relabel-2027/CD-goma-taqwa-2027.json"
+    ],
+    [
+     "O1l-33/data/CF-bangui-2026.json",
+     "O1l-33/data/relabel-2027/CF-bangui-2027.json"
+    ],
+    [
+     "O1l-33/data/CG-brazzaville-2026.json",
+     "O1l-33/data/relabel-2027/CG-brazzaville-2027.json"
+    ],
+    [
+     "O1l-33/data/CM-douala-arrahma-pagecoords-2026.json",
+     "O1l-33/data/relabel-2027/CM-douala-arrahma-2027.json"
+    ],
+    [
+     "O1l-33/data/CM-ngaoundere-2026.json",
+     "O1l-33/data/relabel-2027/CM-ngaoundere-2027.json"
+    ],
+    [
+     "O1l-33/data/GA-libreville-kinguele-2026.json",
+     "O1l-33/data/relabel-2027/GA-libreville-kinguele-2027.json"
+    ],
+    [
+     "O1l-33/data/GA-portgentil-2026.json",
+     "O1l-33/data/relabel-2027/GA-portgentil-2027.json"
+    ],
+    [
+     "O1l-33/data/GQ-malabo-2026.json",
+     "O1l-33/data/relabel-2027/GQ-malabo-2027.json"
+    ],
+    [
+     "O1l-33/data/TD-ndjamena-2026.json",
+     "O1l-33/data/relabel-2027/TD-ndjamena-2027.json"
+    ],
+    [
+     "O1l-33/data/mawaqit-adamou-ngaoundere.json",
+     "O1l-33/data/mawaqit-mbamyanga-ngaoundere.json",
+     "O1l-33/data/mawaqit-sabongari-ngaoundere.json"
+    ]
+   ],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "COUNTS.md",
+    "REPORT.md"
+   ],
+   "named": 7,
+   "missing": [
+    "captures/mawaqit-",
+    "captures/probe-",
+    "data/mawaqit-"
+   ],
+   "newest": 1794375859325.8254,
+   "zero": [
+    "O1l-33/captures/probe-se.html"
+   ]
+  },
+  "africa-cities": {
+   "files": 9,
+   "bytes": 113076,
+   "dataFiles": 0,
+   "dataBytes": 0,
+   "rows": 0,
+   "deduped": 0,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": false,
+   "alt": [],
+   "named": 0,
+   "missing": [],
+   "newest": 1794369619919.3965,
+   "zero": []
+  },
+  "algeria-1447": {
+   "files": 96,
+   "bytes": 70625070,
+   "dataFiles": 6,
+   "dataBytes": 282341,
+   "rows": 1062,
+   "deduped": 1062,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 8,
+   "missing": [],
+   "newest": 1794372482864.798,
+   "zero": []
+  },
+  "algo-table": {
+   "files": 3,
+   "bytes": 55858,
+   "dataFiles": 1,
+   "dataBytes": 6387,
+   "rows": 0,
+   "deduped": 0,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": false,
+   "alt": [
+    "ALGO-TABLE-COMPARE.md"
+   ],
+   "named": 0,
+   "missing": [],
+   "newest": 1794373536269.4465,
+   "zero": []
+  },
+  "athanpro": {
+   "files": 5669,
+   "bytes": 539769927,
+   "dataFiles": 2709,
+   "dataBytes": 18995071,
+   "rows": 80708,
+   "deduped": 80708,
+   "dupGroups": [
+    [
+     "athanpro/data/albania-durres.json",
+     "athanpro/data/albania-shkoder.json"
+    ],
+    [
+     "athanpro/data/andorra-andorra-la-vella.json",
+     "athanpro/data/andorra-canillo.json",
+     "athanpro/data/andorra-encamp.json",
+     "athanpro/data/andorra-escaldes-engordany.json",
+     "athanpro/data/andorra-la-massana.json",
+     "athanpro/data/andorra-ordino.json",
+     "athanpro/data/andorra-sant-julia-de-loria.json"
+    ],
+    [
+     "athanpro/data/argentina-buenos-aires.json",
+     "athanpro/data/argentina-quilmes.json"
+    ],
+    [
+     "athanpro/data/armenia-ararat.json",
+     "athanpro/data/turkey-aralik.json"
+    ],
+    [
+     "athanpro/data/armenia-gyumri.json",
+     "athanpro/data/turkey-akyaka.json"
+    ],
+    [
+     "athanpro/data/armenia-vagharshapat.json",
+     "athanpro/data/turkey-karakoyunlu.json"
+    ],
+    [
+     "athanpro/data/aruba-oranjestad.json",
+     "athanpro/data/aruba-paradera.json"
+    ],
+    [
+     "athanpro/data/australia-brisbane.json",
+     "athanpro/data/australia-logan-city.json"
+    ],
+    [
+     "athanpro/data/austria-dornbirn.json",
+     "athanpro/data/switzerland-st-gallen.json"
+    ],
+    [
+     "athanpro/data/azerbaijan-bakixanov.json",
+     "athanpro/data/azerbaijan-baku.json",
+     "athanpro/data/azerbaijan-qaracuxur.json",
+     "athanpro/data/azerbaijan-sumqayit.json"
+    ],
+    [
+     "athanpro/data/bahrain-aali.json",
+     "athanpro/data/bahrain-hamad-town.json",
+     "athanpro/data/bahrain-manama.json",
+     "athanpro/data/bahrain-muharraq.json",
+     "athanpro/data/bahrain-riffa.json"
+    ],
+    [
+     "athanpro/data/barbados-bathsheba.json",
+     "athanpro/data/barbados-bridgetown.json",
+     "athanpro/data/barbados-holetown.json",
+     "athanpro/data/barbados-oistins.json",
+     "athanpro/data/barbados-speightstown.json"
+    ],
+    [
+     "athanpro/data/belgium-bruges.json",
+     "athanpro/data/belgium-kortrijk.json",
+     "athanpro/data/belgium-tournai.json"
+    ],
+    [
+     "athanpro/data/belgium-hasselt.json",
+     "athanpro/data/belgium-houthalen-helchteren.json"
+    ],
+    [
+     "athanpro/data/belgium-lige.json",
+     "athanpro/data/belgium-verviers.json"
+    ],
+    [
+     "athanpro/data/brunei-bandar-seri-begawan.json",
+     "athanpro/data/brunei-kuala-belait.json",
+     "athanpro/data/brunei-seria.json"
+    ],
+    [
+     "athanpro/data/brunei-brunei.json",
+     "athanpro/data/brunei-tutong.json"
+    ],
+    [
+     "athanpro/data/cameroon-kousseri.json",
+     "athanpro/data/chad-ndjamena.json"
+    ],
+    [
+     "athanpro/data/central-african-republic-bangui.json",
+     "athanpro/data/central-african-republic-bimbo.json"
+    ],
+    [
+     "athanpro/data/chile-puente-alto.json",
+     "athanpro/data/chile-san-bernardo.json",
+     "athanpro/data/chile-santiago.json"
+    ],
+    [
+     "athanpro/data/chile-valparaiso.json",
+     "athanpro/data/chile-vina-del-mar.json"
+    ],
+    [
+     "athanpro/data/costa-rica-alajuela.json",
+     "athanpro/data/costa-rica-san-francisco.json"
+    ],
+    [
+     "athanpro/data/denmark-copenhagen.json",
+     "athanpro/data/denmark-frederiksberg.json",
+     "athanpro/data/denmark-gentofte.json",
+     "athanpro/data/denmark-gladsaxe.json"
+    ],
+    [
+     "athanpro/data/dominica-berekua.json",
+     "athanpro/data/dominica-mahaut.json",
+     "athanpro/data/dominica-roseau.json"
+    ],
+    [
+     "athanpro/data/dominican-republic-san-cristobal.json",
+     "athanpro/data/dominican-republic-santo-domingo.json"
+    ],
+    [
+     "athanpro/data/dr-congo-goma.json",
+     "athanpro/data/rwanda-gisenyi.json"
+    ],
+    [
+     "athanpro/data/ecuador-duran.json",
+     "athanpro/data/ecuador-guayaquil.json"
+    ],
+    [
+     "athanpro/data/egypt-cairo.json",
+     "athanpro/data/egypt-giza.json"
+    ],
+    [
+     "athanpro/data/el-salvador-apopa.json",
+     "athanpro/data/el-salvador-delgado.json",
+     "athanpro/data/el-salvador-mejicanos.json",
+     "athanpro/data/el-salvador-san-marcos.json",
+     "athanpro/data/el-salvador-san-salvador.json",
+     "athanpro/data/el-salvador-santa-tecla.json",
+     "athanpro/data/el-salvador-soyapango.json"
+    ],
+    [
+     "athanpro/data/eswatini-lobamba.json",
+     "athanpro/data/eswatini-manzini.json",
+     "athanpro/data/eswatini-mbabane.json"
+    ],
+    [
+     "athanpro/data/france-cannes.json",
+     "athanpro/data/france-grasse.json"
+    ],
+    [
+     "athanpro/data/gambia-bakau.json",
+     "athanpro/data/gambia-banjul.json",
+     "athanpro/data/gambia-brikama.json",
+     "athanpro/data/gambia-serekunda.json"
+    ],
+    [
+     "athanpro/data/ghana-accra.json",
+     "athanpro/data/ghana-ashaiman.json",
+     "athanpro/data/ghana-tema.json"
+    ],
+    [
+     "athanpro/data/guadeloupe-baie-mahault.json",
+     "athanpro/data/guadeloupe-le-gosier.json",
+     "athanpro/data/guadeloupe-les-abymes.json"
+    ],
+    [
+     "athanpro/data/guatemala-chinautla.json",
+     "athanpro/data/guatemala-guatemala-city.json",
+     "athanpro/data/guatemala-mixco.json",
+     "athanpro/data/guatemala-san-juan-sacatepequez.json",
+     "athanpro/data/guatemala-san-miguel-petapa.json",
+     "athanpro/data/guatemala-villa-canales.json",
+     "athanpro/data/guatemala-villa-nueva.json"
+    ],
+    [
+     "athanpro/data/ireland-bray.json",
+     "athanpro/data/ireland-dublin.json"
+    ],
+    [
+     "athanpro/data/israel-ashdod.json",
+     "athanpro/data/israel-beersheba.json",
+     "athanpro/data/israel-bnei-brak.json",
+     "athanpro/data/israel-holon.json",
+     "athanpro/data/israel-rishon-lezion.json",
+     "athanpro/data/israel-tel-aviv.json"
+    ],
+    [
+     "athanpro/data/israel-haifa.json",
+     "athanpro/data/israel-netanya.json",
+     "athanpro/data/palestine-nablus.json"
+    ],
+    [
+     "athanpro/data/israel-jerusalem.json",
+     "athanpro/data/israel-petah-tikva.json",
+     "athanpro/data/palestine-bethlehem.json",
+     "athanpro/data/palestine-hebron.json",
+     "athanpro/data/palestine-ramallah.json"
+    ],
+    [
+     "athanpro/data/italy-rome.json",
+     "athanpro/data/vatican-vatican-city.json"
+    ],
+    [
+     "athanpro/data/japan-kawasaki.json",
+     "athanpro/data/japan-tokyo.json"
+    ],
+    [
+     "athanpro/data/kiribati-bairiki-village.json",
+     "athanpro/data/kiribati-south-tarawa.json",
+     "athanpro/data/kiribati-teaoraereke-village.json"
+    ],
+    [
+     "athanpro/data/kiribati-betio-village.json",
+     "athanpro/data/kiribati-bikenibeu-village.json"
+    ],
+    [
+     "athanpro/data/kosovo-ferizaj.json",
+     "athanpro/data/kosovo-gjilan.json",
+     "athanpro/data/kosovo-peja.json",
+     "athanpro/data/montenegro-rozaje.json"
+    ],
+    [
+     "athanpro/data/kosovo-prizren.json",
+     "athanpro/data/north-macedonia-gostivar.json"
+    ],
+    [
+     "athanpro/data/kuwait-al-ahmadi.json",
+     "athanpro/data/kuwait-al-egaila.json",
+     "athanpro/data/kuwait-al-farwaniyah.json",
+     "athanpro/data/kuwait-al-fintas.json",
+     "athanpro/data/kuwait-al-mahboula.json",
+     "athanpro/data/kuwait-al-mangaf.json",
+     "athanpro/data/kuwait-al-salmiya.json",
+     "athanpro/data/kuwait-hawalli.json",
+     "athanpro/data/kuwait-kuwait-city.json"
+    ],
+    [
+     "athanpro/data/latvia-jurmala.json",
+     "athanpro/data/latvia-riga.json"
+    ],
+    [
+     "athanpro/data/lebanon-baabda.json",
+     "athanpro/data/lebanon-beirut.json"
+    ],
+    [
+     "athanpro/data/liberia-bensonville.json",
+     "athanpro/data/liberia-monrovia.json"
+    ],
+    [
+     "athanpro/data/libya-benghazi.json",
+     "athanpro/data/libya-mawa.json"
+    ],
+    [
+     "athanpro/data/libya-ekdames.json",
+     "athanpro/data/morocco-chtouka-ait-baha.json"
+    ],
+    [
+     "athanpro/data/libya-jalo.json",
+     "athanpro/data/libya-ojala.json"
+    ],
+    [
+     "athanpro/data/liechtenstein-balzers.json",
+     "athanpro/data/liechtenstein-eschen.json",
+     "athanpro/data/liechtenstein-schaan.json",
+     "athanpro/data/liechtenstein-triesen.json",
+     "athanpro/data/liechtenstein-vaduz.json"
+    ],
+    [
+     "athanpro/data/luxembourg-diekirch.json",
+     "athanpro/data/luxembourg-ettelbruck.json"
+    ],
+    [
+     "athanpro/data/luxembourg-differdange.json",
+     "athanpro/data/luxembourg-esch-sur-alzette.json",
+     "athanpro/data/luxembourg-luxembourg-city.json",
+     "athanpro/data/luxembourg-rumelange.json"
+    ],
+    [
+     "athanpro/data/malaysia-alor-gajah.json",
+     "athanpro/data/malaysia-bandar-melaka.json",
+     "athanpro/data/malaysia-jasin.json",
+     "athanpro/data/malaysia-masjid-tanah.json",
+     "athanpro/data/malaysia-merlimau.json",
+     "athanpro/data/malaysia-nyalas.json"
+    ],
+    [
+     "athanpro/data/malaysia-arau.json",
+     "athanpro/data/malaysia-kangar.json",
+     "athanpro/data/malaysia-padang-besar.json"
+    ],
+    [
+     "athanpro/data/malaysia-bachok.json",
+     "athanpro/data/malaysia-kbharu.json",
+     "athanpro/data/malaysia-kuala-krai.json",
+     "athanpro/data/malaysia-machang.json",
+     "athanpro/data/malaysia-mukim-chiku.json",
+     "athanpro/data/malaysia-pasir-mas.json",
+     "athanpro/data/malaysia-pasir-puteh.json",
+     "athanpro/data/malaysia-tnh-merah.json",
+     "athanpro/data/malaysia-tumpat.json"
+    ],
+    [
+     "athanpro/data/malaysia-bagan-datoh.json",
+     "athanpro/data/malaysia-beruas.json",
+     "athanpro/data/malaysia-kggajah.json",
+     "athanpro/data/malaysia-lumut.json",
+     "athanpro/data/malaysia-parit.json",
+     "athanpro/data/malaysia-setiawan-dan-pulau-pangkor.json",
+     "athanpro/data/malaysia-sri-iskandar.json",
+     "athanpro/data/malaysia-teluk-intan.json"
+    ],
+    [
+     "athanpro/data/malaysia-bagan-serai-dan-parit-buntar.json",
+     "athanpro/data/malaysia-selama.json",
+     "athanpro/data/malaysia-taiping.json"
+    ],
+    [
+     "athanpro/data/malaysia-baling.json",
+     "athanpro/data/malaysia-grik-dan-lenggong.json",
+     "athanpro/data/malaysia-pengkalan-hulu.json"
+    ],
+    [
+     "athanpro/data/malaysia-balingian.json",
+     "athanpro/data/malaysia-dalat.json",
+     "athanpro/data/malaysia-kanowit.json",
+     "athanpro/data/malaysia-kapit.json",
+     "athanpro/data/malaysia-mukah.json",
+     "athanpro/data/malaysia-oya.json",
+     "athanpro/data/malaysia-sibu.json"
+    ],
+    [
+     "athanpro/data/malaysia-balong.json",
+     "athanpro/data/malaysia-kalabakan.json",
+     "athanpro/data/malaysia-tawau.json"
+    ],
+    [
+     "athanpro/data/malaysia-bandar-bahru.json",
+     "athanpro/data/malaysia-kulim.json"
+    ],
+    [
+     "athanpro/data/malaysia-batu-gajah.json",
+     "athanpro/data/malaysia-ipoh.json",
+     "athanpro/data/malaysia-kampar.json",
+     "athanpro/data/malaysia-sg-siput-dan-kuala-kangsar.json"
+    ],
+    [
+     "athanpro/data/malaysia-batu-pahat.json",
+     "athanpro/data/malaysia-gemas.json",
+     "athanpro/data/malaysia-muar.json",
+     "athanpro/data/malaysia-segamat.json"
+    ],
+    [
+     "athanpro/data/malaysia-bau.json",
+     "athanpro/data/malaysia-kuching.json",
+     "athanpro/data/malaysia-lundu.json",
+     "athanpro/data/malaysia-sematan.json"
+    ],
+    [
+     "athanpro/data/malaysia-bdr-bkt-garam.json",
+     "athanpro/data/malaysia-sandakan.json",
+     "athanpro/data/malaysia-tambisan.json"
+    ],
+    [
+     "athanpro/data/malaysia-beaufort.json",
+     "athanpro/data/malaysia-kuala-penyu.json",
+     "athanpro/data/malaysia-membakut.json",
+     "athanpro/data/malaysia-sipitang.json",
+     "athanpro/data/malaysia-tenom.json",
+     "athanpro/data/malaysia-weston.json"
+    ],
+    [
+     "athanpro/data/malaysia-bekenu.json",
+     "athanpro/data/malaysia-marudi.json",
+     "athanpro/data/malaysia-miri.json",
+     "athanpro/data/malaysia-niah.json",
+     "athanpro/data/malaysia-sibuti.json"
+    ],
+    [
+     "athanpro/data/malaysia-belaga.json",
+     "athanpro/data/malaysia-bintulu.json",
+     "athanpro/data/malaysia-pandan.json",
+     "athanpro/data/malaysia-sebauh.json",
+     "athanpro/data/malaysia-tatau.json"
+    ],
+    [
+     "athanpro/data/malaysia-belawai.json",
+     "athanpro/data/malaysia-bintangor.json",
+     "athanpro/data/malaysia-daro.json",
+     "athanpro/data/malaysia-julau.json",
+     "athanpro/data/malaysia-matu.json",
+     "athanpro/data/malaysia-sarikei.json"
+    ],
+    [
+     "athanpro/data/malaysia-beluran.json",
+     "athanpro/data/malaysia-kuamut.json",
+     "athanpro/data/malaysia-pinangah.json",
+     "athanpro/data/malaysia-telupit.json",
+     "athanpro/data/malaysia-terusan.json"
+    ],
+    [
+     "athanpro/data/malaysia-bentong.json",
+     "athanpro/data/malaysia-kuala-lipis.json",
+     "athanpro/data/malaysia-raub.json"
+    ],
+    [
+     "athanpro/data/malaysia-bera.json",
+     "athanpro/data/malaysia-chenor.json",
+     "athanpro/data/malaysia-jerantut.json",
+     "athanpro/data/malaysia-maran.json",
+     "athanpro/data/malaysia-temerloh.json"
+    ],
+    [
+     "athanpro/data/malaysia-besut.json",
+     "athanpro/data/malaysia-setiu.json"
+    ],
+    [
+     "athanpro/data/malaysia-betong.json",
+     "athanpro/data/malaysia-debak.json",
+     "athanpro/data/malaysia-engkelili.json",
+     "athanpro/data/malaysia-kabong.json",
+     "athanpro/data/malaysia-lingga.json",
+     "athanpro/data/malaysia-lubok-antu.json",
+     "athanpro/data/malaysia-pusa.json",
+     "athanpro/data/malaysia-roban.json",
+     "athanpro/data/malaysia-saratok.json",
+     "athanpro/data/malaysia-spaoh.json",
+     "athanpro/data/malaysia-sri-aman.json"
+    ],
+    [
+     "athanpro/data/malaysia-bukit-fraser.json",
+     "athanpro/data/malaysia-bukit-tinggi.json",
+     "athanpro/data/malaysia-cameron-higlands.json",
+     "athanpro/data/malaysia-genting-higlands.json"
+    ],
+    [
+     "athanpro/data/malaysia-genting-sempah.json",
+     "athanpro/data/malaysia-janda-baik.json"
+    ],
+    [
+     "athanpro/data/malaysia-gombak.json",
+     "athanpro/data/malaysia-hlangat.json",
+     "athanpro/data/malaysia-hselangor.json",
+     "athanpro/data/malaysia-petaling.json",
+     "athanpro/data/malaysia-rawang.json",
+     "athanpro/data/malaysia-salam.json",
+     "athanpro/data/malaysia-sepang.json"
+    ],
+    [
+     "athanpro/data/malaysia-jelebu.json",
+     "athanpro/data/malaysia-kuala-pilah.json",
+     "athanpro/data/malaysia-port-dickson.json",
+     "athanpro/data/malaysia-rembau.json",
+     "athanpro/data/malaysia-seremban.json"
+    ],
+    [
+     "athanpro/data/malaysia-johor-bahru.json",
+     "athanpro/data/malaysia-kota-tinggi.json",
+     "athanpro/data/malaysia-mersing.json"
+    ],
+    [
+     "athanpro/data/malaysia-keningau.json",
+     "athanpro/data/malaysia-nabawan.json",
+     "athanpro/data/malaysia-pensiangan.json",
+     "athanpro/data/malaysia-tambunan.json"
+    ],
+    [
+     "athanpro/data/malaysia-klang.json",
+     "athanpro/data/malaysia-kuala-langat.json",
+     "athanpro/data/malaysia-kuala-selangor.json",
+     "athanpro/data/malaysia-sabak-bernam.json"
+    ],
+    [
+     "athanpro/data/malaysia-kota-belud.json",
+     "athanpro/data/malaysia-kota-kinabalu.json",
+     "athanpro/data/malaysia-papar.json",
+     "athanpro/data/malaysia-penampang.json",
+     "athanpro/data/malaysia-ranau.json",
+     "athanpro/data/malaysia-tuaran.json"
+    ],
+    [
+     "athanpro/data/malaysia-kota-setar.json",
+     "athanpro/data/malaysia-kubang-pasu.json",
+     "athanpro/data/malaysia-pokok-sena.json"
+    ],
+    [
+     "athanpro/data/malaysia-kuala-muda.json",
+     "athanpro/data/malaysia-pendang.json",
+     "athanpro/data/malaysia-yan.json"
+    ],
+    [
+     "athanpro/data/malaysia-kuala-terengganu.json",
+     "athanpro/data/malaysia-marang.json"
+    ],
+    [
+     "athanpro/data/malaysia-kuantan.json",
+     "athanpro/data/malaysia-muadzam-shah.json",
+     "athanpro/data/malaysia-pekan.json",
+     "athanpro/data/malaysia-rompin.json"
+    ],
+    [
+     "athanpro/data/malaysia-kudat.json",
+     "athanpro/data/malaysia-pitas.json",
+     "athanpro/data/malaysia-pulau-banggi.json"
+    ],
+    [
+     "athanpro/data/malaysia-kunak.json",
+     "athanpro/data/malaysia-semporna.json"
+    ],
+    [
+     "athanpro/data/malaysia-lawas.json",
+     "athanpro/data/malaysia-limbang.json",
+     "athanpro/data/malaysia-sundar.json",
+     "athanpro/data/malaysia-trusan.json"
+    ],
+    [
+     "athanpro/data/malaysia-padang-terap.json",
+     "athanpro/data/malaysia-sik.json"
+    ],
+    [
+     "athanpro/data/malaysia-samarahan.json",
+     "athanpro/data/malaysia-sebuyau.json",
+     "athanpro/data/malaysia-serian.json",
+     "athanpro/data/malaysia-simunjan.json"
+    ],
+    [
+     "athanpro/data/malaysia-slim-river-dan-tanjung-malim.json",
+     "athanpro/data/malaysia-tapah.json"
+    ],
+    [
+     "athanpro/data/maldives-hulhumale.json",
+     "athanpro/data/maldives-male.json"
+    ],
+    [
+     "athanpro/data/malta-birkirkara.json",
+     "athanpro/data/malta-mosta.json",
+     "athanpro/data/malta-qormi.json",
+     "athanpro/data/malta-rabat.json"
+    ],
+    [
+     "athanpro/data/malta-fgura.json",
+     "athanpro/data/malta-san-gwann.json",
+     "athanpro/data/malta-sliema.json",
+     "athanpro/data/malta-valletta.json",
+     "athanpro/data/malta-zabbar.json",
+     "athanpro/data/malta-zejtun.json"
+    ],
+    [
+     "athanpro/data/martinique-ducos.json",
+     "athanpro/data/martinique-fort-de-france.json",
+     "athanpro/data/martinique-gros-morne.json",
+     "athanpro/data/martinique-le-francois.json",
+     "athanpro/data/martinique-le-lamentin.json",
+     "athanpro/data/martinique-le-robert.json",
+     "athanpro/data/martinique-saint-esprit.json",
+     "athanpro/data/martinique-saint-joseph.json",
+     "athanpro/data/martinique-saint-pierre.json",
+     "athanpro/data/martinique-sainte-marie.json"
+    ],
+    [
+     "athanpro/data/mauritania-nouadhibou.json",
+     "athanpro/data/morocco-lagouira.json"
+    ],
+    [
+     "athanpro/data/mauritius-bel-air.json",
+     "athanpro/data/mauritius-centre-de-flacq.json",
+     "athanpro/data/mauritius-goodlands.json"
+    ],
+    [
+     "athanpro/data/mauritius-curepipe.json",
+     "athanpro/data/mauritius-mahebourg.json",
+     "athanpro/data/mauritius-quatre-bornes.json",
+     "athanpro/data/mauritius-vacoas.json"
+    ],
+    [
+     "athanpro/data/moldova-ungheni.json",
+     "athanpro/data/romania-iasi.json"
+    ],
+    [
+     "athanpro/data/montenegro-budva.json",
+     "athanpro/data/montenegro-herceg-novi.json"
+    ],
+    [
+     "athanpro/data/morocco-smara.json",
+     "athanpro/data/western-sahara-es-semara.json"
+    ],
+    [
+     "athanpro/data/nauru-baiti.json",
+     "athanpro/data/nauru-meneng.json"
+    ],
+    [
+     "athanpro/data/new-caledonia-dumbea.json",
+     "athanpro/data/new-caledonia-mont-dore.json",
+     "athanpro/data/new-caledonia-noumea.json",
+     "athanpro/data/new-caledonia-paita.json"
+    ],
+    [
+     "athanpro/data/nicaragua-managua.json",
+     "athanpro/data/nicaragua-masaya.json"
+    ],
+    [
+     "athanpro/data/oman-bawshar.json",
+     "athanpro/data/oman-muscat.json",
+     "athanpro/data/oman-seeb.json"
+    ],
+    [
+     "athanpro/data/pakistan-islamabad.json",
+     "athanpro/data/pakistan-rawalpindi.json"
+    ],
+    [
+     "athanpro/data/panama-las-cumbres.json",
+     "athanpro/data/panama-pacora.json",
+     "athanpro/data/panama-san-miguelito.json",
+     "athanpro/data/panama-tocumen.json"
+    ],
+    [
+     "athanpro/data/portugal-porto.json",
+     "athanpro/data/portugal-vila-nova-de-gaia.json"
+    ],
+    [
+     "athanpro/data/qatar-al-rayyan.json",
+     "athanpro/data/qatar-doha.json",
+     "athanpro/data/qatar-umm-salal-mohammed.json"
+    ],
+    [
+     "athanpro/data/saint-lucia-anse-la-raye.json",
+     "athanpro/data/saint-lucia-bisee.json",
+     "athanpro/data/saint-lucia-canaries.json",
+     "athanpro/data/saint-lucia-castries.json",
+     "athanpro/data/saint-lucia-dennery.json",
+     "athanpro/data/saint-lucia-gros-islet.json",
+     "athanpro/data/saint-lucia-laborie.json",
+     "athanpro/data/saint-lucia-micoud.json",
+     "athanpro/data/saint-lucia-soufriere.json"
+    ],
+    [
+     "athanpro/data/san-marino-acquaviva.json",
+     "athanpro/data/san-marino-borgo-maggiore.json",
+     "athanpro/data/san-marino-chiesanuova.json",
+     "athanpro/data/san-marino-city-of-san-marino.json",
+     "athanpro/data/san-marino-domagnano.json",
+     "athanpro/data/san-marino-faetano.json",
+     "athanpro/data/san-marino-fiorentino.json",
+     "athanpro/data/san-marino-san-marino.json",
+     "athanpro/data/san-marino-serravalle.json"
+    ],
+    [
+     "athanpro/data/seychelles-beau-vallon.json",
+     "athanpro/data/seychelles-bel-ombre.json"
+    ],
+    [
+     "athanpro/data/sint-maarten-cole-bay.json",
+     "athanpro/data/sint-maarten-cul-de-sac.json",
+     "athanpro/data/sint-maarten-lower-princes-quarter.json",
+     "athanpro/data/sint-maarten-philipsburg.json",
+     "athanpro/data/sint-maarten-upper-princes-quarter.json"
+    ],
+    [
+     "athanpro/data/slovenia-kamnik.json",
+     "athanpro/data/slovenia-kranj.json",
+     "athanpro/data/slovenia-ljubljana.json"
+    ],
+    [
+     "athanpro/data/somalia-baidoa.json",
+     "athanpro/data/somalia-baydhabo.json"
+    ],
+    [
+     "athanpro/data/south-korea-bucheon.json",
+     "athanpro/data/south-korea-incheon.json"
+    ],
+    [
+     "athanpro/data/sri-lanka-colombo.json",
+     "athanpro/data/sri-lanka-gampaha.json",
+     "athanpro/data/sri-lanka-sri-jayawardenepura-kotte.json"
+    ],
+    [
+     "athanpro/data/suriname-lelydorp.json",
+     "athanpro/data/suriname-onverwacht.json"
+    ],
+    [
+     "athanpro/data/sweden-goteborg.json",
+     "athanpro/data/sweden-gothenburg.json"
+    ],
+    [
+     "athanpro/data/switzerland-lausanne.json",
+     "athanpro/data/switzerland-yverdon-les-bains.json"
+    ],
+    [
+     "athanpro/data/togo-kara.json",
+     "athanpro/data/togo-niamtougou.json"
+    ],
+    [
+     "athanpro/data/trinidad-and-tobago-arima.json",
+     "athanpro/data/trinidad-and-tobago-chaguanas.json",
+     "athanpro/data/trinidad-and-tobago-couva.json",
+     "athanpro/data/trinidad-and-tobago-port-of-spain.json",
+     "athanpro/data/trinidad-and-tobago-sangre-grande.json",
+     "athanpro/data/trinidad-and-tobago-tunapuna.json"
+    ],
+    [
+     "athanpro/data/tunisia-la-goulette.json",
+     "athanpro/data/tunisia-tunis.json"
+    ],
+    [
+     "athanpro/data/turkey-ahirli.json",
+     "athanpro/data/turkey-yalihyk.json"
+    ],
+    [
+     "athanpro/data/turkey-anamur.json",
+     "athanpro/data/turkey-bozyazi.json"
+    ],
+    [
+     "athanpro/data/turkey-anliurfa.json",
+     "athanpro/data/turkey-kiziltepe.json",
+     "athanpro/data/turkey-sanliurfa.json"
+    ],
+    [
+     "athanpro/data/turkey-ara.json",
+     "athanpro/data/turkey-hsangaz.json"
+    ],
+    [
+     "athanpro/data/turkey-ayel.json",
+     "athanpro/data/turkey-hemn.json"
+    ],
+    [
+     "athanpro/data/turkey-azdavay.json",
+     "athanpro/data/turkey-pinarbai-k.json"
+    ],
+    [
+     "athanpro/data/turkey-elbeyl.json",
+     "athanpro/data/turkey-ouzel.json"
+    ],
+    [
+     "athanpro/data/turkey-eskehr.json",
+     "athanpro/data/turkey-eskisehir.json"
+    ],
+    [
+     "athanpro/data/turkey-gazantep.json",
+     "athanpro/data/turkey-gaziantep.json"
+    ],
+    [
+     "athanpro/data/turkey-izmir.json",
+     "athanpro/data/turkey-zmr.json"
+    ],
+    [
+     "athanpro/data/turkey-kayser.json",
+     "athanpro/data/turkey-kayseri.json"
+    ],
+    [
+     "athanpro/data/turkey-kozakli.json",
+     "athanpro/data/turkey-yenfakili.json"
+    ],
+    [
+     "athanpro/data/turkey-mersin.json",
+     "athanpro/data/turkey-mersn.json"
+    ],
+    [
+     "athanpro/data/turkey-sakarya.json",
+     "athanpro/data/turkey-serdivan.json"
+    ],
+    [
+     "athanpro/data/united-arab-emirates-abu-al-bayd-island.json",
+     "athanpro/data/united-arab-emirates-tarif-al-marfa.json"
+    ],
+    [
+     "athanpro/data/united-arab-emirates-abu-dahbi-city.json",
+     "athanpro/data/united-arab-emirates-abu-dhabi.json"
+    ],
+    [
+     "athanpro/data/united-arab-emirates-ajman-masfout.json",
+     "athanpro/data/united-arab-emirates-hatta.json"
+    ],
+    [
+     "athanpro/data/united-arab-emirates-ajman.json",
+     "athanpro/data/united-arab-emirates-ajmman-city.json"
+    ],
+    [
+     "athanpro/data/united-arab-emirates-al-ain-city.json",
+     "athanpro/data/united-arab-emirates-al-ain.json"
+    ],
+    [
+     "athanpro/data/united-arab-emirates-al-faqa.json",
+     "athanpro/data/united-arab-emirates-lahbab.json",
+     "athanpro/data/united-arab-emirates-lisaili.json",
+     "athanpro/data/united-arab-emirates-margham.json",
+     "athanpro/data/united-arab-emirates-murqquab.json"
+    ],
+    [
+     "athanpro/data/united-arab-emirates-albadia.json",
+     "athanpro/data/united-arab-emirates-sharjah-east-coast-dibba.json",
+     "athanpro/data/united-arab-emirates-sharjah-east-coast-kalba.json",
+     "athanpro/data/united-arab-emirates-sharjah-east-coast-khor-fakkan.json"
+    ],
+    [
+     "athanpro/data/united-arab-emirates-fujairah.json",
+     "athanpro/data/united-arab-emirates-fujirah.json"
+    ],
+    [
+     "athanpro/data/united-arab-emirates-masafi-shawka.json",
+     "athanpro/data/united-arab-emirates-masafi-siji.json"
+    ],
+    [
+     "athanpro/data/united-arab-emirates-oumm-al-qaiwain-city.json",
+     "athanpro/data/united-arab-emirates-umm-al-quwain.json"
+    ],
+    [
+     "athanpro/data/united-arab-emirates-ras-al-khaimah.json",
+     "athanpro/data/united-arab-emirates-ras-alkhiima-city.json"
+    ],
+    [
+     "athanpro/data/united-kingdom-london-east.json",
+     "athanpro/data/united-kingdom-london-west.json"
+    ],
+    [
+     "athanpro/data/zimbabwe-chitungwiza.json",
+     "athanpro/data/zimbabwe-harare.json"
+    ]
+   ],
+   "badData": [],
+   "hasReport": false,
+   "alt": [
+    "ATHANPRO-CITIES.md"
+   ],
+   "named": 0,
+   "missing": [],
+   "newest": 1794381215992.6619,
+   "zero": []
+  },
+  "balkan-cities": {
+   "files": 403,
+   "bytes": 17288239,
+   "dataFiles": 89,
+   "dataBytes": 3437280,
+   "rows": 25152,
+   "deduped": 25152,
+   "dupGroups": [
+    [
+     "balkan-cities/data/ba_gusinje_2026.json",
+     "balkan-cities/data/ba_plav_2026.json"
+    ],
+    [
+     "balkan-cities/data/ba_priboj_2026.json",
+     "balkan-cities/data/ba_prijepolje_2026.json"
+    ],
+    [
+     "balkan-cities/data/ba_sjenica_2026.json",
+     "balkan-cities/data/ba_tutin_2026.json"
+    ]
+   ],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 20,
+   "missing": [],
+   "newest": 1794370960444.9553,
+   "zero": [
+    "balkan-cities/captures/ba_api_lokacije.txt"
+   ]
+  },
+  "bangladesh-cities": {
+   "files": 25,
+   "bytes": 2270658,
+   "dataFiles": 0,
+   "dataBytes": 0,
+   "rows": 0,
+   "deduped": 0,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": false,
+   "alt": [],
+   "named": 0,
+   "missing": [],
+   "newest": 1794369782977.9255,
+   "zero": []
+  },
+  "canada2": {
+   "files": 120,
+   "bytes": 12805137,
+   "dataFiles": 38,
+   "dataBytes": 1657342,
+   "rows": 13192,
+   "deduped": 12827,
+   "dupGroups": [
+    [
+     "canada2/data/mawaqit-nb-moncton-masjid-yusuf-moncton-e1a-2026.json",
+     "canada2/data/mawaqit-nb-moncton-moncton-masjid-moncton-e-2026.json",
+     "canada2/data/mawaqit-nb-moncton-north-end-mussallah-monc-2026.json"
+    ]
+   ],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 0,
+   "missing": [],
+   "newest": 1794380993926.136,
+   "zero": []
+  },
+  "capitals": {
+   "files": 57,
+   "bytes": 4443901,
+   "dataFiles": 24,
+   "dataBytes": 1310315,
+   "rows": 7384,
+   "deduped": 7384,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "CAPITAL-MATRIX.md",
+    "REPORT.md"
+   ],
+   "named": 6,
+   "missing": [
+    "data/mawaqit-"
+   ],
+   "newest": 1794376656872.886,
+   "zero": []
+  },
+  "capitals2": {
+   "files": 154,
+   "bytes": 24970537,
+   "dataFiles": 60,
+   "dataBytes": 338491,
+   "rows": 2135,
+   "deduped": 2135,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 1,
+   "missing": [],
+   "newest": 1794378197835.4495,
+   "zero": []
+  },
+  "capitals3": {
+   "files": 53,
+   "bytes": 2196875,
+   "dataFiles": 13,
+   "dataBytes": 157746,
+   "rows": 1030,
+   "deduped": 1030,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 7,
+   "missing": [],
+   "newest": 1794380092137.765,
+   "zero": []
+  },
+  "china-capitals": {
+   "files": 196,
+   "bytes": 32276408,
+   "dataFiles": 91,
+   "dataBytes": 3701891,
+   "rows": 14426,
+   "deduped": 14426,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 6,
+   "missing": [
+    "data/grid_",
+    "data/normalized/grid_",
+    "data/islamichina_"
+   ],
+   "newest": 1794367264368.4412,
+   "zero": []
+  },
+  "coords-americas": {
+   "files": 33,
+   "bytes": 4827436,
+   "dataFiles": 5,
+   "dataBytes": 171077,
+   "rows": 0,
+   "deduped": 0,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 9,
+   "missing": [],
+   "newest": 1794375056914.806,
+   "zero": []
+  },
+  "coords-ledger": {
+   "files": 19,
+   "bytes": 15839455,
+   "dataFiles": 6,
+   "dataBytes": 14969526,
+   "rows": 0,
+   "deduped": 0,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "COORDS-LEDGER.md",
+    "REPORT.md"
+   ],
+   "named": 2,
+   "missing": [],
+   "newest": 1794374085082.2178,
+   "zero": []
+  },
+  "corrections": {
+   "files": 1,
+   "bytes": 45104,
+   "dataFiles": 0,
+   "dataBytes": 0,
+   "rows": 0,
+   "deduped": 0,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": false,
+   "alt": [
+    "CORRECTIONS-ROUND.md"
+   ],
+   "named": 0,
+   "missing": [],
+   "newest": 1794378942316.5984,
+   "zero": []
+  },
+  "eastasia2": {
+   "files": 353,
+   "bytes": 155848856,
+   "dataFiles": 146,
+   "dataBytes": 7739432,
+   "rows": 40480,
+   "deduped": 40480,
+   "dupGroups": [
+    [
+     "eastasia2/data/masjidal_kowloon_2027.json",
+     "eastasia2/data/masjidal_kowloon_2027_normalized.json"
+    ]
+   ],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 17,
+   "missing": [
+    "captures/islamichina_",
+    "data/islamichina_",
+    "data/grid_",
+    "data/masjidal_kowloon_"
+   ],
+   "newest": 1794380959115.859,
+   "zero": []
+  },
+  "egypt-82": {
+   "files": 1141,
+   "bytes": 64959105,
+   "dataFiles": 94,
+   "dataBytes": 11391881,
+   "rows": 28778,
+   "deduped": 28778,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 12,
+   "missing": [
+    "data/eg-esa-"
+   ],
+   "newest": 1794369513740.2578,
+   "zero": []
+  },
+  "fallback-sweep": {
+   "files": 60,
+   "bytes": 3079292,
+   "dataFiles": 29,
+   "dataBytes": 647700,
+   "rows": 4440,
+   "deduped": 4440,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 10,
+   "missing": [
+    "captures/ci-abidjan-",
+    "data/ci-abidjan-"
+   ],
+   "newest": 1794377880548.133,
+   "zero": [
+    "fallback-sweep/logs/fit-af.err",
+    "fallback-sweep/logs/fit-ci.err"
+   ]
+  },
+  "fallback2": {
+   "files": 124,
+   "bytes": 3016341,
+   "dataFiles": 52,
+   "dataBytes": 124142,
+   "rows": 1201,
+   "deduped": 1201,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 3,
+   "missing": [],
+   "newest": 1794379489338.524,
+   "zero": []
+  },
+  "final-sweep": {
+   "files": 215,
+   "bytes": 17069623,
+   "dataFiles": 86,
+   "dataBytes": 418764,
+   "rows": 2580,
+   "deduped": 2580,
+   "dupGroups": [
+    [
+     "final-sweep/data/athanpro-kiribati__bairiki-village.json",
+     "final-sweep/data/athanpro-kiribati__south-tarawa.json",
+     "final-sweep/data/athanpro-kiribati__teaoraereke-village.json"
+    ],
+    [
+     "final-sweep/data/athanpro-kiribati__betio-village.json",
+     "final-sweep/data/athanpro-kiribati__bikenibeu-village.json"
+    ],
+    [
+     "final-sweep/data/athanpro-liberia__bensonville.json",
+     "final-sweep/data/athanpro-liberia__monrovia.json"
+    ]
+   ],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 1,
+   "missing": [],
+   "newest": 1794381238208.7412,
+   "zero": []
+  },
+  "fitindex2": {
+   "files": 5,
+   "bytes": 205617,
+   "dataFiles": 0,
+   "dataBytes": 0,
+   "rows": 0,
+   "deduped": 0,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": false,
+   "alt": [
+    "FIT-INDEX-ROUND2.md"
+   ],
+   "named": 0,
+   "missing": [],
+   "newest": 1794381245571.5059,
+   "zero": []
+  },
+  "fitter-audit": {
+   "files": 169,
+   "bytes": 1113682,
+   "dataFiles": 0,
+   "dataBytes": 0,
+   "rows": 0,
+   "deduped": 0,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": false,
+   "alt": [],
+   "named": 0,
+   "missing": [],
+   "newest": 1794381240697.3325,
+   "zero": [
+    "fitter-audit/work-us-unresolved/err_b.txt"
+   ]
+  },
+  "flags2": {
+   "files": 19,
+   "bytes": 39954360,
+   "dataFiles": 2,
+   "dataBytes": 73910,
+   "rows": 0,
+   "deduped": 0,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": false,
+   "alt": [],
+   "named": 0,
+   "missing": [],
+   "newest": 1794381232804.188,
+   "zero": []
+  },
+  "gaps-closed": {
+   "files": 823,
+   "bytes": 20775902,
+   "dataFiles": 84,
+   "dataBytes": 2292718,
+   "rows": 21456,
+   "deduped": 21456,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": false,
+   "alt": [
+    "GAPS-CLOSED.md"
+   ],
+   "named": 0,
+   "missing": [],
+   "newest": 1794374023116.6494,
+   "zero": []
+  },
+  "germany-cities": {
+   "files": 526,
+   "bytes": 14685404,
+   "dataFiles": 47,
+   "dataBytes": 2307465,
+   "rows": 18376,
+   "deduped": 18376,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 14,
+   "missing": [
+    "captures/de-districts-",
+    "captures/igmg-times-",
+    "data/igmg-"
+   ],
+   "newest": 1794377437386.927,
+   "zero": []
+  },
+  "germany-districts": {
+   "files": 2503,
+   "bytes": 574559698,
+   "dataFiles": 1246,
+   "dataBytes": 58551478,
+   "rows": 452965,
+   "deduped": 452965,
+   "dupGroups": [
+    [
+     "germany-districts/data/district-10195-2026.json",
+     "germany-districts/data/district-10922-2026.json"
+    ],
+    [
+     "germany-districts/data/district-33279-2026.json",
+     "germany-districts/data/district-33327-2026.json"
+    ]
+   ],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 14,
+   "missing": [
+    "captures/district-",
+    "data/district-"
+   ],
+   "newest": 1794379531995.0264,
+   "zero": []
+  },
+  "il-ps": {
+   "files": 197,
+   "bytes": 13142552,
+   "dataFiles": 6,
+   "dataBytes": 1100896,
+   "rows": 78,
+   "deduped": 78,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 7,
+   "missing": [
+    "captures/ps-dahr",
+    "captures/mawaqit-",
+    "data/fit-awqaf"
+   ],
+   "newest": 1794379095201.4683,
+   "zero": [
+    "il-ps/captures/ps-awqafalquds-wb-20261101.html"
+   ]
+  },
+  "india-cities": {
+   "files": 168,
+   "bytes": 18674486,
+   "dataFiles": 41,
+   "dataBytes": 1769314,
+   "rows": 13140,
+   "deduped": 13140,
+   "dupGroups": [
+    [
+     "india-cities/data/masjidbox-gujarat-varedia-2025.json",
+     "india-cities/data/masjidbox-gujarat-varedia-2026.json"
+    ],
+    [
+     "india-cities/data/masjidbox-hyderabad-al-ansar-2025.json",
+     "india-cities/data/masjidbox-hyderabad-al-ansar-2026.json"
+    ],
+    [
+     "india-cities/data/masjidbox-mumbai-deeniyat-2025.json",
+     "india-cities/data/masjidbox-mumbai-deeniyat-2026.json"
+    ],
+    [
+     "india-cities/data/masjidbox-srinagar-jamiat-ahlihadees-2025.json",
+     "india-cities/data/masjidbox-srinagar-jamiat-ahlihadees-2026.json"
+    ]
+   ],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 2,
+   "missing": [
+    "data/masjidbox-",
+    "data/mawaqit-"
+   ],
+   "newest": 1794371973175.3823,
+   "zero": []
+  },
+  "indonesia-cities": {
+   "files": 177,
+   "bytes": 21535746,
+   "dataFiles": 120,
+   "dataBytes": 6505376,
+   "rows": 41610,
+   "deduped": 41610,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 9,
+   "missing": [
+    "captures/kemenag-cities-"
+   ],
+   "newest": 1794368458639.363,
+   "zero": []
+  },
+  "indonesia2": {
+   "files": 1193,
+   "bytes": 121930451,
+   "dataFiles": 9,
+   "dataBytes": 6593972,
+   "rows": 50306,
+   "deduped": 34948,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 17,
+   "missing": [
+    "captures/jsorg-",
+    "captures/kem-",
+    "captures/nu-faq-"
+   ],
+   "newest": 1794375484741.5544,
+   "zero": []
+  },
+  "latam-cities": {
+   "files": 327,
+   "bytes": 8452340,
+   "dataFiles": 25,
+   "dataBytes": 763715,
+   "rows": 7787,
+   "deduped": 7787,
+   "dupGroups": [
+    [
+     "latam-cities/data/ec_quito_mawaqit_2026.json",
+     "latam-cities/data/ec_quito_mawaqit_2026_flat.json"
+    ],
+    [
+     "latam-cities/data/mx_monterrey_mawaqit_2026.json",
+     "latam-cities/data/mx_monterrey_mawaqit_2026_flat.json"
+    ],
+    [
+     "latam-cities/data/pe_lima_mawaqit_2026.json",
+     "latam-cities/data/pe_lima_mawaqit_2026_flat.json",
+     "latam-cities/data/pe_lima_mawaqit_as2025.json"
+    ],
+    [
+     "latam-cities/data/tt_ilmulislam_mawaqit_2026.json",
+     "latam-cities/data/tt_ilmulislam_mawaqit_2026_flat.json"
+    ]
+   ],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 9,
+   "missing": [
+    "captures/br_iib_dir_",
+    "captures/br_iib_",
+    "captures/co_mb_fix_"
+   ],
+   "newest": 1794368052347.2922,
+   "zero": []
+  },
+  "malaysia-states": {
+   "files": 42,
+   "bytes": 116903598,
+   "dataFiles": 13,
+   "dataBytes": 3543475,
+   "rows": 24799,
+   "deduped": 24799,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 6,
+   "missing": [],
+   "newest": 1794369318901.4841,
+   "zero": []
+  },
+  "masjidal-global": {
+   "files": 634,
+   "bytes": 27981953,
+   "dataFiles": 110,
+   "dataBytes": 5238241,
+   "rows": 39456,
+   "deduped": 19728,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "MASJIDAL-TENANTS.md",
+    "REPORT.md"
+   ],
+   "named": 1,
+   "missing": [
+    "out/f2_"
+   ],
+   "newest": 1794378482212.8225,
+   "zero": [
+    "masjidal-global/out/fits2.err"
+   ]
+  },
+  "masjidi": {
+   "files": 540,
+   "bytes": 24952555,
+   "dataFiles": 257,
+   "dataBytes": 8071295,
+   "rows": 61122,
+   "deduped": 61122,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 5,
+   "missing": [],
+   "newest": 1794380462498.8542,
+   "zero": []
+  },
+  "masjidi-highlat": {
+   "files": 7,
+   "bytes": 29644,
+   "dataFiles": 0,
+   "dataBytes": 0,
+   "rows": 0,
+   "deduped": 0,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": false,
+   "alt": [],
+   "named": 0,
+   "missing": [],
+   "newest": 1794381001688.727,
+   "zero": []
+  },
+  "megacities": {
+   "files": 56,
+   "bytes": 3742257,
+   "dataFiles": 6,
+   "dataBytes": 192242,
+   "rows": 1127,
+   "deduped": 1127,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 25,
+   "missing": [
+    "data/dar-alifta-cairo-2026-11.json",
+    "captures/jadwalsholat-jakarta-pusat-2026-"
+   ],
+   "newest": 1794378197476.665,
+   "zero": []
+  },
+  "microstates": {
+   "files": 177,
+   "bytes": 7502103,
+   "dataFiles": 12,
+   "dataBytes": 617564,
+   "rows": 4411,
+   "deduped": 4411,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 0,
+   "missing": [],
+   "newest": 1794378084932.0217,
+   "zero": []
+  },
+  "mideast-cities": {
+   "files": 967,
+   "bytes": 44734266,
+   "dataFiles": 25,
+   "dataBytes": 1859585,
+   "rows": 12350,
+   "deduped": 12350,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 1,
+   "missing": [],
+   "newest": 1794367633800.4944,
+   "zero": []
+  },
+  "morocco-cities": {
+   "files": 27,
+   "bytes": 30114169,
+   "dataFiles": 9,
+   "dataBytes": 1835935,
+   "rows": 11590,
+   "deduped": 11590,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 1,
+   "missing": [],
+   "newest": 1794376752753.4563,
+   "zero": []
+  },
+  "nigeria-states": {
+   "files": 104,
+   "bytes": 7936972,
+   "dataFiles": 36,
+   "dataBytes": 406599,
+   "rows": 3252,
+   "deduped": 3252,
+   "dupGroups": [
+    [
+     "nigeria-states/data/masjidway-11637-kano-road-central-mosque-kaduna-2026-11.json",
+     "nigeria-states/data/masjidway-11638-al-manar-mosque-kaduna-2026-11.json"
+    ]
+   ],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 3,
+   "missing": [
+    "captures/masjidbox-walk-"
+   ],
+   "newest": 1794368705347.3875,
+   "zero": []
+  },
+  "nz-finish": {
+   "files": 109,
+   "bytes": 29319609,
+   "dataFiles": 39,
+   "dataBytes": 349303,
+   "rows": 1485,
+   "deduped": 1485,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 10,
+   "missing": [
+    "captures/nz-fianzcom-1447-",
+    "data/nz-2026-",
+    "captures/elevations-"
+   ],
+   "newest": 1794380855568.7378,
+   "zero": []
+  },
+  "o1l-13r": {
+   "files": 84,
+   "bytes": 50192513,
+   "dataFiles": 11,
+   "dataBytes": 285203,
+   "rows": 1893,
+   "deduped": 1893,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 3,
+   "missing": [],
+   "newest": 1794372922394.6863,
+   "zero": []
+  },
+  "o1l-15r": {
+   "files": 215,
+   "bytes": 39838144,
+   "dataFiles": 90,
+   "dataBytes": 4665676,
+   "rows": 30660,
+   "deduped": 30660,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 8,
+   "missing": [
+    "data/tr-2026-"
+   ],
+   "newest": 1794371684157.7246,
+   "zero": [
+    "o1l-15r/captures/test-monthly-9541.json",
+    "o1l-15r/captures/test-states.json"
+   ]
+  },
+  "o1l-19r": {
+   "files": 558,
+   "bytes": 134116042,
+   "dataFiles": 227,
+   "dataBytes": 10508273,
+   "rows": 80886,
+   "deduped": 80886,
+   "dupGroups": [
+    [
+     "o1l-19r/data/diyanet/au-11331-broadmeadows-2026.json",
+     "o1l-19r/data/diyanet/au-11331-broadmeadows-namaz-vakitleri-2026.json",
+     "o1l-19r/data/diyanet/au-11331-broadmeadows-prayer-times-2026.json"
+    ]
+   ],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 14,
+   "missing": [
+    "captures/au-diyanet-",
+    "data/diyanet/au-",
+    "captures/nz-fianz-cdx-",
+    "captures/nz-fianz-salat_",
+    "captures/nz-fianzcom-1447-",
+    "captures/fj-fml-dpt-2026-"
+   ],
+   "newest": 1794377915331.2883,
+   "zero": []
+  },
+  "o1l-20r": {
+   "files": 49,
+   "bytes": 2684309,
+   "dataFiles": 3,
+   "dataBytes": 701223,
+   "rows": 4452,
+   "deduped": 4452,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 3,
+   "missing": [],
+   "newest": 1794371585036.881,
+   "zero": [
+    "o1l-20r/captures/jamiat-month-default.html"
+   ]
+  },
+  "o1l-21r": {
+   "files": 151,
+   "bytes": 399663702,
+   "dataFiles": 4,
+   "dataBytes": 125316,
+   "rows": 730,
+   "deduped": 730,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 4,
+   "missing": [],
+   "newest": 1794373646821.915,
+   "zero": []
+  },
+  "o1l-22": {
+   "files": 61,
+   "bytes": 23917691,
+   "dataFiles": 4,
+   "dataBytes": 884830,
+   "rows": 5632,
+   "deduped": 5632,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 3,
+   "missing": [],
+   "newest": 1794372847718.95,
+   "zero": []
+  },
+  "o1l-23": {
+   "files": 349,
+   "bytes": 71167150,
+   "dataFiles": 164,
+   "dataBytes": 8752850,
+   "rows": 55480,
+   "deduped": 55480,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 13,
+   "missing": [
+    "captures/ilce-select-",
+    "captures/tr-2026-",
+    "data/tr-2026-"
+   ],
+   "newest": 1794373173779.6082,
+   "zero": []
+  },
+  "o1l-24": {
+   "files": 96,
+   "bytes": 12252734,
+   "dataFiles": 9,
+   "dataBytes": 385066,
+   "rows": 2599,
+   "deduped": 2599,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 8,
+   "missing": [],
+   "newest": 1794372987770.9514,
+   "zero": []
+  },
+  "o1l-26r": {
+   "files": 142,
+   "bytes": 4633671,
+   "dataFiles": 80,
+   "dataBytes": 1800852,
+   "rows": 11251,
+   "deduped": 11251,
+   "dupGroups": [
+    [
+     "o1l-26r/data/kz-aktobe-2025.json",
+     "o1l-26r/data/kz-aktobe-2026.json",
+     "o1l-26r/data/kz-aktobe-2027.json",
+     "o1l-26r/data/kz-atyrau-2025.json",
+     "o1l-26r/data/kz-atyrau-2026.json",
+     "o1l-26r/data/kz-atyrau-2027.json",
+     "o1l-26r/data/kz-ayagoz-2025.json",
+     "o1l-26r/data/kz-ayagoz-2026.json",
+     "o1l-26r/data/kz-ayagoz-2027.json",
+     "o1l-26r/data/kz-karazhal-2025.json",
+     "o1l-26r/data/kz-karazhal-2026.json",
+     "o1l-26r/data/kz-karazhal-2027.json",
+     "o1l-26r/data/kz-kostanay-2025.json",
+     "o1l-26r/data/kz-kostanay-2026.json",
+     "o1l-26r/data/kz-kostanay-2027.json",
+     "o1l-26r/data/kz-pavlodar-2025.json",
+     "o1l-26r/data/kz-pavlodar-2026.json",
+     "o1l-26r/data/kz-pavlodar-2027.json",
+     "o1l-26r/data/kz-taraz-2025.json",
+     "o1l-26r/data/kz-taraz-2026.json",
+     "o1l-26r/data/kz-taraz-2027.json",
+     "o1l-26r/data/kz-turkistan-2025.json",
+     "o1l-26r/data/kz-turkistan-2026.json",
+     "o1l-26r/data/kz-turkistan-2027.json",
+     "o1l-26r/data/kz-ustkamenogorsk-2025.json",
+     "o1l-26r/data/kz-ustkamenogorsk-2026.json",
+     "o1l-26r/data/kz-ustkamenogorsk-2027.json"
+    ],
+    [
+     "o1l-26r/data/tj-dushanbe-2026-07.json",
+     "o1l-26r/data/tj-khujand-2026-07.json"
+    ],
+    [
+     "o1l-26r/data/tj-dushanbe-2026-11.json",
+     "o1l-26r/data/tj-khujand-2026-11.json",
+     "o1l-26r/data/uz-andijan-2026-11.json",
+     "o1l-26r/data/uz-bukhara-2026-11.json",
+     "o1l-26r/data/uz-fergana-2026-11.json",
+     "o1l-26r/data/uz-nukus-2026-11.json",
+     "o1l-26r/data/uz-tashkent-2026-11.json"
+    ]
+   ],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 0,
+   "missing": [],
+   "newest": 1794373787577.6277,
+   "zero": [
+    "o1l-26r/captures/kg-cal-test.html",
+    "o1l-26r/captures/kg-calendar.html",
+    "o1l-26r/captures/kg-ru-calendar-.html"
+   ]
+  },
+  "o1l-28": {
+   "files": 292,
+   "bytes": 45735796,
+   "dataFiles": 53,
+   "dataBytes": 2931398,
+   "rows": 18982,
+   "deduped": 18982,
+   "dupGroups": [
+    [
+     "o1l-28/data/ayr-703-go2masjid.json",
+     "o1l-28/data/ayr-785-go2masjid.json",
+     "o1l-28/data/belfast-630-go2masjid.json",
+     "o1l-28/data/belfast-631-go2masjid.json",
+     "o1l-28/data/belfast-632-go2masjid.json",
+     "o1l-28/data/derry-690-go2masjid.json",
+     "o1l-28/data/hamilton-701-go2masjid.json",
+     "o1l-28/data/kilmarnock-703-go2masjid.json",
+     "o1l-28/data/kilmarnock-785-go2masjid.json",
+     "o1l-28/data/kirkcaldy-366-go2masjid.json",
+     "o1l-28/data/manchester-407-go2masjid.json",
+     "o1l-28/data/norwich-748-go2masjid.json",
+     "o1l-28/data/norwich-749-go2masjid.json",
+     "o1l-28/data/portsmouth-753-go2masjid.json",
+     "o1l-28/data/portsmouth-754-go2masjid.json",
+     "o1l-28/data/southampton-426-go2masjid.json",
+     "o1l-28/data/sunderland-768-go2masjid.json",
+     "o1l-28/data/swansea-769-go2masjid.json",
+     "o1l-28/data/swindon-272-go2masjid.json",
+     "o1l-28/data/york-677-go2masjid.json",
+     "o1l-28/data/york-774-go2masjid.json"
+    ],
+    [
+     "o1l-28/data/bristol_-1-go2masjid.json",
+     "o1l-28/data/bristol_-3-go2masjid.json",
+     "o1l-28/data/bristol_-5-go2masjid.json"
+    ],
+    [
+     "o1l-28/data/motherwell-367-go2masjid.json",
+     "o1l-28/data/stirling-404-go2masjid.json",
+     "o1l-28/data/stirling-427-go2masjid.json"
+    ]
+   ],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 2,
+   "missing": [],
+   "newest": 1794374878214.5015,
+   "zero": []
+  },
+  "o1l-29": {
+   "files": 191,
+   "bytes": 22007454,
+   "dataFiles": 88,
+   "dataBytes": 4740980,
+   "rows": 18918,
+   "deduped": 18918,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 16,
+   "missing": [
+    "data/ifi_",
+    "captures/ifi_",
+    "captures/ifi_feed_",
+    "captures/ifi_mosques_",
+    "captures/masjidbox_",
+    "captures/mawaqit_",
+    "captures/iom_iaiom_"
+   ],
+   "newest": 1794375491885.42,
+   "zero": [
+    "o1l-29/captures/body.77473"
+   ]
+  },
+  "offset-registers": {
+   "files": 126,
+   "bytes": 7848272,
+   "dataFiles": 12,
+   "dataBytes": 891358,
+   "rows": 2500,
+   "deduped": 2500,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "OFFSET-REGISTERS.md",
+    "REPORT.md"
+   ],
+   "named": 11,
+   "missing": [],
+   "newest": 1794381244560.822,
+   "zero": []
+  },
+  "pacific2": {
+   "files": 53,
+   "bytes": 4144255,
+   "dataFiles": 16,
+   "dataBytes": 152240,
+   "rows": 1490,
+   "deduped": 1490,
+   "dupGroups": [
+    [
+     "pacific2/data/fml-2024-01.json",
+     "pacific2/data/fml-2024-03.json",
+     "pacific2/data/fml-2024-05.json",
+     "pacific2/data/fml-2024-07.json",
+     "pacific2/data/fml-2024-08.json",
+     "pacific2/data/fml-2024-10.json",
+     "pacific2/data/fml-2024-12.json"
+    ],
+    [
+     "pacific2/data/fml-2024-04.json",
+     "pacific2/data/fml-2024-06.json",
+     "pacific2/data/fml-2024-09.json",
+     "pacific2/data/fml-2024-11.json",
+     "pacific2/data/fml-2026-11.json"
+    ]
+   ],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 16,
+   "missing": [
+    "captures/fml-2024/January..December.jpg",
+    "captures/baab-"
+   ],
+   "newest": 1794375856229.6523,
+   "zero": []
+  },
+  "pakistan-cities": {
+   "files": 67,
+   "bytes": 80736866,
+   "dataFiles": 7,
+   "dataBytes": 259240,
+   "rows": 794,
+   "deduped": 794,
+   "dupGroups": [
+    [
+     "pakistan-cities/data/faisalabad-january-sample.json",
+     "pakistan-cities/data/rawalpindi-january-sample.json"
+    ]
+   ],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 9,
+   "missing": [],
+   "newest": 1794369235488.573,
+   "zero": [
+    "pakistan-cities/captures/jamaattimes-home.html"
+   ]
+  },
+  "pk-transcribe": {
+   "files": 4,
+   "bytes": 10217617,
+   "dataFiles": 0,
+   "dataBytes": 0,
+   "rows": 0,
+   "deduped": 0,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": false,
+   "alt": [],
+   "named": 0,
+   "missing": [],
+   "newest": 1794369619319.1663,
+   "zero": []
+  },
+  "residual-fits": {
+   "files": 54,
+   "bytes": 483539,
+   "dataFiles": 47,
+   "dataBytes": 440337,
+   "rows": 3949,
+   "deduped": 3949,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": false,
+   "alt": [
+    "RESIDUAL-FITS.md"
+   ],
+   "named": 0,
+   "missing": [],
+   "newest": 1794381232595.4795,
+   "zero": [
+    "residual-fits/stage1.log"
+   ]
+  },
+  "russia-boards": {
+   "files": 1702,
+   "bytes": 63302159,
+   "dataFiles": 41,
+   "dataBytes": 10581831,
+   "rows": 75189,
+   "deduped": 75189,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 20,
+   "missing": [],
+   "newest": 1794372987586.7214,
+   "zero": [
+    "russia-boards/data/dumrb_fit.log"
+   ]
+  },
+  "saudi-cities": {
+   "files": 184,
+   "bytes": 32206537,
+   "dataFiles": 49,
+   "dataBytes": 3530104,
+   "rows": 30487,
+   "deduped": 30487,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 8,
+   "missing": [
+    "data/sa-"
+   ],
+   "newest": 1794376847892.392,
+   "zero": []
+  },
+  "second-witnesses": {
+   "files": 59,
+   "bytes": 21695057,
+   "dataFiles": 1,
+   "dataBytes": 9332,
+   "rows": 58,
+   "deduped": 58,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 14,
+   "missing": [
+    "data/horaires-2026-12.js"
+   ],
+   "newest": 1794380203933.6833,
+   "zero": []
+  },
+  "span-ledger": {
+   "files": 2,
+   "bytes": 84011,
+   "dataFiles": 0,
+   "dataBytes": 0,
+   "rows": 0,
+   "deduped": 0,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md",
+    "SPAN-LEDGER.md"
+   ],
+   "named": 0,
+   "missing": [],
+   "newest": 1794367824919.2883,
+   "zero": []
+  },
+  "summary": {
+   "files": 3,
+   "bytes": 39090,
+   "dataFiles": 0,
+   "dataBytes": 0,
+   "rows": 0,
+   "deduped": 0,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": false,
+   "alt": [
+    "ROUND-SUMMARY.md"
+   ],
+   "named": 0,
+   "missing": [],
+   "newest": 1794380093156.7156,
+   "zero": []
+  },
+  "thailand-provinces": {
+   "files": 254,
+   "bytes": 12961119,
+   "dataFiles": 156,
+   "dataBytes": 7217761,
+   "rows": 56286,
+   "deduped": 56286,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 6,
+   "missing": [
+    "captures/th-xlsx-",
+    "data/th-cicot-"
+   ],
+   "newest": 1794366714979.1433,
+   "zero": []
+  },
+  "tunisia-cities": {
+   "files": 756,
+   "bytes": 12906150,
+   "dataFiles": 370,
+   "dataBytes": 2635320,
+   "rows": 7978,
+   "deduped": 7978,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 10,
+   "missing": [
+    "captures/tn-horaire-sw-",
+    "data/tn-inm-sw-"
+   ],
+   "newest": 1794371363267.7422,
+   "zero": []
+  },
+  "uae-cities": {
+   "files": 71,
+   "bytes": 29969397,
+   "dataFiles": 6,
+   "dataBytes": 3871279,
+   "rows": 31052,
+   "deduped": 31052,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 7,
+   "missing": [
+    "captures/federal-areas-emirate1..7.json"
+   ],
+   "newest": 1794376740342.6714,
+   "zero": []
+  },
+  "uk-seconds": {
+   "files": 110,
+   "bytes": 10396540,
+   "dataFiles": 29,
+   "dataBytes": 2156007,
+   "rows": 9907,
+   "deduped": 9907,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 0,
+   "missing": [],
+   "newest": 1794368317847.1667,
+   "zero": []
+  },
+  "us-states": {
+   "files": 485,
+   "bytes": 35821416,
+   "dataFiles": 202,
+   "dataBytes": 5665596,
+   "rows": 68046,
+   "deduped": 35532,
+   "dupGroups": [
+    [
+     "us-states/data/iqamah_0AWpj0dj_2024.json",
+     "us-states/data/iqamah_1QL0VydZ_2024.json",
+     "us-states/data/iqamah_1QL0gbKZ_2024.json",
+     "us-states/data/iqamah_1XAlZzKb_2024.json",
+     "us-states/data/iqamah_4nL1XlKa_2024.json",
+     "us-states/data/iqamah_5AvPx2KX_2024.json",
+     "us-states/data/iqamah_6adJ5qAk_2024.json",
+     "us-states/data/iqamah_8KXma5LM_2024.json",
+     "us-states/data/iqamah_8L7mGbd5_2024.json",
+     "us-states/data/iqamah_BYADgwLN_2024.json",
+     "us-states/data/iqamah_PAPy7ZdJ_2024.json",
+     "us-states/data/iqamah_QL0MGBAZ_2024.json",
+     "us-states/data/iqamah_RKxwXOdO_2024.json",
+     "us-states/data/iqamah_VrdRZqdG_2024.json",
+     "us-states/data/iqamah_VrdRbPdG_2024.json",
+     "us-states/data/iqamah_XAlzQrKb_2024.json",
+     "us-states/data/iqamah_adJmGxAk_2024.json",
+     "us-states/data/iqamah_keLQjWAM_2024.json",
+     "us-states/data/iqamah_keLQn7AM_2024.json",
+     "us-states/data/iqamah_lJAmRjdR_2024.json",
+     "us-states/data/iqamah_nzKzgvLO_2024.json",
+     "us-states/data/iqamah_p8KXgNdM_2024.json",
+     "us-states/data/iqamah_pQKMMBKB_2024.json",
+     "us-states/data/iqamah_rdRvm3dG_2024.json",
+     "us-states/data/iqamah_xdyqvadX_2024.json",
+     "us-states/data/iqamah_xwLVXMdJ_2024.json",
+     "us-states/data/iqamah_y0LbBXLo_2024.json",
+     "us-states/data/iqamah_zKz3zRLO_2024.json",
+     "us-states/data/iqamah_zVKpbbAP_2024.json"
+    ],
+    [
+     "us-states/data/iqamah_0AWpj0dj_2025.json",
+     "us-states/data/iqamah_0AWpj0dj_2026.json",
+     "us-states/data/iqamah_1QL0VydZ_2025.json",
+     "us-states/data/iqamah_1QL0VydZ_2026.json",
+     "us-states/data/iqamah_1QL0gbKZ_2025.json",
+     "us-states/data/iqamah_1QL0gbKZ_2026.json",
+     "us-states/data/iqamah_1XAlZzKb_2025.json",
+     "us-states/data/iqamah_1XAlZzKb_2026.json",
+     "us-states/data/iqamah_4nL1XlKa_2025.json",
+     "us-states/data/iqamah_4nL1XlKa_2026.json",
+     "us-states/data/iqamah_5AvPx2KX_2025.json",
+     "us-states/data/iqamah_5AvPx2KX_2026.json",
+     "us-states/data/iqamah_6adJ5qAk_2025.json",
+     "us-states/data/iqamah_6adJ5qAk_2026.json",
+     "us-states/data/iqamah_8KXma5LM_2025.json",
+     "us-states/data/iqamah_8KXma5LM_2026.json",
+     "us-states/data/iqamah_8L7mGbd5_2025.json",
+     "us-states/data/iqamah_8L7mGbd5_2026.json",
+     "us-states/data/iqamah_BYADgwLN_2025.json",
+     "us-states/data/iqamah_BYADgwLN_2026.json",
+     "us-states/data/iqamah_PAPy7ZdJ_2025.json",
+     "us-states/data/iqamah_PAPy7ZdJ_2026.json",
+     "us-states/data/iqamah_QL0MGBAZ_2025.json",
+     "us-states/data/iqamah_QL0MGBAZ_2026.json",
+     "us-states/data/iqamah_RKxwXOdO_2025.json",
+     "us-states/data/iqamah_RKxwXOdO_2026.json",
+     "us-states/data/iqamah_VrdRZqdG_2025.json",
+     "us-states/data/iqamah_VrdRZqdG_2026.json",
+     "us-states/data/iqamah_VrdRbPdG_2025.json",
+     "us-states/data/iqamah_VrdRbPdG_2026.json",
+     "us-states/data/iqamah_XAlzQrKb_2025.json",
+     "us-states/data/iqamah_XAlzQrKb_2026.json",
+     "us-states/data/iqamah_adJmGxAk_2025.json",
+     "us-states/data/iqamah_adJmGxAk_2026.json",
+     "us-states/data/iqamah_keLQjWAM_2025.json",
+     "us-states/data/iqamah_keLQjWAM_2026.json",
+     "us-states/data/iqamah_keLQn7AM_2025.json",
+     "us-states/data/iqamah_keLQn7AM_2026.json",
+     "us-states/data/iqamah_lJAmRjdR_2025.json",
+     "us-states/data/iqamah_lJAmRjdR_2026.json",
+     "us-states/data/iqamah_nzKzgvLO_2025.json",
+     "us-states/data/iqamah_nzKzgvLO_2026.json",
+     "us-states/data/iqamah_p8KXgNdM_2025.json",
+     "us-states/data/iqamah_p8KXgNdM_2026.json",
+     "us-states/data/iqamah_pQKMMBKB_2025.json",
+     "us-states/data/iqamah_pQKMMBKB_2026.json",
+     "us-states/data/iqamah_rdRvm3dG_2025.json",
+     "us-states/data/iqamah_rdRvm3dG_2026.json",
+     "us-states/data/iqamah_xdyqvadX_2025.json",
+     "us-states/data/iqamah_xdyqvadX_2026.json",
+     "us-states/data/iqamah_xwLVXMdJ_2025.json",
+     "us-states/data/iqamah_xwLVXMdJ_2026.json",
+     "us-states/data/iqamah_y0LbBXLo_2025.json",
+     "us-states/data/iqamah_y0LbBXLo_2026.json",
+     "us-states/data/iqamah_zKz3zRLO_2025.json",
+     "us-states/data/iqamah_zKz3zRLO_2026.json",
+     "us-states/data/iqamah_zVKpbbAP_2025.json",
+     "us-states/data/iqamah_zVKpbbAP_2026.json"
+    ]
+   ],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 8,
+   "missing": [
+    "out/fit_",
+    "data/meta_mawaqit_",
+    "captures/gate_",
+    "captures/mawaqit_",
+    "captures/athanplus_"
+   ],
+   "newest": 1794369149613.8142,
+   "zero": []
+  },
+  "us-unproven": {
+   "files": 2357,
+   "bytes": 91474658,
+   "dataFiles": 30,
+   "dataBytes": 10442341,
+   "rows": 28955,
+   "deduped": 28955,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 2,
+   "missing": [],
+   "newest": 1794381238280.2766,
+   "zero": [
+    "us-unproven/captures/harrisburg-alminaret-salah-calendar.html"
+   ]
+  },
+  "us-unresolved": {
+   "files": 708,
+   "bytes": 75731908,
+   "dataFiles": 203,
+   "dataBytes": 5437011,
+   "rows": 65015,
+   "deduped": 34285,
+   "dupGroups": [
+    [
+     "us-unresolved/data/iqamah_0aAeyzAj_2024.json",
+     "us-unresolved/data/iqamah_1QL0NBdZ_2024.json",
+     "us-unresolved/data/iqamah_3OA8MOdp_2024.json",
+     "us-unresolved/data/iqamah_3OA8V3Kp_2024.json",
+     "us-unresolved/data/iqamah_3wdqX2Ab_2024.json",
+     "us-unresolved/data/iqamah_3wdqj2Kb_2024.json",
+     "us-unresolved/data/iqamah_8KXm93LM_2024.json",
+     "us-unresolved/data/iqamah_BYAD8JAN_2024.json",
+     "us-unresolved/data/iqamah_BYADwlLN_2024.json",
+     "us-unresolved/data/iqamah_M9L2wzAZ_2024.json",
+     "us-unresolved/data/iqamah_MjKZ93dX_2024.json",
+     "us-unresolved/data/iqamah_OLnR9WLM_2024.json",
+     "us-unresolved/data/iqamah_PAPyprdJ_2024.json",
+     "us-unresolved/data/iqamah_QKMnW1LB_2024.json",
+     "us-unresolved/data/iqamah_QL0BZWdZ_2024.json",
+     "us-unresolved/data/iqamah_RKxwpMdO_2024.json",
+     "us-unresolved/data/iqamah_YRKxllKO_2024.json",
+     "us-unresolved/data/iqamah_aAeoEzKj_2024.json",
+     "us-unresolved/data/iqamah_lJAmvOdR_2024.json",
+     "us-unresolved/data/iqamah_nDAgZDL0_2024.json",
+     "us-unresolved/data/iqamah_nzKzJoKO_2024.json",
+     "us-unresolved/data/iqamah_p8KXaELM_2024.json",
+     "us-unresolved/data/iqamah_rGAEj9dn_2024.json",
+     "us-unresolved/data/iqamah_rdRvQDdG_2024.json",
+     "us-unresolved/data/iqamah_xdyq9ZdX_2024.json",
+     "us-unresolved/data/iqamah_xdyqvadX_2024.json",
+     "us-unresolved/data/iqamah_zKz3zRLO_2024.json",
+     "us-unresolved/data/iqamah_zKz8QzAO_2024.json"
+    ],
+    [
+     "us-unresolved/data/iqamah_0aAeyzAj_2025.json",
+     "us-unresolved/data/iqamah_0aAeyzAj_2026.json",
+     "us-unresolved/data/iqamah_1QL0NBdZ_2025.json",
+     "us-unresolved/data/iqamah_1QL0NBdZ_2026.json",
+     "us-unresolved/data/iqamah_3OA8MOdp_2025.json",
+     "us-unresolved/data/iqamah_3OA8MOdp_2026.json",
+     "us-unresolved/data/iqamah_3OA8V3Kp_2025.json",
+     "us-unresolved/data/iqamah_3OA8V3Kp_2026.json",
+     "us-unresolved/data/iqamah_3wdqX2Ab_2025.json",
+     "us-unresolved/data/iqamah_3wdqX2Ab_2026.json",
+     "us-unresolved/data/iqamah_3wdqj2Kb_2025.json",
+     "us-unresolved/data/iqamah_3wdqj2Kb_2026.json",
+     "us-unresolved/data/iqamah_8KXm93LM_2025.json",
+     "us-unresolved/data/iqamah_8KXm93LM_2026.json",
+     "us-unresolved/data/iqamah_BYAD8JAN_2025.json",
+     "us-unresolved/data/iqamah_BYAD8JAN_2026.json",
+     "us-unresolved/data/iqamah_BYADwlLN_2025.json",
+     "us-unresolved/data/iqamah_BYADwlLN_2026.json",
+     "us-unresolved/data/iqamah_M9L2wzAZ_2025.json",
+     "us-unresolved/data/iqamah_M9L2wzAZ_2026.json",
+     "us-unresolved/data/iqamah_MjKZ93dX_2025.json",
+     "us-unresolved/data/iqamah_MjKZ93dX_2026.json",
+     "us-unresolved/data/iqamah_OLnR9WLM_2025.json",
+     "us-unresolved/data/iqamah_OLnR9WLM_2026.json",
+     "us-unresolved/data/iqamah_PAPyprdJ_2025.json",
+     "us-unresolved/data/iqamah_PAPyprdJ_2026.json",
+     "us-unresolved/data/iqamah_QKMnW1LB_2025.json",
+     "us-unresolved/data/iqamah_QKMnW1LB_2026.json",
+     "us-unresolved/data/iqamah_QL0BZWdZ_2025.json",
+     "us-unresolved/data/iqamah_QL0BZWdZ_2026.json",
+     "us-unresolved/data/iqamah_RKxwpMdO_2025.json",
+     "us-unresolved/data/iqamah_RKxwpMdO_2026.json",
+     "us-unresolved/data/iqamah_YRKxllKO_2025.json",
+     "us-unresolved/data/iqamah_YRKxllKO_2026.json",
+     "us-unresolved/data/iqamah_aAeoEzKj_2025.json",
+     "us-unresolved/data/iqamah_aAeoEzKj_2026.json",
+     "us-unresolved/data/iqamah_lJAmvOdR_2025.json",
+     "us-unresolved/data/iqamah_lJAmvOdR_2026.json",
+     "us-unresolved/data/iqamah_nDAgZDL0_2025.json",
+     "us-unresolved/data/iqamah_nDAgZDL0_2026.json",
+     "us-unresolved/data/iqamah_nzKzJoKO_2025.json",
+     "us-unresolved/data/iqamah_nzKzJoKO_2026.json",
+     "us-unresolved/data/iqamah_p8KXaELM_2025.json",
+     "us-unresolved/data/iqamah_p8KXaELM_2026.json",
+     "us-unresolved/data/iqamah_rGAEj9dn_2025.json",
+     "us-unresolved/data/iqamah_rGAEj9dn_2026.json",
+     "us-unresolved/data/iqamah_rdRvQDdG_2025.json",
+     "us-unresolved/data/iqamah_rdRvQDdG_2026.json",
+     "us-unresolved/data/iqamah_xdyq9ZdX_2025.json",
+     "us-unresolved/data/iqamah_xdyq9ZdX_2026.json",
+     "us-unresolved/data/iqamah_xdyqvadX_2025.json",
+     "us-unresolved/data/iqamah_xdyqvadX_2026.json",
+     "us-unresolved/data/iqamah_zKz3zRLO_2025.json",
+     "us-unresolved/data/iqamah_zKz3zRLO_2026.json",
+     "us-unresolved/data/iqamah_zKz8QzAO_2025.json",
+     "us-unresolved/data/iqamah_zKz8QzAO_2026.json"
+    ]
+   ],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 4,
+   "missing": [
+    "out/fit_"
+   ],
+   "newest": 1794376638579.602,
+   "zero": []
+  },
+  "verify-round": {
+   "files": 2,
+   "bytes": 6461,
+   "dataFiles": 0,
+   "dataBytes": 0,
+   "rows": 0,
+   "deduped": 0,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": false,
+   "alt": [],
+   "named": 0,
+   "missing": [],
+   "newest": 1794381238883.5242,
+   "zero": []
+  },
+  "watches-eu": {
+   "files": 113,
+   "bytes": 9644322,
+   "dataFiles": 4,
+   "dataBytes": 141884,
+   "rows": 1126,
+   "deduped": 1126,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 11,
+   "missing": [
+    "data/horaires-2026-11.js",
+    "data/horaires-2026-12.js",
+    "data/horaires-2027-01.js",
+    "data/horaires-YYYY-MM.js"
+   ],
+   "newest": 1794366922872.2446,
+   "zero": [
+    "watches-eu/captures/at-izw-calendar.err",
+    "watches-eu/captures/at-izw-gebetszeiten.err",
+    "watches-eu/captures/at-izw-xlsx-2026.err",
+    "watches-eu/captures/bn-ibantusolat.err",
+    "watches-eu/captures/bn-mora-lists.err",
+    "watches-eu/captures/bn-mora-odata-latest.err",
+    "watches-eu/captures/by-islambel-vremya.err",
+    "watches-eu/captures/cl-dec-page.err",
+    "watches-eu/captures/cl-dic-guess-1.err",
+    "watches-eu/captures/cl-dic-guess-nov-dir.err",
+    "watches-eu/captures/cl-nov-page.err",
+    "watches-eu/captures/cl-nov-vina.err",
+    "watches-eu/captures/de-common-js.err",
+    "watches-eu/captures/de-diyanet-hamburg.err",
+    "watches-eu/captures/de-diyanet-koln.err",
+    "watches-eu/captures/de-diyanet-muenchen.err",
+    "watches-eu/captures/de-diyanet-stuttgart.err",
+    "watches-eu/captures/de-home-js.err",
+    "watches-eu/captures/id-myquran-2027-01.err",
+    "watches-eu/captures/ie-galway-2027.err",
+    "watches-eu/captures/ie-galway-today.err",
+    "watches-eu/captures/ie-ifi-2026.err",
+    "watches-eu/captures/ie-ifi-2027.err",
+    "watches-eu/captures/lk-acju-index.err",
+    "watches-eu/captures/ma-habous-home.err",
+    "watches-eu/captures/ma-habous-prieres.err",
+    "watches-eu/captures/ma-horaires-2026-11.err",
+    "watches-eu/captures/ma-horaires-2026-12.err",
+    "watches-eu/captures/ma-horaires-2027-01.err",
+    "watches-eu/captures/ma-prieres-js.err",
+    "watches-eu/captures/my-esolat-home.err",
+    "watches-eu/captures/my-esolat-muat-turun.err",
+    "watches-eu/captures/my-jakim-year-2027.err",
+    "watches-eu/captures/my-jakim-year-wly01.err",
+    "watches-eu/captures/my-jakim-zonlist.err",
+    "watches-eu/captures/pk-mora-latestnews.err",
+    "watches-eu/captures/pk-mora-publications.err",
+    "watches-eu/captures/th-skthai-index.err",
+    "watches-eu/captures/th-skthai-jina-index.err",
+    "watches-eu/captures/tr-ankara-year.err",
+    "watches-eu/captures/xk-bik-media-2027.err",
+    "watches-eu/captures/xk-bik-media-takvim.err",
+    "watches-eu/captures/xk-bik-takvim-page.err"
+   ]
+  },
+  "wayback-back": {
+   "files": 181,
+   "bytes": 11020306,
+   "dataFiles": 44,
+   "dataBytes": 636846,
+   "rows": 5131,
+   "deduped": 5131,
+   "dupGroups": [
+    [
+     "wayback-back/data/mv-hoadedhdhoo-2027.json",
+     "wayback-back/data/mv-hoadedhdhoo-2031.json",
+     "wayback-back/data/mv-hoadedhdhoo-2036.json"
+    ],
+    [
+     "wayback-back/data/mv-male-2027.json",
+     "wayback-back/data/mv-male-2031.json"
+    ],
+    [
+     "wayback-back/data/mv-thuraakunu-2027.json",
+     "wayback-back/data/mv-thuraakunu-2031.json",
+     "wayback-back/data/mv-thuraakunu-2036.json"
+    ]
+   ],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 11,
+   "missing": [
+    "captures/sa-makkah-hijri-",
+    "captures/sa-medina-hijri-",
+    "captures/mv-muis-",
+    "data/kz-astana-"
+   ],
+   "newest": 1794371934496.737,
+   "zero": []
+  },
+  "westafrica2": {
+   "files": 171,
+   "bytes": 7813392,
+   "dataFiles": 83,
+   "dataBytes": 1745850,
+   "rows": 7930,
+   "deduped": 7930,
+   "dupGroups": [
+    [
+     "westafrica2/data/rows/bf-ouaga-10yaar-2026.json",
+     "westafrica2/data/rows/bf-ouaga-kanazoe-2026.json"
+    ]
+   ],
+   "badData": [],
+   "hasReport": true,
+   "alt": [
+    "REPORT.md"
+   ],
+   "named": 4,
+   "missing": [
+    "data/fit-",
+    "data/rows/mawaqit-"
+   ],
+   "newest": 1794379194986.7676,
+   "zero": [
+    "westafrica2/captures/bf-sunna-heuresprieres.html",
+    "westafrica2/captures/bf-sunna-home.html",
+    "westafrica2/captures/mawaqit-.html",
+    "westafrica2/captures/t2.html"
+   ]
+  },
+  "wtdiff2": {
+   "files": 1,
+   "bytes": 70061,
+   "dataFiles": 0,
+   "dataBytes": 0,
+   "rows": 0,
+   "deduped": 0,
+   "dupGroups": [],
+   "badData": [],
+   "hasReport": false,
+   "alt": [
+    "WORLD-TABLE-DIFF-ROUND2.md"
+   ],
+   "named": 0,
+   "missing": [],
+   "newest": 1794379859553.947,
+   "zero": []
+  }
+ },
+ "badJson": [
+  {
+   "rel": "O1l-31/captures/is-felag-akureyri.json",
+   "size": 59,
+   "err": "Unexpected token 'F', \"Forbidden\n\"... is not valid JSON"
+  },
+  {
+   "rel": "O1l-31/captures/is-felag-egilsstadir.json",
+   "size": 59,
+   "err": "Unexpected token 'F', \"Forbidden\n\"... is not valid JSON"
+  },
+  {
+   "rel": "O1l-31/captures/is-felag-isafjordur.json",
+   "size": 59,
+   "err": "Unexpected token 'F', \"Forbidden\n\"... is not valid JSON"
+  },
+  {
+   "rel": "O1l-31/captures/is-felag-reykjavik.json",
+   "size": 59,
+   "err": "Unexpected token 'F', \"Forbidden\n\"... is not valid JSON"
+  },
+  {
+   "rel": "O1l-31/captures/is-felag-selfoss.json",
+   "size": 59,
+   "err": "Unexpected token 'F', \"Forbidden\n\"... is not valid JSON"
+  },
+  {
+   "rel": "africa-cities/captures/mawaqit-search-berbera.json",
+   "size": 3536,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "africa-cities/captures/mawaqit-search-borama.json",
+   "size": 3536,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "africa-cities/captures/mawaqit-search-bosaso.json",
+   "size": 3536,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "africa-cities/captures/mawaqit-search-garowe.json",
+   "size": 3536,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "africa-cities/captures/mawaqit-search-hargeisa.json",
+   "size": 3536,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "africa-cities/captures/mawaqit-search-kismayo.json",
+   "size": 3536,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "algeria-1447/captures/wb/cdx-marw-allpdf.json",
+   "size": 11832,
+   "err": "Unexpected token '<', \"<html><hea\"... is not valid JSON"
+  },
+  {
+   "rel": "balkan-cities/captures/ba_api_root.json",
+   "size": 6467,
+   "err": "Unexpected token '<', \"\n\n<!doctype \"... is not valid JSON"
+  },
+  {
+   "rel": "balkan-cities/captures/hr_wayback_cdx_rijeka_dom.json",
+   "size": 11832,
+   "err": "Unexpected token '<', \"<html><hea\"... is not valid JSON"
+  },
+  {
+   "rel": "canada2/captures/dptprobe_frederictonislamicassociation.com.json",
+   "size": 943573,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "canada2/captures/dptprobe_londonmosque.ca.json",
+   "size": 63154,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "canada2/captures/dptprobe_manal.ca.json",
+   "size": 71026,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "canada2/captures/probe_mawaqit_search_winnipeg.json",
+   "size": 3536,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "gaps-closed/captures/bn-mora-2026.json",
+   "size": 338,
+   "err": "Unexpected token '<', \"<?xml vers\"... is not valid JSON"
+  },
+  {
+   "rel": "germany-cities/captures/mawaqit-probe-api_2.0_mosque_ali-duisburg.json",
+   "size": 3559,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "germany-cities/captures/mawaqit-probe-api_2.0_mosque_search_q_duisburg.json",
+   "size": 3536,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "india-cities/captures/masjidbox-meta-bilal-masjid-1706812009102.json",
+   "size": 9,
+   "err": "Unexpected token 'N', \"Not Found\" is not valid JSON"
+  },
+  {
+   "rel": "india-cities/captures/masjidbox-meta-fazle-elahi-masjid.json",
+   "size": 9,
+   "err": "Unexpected token 'N', \"Not Found\" is not valid JSON"
+  },
+  {
+   "rel": "india-cities/captures/masjidbox-meta-hajee-sir-ismael-sait-mosque.json",
+   "size": 9,
+   "err": "Unexpected token 'N', \"Not Found\" is not valid JSON"
+  },
+  {
+   "rel": "india-cities/captures/masjidbox-meta-idara-islahul-muslimeen.json",
+   "size": 9,
+   "err": "Unexpected token 'N', \"Not Found\" is not valid JSON"
+  },
+  {
+   "rel": "india-cities/captures/masjidbox-meta-mansarovar-masjid.json",
+   "size": 9,
+   "err": "Unexpected token 'N', \"Not Found\" is not valid JSON"
+  },
+  {
+   "rel": "india-cities/captures/masjidbox-meta-masjid-azezziyyah.json",
+   "size": 9,
+   "err": "Unexpected token 'N', \"Not Found\" is not valid JSON"
+  },
+  {
+   "rel": "india-cities/captures/masjidbox-meta-masjid-e-ghous-e-azam.json",
+   "size": 9,
+   "err": "Unexpected token 'N', \"Not Found\" is not valid JSON"
+  },
+  {
+   "rel": "india-cities/captures/masjidbox-meta-masjid-noori.json",
+   "size": 9,
+   "err": "Unexpected token 'N', \"Not Found\" is not valid JSON"
+  },
+  {
+   "rel": "india-cities/captures/masjidbox-meta-nandanpur-jama-masjid.json",
+   "size": 9,
+   "err": "Unexpected token 'N', \"Not Found\" is not valid JSON"
+  },
+  {
+   "rel": "india-cities/captures/masjidbox-meta-noor-e-ilahi.json",
+   "size": 9,
+   "err": "Unexpected token 'N', \"Not Found\" is not valid JSON"
+  },
+  {
+   "rel": "india-cities/captures/masjidbox-meta-tekrawali-masjid.json",
+   "size": 9,
+   "err": "Unexpected token 'N', \"Not Found\" is not valid JSON"
+  },
+  {
+   "rel": "india-cities/captures/masjidbox-meta-thowheed-mosque.json",
+   "size": 9,
+   "err": "Unexpected token 'N', \"Not Found\" is not valid JSON"
+  },
+  {
+   "rel": "india-cities/captures/mw-probe-calendar.json",
+   "size": 3559,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "india-cities/captures/mw-probe-calendar_2026_1.json",
+   "size": 3559,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "india-cities/captures/mw-probe-prayer-times.json",
+   "size": 3536,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "india-cities/captures/mw-probe-prayer-times_year_2026.json",
+   "size": 3536,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "india-cities/captures/mw-s.json",
+   "size": 3560,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "latam-cities/captures/mx_mb_search_Ciudad_de_Mexico.json",
+   "size": 13,
+   "err": "Unexpected non-whitespace character after JSON at position 4 (line 1 column 5)"
+  },
+  {
+   "rel": "latam-cities/captures/mx_mb_search_Merida.json",
+   "size": 13,
+   "err": "Unexpected non-whitespace character after JSON at position 4 (line 1 column 5)"
+  },
+  {
+   "rel": "latam-cities/captures/mx_mb_search_Monterrey.json",
+   "size": 13,
+   "err": "Unexpected non-whitespace character after JSON at position 4 (line 1 column 5)"
+  },
+  {
+   "rel": "latam-cities/captures/mx_mb_search_Puebla.json",
+   "size": 13,
+   "err": "Unexpected non-whitespace character after JSON at position 4 (line 1 column 5)"
+  },
+  {
+   "rel": "latam-cities/captures/mx_mb_search_Tijuana.json",
+   "size": 13,
+   "err": "Unexpected non-whitespace character after JSON at position 4 (line 1 column 5)"
+  },
+  {
+   "rel": "latam-cities/captures/tt_mb_today_chaguanas-masjid.json",
+   "size": 9,
+   "err": "Unexpected token 'N', \"Not Found\" is not valid JSON"
+  },
+  {
+   "rel": "latam-cities/captures/tt_mb_today_crown-point-masjid-abdullah-ibn-abbaas.json",
+   "size": 9,
+   "err": "Unexpected token 'N', \"Not Found\" is not valid JSON"
+  },
+  {
+   "rel": "latam-cities/captures/tt_mb_today_guaico-masjid-ul-mumineen.json",
+   "size": 9,
+   "err": "Unexpected token 'N', \"Not Found\" is not valid JSON"
+  },
+  {
+   "rel": "masjidal-global/probe/rj12.json",
+   "size": 196,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "masjidal-global/probe/rj6.json",
+   "size": 196,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "masjidi/captures/cdx_tables.json",
+   "size": 11832,
+   "err": "Unexpected token '<', \"<html><hea\"... is not valid JSON"
+  },
+  {
+   "rel": "nigeria-states/captures/masjidbox-api-al-imam-osogbo-ap.json",
+   "size": 9,
+   "err": "Unexpected token 'N', \"Not Found\" is not valid JSON"
+  },
+  {
+   "rel": "o1l-13r/captures/mawaqit-search-bangladesh.json",
+   "size": 3559,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "o1l-13r/captures/mawaqit-search-dhaka.json",
+   "size": 3560,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "o1l-15r/captures/test-monthly-9541.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1l-15r/captures/test-states.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1l-19r/captures/fj-fml-dpt-2025-01.json",
+   "size": 20481,
+   "err": "Unexpected token '<', \"<div class\"... is not valid JSON"
+  },
+  {
+   "rel": "o1l-19r/captures/fj-fml-dpt-2025-06.json",
+   "size": 19990,
+   "err": "Unexpected token '<', \"<div class\"... is not valid JSON"
+  },
+  {
+   "rel": "o1l-19r/captures/fj-fml-dpt-2026-01.json",
+   "size": 20481,
+   "err": "Unexpected token '<', \"<div class\"... is not valid JSON"
+  },
+  {
+   "rel": "o1l-19r/captures/fj-fml-dpt-2026-02.json",
+   "size": 18634,
+   "err": "Unexpected token '<', \"<div class\"... is not valid JSON"
+  },
+  {
+   "rel": "o1l-19r/captures/fj-fml-dpt-2026-03.json",
+   "size": 20497,
+   "err": "Unexpected token '<', \"<div class\"... is not valid JSON"
+  },
+  {
+   "rel": "o1l-19r/captures/fj-fml-dpt-2026-04.json",
+   "size": 19974,
+   "err": "Unexpected token '<', \"<div class\"... is not valid JSON"
+  },
+  {
+   "rel": "o1l-19r/captures/fj-fml-dpt-2026-05.json",
+   "size": 20706,
+   "err": "Unexpected token '<', \"<div class\"... is not valid JSON"
+  },
+  {
+   "rel": "o1l-19r/captures/fj-fml-dpt-2026-06.json",
+   "size": 19990,
+   "err": "Unexpected token '<', \"<div class\"... is not valid JSON"
+  },
+  {
+   "rel": "o1l-19r/captures/fj-fml-dpt-2026-07.json",
+   "size": 20499,
+   "err": "Unexpected token '<', \"<div class\"... is not valid JSON"
+  },
+  {
+   "rel": "o1l-19r/captures/fj-fml-dpt-2026-08.json",
+   "size": 20601,
+   "err": "Unexpected token '<', \"<div class\"... is not valid JSON"
+  },
+  {
+   "rel": "o1l-19r/captures/fj-fml-dpt-2026-09.json",
+   "size": 20149,
+   "err": "Unexpected token '<', \"<div class\"... is not valid JSON"
+  },
+  {
+   "rel": "o1l-19r/captures/fj-fml-dpt-2026-10.json",
+   "size": 20775,
+   "err": "Unexpected token '<', \"<div class\"... is not valid JSON"
+  },
+  {
+   "rel": "o1l-19r/captures/fj-fml-dpt-2026-11.json",
+   "size": 20258,
+   "err": "Unexpected token '<', \"<div class\"... is not valid JSON"
+  },
+  {
+   "rel": "o1l-19r/captures/fj-fml-dpt-2026-12.json",
+   "size": 20575,
+   "err": "Unexpected token '<', \"<div class\"... is not valid JSON"
+  },
+  {
+   "rel": "o1l-19r/captures/fj-fml-dpt-2027-01.json",
+   "size": 20481,
+   "err": "Unexpected token '<', \"<div class\"... is not valid JSON"
+  },
+  {
+   "rel": "o1l-19r/captures/fj-fml-dpt-2027-06.json",
+   "size": 19990,
+   "err": "Unexpected token '<', \"<div class\"... is not valid JSON"
+  },
+  {
+   "rel": "o1l-19r/raw/mw-search.json",
+   "size": 3536,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "o1l-22/captures/mq-search-marseille.json",
+   "size": 3560,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "o1l-28/captures/dpt-almedinah-co-uk.json",
+   "size": 1693,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "o1l-28/captures/dpt-blackpool-mosque-co-uk.json",
+   "size": 1108,
+   "err": "Unexpected token '<', \"<!doctype \"... is not valid JSON"
+  },
+  {
+   "rel": "o1l-28/captures/dpt-masjidmadrassafaizulquran-co-uk.json",
+   "size": 552,
+   "err": "Unexpected token '<', \"<html>\r\n<h\"... is not valid JSON"
+  },
+  {
+   "rel": "o1l-28/captures/dpt-masjidumer-co-uk.json",
+   "size": 265,
+   "err": "Unexpected token '<', \"<!doctype \"... is not valid JSON"
+  },
+  {
+   "rel": "o1l-28/captures/dpt-peacecentre-alminaret-com.json",
+   "size": 48965,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "o1l-28/captures/dpt-www-carlisleislamiccentre-org.json",
+   "size": 468381,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "o1l-28/captures/dpt-www-ipswichmosque-org.json",
+   "size": 24763,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "o1l-28/captures/dpt-www-islamictrust-org.json",
+   "size": 5865,
+   "err": "Unexpected token '<', \"<!doctype \"... is not valid JSON"
+  },
+  {
+   "rel": "o1l-28/captures/dpt-www-lanarkshiremosque-com8ef2.json",
+   "size": 145160,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "o1l-28/captures/dpt-www-lanarkshiremosque-comf99c.json",
+   "size": 1,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1l-28/captures/dpt-www-shahjalalmasjidipswich-co-uk.json",
+   "size": 50678,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "pakistan-cities/captures/mawaqit-search-lahore.json",
+   "size": 3536,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "tunisia-cities/captures/mawaqit-search-tunis.json",
+   "size": 3536,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "uk-seconds/captures/overpass-scotland.json",
+   "size": 558,
+   "err": "Unexpected token '<', \"<html>\r\n<h\"... is not valid JSON"
+  },
+  {
+   "rel": "wayback-back/captures/cl-cdx-pdf.json",
+   "size": 11832,
+   "err": "Unexpected token '<', \"<html><hea\"... is not valid JSON"
+  },
+  {
+   "rel": "wayback-back/captures/cl-cdx-try.json",
+   "size": 11832,
+   "err": "Unexpected token '<', \"<html><hea\"... is not valid JSON"
+  },
+  {
+   "rel": "wayback-back/captures/es-media-horario.json",
+   "size": 5872,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  }
+ ]
+}

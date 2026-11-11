@@ -1,0 +1,34 @@
+{
+ "label": "r2448-ألمانيا",
+ "file": "captures/masjidi_region_2448.json",
+ "rows": 366,
+ "lat": 52.6,
+ "k": 0,
+ "geoRms": 8.057,
+ "fajr": {
+  "kind": "interval",
+  "n": 366,
+  "angle": 15.06,
+  "darkIqr": 1.22
+ },
+ "isha": {
+  "kind": "interval",
+  "n": 366,
+  "angle": 13,
+  "darkIqr": 1.11,
+  "gap": 90
+ },
+ "asr": {
+  "school": "Shafi",
+  "shafiMae": 0.8,
+  "hanafiMae": 51.8
+ },
+ "clock": {
+  "lonImplied": -1.63,
+  "offsetMin": -7,
+  "driftRms": 0.2,
+  "runs": 1,
+  "steps": []
+ },
+ "amplitude": -246
+}

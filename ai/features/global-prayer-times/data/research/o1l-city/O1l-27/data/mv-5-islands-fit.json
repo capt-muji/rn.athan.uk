@@ -1,0 +1,410 @@
+{
+ "1": {
+  "island": "HA. Thuraakunu",
+  "coord": {
+   "name": "HA. Thuraakunu",
+   "lat": 6.9553,
+   "lon": 73.1006
+  },
+  "rows": 30,
+  "cells": 180,
+  "exactAllDays": 0,
+  "within1AllDays": 5,
+  "columns": {
+   "fajr": {
+    "mean": 0.63,
+    "mae": 0.63,
+    "min": 0,
+    "max": 1,
+    "exact": 11,
+    "within1": 30,
+    "n": 30
+   },
+   "sunrise": {
+    "mean": 0.43,
+    "mae": 0.43,
+    "min": 0,
+    "max": 1,
+    "exact": 17,
+    "within1": 30,
+    "n": 30
+   },
+   "dhuhr": {
+    "mean": 1.53,
+    "mae": 1.53,
+    "min": 1,
+    "max": 2,
+    "exact": 0,
+    "within1": 14,
+    "n": 30
+   },
+   "asr": {
+    "mean": 1.27,
+    "mae": 1.27,
+    "min": 1,
+    "max": 2,
+    "exact": 0,
+    "within1": 22,
+    "n": 30
+   },
+   "maghrib": {
+    "mean": 1.43,
+    "mae": 1.43,
+    "min": 1,
+    "max": 2,
+    "exact": 0,
+    "within1": 17,
+    "n": 30
+   },
+   "isha": {
+    "mean": 1.5,
+    "mae": 1.5,
+    "min": 1,
+    "max": 2,
+    "exact": 0,
+    "within1": 15,
+    "n": 30
+   }
+  }
+ },
+ "415": {
+  "island": "Male', Male' City",
+  "coord": {
+   "name": "Male",
+   "lat": 4.1755,
+   "lon": 73.5093
+  },
+  "rows": 30,
+  "cells": 180,
+  "exactAllDays": 11,
+  "within1AllDays": 30,
+  "columns": {
+   "fajr": {
+    "mean": -0.33,
+    "mae": 0.33,
+    "min": -1,
+    "max": 0,
+    "exact": 20,
+    "within1": 30,
+    "n": 30
+   },
+   "sunrise": {
+    "mean": 0.2,
+    "mae": 0.2,
+    "min": 0,
+    "max": 1,
+    "exact": 24,
+    "within1": 30,
+    "n": 30
+   },
+   "dhuhr": {
+    "mean": -0.07,
+    "mae": 0.07,
+    "min": -1,
+    "max": 0,
+    "exact": 28,
+    "within1": 30,
+    "n": 30
+   },
+   "asr": {
+    "mean": 0.03,
+    "mae": 0.03,
+    "min": 0,
+    "max": 1,
+    "exact": 29,
+    "within1": 30,
+    "n": 30
+   },
+   "maghrib": {
+    "mean": -0.03,
+    "mae": 0.03,
+    "min": -1,
+    "max": 0,
+    "exact": 29,
+    "within1": 30,
+    "n": 30
+   },
+   "isha": {
+    "mean": 0.2,
+    "mae": 0.2,
+    "min": 0,
+    "max": 1,
+    "exact": 24,
+    "within1": 30,
+    "n": 30
+   }
+  }
+ },
+ "421": {
+  "island": "K. Thulusdhoo",
+  "coord": {
+   "name": "K. Thulusdhoo",
+   "lat": 4.3742,
+   "lon": 73.6497
+  },
+  "rows": 30,
+  "cells": 180,
+  "exactAllDays": 0,
+  "within1AllDays": 29,
+  "columns": {
+   "fajr": {
+    "mean": -0.13,
+    "mae": 0.13,
+    "min": -1,
+    "max": 0,
+    "exact": 26,
+    "within1": 30,
+    "n": 30
+   },
+   "sunrise": {
+    "mean": 0.4,
+    "mae": 0.4,
+    "min": 0,
+    "max": 1,
+    "exact": 18,
+    "within1": 30,
+    "n": 30
+   },
+   "dhuhr": {
+    "mean": 0.67,
+    "mae": 0.67,
+    "min": 0,
+    "max": 1,
+    "exact": 10,
+    "within1": 30,
+    "n": 30
+   },
+   "asr": {
+    "mean": 0.7,
+    "mae": 0.7,
+    "min": 0,
+    "max": 1,
+    "exact": 9,
+    "within1": 30,
+    "n": 30
+   },
+   "maghrib": {
+    "mean": 0.6,
+    "mae": 0.6,
+    "min": 0,
+    "max": 1,
+    "exact": 12,
+    "within1": 30,
+    "n": 30
+   },
+   "isha": {
+    "mean": 1.03,
+    "mae": 1.03,
+    "min": 1,
+    "max": 2,
+    "exact": 0,
+    "within1": 29,
+    "n": 30
+   }
+  }
+ },
+ "603": {
+  "island": "M. Mulah",
+  "coord": {
+   "name": "M. Mulah",
+   "lat": 2.9467,
+   "lon": 73.5853
+  },
+  "rows": 30,
+  "cells": 180,
+  "exactAllDays": 2,
+  "within1AllDays": 30,
+  "columns": {
+   "fajr": {
+    "mean": 0.07,
+    "mae": 0.07,
+    "min": 0,
+    "max": 1,
+    "exact": 28,
+    "within1": 30,
+    "n": 30
+   },
+   "sunrise": {
+    "mean": 0.5,
+    "mae": 0.5,
+    "min": 0,
+    "max": 1,
+    "exact": 15,
+    "within1": 30,
+    "n": 30
+   },
+   "dhuhr": {
+    "mean": 0.47,
+    "mae": 0.47,
+    "min": 0,
+    "max": 1,
+    "exact": 16,
+    "within1": 30,
+    "n": 30
+   },
+   "asr": {
+    "mean": 0.27,
+    "mae": 0.27,
+    "min": 0,
+    "max": 1,
+    "exact": 22,
+    "within1": 30,
+    "n": 30
+   },
+   "maghrib": {
+    "mean": 0.17,
+    "mae": 0.17,
+    "min": 0,
+    "max": 1,
+    "exact": 25,
+    "within1": 30,
+    "n": 30
+   },
+   "isha": {
+    "mean": 0.33,
+    "mae": 0.33,
+    "min": 0,
+    "max": 1,
+    "exact": 20,
+    "within1": 30,
+    "n": 30
+   }
+  }
+ },
+ "951": {
+  "island": "Gn. Fuvahmulah",
+  "coord": {
+   "name": "Gn. Fuvahmulah",
+   "lat": -0.2989,
+   "lon": 73.4239
+  },
+  "rows": 30,
+  "cells": 180,
+  "exactAllDays": 0,
+  "within1AllDays": 30,
+  "columns": {
+   "fajr": {
+    "mean": 0.07,
+    "mae": 0.07,
+    "min": 0,
+    "max": 1,
+    "exact": 28,
+    "within1": 30,
+    "n": 30
+   },
+   "sunrise": {
+    "mean": 0.1,
+    "mae": 0.1,
+    "min": 0,
+    "max": 1,
+    "exact": 27,
+    "within1": 30,
+    "n": 30
+   },
+   "dhuhr": {
+    "mean": 0.73,
+    "mae": 0.73,
+    "min": 0,
+    "max": 1,
+    "exact": 8,
+    "within1": 30,
+    "n": 30
+   },
+   "asr": {
+    "mean": 0.43,
+    "mae": 0.43,
+    "min": 0,
+    "max": 1,
+    "exact": 17,
+    "within1": 30,
+    "n": 30
+   },
+   "maghrib": {
+    "mean": 0.3,
+    "mae": 0.3,
+    "min": 0,
+    "max": 1,
+    "exact": 21,
+    "within1": 30,
+    "n": 30
+   },
+   "isha": {
+    "mean": 0.9,
+    "mae": 0.9,
+    "min": 0,
+    "max": 1,
+    "exact": 3,
+    "within1": 30,
+    "n": 30
+   }
+  }
+ },
+ "953": {
+  "island": "Hithadhoo, Addu City",
+  "coord": {
+   "name": "Addu Hithadhoo",
+   "lat": -0.6094,
+   "lon": 73.09
+  },
+  "rows": 30,
+  "cells": 180,
+  "exactAllDays": 4,
+  "within1AllDays": 30,
+  "columns": {
+   "fajr": {
+    "mean": -0.13,
+    "mae": 0.13,
+    "min": -1,
+    "max": 0,
+    "exact": 26,
+    "within1": 30,
+    "n": 30
+   },
+   "sunrise": {
+    "mean": -0.2,
+    "mae": 0.2,
+    "min": -1,
+    "max": 0,
+    "exact": 24,
+    "within1": 30,
+    "n": 30
+   },
+   "dhuhr": {
+    "mean": 0.47,
+    "mae": 0.47,
+    "min": 0,
+    "max": 1,
+    "exact": 16,
+    "within1": 30,
+    "n": 30
+   },
+   "asr": {
+    "mean": 0.13,
+    "mae": 0.13,
+    "min": 0,
+    "max": 1,
+    "exact": 26,
+    "within1": 30,
+    "n": 30
+   },
+   "maghrib": {
+    "mean": -0.07,
+    "mae": 0.07,
+    "min": -1,
+    "max": 0,
+    "exact": 28,
+    "within1": 30,
+    "n": 30
+   },
+   "isha": {
+    "mean": 0.43,
+    "mae": 0.43,
+    "min": 0,
+    "max": 1,
+    "exact": 17,
+    "within1": 30,
+    "n": 30
+   }
+  }
+ }
+}

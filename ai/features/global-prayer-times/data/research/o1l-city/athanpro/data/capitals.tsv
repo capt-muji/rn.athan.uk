@@ -1,0 +1,202 @@
+1	China	Beijing
+2	DR Congo	Kinshasa
+3	Japan	Tokyo
+4	Russia	Moscow
+5	Indonesia	Jakarta
+6	Thailand	Bangkok
+7	Bangladesh	Dhaka
+8	Peru	Lima
+9	Egypt	Cairo
+10	South Korea	Seoul
+11	Mexico	Mexico City
+12	Iran	Tehran
+13	United Kingdom	London
+14	Vietnam	Hanoi
+15	Angola	Luanda
+16	Colombia	Bogota
+17	Saudi Arabia	Riyadh
+18	Iraq	Baghdad
+19	Chile	Santiago
+20	Sudan	Khartoum
+21	Singapore	Singapore
+22	Turkiye	Ankara
+23	Ethiopia	Addis Ababa
+24	Afghanistan	Kabul
+25	Kenya	Nairobi
+26	Jordan	Amman
+27	Germany	Berlin
+28	Nigeria	Abuja
+29	Spain	Madrid
+30	Argentina	Buenos Aires
+31	Brazil	Brasilia
+32	Kuwait	Kuwait City
+33	North Korea	Pyongyang
+34	Yemen	Sanaa
+35	Zambia	Lusaka
+36	Algeria	Algiers
+37	Ukraine	Kyiv
+38	Uzbekistan	Tashkent
+39	Cameroon	Yaounde
+40	Italy	Rome
+41	Mali	Bamako
+42	Ghana	Accra
+43	Somalia	Mogadishu
+44	Taiwan	Taipei
+45	South Africa	Pretoria
+46	Syria	Damascus
+47	Burkina Faso	Ouagadougou
+48	Lebanon	Beirut
+49	Azerbaijan	Baku
+50	Cambodia	Phnom Penh
+51	Congo	Brazzaville
+52	Venezuela	Caracas
+53	Cuba	Havana
+54	France	Paris
+55	Austria	Vienna
+56	Belarus	Minsk
+57	Guinea	Conakry
+58	Ecuador	Quito
+59	Morocco	Rabat
+60	Panama	Panama City
+61	Togo	Lome
+62	Malaysia	Kuala Lumpur
+63	Philippines	Manila
+64	Poland	Warsaw
+65	Romania	Bucharest
+66	Hungary	Budapest
+67	Uganda	Kampala
+68	Chad	N'Djamena
+69	Mongolia	Ulaanbaatar
+70	Oman	Muscat
+71	Nepal	Kathmandu
+72	United Arab Emirates	Abu Dhabi
+73	Zimbabwe	Harare
+74	Kazakhstan	Astana
+75	Serbia	Belgrade
+76	Bulgaria	Sofia
+77	Czechia	Prague
+78	Madagascar	Antananarivo
+79	Niger	Niamey
+80	Uruguay	Montevideo
+81	Belgium	Brussels
+82	Georgia	Tbilisi
+83	Honduras	Tegucigalpa
+84	Libya	Tripoli
+85	Mauritania	Nouakchott
+86	Myanmar	Naypyidaw
+87	Pakistan	Islamabad
+88	Qatar	Doha
+89	Rwanda	Kigali
+90	Sierra Leone	Freetown
+91	Armenia	Yerevan
+92	Kyrgyzstan	Bishkek
+93	Mozambique	Maputo
+94	Senegal	Dakar
+95	Canada	Ottawa
+96	Dominican Republic	Santo Domingo
+97	Guatemala	Guatemala City
+98	Haiti	Port-au-Prince
+99	Liberia	Monrovia
+100	Malawi	Lilongwe
+101	Nicaragua	Managua
+102	Norway	Oslo
+103	Somaliland	Hargeisa
+104	Turkmenistan	Ashgabat
+105	Sweden	Stockholm
+106	Israel	Jerusalem
+107	Laos	Vientiane
+108	Central African Republic	Bangui
+109	Eritrea	Asmara
+110	Netherlands	Amsterdam
+111	Tajikistan	Dushanbe
+112	Croatia	Zagreb
+113	Tanzania	Dodoma
+114	Gabon	Libreville
+115	Moldova	Chisinau
+116	United States	Washington
+117	Finland	Helsinki
+118	Denmark	Copenhagen
+119	Greece	Athens
+120	Albania	Tirana
+121	Djibouti	Djibouti
+122	Ireland	Dublin
+123	Jamaica	Kingston
+124	Latvia	Riga
+125	Tunisia	Tunis
+126	Lithuania	Vilnius
+127	Portugal	Lisbon
+128	North Macedonia	Skopje
+129	El Salvador	San Salvador
+130	Paraguay	Asuncion
+131	South Sudan	Juba
+132	Australia	Canberra
+133	Estonia	Tallinn
+134	Slovakia	Bratislava
+135	Namibia	Windhoek
+136	Bosnia and Herzegovina	Sarajevo
+137	New Zealand	Wellington
+138	Guinea-Bissau	Bissau
+139	Papua New Guinea	Port Moresby
+140	Cote d'Ivoire	Yamoussoukro
+141	Costa Rica	San Jose
+142	Cyprus	Nicosia
+143	Lesotho	Maseru
+144	Bahrain	Manama
+145	Bolivia	Sucre
+146	Equatorial Guinea	Malabo
+147	Slovenia	Ljubljana
+148	Bahamas	Nassau
+149	Botswana	Gaborone
+150	Benin	Porto-Novo
+151	India	New Delhi
+152	Maldives	Male
+153	Suriname	Paramaribo
+154	Timor-Leste	Dili
+155	Western Sahara	Laayoune
+156	Guyana	Georgetown
+157	Kosovo	Pristina
+158	Fiji	Suva
+159	Montenegro	Podgorica
+160	Cabo Verde	Praia
+161	Mauritius	Port Louis
+162	Iceland	Reykjavik
+163	Switzerland	Bern
+164	Luxembourg	Luxembourg
+165	Transnistria	Tiraspol
+166	Sri Lanka	Sri Jayawardenepura Kotte
+167	Barbados	Bridgetown
+168	Bhutan	Thimphu
+169	Comoros	Moroni
+170	Brunei	Bandar Seri Begawan
+171	Eswatini	Mbabane
+172	Solomon Islands	Honiara
+173	Sao Tome and Principe	Sao Tome
+174	Abkhazia	Sukhumi
+175	Kiribati	South Tarawa
+176	Northern Cyprus	North Nicosia
+177	Trinidad and Tobago	Port of Spain
+178	Vanuatu	Port Vila
+179	Burundi	Gitega
+180	Monaco	Monaco
+181	Palestine	Ramallah
+182	Samoa	Apia
+183	Gambia	Banjul
+184	Grenada	Saint George's
+185	Marshall Islands	Majuro
+186	Seychelles	Victoria
+187	Tonga	Nuku'alofa
+188	Andorra	Andorra la Vella
+189	Antigua and Barbuda	Saint John's
+190	Belize	Belmopan
+191	Saint Lucia	Castries
+192	Saint Vincent	Kingstown
+193	Dominica	Roseau
+194	Saint Kitts and Nevis	Basseterre
+195	Micronesia	Palikir
+196	Liechtenstein	Vaduz
+197	Malta	Valletta
+198	Tuvalu	Funafuti
+199	San Marino	San Marino
+200	Nauru	Yaren
+201	Vatican City	Vatican City
+202	Palau	Ngerulmud

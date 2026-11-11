@@ -1,0 +1,572 @@
+{
+ "khgt-2026-ambon.json": {
+  "lat": -3.6854,
+  "lon": 128.195,
+  "source": "Kemenag city register, KOTA AMBON"
+ },
+ "khgt-2026-banda-aceh.json": {
+  "lat": 5.5587,
+  "lon": 95.3277,
+  "source": "Kemenag city register, KOTA BANDA ACEH"
+ },
+ "khgt-2026-bandar-lampung.json": {
+  "lat": -5.4142,
+  "lon": 105.2621,
+  "source": "Kemenag city register, KOTA BANDAR LAMPUNG"
+ },
+ "khgt-2026-bandung.json": {
+  "lat": -6.9192,
+  "lon": 107.6366,
+  "source": "Kemenag city register, KOTA BANDUNG"
+ },
+ "khgt-2026-banjarmasin.json": {
+  "lat": -3.3291,
+  "lon": 114.5918,
+  "source": "Kemenag city register, KOTA BANJARMASIN"
+ },
+ "khgt-2026-bengkulu.json": {
+  "lat": -3.8414,
+  "lon": 102.3082,
+  "source": "Kemenag city register, KOTA BENGKULU"
+ },
+ "khgt-2026-bulungan.json": {
+  "lat": 2.7975,
+  "lon": 117.032,
+  "source": "Kemenag city register, KAB. BULUNGAN"
+ },
+ "khgt-2026-denpasar.json": {
+  "lat": -8.6684,
+  "lon": 115.2208,
+  "source": "Kemenag city register, KOTA DENPASAR"
+ },
+ "khgt-2026-gorontalo.json": {
+  "lat": 0.5384,
+  "lon": 123.0553,
+  "source": "Kemenag city register, KOTA GORONTALO"
+ },
+ "khgt-2026-jakarta-pusat.json": {
+  "lat": -6.1812,
+  "lon": 106.8351,
+  "source": "Kemenag city register, KOTA JAKARTA PUSAT"
+ },
+ "khgt-2026-jambi.json": {
+  "lat": -1.6182,
+  "lon": 103.5998,
+  "source": "Kemenag city register, KOTA JAMBI"
+ },
+ "khgt-2026-jayapura.json": {
+  "lat": -2.6645,
+  "lon": 140.8001,
+  "source": "Kemenag city register, KOTA JAYAPURA"
+ },
+ "khgt-2026-jayawijaya.json": {
+  "lat": -4.1333,
+  "lon": 138.9333,
+  "source": "Kemenag city register, KAB. JAYAWIJAYA"
+ },
+ "khgt-2026-kendari.json": {
+  "lat": -3.9977,
+  "lon": 122.5329,
+  "source": "Kemenag city register, KOTA KENDARI"
+ },
+ "khgt-2026-kupang.json": {
+  "lat": -10.2045,
+  "lon": 123.6045,
+  "source": "Kemenag city register, KOTA KUPANG"
+ },
+ "khgt-2026-makassar.json": {
+  "lat": -5.1356,
+  "lon": 119.4639,
+  "source": "Kemenag city register, KOTA MAKASSAR"
+ },
+ "khgt-2026-mamuju.json": {
+  "lat": -2.5197,
+  "lon": 119.3446,
+  "source": "Kemenag city register, KAB. MAMUJU"
+ },
+ "khgt-2026-manado.json": {
+  "lat": 1.5249,
+  "lon": 124.8479,
+  "source": "Kemenag city register, KOTA MANADO"
+ },
+ "khgt-2026-manokwari.json": {
+  "lat": -0.9357,
+  "lon": 133.8004,
+  "source": "Kemenag city register, KAB. MANOKWARI"
+ },
+ "khgt-2026-mataram.json": {
+  "lat": -8.5902,
+  "lon": 116.111,
+  "source": "Kemenag city register, KOTA MATARAM"
+ },
+ "khgt-2026-medan.json": {
+  "lat": 3.629,
+  "lon": 98.6672,
+  "source": "Kemenag city register, KOTA MEDAN"
+ },
+ "khgt-2026-merauke.json": {
+  "lat": -8.4833,
+  "lon": 140.3833,
+  "source": "Kemenag city register, KAB. MERAUKE"
+ },
+ "khgt-2026-nabire.json": {
+  "lat": -3.3667,
+  "lon": 135.4833,
+  "source": "Kemenag city register, KAB. NABIRE"
+ },
+ "khgt-2026-padang.json": {
+  "lat": -0.8989,
+  "lon": 100.4376,
+  "source": "Kemenag city register, KOTA PADANG"
+ },
+ "khgt-2026-palangkaraya.json": {
+  "lat": -2.0075,
+  "lon": 113.7675,
+  "source": "Kemenag city register, KOTA PALANGKARAYA"
+ },
+ "khgt-2026-palembang.json": {
+  "lat": -2.9717,
+  "lon": 104.7413,
+  "source": "Kemenag city register, KOTA PALEMBANG"
+ },
+ "khgt-2026-palu.json": {
+  "lat": -0.8369,
+  "lon": 119.912,
+  "source": "Kemenag city register, KOTA PALU"
+ },
+ "khgt-2026-pangkal-pinang.json": {
+  "lat": -2.1105,
+  "lon": 106.1132,
+  "source": "Kemenag city register, KOTA PANGKAL PINANG"
+ },
+ "khgt-2026-pekanbaru.json": {
+  "lat": 0.5513,
+  "lon": 101.4657,
+  "source": "Kemenag city register, KOTA PEKANBARU"
+ },
+ "khgt-2026-pontianak.json": {
+  "lat": -0.0258,
+  "lon": 109.3317,
+  "source": "Kemenag city register, KOTA PONTIANAK"
+ },
+ "khgt-2026-samarinda.json": {
+  "lat": -0.5003,
+  "lon": 117.1771,
+  "source": "Kemenag city register, KOTA SAMARINDA"
+ },
+ "khgt-2026-semarang.json": {
+  "lat": -7.0239,
+  "lon": 110.3915,
+  "source": "Kemenag city register, KOTA SEMARANG"
+ },
+ "khgt-2026-serang.json": {
+  "lat": -6.1233,
+  "lon": 106.1667,
+  "source": "Kemenag city register, KOTA SERANG"
+ },
+ "khgt-2026-sorong.json": {
+  "lat": -0.8735,
+  "lon": 131.2629,
+  "source": "Kemenag city register, KOTA SORONG"
+ },
+ "khgt-2026-surabaya.json": {
+  "lat": -7.2743,
+  "lon": 112.7236,
+  "source": "Kemenag city register, KOTA SURABAYA"
+ },
+ "khgt-2026-tanjung-pinang.json": {
+  "lat": 0.9196,
+  "lon": 104.4871,
+  "source": "Kemenag city register, KOTA TANJUNG PINANG"
+ },
+ "khgt-2026-ternate.json": {
+  "lat": 0.8385,
+  "lon": 127.1725,
+  "source": "Kemenag city register, KOTA TERNATE"
+ },
+ "khgt-2026-yogyakarta.json": {
+  "lat": -7.8033,
+  "lon": 110.3744,
+  "source": "Kemenag city register, KOTA YOGYAKARTA"
+ },
+ "khgt-2027-ambon.json": {
+  "lat": -3.6854,
+  "lon": 128.195,
+  "source": "Kemenag city register, KOTA AMBON"
+ },
+ "khgt-2027-banda-aceh.json": {
+  "lat": 5.5587,
+  "lon": 95.3277,
+  "source": "Kemenag city register, KOTA BANDA ACEH"
+ },
+ "khgt-2027-bandar-lampung.json": {
+  "lat": -5.4142,
+  "lon": 105.2621,
+  "source": "Kemenag city register, KOTA BANDAR LAMPUNG"
+ },
+ "khgt-2027-bandung.json": {
+  "lat": -6.9192,
+  "lon": 107.6366,
+  "source": "Kemenag city register, KOTA BANDUNG"
+ },
+ "khgt-2027-banjarmasin.json": {
+  "lat": -3.3291,
+  "lon": 114.5918,
+  "source": "Kemenag city register, KOTA BANJARMASIN"
+ },
+ "khgt-2027-bengkulu.json": {
+  "lat": -3.8414,
+  "lon": 102.3082,
+  "source": "Kemenag city register, KOTA BENGKULU"
+ },
+ "khgt-2027-bulungan.json": {
+  "lat": 2.7975,
+  "lon": 117.032,
+  "source": "Kemenag city register, KAB. BULUNGAN"
+ },
+ "khgt-2027-denpasar.json": {
+  "lat": -8.6684,
+  "lon": 115.2208,
+  "source": "Kemenag city register, KOTA DENPASAR"
+ },
+ "khgt-2027-gorontalo.json": {
+  "lat": 0.5384,
+  "lon": 123.0553,
+  "source": "Kemenag city register, KOTA GORONTALO"
+ },
+ "khgt-2027-jakarta-pusat.json": {
+  "lat": -6.1812,
+  "lon": 106.8351,
+  "source": "Kemenag city register, KOTA JAKARTA PUSAT"
+ },
+ "khgt-2027-jambi.json": {
+  "lat": -1.6182,
+  "lon": 103.5998,
+  "source": "Kemenag city register, KOTA JAMBI"
+ },
+ "khgt-2027-jayapura.json": {
+  "lat": -2.6645,
+  "lon": 140.8001,
+  "source": "Kemenag city register, KOTA JAYAPURA"
+ },
+ "khgt-2027-jayawijaya.json": {
+  "lat": -4.1333,
+  "lon": 138.9333,
+  "source": "Kemenag city register, KAB. JAYAWIJAYA"
+ },
+ "khgt-2027-kendari.json": {
+  "lat": -3.9977,
+  "lon": 122.5329,
+  "source": "Kemenag city register, KOTA KENDARI"
+ },
+ "khgt-2027-kupang.json": {
+  "lat": -10.2045,
+  "lon": 123.6045,
+  "source": "Kemenag city register, KOTA KUPANG"
+ },
+ "khgt-2027-makassar.json": {
+  "lat": -5.1356,
+  "lon": 119.4639,
+  "source": "Kemenag city register, KOTA MAKASSAR"
+ },
+ "khgt-2027-mamuju.json": {
+  "lat": -2.5197,
+  "lon": 119.3446,
+  "source": "Kemenag city register, KAB. MAMUJU"
+ },
+ "khgt-2027-manado.json": {
+  "lat": 1.5249,
+  "lon": 124.8479,
+  "source": "Kemenag city register, KOTA MANADO"
+ },
+ "khgt-2027-manokwari.json": {
+  "lat": -0.9357,
+  "lon": 133.8004,
+  "source": "Kemenag city register, KAB. MANOKWARI"
+ },
+ "khgt-2027-mataram.json": {
+  "lat": -8.5902,
+  "lon": 116.111,
+  "source": "Kemenag city register, KOTA MATARAM"
+ },
+ "khgt-2027-medan.json": {
+  "lat": 3.629,
+  "lon": 98.6672,
+  "source": "Kemenag city register, KOTA MEDAN"
+ },
+ "khgt-2027-merauke.json": {
+  "lat": -8.4833,
+  "lon": 140.3833,
+  "source": "Kemenag city register, KAB. MERAUKE"
+ },
+ "khgt-2027-nabire.json": {
+  "lat": -3.3667,
+  "lon": 135.4833,
+  "source": "Kemenag city register, KAB. NABIRE"
+ },
+ "khgt-2027-padang.json": {
+  "lat": -0.8989,
+  "lon": 100.4376,
+  "source": "Kemenag city register, KOTA PADANG"
+ },
+ "khgt-2027-palangkaraya.json": {
+  "lat": -2.0075,
+  "lon": 113.7675,
+  "source": "Kemenag city register, KOTA PALANGKARAYA"
+ },
+ "khgt-2027-palembang.json": {
+  "lat": -2.9717,
+  "lon": 104.7413,
+  "source": "Kemenag city register, KOTA PALEMBANG"
+ },
+ "khgt-2027-palu.json": {
+  "lat": -0.8369,
+  "lon": 119.912,
+  "source": "Kemenag city register, KOTA PALU"
+ },
+ "khgt-2027-pangkal-pinang.json": {
+  "lat": -2.1105,
+  "lon": 106.1132,
+  "source": "Kemenag city register, KOTA PANGKAL PINANG"
+ },
+ "khgt-2027-pekanbaru.json": {
+  "lat": 0.5513,
+  "lon": 101.4657,
+  "source": "Kemenag city register, KOTA PEKANBARU"
+ },
+ "khgt-2027-pontianak.json": {
+  "lat": -0.0258,
+  "lon": 109.3317,
+  "source": "Kemenag city register, KOTA PONTIANAK"
+ },
+ "khgt-2027-samarinda.json": {
+  "lat": -0.5003,
+  "lon": 117.1771,
+  "source": "Kemenag city register, KOTA SAMARINDA"
+ },
+ "khgt-2027-semarang.json": {
+  "lat": -7.0239,
+  "lon": 110.3915,
+  "source": "Kemenag city register, KOTA SEMARANG"
+ },
+ "khgt-2027-serang.json": {
+  "lat": -6.1233,
+  "lon": 106.1667,
+  "source": "Kemenag city register, KOTA SERANG"
+ },
+ "khgt-2027-sorong.json": {
+  "lat": -0.8735,
+  "lon": 131.2629,
+  "source": "Kemenag city register, KOTA SORONG"
+ },
+ "khgt-2027-surabaya.json": {
+  "lat": -7.2743,
+  "lon": 112.7236,
+  "source": "Kemenag city register, KOTA SURABAYA"
+ },
+ "khgt-2027-tanjung-pinang.json": {
+  "lat": 0.9196,
+  "lon": 104.4871,
+  "source": "Kemenag city register, KOTA TANJUNG PINANG"
+ },
+ "khgt-2027-ternate.json": {
+  "lat": 0.8385,
+  "lon": 127.1725,
+  "source": "Kemenag city register, KOTA TERNATE"
+ },
+ "khgt-2027-yogyakarta.json": {
+  "lat": -7.8033,
+  "lon": 110.3744,
+  "source": "Kemenag city register, KOTA YOGYAKARTA"
+ },
+ "sihat-2026-ambon.json": {
+  "lat": -3.6854,
+  "lon": 128.195,
+  "source": "Kemenag city register, KOTA AMBON"
+ },
+ "sihat-2026-banda-aceh.json": {
+  "lat": 5.5587,
+  "lon": 95.3277,
+  "source": "Kemenag city register, KOTA BANDA ACEH"
+ },
+ "sihat-2026-bandar-lampung.json": {
+  "lat": -5.4142,
+  "lon": 105.2621,
+  "source": "Kemenag city register, KOTA BANDAR LAMPUNG"
+ },
+ "sihat-2026-bandung.json": {
+  "lat": -6.9192,
+  "lon": 107.6366,
+  "source": "Kemenag city register, KOTA BANDUNG"
+ },
+ "sihat-2026-banjarmasin.json": {
+  "lat": -3.3291,
+  "lon": 114.5918,
+  "source": "Kemenag city register, KOTA BANJARMASIN"
+ },
+ "sihat-2026-bengkulu.json": {
+  "lat": -3.8414,
+  "lon": 102.3082,
+  "source": "Kemenag city register, KOTA BENGKULU"
+ },
+ "sihat-2026-bulungan.json": {
+  "lat": 2.7975,
+  "lon": 117.032,
+  "source": "Kemenag city register, KAB. BULUNGAN"
+ },
+ "sihat-2026-denpasar.json": {
+  "lat": -8.6684,
+  "lon": 115.2208,
+  "source": "Kemenag city register, KOTA DENPASAR"
+ },
+ "sihat-2026-gorontalo.json": {
+  "lat": 0.5384,
+  "lon": 123.0553,
+  "source": "Kemenag city register, KOTA GORONTALO"
+ },
+ "sihat-2026-jakarta-pusat.json": {
+  "lat": -6.1812,
+  "lon": 106.8351,
+  "source": "Kemenag city register, KOTA JAKARTA PUSAT"
+ },
+ "sihat-2026-jambi.json": {
+  "lat": -1.6182,
+  "lon": 103.5998,
+  "source": "Kemenag city register, KOTA JAMBI"
+ },
+ "sihat-2026-jayapura.json": {
+  "lat": -2.6645,
+  "lon": 140.8001,
+  "source": "Kemenag city register, KOTA JAYAPURA"
+ },
+ "sihat-2026-jayawijaya.json": {
+  "lat": -4.1333,
+  "lon": 138.9333,
+  "source": "Kemenag city register, KAB. JAYAWIJAYA"
+ },
+ "sihat-2026-kendari.json": {
+  "lat": -3.9977,
+  "lon": 122.5329,
+  "source": "Kemenag city register, KOTA KENDARI"
+ },
+ "sihat-2026-kupang.json": {
+  "lat": -10.2045,
+  "lon": 123.6045,
+  "source": "Kemenag city register, KOTA KUPANG"
+ },
+ "sihat-2026-makassar.json": {
+  "lat": -5.1356,
+  "lon": 119.4639,
+  "source": "Kemenag city register, KOTA MAKASSAR"
+ },
+ "sihat-2026-mamuju.json": {
+  "lat": -2.5197,
+  "lon": 119.3446,
+  "source": "Kemenag city register, KAB. MAMUJU"
+ },
+ "sihat-2026-manado.json": {
+  "lat": 1.5249,
+  "lon": 124.8479,
+  "source": "Kemenag city register, KOTA MANADO"
+ },
+ "sihat-2026-manokwari.json": {
+  "lat": -0.9357,
+  "lon": 133.8004,
+  "source": "Kemenag city register, KAB. MANOKWARI"
+ },
+ "sihat-2026-mataram.json": {
+  "lat": -8.5902,
+  "lon": 116.111,
+  "source": "Kemenag city register, KOTA MATARAM"
+ },
+ "sihat-2026-medan.json": {
+  "lat": 3.629,
+  "lon": 98.6672,
+  "source": "Kemenag city register, KOTA MEDAN"
+ },
+ "sihat-2026-merauke.json": {
+  "lat": -8.4833,
+  "lon": 140.3833,
+  "source": "Kemenag city register, KAB. MERAUKE"
+ },
+ "sihat-2026-nabire.json": {
+  "lat": -3.3667,
+  "lon": 135.4833,
+  "source": "Kemenag city register, KAB. NABIRE"
+ },
+ "sihat-2026-padang.json": {
+  "lat": -0.8989,
+  "lon": 100.4376,
+  "source": "Kemenag city register, KOTA PADANG"
+ },
+ "sihat-2026-palangkaraya.json": {
+  "lat": -2.0075,
+  "lon": 113.7675,
+  "source": "Kemenag city register, KOTA PALANGKARAYA"
+ },
+ "sihat-2026-palembang.json": {
+  "lat": -2.9717,
+  "lon": 104.7413,
+  "source": "Kemenag city register, KOTA PALEMBANG"
+ },
+ "sihat-2026-palu.json": {
+  "lat": -0.8369,
+  "lon": 119.912,
+  "source": "Kemenag city register, KOTA PALU"
+ },
+ "sihat-2026-pangkal-pinang.json": {
+  "lat": -2.1105,
+  "lon": 106.1132,
+  "source": "Kemenag city register, KOTA PANGKAL PINANG"
+ },
+ "sihat-2026-pekanbaru.json": {
+  "lat": 0.5513,
+  "lon": 101.4657,
+  "source": "Kemenag city register, KOTA PEKANBARU"
+ },
+ "sihat-2026-pontianak.json": {
+  "lat": -0.0258,
+  "lon": 109.3317,
+  "source": "Kemenag city register, KOTA PONTIANAK"
+ },
+ "sihat-2026-samarinda.json": {
+  "lat": -0.5003,
+  "lon": 117.1771,
+  "source": "Kemenag city register, KOTA SAMARINDA"
+ },
+ "sihat-2026-semarang.json": {
+  "lat": -7.0239,
+  "lon": 110.3915,
+  "source": "Kemenag city register, KOTA SEMARANG"
+ },
+ "sihat-2026-serang.json": {
+  "lat": -6.1233,
+  "lon": 106.1667,
+  "source": "Kemenag city register, KOTA SERANG"
+ },
+ "sihat-2026-sorong.json": {
+  "lat": -0.8735,
+  "lon": 131.2629,
+  "source": "Kemenag city register, KOTA SORONG"
+ },
+ "sihat-2026-surabaya.json": {
+  "lat": -7.2743,
+  "lon": 112.7236,
+  "source": "Kemenag city register, KOTA SURABAYA"
+ },
+ "sihat-2026-tanjung-pinang.json": {
+  "lat": 0.9196,
+  "lon": 104.4871,
+  "source": "Kemenag city register, KOTA TANJUNG PINANG"
+ },
+ "sihat-2026-ternate.json": {
+  "lat": 0.8385,
+  "lon": 127.1725,
+  "source": "Kemenag city register, KOTA TERNATE"
+ },
+ "sihat-2026-yogyakarta.json": {
+  "lat": -7.8033,
+  "lon": 110.3744,
+  "source": "Kemenag city register, KOTA YOGYAKARTA"
+ }
+}

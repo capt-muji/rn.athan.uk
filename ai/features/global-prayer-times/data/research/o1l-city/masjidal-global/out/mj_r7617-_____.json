@@ -1,0 +1,34 @@
+{
+ "label": "r7617-سوريا",
+ "file": "captures/masjidi_region_7617.json",
+ "rows": 366,
+ "lat": 33.46,
+ "k": 0,
+ "geoRms": 6.341,
+ "fajr": {
+  "kind": "angle",
+  "n": 366,
+  "angle": 18.01,
+  "darkIqr": 0.1
+ },
+ "isha": {
+  "kind": "angle",
+  "n": 366,
+  "angle": 16.62,
+  "darkIqr": 0.1,
+  "gap": 80
+ },
+ "asr": {
+  "school": "Shafi",
+  "shafiMae": 1.2,
+  "hanafiMae": 56.6
+ },
+ "clock": {
+  "lonImplied": -8.97,
+  "offsetMin": -36,
+  "driftRms": 0.3,
+  "runs": 1,
+  "steps": []
+ },
+ "amplitude": -135
+}

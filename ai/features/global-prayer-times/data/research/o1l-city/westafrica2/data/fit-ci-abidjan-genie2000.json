@@ -1,0 +1,100 @@
+{
+ "label": "CI Abidjan Genie2000",
+ "file": "ci-abidjan-genie2000-2026.json",
+ "tz": "Africa/Abidjan",
+ "lat": 5.3757182240003,
+ "lon": -3.9351761,
+ "days": 365,
+ "span": [
+  "2026-01-01",
+  "2026-12-31"
+ ],
+ "engine": "adhan 4.4.6 Rounding.None MiddleOfTheNight",
+ "recipe": {
+  "fajrAngle": 14.65,
+  "ishaAngle": 15.3,
+  "madhab": "Shafi",
+  "offsets": {
+   "fajr": -1,
+   "sunrise": 1,
+   "dhuhr": 48,
+   "asr": 13,
+   "maghrib": 1,
+   "isha": -1
+  }
+ },
+ "angleSearch": {
+  "fajr": {
+   "angle": 14.65,
+   "exact": 28,
+   "w1": 216,
+   "worst": 10,
+   "score": 216028
+  },
+  "isha": {
+   "angle": 15.3,
+   "exact": 23,
+   "w1": 77,
+   "worst": 34,
+   "score": 77023
+  }
+ },
+ "asrMadhab": {
+  "shafi": {
+   "exact": 0,
+   "w1": 0,
+   "worst": 47,
+   "n": 365
+  },
+  "hanafi": {
+   "exact": 0,
+   "w1": 0,
+   "worst": 48,
+   "n": 365
+  }
+ },
+ "perColumn": {
+  "fajr": {
+   "exact": 175,
+   "w1": 205,
+   "worst": 11,
+   "n": 365
+  },
+  "sunrise": {
+   "exact": 183,
+   "w1": 365,
+   "worst": 1,
+   "n": 365
+  },
+  "dhuhr": {
+   "exact": 33,
+   "w1": 55,
+   "worst": 17,
+   "n": 365
+  },
+  "asr": {
+   "exact": 21,
+   "w1": 43,
+   "worst": 34,
+   "n": 365
+  },
+  "maghrib": {
+   "exact": 144,
+   "w1": 283,
+   "worst": 13,
+   "n": 365
+  },
+  "isha": {
+   "exact": 47,
+   "w1": 70,
+   "worst": 35,
+   "n": 365
+  }
+ },
+ "totals": {
+  "within1": 1021,
+  "of": 2190,
+  "exact": 603,
+  "worst": 35
+ }
+}

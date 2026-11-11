@@ -1,0 +1,100 @@
+{
+ "label": "GM Koina Anas bin Malik",
+ "file": "gambia-koina-anasbinmalik-2026.json",
+ "tz": "Africa/Banjul",
+ "lat": 13.4746587,
+ "lon": -13.8633205,
+ "days": 365,
+ "span": [
+  "2026-01-01",
+  "2026-12-31"
+ ],
+ "engine": "adhan 4.4.6 Rounding.None MiddleOfTheNight",
+ "recipe": {
+  "fajrAngle": 17.9,
+  "ishaAngle": 17.1,
+  "madhab": "Shafi",
+  "offsets": {
+   "fajr": 0,
+   "sunrise": 1,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 1,
+   "isha": 0
+  }
+ },
+ "angleSearch": {
+  "fajr": {
+   "angle": 17.9,
+   "exact": 344,
+   "w1": 365,
+   "worst": 1,
+   "score": 365344
+  },
+  "isha": {
+   "angle": 17.1,
+   "exact": 345,
+   "w1": 365,
+   "worst": 1,
+   "score": 365345
+  }
+ },
+ "asrMadhab": {
+  "shafi": {
+   "exact": 107,
+   "w1": 269,
+   "worst": 2,
+   "n": 365
+  },
+  "hanafi": {
+   "exact": 0,
+   "w1": 0,
+   "worst": 76,
+   "n": 365
+  }
+ },
+ "perColumn": {
+  "fajr": {
+   "exact": 344,
+   "w1": 365,
+   "worst": 1,
+   "n": 365
+  },
+  "sunrise": {
+   "exact": 187,
+   "w1": 365,
+   "worst": 1,
+   "n": 365
+  },
+  "dhuhr": {
+   "exact": 187,
+   "w1": 365,
+   "worst": 1,
+   "n": 365
+  },
+  "asr": {
+   "exact": 107,
+   "w1": 269,
+   "worst": 2,
+   "n": 365
+  },
+  "maghrib": {
+   "exact": 186,
+   "w1": 365,
+   "worst": 1,
+   "n": 365
+  },
+  "isha": {
+   "exact": 345,
+   "w1": 365,
+   "worst": 1,
+   "n": 365
+  }
+ },
+ "totals": {
+  "within1": 2094,
+  "of": 2190,
+  "exact": 1356,
+  "worst": 2
+ }
+}

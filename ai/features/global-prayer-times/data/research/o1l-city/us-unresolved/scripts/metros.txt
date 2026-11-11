@@ -1,0 +1,64 @@
+Albany|NY
+Albuquerque|NM
+Allentown|PA
+Atlanta|GA
+Baltimore|MD
+Baton Rouge|LA
+Birmingham|AL
+Bridgeport|CT
+Buffalo|NY
+Charlotte|NC
+Chattanooga|TN
+Cincinnati|OH
+Cleveland|OH
+Columbus|OH
+Dearborn|MI
+Des Moines|IA
+Detroit|MI
+Flint|MI
+Fort Wayne|IN
+Gainesville|FL
+Grand Rapids|MI
+Greensboro|NC
+Harrisburg|PA
+Hartford|CT
+Indianapolis|IN
+Jacksonville|FL
+Kansas City|MO
+Knoxville|TN
+Lansing|MI
+Las Vegas|NV
+Lexington|KY
+Little Rock|AR
+Louisville|KY
+Memphis|TN
+Milwaukee|WI
+Mobile|AL
+Montgomery|AL
+Nashville|TN
+New Orleans|LA
+New York|NY
+Newark|NJ
+Norfolk|VA
+Oklahoma City|OK
+Omaha|NE
+Orlando|FL
+Phoenix|AZ
+Pittsburgh|PA
+Portland|OR
+Providence|RI
+Raleigh|NC
+Richmond|VA
+Rochester|NY
+Sacramento|CA
+Salt Lake City|UT
+San Antonio|TX
+Shreveport|LA
+St. Louis|MO
+Tallahassee|FL
+Toledo|OH
+Tucson|AZ
+Tulsa|OK
+Wichita|KS
+Wilmington|DE
+Worcester|MA

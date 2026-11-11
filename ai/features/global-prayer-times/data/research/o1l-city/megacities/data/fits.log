@@ -1,0 +1,62 @@
+
+### Istanbul turktakvim 2026 | 365 days 2026-01-01..2026-12-31 | 41.0082,28.9784 Europe/Istanbul shafi | adhan 4.4.6 Rounding.None
+implied fajr angle: median 17.93 min 17.83 max 18.01 spread 0.19  quarters 17.92|17.95|17.93|17.93
+implied isha angle: median 18.98 min 18.14 max 19.22 spread 1.08  quarters 19.05|18.39|18.71|19.08
+chosen angles fajr 17.93 isha 18.98
+fajr     margin  -0.03  MAE  0.27  within1 365/365  exact 336  worst   0.7  quarters 0.1|-0.2|-0.0|-0.0
+sunrise  margin  -7.62  MAE  0.31  within1 365/365  exact 277  worst   0.9  quarters -7.8|-7.5|-7.6|-7.5
+dhuhr    margin  11.23  MAE  0.25  within1 365/365  exact 362  worst   0.5  quarters 11.1|11.3|11.3|11.3
+asr      margin  11.22  MAE  0.43  within1 360/365  exact 223  worst   1.1  quarters 10.7|11.0|11.6|11.6
+maghrib  margin   8.42  MAE  0.35  within1 362/365  exact 267  worst   1.6  quarters 8.6|8.2|8.5|8.5
+isha     margin   0.02  MAE  2.09  within1 217/365  exact 115  worst   8.4  quarters 0.4|-4.8|-1.9|0.6
+seasonal amplitude fajr Jan 6.81 Jul 3.77 span 182 min
+imsak - fajr: median -18 min, min -22, max -17
+
+### Jakarta Pusat jadwalsholat 2026 | 365 days 2026-01-01..2026-12-31 | -6.1805,106.8284 Asia/Jakarta shafi | adhan 4.4.6 Rounding.None
+implied fajr angle: median 19.51 min 19.25 max 19.76 spread 0.51  quarters 19.56|19.51|19.47|19.52
+implied isha angle: median 18.50 min 18.23 max 18.75 spread 0.52  quarters 18.55|18.50|18.52|18.41
+chosen angles fajr 19.51 isha 18.5
+fajr     margin   0.00  MAE  0.35  within1 361/365  exact 259  worst   1.1  quarters -0.2|-0.0|0.2|-0.0
+sunrise  margin  -1.95  MAE  0.33  within1 364/365  exact 283  worst   1.0  quarters -2.2|-2.1|-1.7|-2.0
+dhuhr    margin   2.05  MAE  0.30  within1 365/365  exact 291  worst   0.9  quarters 2.1|2.0|2.2|1.9
+asr      margin   2.07  MAE  0.36  within1 360/365  exact 260  worst   1.2  quarters 2.2|2.1|2.3|1.8
+maghrib  margin   2.12  MAE  0.32  within1 365/365  exact 284  worst   0.9  quarters 2.2|2.2|2.2|1.9
+isha     margin   0.00  MAE  0.36  within1 357/365  exact 260  worst   1.2  quarters 0.2|-0.0|0.1|-0.4
+seasonal amplitude fajr Jan 4.45 Jul 4.73 span 17 min
+imsak - fajr: median -10 min, min -10, max -10
+
+### Baghdad mawaqit Jami al-Hasanayn 2026 | 366 days 2026-01-01..2026-12-31 | 33.294,44.291 Asia/Baghdad shafi | adhan 4.4.6 Rounding.None
+implied fajr angle: median 18.08 min 10.88 max 18.25 spread 7.36  quarters 18.11|18.11|18.04|18.05
+implied isha angle: median 16.93 min 16.77 max 24.86 spread 8.09  quarters 16.95|16.97|16.91|16.88
+chosen angles fajr 18.08 isha 16.93
+fajr     margin  -0.03  MAE  0.39  within1 365/366  exact 298  worst  34.5  quarters -0.1|-0.2|0.3|0.1
+sunrise  margin  -1.32  MAE  0.36  within1 365/366  exact 309  worst  28.0  quarters -1.4|-1.5|-1.2|-1.1
+dhuhr    margin   4.62  MAE  0.33  within1 365/366  exact 348  worst  29.2  quarters 4.6|4.6|4.6|4.6
+asr      margin   2.75  MAE  0.38  within1 365/366  exact 292  worst  31.9  quarters 2.5|2.6|2.9|2.9
+maghrib  margin   2.53  MAE  0.41  within1 365/366  exact 296  worst  38.0  quarters 2.7|2.7|2.3|2.4
+isha     margin   0.02  MAE  0.39  within1 365/366  exact 312  worst  38.2  quarters 0.1|0.2|-0.1|-0.2
+seasonal amplitude fajr Jan 5.63 Jul 3.43 span 132 min
+
+### Karachi masjidway 11160 Nov 2026 | 30 days 2026-11-01..2026-11-30 | 24.8872538,67.1269746 Asia/Karachi hanafi | adhan 4.4.6 Rounding.None
+implied fajr angle: median 17.99 min 17.89 max 18.09 spread 0.20  quarters 18.05|17.99|17.99|18.00
+implied isha angle: median 18.02 min 17.90 max 18.11 spread 0.20  quarters 18.07|18.03|18.01|18.02
+chosen angles fajr 17.99 isha 18.02
+fajr     margin  -0.02  MAE  0.24  within1  30/30  exact  30  worst   0.4  quarters 0.1|-0.0|0.0|-0.1
+sunrise  margin   0.00  MAE  0.25  within1  30/30  exact  30  worst   0.5  quarters 0.0|0.0|-0.1|-0.1
+dhuhr    margin  -0.05  MAE  0.20  within1  30/30  exact  30  worst   0.5  quarters -0.1|-0.0|0.2|-0.1
+asr      margin   0.23  MAE  0.22  within1  30/30  exact  29  worst   0.5  quarters 0.2|0.2|0.2|0.3
+maghrib  margin   0.10  MAE  0.25  within1  30/30  exact  28  worst   0.6  quarters 0.0|0.1|-0.1|0.3
+isha     margin   0.02  MAE  0.20  within1  30/30  exact  29  worst   0.5  quarters 0.2|0.0|-0.0|0.0
+seasonal amplitude fajr Jan NaN Jul NaN span NaN min
+
+### Dhaka habibur 2026-11-11 | 1 days 2026-11-11..2026-11-11 | 23.7,90.375 Asia/Dhaka hanafi | adhan 4.4.6 Rounding.None
+implied fajr angle: median 18.10 min 18.10 max 18.10 spread 0.00  quarters 18.10|NaN|NaN|NaN
+implied isha angle: median 17.94 min 17.94 max 17.94 spread 0.00  quarters 17.94|NaN|NaN|NaN
+chosen angles fajr 18.1 isha 17.94
+fajr     margin   0.00  MAE  0.00  within1   1/1  exact   1  worst   0.0  quarters 0.0|NaN|NaN|NaN
+sunrise  margin  -0.17  MAE  0.00  within1   1/1  exact   1  worst   0.0  quarters -0.2|NaN|NaN|NaN
+dhuhr    margin  -0.48  MAE  0.00  within1   1/1  exact   1  worst   0.0  quarters -0.5|NaN|NaN|NaN
+asr      margin   0.43  MAE  0.00  within1   1/1  exact   1  worst   0.0  quarters 0.4|NaN|NaN|NaN
+maghrib  margin  -0.55  MAE  0.00  within1   1/1  exact   1  worst   0.0  quarters -0.5|NaN|NaN|NaN
+isha     margin   0.00  MAE  0.00  within1   1/1  exact   1  worst   0.0  quarters 0.0|NaN|NaN|NaN
+seasonal amplitude fajr Jan NaN Jul NaN span NaN min

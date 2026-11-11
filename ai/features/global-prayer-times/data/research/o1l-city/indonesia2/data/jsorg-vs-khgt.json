@@ -1,0 +1,1297 @@
+{
+ "banda_aceh": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -8,
+    "min": -10,
+    "max": -7
+   },
+   "sunrise": {
+    "median": -1,
+    "min": -3,
+    "max": 0
+   },
+   "dhuhr": {
+    "median": 0,
+    "min": -1,
+    "max": 2
+   },
+   "asr": {
+    "median": 0,
+    "min": -1,
+    "max": 3
+   },
+   "maghrib": {
+    "median": 0,
+    "min": -1,
+    "max": 1
+   },
+   "isha": {
+    "median": 0,
+    "min": -1,
+    "max": 1
+   }
+  }
+ },
+ "bandung": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -8,
+    "min": -9,
+    "max": -6
+   },
+   "sunrise": {
+    "median": 2,
+    "min": 1,
+    "max": 3
+   },
+   "dhuhr": {
+    "median": 1,
+    "min": -1,
+    "max": 2
+   },
+   "asr": {
+    "median": 1,
+    "min": -1,
+    "max": 3
+   },
+   "maghrib": {
+    "median": -2,
+    "min": -3,
+    "max": -1
+   },
+   "isha": {
+    "median": 1,
+    "min": 0,
+    "max": 2
+   }
+  }
+ },
+ "surabaya": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -8,
+    "min": -10,
+    "max": -7
+   },
+   "sunrise": {
+    "median": -1,
+    "min": -2,
+    "max": 0
+   },
+   "dhuhr": {
+    "median": 0,
+    "min": -1,
+    "max": 2
+   },
+   "asr": {
+    "median": 0,
+    "min": -1,
+    "max": 3
+   },
+   "maghrib": {
+    "median": 0,
+    "min": -1,
+    "max": 1
+   },
+   "isha": {
+    "median": 1,
+    "min": -1,
+    "max": 1
+   }
+  }
+ },
+ "medan": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -8,
+    "min": -9,
+    "max": -7
+   },
+   "sunrise": {
+    "median": -1,
+    "min": -2,
+    "max": 0
+   },
+   "dhuhr": {
+    "median": 1,
+    "min": -1,
+    "max": 2
+   },
+   "asr": {
+    "median": 0,
+    "min": -1,
+    "max": 3
+   },
+   "maghrib": {
+    "median": 0,
+    "min": -1,
+    "max": 1
+   },
+   "isha": {
+    "median": 1,
+    "min": 0,
+    "max": 2
+   }
+  }
+ },
+ "makassar": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -8,
+    "min": -9,
+    "max": -7
+   },
+   "sunrise": {
+    "median": -1,
+    "min": -2,
+    "max": 0
+   },
+   "dhuhr": {
+    "median": 1,
+    "min": -1,
+    "max": 2
+   },
+   "asr": {
+    "median": 0,
+    "min": -1,
+    "max": 3
+   },
+   "maghrib": {
+    "median": 0,
+    "min": -1,
+    "max": 1
+   },
+   "isha": {
+    "median": 1,
+    "min": 0,
+    "max": 1
+   }
+  }
+ },
+ "jayapura": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -6,
+    "min": -13,
+    "max": -1
+   },
+   "sunrise": {
+    "median": 0,
+    "min": -6,
+    "max": 6
+   },
+   "dhuhr": {
+    "median": 2,
+    "min": 1,
+    "max": 3
+   },
+   "asr": {
+    "median": 2,
+    "min": -4,
+    "max": 8
+   },
+   "maghrib": {
+    "median": 2,
+    "min": -5,
+    "max": 7
+   },
+   "isha": {
+    "median": 2,
+    "min": -5,
+    "max": 8
+   }
+  }
+ },
+ "yogyakarta": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -8,
+    "min": -10,
+    "max": -7
+   },
+   "sunrise": {
+    "median": 0,
+    "min": -1,
+    "max": 1
+   },
+   "dhuhr": {
+    "median": 0,
+    "min": -1,
+    "max": 2
+   },
+   "asr": {
+    "median": 0,
+    "min": -1,
+    "max": 3
+   },
+   "maghrib": {
+    "median": -1,
+    "min": -2,
+    "max": 0
+   },
+   "isha": {
+    "median": 0,
+    "min": -1,
+    "max": 1
+   }
+  }
+ },
+ "semarang": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -8,
+    "min": -10,
+    "max": -7
+   },
+   "sunrise": {
+    "median": -1,
+    "min": -2,
+    "max": 0
+   },
+   "dhuhr": {
+    "median": 0,
+    "min": -1,
+    "max": 1
+   },
+   "asr": {
+    "median": 0,
+    "min": -1,
+    "max": 2
+   },
+   "maghrib": {
+    "median": -1,
+    "min": -2,
+    "max": 0
+   },
+   "isha": {
+    "median": 0,
+    "min": -1,
+    "max": 1
+   }
+  }
+ },
+ "denpasar": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -8,
+    "min": -10,
+    "max": -7
+   },
+   "sunrise": {
+    "median": -1,
+    "min": -2,
+    "max": 0
+   },
+   "dhuhr": {
+    "median": 1,
+    "min": -1,
+    "max": 2
+   },
+   "asr": {
+    "median": 1,
+    "min": -1,
+    "max": 3
+   },
+   "maghrib": {
+    "median": 0,
+    "min": -1,
+    "max": 1
+   },
+   "isha": {
+    "median": 1,
+    "min": 0,
+    "max": 2
+   }
+  }
+ },
+ "pontianak": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -8,
+    "min": -9,
+    "max": -7
+   },
+   "sunrise": {
+    "median": -1,
+    "min": -2,
+    "max": 0
+   },
+   "dhuhr": {
+    "median": 1,
+    "min": -1,
+    "max": 2
+   },
+   "asr": {
+    "median": 0,
+    "min": -1,
+    "max": 3
+   },
+   "maghrib": {
+    "median": 0,
+    "min": -1,
+    "max": 1
+   },
+   "isha": {
+    "median": 1,
+    "min": 0,
+    "max": 1
+   }
+  }
+ },
+ "padang": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -7,
+    "min": -12,
+    "max": -5
+   },
+   "sunrise": {
+    "median": 1,
+    "min": -3,
+    "max": 4
+   },
+   "dhuhr": {
+    "median": 1,
+    "min": -1,
+    "max": 2
+   },
+   "asr": {
+    "median": 0,
+    "min": -3,
+    "max": 5
+   },
+   "maghrib": {
+    "median": -1,
+    "min": -6,
+    "max": 2
+   },
+   "isha": {
+    "median": 1,
+    "min": -4,
+    "max": 4
+   }
+  }
+ },
+ "palembang": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -8,
+    "min": -9,
+    "max": -7
+   },
+   "sunrise": {
+    "median": -1,
+    "min": -2,
+    "max": 0
+   },
+   "dhuhr": {
+    "median": 1,
+    "min": -1,
+    "max": 2
+   },
+   "asr": {
+    "median": 0,
+    "min": -1,
+    "max": 3
+   },
+   "maghrib": {
+    "median": 0,
+    "min": -1,
+    "max": 1
+   },
+   "isha": {
+    "median": 1,
+    "min": 0,
+    "max": 1
+   }
+  }
+ },
+ "banjarmasin": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -8,
+    "min": -9,
+    "max": -7
+   },
+   "sunrise": {
+    "median": -1,
+    "min": -2,
+    "max": -1
+   },
+   "dhuhr": {
+    "median": 1,
+    "min": -1,
+    "max": 2
+   },
+   "asr": {
+    "median": 0,
+    "min": -1,
+    "max": 3
+   },
+   "maghrib": {
+    "median": 1,
+    "min": 0,
+    "max": 1
+   },
+   "isha": {
+    "median": 1,
+    "min": 0,
+    "max": 1
+   }
+  }
+ },
+ "manado": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -8,
+    "min": -9,
+    "max": -7
+   },
+   "sunrise": {
+    "median": -1,
+    "min": -2,
+    "max": 0
+   },
+   "dhuhr": {
+    "median": 1,
+    "min": -1,
+    "max": 2
+   },
+   "asr": {
+    "median": 0,
+    "min": -1,
+    "max": 3
+   },
+   "maghrib": {
+    "median": 0,
+    "min": 0,
+    "max": 1
+   },
+   "isha": {
+    "median": 1,
+    "min": 0,
+    "max": 1
+   }
+  }
+ },
+ "mataram": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -8,
+    "min": -10,
+    "max": -7
+   },
+   "sunrise": {
+    "median": -1,
+    "min": -2,
+    "max": 0
+   },
+   "dhuhr": {
+    "median": 0,
+    "min": -1,
+    "max": 2
+   },
+   "asr": {
+    "median": 0,
+    "min": -1,
+    "max": 2
+   },
+   "maghrib": {
+    "median": 0,
+    "min": -1,
+    "max": 1
+   },
+   "isha": {
+    "median": 0,
+    "min": -1,
+    "max": 1
+   }
+  }
+ },
+ "kupang": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -8,
+    "min": -9,
+    "max": -6
+   },
+   "sunrise": {
+    "median": 0,
+    "min": 0,
+    "max": 1
+   },
+   "dhuhr": {
+    "median": 1,
+    "min": -1,
+    "max": 2
+   },
+   "asr": {
+    "median": 1,
+    "min": -1,
+    "max": 2
+   },
+   "maghrib": {
+    "median": -1,
+    "min": -2,
+    "max": 0
+   },
+   "isha": {
+    "median": 1,
+    "min": 0,
+    "max": 2
+   }
+  }
+ },
+ "ambon": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -8,
+    "min": -9,
+    "max": -6
+   },
+   "sunrise": {
+    "median": 0,
+    "min": -1,
+    "max": 0
+   },
+   "dhuhr": {
+    "median": 1,
+    "min": -1,
+    "max": 2
+   },
+   "asr": {
+    "median": 1,
+    "min": -1,
+    "max": 3
+   },
+   "maghrib": {
+    "median": 0,
+    "min": -1,
+    "max": 1
+   },
+   "isha": {
+    "median": 1,
+    "min": 0,
+    "max": 2
+   }
+  }
+ },
+ "ternate": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -8,
+    "min": -12,
+    "max": -7
+   },
+   "sunrise": {
+    "median": -2,
+    "min": -5,
+    "max": -1
+   },
+   "dhuhr": {
+    "median": 0,
+    "min": -2,
+    "max": 1
+   },
+   "asr": {
+    "median": -1,
+    "min": -3,
+    "max": 3
+   },
+   "maghrib": {
+    "median": 0,
+    "min": -3,
+    "max": 2
+   },
+   "isha": {
+    "median": 0,
+    "min": -3,
+    "max": 2
+   }
+  }
+ },
+ "pekanbaru": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -8,
+    "min": -9,
+    "max": -7
+   },
+   "sunrise": {
+    "median": -1,
+    "min": -2,
+    "max": 0
+   },
+   "dhuhr": {
+    "median": 1,
+    "min": -1,
+    "max": 2
+   },
+   "asr": {
+    "median": 1,
+    "min": -1,
+    "max": 3
+   },
+   "maghrib": {
+    "median": 0,
+    "min": 0,
+    "max": 1
+   },
+   "isha": {
+    "median": 1,
+    "min": 0,
+    "max": 1
+   }
+  }
+ },
+ "samarinda": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -7,
+    "min": -11,
+    "max": -6
+   },
+   "sunrise": {
+    "median": 0,
+    "min": -3,
+    "max": 1
+   },
+   "dhuhr": {
+    "median": 1,
+    "min": -1,
+    "max": 2
+   },
+   "asr": {
+    "median": 1,
+    "min": -2,
+    "max": 3
+   },
+   "maghrib": {
+    "median": 0,
+    "min": -3,
+    "max": 2
+   },
+   "isha": {
+    "median": 1,
+    "min": -2,
+    "max": 3
+   }
+  }
+ },
+ "tanjung_pinang": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -8,
+    "min": -9,
+    "max": -7
+   },
+   "sunrise": {
+    "median": -1,
+    "min": -2,
+    "max": 0
+   },
+   "dhuhr": {
+    "median": 1,
+    "min": -1,
+    "max": 2
+   },
+   "asr": {
+    "median": 1,
+    "min": -1,
+    "max": 3
+   },
+   "maghrib": {
+    "median": 0,
+    "min": -1,
+    "max": 1
+   },
+   "isha": {
+    "median": 1,
+    "min": 0,
+    "max": 2
+   }
+  }
+ },
+ "serang": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -8,
+    "min": -10,
+    "max": -7
+   },
+   "sunrise": {
+    "median": -1,
+    "min": -2,
+    "max": 0
+   },
+   "dhuhr": {
+    "median": 1,
+    "min": -1,
+    "max": 2
+   },
+   "asr": {
+    "median": 0,
+    "min": -1,
+    "max": 3
+   },
+   "maghrib": {
+    "median": 0,
+    "min": -1,
+    "max": 1
+   },
+   "isha": {
+    "median": 1,
+    "min": 0,
+    "max": 1
+   }
+  }
+ },
+ "bengkulu": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -8,
+    "min": -9,
+    "max": -7
+   },
+   "sunrise": {
+    "median": -1,
+    "min": -2,
+    "max": 0
+   },
+   "dhuhr": {
+    "median": 0,
+    "min": -1,
+    "max": 2
+   },
+   "asr": {
+    "median": 0,
+    "min": -1,
+    "max": 3
+   },
+   "maghrib": {
+    "median": 0,
+    "min": -1,
+    "max": 1
+   },
+   "isha": {
+    "median": 0,
+    "min": -1,
+    "max": 1
+   }
+  }
+ },
+ "bandar_lampung": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -8,
+    "min": -9,
+    "max": -7
+   },
+   "sunrise": {
+    "median": 0,
+    "min": -1,
+    "max": 1
+   },
+   "dhuhr": {
+    "median": 1,
+    "min": -1,
+    "max": 2
+   },
+   "asr": {
+    "median": 1,
+    "min": -1,
+    "max": 3
+   },
+   "maghrib": {
+    "median": -1,
+    "min": -2,
+    "max": 0
+   },
+   "isha": {
+    "median": 0,
+    "min": -1,
+    "max": 1
+   }
+  }
+ },
+ "pangkal_pinang": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -8,
+    "min": -9,
+    "max": -7
+   },
+   "sunrise": {
+    "median": -1,
+    "min": -2,
+    "max": 0
+   },
+   "dhuhr": {
+    "median": 1,
+    "min": -1,
+    "max": 2
+   },
+   "asr": {
+    "median": 0,
+    "min": -1,
+    "max": 3
+   },
+   "maghrib": {
+    "median": 0,
+    "min": -1,
+    "max": 1
+   },
+   "isha": {
+    "median": 1,
+    "min": 0,
+    "max": 1
+   }
+  }
+ },
+ "gorontalo": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -8,
+    "min": -9,
+    "max": -7
+   },
+   "sunrise": {
+    "median": -1,
+    "min": -2,
+    "max": 0
+   },
+   "dhuhr": {
+    "median": 0,
+    "min": -1,
+    "max": 2
+   },
+   "asr": {
+    "median": 0,
+    "min": -1,
+    "max": 3
+   },
+   "maghrib": {
+    "median": 0,
+    "min": -1,
+    "max": 1
+   },
+   "isha": {
+    "median": 0,
+    "min": 0,
+    "max": 1
+   }
+  }
+ },
+ "jambi": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -8,
+    "min": -9,
+    "max": -7
+   },
+   "sunrise": {
+    "median": -1,
+    "min": -2,
+    "max": 0
+   },
+   "dhuhr": {
+    "median": 1,
+    "min": -1,
+    "max": 2
+   },
+   "asr": {
+    "median": 0,
+    "min": -1,
+    "max": 3
+   },
+   "maghrib": {
+    "median": 0,
+    "min": -1,
+    "max": 1
+   },
+   "isha": {
+    "median": 1,
+    "min": 0,
+    "max": 1
+   }
+  }
+ },
+ "kendari": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -8,
+    "min": -9,
+    "max": -7
+   },
+   "sunrise": {
+    "median": -1,
+    "min": -2,
+    "max": -1
+   },
+   "dhuhr": {
+    "median": 0,
+    "min": -1,
+    "max": 2
+   },
+   "asr": {
+    "median": 0,
+    "min": -1,
+    "max": 2
+   },
+   "maghrib": {
+    "median": 0,
+    "min": -1,
+    "max": 1
+   },
+   "isha": {
+    "median": 0,
+    "min": -1,
+    "max": 1
+   }
+  }
+ },
+ "palu": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -7,
+    "min": -12,
+    "max": -5
+   },
+   "sunrise": {
+    "median": 0,
+    "min": -3,
+    "max": 3
+   },
+   "dhuhr": {
+    "median": 1,
+    "min": -1,
+    "max": 2
+   },
+   "asr": {
+    "median": 1,
+    "min": -3,
+    "max": 5
+   },
+   "maghrib": {
+    "median": 0,
+    "min": -5,
+    "max": 2
+   },
+   "isha": {
+    "median": 1,
+    "min": -3,
+    "max": 4
+   }
+  }
+ },
+ "mamuju": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -6,
+    "min": -8,
+    "max": -5
+   },
+   "sunrise": {
+    "median": 1,
+    "min": 0,
+    "max": 2
+   },
+   "dhuhr": {
+    "median": 2,
+    "min": 1,
+    "max": 3
+   },
+   "asr": {
+    "median": 2,
+    "min": 1,
+    "max": 5
+   },
+   "maghrib": {
+    "median": 1,
+    "min": 0,
+    "max": 2
+   },
+   "isha": {
+    "median": 2,
+    "min": 1,
+    "max": 3
+   }
+  }
+ },
+ "tanjung_selor": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -9,
+    "min": -10,
+    "max": -8
+   },
+   "sunrise": {
+    "median": -2,
+    "min": -3,
+    "max": -1
+   },
+   "dhuhr": {
+    "median": -1,
+    "min": -2,
+    "max": 0
+   },
+   "asr": {
+    "median": -1,
+    "min": -2,
+    "max": 2
+   },
+   "maghrib": {
+    "median": -2,
+    "min": -3,
+    "max": -1
+   },
+   "isha": {
+    "median": -1,
+    "min": -2,
+    "max": 0
+   }
+  }
+ },
+ "sorong": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -7,
+    "min": -12,
+    "max": -5
+   },
+   "sunrise": {
+    "median": 0,
+    "min": -4,
+    "max": 2
+   },
+   "dhuhr": {
+    "median": 1,
+    "min": -1,
+    "max": 2
+   },
+   "asr": {
+    "median": 1,
+    "min": -3,
+    "max": 5
+   },
+   "maghrib": {
+    "median": 0,
+    "min": -4,
+    "max": 3
+   },
+   "isha": {
+    "median": 1,
+    "min": -3,
+    "max": 4
+   }
+  }
+ },
+ "manokwari": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -8,
+    "min": -13,
+    "max": -6
+   },
+   "sunrise": {
+    "median": 0,
+    "min": -4,
+    "max": 3
+   },
+   "dhuhr": {
+    "median": -1,
+    "min": -2,
+    "max": 1
+   },
+   "asr": {
+    "median": -1,
+    "min": -4,
+    "max": 4
+   },
+   "maghrib": {
+    "median": -2,
+    "min": -7,
+    "max": 1
+   },
+   "isha": {
+    "median": 0,
+    "min": -5,
+    "max": 3
+   }
+  }
+ },
+ "nabire": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -8,
+    "min": -9,
+    "max": -7
+   },
+   "sunrise": {
+    "median": -2,
+    "min": -3,
+    "max": -1
+   },
+   "dhuhr": {
+    "median": 0,
+    "min": -1,
+    "max": 1
+   },
+   "asr": {
+    "median": 0,
+    "min": -1,
+    "max": 2
+   },
+   "maghrib": {
+    "median": 0,
+    "min": -1,
+    "max": 1
+   },
+   "isha": {
+    "median": 0,
+    "min": -1,
+    "max": 1
+   }
+  }
+ },
+ "wamena": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -7,
+    "min": -8,
+    "max": -6
+   },
+   "sunrise": {
+    "median": 5,
+    "min": 4,
+    "max": 5
+   },
+   "dhuhr": {
+    "median": 2,
+    "min": 0,
+    "max": 3
+   },
+   "asr": {
+    "median": 1,
+    "min": 0,
+    "max": 3
+   },
+   "maghrib": {
+    "median": -3,
+    "min": -5,
+    "max": -2
+   },
+   "isha": {
+    "median": 2,
+    "min": 0,
+    "max": 2
+   }
+  }
+ },
+ "merauke": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -8,
+    "min": -9,
+    "max": -6
+   },
+   "sunrise": {
+    "median": -1,
+    "min": -2,
+    "max": 0
+   },
+   "dhuhr": {
+    "median": 1,
+    "min": -1,
+    "max": 2
+   },
+   "asr": {
+    "median": 1,
+    "min": -1,
+    "max": 3
+   },
+   "maghrib": {
+    "median": 0,
+    "min": -1,
+    "max": 1
+   },
+   "isha": {
+    "median": 1,
+    "min": -1,
+    "max": 2
+   }
+  }
+ },
+ "jakarta_pusat": {
+  "n": 365,
+  "cols": {
+   "fajr": {
+    "median": -8,
+    "min": -9,
+    "max": -7
+   },
+   "sunrise": {
+    "median": -1,
+    "min": -2,
+    "max": 0
+   },
+   "dhuhr": {
+    "median": 1,
+    "min": -1,
+    "max": 2
+   },
+   "asr": {
+    "median": 0,
+    "min": -1,
+    "max": 3
+   },
+   "maghrib": {
+    "median": 0,
+    "min": -1,
+    "max": 1
+   },
+   "isha": {
+    "median": 1,
+    "min": 0,
+    "max": 2
+   }
+  }
+ }
+}

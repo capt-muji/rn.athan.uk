@@ -1,0 +1,2365 @@
+[
+ {
+  "country": "TN",
+  "surfaces": 370,
+  "PUBLISHED": 339,
+  "DERIVED": 30,
+  "ANCHOR": 0,
+  "UNKNOWN": 1,
+  "zones": [
+   "Africa/Tunis"
+  ],
+  "reasons": {
+   "outside-bbox": 1
+  },
+  "usable": 369,
+  "bbox": [
+   30.2,
+   37.6,
+   7.4,
+   11.7
+  ],
+  "declaredZones": [
+   "Africa/Tunis"
+  ]
+ },
+ {
+  "country": "TH",
+  "surfaces": 163,
+  "PUBLISHED": 0,
+  "DERIVED": 9,
+  "ANCHOR": 154,
+  "UNKNOWN": 0,
+  "zones": [
+   "Asia/Bangkok"
+  ],
+  "reasons": {},
+  "usable": 163,
+  "bbox": [
+   5.5,
+   20.6,
+   97.2,
+   105.7
+  ],
+  "declaredZones": [
+   "Asia/Bangkok"
+  ]
+ },
+ {
+  "country": "ID",
+  "surfaces": 134,
+  "PUBLISHED": 43,
+  "DERIVED": 88,
+  "ANCHOR": 0,
+  "UNKNOWN": 3,
+  "zones": [
+   "Asia/Jakarta",
+   "Asia/Jayapura",
+   "Asia/Makassar"
+  ],
+  "reasons": {
+   "zone-degenerate": 3
+  },
+  "usable": 131,
+  "bbox": [
+   -11.1,
+   6.1,
+   95,
+   141.1
+  ],
+  "declaredZones": [
+   "Asia/Jakarta",
+   "Asia/Makassar",
+   "Asia/Jayapura",
+   "Asia/Pontianak"
+  ]
+ },
+ {
+  "country": "US",
+  "surfaces": 111,
+  "PUBLISHED": 0,
+  "DERIVED": 0,
+  "ANCHOR": 0,
+  "UNKNOWN": 111,
+  "zones": [],
+  "reasons": {
+   "not-solar": 2,
+   "no-transit": 1,
+   "zone-degenerate": 101,
+   "outside-bbox": 3,
+   "bases-disagree": 3,
+   "too-few-days": 1
+  },
+  "usable": 0,
+  "bbox": [
+   18.8,
+   71.5,
+   -179.2,
+   -66.9
+  ],
+  "declaredZones": [
+   "America/New_York",
+   "America/Chicago",
+   "America/Denver",
+   "America/Los_Angeles",
+   "America/Phoenix",
+   "America/Anchorage",
+   "Pacific/Honolulu",
+   "America/Detroit",
+   "America/Indiana/Indianapolis"
+  ]
+ },
+ {
+  "country": "GB",
+  "surfaces": 89,
+  "PUBLISHED": 0,
+  "DERIVED": 79,
+  "ANCHOR": 0,
+  "UNKNOWN": 10,
+  "zones": [
+   "Europe/London"
+  ],
+  "reasons": {
+   "bases-disagree": 3,
+   "no-transit": 5,
+   "not-solar": 1,
+   "outside-bbox": 1
+  },
+  "usable": 79,
+  "bbox": [
+   49.8,
+   61,
+   -8.7,
+   2
+  ],
+  "declaredZones": [
+   "Europe/London"
+  ]
+ },
+ {
+  "country": "EG",
+  "surfaces": 86,
+  "PUBLISHED": 0,
+  "DERIVED": 86,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Africa/Cairo"
+  ],
+  "reasons": {},
+  "usable": 86,
+  "bbox": [
+   21.9,
+   31.8,
+   24.6,
+   36.9
+  ],
+  "declaredZones": [
+   "Africa/Cairo"
+  ]
+ },
+ {
+  "country": "BA",
+  "surfaces": 62,
+  "PUBLISHED": 61,
+  "DERIVED": 1,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Europe/Sarajevo"
+  ],
+  "reasons": {},
+  "usable": 62,
+  "bbox": [
+   42.5,
+   45.3,
+   15.7,
+   19.7
+  ],
+  "declaredZones": [
+   "Europe/Sarajevo"
+  ]
+ },
+ {
+  "country": "NG",
+  "surfaces": 37,
+  "PUBLISHED": 0,
+  "DERIVED": 32,
+  "ANCHOR": 0,
+  "UNKNOWN": 5,
+  "zones": [
+   "Africa/Lagos"
+  ],
+  "reasons": {
+   "bases-disagree": 4,
+   "not-solar": 1
+  },
+  "usable": 32,
+  "bbox": [
+   4.2,
+   13.9,
+   2.6,
+   14.7
+  ],
+  "declaredZones": [
+   "Africa/Lagos"
+  ]
+ },
+ {
+  "country": "MY",
+  "surfaces": 36,
+  "PUBLISHED": 0,
+  "DERIVED": 36,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Asia/Kuala_Lumpur"
+  ],
+  "reasons": {},
+  "usable": 36,
+  "bbox": [
+   0.8,
+   7.4,
+   99.6,
+   119.3
+  ],
+  "declaredZones": [
+   "Asia/Kuala_Lumpur",
+   "Asia/Kuching"
+  ]
+ },
+ {
+  "country": "KZ",
+  "surfaces": 33,
+  "PUBLISHED": 0,
+  "DERIVED": 33,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Asia/Almaty"
+  ],
+  "reasons": {},
+  "usable": 33,
+  "bbox": [
+   40.5,
+   55.5,
+   46.4,
+   87.4
+  ],
+  "declaredZones": [
+   "Asia/Almaty",
+   "Asia/Aqtobe",
+   "Asia/Atyrau",
+   "Asia/Qyzylorda",
+   "Asia/Qostanay"
+  ]
+ },
+ {
+  "country": "CA",
+  "surfaces": 30,
+  "PUBLISHED": 0,
+  "DERIVED": 1,
+  "ANCHOR": 0,
+  "UNKNOWN": 29,
+  "zones": [
+   "America/Regina"
+  ],
+  "reasons": {
+   "zone-degenerate": 20,
+   "outside-bbox": 9
+  },
+  "usable": 1,
+  "bbox": [
+   41.6,
+   83.2,
+   -141.1,
+   -52.6
+  ],
+  "declaredZones": [
+   "America/Toronto",
+   "America/Vancouver",
+   "America/Edmonton",
+   "America/Winnipeg",
+   "America/Halifax",
+   "America/St_Johns",
+   "America/Regina"
+  ]
+ },
+ {
+  "country": "RU",
+  "surfaces": 21,
+  "PUBLISHED": 0,
+  "DERIVED": 0,
+  "ANCHOR": 0,
+  "UNKNOWN": 21,
+  "zones": [],
+  "reasons": {
+   "zone-degenerate": 21
+  },
+  "usable": 0,
+  "bbox": [
+   41.1,
+   82,
+   19.6,
+   180
+  ],
+  "declaredZones": [
+   "Europe/Moscow",
+   "Asia/Yekaterinburg",
+   "Asia/Novosibirsk",
+   "Asia/Krasnoyarsk",
+   "Asia/Irkutsk",
+   "Asia/Yakutsk",
+   "Asia/Vladivostok",
+   "Europe/Kaliningrad",
+   "Europe/Samara",
+   "Asia/Omsk",
+   "Asia/Magadan",
+   "Asia/Kamchatka"
+  ]
+ },
+ {
+  "country": "CL",
+  "surfaces": 20,
+  "PUBLISHED": 0,
+  "DERIVED": 0,
+  "ANCHOR": 0,
+  "UNKNOWN": 20,
+  "zones": [],
+  "reasons": {
+   "zone-degenerate": 20
+  },
+  "usable": 0,
+  "bbox": [
+   -56,
+   -17.4,
+   -76,
+   -66.3
+  ],
+  "declaredZones": [
+   "America/Santiago",
+   "Pacific/Easter"
+  ]
+ },
+ {
+  "country": "NO",
+  "surfaces": 18,
+  "PUBLISHED": 0,
+  "DERIVED": 16,
+  "ANCHOR": 0,
+  "UNKNOWN": 2,
+  "zones": [
+   "Europe/Oslo"
+  ],
+  "reasons": {
+   "not-solar": 1,
+   "outside-bbox": 1
+  },
+  "usable": 16,
+  "bbox": [
+   57.9,
+   71.2,
+   4.5,
+   31.1
+  ],
+  "declaredZones": [
+   "Europe/Oslo"
+  ]
+ },
+ {
+  "country": "TR",
+  "surfaces": 17,
+  "PUBLISHED": 0,
+  "DERIVED": 17,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Europe/Istanbul"
+  ],
+  "reasons": {},
+  "usable": 17,
+  "bbox": [
+   35.8,
+   42.2,
+   25.6,
+   44.9
+  ],
+  "declaredZones": [
+   "Europe/Istanbul"
+  ]
+ },
+ {
+  "country": "PT",
+  "surfaces": 16,
+  "PUBLISHED": 0,
+  "DERIVED": 0,
+  "ANCHOR": 0,
+  "UNKNOWN": 16,
+  "zones": [],
+  "reasons": {
+   "zone-degenerate": 16
+  },
+  "usable": 0,
+  "bbox": [
+   36.9,
+   42.2,
+   -9.6,
+   -6.1
+  ],
+  "declaredZones": [
+   "Europe/Lisbon",
+   "Atlantic/Azores"
+  ]
+ },
+ {
+  "country": "ME",
+  "surfaces": 13,
+  "PUBLISHED": 0,
+  "DERIVED": 13,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Europe/Podgorica"
+  ],
+  "reasons": {},
+  "usable": 13,
+  "bbox": [
+   41.8,
+   43.6,
+   18.4,
+   20.4
+  ],
+  "declaredZones": [
+   "Europe/Podgorica"
+  ]
+ },
+ {
+  "country": "SA",
+  "surfaces": 12,
+  "PUBLISHED": 0,
+  "DERIVED": 12,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Asia/Riyadh"
+  ],
+  "reasons": {},
+  "usable": 12,
+  "bbox": [
+   16.3,
+   32.2,
+   34.5,
+   55.7
+  ],
+  "declaredZones": [
+   "Asia/Riyadh"
+  ]
+ },
+ {
+  "country": "AU",
+  "surfaces": 11,
+  "PUBLISHED": 0,
+  "DERIVED": 0,
+  "ANCHOR": 0,
+  "UNKNOWN": 11,
+  "zones": [],
+  "reasons": {
+   "no-transit": 1,
+   "not-solar": 1,
+   "zone-degenerate": 9
+  },
+  "usable": 0,
+  "bbox": [
+   -44,
+   -10,
+   112.9,
+   153.7
+  ],
+  "declaredZones": [
+   "Australia/Sydney",
+   "Australia/Melbourne",
+   "Australia/Brisbane",
+   "Australia/Adelaide",
+   "Australia/Perth",
+   "Australia/Darwin",
+   "Australia/Hobart"
+  ]
+ },
+ {
+  "country": "MV",
+  "surfaces": 10,
+  "PUBLISHED": 0,
+  "DERIVED": 10,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Indian/Maldives"
+  ],
+  "reasons": {},
+  "usable": 10,
+  "bbox": [
+   -0.7,
+   7.1,
+   72.6,
+   73.8
+  ],
+  "declaredZones": [
+   "Indian/Maldives"
+  ]
+ },
+ {
+  "country": "BE",
+  "surfaces": 10,
+  "PUBLISHED": 0,
+  "DERIVED": 10,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Europe/Brussels"
+  ],
+  "reasons": {},
+  "usable": 10,
+  "bbox": [
+   49.4,
+   51.6,
+   2.5,
+   6.5
+  ],
+  "declaredZones": [
+   "Europe/Brussels"
+  ]
+ },
+ {
+  "country": "OM",
+  "surfaces": 10,
+  "PUBLISHED": 0,
+  "DERIVED": 10,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Asia/Muscat"
+  ],
+  "reasons": {},
+  "usable": 10,
+  "bbox": [
+   16.6,
+   26.4,
+   52,
+   59.9
+  ],
+  "declaredZones": [
+   "Asia/Muscat"
+  ]
+ },
+ {
+  "country": "AZ",
+  "surfaces": 9,
+  "PUBLISHED": 0,
+  "DERIVED": 4,
+  "ANCHOR": 0,
+  "UNKNOWN": 5,
+  "zones": [
+   "Asia/Baku"
+  ],
+  "reasons": {
+   "outside-bbox": 5
+  },
+  "usable": 4,
+  "bbox": [
+   38.3,
+   41.9,
+   44.7,
+   50.4
+  ],
+  "declaredZones": [
+   "Asia/Baku"
+  ]
+ },
+ {
+  "country": "NL",
+  "surfaces": 9,
+  "PUBLISHED": 0,
+  "DERIVED": 9,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Europe/Amsterdam"
+  ],
+  "reasons": {},
+  "usable": 9,
+  "bbox": [
+   50.7,
+   53.6,
+   3.3,
+   7.2
+  ],
+  "declaredZones": [
+   "Europe/Amsterdam"
+  ]
+ },
+ {
+  "country": "BJ",
+  "surfaces": 8,
+  "PUBLISHED": 0,
+  "DERIVED": 8,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Africa/Porto-Novo"
+  ],
+  "reasons": {},
+  "usable": 8,
+  "bbox": [
+   6.1,
+   12.5,
+   0.7,
+   3.9
+  ],
+  "declaredZones": [
+   "Africa/Porto-Novo"
+  ]
+ },
+ {
+  "country": "SN",
+  "surfaces": 7,
+  "PUBLISHED": 0,
+  "DERIVED": 1,
+  "ANCHOR": 0,
+  "UNKNOWN": 6,
+  "zones": [
+   "Africa/Dakar"
+  ],
+  "reasons": {
+   "bases-disagree": 2,
+   "outside-bbox": 4
+  },
+  "usable": 1,
+  "bbox": [
+   12.2,
+   16.7,
+   -17.6,
+   -11.3
+  ],
+  "declaredZones": [
+   "Africa/Dakar"
+  ]
+ },
+ {
+  "country": "JP",
+  "surfaces": 7,
+  "PUBLISHED": 0,
+  "DERIVED": 5,
+  "ANCHOR": 0,
+  "UNKNOWN": 2,
+  "zones": [
+   "Asia/Tokyo"
+  ],
+  "reasons": {
+   "not-solar": 2
+  },
+  "usable": 5,
+  "bbox": [
+   24,
+   45.6,
+   122.9,
+   153.9
+  ],
+  "declaredZones": [
+   "Asia/Tokyo"
+  ]
+ },
+ {
+  "country": "FJ",
+  "surfaces": 7,
+  "PUBLISHED": 0,
+  "DERIVED": 3,
+  "ANCHOR": 0,
+  "UNKNOWN": 4,
+  "zones": [
+   "Pacific/Fiji"
+  ],
+  "reasons": {
+   "no-transit": 4
+  },
+  "usable": 3,
+  "bbox": [
+   -21.3,
+   -12.2,
+   176.8,
+   180
+  ],
+  "declaredZones": [
+   "Pacific/Fiji"
+  ]
+ },
+ {
+  "country": "ES",
+  "surfaces": 6,
+  "PUBLISHED": 0,
+  "DERIVED": 0,
+  "ANCHOR": 0,
+  "UNKNOWN": 6,
+  "zones": [],
+  "reasons": {
+   "zone-degenerate": 6
+  },
+  "usable": 0,
+  "bbox": [
+   27.5,
+   43.9,
+   -18.3,
+   4.6
+  ],
+  "declaredZones": [
+   "Europe/Madrid",
+   "Atlantic/Canary"
+  ]
+ },
+ {
+  "country": "FR",
+  "surfaces": 6,
+  "PUBLISHED": 0,
+  "DERIVED": 6,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Europe/Paris"
+  ],
+  "reasons": {},
+  "usable": 6,
+  "bbox": [
+   41.3,
+   51.2,
+   -5.2,
+   9.6
+  ],
+  "declaredZones": [
+   "Europe/Paris"
+  ]
+ },
+ {
+  "country": "IT",
+  "surfaces": 6,
+  "PUBLISHED": 0,
+  "DERIVED": 6,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Europe/Rome"
+  ],
+  "reasons": {},
+  "usable": 6,
+  "bbox": [
+   35.4,
+   47.1,
+   6.6,
+   18.6
+  ],
+  "declaredZones": [
+   "Europe/Rome"
+  ]
+ },
+ {
+  "country": "TW",
+  "surfaces": 6,
+  "PUBLISHED": 0,
+  "DERIVED": 1,
+  "ANCHOR": 0,
+  "UNKNOWN": 5,
+  "zones": [
+   "Asia/Taipei"
+  ],
+  "reasons": {
+   "not-solar": 1,
+   "outside-bbox": 2,
+   "too-few-days": 2
+  },
+  "usable": 1,
+  "bbox": [
+   21.8,
+   25.4,
+   119.3,
+   122.1
+  ],
+  "declaredZones": [
+   "Asia/Taipei"
+  ]
+ },
+ {
+  "country": "DE",
+  "surfaces": 6,
+  "PUBLISHED": 0,
+  "DERIVED": 6,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Europe/Berlin"
+  ],
+  "reasons": {},
+  "usable": 6,
+  "bbox": [
+   47.2,
+   55.1,
+   5.8,
+   15.1
+  ],
+  "declaredZones": [
+   "Europe/Berlin"
+  ]
+ },
+ {
+  "country": "SE",
+  "surfaces": 6,
+  "PUBLISHED": 0,
+  "DERIVED": 6,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Europe/Stockholm"
+  ],
+  "reasons": {},
+  "usable": 6,
+  "bbox": [
+   55.3,
+   69.1,
+   11,
+   24.2
+  ],
+  "declaredZones": [
+   "Europe/Stockholm"
+  ]
+ },
+ {
+  "country": "DJ",
+  "surfaces": 6,
+  "PUBLISHED": 0,
+  "DERIVED": 6,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Africa/Djibouti"
+  ],
+  "reasons": {},
+  "usable": 6,
+  "bbox": [
+   10.9,
+   12.8,
+   41.7,
+   43.5
+  ],
+  "declaredZones": [
+   "Africa/Djibouti"
+  ]
+ },
+ {
+  "country": "MA",
+  "surfaces": 6,
+  "PUBLISHED": 0,
+  "DERIVED": 6,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Africa/Casablanca"
+  ],
+  "reasons": {},
+  "usable": 6,
+  "bbox": [
+   27.6,
+   36,
+   -13.3,
+   -0.9
+  ],
+  "declaredZones": [
+   "Africa/Casablanca"
+  ]
+ },
+ {
+  "country": "CI",
+  "surfaces": 5,
+  "PUBLISHED": 0,
+  "DERIVED": 0,
+  "ANCHOR": 0,
+  "UNKNOWN": 5,
+  "zones": [],
+  "reasons": {
+   "bases-disagree": 4,
+   "outside-bbox": 1
+  },
+  "usable": 0,
+  "bbox": [
+   4.3,
+   10.8,
+   -8.7,
+   -2.4
+  ],
+  "declaredZones": [
+   "Africa/Abidjan"
+  ]
+ },
+ {
+  "country": "UZ",
+  "surfaces": 5,
+  "PUBLISHED": 0,
+  "DERIVED": 2,
+  "ANCHOR": 0,
+  "UNKNOWN": 3,
+  "zones": [
+   "Asia/Tashkent"
+  ],
+  "reasons": {
+   "outside-bbox": 3
+  },
+  "usable": 2,
+  "bbox": [
+   37.1,
+   45.6,
+   55.9,
+   73.2
+  ],
+  "declaredZones": [
+   "Asia/Tashkent",
+   "Asia/Samarkand"
+  ]
+ },
+ {
+  "country": "ML",
+  "surfaces": 5,
+  "PUBLISHED": 0,
+  "DERIVED": 5,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Africa/Bamako"
+  ],
+  "reasons": {},
+  "usable": 5,
+  "bbox": [
+   10.1,
+   25,
+   -12.3,
+   4.3
+  ],
+  "declaredZones": [
+   "Africa/Bamako"
+  ]
+ },
+ {
+  "country": "SO",
+  "surfaces": 5,
+  "PUBLISHED": 0,
+  "DERIVED": 5,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Africa/Mogadishu"
+  ],
+  "reasons": {},
+  "usable": 5,
+  "bbox": [
+   -1.7,
+   12,
+   40.9,
+   51.5
+  ],
+  "declaredZones": [
+   "Africa/Mogadishu"
+  ]
+ },
+ {
+  "country": "TZ",
+  "surfaces": 5,
+  "PUBLISHED": 0,
+  "DERIVED": 3,
+  "ANCHOR": 0,
+  "UNKNOWN": 2,
+  "zones": [
+   "Africa/Dar_es_Salaam"
+  ],
+  "reasons": {
+   "not-solar": 1,
+   "outside-bbox": 1
+  },
+  "usable": 3,
+  "bbox": [
+   -11.8,
+   -0.9,
+   29.3,
+   40.5
+  ],
+  "declaredZones": [
+   "Africa/Dar_es_Salaam"
+  ]
+ },
+ {
+  "country": "TT",
+  "surfaces": 4,
+  "PUBLISHED": 0,
+  "DERIVED": 0,
+  "ANCHOR": 0,
+  "UNKNOWN": 4,
+  "zones": [],
+  "reasons": {
+   "not-solar": 4
+  },
+  "usable": 0,
+  "bbox": [
+   10,
+   11.4,
+   -61.9,
+   -60.5
+  ],
+  "declaredZones": [
+   "America/Port_of_Spain"
+  ]
+ },
+ {
+  "country": "NZ",
+  "surfaces": 4,
+  "PUBLISHED": 0,
+  "DERIVED": 3,
+  "ANCHOR": 0,
+  "UNKNOWN": 1,
+  "zones": [
+   "Pacific/Auckland"
+  ],
+  "reasons": {
+   "no-transit": 1
+  },
+  "usable": 3,
+  "bbox": [
+   -47.4,
+   -34.4,
+   166.3,
+   178.6
+  ],
+  "declaredZones": [
+   "Pacific/Auckland"
+  ]
+ },
+ {
+  "country": "TJ",
+  "surfaces": 4,
+  "PUBLISHED": 0,
+  "DERIVED": 1,
+  "ANCHOR": 0,
+  "UNKNOWN": 3,
+  "zones": [
+   "Asia/Dushanbe"
+  ],
+  "reasons": {
+   "no-transit": 2,
+   "outside-bbox": 1
+  },
+  "usable": 1,
+  "bbox": [
+   36.6,
+   41.1,
+   67.3,
+   75.2
+  ],
+  "declaredZones": [
+   "Asia/Dushanbe"
+  ]
+ },
+ {
+  "country": "CH",
+  "surfaces": 4,
+  "PUBLISHED": 0,
+  "DERIVED": 4,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Europe/Zurich"
+  ],
+  "reasons": {},
+  "usable": 4,
+  "bbox": [
+   45.8,
+   47.9,
+   5.9,
+   10.5
+  ],
+  "declaredZones": [
+   "Europe/Zurich"
+  ]
+ },
+ {
+  "country": "IS",
+  "surfaces": 4,
+  "PUBLISHED": 0,
+  "DERIVED": 2,
+  "ANCHOR": 0,
+  "UNKNOWN": 2,
+  "zones": [
+   "Atlantic/Reykjavik"
+  ],
+  "reasons": {
+   "not-solar": 2
+  },
+  "usable": 2,
+  "bbox": [
+   63.2,
+   66.6,
+   -24.6,
+   -13.4
+  ],
+  "declaredZones": [
+   "Atlantic/Reykjavik"
+  ]
+ },
+ {
+  "country": "MW",
+  "surfaces": 4,
+  "PUBLISHED": 0,
+  "DERIVED": 4,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Africa/Blantyre"
+  ],
+  "reasons": {},
+  "usable": 4,
+  "bbox": [
+   -17.2,
+   -9.3,
+   32.6,
+   35.9
+  ],
+  "declaredZones": [
+   "Africa/Blantyre"
+  ]
+ },
+ {
+  "country": "TG",
+  "surfaces": 3,
+  "PUBLISHED": 0,
+  "DERIVED": 2,
+  "ANCHOR": 0,
+  "UNKNOWN": 1,
+  "zones": [
+   "Africa/Lome"
+  ],
+  "reasons": {
+   "outside-bbox": 1
+  },
+  "usable": 2,
+  "bbox": [
+   6,
+   11.2,
+   -0.2,
+   1.9
+  ],
+  "declaredZones": [
+   "Africa/Lome"
+  ]
+ },
+ {
+  "country": "KW",
+  "surfaces": 3,
+  "PUBLISHED": 0,
+  "DERIVED": 1,
+  "ANCHOR": 0,
+  "UNKNOWN": 2,
+  "zones": [
+   "Asia/Kuwait"
+  ],
+  "reasons": {
+   "no-transit": 1,
+   "too-few-days": 1
+  },
+  "usable": 1,
+  "bbox": [
+   28.5,
+   30.1,
+   46.5,
+   48.5
+  ],
+  "declaredZones": [
+   "Asia/Kuwait"
+  ]
+ },
+ {
+  "country": "IQ",
+  "surfaces": 3,
+  "PUBLISHED": 0,
+  "DERIVED": 3,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Asia/Baghdad"
+  ],
+  "reasons": {},
+  "usable": 3,
+  "bbox": [
+   29,
+   37.4,
+   38.7,
+   48.7
+  ],
+  "declaredZones": [
+   "Asia/Baghdad"
+  ]
+ },
+ {
+  "country": "LK",
+  "surfaces": 3,
+  "PUBLISHED": 0,
+  "DERIVED": 2,
+  "ANCHOR": 0,
+  "UNKNOWN": 1,
+  "zones": [
+   "Asia/Colombo"
+  ],
+  "reasons": {
+   "not-solar": 1
+  },
+  "usable": 2,
+  "bbox": [
+   5.8,
+   9.9,
+   79.5,
+   81.9
+  ],
+  "declaredZones": [
+   "Asia/Colombo"
+  ]
+ },
+ {
+  "country": "IE",
+  "surfaces": 3,
+  "PUBLISHED": 0,
+  "DERIVED": 1,
+  "ANCHOR": 0,
+  "UNKNOWN": 2,
+  "zones": [
+   "Europe/Dublin"
+  ],
+  "reasons": {
+   "not-solar": 2
+  },
+  "usable": 1,
+  "bbox": [
+   51.3,
+   55.5,
+   -10.6,
+   -5.9
+  ],
+  "declaredZones": [
+   "Europe/Dublin"
+  ]
+ },
+ {
+  "country": "KR",
+  "surfaces": 3,
+  "PUBLISHED": 0,
+  "DERIVED": 3,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Asia/Seoul"
+  ],
+  "reasons": {},
+  "usable": 3,
+  "bbox": [
+   33,
+   38.7,
+   124.5,
+   132
+  ],
+  "declaredZones": [
+   "Asia/Seoul"
+  ]
+ },
+ {
+  "country": "BG",
+  "surfaces": 3,
+  "PUBLISHED": 0,
+  "DERIVED": 3,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Europe/Sofia"
+  ],
+  "reasons": {},
+  "usable": 3,
+  "bbox": [
+   41.2,
+   44.3,
+   22.3,
+   28.7
+  ],
+  "declaredZones": [
+   "Europe/Sofia"
+  ]
+ },
+ {
+  "country": "KG",
+  "surfaces": 3,
+  "PUBLISHED": 0,
+  "DERIVED": 2,
+  "ANCHOR": 0,
+  "UNKNOWN": 1,
+  "zones": [
+   "Asia/Bishkek"
+  ],
+  "reasons": {
+   "outside-bbox": 1
+  },
+  "usable": 2,
+  "bbox": [
+   39.1,
+   43.3,
+   69.2,
+   80.3
+  ],
+  "declaredZones": [
+   "Asia/Bishkek"
+  ]
+ },
+ {
+  "country": "KE",
+  "surfaces": 3,
+  "PUBLISHED": 0,
+  "DERIVED": 3,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Africa/Nairobi"
+  ],
+  "reasons": {},
+  "usable": 3,
+  "bbox": [
+   -4.8,
+   5.1,
+   33.9,
+   41.9
+  ],
+  "declaredZones": [
+   "Africa/Nairobi"
+  ]
+ },
+ {
+  "country": "MZ",
+  "surfaces": 3,
+  "PUBLISHED": 0,
+  "DERIVED": 3,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Africa/Maputo"
+  ],
+  "reasons": {},
+  "usable": 3,
+  "bbox": [
+   -26.9,
+   -10.4,
+   30.2,
+   41
+  ],
+  "declaredZones": [
+   "Africa/Maputo"
+  ]
+ },
+ {
+  "country": "UG",
+  "surfaces": 3,
+  "PUBLISHED": 0,
+  "DERIVED": 3,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Africa/Kampala"
+  ],
+  "reasons": {},
+  "usable": 3,
+  "bbox": [
+   -1.6,
+   4.3,
+   29.5,
+   35.1
+  ],
+  "declaredZones": [
+   "Africa/Kampala"
+  ]
+ },
+ {
+  "country": "PH",
+  "surfaces": 3,
+  "PUBLISHED": 0,
+  "DERIVED": 3,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Asia/Manila"
+  ],
+  "reasons": {},
+  "usable": 3,
+  "bbox": [
+   4.5,
+   21.2,
+   116.9,
+   126.7
+  ],
+  "declaredZones": [
+   "Asia/Manila"
+  ]
+ },
+ {
+  "country": "ZA",
+  "surfaces": 3,
+  "PUBLISHED": 0,
+  "DERIVED": 3,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Africa/Johannesburg"
+  ],
+  "reasons": {},
+  "usable": 3,
+  "bbox": [
+   -35,
+   -22.1,
+   16.4,
+   33
+  ],
+  "declaredZones": [
+   "Africa/Johannesburg"
+  ]
+ },
+ {
+  "country": "??",
+  "surfaces": 2,
+  "PUBLISHED": 0,
+  "DERIVED": 0,
+  "ANCHOR": 0,
+  "UNKNOWN": 2,
+  "zones": [],
+  "reasons": {
+   "no-country": 2
+  },
+  "usable": 0,
+  "bbox": null,
+  "declaredZones": []
+ },
+ {
+  "country": "GH",
+  "surfaces": 2,
+  "PUBLISHED": 0,
+  "DERIVED": 2,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Africa/Accra"
+  ],
+  "reasons": {},
+  "usable": 2,
+  "bbox": [
+   4.7,
+   11.2,
+   -3.3,
+   1.2
+  ],
+  "declaredZones": [
+   "Africa/Accra"
+  ]
+ },
+ {
+  "country": "GE",
+  "surfaces": 2,
+  "PUBLISHED": 0,
+  "DERIVED": 2,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Asia/Tbilisi"
+  ],
+  "reasons": {},
+  "usable": 2,
+  "bbox": [
+   41,
+   43.6,
+   40,
+   46.8
+  ],
+  "declaredZones": [
+   "Asia/Tbilisi"
+  ]
+ },
+ {
+  "country": "LB",
+  "surfaces": 2,
+  "PUBLISHED": 0,
+  "DERIVED": 0,
+  "ANCHOR": 0,
+  "UNKNOWN": 2,
+  "zones": [],
+  "reasons": {
+   "not-solar": 1,
+   "outside-bbox": 1
+  },
+  "usable": 0,
+  "bbox": [
+   33,
+   34.7,
+   35.1,
+   36.7
+  ],
+  "declaredZones": [
+   "Asia/Beirut"
+  ]
+ },
+ {
+  "country": "AT",
+  "surfaces": 2,
+  "PUBLISHED": 0,
+  "DERIVED": 2,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Europe/Vienna"
+  ],
+  "reasons": {},
+  "usable": 2,
+  "bbox": [
+   46.3,
+   49.1,
+   9.5,
+   17.2
+  ],
+  "declaredZones": [
+   "Europe/Vienna"
+  ]
+ },
+ {
+  "country": "LA",
+  "surfaces": 2,
+  "PUBLISHED": 0,
+  "DERIVED": 2,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Asia/Vientiane"
+  ],
+  "reasons": {},
+  "usable": 2,
+  "bbox": [
+   13.9,
+   22.5,
+   100,
+   107.7
+  ],
+  "declaredZones": [
+   "Asia/Vientiane"
+  ]
+ },
+ {
+  "country": "GR",
+  "surfaces": 2,
+  "PUBLISHED": 0,
+  "DERIVED": 1,
+  "ANCHOR": 0,
+  "UNKNOWN": 1,
+  "zones": [
+   "Europe/Athens"
+  ],
+  "reasons": {
+   "bases-disagree": 1
+  },
+  "usable": 1,
+  "bbox": [
+   34.7,
+   41.8,
+   19.3,
+   29.7
+  ],
+  "declaredZones": [
+   "Europe/Athens"
+  ]
+ },
+ {
+  "country": "HR",
+  "surfaces": 2,
+  "PUBLISHED": 0,
+  "DERIVED": 2,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Europe/Zagreb"
+  ],
+  "reasons": {},
+  "usable": 2,
+  "bbox": [
+   42.3,
+   46.6,
+   13.4,
+   19.5
+  ],
+  "declaredZones": [
+   "Europe/Zagreb"
+  ]
+ },
+ {
+  "country": "HK",
+  "surfaces": 2,
+  "PUBLISHED": 0,
+  "DERIVED": 0,
+  "ANCHOR": 0,
+  "UNKNOWN": 2,
+  "zones": [],
+  "reasons": {
+   "outside-bbox": 1,
+   "no-transit": 1
+  },
+  "usable": 0,
+  "bbox": [
+   22.1,
+   22.6,
+   113.8,
+   114.5
+  ],
+  "declaredZones": [
+   "Asia/Hong_Kong"
+  ]
+ },
+ {
+  "country": "FI",
+  "surfaces": 2,
+  "PUBLISHED": 0,
+  "DERIVED": 2,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Europe/Helsinki"
+  ],
+  "reasons": {},
+  "usable": 2,
+  "bbox": [
+   59.7,
+   70.1,
+   19.5,
+   31.6
+  ],
+  "declaredZones": [
+   "Europe/Helsinki"
+  ]
+ },
+ {
+  "country": "ZW",
+  "surfaces": 2,
+  "PUBLISHED": 0,
+  "DERIVED": 2,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Africa/Harare"
+  ],
+  "reasons": {},
+  "usable": 2,
+  "bbox": [
+   -22.5,
+   -15.6,
+   25.2,
+   33.1
+  ],
+  "declaredZones": [
+   "Africa/Harare"
+  ]
+ },
+ {
+  "country": "PK",
+  "surfaces": 2,
+  "PUBLISHED": 0,
+  "DERIVED": 2,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Asia/Karachi"
+  ],
+  "reasons": {},
+  "usable": 2,
+  "bbox": [
+   23.6,
+   37.1,
+   60.8,
+   77.9
+  ],
+  "declaredZones": [
+   "Asia/Karachi"
+  ]
+ },
+ {
+  "country": "CM",
+  "surfaces": 1,
+  "PUBLISHED": 0,
+  "DERIVED": 1,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Africa/Douala"
+  ],
+  "reasons": {},
+  "usable": 1,
+  "bbox": [
+   1.6,
+   13.1,
+   8.4,
+   16.2
+  ],
+  "declaredZones": [
+   "Africa/Douala"
+  ]
+ },
+ {
+  "country": "AE",
+  "surfaces": 1,
+  "PUBLISHED": 0,
+  "DERIVED": 0,
+  "ANCHOR": 0,
+  "UNKNOWN": 1,
+  "zones": [],
+  "reasons": {
+   "not-solar": 1
+  },
+  "usable": 0,
+  "bbox": [
+   22.6,
+   26.1,
+   51.5,
+   56.4
+  ],
+  "declaredZones": [
+   "Asia/Dubai"
+  ]
+ },
+ {
+  "country": "BD",
+  "surfaces": 1,
+  "PUBLISHED": 0,
+  "DERIVED": 0,
+  "ANCHOR": 0,
+  "UNKNOWN": 1,
+  "zones": [],
+  "reasons": {
+   "outside-bbox": 1
+  },
+  "usable": 0,
+  "bbox": [
+   20.5,
+   26.7,
+   88,
+   92.7
+  ],
+  "declaredZones": [
+   "Asia/Dhaka"
+  ]
+ },
+ {
+  "country": "CO",
+  "surfaces": 1,
+  "PUBLISHED": 0,
+  "DERIVED": 0,
+  "ANCHOR": 0,
+  "UNKNOWN": 1,
+  "zones": [],
+  "reasons": {
+   "not-solar": 1
+  },
+  "usable": 0,
+  "bbox": [
+   -4.3,
+   12.5,
+   -79.1,
+   -66.8
+  ],
+  "declaredZones": [
+   "America/Bogota"
+  ]
+ },
+ {
+  "country": "KH",
+  "surfaces": 1,
+  "PUBLISHED": 0,
+  "DERIVED": 1,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Asia/Phnom_Penh"
+  ],
+  "reasons": {},
+  "usable": 1,
+  "bbox": [
+   10.3,
+   14.7,
+   102.3,
+   107.7
+  ],
+  "declaredZones": [
+   "Asia/Phnom_Penh"
+  ]
+ },
+ {
+  "country": "MN",
+  "surfaces": 1,
+  "PUBLISHED": 0,
+  "DERIVED": 1,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Asia/Ulaanbaatar"
+  ],
+  "reasons": {},
+  "usable": 1,
+  "bbox": [
+   41.5,
+   52.2,
+   87.7,
+   119.9
+  ],
+  "declaredZones": [
+   "Asia/Ulaanbaatar"
+  ]
+ },
+ {
+  "country": "VN",
+  "surfaces": 1,
+  "PUBLISHED": 0,
+  "DERIVED": 1,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Asia/Ho_Chi_Minh"
+  ],
+  "reasons": {},
+  "usable": 1,
+  "bbox": [
+   8.1,
+   23.4,
+   102.1,
+   109.5
+  ],
+  "declaredZones": [
+   "Asia/Ho_Chi_Minh"
+  ]
+ },
+ {
+  "country": "SL",
+  "surfaces": 1,
+  "PUBLISHED": 0,
+  "DERIVED": 1,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Africa/Freetown"
+  ],
+  "reasons": {},
+  "usable": 1,
+  "bbox": [
+   6.9,
+   10,
+   -13.4,
+   -10.2
+  ],
+  "declaredZones": [
+   "Africa/Freetown"
+  ]
+ },
+ {
+  "country": "SR",
+  "surfaces": 1,
+  "PUBLISHED": 0,
+  "DERIVED": 0,
+  "ANCHOR": 0,
+  "UNKNOWN": 1,
+  "zones": [],
+  "reasons": {
+   "not-solar": 1
+  },
+  "usable": 0,
+  "bbox": [
+   1.7,
+   6,
+   -58.1,
+   -53.9
+  ],
+  "declaredZones": [
+   "America/Paramaribo"
+  ]
+ },
+ {
+  "country": "LU",
+  "surfaces": 1,
+  "PUBLISHED": 0,
+  "DERIVED": 1,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Europe/Luxembourg"
+  ],
+  "reasons": {},
+  "usable": 1,
+  "bbox": [
+   49.4,
+   50.2,
+   5.7,
+   6.6
+  ],
+  "declaredZones": [
+   "Europe/Luxembourg"
+  ]
+ },
+ {
+  "country": "BH",
+  "surfaces": 1,
+  "PUBLISHED": 0,
+  "DERIVED": 1,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Asia/Bahrain"
+  ],
+  "reasons": {},
+  "usable": 1,
+  "bbox": [
+   25.7,
+   26.4,
+   50.3,
+   50.9
+  ],
+  "declaredZones": [
+   "Asia/Bahrain"
+  ]
+ },
+ {
+  "country": "YE",
+  "surfaces": 1,
+  "PUBLISHED": 0,
+  "DERIVED": 1,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Asia/Aden"
+  ],
+  "reasons": {},
+  "usable": 1,
+  "bbox": [
+   12.1,
+   19,
+   42.5,
+   54.6
+  ],
+  "declaredZones": [
+   "Asia/Aden"
+  ]
+ },
+ {
+  "country": "MG",
+  "surfaces": 1,
+  "PUBLISHED": 0,
+  "DERIVED": 1,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Indian/Antananarivo"
+  ],
+  "reasons": {},
+  "usable": 1,
+  "bbox": [
+   -25.6,
+   -11.9,
+   43.2,
+   50.5
+  ],
+  "declaredZones": [
+   "Indian/Antananarivo"
+  ]
+ },
+ {
+  "country": "JO",
+  "surfaces": 1,
+  "PUBLISHED": 0,
+  "DERIVED": 0,
+  "ANCHOR": 0,
+  "UNKNOWN": 1,
+  "zones": [],
+  "reasons": {
+   "too-few-days": 1
+  },
+  "usable": 0,
+  "bbox": [
+   29.1,
+   33.4,
+   34.9,
+   39.4
+  ],
+  "declaredZones": [
+   "Asia/Amman"
+  ]
+ },
+ {
+  "country": "QA",
+  "surfaces": 1,
+  "PUBLISHED": 0,
+  "DERIVED": 0,
+  "ANCHOR": 0,
+  "UNKNOWN": 1,
+  "zones": [],
+  "reasons": {
+   "not-solar": 1
+  },
+  "usable": 0,
+  "bbox": [
+   24.4,
+   26.2,
+   50.7,
+   51.7
+  ],
+  "declaredZones": [
+   "Asia/Qatar"
+  ]
+ },
+ {
+  "country": "BY",
+  "surfaces": 1,
+  "PUBLISHED": 0,
+  "DERIVED": 1,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Europe/Minsk"
+  ],
+  "reasons": {},
+  "usable": 1,
+  "bbox": [
+   51.2,
+   56.2,
+   23.1,
+   32.8
+  ],
+  "declaredZones": [
+   "Europe/Minsk"
+  ]
+ },
+ {
+  "country": "DK",
+  "surfaces": 1,
+  "PUBLISHED": 0,
+  "DERIVED": 1,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Europe/Copenhagen"
+  ],
+  "reasons": {},
+  "usable": 1,
+  "bbox": [
+   54.5,
+   57.8,
+   8,
+   15.3
+  ],
+  "declaredZones": [
+   "Europe/Copenhagen"
+  ]
+ },
+ {
+  "country": "LT",
+  "surfaces": 1,
+  "PUBLISHED": 0,
+  "DERIVED": 0,
+  "ANCHOR": 0,
+  "UNKNOWN": 1,
+  "zones": [],
+  "reasons": {
+   "too-few-days": 1
+  },
+  "usable": 0,
+  "bbox": [
+   53.8,
+   56.5,
+   20.9,
+   26.9
+  ],
+  "declaredZones": [
+   "Europe/Vilnius"
+  ]
+ },
+ {
+  "country": "DZ",
+  "surfaces": 1,
+  "PUBLISHED": 0,
+  "DERIVED": 1,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Africa/Algiers"
+  ],
+  "reasons": {},
+  "usable": 1,
+  "bbox": [
+   18.9,
+   37.2,
+   -8.7,
+   12
+  ],
+  "declaredZones": [
+   "Africa/Algiers"
+  ]
+ },
+ {
+  "country": "MR",
+  "surfaces": 1,
+  "PUBLISHED": 0,
+  "DERIVED": 1,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Africa/Nouakchott"
+  ],
+  "reasons": {},
+  "usable": 1,
+  "bbox": [
+   14.7,
+   27.3,
+   -17.1,
+   -4.8
+  ],
+  "declaredZones": [
+   "Africa/Nouakchott"
+  ]
+ },
+ {
+  "country": "NC",
+  "surfaces": 1,
+  "PUBLISHED": 0,
+  "DERIVED": 0,
+  "ANCHOR": 0,
+  "UNKNOWN": 1,
+  "zones": [],
+  "reasons": {
+   "no-transit": 1
+  },
+  "usable": 0,
+  "bbox": null,
+  "declaredZones": []
+ },
+ {
+  "country": "BF",
+  "surfaces": 1,
+  "PUBLISHED": 0,
+  "DERIVED": 1,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Africa/Ouagadougou"
+  ],
+  "reasons": {},
+  "usable": 1,
+  "bbox": [
+   9.4,
+   15.1,
+   -5.6,
+   2.4
+  ],
+  "declaredZones": [
+   "Africa/Ouagadougou"
+  ]
+ },
+ {
+  "country": "GN",
+  "surfaces": 1,
+  "PUBLISHED": 0,
+  "DERIVED": 1,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Africa/Conakry"
+  ],
+  "reasons": {},
+  "usable": 1,
+  "bbox": [
+   7.1,
+   12.7,
+   -15.1,
+   -7.6
+  ],
+  "declaredZones": [
+   "Africa/Conakry"
+  ]
+ },
+ {
+  "country": "LR",
+  "surfaces": 1,
+  "PUBLISHED": 0,
+  "DERIVED": 1,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Africa/Monrovia"
+  ],
+  "reasons": {},
+  "usable": 1,
+  "bbox": [
+   4.3,
+   8.6,
+   -11.5,
+   -7.4
+  ],
+  "declaredZones": [
+   "Africa/Monrovia"
+  ]
+ },
+ {
+  "country": "AO",
+  "surfaces": 1,
+  "PUBLISHED": 0,
+  "DERIVED": 1,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Africa/Luanda"
+  ],
+  "reasons": {},
+  "usable": 1,
+  "bbox": [
+   -18.1,
+   -4.3,
+   11.6,
+   24.1
+  ],
+  "declaredZones": [
+   "Africa/Luanda"
+  ]
+ },
+ {
+  "country": "LS",
+  "surfaces": 1,
+  "PUBLISHED": 0,
+  "DERIVED": 1,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Africa/Maseru"
+  ],
+  "reasons": {},
+  "usable": 1,
+  "bbox": [
+   -30.7,
+   -28.5,
+   27,
+   29.5
+  ],
+  "declaredZones": [
+   "Africa/Maseru"
+  ]
+ },
+ {
+  "country": "SZ",
+  "surfaces": 1,
+  "PUBLISHED": 0,
+  "DERIVED": 1,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Africa/Mbabane"
+  ],
+  "reasons": {},
+  "usable": 1,
+  "bbox": [
+   -27.4,
+   -25.7,
+   30.7,
+   32.2
+  ],
+  "declaredZones": [
+   "Africa/Mbabane"
+  ]
+ },
+ {
+  "country": "NA",
+  "surfaces": 1,
+  "PUBLISHED": 0,
+  "DERIVED": 1,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Africa/Windhoek"
+  ],
+  "reasons": {},
+  "usable": 1,
+  "bbox": [
+   -28.9,
+   -16.9,
+   11.7,
+   25.3
+  ],
+  "declaredZones": [
+   "Africa/Windhoek"
+  ]
+ },
+ {
+  "country": "MU",
+  "surfaces": 1,
+  "PUBLISHED": 0,
+  "DERIVED": 0,
+  "ANCHOR": 0,
+  "UNKNOWN": 1,
+  "zones": [],
+  "reasons": {
+   "not-solar": 1
+  },
+  "usable": 0,
+  "bbox": [
+   -20.6,
+   -19.9,
+   57.3,
+   57.9
+  ],
+  "declaredZones": [
+   "Indian/Mauritius"
+  ]
+ },
+ {
+  "country": "SG",
+  "surfaces": 1,
+  "PUBLISHED": 0,
+  "DERIVED": 1,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Asia/Singapore"
+  ],
+  "reasons": {},
+  "usable": 1,
+  "bbox": [
+   1.1,
+   1.5,
+   103.6,
+   104.1
+  ],
+  "declaredZones": [
+   "Asia/Singapore"
+  ]
+ },
+ {
+  "country": "RS",
+  "surfaces": 1,
+  "PUBLISHED": 0,
+  "DERIVED": 1,
+  "ANCHOR": 0,
+  "UNKNOWN": 0,
+  "zones": [
+   "Europe/Belgrade"
+  ],
+  "reasons": {},
+  "usable": 1,
+  "bbox": [
+   42.2,
+   46.2,
+   18.8,
+   23.1
+  ],
+  "declaredZones": [
+   "Europe/Belgrade"
+  ]
+ }
+]

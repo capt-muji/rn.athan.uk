@@ -1,0 +1,4 @@
+{
+  "files": ["data/rw-kigali-2025-04.json","data/rw-kigali-2025-06.json","data/rw-kigali-2026-05.json"],
+  "fajrFrom": 10, "fajrTo": 20, "ishaFrom": 10, "ishaTo": 20, "step": 0.1, "madhab": "shafi"
+}

@@ -1,0 +1,100 @@
+{
+ "label": "BF Ouaga Kanazoe",
+ "file": "bf-ouaga-kanazoe-2026.json",
+ "tz": "Africa/Ouagadougou",
+ "lat": 12.3714277,
+ "lon": -1.5197,
+ "days": 365,
+ "span": [
+  "2026-01-01",
+  "2026-12-31"
+ ],
+ "engine": "adhan 4.4.6 Rounding.None MiddleOfTheNight",
+ "recipe": {
+  "fajrAngle": 16.6,
+  "ishaAngle": 17.35,
+  "madhab": "Shafi",
+  "offsets": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 18,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": 0
+  }
+ },
+ "angleSearch": {
+  "fajr": {
+   "angle": 16.6,
+   "exact": 263,
+   "w1": 365,
+   "worst": 1,
+   "score": 365263
+  },
+  "isha": {
+   "angle": 17.35,
+   "exact": 59,
+   "w1": 141,
+   "worst": 23,
+   "score": 141059
+  }
+ },
+ "asrMadhab": {
+  "shafi": {
+   "exact": 72,
+   "w1": 209,
+   "worst": 7,
+   "n": 365
+  },
+  "hanafi": {
+   "exact": 0,
+   "w1": 0,
+   "worst": 73,
+   "n": 365
+  }
+ },
+ "perColumn": {
+  "fajr": {
+   "exact": 263,
+   "w1": 365,
+   "worst": 1,
+   "n": 365
+  },
+  "sunrise": {
+   "exact": 321,
+   "w1": 365,
+   "worst": 1,
+   "n": 365
+  },
+  "dhuhr": {
+   "exact": 30,
+   "w1": 61,
+   "worst": 25,
+   "n": 365
+  },
+  "asr": {
+   "exact": 79,
+   "w1": 195,
+   "worst": 6,
+   "n": 365
+  },
+  "maghrib": {
+   "exact": 339,
+   "w1": 365,
+   "worst": 1,
+   "n": 365
+  },
+  "isha": {
+   "exact": 59,
+   "w1": 141,
+   "worst": 23,
+   "n": 365
+  }
+ },
+ "totals": {
+  "within1": 1492,
+  "of": 2190,
+  "exact": 1091,
+  "worst": 25
+ }
+}

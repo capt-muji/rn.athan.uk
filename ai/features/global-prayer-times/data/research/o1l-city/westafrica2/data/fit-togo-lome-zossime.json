@@ -1,0 +1,100 @@
+{
+ "label": "TG Lome Zossime",
+ "file": "togo-lome-zossime-2026.json",
+ "tz": "Africa/Lome",
+ "lat": 6.2320294726382,
+ "lon": 1.1501741409302,
+ "days": 365,
+ "span": [
+  "2026-01-01",
+  "2026-12-31"
+ ],
+ "engine": "adhan 4.4.6 Rounding.None MiddleOfTheNight",
+ "recipe": {
+  "fajrAngle": 17.25,
+  "ishaAngle": 12.05,
+  "madhab": "Shafi",
+  "offsets": {
+   "fajr": -1,
+   "sunrise": 0,
+   "dhuhr": 29,
+   "asr": 1,
+   "maghrib": -17,
+   "isha": 1
+  }
+ },
+ "angleSearch": {
+  "fajr": {
+   "angle": 17.25,
+   "exact": 20,
+   "w1": 70,
+   "worst": 24,
+   "score": 70020
+  },
+  "isha": {
+   "angle": 12.05,
+   "exact": 22,
+   "w1": 79,
+   "worst": 28,
+   "score": 79022
+  }
+ },
+ "asrMadhab": {
+  "shafi": {
+   "exact": 12,
+   "w1": 55,
+   "worst": 31,
+   "n": 365
+  },
+  "hanafi": {
+   "exact": 0,
+   "w1": 0,
+   "worst": 89,
+   "n": 365
+  }
+ },
+ "perColumn": {
+  "fajr": {
+   "exact": 34,
+   "w1": 58,
+   "worst": 23,
+   "n": 365
+  },
+  "sunrise": {
+   "exact": 201,
+   "w1": 365,
+   "worst": 1,
+   "n": 365
+  },
+  "dhuhr": {
+   "exact": 34,
+   "w1": 58,
+   "worst": 23,
+   "n": 365
+  },
+  "asr": {
+   "exact": 33,
+   "w1": 58,
+   "worst": 32,
+   "n": 365
+  },
+  "maghrib": {
+   "exact": 35,
+   "w1": 65,
+   "worst": 32,
+   "n": 365
+  },
+  "isha": {
+   "exact": 36,
+   "w1": 63,
+   "worst": 27,
+   "n": 365
+  }
+ },
+ "totals": {
+  "within1": 667,
+  "of": 2190,
+  "exact": 373,
+  "worst": 32
+ }
+}

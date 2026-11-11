@@ -1,0 +1,100 @@
+{
+ "label": "BJ Savalou Al-Mutiyy",
+ "file": "benin-savalou-mutiyy-2026.json",
+ "tz": "Africa/Porto-Novo",
+ "lat": 7.8510894,
+ "lon": 1.897212,
+ "days": 365,
+ "span": [
+  "2026-01-01",
+  "2026-12-31"
+ ],
+ "engine": "adhan 4.4.6 Rounding.None MiddleOfTheNight",
+ "recipe": {
+  "fajrAngle": 14.9,
+  "ishaAngle": 15.1,
+  "madhab": "Shafi",
+  "offsets": {
+   "fajr": 0,
+   "sunrise": 1,
+   "dhuhr": 1,
+   "asr": -1,
+   "maghrib": 0,
+   "isha": 0
+  }
+ },
+ "angleSearch": {
+  "fajr": {
+   "angle": 14.9,
+   "exact": 332,
+   "w1": 365,
+   "worst": 1,
+   "score": 365332
+  },
+  "isha": {
+   "angle": 15.1,
+   "exact": 330,
+   "w1": 365,
+   "worst": 1,
+   "score": 365330
+  }
+ },
+ "asrMadhab": {
+  "shafi": {
+   "exact": 94,
+   "w1": 267,
+   "worst": 3,
+   "n": 365
+  },
+  "hanafi": {
+   "exact": 0,
+   "w1": 0,
+   "worst": 75,
+   "n": 365
+  }
+ },
+ "perColumn": {
+  "fajr": {
+   "exact": 332,
+   "w1": 365,
+   "worst": 1,
+   "n": 365
+  },
+  "sunrise": {
+   "exact": 198,
+   "w1": 365,
+   "worst": 1,
+   "n": 365
+  },
+  "dhuhr": {
+   "exact": 191,
+   "w1": 365,
+   "worst": 1,
+   "n": 365
+  },
+  "asr": {
+   "exact": 97,
+   "w1": 191,
+   "worst": 4,
+   "n": 365
+  },
+  "maghrib": {
+   "exact": 190,
+   "w1": 365,
+   "worst": 1,
+   "n": 365
+  },
+  "isha": {
+   "exact": 330,
+   "w1": 365,
+   "worst": 1,
+   "n": 365
+  }
+ },
+ "totals": {
+  "within1": 2016,
+  "of": 2190,
+  "exact": 1338,
+  "worst": 4
+ }
+}

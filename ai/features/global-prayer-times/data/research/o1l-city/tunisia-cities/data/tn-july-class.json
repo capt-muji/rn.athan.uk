@@ -1,0 +1,2616 @@
+{
+ "summary": {
+  "delegations": 258,
+  "julyReproducesAt18_1": 236,
+  "julyNeedsLowerAngle": 20,
+  "julyUnreproduced": 0,
+  "lowerAngles": [
+   "Sidi Bouzid/Hichria 17.2/17.3",
+   "Sidi Bouzid/Regueb 17.4/17.5",
+   "Sidi Bouzid/Meknassi 17.4/17.4",
+   "Sidi Bouzid/Jelma 17.3/17.3",
+   "Sidi Bouzid/Sabbalet Ouled Asker 17.3/17.2",
+   "Sidi Bouzid/Bir El Hafey 17.2/17.2",
+   "Sidi Bouzid/Menzel Bouzayane 17.3/17.3",
+   "Sidi Bouzid/Mezouna 17.5/17.5",
+   "Sidi Bouzid/Ouled Haffouz 17.4/17.4",
+   "Sidi Bouzid/Sidi Bouzid 17.3/17.2",
+   "Kairouan/Sebikha 17.6/17.6",
+   "Kairouan/Chebika 17.5/17.5",
+   "Kairouan/Haffouz 17.3/17.3",
+   "Kairouan/El Alaa 17.2/17.2",
+   "Kairouan/Oueslatia 17.1/17.2",
+   "Kairouan/Hajeb El Ayoun 17.3/17.3",
+   "Kairouan/Nasrallah 17.5/17.5",
+   "Kairouan/Bou Hajla 17.5/17.5",
+   "Kairouan/Chrarda 17.5/17.6",
+   "Kairouan/Kairouan 17.6/17.6"
+  ],
+  "lowerGouv": [
+   355,
+   357
+  ]
+ },
+ "rows": [
+  {
+   "name": "Kébili/Kebili",
+   "gouv": 1012,
+   "deleg": 482,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.8,
+   "at18": 5
+  },
+  {
+   "name": "Kébili/Souk El Ahad",
+   "gouv": 1012,
+   "deleg": 483,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.8,
+   "at18": 5
+  },
+  {
+   "name": "Kébili/Douz",
+   "gouv": 1012,
+   "deleg": 484,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Kébili/El Faouar",
+   "gouv": 1012,
+   "deleg": 485,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.8,
+   "at18": 5
+  },
+  {
+   "name": "Kébili/Matrouha",
+   "gouv": 1012,
+   "deleg": 486,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Kébili/Rjim Maatoug",
+   "gouv": 1012,
+   "deleg": 487,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Tunis/La Marsa",
+   "gouv": 342,
+   "deleg": 386,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Tunis/Carthage",
+   "gouv": 342,
+   "deleg": 387,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Tunis/La Goulette",
+   "gouv": 342,
+   "deleg": 388,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Tunis/Cite El Khadhra",
+   "gouv": 342,
+   "deleg": 389,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Tunis/El Menzah",
+   "gouv": 342,
+   "deleg": 390,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Tunis/Omrane",
+   "gouv": 342,
+   "deleg": 391,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Tunis/Omrane Superieur",
+   "gouv": 342,
+   "deleg": 392,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Tunis/Ettahrir",
+   "gouv": 342,
+   "deleg": 393,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Tunis/Bardo",
+   "gouv": 342,
+   "deleg": 394,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Tunis/Bab Souika",
+   "gouv": 342,
+   "deleg": 395,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Tunis/Ezzouhour",
+   "gouv": 342,
+   "deleg": 396,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Tunis/El Hrairia",
+   "gouv": 342,
+   "deleg": 397,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Tunis/Sidi Hassine",
+   "gouv": 342,
+   "deleg": 398,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Tunis/El Ouardia",
+   "gouv": 342,
+   "deleg": 399,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Tunis/El Kabaria",
+   "gouv": 342,
+   "deleg": 400,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Tunis/Jebel Jelloud",
+   "gouv": 342,
+   "deleg": 401,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.8,
+   "at18": 5
+  },
+  {
+   "name": "Tunis/Sidi El Bechir",
+   "gouv": 342,
+   "deleg": 402,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Tunis/La Medina",
+   "gouv": 342,
+   "deleg": 403,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Tunis/Bab Bhar",
+   "gouv": 342,
+   "deleg": 404,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Tunis/Sijoumi",
+   "gouv": 342,
+   "deleg": 405,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Tunis/Le Kram",
+   "gouv": 342,
+   "deleg": 406,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Tunis/Tunis",
+   "gouv": 342,
+   "deleg": 615,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Zaghouan/Zeriba",
+   "gouv": 343,
+   "deleg": 409,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.8,
+   "at18": 5
+  },
+  {
+   "name": "Zaghouan/Bir Mcherga",
+   "gouv": 343,
+   "deleg": 410,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Zaghouan/El Fahs",
+   "gouv": 343,
+   "deleg": 411,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Zaghouan/Nadhour",
+   "gouv": 343,
+   "deleg": 412,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Zaghouan/Saouaf",
+   "gouv": 343,
+   "deleg": 413,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Zaghouan/Zaghouan",
+   "gouv": 343,
+   "deleg": 616,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.8,
+   "at18": 5
+  },
+  {
+   "name": "Siliana/Kesra",
+   "gouv": 344,
+   "deleg": 414,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.8,
+   "at18": 5
+  },
+  {
+   "name": "Siliana/Makther",
+   "gouv": 344,
+   "deleg": 415,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Siliana/Rouhia",
+   "gouv": 344,
+   "deleg": 416,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Siliana/Bargou",
+   "gouv": 344,
+   "deleg": 417,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.8,
+   "at18": 5
+  },
+  {
+   "name": "Siliana/Gaafour",
+   "gouv": 344,
+   "deleg": 418,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Siliana/El Aroussa",
+   "gouv": 344,
+   "deleg": 419,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Siliana/Bouarada",
+   "gouv": 344,
+   "deleg": 420,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Siliana/Le Krib",
+   "gouv": 344,
+   "deleg": 421,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Siliana/Sidi Bou Rouis",
+   "gouv": 344,
+   "deleg": 422,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Siliana/Siliana",
+   "gouv": 344,
+   "deleg": 617,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Mahdia/Rejiche",
+   "gouv": 345,
+   "deleg": 1084,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Mahdia/Ksour Essef",
+   "gouv": 345,
+   "deleg": 423,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Mahdia/Chebba",
+   "gouv": 345,
+   "deleg": 424,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.8,
+   "at18": 5
+  },
+  {
+   "name": "Mahdia/Malloulech",
+   "gouv": 345,
+   "deleg": 425,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.8,
+   "at18": 5
+  },
+  {
+   "name": "Mahdia/Sidi Alouane",
+   "gouv": 345,
+   "deleg": 426,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.8,
+   "at18": 5
+  },
+  {
+   "name": "Mahdia/Boumerdes",
+   "gouv": 345,
+   "deleg": 427,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Mahdia/Souassi",
+   "gouv": 345,
+   "deleg": 428,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Mahdia/Chorbane",
+   "gouv": 345,
+   "deleg": 429,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Mahdia/Hbira",
+   "gouv": 345,
+   "deleg": 430,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Mahdia/Ouled Chamekh",
+   "gouv": 345,
+   "deleg": 431,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Mahdia/Mahdia",
+   "gouv": 345,
+   "deleg": 618,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 18,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Mahdia/El Jem",
+   "gouv": 345,
+   "deleg": 619,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Gabes/Ghannouch",
+   "gouv": 347,
+   "deleg": 1019,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Gabes/Mareth",
+   "gouv": 347,
+   "deleg": 1020,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Gabes/Menzel Habib",
+   "gouv": 347,
+   "deleg": 1021,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Gabes/Matmata",
+   "gouv": 347,
+   "deleg": 1022,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Gabes/Matmata Nouvelle",
+   "gouv": 347,
+   "deleg": 1023,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Gabes/El Hamma",
+   "gouv": 347,
+   "deleg": 1024,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Gabes/Metouia",
+   "gouv": 347,
+   "deleg": 1025,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Gabes/Gabes",
+   "gouv": 347,
+   "deleg": 620,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Sousse/Bouficha",
+   "gouv": 348,
+   "deleg": 433,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Sousse/Enfida",
+   "gouv": 348,
+   "deleg": 434,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Sousse/Hergla",
+   "gouv": 348,
+   "deleg": 435,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Sousse/Sidi Bouali",
+   "gouv": 348,
+   "deleg": 436,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Sousse/Akouda",
+   "gouv": 348,
+   "deleg": 437,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Sousse/Hammam Sousse",
+   "gouv": 348,
+   "deleg": 438,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Sousse/Kalaa Kebira",
+   "gouv": 348,
+   "deleg": 439,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Sousse/Msaken",
+   "gouv": 348,
+   "deleg": 440,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Sousse/Sidi Elheni",
+   "gouv": 348,
+   "deleg": 441,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Sousse/Koundar",
+   "gouv": 348,
+   "deleg": 442,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Sousse/Kalaa Seghira",
+   "gouv": 348,
+   "deleg": 443,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Sousse/Sousse",
+   "gouv": 348,
+   "deleg": 621,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Ben Arous/Mornag",
+   "gouv": 349,
+   "deleg": 444,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Ben Arous/Mohamedia",
+   "gouv": 349,
+   "deleg": 445,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Ben Arous/Fouchana",
+   "gouv": 349,
+   "deleg": 446,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Ben Arous/El Mourouj",
+   "gouv": 349,
+   "deleg": 447,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.8,
+   "at18": 5
+  },
+  {
+   "name": "Ben Arous/Megrine",
+   "gouv": 349,
+   "deleg": 448,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Ben Arous/Rades",
+   "gouv": 349,
+   "deleg": 449,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Ben Arous/Ezzahra",
+   "gouv": 349,
+   "deleg": 450,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.8,
+   "at18": 5
+  },
+  {
+   "name": "Ben Arous/Hammam Lif",
+   "gouv": 349,
+   "deleg": 451,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.8,
+   "at18": 5
+  },
+  {
+   "name": "Ben Arous/Hammam Chatt",
+   "gouv": 349,
+   "deleg": 452,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Ben Arous/Boumhel Bassatine",
+   "gouv": 349,
+   "deleg": 453,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Ben Arous/Medina Jedida",
+   "gouv": 349,
+   "deleg": 454,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Ben Arous/Ben Arous",
+   "gouv": 349,
+   "deleg": 622,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Nabeul/Kelibia",
+   "gouv": 350,
+   "deleg": 455,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Nabeul/Menzel Temime",
+   "gouv": 350,
+   "deleg": 456,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Nabeul/El Mida",
+   "gouv": 350,
+   "deleg": 457,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Nabeul/Menzel Bouzelfa",
+   "gouv": 350,
+   "deleg": 458,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.8,
+   "at18": 5
+  },
+  {
+   "name": "Nabeul/Korba",
+   "gouv": 350,
+   "deleg": 459,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Nabeul/Beni Khiar",
+   "gouv": 350,
+   "deleg": 460,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Nabeul/Hammamet",
+   "gouv": 350,
+   "deleg": 461,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Nabeul/Takelsa",
+   "gouv": 350,
+   "deleg": 462,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Nabeul/Bou Argoub",
+   "gouv": 350,
+   "deleg": 463,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Nabeul/Grombalia",
+   "gouv": 350,
+   "deleg": 464,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Nabeul/Slimane",
+   "gouv": 350,
+   "deleg": 465,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Nabeul/El Haouaria",
+   "gouv": 350,
+   "deleg": 466,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Nabeul/Beni Khalled",
+   "gouv": 350,
+   "deleg": 467,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Nabeul/Dar Chaabane Elfehri",
+   "gouv": 350,
+   "deleg": 468,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Nabeul/Hammam Ghezaz",
+   "gouv": 350,
+   "deleg": 469,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Nabeul/Nabeul",
+   "gouv": 350,
+   "deleg": 623,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Tataouine/Bni Mhira",
+   "gouv": 351,
+   "deleg": 1524,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Tataouine/Dehiba",
+   "gouv": 351,
+   "deleg": 470,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Tataouine/Remada",
+   "gouv": 351,
+   "deleg": 471,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Tataouine/Smar",
+   "gouv": 351,
+   "deleg": 472,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Tataouine/Ghomrassen",
+   "gouv": 351,
+   "deleg": 473,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.8,
+   "at18": 5
+  },
+  {
+   "name": "Tataouine/Bir Lahmar",
+   "gouv": 351,
+   "deleg": 474,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.8,
+   "at18": 5
+  },
+  {
+   "name": "Tataouine/Borj El Khadra",
+   "gouv": 351,
+   "deleg": 475,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Tataouine/El Borma",
+   "gouv": 351,
+   "deleg": 476,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Tataouine/Tataouine",
+   "gouv": 351,
+   "deleg": 624,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Tozeur/Nefta",
+   "gouv": 352,
+   "deleg": 477,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Tozeur/Degueche",
+   "gouv": 352,
+   "deleg": 478,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Tozeur/Hazoua",
+   "gouv": 352,
+   "deleg": 479,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Tozeur/Tameghza",
+   "gouv": 352,
+   "deleg": 480,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.8,
+   "at18": 5
+  },
+  {
+   "name": "Tozeur/Hammat Al Jarid",
+   "gouv": 352,
+   "deleg": 481,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Tozeur/Tozeur",
+   "gouv": 352,
+   "deleg": 625,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Medenine/Ben Guerdene",
+   "gouv": 353,
+   "deleg": 488,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.8,
+   "at18": 5
+  },
+  {
+   "name": "Medenine/Beni Khedach",
+   "gouv": 353,
+   "deleg": 489,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Medenine/Zarzis",
+   "gouv": 353,
+   "deleg": 490,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Medenine/Djerba El May",
+   "gouv": 353,
+   "deleg": 491,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Medenine/Djerba Midoun",
+   "gouv": 353,
+   "deleg": 492,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Medenine/Djerba Ajim",
+   "gouv": 353,
+   "deleg": 493,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.8,
+   "at18": 5
+  },
+  {
+   "name": "Medenine/Djerba Houmt Souk",
+   "gouv": 353,
+   "deleg": 494,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Medenine/Sidi Makhlouf",
+   "gouv": 353,
+   "deleg": 496,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Medenine/Medenine",
+   "gouv": 353,
+   "deleg": 626,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.8,
+   "at18": 5
+  },
+  {
+   "name": "Jendouba/Tabarka",
+   "gouv": 354,
+   "deleg": 497,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Jendouba/Ain Drahem",
+   "gouv": 354,
+   "deleg": 498,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Jendouba/Bou Salem",
+   "gouv": 354,
+   "deleg": 499,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Jendouba/Oued Mliz",
+   "gouv": 354,
+   "deleg": 500,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Jendouba/Ghardimaou",
+   "gouv": 354,
+   "deleg": 501,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.8,
+   "at18": 5
+  },
+  {
+   "name": "Jendouba/Fernana",
+   "gouv": 354,
+   "deleg": 502,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Jendouba/Balta Bou Aouane",
+   "gouv": 354,
+   "deleg": 503,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Jendouba/Jendouba",
+   "gouv": 354,
+   "deleg": 627,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Sidi Bouzid/Hichria",
+   "gouv": 355,
+   "deleg": 1522,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.2,
+   "ia": 17.3,
+   "at18": 0
+  },
+  {
+   "name": "Sidi Bouzid/Regueb",
+   "gouv": 355,
+   "deleg": 504,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.4,
+   "ia": 17.5,
+   "at18": 0
+  },
+  {
+   "name": "Sidi Bouzid/Meknassi",
+   "gouv": 355,
+   "deleg": 505,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.4,
+   "ia": 17.4,
+   "at18": 0
+  },
+  {
+   "name": "Sidi Bouzid/Jelma",
+   "gouv": 355,
+   "deleg": 506,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.3,
+   "ia": 17.3,
+   "at18": 0
+  },
+  {
+   "name": "Sidi Bouzid/Sabbalet Ouled Asker",
+   "gouv": 355,
+   "deleg": 507,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.3,
+   "ia": 17.2,
+   "at18": 0
+  },
+  {
+   "name": "Sidi Bouzid/Bir El Hafey",
+   "gouv": 355,
+   "deleg": 508,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.2,
+   "ia": 17.2,
+   "at18": 0
+  },
+  {
+   "name": "Sidi Bouzid/Sidi Ali Ben Aoun",
+   "gouv": 355,
+   "deleg": 509,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Sidi Bouzid/Menzel Bouzayane",
+   "gouv": 355,
+   "deleg": 510,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.3,
+   "ia": 17.3,
+   "at18": 0
+  },
+  {
+   "name": "Sidi Bouzid/Mezouna",
+   "gouv": 355,
+   "deleg": 511,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.5,
+   "ia": 17.5,
+   "at18": 0
+  },
+  {
+   "name": "Sidi Bouzid/Ouled Haffouz",
+   "gouv": 355,
+   "deleg": 512,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.4,
+   "ia": 17.4,
+   "at18": 0
+  },
+  {
+   "name": "Sidi Bouzid/Souk Jedid",
+   "gouv": 355,
+   "deleg": 513,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Sidi Bouzid/Sidi Bouzid",
+   "gouv": 355,
+   "deleg": 628,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.3,
+   "ia": 17.2,
+   "at18": 0
+  },
+  {
+   "name": "Béja/Nefza",
+   "gouv": 356,
+   "deleg": 514,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Béja/Amdoun",
+   "gouv": 356,
+   "deleg": 515,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Béja/Tibar",
+   "gouv": 356,
+   "deleg": 516,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Béja/Testour",
+   "gouv": 356,
+   "deleg": 517,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Béja/Teboursouk",
+   "gouv": 356,
+   "deleg": 518,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Béja/Goubellat",
+   "gouv": 356,
+   "deleg": 519,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Béja/Mejez El Bab",
+   "gouv": 356,
+   "deleg": 520,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Béja/Beja",
+   "gouv": 356,
+   "deleg": 629,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Kairouan/Sebikha",
+   "gouv": 357,
+   "deleg": 521,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.6,
+   "ia": 17.6,
+   "at18": 0
+  },
+  {
+   "name": "Kairouan/Chebika",
+   "gouv": 357,
+   "deleg": 522,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.5,
+   "ia": 17.5,
+   "at18": 0
+  },
+  {
+   "name": "Kairouan/Haffouz",
+   "gouv": 357,
+   "deleg": 523,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.3,
+   "ia": 17.3,
+   "at18": 0
+  },
+  {
+   "name": "Kairouan/El Alaa",
+   "gouv": 357,
+   "deleg": 524,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.2,
+   "ia": 17.2,
+   "at18": 0
+  },
+  {
+   "name": "Kairouan/Oueslatia",
+   "gouv": 357,
+   "deleg": 525,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.1,
+   "ia": 17.2,
+   "at18": 0
+  },
+  {
+   "name": "Kairouan/Hajeb El Ayoun",
+   "gouv": 357,
+   "deleg": 526,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.3,
+   "ia": 17.3,
+   "at18": 0
+  },
+  {
+   "name": "Kairouan/Nasrallah",
+   "gouv": 357,
+   "deleg": 527,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.5,
+   "ia": 17.5,
+   "at18": 0
+  },
+  {
+   "name": "Kairouan/Bou Hajla",
+   "gouv": 357,
+   "deleg": 528,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.5,
+   "ia": 17.5,
+   "at18": 0
+  },
+  {
+   "name": "Kairouan/Chrarda",
+   "gouv": 357,
+   "deleg": 529,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.5,
+   "ia": 17.6,
+   "at18": 0
+  },
+  {
+   "name": "Kairouan/Kairouan",
+   "gouv": 357,
+   "deleg": 630,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.6,
+   "ia": 17.6,
+   "at18": 0
+  },
+  {
+   "name": "Ariana/Kalaat El Andalous",
+   "gouv": 358,
+   "deleg": 530,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.8,
+   "at18": 3
+  },
+  {
+   "name": "Ariana/Raoued",
+   "gouv": 358,
+   "deleg": 531,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Ariana/Soukra",
+   "gouv": 358,
+   "deleg": 532,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Ariana/Mnihla",
+   "gouv": 358,
+   "deleg": 533,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Ariana/Attadhamon",
+   "gouv": 358,
+   "deleg": 534,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Ariana/Sidi Thabet",
+   "gouv": 358,
+   "deleg": 535,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Ariana/Ariana",
+   "gouv": 358,
+   "deleg": 631,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Sfax/Jebiniana",
+   "gouv": 359,
+   "deleg": 536,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Sfax/Mahres",
+   "gouv": 359,
+   "deleg": 537,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Sfax/Bir Ali Ben Khelifa",
+   "gouv": 359,
+   "deleg": 538,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.8,
+   "at18": 5
+  },
+  {
+   "name": "Sfax/Ghraiba",
+   "gouv": 359,
+   "deleg": 539,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Sfax/Agareb",
+   "gouv": 359,
+   "deleg": 540,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Sfax/El Hencha",
+   "gouv": 359,
+   "deleg": 541,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Sfax/Menzel Chaker",
+   "gouv": 359,
+   "deleg": 542,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Sfax/Kerkennah El Attaya",
+   "gouv": 359,
+   "deleg": 543,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Sfax/Kerkennah Mellita",
+   "gouv": 359,
+   "deleg": 544,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.8,
+   "at18": 5
+  },
+  {
+   "name": "Sfax/El Amra",
+   "gouv": 359,
+   "deleg": 545,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.8,
+   "at18": 5
+  },
+  {
+   "name": "Sfax/Skhira",
+   "gouv": 359,
+   "deleg": 546,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Sfax/Sakiet Ezzit",
+   "gouv": 359,
+   "deleg": 547,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Sfax/Sakiet Eddaier",
+   "gouv": 359,
+   "deleg": 548,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Sfax/Tina",
+   "gouv": 359,
+   "deleg": 549,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.8,
+   "at18": 5
+  },
+  {
+   "name": "Sfax/Sfax",
+   "gouv": 359,
+   "deleg": 632,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 18,
+   "at18": 5
+  },
+  {
+   "name": "Manouba/Jedaida",
+   "gouv": 360,
+   "deleg": 550,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Manouba/El Battan",
+   "gouv": 360,
+   "deleg": 551,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Manouba/Borj El Amri",
+   "gouv": 360,
+   "deleg": 552,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.8,
+   "at18": 5
+  },
+  {
+   "name": "Manouba/Oued Ellil",
+   "gouv": 360,
+   "deleg": 553,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Manouba/Douar Hicher",
+   "gouv": 360,
+   "deleg": 554,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Manouba/Mornaguia",
+   "gouv": 360,
+   "deleg": 555,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Manouba/Tebourba",
+   "gouv": 360,
+   "deleg": 556,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Manouba/Manouba",
+   "gouv": 360,
+   "deleg": 633,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Bizerte/Sejnane",
+   "gouv": 361,
+   "deleg": 557,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Bizerte/Joumine",
+   "gouv": 361,
+   "deleg": 558,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Bizerte/Mateur",
+   "gouv": 361,
+   "deleg": 559,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Bizerte/Ghezala",
+   "gouv": 361,
+   "deleg": 560,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Bizerte/Menzel Jemil",
+   "gouv": 361,
+   "deleg": 561,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Bizerte/Menzel Bourguiba",
+   "gouv": 361,
+   "deleg": 562,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Bizerte/Ghar El Melh",
+   "gouv": 361,
+   "deleg": 563,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Bizerte/Ras Jebel",
+   "gouv": 361,
+   "deleg": 564,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Bizerte/Tinja",
+   "gouv": 361,
+   "deleg": 565,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Bizerte/El Alia",
+   "gouv": 361,
+   "deleg": 566,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Bizerte/Utique",
+   "gouv": 361,
+   "deleg": 567,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Bizerte/Zarzouna",
+   "gouv": 361,
+   "deleg": 568,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Bizerte/Al Matlin",
+   "gouv": 361,
+   "deleg": 569,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Bizerte/Zouaouine",
+   "gouv": 361,
+   "deleg": 570,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Bizerte/Aousja",
+   "gouv": 361,
+   "deleg": 571,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Bizerte/Al Khitmin",
+   "gouv": 361,
+   "deleg": 572,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Bizerte/Bizerte",
+   "gouv": 361,
+   "deleg": 634,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 18,
+   "at18": 5
+  },
+  {
+   "name": "Kasserine/Tala",
+   "gouv": 362,
+   "deleg": 573,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Kasserine/Hidra",
+   "gouv": 362,
+   "deleg": 574,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Kasserine/Sbitla",
+   "gouv": 362,
+   "deleg": 575,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Kasserine/Sbiba",
+   "gouv": 362,
+   "deleg": 576,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Kasserine/Feriana",
+   "gouv": 362,
+   "deleg": 577,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Kasserine/Foussana",
+   "gouv": 362,
+   "deleg": 578,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Kasserine/El Ayoun",
+   "gouv": 362,
+   "deleg": 579,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Kasserine/Majel Bel Abbes",
+   "gouv": 362,
+   "deleg": 580,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Kasserine/Jedliane",
+   "gouv": 362,
+   "deleg": 581,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Kasserine/Hassi Ferid",
+   "gouv": 362,
+   "deleg": 582,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Kasserine/Kasserine",
+   "gouv": 362,
+   "deleg": 635,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Le kef/Tourief",
+   "gouv": 363,
+   "deleg": 1523,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Le kef/El Ksour",
+   "gouv": 363,
+   "deleg": 583,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Le kef/Le Sers",
+   "gouv": 363,
+   "deleg": 584,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Le kef/Jerissa",
+   "gouv": 363,
+   "deleg": 585,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Le kef/Tejerouine",
+   "gouv": 363,
+   "deleg": 586,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Le kef/Kalâa El Khasba",
+   "gouv": 363,
+   "deleg": 587,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Le kef/Kalaat Sinane",
+   "gouv": 363,
+   "deleg": 588,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Le kef/Nebeur",
+   "gouv": 363,
+   "deleg": 589,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Le kef/Dahmani",
+   "gouv": 363,
+   "deleg": 590,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Le kef/Sakiet Sidi Youssef",
+   "gouv": 363,
+   "deleg": 591,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Le kef/Le Kef",
+   "gouv": 363,
+   "deleg": 636,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Monastir/Sahline",
+   "gouv": 364,
+   "deleg": 592,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Monastir/Ouerdanine",
+   "gouv": 364,
+   "deleg": 593,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Monastir/Teboulba",
+   "gouv": 364,
+   "deleg": 594,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Monastir/Jammel",
+   "gouv": 364,
+   "deleg": 595,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Monastir/Zeramdine",
+   "gouv": 364,
+   "deleg": 596,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Monastir/Beni Hassan",
+   "gouv": 364,
+   "deleg": 597,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Monastir/Moknine",
+   "gouv": 364,
+   "deleg": 598,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.8,
+   "at18": 5
+  },
+  {
+   "name": "Monastir/Ksibet Medyouni",
+   "gouv": 364,
+   "deleg": 599,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Monastir/Sayada Lamta Bouhjar",
+   "gouv": 364,
+   "deleg": 600,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Monastir/Bekalta",
+   "gouv": 364,
+   "deleg": 601,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Monastir/Ksar Helal",
+   "gouv": 364,
+   "deleg": 602,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Monastir/Benbla",
+   "gouv": 364,
+   "deleg": 603,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Monastir/Monastir",
+   "gouv": 364,
+   "deleg": 637,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.8,
+   "at18": 4
+  },
+  {
+   "name": "Gafsa/Moulares",
+   "gouv": 365,
+   "deleg": 604,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.8,
+   "at18": 5
+  },
+  {
+   "name": "Gafsa/Redyef",
+   "gouv": 365,
+   "deleg": 605,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Gafsa/Metlaoui",
+   "gouv": 365,
+   "deleg": 606,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Gafsa/Mdhilla",
+   "gouv": 365,
+   "deleg": 607,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Gafsa/El Ksar",
+   "gouv": 365,
+   "deleg": 608,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Gafsa/Sened",
+   "gouv": 365,
+   "deleg": 609,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.8,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Gafsa/Sidi Aich",
+   "gouv": 365,
+   "deleg": 610,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Gafsa/El Guettar",
+   "gouv": 365,
+   "deleg": 611,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  },
+  {
+   "name": "Gafsa/Belkhir",
+   "gouv": 365,
+   "deleg": 612,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.8,
+   "at18": 5
+  },
+  {
+   "name": "Gafsa/Gafsa",
+   "gouv": 365,
+   "deleg": 638,
+   "julyDays": 5,
+   "hits": 5,
+   "fa": 17.9,
+   "ia": 17.9,
+   "at18": 5
+  }
+ ]
+}

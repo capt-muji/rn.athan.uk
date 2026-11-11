@@ -1,0 +1,1773 @@
+{
+ "leipzig": [
+  {
+   "angle": 15.8,
+   "exact": 71,
+   "within1": 114
+  },
+  {
+   "angle": 15.85,
+   "exact": 74,
+   "within1": 128
+  },
+  {
+   "angle": 15.9,
+   "exact": 57,
+   "within1": 151
+  },
+  {
+   "angle": 15.95,
+   "exact": 45,
+   "within1": 169
+  },
+  {
+   "angle": 16,
+   "exact": 40,
+   "within1": 181
+  },
+  {
+   "angle": 16.05,
+   "exact": 49,
+   "within1": 180
+  },
+  {
+   "angle": 16.1,
+   "exact": 54,
+   "within1": 167
+  },
+  {
+   "angle": 16.15,
+   "exact": 64,
+   "within1": 155
+  },
+  {
+   "angle": 16.2,
+   "exact": 68,
+   "within1": 143
+  },
+  {
+   "angle": 16.25,
+   "exact": 71,
+   "within1": 130
+  },
+  {
+   "angle": 16.3,
+   "exact": 55,
+   "within1": 116
+  },
+  {
+   "angle": 16.35,
+   "exact": 28,
+   "within1": 96
+  },
+  {
+   "angle": 16.4,
+   "exact": 7,
+   "within1": 80
+  },
+  {
+   "angle": 16.45,
+   "exact": 0,
+   "within1": 58
+  },
+  {
+   "angle": 16.5,
+   "exact": 0,
+   "within1": 31
+  }
+ ],
+ "dresden": [
+  {
+   "angle": 15.8,
+   "exact": 61,
+   "within1": 124
+  },
+  {
+   "angle": 15.85,
+   "exact": 58,
+   "within1": 143
+  },
+  {
+   "angle": 15.9,
+   "exact": 47,
+   "within1": 158
+  },
+  {
+   "angle": 15.95,
+   "exact": 46,
+   "within1": 169
+  },
+  {
+   "angle": 16,
+   "exact": 50,
+   "within1": 178
+  },
+  {
+   "angle": 16.05,
+   "exact": 56,
+   "within1": 177
+  },
+  {
+   "angle": 16.1,
+   "exact": 58,
+   "within1": 166
+  },
+  {
+   "angle": 16.15,
+   "exact": 75,
+   "within1": 150
+  },
+  {
+   "angle": 16.2,
+   "exact": 71,
+   "within1": 137
+  },
+  {
+   "angle": 16.25,
+   "exact": 64,
+   "within1": 120
+  },
+  {
+   "angle": 16.3,
+   "exact": 31,
+   "within1": 106
+  },
+  {
+   "angle": 16.35,
+   "exact": 13,
+   "within1": 83
+  },
+  {
+   "angle": 16.4,
+   "exact": 1,
+   "within1": 64
+  },
+  {
+   "angle": 16.45,
+   "exact": 0,
+   "within1": 32
+  },
+  {
+   "angle": 16.5,
+   "exact": 0,
+   "within1": 16
+  }
+ ],
+ "nurnberg": [
+  {
+   "angle": 15.8,
+   "exact": 62,
+   "within1": 106
+  },
+  {
+   "angle": 15.85,
+   "exact": 73,
+   "within1": 123
+  },
+  {
+   "angle": 15.9,
+   "exact": 63,
+   "within1": 138
+  },
+  {
+   "angle": 15.95,
+   "exact": 48,
+   "within1": 161
+  },
+  {
+   "angle": 16,
+   "exact": 39,
+   "within1": 188
+  },
+  {
+   "angle": 16.05,
+   "exact": 42,
+   "within1": 193
+  },
+  {
+   "angle": 16.1,
+   "exact": 53,
+   "within1": 186
+  },
+  {
+   "angle": 16.15,
+   "exact": 72,
+   "within1": 164
+  },
+  {
+   "angle": 16.2,
+   "exact": 87,
+   "within1": 152
+  },
+  {
+   "angle": 16.25,
+   "exact": 86,
+   "within1": 139
+  },
+  {
+   "angle": 16.3,
+   "exact": 64,
+   "within1": 129
+  },
+  {
+   "angle": 16.35,
+   "exact": 31,
+   "within1": 113
+  },
+  {
+   "angle": 16.4,
+   "exact": 10,
+   "within1": 95
+  },
+  {
+   "angle": 16.45,
+   "exact": 0,
+   "within1": 70
+  },
+  {
+   "angle": 16.5,
+   "exact": 0,
+   "within1": 41
+  }
+ ],
+ "bremen": [
+  {
+   "angle": 15.8,
+   "exact": 73,
+   "within1": 111
+  },
+  {
+   "angle": 15.85,
+   "exact": 65,
+   "within1": 133
+  },
+  {
+   "angle": 15.9,
+   "exact": 41,
+   "within1": 150
+  },
+  {
+   "angle": 15.95,
+   "exact": 29,
+   "within1": 162
+  },
+  {
+   "angle": 16,
+   "exact": 41,
+   "within1": 169
+  },
+  {
+   "angle": 16.05,
+   "exact": 49,
+   "within1": 157
+  },
+  {
+   "angle": 16.1,
+   "exact": 57,
+   "within1": 155
+  },
+  {
+   "angle": 16.15,
+   "exact": 65,
+   "within1": 151
+  },
+  {
+   "angle": 16.2,
+   "exact": 69,
+   "within1": 139
+  },
+  {
+   "angle": 16.25,
+   "exact": 67,
+   "within1": 127
+  },
+  {
+   "angle": 16.3,
+   "exact": 44,
+   "within1": 108
+  },
+  {
+   "angle": 16.35,
+   "exact": 21,
+   "within1": 89
+  },
+  {
+   "angle": 16.4,
+   "exact": 4,
+   "within1": 72
+  },
+  {
+   "angle": 16.45,
+   "exact": 0,
+   "within1": 42
+  },
+  {
+   "angle": 16.5,
+   "exact": 0,
+   "within1": 21
+  }
+ ],
+ "hannover": [
+  {
+   "angle": 15.8,
+   "exact": 66,
+   "within1": 118
+  },
+  {
+   "angle": 15.85,
+   "exact": 59,
+   "within1": 135
+  },
+  {
+   "angle": 15.9,
+   "exact": 45,
+   "within1": 149
+  },
+  {
+   "angle": 15.95,
+   "exact": 33,
+   "within1": 160
+  },
+  {
+   "angle": 16,
+   "exact": 36,
+   "within1": 167
+  },
+  {
+   "angle": 16.05,
+   "exact": 42,
+   "within1": 164
+  },
+  {
+   "angle": 16.1,
+   "exact": 56,
+   "within1": 152
+  },
+  {
+   "angle": 16.15,
+   "exact": 70,
+   "within1": 142
+  },
+  {
+   "angle": 16.2,
+   "exact": 76,
+   "within1": 133
+  },
+  {
+   "angle": 16.25,
+   "exact": 63,
+   "within1": 120
+  },
+  {
+   "angle": 16.3,
+   "exact": 40,
+   "within1": 108
+  },
+  {
+   "angle": 16.35,
+   "exact": 15,
+   "within1": 91
+  },
+  {
+   "angle": 16.4,
+   "exact": 1,
+   "within1": 65
+  },
+  {
+   "angle": 16.45,
+   "exact": 0,
+   "within1": 40
+  },
+  {
+   "angle": 16.5,
+   "exact": 0,
+   "within1": 14
+  }
+ ],
+ "dortmund": [
+  {
+   "angle": 15.8,
+   "exact": 70,
+   "within1": 115
+  },
+  {
+   "angle": 15.85,
+   "exact": 76,
+   "within1": 130
+  },
+  {
+   "angle": 15.9,
+   "exact": 58,
+   "within1": 145
+  },
+  {
+   "angle": 15.95,
+   "exact": 42,
+   "within1": 167
+  },
+  {
+   "angle": 16,
+   "exact": 37,
+   "within1": 177
+  },
+  {
+   "angle": 16.05,
+   "exact": 37,
+   "within1": 174
+  },
+  {
+   "angle": 16.1,
+   "exact": 50,
+   "within1": 162
+  },
+  {
+   "angle": 16.15,
+   "exact": 64,
+   "within1": 149
+  },
+  {
+   "angle": 16.2,
+   "exact": 75,
+   "within1": 138
+  },
+  {
+   "angle": 16.25,
+   "exact": 70,
+   "within1": 128
+  },
+  {
+   "angle": 16.3,
+   "exact": 51,
+   "within1": 114
+  },
+  {
+   "angle": 16.35,
+   "exact": 29,
+   "within1": 102
+  },
+  {
+   "angle": 16.4,
+   "exact": 11,
+   "within1": 83
+  },
+  {
+   "angle": 16.45,
+   "exact": 1,
+   "within1": 54
+  },
+  {
+   "angle": 16.5,
+   "exact": 0,
+   "within1": 32
+  }
+ ],
+ "essen": [
+  {
+   "angle": 15.8,
+   "exact": 67,
+   "within1": 116
+  },
+  {
+   "angle": 15.85,
+   "exact": 64,
+   "within1": 133
+  },
+  {
+   "angle": 15.9,
+   "exact": 48,
+   "within1": 146
+  },
+  {
+   "angle": 15.95,
+   "exact": 38,
+   "within1": 165
+  },
+  {
+   "angle": 16,
+   "exact": 39,
+   "within1": 176
+  },
+  {
+   "angle": 16.05,
+   "exact": 42,
+   "within1": 174
+  },
+  {
+   "angle": 16.1,
+   "exact": 54,
+   "within1": 165
+  },
+  {
+   "angle": 16.15,
+   "exact": 72,
+   "within1": 149
+  },
+  {
+   "angle": 16.2,
+   "exact": 80,
+   "within1": 138
+  },
+  {
+   "angle": 16.25,
+   "exact": 73,
+   "within1": 127
+  },
+  {
+   "angle": 16.3,
+   "exact": 41,
+   "within1": 111
+  },
+  {
+   "angle": 16.35,
+   "exact": 18,
+   "within1": 98
+  },
+  {
+   "angle": 16.4,
+   "exact": 2,
+   "within1": 78
+  },
+  {
+   "angle": 16.45,
+   "exact": 0,
+   "within1": 43
+  },
+  {
+   "angle": 16.5,
+   "exact": 0,
+   "within1": 21
+  }
+ ],
+ "dusseldorf": [
+  {
+   "angle": 15.8,
+   "exact": 70,
+   "within1": 113
+  },
+  {
+   "angle": 15.85,
+   "exact": 69,
+   "within1": 125
+  },
+  {
+   "angle": 15.9,
+   "exact": 54,
+   "within1": 145
+  },
+  {
+   "angle": 15.95,
+   "exact": 40,
+   "within1": 169
+  },
+  {
+   "angle": 16,
+   "exact": 31,
+   "within1": 171
+  },
+  {
+   "angle": 16.05,
+   "exact": 40,
+   "within1": 173
+  },
+  {
+   "angle": 16.1,
+   "exact": 55,
+   "within1": 166
+  },
+  {
+   "angle": 16.15,
+   "exact": 71,
+   "within1": 148
+  },
+  {
+   "angle": 16.2,
+   "exact": 81,
+   "within1": 139
+  },
+  {
+   "angle": 16.25,
+   "exact": 73,
+   "within1": 130
+  },
+  {
+   "angle": 16.3,
+   "exact": 50,
+   "within1": 117
+  },
+  {
+   "angle": 16.35,
+   "exact": 24,
+   "within1": 104
+  },
+  {
+   "angle": 16.4,
+   "exact": 7,
+   "within1": 85
+  },
+  {
+   "angle": 16.45,
+   "exact": 0,
+   "within1": 54
+  },
+  {
+   "angle": 16.5,
+   "exact": 0,
+   "within1": 26
+  }
+ ],
+ "bonn": [
+  {
+   "angle": 15.8,
+   "exact": 77,
+   "within1": 122
+  },
+  {
+   "angle": 15.85,
+   "exact": 79,
+   "within1": 135
+  },
+  {
+   "angle": 15.9,
+   "exact": 62,
+   "within1": 158
+  },
+  {
+   "angle": 15.95,
+   "exact": 42,
+   "within1": 180
+  },
+  {
+   "angle": 16,
+   "exact": 35,
+   "within1": 181
+  },
+  {
+   "angle": 16.05,
+   "exact": 46,
+   "within1": 175
+  },
+  {
+   "angle": 16.1,
+   "exact": 58,
+   "within1": 162
+  },
+  {
+   "angle": 16.15,
+   "exact": 62,
+   "within1": 144
+  },
+  {
+   "angle": 16.2,
+   "exact": 68,
+   "within1": 132
+  },
+  {
+   "angle": 16.25,
+   "exact": 65,
+   "within1": 124
+  },
+  {
+   "angle": 16.3,
+   "exact": 49,
+   "within1": 111
+  },
+  {
+   "angle": 16.35,
+   "exact": 24,
+   "within1": 90
+  },
+  {
+   "angle": 16.4,
+   "exact": 10,
+   "within1": 74
+  },
+  {
+   "angle": 16.45,
+   "exact": 0,
+   "within1": 52
+  },
+  {
+   "angle": 16.5,
+   "exact": 0,
+   "within1": 30
+  }
+ ],
+ "mannheim": [
+  {
+   "angle": 15.8,
+   "exact": 60,
+   "within1": 117
+  },
+  {
+   "angle": 15.85,
+   "exact": 70,
+   "within1": 128
+  },
+  {
+   "angle": 15.9,
+   "exact": 70,
+   "within1": 148
+  },
+  {
+   "angle": 15.95,
+   "exact": 61,
+   "within1": 168
+  },
+  {
+   "angle": 16,
+   "exact": 47,
+   "within1": 183
+  },
+  {
+   "angle": 16.05,
+   "exact": 41,
+   "within1": 191
+  },
+  {
+   "angle": 16.1,
+   "exact": 53,
+   "within1": 184
+  },
+  {
+   "angle": 16.15,
+   "exact": 61,
+   "within1": 167
+  },
+  {
+   "angle": 16.2,
+   "exact": 74,
+   "within1": 148
+  },
+  {
+   "angle": 16.25,
+   "exact": 71,
+   "within1": 133
+  },
+  {
+   "angle": 16.3,
+   "exact": 62,
+   "within1": 121
+  },
+  {
+   "angle": 16.35,
+   "exact": 37,
+   "within1": 109
+  },
+  {
+   "angle": 16.4,
+   "exact": 16,
+   "within1": 89
+  },
+  {
+   "angle": 16.45,
+   "exact": 2,
+   "within1": 67
+  },
+  {
+   "angle": 16.5,
+   "exact": 0,
+   "within1": 43
+  }
+ ],
+ "karlsruhe": [
+  {
+   "angle": 15.8,
+   "exact": 72,
+   "within1": 122
+  },
+  {
+   "angle": 15.85,
+   "exact": 83,
+   "within1": 136
+  },
+  {
+   "angle": 15.9,
+   "exact": 67,
+   "within1": 157
+  },
+  {
+   "angle": 15.95,
+   "exact": 54,
+   "within1": 182
+  },
+  {
+   "angle": 16,
+   "exact": 37,
+   "within1": 193
+  },
+  {
+   "angle": 16.05,
+   "exact": 42,
+   "within1": 190
+  },
+  {
+   "angle": 16.1,
+   "exact": 55,
+   "within1": 177
+  },
+  {
+   "angle": 16.15,
+   "exact": 70,
+   "within1": 152
+  },
+  {
+   "angle": 16.2,
+   "exact": 76,
+   "within1": 136
+  },
+  {
+   "angle": 16.25,
+   "exact": 66,
+   "within1": 125
+  },
+  {
+   "angle": 16.3,
+   "exact": 51,
+   "within1": 113
+  },
+  {
+   "angle": 16.35,
+   "exact": 27,
+   "within1": 103
+  },
+  {
+   "angle": 16.4,
+   "exact": 11,
+   "within1": 80
+  },
+  {
+   "angle": 16.45,
+   "exact": 0,
+   "within1": 56
+  },
+  {
+   "angle": 16.5,
+   "exact": 0,
+   "within1": 30
+  }
+ ],
+ "freiburg": [
+  {
+   "angle": 15.8,
+   "exact": 76,
+   "within1": 132
+  },
+  {
+   "angle": 15.85,
+   "exact": 74,
+   "within1": 154
+  },
+  {
+   "angle": 15.9,
+   "exact": 56,
+   "within1": 177
+  },
+  {
+   "angle": 15.95,
+   "exact": 46,
+   "within1": 195
+  },
+  {
+   "angle": 16,
+   "exact": 46,
+   "within1": 206
+  },
+  {
+   "angle": 16.05,
+   "exact": 60,
+   "within1": 190
+  },
+  {
+   "angle": 16.1,
+   "exact": 72,
+   "within1": 170
+  },
+  {
+   "angle": 16.15,
+   "exact": 78,
+   "within1": 145
+  },
+  {
+   "angle": 16.2,
+   "exact": 71,
+   "within1": 133
+  },
+  {
+   "angle": 16.25,
+   "exact": 56,
+   "within1": 122
+  },
+  {
+   "angle": 16.3,
+   "exact": 34,
+   "within1": 109
+  },
+  {
+   "angle": 16.35,
+   "exact": 9,
+   "within1": 86
+  },
+  {
+   "angle": 16.4,
+   "exact": 1,
+   "within1": 65
+  },
+  {
+   "angle": 16.45,
+   "exact": 0,
+   "within1": 37
+  },
+  {
+   "angle": 16.5,
+   "exact": 0,
+   "within1": 16
+  }
+ ],
+ "kiel": [
+  {
+   "angle": 15.8,
+   "exact": 73,
+   "within1": 116
+  },
+  {
+   "angle": 15.85,
+   "exact": 60,
+   "within1": 136
+  },
+  {
+   "angle": 15.9,
+   "exact": 36,
+   "within1": 152
+  },
+  {
+   "angle": 15.95,
+   "exact": 38,
+   "within1": 158
+  },
+  {
+   "angle": 16,
+   "exact": 40,
+   "within1": 156
+  },
+  {
+   "angle": 16.05,
+   "exact": 48,
+   "within1": 153
+  },
+  {
+   "angle": 16.1,
+   "exact": 51,
+   "within1": 149
+  },
+  {
+   "angle": 16.15,
+   "exact": 53,
+   "within1": 143
+  },
+  {
+   "angle": 16.2,
+   "exact": 68,
+   "within1": 135
+  },
+  {
+   "angle": 16.25,
+   "exact": 62,
+   "within1": 117
+  },
+  {
+   "angle": 16.3,
+   "exact": 44,
+   "within1": 99
+  },
+  {
+   "angle": 16.35,
+   "exact": 19,
+   "within1": 88
+  },
+  {
+   "angle": 16.4,
+   "exact": 3,
+   "within1": 67
+  },
+  {
+   "angle": 16.45,
+   "exact": 0,
+   "within1": 42
+  },
+  {
+   "angle": 16.5,
+   "exact": 0,
+   "within1": 16
+  }
+ ],
+ "rostock": [
+  {
+   "angle": 15.8,
+   "exact": 59,
+   "within1": 112
+  },
+  {
+   "angle": 15.85,
+   "exact": 56,
+   "within1": 127
+  },
+  {
+   "angle": 15.9,
+   "exact": 42,
+   "within1": 139
+  },
+  {
+   "angle": 15.95,
+   "exact": 27,
+   "within1": 142
+  },
+  {
+   "angle": 16,
+   "exact": 33,
+   "within1": 152
+  },
+  {
+   "angle": 16.05,
+   "exact": 40,
+   "within1": 157
+  },
+  {
+   "angle": 16.1,
+   "exact": 53,
+   "within1": 153
+  },
+  {
+   "angle": 16.15,
+   "exact": 70,
+   "within1": 143
+  },
+  {
+   "angle": 16.2,
+   "exact": 76,
+   "within1": 135
+  },
+  {
+   "angle": 16.25,
+   "exact": 66,
+   "within1": 124
+  },
+  {
+   "angle": 16.3,
+   "exact": 40,
+   "within1": 112
+  },
+  {
+   "angle": 16.35,
+   "exact": 18,
+   "within1": 92
+  },
+  {
+   "angle": 16.4,
+   "exact": 3,
+   "within1": 65
+  },
+  {
+   "angle": 16.45,
+   "exact": 0,
+   "within1": 39
+  },
+  {
+   "angle": 16.5,
+   "exact": 0,
+   "within1": 13
+  }
+ ],
+ "magdeburg": [
+  {
+   "angle": 15.8,
+   "exact": 84,
+   "within1": 120
+  },
+  {
+   "angle": 15.85,
+   "exact": 64,
+   "within1": 140
+  },
+  {
+   "angle": 15.9,
+   "exact": 51,
+   "within1": 159
+  },
+  {
+   "angle": 15.95,
+   "exact": 32,
+   "within1": 171
+  },
+  {
+   "angle": 16,
+   "exact": 40,
+   "within1": 169
+  },
+  {
+   "angle": 16.05,
+   "exact": 45,
+   "within1": 163
+  },
+  {
+   "angle": 16.1,
+   "exact": 54,
+   "within1": 148
+  },
+  {
+   "angle": 16.15,
+   "exact": 62,
+   "within1": 141
+  },
+  {
+   "angle": 16.2,
+   "exact": 65,
+   "within1": 131
+  },
+  {
+   "angle": 16.25,
+   "exact": 64,
+   "within1": 120
+  },
+  {
+   "angle": 16.3,
+   "exact": 41,
+   "within1": 103
+  },
+  {
+   "angle": 16.35,
+   "exact": 21,
+   "within1": 88
+  },
+  {
+   "angle": 16.4,
+   "exact": 5,
+   "within1": 69
+  },
+  {
+   "angle": 16.45,
+   "exact": 0,
+   "within1": 44
+  },
+  {
+   "angle": 16.5,
+   "exact": 0,
+   "within1": 22
+  }
+ ],
+ "erfurt": [
+  {
+   "angle": 15.8,
+   "exact": 72,
+   "within1": 127
+  },
+  {
+   "angle": 15.85,
+   "exact": 56,
+   "within1": 144
+  },
+  {
+   "angle": 15.9,
+   "exact": 47,
+   "within1": 168
+  },
+  {
+   "angle": 15.95,
+   "exact": 41,
+   "within1": 183
+  },
+  {
+   "angle": 16,
+   "exact": 45,
+   "within1": 177
+  },
+  {
+   "angle": 16.05,
+   "exact": 58,
+   "within1": 172
+  },
+  {
+   "angle": 16.1,
+   "exact": 64,
+   "within1": 157
+  },
+  {
+   "angle": 16.15,
+   "exact": 73,
+   "within1": 147
+  },
+  {
+   "angle": 16.2,
+   "exact": 68,
+   "within1": 134
+  },
+  {
+   "angle": 16.25,
+   "exact": 55,
+   "within1": 119
+  },
+  {
+   "angle": 16.3,
+   "exact": 37,
+   "within1": 108
+  },
+  {
+   "angle": 16.35,
+   "exact": 13,
+   "within1": 86
+  },
+  {
+   "angle": 16.4,
+   "exact": 3,
+   "within1": 62
+  },
+  {
+   "angle": 16.45,
+   "exact": 0,
+   "within1": 40
+  },
+  {
+   "angle": 16.5,
+   "exact": 0,
+   "within1": 13
+  }
+ ],
+ "saarbrucken": [
+  {
+   "angle": 15.8,
+   "exact": 73,
+   "within1": 124
+  },
+  {
+   "angle": 15.85,
+   "exact": 81,
+   "within1": 143
+  },
+  {
+   "angle": 15.9,
+   "exact": 64,
+   "within1": 164
+  },
+  {
+   "angle": 15.95,
+   "exact": 53,
+   "within1": 180
+  },
+  {
+   "angle": 16,
+   "exact": 44,
+   "within1": 192
+  },
+  {
+   "angle": 16.05,
+   "exact": 57,
+   "within1": 192
+  },
+  {
+   "angle": 16.1,
+   "exact": 59,
+   "within1": 175
+  },
+  {
+   "angle": 16.15,
+   "exact": 67,
+   "within1": 151
+  },
+  {
+   "angle": 16.2,
+   "exact": 70,
+   "within1": 140
+  },
+  {
+   "angle": 16.25,
+   "exact": 65,
+   "within1": 126
+  },
+  {
+   "angle": 16.3,
+   "exact": 44,
+   "within1": 113
+  },
+  {
+   "angle": 16.35,
+   "exact": 28,
+   "within1": 92
+  },
+  {
+   "angle": 16.4,
+   "exact": 9,
+   "within1": 75
+  },
+  {
+   "angle": 16.45,
+   "exact": 1,
+   "within1": 57
+  },
+  {
+   "angle": 16.5,
+   "exact": 0,
+   "within1": 32
+  }
+ ],
+ "koln": [
+  {
+   "angle": 15.8,
+   "exact": 86,
+   "within1": 126
+  },
+  {
+   "angle": 15.85,
+   "exact": 67,
+   "within1": 145
+  },
+  {
+   "angle": 15.9,
+   "exact": 54,
+   "within1": 161
+  },
+  {
+   "angle": 15.95,
+   "exact": 34,
+   "within1": 180
+  },
+  {
+   "angle": 16,
+   "exact": 42,
+   "within1": 181
+  },
+  {
+   "angle": 16.05,
+   "exact": 47,
+   "within1": 175
+  },
+  {
+   "angle": 16.1,
+   "exact": 63,
+   "within1": 151
+  },
+  {
+   "angle": 16.15,
+   "exact": 66,
+   "within1": 141
+  },
+  {
+   "angle": 16.2,
+   "exact": 72,
+   "within1": 133
+  },
+  {
+   "angle": 16.25,
+   "exact": 61,
+   "within1": 120
+  },
+  {
+   "angle": 16.3,
+   "exact": 37,
+   "within1": 102
+  },
+  {
+   "angle": 16.35,
+   "exact": 17,
+   "within1": 89
+  },
+  {
+   "angle": 16.4,
+   "exact": 3,
+   "within1": 66
+  },
+  {
+   "angle": 16.45,
+   "exact": 0,
+   "within1": 41
+  },
+  {
+   "angle": 16.5,
+   "exact": 0,
+   "within1": 20
+  }
+ ],
+ "berlin": [
+  {
+   "angle": 15.8,
+   "exact": 77,
+   "within1": 111
+  },
+  {
+   "angle": 15.85,
+   "exact": 75,
+   "within1": 122
+  },
+  {
+   "angle": 15.9,
+   "exact": 51,
+   "within1": 141
+  },
+  {
+   "angle": 15.95,
+   "exact": 31,
+   "within1": 162
+  },
+  {
+   "angle": 16,
+   "exact": 28,
+   "within1": 172
+  },
+  {
+   "angle": 16.05,
+   "exact": 36,
+   "within1": 163
+  },
+  {
+   "angle": 16.1,
+   "exact": 50,
+   "within1": 154
+  },
+  {
+   "angle": 16.15,
+   "exact": 71,
+   "within1": 148
+  },
+  {
+   "angle": 16.2,
+   "exact": 76,
+   "within1": 138
+  },
+  {
+   "angle": 16.25,
+   "exact": 73,
+   "within1": 129
+  },
+  {
+   "angle": 16.3,
+   "exact": 51,
+   "within1": 117
+  },
+  {
+   "angle": 16.35,
+   "exact": 28,
+   "within1": 103
+  },
+  {
+   "angle": 16.4,
+   "exact": 8,
+   "within1": 81
+  },
+  {
+   "angle": 16.45,
+   "exact": 0,
+   "within1": 52
+  },
+  {
+   "angle": 16.5,
+   "exact": 0,
+   "within1": 27
+  }
+ ],
+ "frankfurt": [
+  {
+   "angle": 15.8,
+   "exact": 66,
+   "within1": 118
+  },
+  {
+   "angle": 15.85,
+   "exact": 75,
+   "within1": 130
+  },
+  {
+   "angle": 15.9,
+   "exact": 73,
+   "within1": 146
+  },
+  {
+   "angle": 15.95,
+   "exact": 53,
+   "within1": 166
+  },
+  {
+   "angle": 16,
+   "exact": 42,
+   "within1": 189
+  },
+  {
+   "angle": 16.05,
+   "exact": 41,
+   "within1": 187
+  },
+  {
+   "angle": 16.1,
+   "exact": 46,
+   "within1": 177
+  },
+  {
+   "angle": 16.15,
+   "exact": 63,
+   "within1": 158
+  },
+  {
+   "angle": 16.2,
+   "exact": 70,
+   "within1": 141
+  },
+  {
+   "angle": 16.25,
+   "exact": 76,
+   "within1": 127
+  },
+  {
+   "angle": 16.3,
+   "exact": 58,
+   "within1": 117
+  },
+  {
+   "angle": 16.35,
+   "exact": 35,
+   "within1": 104
+  },
+  {
+   "angle": 16.4,
+   "exact": 11,
+   "within1": 88
+  },
+  {
+   "angle": 16.45,
+   "exact": 2,
+   "within1": 64
+  },
+  {
+   "angle": 16.5,
+   "exact": 0,
+   "within1": 37
+  }
+ ],
+ "muenchen": [
+  {
+   "angle": 15.8,
+   "exact": 65,
+   "within1": 125
+  },
+  {
+   "angle": 15.85,
+   "exact": 83,
+   "within1": 136
+  },
+  {
+   "angle": 15.9,
+   "exact": 74,
+   "within1": 159
+  },
+  {
+   "angle": 15.95,
+   "exact": 64,
+   "within1": 184
+  },
+  {
+   "angle": 16,
+   "exact": 48,
+   "within1": 198
+  },
+  {
+   "angle": 16.05,
+   "exact": 47,
+   "within1": 201
+  },
+  {
+   "angle": 16.1,
+   "exact": 60,
+   "within1": 192
+  },
+  {
+   "angle": 16.15,
+   "exact": 66,
+   "within1": 163
+  },
+  {
+   "angle": 16.2,
+   "exact": 78,
+   "within1": 147
+  },
+  {
+   "angle": 16.25,
+   "exact": 62,
+   "within1": 128
+  },
+  {
+   "angle": 16.3,
+   "exact": 53,
+   "within1": 117
+  },
+  {
+   "angle": 16.35,
+   "exact": 32,
+   "within1": 102
+  },
+  {
+   "angle": 16.4,
+   "exact": 14,
+   "within1": 80
+  },
+  {
+   "angle": 16.45,
+   "exact": 2,
+   "within1": 59
+  },
+  {
+   "angle": 16.5,
+   "exact": 0,
+   "within1": 41
+  }
+ ],
+ "hamburg": [
+  {
+   "angle": 15.8,
+   "exact": 63,
+   "within1": 114
+  },
+  {
+   "angle": 15.85,
+   "exact": 49,
+   "within1": 128
+  },
+  {
+   "angle": 15.9,
+   "exact": 40,
+   "within1": 141
+  },
+  {
+   "angle": 15.95,
+   "exact": 38,
+   "within1": 159
+  },
+  {
+   "angle": 16,
+   "exact": 40,
+   "within1": 155
+  },
+  {
+   "angle": 16.05,
+   "exact": 40,
+   "within1": 161
+  },
+  {
+   "angle": 16.1,
+   "exact": 55,
+   "within1": 162
+  },
+  {
+   "angle": 16.15,
+   "exact": 73,
+   "within1": 150
+  },
+  {
+   "angle": 16.2,
+   "exact": 78,
+   "within1": 135
+  },
+  {
+   "angle": 16.25,
+   "exact": 64,
+   "within1": 122
+  },
+  {
+   "angle": 16.3,
+   "exact": 38,
+   "within1": 112
+  },
+  {
+   "angle": 16.35,
+   "exact": 16,
+   "within1": 92
+  },
+  {
+   "angle": 16.4,
+   "exact": 0,
+   "within1": 65
+  },
+  {
+   "angle": 16.45,
+   "exact": 0,
+   "within1": 36
+  },
+  {
+   "angle": 16.5,
+   "exact": 0,
+   "within1": 16
+  }
+ ],
+ "stuttgart": [
+  {
+   "angle": 15.8,
+   "exact": 74,
+   "within1": 121
+  },
+  {
+   "angle": 15.85,
+   "exact": 73,
+   "within1": 135
+  },
+  {
+   "angle": 15.9,
+   "exact": 66,
+   "within1": 159
+  },
+  {
+   "angle": 15.95,
+   "exact": 47,
+   "within1": 182
+  },
+  {
+   "angle": 16,
+   "exact": 42,
+   "within1": 202
+  },
+  {
+   "angle": 16.05,
+   "exact": 48,
+   "within1": 192
+  },
+  {
+   "angle": 16.1,
+   "exact": 65,
+   "within1": 176
+  },
+  {
+   "angle": 16.15,
+   "exact": 74,
+   "within1": 154
+  },
+  {
+   "angle": 16.2,
+   "exact": 83,
+   "within1": 139
+  },
+  {
+   "angle": 16.25,
+   "exact": 69,
+   "within1": 129
+  },
+  {
+   "angle": 16.3,
+   "exact": 48,
+   "within1": 116
+  },
+  {
+   "angle": 16.35,
+   "exact": 26,
+   "within1": 104
+  },
+  {
+   "angle": 16.4,
+   "exact": 6,
+   "within1": 78
+  },
+  {
+   "angle": 16.45,
+   "exact": 0,
+   "within1": 57
+  },
+  {
+   "angle": 16.5,
+   "exact": 0,
+   "within1": 28
+  }
+ ]
+}

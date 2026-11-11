@@ -1,0 +1,18 @@
+malta 2025-01: 31
+malta 2025-02: 28
+  http 502
+  http 503
+malta 2025-03: 31
+malta 2025-04: 30
+  http 502
+  http 503
+malta 2025-05: 31
+malta 2025-06: 30
+malta 2025-07: 31
+malta 2025-08: 31
+malta 2025-09: 30
+malta 2025-10: 31
+  http 504
+malta 2025-11: 30
+malta 2025-12: 31
+malta 2025: 365 rows written

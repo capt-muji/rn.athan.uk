@@ -1,0 +1,534 @@
+[
+ {
+  "id": "23",
+  "country": "لبنان",
+  "city": "رأس-بيروت",
+  "name": "مسجد ومركز العثمان - شانيه",
+  "region": 2
+ },
+ {
+  "id": "24",
+  "country": "لبنان",
+  "city": "رأس-بيروت",
+  "name": "مسجد المجيدية",
+  "region": 2
+ },
+ {
+  "id": "29",
+  "country": "لبنان",
+  "city": "رأس-بيروت",
+  "name": "مسجد حمزة بن عبد المطّلب",
+  "region": 2
+ },
+ {
+  "id": "214",
+  "country": "المملكة العربية السعودية",
+  "city": "الدمام",
+  "name": "مسجد سليمان الشارخي",
+  "region": 1051
+ },
+ {
+  "id": "294",
+  "country": "المملكة العربية السعودية",
+  "city": "الدمام",
+  "name": "الواحة",
+  "region": 1051
+ },
+ {
+  "id": "505",
+  "country": "المملكة العربية السعودية",
+  "city": "الدمام",
+  "name": "جامع الشيخ سالم بن صالح العجيمي",
+  "region": 1051
+ },
+ {
+  "id": "191",
+  "country": "الجزائر",
+  "city": "الجلفة",
+  "name": "مسجد البركة",
+  "region": 3551
+ },
+ {
+  "id": "618",
+  "country": "الجزائر",
+  "city": "الجلفة",
+  "name": "المسجد الجديد",
+  "region": 3551
+ },
+ {
+  "id": "848",
+  "country": "الجزائر",
+  "city": "الجلفة",
+  "name": "مسجد التوبة",
+  "region": 3551
+ },
+ {
+  "id": "877",
+  "country": "سوريا",
+  "city": "برامكة",
+  "name": "جامع الكنجلية",
+  "region": 7617
+ },
+ {
+  "id": "1044",
+  "country": "سوريا",
+  "city": "برامكة",
+  "name": "مسجد الإمام الشافعي",
+  "region": 7617
+ },
+ {
+  "id": "1094",
+  "country": "سوريا",
+  "city": "برامكة",
+  "name": "جامع الشيخ علي الدقر",
+  "region": 7617
+ },
+ {
+  "id": "2069",
+  "country": "أندونيسيا",
+  "city": "Bogor",
+  "name": "Mahad Tahfidz Bukaka",
+  "region": 6127
+ },
+ {
+  "id": "1850",
+  "country": "أندونيسيا",
+  "city": "Kabupaten-Tangerang",
+  "name": "Masjid Jami' Harapan Kita",
+  "region": 6102
+ },
+ {
+  "id": "2097",
+  "country": "أندونيسيا",
+  "city": "Semarang",
+  "name": "Masjid Ulul Albab UNNES",
+  "region": 6168
+ },
+ {
+  "id": "612",
+  "country": "عمان",
+  "city": "صلالة",
+  "name": "جامع الإيمان",
+  "region": 46
+ },
+ {
+  "id": "623",
+  "country": "عمان",
+  "city": "صلالة",
+  "name": "جامع الشيخه سلمى بنت أحمد المعشنيه",
+  "region": 46
+ },
+ {
+  "id": "1330",
+  "country": "عمان",
+  "city": "صلالة",
+  "name": "جامع الشيخ العفيف",
+  "region": 46
+ },
+ {
+  "id": "227",
+  "country": "الأردن",
+  "city": "عمان",
+  "name": "مسجد مخيمر ابو جاموس / ماركا الشماليه",
+  "region": 247
+ },
+ {
+  "id": "549",
+  "country": "الأردن",
+  "city": "عمان",
+  "name": "مسجد ابو صلاح",
+  "region": 247
+ },
+ {
+  "id": "772",
+  "country": "الأردن",
+  "city": "عمان",
+  "name": "مسجد محمد عبده ابو قوره",
+  "region": 247
+ },
+ {
+  "id": "819",
+  "country": "المغرب",
+  "city": "وجدة-أنجاد",
+  "name": "مسجد الإمام مالك (الصابوني)",
+  "region": 8306
+ },
+ {
+  "id": "867",
+  "country": "المغرب",
+  "city": "وجدة-أنجاد",
+  "name": "مسجد أم سلمة",
+  "region": 8306
+ },
+ {
+  "id": "439",
+  "country": "المغرب",
+  "city": "الدار-البيضاء",
+  "name": "مسجد ابي هريرة",
+  "region": 8221
+ },
+ {
+  "id": "1251",
+  "country": "ماليزيا",
+  "city": "Beaufort",
+  "name": "Masjid Nurhidayah",
+  "region": 228
+ },
+ {
+  "id": "684",
+  "country": "ماليزيا",
+  "city": "Kangar",
+  "name": "Surau Aspura",
+  "region": 211
+ },
+ {
+  "id": "1275",
+  "country": "ماليزيا",
+  "city": "Kota-Bharu",
+  "name": "Surau Pak Do Pa",
+  "region": 198
+ },
+ {
+  "id": "1697",
+  "country": "تونس",
+  "city": "تطاوين",
+  "name": "جامع السلام ذهيبة",
+  "region": 364
+ },
+ {
+  "id": "2104",
+  "country": "تونس",
+  "city": "تطاوين",
+  "name": "جامع الرحمة الرقبة تطاوين",
+  "region": 364
+ },
+ {
+  "id": "1938",
+  "country": "تونس",
+  "city": "المهدية",
+  "name": "مسجد بيت الله - المهدية",
+  "region": 355
+ },
+ {
+  "id": "168",
+  "country": "مصر",
+  "city": "القاهرة",
+  "name": "مسجد أبو المعاطي",
+  "region": 3109
+ },
+ {
+  "id": "609",
+  "country": "مصر",
+  "city": "القاهرة",
+  "name": "مسجد الرحمن - المداح - كفرالديب",
+  "region": 3109
+ },
+ {
+  "id": "1683",
+  "country": "مصر",
+  "city": "القاهرة",
+  "name": "مسجد الهداية - مدينة العبور",
+  "region": 3109
+ },
+ {
+  "id": "910",
+  "country": "الولايات المتحدة",
+  "city": "أبفيل",
+  "name": "Islamic Caltural Center",
+  "region": null
+ },
+ {
+  "id": "1205",
+  "country": "الولايات المتحدة",
+  "city": "أتلانتا",
+  "name": "Masjid Al-Etihad Al-Ittihad",
+  "region": null
+ },
+ {
+  "id": "1232",
+  "country": "الولايات المتحدة",
+  "city": "تورانس",
+  "name": "Darul Arqam",
+  "region": null
+ },
+ {
+  "id": "1517",
+  "country": "العراق",
+  "city": "الحويجة",
+  "name": "جامع الحاجة مريم",
+  "region": 173
+ },
+ {
+  "id": "1628",
+  "country": "العراق",
+  "city": "الحويجة",
+  "name": "جامع المصطفى",
+  "region": 173
+ },
+ {
+  "id": "1916",
+  "country": "العراق",
+  "city": "السليمانية",
+  "name": "Masjid qalam - مزگەوتی قەڵەم",
+  "region": 8145
+ },
+ {
+  "id": "769",
+  "country": "المملكة المتحدة",
+  "city": "لندن-الكبرى",
+  "name": "جامع العزيزية",
+  "region": null
+ },
+ {
+  "id": "1857",
+  "country": "المملكة المتحدة",
+  "city": "لندن-الكبرى",
+  "name": "Baitul Aman Mosque & Culture Centre",
+  "region": null
+ },
+ {
+  "id": "1799",
+  "country": "المملكة المتحدة",
+  "city": "ستوك-أون-ترينت",
+  "name": "Masjid Abi Hurairah",
+  "region": null
+ },
+ {
+  "id": "1449",
+  "country": "ليبيا",
+  "city": "طرابلس",
+  "name": "مسجد بن زهرة العتيق",
+  "region": 40
+ },
+ {
+  "id": "2252",
+  "country": "ليبيا",
+  "city": "طرابلس",
+  "name": "الامام مسلم",
+  "region": 40
+ },
+ {
+  "id": "1949",
+  "country": "ليبيا",
+  "city": "الزاوية",
+  "name": "مسجد الإخلاص",
+  "region": 20
+ },
+ {
+  "id": "932",
+  "country": "الكويت",
+  "city": "السالمية",
+  "name": "محمد عبدالوهاب التركيت",
+  "region": 144
+ },
+ {
+  "id": "1264",
+  "country": "الكويت",
+  "city": "الفروانية",
+  "name": "فهد سند العبدالهادي العجمي",
+  "region": 144
+ },
+ {
+  "id": "1373",
+  "country": "الكويت",
+  "city": "بيان",
+  "name": "مسجد أبوسنان الأسدي",
+  "region": 144
+ },
+ {
+  "id": "790",
+  "country": "كندا",
+  "city": "ريجينا",
+  "name": "Aasiya Musallah",
+  "region": null
+ },
+ {
+  "id": "1064",
+  "country": "كندا",
+  "city": "سانت-جون",
+  "name": "ICNL",
+  "region": null
+ },
+ {
+  "id": "140",
+  "country": "كندا",
+  "city": "كامبريدج",
+  "name": "Ontario Muslim Academy",
+  "region": null
+ },
+ {
+  "id": "1929",
+  "country": "فلسطين",
+  "city": "جنين",
+  "name": "مسجد التوحيد اليامون",
+  "region": 5885
+ },
+ {
+  "id": "1971",
+  "country": "فلسطين",
+  "city": "جنين",
+  "name": "مسجد عمر بن الخطاب",
+  "region": 5885
+ },
+ {
+  "id": "1267",
+  "country": "فلسطين",
+  "city": "طولكرم",
+  "name": "مسجد الرحمة",
+  "region": 5886
+ },
+ {
+  "id": "1465",
+  "country": "ألمانيا",
+  "city": "Biberach-an-der-Riß",
+  "name": "مسجد التقوى",
+  "region": 2905
+ },
+ {
+  "id": "119",
+  "country": "ألمانيا",
+  "city": "برلين",
+  "name": "Masjid Ibrahim Khalil",
+  "region": 2448
+ },
+ {
+  "id": "1260",
+  "country": "ألمانيا",
+  "city": "مولهايم",
+  "name": "ATİB Mülheim Merkez Cami",
+  "region": 2772
+ },
+ {
+  "id": "1306",
+  "country": "أستراليا",
+  "city": "لاكيمبا",
+  "name": "Masjid As Sunnah",
+  "region": null
+ },
+ {
+  "id": "1984",
+  "country": "أستراليا",
+  "city": "هوبارت",
+  "name": "House of Guidance Mosque",
+  "region": null
+ },
+ {
+  "id": "682",
+  "country": "السويد",
+  "city": "فاجيرستا",
+  "name": "Fagersta Moské",
+  "region": 5587
+ },
+ {
+  "id": "1136",
+  "country": "السويد",
+  "city": "ليدكوبينغ",
+  "name": "Lidköpings Moské",
+  "region": 5622
+ },
+ {
+  "id": "1825",
+  "country": "النرويج",
+  "city": "Asker",
+  "name": "Masjid Badar",
+  "region": 394
+ },
+ {
+  "id": "136",
+  "country": "النرويج",
+  "city": "Fredrikstad",
+  "name": "Masjid Darussalam Norge",
+  "region": 444
+ },
+ {
+  "id": "512",
+  "country": "إسبانيا",
+  "city": "سوريا",
+  "name": "مسجد السلام olvega",
+  "region": null
+ },
+ {
+  "id": "890",
+  "country": "إسبانيا",
+  "city": "كريفيلينتي",
+  "name": "centro islamico crevillente",
+  "region": null
+ },
+ {
+  "id": "2177",
+  "country": "الهند",
+  "city": "تاليبارامبا",
+  "name": "MASJID AL EMAN",
+  "region": null
+ },
+ {
+  "id": "1597",
+  "country": "الهند",
+  "city": "हैदराबाद",
+  "name": "Masjid Ayesha",
+  "region": null
+ },
+ {
+  "id": "579",
+  "country": "تركيا",
+  "city": "Suruç",
+  "name": "Mustafa Masjid",
+  "region": null
+ },
+ {
+  "id": "186",
+  "country": "بلجيكا",
+  "city": "شارلروا",
+  "name": "Sakina Masjid",
+  "region": 1641
+ },
+ {
+  "id": "1099",
+  "country": "روسيا",
+  "city": "بالاكوفو",
+  "name": "Ramadan",
+  "region": null
+ },
+ {
+  "id": "1390",
+  "country": "رومانيا",
+  "city": "Constanţa",
+  "name": "المركز الإسلامي الثقافي (طيبة) كونستانتا",
+  "region": 5733
+ },
+ {
+  "id": "2002",
+  "country": "باكستان",
+  "city": "مهرابور",
+  "name": "Madina masjid",
+  "region": null
+ },
+ {
+  "id": "755",
+  "country": "قطر",
+  "city": "الريان",
+  "name": "مسجد غانم ناصر ال علي المعاضيد",
+  "region": 164
+ },
+ {
+  "id": "1374",
+  "country": "البوسنة والهرسك",
+  "city": "Srebrenik",
+  "name": "Dzamija Luka",
+  "region": 1142
+ },
+ {
+  "id": "125",
+  "country": "البحرين",
+  "city": "المنامة",
+  "name": "مركز سبيكة بنت ابراهيم الأنصاري الإسلامي",
+  "region": 5883
+ },
+ {
+  "id": "1016",
+  "country": "إيطاليا",
+  "city": "دونوراتيكو",
+  "name": "Moschea Donoratico",
+  "region": 1925
+ }
+]

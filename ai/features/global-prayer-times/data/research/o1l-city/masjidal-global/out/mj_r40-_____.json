@@ -1,0 +1,34 @@
+{
+ "label": "r40-ليبيا",
+ "file": "captures/masjidi_region_40.json",
+ "rows": 366,
+ "lat": 32.82,
+ "k": 0,
+ "geoRms": 6.289,
+ "fajr": {
+  "kind": "angle",
+  "n": 366,
+  "angle": 18.01,
+  "darkIqr": 0.13
+ },
+ "isha": {
+  "kind": "angle",
+  "n": 366,
+  "angle": 17,
+  "darkIqr": 0.12,
+  "gap": 82
+ },
+ "asr": {
+  "school": "Shafi",
+  "shafiMae": 0.4,
+  "hanafiMae": 55.9
+ },
+ "clock": {
+  "lonImplied": -16.81,
+  "offsetMin": -67,
+  "driftRms": 0.3,
+  "runs": 1,
+  "steps": []
+ },
+ "amplitude": -131
+}

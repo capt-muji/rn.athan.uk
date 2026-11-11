@@ -1,0 +1,7744 @@
+{
+ "20015": {
+  "name": "Berlin",
+  "sun": {
+   "lat": 52.5,
+   "lon": 13.4
+  }
+ },
+ "19000965": {
+  "name": "Bergedorf",
+  "sun": {
+   "lat": 53.5,
+   "lon": 10.2
+  }
+ },
+ "19000966": {
+  "name": "Billstedt",
+  "sun": {
+   "lat": 53.6,
+   "lon": 10.1
+  }
+ },
+ "19000967": {
+  "name": "Finkenwerder",
+  "sun": {
+   "lat": 53.5,
+   "lon": 9.9
+  }
+ },
+ "20083": {
+  "name": "Hamburg",
+  "sun": {
+   "lat": 53.6,
+   "lon": 10
+  }
+ },
+ "20254": {
+  "name": "Harburg",
+  "sun": {
+   "lat": 53.5,
+   "lon": 10
+  }
+ },
+ "20255": {
+  "name": "Wilhelmsburg",
+  "sun": {
+   "lat": 53.5,
+   "lon": 10
+  }
+ },
+ "19000612": {
+  "name": "Leutkirch",
+  "sun": {
+   "lat": 47.8,
+   "lon": 10
+  }
+ },
+ "19000724": {
+  "name": "Wendlingen am Neckar",
+  "sun": {
+   "lat": 48.8,
+   "lon": 9.4
+  }
+ },
+ "19000568": {
+  "name": "Gomaringen",
+  "sun": {
+   "lat": 48.5,
+   "lon": 9.1
+  }
+ },
+ "19000588": {
+  "name": "Hufingen",
+  "sun": {
+   "lat": 47.9,
+   "lon": 8.5
+  }
+ },
+ "20100": {
+  "name": "H\u00fcfingen",
+  "sun": {
+   "lat": 47.9,
+   "lon": 8.5
+  }
+ },
+ "19000540": {
+  "name": "Donaueschingen",
+  "sun": {
+   "lat": 48,
+   "lon": 8.5
+  }
+ },
+ "20130": {
+  "name": "L\u00f6rrach",
+  "sun": {
+   "lat": 47.6,
+   "lon": 7.7
+  }
+ },
+ "20091": {
+  "name": "Heilbronn",
+  "sun": {
+   "lat": 49.2,
+   "lon": 9.2
+  }
+ },
+ "20224": {
+  "name": "Ulm",
+  "sun": {
+   "lat": 48.4,
+   "lon": 10
+  }
+ },
+ "20187": {
+  "name": "Reutlingen",
+  "sun": {
+   "lat": 48.5,
+   "lon": 9.2
+  }
+ },
+ "19000723": {
+  "name": "Welzheim",
+  "sun": {
+   "lat": 48.9,
+   "lon": 9.6
+  }
+ },
+ "19000649": {
+  "name": "Oberndorf a.N.",
+  "sun": {
+   "lat": 48.3,
+   "lon": 8.6
+  }
+ },
+ "19000760": {
+  "name": "Burglengenfeld",
+  "sun": {
+   "lat": 49.2,
+   "lon": 12
+  }
+ },
+ "19000916": {
+  "name": "Waldkraiburg",
+  "sun": {
+   "lat": 48.2,
+   "lon": 12.4
+  }
+ },
+ "19000750": {
+  "name": "Badendorf",
+  "sun": {
+   "lat": 48.5,
+   "lon": 11.7
+  }
+ },
+ "19000742": {
+  "name": "Asbach (Lanzing)",
+  "sun": {
+   "lat": 48.5,
+   "lon": 13
+  }
+ },
+ "20146": {
+  "name": "Moosburg",
+  "sun": {
+   "lat": 48.5,
+   "lon": 11.9
+  }
+ },
+ "19000795": {
+  "name": "Gr\u00fcnwald",
+  "sun": {
+   "lat": 48.1,
+   "lon": 11.5
+  }
+ },
+ "19000804": {
+  "name": "Herzogenaurach",
+  "sun": {
+   "lat": 49.6,
+   "lon": 10.9
+  }
+ },
+ "19000823": {
+  "name": "K\u00f6nigsbrunn",
+  "sun": {
+   "lat": 48.3,
+   "lon": 10.9
+  }
+ },
+ "19000761": {
+  "name": "Coburg",
+  "sun": {
+   "lat": 50.3,
+   "lon": 11
+  }
+ },
+ "19000952": {
+  "name": "Luckenwalde",
+  "sun": {
+   "lat": 52.1,
+   "lon": 13.2
+  }
+ },
+ "19000950": {
+  "name": "L\u00fcbben",
+  "sun": {
+   "lat": 51.9,
+   "lon": 13.9
+  }
+ },
+ "19000939": {
+  "name": "Eisenh\u00fcttenstadt",
+  "sun": {
+   "lat": 52.2,
+   "lon": 14.6
+  }
+ },
+ "19000948": {
+  "name": "Kremmen",
+  "sun": {
+   "lat": 52.8,
+   "lon": 13
+  }
+ },
+ "20028": {
+  "name": "Bremen",
+  "sun": {
+   "lat": 53.1,
+   "lon": 8.8
+  }
+ },
+ "19000964": {
+  "name": "Findorf",
+  "sun": {
+   "lat": 53.1,
+   "lon": 8.8
+  }
+ },
+ "20029": {
+  "name": "Bremerhaven",
+  "sun": {
+   "lat": 53.6,
+   "lon": 8.6
+  }
+ },
+ "19001063": {
+  "name": "Neustadt in Hessen",
+  "sun": {
+   "lat": 50.9,
+   "lon": 9.1
+  }
+ },
+ "19000981": {
+  "name": "Bad Vilbel",
+  "sun": {
+   "lat": 50.2,
+   "lon": 8.7
+  }
+ },
+ "19000977": {
+  "name": "Bad Hersfeld",
+  "sun": {
+   "lat": 50.9,
+   "lon": 9.7
+  }
+ },
+ "19001030": {
+  "name": "Heppenheim a.d. Berg",
+  "sun": {
+   "lat": 49.6,
+   "lon": 8.6
+  }
+ },
+ "19001051": {
+  "name": "Lauterbach",
+  "sun": {
+   "lat": 50.6,
+   "lon": 9.4
+  }
+ },
+ "19001080": {
+  "name": "Wachtersbach",
+  "sun": {
+   "lat": 50.3,
+   "lon": 9.3
+  }
+ },
+ "19001011": {
+  "name": "Fl\u00f6rsheim",
+  "sun": {
+   "lat": 50,
+   "lon": 8.4
+  }
+ },
+ "19000982": {
+  "name": "Bad Wildungen",
+  "sun": {
+   "lat": 51.1,
+   "lon": 9.1
+  }
+ },
+ "19001075": {
+  "name": "Sterzhausen",
+  "sun": {
+   "lat": 50.9,
+   "lon": 8.7
+  }
+ },
+ "19001108": {
+  "name": "B\u00f6hmte",
+  "sun": {
+   "lat": 52.4,
+   "lon": 8.3
+  }
+ },
+ "19001214": {
+  "name": "Zeven",
+  "sun": {
+   "lat": 53.3,
+   "lon": 9.3
+  }
+ },
+ "19001139": {
+  "name": "Hannoversch M\u00fcnden",
+  "sun": {
+   "lat": 51.4,
+   "lon": 9.7
+  }
+ },
+ "19001147": {
+  "name": "Isernhagen F.B.",
+  "sun": {
+   "lat": 52.5,
+   "lon": 9.8
+  }
+ },
+ "19001204": {
+  "name": "Walsrode",
+  "sun": {
+   "lat": 52.9,
+   "lon": 9.6
+  }
+ },
+ "19001172": {
+  "name": "Papenburg",
+  "sun": {
+   "lat": 53.1,
+   "lon": 7.4
+  }
+ },
+ "20040": {
+  "name": "Delmenhorst",
+  "sun": {
+   "lat": 53.1,
+   "lon": 8.6
+  }
+ },
+ "19001126": {
+  "name": "Duderstadt",
+  "sun": {
+   "lat": 51.5,
+   "lon": 10.3
+  }
+ },
+ "20068": {
+  "name": "Garbsen",
+  "sun": {
+   "lat": 52.4,
+   "lon": 9.6
+  }
+ },
+ "19001200": {
+  "name": "Uelzen",
+  "sun": {
+   "lat": 53,
+   "lon": 10.6
+  }
+ },
+ "19001090": {
+  "name": "Ludwigslust",
+  "sun": {
+   "lat": 53.3,
+   "lon": 11.5
+  }
+ },
+ "19001092": {
+  "name": "Rostock",
+  "sun": {
+   "lat": 54.1,
+   "lon": 12.1
+  }
+ },
+ "19001282": {
+  "name": "Engelskirchen",
+  "sun": {
+   "lat": 51,
+   "lon": 7.4
+  }
+ },
+ "19001317": {
+  "name": "Haspe",
+  "sun": {
+   "lat": 51.4,
+   "lon": 7.4
+  }
+ },
+ "20071": {
+  "name": "Gelsenkirchen",
+  "sun": {
+   "lat": 51.5,
+   "lon": 7.1
+  }
+ },
+ "19001424": {
+  "name": "Rheinberg",
+  "sun": {
+   "lat": 51.6,
+   "lon": 6.6
+  }
+ },
+ "19001394": {
+  "name": "Neubeckum",
+  "sun": {
+   "lat": 51.8,
+   "lon": 8
+  }
+ },
+ "19001309": {
+  "name": "G\u00fctersloh",
+  "sun": {
+   "lat": 51.9,
+   "lon": 8.4
+  }
+ },
+ "19001453": {
+  "name": "Straelen",
+  "sun": {
+   "lat": 51.5,
+   "lon": 6.3
+  }
+ },
+ "20227": {
+  "name": "Viersen",
+  "sun": {
+   "lat": 51.3,
+   "lon": 6.4
+  }
+ },
+ "19001311": {
+  "name": "Halle (NRW)",
+  "sun": {
+   "lat": 52.1,
+   "lon": 8.4
+  }
+ },
+ "20188": {
+  "name": "Rheda-Wiedenbr\u00fcck",
+  "sun": {
+   "lat": 51.9,
+   "lon": 8.3
+  }
+ },
+ "19001359": {
+  "name": "Kreuztal",
+  "sun": {
+   "lat": 51,
+   "lon": 8
+  }
+ },
+ "20010": {
+  "name": "Bad Salzuflen",
+  "sun": {
+   "lat": 52.1,
+   "lon": 8.7
+  }
+ },
+ "19001515": {
+  "name": "Burgbrohl",
+  "sun": {
+   "lat": 50.5,
+   "lon": 7.3
+  }
+ },
+ "19001532": {
+  "name": "Kirn",
+  "sun": {
+   "lat": 49.8,
+   "lon": 7.5
+  }
+ },
+ "19001555": {
+  "name": "Rockenhausen",
+  "sun": {
+   "lat": 49.6,
+   "lon": 7.8
+  }
+ },
+ "20160": {
+  "name": "Neuwied",
+  "sun": {
+   "lat": 50.4,
+   "lon": 7.5
+  }
+ },
+ "20037": {
+  "name": "Dannstadt",
+  "sun": {
+   "lat": 49.4,
+   "lon": 8.3
+  }
+ },
+ "19001513": {
+  "name": "Budenheim",
+  "sun": {
+   "lat": 50,
+   "lon": 8.2
+  }
+ },
+ "19001580": {
+  "name": "P\u00fcttlingen",
+  "sun": {
+   "lat": 49.3,
+   "lon": 6.9
+  }
+ },
+ "19001573": {
+  "name": "Bexbach",
+  "sun": {
+   "lat": 49.4,
+   "lon": 7.3
+  }
+ },
+ "19001583": {
+  "name": "Saarlouis",
+  "sun": {
+   "lat": 49.3,
+   "lon": 6.8
+  }
+ },
+ "19001588": {
+  "name": "Sulzbach",
+  "sun": {
+   "lat": 49.3,
+   "lon": 7.1
+  }
+ },
+ "19001709": {
+  "name": "Leinefelde",
+  "sun": {
+   "lat": 51.4,
+   "lon": 10.3
+  }
+ },
+ "19001713": {
+  "name": "Strassfurt",
+  "sun": {
+   "lat": 51.2,
+   "lon": 11
+  }
+ },
+ "19001710": {
+  "name": "Ronneburg",
+  "sun": {
+   "lat": 50.9,
+   "lon": 12.2
+  }
+ },
+ "19001608": {
+  "name": "Oschatz",
+  "sun": {
+   "lat": 51.3,
+   "lon": 13.1
+  }
+ },
+ "19001611": {
+  "name": "Plauen",
+  "sun": {
+   "lat": 50.5,
+   "lon": 12.1
+  }
+ },
+ "19001635": {
+  "name": "Oebisfelde",
+  "sun": {
+   "lat": 52.4,
+   "lon": 11
+  }
+ },
+ "19001626": {
+  "name": "Genthin",
+  "sun": {
+   "lat": 52.4,
+   "lon": 12.2
+  }
+ },
+ "19001634": {
+  "name": "Mittweida",
+  "sun": {
+   "lat": 51,
+   "lon": 13
+  }
+ },
+ "20306": {
+  "name": "Magdeburg",
+  "sun": {
+   "lat": 52.1,
+   "lon": 11.6
+  }
+ },
+ "19001674": {
+  "name": "Malente",
+  "sun": {
+   "lat": 54.2,
+   "lon": 10.6
+  }
+ },
+ "19001669": {
+  "name": "Lauenburg",
+  "sun": {
+   "lat": 53.4,
+   "lon": 10.6
+  }
+ },
+ "19001685": {
+  "name": "Quickborn",
+  "sun": {
+   "lat": 53.7,
+   "lon": 9.9
+  }
+ },
+ "19001696": {
+  "name": "Wedel",
+  "sun": {
+   "lat": 53.6,
+   "lon": 9.7
+  }
+ },
+ "19001661": {
+  "name": "Hohenwestedt",
+  "sun": {
+   "lat": 54.1,
+   "lon": 9.7
+  }
+ },
+ "20002": {
+  "name": "Aalen",
+  "sun": {
+   "lat": 48.9,
+   "lon": 10.1
+  }
+ },
+ "20003": {
+  "name": "Achern",
+  "sun": {
+   "lat": 48.6,
+   "lon": 8.1
+  }
+ },
+ "19000502": {
+  "name": "Aidlingen",
+  "sun": {
+   "lat": 48.7,
+   "lon": 8.9
+  }
+ },
+ "19000503": {
+  "name": "Albstadt",
+  "sun": {
+   "lat": 48.2,
+   "lon": 9
+  }
+ },
+ "19000504": {
+  "name": "Allensbach",
+  "sun": {
+   "lat": 47.7,
+   "lon": 9.1
+  }
+ },
+ "19000505": {
+  "name": "Alpirsbach",
+  "sun": {
+   "lat": 48.3,
+   "lon": 8.4
+  }
+ },
+ "19000506": {
+  "name": "Althengstett",
+  "sun": {
+   "lat": 48.7,
+   "lon": 8.8
+  }
+ },
+ "19000507": {
+  "name": "Backnang",
+  "sun": {
+   "lat": 49,
+   "lon": 9.4
+  }
+ },
+ "19000508": {
+  "name": "Bad D\u00fcrrheim",
+  "sun": {
+   "lat": 48,
+   "lon": 8.5
+  }
+ },
+ "19000509": {
+  "name": "Bad Krozingen",
+  "sun": {
+   "lat": 47.9,
+   "lon": 7.7
+  }
+ },
+ "19000510": {
+  "name": "Bad S\u00e4ckingen",
+  "sun": {
+   "lat": 47.6,
+   "lon": 7.9
+  }
+ },
+ "19000511": {
+  "name": "Bad Urach",
+  "sun": {
+   "lat": 48.5,
+   "lon": 9.4
+  }
+ },
+ "19000512": {
+  "name": "Bad Waldsee",
+  "sun": {
+   "lat": 47.9,
+   "lon": 9.8
+  }
+ },
+ "19000513": {
+  "name": "Bad Wurzach",
+  "sun": {
+   "lat": 47.9,
+   "lon": 9.9
+  }
+ },
+ "19000514": {
+  "name": "Baden-Baden",
+  "sun": {
+   "lat": 48.8,
+   "lon": 8.2
+  }
+ },
+ "19000515": {
+  "name": "Bad Schussenried",
+  "sun": {
+   "lat": 48,
+   "lon": 9.7
+  }
+ },
+ "19000516": {
+  "name": "Baiersbronn",
+  "sun": {
+   "lat": 48.5,
+   "lon": 8.4
+  }
+ },
+ "20013": {
+  "name": "Balingen",
+  "sun": {
+   "lat": 48.3,
+   "lon": 8.9
+  }
+ },
+ "19000519": {
+  "name": "Bietigheim-Bissingen",
+  "sun": {
+   "lat": 49,
+   "lon": 9.1
+  }
+ },
+ "19000520": {
+  "name": "Bissingen an der Enz",
+  "sun": {
+   "lat": 48.9,
+   "lon": 9.1
+  }
+ },
+ "20019": {
+  "name": "Blaubeuren",
+  "sun": {
+   "lat": 48.4,
+   "lon": 9.8
+  }
+ },
+ "20020": {
+  "name": "Blumberg",
+  "sun": {
+   "lat": 47.8,
+   "lon": 8.5
+  }
+ },
+ "19000523": {
+  "name": "B\u00f6blingen",
+  "sun": {
+   "lat": 48.7,
+   "lon": 9
+  }
+ },
+ "19000524": {
+  "name": "Bonndorf",
+  "sun": {
+   "lat": 47.8,
+   "lon": 8.3
+  }
+ },
+ "19000525": {
+  "name": "Bopfingen",
+  "sun": {
+   "lat": 48.9,
+   "lon": 10.4
+  }
+ },
+ "19000526": {
+  "name": "Botzingen",
+  "sun": {
+   "lat": 48.1,
+   "lon": 7.7
+  }
+ },
+ "20030": {
+  "name": "Bretten",
+  "sun": {
+   "lat": 49,
+   "lon": 8.7
+  }
+ },
+ "20031": {
+  "name": "Bruchsal",
+  "sun": {
+   "lat": 49.1,
+   "lon": 8.6
+  }
+ },
+ "19000529": {
+  "name": "Buchen",
+  "sun": {
+   "lat": 49.5,
+   "lon": 9.3
+  }
+ },
+ "19000530": {
+  "name": "Buggingen",
+  "sun": {
+   "lat": 47.9,
+   "lon": 7.6
+  }
+ },
+ "19000531": {
+  "name": "B\u00fchl (Baden-Baden)",
+  "sun": {
+   "lat": 48.7,
+   "lon": 8.1
+  }
+ },
+ "19000532": {
+  "name": "Burladingen",
+  "sun": {
+   "lat": 48.3,
+   "lon": 9.1
+  }
+ },
+ "19000534": {
+  "name": "Crailsheim",
+  "sun": {
+   "lat": 49.1,
+   "lon": 10.1
+  }
+ },
+ "19000535": {
+  "name": "Denzlingen",
+  "sun": {
+   "lat": 48.1,
+   "lon": 7.9
+  }
+ },
+ "19000536": {
+  "name": "Dettingen an der Erms",
+  "sun": {
+   "lat": 48.5,
+   "lon": 9.3
+  }
+ },
+ "19000537": {
+  "name": "Dettingen unter Teck",
+  "sun": {
+   "lat": 48.6,
+   "lon": 9.4
+  }
+ },
+ "19000538": {
+  "name": "Dietenheim",
+  "sun": {
+   "lat": 48.2,
+   "lon": 10.1
+  }
+ },
+ "19000539": {
+  "name": "Ditzingen",
+  "sun": {
+   "lat": 48.8,
+   "lon": 9.1
+  }
+ },
+ "19000542": {
+  "name": "Eberbach",
+  "sun": {
+   "lat": 49.5,
+   "lon": 9
+  }
+ },
+ "19000543": {
+  "name": "Ebersbach an der Fils",
+  "sun": {
+   "lat": 48.7,
+   "lon": 9.5
+  }
+ },
+ "20049": {
+  "name": "Ebingen",
+  "sun": {
+   "lat": 48.2,
+   "lon": 9
+  }
+ },
+ "19000545": {
+  "name": "Ehingen (Donau)",
+  "sun": {
+   "lat": 48.3,
+   "lon": 9.7
+  }
+ },
+ "19000546": {
+  "name": "Ehningen",
+  "sun": {
+   "lat": 48.7,
+   "lon": 8.9
+  }
+ },
+ "19000547": {
+  "name": "Eislingen",
+  "sun": {
+   "lat": 48.7,
+   "lon": 9.7
+  }
+ },
+ "19000548": {
+  "name": "Ellwangen",
+  "sun": {
+   "lat": 49,
+   "lon": 10.1
+  }
+ },
+ "19000549": {
+  "name": "Emmendingen",
+  "sun": {
+   "lat": 48.1,
+   "lon": 7.9
+  }
+ },
+ "19000551": {
+  "name": "Eppingen",
+  "sun": {
+   "lat": 49.1,
+   "lon": 8.9
+  }
+ },
+ "19000552": {
+  "name": "Erdmannhausen",
+  "sun": {
+   "lat": 48.9,
+   "lon": 9.3
+  }
+ },
+ "19000554": {
+  "name": "Ettlingen",
+  "sun": {
+   "lat": 48.9,
+   "lon": 8.4
+  }
+ },
+ "19000555": {
+  "name": "Filderstadt",
+  "sun": {
+   "lat": 48.7,
+   "lon": 9.2
+  }
+ },
+ "19000556": {
+  "name": "Forbach",
+  "sun": {
+   "lat": 48.7,
+   "lon": 8.4
+  }
+ },
+ "20064": {
+  "name": "Freiburg",
+  "sun": {
+   "lat": 48,
+   "lon": 7.8
+  }
+ },
+ "19000558": {
+  "name": "Freudenstadt",
+  "sun": {
+   "lat": 48.5,
+   "lon": 8.4
+  }
+ },
+ "20066": {
+  "name": "Friedrichshafen",
+  "sun": {
+   "lat": 47.7,
+   "lon": 9.5
+  }
+ },
+ "19000560": {
+  "name": "Furtwangen",
+  "sun": {
+   "lat": 48.1,
+   "lon": 8.2
+  }
+ },
+ "19000561": {
+  "name": "Gaggenau",
+  "sun": {
+   "lat": 48.8,
+   "lon": 8.3
+  }
+ },
+ "19000562": {
+  "name": "Gaildorf",
+  "sun": {
+   "lat": 49,
+   "lon": 9.8
+  }
+ },
+ "19000563": {
+  "name": "Gammertingen",
+  "sun": {
+   "lat": 48.3,
+   "lon": 9.2
+  }
+ },
+ "19000564": {
+  "name": "Gartringen",
+  "sun": {
+   "lat": 48.7,
+   "lon": 8.9
+  }
+ },
+ "19000565": {
+  "name": "Geislingen an der Steige",
+  "sun": {
+   "lat": 48.6,
+   "lon": 9.8
+  }
+ },
+ "19000566": {
+  "name": "Gengenbach",
+  "sun": {
+   "lat": 48.4,
+   "lon": 8
+  }
+ },
+ "19000567": {
+  "name": "Giengen an der Brenz",
+  "sun": {
+   "lat": 48.6,
+   "lon": 10.2
+  }
+ },
+ "31323993": {
+  "name": "G\u00f6ppingen",
+  "sun": {
+   "lat": 48.7,
+   "lon": 9.7
+  }
+ },
+ "19000570": {
+  "name": "Gottmadingen",
+  "sun": {
+   "lat": 47.7,
+   "lon": 8.8
+  }
+ },
+ "19000571": {
+  "name": "Graben-Neudorf",
+  "sun": {
+   "lat": 49.2,
+   "lon": 8.5
+  }
+ },
+ "19000572": {
+  "name": "Greffern",
+  "sun": {
+   "lat": 48.8,
+   "lon": 8
+  }
+ },
+ "19000574": {
+  "name": "Gundelsheim",
+  "sun": {
+   "lat": 49.3,
+   "lon": 9.2
+  }
+ },
+ "19000575": {
+  "name": "Haigerloch",
+  "sun": {
+   "lat": 48.4,
+   "lon": 8.8
+  }
+ },
+ "19000576": {
+  "name": "Haslach",
+  "sun": {
+   "lat": 48.6,
+   "lon": 8
+  }
+ },
+ "19000577": {
+  "name": "Hechingen",
+  "sun": {
+   "lat": 48.4,
+   "lon": 9
+  }
+ },
+ "20308": {
+  "name": "Heidelberg",
+  "sun": {
+   "lat": 49.4,
+   "lon": 8.7
+  }
+ },
+ "20090": {
+  "name": "Heidenheim",
+  "sun": {
+   "lat": 48.7,
+   "lon": 10.2
+  }
+ },
+ "19000581": {
+  "name": "Hemmingen",
+  "sun": {
+   "lat": 48.9,
+   "lon": 9
+  }
+ },
+ "20095": {
+  "name": "Herrenberg",
+  "sun": {
+   "lat": 48.6,
+   "lon": 8.9
+  }
+ },
+ "19000583": {
+  "name": "Heubach",
+  "sun": {
+   "lat": 48.8,
+   "lon": 9.9
+  }
+ },
+ "19000584": {
+  "name": "Hirsau",
+  "sun": {
+   "lat": 48.7,
+   "lon": 8.7
+  }
+ },
+ "19000585": {
+  "name": "Hockenheim",
+  "sun": {
+   "lat": 49.3,
+   "lon": 8.6
+  }
+ },
+ "19000589": {
+  "name": "Immenstaad",
+  "sun": {
+   "lat": 47.7,
+   "lon": 9.4
+  }
+ },
+ "19000590": {
+  "name": "Isny",
+  "sun": {
+   "lat": 47.7,
+   "lon": 10
+  }
+ },
+ "20106": {
+  "name": "Karlsruhe",
+  "sun": {
+   "lat": 49,
+   "lon": 8.4
+  }
+ },
+ "19000592": {
+  "name": "Kehl",
+  "sun": {
+   "lat": 48.6,
+   "lon": 7.8
+  }
+ },
+ "19000594": {
+  "name": "Kirchheim unter Teck",
+  "sun": {
+   "lat": 48.7,
+   "lon": 9.4
+  }
+ },
+ "19000596": {
+  "name": "K\u00f6ngen",
+  "sun": {
+   "lat": 48.7,
+   "lon": 9.4
+  }
+ },
+ "19000597": {
+  "name": "Konstanz",
+  "sun": {
+   "lat": 47.7,
+   "lon": 9.2
+  }
+ },
+ "19000598": {
+  "name": "Kornwestheim",
+  "sun": {
+   "lat": 48.9,
+   "lon": 9.2
+  }
+ },
+ "19000599": {
+  "name": "Kressbronn",
+  "sun": {
+   "lat": 47.6,
+   "lon": 9.6
+  }
+ },
+ "19000600": {
+  "name": "Kusterdingen",
+  "sun": {
+   "lat": 48.5,
+   "lon": 9.1
+  }
+ },
+ "19000601": {
+  "name": "Ladenburg",
+  "sun": {
+   "lat": 49.5,
+   "lon": 8.6
+  }
+ },
+ "204723448": {
+  "name": "Laichingen",
+  "sun": {
+   "lat": 48.5,
+   "lon": 9.7
+  }
+ },
+ "19000604": {
+  "name": "Langenargen",
+  "sun": {
+   "lat": 47.6,
+   "lon": 9.5
+  }
+ },
+ "19000606": {
+  "name": "Lauda",
+  "sun": {
+   "lat": 49.6,
+   "lon": 9.7
+  }
+ },
+ "19000608": {
+  "name": "Laupheim",
+  "sun": {
+   "lat": 48.2,
+   "lon": 9.9
+  }
+ },
+ "19000609": {
+  "name": "Leimen",
+  "sun": {
+   "lat": 49.4,
+   "lon": 8.7
+  }
+ },
+ "19000610": {
+  "name": "Leinfelden-Echterdingen",
+  "sun": {
+   "lat": 48.7,
+   "lon": 9.1
+  }
+ },
+ "19000611": {
+  "name": "Leonberg",
+  "sun": {
+   "lat": 48.8,
+   "lon": 9
+  }
+ },
+ "19000613": {
+  "name": "Lipbach",
+  "sun": {
+   "lat": 47.7,
+   "lon": 9.4
+  }
+ },
+ "19000615": {
+  "name": "Lonsee",
+  "sun": {
+   "lat": 48.5,
+   "lon": 9.9
+  }
+ },
+ "19000616": {
+  "name": "Lorch",
+  "sun": {
+   "lat": 48.8,
+   "lon": 9.7
+  }
+ },
+ "19000618": {
+  "name": "Lossburg",
+  "sun": {
+   "lat": 48.4,
+   "lon": 8.5
+  }
+ },
+ "20132": {
+  "name": "Ludwigsburg",
+  "sun": {
+   "lat": 48.9,
+   "lon": 9.2
+  }
+ },
+ "19000620": {
+  "name": "Magstadt",
+  "sun": {
+   "lat": 48.7,
+   "lon": 9
+  }
+ },
+ "19000621": {
+  "name": "Maichingen",
+  "sun": {
+   "lat": 48.7,
+   "lon": 9
+  }
+ },
+ "20137": {
+  "name": "Mannheim",
+  "sun": {
+   "lat": 49.5,
+   "lon": 8.5
+  }
+ },
+ "19000623": {
+  "name": "Marbach am Neckar",
+  "sun": {
+   "lat": 48.9,
+   "lon": 9.3
+  }
+ },
+ "19000624": {
+  "name": "Markdorf",
+  "sun": {
+   "lat": 47.7,
+   "lon": 9.4
+  }
+ },
+ "19000625": {
+  "name": "Markgr\u00f6ningen",
+  "sun": {
+   "lat": 48.9,
+   "lon": 9.1
+  }
+ },
+ "19000626": {
+  "name": "Maulbronn",
+  "sun": {
+   "lat": 49,
+   "lon": 8.8
+  }
+ },
+ "19000627": {
+  "name": "Meckenbeuren",
+  "sun": {
+   "lat": 47.7,
+   "lon": 9.6
+  }
+ },
+ "19000628": {
+  "name": "Mengen",
+  "sun": {
+   "lat": 48.1,
+   "lon": 9.3
+  }
+ },
+ "19000629": {
+  "name": "Messkirch",
+  "sun": {
+   "lat": 48,
+   "lon": 9.1
+  }
+ },
+ "19000630": {
+  "name": "Metzingen",
+  "sun": {
+   "lat": 48.5,
+   "lon": 9.3
+  }
+ },
+ "19000631": {
+  "name": "M\u00f6glingen",
+  "sun": {
+   "lat": 48.9,
+   "lon": 9.1
+  }
+ },
+ "19000632": {
+  "name": "Mosbach",
+  "sun": {
+   "lat": 49.4,
+   "lon": 9.1
+  }
+ },
+ "20147": {
+  "name": "M\u00f6ssingen",
+  "sun": {
+   "lat": 48.4,
+   "lon": 9.1
+  }
+ },
+ "20148": {
+  "name": "M\u00fchlacker",
+  "sun": {
+   "lat": 49,
+   "lon": 8.8
+  }
+ },
+ "19000635": {
+  "name": "M\u00fchlhofen",
+  "sun": {
+   "lat": 47.8,
+   "lon": 9.3
+  }
+ },
+ "19000636": {
+  "name": "M\u00fcllheim",
+  "sun": {
+   "lat": 47.8,
+   "lon": 7.6
+  }
+ },
+ "19000637": {
+  "name": "Munderkingen",
+  "sun": {
+   "lat": 48.2,
+   "lon": 9.6
+  }
+ },
+ "19000638": {
+  "name": "M\u00fcnsingen",
+  "sun": {
+   "lat": 48.4,
+   "lon": 9.5
+  }
+ },
+ "19000639": {
+  "name": "Murrhardt",
+  "sun": {
+   "lat": 49,
+   "lon": 9.6
+  }
+ },
+ "19000640": {
+  "name": "Mutlangen",
+  "sun": {
+   "lat": 48.8,
+   "lon": 9.8
+  }
+ },
+ "20153": {
+  "name": "Nagold",
+  "sun": {
+   "lat": 48.6,
+   "lon": 8.7
+  }
+ },
+ "19000642": {
+  "name": "Neckarsulm",
+  "sun": {
+   "lat": 49.1,
+   "lon": 9.2
+  }
+ },
+ "19000643": {
+  "name": "Nellingen a.D. Filder",
+  "sun": {
+   "lat": 48.7,
+   "lon": 9.3
+  }
+ },
+ "19000644": {
+  "name": "Neresheim",
+  "sun": {
+   "lat": 48.8,
+   "lon": 10.3
+  }
+ },
+ "19000645": {
+  "name": "Neudorf (Germersheim)",
+  "sun": {
+   "lat": 49.2,
+   "lon": 8.5
+  }
+ },
+ "20163": {
+  "name": "N\u00fcrtingen",
+  "sun": {
+   "lat": 48.6,
+   "lon": 9.3
+  }
+ },
+ "19000647": {
+  "name": "Oberderdingen",
+  "sun": {
+   "lat": 49.1,
+   "lon": 8.8
+  }
+ },
+ "19000650": {
+  "name": "Oberstenfeld / W\u00fcrtt",
+  "sun": {
+   "lat": 49,
+   "lon": 9.3
+  }
+ },
+ "19000651": {
+  "name": "Offenburg",
+  "sun": {
+   "lat": 48.5,
+   "lon": 7.9
+  }
+ },
+ "19000652": {
+  "name": "\u00d6hringen",
+  "sun": {
+   "lat": 49.2,
+   "lon": 9.5
+  }
+ },
+ "19000653": {
+  "name": "Ostfildern",
+  "sun": {
+   "lat": 48.7,
+   "lon": 9.3
+  }
+ },
+ "20171": {
+  "name": "\u00d6stringen",
+  "sun": {
+   "lat": 49.2,
+   "lon": 8.7
+  }
+ },
+ "19000655": {
+  "name": "Pfalzgrafenweiler",
+  "sun": {
+   "lat": 48.5,
+   "lon": 8.6
+  }
+ },
+ "20175": {
+  "name": "Pforzheim",
+  "sun": {
+   "lat": 48.9,
+   "lon": 8.7
+  }
+ },
+ "19000657": {
+  "name": "Pfullendorf",
+  "sun": {
+   "lat": 47.9,
+   "lon": 9.3
+  }
+ },
+ "19000658": {
+  "name": "Pfullingen",
+  "sun": {
+   "lat": 48.5,
+   "lon": 9.2
+  }
+ },
+ "20177": {
+  "name": "Philippsburg",
+  "sun": {
+   "lat": 49.2,
+   "lon": 8.4
+  }
+ },
+ "19000660": {
+  "name": "Plochingen",
+  "sun": {
+   "lat": 48.7,
+   "lon": 9.4
+  }
+ },
+ "19000661": {
+  "name": "Radolfzell",
+  "sun": {
+   "lat": 47.7,
+   "lon": 9
+  }
+ },
+ "20179": {
+  "name": "Rastatt",
+  "sun": {
+   "lat": 48.9,
+   "lon": 8.2
+  }
+ },
+ "20182": {
+  "name": "Ravensburg",
+  "sun": {
+   "lat": 47.8,
+   "lon": 9.6
+  }
+ },
+ "19000664": {
+  "name": "Renchen",
+  "sun": {
+   "lat": 48.6,
+   "lon": 8
+  }
+ },
+ "19000665": {
+  "name": "Renningen",
+  "sun": {
+   "lat": 48.8,
+   "lon": 8.9
+  }
+ },
+ "19000667": {
+  "name": "Rheinfelden (Karsau)",
+  "sun": {
+   "lat": 47.6,
+   "lon": 7.8
+  }
+ },
+ "19000668": {
+  "name": "Rottenburg",
+  "sun": {
+   "lat": 48.5,
+   "lon": 8.9
+  }
+ },
+ "19000669": {
+  "name": "Rottweil",
+  "sun": {
+   "lat": 48.2,
+   "lon": 8.6
+  }
+ },
+ "19000670": {
+  "name": "Sachsenheim",
+  "sun": {
+   "lat": 49,
+   "lon": 9.1
+  }
+ },
+ "19000671": {
+  "name": "Salem",
+  "sun": {
+   "lat": 47.8,
+   "lon": 9.3
+  }
+ },
+ "19000672": {
+  "name": "Saulgau",
+  "sun": {
+   "lat": 48,
+   "lon": 9.5
+  }
+ },
+ "19000673": {
+  "name": "Sch\u00f6mberg",
+  "sun": {
+   "lat": 48.8,
+   "lon": 8.6
+  }
+ },
+ "19000674": {
+  "name": "Schopfheim",
+  "sun": {
+   "lat": 47.7,
+   "lon": 7.8
+  }
+ },
+ "1534": {
+  "name": "Schorndorf",
+  "sun": {
+   "lat": 48.8,
+   "lon": 9.5
+  }
+ },
+ "19000676": {
+  "name": "Schramberg",
+  "sun": {
+   "lat": 48.2,
+   "lon": 8.4
+  }
+ },
+ "19000677": {
+  "name": "Schriesheim",
+  "sun": {
+   "lat": 49.5,
+   "lon": 8.7
+  }
+ },
+ "19000678": {
+  "name": "Schutterwald",
+  "sun": {
+   "lat": 48.5,
+   "lon": 7.9
+  }
+ },
+ "20199": {
+  "name": "Schw\u00e4bisch Gm\u00fcnd",
+  "sun": {
+   "lat": 48.8,
+   "lon": 9.8
+  }
+ },
+ "19000680": {
+  "name": "Schw\u00e4bisch Hall",
+  "sun": {
+   "lat": 49.1,
+   "lon": 9.7
+  }
+ },
+ "19000681": {
+  "name": "Schwaikheim",
+  "sun": {
+   "lat": 48.9,
+   "lon": 9.4
+  }
+ },
+ "19000682": {
+  "name": "Schwaningen",
+  "sun": {
+   "lat": 47.8,
+   "lon": 8.4
+  }
+ },
+ "19000683": {
+  "name": "Schwetzingen",
+  "sun": {
+   "lat": 49.4,
+   "lon": 8.6
+  }
+ },
+ "19000684": {
+  "name": "Sigmaringen",
+  "sun": {
+   "lat": 48.1,
+   "lon": 9.2
+  }
+ },
+ "20204": {
+  "name": "Sindelfingen",
+  "sun": {
+   "lat": 48.7,
+   "lon": 9
+  }
+ },
+ "19000686": {
+  "name": "Singen",
+  "sun": {
+   "lat": 47.8,
+   "lon": 8.8
+  }
+ },
+ "20205": {
+  "name": "Sinsheim",
+  "sun": {
+   "lat": 49.3,
+   "lon": 8.9
+  }
+ },
+ "19000688": {
+  "name": "Sontheim",
+  "sun": {
+   "lat": 49.1,
+   "lon": 9.2
+  }
+ },
+ "19000689": {
+  "name": "Sontheim an der Brenz",
+  "sun": {
+   "lat": 48.6,
+   "lon": 10.3
+  }
+ },
+ "19000690": {
+  "name": "Spaichingen",
+  "sun": {
+   "lat": 48.1,
+   "lon": 8.7
+  }
+ },
+ "19000691": {
+  "name": "Stockach (Konstanz)",
+  "sun": {
+   "lat": 47.9,
+   "lon": 9
+  }
+ },
+ "20216": {
+  "name": "Stuttgart",
+  "sun": {
+   "lat": 48.8,
+   "lon": 9.2
+  }
+ },
+ "19000693": {
+  "name": "Sulz am Neckar",
+  "sun": {
+   "lat": 48.4,
+   "lon": 8.6
+  }
+ },
+ "19000695": {
+  "name": "Tauberbischofsheim",
+  "sun": {
+   "lat": 49.6,
+   "lon": 9.7
+  }
+ },
+ "19000696": {
+  "name": "Tettnang",
+  "sun": {
+   "lat": 47.7,
+   "lon": 9.6
+  }
+ },
+ "19000697": {
+  "name": "Titisee-Neustadt",
+  "sun": {
+   "lat": 47.9,
+   "lon": 8.2
+  }
+ },
+ "20220": {
+  "name": "Triberg",
+  "sun": {
+   "lat": 48.1,
+   "lon": 8.2
+  }
+ },
+ "19000699": {
+  "name": "Trossingen",
+  "sun": {
+   "lat": 48.1,
+   "lon": 8.6
+  }
+ },
+ "20222": {
+  "name": "T\u00fcbingen",
+  "sun": {
+   "lat": 48.5,
+   "lon": 9.1
+  }
+ },
+ "20223": {
+  "name": "Tuttlingen",
+  "sun": {
+   "lat": 48,
+   "lon": 8.8
+  }
+ },
+ "19000702": {
+  "name": "\u00dcberlingen",
+  "sun": {
+   "lat": 47.8,
+   "lon": 9.2
+  }
+ },
+ "19000703": {
+  "name": "Uhingen",
+  "sun": {
+   "lat": 48.7,
+   "lon": 9.6
+  }
+ },
+ "19000706": {
+  "name": "Urach",
+  "sun": {
+   "lat": 48,
+   "lon": 8.2
+  }
+ },
+ "19000707": {
+  "name": "Urbach",
+  "sun": {
+   "lat": 48.8,
+   "lon": 9.6
+  }
+ },
+ "19000708": {
+  "name": "Vaihingen an der Enz",
+  "sun": {
+   "lat": 48.9,
+   "lon": 9
+  }
+ },
+ "20230": {
+  "name": "Waiblingen",
+  "sun": {
+   "lat": 48.8,
+   "lon": 9.3
+  }
+ },
+ "19000712": {
+  "name": "Waldenbuch",
+  "sun": {
+   "lat": 48.6,
+   "lon": 9.1
+  }
+ },
+ "19000713": {
+  "name": "Waldkirch (Freiburg)",
+  "sun": {
+   "lat": 48.1,
+   "lon": 8
+  }
+ },
+ "19000714": {
+  "name": "Waldshut-Tiengen",
+  "sun": {
+   "lat": 47.6,
+   "lon": 8.2
+  }
+ },
+ "20231": {
+  "name": "Walldorf",
+  "sun": {
+   "lat": 49.3,
+   "lon": 8.6
+  }
+ },
+ "19000716": {
+  "name": "Walld\u00fcrn",
+  "sun": {
+   "lat": 49.6,
+   "lon": 9.4
+  }
+ },
+ "20232": {
+  "name": "Wangen im Allg\u00e4u",
+  "sun": {
+   "lat": 47.7,
+   "lon": 9.8
+  }
+ },
+ "19000718": {
+  "name": "Wehingen",
+  "sun": {
+   "lat": 48.1,
+   "lon": 8.8
+  }
+ },
+ "19000719": {
+  "name": "Weil am Rhein",
+  "sun": {
+   "lat": 47.6,
+   "lon": 7.6
+  }
+ },
+ "19000720": {
+  "name": "Weil der Stadt",
+  "sun": {
+   "lat": 48.8,
+   "lon": 8.9
+  }
+ },
+ "19000721": {
+  "name": "Weingarten",
+  "sun": {
+   "lat": 47.8,
+   "lon": 9.6
+  }
+ },
+ "19000722": {
+  "name": "Weinheim",
+  "sun": {
+   "lat": 49.6,
+   "lon": 8.7
+  }
+ },
+ "19000725": {
+  "name": "Wernau",
+  "sun": {
+   "lat": 48.7,
+   "lon": 9.4
+  }
+ },
+ "19000726": {
+  "name": "Wertheim",
+  "sun": {
+   "lat": 49.8,
+   "lon": 9.5
+  }
+ },
+ "19000727": {
+  "name": "Wiesloch",
+  "sun": {
+   "lat": 49.3,
+   "lon": 8.7
+  }
+ },
+ "19000729": {
+  "name": "Wildberg",
+  "sun": {
+   "lat": 48.6,
+   "lon": 8.8
+  }
+ },
+ "19000730": {
+  "name": "Willst\u00e4tt",
+  "sun": {
+   "lat": 48.5,
+   "lon": 7.9
+  }
+ },
+ "19000731": {
+  "name": "Winnenden",
+  "sun": {
+   "lat": 48.9,
+   "lon": 9.4
+  }
+ },
+ "19000732": {
+  "name": "Winterlingen",
+  "sun": {
+   "lat": 48.2,
+   "lon": 9.1
+  }
+ },
+ "20005": {
+  "name": "Aichach",
+  "sun": {
+   "lat": 48.5,
+   "lon": 11.1
+  }
+ },
+ "19000734": {
+  "name": "Allach",
+  "sun": {
+   "lat": 48.2,
+   "lon": 11.4
+  }
+ },
+ "19000735": {
+  "name": "Allersberg",
+  "sun": {
+   "lat": 49.3,
+   "lon": 11.2
+  }
+ },
+ "19000736": {
+  "name": "Altdorf b. N\u00fcrnberg",
+  "sun": {
+   "lat": 49.4,
+   "lon": 11.3
+  }
+ },
+ "19000737": {
+  "name": "Altenerding",
+  "sun": {
+   "lat": 48.3,
+   "lon": 11.9
+  }
+ },
+ "20007": {
+  "name": "Alzenau",
+  "sun": {
+   "lat": 50.1,
+   "lon": 9.1
+  }
+ },
+ "19000739": {
+  "name": "Amberg",
+  "sun": {
+   "lat": 49.5,
+   "lon": 11.9
+  }
+ },
+ "618": {
+  "name": "Ansbach",
+  "sun": {
+   "lat": 49.3,
+   "lon": 10.6
+  }
+ },
+ "19000741": {
+  "name": "Arnstorf",
+  "sun": {
+   "lat": 48.6,
+   "lon": 12.8
+  }
+ },
+ "20008": {
+  "name": "Aschaffenburg",
+  "sun": {
+   "lat": 50,
+   "lon": 9.2
+  }
+ },
+ "20009": {
+  "name": "Augsburg",
+  "sun": {
+   "lat": 48.4,
+   "lon": 10.9
+  }
+ },
+ "19000746": {
+  "name": "Ay",
+  "sun": {
+   "lat": 48.3,
+   "lon": 10
+  }
+ },
+ "19000749": {
+  "name": "Bad Windsheim",
+  "sun": {
+   "lat": 49.5,
+   "lon": 10.4
+  }
+ },
+ "616": {
+  "name": "Bamberg",
+  "sun": {
+   "lat": 49.9,
+   "lon": 10.9
+  }
+ },
+ "615": {
+  "name": "Bayreuth",
+  "sun": {
+   "lat": 50,
+   "lon": 11.6
+  }
+ },
+ "19000753": {
+  "name": "Beilngries",
+  "sun": {
+   "lat": 49,
+   "lon": 11.5
+  }
+ },
+ "20021": {
+  "name": "Bobingen",
+  "sun": {
+   "lat": 48.3,
+   "lon": 10.8
+  }
+ },
+ "20032": {
+  "name": "Bruckm\u00fchl",
+  "sun": {
+   "lat": 47.9,
+   "lon": 11.9
+  }
+ },
+ "19000756": {
+  "name": "Buchloe",
+  "sun": {
+   "lat": 48,
+   "lon": 10.7
+  }
+ },
+ "19000757": {
+  "name": "Burgau",
+  "sun": {
+   "lat": 48.4,
+   "lon": 10.4
+  }
+ },
+ "210082123": {
+  "name": "Burghausen",
+  "sun": {
+   "lat": 48.2,
+   "lon": 12.8
+  }
+ },
+ "19000759": {
+  "name": "Burgkirchen an der Alz",
+  "sun": {
+   "lat": 48.2,
+   "lon": 12.7
+  }
+ },
+ "19000762": {
+  "name": "Dachau",
+  "sun": {
+   "lat": 48.3,
+   "lon": 11.4
+  }
+ },
+ "20039": {
+  "name": "Deggendorf",
+  "sun": {
+   "lat": 48.8,
+   "lon": 13
+  }
+ },
+ "19000764": {
+  "name": "Dietenhofen",
+  "sun": {
+   "lat": 49.4,
+   "lon": 10.7
+  }
+ },
+ "19000765": {
+  "name": "Dillingen an der Donau",
+  "sun": {
+   "lat": 48.6,
+   "lon": 10.5
+  }
+ },
+ "19000766": {
+  "name": "Dingolfing",
+  "sun": {
+   "lat": 48.6,
+   "lon": 12.5
+  }
+ },
+ "19000767": {
+  "name": "Donauw\u00f6rth",
+  "sun": {
+   "lat": 48.7,
+   "lon": 10.8
+  }
+ },
+ "19000769": {
+  "name": "Ebrach (W\u00fcrzburg)",
+  "sun": {
+   "lat": 49.8,
+   "lon": 10.5
+  }
+ },
+ "19000770": {
+  "name": "Eichst\u00e4tt",
+  "sun": {
+   "lat": 48.9,
+   "lon": 11.2
+  }
+ },
+ "20053": {
+  "name": "Elsenfeld",
+  "sun": {
+   "lat": 49.8,
+   "lon": 9.2
+  }
+ },
+ "20055": {
+  "name": "Erding",
+  "sun": {
+   "lat": 48.3,
+   "lon": 11.9
+  }
+ },
+ "19000773": {
+  "name": "Ergoldsbach",
+  "sun": {
+   "lat": 48.7,
+   "lon": 12.2
+  }
+ },
+ "623": {
+  "name": "Erlangen",
+  "sun": {
+   "lat": 49.6,
+   "lon": 11
+  }
+ },
+ "19000775": {
+  "name": "Erlenbach am Main",
+  "sun": {
+   "lat": 49.8,
+   "lon": 9.2
+  }
+ },
+ "19000776": {
+  "name": "Essenbach (Landshut)",
+  "sun": {
+   "lat": 48.6,
+   "lon": 12.2
+  }
+ },
+ "620": {
+  "name": "Feuchtwangen",
+  "sun": {
+   "lat": 49.2,
+   "lon": 10.3
+  }
+ },
+ "20065": {
+  "name": "Freising",
+  "sun": {
+   "lat": 48.4,
+   "lon": 11.7
+  }
+ },
+ "19000781": {
+  "name": "Freystadt",
+  "sun": {
+   "lat": 49.2,
+   "lon": 11.3
+  }
+ },
+ "20067": {
+  "name": "F\u00fcrstenfeldbr\u00fcck",
+  "sun": {
+   "lat": 48.2,
+   "lon": 11.2
+  }
+ },
+ "19000784": {
+  "name": "F\u00fcrth",
+  "sun": {
+   "lat": 49.5,
+   "lon": 11
+  }
+ },
+ "19000785": {
+  "name": "F\u00fcssen",
+  "sun": {
+   "lat": 47.6,
+   "lon": 10.7
+  }
+ },
+ "19000786": {
+  "name": "Garching",
+  "sun": {
+   "lat": 48.2,
+   "lon": 11.7
+  }
+ },
+ "19000788": {
+  "name": "Gauting",
+  "sun": {
+   "lat": 48.1,
+   "lon": 11.4
+  }
+ },
+ "19000789": {
+  "name": "Geisenfeld",
+  "sun": {
+   "lat": 48.7,
+   "lon": 11.6
+  }
+ },
+ "19000790": {
+  "name": "Geretsried",
+  "sun": {
+   "lat": 47.9,
+   "lon": 11.5
+  }
+ },
+ "19000791": {
+  "name": "Germering",
+  "sun": {
+   "lat": 48.1,
+   "lon": 11.4
+  }
+ },
+ "19000792": {
+  "name": "Gersthofen",
+  "sun": {
+   "lat": 48.4,
+   "lon": 10.9
+  }
+ },
+ "19000793": {
+  "name": "Gilching",
+  "sun": {
+   "lat": 48.1,
+   "lon": 11.3
+  }
+ },
+ "20080": {
+  "name": "G\u00fcnzburg",
+  "sun": {
+   "lat": 48.5,
+   "lon": 10.3
+  }
+ },
+ "19000797": {
+  "name": "Gunzenhausen",
+  "sun": {
+   "lat": 49.1,
+   "lon": 10.8
+  }
+ },
+ "19000802": {
+  "name": "Helmbrechts",
+  "sun": {
+   "lat": 50.2,
+   "lon": 11.7
+  }
+ },
+ "20096": {
+  "name": "Hersbruck",
+  "sun": {
+   "lat": 49.5,
+   "lon": 11.4
+  }
+ },
+ "20099": {
+  "name": "Hof",
+  "sun": {
+   "lat": 50.3,
+   "lon": 11.9
+  }
+ },
+ "19000806": {
+  "name": "Horgau",
+  "sun": {
+   "lat": 48.4,
+   "lon": 10.7
+  }
+ },
+ "19000807": {
+  "name": "H\u00f6sbach",
+  "sun": {
+   "lat": 50,
+   "lon": 9.2
+  }
+ },
+ "19000808": {
+  "name": "Ichenhausen",
+  "sun": {
+   "lat": 48.4,
+   "lon": 10.3
+  }
+ },
+ "20102": {
+  "name": "Illertissen",
+  "sun": {
+   "lat": 48.2,
+   "lon": 10.1
+  }
+ },
+ "19000811": {
+  "name": "Immenstadt",
+  "sun": {
+   "lat": 47.6,
+   "lon": 10.2
+  }
+ },
+ "20103": {
+  "name": "Ingolstadt",
+  "sun": {
+   "lat": 48.8,
+   "lon": 11.4
+  }
+ },
+ "19000813": {
+  "name": "Inningen",
+  "sun": {
+   "lat": 48.3,
+   "lon": 10.9
+  }
+ },
+ "19000814": {
+  "name": "Karlstadt",
+  "sun": {
+   "lat": 50,
+   "lon": 9.8
+  }
+ },
+ "19000815": {
+  "name": "Kaufbeuren",
+  "sun": {
+   "lat": 47.9,
+   "lon": 10.6
+  }
+ },
+ "19000816": {
+  "name": "Kelheim",
+  "sun": {
+   "lat": 48.9,
+   "lon": 11.9
+  }
+ },
+ "20109": {
+  "name": "Kempten",
+  "sun": {
+   "lat": 47.7,
+   "lon": 10.3
+  }
+ },
+ "19000818": {
+  "name": "Kipfenberg",
+  "sun": {
+   "lat": 48.9,
+   "lon": 11.4
+  }
+ },
+ "19000819": {
+  "name": "Kirchseeon",
+  "sun": {
+   "lat": 48.1,
+   "lon": 11.9
+  }
+ },
+ "19000820": {
+  "name": "Kitzingen",
+  "sun": {
+   "lat": 49.7,
+   "lon": 10.2
+  }
+ },
+ "19000821": {
+  "name": "Kolbermoor",
+  "sun": {
+   "lat": 47.9,
+   "lon": 12.1
+  }
+ },
+ "20114": {
+  "name": "Krumbach",
+  "sun": {
+   "lat": 48.3,
+   "lon": 10.4
+  }
+ },
+ "19000825": {
+  "name": "Kulmbach",
+  "sun": {
+   "lat": 50.1,
+   "lon": 11.4
+  }
+ },
+ "19000826": {
+  "name": "Landau an der Isar",
+  "sun": {
+   "lat": 48.7,
+   "lon": 12.7
+  }
+ },
+ "19000827": {
+  "name": "Landsberg am Lech",
+  "sun": {
+   "lat": 48.1,
+   "lon": 10.9
+  }
+ },
+ "20117": {
+  "name": "Landshut",
+  "sun": {
+   "lat": 48.5,
+   "lon": 12.1
+  }
+ },
+ "19000829": {
+  "name": "Langquaid",
+  "sun": {
+   "lat": 48.8,
+   "lon": 12.1
+  }
+ },
+ "19000830": {
+  "name": "Langweid",
+  "sun": {
+   "lat": 48.5,
+   "lon": 10.9
+  }
+ },
+ "19000831": {
+  "name": "Lappersdorf",
+  "sun": {
+   "lat": 49.1,
+   "lon": 12.1
+  }
+ },
+ "19000833": {
+  "name": "Laufach",
+  "sun": {
+   "lat": 50,
+   "lon": 9.3
+  }
+ },
+ "19000834": {
+  "name": "Lauingen",
+  "sun": {
+   "lat": 48.6,
+   "lon": 10.4
+  }
+ },
+ "19000835": {
+  "name": "Leipheim",
+  "sun": {
+   "lat": 48.5,
+   "lon": 10.2
+  }
+ },
+ "19000836": {
+  "name": "Lichtenfels",
+  "sun": {
+   "lat": 50.2,
+   "lon": 11.1
+  }
+ },
+ "19000838": {
+  "name": "Lindenberg im Allg\u00e4u",
+  "sun": {
+   "lat": 47.6,
+   "lon": 9.9
+  }
+ },
+ "20135": {
+  "name": "Mainburg",
+  "sun": {
+   "lat": 48.7,
+   "lon": 11.8
+  }
+ },
+ "19000840": {
+  "name": "Markt Erlbach",
+  "sun": {
+   "lat": 49.5,
+   "lon": 10.6
+  }
+ },
+ "19000841": {
+  "name": "Markt Schwaben",
+  "sun": {
+   "lat": 48.2,
+   "lon": 11.9
+  }
+ },
+ "19000842": {
+  "name": "Marktheidenfeld",
+  "sun": {
+   "lat": 49.9,
+   "lon": 9.6
+  }
+ },
+ "19000843": {
+  "name": "Marktoberdorf",
+  "sun": {
+   "lat": 47.8,
+   "lon": 10.6
+  }
+ },
+ "19000844": {
+  "name": "Marktredwitz",
+  "sun": {
+   "lat": 50,
+   "lon": 12.1
+  }
+ },
+ "19000845": {
+  "name": "Memmingen",
+  "sun": {
+   "lat": 48,
+   "lon": 10.2
+  }
+ },
+ "19000846": {
+  "name": "Miesbach",
+  "sun": {
+   "lat": 47.8,
+   "lon": 11.8
+  }
+ },
+ "19000847": {
+  "name": "Miltenberg",
+  "sun": {
+   "lat": 49.7,
+   "lon": 9.3
+  }
+ },
+ "19000848": {
+  "name": "Mindelheim",
+  "sun": {
+   "lat": 48.1,
+   "lon": 10.5
+  }
+ },
+ "19000850": {
+  "name": "Momlingen",
+  "sun": {
+   "lat": 49.9,
+   "lon": 9.1
+  }
+ },
+ "19000853": {
+  "name": "M\u00fcnchberg",
+  "sun": {
+   "lat": 50.2,
+   "lon": 11.8
+  }
+ },
+ "20151": {
+  "name": "M\u00fcnchen",
+  "sun": {
+   "lat": 48.1,
+   "lon": 11.6
+  }
+ },
+ "19000855": {
+  "name": "Murnau",
+  "sun": {
+   "lat": 47.7,
+   "lon": 11.2
+  }
+ },
+ "19000856": {
+  "name": "Naila",
+  "sun": {
+   "lat": 50.3,
+   "lon": 11.7
+  }
+ },
+ "19000857": {
+  "name": "Nersingen",
+  "sun": {
+   "lat": 48.4,
+   "lon": 10.1
+  }
+ },
+ "20159": {
+  "name": "Neu-Ulm",
+  "sun": {
+   "lat": 48.4,
+   "lon": 10
+  }
+ },
+ "19000859": {
+  "name": "Neuburg an der Donau",
+  "sun": {
+   "lat": 48.7,
+   "lon": 11.2
+  }
+ },
+ "19000860": {
+  "name": "Neufahrn in Niederbayern",
+  "sun": {
+   "lat": 48.7,
+   "lon": 12.2
+  }
+ },
+ "19000862": {
+  "name": "Neunburg vorm Wald",
+  "sun": {
+   "lat": 49.3,
+   "lon": 12.4
+  }
+ },
+ "19000863": {
+  "name": "Neuses",
+  "sun": {
+   "lat": 48.4,
+   "lon": 10.8
+  }
+ },
+ "19000864": {
+  "name": "Neustadt b. Coburg",
+  "sun": {
+   "lat": 50.3,
+   "lon": 11.1
+  }
+ },
+ "19000865": {
+  "name": "Neutraubling",
+  "sun": {
+   "lat": 49,
+   "lon": 12.2
+  }
+ },
+ "19000866": {
+  "name": "N\u00f6rdlingen",
+  "sun": {
+   "lat": 48.9,
+   "lon": 10.5
+  }
+ },
+ "20162": {
+  "name": "N\u00fcrnberg",
+  "sun": {
+   "lat": 49.5,
+   "lon": 11.1
+  }
+ },
+ "19000868": {
+  "name": "Oberasbach",
+  "sun": {
+   "lat": 49.4,
+   "lon": 11
+  }
+ },
+ "19000869": {
+  "name": "Oberkotzau",
+  "sun": {
+   "lat": 50.3,
+   "lon": 11.9
+  }
+ },
+ "19000870": {
+  "name": "Ochsenfurt",
+  "sun": {
+   "lat": 49.7,
+   "lon": 10.1
+  }
+ },
+ "19000871": {
+  "name": "Olching",
+  "sun": {
+   "lat": 48.2,
+   "lon": 11.3
+  }
+ },
+ "19000872": {
+  "name": "Olsnitz",
+  "sun": {
+   "lat": 50.3,
+   "lon": 11.9
+  }
+ },
+ "19000873": {
+  "name": "Ortenburg",
+  "sun": {
+   "lat": 48.6,
+   "lon": 13.2
+  }
+ },
+ "19000874": {
+  "name": "Ottobrunn",
+  "sun": {
+   "lat": 48.1,
+   "lon": 11.7
+  }
+ },
+ "19000875": {
+  "name": "Parsberg",
+  "sun": {
+   "lat": 49.2,
+   "lon": 11.7
+  }
+ },
+ "19000876": {
+  "name": "Passau",
+  "sun": {
+   "lat": 48.6,
+   "lon": 13.4
+  }
+ },
+ "19000877": {
+  "name": "Pegnitz",
+  "sun": {
+   "lat": 49.8,
+   "lon": 11.5
+  }
+ },
+ "19000878": {
+  "name": "Pfarrkirchen",
+  "sun": {
+   "lat": 48.4,
+   "lon": 12.9
+  }
+ },
+ "19000879": {
+  "name": "Plattling",
+  "sun": {
+   "lat": 48.8,
+   "lon": 12.9
+  }
+ },
+ "19000880": {
+  "name": "Rain",
+  "sun": {
+   "lat": 48.7,
+   "lon": 10.9
+  }
+ },
+ "19000881": {
+  "name": "Redwitz a.d. Rodach",
+  "sun": {
+   "lat": 50.2,
+   "lon": 11.2
+  }
+ },
+ "20184": {
+  "name": "Regensburg",
+  "sun": {
+   "lat": 49,
+   "lon": 12.1
+  }
+ },
+ "19000883": {
+  "name": "Regenstauf",
+  "sun": {
+   "lat": 48.1,
+   "lon": 12.1
+  }
+ },
+ "19000884": {
+  "name": "Rehau",
+  "sun": {
+   "lat": 50.2,
+   "lon": 12
+  }
+ },
+ "19000885": {
+  "name": "Rodach",
+  "sun": {
+   "lat": 50.3,
+   "lon": 10.8
+  }
+ },
+ "19000886": {
+  "name": "Roding",
+  "sun": {
+   "lat": 49.2,
+   "lon": 12.5
+  }
+ },
+ "20190": {
+  "name": "Rosenheim",
+  "sun": {
+   "lat": 47.9,
+   "lon": 12.2
+  }
+ },
+ "19000888": {
+  "name": "Roth",
+  "sun": {
+   "lat": 49.2,
+   "lon": 11.1
+  }
+ },
+ "19000889": {
+  "name": "Rothenbach a.d. Pegnitz",
+  "sun": {
+   "lat": 49.5,
+   "lon": 11.2
+  }
+ },
+ "19000891": {
+  "name": "Schirnding",
+  "sun": {
+   "lat": 50.1,
+   "lon": 12.2
+  }
+ },
+ "20197": {
+  "name": "Schongau",
+  "sun": {
+   "lat": 47.8,
+   "lon": 10.9
+  }
+ },
+ "19000893": {
+  "name": "Schrobenhausen",
+  "sun": {
+   "lat": 48.6,
+   "lon": 11.3
+  }
+ },
+ "20198": {
+  "name": "Schwabach",
+  "sun": {
+   "lat": 49.3,
+   "lon": 11
+  }
+ },
+ "617": {
+  "name": "Schwandorf",
+  "sun": {
+   "lat": 49.3,
+   "lon": 12.1
+  }
+ },
+ "19000896": {
+  "name": "Schwarzenbach a.d. Saale",
+  "sun": {
+   "lat": 50.2,
+   "lon": 11.6
+  }
+ },
+ "19000897": {
+  "name": "Schwarzenbach am Wald",
+  "sun": {
+   "lat": 50.3,
+   "lon": 11.6
+  }
+ },
+ "20200": {
+  "name": "Schweinfurt",
+  "sun": {
+   "lat": 50.1,
+   "lon": 10.2
+  }
+ },
+ "19000899": {
+  "name": "Schwindegg",
+  "sun": {
+   "lat": 48.3,
+   "lon": 12.3
+  }
+ },
+ "19000900": {
+  "name": "Selb",
+  "sun": {
+   "lat": 50.2,
+   "lon": 12.1
+  }
+ },
+ "19000901": {
+  "name": "Selbitz",
+  "sun": {
+   "lat": 50.3,
+   "lon": 11.8
+  }
+ },
+ "19000903": {
+  "name": "Simbach am Inn",
+  "sun": {
+   "lat": 48.3,
+   "lon": 13
+  }
+ },
+ "19000904": {
+  "name": "Stadtprozelten",
+  "sun": {
+   "lat": 49.8,
+   "lon": 9.4
+  }
+ },
+ "19000905": {
+  "name": "Starnberg",
+  "sun": {
+   "lat": 48,
+   "lon": 11.3
+  }
+ },
+ "19000906": {
+  "name": "Stockstadt am Main",
+  "sun": {
+   "lat": 50,
+   "lon": 9.1
+  }
+ },
+ "19000907": {
+  "name": "Straubing",
+  "sun": {
+   "lat": 48.9,
+   "lon": 12.6
+  }
+ },
+ "19000909": {
+  "name": "Tettau",
+  "sun": {
+   "lat": 50.5,
+   "lon": 11.3
+  }
+ },
+ "20219": {
+  "name": "Treuchtlingen",
+  "sun": {
+   "lat": 49,
+   "lon": 10.9
+  }
+ },
+ "19000910": {
+  "name": "Trostberg an der Alz",
+  "sun": {
+   "lat": 48,
+   "lon": 12.6
+  }
+ },
+ "19000912": {
+  "name": "Unterneukirchen",
+  "sun": {
+   "lat": 48.2,
+   "lon": 12.6
+  }
+ },
+ "20305": {
+  "name": "Vilsbiburg",
+  "sun": {
+   "lat": 48.5,
+   "lon": 12.4
+  }
+ },
+ "19000915": {
+  "name": "V\u00f6hringen",
+  "sun": {
+   "lat": 48.3,
+   "lon": 10.1
+  }
+ },
+ "20234": {
+  "name": "Wasserburg",
+  "sun": {
+   "lat": 48.1,
+   "lon": 12.2
+  }
+ },
+ "19000920": {
+  "name": "Weiden",
+  "sun": {
+   "lat": 49.7,
+   "lon": 12.2
+  }
+ },
+ "19000921": {
+  "name": "Weilheim",
+  "sun": {
+   "lat": 47.8,
+   "lon": 11.1
+  }
+ },
+ "19000924": {
+  "name": "Wemding",
+  "sun": {
+   "lat": 48.9,
+   "lon": 10.7
+  }
+ },
+ "19000925": {
+  "name": "Wendelstein",
+  "sun": {
+   "lat": 49.4,
+   "lon": 11.2
+  }
+ },
+ "19000926": {
+  "name": "Wertingen",
+  "sun": {
+   "lat": 48.6,
+   "lon": 10.7
+  }
+ },
+ "19000927": {
+  "name": "Wolnzach",
+  "sun": {
+   "lat": 48.6,
+   "lon": 11.6
+  }
+ },
+ "20245": {
+  "name": "W\u00fcrzburg",
+  "sun": {
+   "lat": 49.8,
+   "lon": 9.9
+  }
+ },
+ "19000931": {
+  "name": "Beelitz",
+  "sun": {
+   "lat": 52.2,
+   "lon": 13
+  }
+ },
+ "19000932": {
+  "name": "Beeskow",
+  "sun": {
+   "lat": 52.2,
+   "lon": 14.2
+  }
+ },
+ "19000933": {
+  "name": "Belzig",
+  "sun": {
+   "lat": 52.1,
+   "lon": 12.6
+  }
+ },
+ "19000934": {
+  "name": "Bernau",
+  "sun": {
+   "lat": 52.7,
+   "lon": 13.6
+  }
+ },
+ "19000935": {
+  "name": "Brandenburg/Havel",
+  "sun": {
+   "lat": 52.4,
+   "lon": 12.5
+  }
+ },
+ "19000936": {
+  "name": "Calau",
+  "sun": {
+   "lat": 51.7,
+   "lon": 14
+  }
+ },
+ "19000937": {
+  "name": "Cottbus",
+  "sun": {
+   "lat": 51.8,
+   "lon": 14.3
+  }
+ },
+ "19000938": {
+  "name": "Eberswalde",
+  "sun": {
+   "lat": 52.8,
+   "lon": 13.8
+  }
+ },
+ "19000941": {
+  "name": "Finsterwalde",
+  "sun": {
+   "lat": 51.6,
+   "lon": 13.7
+  }
+ },
+ "19000942": {
+  "name": "Forst (Cottbus)",
+  "sun": {
+   "lat": 51.7,
+   "lon": 14.6
+  }
+ },
+ "19000943": {
+  "name": "Frankfurt (Oder)",
+  "sun": {
+   "lat": 52.3,
+   "lon": 14.5
+  }
+ },
+ "19000944": {
+  "name": "F\u00fcrstenwalde",
+  "sun": {
+   "lat": 52.4,
+   "lon": 14.1
+  }
+ },
+ "19000946": {
+  "name": "Guben",
+  "sun": {
+   "lat": 52,
+   "lon": 14.7
+  }
+ },
+ "19000949": {
+  "name": "Lauchhammer",
+  "sun": {
+   "lat": 51.5,
+   "lon": 13.8
+  }
+ },
+ "19000951": {
+  "name": "L\u00fcbbenau",
+  "sun": {
+   "lat": 51.9,
+   "lon": 14
+  }
+ },
+ "19000953": {
+  "name": "Nauen",
+  "sun": {
+   "lat": 52.6,
+   "lon": 12.9
+  }
+ },
+ "19000954": {
+  "name": "Oranienburg",
+  "sun": {
+   "lat": 52.7,
+   "lon": 13.2
+  }
+ },
+ "19000957": {
+  "name": "Seelow",
+  "sun": {
+   "lat": 52.5,
+   "lon": 14.4
+  }
+ },
+ "19000958": {
+  "name": "Spremberg",
+  "sun": {
+   "lat": 51.6,
+   "lon": 14.4
+  }
+ },
+ "19000959": {
+  "name": "Strausberg",
+  "sun": {
+   "lat": 52.6,
+   "lon": 13.9
+  }
+ },
+ "19000960": {
+  "name": "Vetschau",
+  "sun": {
+   "lat": 51.8,
+   "lon": 14.1
+  }
+ },
+ "19000961": {
+  "name": "Wittenberge",
+  "sun": {
+   "lat": 53,
+   "lon": 11.7
+  }
+ },
+ "19000971": {
+  "name": "Allendorf/Eder",
+  "sun": {
+   "lat": 51,
+   "lon": 8.7
+  }
+ },
+ "19000972": {
+  "name": "Alsfeld",
+  "sun": {
+   "lat": 50.8,
+   "lon": 9.3
+  }
+ },
+ "19000973": {
+  "name": "Arolsen",
+  "sun": {
+   "lat": 51.4,
+   "lon": 9
+  }
+ },
+ "19000976": {
+  "name": "Bad Camberg",
+  "sun": {
+   "lat": 50.3,
+   "lon": 8.3
+  }
+ },
+ "19000978": {
+  "name": "Bad Homburg",
+  "sun": {
+   "lat": 50.2,
+   "lon": 8.6
+  }
+ },
+ "19000979": {
+  "name": "Bad Nauheim",
+  "sun": {
+   "lat": 50.4,
+   "lon": 8.7
+  }
+ },
+ "19000980": {
+  "name": "Bad Schwalbach",
+  "sun": {
+   "lat": 50.1,
+   "lon": 8.1
+  }
+ },
+ "19000983": {
+  "name": "Baunatal",
+  "sun": {
+   "lat": 51.3,
+   "lon": 9.4
+  }
+ },
+ "19000984": {
+  "name": "Bebra",
+  "sun": {
+   "lat": 51,
+   "lon": 9.8
+  }
+ },
+ "19000985": {
+  "name": "Beerfelden",
+  "sun": {
+   "lat": 49.6,
+   "lon": 9
+  }
+ },
+ "19000986": {
+  "name": "Bensheim",
+  "sun": {
+   "lat": 49.7,
+   "lon": 8.6
+  }
+ },
+ "19000987": {
+  "name": "Bettenhausen",
+  "sun": {
+   "lat": 51.3,
+   "lon": 9.5
+  }
+ },
+ "19000988": {
+  "name": "Biebesheim am Rhein",
+  "sun": {
+   "lat": 49.8,
+   "lon": 8.5
+  }
+ },
+ "19000989": {
+  "name": "Biedenkopf",
+  "sun": {
+   "lat": 50.9,
+   "lon": 8.5
+  }
+ },
+ "19000990": {
+  "name": "Bischofsheim",
+  "sun": {
+   "lat": 49.9,
+   "lon": 8.4
+  }
+ },
+ "19000991": {
+  "name": "Borken (Hessen)",
+  "sun": {
+   "lat": 51.1,
+   "lon": 9.3
+  }
+ },
+ "19000992": {
+  "name": "Breidenbach",
+  "sun": {
+   "lat": 50.9,
+   "lon": 8.5
+  }
+ },
+ "19000993": {
+  "name": "Breuberg",
+  "sun": {
+   "lat": 49.8,
+   "lon": 9
+  }
+ },
+ "19000994": {
+  "name": "Bruchk\u00f6bel",
+  "sun": {
+   "lat": 50.2,
+   "lon": 8.9
+  }
+ },
+ "19000995": {
+  "name": "B\u00fcdingen",
+  "sun": {
+   "lat": 50.3,
+   "lon": 9.1
+  }
+ },
+ "19000996": {
+  "name": "B\u00fcrstadt",
+  "sun": {
+   "lat": 49.6,
+   "lon": 8.5
+  }
+ },
+ "19000997": {
+  "name": "Buttelborn",
+  "sun": {
+   "lat": 49.9,
+   "lon": 8.5
+  }
+ },
+ "19000998": {
+  "name": "Butzbach",
+  "sun": {
+   "lat": 50.4,
+   "lon": 8.7
+  }
+ },
+ "20038": {
+  "name": "Darmstadt",
+  "sun": {
+   "lat": 49.9,
+   "lon": 8.6
+  }
+ },
+ "19001000": {
+  "name": "Dieburg",
+  "sun": {
+   "lat": 49.9,
+   "lon": 8.8
+  }
+ },
+ "99098234": {
+  "name": "Dietzenbach",
+  "sun": {
+   "lat": 50,
+   "lon": 8.8
+  }
+ },
+ "19001002": {
+  "name": "Dillenburg",
+  "sun": {
+   "lat": 50.7,
+   "lon": 8.3
+  }
+ },
+ "19001003": {
+  "name": "Dreieich",
+  "sun": {
+   "lat": 50,
+   "lon": 8.7
+  }
+ },
+ "19001004": {
+  "name": "Dudenhofen",
+  "sun": {
+   "lat": 50,
+   "lon": 8.9
+  }
+ },
+ "19001005": {
+  "name": "Ehringshausen",
+  "sun": {
+   "lat": 50.6,
+   "lon": 8.4
+  }
+ },
+ "19001006": {
+  "name": "Eltville",
+  "sun": {
+   "lat": 50,
+   "lon": 8.1
+  }
+ },
+ "19001007": {
+  "name": "Eppertshausen",
+  "sun": {
+   "lat": 49.9,
+   "lon": 8.8
+  }
+ },
+ "19001008": {
+  "name": "Erbach",
+  "sun": {
+   "lat": 49.7,
+   "lon": 9
+  }
+ },
+ "19001009": {
+  "name": "Eschborn",
+  "sun": {
+   "lat": 50.1,
+   "lon": 8.5
+  }
+ },
+ "20269": {
+  "name": "Felsberg",
+  "sun": {
+   "lat": 51.1,
+   "lon": 9.4
+  }
+ },
+ "19001012": {
+  "name": "Frankenberg (Eder)",
+  "sun": {
+   "lat": 51.1,
+   "lon": 8.8
+  }
+ },
+ "20062": {
+  "name": "Frankfurt",
+  "sun": {
+   "lat": 50.1,
+   "lon": 8.7
+  }
+ },
+ "19001014": {
+  "name": "Friedberg (Hessen)",
+  "sun": {
+   "lat": 50.3,
+   "lon": 8.8
+  }
+ },
+ "19001016": {
+  "name": "Fulda",
+  "sun": {
+   "lat": 50.6,
+   "lon": 9.7
+  }
+ },
+ "19001017": {
+  "name": "F\u00fcrth (Odw. Hessen)",
+  "sun": {
+   "lat": 49.7,
+   "lon": 8.8
+  }
+ },
+ "20070": {
+  "name": "Gelnhausen",
+  "sun": {
+   "lat": 50.2,
+   "lon": 9.2
+  }
+ },
+ "20074": {
+  "name": "Giessen",
+  "sun": {
+   "lat": 50.6,
+   "lon": 8.7
+  }
+ },
+ "19001020": {
+  "name": "Ginsheim",
+  "sun": {
+   "lat": 50,
+   "lon": 8.3
+  }
+ },
+ "19001021": {
+  "name": "Gladenbach",
+  "sun": {
+   "lat": 50.8,
+   "lon": 8.6
+  }
+ },
+ "19001022": {
+  "name": "Grasellenbach",
+  "sun": {
+   "lat": 49.6,
+   "lon": 8.9
+  }
+ },
+ "19001027": {
+  "name": "Hadamar",
+  "sun": {
+   "lat": 50.5,
+   "lon": 8
+  }
+ },
+ "20082": {
+  "name": "Haiger",
+  "sun": {
+   "lat": 50.8,
+   "lon": 8.2
+  }
+ },
+ "20086": {
+  "name": "Hanau",
+  "sun": {
+   "lat": 50.1,
+   "lon": 8.9
+  }
+ },
+ "19001031": {
+  "name": "Herborn",
+  "sun": {
+   "lat": 50.7,
+   "lon": 8.3
+  }
+ },
+ "19001032": {
+  "name": "Hessisch Lichtenau",
+  "sun": {
+   "lat": 51.2,
+   "lon": 9.7
+  }
+ },
+ "19001033": {
+  "name": "Hirschhorn (Hessen)",
+  "sun": {
+   "lat": 49.5,
+   "lon": 8.9
+  }
+ },
+ "19001034": {
+  "name": "Hochheim am Main",
+  "sun": {
+   "lat": 50,
+   "lon": 8.4
+  }
+ },
+ "19001035": {
+  "name": "H\u00f6chst im Odenwald",
+  "sun": {
+   "lat": 49.8,
+   "lon": 9
+  }
+ },
+ "19001036": {
+  "name": "Hofgeismar",
+  "sun": {
+   "lat": 51.5,
+   "lon": 9.4
+  }
+ },
+ "19001037": {
+  "name": "Hofheim",
+  "sun": {
+   "lat": 49.7,
+   "lon": 8.4
+  }
+ },
+ "19001038": {
+  "name": "Hofheim a. Taunus",
+  "sun": {
+   "lat": 50.1,
+   "lon": 8.4
+  }
+ },
+ "19001039": {
+  "name": "Hungen",
+  "sun": {
+   "lat": 50.5,
+   "lon": 8.9
+  }
+ },
+ "19001040": {
+  "name": "Idstein",
+  "sun": {
+   "lat": 50.2,
+   "lon": 8.3
+  }
+ },
+ "19001041": {
+  "name": "Karben",
+  "sun": {
+   "lat": 50.2,
+   "lon": 8.8
+  }
+ },
+ "20107": {
+  "name": "Kassel",
+  "sun": {
+   "lat": 51.3,
+   "lon": 9.5
+  }
+ },
+ "19001043": {
+  "name": "Kelkheim",
+  "sun": {
+   "lat": 50.1,
+   "lon": 8.5
+  }
+ },
+ "20108": {
+  "name": "Kelsterbach",
+  "sun": {
+   "lat": 50.1,
+   "lon": 8.5
+  }
+ },
+ "19001045": {
+  "name": "Kirchhain",
+  "sun": {
+   "lat": 50.8,
+   "lon": 9
+  }
+ },
+ "19001046": {
+  "name": "Korbach",
+  "sun": {
+   "lat": 51.3,
+   "lon": 8.9
+  }
+ },
+ "19001047": {
+  "name": "Lampertheim",
+  "sun": {
+   "lat": 49.6,
+   "lon": 8.5
+  }
+ },
+ "19001048": {
+  "name": "Langen",
+  "sun": {
+   "lat": 50,
+   "lon": 8.7
+  }
+ },
+ "19001049": {
+  "name": "Langenselbold",
+  "sun": {
+   "lat": 50.2,
+   "lon": 9
+  }
+ },
+ "19001050": {
+  "name": "Laubach (Hessen)",
+  "sun": {
+   "lat": 50.6,
+   "lon": 9
+  }
+ },
+ "19001054": {
+  "name": "Lohfelden",
+  "sun": {
+   "lat": 51.3,
+   "lon": 9.5
+  }
+ },
+ "20129": {
+  "name": "Lollar",
+  "sun": {
+   "lat": 50.7,
+   "lon": 8.7
+  }
+ },
+ "19001057": {
+  "name": "Melsungen",
+  "sun": {
+   "lat": 51.1,
+   "lon": 9.5
+  }
+ },
+ "19001058": {
+  "name": "Michelstadt",
+  "sun": {
+   "lat": 49.7,
+   "lon": 9
+  }
+ },
+ "19001059": {
+  "name": "M\u00f6rfelden-Walldorf",
+  "sun": {
+   "lat": 50,
+   "lon": 8.6
+  }
+ },
+ "19001060": {
+  "name": "M\u00fchlheim",
+  "sun": {
+   "lat": 50.1,
+   "lon": 8.8
+  }
+ },
+ "19001061": {
+  "name": "M\u00fcnden",
+  "sun": {
+   "lat": 51.2,
+   "lon": 8.7
+  }
+ },
+ "19001062": {
+  "name": "Neu-Isenburg",
+  "sun": {
+   "lat": 50.1,
+   "lon": 8.7
+  }
+ },
+ "19001064": {
+  "name": "Nidda",
+  "sun": {
+   "lat": 50.4,
+   "lon": 9
+  }
+ },
+ "19001065": {
+  "name": "Obertshausen",
+  "sun": {
+   "lat": 50.1,
+   "lon": 8.8
+  }
+ },
+ "19001066": {
+  "name": "Oberursel",
+  "sun": {
+   "lat": 50.2,
+   "lon": 8.6
+  }
+ },
+ "20166": {
+  "name": "Offenbach",
+  "sun": {
+   "lat": 50.1,
+   "lon": 8.8
+  }
+ },
+ "20176": {
+  "name": "Pfungstadt",
+  "sun": {
+   "lat": 49.8,
+   "lon": 8.6
+  }
+ },
+ "20181": {
+  "name": "Raunheim",
+  "sun": {
+   "lat": 50,
+   "lon": 8.5
+  }
+ },
+ "20193": {
+  "name": "R\u00fcsselsheim",
+  "sun": {
+   "lat": 50,
+   "lon": 8.4
+  }
+ },
+ "19001072": {
+  "name": "Schluchtern",
+  "sun": {
+   "lat": 50.4,
+   "lon": 9.5
+  }
+ },
+ "19001073": {
+  "name": "Sontra",
+  "sun": {
+   "lat": 51.1,
+   "lon": 9.9
+  }
+ },
+ "20212": {
+  "name": "Stadtallendorf",
+  "sun": {
+   "lat": 50.8,
+   "lon": 9
+  }
+ },
+ "19001076": {
+  "name": "Urberach",
+  "sun": {
+   "lat": 50,
+   "lon": 8.8
+  }
+ },
+ "19001077": {
+  "name": "Usingen",
+  "sun": {
+   "lat": 50.3,
+   "lon": 8.5
+  }
+ },
+ "20226": {
+  "name": "Viernheim",
+  "sun": {
+   "lat": 49.5,
+   "lon": 8.6
+  }
+ },
+ "19001079": {
+  "name": "Villingen",
+  "sun": {
+   "lat": 50.5,
+   "lon": 8.9
+  }
+ },
+ "19001081": {
+  "name": "Weilburg",
+  "sun": {
+   "lat": 50.5,
+   "lon": 8.3
+  }
+ },
+ "19001082": {
+  "name": "Weiterstadt",
+  "sun": {
+   "lat": 49.9,
+   "lon": 8.6
+  }
+ },
+ "20238": {
+  "name": "Wetzlar",
+  "sun": {
+   "lat": 50.6,
+   "lon": 8.5
+  }
+ },
+ "20239": {
+  "name": "Wiesbaden",
+  "sun": {
+   "lat": 50.1,
+   "lon": 8.2
+  }
+ },
+ "19001085": {
+  "name": "Witzenhausen",
+  "sun": {
+   "lat": 51.3,
+   "lon": 9.9
+  }
+ },
+ "19001086": {
+  "name": "Wolfhagen",
+  "sun": {
+   "lat": 51.3,
+   "lon": 9.2
+  }
+ },
+ "20004": {
+  "name": "Achim",
+  "sun": {
+   "lat": 53,
+   "lon": 9
+  }
+ },
+ "19001095": {
+  "name": "Adelebsen",
+  "sun": {
+   "lat": 51.6,
+   "lon": 9.7
+  }
+ },
+ "19001097": {
+  "name": "Ankum",
+  "sun": {
+   "lat": 52.5,
+   "lon": 7.9
+  }
+ },
+ "19001098": {
+  "name": "Bad Bentheim",
+  "sun": {
+   "lat": 52.3,
+   "lon": 7.2
+  }
+ },
+ "19001099": {
+  "name": "Bad Essen",
+  "sun": {
+   "lat": 52.3,
+   "lon": 8.3
+  }
+ },
+ "19001100": {
+  "name": "Bad Lauterberg",
+  "sun": {
+   "lat": 51.7,
+   "lon": 10.5
+  }
+ },
+ "19001101": {
+  "name": "Bad Pyrmont",
+  "sun": {
+   "lat": 52,
+   "lon": 9.3
+  }
+ },
+ "19001102": {
+  "name": "Bad Zwischenahn",
+  "sun": {
+   "lat": 53.2,
+   "lon": 8
+  }
+ },
+ "19001103": {
+  "name": "Barsinghausen",
+  "sun": {
+   "lat": 52.3,
+   "lon": 9.5
+  }
+ },
+ "19001104": {
+  "name": "Bassum",
+  "sun": {
+   "lat": 52.9,
+   "lon": 8.7
+  }
+ },
+ "19001105": {
+  "name": "Bennem\u00fchlen",
+  "sun": {
+   "lat": 52.6,
+   "lon": 9.7
+  }
+ },
+ "20265": {
+  "name": "Blumenthal",
+  "sun": {
+   "lat": 53.2,
+   "lon": 8.6
+  }
+ },
+ "19001107": {
+  "name": "Boffzen",
+  "sun": {
+   "lat": 51.8,
+   "lon": 9.4
+  }
+ },
+ "19001109": {
+  "name": "Bovenden",
+  "sun": {
+   "lat": 51.6,
+   "lon": 9.9
+  }
+ },
+ "19001110": {
+  "name": "Brake",
+  "sun": {
+   "lat": 53.3,
+   "lon": 8.5
+  }
+ },
+ "19001111": {
+  "name": "Bramsche",
+  "sun": {
+   "lat": 52.4,
+   "lon": 8
+  }
+ },
+ "20027": {
+  "name": "Braunschweig",
+  "sun": {
+   "lat": 52.3,
+   "lon": 10.5
+  }
+ },
+ "19001113": {
+  "name": "Brunswick (Braunschweig)",
+  "sun": {
+   "lat": 52.3,
+   "lon": 10.5
+  }
+ },
+ "19001115": {
+  "name": "B\u00fcckeburg",
+  "sun": {
+   "lat": 52.3,
+   "lon": 9
+  }
+ },
+ "19001116": {
+  "name": "Burgdorf",
+  "sun": {
+   "lat": 52.5,
+   "lon": 10
+  }
+ },
+ "19001117": {
+  "name": "Butzfleth",
+  "sun": {
+   "lat": 53.6,
+   "lon": 9.5
+  }
+ },
+ "20035": {
+  "name": "Buxtehude",
+  "sun": {
+   "lat": 53.5,
+   "lon": 9.7
+  }
+ },
+ "19001119": {
+  "name": "Celle",
+  "sun": {
+   "lat": 52.6,
+   "lon": 10.1
+  }
+ },
+ "19001120": {
+  "name": "Clausthal-Zellerfeld",
+  "sun": {
+   "lat": 51.8,
+   "lon": 10.3
+  }
+ },
+ "20300": {
+  "name": "Cuxhaven",
+  "sun": {
+   "lat": 53.9,
+   "lon": 8.7
+  }
+ },
+ "19001123": {
+  "name": "Damme",
+  "sun": {
+   "lat": 52.5,
+   "lon": 8.2
+  }
+ },
+ "19001125": {
+  "name": "Dissen",
+  "sun": {
+   "lat": 52.1,
+   "lon": 8.2
+  }
+ },
+ "19001127": {
+  "name": "Elsfeth",
+  "sun": {
+   "lat": 53.2,
+   "lon": 8.5
+  }
+ },
+ "19001128": {
+  "name": "Emden",
+  "sun": {
+   "lat": 53.4,
+   "lon": 7.2
+  }
+ },
+ "19001129": {
+  "name": "Emmerthal",
+  "sun": {
+   "lat": 52.1,
+   "lon": 9.4
+  }
+ },
+ "20260": {
+  "name": "Esterwegen",
+  "sun": {
+   "lat": 53,
+   "lon": 7.6
+  }
+ },
+ "19001130": {
+  "name": "Ganderkesee",
+  "sun": {
+   "lat": 53,
+   "lon": 8.5
+  }
+ },
+ "19001132": {
+  "name": "Garrel",
+  "sun": {
+   "lat": 53,
+   "lon": 8
+  }
+ },
+ "19001133": {
+  "name": "Georgsmarienh\u00fctte",
+  "sun": {
+   "lat": 52.2,
+   "lon": 8
+  }
+ },
+ "88902073": {
+  "name": "Gifhorn",
+  "sun": {
+   "lat": 52.5,
+   "lon": 10.5
+  }
+ },
+ "20077": {
+  "name": "Goslar",
+  "sun": {
+   "lat": 51.9,
+   "lon": 10.4
+  }
+ },
+ "19001136": {
+  "name": "G\u00f6ttingen",
+  "sun": {
+   "lat": 51.5,
+   "lon": 9.9
+  }
+ },
+ "20084": {
+  "name": "Hameln",
+  "sun": {
+   "lat": 52.1,
+   "lon": 9.4
+  }
+ },
+ "20087": {
+  "name": "Hannover",
+  "sun": {
+   "lat": 52.4,
+   "lon": 9.7
+  }
+ },
+ "19001140": {
+  "name": "Hardegsen",
+  "sun": {
+   "lat": 51.7,
+   "lon": 9.8
+  }
+ },
+ "19001141": {
+  "name": "Helmstedt",
+  "sun": {
+   "lat": 52.2,
+   "lon": 11
+  }
+ },
+ "19001142": {
+  "name": "Herzberg am Harz",
+  "sun": {
+   "lat": 51.7,
+   "lon": 10.3
+  }
+ },
+ "19001143": {
+  "name": "Hessisch Oldendorf",
+  "sun": {
+   "lat": 52.2,
+   "lon": 9.2
+  }
+ },
+ "20098": {
+  "name": "Hildesheim",
+  "sun": {
+   "lat": 52.2,
+   "lon": 9.9
+  }
+ },
+ "19001145": {
+  "name": "Holzminden",
+  "sun": {
+   "lat": 51.8,
+   "lon": 9.5
+  }
+ },
+ "19001146": {
+  "name": "Hunteburg",
+  "sun": {
+   "lat": 52.4,
+   "lon": 8.3
+  }
+ },
+ "19001148": {
+  "name": "Kirchdorf",
+  "sun": {
+   "lat": 53.7,
+   "lon": 8.9
+  }
+ },
+ "19001149": {
+  "name": "K\u00f6nigslutter",
+  "sun": {
+   "lat": 52.3,
+   "lon": 10.8
+  }
+ },
+ "20115": {
+  "name": "Laatzen",
+  "sun": {
+   "lat": 52.3,
+   "lon": 9.8
+  }
+ },
+ "19001151": {
+  "name": "Langenhagen",
+  "sun": {
+   "lat": 52.4,
+   "lon": 9.7
+  }
+ },
+ "19001152": {
+  "name": "Lauenf\u00f6rde",
+  "sun": {
+   "lat": 51.7,
+   "lon": 10.4
+  }
+ },
+ "19001153": {
+  "name": "Lehrte",
+  "sun": {
+   "lat": 52.4,
+   "lon": 10
+  }
+ },
+ "19001154": {
+  "name": "Lemwerder",
+  "sun": {
+   "lat": 53.2,
+   "lon": 8.6
+  }
+ },
+ "20127": {
+  "name": "Lohne",
+  "sun": {
+   "lat": 52.7,
+   "lon": 8.2
+  }
+ },
+ "20128": {
+  "name": "L\u00f6hne",
+  "sun": {
+   "lat": 52.2,
+   "lon": 8.7
+  }
+ },
+ "19001157": {
+  "name": "L\u00fcneburg",
+  "sun": {
+   "lat": 53.3,
+   "lon": 10.4
+  }
+ },
+ "19001159": {
+  "name": "Meppen",
+  "sun": {
+   "lat": 52.7,
+   "lon": 7.3
+  }
+ },
+ "19001160": {
+  "name": "Moringen",
+  "sun": {
+   "lat": 51.7,
+   "lon": 9.9
+  }
+ },
+ "19001161": {
+  "name": "Nienburg (Weser)",
+  "sun": {
+   "lat": 52.6,
+   "lon": 9.2
+  }
+ },
+ "19001162": {
+  "name": "Norden",
+  "sun": {
+   "lat": 53.6,
+   "lon": 7.2
+  }
+ },
+ "20161": {
+  "name": "Nordenham",
+  "sun": {
+   "lat": 53.5,
+   "lon": 8.5
+  }
+ },
+ "19001164": {
+  "name": "Nordhorn",
+  "sun": {
+   "lat": 52.4,
+   "lon": 7.1
+  }
+ },
+ "19001165": {
+  "name": "Northeim",
+  "sun": {
+   "lat": 51.7,
+   "lon": 10
+  }
+ },
+ "20167": {
+  "name": "Oldenburg",
+  "sun": {
+   "lat": 53.2,
+   "lon": 8.2
+  }
+ },
+ "20169": {
+  "name": "Osnabr\u00fcck",
+  "sun": {
+   "lat": 52.3,
+   "lon": 8
+  }
+ },
+ "20302": {
+  "name": "Osterholz-Scharmbeck",
+  "sun": {
+   "lat": 53.2,
+   "lon": 8.8
+  }
+ },
+ "20170": {
+  "name": "Osterode am Harz",
+  "sun": {
+   "lat": 51.7,
+   "lon": 10.3
+  }
+ },
+ "19001170": {
+  "name": "Ottersberg",
+  "sun": {
+   "lat": 53.1,
+   "lon": 9.1
+  }
+ },
+ "19001171": {
+  "name": "Oyten",
+  "sun": {
+   "lat": 53.1,
+   "lon": 9
+  }
+ },
+ "20173": {
+  "name": "Peine",
+  "sun": {
+   "lat": 52.3,
+   "lon": 10.2
+  }
+ },
+ "19001174": {
+  "name": "Rastede",
+  "sun": {
+   "lat": 53.2,
+   "lon": 8.2
+  }
+ },
+ "19001175": {
+  "name": "Rehburg-Loccum",
+  "sun": {
+   "lat": 52.5,
+   "lon": 9.2
+  }
+ },
+ "19001176": {
+  "name": "Rethem",
+  "sun": {
+   "lat": 52.8,
+   "lon": 9.4
+  }
+ },
+ "19001177": {
+  "name": "Rinteln",
+  "sun": {
+   "lat": 52.2,
+   "lon": 9.1
+  }
+ },
+ "19001179": {
+  "name": "Rosdorf",
+  "sun": {
+   "lat": 51.5,
+   "lon": 9.9
+  }
+ },
+ "20191": {
+  "name": "Rotenburg",
+  "sun": {
+   "lat": 53.1,
+   "lon": 9.4
+  }
+ },
+ "20195": {
+  "name": "Salzgitter",
+  "sun": {
+   "lat": 52.2,
+   "lon": 10.3
+  }
+ },
+ "19001182": {
+  "name": "Salzgitter-Bad",
+  "sun": {
+   "lat": 52.1,
+   "lon": 10.4
+  }
+ },
+ "19001183": {
+  "name": "Sarstedt",
+  "sun": {
+   "lat": 52.2,
+   "lon": 9.8
+  }
+ },
+ "20196": {
+  "name": "Saterland",
+  "sun": {
+   "lat": 53.1,
+   "lon": 7.7
+  }
+ },
+ "19001184": {
+  "name": "Sch\u00fcttorf",
+  "sun": {
+   "lat": 52.3,
+   "lon": 7.2
+  }
+ },
+ "19001185": {
+  "name": "Seelze",
+  "sun": {
+   "lat": 52.4,
+   "lon": 9.6
+  }
+ },
+ "19001186": {
+  "name": "Seesen",
+  "sun": {
+   "lat": 51.9,
+   "lon": 10.2
+  }
+ },
+ "19001187": {
+  "name": "Seevetal",
+  "sun": {
+   "lat": 53.4,
+   "lon": 10
+  }
+ },
+ "19001188": {
+  "name": "Sehnde",
+  "sun": {
+   "lat": 52.3,
+   "lon": 10
+  }
+ },
+ "19001189": {
+  "name": "Soltau",
+  "sun": {
+   "lat": 53,
+   "lon": 9.8
+  }
+ },
+ "19001190": {
+  "name": "Springe",
+  "sun": {
+   "lat": 52.2,
+   "lon": 9.6
+  }
+ },
+ "19001192": {
+  "name": "Stade-Butzfleth",
+  "sun": {
+   "lat": 53.6,
+   "lon": 9.5
+  }
+ },
+ "20213": {
+  "name": "Stadthagen",
+  "sun": {
+   "lat": 52.3,
+   "lon": 9.2
+  }
+ },
+ "19001194": {
+  "name": "Stadtoldendorf",
+  "sun": {
+   "lat": 51.9,
+   "lon": 9.6
+  }
+ },
+ "19001195": {
+  "name": "Stederdorf (Peine)",
+  "sun": {
+   "lat": 52.4,
+   "lon": 10.2
+  }
+ },
+ "19001196": {
+  "name": "Stuhr",
+  "sun": {
+   "lat": 53,
+   "lon": 8.7
+  }
+ },
+ "20217": {
+  "name": "Sulingen",
+  "sun": {
+   "lat": 52.7,
+   "lon": 8.8
+  }
+ },
+ "19001198": {
+  "name": "Syke",
+  "sun": {
+   "lat": 52.9,
+   "lon": 8.8
+  }
+ },
+ "19001199": {
+  "name": "Uchte",
+  "sun": {
+   "lat": 52.5,
+   "lon": 8.9
+  }
+ },
+ "19001201": {
+  "name": "Vechta",
+  "sun": {
+   "lat": 52.7,
+   "lon": 8.3
+  }
+ },
+ "19001202": {
+  "name": "Verden",
+  "sun": {
+   "lat": 52.9,
+   "lon": 9.2
+  }
+ },
+ "19001203": {
+  "name": "Wagenfeld",
+  "sun": {
+   "lat": 52.6,
+   "lon": 8.6
+  }
+ },
+ "19001467": {
+  "name": "Waldbrol",
+  "sun": {
+   "lat": 50.9,
+   "lon": 7.6
+  }
+ },
+ "20271": {
+  "name": "Watenstedt",
+  "sun": {
+   "lat": 52.1,
+   "lon": 10.8
+  }
+ },
+ "19001207": {
+  "name": "Westerstede",
+  "sun": {
+   "lat": 53.3,
+   "lon": 7.9
+  }
+ },
+ "19001208": {
+  "name": "Wildeshausen",
+  "sun": {
+   "lat": 52.9,
+   "lon": 8.4
+  }
+ },
+ "19001209": {
+  "name": "Wilhelmshaven",
+  "sun": {
+   "lat": 53.5,
+   "lon": 8.1
+  }
+ },
+ "19001210": {
+  "name": "Winsen (Luhe)",
+  "sun": {
+   "lat": 53.4,
+   "lon": 10.2
+  }
+ },
+ "19001211": {
+  "name": "Wolfenb\u00fcttel",
+  "sun": {
+   "lat": 52.2,
+   "lon": 10.5
+  }
+ },
+ "446333195": {
+  "name": "Wolfsburg",
+  "sun": {
+   "lat": 52.4,
+   "lon": 10.8
+  }
+ },
+ "19001213": {
+  "name": "Wunstorf",
+  "sun": {
+   "lat": 52.4,
+   "lon": 9.4
+  }
+ },
+ "19001087": {
+  "name": "Boizenburg",
+  "sun": {
+   "lat": 53.4,
+   "lon": 10.7
+  }
+ },
+ "19001088": {
+  "name": "Greifswald",
+  "sun": {
+   "lat": 54.1,
+   "lon": 13.4
+  }
+ },
+ "19001089": {
+  "name": "Grevesm\u00fchlen",
+  "sun": {
+   "lat": 53.9,
+   "lon": 11.2
+  }
+ },
+ "19001091": {
+  "name": "Parchim",
+  "sun": {
+   "lat": 53.4,
+   "lon": 11.9
+  }
+ },
+ "20001": {
+  "name": "Aachen",
+  "sun": {
+   "lat": 50.8,
+   "lon": 6.1
+  }
+ },
+ "19001216": {
+  "name": "Ahaus",
+  "sun": {
+   "lat": 52.1,
+   "lon": 7
+  }
+ },
+ "19001217": {
+  "name": "Ahlen",
+  "sun": {
+   "lat": 51.8,
+   "lon": 7.9
+  }
+ },
+ "19001218": {
+  "name": "Aldenhoven",
+  "sun": {
+   "lat": 50.9,
+   "lon": 6.3
+  }
+ },
+ "19001219": {
+  "name": "Alfter",
+  "sun": {
+   "lat": 50.7,
+   "lon": 7
+  }
+ },
+ "19001220": {
+  "name": "Alsdorf",
+  "sun": {
+   "lat": 50.9,
+   "lon": 6.2
+  }
+ },
+ "19001221": {
+  "name": "Altena",
+  "sun": {
+   "lat": 51.3,
+   "lon": 7.7
+  }
+ },
+ "19001222": {
+  "name": "Appelh\u00fclsen",
+  "sun": {
+   "lat": 51.9,
+   "lon": 7.4
+  }
+ },
+ "19001223": {
+  "name": "Arnsberg",
+  "sun": {
+   "lat": 51.4,
+   "lon": 8.1
+  }
+ },
+ "19001224": {
+  "name": "Ascheberg",
+  "sun": {
+   "lat": 51.8,
+   "lon": 7.6
+  }
+ },
+ "19001225": {
+  "name": "Asseln",
+  "sun": {
+   "lat": 51.7,
+   "lon": 8.9
+  }
+ },
+ "19001226": {
+  "name": "Attendorn",
+  "sun": {
+   "lat": 51.1,
+   "lon": 7.9
+  }
+ },
+ "19001227": {
+  "name": "Augustdorf",
+  "sun": {
+   "lat": 51.9,
+   "lon": 8.7
+  }
+ },
+ "19001228": {
+  "name": "Bad Honnef am Rhein",
+  "sun": {
+   "lat": 50.7,
+   "lon": 7.2
+  }
+ },
+ "19001229": {
+  "name": "Bad Lippspringe",
+  "sun": {
+   "lat": 51.8,
+   "lon": 8.8
+  }
+ },
+ "19001230": {
+  "name": "Bad Meinberg",
+  "sun": {
+   "lat": 51.9,
+   "lon": 9
+  }
+ },
+ "19001231": {
+  "name": "Bad Oeynhausen",
+  "sun": {
+   "lat": 52.2,
+   "lon": 8.8
+  }
+ },
+ "20012": {
+  "name": "Baesweiler",
+  "sun": {
+   "lat": 50.9,
+   "lon": 6.2
+  }
+ },
+ "19001234": {
+  "name": "Balve",
+  "sun": {
+   "lat": 51.3,
+   "lon": 7.9
+  }
+ },
+ "19001235": {
+  "name": "Bardenberg",
+  "sun": {
+   "lat": 50.9,
+   "lon": 6.1
+  }
+ },
+ "19001236": {
+  "name": "Barmen (Wuppertal)",
+  "sun": {
+   "lat": 51.3,
+   "lon": 7.2
+  }
+ },
+ "19001237": {
+  "name": "Beckum",
+  "sun": {
+   "lat": 51.8,
+   "lon": 8
+  }
+ },
+ "19001238": {
+  "name": "Bedburg",
+  "sun": {
+   "lat": 51,
+   "lon": 6.6
+  }
+ },
+ "19001239": {
+  "name": "Bergheim",
+  "sun": {
+   "lat": 51,
+   "lon": 6.6
+  }
+ },
+ "20014": {
+  "name": "Bergkamen",
+  "sun": {
+   "lat": 51.6,
+   "lon": 7.6
+  }
+ },
+ "19001242": {
+  "name": "Bergneustadt",
+  "sun": {
+   "lat": 51,
+   "lon": 7.6
+  }
+ },
+ "19001243": {
+  "name": "Bestwig",
+  "sun": {
+   "lat": 51.4,
+   "lon": 8.4
+  }
+ },
+ "20017": {
+  "name": "Bielefeld",
+  "sun": {
+   "lat": 52,
+   "lon": 8.5
+  }
+ },
+ "19001245": {
+  "name": "Bismarck",
+  "sun": {
+   "lat": 51.5,
+   "lon": 7.1
+  }
+ },
+ "19001246": {
+  "name": "Blankenheim",
+  "sun": {
+   "lat": 50.4,
+   "lon": 6.6
+  }
+ },
+ "19001247": {
+  "name": "Blomberg",
+  "sun": {
+   "lat": 52,
+   "lon": 9.1
+  }
+ },
+ "19001248": {
+  "name": "Bocholt",
+  "sun": {
+   "lat": 51.8,
+   "lon": 6.6
+  }
+ },
+ "20022": {
+  "name": "Bochum",
+  "sun": {
+   "lat": 51.5,
+   "lon": 7.2
+  }
+ },
+ "20023": {
+  "name": "B\u00f6nen",
+  "sun": {
+   "lat": 51.6,
+   "lon": 7.8
+  }
+ },
+ "20024": {
+  "name": "Bonn",
+  "sun": {
+   "lat": 50.7,
+   "lon": 7.1
+  }
+ },
+ "19001252": {
+  "name": "Bornheim",
+  "sun": {
+   "lat": 50.8,
+   "lon": 7
+  }
+ },
+ "20026": {
+  "name": "Bottrop",
+  "sun": {
+   "lat": 51.5,
+   "lon": 6.9
+  }
+ },
+ "19001254": {
+  "name": "Brakel",
+  "sun": {
+   "lat": 51.7,
+   "lon": 9.2
+  }
+ },
+ "19001255": {
+  "name": "Brambauer (L\u00fcnen)",
+  "sun": {
+   "lat": 51.6,
+   "lon": 7.4
+  }
+ },
+ "19001256": {
+  "name": "Brilon",
+  "sun": {
+   "lat": 51.4,
+   "lon": 8.6
+  }
+ },
+ "19001257": {
+  "name": "Br\u00fcggen",
+  "sun": {
+   "lat": 51.2,
+   "lon": 6.2
+  }
+ },
+ "20033": {
+  "name": "Br\u00fchl",
+  "sun": {
+   "lat": 50.8,
+   "lon": 6.9
+  }
+ },
+ "19001259": {
+  "name": "Bunde",
+  "sun": {
+   "lat": 52.2,
+   "lon": 8.6
+  }
+ },
+ "20034": {
+  "name": "Burscheid",
+  "sun": {
+   "lat": 51.1,
+   "lon": 7.1
+  }
+ },
+ "20036": {
+  "name": "Castrop-Rauxel",
+  "sun": {
+   "lat": 51.6,
+   "lon": 7.3
+  }
+ },
+ "19001262": {
+  "name": "Coesfeld",
+  "sun": {
+   "lat": 51.9,
+   "lon": 7.2
+  }
+ },
+ "19001264": {
+  "name": "Datteln",
+  "sun": {
+   "lat": 51.7,
+   "lon": 7.4
+  }
+ },
+ "19001265": {
+  "name": "Delbr\u00fcck",
+  "sun": {
+   "lat": 51.8,
+   "lon": 8.6
+  }
+ },
+ "19001266": {
+  "name": "Dellwig",
+  "sun": {
+   "lat": 51.5,
+   "lon": 6.9
+  }
+ },
+ "20041": {
+  "name": "Detmold",
+  "sun": {
+   "lat": 51.9,
+   "lon": 8.9
+  }
+ },
+ "20042": {
+  "name": "Dinslaken",
+  "sun": {
+   "lat": 51.6,
+   "lon": 6.7
+  }
+ },
+ "20043": {
+  "name": "Dormagen",
+  "sun": {
+   "lat": 51.1,
+   "lon": 6.8
+  }
+ },
+ "19001271": {
+  "name": "Dorsten",
+  "sun": {
+   "lat": 51.7,
+   "lon": 7
+  }
+ },
+ "20044": {
+  "name": "Dortmund",
+  "sun": {
+   "lat": 51.5,
+   "lon": 7.5
+  }
+ },
+ "19001273": {
+  "name": "Drensteinfurt",
+  "sun": {
+   "lat": 51.8,
+   "lon": 7.7
+  }
+ },
+ "19001275": {
+  "name": "D\u00fclmen",
+  "sun": {
+   "lat": 51.8,
+   "lon": 7.3
+  }
+ },
+ "20046": {
+  "name": "D\u00fcren",
+  "sun": {
+   "lat": 50.8,
+   "lon": 6.5
+  }
+ },
+ "20047": {
+  "name": "D\u00fcsseldorf",
+  "sun": {
+   "lat": 51.3,
+   "lon": 6.8
+  }
+ },
+ "20052": {
+  "name": "Eitorf",
+  "sun": {
+   "lat": 50.8,
+   "lon": 7.4
+  }
+ },
+ "19001279": {
+  "name": "Elsdorf",
+  "sun": {
+   "lat": 50.9,
+   "lon": 6.6
+  }
+ },
+ "19001280": {
+  "name": "Emmerich",
+  "sun": {
+   "lat": 51.9,
+   "lon": 6.3
+  }
+ },
+ "19001281": {
+  "name": "Emsdetten",
+  "sun": {
+   "lat": 52.2,
+   "lon": 7.5
+  }
+ },
+ "19001283": {
+  "name": "Ennepetal",
+  "sun": {
+   "lat": 51.3,
+   "lon": 7.3
+  }
+ },
+ "19001284": {
+  "name": "Erftstadt",
+  "sun": {
+   "lat": 50.8,
+   "lon": 6.8
+  }
+ },
+ "19001285": {
+  "name": "Erkelenz",
+  "sun": {
+   "lat": 51.1,
+   "lon": 6.3
+  }
+ },
+ "19001286": {
+  "name": "Erkrath",
+  "sun": {
+   "lat": 51.2,
+   "lon": 6.9
+  }
+ },
+ "19001287": {
+  "name": "Erle",
+  "sun": {
+   "lat": 51.8,
+   "lon": 6.9
+  }
+ },
+ "19001288": {
+  "name": "Eschweiler",
+  "sun": {
+   "lat": 50.8,
+   "lon": 6.3
+  }
+ },
+ "19001289": {
+  "name": "Eslohe",
+  "sun": {
+   "lat": 51.3,
+   "lon": 8.2
+  }
+ },
+ "20056": {
+  "name": "Espelkamp",
+  "sun": {
+   "lat": 52.4,
+   "lon": 8.6
+  }
+ },
+ "19001291": {
+  "name": "Espelkamp/Rahden",
+  "sun": {
+   "lat": 52.4,
+   "lon": 8.6
+  }
+ },
+ "20057": {
+  "name": "Essen",
+  "sun": {
+   "lat": 51.5,
+   "lon": 7
+  }
+ },
+ "19001293": {
+  "name": "Euskirchen",
+  "sun": {
+   "lat": 50.7,
+   "lon": 6.8
+  }
+ },
+ "20059": {
+  "name": "Finnentrop",
+  "sun": {
+   "lat": 51.2,
+   "lon": 8
+  }
+ },
+ "19001294": {
+  "name": "Frechen",
+  "sun": {
+   "lat": 50.9,
+   "lon": 6.8
+  }
+ },
+ "19001295": {
+  "name": "Fr\u00f6ndenberg",
+  "sun": {
+   "lat": 51.5,
+   "lon": 7.8
+  }
+ },
+ "19001296": {
+  "name": "Geilenkirchen (NRW)",
+  "sun": {
+   "lat": 51,
+   "lon": 6.1
+  }
+ },
+ "19001297": {
+  "name": "Geldern",
+  "sun": {
+   "lat": 51.5,
+   "lon": 6.3
+  }
+ },
+ "19001298": {
+  "name": "Gelsdorf",
+  "sun": {
+   "lat": 50.6,
+   "lon": 7
+  }
+ },
+ "19001300": {
+  "name": "Geseke",
+  "sun": {
+   "lat": 51.6,
+   "lon": 8.5
+  }
+ },
+ "19001301": {
+  "name": "Gevelsberg",
+  "sun": {
+   "lat": 51.3,
+   "lon": 7.3
+  }
+ },
+ "19001302": {
+  "name": "Gladbach (NRW)",
+  "sun": {
+   "lat": 50.8,
+   "lon": 6.6
+  }
+ },
+ "20075": {
+  "name": "Gladbeck",
+  "sun": {
+   "lat": 51.6,
+   "lon": 7
+  }
+ },
+ "19001304": {
+  "name": "Greven",
+  "sun": {
+   "lat": 52.1,
+   "lon": 7.6
+  }
+ },
+ "19001305": {
+  "name": "Grevenbroich",
+  "sun": {
+   "lat": 51.1,
+   "lon": 6.6
+  }
+ },
+ "19001306": {
+  "name": "Gronau",
+  "sun": {
+   "lat": 52.2,
+   "lon": 7
+  }
+ },
+ "20079": {
+  "name": "Gummersbach",
+  "sun": {
+   "lat": 51,
+   "lon": 7.6
+  }
+ },
+ "19001308": {
+  "name": "G\u00fcrzenich",
+  "sun": {
+   "lat": 50.8,
+   "lon": 6.5
+  }
+ },
+ "19001312": {
+  "name": "Halver",
+  "sun": {
+   "lat": 51.2,
+   "lon": 7.5
+  }
+ },
+ "20085": {
+  "name": "Hamm",
+  "sun": {
+   "lat": 51.7,
+   "lon": 7.8
+  }
+ },
+ "19001314": {
+  "name": "Hamm (Marl)",
+  "sun": {
+   "lat": 51.7,
+   "lon": 7.2
+  }
+ },
+ "19001315": {
+  "name": "Hamminkeln",
+  "sun": {
+   "lat": 51.7,
+   "lon": 6.6
+  }
+ },
+ "19001316": {
+  "name": "Harsewinkel",
+  "sun": {
+   "lat": 52,
+   "lon": 8.2
+  }
+ },
+ "20278": {
+  "name": "Hassel",
+  "sun": {
+   "lat": 51.6,
+   "lon": 7
+  }
+ },
+ "19001319": {
+  "name": "Hattingen",
+  "sun": {
+   "lat": 51.4,
+   "lon": 7.2
+  }
+ },
+ "19001320": {
+  "name": "Heessen",
+  "sun": {
+   "lat": 51.7,
+   "lon": 7.9
+  }
+ },
+ "19001321": {
+  "name": "Heiligenhaus",
+  "sun": {
+   "lat": 51.3,
+   "lon": 7
+  }
+ },
+ "19001322": {
+  "name": "Heinsberg",
+  "sun": {
+   "lat": 51.1,
+   "lon": 6.1
+  }
+ },
+ "19001323": {
+  "name": "Hemer",
+  "sun": {
+   "lat": 51.4,
+   "lon": 7.8
+  }
+ },
+ "19001324": {
+  "name": "Hennef",
+  "sun": {
+   "lat": 50.8,
+   "lon": 7.3
+  }
+ },
+ "19001325": {
+  "name": "Herdecke",
+  "sun": {
+   "lat": 51.4,
+   "lon": 7.4
+  }
+ },
+ "20093": {
+  "name": "Herford",
+  "sun": {
+   "lat": 52.1,
+   "lon": 8.7
+  }
+ },
+ "20094": {
+  "name": "Herne",
+  "sun": {
+   "lat": 51.5,
+   "lon": 7.2
+  }
+ },
+ "19001328": {
+  "name": "Herringen",
+  "sun": {
+   "lat": 51.7,
+   "lon": 7.7
+  }
+ },
+ "19001329": {
+  "name": "Herten",
+  "sun": {
+   "lat": 51.6,
+   "lon": 7.2
+  }
+ },
+ "19001330": {
+  "name": "Herzogenrath",
+  "sun": {
+   "lat": 50.9,
+   "lon": 6.1
+  }
+ },
+ "19001331": {
+  "name": "Hiddenhausen",
+  "sun": {
+   "lat": 52.2,
+   "lon": 8.6
+  }
+ },
+ "19001332": {
+  "name": "Hilden",
+  "sun": {
+   "lat": 51.2,
+   "lon": 6.9
+  }
+ },
+ "19001334": {
+  "name": "Hohenlimburg",
+  "sun": {
+   "lat": 51.4,
+   "lon": 7.6
+  }
+ },
+ "19001335": {
+  "name": "Hombruch",
+  "sun": {
+   "lat": 51.4,
+   "lon": 7.7
+  }
+ },
+ "19001336": {
+  "name": "Horn-Bad Meinberg",
+  "sun": {
+   "lat": 51.9,
+   "lon": 8.9
+  }
+ },
+ "19001337": {
+  "name": "Horst",
+  "sun": {
+   "lat": 52,
+   "lon": 7.2
+  }
+ },
+ "19001339": {
+  "name": "H\u00f6xter",
+  "sun": {
+   "lat": 51.8,
+   "lon": 9.4
+  }
+ },
+ "19001340": {
+  "name": "H\u00fcckelhoven",
+  "sun": {
+   "lat": 51.1,
+   "lon": 6.2
+  }
+ },
+ "19001341": {
+  "name": "H\u00fcrth",
+  "sun": {
+   "lat": 50.9,
+   "lon": 6.9
+  }
+ },
+ "19001342": {
+  "name": "Hutzemert",
+  "sun": {
+   "lat": 51,
+   "lon": 7.7
+  }
+ },
+ "20101": {
+  "name": "Ibbenb\u00fcren",
+  "sun": {
+   "lat": 52.3,
+   "lon": 7.7
+  }
+ },
+ "20104": {
+  "name": "Iserlohn",
+  "sun": {
+   "lat": 51.4,
+   "lon": 7.7
+  }
+ },
+ "19001345": {
+  "name": "J\u00fcchen",
+  "sun": {
+   "lat": 51.1,
+   "lon": 6.5
+  }
+ },
+ "19001346": {
+  "name": "J\u00fclich",
+  "sun": {
+   "lat": 50.9,
+   "lon": 6.4
+  }
+ },
+ "19001347": {
+  "name": "Kaldenkirchen",
+  "sun": {
+   "lat": 51.3,
+   "lon": 6.2
+  }
+ },
+ "20105": {
+  "name": "Kamen",
+  "sun": {
+   "lat": 51.6,
+   "lon": 7.7
+  }
+ },
+ "19001349": {
+  "name": "Kamp-Lintfort",
+  "sun": {
+   "lat": 51.5,
+   "lon": 6.5
+  }
+ },
+ "19001350": {
+  "name": "Kempen (NRW)",
+  "sun": {
+   "lat": 51.4,
+   "lon": 6.4
+  }
+ },
+ "20110": {
+  "name": "Kerpen",
+  "sun": {
+   "lat": 50.9,
+   "lon": 6.7
+  }
+ },
+ "19001352": {
+  "name": "Kierspe",
+  "sun": {
+   "lat": 51.1,
+   "lon": 7.6
+  }
+ },
+ "19001353": {
+  "name": "Kohlscheid",
+  "sun": {
+   "lat": 50.8,
+   "lon": 6.1
+  }
+ },
+ "20112": {
+  "name": "K\u00f6ln",
+  "sun": {
+   "lat": 50.9,
+   "lon": 6.9
+  }
+ },
+ "19001355": {
+  "name": "K\u00f6nigswinter",
+  "sun": {
+   "lat": 50.7,
+   "lon": 7.2
+  }
+ },
+ "19001356": {
+  "name": "Korschenbroich",
+  "sun": {
+   "lat": 51.2,
+   "lon": 6.5
+  }
+ },
+ "19001357": {
+  "name": "Kray",
+  "sun": {
+   "lat": 51.5,
+   "lon": 7.1
+  }
+ },
+ "20113": {
+  "name": "Krefeld",
+  "sun": {
+   "lat": 51.3,
+   "lon": 6.6
+  }
+ },
+ "19001360": {
+  "name": "K\u00fcrten",
+  "sun": {
+   "lat": 51.1,
+   "lon": 7.3
+  }
+ },
+ "20116": {
+  "name": "Lage",
+  "sun": {
+   "lat": 52,
+   "lon": 8.8
+  }
+ },
+ "19001362": {
+  "name": "Langenfeld",
+  "sun": {
+   "lat": 51.1,
+   "lon": 7
+  }
+ },
+ "19001363": {
+  "name": "Leichlingen",
+  "sun": {
+   "lat": 51.1,
+   "lon": 7
+  }
+ },
+ "20122": {
+  "name": "Lemgo",
+  "sun": {
+   "lat": 52,
+   "lon": 8.9
+  }
+ },
+ "20123": {
+  "name": "Lengerich",
+  "sun": {
+   "lat": 52.2,
+   "lon": 7.9
+  }
+ },
+ "19001366": {
+  "name": "Lennestadt",
+  "sun": {
+   "lat": 51.1,
+   "lon": 8.1
+  }
+ },
+ "19001367": {
+  "name": "Letmathe",
+  "sun": {
+   "lat": 51.4,
+   "lon": 7.6
+  }
+ },
+ "20124": {
+  "name": "Leverkusen",
+  "sun": {
+   "lat": 51,
+   "lon": 7
+  }
+ },
+ "19001369": {
+  "name": "Lindlar",
+  "sun": {
+   "lat": 51,
+   "lon": 7.4
+  }
+ },
+ "19001370": {
+  "name": "Lippstadt",
+  "sun": {
+   "lat": 51.7,
+   "lon": 8.3
+  }
+ },
+ "19001371": {
+  "name": "Lobberich",
+  "sun": {
+   "lat": 51.3,
+   "lon": 6.3
+  }
+ },
+ "19001372": {
+  "name": "Lohmar",
+  "sun": {
+   "lat": 50.8,
+   "lon": 7.2
+  }
+ },
+ "19001374": {
+  "name": "L\u00fcdenscheid",
+  "sun": {
+   "lat": 51.2,
+   "lon": 7.6
+  }
+ },
+ "19001375": {
+  "name": "L\u00fcdinghausen",
+  "sun": {
+   "lat": 51.8,
+   "lon": 7.4
+  }
+ },
+ "19001376": {
+  "name": "L\u00fcgde",
+  "sun": {
+   "lat": 52,
+   "lon": 9.3
+  }
+ },
+ "20134": {
+  "name": "L\u00fcnen",
+  "sun": {
+   "lat": 51.6,
+   "lon": 7.5
+  }
+ },
+ "20138": {
+  "name": "Marl",
+  "sun": {
+   "lat": 51.7,
+   "lon": 7.1
+  }
+ },
+ "19001379": {
+  "name": "Marsberg",
+  "sun": {
+   "lat": 51.5,
+   "lon": 8.9
+  }
+ },
+ "19001380": {
+  "name": "Mechernich",
+  "sun": {
+   "lat": 50.6,
+   "lon": 6.6
+  }
+ },
+ "19001381": {
+  "name": "Meckenheim",
+  "sun": {
+   "lat": 50.6,
+   "lon": 7
+  }
+ },
+ "19001382": {
+  "name": "Meinerzhagen",
+  "sun": {
+   "lat": 51.1,
+   "lon": 7.6
+  }
+ },
+ "19001383": {
+  "name": "Menden",
+  "sun": {
+   "lat": 51.4,
+   "lon": 7.8
+  }
+ },
+ "20141": {
+  "name": "Meschede",
+  "sun": {
+   "lat": 51.4,
+   "lon": 8.3
+  }
+ },
+ "20142": {
+  "name": "Mettmann",
+  "sun": {
+   "lat": 51.3,
+   "lon": 7
+  }
+ },
+ "271298": {
+  "name": "Minden",
+  "sun": {
+   "lat": 52.3,
+   "lon": 8.9
+  }
+ },
+ "203549545": {
+  "name": "Moers",
+  "sun": {
+   "lat": 51.5,
+   "lon": 6.6
+  }
+ },
+ "20145": {
+  "name": "M\u00f6nchengladbach",
+  "sun": {
+   "lat": 51.2,
+   "lon": 6.4
+  }
+ },
+ "19001389": {
+  "name": "Monheim",
+  "sun": {
+   "lat": 51.1,
+   "lon": 6.9
+  }
+ },
+ "20150": {
+  "name": "M\u00fclheim an der Ruhr",
+  "sun": {
+   "lat": 51.4,
+   "lon": 6.9
+  }
+ },
+ "20152": {
+  "name": "M\u00fcnster",
+  "sun": {
+   "lat": 52,
+   "lon": 7.6
+  }
+ },
+ "19001392": {
+  "name": "Nachrodt",
+  "sun": {
+   "lat": 51.3,
+   "lon": 7.6
+  }
+ },
+ "19001393": {
+  "name": "Nettetal",
+  "sun": {
+   "lat": 51.3,
+   "lon": 6.3
+  }
+ },
+ "20157": {
+  "name": "Neuss",
+  "sun": {
+   "lat": 51.2,
+   "lon": 6.7
+  }
+ },
+ "19001397": {
+  "name": "Neuss Norf",
+  "sun": {
+   "lat": 51.2,
+   "lon": 6.7
+  }
+ },
+ "19001398": {
+  "name": "Niederkassel",
+  "sun": {
+   "lat": 50.8,
+   "lon": 7
+  }
+ },
+ "19001399": {
+  "name": "Nienhagen",
+  "sun": {
+   "lat": 52,
+   "lon": 8.7
+  }
+ },
+ "19001400": {
+  "name": "Nordkirchen",
+  "sun": {
+   "lat": 51.7,
+   "lon": 7.5
+  }
+ },
+ "19001401": {
+  "name": "Nottuln",
+  "sun": {
+   "lat": 51.9,
+   "lon": 7.4
+  }
+ },
+ "20164": {
+  "name": "Oberhausen",
+  "sun": {
+   "lat": 51.5,
+   "lon": 6.8
+  }
+ },
+ "19001404": {
+  "name": "Odenthal",
+  "sun": {
+   "lat": 51,
+   "lon": 7.1
+  }
+ },
+ "19001405": {
+  "name": "Oedt",
+  "sun": {
+   "lat": 51.3,
+   "lon": 6.4
+  }
+ },
+ "19001406": {
+  "name": "Oelde",
+  "sun": {
+   "lat": 51.8,
+   "lon": 8.1
+  }
+ },
+ "20165": {
+  "name": "Oer-Erkenschwick",
+  "sun": {
+   "lat": 51.6,
+   "lon": 7.2
+  }
+ },
+ "19001408": {
+  "name": "Olpe",
+  "sun": {
+   "lat": 51,
+   "lon": 7.9
+  }
+ },
+ "1456": {
+  "name": "Overath",
+  "sun": {
+   "lat": 51,
+   "lon": 7.3
+  }
+ },
+ "20172": {
+  "name": "Paderborn",
+  "sun": {
+   "lat": 51.7,
+   "lon": 8.8
+  }
+ },
+ "19001411": {
+  "name": "Pelkum",
+  "sun": {
+   "lat": 51.6,
+   "lon": 7.7
+  }
+ },
+ "19001412": {
+  "name": "Petershagen",
+  "sun": {
+   "lat": 52.4,
+   "lon": 9
+  }
+ },
+ "19001414": {
+  "name": "Plettenberg",
+  "sun": {
+   "lat": 51.2,
+   "lon": 7.9
+  }
+ },
+ "19001415": {
+  "name": "Pulheim",
+  "sun": {
+   "lat": 51,
+   "lon": 6.8
+  }
+ },
+ "19001416": {
+  "name": "Radevormwald",
+  "sun": {
+   "lat": 51.2,
+   "lon": 7.3
+  }
+ },
+ "19001417": {
+  "name": "Rahden",
+  "sun": {
+   "lat": 52.4,
+   "lon": 8.6
+  }
+ },
+ "20180": {
+  "name": "Ratingen",
+  "sun": {
+   "lat": 51.3,
+   "lon": 6.9
+  }
+ },
+ "20183": {
+  "name": "Recklinghausen",
+  "sun": {
+   "lat": 51.6,
+   "lon": 7.2
+  }
+ },
+ "20185": {
+  "name": "Remscheid",
+  "sun": {
+   "lat": 51.2,
+   "lon": 7.2
+  }
+ },
+ "19001421": {
+  "name": "Repelen (Moers)",
+  "sun": {
+   "lat": 51.5,
+   "lon": 6.6
+  }
+ },
+ "19001423": {
+  "name": "Rheinbach",
+  "sun": {
+   "lat": 50.6,
+   "lon": 7
+  }
+ },
+ "19001425": {
+  "name": "Rheindahlen",
+  "sun": {
+   "lat": 51.2,
+   "lon": 6.4
+  }
+ },
+ "19001426": {
+  "name": "Rheine",
+  "sun": {
+   "lat": 52.3,
+   "lon": 7.4
+  }
+ },
+ "19001428": {
+  "name": "Rietberg",
+  "sun": {
+   "lat": 51.8,
+   "lon": 8.4
+  }
+ },
+ "19001429": {
+  "name": "Ronsdorf",
+  "sun": {
+   "lat": 51.2,
+   "lon": 7.2
+  }
+ },
+ "19001430": {
+  "name": "Rosrath",
+  "sun": {
+   "lat": 50.9,
+   "lon": 7.2
+  }
+ },
+ "19001433": {
+  "name": "Salzkotten",
+  "sun": {
+   "lat": 51.7,
+   "lon": 8.6
+  }
+ },
+ "19001434": {
+  "name": "Schwelm",
+  "sun": {
+   "lat": 51.3,
+   "lon": 7.3
+  }
+ },
+ "20201": {
+  "name": "Schwerte",
+  "sun": {
+   "lat": 51.4,
+   "lon": 7.6
+  }
+ },
+ "19001436": {
+  "name": "Senden (NRW)",
+  "sun": {
+   "lat": 51.9,
+   "lon": 7.5
+  }
+ },
+ "19001437": {
+  "name": "Sendenhorst",
+  "sun": {
+   "lat": 51.8,
+   "lon": 7.8
+  }
+ },
+ "19001438": {
+  "name": "Siegburg",
+  "sun": {
+   "lat": 50.8,
+   "lon": 7.2
+  }
+ },
+ "20203": {
+  "name": "Siegen",
+  "sun": {
+   "lat": 50.9,
+   "lon": 8
+  }
+ },
+ "19001440": {
+  "name": "Sindorf",
+  "sun": {
+   "lat": 50.9,
+   "lon": 6.7
+  }
+ },
+ "20208": {
+  "name": "Soest",
+  "sun": {
+   "lat": 51.6,
+   "lon": 8.1
+  }
+ },
+ "20209": {
+  "name": "Solingen",
+  "sun": {
+   "lat": 51.2,
+   "lon": 7.1
+  }
+ },
+ "19001443": {
+  "name": "Spenge",
+  "sun": {
+   "lat": 52.1,
+   "lon": 8.5
+  }
+ },
+ "19001444": {
+  "name": "Sprockh\u00f6vel",
+  "sun": {
+   "lat": 51.4,
+   "lon": 7.2
+  }
+ },
+ "19001445": {
+  "name": "St. Augustin",
+  "sun": {
+   "lat": 50.8,
+   "lon": 7.2
+  }
+ },
+ "19001446": {
+  "name": "Stadtlohn",
+  "sun": {
+   "lat": 52,
+   "lon": 6.9
+  }
+ },
+ "19001447": {
+  "name": "Steele",
+  "sun": {
+   "lat": 51.5,
+   "lon": 7.1
+  }
+ },
+ "19001448": {
+  "name": "Steinfurt",
+  "sun": {
+   "lat": 52.2,
+   "lon": 7.3
+  }
+ },
+ "20214": {
+  "name": "Steinhagen",
+  "sun": {
+   "lat": 52,
+   "lon": 8.4
+  }
+ },
+ "19001450": {
+  "name": "Steinheim",
+  "sun": {
+   "lat": 51.9,
+   "lon": 9.1
+  }
+ },
+ "19001451": {
+  "name": "Stemwede-Oppenwehe",
+  "sun": {
+   "lat": 52.5,
+   "lon": 8.5
+  }
+ },
+ "20215": {
+  "name": "Stolberg",
+  "sun": {
+   "lat": 50.8,
+   "lon": 6.2
+  }
+ },
+ "19001454": {
+  "name": "Sundern",
+  "sun": {
+   "lat": 51.3,
+   "lon": 8
+  }
+ },
+ "19001455": {
+  "name": "Telgte",
+  "sun": {
+   "lat": 52,
+   "lon": 7.8
+  }
+ },
+ "19001456": {
+  "name": "T\u00f6nisvorst",
+  "sun": {
+   "lat": 51.3,
+   "lon": 6.4
+  }
+ },
+ "20221": {
+  "name": "Troisdorf",
+  "sun": {
+   "lat": 50.8,
+   "lon": 7.2
+  }
+ },
+ "19001458": {
+  "name": "\u00dcbach-Palenberg",
+  "sun": {
+   "lat": 50.9,
+   "lon": 6.1
+  }
+ },
+ "19001460": {
+  "name": "Unna",
+  "sun": {
+   "lat": 51.5,
+   "lon": 7.7
+  }
+ },
+ "20225": {
+  "name": "Velbert",
+  "sun": {
+   "lat": 51.3,
+   "lon": 7
+  }
+ },
+ "19001462": {
+  "name": "Verl",
+  "sun": {
+   "lat": 51.9,
+   "lon": 8.5
+  }
+ },
+ "19001464": {
+  "name": "Vlotho",
+  "sun": {
+   "lat": 52.2,
+   "lon": 8.8
+  }
+ },
+ "19001465": {
+  "name": "Voerde",
+  "sun": {
+   "lat": 51.6,
+   "lon": 6.7
+  }
+ },
+ "19001466": {
+  "name": "Vohwinkel",
+  "sun": {
+   "lat": 51.2,
+   "lon": 7.1
+  }
+ },
+ "19001468": {
+  "name": "Waltrop",
+  "sun": {
+   "lat": 51.6,
+   "lon": 7.4
+  }
+ },
+ "20233": {
+  "name": "Warendorf",
+  "sun": {
+   "lat": 52,
+   "lon": 8
+  }
+ },
+ "19001470": {
+  "name": "Warstein",
+  "sun": {
+   "lat": 51.5,
+   "lon": 8.4
+  }
+ },
+ "19001471": {
+  "name": "Wassenberg",
+  "sun": {
+   "lat": 51.1,
+   "lon": 6.1
+  }
+ },
+ "19001472": {
+  "name": "Wattenscheid",
+  "sun": {
+   "lat": 51.5,
+   "lon": 7.1
+  }
+ },
+ "19001473": {
+  "name": "Wegberg",
+  "sun": {
+   "lat": 51.2,
+   "lon": 6.3
+  }
+ },
+ "19001474": {
+  "name": "Weilerwist",
+  "sun": {
+   "lat": 50.8,
+   "lon": 6.8
+  }
+ },
+ "19001475": {
+  "name": "Welver",
+  "sun": {
+   "lat": 51.6,
+   "lon": 8
+  }
+ },
+ "19001476": {
+  "name": "Wenden",
+  "sun": {
+   "lat": 51,
+   "lon": 7.9
+  }
+ },
+ "20236": {
+  "name": "Werdohl",
+  "sun": {
+   "lat": 51.3,
+   "lon": 7.8
+  }
+ },
+ "20237": {
+  "name": "Werl",
+  "sun": {
+   "lat": 51.6,
+   "lon": 7.9
+  }
+ },
+ "19001479": {
+  "name": "Wermelskirchen",
+  "sun": {
+   "lat": 51.2,
+   "lon": 7.2
+  }
+ },
+ "19001480": {
+  "name": "Werne a.D. Lippe",
+  "sun": {
+   "lat": 51.7,
+   "lon": 7.6
+  }
+ },
+ "19001481": {
+  "name": "Wesel",
+  "sun": {
+   "lat": 51.7,
+   "lon": 6.6
+  }
+ },
+ "19001482": {
+  "name": "Wesseling",
+  "sun": {
+   "lat": 50.8,
+   "lon": 7
+  }
+ },
+ "19001483": {
+  "name": "Westerholt",
+  "sun": {
+   "lat": 51.6,
+   "lon": 7.1
+  }
+ },
+ "19001484": {
+  "name": "Westhofen",
+  "sun": {
+   "lat": 51.4,
+   "lon": 7.5
+  }
+ },
+ "19001487": {
+  "name": "Wiedenbr\u00fcck",
+  "sun": {
+   "lat": 51.6,
+   "lon": 8.3
+  }
+ },
+ "19001488": {
+  "name": "Wiehl",
+  "sun": {
+   "lat": 50.9,
+   "lon": 7.5
+  }
+ },
+ "20240": {
+  "name": "Willich",
+  "sun": {
+   "lat": 51.3,
+   "lon": 6.5
+  }
+ },
+ "19001490": {
+  "name": "Wipperf\u00fcrth",
+  "sun": {
+   "lat": 51.1,
+   "lon": 7.4
+  }
+ },
+ "20242": {
+  "name": "Witten",
+  "sun": {
+   "lat": 51.4,
+   "lon": 7.3
+  }
+ },
+ "19001492": {
+  "name": "Witten Herbede",
+  "sun": {
+   "lat": 51.4,
+   "lon": 7.3
+  }
+ },
+ "19001493": {
+  "name": "Witterschlick",
+  "sun": {
+   "lat": 50.7,
+   "lon": 7
+  }
+ },
+ "19001494": {
+  "name": "Wulfrath",
+  "sun": {
+   "lat": 51.3,
+   "lon": 7.1
+  }
+ },
+ "20244": {
+  "name": "Wuppertal",
+  "sun": {
+   "lat": 51.3,
+   "lon": 7.2
+  }
+ },
+ "19001496": {
+  "name": "Wurselen",
+  "sun": {
+   "lat": 50.9,
+   "lon": 6.1
+  }
+ },
+ "19001497": {
+  "name": "Z\u00fclpich",
+  "sun": {
+   "lat": 50.7,
+   "lon": 6.6
+  }
+ },
+ "19001498": {
+  "name": "Adenau",
+  "sun": {
+   "lat": 50.4,
+   "lon": 6.9
+  }
+ },
+ "19001499": {
+  "name": "Alsenborn",
+  "sun": {
+   "lat": 49.5,
+   "lon": 7.9
+  }
+ },
+ "19001500": {
+  "name": "Altenkirchen",
+  "sun": {
+   "lat": 50.7,
+   "lon": 7.6
+  }
+ },
+ "19001501": {
+  "name": "Alzey",
+  "sun": {
+   "lat": 49.8,
+   "lon": 8.1
+  }
+ },
+ "19001502": {
+  "name": "Andernach",
+  "sun": {
+   "lat": 50.4,
+   "lon": 7.4
+  }
+ },
+ "19001503": {
+  "name": "Annweiler",
+  "sun": {
+   "lat": 49.2,
+   "lon": 8
+  }
+ },
+ "19001504": {
+  "name": "Bad D\u00fcrkheim",
+  "sun": {
+   "lat": 49.5,
+   "lon": 8.2
+  }
+ },
+ "19001505": {
+  "name": "Bad Ems",
+  "sun": {
+   "lat": 50.3,
+   "lon": 7.7
+  }
+ },
+ "206551976": {
+  "name": "Bad Kreuznach",
+  "sun": {
+   "lat": 49.8,
+   "lon": 7.9
+  }
+ },
+ "19001507": {
+  "name": "Bad Neuenahr-Ahrweiler",
+  "sun": {
+   "lat": 50.5,
+   "lon": 7.1
+  }
+ },
+ "19001508": {
+  "name": "Bellheim",
+  "sun": {
+   "lat": 49.2,
+   "lon": 8.3
+  }
+ },
+ "19001510": {
+  "name": "Betzdorf",
+  "sun": {
+   "lat": 50.8,
+   "lon": 7.9
+  }
+ },
+ "19001511": {
+  "name": "Bingen",
+  "sun": {
+   "lat": 50,
+   "lon": 7.9
+  }
+ },
+ "19001512": {
+  "name": "Boppard",
+  "sun": {
+   "lat": 50.2,
+   "lon": 7.6
+  }
+ },
+ "19001514": {
+  "name": "Bullay",
+  "sun": {
+   "lat": 50.1,
+   "lon": 7.1
+  }
+ },
+ "19001517": {
+  "name": "Eisenberg",
+  "sun": {
+   "lat": 49.6,
+   "lon": 8.1
+  }
+ },
+ "19001518": {
+  "name": "Emmelshausen",
+  "sun": {
+   "lat": 50.2,
+   "lon": 7.6
+  }
+ },
+ "19001519": {
+  "name": "Ettringen",
+  "sun": {
+   "lat": 50.4,
+   "lon": 7.2
+  }
+ },
+ "20061": {
+  "name": "Frankenthal",
+  "sun": {
+   "lat": 49.5,
+   "lon": 8.4
+  }
+ },
+ "19001521": {
+  "name": "F\u00fcrthen (Sieg)",
+  "sun": {
+   "lat": 50.8,
+   "lon": 7.7
+  }
+ },
+ "20073": {
+  "name": "Germersheim",
+  "sun": {
+   "lat": 49.2,
+   "lon": 8.4
+  }
+ },
+ "19001523": {
+  "name": "Gerolstein",
+  "sun": {
+   "lat": 50.2,
+   "lon": 6.7
+  }
+ },
+ "19001524": {
+  "name": "Gr\u00fcnstadt",
+  "sun": {
+   "lat": 49.6,
+   "lon": 8.2
+  }
+ },
+ "19001526": {
+  "name": "Hachenburg",
+  "sun": {
+   "lat": 50.7,
+   "lon": 7.8
+  }
+ },
+ "19001527": {
+  "name": "H\u00f6hr-Grenzhausen",
+  "sun": {
+   "lat": 50.4,
+   "lon": 7.7
+  }
+ },
+ "19001528": {
+  "name": "Ingelheim",
+  "sun": {
+   "lat": 50,
+   "lon": 8.1
+  }
+ },
+ "19001529": {
+  "name": "Junkerath",
+  "sun": {
+   "lat": 50.3,
+   "lon": 6.6
+  }
+ },
+ "19001530": {
+  "name": "Kaisersesch",
+  "sun": {
+   "lat": 50.2,
+   "lon": 7.1
+  }
+ },
+ "19001531": {
+  "name": "Kaiserslautern",
+  "sun": {
+   "lat": 49.4,
+   "lon": 7.8
+  }
+ },
+ "89167503": {
+  "name": "Koblenz",
+  "sun": {
+   "lat": 50.4,
+   "lon": 7.6
+  }
+ },
+ "19001534": {
+  "name": "Konz",
+  "sun": {
+   "lat": 49.7,
+   "lon": 6.6
+  }
+ },
+ "19001535": {
+  "name": "Lahnstein",
+  "sun": {
+   "lat": 50.3,
+   "lon": 7.6
+  }
+ },
+ "19001536": {
+  "name": "Landau in der Pfalz",
+  "sun": {
+   "lat": 49.2,
+   "lon": 8.1
+  }
+ },
+ "19001537": {
+  "name": "Landstuhl",
+  "sun": {
+   "lat": 49.4,
+   "lon": 7.6
+  }
+ },
+ "19001538": {
+  "name": "Linz am Rhein",
+  "sun": {
+   "lat": 50.6,
+   "lon": 7.3
+  }
+ },
+ "20133": {
+  "name": "Ludwigshafen",
+  "sun": {
+   "lat": 49.5,
+   "lon": 8.4
+  }
+ },
+ "19001540": {
+  "name": "Lustadt",
+  "sun": {
+   "lat": 49.2,
+   "lon": 8.3
+  }
+ },
+ "19001541": {
+  "name": "Maikammer",
+  "sun": {
+   "lat": 49.3,
+   "lon": 8.1
+  }
+ },
+ "20136": {
+  "name": "Mainz",
+  "sun": {
+   "lat": 50,
+   "lon": 8.3
+  }
+ },
+ "19001543": {
+  "name": "Maxdorf",
+  "sun": {
+   "lat": 49.5,
+   "lon": 8.3
+  }
+ },
+ "19001544": {
+  "name": "Mayen",
+  "sun": {
+   "lat": 50.3,
+   "lon": 7.2
+  }
+ },
+ "19001545": {
+  "name": "Montabaur",
+  "sun": {
+   "lat": 50.4,
+   "lon": 7.8
+  }
+ },
+ "19001546": {
+  "name": "Mutterstadt",
+  "sun": {
+   "lat": 49.5,
+   "lon": 8.4
+  }
+ },
+ "19001547": {
+  "name": "Nassau",
+  "sun": {
+   "lat": 50.3,
+   "lon": 7.8
+  }
+ },
+ "19001548": {
+  "name": "Neustadt a. D. Weinstrasse",
+  "sun": {
+   "lat": 49.4,
+   "lon": 8.1
+  }
+ },
+ "19001551": {
+  "name": "Pirmasens",
+  "sun": {
+   "lat": 49.2,
+   "lon": 7.6
+  }
+ },
+ "19001552": {
+  "name": "Ransbach-Baumbach",
+  "sun": {
+   "lat": 50.5,
+   "lon": 7.7
+  }
+ },
+ "19001553": {
+  "name": "Remagen",
+  "sun": {
+   "lat": 50.6,
+   "lon": 7.2
+  }
+ },
+ "19001554": {
+  "name": "Rennerod",
+  "sun": {
+   "lat": 50.6,
+   "lon": 8.1
+  }
+ },
+ "19001557": {
+  "name": "R\u00fclzheim",
+  "sun": {
+   "lat": 49.2,
+   "lon": 8.3
+  }
+ },
+ "19001558": {
+  "name": "Schifferstadt",
+  "sun": {
+   "lat": 49.4,
+   "lon": 8.4
+  }
+ },
+ "19001559": {
+  "name": "Selters",
+  "sun": {
+   "lat": 50.5,
+   "lon": 7.8
+  }
+ },
+ "19001560": {
+  "name": "Simmern",
+  "sun": {
+   "lat": 50,
+   "lon": 7.5
+  }
+ },
+ "20206": {
+  "name": "Sinzig",
+  "sun": {
+   "lat": 50.6,
+   "lon": 7.2
+  }
+ },
+ "20210": {
+  "name": "Speyer",
+  "sun": {
+   "lat": 49.3,
+   "lon": 8.4
+  }
+ },
+ "19001563": {
+  "name": "Sprendlingen",
+  "sun": {
+   "lat": 49.9,
+   "lon": 8
+  }
+ },
+ "19001564": {
+  "name": "Trier",
+  "sun": {
+   "lat": 49.8,
+   "lon": 6.6
+  }
+ },
+ "19001565": {
+  "name": "Ulmen",
+  "sun": {
+   "lat": 50.2,
+   "lon": 7
+  }
+ },
+ "19001566": {
+  "name": "Weisenthurm",
+  "sun": {
+   "lat": 50.4,
+   "lon": 7.5
+  }
+ },
+ "20241": {
+  "name": "Wirges",
+  "sun": {
+   "lat": 50.5,
+   "lon": 7.8
+  }
+ },
+ "19001568": {
+  "name": "Wittlich",
+  "sun": {
+   "lat": 50,
+   "lon": 6.9
+  }
+ },
+ "20243": {
+  "name": "Worms",
+  "sun": {
+   "lat": 49.6,
+   "lon": 8.4
+  }
+ },
+ "19001570": {
+  "name": "Worrstadt",
+  "sun": {
+   "lat": 49.8,
+   "lon": 8.1
+  }
+ },
+ "19001571": {
+  "name": "Worth Am Rhein",
+  "sun": {
+   "lat": 49.1,
+   "lon": 8.3
+  }
+ },
+ "19001572": {
+  "name": "Zweibr\u00fccken",
+  "sun": {
+   "lat": 49.3,
+   "lon": 7.4
+  }
+ },
+ "19001574": {
+  "name": "Blieskastel",
+  "sun": {
+   "lat": 49.2,
+   "lon": 7.3
+  }
+ },
+ "19001575": {
+  "name": "Dillingen (Saar)",
+  "sun": {
+   "lat": 49.4,
+   "lon": 6.7
+  }
+ },
+ "19001576": {
+  "name": "Homburg (Saar)",
+  "sun": {
+   "lat": 49.3,
+   "lon": 7.3
+  }
+ },
+ "19001577": {
+  "name": "Lebach",
+  "sun": {
+   "lat": 49.4,
+   "lon": 6.9
+  }
+ },
+ "19001578": {
+  "name": "Merzig",
+  "sun": {
+   "lat": 49.4,
+   "lon": 6.6
+  }
+ },
+ "19001579": {
+  "name": "Neunkirchen",
+  "sun": {
+   "lat": 49.4,
+   "lon": 7.2
+  }
+ },
+ "19001581": {
+  "name": "Quierscheid",
+  "sun": {
+   "lat": 49.3,
+   "lon": 7.1
+  }
+ },
+ "20194": {
+  "name": "Saarbr\u00fccken",
+  "sun": {
+   "lat": 49.2,
+   "lon": 7
+  }
+ },
+ "20307": {
+  "name": "Schmelz",
+  "sun": {
+   "lat": 49.4,
+   "lon": 6.9
+  }
+ },
+ "19001586": {
+  "name": "St. Ingbert",
+  "sun": {
+   "lat": 49.3,
+   "lon": 7.1
+  }
+ },
+ "19001587": {
+  "name": "St. Wendel",
+  "sun": {
+   "lat": 49.5,
+   "lon": 7.2
+  }
+ },
+ "20229": {
+  "name": "V\u00f6lklingen",
+  "sun": {
+   "lat": 49.3,
+   "lon": 6.9
+  }
+ },
+ "19001590": {
+  "name": "Wiebelskirchen",
+  "sun": {
+   "lat": 49.4,
+   "lon": 7.2
+  }
+ },
+ "19001699": {
+  "name": "Apolda",
+  "sun": {
+   "lat": 51,
+   "lon": 11.5
+  }
+ },
+ "19001700": {
+  "name": "Arnstadt",
+  "sun": {
+   "lat": 50.8,
+   "lon": 11
+  }
+ },
+ "19001702": {
+  "name": "Eisenach",
+  "sun": {
+   "lat": 51,
+   "lon": 10.3
+  }
+ },
+ "19001703": {
+  "name": "Erfurt",
+  "sun": {
+   "lat": 51,
+   "lon": 11
+  }
+ },
+ "19001704": {
+  "name": "Gera",
+  "sun": {
+   "lat": 50.9,
+   "lon": 12.1
+  }
+ },
+ "19001708": {
+  "name": "Jena",
+  "sun": {
+   "lat": 50.9,
+   "lon": 11.6
+  }
+ },
+ "19001711": {
+  "name": "Saalfeld",
+  "sun": {
+   "lat": 50.6,
+   "lon": 11.4
+  }
+ },
+ "19001712": {
+  "name": "Sommerda",
+  "sun": {
+   "lat": 51.2,
+   "lon": 11.1
+  }
+ },
+ "19001714": {
+  "name": "Suhl",
+  "sun": {
+   "lat": 50.6,
+   "lon": 10.7
+  }
+ },
+ "19001715": {
+  "name": "Weimar",
+  "sun": {
+   "lat": 51,
+   "lon": 11.3
+  }
+ },
+ "19001591": {
+  "name": "Bautzen",
+  "sun": {
+   "lat": 51.2,
+   "lon": 14.4
+  }
+ },
+ "19001592": {
+  "name": "Chemnitz",
+  "sun": {
+   "lat": 50.8,
+   "lon": 12.9
+  }
+ },
+ "19001593": {
+  "name": "Delitzsch",
+  "sun": {
+   "lat": 51.5,
+   "lon": 12.3
+  }
+ },
+ "19001594": {
+  "name": "D\u00f6beln",
+  "sun": {
+   "lat": 51.1,
+   "lon": 13.1
+  }
+ },
+ "19001595": {
+  "name": "Dresden",
+  "sun": {
+   "lat": 51.1,
+   "lon": 13.7
+  }
+ },
+ "19001598": {
+  "name": "Freiberg",
+  "sun": {
+   "lat": 50.9,
+   "lon": 13.3
+  }
+ },
+ "19001599": {
+  "name": "Glauchau",
+  "sun": {
+   "lat": 50.8,
+   "lon": 12.5
+  }
+ },
+ "19001600": {
+  "name": "Gorlitz",
+  "sun": {
+   "lat": 51.2,
+   "lon": 15
+  }
+ },
+ "19001601": {
+  "name": "Hohenstein-Ernstthal",
+  "sun": {
+   "lat": 50.8,
+   "lon": 12.7
+  }
+ },
+ "19001602": {
+  "name": "Hoyerswerda",
+  "sun": {
+   "lat": 51.4,
+   "lon": 14.2
+  }
+ },
+ "20121": {
+  "name": "Leipzig",
+  "sun": {
+   "lat": 51.4,
+   "lon": 12.4
+  }
+ },
+ "19001606": {
+  "name": "Oelsnitz (Chemnitz)",
+  "sun": {
+   "lat": 50.7,
+   "lon": 12.7
+  }
+ },
+ "19001607": {
+  "name": "Olbernhau",
+  "sun": {
+   "lat": 50.7,
+   "lon": 13.3
+  }
+ },
+ "19001609": {
+  "name": "Pegau",
+  "sun": {
+   "lat": 51.2,
+   "lon": 12.2
+  }
+ },
+ "19001610": {
+  "name": "Pirna",
+  "sun": {
+   "lat": 51,
+   "lon": 13.9
+  }
+ },
+ "19001612": {
+  "name": "Radebeul",
+  "sun": {
+   "lat": 51.1,
+   "lon": 13.6
+  }
+ },
+ "19001613": {
+  "name": "Radeburg",
+  "sun": {
+   "lat": 51.2,
+   "lon": 13.7
+  }
+ },
+ "19001614": {
+  "name": "Riesa",
+  "sun": {
+   "lat": 51.3,
+   "lon": 13.3
+  }
+ },
+ "19001618": {
+  "name": "W\u00fcrzen",
+  "sun": {
+   "lat": 51.4,
+   "lon": 12.7
+  }
+ },
+ "19001619": {
+  "name": "Zwickau",
+  "sun": {
+   "lat": 50.7,
+   "lon": 12.5
+  }
+ },
+ "19001620": {
+  "name": "Aken",
+  "sun": {
+   "lat": 51.9,
+   "lon": 12
+  }
+ },
+ "19001621": {
+  "name": "Barleben",
+  "sun": {
+   "lat": 52.2,
+   "lon": 11.6
+  }
+ },
+ "19001623": {
+  "name": "Calbe",
+  "sun": {
+   "lat": 51.9,
+   "lon": 11.8
+  }
+ },
+ "19001624": {
+  "name": "Dessau",
+  "sun": {
+   "lat": 51.8,
+   "lon": 12.2
+  }
+ },
+ "19001627": {
+  "name": "Gommern",
+  "sun": {
+   "lat": 52.1,
+   "lon": 11.8
+  }
+ },
+ "19001628": {
+  "name": "Halberstadt",
+  "sun": {
+   "lat": 51.9,
+   "lon": 11.1
+  }
+ },
+ "19001629": {
+  "name": "Haldensleben",
+  "sun": {
+   "lat": 52.3,
+   "lon": 11.4
+  }
+ },
+ "19001632": {
+  "name": "Markneukirchen",
+  "sun": {
+   "lat": 50.3,
+   "lon": 12.3
+  }
+ },
+ "19001636": {
+  "name": "Oschersleben",
+  "sun": {
+   "lat": 52,
+   "lon": 11.2
+  }
+ },
+ "19001638": {
+  "name": "Salzwedel",
+  "sun": {
+   "lat": 52.9,
+   "lon": 11.2
+  }
+ },
+ "19001640": {
+  "name": "Wernigerode",
+  "sun": {
+   "lat": 51.8,
+   "lon": 10.8
+  }
+ },
+ "19001641": {
+  "name": "Zeitz",
+  "sun": {
+   "lat": 51.1,
+   "lon": 12.1
+  }
+ },
+ "19001642": {
+  "name": "Zerbst",
+  "sun": {
+   "lat": 52,
+   "lon": 12.1
+  }
+ },
+ "19001643": {
+  "name": "Ahrensburg",
+  "sun": {
+   "lat": 53.7,
+   "lon": 10.2
+  }
+ },
+ "19001644": {
+  "name": "Bad Bramstedt",
+  "sun": {
+   "lat": 53.9,
+   "lon": 9.9
+  }
+ },
+ "19001645": {
+  "name": "Bad Oldesloe",
+  "sun": {
+   "lat": 53.8,
+   "lon": 10.4
+  }
+ },
+ "19001646": {
+  "name": "Bad Schwartau",
+  "sun": {
+   "lat": 53.9,
+   "lon": 10.7
+  }
+ },
+ "19001647": {
+  "name": "Bad Segeberg",
+  "sun": {
+   "lat": 53.9,
+   "lon": 10.3
+  }
+ },
+ "19001648": {
+  "name": "Bredstedt",
+  "sun": {
+   "lat": 54.6,
+   "lon": 9
+  }
+ },
+ "19001649": {
+  "name": "Brunsb\u00fcttel",
+  "sun": {
+   "lat": 53.9,
+   "lon": 9.1
+  }
+ },
+ "19001651": {
+  "name": "Eckernf\u00f6rde",
+  "sun": {
+   "lat": 54.5,
+   "lon": 9.8
+  }
+ },
+ "19001652": {
+  "name": "Elmshorn",
+  "sun": {
+   "lat": 53.7,
+   "lon": 9.6
+  }
+ },
+ "19001653": {
+  "name": "Eutin",
+  "sun": {
+   "lat": 54.1,
+   "lon": 10.6
+  }
+ },
+ "19001654": {
+  "name": "Flensburg",
+  "sun": {
+   "lat": 54.8,
+   "lon": 9.4
+  }
+ },
+ "19001655": {
+  "name": "Geesthacht",
+  "sun": {
+   "lat": 53.4,
+   "lon": 10.4
+  }
+ },
+ "19001657": {
+  "name": "Gl\u00fccksburg",
+  "sun": {
+   "lat": 54.8,
+   "lon": 9.6
+  }
+ },
+ "19001658": {
+  "name": "Gl\u00fcckstadt",
+  "sun": {
+   "lat": 53.8,
+   "lon": 9.4
+  }
+ },
+ "19001659": {
+  "name": "Gr\u00f6mitz",
+  "sun": {
+   "lat": 54.2,
+   "lon": 11
+  }
+ },
+ "19001660": {
+  "name": "Heide",
+  "sun": {
+   "lat": 54.2,
+   "lon": 9.1
+  }
+ },
+ "19001662": {
+  "name": "Husum",
+  "sun": {
+   "lat": 54.5,
+   "lon": 9.1
+  }
+ },
+ "19001663": {
+  "name": "Itzehoe",
+  "sun": {
+   "lat": 53.9,
+   "lon": 9.5
+  }
+ },
+ "19001664": {
+  "name": "Kaltenkirchen",
+  "sun": {
+   "lat": 53.8,
+   "lon": 10
+  }
+ },
+ "19001665": {
+  "name": "Kappeln",
+  "sun": {
+   "lat": 54.7,
+   "lon": 9.9
+  }
+ },
+ "19001666": {
+  "name": "Kellinghusen",
+  "sun": {
+   "lat": 54,
+   "lon": 9.7
+  }
+ },
+ "20111": {
+  "name": "Kiel",
+  "sun": {
+   "lat": 54.3,
+   "lon": 10.1
+  }
+ },
+ "19001668": {
+  "name": "Kronshagen",
+  "sun": {
+   "lat": 54.3,
+   "lon": 10.1
+  }
+ },
+ "19001670": {
+  "name": "Leck",
+  "sun": {
+   "lat": 54.8,
+   "lon": 9
+  }
+ },
+ "19001671": {
+  "name": "Lensahn",
+  "sun": {
+   "lat": 54.2,
+   "lon": 10.9
+  }
+ },
+ "20131": {
+  "name": "L\u00fcbeck",
+  "sun": {
+   "lat": 53.9,
+   "lon": 10.6
+  }
+ },
+ "19001673": {
+  "name": "L\u00fctjenburg",
+  "sun": {
+   "lat": 54.3,
+   "lon": 10.6
+  }
+ },
+ "19001675": {
+  "name": "Marne",
+  "sun": {
+   "lat": 54,
+   "lon": 9
+  }
+ },
+ "19001676": {
+  "name": "Meldorf",
+  "sun": {
+   "lat": 54.1,
+   "lon": 9.1
+  }
+ },
+ "19001677": {
+  "name": "M\u00f6lln",
+  "sun": {
+   "lat": 53.6,
+   "lon": 10.7
+  }
+ },
+ "20156": {
+  "name": "Neum\u00fcnster",
+  "sun": {
+   "lat": 54.1,
+   "lon": 10
+  }
+ },
+ "19001679": {
+  "name": "Nieb\u00fcll",
+  "sun": {
+   "lat": 54.8,
+   "lon": 8.8
+  }
+ },
+ "19001680": {
+  "name": "Norderstedt",
+  "sun": {
+   "lat": 53.7,
+   "lon": 10
+  }
+ },
+ "19001681": {
+  "name": "Oststeinbek",
+  "sun": {
+   "lat": 53.5,
+   "lon": 10.2
+  }
+ },
+ "19001682": {
+  "name": "Pinneberg",
+  "sun": {
+   "lat": 53.7,
+   "lon": 9.8
+  }
+ },
+ "19001683": {
+  "name": "Pl\u00f6n",
+  "sun": {
+   "lat": 54.2,
+   "lon": 10.4
+  }
+ },
+ "19001684": {
+  "name": "Preetz",
+  "sun": {
+   "lat": 54.2,
+   "lon": 10.3
+  }
+ },
+ "19001686": {
+  "name": "Raisdorf",
+  "sun": {
+   "lat": 54.3,
+   "lon": 10.2
+  }
+ },
+ "19001687": {
+  "name": "Ratzeburg",
+  "sun": {
+   "lat": 53.7,
+   "lon": 10.8
+  }
+ },
+ "19001688": {
+  "name": "Reinbek",
+  "sun": {
+   "lat": 53.5,
+   "lon": 10.3
+  }
+ },
+ "20186": {
+  "name": "Rendsburg",
+  "sun": {
+   "lat": 54.3,
+   "lon": 9.7
+  }
+ },
+ "19001690": {
+  "name": "Schleswig",
+  "sun": {
+   "lat": 54.5,
+   "lon": 9.6
+  }
+ },
+ "19001691": {
+  "name": "Schwarzenbek",
+  "sun": {
+   "lat": 53.5,
+   "lon": 10.5
+  }
+ },
+ "19001692": {
+  "name": "Stockelsdorf",
+  "sun": {
+   "lat": 53.9,
+   "lon": 10.7
+  }
+ },
+ "19001693": {
+  "name": "Tarp",
+  "sun": {
+   "lat": 54.7,
+   "lon": 9.4
+  }
+ },
+ "19001694": {
+  "name": "Uetersen",
+  "sun": {
+   "lat": 53.7,
+   "lon": 9.7
+  }
+ },
+ "19001695": {
+  "name": "Wahlstedt",
+  "sun": {
+   "lat": 54,
+   "lon": 10.2
+  }
+ },
+ "19001697": {
+  "name": "Westerland",
+  "sun": {
+   "lat": 54.9,
+   "lon": 8.3
+  }
+ },
+ "19001698": {
+  "name": "Wyk",
+  "sun": {
+   "lat": 54.7,
+   "lon": 8.6
+  }
+ }
+}

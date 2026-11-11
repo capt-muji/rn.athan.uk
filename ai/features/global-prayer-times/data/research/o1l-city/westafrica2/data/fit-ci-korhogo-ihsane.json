@@ -1,0 +1,100 @@
+{
+ "label": "ci-korhogo-ihsane",
+ "file": "ci-korhogo-ihsane-2026.json",
+ "tz": "Africa/Abidjan",
+ "lat": 9.4717625,
+ "lon": -5.6258906,
+ "days": 365,
+ "span": [
+  "2026-01-01",
+  "2026-12-31"
+ ],
+ "engine": "adhan 4.4.6 Rounding.None MiddleOfTheNight",
+ "recipe": {
+  "fajrAngle": 17.9,
+  "ishaAngle": 17.1,
+  "madhab": "Shafi",
+  "offsets": {
+   "fajr": 0,
+   "sunrise": 1,
+   "dhuhr": 0,
+   "asr": 2,
+   "maghrib": 0,
+   "isha": 0
+  }
+ },
+ "angleSearch": {
+  "fajr": {
+   "angle": 17.9,
+   "exact": 338,
+   "w1": 365,
+   "worst": 1,
+   "score": 365338
+  },
+  "isha": {
+   "angle": 17.1,
+   "exact": 341,
+   "w1": 365,
+   "worst": 1,
+   "score": 365341
+  }
+ },
+ "asrMadhab": {
+  "shafi": {
+   "exact": 96,
+   "w1": 265,
+   "worst": 3,
+   "n": 365
+  },
+  "hanafi": {
+   "exact": 0,
+   "w1": 0,
+   "worst": 75,
+   "n": 365
+  }
+ },
+ "perColumn": {
+  "fajr": {
+   "exact": 338,
+   "w1": 365,
+   "worst": 1,
+   "n": 365
+  },
+  "sunrise": {
+   "exact": 183,
+   "w1": 365,
+   "worst": 1,
+   "n": 365
+  },
+  "dhuhr": {
+   "exact": 187,
+   "w1": 365,
+   "worst": 1,
+   "n": 365
+  },
+  "asr": {
+   "exact": 99,
+   "w1": 180,
+   "worst": 3,
+   "n": 365
+  },
+  "maghrib": {
+   "exact": 185,
+   "w1": 365,
+   "worst": 1,
+   "n": 365
+  },
+  "isha": {
+   "exact": 341,
+   "w1": 365,
+   "worst": 1,
+   "n": 365
+  }
+ },
+ "totals": {
+  "within1": 2005,
+  "of": 2190,
+  "exact": 1333,
+  "worst": 3
+ }
+}

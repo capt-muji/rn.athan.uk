@@ -1,0 +1,322 @@
+{
+ "benin-savalou-mutiyy": {
+  "anchor": "d10",
+  "row_len": 6,
+  "lat": "7.8510894",
+  "lon": "1.897212",
+  "name": "Mosqu\u00e9e Al-Mu\u2019t\u00eeyy | Mawaqit - Prayer times, Mosque",
+  "url": "https://mawaqit.net/en/m/mosquee-al-mutiyy-aga-bp01-savalou-benin",
+  "live_times": [
+   "05:43",
+   "12:36",
+   "15:59",
+   "18:30",
+   "19:30"
+  ],
+  "live_shuruq": "06:43"
+ },
+ "bf-ouaga-10yaar": {
+  "anchor": "d11",
+  "row_len": 6,
+  "lat": "12.2850926",
+  "lon": "-1.4918235",
+  "name": "MSBF | BRC | Mosqu\u00e9e 10 Yaar | Mawaqit - Prayer times, Mosque",
+  "url": "https://mawaqit.net/en/m/mosquee-10-yaar-msbf-ouagadougou-1332-ouaga-burkina-faso",
+  "live_times": [
+   "04:55",
+   "12:25",
+   "15:10",
+   "17:38",
+   "19:10"
+  ],
+  "live_shuruq": "06:02"
+ },
+ "bf-ouaga-dubai": {
+  "anchor": "d10",
+  "row_len": 6,
+  "lat": "12.283028",
+  "lon": "-1.460583",
+  "name": "Mosqu\u00e9e Duba\u00ef Ouaga | Mawaqit - Prayer times, Mosque",
+  "url": "https://mawaqit.net/en/m/mosquee-dubai-ouaga-ouagadougou-00226-burkina-faso",
+  "live_times": [
+   "05:01",
+   "11:50",
+   "15:10",
+   "17:38",
+   "18:38"
+  ],
+  "live_shuruq": "06:02"
+ },
+ "bf-ouaga-kanazoe": {
+  "anchor": "d11",
+  "row_len": 6,
+  "lat": "12.3714277",
+  "lon": "-1.5196603",
+  "name": "Mosqu\u00e9e Aboubacar kanazoe de Tanghin | Mawaqit - Prayer times, Mosque",
+  "url": "https://mawaqit.net/en/m/mosquee-aboubacar-kanazoe-de-tanghin-ouagadougou-11-bp-1613-burkina-faso",
+  "live_times": [
+   "04:55",
+   "12:25",
+   "15:10",
+   "17:38",
+   "19:10"
+  ],
+  "live_shuruq": "06:02"
+ },
+ "ci-abidjan-aghien": {
+  "anchor": "d10",
+  "row_len": 6,
+  "lat": "5.3822233",
+  "lon": "-3.9932946",
+  "name": "COMMUNAUTE MUSULMANE D&#039;AGHIEN | Mawaqit - Prayer times, Mosque",
+  "url": "https://mawaqit.net/en/m/aghien",
+  "live_times": [
+   "05:15",
+   "13:00",
+   "16:00",
+   "18:30",
+   "19:30"
+  ],
+  "live_shuruq": "06:03"
+ },
+ "ci-abidjan-alhousseyne": {
+  "anchor": "d10",
+  "row_len": 6,
+  "lat": "5.3033555",
+  "lon": "-3.9624073",
+  "name": "MOSQUE\u0301E SUNNITE ALHADJ ALHOUSSEYNE | Mawaqit - Prayer times, Mosque",
+  "url": "https://mawaqit.net/en/m/mosquee-sunnite-alhadj-alhousseyne-abidjan-00225-cote-divoire",
+  "live_times": [
+   "04:55",
+   "12:40",
+   "15:22",
+   "18:05",
+   "19:10"
+  ],
+  "live_shuruq": "06:03"
+ },
+ "ci-abidjan-cisse": {
+  "anchor": "d10",
+  "row_len": 6,
+  "lat": "5.3479239",
+  "lon": "-4.0160501",
+  "name": "Mosqu\u00e9e Ciss\u00e9 Mamadou | Mawaqit - Prayer times, Mosque",
+  "url": "https://mawaqit.net/en/m/mosquee-cisse-mamadou-abidjan-09-bp-1470-abidjan-09-cote-divoire",
+  "live_times": [
+   "05:10",
+   "13:30",
+   "16:00",
+   "18:30",
+   "19:30"
+  ],
+  "live_shuruq": "06:03"
+ },
+ "ci-abidjan-comucip": {
+  "anchor": "d10",
+  "row_len": 6,
+  "lat": "5.3838362223676",
+  "lon": "-3.9168512821198",
+  "name": "Mosqu\u00e9e COMUCIP Cit\u00e9 Prestige 2 | Mawaqit - Prayer times, Mosque",
+  "url": "https://mawaqit.net/en/m/mosquee-comucip-cite-prestige-2-abidjan-10000-cote-divoire",
+  "live_times": [
+   "05:00",
+   "13:20",
+   "15:50",
+   "18:05",
+   "19:20"
+  ],
+  "live_shuruq": "06:03"
+ },
+ "ci-abidjan-firad": {
+  "anchor": "d10",
+  "row_len": 6,
+  "lat": "5.4071625",
+  "lon": "-3.9762031",
+  "name": "Complexe islamique Firad | Mawaqit - Prayer times, Mosque",
+  "url": "https://mawaqit.net/en/m/complexe-islamique-firad-abidjan-00225-cote-divoire",
+  "live_times": [
+   "05:05",
+   "13:30",
+   "16:00",
+   "18:30",
+   "19:30"
+  ],
+  "live_shuruq": "06:03"
+ },
+ "ci-abidjan-firdaous": {
+  "anchor": "d10",
+  "row_len": 6,
+  "lat": "5.3975484",
+  "lon": "-3.9562036",
+  "name": "COMUFA Mosqu\u00e9e Firdaous | Mawaqit - Prayer times, Mosque",
+  "url": "https://mawaqit.net/en/m/comufa-mosquee-firdaous-abidjan-23-bp-145-abidjan-23-cote-divoire",
+  "live_times": [
+   "05:10",
+   "13:00",
+   "16:00",
+   "18:10",
+   "19:30"
+  ],
+  "live_shuruq": "06:03"
+ },
+ "ci-abidjan-genie2000": {
+  "anchor": "d10",
+  "row_len": 6,
+  "lat": "5.3757182240003",
+  "lon": "-3.9351761341095",
+  "name": "Grande Mosqu\u00e9e de G\u00e9nie 2000 &amp; Environs | Mawaqit - Prayer times, Mosque",
+  "url": "https://mawaqit.net/en/m/mosquee-de-faya-genie-2000-environs-abidjan-00000-cote-divoire",
+  "live_times": [
+   "05:10",
+   "13:00",
+   "16:00",
+   "18:10",
+   "19:30"
+  ],
+  "live_shuruq": "06:03"
+ },
+ "ci-abidjan-ibrahim": {
+  "anchor": "d10",
+  "row_len": 6,
+  "lat": "5.25777",
+  "lon": "-3.90455",
+  "name": "Mosqu\u00e9e  Ibrahim | Mawaqit - Prayer times, Mosque",
+  "url": "https://mawaqit.net/en/m/cmora-abidjan-cote-d-ivoire",
+  "live_times": [
+   "05:05",
+   "13:00",
+   "15:30",
+   "18:10",
+   "19:15"
+  ],
+  "live_shuruq": "06:03"
+ },
+ "ci-abidjan-nountoure": {
+  "anchor": "d11",
+  "row_len": 6,
+  "lat": "5.4533124815484",
+  "lon": "-4.079353433401",
+  "name": "Mosqu\u00e9e noun tour\u00e9 | Mawaqit - Prayer times, Mosque",
+  "url": "https://mawaqit.net/en/m/mosquee-noun-toure-abidjan-01-cote-divoire",
+  "live_times": [
+   "04:50",
+   "12:45",
+   "15:45",
+   "18:25",
+   "19:35"
+  ],
+  "live_shuruq": "06:04"
+ },
+ "ci-bingerville-omarik": {
+  "anchor": "d10",
+  "row_len": 6,
+  "lat": "5.357650809359",
+  "lon": "-3.8829274717316",
+  "name": "Mosqu\u00e9e Oumar Ibn Khattab-Bingerville | Mawaqit - Prayer times, Mosque",
+  "url": "https://mawaqit.net/en/m/mosquee-omar-ibn-khattab-de-bingerville-abidjan-1387-cote-divoire",
+  "live_times": [
+   "04:50",
+   "12:10",
+   "15:20",
+   "18:00",
+   "19:07"
+  ],
+  "live_shuruq": "06:03"
+ },
+ "ci-korhogo-ihsane": {
+  "anchor": "d11",
+  "row_len": 6,
+  "lat": "9.4717625",
+  "lon": "-5.6258906",
+  "name": "MOSQU\u00c9E IHSANE | Mawaqit - Prayer times, Mosque",
+  "url": "https://mawaqit.net/en/m/mosquee-ihsane-korhogo-savanes-korhogo-cote-divoire-1",
+  "live_times": [
+   "05:02",
+   "12:07",
+   "15:28",
+   "17:58",
+   "19:06"
+  ],
+  "live_shuruq": "06:15"
+ },
+ "gambia-koina-anasbinmalik": {
+  "anchor": "d11",
+  "row_len": 7,
+  "lat": "13.4746587",
+  "lon": "-13.8633205",
+  "name": "\u0645\u0633\u062c\u062f \u0623\u0646\u0633 \u0628\u0646 \u0645\u0627\u0644\u0643 \u0643\u0648\u064a\u0646\u0627 \u0643\u0646\u062a\u0648\u0631\u0627 | Mawaqit - Prayer times, Mosque",
+  "url": "https://mawaqit.net/en/m/masjid-anas-bin-malik-koina-kuntaura-gambia",
+  "live_times": [
+   "05:40",
+   "12:39",
+   "15:59",
+   "18:26",
+   "19:35"
+  ],
+  "live_shuruq": "06:53"
+ },
+ "gambia-oldyundum-fatih": {
+  "anchor": "d10",
+  "row_len": 6,
+  "lat": "13.362642684004",
+  "lon": "-16.694825608464",
+  "name": "Muhammad AlFatih Mosque | Mawaqit - Prayer times, Mosque",
+  "url": "https://mawaqit.net/en/m/muhammad-al-fatih-mosque-old-yundum-gambia",
+  "live_times": [
+   "05:51",
+   "12:51",
+   "16:10",
+   "18:37",
+   "19:46"
+  ],
+  "live_shuruq": "07:04"
+ },
+ "sl-freetown-ansaar": {
+  "anchor": "d10",
+  "row_len": 6,
+  "lat": "8.460859",
+  "lon": "-12.682281",
+  "name": "MASJID AL ANSAAR | Mawaqit - Prayer times, Mosque",
+  "url": "https://mawaqit.net/en/m/masjid-al-ansaar-masiaka-yonibana-highway-freetown-sierra-leone",
+  "live_times": [
+   "05:30",
+   "12:35",
+   "15:54",
+   "18:30",
+   "19:35"
+  ],
+  "live_shuruq": "06:42"
+ },
+ "togo-lome-alitisam": {
+  "anchor": "d10",
+  "row_len": 6,
+  "lat": "6.2021203",
+  "lon": "1.2396713",
+  "name": "Mosqu\u00e9e Al-I&#039;tisam | Mawaqit - Prayer times, Mosque",
+  "url": "https://mawaqit.net/en/m/mosquee-al-i-tisam-lome-99999-togo",
+  "live_times": [
+   "04:31",
+   "11:39",
+   "15:02",
+   "17:35",
+   "18:43"
+  ],
+  "live_shuruq": "05:43"
+ },
+ "togo-lome-zossime": {
+  "anchor": "d11",
+  "row_len": 6,
+  "lat": "6.2320294726382",
+  "lon": "1.1501741409302",
+  "name": "Mosqu\u00e9e de Zossim\u00e9 | Mawaqit - Prayer times, Mosque",
+  "url": "https://mawaqit.net/en/m/mosquee-de-zossime-lome-1896-togo",
+  "live_times": [
+   "04:40",
+   "12:30",
+   "15:00",
+   "17:50",
+   "18:50"
+  ],
+  "live_shuruq": "05:44"
+ }
+}

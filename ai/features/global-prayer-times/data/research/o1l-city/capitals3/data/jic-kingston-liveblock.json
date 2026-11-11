@@ -1,0 +1,30 @@
+{
+ "meta": {
+  "addressCoord": [
+   "17.9917",
+   "-76.9558"
+  ],
+  "city": "Kingston",
+  "coord": [
+   "18.0179",
+   "-76.8099"
+  ],
+  "defect": "live block is undated; times are Kingston's, not the Spanish Town address's (0 days fit at 17.9917,-76.9558 within 1 min)",
+  "jamaatColumn": "printed 5 min BEFORE the adhan column on all five prayers (inverted); no date reproduces it",
+  "label": "Jamaica Islamic Centre (Frasers Content, Frasers Blvd, Spanish Town)",
+  "recoveredDateWindow": "2026-11-08..2026-11-12",
+  "recovery": "all five printed times reproduce on adhan 4.4.6 at 17.5/17 Shafi within 1 min on 5 consecutive days only; no clock read",
+  "tier": "community",
+  "url": "https://jamaicaislamiccentre.com/"
+ },
+ "note": "single dated row recovered by self-consistency; not a published table",
+ "rows": {
+  "2026-11-08..2026-11-12": {
+   "asr": "15:07",
+   "dhuhr": "11:51",
+   "fajr": "04:56",
+   "isha": "18:42",
+   "maghrib": "17:31"
+  }
+ }
+}

@@ -1,0 +1,100 @@
+{
+ "label": "gambia-oldyundum-fatih",
+ "file": "gambia-oldyundum-fatih-2026.json",
+ "tz": "Africa/Banjul",
+ "lat": 13.362642684004,
+ "lon": -16.694825608464,
+ "days": 365,
+ "span": [
+  "2026-01-01",
+  "2026-12-31"
+ ],
+ "engine": "adhan 4.4.6 Rounding.None MiddleOfTheNight",
+ "recipe": {
+  "fajrAngle": 17.9,
+  "ishaAngle": 17.1,
+  "madhab": "Shafi",
+  "offsets": {
+   "fajr": 0,
+   "sunrise": 1,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  }
+ },
+ "angleSearch": {
+  "fajr": {
+   "angle": 17.9,
+   "exact": 345,
+   "w1": 365,
+   "worst": 1,
+   "score": 365345
+  },
+  "isha": {
+   "angle": 17.1,
+   "exact": 342,
+   "w1": 365,
+   "worst": 1,
+   "score": 365342
+  }
+ },
+ "asrMadhab": {
+  "shafi": {
+   "exact": 100,
+   "w1": 272,
+   "worst": 3,
+   "n": 365
+  },
+  "hanafi": {
+   "exact": 0,
+   "w1": 0,
+   "worst": 76,
+   "n": 365
+  }
+ },
+ "perColumn": {
+  "fajr": {
+   "exact": 345,
+   "w1": 365,
+   "worst": 1,
+   "n": 365
+  },
+  "sunrise": {
+   "exact": 193,
+   "w1": 365,
+   "worst": 1,
+   "n": 365
+  },
+  "dhuhr": {
+   "exact": 196,
+   "w1": 365,
+   "worst": 1,
+   "n": 365
+  },
+  "asr": {
+   "exact": 100,
+   "w1": 272,
+   "worst": 3,
+   "n": 365
+  },
+  "maghrib": {
+   "exact": 183,
+   "w1": 365,
+   "worst": 1,
+   "n": 365
+  },
+  "isha": {
+   "exact": 342,
+   "w1": 365,
+   "worst": 1,
+   "n": 365
+  }
+ },
+ "totals": {
+  "within1": 2097,
+  "of": 2190,
+  "exact": 1359,
+  "worst": 3
+ }
+}

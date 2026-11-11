@@ -1,0 +1,1 @@
+cop point -26.97/-70.40 geom-mae 0.24 | nearest Copiapo 45 km | margins fajr 0.3 sunrise -0.0 dhuhr 0.0 asr -0.8 maghrib 5.4 isha -0.2 | exact 92 w1 100 worst 1

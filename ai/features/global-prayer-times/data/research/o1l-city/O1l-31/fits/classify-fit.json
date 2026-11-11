@@ -1,0 +1,739 @@
+{
+ "job": "o1l-31-classify",
+ "meta": {
+  "engine": "adhan 4.4.6",
+  "rule": "angle-honest days at zero margin, floor"
+ },
+ "cities": [
+  {
+   "tag": "is-reykjavik",
+   "lat": 64.1466,
+   "lng": -21.9426,
+   "rows": 365,
+   "claim": "14.2/14",
+   "fajr": {
+    "honest": {
+     "exact": 111,
+     "within1": 207,
+     "worst": 1,
+     "coverage": 207
+    },
+    "honestDays": 207,
+    "window": [
+     "2026-04-04..2026-09-08 (158d)"
+    ],
+    "frozen45": {
+     "exact": 0,
+     "within1": 0,
+     "worst": 98,
+     "coverage": 158
+    },
+    "portions5": {
+     "exact": 0,
+     "within1": 0,
+     "worst": 23,
+     "coverage": 158
+    }
+   },
+   "isha": {
+    "honest": {
+     "exact": 99,
+     "within1": 208,
+     "worst": 1,
+     "coverage": 208
+    },
+    "honestDays": 208,
+    "window": [
+     "2026-04-04..2026-09-06 (156d)"
+    ],
+    "frozen45": {
+     "exact": 0,
+     "within1": 0,
+     "worst": 100,
+     "coverage": 157
+    },
+    "portions5": {
+     "exact": 0,
+     "within1": 0,
+     "worst": 22,
+     "coverage": 157
+    }
+   },
+   "solar": {
+    "sunrise": {
+     "exact": 193,
+     "within1": 365,
+     "worst": 1,
+     "coverage": 365
+    },
+    "dhuhr": {
+     "exact": 195,
+     "within1": 365,
+     "worst": 1,
+     "coverage": 365
+    },
+    "asr1": {
+     "exact": 20,
+     "within1": 125,
+     "worst": 14,
+     "coverage": 365
+    },
+    "maghrib": {
+     "exact": 189,
+     "within1": 365,
+     "worst": 1,
+     "coverage": 365
+    }
+   }
+  },
+  {
+   "tag": "is-keflavik",
+   "lat": 64.0011,
+   "lng": -22.5626,
+   "rows": 363,
+   "claim": "14.2/14",
+   "fajr": {
+    "honest": {
+     "exact": 112,
+     "within1": 207,
+     "worst": 1,
+     "coverage": 207
+    },
+    "honestDays": 207,
+    "window": [
+     "2026-04-05..2026-09-07 (156d)"
+    ],
+    "frozen45": {
+     "exact": 0,
+     "within1": 0,
+     "worst": 96,
+     "coverage": 156
+    },
+    "portions5": {
+     "exact": 0,
+     "within1": 0,
+     "worst": 22,
+     "coverage": 156
+    }
+   },
+   "isha": {
+    "honest": {
+     "exact": 100,
+     "within1": 206,
+     "worst": 1,
+     "coverage": 206
+    },
+    "honestDays": 206,
+    "window": [
+     "2026-04-04..2026-09-06 (156d)"
+    ],
+    "frozen45": {
+     "exact": 0,
+     "within1": 0,
+     "worst": 98,
+     "coverage": 157
+    },
+    "portions5": {
+     "exact": 0,
+     "within1": 0,
+     "worst": 21,
+     "coverage": 157
+    }
+   },
+   "solar": {
+    "sunrise": {
+     "exact": 185,
+     "within1": 363,
+     "worst": 1,
+     "coverage": 363
+    },
+    "dhuhr": {
+     "exact": 166,
+     "within1": 363,
+     "worst": 1,
+     "coverage": 363
+    },
+    "asr1": {
+     "exact": 13,
+     "within1": 102,
+     "worst": 19,
+     "coverage": 363
+    },
+    "maghrib": {
+     "exact": 176,
+     "within1": 362,
+     "worst": 1439,
+     "coverage": 363
+    }
+   }
+  },
+  {
+   "tag": "is-akureyri",
+   "lat": 65.6835,
+   "lng": -18.0878,
+   "rows": 365,
+   "claim": "14.2/14",
+   "fajr": {
+    "honest": {
+     "exact": 73,
+     "within1": 199,
+     "worst": 1,
+     "coverage": 199
+    },
+    "honestDays": 199,
+    "window": [
+     "2026-03-31..2026-09-12 (166d)"
+    ],
+    "frozen45": {
+     "exact": 0,
+     "within1": 0,
+     "worst": 135,
+     "coverage": 166
+    },
+    "portions5": {
+     "exact": 7,
+     "within1": 14,
+     "worst": 23,
+     "coverage": 166
+    }
+   },
+   "isha": {
+    "honest": {
+     "exact": 73,
+     "within1": 195,
+     "worst": 1,
+     "coverage": 195
+    },
+    "honestDays": 195,
+    "window": [
+     "2026-03-31..2026-09-11 (165d)"
+    ],
+    "frozen45": {
+     "exact": 0,
+     "within1": 0,
+     "worst": 138,
+     "coverage": 170
+    },
+    "portions5": {
+     "exact": 0,
+     "within1": 1,
+     "worst": 22,
+     "coverage": 170
+    }
+   },
+   "solar": {
+    "sunrise": {
+     "exact": 134,
+     "within1": 365,
+     "worst": 2,
+     "coverage": 365
+    },
+    "dhuhr": {
+     "exact": 119,
+     "within1": 365,
+     "worst": 1,
+     "coverage": 365
+    },
+    "asr1": {
+     "exact": 19,
+     "within1": 116,
+     "worst": 33,
+     "coverage": 365
+    },
+    "maghrib": {
+     "exact": 138,
+     "within1": 365,
+     "worst": 2,
+     "coverage": 365
+    }
+   }
+  },
+  {
+   "tag": "is-akranes",
+   "lat": 64.3218,
+   "lng": -22.0749,
+   "rows": 364,
+   "claim": "14.2/14",
+   "fajr": {
+    "honest": {
+     "exact": 107,
+     "within1": 206,
+     "worst": 1,
+     "coverage": 206
+    },
+    "honestDays": 206,
+    "window": [
+     "2026-04-04..2026-09-08 (158d)"
+    ],
+    "frozen45": {
+     "exact": 0,
+     "within1": 0,
+     "worst": 100,
+     "coverage": 158
+    },
+    "portions5": {
+     "exact": 0,
+     "within1": 0,
+     "worst": 22,
+     "coverage": 158
+    }
+   },
+   "isha": {
+    "honest": {
+     "exact": 98,
+     "within1": 205,
+     "worst": 1,
+     "coverage": 205
+    },
+    "honestDays": 205,
+    "window": [
+     "2026-04-03..2026-09-07 (158d)"
+    ],
+    "frozen45": {
+     "exact": 0,
+     "within1": 0,
+     "worst": 102,
+     "coverage": 159
+    },
+    "portions5": {
+     "exact": 0,
+     "within1": 0,
+     "worst": 22,
+     "coverage": 159
+    }
+   },
+   "solar": {
+    "sunrise": {
+     "exact": 167,
+     "within1": 364,
+     "worst": 1,
+     "coverage": 364
+    },
+    "dhuhr": {
+     "exact": 173,
+     "within1": 364,
+     "worst": 1,
+     "coverage": 364
+    },
+    "asr1": {
+     "exact": 18,
+     "within1": 98,
+     "worst": 21,
+     "coverage": 364
+    },
+    "maghrib": {
+     "exact": 191,
+     "within1": 364,
+     "worst": 1,
+     "coverage": 364
+    }
+   }
+  },
+  {
+   "tag": "is-borgarnes",
+   "lat": 64.5383,
+   "lng": -21.9206,
+   "rows": 364,
+   "claim": "14.2/14",
+   "fajr": {
+    "honest": {
+     "exact": 99,
+     "within1": 204,
+     "worst": 1,
+     "coverage": 204
+    },
+    "honestDays": 204,
+    "window": [
+     "2026-04-03..2026-09-09 (160d)"
+    ],
+    "frozen45": {
+     "exact": 0,
+     "within1": 0,
+     "worst": 103,
+     "coverage": 160
+    },
+    "portions5": {
+     "exact": 0,
+     "within1": 0,
+     "worst": 23,
+     "coverage": 160
+    }
+   },
+   "isha": {
+    "honest": {
+     "exact": 103,
+     "within1": 201,
+     "worst": 1,
+     "coverage": 201
+    },
+    "honestDays": 201,
+    "window": [
+     "2026-04-03..2026-09-10 (161d)"
+    ],
+    "frozen45": {
+     "exact": 0,
+     "within1": 0,
+     "worst": 106,
+     "coverage": 163
+    },
+    "portions5": {
+     "exact": 0,
+     "within1": 0,
+     "worst": 22,
+     "coverage": 163
+    }
+   },
+   "solar": {
+    "sunrise": {
+     "exact": 170,
+     "within1": 364,
+     "worst": 2,
+     "coverage": 364
+    },
+    "dhuhr": {
+     "exact": 191,
+     "within1": 364,
+     "worst": 1,
+     "coverage": 364
+    },
+    "asr1": {
+     "exact": 16,
+     "within1": 95,
+     "worst": 24,
+     "coverage": 364
+    },
+    "maghrib": {
+     "exact": 168,
+     "within1": 363,
+     "worst": 1439,
+     "coverage": 364
+    }
+   }
+  },
+  {
+   "tag": "is-hofsos",
+   "lat": 65.9,
+   "lng": -19.4,
+   "rows": 365,
+   "claim": "14.2/14",
+   "fajr": {
+    "honest": {
+     "exact": 78,
+     "within1": 197,
+     "worst": 1,
+     "coverage": 197
+    },
+    "honestDays": 197,
+    "window": [
+     "2026-03-30..2026-09-13 (168d)"
+    ],
+    "frozen45": {
+     "exact": 0,
+     "within1": 0,
+     "worst": 144,
+     "coverage": 168
+    },
+    "portions5": {
+     "exact": 2,
+     "within1": 5,
+     "worst": 23,
+     "coverage": 168
+    }
+   },
+   "isha": {
+    "honest": {
+     "exact": 72,
+     "within1": 196,
+     "worst": 1,
+     "coverage": 196
+    },
+    "honestDays": 196,
+    "window": [
+     "2026-03-30..2026-09-11 (166d)"
+    ],
+    "frozen45": {
+     "exact": 0,
+     "within1": 0,
+     "worst": 147,
+     "coverage": 169
+    },
+    "portions5": {
+     "exact": 0,
+     "within1": 0,
+     "worst": 22,
+     "coverage": 169
+    }
+   },
+   "solar": {
+    "sunrise": {
+     "exact": 169,
+     "within1": 347,
+     "worst": 4,
+     "coverage": 365
+    },
+    "dhuhr": {
+     "exact": 168,
+     "within1": 365,
+     "worst": 1,
+     "coverage": 365
+    },
+    "asr1": {
+     "exact": 11,
+     "within1": 86,
+     "worst": 41,
+     "coverage": 365
+    },
+    "maghrib": {
+     "exact": 135,
+     "within1": 349,
+     "worst": 5,
+     "coverage": 365
+    }
+   }
+  },
+  {
+   "tag": "is-husavik",
+   "lat": 66.0449,
+   "lng": -17.3389,
+   "rows": 365,
+   "claim": "14.2/14",
+   "fajr": {
+    "honest": {
+     "exact": 111,
+     "within1": 197,
+     "worst": 1,
+     "coverage": 197
+    },
+    "honestDays": 197,
+    "window": [
+     "2026-03-30..2026-09-13 (168d)"
+    ],
+    "frozen45": {
+     "exact": 0,
+     "within1": 0,
+     "worst": 145,
+     "coverage": 168
+    },
+    "portions5": {
+     "exact": 1,
+     "within1": 5,
+     "worst": 24,
+     "coverage": 168
+    }
+   },
+   "isha": {
+    "honest": {
+     "exact": 93,
+     "within1": 194,
+     "worst": 1,
+     "coverage": 194
+    },
+    "honestDays": 194,
+    "window": [
+     "2026-03-30..2026-09-12 (167d)"
+    ],
+    "frozen45": {
+     "exact": 0,
+     "within1": 0,
+     "worst": 148,
+     "coverage": 171
+    },
+    "portions5": {
+     "exact": 0,
+     "within1": 0,
+     "worst": 24,
+     "coverage": 171
+    }
+   },
+   "solar": {
+    "sunrise": {
+     "exact": 168,
+     "within1": 344,
+     "worst": 5,
+     "coverage": 365
+    },
+    "dhuhr": {
+     "exact": 179,
+     "within1": 365,
+     "worst": 1,
+     "coverage": 365
+    },
+    "asr1": {
+     "exact": 16,
+     "within1": 89,
+     "worst": 42,
+     "coverage": 365
+    },
+    "maghrib": {
+     "exact": 156,
+     "within1": 343,
+     "worst": 30,
+     "coverage": 365
+    }
+   }
+  },
+  {
+   "tag": "is-hvolsvollur",
+   "lat": 63.75,
+   "lng": -20.22,
+   "rows": 365,
+   "claim": "14.2/14",
+   "fajr": {
+    "honest": {
+     "exact": 111,
+     "within1": 209,
+     "worst": 1,
+     "coverage": 209
+    },
+    "honestDays": 209,
+    "window": [
+     "2026-04-05..2026-09-07 (156d)"
+    ],
+    "frozen45": {
+     "exact": 0,
+     "within1": 0,
+     "worst": 93,
+     "coverage": 156
+    },
+    "portions5": {
+     "exact": 0,
+     "within1": 0,
+     "worst": 22,
+     "coverage": 156
+    }
+   },
+   "isha": {
+    "honest": {
+     "exact": 89,
+     "within1": 203,
+     "worst": 1,
+     "coverage": 203
+    },
+    "honestDays": 203,
+    "window": [
+     "2026-04-05..2026-09-05 (154d)",
+     "2026-09-07..2026-09-11 (5d)"
+    ],
+    "frozen45": {
+     "exact": 0,
+     "within1": 0,
+     "worst": 95,
+     "coverage": 162
+    },
+    "portions5": {
+     "exact": 0,
+     "within1": 0,
+     "worst": 22,
+     "coverage": 162
+    }
+   },
+   "solar": {
+    "sunrise": {
+     "exact": 165,
+     "within1": 365,
+     "worst": 1,
+     "coverage": 365
+    },
+    "dhuhr": {
+     "exact": 177,
+     "within1": 365,
+     "worst": 1,
+     "coverage": 365
+    },
+    "asr1": {
+     "exact": 17,
+     "within1": 100,
+     "worst": 17,
+     "coverage": 365
+    },
+    "maghrib": {
+     "exact": 182,
+     "within1": 365,
+     "worst": 1,
+     "coverage": 365
+    }
+   }
+  },
+  {
+   "tag": "is-hella",
+   "lat": 63.83,
+   "lng": -20.4,
+   "rows": 360,
+   "claim": "14.2/14",
+   "fajr": {
+    "honest": {
+     "exact": 109,
+     "within1": 205,
+     "worst": 1,
+     "coverage": 205
+    },
+    "honestDays": 205,
+    "window": [
+     "2026-04-05..2026-09-07 (155d)"
+    ],
+    "frozen45": {
+     "exact": 0,
+     "within1": 0,
+     "worst": 94,
+     "coverage": 155
+    },
+    "portions5": {
+     "exact": 0,
+     "within1": 0,
+     "worst": 22,
+     "coverage": 155
+    }
+   },
+   "isha": {
+    "honest": {
+     "exact": 95,
+     "within1": 205,
+     "worst": 1,
+     "coverage": 205
+    },
+    "honestDays": 205,
+    "window": [
+     "2026-04-05..2026-09-06 (154d)"
+    ],
+    "frozen45": {
+     "exact": 0,
+     "within1": 0,
+     "worst": 96,
+     "coverage": 155
+    },
+    "portions5": {
+     "exact": 0,
+     "within1": 0,
+     "worst": 22,
+     "coverage": 155
+    }
+   },
+   "solar": {
+    "sunrise": {
+     "exact": 164,
+     "within1": 360,
+     "worst": 1,
+     "coverage": 360
+    },
+    "dhuhr": {
+     "exact": 182,
+     "within1": 360,
+     "worst": 1,
+     "coverage": 360
+    },
+    "asr1": {
+     "exact": 18,
+     "within1": 102,
+     "worst": 17,
+     "coverage": 360
+    },
+    "maghrib": {
+     "exact": 175,
+     "within1": 360,
+     "worst": 1,
+     "coverage": 360
+    }
+   }
+  }
+ ]
+}

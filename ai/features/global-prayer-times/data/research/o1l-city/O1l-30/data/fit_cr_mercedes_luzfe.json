@@ -1,0 +1,83 @@
+{
+ "file": "data/mawaqit_cr_mercedes_luzfe.json",
+ "name": "Mezquita Luz Y Fe - MERCED",
+ "lat": 9.9336934580625,
+ "lon": -84.082468226552,
+ "tz": "America/Costa_Rica",
+ "days": 365,
+ "candidates": [
+  {
+   "method": "MWL",
+   "madhab": "shafi",
+   "totalMae": 8.43
+  },
+  {
+   "method": "Turkey",
+   "madhab": "shafi",
+   "totalMae": 8.43
+  },
+  {
+   "method": "Kuwait",
+   "madhab": "shafi",
+   "totalMae": 10.31
+  }
+ ],
+ "refined": {
+  "method": "MWL",
+  "madhab": "shafi",
+  "fajrAngle": 17.75,
+  "ishaAngle": 16.3,
+  "offsets": {
+   "fajr": -1,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 7,
+   "isha": 3
+  },
+  "scores": {
+   "fajr": {
+    "med": -0.1,
+    "exact": 332,
+    "w1": 365,
+    "mae": 0.26,
+    "worst": 0.6
+   },
+   "sunrise": {
+    "med": 0,
+    "exact": 361,
+    "w1": 365,
+    "mae": 0.25,
+    "worst": 0.5
+   },
+   "dhuhr": {
+    "med": 0,
+    "exact": 357,
+    "w1": 365,
+    "mae": 0.25,
+    "worst": 0.5
+   },
+   "asr": {
+    "med": 0,
+    "exact": 132,
+    "w1": 358,
+    "mae": 0.66,
+    "worst": 1.6
+   },
+   "maghrib": {
+    "med": 0,
+    "exact": 358,
+    "w1": 365,
+    "mae": 0.23,
+    "worst": 0.5
+   },
+   "isha": {
+    "med": 0,
+    "exact": 340,
+    "w1": 365,
+    "mae": 0.23,
+    "worst": 0.7
+   }
+  }
+ }
+}

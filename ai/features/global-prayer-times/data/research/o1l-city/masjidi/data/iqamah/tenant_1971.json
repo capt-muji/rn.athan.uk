@@ -1,0 +1,50 @@
+{
+ "tenantId": "1971",
+ "name": "مسجد عمر بن الخطاب",
+ "city": "جنين",
+ "country": "فلسطين",
+ "timezone": "Asia/Gaza",
+ "timingsType": "table-api",
+ "tableId": 5885,
+ "iqamah": {
+  "Fajr": {
+   "iqamaWaitDuration": 20,
+   "timeOffset": 0
+  },
+  "Sunrise": {
+   "iqamaWaitDuration": 0,
+   "timeOffset": 0
+  },
+  "Dhuhr": {
+   "iqamaWaitDuration": 17,
+   "timeOffset": 0
+  },
+  "Asr": {
+   "iqamaWaitDuration": 17,
+   "timeOffset": 0
+  },
+  "Maghrib": {
+   "iqamaWaitDuration": 10,
+   "timeOffset": 0
+  },
+  "Isha": {
+   "iqamaWaitDuration": 10,
+   "timeOffset": 0
+  }
+ },
+ "overrides": {
+  "Dhuhr": [
+   {
+    "name": "الجمعة",
+    "iqamaWaitDuration": 0,
+    "duration": 30,
+    "date": {
+     "gregorian": {
+      "dayOfWeek": 6
+     }
+    }
+   }
+  ]
+ },
+ "note": "athan times come from the regional table; the iqamah layer is the wait in minutes after the athan, plus Friday (Jumu'ah) overrides."
+}

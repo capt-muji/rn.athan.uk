@@ -1,0 +1,38 @@
+domain	verdict	detail
+icgm-fl.org	miss	HTTP 404    
+masjidalihsaan.com	miss	HTTP 404    
+masjidmiami.com	miss	HTTP 200    
+bisweb.org	miss	HTTP 404    
+islamiccenternola.com	miss	HTTP 200    
+jmanola.org	miss	HTTP 404    
+masjidomarharvey.org	miss	HTTP 404    
+thedicdenver.org	miss	HTTP 000    
+coloradomuslimsociety.org	miss	HTTP 200    
+utislamiccenter.org	miss	HTTP 404    
+hicutah.org	miss	HTTP 200    
+utahmuslims.com	miss	HTTP 200    
+iccpaz.com	miss	HTTP 200    
+tempemosque.com	miss	HTTP 404    
+uislamicca.com	miss	HTTP 404 masjid_id=zKz3zRLO   
+lasvegasmasjid.com	miss	HTTP 404    
+icnmabq.org	miss	HTTP 200    
+abqislamiccenter.org	miss	HTTP 200    
+boisemuslims.org	miss	HTTP 404    
+icct.org	miss	HTTP 000    
+iasconnect.org	miss	HTTP 404 masjid_id=8L7mGbd5   
+isnfwny.org	miss	HTTP 200    
+jamimasjid.org	miss	HTTP 200    
+alaskamasjid.org	miss	HTTP 200    
+hawaiimasjid.com	miss	HTTP 200 masjid_id=nzKzgvLO   
+isgh.org	miss	HTTP 403    
+alsalammasjid.org	miss	HTTP 404    
+maskaty.org	miss	HTTP 200    
+isghmasjidhamza.org	HIT_Dpt	rows=1 size=129213
+masjid.mcisonline.net	HIT_Dpt	rows=1 size=129213
+micmemphis.org	miss	HTTP 200 masjid_id=1QL0gbKZ   
+muslimsocietyofmemphis.org	miss	HTTP 000    
+masjid-alnoor.org	miss	HTTP 200    
+scntn.org	miss	HTTP 200    
+icwctn.org	miss	HTTP 404 masjid_id=zVKpbbAP   
+icntn.org	miss	HTTP 200    
+berlinmosque.org	miss	HTTP 200    

@@ -1,0 +1,185 @@
+{
+ "metro": "New Orleans",
+ "surface": "islamic-center-of-new-orleans-new-orleans-70116-1541-united-states-mawaqit",
+ "isna_15_15": {
+  "madhab": "shafi",
+  "margins": {
+   "fajr": -12,
+   "sunrise": 24,
+   "dhuhr": 58,
+   "asr": 134,
+   "maghrib": 102,
+   "isha": 123
+  },
+  "w1": 4.1,
+  "exact": 2.2,
+  "per_column": {
+   "fajr": {
+    "mae": 40.31,
+    "bias": -0.13,
+    "exact": 0.5,
+    "w1": 1.1,
+    "worst": 80.1
+   },
+   "sunrise": {
+    "mae": 36.19,
+    "bias": 0.09,
+    "exact": 0.8,
+    "w1": 1.4,
+    "worst": 65.1
+   },
+   "dhuhr": {
+    "mae": 7.77,
+    "bias": -0.45,
+    "exact": 2.7,
+    "w1": 6.3,
+    "worst": 21.2
+   },
+   "asr": {
+    "mae": 17.45,
+    "bias": 0.02,
+    "exact": 1.6,
+    "w1": 4.6,
+    "worst": 54.5
+   },
+   "maghrib": {
+    "mae": 38.53,
+    "bias": -0.18,
+    "exact": 6.8,
+    "w1": 8.7,
+    "worst": 76.9
+   },
+   "isha": {
+    "mae": 42.12,
+    "bias": 0.22,
+    "exact": 1.1,
+    "w1": 2.5,
+    "worst": 94.2
+   }
+  }
+ },
+ "rows": 366,
+ "span": [
+  "2026-01-01",
+  "2026-12-31"
+ ],
+ "years": [
+  "2026"
+ ],
+ "coords": [
+  29.9685294,
+  -90.060007
+ ],
+ "tz": "America/Chicago",
+ "recipe": {
+  "engine": "adhan 4.4.6",
+  "fajr_angle": 13,
+  "isha": [
+   "interval",
+   60
+  ],
+  "madhab": "shafi",
+  "high_latitude": "TwilightAngle",
+  "rounding": "None",
+  "margins": {
+   "fajr": -21,
+   "sunrise": 24,
+   "dhuhr": 58,
+   "asr": 134,
+   "maghrib": 102,
+   "isha": 129
+  }
+ },
+ "per_column": {
+  "fajr": {
+   "mae": 39.76,
+   "bias": -0.36,
+   "exact": 0.5,
+   "w1": 0.8,
+   "worst": 77.7
+  },
+  "sunrise": {
+   "mae": 36.19,
+   "bias": 0.09,
+   "exact": 0.8,
+   "w1": 1.4,
+   "worst": 65.1
+  },
+  "dhuhr": {
+   "mae": 7.77,
+   "bias": -0.45,
+   "exact": 2.7,
+   "w1": 6.3,
+   "worst": 21.2
+  },
+  "asr": {
+   "mae": 17.45,
+   "bias": 0.02,
+   "exact": 1.6,
+   "w1": 4.6,
+   "worst": 54.5
+  },
+  "maghrib": {
+   "mae": 38.53,
+   "bias": -0.18,
+   "exact": 6.8,
+   "w1": 8.7,
+   "worst": 76.9
+  },
+  "isha": {
+   "mae": 39.99,
+   "bias": -0.08,
+   "exact": 1.4,
+   "w1": 2.2,
+   "worst": 82.4
+  }
+ },
+ "per_year": {
+  "2026": {
+   "fajr": {
+    "mae": 39.76,
+    "bias": -0.36,
+    "exact": 0.5,
+    "w1": 0.8,
+    "worst": 77.7
+   },
+   "sunrise": {
+    "mae": 36.19,
+    "bias": 0.09,
+    "exact": 0.8,
+    "w1": 1.4,
+    "worst": 65.1
+   },
+   "dhuhr": {
+    "mae": 7.77,
+    "bias": -0.45,
+    "exact": 2.7,
+    "w1": 6.3,
+    "worst": 21.2
+   },
+   "asr": {
+    "mae": 17.45,
+    "bias": 0.02,
+    "exact": 1.6,
+    "w1": 4.6,
+    "worst": 54.5
+   },
+   "maghrib": {
+    "mae": 38.53,
+    "bias": -0.18,
+    "exact": 6.8,
+    "w1": 8.7,
+    "worst": 76.9
+   },
+   "isha": {
+    "mae": 39.99,
+    "bias": -0.08,
+    "exact": 1.4,
+    "w1": 2.2,
+    "worst": 82.4
+   }
+  }
+ },
+ "seasonal_fajr_amplitude_min": 60,
+ "fajr_later_in_january": false
+}

@@ -1,0 +1,95 @@
+Brazil	Sao Luis	HTTP 400	rows_tz 0 
+Brazil	Juiz de Fora	HTTP 400	rows_tz 0 
+Brazil	Varginha	HTTP 400	rows_tz 0 
+Brazil	Anapolis	HTTP 400	rows_tz 0 
+Brazil	Jatai	HTTP 400	rows_tz 0 
+Brazil	Trindade	HTTP 400	rows_tz 0 
+Brazil	Serra	HTTP 400	rows_tz 0 
+Brazil	Taguatinga	HTTP 400	rows_tz 0 
+Brazil	Petropolis	HTTP 400	rows_tz 0 
+Brazil	Olinda	HTTP 400	rows_tz 0 
+Brazil	Belo Jardim	HTTP 400	rows_tz 0 
+Brazil	Carambei	HTTP 400	rows_tz 0 
+Brazil	Foz do Iguacu	HTTP 400	rows_tz 0 
+Brazil	Francisco Beltrao	HTTP 400	rows_tz 0 
+Brazil	Guarapuava	HTTP 400	rows_tz 0 
+Brazil	Jaguapita	HTTP 400	rows_tz 0 
+Brazil	Loanda	HTTP 400	rows_tz 0 
+Brazil	Londrina	HTTP 400	rows_tz 0 
+Brazil	Marechal Candido Rondon	HTTP 400	rows_tz 0 
+Brazil	Maringa	HTTP 400	rows_tz 0 
+Brazil	Paranagua	HTTP 400	rows_tz 0 
+Brazil	Paranavai	HTTP 400	rows_tz 0 
+Brazil	Ponta Grossa	HTTP 400	rows_tz 0 
+Brazil	Sao Jose dos Pinhais	HTTP 400	rows_tz 0 
+Brazil	Alegrete	HTTP 400	rows_tz 0 
+Brazil	Caxias do Sul	HTTP 400	rows_tz 0 
+Brazil	Chui	HTTP 400	rows_tz 0 
+Brazil	Livramento	HTTP 400	rows_tz 0 
+Brazil	Novo Hamburgo	HTTP 400	rows_tz 0 
+Brazil	Passo Fundo	HTTP 400	rows_tz 0 
+Brazil	Pelotas	HTTP 400	rows_tz 0 
+Brazil	Quarai	HTTP 400	rows_tz 0 
+Brazil	Sao Borja	HTTP 400	rows_tz 0 
+Brazil	Uruguaiana	HTTP 400	rows_tz 0 
+Brazil	Criciuma	HTTP 400	rows_tz 0 
+Brazil	Lages	HTTP 400	rows_tz 0 
+Brazil	Barretos	HTTP 400	rows_tz 0 
+Brazil	Bebedouro	HTTP 400	rows_tz 0 
+Brazil	Carapicuiba	HTTP 400	rows_tz 0 
+Brazil	Colina	HTTP 400	rows_tz 0 
+Brazil	Embu das Artes	HTTP 400	rows_tz 0 
+Brazil	Francisco Morato	HTTP 400	rows_tz 0 
+Brazil	Guaira	HTTP 400	rows_tz 0 
+Brazil	Jundiai	HTTP 400	rows_tz 0 
+Brazil	Mogi das Cruzes	HTTP 400	rows_tz 0 
+Brazil	Ribeirao Preto	HTTP 400	rows_tz 0 
+Brazil	Santos	HTTP 400	rows_tz 0 
+Brazil	Sao Jose dos Campos	HTTP 400	rows_tz 0 
+Brazil	Sorocaba	HTTP 400	rows_tz 0 
+Brazil	Suzano	HTTP 400	rows_tz 0 
+Brazil	Taboao da Serra	HTTP 400	rows_tz 0 
+Brazil	Taubate	HTTP 400	rows_tz 0 
+Brazil	Corumba	HTTP 400	rows_tz 0 
+Brazil	Dourados	HTTP 400	rows_tz 0 
+Brazil	Ponta Pora	HTTP 400	rows_tz 0 
+Ecuador	Quito	HTTP 400	rows_tz 0 
+Ecuador	Guayaquil	HTTP 400	rows_tz 0 
+Uruguay	Montevideo	HTTP 400	rows_tz 0 
+Uruguay	Las Piedras	HTTP 400	rows_tz 0 
+Paraguay	Asuncion	HTTP 400	rows_tz 0 
+Bolivia	Sucre	HTTP 400	rows_tz 0 
+Bolivia	Cochabamba	HTTP 400	rows_tz 0 
+Bolivia	Santa Cruz	HTTP 400	rows_tz 0 
+Peru	Lima	HTTP 400	rows_tz 0 
+Colombia	Bogota	HTTP 400	rows_tz 0 
+Colombia	Pasto	HTTP 400	rows_tz 0 
+Colombia	San Andres	HTTP 400	rows_tz 0 
+Chile	Santiago	HTTP 400	rows_tz 0 
+Chile	San Bernardo	HTTP 400	rows_tz 0 
+Chile	Coquimbo	HTTP 400	rows_tz 0 
+Chile	Iquique	HTTP 400	rows_tz 0 
+Argentina	Buenos Aires	HTTP 400	rows_tz 0 
+Argentina	Cordoba	HTTP 400	rows_tz 0 
+Argentina	Mendoza	HTTP 400	rows_tz 0 
+Argentina	Rosario	HTTP 400	rows_tz 0 
+Argentina	Tucuman	HTTP 400	rows_tz 0 
+Mexico	Ciudad de Mexico	HTTP 400	rows_tz 0 
+Mexico	Monterrey	HTTP 400	rows_tz 0 
+Mexico	Hermosillo	HTTP 400	rows_tz 0 
+Mexico	Rosarito	HTTP 400	rows_tz 0 
+Venezuela	Caracas	HTTP 400	rows_tz 0 
+Venezuela	Maracaibo	HTTP 400	rows_tz 0 
+Venezuela	Valencia	HTTP 400	rows_tz 0 
+Venezuela	Porlamar	HTTP 400	rows_tz 0 
+Guatemala	Ciudad de Guatemala	HTTP 400	rows_tz 0 
+Honduras	San Pedro Sula	HTTP 400	rows_tz 0 
+Costa Rica	San Jose	HTTP 400	rows_tz 0 
+Panama	Ciudad de Panama	HTTP 400	rows_tz 0 
+Panama	David	HTTP 400	rows_tz 0 
+Panama	Colon	HTTP 400	rows_tz 0 
+Cuba	La Habana	HTTP 400	rows_tz 0 
+Nicaragua	Managua	HTTP 400	rows_tz 0 
+El Salvador	San Salvador	HTTP 400	rows_tz 0 
+Puerto Rico	San Juan	HTTP 400	rows_tz 0 
+Republica Dominicana	Santo Domingo	HTTP 400	rows_tz 0 

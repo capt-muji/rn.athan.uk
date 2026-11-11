@@ -1,0 +1,6298 @@
+{
+ "schema": "athan-fit-index",
+ "schemaVersion": "1.0.0",
+ "generated": "2026-11-11",
+ "generatedBy": "fitindex2 registry agent (O1l-68), O1l city-level round",
+ "purpose": "machine-readable index of every fit recipe the O1l round produced. Recipes are transcribed as the fit deliverables state them; nothing is re-derived.",
+ "gradingRule": {
+  "source": "T-667 #6943 owner multi-year ruling, O1k frozen-generation precedent",
+  "gradeA": "at least 2-3 distinct years of fitted evidence, one recipe reproducing every year",
+  "provisional": "one published cycle, one year, or a short sample",
+  "community": "fitted recipe from a mosque, federation or platform surface",
+  "candidate": "dated data, no fit",
+  "F": "structurally closed",
+  "FALLBACK": "no surface",
+  "carriedClasses": {
+   "A-candidate": "Thailand: two year-blocks, one recipe, the leap block cannot separate the years",
+   "measured": "China: an authority grid measured, not a publisher object",
+   "A eligible": "Tanzania: three fitted years, class left unnamed by the block"
+  },
+  "frozenGenerationPrecedent": "a table proven perpetual or byte-reprinted across nominal years supplies no distinct year-2"
+ },
+ "method": {
+  "engine": "adhan-js 4.4.6 at census/adhan-build, Rounding.None; exceptions stated per entry (NOAA routine, PrayTimes v2 family, publisher prayTimes.js)",
+  "scores": "exact = days, cells or delegations reproduced to the printed minute; within1 = inside one minute; worst = largest whole-minute miss; unit stated per entry",
+  "spanVerdicts": {
+   "yes": "one recipe holds across every held year or edition",
+   "no": "the recipe changes inside the span",
+   "frozen-recomputed": "one recipe across recomputed years, a genuine multi-year test",
+   "frozen-reprint": "one generation republished: year-2 nominal",
+   "untestable-single-year": "one year held",
+   "untestable-single-template": "one perpetual template",
+   "untestable-short-sample": "one month or one short sample"
+  }
+ },
+ "counts": {
+  "entries": 154,
+  "countries_or_territories": 111,
+  "platform_and_matrix_pools": 1,
+  "grades": {
+   "A": 31,
+   "provisional": 52,
+   "candidate": 36,
+   "community": 32,
+   "A eligible": 1,
+   "A-candidate": 1,
+   "measured": 1
+  },
+  "conflictEntries": 36,
+  "flaggedEntries": 16,
+  "spans": {
+   "yes": 42,
+   "frozen-recomputed": 1,
+   "untestable-short-sample": 20,
+   "frozen-reprint": 14,
+   "untestable-single-year": 66,
+   "no": 6,
+   "untestable-single-template": 5
+  }
+ },
+ "integrity": {
+  "fitterBug": "const isha then += 1440 drops any year with an after-midnight isha (A53/D9); present in the US-states copy",
+  "auditState": "not landed at this cut; flags2 and integrity2 held no audit report",
+  "affectedEntries": [
+   "US-33-METROS",
+   "MASJIDAL-216-POOL"
+  ]
+ },
+ "entries": [
+  {
+   "id": "TN-INM-258-DELEGATIONS",
+   "country": "TN",
+   "country_name": "Tunisia",
+   "region": "North Africa",
+   "surface": "Tunisia INM delegation sweep, 258 of 259 delegations",
+   "publisher": "Institut National de la Meteorologie (meteo.tn)",
+   "tier": "authority",
+   "source_workspace": "O1l-18r tunisia-cities; O1l-25 gaps-closed",
+   "register": "C27, A28, A29, D1, D2",
+   "data_span": {
+    "from": "2019-10-25",
+    "to": "2026-12-31",
+    "years": 7,
+    "days": null,
+    "note": "5,144 season rows + 1,722 capital/Djerba rows + 426 year-pair rows + 321 back-harvest rows + Kasserine 365"
+   },
+   "recipe": {
+    "fajr": "18.1 deg",
+    "isha": "18.1 deg",
+    "asr": "Shafi",
+    "dhuhr": "+7 min",
+    "maghrib": "+2 min",
+    "special": "per-site DEM horizon dip 0.0316*sqrt(m) - 0.0999 deg, R2 0.980"
+   },
+   "scores": {
+    "unit": "delegations",
+    "n": 258,
+    "exact": null,
+    "within1": "92.7 pc all-five-within-1 with the dip (58.3 pc without)",
+    "worst": null,
+    "md": "92.7 pc all-five within1 with the dip, 58.3 pc without; 158/258 delegations at 95 pc+"
+   },
+   "span_verdict": "yes",
+   "span_note": "one recipe plus the DEM dip across 2019-2026; year-pair dip shift mean 0.039 deg (62 of 71 inside 0.05), frozen; no regime change in the back-harvest",
+   "grade_candidate": "A",
+   "grade_reason": "seven years, 258 delegations, one national recipe plus a measured per-site term; parameters frozen",
+   "conflicts": [
+    "record: 20 Kairouan/Sidi Bouzid tables print a July angle near 17.3"
+   ],
+   "flags": [],
+   "open_caveats": [
+    "no sunrise field",
+    "archive ends 2026-12-31",
+    "Arram serves no table"
+   ]
+  },
+  {
+   "id": "TN-INM-FLAT2026",
+   "country": "TN",
+   "country_name": "Tunisia",
+   "region": "North Africa",
+   "surface": "Kairouan and Sidi Bouzid 20 delegations, the dated July split",
+   "publisher": "Institut National de la Meteorologie (meteo.tn)",
+   "tier": "authority",
+   "source_workspace": "O1l-25 gaps-closed; O1l-18r tunisia-cities",
+   "register": "A28, D1",
+   "data_span": {
+    "from": "2025-12-15",
+    "to": "2026-01-15",
+    "years": 1,
+    "days": 129,
+    "note": "dated override window inside the seven-year span"
+   },
+   "recipe": {
+    "fajr": "18.1 deg",
+    "isha": "18.1 deg",
+    "asr": "Shafi",
+    "dhuhr": "+7 min",
+    "maghrib": "+2 min",
+    "special": "DEM dip set to 0 for the window (rule form TN-INM-FLAT2026)"
+   },
+   "scores": {
+    "unit": "rows",
+    "n": 100,
+    "exact": null,
+    "within1": "100/100 July rows",
+    "worst": null,
+    "md": "100/100 July rows within1; 129-day 2026 replay 100 pc within1"
+   },
+   "span_verdict": "yes",
+   "span_note": "the window reproduces at 100 pc; the split is dated, not seasonal",
+   "grade_candidate": "A",
+   "grade_reason": "a dated override inside the A object; the window is part of the seven-year evidence, not a second year",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "MA-HABOUS-190-CITIES",
+   "country": "MA",
+   "country_name": "Morocco",
+   "region": "North Africa",
+   "surface": "Morocco 190 cities x 2 months (October and November 2026)",
+   "publisher": "Ministere des Habous et des Affaires Islamiques (habous.gov.ma)",
+   "tier": "authority",
+   "source_workspace": "O1l-39 morocco-cities",
+   "register": "C25, A4, A5, D4",
+   "data_span": {
+    "from": "2026-10-01",
+    "to": "2026-11-30",
+    "years": 1,
+    "days": 61,
+    "note": "190 cities x 2 months; December not published"
+   },
+   "recipe": {
+    "fajr": "national set, per-city spread 2-9 s",
+    "isha": "national set, per-city spread 2-9 s",
+    "asr": "Shafi +0.33",
+    "dhuhr": "+5.00 min (UTC+0, sd 0.29)",
+    "sunrise": "-3.13 min",
+    "maghrib": "+3.80 min",
+    "special": "per-city horizon term 5.85-17.54 min, corr 0.87 with elevation, DEM bands 6.56-13.96"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 69540,
+    "exact": null,
+    "within1": "99.94 pc with the horizon term (81.10 pc national-only)",
+    "worst": null,
+    "md": "99.94 pc within1 with the term; 173/190 cities perfect; fajr/dhuhr/isha 100 pc, asr 99.8, sunrise 39.2, maghrib 47.6"
+   },
+   "span_verdict": "yes",
+   "span_note": "one national margin set plus one measured per-city term across both months; the clock shows no shift",
+   "grade_candidate": "A",
+   "grade_reason": "190 cities, two months, 69,540 cells, one recipe plus a quantified horizon term",
+   "conflicts": [
+    "O1k-M1 held a -1.42 asr shift"
+   ],
+   "flags": [],
+   "open_caveats": [
+    "December not published",
+    "the ten worst cities are High Atlas, 971-1,965 m"
+   ]
+  },
+  {
+   "id": "DZ-MINISTRY-1447-1448",
+   "country": "DZ",
+   "country_name": "Algeria",
+   "region": "North Africa",
+   "surface": "Algeria ministry books, Alger / Adrar / Djelfa 1447 plus the 1448 holdout",
+   "publisher": "Ministere des Affaires Religieuses",
+   "tier": "authority",
+   "source_workspace": "O1l-17r algeria-1447",
+   "register": "C19, A45, A46, D5",
+   "data_span": {
+    "from": "2025-06-27",
+    "to": "2026-06-15",
+    "years": 2,
+    "days": 884,
+    "note": "twelve Hijri months x three wilayas, books abut with no gap; 1448 holdout 1,074 rows"
+   },
+   "recipe": {
+    "fajr": "frozen per-wilaya recipe at own coordinates",
+    "isha": "16.10 with +5 winter, 17.00 with 0 ceil summer (the same printed curve)",
+    "asr": "Shafi",
+    "special": "seasonal angle-margin swap, rule form D5"
+   },
+   "scores": {
+    "unit": "days",
+    "n": 884,
+    "exact": null,
+    "within1": "Alger 97.4 pc, Adrar 100 pc, Djelfa 98.6 pc",
+    "worst": 11,
+    "md": "Alger 97.4 / Adrar 100 / Djelfa 98.6 pc within1; 1448 holdout 1,074/1,074 at worst 1"
+   },
+   "span_verdict": "frozen-recomputed",
+   "span_note": "same-Hijri-cell drift over six months including both solstices reproduces adhan to residual means <=0.36 min, maxima <1.2; no month is a reprint",
+   "grade_candidate": "A",
+   "grade_reason": "two recomputed Hijri years on one recipe; the register's unnamed 'fitted multi-year' satisfies the A rule",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": [
+    "between-wilaya spread reaches 24 min",
+    "no fourth wilaya book exists on Wayback"
+   ]
+  },
+  {
+   "id": "DZ-CONSTANTINE-1447",
+   "country": "DZ",
+   "country_name": "Algeria",
+   "region": "North Africa",
+   "surface": "Constantine directorate Ramadan-1447 table",
+   "publisher": "Direction des Affaires Religieuses, Constantine",
+   "tier": "authority",
+   "source_workspace": "O1l-17r algeria-1447",
+   "register": "A46",
+   "data_span": {
+    "from": "2026-02-18",
+    "to": "2026-03-18",
+    "years": 1,
+    "days": 29,
+    "note": "Ramadan 1447 directorate table"
+   },
+   "recipe": {
+    "fajr": "as the wilaya book",
+    "isha": "as the wilaya book",
+    "asr": "Shafi",
+    "maghrib": "+5 min",
+    "special": "the 'imsak' column is SUNRISE under an imsak header"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 174,
+    "exact": null,
+    "within1": "174/174",
+    "worst": 0,
+    "md": "174/174 within1"
+   },
+   "span_verdict": "untestable-short-sample",
+   "span_note": "one Ramadan month",
+   "grade_candidate": "provisional",
+   "grade_reason": "one cycle; the imsak header is a defect, not a column",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "EG-ESA-78-CITIES",
+   "country": "EG",
+   "country_name": "Egypt",
+   "region": "North Africa",
+   "surface": "Egyptian General Authority of Survey, 78 of 82 city options, full 2026",
+   "publisher": "Egyptian General Authority of Survey (ESA)",
+   "tier": "authority",
+   "source_workspace": "O1l-14 egypt-82",
+   "register": "C26, A30, A31, A32, D17",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "78 city options x 365; 984 raw captures"
+   },
+   "recipe": {
+    "fajr": "19.5 deg",
+    "isha": "17.5 deg",
+    "asr": "Shafi, nearest",
+    "margins": "zero on all six"
+   },
+   "scores": {
+    "unit": "day-rows",
+    "n": 28468,
+    "exact": "48.5 pc all six",
+    "within1": "28,468/28,468 (100 pc)",
+    "worst": 0,
+    "md": "28,468/28,468 all six within1; 48.5 pc all-six exact; dhuhr 96.0, asr 68.9 exact"
+   },
+   "span_verdict": "yes",
+   "span_note": "one point-recipe serves 22.32 N (Halaib) to 31.73 N (Saloum) at the user's own coordinates",
+   "grade_candidate": "A",
+   "grade_reason": "78 cities, one year, one recipe, 100 pc within1",
+   "conflicts": [
+    "13 cities failed the fit at gazetteer points"
+   ],
+   "flags": [],
+   "open_caveats": [
+    "no elevation term: St Catherine at about 1,500 m is exact",
+    "four options render empty all year",
+    "Dar al-Ifta republishes ESA verbatim (150/180 Cairo values identical)"
+   ]
+  },
+  {
+   "id": "NG-MWL-NATIONAL-LINE",
+   "country": "NG",
+   "country_name": "Nigeria",
+   "region": "West Africa",
+   "surface": "Nigeria mosque-configured MWL line: Kaduna 6 mosques, Abuja, Benin City, Enugu, Osogbo, Suleja, Ile-Ife",
+   "publisher": "mosque boards and masjidbox tenants",
+   "tier": "community",
+   "source_workspace": "O1l-7 nigeria-states",
+   "register": "A6, A7, B30-adjacent, D26",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2027-12-31",
+    "years": 2,
+    "days": null,
+    "note": "Osogbo 399 rows 2026-2027; Kaduna 552; Suleja 399; Ile-Ife 399"
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "17.0 deg",
+    "asr": "Shafi",
+    "margins": "zero"
+   },
+   "scores": {
+    "unit": "day-rows",
+    "n": 1749,
+    "exact": null,
+    "within1": "Osogbo 365/365 + 34/34; Suleja 98 pc of 399; Kaduna 98.9-100 pc of 552",
+    "worst": 1,
+    "md": "Osogbo 365/365 + 34/34 zero margins; Suleja 98 pc; Kaduna 98.9-100 pc"
+   },
+   "span_verdict": "yes",
+   "span_note": "Osogbo carries 2026 and 2027 at zero margins; the same pair on every mosque-configured table",
+   "grade_candidate": "A",
+   "grade_reason": "two years on one surface, one recipe, zero margins; community tier",
+   "conflicts": [
+    "v3 held Egyptian 19.5/17.5 as a regional line"
+   ],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "NG-MASJIDWAY-EGYPT-DEFAULT",
+   "country": "NG",
+   "country_name": "Nigeria",
+   "region": "West Africa",
+   "surface": "masjidway platform default, four Nigerian regions",
+   "publisher": "masjidway",
+   "tier": "platform",
+   "source_workspace": "O1l-7 nigeria-states",
+   "register": "A6, D26",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2027-01-31",
+    "years": 1,
+    "days": null,
+    "note": "uniform north, middle belt, south and southeast; January 2026 identical to January 2027"
+   },
+   "recipe": {
+    "fajr": "19.5 deg",
+    "isha": "17.5 deg",
+    "asr": "Shafi"
+   },
+   "scores": {
+    "unit": "day-rows",
+    "n": 552,
+    "exact": null,
+    "within1": "98.9-100 pc at Kaduna, 100 pc at Enugu",
+    "worst": 1,
+    "md": "98.9-100 pc within1 across four regions"
+   },
+   "span_verdict": "frozen-reprint",
+   "span_note": "the same platform table re-serves every year; January 2026 and January 2027 are identical",
+   "grade_candidate": "provisional",
+   "grade_reason": "platform provenance, not regional geometry; one published cycle",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "NG-ILE-IFE-OFFZONE",
+   "country": "NG",
+   "country_name": "Nigeria",
+   "region": "West Africa",
+   "surface": "Ile-Ife masjidbox table, whole table on UTC",
+   "publisher": "Ile-Ife mosque board (masjidbox)",
+   "tier": "community",
+   "source_workspace": "O1l-7 nigeria-states",
+   "register": "A7",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2027-01-31",
+    "years": 1,
+    "days": 399,
+    "note": "MWL exact in UTC, the whole table 60 min early"
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "17.0 deg",
+    "asr": "Shafi",
+    "margins": "zero",
+    "special": "off-zone: values are UTC"
+   },
+   "scores": {
+    "unit": "day-rows",
+    "n": 399,
+    "exact": null,
+    "within1": "MWL exact once read in UTC",
+    "worst": 0,
+    "md": "MWL 18/17 exact in UTC; the local clock is 60 min early all year"
+   },
+   "span_verdict": "yes",
+   "span_note": "the recipe is exact; the defect is the zone label, not the recipe",
+   "grade_candidate": "provisional",
+   "grade_reason": "one cycle; the TZ-distrust trap caught",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "GH-KUMASI-ACCRA",
+   "country": "GH",
+   "country_name": "Ghana",
+   "region": "West Africa",
+   "surface": "Kumasi Central, Accra GhanaMasjid layer, Tamale MATW",
+   "publisher": "mosque boards; GhanaMasjid (AlAdhan method-3 wrapper)",
+   "tier": "community",
+   "source_workspace": "O1l-50 westafrica2",
+   "register": "B-row (post-cut), D26-adjacent",
+   "data_span": {
+    "from": "2026-11-01",
+    "to": "2026-11-30",
+    "years": 1,
+    "days": 30,
+    "note": "Kumasi Central 30 rows, MATW 30, Accra national + Al-Firdaws 30 each"
+   },
+   "recipe": {
+    "fajr": "not stated in the block",
+    "isha": "not stated in the block",
+    "asr": "not stated"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 180,
+    "exact": null,
+    "within1": "Kumasi 180/180",
+    "worst": 0,
+    "md": "Kumasi Central 180/180; the Accra directory layer is a platform wrapper, never mosque-entered"
+   },
+   "span_verdict": "untestable-short-sample",
+   "span_note": "one month",
+   "grade_candidate": "candidate",
+   "grade_reason": "dated rows, one month, no year",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": [
+    "GhanaMasjid is an AlAdhan method-3 wrapper, platform provenance only"
+   ]
+  },
+  {
+   "id": "TG-LOME",
+   "country": "TG",
+   "country_name": "Togo",
+   "region": "West Africa",
+   "surface": "Lome, Al-I'tisam mosque",
+   "publisher": "Al-I'tisam (mosque board)",
+   "tier": "community",
+   "source_workspace": "O1l-50 westafrica2",
+   "register": "B-row (post-cut)",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "17.9 deg",
+    "isha": "17.1 deg",
+    "asr": "Shafi"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2190,
+    "exact": null,
+    "within1": "2,102/2,190",
+    "worst": null,
+    "md": "2,102/2,190 within1; fajr amplitude 24 min"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "provisional",
+   "grade_reason": "Togo's first real table; one cycle",
+   "conflicts": [
+    "Zossime read as a second Togolese surface"
+   ],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "BJ-SAVALOU",
+   "country": "BJ",
+   "country_name": "Benin",
+   "region": "West Africa",
+   "surface": "Savalou, the country's first table outside Cotonou",
+   "publisher": "Savalou mosque (mawaqit)",
+   "tier": "community",
+   "source_workspace": "O1l-50 westafrica2",
+   "register": "F12, B-row (post-cut)",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "14.9 deg",
+    "isha": "15.1 deg",
+    "asr": "Shafi"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2190,
+    "exact": null,
+    "within1": "2,016/2,190",
+    "worst": null,
+    "md": "2,016/2,190 within1"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "provisional",
+   "grade_reason": "Benin's first dated table outside Cotonou; one cycle",
+   "conflicts": [
+    "the O1k Cotonou candidate"
+   ],
+   "flags": [
+    "Benin / Kandi"
+   ],
+   "open_caveats": []
+  },
+  {
+   "id": "CI-KORHOGO",
+   "country": "CI",
+   "country_name": "Cote d'Ivoire",
+   "region": "West Africa",
+   "surface": "Korhogo, the country's first athan-class table",
+   "publisher": "Korhogo mosque (mawaqit)",
+   "tier": "community",
+   "source_workspace": "O1l-50 westafrica2",
+   "register": "B-row (post-cut)",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "17.9 deg",
+    "isha": "17.1 deg",
+    "asr": "Shafi"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2190,
+    "exact": null,
+    "within1": "2,005/2,190",
+    "worst": null,
+    "md": "2,005/2,190 within1"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "provisional",
+   "grade_reason": "one cycle",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "CI-ABIDJAN-BOARDS",
+   "country": "CI",
+   "country_name": "Cote d'Ivoire",
+   "region": "West Africa",
+   "surface": "Abidjan mosques on mawaqit, hand-set jama'ah boards",
+   "publisher": "Abidjan mawaqit tenants",
+   "tier": "community",
+   "source_workspace": "O1l-48 fallback-sweep; O1l-50 westafrica2",
+   "register": "E4, B24",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "7 mosques (fallback-sweep) / nine (westafrica2)"
+   },
+   "recipe": {
+    "fajr": "not stated in the block",
+    "isha": "not stated",
+    "dhuhr": "fixed clock 12:45-13:30",
+    "special": "hand-set boards with fixed dhuhr and asr clocks"
+   },
+   "scores": {
+    "unit": "day-rows",
+    "n": 2555,
+    "exact": null,
+    "within1": null,
+    "worst": null,
+    "md": "boards, not computed tables; the fixed dhuhr clocks confirm COSIM's convention"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year of boards",
+   "grade_candidate": "candidate",
+   "grade_reason": "dated rows, no reproducible recipe",
+   "conflicts": [
+    "fallback-sweep counts 7 Abidjan mosques, westafrica2 nine"
+   ],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "SL-FREETOWN-ANSAAR",
+   "country": "SL",
+   "country_name": "Sierra Leone",
+   "region": "West Africa",
+   "surface": "Freetown, Masjid Al Ansaar",
+   "publisher": "Masjid Al Ansaar (mosque board)",
+   "tier": "community",
+   "source_workspace": "O1l-50 westafrica2",
+   "register": "B-row (post-cut)",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "17.65 deg",
+    "isha": "16.9 deg",
+    "asr": "Shafi"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2190,
+    "exact": null,
+    "within1": "2,149/2,190",
+    "worst": null,
+    "md": "2,149/2,190 within1"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "provisional",
+   "grade_reason": "one cycle",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "GM-YUNDUM-KOINA",
+   "country": "GM",
+   "country_name": "Gambia",
+   "region": "West Africa",
+   "surface": "Old Yundum and Koina, Greater Banjul's first mosque athan tables",
+   "publisher": "mosque boards",
+   "tier": "community",
+   "source_workspace": "O1l-50 westafrica2",
+   "register": "B-row (post-cut)",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "two 365-row surfaces"
+   },
+   "recipe": {
+    "fajr": "17.9 deg",
+    "isha": "17.1 deg",
+    "asr": "Shafi"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 4380,
+    "exact": null,
+    "within1": null,
+    "worst": null,
+    "md": "two 365-row surfaces on one pair; Old Yundum fajr amplitude 48 min"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "provisional",
+   "grade_reason": "one cycle",
+   "conflicts": [
+    "King Fahd's Gambia site"
+   ],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "BF-OUAGA-DUBAI",
+   "country": "BF",
+   "country_name": "Burkina Faso",
+   "region": "West Africa",
+   "surface": "Ouagadougou, the Dubai mosque",
+   "publisher": "Dubai mosque (mawaqit)",
+   "tier": "community",
+   "source_workspace": "O1l-50 westafrica2",
+   "register": "B-row (post-cut)",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "as served",
+    "isha": "as served",
+    "asr": "Shafi"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2190,
+    "exact": null,
+    "within1": "2,190/2,190",
+    "worst": 0,
+    "md": "2,190/2,190 within1, the cleanest surface of the wave"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "provisional",
+   "grade_reason": "one cycle",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "BF-MSBF-TEMPLATE",
+   "country": "BF",
+   "country_name": "Burkina Faso",
+   "region": "West Africa",
+   "surface": "MSBF template across Kanazoe and ten Yaar mosques",
+   "publisher": "MSBF (federation template)",
+   "tier": "community",
+   "source_workspace": "O1l-50 westafrica2; O1k BF-OUAGADOUGOU",
+   "register": "BF-FAJR-SHIFT (O1k recorded)",
+   "data_span": {
+    "from": "2021-01-01",
+    "to": "2025-12-31",
+    "years": 2,
+    "days": 122,
+    "note": "the 2021 edition and the 2025 edition"
+   },
+   "recipe": {
+    "fajr": "17.6 deg",
+    "isha": "a 5-minute block walk",
+    "asr": "Shafi block",
+    "dhuhr": "a clock block",
+    "special": "1447 prints fajr five minutes later on every day"
+   },
+   "scores": {
+    "unit": "rows",
+    "n": 122,
+    "exact": null,
+    "within1": "fajr 31/31 exact in both editions; maghrib 31/31 within1",
+    "worst": 1,
+    "md": "fajr 31/31 exact in both editions; maghrib 31/31 within1 (18/31 exact)"
+   },
+   "span_verdict": "frozen-reprint",
+   "span_note": "eleven mosque pages carry one byte-identical template; the 2025 edition shifts fajr +5 on every day",
+   "grade_candidate": "provisional",
+   "grade_reason": "one generation with a dated fajr shift; the year-2 is nominal",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "SN-CERFI-9-CITIES",
+   "country": "SN",
+   "country_name": "Senegal",
+   "region": "West Africa",
+   "surface": "CERFI, Dakar plus eight second cities",
+   "publisher": "CERFI (cerfi.sn)",
+   "tier": "community",
+   "source_workspace": "O1l-20r africa-cities; O1k SN-DAKAR-CERFI",
+   "register": "A-row",
+   "data_span": {
+    "from": "2026-11-01",
+    "to": "2026-11-30",
+    "years": 1,
+    "days": 7,
+    "note": "7 rows per city"
+   },
+   "recipe": {
+    "fajr": "sunrise - 75.5 (the two-dawn 15 convention)",
+    "isha": "maghrib + 60",
+    "asr": "Shafi +2"
+   },
+   "scores": {
+    "unit": "cities",
+    "n": 9,
+    "exact": null,
+    "within1": "the two conventions hold on all nine cities",
+    "worst": null,
+    "md": "both conventions hold on all nine cities; 7 rows each"
+   },
+   "span_verdict": "untestable-short-sample",
+   "span_note": "7 rows per city",
+   "grade_candidate": "community",
+   "grade_reason": "fitted non-authority surface, one short sample",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "ML-SEGOU",
+   "country": "ML",
+   "country_name": "Mali",
+   "region": "West Africa",
+   "surface": "Segou, a second Malian line beside Bamako",
+   "publisher": "Segou mosque (platform)",
+   "tier": "community",
+   "source_workspace": "O1l-20r africa-cities",
+   "register": "A-row",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "15 deg",
+    "isha": "15 deg",
+    "dhuhr": "transit +14",
+    "maghrib": "sunset +0"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2190,
+    "exact": null,
+    "within1": null,
+    "worst": null,
+    "md": "15/15 pair, dhuhr +14, maghrib sunset; differs from Bamako's 19/17"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "community",
+   "grade_reason": "fitted non-authority surface",
+   "conflicts": [
+    "Bamako Al Madina held 19.0/17.0"
+   ],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "ET-JIJIGA-JAAMUUQ",
+   "country": "ET",
+   "country_name": "Ethiopia",
+   "region": "West Africa",
+   "surface": "Jijiga and Jaamuuq",
+   "publisher": "mosque boards (platform)",
+   "tier": "community",
+   "source_workspace": "O1l-20r africa-cities",
+   "register": "A-row",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "two 365-row surfaces"
+   },
+   "recipe": {
+    "fajr": "18.00 deg exact",
+    "isha": "18.38 / 18.45 deg",
+    "asr": "Shafi"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 4380,
+    "exact": null,
+    "within1": null,
+    "worst": null,
+    "md": "fajr 18.00 exact; isha 18.38 and 18.45 on the two surfaces"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "community",
+   "grade_reason": "fitted non-authority surface",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "UG-ENTEBBE",
+   "country": "UG",
+   "country_name": "Uganda",
+   "region": "West Africa",
+   "surface": "Entebbe",
+   "publisher": "Entebbe mosque (platform)",
+   "tier": "community",
+   "source_workspace": "O1l-20r africa-cities",
+   "register": "C9, L5",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "15 deg",
+    "isha": "15 deg",
+    "asr": "Shafi",
+    "margins": "clean, zero"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2190,
+    "exact": null,
+    "within1": "clean 15/15",
+    "worst": null,
+    "md": "clean 15/15"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "provisional",
+   "grade_reason": "Uganda's country-first fitted surface; one cycle",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "TD-NDJAMENA",
+   "country": "TD",
+   "country_name": "Chad",
+   "region": "Central, East and Southern Africa, Indian Ocean",
+   "surface": "N'Djamena, mosque table plus its 12-page PDF",
+   "publisher": "N'Djamena mosque",
+   "tier": "community",
+   "source_workspace": "O1l-33 central-africa",
+   "register": "A-row",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "17.0 deg",
+    "asr": "Shafi",
+    "margins": "zero"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2190,
+    "exact": null,
+    "within1": "all six exact",
+    "worst": 0,
+    "md": "MWL 18/17 exact on all six; the PDF matches 365/365"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "provisional",
+   "grade_reason": "one cycle",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "CM-NGAOUNDERE",
+   "country": "CM",
+   "country_name": "Cameroon",
+   "region": "Central, East and Southern Africa, Indian Ocean",
+   "surface": "Ngaoundere, three mosque pages, one table",
+   "publisher": "Ngaoundere mosques",
+   "tier": "community",
+   "source_workspace": "O1l-33 central-africa",
+   "register": "A3, F9",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "18.00 deg",
+    "isha": "17.00 deg",
+    "asr": "Shafi",
+    "maghrib": "+3 min"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2190,
+    "exact": null,
+    "within1": "every column within1",
+    "worst": 1,
+    "md": "every column within1; three mosque pages carry one byte-identical table"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "provisional",
+   "grade_reason": "one cycle",
+   "conflicts": [
+    "v3 Cameroon row: Ar-Rahma 'Douala', all six columns sun-tracking"
+   ],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "CM-ARRAHMA-ADAMAWA",
+   "country": "CM",
+   "country_name": "Cameroon",
+   "region": "Central, East and Southern Africa, Indian Ocean",
+   "surface": "Ar-Rahma page, computed at the Adamawa point",
+   "publisher": "Ar-Rahma (mosque page)",
+   "tier": "community",
+   "source_workspace": "O1l-33 central-africa",
+   "register": "A3, F9, G7",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "the held surface, relabelled"
+   },
+   "recipe": {
+    "fajr": "sun-tracking",
+    "isha": "sun-tracking",
+    "asr": "sun-tracking",
+    "special": "all six columns sun-tracking"
+   },
+   "scores": {
+    "unit": "day-rows",
+    "n": 365,
+    "exact": null,
+    "within1": null,
+    "worst": null,
+    "md": "all six columns sun-tracking; no angular recipe"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "candidate",
+   "grade_reason": "dated rows; the recipe is a sun-tracking construction, not an angle pair",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "CG-BRAZZAVILLE",
+   "country": "CG",
+   "country_name": "Congo-Brazzaville",
+   "region": "Central, East and Southern Africa, Indian Ocean",
+   "surface": "Brazzaville, the country's first table",
+   "publisher": "Brazzaville mosque (platform)",
+   "tier": "community",
+   "source_workspace": "O1l-33 central-africa",
+   "register": "B1, N2",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "12.3 deg",
+    "isha": "18.19 deg",
+    "asr": "Shafi",
+    "special": "dhuhr prints 60 min after its own solar noon while sunrise and sunset are exact"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2190,
+    "exact": null,
+    "within1": null,
+    "worst": null,
+    "md": "fajr 12.3 / isha 18.19; dhuhr carries an internal one-hour inconsistency"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "candidate",
+   "grade_reason": "new country, dated rows, internal inconsistency recorded",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "GQ-MALABO",
+   "country": "GQ",
+   "country_name": "Equatorial Guinea",
+   "region": "Central, East and Southern Africa, Indian Ocean",
+   "surface": "Malabo, the country's first row",
+   "publisher": "Malabo mosque (platform)",
+   "tier": "community",
+   "source_workspace": "O1l-33 central-africa",
+   "register": "B2, N3",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "17.0 deg",
+    "asr": "Shafi",
+    "margins": "zero"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2190,
+    "exact": null,
+    "within1": "MWL exact",
+    "worst": 0,
+    "md": "MWL exact on all six"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "community",
+   "grade_reason": "new country, fitted non-authority surface",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "GA-PORT-GENTIL",
+   "country": "GA",
+   "country_name": "Gabon",
+   "region": "Central, East and Southern Africa, Indian Ocean",
+   "surface": "Port-Gentil, beside the held Libreville surfaces",
+   "publisher": "Port-Gentil mosque (platform)",
+   "tier": "community",
+   "source_workspace": "O1l-33 central-africa",
+   "register": "A-row",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "17.0 deg",
+    "asr": "Shafi",
+    "margins": "zero"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2190,
+    "exact": null,
+    "within1": "MWL exact",
+    "worst": 0,
+    "md": "MWL exact"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "community",
+   "grade_reason": "fitted non-authority surface",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "CD-GOMA-TWO-MOSQUES",
+   "country": "CD",
+   "country_name": "DR Congo",
+   "region": "Central, East and Southern Africa, Indian Ocean",
+   "surface": "Goma, Taqwa and Daaru-ssalaam",
+   "publisher": "Goma mosque boards",
+   "tier": "community",
+   "source_workspace": "O1l-33 central-africa",
+   "register": "A-row",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "two 365-row surfaces"
+   },
+   "recipe": {
+    "fajr": "18.0 (Taqwa) / 19.50 (Daaru-ssalaam)",
+    "isha": "17.0 / 17.50",
+    "asr": "Shafi"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 4380,
+    "exact": null,
+    "within1": "Taqwa MWL exact; Daaru-ssalaam exact 365/365",
+    "worst": 0,
+    "md": "Taqwa MWL exact; Daaru-ssalaam 19.50/17.50 exact 365/365, a new angle pair"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "community",
+   "grade_reason": "fitted non-authority surfaces; two pairs in one city",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "CF-BANGUI",
+   "country": "CF",
+   "country_name": "Central African Republic",
+   "region": "Central, East and Southern Africa, Indian Ocean",
+   "surface": "Bangui, lifted out of FALLBACK",
+   "publisher": "Bangui mosque (mawaqit)",
+   "tier": "community",
+   "source_workspace": "O1l-48 fallback-sweep",
+   "register": "C10, L1",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "15 deg",
+    "isha": "15 deg",
+    "asr": "Shafi",
+    "margins": "zero",
+    "dhuhr": "fixed 12:00 jama'ah clock"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2190,
+    "exact": null,
+    "within1": "365/365",
+    "worst": 0,
+    "md": "365/365 within1 on ISNA 15/15; dhuhr is a fixed 12:00 clock"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "provisional",
+   "grade_reason": "FALLBACK lifted; one cycle",
+   "conflicts": [
+    "central-africa block read Bangui's dhuhr as a defect (15/365 exact, worst +17)"
+   ],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "RW-RMC-KIGALI",
+   "country": "RW",
+   "country_name": "Rwanda",
+   "region": "Central, East and Southern Africa, Indian Ocean",
+   "surface": "Rwanda Muslim Community monthly timetable images (Kigali and the Northern Province), plus Tawkit's 11 cities",
+   "publisher": "Rwanda Muslim Community (authority, via its public X syndication endpoint)",
+   "tier": "authority",
+   "source_workspace": "O1l-53 fallback2",
+   "register": "C-row (post-cut), FALLBACK lift",
+   "data_span": {
+    "from": "2025-04-01",
+    "to": "2026-05-31",
+    "years": 2,
+    "days": null,
+    "note": "Kigali Apr/Jun 2025, May 2026 and the Northern Province table; Tawkit 11 cities 330 rows"
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "17.0 deg",
+    "asr": "Shafi",
+    "margins": "zero"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 121,
+    "exact": "fajr 91/91",
+    "within1": "121/121",
+    "worst": 0,
+    "md": "fajr 91/91 exact, 121/121 within1 across two years"
+   },
+   "span_verdict": "yes",
+   "span_note": "two years, one pair, zero margins; the span is three months, stated",
+   "grade_candidate": "A",
+   "grade_reason": "two distinct years on the authority's own tables; A on the two-year rule with the span stated",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": [
+    "span is three months of published months, not a year-round series"
+   ]
+  },
+  {
+   "id": "BI-TAWKIT-6",
+   "country": "BI",
+   "country_name": "Burundi",
+   "region": "Central, East and Southern Africa, Indian Ocean",
+   "surface": "tawkit.net, six Burundian cities",
+   "publisher": "tawkit.net (platform)",
+   "tier": "platform",
+   "source_workspace": "O1l-53 fallback2",
+   "register": "C-row (post-cut)",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 30,
+    "note": "six cities x 30 rows"
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "17.0 deg",
+    "asr": "Shafi",
+    "margins": "+0.5 min"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 180,
+    "exact": null,
+    "within1": "180/180",
+    "worst": 0,
+    "md": "180/180 within1"
+   },
+   "span_verdict": "untestable-short-sample",
+   "span_note": "one month",
+   "grade_candidate": "provisional",
+   "grade_reason": "FALLBACK lift on a platform surface, one cycle",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "AM-TAWKIT-18",
+   "country": "AM",
+   "country_name": "Armenia",
+   "region": "Central, East and Southern Africa, Indian Ocean",
+   "surface": "tawkit.net, eighteen Armenian cities",
+   "publisher": "tawkit.net (platform)",
+   "tier": "platform",
+   "source_workspace": "O1l-53 fallback2",
+   "register": "C-row (post-cut)",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 30,
+    "note": "18 cities x 30 rows"
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "17.0 deg",
+    "asr": "Shafi",
+    "margins": "as served"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 540,
+    "exact": null,
+    "within1": "540/540",
+    "worst": 0,
+    "md": "540/540 within1"
+   },
+   "span_verdict": "untestable-short-sample",
+   "span_note": "one month",
+   "grade_candidate": "provisional",
+   "grade_reason": "FALLBACK lift on a platform surface, one cycle",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "EH-LAAYOUNE-DAKHLA",
+   "country": "EH",
+   "country_name": "Western Sahara",
+   "region": "Central, East and Southern Africa, Indian Ocean",
+   "surface": "Laayoune and Dakhla, horaire-de-priere.ma",
+   "publisher": "horaire-de-priere.ma (Moroccan decree surface)",
+   "tier": "community",
+   "source_workspace": "O1l-48 fallback-sweep",
+   "register": "C11, L2",
+   "data_span": {
+    "from": "2026-10-01",
+    "to": "2026-11-30",
+    "years": 1,
+    "days": 30,
+    "note": "two cities x 30 rows, printed on GMT"
+   },
+   "recipe": {
+    "fajr": "19 deg",
+    "isha": "17 deg",
+    "asr": "Shafi",
+    "margins": "0 / -3 / +5 / +1 / +4 / 0"
+   },
+   "scores": {
+    "unit": "day-rows",
+    "n": 60,
+    "exact": null,
+    "within1": "30/30",
+    "worst": 0,
+    "md": "30/30 within1 on the six-margin set"
+   },
+   "span_verdict": "untestable-short-sample",
+   "span_note": "one month per city",
+   "grade_candidate": "candidate",
+   "grade_reason": "FALLBACK lift, short sample",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "MG-THREE-MOSQUES",
+   "country": "MG",
+   "country_name": "Madagascar",
+   "region": "Central, East and Southern Africa, Indian Ocean",
+   "surface": "Three Malagasy mosques",
+   "publisher": "mosque tenants (platform)",
+   "tier": "community",
+   "source_workspace": "O1l-48 fallback-sweep",
+   "register": "C12, L3",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "three 365-row surfaces"
+   },
+   "recipe": {
+    "fajr": "as served",
+    "isha": "as served",
+    "asr": "Shafi"
+   },
+   "scores": {
+    "unit": "day-rows",
+    "n": 1095,
+    "exact": null,
+    "within1": null,
+    "worst": null,
+    "md": "three surfaces, 1,095 rows; no single recipe stated"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "candidate",
+   "grade_reason": "FALLBACK lift, dated rows, no single recipe",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "GW-BISSAU",
+   "country": "GW",
+   "country_name": "Guinea-Bissau",
+   "region": "Central, East and Southern Africa, Indian Ocean",
+   "surface": "Bissau",
+   "publisher": "Bissau mosque (platform)",
+   "tier": "community",
+   "source_workspace": "O1l-48 fallback-sweep",
+   "register": "C13, L4",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "as served",
+    "isha": "as served",
+    "asr": "Shafi"
+   },
+   "scores": {
+    "unit": "day-rows",
+    "n": 365,
+    "exact": null,
+    "within1": null,
+    "worst": null,
+    "md": "365 rows; no recipe stated in the block"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "candidate",
+   "grade_reason": "FALLBACK lift, dated rows",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "TZ-ARUSHA",
+   "country": "TZ",
+   "country_name": "Tanzania",
+   "region": "Central, East and Southern Africa, Indian Ocean",
+   "surface": "Arusha, salaahtimes API, 2025-2027",
+   "publisher": "salaahtimes (platform)",
+   "tier": "platform",
+   "source_workspace": "O1l-20r africa-cities",
+   "register": "C8, L6, A42",
+   "data_span": {
+    "from": "2025-01-01",
+    "to": "2027-12-31",
+    "years": 3,
+    "days": 1095,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "18.0 deg",
+    "asr": "Shafi",
+    "dhuhr": "transit +5",
+    "maghrib": "sunset +3"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 6570,
+    "exact": null,
+    "within1": "365/365 all six in every year",
+    "worst": 1,
+    "md": "365/365 all six within1 in each of three years; fajr amplitude 7 min"
+   },
+   "span_verdict": "yes",
+   "span_note": "one recipe across 2025, 2026 and 2027",
+   "grade_candidate": "A eligible",
+   "grade_reason": "three fitted years, one recipe; the block left the class unnamed",
+   "conflicts": [
+    "the platform's 'Mwanza' row read as Tanzanian"
+   ],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "MU-MAURITIUS",
+   "country": "MU",
+   "country_name": "Mauritius",
+   "region": "Central, East and Southern Africa, Indian Ocean",
+   "surface": "Mauritius 2026 year (span ledger)",
+   "publisher": "not measured by an O1l block this round",
+   "tier": "community",
+   "source_workspace": "O1l-A2 span-ledger (carried); no O1l block",
+   "register": "C40, F13",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "carried from the O1l-A2 span ledger; no O1l block re-measured it"
+   },
+   "recipe": {
+    "fajr": "as the held object",
+    "isha": "as the held object",
+    "asr": "Shafi"
+   },
+   "scores": {
+    "unit": "day-rows",
+    "n": 365,
+    "exact": null,
+    "within1": null,
+    "worst": null,
+    "md": "full 2026 year fitted; year-2 structurally negative (the same 365 rows re-ship per year)"
+   },
+   "span_verdict": "frozen-reprint",
+   "span_note": "the same 365 rows re-ship every year: no distinct year-2 exists",
+   "grade_candidate": "community",
+   "grade_reason": "fitted non-authority surface; the A path is closed by the frozen generation",
+   "conflicts": [],
+   "flags": [
+    "Mauritius"
+   ],
+   "open_caveats": []
+  },
+  {
+   "id": "GB-SCOTLAND-14",
+   "country": "GB",
+   "country_name": "United Kingdom",
+   "region": "Europe: British Isles",
+   "surface": "Fourteen new dated Scottish surfaces: Glasgow AFECC dpt + three mawaqit mosques, Paisley, Edinburgh x3, Falkirk, Perth, Stirling, Dundee-Tayside, Kilmarnock, Livingston, Inverness, Motherwell, East Kilbride",
+   "publisher": "mosque and dpt surfaces",
+   "tier": "community",
+   "source_workspace": "O1l-B2 uk-seconds; O1l-28 uk-seconds2",
+   "register": "C55, A58",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": null,
+    "note": "365 or 366 rows per surface; Inverness 51 rows"
+   },
+   "recipe": {
+    "fajr": "15.4-18.1 deg by surface",
+    "isha": "15.0-15.5 deg by surface",
+    "asr": "Shafi",
+    "special": "Paisley and Edinburgh carry own prints; Livingston 18.1 fajr at 100 pc within1"
+   },
+   "scores": {
+    "unit": "surfaces",
+    "n": 14,
+    "exact": null,
+    "within1": "Livingston 100 pc; Glasgow mawaqit 15.4/15.5 on 365/366 rows",
+    "worst": null,
+    "md": "per-surface named pairs; Livingston 18.1 fajr 100 pc within1"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year per surface",
+   "grade_candidate": "community",
+   "grade_reason": "the Scotland rule proven: an own-table mosaic, never a national recipe",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": [
+    "East Kilbride's winter half is corrupt"
+   ]
+  },
+  {
+   "id": "GB-LONDON-9-BOROUGHS",
+   "country": "GB",
+   "country_name": "United Kingdom",
+   "region": "Europe: British Isles",
+   "surface": "Nine new London borough surfaces: Brent x3, Newham x2, Camden x2, Kensington and Chelsea, Hackney Valide",
+   "publisher": "borough mosque surfaces",
+   "tier": "community",
+   "source_workspace": "O1l-B2 uk-seconds",
+   "register": "C55",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": null,
+    "note": "nine surfaces beyond the three LUPT adopters"
+   },
+   "recipe": {
+    "fajr": "15.x family on most; Hackney Valide 12.3",
+    "isha": "18.2 at Hackney Valide",
+    "asr": "Shafi"
+   },
+   "scores": {
+    "unit": "surfaces",
+    "n": 9,
+    "exact": null,
+    "within1": "one 15.x table within a minute",
+    "worst": null,
+    "md": "one 15.x table within a minute; Hackney Valide 12.3/18.2 a distinct pair"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "community",
+   "grade_reason": "fitted non-authority surfaces",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "GB-ENGLAND-6-TOWNS",
+   "country": "GB",
+   "country_name": "United Kingdom",
+   "region": "Europe: British Isles",
+   "surface": "Six one-month towns lifted to years: Luton, Leicester, Middlesbrough, Ilford, Birmingham, Watford",
+   "publisher": "town mosque surfaces",
+   "tier": "community",
+   "source_workspace": "O1l-B2 uk-seconds",
+   "register": "C55",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 366,
+    "note": "366 rows each; Watford after a +60 clock fix"
+   },
+   "recipe": {
+    "fajr": "12.2 (Luton) / 15.0 (Leicester) / 15.5 (Ilford) / 12.5 (Birmingham)",
+    "isha": "12.0 / 12.7 / 15.0 / 14.5",
+    "asr": "Shafi",
+    "special": "Luton 12.2/12.0 is a new pair with no cap"
+   },
+   "scores": {
+    "unit": "surfaces",
+    "n": 6,
+    "exact": null,
+    "within1": null,
+    "worst": null,
+    "md": "six year surfaces; Luton a new pair, Birmingham's 12.5/14.5 unstable, Stockport rejected"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "community",
+   "grade_reason": "fitted non-authority surfaces",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "GB-WALES-CARDIFF",
+   "country": "GB",
+   "country_name": "United Kingdom",
+   "region": "Europe: British Isles",
+   "surface": "Cardiff, fifteen mosques, second Welsh layer",
+   "publisher": "Cardiff mosque surfaces",
+   "tier": "community",
+   "source_workspace": "O1l-28 uk-seconds2",
+   "register": "C55",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": null,
+    "note": "13 of 15 on one 15.0/15.5 pair; Newport a candidate"
+   },
+   "recipe": {
+    "fajr": "15.0 deg",
+    "isha": "15.5 deg",
+    "asr": "Shafi"
+   },
+   "scores": {
+    "unit": "surfaces",
+    "n": 15,
+    "exact": null,
+    "within1": "13 of 15 on one pair",
+    "worst": null,
+    "md": "13 of 15 mosques on one 15.0/15.5 pair"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "community",
+   "grade_reason": "fitted non-authority surfaces",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "GB-BELFAST",
+   "country": "GB",
+   "country_name": "United Kingdom",
+   "region": "Europe: British Isles",
+   "surface": "Belfast, the first Northern Irish year surface",
+   "publisher": "Belfast mosque surface",
+   "tier": "community",
+   "source_workspace": "O1l-28 uk-seconds2",
+   "register": "C55",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "15.6 deg",
+    "isha": "14.9 deg",
+    "asr": "Shafi",
+    "special": "ISNA fajr refuted"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2190,
+    "exact": null,
+    "within1": null,
+    "worst": null,
+    "md": "15.6/14.9; the ISNA fajr reading is refuted"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "community",
+   "grade_reason": "fitted non-authority surface",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "GB-SECOND-LAYER",
+   "country": "GB",
+   "country_name": "United Kingdom",
+   "region": "Europe: British Isles",
+   "surface": "England's second layer: Plymouth, Lincoln, Bath, Bristol x3, York, Norwich, Portsmouth",
+   "publisher": "mosque surfaces",
+   "tier": "community",
+   "source_workspace": "O1l-28 uk-seconds2",
+   "register": "C55, A59",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": null,
+    "note": "Plymouth ISNA 15 / isha 14.1; Lincoln 18/15; Bath isha 10.9; York 13.5/11.5; Portsmouth republishes ELM's 2016 LUPT PDF"
+   },
+   "recipe": {
+    "fajr": "13.5-18.0 by surface",
+    "isha": "10.9-15.0 by surface",
+    "asr": "Shafi",
+    "special": "Portsmouth is an LUPT adopter on a 2016 print"
+   },
+   "scores": {
+    "unit": "surfaces",
+    "n": 9,
+    "exact": null,
+    "within1": null,
+    "worst": null,
+    "md": "per-surface pairs; Portsmouth the fourth LUPT adopter, on the 2016 PDF"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "community",
+   "grade_reason": "fitted non-authority surfaces",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": [
+    "mawaqit's stored calendar is a different generation from the live page at Plymouth and Lincoln"
+   ]
+  },
+  {
+   "id": "IE-IFI-26-CITIES",
+   "country": "IE",
+   "country_name": "Ireland",
+   "region": "Europe: British Isles",
+   "surface": "Islamic Foundation of Ireland annual city PDFs, 26 cities",
+   "publisher": "Islamic Foundation of Ireland (islamicfoundation.ie)",
+   "tier": "authority",
+   "source_workspace": "O1l-29 ireland-wales-iom",
+   "register": "C49, A37, A38, D22",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "26 city files; year proved against the Ramadan-1447 edition (19 Feb row identical, 30/30 exact)"
+   },
+   "recipe": {
+    "fajr": "winter 16.2 deg, horizon -1.26 both ends",
+    "isha": "winter 15.2 deg; summer capped maghrib +90 for 30-43 days",
+    "asr": "Shafi",
+    "dhuhr": "noon +2.00",
+    "special": "summer fajr UNMODELLED"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 9459,
+    "exact": null,
+    "within1": "rms 1.75 over 3,120 winter observations",
+    "worst": null,
+    "md": "winter twilights rms 1.75; summer isha capped maghrib+90; summer fajr unmodelled"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one cycle; the ?year= parameter is discarded by a 301, so no second year exists",
+   "grade_candidate": "provisional",
+   "grade_reason": "one cycle on an authority surface",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": [
+    "the feed is parameter-blind and leap-shaped with a phantom Feb 29",
+    "the DST defect is the PDF's instructions dropped (+57 min 1 April, -59 1 November)"
+   ]
+  },
+  {
+   "id": "DE-24-CITIES",
+   "country": "DE",
+   "country_name": "Germany",
+   "region": "Europe: Nordics, Baltics, Benelux and Central",
+   "surface": "EU-Diyanet portal, 24 cities, full 2026",
+   "publisher": "Diyanet (EU-Diyanet portal)",
+   "tier": "authority",
+   "source_workspace": "O1l-42 germany-cities; O1l-10 watches-eu",
+   "register": "C29, A62, A74",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "18 new city-years; 2027 present at IGMG's mirror to 2027-11-10"
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "band 15.8-16.3 (16 exact)",
+    "asr": "Shafi shadow-1",
+    "dhuhr": "+5.5 floor",
+    "sunrise": "-6.5",
+    "maghrib": "+6.5",
+    "special": "domestic temkin; amplitude fajr 144-166, isha 256-284"
+   },
+   "scores": {
+    "unit": "days",
+    "n": 6570,
+    "exact": "dhuhr 290-333/365; fajr 128-148/182 winter days",
+    "within1": "182/182 fajr winter days",
+    "worst": 2,
+    "md": "dhuhr +5.5 floor exact 290-333/365; fajr 18.0 exact 128-148/182 winter days, 182/182 within1; isha zero at 15.0/16.5/17.0"
+   },
+   "span_verdict": "frozen-reprint",
+   "span_note": "2027 is byte-identical to 2026 on 2,116/2,116 overlapping city-days: one generation",
+   "grade_candidate": "provisional",
+   "grade_reason": "a mirror of one generation cannot lift to A; proven-to-2027-11",
+   "conflicts": [
+    "DITIB's 18/17 prose"
+   ],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "DE-DISTRICT-1241",
+   "country": "DE",
+   "country_name": "Germany",
+   "region": "Europe: Nordics, Baltics, Benelux and Central",
+   "surface": "German portal district layer, all 1,241 district ids",
+   "publisher": "Diyanet (EU-Diyanet portal)",
+   "tier": "authority",
+   "source_workspace": "O1l-51 germany-districts",
+   "register": "C-row (post-cut), A63-class",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "1,241 pages, 1,239 distinct tables, zero conflicts, zero 2027"
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "16.5 excluded at 1,102/1,102",
+    "asr": "Shafi, temkin latitude-dependent (+3 at 49 districts, +3.5 at 35, +6.5 at five northern)",
+    "dhuhr": "+5.5 floor",
+    "sunrise": "-6.5 floor",
+    "special": "coordinate refinement, not a per-district table"
+   },
+   "scores": {
+    "unit": "districts",
+    "n": 1102,
+    "exact": "dhuhr 1,102/1,102",
+    "within1": "fajr 182/182 at 18.0",
+    "worst": 2,
+    "md": "dhuhr +5.5 floor 1,102/1,102; fajr 18.0 182/182 within1; winter residual never exceeds 2 min over 4,222 same-state pairs"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one published cycle",
+   "grade_candidate": "provisional",
+   "grade_reason": "coordinate refinement over 452,965 district-days; one cycle",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": [
+    "longitude unrecoverable (dhuhr-temkin degeneracy); latitude recovered to 0.02 deg median"
+   ]
+  },
+  {
+   "id": "FI-JYVASKYLA-TURKU-TAMPERE",
+   "country": "FI",
+   "country_name": "Finland",
+   "region": "Europe: Nordics, Baltics, Benelux and Central",
+   "surface": "Jyvaskyla, Turku and Tampere; Oulu corrected",
+   "publisher": "Finnish mosque surfaces",
+   "tier": "community",
+   "source_workspace": "O1l-31 nordics2-cities",
+   "register": "C50, A15",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2027-01-31",
+    "years": 2,
+    "days": 353,
+    "note": "Jyvaskyla 353 rows spanning into Jan 2027"
+   },
+   "recipe": {
+    "fajr": "18.0 deg (Jyvaskyla); about 15 on Turku/Tampere",
+    "isha": "17.0; about 12 on Turku/Tampere",
+    "asr": "Shafi"
+   },
+   "scores": {
+    "unit": "days",
+    "n": 353,
+    "exact": null,
+    "within1": "Jyvaskyla 18/17 exact",
+    "worst": null,
+    "md": "Jyvaskyla 18/17 exact on 353 rows; Turku and Tampere a measured 15/12 line"
+   },
+   "span_verdict": "yes",
+   "span_note": "Jyvaskyla spans into January 2027 on one pair",
+   "grade_candidate": "candidate",
+   "grade_reason": "two city findings, no second full year",
+   "conflicts": [
+    "Oulu held as its own surface with a stated IRN 16/15 + 1/3 night"
+   ],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "SE-SEVEN-CITIES",
+   "country": "SE",
+   "country_name": "Sweden",
+   "region": "Europe: Nordics, Baltics, Benelux and Central",
+   "surface": "Sweden, seven cities on the Islamic Federation line",
+   "publisher": "Islamiska Forbundet (IF)",
+   "tier": "community",
+   "source_workspace": "O1l-31 nordics2-cities; O1l-52 second-witnesses",
+   "register": "C-row, A72-class",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "seven cities x 365"
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "16.0 deg",
+    "asr": "Shafi",
+    "sunrise": "-6.5",
+    "maghrib": "+5.5",
+    "dhuhr": "+6"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 15330,
+    "exact": null,
+    "within1": "18/16 exact on the angle-honest days",
+    "worst": null,
+    "md": "18/16 exact on angle-honest days; temkin -6.5/+5.5/+6"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "candidate",
+   "grade_reason": "one year, one line",
+   "conflicts": [
+    "Kiruna read as its own surface"
+   ],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "NO-TEN-CITIES",
+   "country": "NO",
+   "country_name": "Norway",
+   "region": "Europe: Nordics, Baltics, Benelux and Central",
+   "surface": "Norway, ten cities: IRN line, mawaqeet line, polar placeholders",
+   "publisher": "Islamsk Rad Norge (IRN) and mawaqeet surfaces",
+   "tier": "community",
+   "source_workspace": "O1l-31 nordics2-cities",
+   "register": "C52, D6",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "Stavanger, Haugesund, Sandnes, Fredrikstad, Sarpsborg, Alesund 365 each; Bodo, Harstad, Alta polar placeholders"
+   },
+   "recipe": {
+    "fajr": "16 deg (IRN) / 18 deg (mawaqeet)",
+    "isha": "15 deg / 15 deg",
+    "asr": "Shafi, seasonal school switch (D6)",
+    "special": "polar placeholders sized 15/36, 37/58, 40/62 days"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 21900,
+    "exact": null,
+    "within1": "IRN 16/15 exact on angle-honest days; mawaqeet 18/15 exact at five",
+    "worst": null,
+    "md": "IRN 16/15 exact on angle-honest days; mawaqeet 18/15 at five; placeholders sized per city"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "candidate",
+   "grade_reason": "three coexisting recipe forms; no single Norwegian object",
+   "conflicts": [],
+   "flags": [
+    "IRN asr school switch"
+   ],
+   "open_caveats": []
+  },
+  {
+   "id": "DK-FOUR-CITIES",
+   "country": "DK",
+   "country_name": "Denmark",
+   "region": "Europe: Nordics, Baltics, Benelux and Central",
+   "surface": "Aarhus, Odense, Aalborg, Esbjerg, a fourth Danish line",
+   "publisher": "Danish mosque surfaces",
+   "tier": "community",
+   "source_workspace": "O1l-31 nordics2-cities",
+   "register": "C53",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "four cities x 365"
+   },
+   "recipe": {
+    "fajr": "as served",
+    "isha": "as served",
+    "asr": "Shafi"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 8760,
+    "exact": null,
+    "within1": "exact at all four",
+    "worst": 0,
+    "md": "exact at all four cities"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "candidate",
+   "grade_reason": "a fourth Danish line beside Copenhagen's three",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "LT-KLAIPEDA",
+   "country": "LT",
+   "country_name": "Lithuania",
+   "region": "Europe: Nordics, Baltics, Benelux and Central",
+   "surface": "Klaipeda, 2026-2027 Diyanet",
+   "publisher": "Diyanet (Klaipeda)",
+   "tier": "authority",
+   "source_workspace": "O1l-31 nordics2-cities",
+   "register": "C-row",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2027-12-31",
+    "years": 2,
+    "days": 730,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "16.0 deg",
+    "asr": "Shafi",
+    "margins": "temkin"
+   },
+   "scores": {
+    "unit": "days",
+    "n": 730,
+    "exact": null,
+    "within1": "18/16 exact",
+    "worst": 0,
+    "md": "18/16 exact across both years"
+   },
+   "span_verdict": "yes",
+   "span_note": "two served years, one recipe",
+   "grade_candidate": "candidate",
+   "grade_reason": "the block leaves the class unnamed; two years held",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "IS-NINE-CITIES",
+   "country": "IS",
+   "country_name": "Iceland",
+   "region": "Europe: Nordics, Baltics, Benelux and Central",
+   "surface": "Iceland, nine cities on the Felag Muslima line",
+   "publisher": "Felag Muslima a Islandi",
+   "tier": "community",
+   "source_workspace": "O1l-31 nordics2-cities",
+   "register": "C51",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "Reykjavik, Keflavik, Akureyri, Akranes, Borgarnes, Hofsos, Husavik, Hvolsvollur, Hella"
+   },
+   "recipe": {
+    "fajr": "14.2 deg with the angle-derived night portion",
+    "isha": "14.0 deg",
+    "asr": "Shafi"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 19710,
+    "exact": null,
+    "within1": "exact at all nine",
+    "worst": 0,
+    "md": "14.2/14.0 exact at all nine cities"
+   },
+   "span_verdict": "yes",
+   "span_note": "nine cities, one pair; O1k held three years on the same recipe",
+   "grade_candidate": "A",
+   "grade_reason": "the O1k A span plus six more cities at the same constants",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": [
+    "Isafjordur and Selfoss refuse (20 towns probed)",
+    "the December +90 clause fires on zero days"
+   ]
+  },
+  {
+   "id": "CY-NORTH-2025-2026",
+   "country": "CY",
+   "country_name": "Cyprus (north)",
+   "region": "Europe: Nordics, Baltics, Benelux and Central",
+   "surface": "KKTC 2025 and 2026 editions",
+   "publisher": "KKTC religious affairs",
+   "tier": "authority",
+   "source_workspace": "O1l-A2 span-ledger",
+   "register": "C41, A16",
+   "data_span": {
+    "from": "2025-01-01",
+    "to": "2026-12-31",
+    "years": 2,
+    "days": 730,
+    "note": "2025 edition fails as-is, passes on one additive constant"
+   },
+   "recipe": {
+    "fajr": "2026 recipe",
+    "isha": "2026 recipe",
+    "asr": "Shafi",
+    "special": "2025 needs a -2.5 min constant; with it 552/552 within1"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 552,
+    "exact": null,
+    "within1": "552/552 with the correction",
+    "worst": 0,
+    "md": "552/552 within1 with the -2.5 constant; the 2025 edition fails as-is (mean -2.42)"
+   },
+   "span_verdict": "no",
+   "span_note": "the recipe changes inside the span; the regime split is dated 2025",
+   "grade_candidate": "provisional",
+   "grade_reason": "two honest editions would open A; the constant is dated",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "GI-FOUR-YEARS",
+   "country": "GI",
+   "country_name": "Gibraltar",
+   "region": "Europe: Nordics, Baltics, Benelux and Central",
+   "surface": "Ibrahim-al-Ibrahim, 2011 / 2014 / 2026 / 2027",
+   "publisher": "Ibrahim-al-Ibrahim Mosque",
+   "tier": "community",
+   "source_workspace": "O1l-36 microstates",
+   "register": "C-row, A-row",
+   "data_span": {
+    "from": "2011-01-01",
+    "to": "2027-12-31",
+    "years": 4,
+    "days": 1460,
+    "note": "four editions, forward-proven to 2027-12-31"
+   },
+   "recipe": {
+    "fajr": "18.1 deg",
+    "isha": "16.9 deg",
+    "asr": "Shafi",
+    "margins": "-1 min"
+   },
+   "scores": {
+    "unit": "days",
+    "n": 1460,
+    "exact": "341-345 per year",
+    "within1": null,
+    "worst": 1,
+    "md": "341-345 exact per year across four editions"
+   },
+   "span_verdict": "yes",
+   "span_note": "four editions, one pair, forward-proven to 2027-12-31",
+   "grade_candidate": "A",
+   "grade_reason": "four distinct years on one recipe",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "MT-THREE-SURFACES",
+   "country": "MT",
+   "country_name": "Malta",
+   "region": "Europe: Nordics, Baltics, Benelux and Central",
+   "surface": "Birkirkara, Bilal and Paola (masjidway)",
+   "publisher": "Maltese mosque surfaces",
+   "tier": "community",
+   "source_workspace": "O1l-36 microstates",
+   "register": "A2, B16, C17, F10",
+   "data_span": {
+    "from": "2025-01-01",
+    "to": "2026-12-31",
+    "years": 2,
+    "days": 1460,
+    "note": "Paola fits 2025 and 2026; Birkirkara 365, Bilal 365"
+   },
+   "recipe": {
+    "fajr": "18 deg (Birkirkara, behind a fixed 05:13 floor for 213 days) / 18 (Bilal) / 17.9 (Paola)",
+    "isha": "17 / 16.9",
+    "asr": "Shafi"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 1460,
+    "exact": null,
+    "within1": null,
+    "worst": null,
+    "md": "three surfaces; Paola 17.9/16.9 fits 2025 AND 2026, the country's only year-pair"
+   },
+   "span_verdict": "yes",
+   "span_note": "Paola carries two years on one pair",
+   "grade_candidate": "candidate",
+   "grade_reason": "the v2.5 'no fit' was an absence, not a verdict; Malta must be ADDED",
+   "conflicts": [],
+   "flags": [
+    "Malta absent from both record files"
+   ],
+   "open_caveats": []
+  },
+  {
+   "id": "AD-ANDORRA",
+   "country": "AD",
+   "country_name": "Andorra",
+   "region": "Europe: Nordics, Baltics, Benelux and Central",
+   "surface": "Centre Cultural Islamic, mawaqit",
+   "publisher": "Centre Cultural Islamic (mawaqit)",
+   "tier": "community",
+   "source_workspace": "O1l-36 microstates",
+   "register": "B17, C18, N16",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "18.1 deg",
+    "isha": "16.9 deg",
+    "asr": "Shafi",
+    "margins": "-1 min"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2190,
+    "exact": null,
+    "within1": "365/365",
+    "worst": 0,
+    "md": "365/365 within1"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "candidate",
+   "grade_reason": "new country; the O1k negative stands for a mosque-printed table",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "LI-VADUZ",
+   "country": "LI",
+   "country_name": "Liechtenstein",
+   "region": "Europe: Nordics, Baltics, Benelux and Central",
+   "surface": "IGMG Vaduz plus the IGFL line",
+   "publisher": "IGMG Vaduz; Islamische Gemeinschaft Furstentum Liechtenstein",
+   "tier": "community",
+   "source_workspace": "O1l-36 microstates",
+   "register": "B18, C18, N17",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2027-01-06",
+    "years": 1,
+    "days": 396,
+    "note": "IGFL's own line is identical to the minute"
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "17.0 deg",
+    "asr": "Shafi",
+    "margins": "temkin",
+    "special": "the summer block leaves the angles, not a fixed fraction, so the form cannot be told"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2376,
+    "exact": null,
+    "within1": null,
+    "worst": null,
+    "md": "18/17 + temkin; IGFL line identical to the minute"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "candidate",
+   "grade_reason": "new country, one cycle",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "SM-BADR",
+   "country": "SM",
+   "country_name": "San Marino",
+   "region": "Europe: Nordics, Baltics, Benelux and Central",
+   "surface": "Associazione Badr",
+   "publisher": "Associazione Badr",
+   "tier": "community",
+   "source_workspace": "O1l-36 microstates",
+   "register": "B19, C18, N18",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "14.9 deg",
+    "isha": "15.1 deg",
+    "asr": "Shafi",
+    "margins": "zero"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2190,
+    "exact": null,
+    "within1": null,
+    "worst": null,
+    "md": "14.9/15.1 zero margins"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "candidate",
+   "grade_reason": "new country, one cycle",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "FR-LYON-LILLE-MARSEILLE",
+   "country": "FR",
+   "country_name": "France",
+   "region": "Europe: Iberia and the Balkans",
+   "surface": "Lyon two mosques, Lille Grande Mosquee, Marseille two mosques",
+   "publisher": "French mosque surfaces",
+   "tier": "community",
+   "source_workspace": "O1l-22 europe-second",
+   "register": "A-row",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "GMP Lyon 258/365; Marseille 730 rows across two"
+   },
+   "recipe": {
+    "fajr": "14.42 (Lyon GMP and Attawba) / 12.51 (Lille) / 13.03 and 12.92 (Marseille)",
+    "isha": "13.54 / 13.47 / 12.66 / 13.02 and 12.84",
+    "asr": "Shafi",
+    "special": "seasonal sweeps"
+   },
+   "scores": {
+    "unit": "days",
+    "n": 1460,
+    "exact": null,
+    "within1": "Lyon all six 258/365; Lille 42/365",
+    "worst": null,
+    "md": "Lyon GMP all six 258/365; Lille 42/365; Marseille 730 rows"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "community",
+   "grade_reason": "fitted non-authority surfaces",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "IT-ROME-MILAN",
+   "country": "IT",
+   "country_name": "Italy",
+   "region": "Europe: Iberia and the Balkans",
+   "surface": "Rome, Milan, Turin, Bologna",
+   "publisher": "Italian mosque surfaces",
+   "tier": "community",
+   "source_workspace": "O1l-22 europe-second",
+   "register": "A-row",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "Rome a 30-row month, the rest 365 each"
+   },
+   "recipe": {
+    "fajr": "19.02 (Rome) / 18 (Milan, Bologna) / 15 (Turin)",
+    "isha": "maghrib +90 (Rome) / 17 / 15",
+    "asr": "Shafi"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 1125,
+    "exact": "Rome all six 30/30",
+    "within1": "Rome 30/30",
+    "worst": 0,
+    "md": "Rome fajr 19.02 30/30, isha maghrib+90 exact, all six 30/30; the rest five of six at zero margin"
+   },
+   "span_verdict": "untestable-short-sample",
+   "span_note": "Rome one month; the others one year",
+   "grade_candidate": "community",
+   "grade_reason": "fitted non-authority surfaces",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": [
+    "the Rome December poster is absent"
+   ]
+  },
+  {
+   "id": "ES-FIVE-CITIES",
+   "country": "ES",
+   "country_name": "Spain",
+   "region": "Europe: Iberia and the Balkans",
+   "surface": "Granada two mosques, Barcelona, Valencia, Sevilla twice",
+   "publisher": "Spanish mosque surfaces",
+   "tier": "community",
+   "source_workspace": "O1l-22 europe-second",
+   "register": "A-row",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "Barcelona 280/365; Valencia 339/365; Sevilla 265 and 170"
+   },
+   "recipe": {
+    "fajr": "18.0 deg on four surfaces; Granada 18/18 on one",
+    "isha": "17.0 deg",
+    "asr": "Shafi",
+    "maghrib": "+3 on one Granada surface"
+   },
+   "scores": {
+    "unit": "days",
+    "n": 1200,
+    "exact": null,
+    "within1": "Valencia 339/365; Barcelona 280/365",
+    "worst": null,
+    "md": "Valencia 339/365, Barcelona 280/365, Sevilla 265 and 170"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "community",
+   "grade_reason": "fitted non-authority surfaces",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "ES-2024-POSTERS",
+   "country": "ES",
+   "country_name": "Spain",
+   "region": "Europe: Iberia and the Balkans",
+   "surface": "Spain 2024 posters recovered from the WordPress upload tree",
+   "publisher": "Spanish mosque surfaces (Wayback)",
+   "tier": "community",
+   "source_workspace": "O1l-B1r wayback-back",
+   "register": "A-row",
+   "data_span": {
+    "from": "2024-01-01",
+    "to": "2024-12-31",
+    "years": 1,
+    "days": 184,
+    "note": "2020-2024 /Doc/Horario/ 404s; 2024 recovered via posters"
+   },
+   "recipe": {
+    "fajr": "as the posters",
+    "isha": "as the posters",
+    "asr": "Shafi"
+   },
+   "scores": {
+    "unit": "rows",
+    "n": 184,
+    "exact": null,
+    "within1": "96.8 pc",
+    "worst": null,
+    "md": "96.8 pc within1 on 184 rows"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year, partially recovered",
+   "grade_candidate": "candidate",
+   "grade_reason": "dated rows, no year-pair",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "PT-LISBOA-COIMBRA-PORTO",
+   "country": "PT",
+   "country_name": "Portugal",
+   "region": "Europe: Iberia and the Balkans",
+   "surface": "Lisboa and Coimbra monthly sheets, Porto annual and monthly",
+   "publisher": "hsalah.info hub",
+   "tier": "community",
+   "source_workspace": "O1l-22 europe-second",
+   "register": "A67, F4",
+   "data_span": {
+    "from": "2026-10-01",
+    "to": "2026-11-30",
+    "years": 1,
+    "days": 61,
+    "note": "monthly delta 0 at Lisboa and Coimbra; Porto monthly a convention sheet"
+   },
+   "recipe": {
+    "fajr": "18 deg",
+    "isha": "12 deg +3",
+    "asr": "Shafi +0.5",
+    "dhuhr": "+5.5",
+    "maghrib": "+3.5",
+    "special": "Porto monthly asr +39 to +54 against its own annual"
+   },
+   "scores": {
+    "unit": "rows",
+    "n": 90,
+    "exact": null,
+    "within1": "Lisboa/Coimbra monthly delta 0",
+    "worst": null,
+    "md": "Lisboa and Coimbra monthly delta 0; Porto monthly asr +39..+54 against its own annual"
+   },
+   "span_verdict": "yes",
+   "span_note": "the monthly sheets reproduce the annual at delta 0 at two cities",
+   "grade_candidate": "community",
+   "grade_reason": "fitted non-authority surface; the O1k A span stands on three editions",
+   "conflicts": [
+    "the monthly Porto sheet read as the same rule as the annual"
+   ],
+   "flags": [
+    "Portugal, Porto"
+   ],
+   "open_caveats": []
+  },
+  {
+   "id": "AT-IGGOE",
+   "country": "AT",
+   "country_name": "Austria",
+   "region": "Europe: Iberia and the Balkans",
+   "surface": "IGGOe line against the IZW tables",
+   "publisher": "Islamische Glaubensgemeinschaft in Osterreich (IGGOe)",
+   "tier": "community",
+   "source_workspace": "O1l-25 gaps-closed",
+   "register": "C47, A72",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 245,
+    "note": "245 comparison rows"
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "16.0 deg",
+    "asr": "Shafi",
+    "margins": "temkin + Istanbul takdir"
+   },
+   "scores": {
+    "unit": "rows",
+    "n": 245,
+    "exact": null,
+    "within1": "isha 245/245",
+    "worst": 29,
+    "md": "isha sync 245/245 within1; fajr drift mean 12.8 min earlier, worst 29 in August"
+   },
+   "span_verdict": "no",
+   "span_note": "fajr drifts inside the span; isha is in sync",
+   "grade_candidate": "provisional",
+   "grade_reason": "drift measured, not adjudicated",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "BA-61-CITIES",
+   "country": "BA",
+   "country_name": "Bosnia and Herzegovina",
+   "region": "Europe: Iberia and the Balkans",
+   "surface": "Bosnia, 61 cities on the Rijaset tables",
+   "publisher": "Rijaset Islamske Zajednice",
+   "tier": "authority",
+   "source_workspace": "O1l-16r balkan-cities",
+   "register": "C38, A20, A21, D16",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "61 cities"
+   },
+   "recipe": {
+    "fajr": "18.0 deg + scalar k per city",
+    "isha": "16.0 deg - k",
+    "asr": "Shafi",
+    "sunrise": "-5.5",
+    "maghrib": "+5.5",
+    "dhuhr": "+0.5",
+    "special": "one Sarajevo-anchored generation redistributed 4 min/degree longitude (mean error 0.31)"
+   },
+   "scores": {
+    "unit": "city-days",
+    "n": 22265,
+    "exact": "35.2 pc",
+    "within1": "71.5 pc",
+    "worst": null,
+    "md": "71.5 pc within1, 35.2 pc exact; seven tables exact constant shifts"
+   },
+   "span_verdict": "frozen-reprint",
+   "span_note": "one generation; the frozen-generation precedent bars a lift",
+   "grade_candidate": "provisional",
+   "grade_reason": "one generation across 61 cities",
+   "conflicts": [
+    "the record held a 611 m elevation rung in the temkin ladder"
+   ],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "RS-NOVI-PAZAR-BELGRADE",
+   "country": "RS",
+   "country_name": "Serbia",
+   "region": "Europe: Iberia and the Balkans",
+   "surface": "Novi Pazar 2025, Belgrade, Nis",
+   "publisher": "Serbian mosque surfaces",
+   "tier": "community",
+   "source_workspace": "O1l-16r balkan-cities",
+   "register": "A-row",
+   "data_span": {
+    "from": "2025-01-01",
+    "to": "2025-12-31",
+    "years": 1,
+    "days": 180,
+    "note": "Novi Pazar 2025, Belgrade 180/180, Nis 176/180 months"
+   },
+   "recipe": {
+    "fajr": "19.6 deg (Novi Pazar)",
+    "isha": "17.8 deg",
+    "asr": "Shafi"
+   },
+   "scores": {
+    "unit": "days",
+    "n": 540,
+    "exact": null,
+    "within1": "Novi Pazar 46.4 pc",
+    "worst": null,
+    "md": "Novi Pazar 19.6/17.8 at 46.4 pc within1; Belgrade 180/180, Nis 176/180 months"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "candidate",
+   "grade_reason": "one year, one city pair",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "HR-ZAGREB-RIJEKA-SPLIT",
+   "country": "HR",
+   "country_name": "Croatia",
+   "region": "Europe: Iberia and the Balkans",
+   "surface": "Zagreb, Rijeka, Split",
+   "publisher": "Croatian mosque surfaces",
+   "tier": "community",
+   "source_workspace": "O1l-16r balkan-cities",
+   "register": "A-row",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 180,
+    "note": "180 months checked per city"
+   },
+   "recipe": {
+    "fajr": "as served",
+    "isha": "as served",
+    "asr": "Shafi"
+   },
+   "scores": {
+    "unit": "months",
+    "n": 540,
+    "exact": null,
+    "within1": "Zagreb 172/180, Rijeka 170/180, Split 164/180",
+    "worst": null,
+    "md": "Zagreb 172/180, Rijeka 170/180, Split 164/180 months"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "candidate",
+   "grade_reason": "one year",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "ME-ONE-TABLE-SIX-SHIFTS",
+   "country": "ME",
+   "country_name": "Montenegro",
+   "region": "Europe: Iberia and the Balkans",
+   "surface": "Montenegro, six PDFs",
+   "publisher": "Islamic Community of Montenegro (IZCG)",
+   "tier": "authority",
+   "source_workspace": "O1l-16r balkan-cities; O1l-A1 algo-table-matrix",
+   "register": "A18, A19",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "six PDFs read as one table plus six constant shifts"
+   },
+   "recipe": {
+    "fajr": "one table plus {-4,-2,0,+1,+3,+5} min",
+    "isha": "same shifts",
+    "asr": "Shafi",
+    "special": "the stated 19.5/17.5 scores 35.3 pc; fajr seasonal swing about 11.5 min"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2190,
+    "exact": "cell-exact on the shift set",
+    "within1": null,
+    "worst": 0,
+    "md": "cell-exact on one table plus six shifts; the stated pair scores 35.3 pc"
+   },
+   "span_verdict": "frozen-reprint",
+   "span_note": "one table, six constant shifts: no distinct year-2",
+   "grade_candidate": "provisional",
+   "grade_reason": "one generation",
+   "conflicts": [
+    "v3: 'the declared 19.5/17.5 is nearly exact'"
+   ],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "MK-SKOPJE-TWO-SURFACES",
+   "country": "MK",
+   "country_name": "North Macedonia",
+   "region": "Europe: Iberia and the Balkans",
+   "surface": "Skopje on bfi.mk and vaktija.eu",
+   "publisher": "bfi.mk; vaktija.eu",
+   "tier": "community",
+   "source_workspace": "O1l-16r balkan-cities",
+   "register": "A68, F3",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 180,
+    "note": "bfi.mk a 1-day accrual; vaktija.eu Skopje 164/180"
+   },
+   "recipe": {
+    "fajr": "two surfaces +45 min apart",
+    "isha": "as each surface",
+    "asr": "Shafi"
+   },
+   "scores": {
+    "unit": "months",
+    "n": 180,
+    "exact": null,
+    "within1": "vaktija 164/180",
+    "worst": null,
+    "md": "vaktija.eu 164/180 months; bfi.mk a 1-day accrual; the two disagree +45 min on fajr"
+   },
+   "span_verdict": "no",
+   "span_note": "the two surfaces disagree inside the span",
+   "grade_candidate": "candidate",
+   "grade_reason": "two surfaces, no single recipe",
+   "conflicts": [],
+   "flags": [
+    "Macedonia fajr"
+   ],
+   "open_caveats": []
+  },
+  {
+   "id": "AL-SHKODRA-TIRANA",
+   "country": "AL",
+   "country_name": "Albania",
+   "region": "Europe: Iberia and the Balkans",
+   "surface": "Shkodra and Tirana",
+   "publisher": "Albanian mosque surfaces",
+   "tier": "community",
+   "source_workspace": "O1l-16r balkan-cities",
+   "register": "A-row",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 180,
+    "note": "Shkodra 162/180, Tirana 149/180 months"
+   },
+   "recipe": {
+    "fajr": "as served",
+    "isha": "as served",
+    "asr": "Shafi"
+   },
+   "scores": {
+    "unit": "months",
+    "n": 360,
+    "exact": null,
+    "within1": "Shkodra 162/180, Tirana 149/180",
+    "worst": null,
+    "md": "Shkodra 162/180, Tirana 149/180 months; KMSH client-rendered negative"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "candidate",
+   "grade_reason": "one year",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "RU-CDUM-MOSCOW",
+   "country": "RU",
+   "country_name": "Russia",
+   "region": "Europe: Russia",
+   "surface": "CDUM Moscow and the CDUM settlement set",
+   "publisher": "Central Spiritual Administration of Muslims (CDUM)",
+   "tier": "authority",
+   "source_workspace": "O1l-6r russia-boards",
+   "register": "C30, A10, A13, A14",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "Moscow at the published position; Sibay served 55.81 N"
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "17.0 deg",
+    "asr": "Shafi",
+    "margins": "near 2 min"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2190,
+    "exact": null,
+    "within1": "95.5 pc at the true position",
+    "worst": null,
+    "md": "95.5 pc within1 at the true position; the 2026 sunrise defect reaches -68 min"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "provisional",
+   "grade_reason": "one cycle; the quoted margins were computed 0.163 deg west",
+   "conflicts": [
+    "the record quoted C23's margins"
+   ],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "RU-DUMRB-63",
+   "country": "RU",
+   "country_name": "Russia",
+   "region": "Europe: Russia",
+   "surface": "DUM RB, 63 settlements, 2025 and 2026",
+   "publisher": "Spiritual Administration of Muslims of Bashkortostan (DUM RB)",
+   "tier": "authority",
+   "source_workspace": "O1l-6r russia-boards",
+   "register": "C30, A11, A12",
+   "data_span": {
+    "from": "2025-01-01",
+    "to": "2026-12-31",
+    "years": 2,
+    "days": 730,
+    "note": "61 cities x 2026 = 22,265; 63 x 2025 = 12,621"
+   },
+   "recipe": {
+    "fajr": "16 deg",
+    "isha": "15 deg",
+    "asr": "Hanafi",
+    "special": "the free-angle fit was degenerate; replaced by level identification"
+   },
+   "scores": {
+    "unit": "day-rows",
+    "n": 34886,
+    "exact": null,
+    "within1": "2026: 98.9 pc",
+    "worst": null,
+    "md": "2026 fajr median 16.05, within1 98.9 pc; 2025's fajr fits NO single angle (18.6 pc)"
+   },
+   "span_verdict": "no",
+   "span_note": "the recipe changes inside the span; the regime change is dated 2025",
+   "grade_candidate": "provisional",
+   "grade_reason": "the 16/15 recipe holds for 2026 only",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "RU-DUMRT-44",
+   "country": "RU",
+   "country_name": "Russia",
+   "region": "Europe: Russia",
+   "surface": "DUM RT, 44 cities",
+   "publisher": "Spiritual Administration of Muslims of Tatarstan (DUM RT)",
+   "tier": "authority",
+   "source_workspace": "O1l-6r russia-boards",
+   "register": "C31",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "44 cities, zero gaps, 43 of 44 CSVs byte-identical to C23"
+   },
+   "recipe": {
+    "fajr": "as the C23 recipe",
+    "isha": "as the C23 recipe",
+    "asr": "Hanafi"
+   },
+   "scores": {
+    "unit": "day-rows",
+    "n": 32120,
+    "exact": null,
+    "within1": null,
+    "worst": null,
+    "md": "32,120 rows, zero gaps; 43 of 44 CSVs byte-identical to C23"
+   },
+   "span_verdict": "yes",
+   "span_note": "one recipe across 44 cities; the byte-identity is one generation",
+   "grade_candidate": "A",
+   "grade_reason": "the O1k A span widened to 44 cities",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "RU-UFA-ALMANAC",
+   "country": "RU",
+   "country_name": "Russia",
+   "region": "Europe: Russia",
+   "surface": "Ufa, the twelve-sheet Hijri-1448 almanac plus three 1446 sheets",
+   "publisher": "DUM RB almanac (Ufa)",
+   "tier": "authority",
+   "source_workspace": "O1l-6r russia-boards",
+   "register": "B29, E3, D12",
+   "data_span": {
+    "from": "2026-06-16",
+    "to": "2027-06-05",
+    "years": 2,
+    "days": 355,
+    "note": "355 + 87 rows"
+   },
+   "recipe": {
+    "fajr": "sunrise - 100",
+    "isha": "maghrib + 90",
+    "asr": "Hanafi of the date plus ten days",
+    "maghrib": "sunset + 4",
+    "dhuhr": "max(13:30, noon + 5)",
+    "special": "suhur = fajr - 20; fixed-interval recipe, not angular"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2652,
+    "exact": "90.8 pc cell-exact",
+    "within1": null,
+    "worst": null,
+    "md": "cell-exact 90.8 pc"
+   },
+   "span_verdict": "yes",
+   "span_note": "one fixed-interval recipe across the 1448 almanac and three 1446 sheets",
+   "grade_candidate": "A",
+   "grade_reason": "two Hijri years, one recipe, cell-exact",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "SA-43-GOVERNORATES",
+   "country": "SA",
+   "country_name": "Saudi Arabia",
+   "region": "Middle East",
+   "surface": "Saudi Arabia, 43 governorate points, 1448 and 1449",
+   "publisher": "Umm al-Qura / KACST (umqserv)",
+   "tier": "authority",
+   "source_workspace": "O1l-40 saudi-cities",
+   "register": "C22, A33, D13, D14",
+   "data_span": {
+    "from": null,
+    "to": null,
+    "years": 2,
+    "days": 730,
+    "note": "43 points x Hijri years 1448 and 1449; endpoints not stated in the block"
+   },
+   "recipe": {
+    "fajr": "18.5 deg floor +1",
+    "isha": "maghrib + 90, +120 on every Ramadan day",
+    "asr": "Shafi floor +1",
+    "sunrise": "floor raw",
+    "special": "prayers = floor(raw + 1 min), arithmetically ceil-of-raw (D13); the Ramadan interval is exactly two values (D14)"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 182922,
+    "exact": "81.9-87.7 pc",
+    "within1": "99.8-100 pc",
+    "worst": 2,
+    "md": "exact 81.9-87.7 pc, within1 99.8-100 pc, MAE 0.123-0.182; free fajr fits 18.44-18.50"
+   },
+   "span_verdict": "yes",
+   "span_note": "one recipe across 43 points and both Hijri years; between-year exactness moves <=2.0 points",
+   "grade_candidate": "A",
+   "grade_reason": "43 points, two years, one recipe; no deviating governorate",
+   "conflicts": [
+    "the endpoint was assumed to carry a city/cityId axis"
+   ],
+   "flags": [],
+   "open_caveats": [
+    "the 43 points are the publisher's engine at coordinates, a uniformity test of the rule",
+    "worst Turaif 81.9, best Sharurah 87.7, ordering latitude"
+   ]
+  },
+  {
+   "id": "SA-CENTURY-1318-1500H",
+   "country": "SA",
+   "country_name": "Saudi Arabia",
+   "region": "Middle East",
+   "surface": "Makkah and Medina across 1318H-1500H",
+   "publisher": "Umm al-Qura (Wayback harvest)",
+   "tier": "authority",
+   "source_workspace": "O1l-B1r wayback-back",
+   "register": "D32, A-row",
+   "data_span": {
+    "from": null,
+    "to": null,
+    "years": 7,
+    "days": 6379,
+    "note": "seven Hijri years sampled across a 183-year span, 1318H-1500H; ceiling 1501H = 400"
+   },
+   "recipe": {
+    "fajr": "18.5 deg floor +1",
+    "isha": "maghrib + 90, +120 in Ramadan",
+    "asr": "Shafi floor +1",
+    "sunrise": "floor raw"
+   },
+   "scores": {
+    "unit": "rows",
+    "n": 6379,
+    "exact": null,
+    "within1": "100 pc",
+    "worst": 1,
+    "md": "6,379 rows at 100 pc within1; zero regime changes"
+   },
+   "span_verdict": "yes",
+   "span_note": "no regime change across 1318H-1500H",
+   "grade_candidate": "A",
+   "grade_reason": "the deepest proof in the record: seven Hijri years, one recipe, 183-year span",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "SA-TEN-CITIES-1448-1449",
+   "country": "SA",
+   "country_name": "Saudi Arabia",
+   "region": "Middle East",
+   "surface": "Abha, Tabuk, Dammam, Taif, Buraidah, Hail and four more, 1448 + 1449",
+   "publisher": "Umm al-Qura (umqserv)",
+   "tier": "authority",
+   "source_workspace": "O1l-8 mideast-cities",
+   "register": "A-row",
+   "data_span": {
+    "from": null,
+    "to": null,
+    "years": 2,
+    "days": 730,
+    "note": "ten cities, Hijri 1448 and 1449"
+   },
+   "recipe": {
+    "fajr": "18.5 floor +1",
+    "isha": "maghrib +90 / +120 in Ramadan",
+    "asr": "Shafi floor +1"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 42540,
+    "exact": null,
+    "within1": "99.8-100 pc",
+    "worst": 2,
+    "md": "99.8-100 pc within1; 13 cells of 42,540 sit 2 min out on six publisher edge days"
+   },
+   "span_verdict": "yes",
+   "span_note": "one recipe all ten cities across both years",
+   "grade_candidate": "A",
+   "grade_reason": "ten cities, two years, one recipe",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "OM-SEVEN-CITIES-2021-2031",
+   "country": "OM",
+   "country_name": "Oman",
+   "region": "Middle East",
+   "surface": "Oman, seven cities, 2021-2031",
+   "publisher": "Ministry of Endowments and Religious Affairs (Oman)",
+   "tier": "authority",
+   "source_workspace": "O1l-25 gaps-closed; O1l-8 mideast-cities",
+   "register": "C21, A8, A9, D30, F1",
+   "data_span": {
+    "from": "2021-01-01",
+    "to": "2031-12-31",
+    "years": 11,
+    "days": 4015,
+    "note": "seven cities; Salalah, Sohar, Nizwa, Sur, Ibri, Buraimi plus Muscat"
+   },
+   "recipe": {
+    "fajr": "18.0 deg, NEAREST",
+    "isha": "18.0 deg, nearest",
+    "asr": "Shafi +5 ceil",
+    "dhuhr": "+5 ceil",
+    "maghrib": "+5 ceil",
+    "special": "the competing reading is 17.8/18.15 with +5 ceil; the split is the ROUNDING MODE"
+   },
+   "scores": {
+    "unit": "city-days",
+    "n": 28105,
+    "exact": null,
+    "within1": "18/18 nearest 100 pc everywhere; 17.8/18.15 ceil 98.8-99.6 pc (asr at the six second cities)",
+    "worst": 1,
+    "md": "18/18 nearest 100 pc within1 everywhere; 17.8/18.15 ceil holds except asr at six second cities (98.8-99.6 pc)"
+   },
+   "span_verdict": "yes",
+   "span_note": "one recipe across 2021-2031 on the nearest reading; both parameterizations carry",
+   "grade_candidate": "A",
+   "grade_reason": "eleven years, seven cities, 28,105 city-days",
+   "conflicts": [
+    "deep2 amendment 17.8/18.15 +5 ceil"
+   ],
+   "flags": [
+    "Oman parameterization"
+   ],
+   "open_caveats": []
+  },
+  {
+   "id": "AE-SEVEN-EMIRATES",
+   "country": "AE",
+   "country_name": "United Arab Emirates",
+   "region": "Middle East",
+   "surface": "UAE federal AWQAF feed, all seven emirates, 60 areas",
+   "publisher": "General Authority of Islamic Affairs and Endowments (awqaf.gov.ae)",
+   "tier": "authority",
+   "source_workspace": "O1l-41 uae-cities",
+   "register": "C23, A34, A75, D15",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2027-05-31",
+    "years": 2,
+    "days": 516,
+    "note": "2026 full plus 2027 to 05-31; 60 area anchors recovered with emirate ids"
+   },
+   "recipe": {
+    "fajr": "18.2 deg",
+    "isha": "18.2 deg",
+    "asr": "Shafi",
+    "special": "the angle pair is ridge-degenerate (D15)"
+   },
+   "scores": {
+    "unit": "area-days",
+    "n": 30960,
+    "exact": "55.9-83.2 pc",
+    "within1": "89.7-100 pc",
+    "worst": null,
+    "md": "exact 55.9-83.2 pc, within1 89.7-100 pc; frozen (within1 moves 0.4 pt between years); fajr amplitude 78-84 min"
+   },
+   "span_verdict": "yes",
+   "span_note": "frozen between the two years; one recipe across seven emirates",
+   "grade_candidate": "A",
+   "grade_reason": "seven emirates, 30,960 area-days, one recipe",
+   "conflicts": [
+    "adhan 4.4.6's Dubai preset taken as the Dubai recipe"
+   ],
+   "flags": [],
+   "open_caveats": [
+    "Ras Al Khaimah is the drag at 89.7 pc (Jebel Jais, Tonb Al-Kubra)"
+   ]
+  },
+  {
+   "id": "KW-CAPITAL-2026",
+   "country": "KW",
+   "country_name": "Kuwait",
+   "region": "Middle East",
+   "surface": "Kuwait capital, full 2026",
+   "publisher": "Awqaf and Islamic Affairs (Kuwait)",
+   "tier": "authority",
+   "source_workspace": "O1l-8 mideast-cities",
+   "register": "C42, A47",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "17.5 deg",
+    "asr": "Shafi",
+    "margins": "dhuhr and asr now measured"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2190,
+    "exact": null,
+    "within1": "99.8 pc",
+    "worst": null,
+    "md": "18/17.5 at 99.8 pc within1"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year; the page is year-locked",
+   "grade_candidate": "provisional",
+   "grade_reason": "one cycle; the two null margins are now measured",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "JO-REGIONAL-MARGINS",
+   "country": "JO",
+   "country_name": "Jordan",
+   "region": "Middle East",
+   "surface": "Jordan, Amman group plus Irbid and Aqaba",
+   "publisher": "Awqaf (Jordan)",
+   "tier": "authority",
+   "source_workspace": "O1l-8 mideast-cities",
+   "register": "C54, A48, D29",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "three regional groups"
+   },
+   "recipe": {
+    "fajr": "as the national set",
+    "isha": "as the national set",
+    "asr": "Shafi",
+    "margins": "Irbid and Aqaba carry own sets; Zarqa sits in Amman's group"
+   },
+   "scores": {
+    "unit": "cities",
+    "n": 3,
+    "exact": null,
+    "within1": "Irbid and Aqaba 100 pc on their own; Aqaba 66.7 pc on Amman's",
+    "worst": null,
+    "md": "Irbid and Aqaba 100 pc on their own sets; Aqaba 66.7 pc on Amman's"
+   },
+   "span_verdict": "yes",
+   "span_note": "one national set plus two regional sets, all reproduced",
+   "grade_candidate": "provisional",
+   "grade_reason": "margins are regional not national; the row's grade does not move",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "IQ-BAGHDAD-DIWAN",
+   "country": "IQ",
+   "country_name": "Iraq",
+   "region": "Middle East",
+   "surface": "Baghdad, the Diwan al-Waqf table",
+   "publisher": "Diwan al-Waqf al-Sunni",
+   "tier": "authority",
+   "source_workspace": "O1l-8 mideast-cities",
+   "register": "C43, A49",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "18.1 deg +1",
+    "isha": "16.9 deg +1",
+    "asr": "Shafi",
+    "margins": "zero on the rest"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2190,
+    "exact": null,
+    "within1": "100 pc",
+    "worst": 0,
+    "md": "18.1+1 / 16.9+1 at 100 pc within1"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "provisional",
+   "grade_reason": "the national row is Baghdad; no city axis exists",
+   "conflicts": [
+    "a city axis was assumed"
+   ],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "IQ-BAGHDAD-MAWAQIT",
+   "country": "IQ",
+   "country_name": "Iraq",
+   "region": "Middle East",
+   "surface": "Baghdad, mawaqit Jami al-Hasanayn, second surface",
+   "publisher": "Jami al-Hasanayn (mawaqit)",
+   "tier": "community",
+   "source_workspace": "O1l-47 megacities",
+   "register": "A77, B33",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 366,
+    "note": "its calendar prints an impossible 2026-02-29"
+   },
+   "recipe": {
+    "fajr": "18.08 deg",
+    "isha": "16.93 deg",
+    "asr": "Shafi"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2196,
+    "exact": null,
+    "within1": null,
+    "worst": null,
+    "md": "drifts +4.6 dhuhr / +2.8 asr / +2.5 maghrib against the Diwan"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "community",
+   "grade_reason": "second witness, non-authority",
+   "conflicts": [
+    "the Diwan's zero margins read as the only Baghdad reading"
+   ],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "IL-JERUSALEM-AWQAF",
+   "country": "IL",
+   "country_name": "Israel",
+   "region": "Middle East",
+   "surface": "Jerusalem, the Awqaf perpetual print plus 78 live days",
+   "publisher": "Jerusalem Awqaf (Dar al-Ifta al-Tawqit al-Dahri print, 2012)",
+   "tier": "authority",
+   "source_workspace": "O1l-46 il-ps",
+   "register": "C-row (post-cut)",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 366,
+    "note": "366 dated month-day rows; 77 of 78 live days at exactly +60 min"
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "18.0 deg",
+    "asr": "Shafi",
+    "sunrise": "-3",
+    "maghrib": "+6",
+    "dhuhr": "floor",
+    "special": "fixed UTC+3 re-proved including winter; the print matches the live site at +60 min"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2196,
+    "exact": "dhuhr 92.3 pc",
+    "within1": "94.8 pc",
+    "worst": 4,
+    "md": "94.8 pc within1, worst 4; MAE 0.485; dhuhr floor 92.3 pc exact; fajr amplitude 111 min"
+   },
+   "span_verdict": "frozen-reprint",
+   "span_note": "one generation: the print and the live days differ by a constant 60 minutes",
+   "grade_candidate": "provisional",
+   "grade_reason": "the year is lifted to 366 rows by a perpetual print; one generation",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": [
+    "the live site is Cloudflare-closed (403)",
+    "Al-Aqsa mawaqit 365 rows is a second surface"
+   ]
+  },
+  {
+   "id": "IL-PS-CITY-OFFSET",
+   "country": "PS",
+   "country_name": "Palestine",
+   "region": "Middle East",
+   "surface": "The Awqaf city layer: 23 cities at published offsets from Jerusalem",
+   "publisher": "Jerusalem Awqaf (page 2 of the print); mawaqit payloads",
+   "tier": "authority",
+   "source_workspace": "O1l-46 il-ps",
+   "register": "C-row (post-cut), B-row",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 366,
+    "note": "26 mawaqit pages / 13 calendar payloads; 23 cities at offsets"
+   },
+   "recipe": {
+    "fajr": "the Jerusalem print",
+    "isha": "the Jerusalem print",
+    "asr": "Shafi",
+    "special": "each payload is the Awqaf print PLUS that city's published offset (0/+1/+2 on the mawaqit pages, 0 to +4 on the print's page 2); iqama is own-config"
+   },
+   "scores": {
+    "unit": "cities",
+    "n": 23,
+    "exact": null,
+    "within1": "each payload reproduces as print + offset",
+    "worst": null,
+    "md": "each payload = print + that city's offset; 13 payloads, 26 pages"
+   },
+   "span_verdict": "yes",
+   "span_note": "one print plus published offsets across 23 cities",
+   "grade_candidate": "provisional",
+   "grade_reason": "the first authority city layer for the territory; one generation",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": [
+    "Gaza is an honest negative: calculators and imsakiyya posters only"
+   ]
+  },
+  {
+   "id": "TR-81-PROVINCES",
+   "country": "TR",
+   "country_name": "Turkey",
+   "region": "Middle East",
+   "surface": "Turkey, all 81 provinces, full 2026",
+   "publisher": "Diyanet Isleri Baskanligi (namazvakitleri.diyanet.gov.tr)",
+   "tier": "authority",
+   "source_workspace": "O1l-15r turkey-cities",
+   "register": "C24, A63, A64, A65",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "zero missing days; ilce ids via GetDestinationUrl"
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "17.0 deg",
+    "asr": "Shafi, nearest",
+    "sunrise": "-7",
+    "dhuhr": "+5",
+    "maghrib": "+4",
+    "special": "temkin +7 on isha; residual rises monotonically with latitude"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 177390,
+    "exact": null,
+    "within1": "95.2-99.4 pc",
+    "worst": 2,
+    "md": "within1 95.2-99.4 pc, MAE 0.361-0.482, worst 2; 98.5 pc at 36-37 N, 95.6 pc at 42 N; no deviating province"
+   },
+   "span_verdict": "yes",
+   "span_note": "one recipe across 177,390 cells; no switch at 41 N",
+   "grade_candidate": "A",
+   "grade_reason": "81 provinces, one recipe, 177,390 cells",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": [
+    "2027 not served publicly: last row 31 Aralik 2026, ?yil ignored, awqatsalah 401"
+   ]
+  },
+  {
+   "id": "TR-DISTRICTS-144",
+   "country": "TR",
+   "country_name": "Turkey",
+   "region": "Middle East",
+   "surface": "Turkey, 144 district tables across 8 provinces",
+   "publisher": "Diyanet (ilce layer)",
+   "tier": "authority",
+   "source_workspace": "O1l-23 turkey-districts",
+   "register": "C24, A63, D11",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "152 pages, 198 administrative districts resolved, 144 with own tables"
+   },
+   "recipe": {
+    "fajr": "the province recipe at the district point",
+    "isha": "same",
+    "asr": "Shafi",
+    "special": "a coordinate refinement, not a different recipe (D11)"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 315360,
+    "exact": null,
+    "within1": "97.35 pc",
+    "worst": 3,
+    "md": "315,360 cells 97.35 pc within1, MAE 0.425, worst 3; difference-space residual 0.264 min median (141/144 under 0.5)"
+   },
+   "span_verdict": "yes",
+   "span_note": "one recipe at district points; deviation correlates 0.984 with longitude",
+   "grade_candidate": "A",
+   "grade_reason": "144 district tables, 55,480 rows, one recipe",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": [
+    "GetDestinationUrl returns the province id for Cubuk, Seferihisar and Arnavutkoy"
+   ]
+  },
+  {
+   "id": "IR-TEHRAN-30",
+   "country": "IR",
+   "country_name": "Iran",
+   "region": "Middle East",
+   "surface": "Tehran, a 30-row table",
+   "publisher": "not named in the block",
+   "tier": "community",
+   "source_workspace": "O1l-45 capitals2",
+   "register": "F15",
+   "data_span": {
+    "from": "2026-11-01",
+    "to": "2026-11-30",
+    "years": 1,
+    "days": 30,
+    "note": "95/149 cells"
+   },
+   "recipe": {
+    "fajr": "not stated",
+    "isha": "not stated",
+    "asr": "not stated"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 180,
+    "exact": null,
+    "within1": "95/149 stated cells",
+    "worst": null,
+    "md": "95/149 cells; the table is NOT claimed against the record's closure"
+   },
+   "span_verdict": "untestable-short-sample",
+   "span_note": "one month",
+   "grade_candidate": "candidate",
+   "grade_reason": "dated rows, no fit, deliberately not claimed",
+   "conflicts": [],
+   "flags": [
+    "Iran, Tehran"
+   ],
+   "open_caveats": []
+  },
+  {
+   "id": "KZ-49-YEAR-SPAN",
+   "country": "KZ",
+   "country_name": "Kazakhstan",
+   "region": "Central Asia",
+   "surface": "Kazakhstan muftyat.kz, Astana across 49 years",
+   "publisher": "Spiritual Administration of Muslims of Kazakhstan (muftyat.kz)",
+   "tier": "authority",
+   "source_workspace": "O1l-B1r wayback-back; O1l-26 centralasia2-cities",
+   "register": "C20, A55, D10",
+   "data_span": {
+    "from": null,
+    "to": null,
+    "years": 49,
+    "days": 2921,
+    "note": "49-year span; 8 Astana years banked, 2027/2029/2033 gaps closed; endpoints not stated in the block"
+   },
+   "recipe": {
+    "fajr": "15.0 deg (ISNA)",
+    "isha": "15.0 deg with TwilightAngle",
+    "asr": "Hanafi",
+    "margins": "set A (sunrise -3, dhuhr/asr/maghrib +3) below 48 N, set B (-5/+5) at or above",
+    "special": "the 48 N switch is a hard switch 0.001 deg wide (D10)"
+   },
+   "scores": {
+    "unit": "rows",
+    "n": 2921,
+    "exact": "65.1-70.5 pc",
+    "within1": "100 pc",
+    "worst": 1,
+    "md": "100 pc within1 across the 49-year span; 99.7-100 pc on the sampled years; no trend"
+   },
+   "span_verdict": "yes",
+   "span_note": "one recipe across 49 years; the served prayTimes.js reproduces the 2026 table 365/365",
+   "grade_candidate": "A",
+   "grade_reason": "the round's widest verified span at 100 pc within1",
+   "conflicts": [
+    "a publisher change suspected across the span"
+   ],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "KZ-SEVEN-CITIES",
+   "country": "KZ",
+   "country_name": "Kazakhstan",
+   "region": "Central Asia",
+   "surface": "Aktobe, Atyrau, Kostanay, Pavlodar, Ust-Kamenogorsk, Taraz, Turkistan, 2025-2027",
+   "publisher": "Spiritual Administration of Muslims of Kazakhstan (muftyat.kz)",
+   "tier": "authority",
+   "source_workspace": "O1l-26 centralasia2-cities",
+   "register": "C20, D10",
+   "data_span": {
+    "from": "2025-01-01",
+    "to": "2027-12-31",
+    "years": 3,
+    "days": 1095,
+    "note": "1,095 rows each"
+   },
+   "recipe": {
+    "fajr": "15.0 deg",
+    "isha": "15.0 deg",
+    "asr": "Hanafi",
+    "margins": "set A/B per the 48 N line"
+   },
+   "scores": {
+    "unit": "rows",
+    "n": 7665,
+    "exact": "83-92 pc",
+    "within1": "100 pc",
+    "worst": 1,
+    "md": "exact 83-92 pc, 100 pc within1 on all seven"
+   },
+   "span_verdict": "yes",
+   "span_note": "three years, seven cities, one recipe",
+   "grade_candidate": "A",
+   "grade_reason": "seven cities at three years each",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": [
+    "Karazhal 48.001042 takes set B, Ayagoz 47.966667 set A; the wrong set puts four columns exactly 2.00 min off"
+   ]
+  },
+  {
+   "id": "KG-THREE-CITIES",
+   "country": "KG",
+   "country_name": "Kyrgyzstan",
+   "region": "Central Asia",
+   "surface": "Karakol, Naryn, Jalal-Abad",
+   "publisher": "Spiritual Administration of Muslims of Kyrgyzstan (muftiyat.kg)",
+   "tier": "authority",
+   "source_workspace": "O1l-26 centralasia2-cities",
+   "register": "A-row",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "365 each; Jalal-Abad reached via the coordinate door"
+   },
+   "recipe": {
+    "fajr": "18.0 deg floor",
+    "isha": "maghrib + round(7/9 x (sunrise - fajr) + 3.5)",
+    "asr": "Hanafi ceil +1",
+    "maghrib": "sunset +7"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 6570,
+    "exact": null,
+    "within1": "98.9-99.5 pc",
+    "worst": null,
+    "md": "ratio rule 98.9-99.5 pc within1 on all three"
+   },
+   "span_verdict": "yes",
+   "span_note": "one ratio rule across three cities; O1k held five sampled years on the same rule",
+   "grade_candidate": "A",
+   "grade_reason": "the O1k A span plus three cities at 98.9-99.5 pc",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "UZ-FOUR-CITIES",
+   "country": "UZ",
+   "country_name": "Uzbekistan",
+   "region": "Central Asia",
+   "surface": "Bukhara, Nukus, Fergana, Andijan",
+   "publisher": "Muslim Board of Uzbekistan",
+   "tier": "authority",
+   "source_workspace": "O1l-26 centralasia2-cities",
+   "register": "A17",
+   "data_span": {
+    "from": "2026-11-01",
+    "to": "2026-11-30",
+    "years": 1,
+    "days": 30,
+    "note": "30 rows each"
+   },
+   "recipe": {
+    "fajr": "15.5 deg",
+    "isha": "15.5 deg",
+    "asr": "Hanafi",
+    "maghrib": "sunset +4",
+    "special": "the record's '+5 display margins' is refuted"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 720,
+    "exact": "30/30 on all six",
+    "within1": "100 pc",
+    "worst": 0,
+    "md": "six columns 30/30 exact"
+   },
+   "span_verdict": "untestable-short-sample",
+   "span_note": "one month",
+   "grade_candidate": "provisional",
+   "grade_reason": "one cycle; the margin set is corrected",
+   "conflicts": [
+    "v3: display margins +5 (Ishroq +20, Shom +4)"
+   ],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "TJ-KHUJAND-WINDOW",
+   "country": "TJ",
+   "country_name": "Tajikistan",
+   "region": "Central Asia",
+   "surface": "Khujand window rows",
+   "publisher": "Shuroi Ulama (Tajikistan)",
+   "tier": "authority",
+   "source_workspace": "O1l-26 centralasia2-cities",
+   "register": "A-row",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 40,
+    "note": "Dushanbe -3 min per the authority's own offset list"
+   },
+   "recipe": {
+    "fajr": "as the national table",
+    "isha": "as the national table",
+    "asr": "Shafi",
+    "maghrib": "window exactly 40 min"
+   },
+   "scores": {
+    "unit": "rows",
+    "n": 40,
+    "exact": null,
+    "within1": null,
+    "worst": null,
+    "md": "the maghrib window is exactly 40 min"
+   },
+   "span_verdict": "untestable-short-sample",
+   "span_note": "one window",
+   "grade_candidate": "candidate",
+   "grade_reason": "dated rows, no year fit",
+   "conflicts": [
+    "a single Tajik fajr constant"
+   ],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "AZ-BAKU-TWO-LINES",
+   "country": "AZ",
+   "country_name": "Azerbaijan",
+   "region": "Central Asia",
+   "surface": "Baku, mawaqit mosque and nam.az",
+   "publisher": "Baku mosque (mawaqit); nam.az",
+   "tier": "community",
+   "source_workspace": "O1l-26 centralasia2-cities",
+   "register": "A-row",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 366,
+    "note": "mawaqit 366 rows; nam.az 365"
+   },
+   "recipe": {
+    "fajr": "16.0 (mawaqit) / 18.0 (nam.az)",
+    "isha": "15.0 / 17.0",
+    "asr": "Hanafi / Shafi",
+    "maghrib": "margin 12-17 on the mawaqit line"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 4386,
+    "exact": null,
+    "within1": "nam.az 100 pc",
+    "worst": null,
+    "md": "nam.az MWL 18/17 Shafi 100 pc; mawaqit 16/15 Hanafi with a 12-17 min maghrib margin"
+   },
+   "span_verdict": "yes",
+   "span_note": "two distinct Baku lines, each reproducing",
+   "grade_candidate": "community",
+   "grade_reason": "two fitted non-authority surfaces",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "PK-KARACHI-CHART",
+   "country": "PK",
+   "country_name": "Pakistan",
+   "region": "South Asia",
+   "surface": "Karachi, perpetual city chart",
+   "publisher": "city chart (archive.org copy)",
+   "tier": "community",
+   "source_workspace": "O1l-12 pakistan-cities",
+   "register": "C37, A24",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 366,
+    "note": "perpetual undated chart"
+   },
+   "recipe": {
+    "fajr": "18.4 deg",
+    "isha": "18.0 deg",
+    "asr": "Hanafi +3.5",
+    "dhuhr": "solar noon",
+    "maghrib": "sunset"
+   },
+   "scores": {
+    "unit": "rows",
+    "n": 366,
+    "exact": null,
+    "within1": null,
+    "worst": null,
+    "md": "18.4/18.0 Hanafi, maghrib sunset, zuhr solar noon, asr +3.5"
+   },
+   "span_verdict": "untestable-single-template",
+   "span_note": "one perpetual template",
+   "grade_candidate": "provisional",
+   "grade_reason": "one template; the federal clock conventions do not describe it (dhuhr 0/366)",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "PK-MULTAN-CHART",
+   "country": "PK",
+   "country_name": "Pakistan",
+   "region": "South Asia",
+   "surface": "Multan, perpetual city chart",
+   "publisher": "city chart",
+   "tier": "community",
+   "source_workspace": "O1l-12 pakistan-cities",
+   "register": "C37, A24",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 366,
+    "note": "perpetual undated chart"
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "18.0 deg",
+    "asr": "Hanafi +2",
+    "margins": "fajr -0.5, sunrise -1.5, zuhr +0.5, asr +2, maghrib +1.6, isha +0.6"
+   },
+   "scores": {
+    "unit": "rows",
+    "n": 366,
+    "exact": null,
+    "within1": null,
+    "worst": null,
+    "md": "18/18 Hanafi with six frozen margins; the federal dhuhr clock hits 6/366"
+   },
+   "span_verdict": "untestable-single-template",
+   "span_note": "one perpetual template",
+   "grade_candidate": "provisional",
+   "grade_reason": "one template",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "PK-PESHAWAR-CHART",
+   "country": "PK",
+   "country_name": "Pakistan",
+   "region": "South Asia",
+   "surface": "Peshawar, 19-column rolling Urdu chart",
+   "publisher": "city chart",
+   "tier": "community",
+   "source_workspace": "O1l-21r pakistan-charts; O1l-21r pk-transcribe",
+   "register": "C37, D25, F6",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "366 chart rows, 365 dated"
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "18.0 deg +1",
+    "asr": "Hanafi",
+    "maghrib": "sunset +1",
+    "special": "column 2 is fajr MINUS 5 and column 16 is the maghrib WINDOW LENGTH (D25)"
+   },
+   "scores": {
+    "unit": "rows",
+    "n": 365,
+    "exact": "all-six 348/366",
+    "within1": "fajr 366/366",
+    "worst": 1,
+    "md": "fajr 366/366 within1, sunrise 362, dhuhr 366, asr 358, maghrib 359, isha 361; all-six 348/366 (95.1 pc)"
+   },
+   "span_verdict": "untestable-single-template",
+   "span_note": "one perpetual template; reproduces 2018-2032 alike",
+   "grade_candidate": "provisional",
+   "grade_reason": "one template; 18.5 excluded (needs +2 fajr and -2 isha)",
+   "conflicts": [
+    "the same block counted at 366 and 365 rows"
+   ],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "PK-QUETTA-CHART",
+   "country": "PK",
+   "country_name": "Pakistan",
+   "region": "South Asia",
+   "surface": "Quetta, 8-column flat chart",
+   "publisher": "city chart",
+   "tier": "community",
+   "source_workspace": "O1l-21r pakistan-charts",
+   "register": "C37, A25, F2",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "February carries 28 rows"
+   },
+   "recipe": {
+    "fajr": "18.2 deg",
+    "isha": "18.0 deg +2",
+    "asr": "Hanafi (does not reproduce)",
+    "dhuhr": "+1",
+    "maghrib": "sunset +2"
+   },
+   "scores": {
+    "unit": "rows",
+    "n": 365,
+    "exact": null,
+    "within1": "fajr 68.5 pc, sunrise 89.3, dhuhr 99.7, maghrib 85.2, isha 70.2",
+    "worst": null,
+    "md": "fajr 68.5 pc within1, sunrise 89.3, dhuhr 99.7, maghrib 85.2, isha 70.2; asr does not reproduce"
+   },
+   "span_verdict": "untestable-single-template",
+   "span_note": "one template; the asr column swings inside it",
+   "grade_candidate": "provisional",
+   "grade_reason": "one template; the largest pads of the four-city family",
+   "conflicts": [],
+   "flags": [
+    "Quetta asr"
+   ],
+   "open_caveats": []
+  },
+  {
+   "id": "IN-EIGHT-CITY-MOSAIC",
+   "country": "IN",
+   "country_name": "India",
+   "region": "South Asia",
+   "surface": "India's measured mosaic: Hyderabad, Mumbai, Bengaluru, Kolkata, Srinagar, Ramban, Moradabad, Baharampur",
+   "publisher": "mosque tenants (20 surfaces)",
+   "tier": "community",
+   "source_workspace": "O1l-11r india-cities",
+   "register": "C2, B30, A69, F5",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "20 tenants across 8 cities"
+   },
+   "recipe": {
+    "fajr": "18.0 deg on seven cities",
+    "isha": "17.0 or 18.0 by city",
+    "asr": "Shafi on six, Hanafi on Bengaluru and Moradabad",
+    "special": "three variants: 18/17 Shafi, 18/18 Hanafi, 18/17 Hanafi"
+   },
+   "scores": {
+    "unit": "rows",
+    "n": 13140,
+    "exact": "Hyderabad 356/365",
+    "within1": "Mumbai 2,190 rows across three tenants",
+    "worst": 1,
+    "md": "Hyderabad 18/17 Shafi 730 rows at 356/365 exact; Mumbai 2,190 rows; Bengaluru the null hypothesis as a dated table"
+   },
+   "span_verdict": "yes",
+   "span_note": "each city reproduces on its own tenant's pair across the year",
+   "grade_candidate": "A",
+   "grade_reason": "eight cities fitted at A-grade community; authority tier unchanged (no board publishes a daily table)",
+   "conflicts": [],
+   "flags": [
+    "India isha line"
+   ],
+   "open_caveats": [
+    "Deeniyat's isha is defective at +216 min",
+    "Kerala is print-only (Suprabhatham e-paper SPA)"
+   ]
+  },
+  {
+   "id": "BD-BOLURA-BAND",
+   "country": "BD",
+   "country_name": "Bangladesh",
+   "region": "South Asia",
+   "surface": "Sylhet Bolura, the IFB band artifact found online",
+   "publisher": "Bolura mosque (mawaqit)",
+   "tier": "community",
+   "source_workspace": "O1l-13r bangladesh-cities",
+   "register": "C44, A70, D20",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "19.25 deg",
+    "isha": "18.65 deg",
+    "asr": "Hanafi (Shafi off 58 min)",
+    "dhuhr": "fixed 13:10 clock",
+    "maghrib": "sunset +3",
+    "special": "68 date-bands (42 of 5 days, 12 of 4, 7 of 7), the quantization cap by construction (D20)"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2190,
+    "exact": null,
+    "within1": "45 pc on both twilights",
+    "worst": null,
+    "md": "45 pc within1 on both twilights; fajr amplitude 97 min"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "provisional",
+   "grade_reason": "the band artifact is a district/zone table, supported but unproven",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": [
+    "Bolura's table implies a point 0.5 deg from its own mosque",
+    "Dhaka shows no bands at all"
+   ]
+  },
+  {
+   "id": "BD-DHAKA-FOUR",
+   "country": "BD",
+   "country_name": "Bangladesh",
+   "region": "South Asia",
+   "surface": "Dhaka, four mawaqit mosques",
+   "publisher": "Dhaka mosque tenants (mawaqit)",
+   "tier": "community",
+   "source_workspace": "O1l-13r bangladesh-cities",
+   "register": "A70",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "4 x 365 rows"
+   },
+   "recipe": {
+    "fajr": "15.00 deg exact",
+    "isha": "ceiling by mosque",
+    "asr": "Hanafi",
+    "maghrib": "sunset",
+    "special": "each mosque pins its own zuhr clock (12:50/13:00/13:15/13:30) and a fajr floor or isha ceiling"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 8760,
+    "exact": "fajr 15.00 exact",
+    "within1": null,
+    "worst": null,
+    "md": "fajr 15.00 exact at all four; maghrib sunset; Hanafi asr"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "community",
+   "grade_reason": "fitted non-authority surfaces on the platform engine",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": [
+    "Sara Builder's maghrib freezes after 2026-10-26"
+   ]
+  },
+  {
+   "id": "MV-FIVE-ISLANDS",
+   "country": "MV",
+   "country_name": "Maldives",
+   "region": "South Asia",
+   "surface": "Five more Maldivian islands beside the held set",
+   "publisher": "Ministry of Islamic Affairs (MUIS) mirror",
+   "tier": "authority",
+   "source_workspace": "O1l-27 southasia-fringe; O1l-B1r wayback-back",
+   "register": "C45, A54, D21",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 180,
+    "note": "1,080 cells"
+   },
+   "recipe": {
+    "fajr": "20 deg (MABIMS)",
+    "isha": "18 deg",
+    "asr": "Shafi",
+    "margins": "the fixed integer set"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 1080,
+    "exact": null,
+    "within1": "every one within 1 min of MABIMS 20/18",
+    "worst": 1,
+    "md": "1,080/1,080 within1 of MABIMS 20/18; one recipe across 7.6 deg of latitude"
+   },
+   "span_verdict": "frozen-reprint",
+   "span_note": "2027/2031/2036 are byte-identical to the base (0/365 month-day rows change)",
+   "grade_candidate": "provisional",
+   "grade_reason": "the frozen generation bars a lift",
+   "conflicts": [
+    "2027/2031/2036 read as forward years"
+   ],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "LK-NOVEMBER-WATCH",
+   "country": "LK",
+   "country_name": "Sri Lanka",
+   "region": "South Asia",
+   "surface": "Sri Lanka zones, November watch plus Trincomalee and Galle",
+   "publisher": "ACJU (Sri Lanka)",
+   "tier": "community",
+   "source_workspace": "O1l-27 southasia-fringe",
+   "register": "A-row",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "12 links under 2026/11 = zone 03 only, byte-identical"
+   },
+   "recipe": {
+    "fajr": "as the zone table",
+    "isha": "as the zone table",
+    "asr": "Shafi"
+   },
+   "scores": {
+    "unit": "zones",
+    "n": 2,
+    "exact": null,
+    "within1": "zone 12 sub-minute; Kandy = zone 07 150/150",
+    "worst": null,
+    "md": "zone 12 sub-minute; Kandy Aruppola is ACJU zone 07 at 150/150 cells; Kollupitiya an independent witness 1-2 min off"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "community",
+   "grade_reason": "fitted non-authority surfaces; the November watch is a not-met signal",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "NP-KATHMANDU-30",
+   "country": "NP",
+   "country_name": "Nepal",
+   "region": "South Asia",
+   "surface": "Kathmandu, a 30-row table",
+   "publisher": "not named in the block",
+   "tier": "community",
+   "source_workspace": "O1l-45 capitals2; O1l-27 southasia-fringe",
+   "register": "B27",
+   "data_span": {
+    "from": "2026-11-01",
+    "to": "2026-11-30",
+    "years": 1,
+    "days": 30,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "not stated",
+    "isha": "not stated",
+    "asr": "not stated"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 180,
+    "exact": null,
+    "within1": "99.3 pc",
+    "worst": null,
+    "md": "99.3 pc within1"
+   },
+   "span_verdict": "untestable-short-sample",
+   "span_note": "one month",
+   "grade_candidate": "candidate",
+   "grade_reason": "FALLBACK stands for a dated authority series; the held PDF has no prayer column",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": [
+    "Bhairahawa's mawaqit install is frozen (ten of twelve months one repeated tuple)"
+   ]
+  },
+  {
+   "id": "BN-MORA-2026",
+   "country": "BN",
+   "country_name": "Brunei",
+   "region": "South Asia",
+   "surface": "Brunei MORA 2026",
+   "publisher": "Ministry of Religious Affairs (Brunei)",
+   "tier": "authority",
+   "source_workspace": "O1l-25 gaps-closed",
+   "register": "C46, A71",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "20 deg",
+    "isha": "18 deg",
+    "asr": "Shafi",
+    "dhuhr": "transit +1"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2190,
+    "exact": "95.1 fajr / 86.8 isha pc",
+    "within1": "99.2 pc",
+    "worst": null,
+    "md": "95.1 / 86.8 pc exact, 99.2 pc within1"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "provisional",
+   "grade_reason": "the unfitted candidate becomes a fitted row; weak provenance carried",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "TH-77-PROVINCES",
+   "country": "TH",
+   "country_name": "Thailand",
+   "region": "Southeast Asia",
+   "surface": "Thailand, 77 CICOT provincial workbooks",
+   "publisher": "Central Islamic Council of Thailand (CICOT)",
+   "tier": "authority",
+   "source_workspace": "O1l-2 thailand-provinces",
+   "register": "C1, A43, A44",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 2,
+    "days": null,
+    "note": "two year-blocks; the leap block cannot separate 2024 from 2028"
+   },
+   "recipe": {
+    "fajr": "19.8 deg",
+    "isha": "18.1 deg",
+    "asr": "Shafi",
+    "margins": "ZERO on all six",
+    "rounding": "ceil on sunrise/dhuhr/asr/maghrib, half-up on fajr/isha"
+   },
+   "scores": {
+    "unit": "values",
+    "n": 166434,
+    "exact": null,
+    "within1": "166,433/166,434",
+    "worst": 1,
+    "md": "166,433/166,434 within1 in 2026; 166,885/166,896 in the leap block; parameters frozen across both"
+   },
+   "span_verdict": "frozen-reprint",
+   "span_note": "the leap block cannot separate 2024 from 2028, so no distinct year is asserted",
+   "grade_candidate": "A-candidate",
+   "grade_reason": "77 provinces on one recipe; the block's own class, carried as written",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": [
+    "Nan's printed longitude typo (the implied point reproduces all 2,190 rows)",
+    "Ranong's normal block stops 30 Dec",
+    "BE 2570 (2027) not published"
+   ]
+  },
+  {
+   "id": "ID-KEMENAG-38",
+   "country": "ID",
+   "country_name": "Indonesia",
+   "region": "Southeast Asia",
+   "surface": "Kemenag SIHAT, 38 provincial capitals",
+   "publisher": "Kementerian Agama (SIHAT)",
+   "tier": "authority",
+   "source_workspace": "O1l-3 indonesia-cities",
+   "register": "C28, A60, A61, D3",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "2027 refused 404"
+   },
+   "recipe": {
+    "fajr": "20 deg +2 floor",
+    "isha": "18 deg +2 floor",
+    "asr": "Shafi +2",
+    "dhuhr": "+3",
+    "sunrise": "-3",
+    "maghrib": "+3",
+    "special": "horizon dip 1.76*sqrt(h) arcmin on sunrise and maghrib (D3)"
+   },
+   "scores": {
+    "unit": "rows",
+    "n": 13870,
+    "exact": "fajr 99.6 pc, isha 99.4 pc",
+    "within1": "100 pc",
+    "worst": 1,
+    "md": "fajr 20+2 floor 99.6 pc exact, isha 18+2 floor 99.4 pc; within1 100 pc, worst 1"
+   },
+   "span_verdict": "yes",
+   "span_note": "one recipe across 38 capitals",
+   "grade_candidate": "A",
+   "grade_reason": "38 capitals, one year, one recipe, 100 pc within1",
+   "conflicts": [
+    "Kemenag and Muhammadiyah read as one Indonesia recipe"
+   ],
+   "flags": [],
+   "open_caveats": [
+    "SIHAT renders Mataram and Kupang on WIB, a civil hour early all year",
+    "cities?province_id filter is ignored",
+    "three new Papuan provinces carry 0 regencies"
+   ]
+  },
+  {
+   "id": "ID-KHGT-38",
+   "country": "ID",
+   "country_name": "Indonesia",
+   "region": "Southeast Asia",
+   "surface": "Muhammadiyah KHGT, 38 provincial capitals, 2026 and 2027",
+   "publisher": "Muhammadiyah (KHGT API)",
+   "tier": "authority",
+   "source_workspace": "O1l-3 indonesia-cities",
+   "register": "C28, D23, D24",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2027-12-31",
+    "years": 2,
+    "days": 730,
+    "note": "2026 plus 2027, frozen between years"
+   },
+   "recipe": {
+    "fajr": "18.0 deg floor +1..2",
+    "isha": "18.0 deg floor +1..2",
+    "asr": "Shafi",
+    "special": "subuh +8.0 min median against Kemenag on all 38 cities, band [7..9]"
+   },
+   "scores": {
+    "unit": "rows",
+    "n": 27740,
+    "exact": null,
+    "within1": "100 pc every city-year",
+    "worst": 1,
+    "md": "within1 100 pc every city-year; subuh +8.0 min median against Kemenag"
+   },
+   "span_verdict": "frozen-reprint",
+   "span_note": "frozen between 2026 and 2027",
+   "grade_candidate": "A",
+   "grade_reason": "two years at 100 pc within1 on 38 cities, one recipe",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "ID-JADWALSHOLAT-643",
+   "country": "ID",
+   "country_name": "Indonesia",
+   "region": "Southeast Asia",
+   "surface": "jadwalsholat.org, 643 kab/kota",
+   "publisher": "jadwalsholat.org (community)",
+   "tier": "community",
+   "source_workspace": "O1l-32 indonesia2",
+   "register": "D24",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "any month any year; frozen 2024-2028"
+   },
+   "recipe": {
+    "fajr": "20 deg +2",
+    "isha": "18 deg +2",
+    "asr": "Shafi",
+    "special": "Kemenag's 20/18 plus a uniform +2 but with Kemenag's elevation dip OMITTED"
+   },
+   "scores": {
+    "unit": "rows",
+    "n": 34648,
+    "exact": null,
+    "within1": "follows the Kemenag line (fajr -8.0 min vs KHGT)",
+    "worst": null,
+    "md": "Kemenag line with the dip omitted; fajr -8.0 min against KHGT at 38/38 cities"
+   },
+   "span_verdict": "frozen-reprint",
+   "span_note": "frozen 2024-2028",
+   "grade_candidate": "community",
+   "grade_reason": "a national community surface; one generation",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": [
+    "Larantuka and Wakatobi serve scrambled tables"
+   ]
+  },
+  {
+   "id": "ID-PERSIS-NU-LINES",
+   "country": "ID",
+   "country_name": "Indonesia",
+   "region": "Southeast Asia",
+   "surface": "Persis and NU Online stated methods",
+   "publisher": "Persatuan Islam (Persis); Nahdlatul Ulama (Lembaga Falakiyah)",
+   "tier": "community",
+   "source_workspace": "O1l-32 indonesia2",
+   "register": "D23",
+   "data_span": {
+    "from": null,
+    "to": null,
+    "years": 1,
+    "days": null,
+    "note": "Persis one reproduced day; NU a published FAQ, no table"
+   },
+   "recipe": {
+    "fajr": "-20 deg (Persis, no absolute elevation correction); 20 deg (NU)",
+    "isha": "18 deg (NU)",
+    "asr": "Shafi",
+    "special": "NU: elevation applied, NO ihtiyati, round-up; a third line inside the 20-deg family"
+   },
+   "scores": {
+    "unit": "days",
+    "n": 1,
+    "exact": "Bandung 19 Feb 2026 reproduces to the minute",
+    "within1": null,
+    "worst": 0,
+    "md": "Persis reproduces one day to the minute; NU publishes a method, no table"
+   },
+   "span_verdict": "untestable-short-sample",
+   "span_note": "one reproduced day",
+   "grade_candidate": "candidate",
+   "grade_reason": "stated methods, no dated series",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": [
+    "Muhammadiyah DROPS the elevation correction in 2026 (a dated rule change, flagged)",
+    "jadwalsholat.nu.or.id blocked (Vercel Code 21)"
+   ]
+  },
+  {
+   "id": "MY-PERAK-SEVEN-ZONES",
+   "country": "MY",
+   "country_name": "Malaysia",
+   "region": "Southeast Asia",
+   "surface": "Perak, seven zones",
+   "publisher": "JAKIM (e-Solat)",
+   "tier": "authority",
+   "source_workspace": "O1l-1 malaysia-states",
+   "register": "C39, A26, A27, D27",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "seven zones"
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "18.0 deg",
+    "asr": "Shafi",
+    "dhuhr": "zohor +1.5 only",
+    "special": "the census +2 ihtiyati margins score 0 exact; zon7 Bukit Larut carries an elevation term (terbit -5.9, maghrib +5.6)"
+   },
+   "scores": {
+    "unit": "zones",
+    "n": 7,
+    "exact": "0 on fajr/asar/isyak with the census margins",
+    "within1": "Recipe B carries all zones",
+    "worst": 1,
+    "md": "Recipe B (18/18, zohor +1.5) carries all seven zones within1; census +2 scores 0 exact"
+   },
+   "span_verdict": "yes",
+   "span_note": "one recipe across seven zones on a third baseline",
+   "grade_candidate": "provisional",
+   "grade_reason": "the T-674 verdict confirmed; the elevation term is new",
+   "conflicts": [],
+   "flags": [
+    "e-Solat year parameter"
+   ],
+   "open_caveats": []
+  },
+  {
+   "id": "MY-PENANG-PANTAI-ACHEH",
+   "country": "MY",
+   "country_name": "Malaysia",
+   "region": "Southeast Asia",
+   "surface": "Penang, mufti 1448H grid",
+   "publisher": "Penang Mufti Department",
+   "tier": "authority",
+   "source_workspace": "O1l-1 malaysia-states",
+   "register": "C39",
+   "data_span": {
+    "from": "2026-06-17",
+    "to": "2027-06-27",
+    "years": 2,
+    "days": 354,
+    "note": "parsed via coordinates, zero gaps"
+   },
+   "recipe": {
+    "fajr": "one frozen recipe at Pantai Acheh",
+    "isha": "same",
+    "asr": "Shafi"
+   },
+   "scores": {
+    "unit": "rows",
+    "n": 354,
+    "exact": null,
+    "within1": null,
+    "worst": null,
+    "md": "one frozen recipe at Pantai Acheh across 354 rows"
+   },
+   "span_verdict": "yes",
+   "span_note": "one recipe across a 375-day span",
+   "grade_candidate": "A",
+   "grade_reason": "A-grade class per the block: one recipe across two Hijri years",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "MY-MELAKA-1447",
+   "country": "MY",
+   "country_name": "Malaysia",
+   "region": "Southeast Asia",
+   "surface": "Melaka, 1447H takwim",
+   "publisher": "Melaka religious authority",
+   "tier": "authority",
+   "source_workspace": "O1l-1 malaysia-states",
+   "register": "C39",
+   "data_span": {
+    "from": null,
+    "to": null,
+    "years": 2,
+    "days": 355,
+    "note": "the 1447H takwim spans 2026 into 2027; the block calls the fit A-grade class"
+   },
+   "recipe": {
+    "fajr": "as the takwim",
+    "isha": "as the takwim",
+    "asr": "Shafi",
+    "dhuhr": "zohor +1.5"
+   },
+   "scores": {
+    "unit": "rows",
+    "n": 355,
+    "exact": "zohor +1.5 342/355",
+    "within1": null,
+    "worst": null,
+    "md": "zohor +1.5 on 342/355 rows"
+   },
+   "span_verdict": "yes",
+   "span_note": "one Hijri cycle that spans two Gregorian years on one frozen recipe",
+   "grade_candidate": "A",
+   "grade_reason": "A-grade class per the block: the 1447H takwim covers rows in both 2026 and 2027 on one recipe",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "MY-KELANTAN-1446",
+   "country": "MY",
+   "country_name": "Malaysia",
+   "region": "Southeast Asia",
+   "surface": "Kelantan zon 1 and 2 (Majlis Daerah Jeli), Ramadan 1446 / 2025",
+   "publisher": "Kelantan religious authority (zon tables)",
+   "tier": "authority",
+   "source_workspace": "O1l-52 second-witnesses",
+   "register": "F11",
+   "data_span": {
+    "from": "2025-03-01",
+    "to": "2025-03-29",
+    "years": 1,
+    "days": 29,
+    "note": "a later month found and transcribed after the O1k capture gap"
+   },
+   "recipe": {
+    "fajr": "18 deg (subuh)",
+    "isha": "17 deg (isyak)",
+    "asr": "Hanafi",
+    "special": "imsak = subuh - 10 on all 58 zone-days; a dated change fajr 19 -> 18 from 24 April 2020"
+   },
+   "scores": {
+    "unit": "zone-days",
+    "n": 58,
+    "exact": "subuh and isha 27/29 each",
+    "within1": "29/29",
+    "worst": 1,
+    "md": "subuh and isha 27/29 exact, 29/29 within1; imsak = subuh-10 on 58/58 zone-days; Hanafi asr 0/29"
+   },
+   "span_verdict": "yes",
+   "span_note": "the banked 18/17 pair holds on the later month; the regime change is dated 2020-04-24",
+   "grade_candidate": "provisional",
+   "grade_reason": "one month, one cycle; the pair is confirmed",
+   "conflicts": [],
+   "flags": [
+    "Kelantan split void"
+   ],
+   "open_caveats": []
+  },
+  {
+   "id": "MY-NEGERI-SEMBILAN",
+   "country": "MY",
+   "country_name": "Malaysia",
+   "region": "Southeast Asia",
+   "surface": "Negeri Sembilan, NGS01 and NGS02",
+   "publisher": "JAKIM (e-Solat)",
+   "tier": "authority",
+   "source_workspace": "O1l-1 malaysia-states",
+   "register": "C39, A26",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "both zones serve full 2026; the federation is 59 zones"
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "18.0 deg",
+    "asr": "Shafi",
+    "dhuhr": "zohor +1.5"
+   },
+   "scores": {
+    "unit": "rows",
+    "n": 730,
+    "exact": null,
+    "within1": "census margins refuted here too",
+    "worst": null,
+    "md": "730 rows; the census +2 margins are refuted a third time"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "provisional",
+   "grade_reason": "one year, two zones",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "CN-29-CAPITALS",
+   "country": "CN",
+   "country_name": "China",
+   "region": "East Asia",
+   "surface": "China, 29 provincial capitals on the national grid",
+   "publisher": "national grid (islamichina-family portal, 2004 computation)",
+   "tier": "authority",
+   "source_workspace": "O1l-4 china-capitals",
+   "register": "C3, A22, A23, D28",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "29 capitals at the portal's own gazetteer points"
+   },
+   "recipe": {
+    "fajr": "15.0 deg",
+    "isha": "15.0-15.1 deg",
+    "asr": "Hanafi",
+    "special": "the grid is measurably a 2004 computation: 2026 drifts fajr +0.34 to +0.82"
+   },
+   "scores": {
+    "unit": "city-days",
+    "n": 4176,
+    "exact": null,
+    "within1": null,
+    "worst": null,
+    "md": "fajr mean -0.01..+0.10 (rms 0.29-0.47), isha +0.04..+0.13, noon/asr/sunset within 0.15; 18/17 refuted (+13.8..+21.5)"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year of a 2004 grid",
+   "grade_candidate": "measured",
+   "grade_reason": "FALLBACK to measured; the block's own class, carried as written",
+   "conflicts": [
+    "v3: China FALLBACK, the 18/17 form-label line"
+   ],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "CN-ISLAMICHINA-28",
+   "country": "CN",
+   "country_name": "China",
+   "region": "East Asia",
+   "surface": "islamichina.com, 28 capitals x 2026",
+   "publisher": "islamichina.com (platform)",
+   "tier": "platform",
+   "source_workspace": "O1l-4 china-capitals",
+   "register": "B28, A23",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "28 capitals"
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "17.0 deg",
+    "asr": "Shafi",
+    "maghrib": "sunset +1"
+   },
+   "scores": {
+    "unit": "rows",
+    "n": 10220,
+    "exact": null,
+    "within1": null,
+    "worst": null,
+    "md": "measured 18/17 Shafi, maghrib sunset +1"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "community",
+   "grade_reason": "a platform surface, one year",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": [
+    "its 'Urumqi' computes at 117.5 E, about 119 min early"
+   ]
+  },
+  {
+   "id": "CN-GUANGZHOU-RAMADAN",
+   "country": "CN",
+   "country_name": "China",
+   "region": "East Asia",
+   "surface": "Guangzhou, 30 dated Ramadan-1448 rows (cheen.cn)",
+   "publisher": "cheen.cn (personal blog)",
+   "tier": "community",
+   "source_workspace": "O1l-4 china-capitals",
+   "register": "B28",
+   "data_span": {
+    "from": "2026-02-18",
+    "to": "2026-03-18",
+    "years": 1,
+    "days": 30,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "18.2 deg, imsak = fajr - 10",
+    "isha": "as served",
+    "asr": "Shafi",
+    "special": "iftar = sunset + 4.25"
+   },
+   "scores": {
+    "unit": "rows",
+    "n": 30,
+    "exact": null,
+    "within1": "imsak MAE 1.28",
+    "worst": null,
+    "md": "imsak = fajr 18.2 -10 (MAE 1.28); iftar sunset +4.25"
+   },
+   "span_verdict": "untestable-short-sample",
+   "span_note": "one month",
+   "grade_candidate": "candidate",
+   "grade_reason": "the first mainland dated city rows; one month",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "JP-KOBE",
+   "country": "JP",
+   "country_name": "Japan",
+   "region": "East Asia",
+   "surface": "Kobe Mosque, 366 dated rows plus 2025 PDFs",
+   "publisher": "Kobe Mosque (kobemosque.com, the official site)",
+   "tier": "authority",
+   "source_workspace": "O1l-24 japan-korea",
+   "register": "C14, A1",
+   "data_span": {
+    "from": "2024-01-01",
+    "to": "2025-12-31",
+    "years": 2,
+    "days": 366,
+    "note": "2024 tables and 2025 PDFs identical to the minute"
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "17.0 deg",
+    "asr": "Shafi +1",
+    "margins": "+1 solar",
+    "special": "its Maghrib column is the IQAMA"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2196,
+    "exact": null,
+    "within1": "all-six 322/365",
+    "worst": null,
+    "md": "all-six 322/365 within1"
+   },
+   "span_verdict": "frozen-reprint",
+   "span_note": "the two editions are identical to the minute: one generation",
+   "grade_candidate": "provisional",
+   "grade_reason": "one generation, so the A path is closed",
+   "conflicts": [
+    "v3: 'Kobe Mosque has NO official website'"
+   ],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "JP-KYOTO",
+   "country": "JP",
+   "country_name": "Japan",
+   "region": "East Asia",
+   "surface": "Kyoto, Ramadan-1447 image calendar",
+   "publisher": "IslamicFinder-named publisher",
+   "tier": "community",
+   "source_workspace": "O1l-24 japan-korea",
+   "register": "C14-adjacent",
+   "data_span": {
+    "from": "2026-02-18",
+    "to": "2026-03-18",
+    "years": 1,
+    "days": 30,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "17.0 deg",
+    "asr": "Shafi",
+    "margins": "zero"
+   },
+   "scores": {
+    "unit": "rows",
+    "n": 30,
+    "exact": "29/30",
+    "within1": "30/30",
+    "worst": 1,
+    "md": "18/17 zero margins, 29/30 exact"
+   },
+   "span_verdict": "untestable-short-sample",
+   "span_note": "one month",
+   "grade_candidate": "candidate",
+   "grade_reason": "dated rows, one month",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "JP-TOKYO",
+   "country": "JP",
+   "country_name": "Japan",
+   "region": "East Asia",
+   "surface": "Tokyo, masjidbox tenant",
+   "publisher": "Tokyo mosque (masjidbox)",
+   "tier": "community",
+   "source_workspace": "O1l-24 japan-korea",
+   "register": "A-row",
+   "data_span": {
+    "from": "2026-11-01",
+    "to": "2026-11-07",
+    "years": 1,
+    "days": 7,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "as served",
+    "isha": "as served",
+    "asr": "Shafi",
+    "sunrise": "-7",
+    "dhuhr": "+5",
+    "maghrib": "+7/8"
+   },
+   "scores": {
+    "unit": "rows",
+    "n": 7,
+    "exact": null,
+    "within1": "reproduces the held margins exactly",
+    "worst": 0,
+    "md": "reproduces the held Tokyo margins exactly (sunrise -7, dhuhr +5, asr +5, maghrib +7/8)"
+   },
+   "span_verdict": "untestable-short-sample",
+   "span_note": "seven rows",
+   "grade_candidate": "candidate",
+   "grade_reason": "dated rows, no fit",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "KR-THREE-CITY-YEARS",
+   "country": "KR",
+   "country_name": "Korea",
+   "region": "East Asia",
+   "surface": "Daegu, Seoul Masjid Noor, Yangju Gatbawi",
+   "publisher": "Korean mosque surfaces",
+   "tier": "community",
+   "source_workspace": "O1l-24 japan-korea",
+   "register": "C15",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "three cities x 365"
+   },
+   "recipe": {
+    "fajr": "18.0 deg (Daegu, Seoul, Yangju)",
+    "isha": "18.0 (Daegu, Seoul) / 17.0 (Yangju)",
+    "asr": "Hanafi",
+    "margins": "zero"
+   },
+   "scores": {
+    "unit": "days",
+    "n": 1095,
+    "exact": null,
+    "within1": "365/365 each",
+    "worst": 0,
+    "md": "365/365 within1 at each of the three"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "provisional",
+   "grade_reason": "three new city-years, one year each",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "US-33-METROS",
+   "country": "US",
+   "country_name": "United States",
+   "region": "North America",
+   "surface": "33 of 64 US metros dated, 41 surfaces",
+   "publisher": "Masjidal, mawaqit, dpt, masjidbox and PDF surfaces",
+   "tier": "community",
+   "source_workspace": "O1l-37 us-unresolved; O1l-5 us-states",
+   "register": "C32, A50, A51, A52, A53, D9",
+   "data_span": {
+    "from": "2024-01-01",
+    "to": "2026-12-31",
+    "years": 3,
+    "days": null,
+    "note": "30,688 Masjidal / 1,460 mawaqit / 1,276 dpt / 42 masjidbox / 89 PDF"
+   },
+   "recipe": {
+    "fajr": "15 deg at 26 of 37 verdict surfaces",
+    "isha": "15 deg",
+    "asr": "Shafi mostly",
+    "special": "31 of 37 in the 15-family (84 pc); 5 at 18 deg (14 pc); one hand-edited"
+   },
+   "scores": {
+    "unit": "surfaces",
+    "n": 37,
+    "exact": "26 plain ISNA 15/15 (70 pc)",
+    "within1": "31 in the 15-family",
+    "worst": 3,
+    "md": "26 of 37 plain ISNA 15/15 (70 pc), 31 in the 15-family (84 pc), 5 at 18 deg; three-year angle movement <=0.10 deg on 24 clean surfaces"
+   },
+   "span_verdict": "yes",
+   "span_note": "three-year profiles on 24 clean surfaces, movement <=0.10 deg",
+   "grade_candidate": "A",
+   "grade_reason": "three-year evidence on one recipe class; community tier",
+   "conflicts": [],
+   "flags": [
+    "fitter bug"
+   ],
+   "open_caveats": [
+    "25 metros stay unproven (Mohid/athanplus iqamah stacks)",
+    "Omaha a dated 2026 regime change; Mobile computes Houston; two dpt installs zeroed years; Little Rock serving 2023"
+   ]
+  },
+  {
+   "id": "US-OMAHA-REGIME",
+   "country": "US",
+   "country_name": "United States",
+   "region": "North America",
+   "surface": "Omaha ICOM, the dated 2026 change",
+   "publisher": "Islamic Center of Omaha (Masjidal)",
+   "tier": "community",
+   "source_workspace": "O1l-37 us-unresolved",
+   "register": "A52",
+   "data_span": {
+    "from": "2025-01-01",
+    "to": "2026-12-31",
+    "years": 2,
+    "days": 730,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "15 deg (2025) then 18.47 (2026)",
+    "isha": "a fixed isha interval from 2026",
+    "asr": "Shafi"
+   },
+   "scores": {
+    "unit": "rows",
+    "n": 730,
+    "exact": null,
+    "within1": null,
+    "worst": null,
+    "md": "15/15 to 18.47 plus a fixed isha interval, dated 2026"
+   },
+   "span_verdict": "no",
+   "span_note": "the recipe changes inside the span; the change is dated 2026",
+   "grade_candidate": "community",
+   "grade_reason": "a dated regime change, fitted on both sides",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "MX-GUADALAJARA",
+   "country": "MX",
+   "country_name": "Mexico",
+   "region": "Central America and the Caribbean",
+   "surface": "Guadalajara, Isa Ibn Maryam (masjidbox)",
+   "publisher": "Isa Ibn Maryam (masjidbox)",
+   "tier": "community",
+   "source_workspace": "O1l-9 latam-cities",
+   "register": "C4",
+   "data_span": {
+    "from": "2025-10-01",
+    "to": "2026-11-30",
+    "years": 2,
+    "days": 385,
+    "note": "a begin= walk across 14 months"
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "17.0 deg",
+    "asr": "Shafi",
+    "margins": "zero"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2310,
+    "exact": null,
+    "within1": "within1, worst 1",
+    "worst": 1,
+    "md": "MWL 18/17 within1, worst 1, across 14 months"
+   },
+   "span_verdict": "yes",
+   "span_note": "one recipe across two calendar years",
+   "grade_candidate": "A",
+   "grade_reason": "two years on one surface; Mexico leaves FALLBACK",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "MX-MONTERREY",
+   "country": "MX",
+   "country_name": "Mexico",
+   "region": "Central America and the Caribbean",
+   "surface": "Monterrey, mawaqit",
+   "publisher": "Monterrey mosque (mawaqit)",
+   "tier": "community",
+   "source_workspace": "O1l-9 latam-cities",
+   "register": "C4-adjacent",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "15 deg",
+    "isha": "15 deg",
+    "asr": "Shafi",
+    "margins": "literal, zero"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2190,
+    "exact": null,
+    "within1": null,
+    "worst": null,
+    "md": "literal 15/15"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "provisional",
+   "grade_reason": "a second Mexican surface, one cycle",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "CU-HAVANA",
+   "country": "CU",
+   "country_name": "Cuba",
+   "region": "Central America and the Caribbean",
+   "surface": "Havana, mawaqit Abdallah, the country's only mosque",
+   "publisher": "Abdallah mosque (mawaqit)",
+   "tier": "community",
+   "source_workspace": "O1l-30 caribbean-central",
+   "register": "B3, N4",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "15-21 deg sweep",
+    "isha": "15 deg +12",
+    "asr": "Shafi",
+    "maghrib": "+3"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2190,
+    "exact": "353/365",
+    "within1": null,
+    "worst": 1,
+    "md": "353/365 exact"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "community",
+   "grade_reason": "new country, fitted non-authority surface",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "DO-SANTO-DOMINGO",
+   "country": "DO",
+   "country_name": "Dominican Republic",
+   "region": "Central America and the Caribbean",
+   "surface": "Santo Domingo, masjidbox",
+   "publisher": "Santo Domingo mosque (masjidbox)",
+   "tier": "community",
+   "source_workspace": "O1l-30 caribbean-central",
+   "register": "B9, N10",
+   "data_span": {
+    "from": "2026-11-01",
+    "to": "2026-11-07",
+    "years": 1,
+    "days": 7,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "as served",
+    "isha": "as served",
+    "asr": "Shafi"
+   },
+   "scores": {
+    "unit": "rows",
+    "n": 7,
+    "exact": null,
+    "within1": null,
+    "worst": null,
+    "md": "7 rows, no fit"
+   },
+   "span_verdict": "untestable-short-sample",
+   "span_note": "seven rows",
+   "grade_candidate": "candidate",
+   "grade_reason": "new country, dated rows",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "PR-SANJUAN-PONCE",
+   "country": "PR",
+   "country_name": "Puerto Rico",
+   "region": "Central America and the Caribbean",
+   "surface": "San Juan and Ponce",
+   "publisher": "Puerto Rican mosque surfaces",
+   "tier": "community",
+   "source_workspace": "O1l-30 caribbean-central",
+   "register": "B4, N5",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "365 each"
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "17.0 deg",
+    "asr": "Shafi",
+    "margins": "plain MWL"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 4380,
+    "exact": null,
+    "within1": null,
+    "worst": null,
+    "md": "plain MWL 18/17 on both"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "community",
+   "grade_reason": "new country, fitted non-authority surfaces",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "HT-PORTAUPRINCE",
+   "country": "HT",
+   "country_name": "Haiti",
+   "region": "Central America and the Caribbean",
+   "surface": "Port-au-Prince",
+   "publisher": "Port-au-Prince mosque surface",
+   "tier": "community",
+   "source_workspace": "O1l-30 caribbean-central",
+   "register": "B5, N6",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "18 deg +10",
+    "isha": "as served",
+    "asr": "Shafi +5 floored 15:30",
+    "dhuhr": "transit +15",
+    "special": "the asr floor binds 101 days"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2190,
+    "exact": null,
+    "within1": null,
+    "worst": null,
+    "md": "fajr 18+10, dhuhr transit+15, asr Shafi+5 floored 15:30 (binds 101 days)"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "community",
+   "grade_reason": "new country, fitted non-authority surface",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "BB-BRIDGETOWN",
+   "country": "BB",
+   "country_name": "Barbados",
+   "region": "Central America and the Caribbean",
+   "surface": "Bridgetown, masjidbox",
+   "publisher": "Bridgetown mosque (masjidbox)",
+   "tier": "community",
+   "source_workspace": "O1l-30 caribbean-central",
+   "register": "B6, N7",
+   "data_span": {
+    "from": "2026-11-01",
+    "to": "2026-11-07",
+    "years": 1,
+    "days": 7,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "as served",
+    "isha": "as served",
+    "asr": "Shafi"
+   },
+   "scores": {
+    "unit": "rows",
+    "n": 7,
+    "exact": null,
+    "within1": null,
+    "worst": null,
+    "md": "7 rows, no fit"
+   },
+   "span_verdict": "untestable-short-sample",
+   "span_note": "seven rows",
+   "grade_candidate": "candidate",
+   "grade_reason": "new country, dated rows",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "BZ-BELIZE-CITY",
+   "country": "BZ",
+   "country_name": "Belize",
+   "region": "Central America and the Caribbean",
+   "surface": "Belize City",
+   "publisher": "Belize City mosque surface",
+   "tier": "community",
+   "source_workspace": "O1l-30 caribbean-central",
+   "register": "B7, N8",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "15 deg",
+    "isha": "15 deg",
+    "asr": "Shafi",
+    "margins": "ISNA"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2190,
+    "exact": null,
+    "within1": null,
+    "worst": null,
+    "md": "ISNA 15/15"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "community",
+   "grade_reason": "new country, fitted non-authority surface",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "PA-PANAMA-CITY",
+   "country": "PA",
+   "country_name": "Panama",
+   "region": "Central America and the Caribbean",
+   "surface": "Panama City",
+   "publisher": "Panama City mosque surface",
+   "tier": "community",
+   "source_workspace": "O1l-30 caribbean-central",
+   "register": "B10, N11",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "18.5 deg",
+    "asr": "Shafi",
+    "maghrib": "sunset +6"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2190,
+    "exact": null,
+    "within1": null,
+    "worst": null,
+    "md": "18/18.5, maghrib sunset +6"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "community",
+   "grade_reason": "new country, fitted non-authority surface",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "CR-SAN-JOSE",
+   "country": "CR",
+   "country_name": "Costa Rica",
+   "region": "Central America and the Caribbean",
+   "surface": "San Jose, two surfaces",
+   "publisher": "San Jose mosque surfaces",
+   "tier": "community",
+   "source_workspace": "O1l-30 caribbean-central; O1l-57 capitals3",
+   "register": "B11, N12",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "mawaqit Mezquita Luz y Fe full 2026, gate PASS"
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "17.0 deg",
+    "asr": "Shafi",
+    "maghrib": "+7 (one surface +8)"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2190,
+    "exact": null,
+    "within1": "1,788/1,825 on the mawaqit surface",
+    "worst": null,
+    "md": "MWL 18/17 with maghrib +7; mawaqit surface 1,788/1,825 within1"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "community",
+   "grade_reason": "new country, fitted non-authority surfaces",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "SV-SAN-SALVADOR",
+   "country": "SV",
+   "country_name": "El Salvador",
+   "region": "Central America and the Caribbean",
+   "surface": "San Salvador, two tables",
+   "publisher": "San Salvador mosque surfaces",
+   "tier": "community",
+   "source_workspace": "O1l-30 caribbean-central",
+   "register": "B8, N9",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "two tables, 730 rows"
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "17.0 deg",
+    "asr": "Shafi",
+    "margins": "MWL"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 4380,
+    "exact": null,
+    "within1": "the two agree within 1 all year",
+    "worst": 1,
+    "md": "MWL 18/17; the two tables agree within 1 all year"
+   },
+   "span_verdict": "yes",
+   "span_note": "two independent tables agree inside the year",
+   "grade_candidate": "community",
+   "grade_reason": "new country, two fitted non-authority surfaces",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "TT-ILMUL-ISLAM",
+   "country": "TT",
+   "country_name": "Trinidad and Tobago",
+   "region": "Central America and the Caribbean",
+   "surface": "Trinidad, Ilmul Islam plus Darul Uloom and the Chaguanas defect",
+   "publisher": "Trinidadian mosque surfaces",
+   "tier": "community",
+   "source_workspace": "O1l-9 latam-cities",
+   "register": "A57",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "Ilmul Islam 15/15; Darul Uloom a candidate"
+   },
+   "recipe": {
+    "fajr": "15 deg",
+    "isha": "15 deg",
+    "asr": "Shafi"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2190,
+    "exact": null,
+    "within1": null,
+    "worst": null,
+    "md": "Ilmul Islam 15/15 provisional; the Chaguanas -1h defect is STILL LIVE"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "provisional",
+   "grade_reason": "one cycle; the tz defect persists",
+   "conflicts": [
+    "the profile timezone trusted"
+   ],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "JM-SPANISH-TOWN",
+   "country": "JM",
+   "country_name": "Jamaica",
+   "region": "Central America and the Caribbean",
+   "surface": "Jamaica Islamic Centre, Spanish Town",
+   "publisher": "Jamaica Islamic Centre",
+   "tier": "community",
+   "source_workspace": "O1l-9 latam-cities",
+   "register": "B13, N13",
+   "data_span": {
+    "from": "2026-11-11",
+    "to": "2026-11-11",
+    "years": 1,
+    "days": 1,
+    "note": "a today-row"
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "17.0 deg",
+    "asr": "Shafi",
+    "margins": "MWL"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 6,
+    "exact": null,
+    "within1": "within 1",
+    "worst": 1,
+    "md": "MWL 18/17 within1 on one day; both decoys avoided"
+   },
+   "span_verdict": "untestable-short-sample",
+   "span_note": "one day",
+   "grade_candidate": "candidate",
+   "grade_reason": "country-first dated row, no series",
+   "conflicts": [
+    "the capital matrix records Kingston JM as a negative (solar gate 481 min)"
+   ],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "BR-IIB-25",
+   "country": "BR",
+   "country_name": "Brazil",
+   "region": "South America",
+   "surface": "Brazil, 25 IIB cities, 2025 and 2026",
+   "publisher": "Islamic International Institute (IIB)",
+   "tier": "community",
+   "source_workspace": "O1l-9 latam-cities",
+   "register": "C5",
+   "data_span": {
+    "from": "2025-05-01",
+    "to": "2026-11-30",
+    "years": 2,
+    "days": 3000,
+    "note": "2025-05 and 2025-08 accrued for all 25 cities"
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "17.0 deg",
+    "asr": "Shafi",
+    "margins": "zero"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 18000,
+    "exact": null,
+    "within1": "99.7 pc",
+    "worst": 2,
+    "md": "18,000 cells 99.7 pc within1, worst 2"
+   },
+   "span_verdict": "yes",
+   "span_note": "one recipe across 2025 and 2026",
+   "grade_candidate": "A",
+   "grade_reason": "two years, 25 cities, one recipe",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": [
+    "beyond the 25 the month API 400s every non-held city in both PT and EN"
+   ]
+  },
+  {
+   "id": "CO-CARTAGENA",
+   "country": "CO",
+   "country_name": "Colombia",
+   "region": "South America",
+   "surface": "Cartagena, masjidbox",
+   "publisher": "Cartagena mosque (masjidbox)",
+   "tier": "community",
+   "source_workspace": "O1l-9 latam-cities",
+   "register": "C6",
+   "data_span": {
+    "from": "2025-10-01",
+    "to": "2026-11-30",
+    "years": 2,
+    "days": 385,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "17.0 deg",
+    "asr": "Shafi",
+    "margins": "MWL"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2310,
+    "exact": null,
+    "within1": "within1",
+    "worst": 1,
+    "md": "MWL 18/17 within1 across 14 months"
+   },
+   "span_verdict": "yes",
+   "span_note": "one recipe across two calendar years",
+   "grade_candidate": "A",
+   "grade_reason": "two years on one surface",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": [
+    "the profile tz lies America/New_York (Chaguanas-class)"
+   ]
+  },
+  {
+   "id": "PE-LIMA",
+   "country": "PE",
+   "country_name": "Peru",
+   "region": "South America",
+   "surface": "Lima, the suite run",
+   "publisher": "Lima mosque surface",
+   "tier": "community",
+   "source_workspace": "O1l-9 latam-cities",
+   "register": "C7",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "fresh capture byte-identical"
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "17.0 deg",
+    "asr": "Shafi",
+    "maghrib": "+3"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2190,
+    "exact": null,
+    "within1": "365/365",
+    "worst": 0,
+    "md": "365/365 within1"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "provisional",
+   "grade_reason": "candidate to provisional on a passed suite",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "EC-QUITO",
+   "country": "EC",
+   "country_name": "Ecuador",
+   "region": "South America",
+   "surface": "Quito, mawaqit",
+   "publisher": "Quito mosque (mawaqit)",
+   "tier": "community",
+   "source_workspace": "O1l-9 latam-cities",
+   "register": "B14, N14",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "17.0 deg",
+    "asr": "Shafi",
+    "margins": "MWL anchored"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2190,
+    "exact": null,
+    "within1": null,
+    "worst": null,
+    "md": "MWL 18/17 anchored"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "provisional",
+   "grade_reason": "Ecuador's first row, one cycle",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "BO-SANTA-CRUZ",
+   "country": "BO",
+   "country_name": "Bolivia",
+   "region": "South America",
+   "surface": "Santa Cruz, mawaqit",
+   "publisher": "Santa Cruz mosque (mawaqit)",
+   "tier": "community",
+   "source_workspace": "O1l-9 latam-cities",
+   "register": "B15, N15",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "17.0 deg",
+    "asr": "Shafi",
+    "special": "the sun columns are unreproducible at any South American coordinate"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2190,
+    "exact": null,
+    "within1": null,
+    "worst": null,
+    "md": "fajr/isha 18/17 but the sun columns reproduce at no South American coordinate"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "candidate",
+   "grade_reason": "Bolivia's first row, sun columns unreproducible",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "CL-2016-ERA",
+   "country": "CL",
+   "country_name": "Chile",
+   "region": "South America",
+   "surface": "Chile 2016 era, 18 PDFs",
+   "publisher": "Chilean publisher (Wayback)",
+   "tier": "authority",
+   "source_workspace": "O1l-B1r wayback-back",
+   "register": "A56",
+   "data_span": {
+    "from": "2016-01-01",
+    "to": "2016-12-31",
+    "years": 1,
+    "days": 558,
+    "note": "4 naming eras in the CDX inventory; the 2016 era captured"
+   },
+   "recipe": {
+    "fajr": "one recipe across 34.9 deg latitude",
+    "isha": "same",
+    "asr": "Shafi",
+    "sunrise": "-0.4 (no clock offset)"
+   },
+   "scores": {
+    "unit": "rows",
+    "n": 558,
+    "exact": null,
+    "within1": "97-100 pc",
+    "worst": null,
+    "md": "one recipe across 34.9 deg of latitude at 97-100 pc within1"
+   },
+   "span_verdict": "yes",
+   "span_note": "one recipe across the country in 2016",
+   "grade_candidate": "provisional",
+   "grade_reason": "one past year; the regime boundary is dated 2016-2025",
+   "conflicts": [
+    "one span assumed"
+   ],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "CL-2025-WORKBOOK",
+   "country": "CL",
+   "country_name": "Chile",
+   "region": "South America",
+   "surface": "Chile 2025 workbook",
+   "publisher": "Chilean publisher",
+   "tier": "authority",
+   "source_workspace": "O1l-B1r wayback-back",
+   "register": "A56",
+   "data_span": {
+    "from": "2025-01-01",
+    "to": "2025-12-31",
+    "years": 1,
+    "days": 365,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "as 2016 plus a +6 clock offset",
+    "isha": "same",
+    "asr": "Shafi",
+    "special": "+6 on every column"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2190,
+    "exact": null,
+    "within1": null,
+    "worst": null,
+    "md": "+6 on every column against the 2016 era"
+   },
+   "span_verdict": "no",
+   "span_note": "the clock offset changes inside the span",
+   "grade_candidate": "provisional",
+   "grade_reason": "one year on the current regime",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "AU-218-GRID",
+   "country": "AU",
+   "country_name": "Australia",
+   "region": "Oceania",
+   "surface": "Australia, 218 Diyanet grid points",
+   "publisher": "Diyanet (Australian grid)",
+   "tier": "authority",
+   "source_workspace": "O1l-19r australia-nz",
+   "register": "C33",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "Perth, Canberra, Darwin, Hobart, Gold Coast, Newcastle, Wollongong, Adelaide, Geelong and 209 more"
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "17.0 deg",
+    "asr": "Shafi",
+    "margins": "temkin",
+    "special": "Geelong also fits 18/18 + maghrib +3 on its own mawaqit year"
+   },
+   "scores": {
+    "unit": "points",
+    "n": 218,
+    "exact": null,
+    "within1": "one recipe within 2 min on all 365 days",
+    "worst": 2,
+    "md": "one recipe within 2 min on all 365 days at all 218 points"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "candidate",
+   "grade_reason": "complete at the gazetteer; one year",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": [
+    "6 of 218 grid points print on the eastern clock whatever their label"
+   ]
+  },
+  {
+   "id": "NZ-FIANZ-20-YEAR-PAIR",
+   "country": "NZ",
+   "country_name": "New Zealand",
+   "region": "Oceania",
+   "surface": "FIANZ Ramadan pairs, 1427 (2006) and 1447 (2026)",
+   "publisher": "Federation of Islamic Associations of New Zealand (FIANZ)",
+   "tier": "community",
+   "source_workspace": "O1l-19r australia-nz",
+   "register": "C34, A66, D31",
+   "data_span": {
+    "from": "2006-09-24",
+    "to": "2026-03-19",
+    "years": 2,
+    "days": 555,
+    "note": "2006 465 rows via Wayback; 2026 90 rows"
+   },
+   "recipe": {
+    "fajr": "18.0 (Auckland, Hamilton) / 16.0 (Wellington, Christchurch, Dunedin) / 17.0 (Tauranga)",
+    "isha": "18.0 / 15.0 / 17.0",
+    "asr": "Shafi; +1h15 double shadow in 2006, +40 min in 2026",
+    "special": "one engine, zero drift over twenty years"
+   },
+   "scores": {
+    "unit": "rows",
+    "n": 555,
+    "exact": null,
+    "within1": "the pairs are IDENTICAL",
+    "worst": 0,
+    "md": "the pairs are identical; one engine, zero drift over twenty years"
+   },
+   "span_verdict": "frozen-reprint",
+   "span_note": "identical generations: no distinct year-2",
+   "grade_candidate": "candidate",
+   "grade_reason": "the record's longest community span; no lift because the generations are identical",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": [
+    "the dated asr change: +1h15 in 2006 against +40 min in 2026",
+    "30 more 2026 sheets captured, untranscribed"
+   ]
+  },
+  {
+   "id": "FJ-TWELVE-SHEETS",
+   "country": "FJ",
+   "country_name": "Fiji",
+   "region": "Oceania",
+   "surface": "Fiji, twelve 2024 sheets on the live FML page",
+   "publisher": "Fiji Muslim League (FML)",
+   "tier": "community",
+   "source_workspace": "O1l-35 pacific2",
+   "register": "C35, A39, A40, D18",
+   "data_span": {
+    "from": "2024-01-01",
+    "to": "2024-12-31",
+    "years": 1,
+    "days": 365,
+    "note": "the live page still serves the 2024 set; the Nov-2026 Facebook sheet is identical to Nov-2024 (210 cells, zero diffs)"
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "maghrib +75 exact March to September",
+    "asr": "Shafi",
+    "dhuhr": "transit +5 to +6",
+    "maghrib": "sunset +3",
+    "special": "isha is an interval table, not an angle (D18)"
+   },
+   "scores": {
+    "unit": "days",
+    "n": 365,
+    "exact": null,
+    "within1": "365/365 on fajr, sunrise, dhuhr, asr and maghrib",
+    "worst": 0,
+    "md": "365/365 within1 on five columns; isha the maghrib+75 interval"
+   },
+   "span_verdict": "frozen-reprint",
+   "span_note": "the 2024 set is re-served; the 2026 sheet is identical on 210 cells",
+   "grade_candidate": "provisional",
+   "grade_reason": "one generation; dhuhr and isha corrected",
+   "conflicts": [
+    "v3: dhuhr +3, isha a fixed offset"
+   ],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "NC-NOUMEA",
+   "country": "NC",
+   "country_name": "New Caledonia",
+   "region": "Oceania",
+   "surface": "Noumea, mawaqit",
+   "publisher": "Noumea mosque (mawaqit)",
+   "tier": "community",
+   "source_workspace": "O1l-35 pacific2",
+   "register": "C36, A41, D19",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "19:45 floor for 243 days, then 7-day blocks tracking sunset +85",
+    "asr": "hand block",
+    "dhuhr": "hand block",
+    "maghrib": "sunset +5",
+    "special": "a Ramadan taraweeh override at 20:15; an iqama layer is held"
+   },
+   "scores": {
+    "unit": "days",
+    "n": 365,
+    "exact": null,
+    "within1": "the 19:45 floor holds exactly 243 days",
+    "worst": null,
+    "md": "fajr 18, sunset+5, isha 19:45 floor at exactly 243 days; dhuhr and asr hand blocks"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "candidate",
+   "grade_reason": "machine-readable at last; between-year stability untestable",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "TO-NIUTOUA",
+   "country": "TO",
+   "country_name": "Tonga",
+   "region": "Oceania",
+   "surface": "Masjid Al-Taiyab Niutoua, mawaqit",
+   "publisher": "Masjid Al-Taiyab (mawaqit)",
+   "tier": "community",
+   "source_workspace": "O1l-35 pacific2",
+   "register": "C16, B12",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 365,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "17.0 deg",
+    "asr": "Shafi",
+    "margins": "MWL",
+    "rounding": "floor"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 2190,
+    "exact": null,
+    "within1": "five columns 365/365",
+    "worst": 2,
+    "md": "five columns 365/365 within1; asr +-2 is a platform artefact"
+   },
+   "span_verdict": "untestable-single-year",
+   "span_note": "one year",
+   "grade_candidate": "provisional",
+   "grade_reason": "candidate to provisional on 365 fitted rows",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "PF-TAHITI",
+   "country": "PF",
+   "country_name": "French Polynesia",
+   "region": "Oceania",
+   "surface": "Tahiti, masjidway month",
+   "publisher": "masjidway tenant (unclaimed)",
+   "tier": "platform",
+   "source_workspace": "O1l-53 fallback2",
+   "register": "C-row (post-cut)",
+   "data_span": {
+    "from": "2026-11-01",
+    "to": "2026-11-30",
+    "years": 1,
+    "days": 30,
+    "note": null
+   },
+   "recipe": {
+    "fajr": "18.0 deg",
+    "isha": "17.0 deg",
+    "asr": "Shafi",
+    "maghrib": "sunset +4"
+   },
+   "scores": {
+    "unit": "cells",
+    "n": 180,
+    "exact": null,
+    "within1": null,
+    "worst": null,
+    "md": "18/17, maghrib sunset +4; the tenant is unclaimed"
+   },
+   "span_verdict": "untestable-short-sample",
+   "span_note": "one month",
+   "grade_candidate": "candidate",
+   "grade_reason": "FALLBACK lift; 'citable, never' stands for authority; pending an owner ruling",
+   "conflicts": [],
+   "flags": [],
+   "open_caveats": []
+  },
+  {
+   "id": "CAPITALS-198",
+   "country": "ZZ",
+   "country_name": "Capitals matrix (198 of 202)",
+   "region": "Matrices and platforms",
+   "surface": "The world capital matrix: 198 of 202 covered (195 with Delhi accepted for New Delhi)",
+   "publisher": "athanpro.com and mawaqit capital surfaces",
+   "tier": "platform",
+   "source_workspace": "O1l-38 capitals; O1l-45 capitals2; O1l-57 capitals3",
+   "register": "B31, B34, M1, M4, F8",
+   "data_span": {
+    "from": "2026-01-01",
+    "to": "2026-12-31",
+    "years": 1,
+    "days": 30,
+    "note": "30-row tables at the small states, 365 at the large; 4 gaps"
+   },
+   "recipe": {
+    "fajr": "per capital",
+    "isha": "per capital",
+    "asr": "Shafi",
+    "special": "eight reproduce within1 on fajr+isha; three publish a snapped dhuhr; two publish a point contradicting the city; four are interval tables"
+   },
+   "scores": {
+    "unit": "capitals",
+    "n": 198,
+    "exact": "Praia 98.9/97.3, Damascus 97/87.7, Asmara 94/95.9",
+    "within1": "eight reproduce on fajr+isha",
+    "worst": null,
+    "md": "eight reproduce within1 on fajr+isha (Praia 98.9/97.3, Damascus 97/87.7, Asmara 94/95.9); Skopje's snapped dhuhr 3.6 pc; Yaounde 25.2 deg off, Moroni 1.03"
+   },
+   "span_verdict": "untestable-short-sample",
+   "span_note": "one cycle per capital",
+   "grade_candidate": "provisional",
+   "grade_reason": "one frozen September-2026 athanpro build plus mawaqit surfaces",
+   "conflicts": [],
+   "flags": [
+    "Capitals count"
+   ],
+   "open_caveats": [
+    "four gaps: Palikir, Ngerulmud, Tegucigalpa, Tehran (candidate artifact only)",
+    "athanpro defects: wrong offset labels, a Today block contradicting its own month table, four broken capital pages"
+   ]
+  },
+  {
+   "id": "MASJIDI-167-TABLES",
+   "country": "ZZ",
+   "country_name": "masjidi.app (33 countries)",
+   "region": "Matrices and platforms",
+   "surface": "masjidi.app, 167 distinct regional tables serving 468 table tenants",
+   "publisher": "masjidi.app (tv.masjidi.app)",
+   "tier": "platform",
+   "source_workspace": "O1l-59 masjidi (REPORT.md)",
+   "register": "B32, A76, F14",
+   "data_span": {
+    "from": null,
+    "to": null,
+    "years": 1,
+    "days": 366,
+    "note": "495 tenants, 33 countries; 167 distinct tables; 25 Saudi tables dated 2026, three dated 2024"
+   },
+   "recipe": {
+    "fajr": "per-country family (Saudi 18.42, Jordan 15.04, Egypt 19.54, Oman 18.53, Morocco 19.51, Algeria 18.31, Syria 18.19, Indonesia 19.40, Malaysia 17.89)",
+    "isha": "per-country family; Saudi maghrib +90 (25/25), Germany maghrib +90",
+    "asr": "Shafi everywhere (fitted factor 0.97-1.08, never near 2.0)",
+    "special": "a THIRD engine: precise ephemeris, sun evaluated once per day at 0h UT, per-region rise-set margin 0.1-3.6 min, integer output, no DST steps"
+   },
+   "scores": {
+    "unit": "tables",
+    "n": 167,
+    "exact": null,
+    "within1": "median 93 pc",
+    "worst": null,
+    "md": "167/167 fit at median 0.54 min RMS and median 93 pc within1; per-country families 62-98 pc"
+   },
+   "span_verdict": "untestable-single-template",
+   "span_note": "one 366-row undated scaffold per table; 25 Saudi tables carry a Ramadan anchor dating them 2026, three 2024",
+   "grade_candidate": "community",
+   "grade_reason": "a platform pool fitted at the quantization floor; a third engine named",
+   "conflicts": [],
+   "flags": [
+    "masjidi.app engine"
+   ],
+   "open_caveats": [
+    "the pool is stale and mixed-vintage; a fit must not be read across cohorts",
+    "142 tables carry no internal date anchor",
+    "the R5 live-page gate is closed for this platform, not failed"
+   ]
+  },
+  {
+   "id": "MASJIDAL-216-POOL",
+   "country": "ZZ",
+   "country_name": "masjidal.com (7 countries)",
+   "region": "Matrices and platforms",
+   "surface": "masjidal.com, 216 tenants, an 18-tenant x 3-year sample",
+   "publisher": "masjidal.com (platform)",
+   "tier": "platform",
+   "source_workspace": "O1l-43 masjidal-global",
+   "register": "C56, B32, D9",
+   "data_span": {
+    "from": "2024-01-01",
+    "to": "2026-12-31",
+    "years": 3,
+    "days": null,
+    "note": "US 174, Canada 21, UK 12, Australia 6, Hong Kong 1, Mauritius 1, Chile 1; a FLOOR not a census"
+   },
+   "recipe": {
+    "fajr": "per tenant",
+    "isha": "per tenant",
+    "asr": "Shafi mostly",
+    "special": "seven tenants reproduce at zero margins; twelve hold parameters within 0.03 deg over 2024-2026"
+   },
+   "scores": {
+    "unit": "tenants",
+    "n": 18,
+    "exact": null,
+    "within1": "seven at zero margins 100 pc; suite 9/18 strict, 14/18 at 90 pc",
+    "worst": null,
+    "md": "19,728 athan + 19,728 iqamah rows; seven tenants zero margins 100 pc; twelve within 0.03 deg over three years; suite 9/18 strict"
+   },
+   "span_verdict": "yes",
+   "span_note": "three-year profiles on twelve tenants, parameter movement <=0.03 deg",
+   "grade_candidate": "A",
+   "grade_reason": "three years of fitted evidence on one recipe class; community tier",
+   "conflicts": [],
+   "flags": [
+    "fitter bug"
+   ],
+   "open_caveats": [
+    "New Peckham London carries a jama'ah schedule in the athan slot (rms 19.9)",
+    "Halton Burlington a 63-day DST block"
+   ]
+  }
+ ]
+}

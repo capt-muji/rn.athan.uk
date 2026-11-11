@@ -1,0 +1,202 @@
+{
+ "ballyhaunis": {
+  "fajr_amplitude_min": -208,
+  "isha_amplitude_min": 304,
+  "jan_fajr_min": 410,
+  "jan_isha_min": 1113,
+  "jul_fajr_min": 202,
+  "jul_isha_min": 1417
+ },
+ "carlow": {
+  "fajr_amplitude_min": -203,
+  "isha_amplitude_min": 296,
+  "jan_fajr_min": 399,
+  "jan_isha_min": 1109,
+  "jul_fajr_min": 196.0,
+  "jul_isha_min": 1405.0
+ },
+ "castlebar": {
+  "fajr_amplitude_min": -209,
+  "isha_amplitude_min": 303,
+  "jan_fajr_min": 412,
+  "jan_isha_min": 1115,
+  "jul_fajr_min": 203,
+  "jul_isha_min": 1418
+ },
+ "cavan": {
+  "fajr_amplitude_min": -210,
+  "isha_amplitude_min": 306,
+  "jan_fajr_min": 405,
+  "jan_isha_min": 1106,
+  "jul_fajr_min": 195,
+  "jul_isha_min": 1412
+ },
+ "clonmel": {
+  "fajr_amplitude_min": -199,
+  "isha_amplitude_min": 292,
+  "jan_fajr_min": 400,
+  "jan_isha_min": 1114,
+  "jul_fajr_min": 201,
+  "jul_isha_min": 1406
+ },
+ "cork": {
+  "fajr_amplitude_min": -197,
+  "isha_amplitude_min": 290,
+  "jan_fajr_min": 402,
+  "jan_isha_min": 1118,
+  "jul_fajr_min": 205,
+  "jul_isha_min": 1408
+ },
+ "drogheda": {
+  "fajr_amplitude_min": -208,
+  "isha_amplitude_min": 302,
+  "jan_fajr_min": 400,
+  "jan_isha_min": 1103,
+  "jul_fajr_min": 192,
+  "jul_isha_min": 1405
+ },
+ "dublin": {
+  "fajr_amplitude_min": -205,
+  "isha_amplitude_min": 301,
+  "jan_fajr_min": 398,
+  "jan_isha_min": 1104,
+  "jul_fajr_min": 193,
+  "jul_isha_min": 1405
+ },
+ "dundalk": {
+  "fajr_amplitude_min": -209,
+  "isha_amplitude_min": 304,
+  "jan_fajr_min": 401,
+  "jan_isha_min": 1102,
+  "jul_fajr_min": 192,
+  "jul_isha_min": 1406
+ },
+ "ennis": {
+  "fajr_amplitude_min": -202,
+  "isha_amplitude_min": 296,
+  "jan_fajr_min": 407,
+  "jan_isha_min": 1117,
+  "jul_fajr_min": 205,
+  "jul_isha_min": 1413
+ },
+ "galway": {
+  "fajr_amplitude_min": -205,
+  "isha_amplitude_min": 300,
+  "jan_fajr_min": 409,
+  "jan_isha_min": 1116,
+  "jul_fajr_min": 204,
+  "jul_isha_min": 1416
+ },
+ "kilkenny": {
+  "fajr_amplitude_min": -202,
+  "isha_amplitude_min": 294,
+  "jan_fajr_min": 400,
+  "jan_isha_min": 1111,
+  "jul_fajr_min": 198,
+  "jul_isha_min": 1405
+ },
+ "letterkenny": {
+  "fajr_amplitude_min": -216,
+  "isha_amplitude_min": 311,
+  "jan_fajr_min": 410,
+  "jan_isha_min": 1104,
+  "jul_fajr_min": 194,
+  "jul_isha_min": 1415
+ },
+ "limerick": {
+  "fajr_amplitude_min": -201,
+  "isha_amplitude_min": 295,
+  "jan_fajr_min": 405,
+  "jan_isha_min": 1116,
+  "jul_fajr_min": 204,
+  "jul_isha_min": 1411
+ },
+ "longford": {
+  "fajr_amplitude_min": -208,
+  "isha_amplitude_min": 302,
+  "jan_fajr_min": 406,
+  "jan_isha_min": 1109,
+  "jul_fajr_min": 198,
+  "jul_isha_min": 1411
+ },
+ "mullingar": {
+  "fajr_amplitude_min": -207,
+  "isha_amplitude_min": 303,
+  "jan_fajr_min": 403,
+  "jan_isha_min": 1108,
+  "jul_fajr_min": 196,
+  "jul_isha_min": 1411
+ },
+ "naas": {
+  "fajr_amplitude_min": -204,
+  "isha_amplitude_min": 300,
+  "jan_fajr_min": 399,
+  "jan_isha_min": 1106,
+  "jul_fajr_min": 195,
+  "jul_isha_min": 1406
+ },
+ "navan": {
+  "fajr_amplitude_min": -208,
+  "isha_amplitude_min": 303,
+  "jan_fajr_min": 401,
+  "jan_isha_min": 1105,
+  "jul_fajr_min": 193,
+  "jul_isha_min": 1408
+ },
+ "portlaoise": {
+  "fajr_amplitude_min": -203,
+  "isha_amplitude_min": 299,
+  "jan_fajr_min": 401,
+  "jan_isha_min": 1110,
+  "jul_fajr_min": 198,
+  "jul_isha_min": 1409
+ },
+ "sligo": {
+  "fajr_amplitude_min": -212,
+  "isha_amplitude_min": 307,
+  "jan_fajr_min": 411,
+  "jan_isha_min": 1110,
+  "jul_fajr_min": 199,
+  "jul_isha_min": 1417
+ },
+ "thurles": {
+  "fajr_amplitude_min": -202,
+  "isha_amplitude_min": 295,
+  "jan_fajr_min": 402,
+  "jan_isha_min": 1113,
+  "jul_fajr_min": 200,
+  "jul_isha_min": 1408
+ },
+ "tralee": {
+  "fajr_amplitude_min": -199,
+  "isha_amplitude_min": 294,
+  "jan_fajr_min": 408,
+  "jan_isha_min": 1122,
+  "jul_fajr_min": 209,
+  "jul_isha_min": 1416
+ },
+ "tullamore": {
+  "fajr_amplitude_min": -205,
+  "isha_amplitude_min": 302,
+  "jan_fajr_min": 403,
+  "jan_isha_min": 1109,
+  "jul_fajr_min": 198,
+  "jul_isha_min": 1411
+ },
+ "waterford": {
+  "fajr_amplitude_min": -199,
+  "isha_amplitude_min": 293,
+  "jan_fajr_min": 398,
+  "jan_isha_min": 1112,
+  "jul_fajr_min": 199,
+  "jul_isha_min": 1405
+ },
+ "wexford": {
+  "fajr_amplitude_min": -199,
+  "isha_amplitude_min": 293,
+  "jan_fajr_min": 395,
+  "jan_isha_min": 1109,
+  "jul_fajr_min": 196,
+  "jul_isha_min": 1402
+ }
+}

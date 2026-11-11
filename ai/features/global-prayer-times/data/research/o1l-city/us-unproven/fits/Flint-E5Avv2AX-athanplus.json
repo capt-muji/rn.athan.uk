@@ -1,0 +1,320 @@
+{
+ "metro": "Flint",
+ "surface": "E5Avv2AX-athanplus",
+ "isna_15_15": {
+  "madhab": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "w1": 93.6,
+  "exact": 82.3,
+  "per_column": {
+   "fajr": {
+    "mae": 0.26,
+    "bias": 0.03,
+    "exact": 94.9,
+    "w1": 100,
+    "worst": 0.6
+   },
+   "sunrise": {
+    "mae": 0.26,
+    "bias": 0.02,
+    "exact": 95.8,
+    "w1": 100,
+    "worst": 0.6
+   },
+   "dhuhr": {
+    "mae": 0.26,
+    "bias": 0.05,
+    "exact": 96.4,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "asr": {
+    "mae": 0.84,
+    "bias": 0.02,
+    "exact": 25,
+    "w1": 61.7,
+    "worst": 1.7
+   },
+   "maghrib": {
+    "mae": 0.26,
+    "bias": 0,
+    "exact": 95.8,
+    "w1": 100,
+    "worst": 0.6
+   },
+   "isha": {
+    "mae": 0.27,
+    "bias": 0,
+    "exact": 85.8,
+    "w1": 100,
+    "worst": 0.8
+   }
+  }
+ },
+ "rows": 1461,
+ "span": [
+  "2024-01-01",
+  "2027-12-31"
+ ],
+ "years": [
+  "2024",
+  "2025",
+  "2026",
+  "2027"
+ ],
+ "coords": [
+  43.0119211,
+  -83.7838324
+ ],
+ "tz": "America/Detroit",
+ "recipe": {
+  "engine": "adhan 4.4.6",
+  "fajr_angle": 15,
+  "isha": [
+   "angle",
+   15
+  ],
+  "madhab": "shafi",
+  "high_latitude": "TwilightAngle",
+  "rounding": "None",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  }
+ },
+ "per_column": {
+  "fajr": {
+   "mae": 0.26,
+   "bias": 0.03,
+   "exact": 94.9,
+   "w1": 100,
+   "worst": 0.6
+  },
+  "sunrise": {
+   "mae": 0.26,
+   "bias": 0.02,
+   "exact": 95.8,
+   "w1": 100,
+   "worst": 0.6
+  },
+  "dhuhr": {
+   "mae": 0.26,
+   "bias": 0.05,
+   "exact": 96.4,
+   "w1": 100,
+   "worst": 0.5
+  },
+  "asr": {
+   "mae": 0.84,
+   "bias": 0.02,
+   "exact": 25,
+   "w1": 61.7,
+   "worst": 1.7
+  },
+  "maghrib": {
+   "mae": 0.26,
+   "bias": 0,
+   "exact": 95.8,
+   "w1": 100,
+   "worst": 0.6
+  },
+  "isha": {
+   "mae": 0.27,
+   "bias": 0,
+   "exact": 85.8,
+   "w1": 100,
+   "worst": 0.8
+  }
+ },
+ "per_year": {
+  "2024": {
+   "fajr": {
+    "mae": 0.25,
+    "bias": 0.03,
+    "exact": 94.8,
+    "w1": 100,
+    "worst": 0.6
+   },
+   "sunrise": {
+    "mae": 0.27,
+    "bias": 0.02,
+    "exact": 94.8,
+    "w1": 100,
+    "worst": 0.6
+   },
+   "dhuhr": {
+    "mae": 0.26,
+    "bias": 0.05,
+    "exact": 95.4,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "asr": {
+    "mae": 0.85,
+    "bias": 0,
+    "exact": 24.6,
+    "w1": 61.2,
+    "worst": 1.7
+   },
+   "maghrib": {
+    "mae": 0.26,
+    "bias": -0.01,
+    "exact": 97,
+    "w1": 100,
+    "worst": 0.6
+   },
+   "isha": {
+    "mae": 0.28,
+    "bias": -0.02,
+    "exact": 83.9,
+    "w1": 100,
+    "worst": 0.7
+   }
+  },
+  "2025": {
+   "fajr": {
+    "mae": 0.25,
+    "bias": 0.05,
+    "exact": 96.2,
+    "w1": 100,
+    "worst": 0.6
+   },
+   "sunrise": {
+    "mae": 0.26,
+    "bias": 0.02,
+    "exact": 95.3,
+    "w1": 100,
+    "worst": 0.6
+   },
+   "dhuhr": {
+    "mae": 0.26,
+    "bias": 0.05,
+    "exact": 96.7,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "asr": {
+    "mae": 0.84,
+    "bias": 0.03,
+    "exact": 26.3,
+    "w1": 61.1,
+    "worst": 1.7
+   },
+   "maghrib": {
+    "mae": 0.26,
+    "bias": -0.03,
+    "exact": 95.9,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "isha": {
+    "mae": 0.27,
+    "bias": 0,
+    "exact": 84.9,
+    "w1": 100,
+    "worst": 0.8
+   }
+  },
+  "2026": {
+   "fajr": {
+    "mae": 0.26,
+    "bias": 0.02,
+    "exact": 93.4,
+    "w1": 100,
+    "worst": 0.6
+   },
+   "sunrise": {
+    "mae": 0.25,
+    "bias": 0.03,
+    "exact": 96.4,
+    "w1": 100,
+    "worst": 0.6
+   },
+   "dhuhr": {
+    "mae": 0.26,
+    "bias": 0.03,
+    "exact": 97.3,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "asr": {
+    "mae": 0.83,
+    "bias": 0.03,
+    "exact": 25.2,
+    "w1": 61.6,
+    "worst": 1.7
+   },
+   "maghrib": {
+    "mae": 0.25,
+    "bias": 0.02,
+    "exact": 94.5,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "isha": {
+    "mae": 0.27,
+    "bias": 0.03,
+    "exact": 88.2,
+    "w1": 100,
+    "worst": 0.8
+   }
+  },
+  "2027": {
+   "fajr": {
+    "mae": 0.25,
+    "bias": 0.02,
+    "exact": 95.1,
+    "w1": 100,
+    "worst": 0.6
+   },
+   "sunrise": {
+    "mae": 0.25,
+    "bias": 0,
+    "exact": 96.4,
+    "w1": 100,
+    "worst": 0.6
+   },
+   "dhuhr": {
+    "mae": 0.26,
+    "bias": 0.05,
+    "exact": 96.4,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "asr": {
+    "mae": 0.85,
+    "bias": 0.02,
+    "exact": 23.8,
+    "w1": 62.7,
+    "worst": 1.7
+   },
+   "maghrib": {
+    "mae": 0.25,
+    "bias": 0.03,
+    "exact": 95.6,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "isha": {
+    "mae": 0.28,
+    "bias": 0,
+    "exact": 86,
+    "w1": 100,
+    "worst": 0.8
+   }
+  }
+ },
+ "seasonal_fajr_amplitude_min": 128.2,
+ "fajr_later_in_january": true
+}

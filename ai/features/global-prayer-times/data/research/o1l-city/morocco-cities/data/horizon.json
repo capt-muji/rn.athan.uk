@@ -1,0 +1,1332 @@
+[
+ {
+  "c": 1,
+  "n": "الرباط",
+  "bracket": 6.69,
+  "dem": 121,
+  "place": "Ben Ghaouch"
+ },
+ {
+  "c": 2,
+  "n": "الخميسات",
+  "bracket": 9.39,
+  "dem": 709,
+  "place": "Dar Okkaz Lahsen"
+ },
+ {
+  "c": 3,
+  "n": "تيفلت",
+  "bracket": 9.47,
+  "dem": 214,
+  "place": "Al M’aziz"
+ },
+ {
+  "c": 4,
+  "n": "الرماني",
+  "bracket": 9.78,
+  "dem": 718,
+  "place": "Ezzhiliga"
+ },
+ {
+  "c": 5,
+  "n": "والماس",
+  "bracket": 13.27,
+  "dem": 897,
+  "place": "Afoud Aouragh"
+ },
+ {
+  "c": 6,
+  "n": "بوزنيقة",
+  "bracket": 6.23,
+  "dem": 197,
+  "place": "Oulad Ahmed Sahel"
+ },
+ {
+  "c": 7,
+  "n": "القنيطرة",
+  "bracket": 7.76,
+  "dem": 73,
+  "place": "Zdagh"
+ },
+ {
+  "c": 8,
+  "n": "سيدي قاسم",
+  "bracket": 9.41,
+  "dem": 471,
+  "place": "Dar El Caid Lhoussine"
+ },
+ {
+  "c": 9,
+  "n": "سيدي يحيى الغرب",
+  "bracket": 7.59,
+  "dem": 39,
+  "place": "Douar Lahmadna"
+ },
+ {
+  "c": 10,
+  "n": "سيدي سليمان",
+  "bracket": 6.47,
+  "dem": 73,
+  "place": "Douar Laouerdha"
+ },
+ {
+  "c": 11,
+  "n": "سوق أربعاء الغرب",
+  "bracket": 6.26,
+  "dem": 39,
+  "place": "Douar Lahmadna"
+ },
+ {
+  "c": 12,
+  "n": "عرباوة",
+  "bracket": 7.53,
+  "dem": 207,
+  "place": "Douar Oulad Hamd"
+ },
+ {
+  "c": 13,
+  "n": "مولاي بوسلهام",
+  "bracket": 6.21,
+  "dem": 11,
+  "place": "Douar Laamiriyine"
+ },
+ {
+  "c": 14,
+  "n": "طنجة",
+  "bracket": 8.64,
+  "dem": 60,
+  "place": "Douar Lbibane"
+ },
+ {
+  "c": 15,
+  "n": "تطوان",
+  "bracket": 10.23,
+  "dem": 535,
+  "place": "El Ihamtene"
+ },
+ {
+  "c": 16,
+  "n": "العرائش",
+  "bracket": 6.24,
+  "dem": 106,
+  "place": "Laghouazi"
+ },
+ {
+  "c": 17,
+  "n": "أصيلة",
+  "bracket": 6.68,
+  "dem": 107,
+  "place": "Bnoniyene"
+ },
+ {
+  "c": 18,
+  "n": "شفشاون",
+  "bracket": 13.01,
+  "dem": 540,
+  "place": "El Marj"
+ },
+ {
+  "c": 19,
+  "n": "مرتيل",
+  "bracket": 6.56,
+  "dem": 24,
+  "place": "Thar Essoufla"
+ },
+ {
+  "c": 20,
+  "n": "المضيق",
+  "bracket": 6.4,
+  "dem": 7,
+  "place": "Hamda"
+ },
+ {
+  "c": 21,
+  "n": "القصر الكبير",
+  "bracket": 7.04,
+  "dem": 165,
+  "place": "Douar Eddoumiyine"
+ },
+ {
+  "c": 22,
+  "n": "القصر الصغير",
+  "bracket": 7.08,
+  "dem": 303,
+  "place": "Douar Msiaad"
+ },
+ {
+  "c": 23,
+  "n": "الحسيمة",
+  "bracket": 7.57,
+  "dem": 306,
+  "place": "Douar Izghayene"
+ },
+ {
+  "c": 24,
+  "n": "سبتة",
+  "bracket": 9.79,
+  "dem": 8,
+  "place": "Boujdad"
+ },
+ {
+  "c": 25,
+  "n": "الفنيدق",
+  "bracket": 8.15,
+  "dem": 18,
+  "place": "El Koutha"
+ },
+ {
+  "c": 26,
+  "n": "الجبهة",
+  "bracket": 8.12,
+  "dem": 896,
+  "place": "Aït el Haït"
+ },
+ {
+  "c": 27,
+  "n": "واد لاو",
+  "bracket": 6.43,
+  "dem": 446,
+  "place": "Douar Ibatounene"
+ },
+ {
+  "c": 28,
+  "n": "باب برد",
+  "bracket": 13.44,
+  "dem": 573,
+  "place": "Azib Afouzer"
+ },
+ {
+  "c": 29,
+  "n": "وزان",
+  "bracket": 11.07,
+  "dem": 70,
+  "place": "Bou Haja"
+ },
+ {
+  "c": 30,
+  "n": "بوسكور",
+  "bracket": 9.35,
+  "dem": 1172,
+  "place": "Aamar ben Lemjrah"
+ },
+ {
+  "c": 31,
+  "n": "وجدة",
+  "bracket": 11.15,
+  "dem": 951,
+  "place": "Oued el Himer"
+ },
+ {
+  "c": 32,
+  "n": "بركان",
+  "bracket": 7.59,
+  "dem": 747,
+  "place": "Douar Oulad Ali"
+ },
+ {
+  "c": 33,
+  "n": "فكيك",
+  "bracket": 11.73,
+  "dem": 865,
+  "place": "Zenaga"
+ },
+ {
+  "c": 34,
+  "n": "بوعرفة",
+  "bracket": 11.96,
+  "dem": 1169,
+  "place": "Bouarfa"
+ },
+ {
+  "c": 35,
+  "n": "كرسيف",
+  "bracket": 9.21,
+  "dem": 426,
+  "place": "Douar Sebarhat"
+ },
+ {
+  "c": 36,
+  "n": "جرادة",
+  "bracket": 12.62,
+  "dem": 919,
+  "place": "Al Fouqra"
+ },
+ {
+  "c": 37,
+  "n": "عين الشعير",
+  "bracket": 11.81,
+  "dem": 982,
+  "place": "Aïn Chaïr"
+ },
+ {
+  "c": 38,
+  "n": "تاوريرت",
+  "bracket": 12.31,
+  "dem": 740,
+  "place": "El Madar"
+ },
+ {
+  "c": 39,
+  "n": "الناظور",
+  "bracket": 7.48,
+  "dem": 174,
+  "place": "Sekkagene"
+ },
+ {
+  "c": 40,
+  "n": "مليلية",
+  "bracket": 6.46,
+  "dem": 550,
+  "place": "Jadmiene"
+ },
+ {
+  "c": 41,
+  "n": "دبدو",
+  "bracket": 12.74,
+  "dem": 1256,
+  "place": "El Hamar"
+ },
+ {
+  "c": 42,
+  "n": "سلوان",
+  "bracket": 8.61,
+  "dem": 186,
+  "place": "Douar Dougaria"
+ },
+ {
+  "c": 43,
+  "n": "بني أنصار",
+  "bracket": 7.65,
+  "dem": 7,
+  "place": "Oulad Bouatia"
+ },
+ {
+  "c": 44,
+  "n": "فرخانة",
+  "bracket": 7.54,
+  "dem": 196,
+  "place": "Ihaouadine"
+ },
+ {
+  "c": 45,
+  "n": "تالسينت",
+  "bracket": 13.96,
+  "dem": 1064,
+  "place": "Ar-Routte"
+ },
+ {
+  "c": 46,
+  "n": "تندرارة",
+  "bracket": 13.88,
+  "dem": 1265,
+  "place": "Hassi el Aricha"
+ },
+ {
+  "c": 47,
+  "n": "العيون الشرقية",
+  "bracket": 10.7,
+  "dem": 1140,
+  "place": "Tarhilasset"
+ },
+ {
+  "c": 48,
+  "n": "بني ادرار",
+  "bracket": 10,
+  "dem": 669,
+  "place": "Dar Koulati Ben Younes"
+ },
+ {
+  "c": 49,
+  "n": "السعيدية",
+  "bracket": 6.36,
+  "dem": 3,
+  "place": "Oulad Mansour"
+ },
+ {
+  "c": 50,
+  "n": "رأس الماء",
+  "bracket": 6.32,
+  "dem": 68,
+  "place": "Douar Lhamri"
+ },
+ {
+  "c": 51,
+  "n": "تافوغالت",
+  "bracket": 11.98,
+  "dem": 679,
+  "place": "Douar El Honniyine Anfis"
+ },
+ {
+  "c": 52,
+  "n": "فزوان",
+  "bracket": 11.46,
+  "dem": 665,
+  "place": "Oulad Hbat"
+ },
+ {
+  "c": 53,
+  "n": "أحفير",
+  "bracket": 8.46,
+  "dem": 576,
+  "place": "Ejjaouta"
+ },
+ {
+  "c": 54,
+  "n": "زايو",
+  "bracket": 10.59,
+  "dem": 475,
+  "place": "Oulad Sidi Bechir"
+ },
+ {
+  "c": 55,
+  "n": "دريوش",
+  "bracket": 10.5,
+  "dem": 674,
+  "place": "Ikhoulatene"
+ },
+ {
+  "c": 56,
+  "n": "بني تجيت",
+  "bracket": 13.75,
+  "dem": 907,
+  "place": "Saheli"
+ },
+ {
+  "c": 57,
+  "n": "بوعنان",
+  "bracket": 11.61,
+  "dem": 770,
+  "place": "El Aouina Souatar"
+ },
+ {
+  "c": 58,
+  "n": "الدار البيضاء",
+  "bracket": 7.41,
+  "dem": 185,
+  "place": "Dar Bou’azza Ben ’Abdallah"
+ },
+ {
+  "c": 59,
+  "n": "المحمدية",
+  "bracket": 6.19,
+  "dem": 122,
+  "place": "Douar Qouasma"
+ },
+ {
+  "c": 60,
+  "n": "بن سليمان",
+  "bracket": 8.36,
+  "dem": 302,
+  "place": "Douar Lhartani"
+ },
+ {
+  "c": 61,
+  "n": "سطات",
+  "bracket": 9.14,
+  "dem": 538,
+  "place": "Dhaba"
+ },
+ {
+  "c": 62,
+  "n": "الكارة",
+  "bracket": 9.29,
+  "dem": 627,
+  "place": "Oulad Bouya Abbou Lgaada"
+ },
+ {
+  "c": 63,
+  "n": "البروج",
+  "bracket": 9.87,
+  "dem": 341,
+  "place": "Douar Tmata"
+ },
+ {
+  "c": 64,
+  "n": "ابن أحمد",
+  "bracket": 10.69,
+  "dem": 676,
+  "place": "El Mnadla"
+ },
+ {
+  "c": 65,
+  "n": "برشيد",
+  "bracket": 7.72,
+  "dem": 274,
+  "place": "’Amamcha"
+ },
+ {
+  "c": 66,
+  "n": "الجديدة",
+  "bracket": 6.23,
+  "dem": 57,
+  "place": "Bouchaïb"
+ },
+ {
+  "c": 67,
+  "n": "أزمور",
+  "bracket": 7.08,
+  "dem": 115,
+  "place": "Douar Bouidat"
+ },
+ {
+  "c": 68,
+  "n": "سيدي بنور",
+  "bracket": 7.36,
+  "dem": 218,
+  "place": "Douar Lemanadrane"
+ },
+ {
+  "c": 69,
+  "n": "خميس الزمامرة",
+  "bracket": 7.29,
+  "dem": 188,
+  "place": "Lehmoudat"
+ },
+ {
+  "c": 70,
+  "n": "خنيفرة",
+  "bracket": 12.14,
+  "dem": 1794,
+  "place": "Tit-N-Saqqa"
+ },
+ {
+  "c": 71,
+  "n": "مولاي بوعزة",
+  "bracket": 11.86,
+  "dem": 953,
+  "place": "Aït er Rahal"
+ },
+ {
+  "c": 72,
+  "n": "زاوية أحنصال",
+  "bracket": 16.74,
+  "dem": 1596,
+  "place": "Tamalout"
+ },
+ {
+  "c": 73,
+  "n": "بني ملال",
+  "bracket": 12.82,
+  "dem": 1330,
+  "place": "Taganit"
+ },
+ {
+  "c": 74,
+  "n": "أزيلال",
+  "bracket": 14.58,
+  "dem": 1718,
+  "place": "Tabghiwiyn"
+ },
+ {
+  "c": 75,
+  "n": "الفقيه بنصالح",
+  "bracket": 9.89,
+  "dem": 406,
+  "place": "Douar Oulad Jbir"
+ },
+ {
+  "c": 76,
+  "n": "دمنات",
+  "bracket": 14.61,
+  "dem": 1904,
+  "place": "Aït Wahi"
+ },
+ {
+  "c": 77,
+  "n": "القصيبة",
+  "bracket": 13.52,
+  "dem": 1027,
+  "place": "Aït Ououchene"
+ },
+ {
+  "c": 78,
+  "n": "قصبة تادلة",
+  "bracket": 9.98,
+  "dem": 670,
+  "place": "Aït Hammou Saïd"
+ },
+ {
+  "c": 79,
+  "n": "خريبكة",
+  "bracket": 11.65,
+  "dem": 581,
+  "place": "Cherqawa"
+ },
+ {
+  "c": 80,
+  "n": "وادي زم",
+  "bracket": 11.75,
+  "dem": 488,
+  "place": "Ayt Al Haj Mfaddel"
+ },
+ {
+  "c": 81,
+  "n": "فاس",
+  "bracket": 9.53,
+  "dem": 668,
+  "place": "Ait Haqqi"
+ },
+ {
+  "c": 82,
+  "n": "صفرو",
+  "bracket": 12.33,
+  "dem": 1692,
+  "place": "Douar Ait Ittou Ou Mimoune"
+ },
+ {
+  "c": 83,
+  "n": "مولاي يعقوب",
+  "bracket": 9.12,
+  "dem": 576,
+  "place": "Douar Aït Moussa"
+ },
+ {
+  "c": 84,
+  "n": "بولمان",
+  "bracket": 17.1,
+  "dem": 1508,
+  "place": "Iztat"
+ },
+ {
+  "c": 85,
+  "n": "ميسور",
+  "bracket": 11.83,
+  "dem": 1130,
+  "place": "Tikoutamine"
+ },
+ {
+  "c": 86,
+  "n": "رباط الخير",
+  "bracket": 14.34,
+  "dem": 1222,
+  "place": "Kasba Mohammed Ameziane"
+ },
+ {
+  "c": 87,
+  "n": "المنزل بني يازغة",
+  "bracket": 12.63,
+  "dem": 1026,
+  "place": "Douar Leli N-akki"
+ },
+ {
+  "c": 88,
+  "n": "إموزار كندر",
+  "bracket": 14.31,
+  "dem": 1638,
+  "place": "Aït Fetkhaoui"
+ },
+ {
+  "c": 89,
+  "n": "تازة",
+  "bracket": 11.87,
+  "dem": 899,
+  "place": "Tmourghout"
+ },
+ {
+  "c": 90,
+  "n": "تاونات",
+  "bracket": 11.47,
+  "dem": 277,
+  "place": "Douar Leonatra"
+ },
+ {
+  "c": 91,
+  "n": "أكنول",
+  "bracket": 13.97,
+  "dem": 952,
+  "place": "Aarous"
+ },
+ {
+  "c": 92,
+  "n": "تيزي وسلي",
+  "bracket": 14.12,
+  "dem": 787,
+  "place": "Douar Daïa"
+ },
+ {
+  "c": 93,
+  "n": "بورد",
+  "bracket": 11.92,
+  "dem": 943,
+  "place": "Douar Olad. Hammou"
+ },
+ {
+  "c": 94,
+  "n": "تاهلة",
+  "bracket": 10.1,
+  "dem": 1098,
+  "place": "Lahma"
+ },
+ {
+  "c": 95,
+  "n": "تيسة",
+  "bracket": 8.58,
+  "dem": 226,
+  "place": "Oulad Missat"
+ },
+ {
+  "c": 96,
+  "n": "قرية با محمد",
+  "bracket": 8.03,
+  "dem": 282,
+  "place": "Douar Ejjouaber"
+ },
+ {
+  "c": 97,
+  "n": "كتامة",
+  "bracket": 15.27,
+  "dem": 267,
+  "place": "Qantrat Rghioua"
+ },
+ {
+  "c": 98,
+  "n": "واد أمليل",
+  "bracket": 9.31,
+  "dem": 700,
+  "place": "Douar Mazer"
+ },
+ {
+  "c": 99,
+  "n": "مكناس",
+  "bracket": 10.32,
+  "dem": 991,
+  "place": "Dar Boukhari Thami"
+ },
+ {
+  "c": 100,
+  "n": "يفرن",
+  "bracket": 13.96,
+  "dem": 1916,
+  "place": "Amangous"
+ },
+ {
+  "c": 101,
+  "n": "الحاجب",
+  "bracket": 13.08,
+  "dem": 1068,
+  "place": "Aït Jilali"
+ },
+ {
+  "c": 102,
+  "n": "زرهون",
+  "bracket": 11.67,
+  "dem": 717,
+  "place": "Charikat Zayane"
+ },
+ {
+  "c": 103,
+  "n": "آزرو",
+  "bracket": 14.01,
+  "dem": 1715,
+  "place": "Aït Boubker"
+ },
+ {
+  "c": 104,
+  "n": "مراكش",
+  "bracket": 10.17,
+  "dem": 722,
+  "place": "Douar Tagadirt"
+ },
+ {
+  "c": 105,
+  "n": "قلعة السراغنة",
+  "bracket": 9.95,
+  "dem": 616,
+  "place": "Douar Caïd el Hachemi"
+ },
+ {
+  "c": 106,
+  "n": "الصويرة",
+  "bracket": 6.56,
+  "dem": 67,
+  "place": "Douar Ait Barazzi"
+ },
+ {
+  "c": 107,
+  "n": "شيشاوة",
+  "bracket": 9.63,
+  "dem": 584,
+  "place": "Oulad Abd el Moula"
+ },
+ {
+  "c": 108,
+  "n": "بنجرير",
+  "bracket": 9.89,
+  "dem": 451,
+  "place": "El Khalil"
+ },
+ {
+  "c": 109,
+  "n": "الرحامنة",
+  "bracket": 11.13,
+  "dem": 499,
+  "place": "Douar Mrabtine Oulad Rahou"
+ },
+ {
+  "c": 110,
+  "n": "تمنار",
+  "bracket": 9.21,
+  "dem": 598,
+  "place": "Aït Mansour"
+ },
+ {
+  "c": 111,
+  "n": "آسفي",
+  "bracket": 6.78,
+  "dem": 65,
+  "place": "Oulad Zriwil"
+ },
+ {
+  "c": 112,
+  "n": "الوليدية",
+  "bracket": 6.33,
+  "dem": 114,
+  "place": "Abbidac"
+ },
+ {
+  "c": 113,
+  "n": "اليوسفية",
+  "bracket": 9.3,
+  "dem": 400,
+  "place": "Douar Oulad Sidi Allal Mansour"
+ },
+ {
+  "c": 114,
+  "n": "تسلطانت",
+  "bracket": 10.32,
+  "dem": 885,
+  "place": "Agafay"
+ },
+ {
+  "c": 115,
+  "n": "تامصلوحت",
+  "bracket": 10.31,
+  "dem": 872,
+  "place": "Douar Tagadirt N’Trhemchout"
+ },
+ {
+  "c": 116,
+  "n": "قطارة",
+  "bracket": 10.09,
+  "dem": 434,
+  "place": "Douar Mnabha"
+ },
+ {
+  "c": 117,
+  "n": "أكادير",
+  "bracket": 8.27,
+  "dem": 40,
+  "place": "Ben Guemoud"
+ },
+ {
+  "c": 118,
+  "n": "تارودانت",
+  "bracket": 8.14,
+  "dem": 864,
+  "place": "Aguelz"
+ },
+ {
+  "c": 119,
+  "n": "تزنيت",
+  "bracket": 8.15,
+  "dem": 451,
+  "place": "Id Bella"
+ },
+ {
+  "c": 120,
+  "n": "إغرم",
+  "bracket": 15.32,
+  "dem": 971,
+  "place": "Tizgui Ida Ou Baloul"
+ },
+ {
+  "c": 121,
+  "n": "تالوين",
+  "bracket": 13.73,
+  "dem": 1735,
+  "place": "Aït Ikhlaf-n-Izdar"
+ },
+ {
+  "c": 122,
+  "n": "تافراوت",
+  "bracket": 14.06,
+  "dem": 1205,
+  "place": "Agoujgal"
+ },
+ {
+  "c": 123,
+  "n": "طاطا",
+  "bracket": 10.59,
+  "dem": 544,
+  "place": "Tadoucht"
+ },
+ {
+  "c": 124,
+  "n": "أقا",
+  "bracket": 13.66,
+  "dem": 416,
+  "place": "Igdi"
+ },
+ {
+  "c": 125,
+  "n": "فم لحصن",
+  "bracket": 11.99,
+  "dem": 345,
+  "place": "Tanzida"
+ },
+ {
+  "c": 126,
+  "n": "بويكرة",
+  "bracket": 6.81,
+  "dem": 151,
+  "place": "Touggarane"
+ },
+ {
+  "c": 127,
+  "n": "أولاد تايمة",
+  "bracket": 8.09,
+  "dem": 238,
+  "place": "Hasseïne Ou Ali"
+ },
+ {
+  "c": 128,
+  "n": "الرشيدية",
+  "bracket": 11.96,
+  "dem": 838,
+  "place": "Oulad Jallal"
+ },
+ {
+  "c": 129,
+  "n": "الريصاني",
+  "bracket": 12.14,
+  "dem": 779,
+  "place": "Shayb Arras"
+ },
+ {
+  "c": 130,
+  "n": "أرفود",
+  "bracket": 12.03,
+  "dem": 743,
+  "place": "El Kachla"
+ },
+ {
+  "c": 131,
+  "n": "تنديت",
+  "bracket": 11.24,
+  "dem": 862,
+  "place": "Ahl Allouch"
+ },
+ {
+  "c": 132,
+  "n": "كلميمة",
+  "bracket": 12.24,
+  "dem": 1109,
+  "place": "Bou Oudoud"
+ },
+ {
+  "c": 133,
+  "n": "إملشيل",
+  "bracket": 16.2,
+  "dem": 1749,
+  "place": "Tamtetoucht"
+ },
+ {
+  "c": 134,
+  "n": "تنجداد",
+  "bracket": 12.03,
+  "dem": 895,
+  "place": "Taghoucht n’Imelouane"
+ },
+ {
+  "c": 135,
+  "n": "الريش",
+  "bracket": 13.52,
+  "dem": 1046,
+  "place": "Oulad Tguir"
+ },
+ {
+  "c": 136,
+  "n": "ميدلت",
+  "bracket": 14.6,
+  "dem": 2284,
+  "place": "Assamer n’Aït Mohamed"
+ },
+ {
+  "c": 137,
+  "n": "زاكورة",
+  "bracket": 11.1,
+  "dem": 763,
+  "place": "Oum el Hanch"
+ },
+ {
+  "c": 138,
+  "n": "ورزازات",
+  "bracket": 12.9,
+  "dem": 1525,
+  "place": "Amcla-n-Brahim"
+ },
+ {
+  "c": 139,
+  "n": "تنغير",
+  "bracket": 13.85,
+  "dem": 1921,
+  "place": "Oulili"
+ },
+ {
+  "c": 140,
+  "n": "هسكورة",
+  "bracket": 12.97,
+  "dem": 1143,
+  "place": "Ourika Wawrmas"
+ },
+ {
+  "c": 141,
+  "n": "قلعة مكونة",
+  "bracket": 13.88,
+  "dem": 1369,
+  "place": "Afaoui"
+ },
+ {
+  "c": 142,
+  "n": "أكدز",
+  "bracket": 14.17,
+  "dem": 1279,
+  "place": "Dar L’ars"
+ },
+ {
+  "c": 143,
+  "n": "بومالن دادس",
+  "bracket": 14.18,
+  "dem": 1566,
+  "place": "Ighissi"
+ },
+ {
+  "c": 144,
+  "n": "النيف",
+  "bracket": 11.56,
+  "dem": 790,
+  "place": "Aït Saïd Ou Ali"
+ },
+ {
+  "c": 145,
+  "n": "أسول",
+  "bracket": 17.54,
+  "dem": 1079,
+  "place": "Khouttart Azag N-ouchchane"
+ },
+ {
+  "c": 146,
+  "n": "أمسمرير",
+  "bracket": 15.86,
+  "dem": 1522,
+  "place": "Anou Nizam"
+ },
+ {
+  "c": 147,
+  "n": "تازارين",
+  "bracket": 9.62,
+  "dem": 841,
+  "place": "Aït Yahya Ou Moussa"
+ },
+ {
+  "c": 148,
+  "n": "سيدي إفني",
+  "bracket": 8.48,
+  "dem": 422,
+  "place": "El Aïn Iahia"
+ },
+ {
+  "c": 149,
+  "n": "كلميم",
+  "bracket": 10.34,
+  "dem": 247,
+  "place": "Aouzeroualt"
+ },
+ {
+  "c": 150,
+  "n": "أسا",
+  "bracket": 7.99,
+  "dem": 207,
+  "place": "Tadachacht"
+ },
+ {
+  "c": 151,
+  "n": "الزاك",
+  "bracket": 8.76,
+  "dem": 410,
+  "place": "Zag"
+ },
+ {
+  "c": 152,
+  "n": "طانطان",
+  "bracket": 8.26,
+  "dem": 238,
+  "place": "Dar Chebika"
+ },
+ {
+  "c": 153,
+  "n": "بويزكارن",
+  "bracket": 9.91,
+  "dem": 345,
+  "place": "Fask"
+ },
+ {
+  "c": 154,
+  "n": "المحبس",
+  "bracket": 9.02,
+  "dem": 410,
+  "place": "Zag"
+ },
+ {
+  "c": 155,
+  "n": "لمسيد",
+  "bracket": 9.19,
+  "dem": 268,
+  "place": "Messeïed"
+ },
+ {
+  "c": 156,
+  "n": "العيون",
+  "bracket": 6.14,
+  "dem": 43,
+  "place": "Tah"
+ },
+ {
+  "c": 157,
+  "n": "السمارة",
+  "bracket": 7.89,
+  "dem": 188,
+  "place": "Smara"
+ },
+ {
+  "c": 158,
+  "n": "بوجدور",
+  "bracket": 5.99,
+  "dem": 419,
+  "place": "Gueltat Zemmour"
+ },
+ {
+  "c": 159,
+  "n": "طرفاية",
+  "bracket": 5.92,
+  "dem": 43,
+  "place": "Tah"
+ },
+ {
+  "c": 160,
+  "n": "تفاريتي",
+  "bracket": 11.8,
+  "dem": 188,
+  "place": "Smara"
+ },
+ {
+  "c": 161,
+  "n": "بوكراع",
+  "bracket": 8.02,
+  "dem": 188,
+  "place": "Smara"
+ },
+ {
+  "c": 162,
+  "n": "كلتة زمور",
+  "bracket": 7.98,
+  "dem": 419,
+  "place": "Gueltat Zemmour"
+ },
+ {
+  "c": 163,
+  "n": "أمكالة",
+  "bracket": 7.85,
+  "dem": 188,
+  "place": "Smara"
+ },
+ {
+  "c": 164,
+  "n": "أخفنير",
+  "bracket": 8.32,
+  "dem": 15,
+  "place": "Akhfennir"
+ },
+ {
+  "c": 165,
+  "n": "الداخلة",
+  "bracket": 6.69,
+  "dem": 118,
+  "place": "Imlili"
+ },
+ {
+  "c": 166,
+  "n": "الكويرة",
+  "bracket": 5.85,
+  "dem": 202,
+  "place": "Oum Tlayha"
+ },
+ {
+  "c": 167,
+  "n": "أوسرد",
+  "bracket": 7.87,
+  "dem": 306,
+  "place": "Aousserd"
+ },
+ {
+  "c": 168,
+  "n": "بئر كندوز",
+  "bracket": 7.73,
+  "dem": 202,
+  "place": "Oum Tlayha"
+ },
+ {
+  "c": 169,
+  "n": "بئر أنزاران",
+  "bracket": 8.61,
+  "dem": 346,
+  "place": "Gleibet El Foula"
+ },
+ {
+  "c": 301,
+  "n": "خميس سيدي عبد الجليل",
+  "bracket": 10.47,
+  "dem": 676,
+  "place": "Oulad Bougrine"
+ },
+ {
+  "c": 302,
+  "n": "أولاد عياد",
+  "bracket": 8.46,
+  "dem": 585,
+  "place": "Douar Ryafa"
+ },
+ {
+  "c": 304,
+  "n": "مطماطة",
+  "bracket": 7.04,
+  "dem": 535,
+  "place": "Douar Sidi Bennour"
+ },
+ {
+  "c": 305,
+  "n": "إيمنتانوت",
+  "bracket": 11.77,
+  "dem": 1848,
+  "place": "Ikechane"
+ },
+ {
+  "c": 306,
+  "n": "سيدي غانم",
+  "bracket": 11.9,
+  "dem": 715,
+  "place": "Tassila Ida Ou Saïd"
+ },
+ {
+  "c": 307,
+  "n": "تفنتان",
+  "bracket": 8.97,
+  "dem": 1867,
+  "place": "Tiounza"
+ },
+ {
+  "c": 308,
+  "n": "آيت القاق",
+  "bracket": 16.96,
+  "dem": 1885,
+  "place": "Aït Melloul"
+ },
+ {
+  "c": 309,
+  "n": "أكدال أملشيل",
+  "bracket": 16.17,
+  "dem": 1749,
+  "place": "Tamtetoucht"
+ },
+ {
+  "c": 310,
+  "n": "اكودال املشيل ميدلت",
+  "bracket": 12.91,
+  "dem": 1749,
+  "place": "Tamtetoucht"
+ },
+ {
+  "c": 311,
+  "n": "أكايوار",
+  "bracket": 12.77,
+  "dem": 1840,
+  "place": "Tissert"
+ },
+ {
+  "c": 312,
+  "n": "عين العودة",
+  "bracket": 7.6,
+  "dem": 333,
+  "place": "Douar Culad Rayg"
+ },
+ {
+  "c": 313,
+  "n": "أسكين",
+  "bracket": 12.49,
+  "dem": 2174,
+  "place": "Koudia Tizi n’Ougount"
+ },
+ {
+  "c": 314,
+  "n": "آيت ورير",
+  "bracket": 10.74,
+  "dem": 2215,
+  "place": "Ait Ouairi"
+ },
+ {
+  "c": 315,
+  "n": "زاوية مولاي ابراهيم",
+  "bracket": 12.81,
+  "dem": 2072,
+  "place": "Ighil"
+ },
+ {
+  "c": 316,
+  "n": "تولكولت",
+  "bracket": 12.76,
+  "dem": 1015,
+  "place": "Aït Khetab Oufella"
+ },
+ {
+  "c": 317,
+  "n": "إيكس",
+  "bracket": 16.63,
+  "dem": 1360,
+  "place": "Agadir"
+ },
+ {
+  "c": 318,
+  "n": "كرس",
+  "bracket": 15.48,
+  "dem": 1965,
+  "place": "Aguerd n’Ou Issil"
+ },
+ {
+  "c": 319,
+  "n": "تيسنت",
+  "bracket": 13.7,
+  "dem": 475,
+  "place": "Mrimina"
+ },
+ {
+  "c": 320,
+  "n": "فم زكيد",
+  "bracket": 13.84,
+  "dem": 475,
+  "place": "Mrimina"
+ },
+ {
+  "c": 321,
+  "n": "قصر إيش",
+  "bracket": 13.37,
+  "dem": 869,
+  "place": "El Arja"
+ },
+ {
+  "c": 322,
+  "n": "إيمين ثلاث",
+  "bracket": 12.08,
+  "dem": 1709,
+  "place": "Ignane"
+ }
+]

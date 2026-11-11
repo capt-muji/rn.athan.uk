@@ -1,0 +1,1514 @@
+{
+ "leipzig": {
+  "winterDays": 182,
+  "isha": [
+   {
+    "angle": 15,
+    "exact": 0,
+    "within1": 0,
+    "worst": 9,
+    "coverage": 182
+   },
+   {
+    "angle": 15.5,
+    "exact": 0,
+    "within1": 1,
+    "worst": 6,
+    "coverage": 182
+   },
+   {
+    "angle": 15.75,
+    "exact": 52,
+    "within1": 109,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 16,
+    "exact": 29,
+    "within1": 128,
+    "worst": 2,
+    "coverage": 182
+   },
+   {
+    "angle": 16.25,
+    "exact": 31,
+    "within1": 60,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 16.5,
+    "exact": 0,
+    "within1": 16,
+    "worst": 6,
+    "coverage": 182
+   },
+   {
+    "angle": 17,
+    "exact": 0,
+    "within1": 0,
+    "worst": 9,
+    "coverage": 182
+   }
+  ],
+  "fajr": [
+   {
+    "angle": 17.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 18,
+    "exact": 139,
+    "within1": 182,
+    "worst": 1,
+    "coverage": 182
+   },
+   {
+    "angle": 18.25,
+    "exact": 0,
+    "within1": 56,
+    "worst": 2,
+    "coverage": 182
+   },
+   {
+    "angle": 18.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 4,
+    "coverage": 182
+   }
+  ]
+ },
+ "dresden": {
+  "winterDays": 182,
+  "isha": [
+   {
+    "angle": 15,
+    "exact": 0,
+    "within1": 0,
+    "worst": 9,
+    "coverage": 182
+   },
+   {
+    "angle": 15.5,
+    "exact": 0,
+    "within1": 4,
+    "worst": 6,
+    "coverage": 182
+   },
+   {
+    "angle": 15.75,
+    "exact": 49,
+    "within1": 105,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 16,
+    "exact": 29,
+    "within1": 151,
+    "worst": 2,
+    "coverage": 182
+   },
+   {
+    "angle": 16.25,
+    "exact": 33,
+    "within1": 63,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 16.5,
+    "exact": 0,
+    "within1": 10,
+    "worst": 5,
+    "coverage": 182
+   },
+   {
+    "angle": 17,
+    "exact": 0,
+    "within1": 0,
+    "worst": 9,
+    "coverage": 182
+   }
+  ],
+  "fajr": [
+   {
+    "angle": 17.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 18,
+    "exact": 133,
+    "within1": 182,
+    "worst": 1,
+    "coverage": 182
+   },
+   {
+    "angle": 18.25,
+    "exact": 0,
+    "within1": 59,
+    "worst": 3,
+    "coverage": 182
+   },
+   {
+    "angle": 18.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 4,
+    "coverage": 182
+   }
+  ]
+ },
+ "nurnberg": {
+  "winterDays": 182,
+  "isha": [
+   {
+    "angle": 15,
+    "exact": 0,
+    "within1": 0,
+    "worst": 8,
+    "coverage": 182
+   },
+   {
+    "angle": 15.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 5,
+    "coverage": 182
+   },
+   {
+    "angle": 15.75,
+    "exact": 40,
+    "within1": 104,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 16,
+    "exact": 43,
+    "within1": 149,
+    "worst": 2,
+    "coverage": 182
+   },
+   {
+    "angle": 16.25,
+    "exact": 38,
+    "within1": 72,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 16.5,
+    "exact": 0,
+    "within1": 16,
+    "worst": 5,
+    "coverage": 182
+   },
+   {
+    "angle": 17,
+    "exact": 0,
+    "within1": 0,
+    "worst": 9,
+    "coverage": 182
+   }
+  ],
+  "fajr": [
+   {
+    "angle": 17.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 18,
+    "exact": 131,
+    "within1": 182,
+    "worst": 1,
+    "coverage": 182
+   },
+   {
+    "angle": 18.25,
+    "exact": 0,
+    "within1": 58,
+    "worst": 3,
+    "coverage": 182
+   },
+   {
+    "angle": 18.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 4,
+    "coverage": 182
+   }
+  ]
+ },
+ "bremen": {
+  "winterDays": 182,
+  "isha": [
+   {
+    "angle": 15,
+    "exact": 0,
+    "within1": 0,
+    "worst": 9,
+    "coverage": 182
+   },
+   {
+    "angle": 15.5,
+    "exact": 0,
+    "within1": 3,
+    "worst": 6,
+    "coverage": 182
+   },
+   {
+    "angle": 15.75,
+    "exact": 58,
+    "within1": 103,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 16,
+    "exact": 33,
+    "within1": 118,
+    "worst": 2,
+    "coverage": 182
+   },
+   {
+    "angle": 16.25,
+    "exact": 32,
+    "within1": 68,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 16.5,
+    "exact": 0,
+    "within1": 14,
+    "worst": 6,
+    "coverage": 182
+   },
+   {
+    "angle": 17,
+    "exact": 0,
+    "within1": 0,
+    "worst": 10,
+    "coverage": 182
+   }
+  ],
+  "fajr": [
+   {
+    "angle": 17.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 18,
+    "exact": 136,
+    "within1": 182,
+    "worst": 1,
+    "coverage": 182
+   },
+   {
+    "angle": 18.25,
+    "exact": 0,
+    "within1": 55,
+    "worst": 3,
+    "coverage": 182
+   },
+   {
+    "angle": 18.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 5,
+    "coverage": 182
+   }
+  ]
+ },
+ "hannover": {
+  "winterDays": 182,
+  "isha": [
+   {
+    "angle": 15,
+    "exact": 0,
+    "within1": 0,
+    "worst": 9,
+    "coverage": 182
+   },
+   {
+    "angle": 15.5,
+    "exact": 0,
+    "within1": 1,
+    "worst": 6,
+    "coverage": 182
+   },
+   {
+    "angle": 15.75,
+    "exact": 54,
+    "within1": 102,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 16,
+    "exact": 37,
+    "within1": 134,
+    "worst": 2,
+    "coverage": 182
+   },
+   {
+    "angle": 16.25,
+    "exact": 32,
+    "within1": 67,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 16.5,
+    "exact": 0,
+    "within1": 15,
+    "worst": 6,
+    "coverage": 182
+   },
+   {
+    "angle": 17,
+    "exact": 0,
+    "within1": 0,
+    "worst": 10,
+    "coverage": 182
+   }
+  ],
+  "fajr": [
+   {
+    "angle": 17.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 18,
+    "exact": 129,
+    "within1": 182,
+    "worst": 1,
+    "coverage": 182
+   },
+   {
+    "angle": 18.25,
+    "exact": 0,
+    "within1": 54,
+    "worst": 3,
+    "coverage": 182
+   },
+   {
+    "angle": 18.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 5,
+    "coverage": 182
+   }
+  ]
+ },
+ "dortmund": {
+  "winterDays": 182,
+  "isha": [
+   {
+    "angle": 15,
+    "exact": 0,
+    "within1": 0,
+    "worst": 9,
+    "coverage": 182
+   },
+   {
+    "angle": 15.5,
+    "exact": 0,
+    "within1": 9,
+    "worst": 6,
+    "coverage": 182
+   },
+   {
+    "angle": 15.75,
+    "exact": 57,
+    "within1": 108,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 16,
+    "exact": 29,
+    "within1": 131,
+    "worst": 2,
+    "coverage": 182
+   },
+   {
+    "angle": 16.25,
+    "exact": 30,
+    "within1": 65,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 16.5,
+    "exact": 0,
+    "within1": 11,
+    "worst": 6,
+    "coverage": 182
+   },
+   {
+    "angle": 17,
+    "exact": 0,
+    "within1": 0,
+    "worst": 10,
+    "coverage": 182
+   }
+  ],
+  "fajr": [
+   {
+    "angle": 17.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 18,
+    "exact": 135,
+    "within1": 182,
+    "worst": 1,
+    "coverage": 182
+   },
+   {
+    "angle": 18.25,
+    "exact": 0,
+    "within1": 74,
+    "worst": 3,
+    "coverage": 182
+   },
+   {
+    "angle": 18.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 5,
+    "coverage": 182
+   }
+  ]
+ },
+ "essen": {
+  "winterDays": 182,
+  "isha": [
+   {
+    "angle": 15,
+    "exact": 0,
+    "within1": 0,
+    "worst": 9,
+    "coverage": 182
+   },
+   {
+    "angle": 15.5,
+    "exact": 0,
+    "within1": 3,
+    "worst": 6,
+    "coverage": 182
+   },
+   {
+    "angle": 15.75,
+    "exact": 54,
+    "within1": 105,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 16,
+    "exact": 33,
+    "within1": 138,
+    "worst": 2,
+    "coverage": 182
+   },
+   {
+    "angle": 16.25,
+    "exact": 35,
+    "within1": 66,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 16.5,
+    "exact": 0,
+    "within1": 12,
+    "worst": 6,
+    "coverage": 182
+   },
+   {
+    "angle": 17,
+    "exact": 0,
+    "within1": 0,
+    "worst": 9,
+    "coverage": 182
+   }
+  ],
+  "fajr": [
+   {
+    "angle": 17.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 18,
+    "exact": 135,
+    "within1": 182,
+    "worst": 1,
+    "coverage": 182
+   },
+   {
+    "angle": 18.25,
+    "exact": 0,
+    "within1": 51,
+    "worst": 3,
+    "coverage": 182
+   },
+   {
+    "angle": 18.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 5,
+    "coverage": 182
+   }
+  ]
+ },
+ "duisburg": {
+  "winterDays": 182,
+  "isha": [
+   {
+    "angle": 15,
+    "exact": 0,
+    "within1": 0,
+    "worst": 9,
+    "coverage": 182
+   },
+   {
+    "angle": 15.5,
+    "exact": 0,
+    "within1": 2,
+    "worst": 6,
+    "coverage": 182
+   },
+   {
+    "angle": 15.75,
+    "exact": 56,
+    "within1": 106,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 16,
+    "exact": 32,
+    "within1": 139,
+    "worst": 3,
+    "coverage": 182
+   },
+   {
+    "angle": 16.25,
+    "exact": 30,
+    "within1": 65,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 16.5,
+    "exact": 0,
+    "within1": 11,
+    "worst": 5,
+    "coverage": 182
+   },
+   {
+    "angle": 17,
+    "exact": 0,
+    "within1": 0,
+    "worst": 9,
+    "coverage": 182
+   }
+  ],
+  "fajr": [
+   {
+    "angle": 17.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 18,
+    "exact": 142,
+    "within1": 182,
+    "worst": 1,
+    "coverage": 182
+   },
+   {
+    "angle": 18.25,
+    "exact": 0,
+    "within1": 52,
+    "worst": 3,
+    "coverage": 182
+   },
+   {
+    "angle": 18.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 5,
+    "coverage": 182
+   }
+  ]
+ },
+ "dusseldorf": {
+  "winterDays": 182,
+  "isha": [
+   {
+    "angle": 15,
+    "exact": 0,
+    "within1": 0,
+    "worst": 9,
+    "coverage": 182
+   },
+   {
+    "angle": 15.5,
+    "exact": 0,
+    "within1": 5,
+    "worst": 6,
+    "coverage": 182
+   },
+   {
+    "angle": 15.75,
+    "exact": 62,
+    "within1": 110,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 16,
+    "exact": 28,
+    "within1": 132,
+    "worst": 2,
+    "coverage": 182
+   },
+   {
+    "angle": 16.25,
+    "exact": 33,
+    "within1": 64,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 16.5,
+    "exact": 0,
+    "within1": 9,
+    "worst": 6,
+    "coverage": 182
+   },
+   {
+    "angle": 17,
+    "exact": 0,
+    "within1": 0,
+    "worst": 9,
+    "coverage": 182
+   }
+  ],
+  "fajr": [
+   {
+    "angle": 17.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 18,
+    "exact": 137,
+    "within1": 182,
+    "worst": 1,
+    "coverage": 182
+   },
+   {
+    "angle": 18.25,
+    "exact": 0,
+    "within1": 73,
+    "worst": 3,
+    "coverage": 182
+   },
+   {
+    "angle": 18.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 4,
+    "coverage": 182
+   }
+  ]
+ },
+ "bonn": {
+  "winterDays": 182,
+  "isha": [
+   {
+    "angle": 15,
+    "exact": 0,
+    "within1": 0,
+    "worst": 9,
+    "coverage": 182
+   },
+   {
+    "angle": 15.5,
+    "exact": 0,
+    "within1": 4,
+    "worst": 6,
+    "coverage": 182
+   },
+   {
+    "angle": 15.75,
+    "exact": 52,
+    "within1": 108,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 16,
+    "exact": 26,
+    "within1": 141,
+    "worst": 2,
+    "coverage": 182
+   },
+   {
+    "angle": 16.25,
+    "exact": 34,
+    "within1": 65,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 16.5,
+    "exact": 0,
+    "within1": 16,
+    "worst": 6,
+    "coverage": 182
+   },
+   {
+    "angle": 17,
+    "exact": 0,
+    "within1": 0,
+    "worst": 9,
+    "coverage": 182
+   }
+  ],
+  "fajr": [
+   {
+    "angle": 17.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 18,
+    "exact": 142,
+    "within1": 182,
+    "worst": 1,
+    "coverage": 182
+   },
+   {
+    "angle": 18.25,
+    "exact": 0,
+    "within1": 65,
+    "worst": 3,
+    "coverage": 182
+   },
+   {
+    "angle": 18.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 4,
+    "coverage": 182
+   }
+  ]
+ },
+ "mannheim": {
+  "winterDays": 182,
+  "isha": [
+   {
+    "angle": 15,
+    "exact": 0,
+    "within1": 0,
+    "worst": 9,
+    "coverage": 182
+   },
+   {
+    "angle": 15.5,
+    "exact": 0,
+    "within1": 4,
+    "worst": 5,
+    "coverage": 182
+   },
+   {
+    "angle": 15.75,
+    "exact": 48,
+    "within1": 104,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 16,
+    "exact": 30,
+    "within1": 151,
+    "worst": 2,
+    "coverage": 182
+   },
+   {
+    "angle": 16.25,
+    "exact": 34,
+    "within1": 65,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 16.5,
+    "exact": 0,
+    "within1": 14,
+    "worst": 5,
+    "coverage": 182
+   },
+   {
+    "angle": 17,
+    "exact": 0,
+    "within1": 0,
+    "worst": 9,
+    "coverage": 182
+   }
+  ],
+  "fajr": [
+   {
+    "angle": 17.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 18,
+    "exact": 137,
+    "within1": 182,
+    "worst": 1,
+    "coverage": 182
+   },
+   {
+    "angle": 18.25,
+    "exact": 0,
+    "within1": 57,
+    "worst": 3,
+    "coverage": 182
+   },
+   {
+    "angle": 18.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 4,
+    "coverage": 182
+   }
+  ]
+ },
+ "karlsruhe": {
+  "winterDays": 182,
+  "isha": [
+   {
+    "angle": 15,
+    "exact": 0,
+    "within1": 0,
+    "worst": 8,
+    "coverage": 182
+   },
+   {
+    "angle": 15.5,
+    "exact": 0,
+    "within1": 4,
+    "worst": 5,
+    "coverage": 182
+   },
+   {
+    "angle": 15.75,
+    "exact": 45,
+    "within1": 113,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 16,
+    "exact": 30,
+    "within1": 150,
+    "worst": 2,
+    "coverage": 182
+   },
+   {
+    "angle": 16.25,
+    "exact": 38,
+    "within1": 64,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 16.5,
+    "exact": 0,
+    "within1": 12,
+    "worst": 5,
+    "coverage": 182
+   },
+   {
+    "angle": 17,
+    "exact": 0,
+    "within1": 0,
+    "worst": 9,
+    "coverage": 182
+   }
+  ],
+  "fajr": [
+   {
+    "angle": 17.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 18,
+    "exact": 136,
+    "within1": 182,
+    "worst": 1,
+    "coverage": 182
+   },
+   {
+    "angle": 18.25,
+    "exact": 0,
+    "within1": 73,
+    "worst": 3,
+    "coverage": 182
+   },
+   {
+    "angle": 18.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 4,
+    "coverage": 182
+   }
+  ]
+ },
+ "freiburg": {
+  "winterDays": 182,
+  "isha": [
+   {
+    "angle": 15,
+    "exact": 0,
+    "within1": 0,
+    "worst": 8,
+    "coverage": 182
+   },
+   {
+    "angle": 15.5,
+    "exact": 0,
+    "within1": 8,
+    "worst": 5,
+    "coverage": 182
+   },
+   {
+    "angle": 15.75,
+    "exact": 47,
+    "within1": 109,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 16,
+    "exact": 32,
+    "within1": 153,
+    "worst": 2,
+    "coverage": 182
+   },
+   {
+    "angle": 16.25,
+    "exact": 32,
+    "within1": 69,
+    "worst": 3,
+    "coverage": 182
+   },
+   {
+    "angle": 16.5,
+    "exact": 0,
+    "within1": 18,
+    "worst": 5,
+    "coverage": 182
+   },
+   {
+    "angle": 17,
+    "exact": 0,
+    "within1": 0,
+    "worst": 8,
+    "coverage": 182
+   }
+  ],
+  "fajr": [
+   {
+    "angle": 17.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 18,
+    "exact": 148,
+    "within1": 182,
+    "worst": 1,
+    "coverage": 182
+   },
+   {
+    "angle": 18.25,
+    "exact": 0,
+    "within1": 78,
+    "worst": 2,
+    "coverage": 182
+   },
+   {
+    "angle": 18.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 4,
+    "coverage": 182
+   }
+  ]
+ },
+ "kiel": {
+  "winterDays": 182,
+  "isha": [
+   {
+    "angle": 15,
+    "exact": 0,
+    "within1": 0,
+    "worst": 9,
+    "coverage": 182
+   },
+   {
+    "angle": 15.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 6,
+    "coverage": 182
+   },
+   {
+    "angle": 15.75,
+    "exact": 52,
+    "within1": 98,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 16,
+    "exact": 29,
+    "within1": 110,
+    "worst": 2,
+    "coverage": 182
+   },
+   {
+    "angle": 16.25,
+    "exact": 33,
+    "within1": 66,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 16.5,
+    "exact": 0,
+    "within1": 12,
+    "worst": 6,
+    "coverage": 182
+   },
+   {
+    "angle": 17,
+    "exact": 0,
+    "within1": 0,
+    "worst": 10,
+    "coverage": 182
+   }
+  ],
+  "fajr": [
+   {
+    "angle": 17.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 18,
+    "exact": 128,
+    "within1": 182,
+    "worst": 1,
+    "coverage": 182
+   },
+   {
+    "angle": 18.25,
+    "exact": 0,
+    "within1": 44,
+    "worst": 3,
+    "coverage": 182
+   },
+   {
+    "angle": 18.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 5,
+    "coverage": 182
+   }
+  ]
+ },
+ "rostock": {
+  "winterDays": 182,
+  "isha": [
+   {
+    "angle": 15,
+    "exact": 0,
+    "within1": 0,
+    "worst": 10,
+    "coverage": 182
+   },
+   {
+    "angle": 15.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 6,
+    "coverage": 182
+   },
+   {
+    "angle": 15.75,
+    "exact": 52,
+    "within1": 100,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 16,
+    "exact": 29,
+    "within1": 125,
+    "worst": 3,
+    "coverage": 182
+   },
+   {
+    "angle": 16.25,
+    "exact": 35,
+    "within1": 68,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 16.5,
+    "exact": 0,
+    "within1": 15,
+    "worst": 6,
+    "coverage": 182
+   },
+   {
+    "angle": 17,
+    "exact": 0,
+    "within1": 0,
+    "worst": 10,
+    "coverage": 182
+   }
+  ],
+  "fajr": [
+   {
+    "angle": 17.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 18,
+    "exact": 132,
+    "within1": 182,
+    "worst": 1,
+    "coverage": 182
+   },
+   {
+    "angle": 18.25,
+    "exact": 0,
+    "within1": 37,
+    "worst": 3,
+    "coverage": 182
+   },
+   {
+    "angle": 18.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 5,
+    "coverage": 182
+   }
+  ]
+ },
+ "magdeburg": {
+  "winterDays": 182,
+  "isha": [
+   {
+    "angle": 15,
+    "exact": 0,
+    "within1": 0,
+    "worst": 9,
+    "coverage": 182
+   },
+   {
+    "angle": 15.5,
+    "exact": 0,
+    "within1": 1,
+    "worst": 6,
+    "coverage": 182
+   },
+   {
+    "angle": 15.75,
+    "exact": 43,
+    "within1": 104,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 16,
+    "exact": 31,
+    "within1": 137,
+    "worst": 2,
+    "coverage": 182
+   },
+   {
+    "angle": 16.25,
+    "exact": 31,
+    "within1": 69,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 16.5,
+    "exact": 0,
+    "within1": 10,
+    "worst": 6,
+    "coverage": 182
+   },
+   {
+    "angle": 17,
+    "exact": 0,
+    "within1": 0,
+    "worst": 9,
+    "coverage": 182
+   }
+  ],
+  "fajr": [
+   {
+    "angle": 17.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 18,
+    "exact": 139,
+    "within1": 182,
+    "worst": 1,
+    "coverage": 182
+   },
+   {
+    "angle": 18.25,
+    "exact": 0,
+    "within1": 53,
+    "worst": 3,
+    "coverage": 182
+   },
+   {
+    "angle": 18.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 5,
+    "coverage": 182
+   }
+  ]
+ },
+ "erfurt": {
+  "winterDays": 182,
+  "isha": [
+   {
+    "angle": 15,
+    "exact": 0,
+    "within1": 0,
+    "worst": 9,
+    "coverage": 182
+   },
+   {
+    "angle": 15.5,
+    "exact": 0,
+    "within1": 6,
+    "worst": 6,
+    "coverage": 182
+   },
+   {
+    "angle": 15.75,
+    "exact": 50,
+    "within1": 108,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 16,
+    "exact": 30,
+    "within1": 138,
+    "worst": 2,
+    "coverage": 182
+   },
+   {
+    "angle": 16.25,
+    "exact": 31,
+    "within1": 61,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 16.5,
+    "exact": 0,
+    "within1": 11,
+    "worst": 6,
+    "coverage": 182
+   },
+   {
+    "angle": 17,
+    "exact": 0,
+    "within1": 0,
+    "worst": 9,
+    "coverage": 182
+   }
+  ],
+  "fajr": [
+   {
+    "angle": 17.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 18,
+    "exact": 143,
+    "within1": 182,
+    "worst": 1,
+    "coverage": 182
+   },
+   {
+    "angle": 18.25,
+    "exact": 0,
+    "within1": 62,
+    "worst": 3,
+    "coverage": 182
+   },
+   {
+    "angle": 18.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 4,
+    "coverage": 182
+   }
+  ]
+ },
+ "saarbrucken": {
+  "winterDays": 182,
+  "isha": [
+   {
+    "angle": 15,
+    "exact": 0,
+    "within1": 0,
+    "worst": 8,
+    "coverage": 182
+   },
+   {
+    "angle": 15.5,
+    "exact": 0,
+    "within1": 6,
+    "worst": 5,
+    "coverage": 182
+   },
+   {
+    "angle": 15.75,
+    "exact": 51,
+    "within1": 105,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 16,
+    "exact": 37,
+    "within1": 142,
+    "worst": 2,
+    "coverage": 182
+   },
+   {
+    "angle": 16.25,
+    "exact": 35,
+    "within1": 68,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 16.5,
+    "exact": 0,
+    "within1": 16,
+    "worst": 5,
+    "coverage": 182
+   },
+   {
+    "angle": 17,
+    "exact": 0,
+    "within1": 0,
+    "worst": 9,
+    "coverage": 182
+   }
+  ],
+  "fajr": [
+   {
+    "angle": 17.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 4,
+    "coverage": 182
+   },
+   {
+    "angle": 18,
+    "exact": 140,
+    "within1": 182,
+    "worst": 1,
+    "coverage": 182
+   },
+   {
+    "angle": 18.25,
+    "exact": 0,
+    "within1": 72,
+    "worst": 3,
+    "coverage": 182
+   },
+   {
+    "angle": 18.5,
+    "exact": 0,
+    "within1": 0,
+    "worst": 4,
+    "coverage": 182
+   }
+  ]
+ }
+}

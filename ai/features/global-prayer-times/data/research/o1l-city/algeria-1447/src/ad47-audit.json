@@ -1,0 +1,68 @@
+{
+ "tag": "ad47",
+ "months": {
+  "1": {
+   "name": "Muharram",
+   "days": 29,
+   "from": "tsv ad47-01.tsv"
+  },
+  "2": {
+   "name": "Safar",
+   "days": 30,
+   "from": "tsv ad47-02.tsv"
+  },
+  "3": {
+   "name": "Rabi al-Awwal",
+   "days": 29,
+   "from": "tsv ad47-03.tsv"
+  },
+  "4": {
+   "name": "Rabi al-Thani",
+   "days": 30,
+   "from": "tsv ad47-04.tsv"
+  },
+  "5": {
+   "name": "Jumada al-Ula",
+   "days": 30,
+   "from": "fit11 dz-adrar-1447-jumada1.json"
+  },
+  "6": {
+   "name": "Jumada al-Thaniya",
+   "days": 29,
+   "from": "tsv ad47-06.tsv"
+  },
+  "7": {
+   "name": "Rajab",
+   "days": 30,
+   "from": "tsv ad47-07.tsv"
+  },
+  "8": {
+   "name": "Sha'ban",
+   "days": 30,
+   "from": "tsv ad47-08.tsv"
+  },
+  "9": {
+   "name": "Ramadan",
+   "days": 29,
+   "from": "tsv ad47-09.tsv"
+  },
+  "10": {
+   "name": "Shawwal",
+   "days": 30,
+   "from": "tsv ad47-10.tsv"
+  },
+  "11": {
+   "name": "Dhu al-Qada",
+   "days": 29,
+   "from": "tsv ad47-11.tsv"
+  },
+  "12": {
+   "name": "Dhu al-Hijja",
+   "days": 29,
+   "from": "tsv ad47-12.tsv"
+  }
+ },
+ "gaps": [],
+ "duplicates": [],
+ "outliers": []
+}

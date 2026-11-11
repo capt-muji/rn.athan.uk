@@ -1,0 +1,958 @@
+{
+ "western_clock": {
+  "urumqi": {
+   "2025": {
+    "fajr": {
+     "raw_mean": -120.08,
+     "raw_mae": 120.08,
+     "minus120_mean": -0.08,
+     "minus120_mae": 1.08
+    },
+    "sunrise": {
+     "raw_mean": -120.4,
+     "raw_mae": 120.4,
+     "minus120_mean": -0.4,
+     "minus120_mae": 0.46
+    },
+    "dhuhr": {
+     "raw_mean": -119.42,
+     "raw_mae": 119.42,
+     "minus120_mean": 0.58,
+     "minus120_mae": 0.58
+    },
+    "asr": {
+     "raw_mean": -119.43,
+     "raw_mae": 119.43,
+     "minus120_mean": 0.57,
+     "minus120_mae": 0.59
+    },
+    "maghrib": {
+     "raw_mean": -119.47,
+     "raw_mae": 119.47,
+     "minus120_mean": 0.53,
+     "minus120_mae": 0.56
+    },
+    "isha": {
+     "raw_mean": -119.46,
+     "raw_mae": 119.46,
+     "minus120_mean": 0.54,
+     "minus120_mae": 0.57
+    }
+   },
+   "2026": {
+    "fajr": {
+     "raw_mean": -120.07,
+     "raw_mae": 120.07,
+     "minus120_mean": -0.07,
+     "minus120_mae": 1.06
+    },
+    "sunrise": {
+     "raw_mean": -120.42,
+     "raw_mae": 120.42,
+     "minus120_mean": -0.42,
+     "minus120_mae": 0.47
+    },
+    "dhuhr": {
+     "raw_mean": -119.42,
+     "raw_mae": 119.42,
+     "minus120_mean": 0.58,
+     "minus120_mae": 0.58
+    },
+    "asr": {
+     "raw_mean": -119.43,
+     "raw_mae": 119.43,
+     "minus120_mean": 0.57,
+     "minus120_mae": 0.59
+    },
+    "maghrib": {
+     "raw_mean": -119.44,
+     "raw_mae": 119.44,
+     "minus120_mean": 0.56,
+     "minus120_mae": 0.59
+    },
+    "isha": {
+     "raw_mean": -119.51,
+     "raw_mae": 119.51,
+     "minus120_mean": 0.49,
+     "minus120_mae": 0.53
+    }
+   }
+  },
+  "turpan": {
+   "2025": {
+    "fajr": {
+     "raw_mean": -120,
+     "raw_mae": 120,
+     "minus120_mean": 0,
+     "minus120_mae": 1
+    },
+    "sunrise": {
+     "raw_mean": -120.35,
+     "raw_mae": 120.35,
+     "minus120_mean": -0.35,
+     "minus120_mae": 0.4
+    },
+    "dhuhr": {
+     "raw_mean": -119.4,
+     "raw_mae": 119.4,
+     "minus120_mean": 0.6,
+     "minus120_mae": 0.6
+    },
+    "asr": {
+     "raw_mean": -119.38,
+     "raw_mae": 119.38,
+     "minus120_mean": 0.62,
+     "minus120_mae": 0.63
+    },
+    "maghrib": {
+     "raw_mean": -119.39,
+     "raw_mae": 119.39,
+     "minus120_mean": 0.61,
+     "minus120_mae": 0.63
+    },
+    "isha": {
+     "raw_mean": -119.45,
+     "raw_mae": 119.45,
+     "minus120_mean": 0.55,
+     "minus120_mae": 0.58
+    }
+   },
+   "2026": {
+    "fajr": {
+     "raw_mean": -120.03,
+     "raw_mae": 120.03,
+     "minus120_mean": -0.03,
+     "minus120_mae": 1.02
+    },
+    "sunrise": {
+     "raw_mean": -120.38,
+     "raw_mae": 120.38,
+     "minus120_mean": -0.38,
+     "minus120_mae": 0.43
+    },
+    "dhuhr": {
+     "raw_mean": -119.41,
+     "raw_mae": 119.41,
+     "minus120_mean": 0.59,
+     "minus120_mae": 0.59
+    },
+    "asr": {
+     "raw_mean": -119.38,
+     "raw_mae": 119.38,
+     "minus120_mean": 0.62,
+     "minus120_mae": 0.63
+    },
+    "maghrib": {
+     "raw_mean": -119.41,
+     "raw_mae": 119.41,
+     "minus120_mean": 0.59,
+     "minus120_mae": 0.63
+    },
+    "isha": {
+     "raw_mean": -119.46,
+     "raw_mae": 119.46,
+     "minus120_mean": 0.54,
+     "minus120_mae": 0.59
+    }
+   }
+  },
+  "dunhuang": {
+   "2025": {
+    "fajr": {
+     "raw_mean": -120.22,
+     "raw_mae": 120.22,
+     "minus120_mean": -0.22,
+     "minus120_mae": 0.94
+    },
+    "sunrise": {
+     "raw_mean": -120.55,
+     "raw_mae": 120.55,
+     "minus120_mean": -0.55,
+     "minus120_mae": 0.57
+    },
+    "dhuhr": {
+     "raw_mean": -119.6,
+     "raw_mae": 119.6,
+     "minus120_mean": 0.4,
+     "minus120_mae": 0.41
+    },
+    "asr": {
+     "raw_mean": -119.58,
+     "raw_mae": 119.58,
+     "minus120_mean": 0.42,
+     "minus120_mae": 0.47
+    },
+    "maghrib": {
+     "raw_mean": -119.56,
+     "raw_mae": 119.56,
+     "minus120_mean": 0.44,
+     "minus120_mae": 0.48
+    },
+    "isha": {
+     "raw_mean": -119.53,
+     "raw_mae": 119.53,
+     "minus120_mean": 0.47,
+     "minus120_mae": 0.52
+    }
+   },
+   "2026": {
+    "fajr": {
+     "raw_mean": -120.22,
+     "raw_mae": 120.22,
+     "minus120_mean": -0.22,
+     "minus120_mae": 0.96
+    },
+    "sunrise": {
+     "raw_mean": -120.56,
+     "raw_mae": 120.56,
+     "minus120_mean": -0.56,
+     "minus120_mae": 0.59
+    },
+    "dhuhr": {
+     "raw_mean": -119.58,
+     "raw_mae": 119.58,
+     "minus120_mean": 0.42,
+     "minus120_mae": 0.43
+    },
+    "asr": {
+     "raw_mean": -119.61,
+     "raw_mae": 119.61,
+     "minus120_mean": 0.39,
+     "minus120_mae": 0.44
+    },
+    "maghrib": {
+     "raw_mean": -119.59,
+     "raw_mae": 119.59,
+     "minus120_mean": 0.41,
+     "minus120_mae": 0.45
+    },
+    "isha": {
+     "raw_mean": -119.51,
+     "raw_mae": 119.51,
+     "minus120_mean": 0.49,
+     "minus120_mae": 0.53
+    }
+   }
+  },
+  "lhasa": {
+   "2025": {
+    "fajr": {
+     "raw_mean": -119.92,
+     "raw_mae": 119.92,
+     "minus120_mean": 0.08,
+     "minus120_mae": 0.6
+    },
+    "sunrise": {
+     "raw_mean": -120.42,
+     "raw_mae": 120.42,
+     "minus120_mean": -0.42,
+     "minus120_mae": 0.45
+    },
+    "dhuhr": {
+     "raw_mean": -119.4,
+     "raw_mae": 119.4,
+     "minus120_mean": 0.6,
+     "minus120_mae": 0.6
+    },
+    "asr": {
+     "raw_mean": -119.42,
+     "raw_mae": 119.42,
+     "minus120_mean": 0.58,
+     "minus120_mae": 0.59
+    },
+    "maghrib": {
+     "raw_mean": -119.4,
+     "raw_mae": 119.4,
+     "minus120_mean": 0.6,
+     "minus120_mae": 0.61
+    },
+    "isha": {
+     "raw_mean": -119.43,
+     "raw_mae": 119.43,
+     "minus120_mean": 0.57,
+     "minus120_mae": 0.58
+    }
+   },
+   "2026": {
+    "fajr": {
+     "raw_mean": -119.92,
+     "raw_mae": 119.92,
+     "minus120_mean": 0.08,
+     "minus120_mae": 0.59
+    },
+    "sunrise": {
+     "raw_mean": -120.41,
+     "raw_mae": 120.41,
+     "minus120_mean": -0.41,
+     "minus120_mae": 0.43
+    },
+    "dhuhr": {
+     "raw_mean": -119.4,
+     "raw_mae": 119.4,
+     "minus120_mean": 0.6,
+     "minus120_mae": 0.6
+    },
+    "asr": {
+     "raw_mean": -119.43,
+     "raw_mae": 119.43,
+     "minus120_mean": 0.57,
+     "minus120_mae": 0.58
+    },
+    "maghrib": {
+     "raw_mean": -119.43,
+     "raw_mae": 119.43,
+     "minus120_mean": 0.57,
+     "minus120_mae": 0.58
+    },
+    "isha": {
+     "raw_mean": -119.43,
+     "raw_mae": 119.43,
+     "minus120_mean": 0.57,
+     "minus120_mae": 0.58
+    }
+   }
+  }
+ },
+ "between_year": {
+  "beijing": {
+   "2025_vs_2026": null,
+   "2026_vs_2027": {
+    "cells": 2190,
+    "identical": 0.539
+   },
+   "2027_vs_2028": {
+    "cells": 2190,
+    "identical": 0.494
+   },
+   "2028_vs_2029": {
+    "cells": 2190,
+    "identical": 0.753
+   }
+  },
+  "shanghai": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.861
+   },
+   "2026_vs_2027": {
+    "cells": 2190,
+    "identical": 0.582
+   },
+   "2027_vs_2028": {
+    "cells": 2190,
+    "identical": 0.603
+   },
+   "2028_vs_2029": {
+    "cells": 2190,
+    "identical": 0.801
+   }
+  },
+  "tianjin": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.814
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "chongqing": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.874
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "guangzhou": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.894
+   },
+   "2026_vs_2027": {
+    "cells": 2190,
+    "identical": 0.594
+   },
+   "2027_vs_2028": {
+    "cells": 2190,
+    "identical": 0.694
+   },
+   "2028_vs_2029": {
+    "cells": 2190,
+    "identical": 0.854
+   }
+  },
+  "kunming": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.884
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "urumqi": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.716
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "yinchuan": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.816
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "lanzhou": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.837
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "xining": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.832
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "xian": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.843
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "zhengzhou": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.832
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "jinan": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.83
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "shenyang": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.787
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "changchun": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.77
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "harbin": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.735
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "hohhot": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.801
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "chengdu": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.861
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "wuhan": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.857
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "changsha": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.884
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "nanjing": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.85
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "hangzhou": {
+   "2025_vs_2026": null,
+   "2026_vs_2027": {
+    "cells": 2190,
+    "identical": 0.575
+   },
+   "2027_vs_2028": {
+    "cells": 2190,
+    "identical": 0.611
+   },
+   "2028_vs_2029": {
+    "cells": 2190,
+    "identical": 0.806
+   }
+  },
+  "fuzhou": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.884
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "nanning": {
+   "2025_vs_2026": null,
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "guiyang": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.885
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "hefei": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.847
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "shijiazhuang": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.792
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "taiyuan": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.815
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "lhasa": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.818
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "dalian": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.807
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "dunhuang": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.744
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "guilin": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.887
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "haikou": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.9
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "kashgar": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.813
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "luoyang": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.846
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "nanchang": {
+   "2025_vs_2026": null,
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "ningbo": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.863
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "qingdao": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.816
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "quanzhou": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.874
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "sanya": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.897
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "shenzhen": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.888
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "suzhou": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.846
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "turpan": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.735
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  },
+  "xiamen": {
+   "2025_vs_2026": {
+    "cells": 2190,
+    "identical": 0.872
+   },
+   "2026_vs_2027": null,
+   "2027_vs_2028": null,
+   "2028_vs_2029": null
+  }
+ },
+ "harbin": {
+  "2025": {
+   "lon": 126.74,
+   "lat": 45.76,
+   "mae": 7.38
+  },
+  "2026": {
+   "lon": 126.74,
+   "lat": 45.76,
+   "mae": 1.23
+  }
+ },
+ "kashgar_isha": {
+  "2025": {
+   "isha_residual_p05": -1,
+   "isha_residual_p95": 2.5,
+   "isha_minus_maghrib_min": -1337,
+   "isha_minus_maghrib_max": 107,
+   "isha_minus_maghrib_mean": -143.9,
+   "first_days": [
+    {
+     "month": 1,
+     "day": 1,
+     "fajr": "08:40 AM",
+     "sunrise": "10:16 AM",
+     "dhuhr": "03:00 PM",
+     "asr": "05:25 PM",
+     "maghrib": "07:43 PM",
+     "isha": "09:14 PM"
+    },
+    {
+     "month": 1,
+     "day": 2,
+     "fajr": "08:40 AM",
+     "sunrise": "10:16 AM",
+     "dhuhr": "03:00 PM",
+     "asr": "05:26 PM",
+     "maghrib": "07:44 PM",
+     "isha": "09:15 PM"
+    },
+    {
+     "month": 1,
+     "day": 3,
+     "fajr": "08:41 AM",
+     "sunrise": "10:16 AM",
+     "dhuhr": "03:01 PM",
+     "asr": "05:27 PM",
+     "maghrib": "07:44 PM",
+     "isha": "09:15 PM"
+    }
+   ],
+   "june_days": [
+    {
+     "month": 6,
+     "day": 1,
+     "fajr": "05:35 AM",
+     "sunrise": "07:31 AM",
+     "dhuhr": "02:54 PM",
+     "asr": "06:51 PM",
+     "maghrib": "10:17 PM",
+     "isha": "12:06 AM"
+    },
+    {
+     "month": 6,
+     "day": 2,
+     "fajr": "05:34 AM",
+     "sunrise": "07:31 AM",
+     "dhuhr": "02:54 PM",
+     "asr": "06:51 PM",
+     "maghrib": "10:18 PM",
+     "isha": "12:07 AM"
+    },
+    {
+     "month": 6,
+     "day": 3,
+     "fajr": "05:33 AM",
+     "sunrise": "07:30 AM",
+     "dhuhr": "02:55 PM",
+     "asr": "06:51 PM",
+     "maghrib": "10:18 PM",
+     "isha": "12:08 AM"
+    }
+   ],
+   "december_days": [
+    {
+     "month": 12,
+     "day": 1,
+     "fajr": "08:22 AM",
+     "sunrise": "09:56 AM",
+     "dhuhr": "02:45 PM",
+     "asr": "05:15 PM",
+     "maghrib": "07:34 PM",
+     "isha": "09:03 PM"
+    },
+    {
+     "month": 12,
+     "day": 2,
+     "fajr": "08:23 AM",
+     "sunrise": "09:57 AM",
+     "dhuhr": "02:46 PM",
+     "asr": "05:15 PM",
+     "maghrib": "07:33 PM",
+     "isha": "09:03 PM"
+    },
+    {
+     "month": 12,
+     "day": 3,
+     "fajr": "08:23 AM",
+     "sunrise": "09:58 AM",
+     "dhuhr": "02:46 PM",
+     "asr": "05:15 PM",
+     "maghrib": "07:33 PM",
+     "isha": "09:03 PM"
+    }
+   ]
+  },
+  "2026": {
+   "isha_residual_p05": -1,
+   "isha_residual_p95": 2.6,
+   "isha_minus_maghrib_min": -1337,
+   "isha_minus_maghrib_max": 106,
+   "isha_minus_maghrib_mean": -144,
+   "first_days": [
+    {
+     "month": 1,
+     "day": 1,
+     "fajr": "08:40 AM",
+     "sunrise": "10:16 AM",
+     "dhuhr": "03:00 PM",
+     "asr": "05:25 PM",
+     "maghrib": "07:43 PM",
+     "isha": "09:14 PM"
+    },
+    {
+     "month": 1,
+     "day": 2,
+     "fajr": "08:40 AM",
+     "sunrise": "10:16 AM",
+     "dhuhr": "03:00 PM",
+     "asr": "05:26 PM",
+     "maghrib": "07:43 PM",
+     "isha": "09:14 PM"
+    },
+    {
+     "month": 1,
+     "day": 3,
+     "fajr": "08:41 AM",
+     "sunrise": "10:16 AM",
+     "dhuhr": "03:01 PM",
+     "asr": "05:26 PM",
+     "maghrib": "07:44 PM",
+     "isha": "09:15 PM"
+    }
+   ],
+   "june_days": [
+    {
+     "month": 6,
+     "day": 1,
+     "fajr": "05:35 AM",
+     "sunrise": "07:31 AM",
+     "dhuhr": "02:54 PM",
+     "asr": "06:51 PM",
+     "maghrib": "10:17 PM",
+     "isha": "12:05 AM"
+    },
+    {
+     "month": 6,
+     "day": 2,
+     "fajr": "05:34 AM",
+     "sunrise": "07:31 AM",
+     "dhuhr": "02:54 PM",
+     "asr": "06:51 PM",
+     "maghrib": "10:18 PM",
+     "isha": "12:06 AM"
+    },
+    {
+     "month": 6,
+     "day": 3,
+     "fajr": "05:34 AM",
+     "sunrise": "07:30 AM",
+     "dhuhr": "02:55 PM",
+     "asr": "06:51 PM",
+     "maghrib": "10:18 PM",
+     "isha": "12:07 AM"
+    }
+   ],
+   "december_days": [
+    {
+     "month": 12,
+     "day": 1,
+     "fajr": "08:21 AM",
+     "sunrise": "09:55 AM",
+     "dhuhr": "02:45 PM",
+     "asr": "05:15 PM",
+     "maghrib": "07:34 PM",
+     "isha": "09:03 PM"
+    },
+    {
+     "month": 12,
+     "day": 2,
+     "fajr": "08:22 AM",
+     "sunrise": "09:56 AM",
+     "dhuhr": "02:46 PM",
+     "asr": "05:15 PM",
+     "maghrib": "07:33 PM",
+     "isha": "09:03 PM"
+    },
+    {
+     "month": 12,
+     "day": 3,
+     "fajr": "08:23 AM",
+     "sunrise": "09:57 AM",
+     "dhuhr": "02:46 PM",
+     "asr": "05:15 PM",
+     "maghrib": "07:33 PM",
+     "isha": "09:03 PM"
+    }
+   ]
+  }
+ }
+}

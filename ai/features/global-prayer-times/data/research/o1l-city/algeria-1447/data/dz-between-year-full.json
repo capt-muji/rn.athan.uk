@@ -1,0 +1,540 @@
+{
+ "meta": {
+  "engine": "adhan-js 4.4.6",
+  "site": {
+   "name": "Alger",
+   "lat": 36.7538,
+   "lon": 3.0588
+  },
+  "tz": "Africa/Algiers"
+ },
+ "holdout1448": {
+  "months": [
+   1,
+   5,
+   6,
+   7,
+   9,
+   11
+  ],
+  "days": 179,
+  "frozen": {
+   "exact": 886,
+   "within1": 1045,
+   "n": 1074,
+   "worst": 3,
+   "exactPct": 82.5,
+   "per": {
+    "fajr": {
+     "exact": 150,
+     "within1": 179,
+     "worst": 1,
+     "n": 179
+    },
+    "sunrise": {
+     "exact": 169,
+     "within1": 179,
+     "worst": 1,
+     "n": 179
+    },
+    "dhuhr": {
+     "exact": 174,
+     "within1": 179,
+     "worst": 1,
+     "n": 179
+    },
+    "asr": {
+     "exact": 104,
+     "within1": 179,
+     "worst": 1,
+     "n": 179
+    },
+    "magrib": {
+     "exact": 166,
+     "within1": 179,
+     "worst": 1,
+     "n": 179
+    },
+    "isha": {
+     "exact": 123,
+     "within1": 150,
+     "worst": 3,
+     "n": 179
+    }
+   }
+  },
+  "isha17": {
+   "exact": 932,
+   "within1": 1074,
+   "n": 1074,
+   "worst": 1,
+   "exactPct": 86.8,
+   "per": {
+    "fajr": {
+     "exact": 150,
+     "within1": 179,
+     "worst": 1,
+     "n": 179
+    },
+    "sunrise": {
+     "exact": 169,
+     "within1": 179,
+     "worst": 1,
+     "n": 179
+    },
+    "dhuhr": {
+     "exact": 174,
+     "within1": 179,
+     "worst": 1,
+     "n": 179
+    },
+    "asr": {
+     "exact": 104,
+     "within1": 179,
+     "worst": 1,
+     "n": 179
+    },
+    "magrib": {
+     "exact": 166,
+     "within1": 179,
+     "worst": 1,
+     "n": 179
+    },
+    "isha": {
+     "exact": 169,
+     "within1": 179,
+     "worst": 1,
+     "n": 179
+    }
+   }
+  },
+  "month1": {
+   "days": 30,
+   "frozen": {
+    "exact": 129,
+    "within1": 151,
+    "n": 180,
+    "worst": 3,
+    "exactPct": 71.7,
+    "per": {
+     "fajr": {
+      "exact": 17,
+      "within1": 30,
+      "worst": 1,
+      "n": 30
+     },
+     "sunrise": {
+      "exact": 28,
+      "within1": 30,
+      "worst": 1,
+      "n": 30
+     },
+     "dhuhr": {
+      "exact": 30,
+      "within1": 30,
+      "worst": 0,
+      "n": 30
+     },
+     "asr": {
+      "exact": 27,
+      "within1": 30,
+      "worst": 1,
+      "n": 30
+     },
+     "magrib": {
+      "exact": 27,
+      "within1": 30,
+      "worst": 1,
+      "n": 30
+     },
+     "isha": {
+      "exact": 0,
+      "within1": 1,
+      "worst": 3,
+      "n": 30
+     }
+    }
+   }
+  },
+  "month11": {
+   "days": 30,
+   "frozen": {
+    "exact": 131,
+    "within1": 180,
+    "n": 180,
+    "worst": 1,
+    "exactPct": 72.8,
+    "per": {
+     "fajr": {
+      "exact": 22,
+      "within1": 30,
+      "worst": 1,
+      "n": 30
+     },
+     "sunrise": {
+      "exact": 28,
+      "within1": 30,
+      "worst": 1,
+      "n": 30
+     },
+     "dhuhr": {
+      "exact": 30,
+      "within1": 30,
+      "worst": 0,
+      "n": 30
+     },
+     "asr": {
+      "exact": 15,
+      "within1": 30,
+      "worst": 1,
+      "n": 30
+     },
+     "magrib": {
+      "exact": 28,
+      "within1": 30,
+      "worst": 1,
+      "n": 30
+     },
+     "isha": {
+      "exact": 8,
+      "within1": 30,
+      "worst": 1,
+      "n": 30
+     }
+    }
+   }
+  }
+ },
+ "sameCellDrift": {
+  "1": {
+   "month": 1,
+   "gapDays": 354,
+   "days": 29,
+   "per": {
+    "fajr": {
+     "printedMean": -8.17,
+     "modelledMean": -8.14,
+     "residMean": -0.03,
+     "residMax": 0.87,
+     "identicalCells": 0,
+     "n": 29
+    },
+    "sunrise": {
+     "printedMean": -5.9,
+     "modelledMean": -5.78,
+     "residMean": -0.12,
+     "residMax": 0.82,
+     "identicalCells": 0,
+     "n": 29
+    },
+    "dhuhr": {
+     "printedMean": -1.76,
+     "modelledMean": -1.75,
+     "residMean": -0.01,
+     "residMax": 0.77,
+     "identicalCells": 0,
+     "n": 29
+    },
+    "asr": {
+     "printedMean": -1.28,
+     "modelledMean": -1.08,
+     "residMean": -0.2,
+     "residMax": 0.93,
+     "identicalCells": 6,
+     "n": 29
+    },
+    "magrib": {
+     "printedMean": 2.34,
+     "modelledMean": 2.44,
+     "residMean": -0.1,
+     "residMax": 1.1,
+     "identicalCells": 3,
+     "n": 29
+    },
+    "isha": {
+     "printedMean": 4.59,
+     "modelledMean": 4.53,
+     "residMean": 0.06,
+     "residMax": 0.92,
+     "identicalCells": 1,
+     "n": 29
+    }
+   }
+  },
+  "5": {
+   "month": 5,
+   "gapDays": 354,
+   "days": 30,
+   "per": {
+    "fajr": {
+     "printedMean": -9.83,
+     "modelledMean": -9.87,
+     "residMean": 0.04,
+     "residMax": 0.95,
+     "identicalCells": 0,
+     "n": 30
+    },
+    "sunrise": {
+     "printedMean": -11.03,
+     "modelledMean": -11.15,
+     "residMean": 0.11,
+     "residMax": 0.57,
+     "identicalCells": 0,
+     "n": 30
+    },
+    "dhuhr": {
+     "printedMean": 0.17,
+     "modelledMean": 0.2,
+     "residMean": -0.03,
+     "residMax": 0.92,
+     "identicalCells": 11,
+     "n": 30
+    },
+    "asr": {
+     "printedMean": 8.8,
+     "modelledMean": 8.85,
+     "residMean": -0.05,
+     "residMax": 0.98,
+     "identicalCells": 0,
+     "n": 30
+    },
+    "magrib": {
+     "printedMean": 11.37,
+     "modelledMean": 11.48,
+     "residMean": -0.11,
+     "residMax": 1.05,
+     "identicalCells": 0,
+     "n": 30
+    },
+    "isha": {
+     "printedMean": 10.23,
+     "modelledMean": 10.23,
+     "residMean": 0.01,
+     "residMax": 0.85,
+     "identicalCells": 0,
+     "n": 30
+    }
+   }
+  },
+  "6": {
+   "month": 6,
+   "gapDays": 354,
+   "days": 29,
+   "per": {
+    "fajr": {
+     "printedMean": -9,
+     "modelledMean": -8.9,
+     "residMean": -0.1,
+     "residMax": 0.87,
+     "identicalCells": 0,
+     "n": 29
+    },
+    "sunrise": {
+     "printedMean": -10.41,
+     "modelledMean": -10.12,
+     "residMean": -0.3,
+     "residMax": 0.87,
+     "identicalCells": 0,
+     "n": 29
+    },
+    "dhuhr": {
+     "printedMean": -4.03,
+     "modelledMean": -4.01,
+     "residMean": -0.03,
+     "residMax": 0.95,
+     "identicalCells": 0,
+     "n": 29
+    },
+    "asr": {
+     "printedMean": 1.03,
+     "modelledMean": 0.87,
+     "residMean": 0.16,
+     "residMax": 1.13,
+     "identicalCells": 5,
+     "n": 29
+    },
+    "magrib": {
+     "printedMean": 2.03,
+     "modelledMean": 1.99,
+     "residMean": 0.04,
+     "residMax": 0.72,
+     "identicalCells": 2,
+     "n": 29
+    },
+    "isha": {
+     "printedMean": 0.79,
+     "modelledMean": 0.84,
+     "residMean": -0.05,
+     "residMax": 0.82,
+     "identicalCells": 4,
+     "n": 29
+    }
+   }
+  },
+  "7": {
+   "month": 7,
+   "gapDays": 355,
+   "days": 29,
+   "per": {
+    "fajr": {
+     "printedMean": -2.76,
+     "modelledMean": -2.84,
+     "residMean": 0.08,
+     "residMax": 0.88,
+     "identicalCells": 6,
+     "n": 29
+    },
+    "sunrise": {
+     "printedMean": -2.24,
+     "modelledMean": -2.31,
+     "residMean": 0.06,
+     "residMax": 0.75,
+     "identicalCells": 5,
+     "n": 29
+    },
+    "dhuhr": {
+     "printedMean": -4.69,
+     "modelledMean": -4.72,
+     "residMean": 0.03,
+     "residMax": 0.95,
+     "identicalCells": 0,
+     "n": 29
+    },
+    "asr": {
+     "printedMean": -6.86,
+     "modelledMean": -7.02,
+     "residMean": 0.16,
+     "residMax": 1.15,
+     "identicalCells": 0,
+     "n": 29
+    },
+    "magrib": {
+     "printedMean": -7.34,
+     "modelledMean": -7.24,
+     "residMean": -0.11,
+     "residMax": 0.83,
+     "identicalCells": 0,
+     "n": 29
+    },
+    "isha": {
+     "printedMean": -6.69,
+     "modelledMean": -6.75,
+     "residMean": 0.06,
+     "residMax": 0.82,
+     "identicalCells": 0,
+     "n": 29
+    }
+   }
+  },
+  "9": {
+   "month": 9,
+   "gapDays": 354,
+   "days": 29,
+   "per": {
+    "fajr": {
+     "printedMean": 14.34,
+     "modelledMean": 14.27,
+     "residMean": 0.08,
+     "residMax": 0.88,
+     "identicalCells": 0,
+     "n": 29
+    },
+    "sunrise": {
+     "printedMean": 14.69,
+     "modelledMean": 14.69,
+     "residMean": 0,
+     "residMax": 0.88,
+     "identicalCells": 0,
+     "n": 29
+    },
+    "dhuhr": {
+     "printedMean": 1.79,
+     "modelledMean": 1.9,
+     "residMean": -0.11,
+     "residMax": 0.7,
+     "identicalCells": 3,
+     "n": 29
+    },
+    "asr": {
+     "printedMean": -6.93,
+     "modelledMean": -6.91,
+     "residMean": -0.03,
+     "residMax": 0.92,
+     "identicalCells": 0,
+     "n": 29
+    },
+    "magrib": {
+     "printedMean": -11.28,
+     "modelledMean": -10.92,
+     "residMean": -0.36,
+     "residMax": 0.93,
+     "identicalCells": 0,
+     "n": 29
+    },
+    "isha": {
+     "printedMean": -10.59,
+     "modelledMean": -10.5,
+     "residMean": -0.09,
+     "residMax": 0.57,
+     "identicalCells": 0,
+     "n": 29
+    }
+   }
+  },
+  "11": {
+   "month": 11,
+   "gapDays": 354,
+   "days": 29,
+   "per": {
+    "fajr": {
+     "printedMean": 17.07,
+     "modelledMean": 16.96,
+     "residMean": 0.11,
+     "residMax": 0.73,
+     "identicalCells": 0,
+     "n": 29
+    },
+    "sunrise": {
+     "printedMean": 13.14,
+     "modelledMean": 13.1,
+     "residMean": 0.04,
+     "residMax": 0.83,
+     "identicalCells": 0,
+     "n": 29
+    },
+    "dhuhr": {
+     "printedMean": 1.48,
+     "modelledMean": 1.62,
+     "residMean": -0.13,
+     "residMax": 0.95,
+     "identicalCells": 6,
+     "n": 29
+    },
+    "asr": {
+     "printedMean": -1.79,
+     "modelledMean": -1.74,
+     "residMean": -0.05,
+     "residMax": 0.73,
+     "identicalCells": 0,
+     "n": 29
+    },
+    "magrib": {
+     "printedMean": -9.83,
+     "modelledMean": -9.82,
+     "residMean": 0,
+     "residMax": 0.88,
+     "identicalCells": 0,
+     "n": 29
+    },
+    "isha": {
+     "printedMean": -13.38,
+     "modelledMean": -13.11,
+     "residMean": -0.27,
+     "residMax": 1.18,
+     "identicalCells": 0,
+     "n": 29
+    }
+   }
+  }
+ }
+}

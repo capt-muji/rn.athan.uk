@@ -1,0 +1,26 @@
+[
+ {
+  "tag": "lt-vilnius",
+  "file": "lt-vilnius-diyanet.json",
+  "lat": 54.6872,
+  "lng": 25.2797,
+  "fa": 18,
+  "is": 16
+ },
+ {
+  "tag": "lt-kaunas",
+  "file": "lt-kaunas-diyanet.json",
+  "lat": 54.8985,
+  "lng": 23.9036,
+  "fa": 18,
+  "is": 16
+ },
+ {
+  "tag": "lt-klaipeda",
+  "file": "lt-klaipeda-diyanet.json",
+  "lat": 55.7033,
+  "lng": 21.1443,
+  "fa": 18,
+  "is": 16
+ }
+]

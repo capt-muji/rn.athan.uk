@@ -1,0 +1,1159 @@
+{
+ "job": "o1l-31-multi",
+ "meta": {
+  "engine": "adhan 4.4.6",
+  "discipline": "second resolution then explicit rounding; TZ per country"
+ },
+ "fits": [
+  {
+   "tag": "fi-tampere",
+   "file": "fi-tampere-2026.json",
+   "lat": 61.4978,
+   "lng": 23.761,
+   "rows": 334,
+   "years": [
+    "2025",
+    "2026"
+   ],
+   "claim": {
+    "fa": 18,
+    "is": 17,
+    "fajr": {
+     "margin": 14.5,
+     "mode": "ceil",
+     "exact": 0,
+     "within1": 0,
+     "worst": 122,
+     "coverage": 204
+    },
+    "isha": {
+     "margin": -15,
+     "mode": "floor",
+     "exact": 0,
+     "within1": 0,
+     "worst": 245,
+     "coverage": 209
+    }
+   },
+   "solar": {
+    "sunrise": {
+     "margin": -1,
+     "mode": "floor",
+     "exact": 106,
+     "within1": 245,
+     "worst": 4
+    },
+    "dhuhr": {
+     "margin": 0.5,
+     "mode": "floor",
+     "exact": 301,
+     "within1": 334,
+     "worst": 1
+    },
+    "asr1": {
+     "margin": 1,
+     "mode": "floor",
+     "exact": 147,
+     "within1": 228,
+     "worst": 61
+    },
+    "asr2": {
+     "margin": -15,
+     "mode": "floor",
+     "exact": 9,
+     "within1": 20,
+     "worst": 121
+    },
+    "maghrib": {
+     "margin": 3,
+     "mode": "floor",
+     "exact": 102,
+     "within1": 235,
+     "worst": 5
+    }
+   },
+   "perYear": [
+    {
+     "year": "2025",
+     "days": 1,
+     "fajr": {
+      "margin": 14.5,
+      "mode": "ceil",
+      "exact": 0,
+      "within1": 0,
+      "worst": 0,
+      "coverage": 0
+     },
+     "isha": {
+      "margin": -15,
+      "mode": "floor",
+      "exact": 0,
+      "within1": 0,
+      "worst": 0,
+      "coverage": 0
+     },
+     "sunrise": {
+      "margin": -2,
+      "mode": "floor",
+      "exact": 1,
+      "within1": 1,
+      "worst": 0
+     },
+     "maghrib": {
+      "margin": 4,
+      "mode": "floor",
+      "exact": 1,
+      "within1": 1,
+      "worst": 0
+     }
+    },
+    {
+     "year": "2026",
+     "days": 333,
+     "fajr": {
+      "margin": 14.5,
+      "mode": "ceil",
+      "exact": 0,
+      "within1": 0,
+      "worst": 122,
+      "coverage": 204
+     },
+     "isha": {
+      "margin": -15,
+      "mode": "floor",
+      "exact": 0,
+      "within1": 0,
+      "worst": 245,
+      "coverage": 209
+     },
+     "sunrise": {
+      "margin": -1,
+      "mode": "floor",
+      "exact": 106,
+      "within1": 244,
+      "worst": 4
+     },
+     "maghrib": {
+      "margin": 3,
+      "mode": "floor",
+      "exact": 102,
+      "within1": 234,
+      "worst": 5
+     }
+    }
+   ],
+   "free": {
+    "fajr": [
+     {
+      "params": {
+       "fa": 14.5,
+       "kind": "bare"
+      },
+      "margin": -4,
+      "mode": "floor",
+      "exact": 83,
+      "within1": 143,
+      "worst": 220,
+      "coverage": 334
+     },
+     {
+      "params": {
+       "fa": 14,
+       "kind": "bare"
+      },
+      "margin": -8.5,
+      "mode": "floor",
+      "exact": 82,
+      "within1": 140,
+      "worst": 223,
+      "coverage": 334
+     },
+     {
+      "params": {
+       "fa": 14.25,
+       "kind": "bare"
+      },
+      "margin": -6.5,
+      "mode": "floor",
+      "exact": 79,
+      "within1": 128,
+      "worst": 222,
+      "coverage": 334
+     },
+     {
+      "params": {
+       "fa": 15,
+       "kind": "bare"
+      },
+      "margin": 0.5,
+      "mode": "floor",
+      "exact": 78,
+      "within1": 129,
+      "worst": 218,
+      "coverage": 334
+     }
+    ],
+    "isha": [
+     {
+      "params": {
+       "fa": 11,
+       "kind": "bare"
+      },
+      "margin": 10,
+      "mode": "floor",
+      "exact": 0,
+      "within1": 0,
+      "worst": 1425,
+      "coverage": 334
+     },
+     {
+      "params": {
+       "fa": 11.25,
+       "kind": "bare"
+      },
+      "margin": 10,
+      "mode": "floor",
+      "exact": 0,
+      "within1": 0,
+      "worst": 1425,
+      "coverage": 334
+     },
+     {
+      "params": {
+       "fa": 11.5,
+       "kind": "bare"
+      },
+      "margin": 10,
+      "mode": "floor",
+      "exact": 0,
+      "within1": 0,
+      "worst": 1425,
+      "coverage": 334
+     },
+     {
+      "params": {
+       "fa": 11.75,
+       "kind": "bare"
+      },
+      "margin": 10,
+      "mode": "floor",
+      "exact": 0,
+      "within1": 0,
+      "worst": 1425,
+      "coverage": 334
+     }
+    ]
+   },
+   "amplitude": {
+    "jul": {
+     "date": "2026-07-15",
+     "computedGapMin": null,
+     "chartGapMin": -76
+    }
+   }
+  },
+  {
+   "tag": "fi-turku",
+   "file": "fi-turku-2026.json",
+   "lat": 60.4518,
+   "lng": 22.2666,
+   "rows": 365,
+   "years": [
+    "2026"
+   ],
+   "claim": {
+    "fa": 18,
+    "is": 17,
+    "fajr": {
+     "margin": 14.5,
+     "mode": "ceil",
+     "exact": 0,
+     "within1": 0,
+     "worst": 117,
+     "coverage": 241
+    },
+    "isha": {
+     "margin": -15,
+     "mode": "floor",
+     "exact": 0,
+     "within1": 0,
+     "worst": 148,
+     "coverage": 247
+    }
+   },
+   "solar": {
+    "sunrise": {
+     "margin": 0,
+     "mode": "floor",
+     "exact": 156,
+     "within1": 296,
+     "worst": 61
+    },
+    "dhuhr": {
+     "margin": 1,
+     "mode": "floor",
+     "exact": 312,
+     "within1": 363,
+     "worst": 60
+    },
+    "asr1": {
+     "margin": 1,
+     "mode": "floor",
+     "exact": 158,
+     "within1": 233,
+     "worst": 60
+    },
+    "asr2": {
+     "margin": -15,
+     "mode": "floor",
+     "exact": 0,
+     "within1": 5,
+     "worst": 96
+    },
+    "maghrib": {
+     "margin": 1.5,
+     "mode": "floor",
+     "exact": 167,
+     "within1": 320,
+     "worst": 60
+    }
+   },
+   "perYear": [
+    {
+     "year": "2026",
+     "days": 365,
+     "fajr": {
+      "margin": 14.5,
+      "mode": "ceil",
+      "exact": 0,
+      "within1": 0,
+      "worst": 117,
+      "coverage": 241
+     },
+     "isha": {
+      "margin": -15,
+      "mode": "floor",
+      "exact": 0,
+      "within1": 0,
+      "worst": 148,
+      "coverage": 247
+     },
+     "sunrise": {
+      "margin": 0,
+      "mode": "floor",
+      "exact": 156,
+      "within1": 296,
+      "worst": 61
+     },
+     "maghrib": {
+      "margin": 1.5,
+      "mode": "floor",
+      "exact": 167,
+      "within1": 320,
+      "worst": 60
+     }
+    }
+   ],
+   "free": {
+    "fajr": [
+     {
+      "params": {
+       "fa": 15.25,
+       "kind": "bare"
+      },
+      "margin": 3,
+      "mode": "floor",
+      "exact": 124,
+      "within1": 149,
+      "worst": 222,
+      "coverage": 365
+     },
+     {
+      "params": {
+       "fa": 15.5,
+       "kind": "bare"
+      },
+      "margin": 5,
+      "mode": "floor",
+      "exact": 121,
+      "within1": 149,
+      "worst": 221,
+      "coverage": 365
+     },
+     {
+      "params": {
+       "fa": 15,
+       "kind": "bare"
+      },
+      "margin": 1,
+      "mode": "floor",
+      "exact": 120,
+      "within1": 150,
+      "worst": 223,
+      "coverage": 365
+     },
+     {
+      "params": {
+       "fa": 15.75,
+       "kind": "bare"
+      },
+      "margin": 7,
+      "mode": "floor",
+      "exact": 114,
+      "within1": 147,
+      "worst": 219,
+      "coverage": 365
+     }
+    ],
+    "isha": [
+     {
+      "params": {
+       "fa": 11,
+       "kind": "bare"
+      },
+      "margin": 9.5,
+      "mode": "ceil",
+      "exact": 1,
+      "within1": 1,
+      "worst": 1436,
+      "coverage": 365
+     },
+     {
+      "params": {
+       "fa": 11.25,
+       "kind": "bare"
+      },
+      "margin": 9.5,
+      "mode": "ceil",
+      "exact": 1,
+      "within1": 1,
+      "worst": 1436,
+      "coverage": 365
+     },
+     {
+      "params": {
+       "fa": 11.5,
+       "kind": "bare"
+      },
+      "margin": 9.5,
+      "mode": "ceil",
+      "exact": 1,
+      "within1": 1,
+      "worst": 1436,
+      "coverage": 365
+     },
+     {
+      "params": {
+       "fa": 11.75,
+       "kind": "bare"
+      },
+      "margin": 9.5,
+      "mode": "ceil",
+      "exact": 1,
+      "within1": 1,
+      "worst": 1436,
+      "coverage": 365
+     }
+    ]
+   },
+   "amplitude": {
+    "jan": {
+     "date": "2026-01-15",
+     "computedGapMin": -159.7,
+     "chartGapMin": -133
+    },
+    "jul": {
+     "date": "2026-07-15",
+     "computedGapMin": null,
+     "chartGapMin": -82
+    }
+   }
+  },
+  {
+   "tag": "fi-jyvaskyla",
+   "file": "fi-jyvaskyla-2026.json",
+   "lat": 62.2415,
+   "lng": 25.7209,
+   "rows": 353,
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "claim": {
+    "fa": 18,
+    "is": 17,
+    "fajr": {
+     "margin": 0.5,
+     "mode": "floor",
+     "exact": 168,
+     "within1": 201,
+     "worst": 92,
+     "coverage": 223
+    },
+    "isha": {
+     "margin": 0.5,
+     "mode": "floor",
+     "exact": 145,
+     "within1": 205,
+     "worst": 96,
+     "coverage": 228
+    }
+   },
+   "solar": {
+    "sunrise": {
+     "margin": 0.5,
+     "mode": "floor",
+     "exact": 275,
+     "within1": 353,
+     "worst": 1
+    },
+    "dhuhr": {
+     "margin": 0.5,
+     "mode": "floor",
+     "exact": 318,
+     "within1": 353,
+     "worst": 1
+    },
+    "asr1": {
+     "margin": -1,
+     "mode": "floor",
+     "exact": 75,
+     "within1": 178,
+     "worst": 5
+    },
+    "asr2": {
+     "margin": -13.5,
+     "mode": "floor",
+     "exact": 12,
+     "within1": 29,
+     "worst": 68
+    },
+    "maghrib": {
+     "margin": 0.5,
+     "mode": "floor",
+     "exact": 279,
+     "within1": 353,
+     "worst": 1
+    }
+   },
+   "perYear": [
+    {
+     "year": "2026",
+     "days": 323,
+     "fajr": {
+      "margin": 0.5,
+      "mode": "floor",
+      "exact": 141,
+      "within1": 171,
+      "worst": 92,
+      "coverage": 193
+     },
+     "isha": {
+      "margin": 0.5,
+      "mode": "floor",
+      "exact": 120,
+      "within1": 175,
+      "worst": 96,
+      "coverage": 198
+     },
+     "sunrise": {
+      "margin": 0.5,
+      "mode": "floor",
+      "exact": 252,
+      "within1": 323,
+      "worst": 1
+     },
+     "maghrib": {
+      "margin": 0.5,
+      "mode": "floor",
+      "exact": 254,
+      "within1": 323,
+      "worst": 1
+     }
+    },
+    {
+     "year": "2027",
+     "days": 30,
+     "fajr": {
+      "margin": 0.5,
+      "mode": "floor",
+      "exact": 27,
+      "within1": 30,
+      "worst": 1,
+      "coverage": 30
+     },
+     "isha": {
+      "margin": 0.5,
+      "mode": "floor",
+      "exact": 25,
+      "within1": 30,
+      "worst": 1,
+      "coverage": 30
+     },
+     "sunrise": {
+      "margin": 0.5,
+      "mode": "floor",
+      "exact": 23,
+      "within1": 30,
+      "worst": 1
+     },
+     "maghrib": {
+      "margin": 0.5,
+      "mode": "floor",
+      "exact": 25,
+      "within1": 30,
+      "worst": 1
+     }
+    }
+   ],
+   "free": {
+    "fajr": [
+     {
+      "params": {
+       "fa": 18,
+       "kind": "bare"
+      },
+      "margin": 0.5,
+      "mode": "floor",
+      "exact": 168,
+      "within1": 201,
+      "worst": 188,
+      "coverage": 353
+     },
+     {
+      "params": {
+       "fa": 17.75,
+       "kind": "bare"
+      },
+      "margin": -2,
+      "mode": "floor",
+      "exact": 158,
+      "within1": 195,
+      "worst": 189,
+      "coverage": 353
+     },
+     {
+      "params": {
+       "fa": 18.25,
+       "kind": "bare"
+      },
+      "margin": 2.5,
+      "mode": "floor",
+      "exact": 156,
+      "within1": 195,
+      "worst": 186,
+      "coverage": 353
+     },
+     {
+      "params": {
+       "fa": 17.5,
+       "kind": "bare"
+      },
+      "margin": -4,
+      "mode": "floor",
+      "exact": 150,
+      "within1": 184,
+      "worst": 191,
+      "coverage": 353
+     }
+    ],
+    "isha": [
+     {
+      "params": {
+       "fa": 11,
+       "kind": "bare"
+      },
+      "margin": -8.5,
+      "mode": "floor",
+      "exact": 126,
+      "within1": 169,
+      "worst": 1475,
+      "coverage": 353
+     },
+     {
+      "params": {
+       "fa": 11.25,
+       "kind": "bare"
+      },
+      "margin": -8.5,
+      "mode": "floor",
+      "exact": 126,
+      "within1": 169,
+      "worst": 1475,
+      "coverage": 353
+     },
+     {
+      "params": {
+       "fa": 11.5,
+       "kind": "bare"
+      },
+      "margin": -8.5,
+      "mode": "floor",
+      "exact": 126,
+      "within1": 169,
+      "worst": 1475,
+      "coverage": 353
+     },
+     {
+      "params": {
+       "fa": 11.75,
+       "kind": "bare"
+      },
+      "margin": -8.5,
+      "mode": "floor",
+      "exact": 126,
+      "within1": 169,
+      "worst": 1475,
+      "coverage": 353
+     }
+    ]
+   },
+   "amplitude": {
+    "jan": {
+     "date": "2027-01-15",
+     "computedGapMin": -172.7,
+     "chartGapMin": -173
+    },
+    "jul": {
+     "date": "2026-07-14",
+     "computedGapMin": null,
+     "chartGapMin": -92
+    }
+   }
+  },
+  {
+   "tag": "fi-oulu-as-published",
+   "file": "fi-oulu-2026.json",
+   "lat": 65.0121,
+   "lng": 25.4651,
+   "rows": 365,
+   "years": [
+    "2026"
+   ],
+   "claim": {
+    "fa": 16,
+    "is": 15,
+    "fajr": {
+     "margin": 7.5,
+     "mode": "floor",
+     "exact": 19,
+     "within1": 30,
+     "worst": 146,
+     "coverage": 226
+    },
+    "isha": {
+     "margin": 2.5,
+     "mode": "floor",
+     "exact": 20,
+     "within1": 34,
+     "worst": 143,
+     "coverage": 231
+    }
+   },
+   "solar": {
+    "sunrise": {
+     "margin": 3,
+     "mode": "floor",
+     "exact": 6,
+     "within1": 13,
+     "worst": 100
+    },
+    "dhuhr": {
+     "margin": 13.5,
+     "mode": "floor",
+     "exact": 247,
+     "within1": 312,
+     "worst": 68
+    },
+    "asr1": {
+     "margin": 1.5,
+     "mode": "floor",
+     "exact": 29,
+     "within1": 48,
+     "worst": 94
+    },
+    "asr2": {
+     "margin": -8.5,
+     "mode": "floor",
+     "exact": 3,
+     "within1": 8,
+     "worst": 85
+    },
+    "maghrib": {
+     "margin": 10,
+     "mode": "floor",
+     "exact": 5,
+     "within1": 11,
+     "worst": 1368
+    }
+   },
+   "perYear": [
+    {
+     "year": "2026",
+     "days": 365,
+     "fajr": {
+      "margin": 7.5,
+      "mode": "floor",
+      "exact": 19,
+      "within1": 30,
+      "worst": 146,
+      "coverage": 226
+     },
+     "isha": {
+      "margin": 2.5,
+      "mode": "floor",
+      "exact": 20,
+      "within1": 34,
+      "worst": 143,
+      "coverage": 231
+     },
+     "sunrise": {
+      "margin": 3,
+      "mode": "floor",
+      "exact": 6,
+      "within1": 13,
+      "worst": 100
+     },
+     "maghrib": {
+      "margin": 10,
+      "mode": "floor",
+      "exact": 5,
+      "within1": 11,
+      "worst": 1368
+     }
+    }
+   ],
+   "free": {
+    "fajr": [
+     {
+      "params": {
+       "fa": 15.25,
+       "kind": "bare"
+      },
+      "margin": 0,
+      "mode": "floor",
+      "exact": 19,
+      "within1": 33,
+      "worst": 242,
+      "coverage": 365
+     },
+     {
+      "params": {
+       "fa": 15,
+       "kind": "bare"
+      },
+      "margin": -2.5,
+      "mode": "floor",
+      "exact": 19,
+      "within1": 33,
+      "worst": 243,
+      "coverage": 365
+     },
+     {
+      "params": {
+       "fa": 15.5,
+       "kind": "bare"
+      },
+      "margin": 2.5,
+      "mode": "floor",
+      "exact": 19,
+      "within1": 31,
+      "worst": 240,
+      "coverage": 365
+     },
+     {
+      "params": {
+       "fa": 16.25,
+       "kind": "bare"
+      },
+      "margin": 10,
+      "mode": "floor",
+      "exact": 19,
+      "within1": 30,
+      "worst": 236,
+      "coverage": 365
+     }
+    ],
+    "isha": [
+     {
+      "params": {
+       "fa": 11,
+       "kind": "bare"
+      },
+      "margin": -8,
+      "mode": "floor",
+      "exact": 20,
+      "within1": 40,
+      "worst": 1454,
+      "coverage": 365
+     },
+     {
+      "params": {
+       "fa": 11.25,
+       "kind": "bare"
+      },
+      "margin": -8,
+      "mode": "floor",
+      "exact": 20,
+      "within1": 40,
+      "worst": 1454,
+      "coverage": 365
+     },
+     {
+      "params": {
+       "fa": 11.5,
+       "kind": "bare"
+      },
+      "margin": -8,
+      "mode": "floor",
+      "exact": 20,
+      "within1": 40,
+      "worst": 1454,
+      "coverage": 365
+     },
+     {
+      "params": {
+       "fa": 11.75,
+       "kind": "bare"
+      },
+      "margin": -8,
+      "mode": "floor",
+      "exact": 20,
+      "within1": 40,
+      "worst": 1454,
+      "coverage": 365
+     }
+    ]
+   },
+   "amplitude": {
+    "jan": {
+     "date": "2026-01-15",
+     "computedGapMin": -179.4,
+     "chartGapMin": -133
+    },
+    "jul": {
+     "date": "2026-07-15",
+     "computedGapMin": null,
+     "chartGapMin": -82
+    }
+   }
+  },
+  {
+   "tag": "fi-oulu-at-turku-coords",
+   "file": "fi-oulu-2026.json",
+   "lat": 60.4518,
+   "lng": 22.2666,
+   "rows": 365,
+   "years": [
+    "2026"
+   ],
+   "claim": {
+    "fa": 18,
+    "is": 17,
+    "fajr": {
+     "margin": 14.5,
+     "mode": "ceil",
+     "exact": 0,
+     "within1": 0,
+     "worst": 117,
+     "coverage": 241
+    },
+    "isha": {
+     "margin": -15,
+     "mode": "floor",
+     "exact": 0,
+     "within1": 0,
+     "worst": 148,
+     "coverage": 247
+    }
+   },
+   "solar": {
+    "sunrise": {
+     "margin": 0,
+     "mode": "floor",
+     "exact": 156,
+     "within1": 296,
+     "worst": 61
+    },
+    "dhuhr": {
+     "margin": 1,
+     "mode": "floor",
+     "exact": 267,
+     "within1": 312,
+     "worst": 68
+    },
+    "asr1": {
+     "margin": 1,
+     "mode": "floor",
+     "exact": 158,
+     "within1": 233,
+     "worst": 60
+    },
+    "asr2": {
+     "margin": -15,
+     "mode": "floor",
+     "exact": 0,
+     "within1": 5,
+     "worst": 96
+    },
+    "maghrib": {
+     "margin": 1.5,
+     "mode": "floor",
+     "exact": 167,
+     "within1": 320,
+     "worst": 60
+    }
+   },
+   "perYear": [
+    {
+     "year": "2026",
+     "days": 365,
+     "fajr": {
+      "margin": 14.5,
+      "mode": "ceil",
+      "exact": 0,
+      "within1": 0,
+      "worst": 117,
+      "coverage": 241
+     },
+     "isha": {
+      "margin": -15,
+      "mode": "floor",
+      "exact": 0,
+      "within1": 0,
+      "worst": 148,
+      "coverage": 247
+     },
+     "sunrise": {
+      "margin": 0,
+      "mode": "floor",
+      "exact": 156,
+      "within1": 296,
+      "worst": 61
+     },
+     "maghrib": {
+      "margin": 1.5,
+      "mode": "floor",
+      "exact": 167,
+      "within1": 320,
+      "worst": 60
+     }
+    }
+   ],
+   "free": {
+    "fajr": [
+     {
+      "params": {
+       "fa": 15.25,
+       "kind": "bare"
+      },
+      "margin": 3,
+      "mode": "floor",
+      "exact": 124,
+      "within1": 149,
+      "worst": 222,
+      "coverage": 365
+     },
+     {
+      "params": {
+       "fa": 15.5,
+       "kind": "bare"
+      },
+      "margin": 5,
+      "mode": "floor",
+      "exact": 121,
+      "within1": 149,
+      "worst": 221,
+      "coverage": 365
+     },
+     {
+      "params": {
+       "fa": 15,
+       "kind": "bare"
+      },
+      "margin": 1,
+      "mode": "floor",
+      "exact": 120,
+      "within1": 150,
+      "worst": 223,
+      "coverage": 365
+     },
+     {
+      "params": {
+       "fa": 15.75,
+       "kind": "bare"
+      },
+      "margin": 7,
+      "mode": "floor",
+      "exact": 114,
+      "within1": 147,
+      "worst": 219,
+      "coverage": 365
+     }
+    ],
+    "isha": [
+     {
+      "params": {
+       "fa": 11,
+       "kind": "bare"
+      },
+      "margin": 9.5,
+      "mode": "ceil",
+      "exact": 1,
+      "within1": 1,
+      "worst": 1436,
+      "coverage": 365
+     },
+     {
+      "params": {
+       "fa": 11.25,
+       "kind": "bare"
+      },
+      "margin": 9.5,
+      "mode": "ceil",
+      "exact": 1,
+      "within1": 1,
+      "worst": 1436,
+      "coverage": 365
+     },
+     {
+      "params": {
+       "fa": 11.5,
+       "kind": "bare"
+      },
+      "margin": 9.5,
+      "mode": "ceil",
+      "exact": 1,
+      "within1": 1,
+      "worst": 1436,
+      "coverage": 365
+     },
+     {
+      "params": {
+       "fa": 11.75,
+       "kind": "bare"
+      },
+      "margin": 9.5,
+      "mode": "ceil",
+      "exact": 1,
+      "within1": 1,
+      "worst": 1436,
+      "coverage": 365
+     }
+    ]
+   },
+   "amplitude": {
+    "jan": {
+     "date": "2026-01-15",
+     "computedGapMin": -159.7,
+     "chartGapMin": -133
+    },
+    "jul": {
+     "date": "2026-07-15",
+     "computedGapMin": null,
+     "chartGapMin": -82
+    }
+   }
+  }
+ ]
+}

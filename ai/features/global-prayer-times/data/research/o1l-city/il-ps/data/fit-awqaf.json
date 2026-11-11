@@ -1,0 +1,170 @@
+{
+ "point": {
+  "lat": 31.7761,
+  "lon": 35.2358
+ },
+ "live": {
+  "per": {
+   "fajr": {
+    "n": 77,
+    "exact": 43,
+    "within1": 76,
+    "sum": 35,
+    "worst": 2,
+    "signed": 17,
+    "mae": 0.455,
+    "signedMean": 0.221,
+    "exactPct": 55.84
+   },
+   "sunrise": {
+    "n": 77,
+    "exact": 48,
+    "within1": 77,
+    "sum": 29,
+    "worst": 1,
+    "signed": 5,
+    "mae": 0.377,
+    "signedMean": 0.065,
+    "exactPct": 62.34
+   },
+   "dhuhr": {
+    "n": 77,
+    "exact": 43,
+    "within1": 77,
+    "sum": 34,
+    "worst": 1,
+    "signed": 34,
+    "mae": 0.442,
+    "signedMean": 0.442,
+    "exactPct": 55.84
+   },
+   "asr": {
+    "n": 77,
+    "exact": 35,
+    "within1": 75,
+    "sum": 44,
+    "worst": 2,
+    "signed": 28,
+    "mae": 0.571,
+    "signedMean": 0.364,
+    "exactPct": 45.45
+   },
+   "maghrib": {
+    "n": 77,
+    "exact": 41,
+    "within1": 77,
+    "sum": 36,
+    "worst": 1,
+    "signed": -10,
+    "mae": 0.468,
+    "signedMean": -0.13,
+    "exactPct": 53.25
+   },
+   "isha": {
+    "n": 77,
+    "exact": 34,
+    "within1": 76,
+    "sum": 44,
+    "worst": 2,
+    "signed": -6,
+    "mae": 0.571,
+    "signedMean": -0.078,
+    "exactPct": 44.16
+   }
+  },
+  "mae": 0.481,
+  "n": 462,
+  "fajrAngle": 18.1,
+  "ishaAngle": 17.4,
+  "margins": {
+   "fajr": 0,
+   "sunrise": -3,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 6,
+   "isha": 3
+  }
+ },
+ "perpetual": {
+  "per": {
+   "fajr": {
+    "n": 366,
+    "exact": 190,
+    "within1": 302,
+    "sum": 246,
+    "worst": 4,
+    "signed": 104,
+    "mae": 0.672,
+    "signedMean": 0.284,
+    "exactPct": 51.91
+   },
+   "sunrise": {
+    "n": 366,
+    "exact": 169,
+    "within1": 347,
+    "sum": 216,
+    "worst": 2,
+    "signed": -36,
+    "mae": 0.59,
+    "signedMean": -0.098,
+    "exactPct": 46.17
+   },
+   "dhuhr": {
+    "n": 366,
+    "exact": 205,
+    "within1": 366,
+    "sum": 161,
+    "worst": 1,
+    "signed": 161,
+    "mae": 0.44,
+    "signedMean": 0.44,
+    "exactPct": 56.01
+   },
+   "asr": {
+    "n": 366,
+    "exact": 206,
+    "within1": 351,
+    "sum": 175,
+    "worst": 2,
+    "signed": 149,
+    "mae": 0.478,
+    "signedMean": 0.407,
+    "exactPct": 56.28
+   },
+   "maghrib": {
+    "n": 366,
+    "exact": 223,
+    "within1": 366,
+    "sum": 143,
+    "worst": 1,
+    "signed": -21,
+    "mae": 0.391,
+    "signedMean": -0.057,
+    "exactPct": 60.93
+   },
+   "isha": {
+    "n": 366,
+    "exact": 186,
+    "within1": 358,
+    "sum": 188,
+    "worst": 2,
+    "signed": -98,
+    "mae": 0.514,
+    "signedMean": -0.268,
+    "exactPct": 50.82
+   }
+  },
+  "mae": 0.514,
+  "n": 2196,
+  "fajrAngle": 18.25,
+  "ishaAngle": 17.9,
+  "margins": {
+   "fajr": 1,
+   "sunrise": -3,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 6,
+   "isha": 0
+  }
+ }
+}

@@ -1,0 +1,34 @@
+{
+ "label": "r8145-العراق",
+ "file": "captures/masjidi_region_8145.json",
+ "rows": 366,
+ "lat": 35.58,
+ "k": 0,
+ "geoRms": 6.753,
+ "fajr": {
+  "kind": "angle",
+  "n": 366,
+  "angle": 16.83,
+  "darkIqr": 0.23
+ },
+ "isha": {
+  "kind": "angle",
+  "n": 366,
+  "angle": 15.79,
+  "darkIqr": 0.22,
+  "gap": 77
+ },
+ "asr": {
+  "school": "Shafi",
+  "shafiMae": 5.1,
+  "hanafiMae": 60.1
+ },
+ "clock": {
+  "lonImplied": -0.55,
+  "offsetMin": -2,
+  "driftRms": 0.4,
+  "runs": 1,
+  "steps": []
+ },
+ "amplitude": -133
+}

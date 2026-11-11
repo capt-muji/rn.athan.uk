@@ -1,0 +1,1021 @@
+{
+ "ca_qc_capitale-qc_mawaqit.html": {
+  "address": null,
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/ca_qc_capitale-qc_mawaqit.html",
+  "evidence": "mawaqit page payload (confData/meta latitude, longitude)",
+  "lat": 46.8077986,
+  "lon": -71.2454895,
+  "name": "Mosqu\\u00e9e de la Capitale",
+  "platform": "mawaqit"
+ },
+ "ca_qc_cciq_mawaqit.html": {
+  "address": null,
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/ca_qc_cciq_mawaqit.html",
+  "evidence": "mawaqit page payload (confData/meta latitude, longitude)",
+  "lat": 46.777942,
+  "lon": -71.305444,
+  "name": "Centre Culturel Islamique de Qu\\u00e9bec GMQ",
+  "platform": "mawaqit"
+ },
+ "gt_aldaawa_mawaqit.html": {
+  "address": null,
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/gt_aldaawa_mawaqit.html",
+  "evidence": "mawaqit page payload (confData/meta latitude, longitude)",
+  "lat": 14.610256196072,
+  "lon": -90.515532642603,
+  "name": "Mezquita Aldaawa Isl\\u00e1mica de Guatemala",
+  "platform": "mawaqit"
+ },
+ "hn_sps_mawaqit.html": {
+  "address": null,
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/hn_sps_mawaqit.html",
+  "evidence": "mawaqit page payload (confData/meta latitude, longitude)",
+  "lat": 15.490209545985,
+  "lon": -88.032333927474,
+  "name": "CENTRO ISL\\u00c1MICO DE HONDURAS - SAN PEDRO SULA",
+  "platform": "mawaqit"
+ },
+ "masjidal_0AWpj0dj_2024.json": {
+  "address": "5010 Grove St, Marysville, WA 98270, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_0AWpj0dj_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Maps Snohomish County",
+  "platform": "masjidal",
+  "website": "https://mapsredmond.org/maps-snohomish/"
+ },
+ "masjidal_0AWpj0dj_2025.json": {
+  "address": "5010 Grove St, Marysville, WA 98270, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_0AWpj0dj_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Maps Snohomish County",
+  "platform": "masjidal",
+  "website": "https://mapsredmond.org/maps-snohomish/"
+ },
+ "masjidal_0AWpj0dj_2026.json": {
+  "address": "5010 Grove St, Marysville, WA 98270, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_0AWpj0dj_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Maps Snohomish County",
+  "platform": "masjidal",
+  "website": "https://mapsredmond.org/maps-snohomish/"
+ },
+ "masjidal_1QL0VydZ_2024.json": {
+  "address": "15709 Hwy 99, Lynnwood, WA 98087, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_1QL0VydZ_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "ICOPS - Islamic Center of Puget Sound",
+  "platform": "masjidal",
+  "website": "https://icopsmasjidwa.org"
+ },
+ "masjidal_1QL0VydZ_2025.json": {
+  "address": "15709 Hwy 99, Lynnwood, WA 98087, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_1QL0VydZ_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "ICOPS - Islamic Center of Puget Sound",
+  "platform": "masjidal",
+  "website": "https://icopsmasjidwa.org"
+ },
+ "masjidal_1QL0VydZ_2026.json": {
+  "address": "15709 Hwy 99, Lynnwood, WA 98087, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_1QL0VydZ_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "ICOPS - Islamic Center of Puget Sound",
+  "platform": "masjidal",
+  "website": "https://icopsmasjidwa.org"
+ },
+ "masjidal_1QL0gbKZ_2024.json": {
+  "address": "10299 Humphrey Rd, Cordova, Tennessee 38018, US",
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/masjidal_1QL0gbKZ_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Memphis Islamic Center",
+  "platform": "masjidal",
+  "website": ""
+ },
+ "masjidal_1QL0gbKZ_2025.json": {
+  "address": "10299 Humphrey Rd, Cordova, Tennessee 38018, US",
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/masjidal_1QL0gbKZ_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Memphis Islamic Center",
+  "platform": "masjidal",
+  "website": ""
+ },
+ "masjidal_1QL0gbKZ_2026.json": {
+  "address": "10299 Humphrey Rd, Cordova, Tennessee 38018, US",
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/masjidal_1QL0gbKZ_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Memphis Islamic Center",
+  "platform": "masjidal",
+  "website": ""
+ },
+ "masjidal_1XAlZzKb_2024.json": {
+  "address": "745 Heim Rd, Getzville, NY 14068, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_1XAlZzKb_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Masjid An-Noor (Islamic Society of Niagara Frontier)",
+  "platform": "masjidal",
+  "website": "https://www.isnfwny.org"
+ },
+ "masjidal_1XAlZzKb_2025.json": {
+  "address": "745 Heim Rd, Getzville, NY 14068, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_1XAlZzKb_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Masjid An-Noor (Islamic Society of Niagara Frontier)",
+  "platform": "masjidal",
+  "website": "https://www.isnfwny.org"
+ },
+ "masjidal_1XAlZzKb_2026.json": {
+  "address": "745 Heim Rd, Getzville, NY 14068, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_1XAlZzKb_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Masjid An-Noor (Islamic Society of Niagara Frontier)",
+  "platform": "masjidal",
+  "website": "https://www.isnfwny.org"
+ },
+ "masjidal_4nL1XlKa_2024.json": {
+  "address": "11005 Jones Bridge Rd Suite 112, Johns Creek, GA 30022, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_4nL1XlKa_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Masjid Jafar",
+  "platform": "masjidal",
+  "website": "http://www.masjidjafaratl.com"
+ },
+ "masjidal_4nL1XlKa_2025.json": {
+  "address": "11005 Jones Bridge Rd Suite 112, Johns Creek, GA 30022, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_4nL1XlKa_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Masjid Jafar",
+  "platform": "masjidal",
+  "website": "http://www.masjidjafaratl.com"
+ },
+ "masjidal_4nL1XlKa_2026.json": {
+  "address": "11005 Jones Bridge Rd Suite 112, Johns Creek, GA 30022, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_4nL1XlKa_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Masjid Jafar",
+  "platform": "masjidal",
+  "website": "http://www.masjidjafaratl.com"
+ },
+ "masjidal_5AvPx2KX_2024.json": {
+  "address": "3350 Ridge Rd, Buford, GA 30519, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_5AvPx2KX_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Masjid al-Husna (Buford, GA)",
+  "platform": "masjidal",
+  "website": "https://www.masjidalhusna.com"
+ },
+ "masjidal_5AvPx2KX_2025.json": {
+  "address": "3350 Ridge Rd, Buford, GA 30519, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_5AvPx2KX_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Masjid al-Husna (Buford, GA)",
+  "platform": "masjidal",
+  "website": "https://www.masjidalhusna.com"
+ },
+ "masjidal_5AvPx2KX_2026.json": {
+  "address": "3350 Ridge Rd, Buford, GA 30519, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_5AvPx2KX_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Masjid al-Husna (Buford, GA)",
+  "platform": "masjidal",
+  "website": "https://www.masjidalhusna.com"
+ },
+ "masjidal_6adJ5qAk_2024.json": {
+  "address": "3730 S 166th St, SeaTac, WA 98188, US",
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/masjidal_6adJ5qAk_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Ethiopian Muslim Association of Seattle",
+  "platform": "masjidal",
+  "website": ""
+ },
+ "masjidal_6adJ5qAk_2025.json": {
+  "address": "3730 S 166th St, SeaTac, WA 98188, US",
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/masjidal_6adJ5qAk_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Ethiopian Muslim Association of Seattle",
+  "platform": "masjidal",
+  "website": ""
+ },
+ "masjidal_6adJ5qAk_2026.json": {
+  "address": "3730 S 166th St, SeaTac, WA 98188, US",
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/masjidal_6adJ5qAk_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Ethiopian Muslim Association of Seattle",
+  "platform": "masjidal",
+  "website": ""
+ },
+ "masjidal_8KXma5LM_2024.json": {
+  "address": "6703 Pitts Rd, Katy, Texas 77493, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_8KXma5LM_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Al Huda Islamic Center",
+  "platform": "masjidal",
+  "website": "http://www.alhudakaty.org"
+ },
+ "masjidal_8KXma5LM_2025.json": {
+  "address": "6703 Pitts Rd, Katy, Texas 77493, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_8KXma5LM_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Al Huda Islamic Center",
+  "platform": "masjidal",
+  "website": "http://www.alhudakaty.org"
+ },
+ "masjidal_8KXma5LM_2026.json": {
+  "address": "6703 Pitts Rd, Katy, Texas 77493, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_8KXma5LM_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Al Huda Islamic Center",
+  "platform": "masjidal",
+  "website": "http://www.alhudakaty.org"
+ },
+ "masjidal_8L7mGbd5_2024.json": {
+  "address": "95 Schraffts Dr, Waterbury, Connecticut 06705, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_8L7mGbd5_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Islamic American Society of Connecticut",
+  "platform": "masjidal",
+  "website": "https://www.iasconnect.org"
+ },
+ "masjidal_8L7mGbd5_2025.json": {
+  "address": "95 Schraffts Dr, Waterbury, Connecticut 06705, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_8L7mGbd5_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Islamic American Society of Connecticut",
+  "platform": "masjidal",
+  "website": "https://www.iasconnect.org"
+ },
+ "masjidal_8L7mGbd5_2026.json": {
+  "address": "95 Schraffts Dr, Waterbury, Connecticut 06705, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_8L7mGbd5_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Islamic American Society of Connecticut",
+  "platform": "masjidal",
+  "website": "https://www.iasconnect.org"
+ },
+ "masjidal_BYADgwLN_2024.json": {
+  "address": "6443 Prestwood Dr, Houston, TX 77081, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_BYADgwLN_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Alnoor Masjid",
+  "platform": "masjidal",
+  "website": "https://alnoormasjid.org/"
+ },
+ "masjidal_BYADgwLN_2025.json": {
+  "address": "6443 Prestwood Dr, Houston, TX 77081, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_BYADgwLN_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Alnoor Masjid",
+  "platform": "masjidal",
+  "website": "https://alnoormasjid.org/"
+ },
+ "masjidal_BYADgwLN_2026.json": {
+  "address": "6443 Prestwood Dr, Houston, TX 77081, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_BYADgwLN_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Alnoor Masjid",
+  "platform": "masjidal",
+  "website": "https://alnoormasjid.org/"
+ },
+ "masjidal_M0dYkvL6.json": {
+  "address": "9275 25 Ave NW, Edmonton, AB T6N 0A5, CA",
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/masjidal_M0dYkvL6.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Masjid Al-Fatima",
+  "platform": "masjidal",
+  "website": "https://masjidalfatima.com/"
+ },
+ "masjidal_M0dYkvL6_2024.json": {
+  "address": "9275 25 Ave NW, Edmonton, AB T6N 0A5, CA",
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/masjidal_M0dYkvL6_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Masjid Al-Fatima",
+  "platform": "masjidal",
+  "website": "https://masjidalfatima.com/"
+ },
+ "masjidal_M0dYkvL6_2025.json": {
+  "address": "9275 25 Ave NW, Edmonton, AB T6N 0A5, CA",
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/masjidal_M0dYkvL6_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Masjid Al-Fatima",
+  "platform": "masjidal",
+  "website": "https://masjidalfatima.com/"
+ },
+ "masjidal_M0dYkvL6_2026.json": {
+  "address": "9275 25 Ave NW, Edmonton, AB T6N 0A5, CA",
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/masjidal_M0dYkvL6_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Masjid Al-Fatima",
+  "platform": "masjidal",
+  "website": "https://masjidalfatima.com/"
+ },
+ "masjidal_PAPy7ZdJ_2024.json": {
+  "address": "1920 Temple Johnson Rd, Loganville, GA 30052, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_PAPy7ZdJ_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Masjid Ibraaheem",
+  "platform": "masjidal",
+  "website": "https://www.masjidibraaheem.com/"
+ },
+ "masjidal_PAPy7ZdJ_2025.json": {
+  "address": "1920 Temple Johnson Rd, Loganville, GA 30052, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_PAPy7ZdJ_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Masjid Ibraaheem",
+  "platform": "masjidal",
+  "website": "https://www.masjidibraaheem.com/"
+ },
+ "masjidal_PAPy7ZdJ_2026.json": {
+  "address": "1920 Temple Johnson Rd, Loganville, GA 30052, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_PAPy7ZdJ_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Masjid Ibraaheem",
+  "platform": "masjidal",
+  "website": "https://www.masjidibraaheem.com/"
+ },
+ "masjidal_QL0MGBAZ_2024.json": {
+  "address": "20857 108th Ave SE, Kent, WA 98031, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_QL0MGBAZ_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "ICK",
+  "platform": "masjidal",
+  "website": "https://islamiccenterofkent.org"
+ },
+ "masjidal_QL0MGBAZ_2025.json": {
+  "address": "20857 108th Ave SE, Kent, WA 98031, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_QL0MGBAZ_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "ICK",
+  "platform": "masjidal",
+  "website": "https://islamiccenterofkent.org"
+ },
+ "masjidal_QL0MGBAZ_2026.json": {
+  "address": "20857 108th Ave SE, Kent, WA 98031, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_QL0MGBAZ_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "ICK",
+  "platform": "masjidal",
+  "website": "https://islamiccenterofkent.org"
+ },
+ "masjidal_RKxwXOdO_2024.json": {
+  "address": "4625 22nd Ave NE, Seattle, WA 98105, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_RKxwXOdO_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Islamic House of Seattle",
+  "platform": "masjidal",
+  "website": "https://ihseattle.org"
+ },
+ "masjidal_RKxwXOdO_2025.json": {
+  "address": "4625 22nd Ave NE, Seattle, WA 98105, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_RKxwXOdO_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Islamic House of Seattle",
+  "platform": "masjidal",
+  "website": "https://ihseattle.org"
+ },
+ "masjidal_RKxwXOdO_2026.json": {
+  "address": "4625 22nd Ave NE, Seattle, WA 98105, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_RKxwXOdO_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Islamic House of Seattle",
+  "platform": "masjidal",
+  "website": "https://ihseattle.org"
+ },
+ "masjidal_VrdRZqdG_2024.json": {
+  "address": "1400-E1 Buford Hwy NE, Buford, GA 30518, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_VrdRZqdG_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Masjid al-Quba",
+  "platform": "masjidal",
+  "website": "https://www.masjidalquba.net"
+ },
+ "masjidal_VrdRZqdG_2025.json": {
+  "address": "1400-E1 Buford Hwy NE, Buford, GA 30518, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_VrdRZqdG_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Masjid al-Quba",
+  "platform": "masjidal",
+  "website": "https://www.masjidalquba.net"
+ },
+ "masjidal_VrdRZqdG_2026.json": {
+  "address": "1400-E1 Buford Hwy NE, Buford, GA 30518, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_VrdRZqdG_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Masjid al-Quba",
+  "platform": "masjidal",
+  "website": "https://www.masjidalquba.net"
+ },
+ "masjidal_VrdRbPdG_2024.json": {
+  "address": "17550 NE 67th Ct, Redmond, WA 98052, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_VrdRbPdG_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Muslim Association of PugetSound",
+  "platform": "masjidal",
+  "website": "https://mapsredmond.org/"
+ },
+ "masjidal_VrdRbPdG_2025.json": {
+  "address": "17550 NE 67th Ct, Redmond, WA 98052, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_VrdRbPdG_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Muslim Association of PugetSound",
+  "platform": "masjidal",
+  "website": "https://mapsredmond.org/"
+ },
+ "masjidal_VrdRbPdG_2026.json": {
+  "address": "17550 NE 67th Ct, Redmond, WA 98052, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_VrdRbPdG_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Muslim Association of PugetSound",
+  "platform": "masjidal",
+  "website": "https://mapsredmond.org/"
+ },
+ "masjidal_VrdRkwKG.json": {
+  "address": "7907 36 Ave NW, Edmonton, AB T6K 3S6, CA",
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/masjidal_VrdRkwKG.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Markaz Ul Islam",
+  "platform": "masjidal",
+  "website": "https://www.markaz.ca/"
+ },
+ "masjidal_VrdRkwKG_2024.json": {
+  "address": "7907 36 Ave NW, Edmonton, AB T6K 3S6, CA",
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/masjidal_VrdRkwKG_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Markaz Ul Islam",
+  "platform": "masjidal",
+  "website": "https://www.markaz.ca/"
+ },
+ "masjidal_VrdRkwKG_2025.json": {
+  "address": "7907 36 Ave NW, Edmonton, AB T6K 3S6, CA",
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/masjidal_VrdRkwKG_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Markaz Ul Islam",
+  "platform": "masjidal",
+  "website": "https://www.markaz.ca/"
+ },
+ "masjidal_VrdRkwKG_2026.json": {
+  "address": "7907 36 Ave NW, Edmonton, AB T6K 3S6, CA",
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/masjidal_VrdRkwKG_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Markaz Ul Islam",
+  "platform": "masjidal",
+  "website": "https://www.markaz.ca/"
+ },
+ "masjidal_XAlzQrKb_2024.json": {
+  "address": "12335 NE Glisan St, Portland, Oregon 97230, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_XAlzQrKb_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Masjid An-Noor Islamic Center",
+  "platform": "masjidal",
+  "website": "https://www.annoorpdx.org/"
+ },
+ "masjidal_XAlzQrKb_2025.json": {
+  "address": "12335 NE Glisan St, Portland, Oregon 97230, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_XAlzQrKb_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Masjid An-Noor Islamic Center",
+  "platform": "masjidal",
+  "website": "https://www.annoorpdx.org/"
+ },
+ "masjidal_XAlzQrKb_2026.json": {
+  "address": "12335 NE Glisan St, Portland, Oregon 97230, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_XAlzQrKb_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Masjid An-Noor Islamic Center",
+  "platform": "masjidal",
+  "website": "https://www.annoorpdx.org/"
+ },
+ "masjidal_XEdoEvL7_2024.json": {
+  "address": "25816 Walnut St, Lomita, California 90717, US",
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/masjidal_XEdoEvL7_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Islamic Center of South Bay - L.A.",
+  "platform": "masjidal",
+  "website": "https://www.masjidalnoor.org"
+ },
+ "masjidal_XEdoEvL7_2025.json": {
+  "address": "25816 Walnut St, Lomita, California 90717, US",
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/masjidal_XEdoEvL7_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Islamic Center of South Bay - L.A.",
+  "platform": "masjidal",
+  "website": "https://www.masjidalnoor.org"
+ },
+ "masjidal_XEdoEvL7_2026.json": {
+  "address": "25816 Walnut St, Lomita, California 90717, US",
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/masjidal_XEdoEvL7_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Islamic Center of South Bay - L.A.",
+  "platform": "masjidal",
+  "website": "https://www.masjidalnoor.org"
+ },
+ "masjidal_adJmGxAk_2024.json": {
+  "address": "10323 SW 43rd Ave, Portland, Oregon 97219, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_adJmGxAk_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Islamic Center of Portland - Masjid As-Saber",
+  "platform": "masjidal",
+  "website": "https://assaber.org/"
+ },
+ "masjidal_adJmGxAk_2025.json": {
+  "address": "10323 SW 43rd Ave, Portland, Oregon 97219, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_adJmGxAk_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Islamic Center of Portland - Masjid As-Saber",
+  "platform": "masjidal",
+  "website": "https://assaber.org/"
+ },
+ "masjidal_adJmGxAk_2026.json": {
+  "address": "10323 SW 43rd Ave, Portland, Oregon 97219, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_adJmGxAk_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Islamic Center of Portland - Masjid As-Saber",
+  "platform": "masjidal",
+  "website": "https://assaber.org/"
+ },
+ "masjidal_keLQjWAM_2024.json": {
+  "address": "1400 NE Northgate Way, Seattle, WA 98125, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_keLQjWAM_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Idris Mosque",
+  "platform": "masjidal",
+  "website": "https://www.idrismosque.com/"
+ },
+ "masjidal_keLQjWAM_2025.json": {
+  "address": "1400 NE Northgate Way, Seattle, WA 98125, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_keLQjWAM_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Idris Mosque",
+  "platform": "masjidal",
+  "website": "https://www.idrismosque.com/"
+ },
+ "masjidal_keLQjWAM_2026.json": {
+  "address": "1400 NE Northgate Way, Seattle, WA 98125, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_keLQjWAM_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Idris Mosque",
+  "platform": "masjidal",
+  "website": "https://www.idrismosque.com/"
+ },
+ "masjidal_keLQn7AM_2024.json": {
+  "address": "5530 Long Prairie Trace #100, Richmond, TX 77407, US",
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/masjidal_keLQn7AM_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Richmond Islamic Community Center",
+  "platform": "masjidal",
+  "website": "https://richmondmasjid.org/"
+ },
+ "masjidal_keLQn7AM_2025.json": {
+  "address": "5530 Long Prairie Trace #100, Richmond, TX 77407, US",
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/masjidal_keLQn7AM_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Richmond Islamic Community Center",
+  "platform": "masjidal",
+  "website": "https://richmondmasjid.org/"
+ },
+ "masjidal_keLQn7AM_2026.json": {
+  "address": "5530 Long Prairie Trace #100, Richmond, TX 77407, US",
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/masjidal_keLQn7AM_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Richmond Islamic Community Center",
+  "platform": "masjidal",
+  "website": "https://richmondmasjid.org/"
+ },
+ "masjidal_lJAmRjdR_2024.json": {
+  "address": "5945 39th Ave S, Seattle, WA 98118, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_lJAmRjdR_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Masjid Jamiul Muslimeen",
+  "platform": "masjidal",
+  "website": "https://chamrefugeescommunity.org"
+ },
+ "masjidal_lJAmRjdR_2025.json": {
+  "address": "5945 39th Ave S, Seattle, WA 98118, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_lJAmRjdR_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Masjid Jamiul Muslimeen",
+  "platform": "masjidal",
+  "website": "https://chamrefugeescommunity.org"
+ },
+ "masjidal_lJAmRjdR_2026.json": {
+  "address": "5945 39th Ave S, Seattle, WA 98118, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_lJAmRjdR_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Masjid Jamiul Muslimeen",
+  "platform": "masjidal",
+  "website": "https://chamrefugeescommunity.org"
+ },
+ "masjidal_nL1JggAa_2024.json": {
+  "address": "36924 Ann Arbor Trail, Livonia, MI 48150, US",
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/masjidal_nL1JggAa_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Muslim American Society (MAS) Tarbiyah Center",
+  "platform": "masjidal",
+  "website": "https://www.masdetroit.org/"
+ },
+ "masjidal_nL1JggAa_2025.json": {
+  "address": "36924 Ann Arbor Trail, Livonia, MI 48150, US",
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/masjidal_nL1JggAa_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Muslim American Society (MAS) Tarbiyah Center",
+  "platform": "masjidal",
+  "website": "https://www.masdetroit.org/"
+ },
+ "masjidal_nL1JggAa_2026.json": {
+  "address": "36924 Ann Arbor Trail, Livonia, MI 48150, US",
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/masjidal_nL1JggAa_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Muslim American Society (MAS) Tarbiyah Center",
+  "platform": "masjidal",
+  "website": "https://www.masdetroit.org/"
+ },
+ "masjidal_nzKzgvLO_2024.json": {
+  "address": "1935 Aleo Pl, Honolulu, HI 96822, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_nzKzgvLO_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Muslim Association of Hawaii",
+  "platform": "masjidal",
+  "website": "https://www.hawaiimasjid.com"
+ },
+ "masjidal_nzKzgvLO_2025.json": {
+  "address": "1935 Aleo Pl, Honolulu, HI 96822, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_nzKzgvLO_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Muslim Association of Hawaii",
+  "platform": "masjidal",
+  "website": "https://www.hawaiimasjid.com"
+ },
+ "masjidal_nzKzgvLO_2026.json": {
+  "address": "1935 Aleo Pl, Honolulu, HI 96822, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_nzKzgvLO_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Muslim Association of Hawaii",
+  "platform": "masjidal",
+  "website": "https://www.hawaiimasjid.com"
+ },
+ "masjidal_p8KXgNdM_2024.json": {
+  "address": "40 Parker Ave, Buffalo, NY 14214, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_p8KXgNdM_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Masjid  At  Taqwa",
+  "platform": "masjidal",
+  "website": "http://isnfwny.org/"
+ },
+ "masjidal_p8KXgNdM_2025.json": {
+  "address": "40 Parker Ave, Buffalo, NY 14214, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_p8KXgNdM_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Masjid  At  Taqwa",
+  "platform": "masjidal",
+  "website": "http://isnfwny.org/"
+ },
+ "masjidal_p8KXgNdM_2026.json": {
+  "address": "40 Parker Ave, Buffalo, NY 14214, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_p8KXgNdM_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Masjid  At  Taqwa",
+  "platform": "masjidal",
+  "website": "http://isnfwny.org/"
+ },
+ "masjidal_pQKMMBKB_2024.json": {
+  "address": "80 Celebration Drive, Suwanee,  GA 30024, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_pQKMMBKB_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Gwinnett Islamic Circle",
+  "platform": "masjidal",
+  "website": "https://www.suwaneemasjid.org/"
+ },
+ "masjidal_pQKMMBKB_2025.json": {
+  "address": "80 Celebration Drive, Suwanee,  GA 30024, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_pQKMMBKB_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Gwinnett Islamic Circle",
+  "platform": "masjidal",
+  "website": "https://www.suwaneemasjid.org/"
+ },
+ "masjidal_pQKMMBKB_2026.json": {
+  "address": "80 Celebration Drive, Suwanee,  GA 30024, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_pQKMMBKB_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Gwinnett Islamic Circle",
+  "platform": "masjidal",
+  "website": "https://www.suwaneemasjid.org/"
+ },
+ "masjidal_pVdwNMAe_2024.json": {
+  "address": "543 S Lake St, Aurora, IL 60506, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_pVdwNMAe_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Masjid Hidayath",
+  "platform": "masjidal",
+  "website": "https://masjidhidayath.org"
+ },
+ "masjidal_pVdwNMAe_2025.json": {
+  "address": "543 S Lake St, Aurora, IL 60506, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_pVdwNMAe_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Masjid Hidayath",
+  "platform": "masjidal",
+  "website": "https://masjidhidayath.org"
+ },
+ "masjidal_pVdwNMAe_2026.json": {
+  "address": "543 S Lake St, Aurora, IL 60506, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_pVdwNMAe_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Masjid Hidayath",
+  "platform": "masjidal",
+  "website": "https://masjidhidayath.org"
+ },
+ "masjidal_pVdwyVLe.json": {
+  "address": "10654 101 St NW, Edmonton, Alberta T5H 2S1, CA",
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/masjidal_pVdwyVLe.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Masjid At-Taqwa",
+  "platform": "masjidal",
+  "website": "http://masjidtaqwa.ca"
+ },
+ "masjidal_pVdwyVLe_2024.json": {
+  "address": "10654 101 St NW, Edmonton, Alberta T5H 2S1, CA",
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/masjidal_pVdwyVLe_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Masjid At-Taqwa",
+  "platform": "masjidal",
+  "website": "http://masjidtaqwa.ca"
+ },
+ "masjidal_pVdwyVLe_2025.json": {
+  "address": "10654 101 St NW, Edmonton, Alberta T5H 2S1, CA",
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/masjidal_pVdwyVLe_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Masjid At-Taqwa",
+  "platform": "masjidal",
+  "website": "http://masjidtaqwa.ca"
+ },
+ "masjidal_pVdwyVLe_2026.json": {
+  "address": "10654 101 St NW, Edmonton, Alberta T5H 2S1, CA",
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/masjidal_pVdwyVLe_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Masjid At-Taqwa",
+  "platform": "masjidal",
+  "website": "http://masjidtaqwa.ca"
+ },
+ "masjidal_rdRvm3dG_2024.json": {
+  "address": "5400 Bell Forge Ln E, Antioch, TN 37013, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_rdRvm3dG_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Islamic Center of Tennessee",
+  "platform": "masjidal",
+  "website": "http://www.islamiccenteroftennessee.org/"
+ },
+ "masjidal_rdRvm3dG_2025.json": {
+  "address": "5400 Bell Forge Ln E, Antioch, TN 37013, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_rdRvm3dG_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Islamic Center of Tennessee",
+  "platform": "masjidal",
+  "website": "http://www.islamiccenteroftennessee.org/"
+ },
+ "masjidal_rdRvm3dG_2026.json": {
+  "address": "5400 Bell Forge Ln E, Antioch, TN 37013, US",
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/masjidal_rdRvm3dG_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Islamic Center of Tennessee",
+  "platform": "masjidal",
+  "website": "http://www.islamiccenteroftennessee.org/"
+ },
+ "masjidal_xdy03lAX_2024.json": {
+  "address": "840 Abrams Rd, Richardson, TX 75081, US",
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/masjidal_xdy03lAX_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Islamic Association of North Texas",
+  "platform": "masjidal",
+  "website": "https://www.iant.com"
+ },
+ "masjidal_xdy03lAX_2025.json": {
+  "address": "840 Abrams Rd, Richardson, TX 75081, US",
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/masjidal_xdy03lAX_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Islamic Association of North Texas",
+  "platform": "masjidal",
+  "website": "https://www.iant.com"
+ },
+ "masjidal_xdy03lAX_2026.json": {
+  "address": "840 Abrams Rd, Richardson, TX 75081, US",
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/masjidal_xdy03lAX_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Islamic Association of North Texas",
+  "platform": "masjidal",
+  "website": "https://www.iant.com"
+ },
+ "masjidal_xdyqvadX_2024.json": {
+  "address": "3116 Johnston Oehler Rd, Charlotte, NC 28269, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_xdyqvadX_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Pillars Mosque",
+  "platform": "masjidal",
+  "website": "https://www.charlottemcc.org"
+ },
+ "masjidal_xdyqvadX_2025.json": {
+  "address": "3116 Johnston Oehler Rd, Charlotte, NC 28269, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_xdyqvadX_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Pillars Mosque",
+  "platform": "masjidal",
+  "website": "https://www.charlottemcc.org"
+ },
+ "masjidal_xdyqvadX_2026.json": {
+  "address": "3116 Johnston Oehler Rd, Charlotte, NC 28269, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_xdyqvadX_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Pillars Mosque",
+  "platform": "masjidal",
+  "website": "https://www.charlottemcc.org"
+ },
+ "masjidal_xwLVXMdJ_2024.json": {
+  "address": "14101 Tukwila International Blvd, Tukwila, WA 98168, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_xwLVXMdJ_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Abubakr Islamic of Center WA",
+  "platform": "masjidal",
+  "website": "https://abubakrislamiccenter.org/"
+ },
+ "masjidal_xwLVXMdJ_2025.json": {
+  "address": "14101 Tukwila International Blvd, Tukwila, WA 98168, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_xwLVXMdJ_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Abubakr Islamic of Center WA",
+  "platform": "masjidal",
+  "website": "https://abubakrislamiccenter.org/"
+ },
+ "masjidal_xwLVXMdJ_2026.json": {
+  "address": "14101 Tukwila International Blvd, Tukwila, WA 98168, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_xwLVXMdJ_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Abubakr Islamic of Center WA",
+  "platform": "masjidal",
+  "website": "https://abubakrislamiccenter.org/"
+ },
+ "masjidal_y0LbBXLo_2024.json": {
+  "address": "11815 110th Ave E, Puyallup, Washington 98374, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_y0LbBXLo_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Puyallup Islamic Community Center",
+  "platform": "masjidal",
+  "website": "https://www.puyallupmasjid.org/"
+ },
+ "masjidal_y0LbBXLo_2025.json": {
+  "address": "11815 110th Ave E, Puyallup, Washington 98374, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_y0LbBXLo_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Puyallup Islamic Community Center",
+  "platform": "masjidal",
+  "website": "https://www.puyallupmasjid.org/"
+ },
+ "masjidal_y0LbBXLo_2026.json": {
+  "address": "11815 110th Ave E, Puyallup, Washington 98374, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_y0LbBXLo_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Puyallup Islamic Community Center",
+  "platform": "masjidal",
+  "website": "https://www.puyallupmasjid.org/"
+ },
+ "masjidal_z0AW66Lj_2024.json": {
+  "address": "85-37 JMC WAY, JAMAICA, NY 11432, United States",
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/masjidal_z0AW66Lj_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Jamaica Muslim Center",
+  "platform": "masjidal",
+  "website": "https://jamaicamuslimcenter.org/"
+ },
+ "masjidal_z0AW66Lj_2025.json": {
+  "address": "85-37 JMC WAY, JAMAICA, NY 11432, United States",
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/masjidal_z0AW66Lj_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Jamaica Muslim Center",
+  "platform": "masjidal",
+  "website": "https://jamaicamuslimcenter.org/"
+ },
+ "masjidal_z0AW66Lj_2026.json": {
+  "address": "85-37 JMC WAY, JAMAICA, NY 11432, United States",
+  "capture": "$HOME/athan-gitree/census/o1k-wide/americas2/captures/masjidal_z0AW66Lj_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Jamaica Muslim Center",
+  "platform": "masjidal",
+  "website": "https://jamaicamuslimcenter.org/"
+ },
+ "masjidal_zKz3zRLO_2024.json": {
+  "address": "19250 N 35th Ave, Glendale, Arizona 85308, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_zKz3zRLO_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "United Islamic Center of Arizona",
+  "platform": "masjidal",
+  "website": "https://uislamicca.com"
+ },
+ "masjidal_zKz3zRLO_2025.json": {
+  "address": "19250 N 35th Ave, Glendale, Arizona 85308, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_zKz3zRLO_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "United Islamic Center of Arizona",
+  "platform": "masjidal",
+  "website": "https://uislamicca.com"
+ },
+ "masjidal_zKz3zRLO_2026.json": {
+  "address": "19250 N 35th Ave, Glendale, Arizona 85308, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_zKz3zRLO_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "United Islamic Center of Arizona",
+  "platform": "masjidal",
+  "website": "https://uislamicca.com"
+ },
+ "masjidal_zVKpbbAP_2024.json": {
+  "address": "320 Mallory Station Rd, Franklin, TN 37067, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_zVKpbbAP_2024.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Islamic Center of Williamson County",
+  "platform": "masjidal",
+  "website": ""
+ },
+ "masjidal_zVKpbbAP_2025.json": {
+  "address": "320 Mallory Station Rd, Franklin, TN 37067, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_zVKpbbAP_2025.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Islamic Center of Williamson County",
+  "platform": "masjidal",
+  "website": ""
+ },
+ "masjidal_zVKpbbAP_2026.json": {
+  "address": "320 Mallory Station Rd, Franklin, TN 37067, US",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidal_zVKpbbAP_2026.json",
+  "evidence": "Masjidal masjid_info.location (platform API, masjid_detail=yes)",
+  "name": "Islamic Center of Williamson County",
+  "platform": "masjidal",
+  "website": ""
+ },
+ "masjidbox_icnm_abq.html": {
+  "address": "1100 Yale Blvd SE, Albuquerque, NM, USA",
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/masjidbox_icnm_abq.html",
+  "evidence": "Masjidbox page JSON-LD PostalAddress",
+  "geo": null,
+  "name": "Islamic Center of New Mexico (ABQ)",
+  "platform": "masjidbox"
+ },
+ "mawaqit_bekcc-denver-80212-united-states.html": {
+  "address": null,
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/mawaqit_bekcc-denver-80212-united-states.html",
+  "evidence": "mawaqit page payload (confData/meta latitude, longitude)",
+  "lat": 39.7663482,
+  "lon": -105.0529718,
+  "name": "MILE HIGH ISLAMIC CENTER - BEKCC - DENVER",
+  "platform": "mawaqit"
+ },
+ "mawaqit_cmcc-colorado-80013-united-states.html": {
+  "address": null,
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/mawaqit_cmcc-colorado-80013-united-states.html",
+  "evidence": "mawaqit page payload (confData/meta latitude, longitude)",
+  "lat": 39.6517814,
+  "lon": -104.8069134,
+  "name": "CMCC",
+  "platform": "mawaqit"
+ },
+ "mawaqit_islamic-center-of-boise-boise-83704-united-states.html": {
+  "address": null,
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/mawaqit_islamic-center-of-boise-boise-83704-united-states.html",
+  "evidence": "mawaqit page payload (confData/meta latitude, longitude)",
+  "lat": 43.6329094,
+  "lon": -116.2867643,
+  "name": "Islamic Center of Boise",
+  "platform": "mawaqit"
+ },
+ "mawaqit_islamic-center-of-new-orleans-new-orleans-70116-1541-united-states.html": {
+  "address": null,
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/mawaqit_islamic-center-of-new-orleans-new-orleans-70116-1541-united-states.html",
+  "evidence": "mawaqit page payload (confData/meta latitude, longitude)",
+  "lat": 29.9685294,
+  "lon": -90.060007,
+  "name": "Islamic Center of New Orleans - New-Orleans",
+  "platform": "mawaqit"
+ },
+ "mawaqit_masjid-al-ihsaan-miami-33157-united-states.html": {
+  "address": null,
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/mawaqit_masjid-al-ihsaan-miami-33157-united-states.html",
+  "evidence": "mawaqit page payload (confData/meta latitude, longitude)",
+  "lat": 25.613,
+  "lon": -80.356,
+  "name": "Masjid Al-Ihsaan",
+  "platform": "mawaqit"
+ },
+ "mawaqit_masjid-noor-miami-33186-united-states.html": {
+  "address": null,
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/mawaqit_masjid-noor-miami-33186-united-states.html",
+  "evidence": "mawaqit page payload (confData/meta latitude, longitude)",
+  "lat": 25.659,
+  "lon": -80.429,
+  "name": "The Islamic School of Miami- Masjid Noor",
+  "platform": "mawaqit"
+ },
+ "mawaqit_masjid-tawheed.html": {
+  "address": null,
+  "capture": "$HOME/athan-gitree/census/o1l-city/us-states/captures/mawaqit_masjid-tawheed.html",
+  "evidence": "mawaqit page payload (confData/meta latitude, longitude)",
+  "lat": 36.1183936,
+  "lon": -115.2268008,
+  "name": "Masjid Tawheed - Las-Vegas",
+  "platform": "mawaqit"
+ }
+}

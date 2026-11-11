@@ -1,0 +1,34 @@
+{
+ "label": "r173-العراق",
+ "file": "captures/masjidi_region_173.json",
+ "rows": 366,
+ "lat": 35,
+ "k": 0,
+ "geoRms": 6.311,
+ "fajr": {
+  "kind": "angle",
+  "n": 366,
+  "angle": 16.05,
+  "darkIqr": 0.39
+ },
+ "isha": {
+  "kind": "interval",
+  "n": 366,
+  "angle": 16.24,
+  "darkIqr": 0.71,
+  "gap": 80
+ },
+ "asr": {
+  "school": "Shafi",
+  "shafiMae": 2.7,
+  "hanafiMae": 52.7
+ },
+ "clock": {
+  "lonImplied": -2.06,
+  "offsetMin": -8,
+  "driftRms": 1,
+  "runs": 1,
+  "steps": []
+ },
+ "amplitude": -131
+}

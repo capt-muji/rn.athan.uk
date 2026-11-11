@@ -1,0 +1,231 @@
+{
+ "id": "--rows=data/dpt_isghmasjidhamza.org_2025.json",
+ "tz": "America/Chicago",
+ "years": {
+  "2025": {
+   "rows": 365,
+   "parsed": 365,
+   "iqRows": 0,
+   "geo": {
+    "lat": 17.7,
+    "lon": -15.184,
+    "k": 0,
+    "resid": 550.235
+   },
+   "fajrAngle": {
+    "kind": "angle",
+    "n": 365,
+    "angle": 23.74,
+    "winter": 23.25,
+    "summer": 32.89,
+    "darkIqr": 0.88,
+    "iqrGap": 1459,
+    "gapMedian": 99,
+    "residRms": null,
+    "darkRms": null
+   },
+   "ishaAngleVsSunset": {
+    "kind": "angle",
+    "n": 365,
+    "angle": 23.78,
+    "winter": 23.28,
+    "summer": 32.89,
+    "darkIqr": 0.84,
+    "iqrGap": 29,
+    "gapMedian": 101,
+    "residRms": null,
+    "darkRms": null
+   },
+   "ishaGapToMaghrib": {
+    "med": 101
+   },
+   "isna": {
+    "days": 365,
+    "exact": 0,
+    "within1": 0,
+    "worst": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    },
+    "worstCol": null,
+    "asrHanafiBetter": null,
+    "fajr": {
+     "exact": 1,
+     "exactPct": 0.3,
+     "within1Pct": 0.5,
+     "worst": 1424
+    },
+    "sunrise": {
+     "exact": 0,
+     "exactPct": 0,
+     "within1Pct": 0,
+     "worst": 1336
+    },
+    "dhuhr": {
+     "exact": 90,
+     "exactPct": 24.7,
+     "within1Pct": 32.6,
+     "worst": 323
+    },
+    "asr": {
+     "exact": 7,
+     "exactPct": 1.9,
+     "within1Pct": 21.9,
+     "worst": -405
+    },
+    "maghrib": {
+     "exact": 1,
+     "exactPct": 0.3,
+     "within1Pct": 1.4,
+     "worst": -410
+    },
+    "isha": {
+     "exact": 3,
+     "exactPct": 0.8,
+     "within1Pct": 1.4,
+     "worst": -404
+    }
+   },
+   "mwl": {
+    "days": 365,
+    "exact": 0,
+    "within1": 0,
+    "worst": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    },
+    "worstCol": null,
+    "asrHanafiBetter": null,
+    "fajr": {
+     "exact": 1,
+     "exactPct": 0.3,
+     "within1Pct": 0.5,
+     "worst": 1437
+    },
+    "sunrise": {
+     "exact": 0,
+     "exactPct": 0,
+     "within1Pct": 0,
+     "worst": 1336
+    },
+    "dhuhr": {
+     "exact": 90,
+     "exactPct": 24.7,
+     "within1Pct": 32.6,
+     "worst": 323
+    },
+    "asr": {
+     "exact": 7,
+     "exactPct": 1.9,
+     "within1Pct": 21.9,
+     "worst": -405
+    },
+    "maghrib": {
+     "exact": 1,
+     "exactPct": 0.3,
+     "within1Pct": 1.4,
+     "worst": -410
+    },
+    "isha": {
+     "exact": 2,
+     "exactPct": 0.5,
+     "within1Pct": 1.1,
+     "worst": -413
+    }
+   },
+   "asr": {
+    "shafiMae": 52.96,
+    "hanafiMae": 113.73,
+    "school": "Shafi"
+   },
+   "dst": [
+    {
+     "from": "2025-01-01",
+     "to": "2025-01-02",
+     "bucket": 360
+    },
+    {
+     "from": "2025-01-03",
+     "to": "2025-01-24",
+     "bucket": 90
+    },
+    {
+     "from": "2025-01-25",
+     "to": "2025-02-16",
+     "bucket": 60
+    },
+    {
+     "from": "2025-02-18",
+     "to": "2025-02-23",
+     "bucket": 330
+    },
+    {
+     "from": "2025-02-24",
+     "to": "2025-03-09",
+     "bucket": 30
+    },
+    {
+     "from": "2025-03-10",
+     "to": "2025-03-29",
+     "bucket": -60
+    },
+    {
+     "from": "2025-03-30",
+     "to": "2025-04-17",
+     "bucket": -90
+    },
+    {
+     "from": "2025-04-19",
+     "to": "2025-05-11",
+     "bucket": 1320
+    },
+    {
+     "from": "2025-05-12",
+     "to": "2025-07-31",
+     "bucket": 1290
+    },
+    {
+     "from": "2025-08-01",
+     "to": "2025-08-23",
+     "bucket": 1320
+    },
+    {
+     "from": "2025-08-24",
+     "to": "2025-09-13",
+     "bucket": -90
+    },
+    {
+     "from": "2025-09-14",
+     "to": "2025-10-04",
+     "bucket": -60
+    },
+    {
+     "from": "2025-10-05",
+     "to": "2025-10-24",
+     "bucket": -30
+    },
+    {
+     "from": "2025-11-02",
+     "to": "2025-11-16",
+     "bucket": 60
+    },
+    {
+     "from": "2025-11-17",
+     "to": "2025-12-31",
+     "bucket": 90
+    }
+   ],
+   "amplitudeFajrJanJul": 1150,
+   "fajrJan": 78,
+   "fajrJul": 1228
+  }
+ }
+}

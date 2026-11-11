@@ -1,0 +1,37 @@
+== my-esolat-2026-ngs01  point 2.7135,102.1997  span 2026-01-01..2026-12-31  n 365  amp fajr 9 isha 10
+  2026 B: faj 288/365/w1 sun 3/337/w-2 dhu 355/365/w1 asr 250/365/w1 mag 292/365/w1 ish 294/365/w1
+  2026 A: faj 0/76/w-3 sun 3/337/w-2 dhu 355/365/w1 asr 0/75/w-3 mag 292/365/w1 ish 0/70/w-3
+== my-esolat-2026-ngs02  point 2.9026,101.919  span 2026-01-01..2026-12-31  n 365  amp fajr 10 isha 11
+  2026 B: faj 310/365/w1 sun 29/345/w-2 dhu 351/365/w1 asr 270/365/w1 mag 308/365/w1 ish 297/365/w1
+  2026 A: faj 0/52/w-3 sun 29/345/w-2 dhu 351/365/w1 asr 0/54/w-3 mag 308/365/w1 ish 0/65/w-3
+== my-melaka-mufti-2025-2026  point 2.3986,101.9622  span 2025-06-27..2026-06-16  n 355  amp fajr 8 isha 10
+  2025 B: faj 178/188/w-1 sun 6/185/w2 dhu 181/188/w1 asr 161/188/w-1 mag 176/188/w-1 ish 173/188/w-1
+  2025 A: faj 0/5/w-3 sun 6/185/w2 dhu 181/188/w1 asr 0/15/w-3 mag 176/188/w-1 ish 0/9/w-3
+  2026 B: faj 154/167/w1 sun 8/163/w2 dhu 161/167/w1 asr 133/167/w-1 mag 161/167/w-1 ish 157/167/w-1
+  2026 A: faj 0/2/w-3 sun 8/163/w2 dhu 161/167/w1 asr 0/14/w-3 mag 161/167/w-1 ish 0/1/w-3
+== my-penang-2026-2027-grid  point 5.3333,100.1633  span 2026-06-17..2027-06-05  n 354  amp fajr 19 isha 19
+  2026 B: faj 180/198/w1 sun 54/198/w-1 dhu 196/198/w1 asr 141/198/w1 mag 188/198/w1 ish 184/198/w1
+  2026 A: faj 0/18/w-2 sun 54/198/w-1 dhu 196/198/w1 asr 0/29/w-3 mag 188/198/w1 ish 0/12/w-3
+  2027 B: faj 139/156/w1 sun 62/156/w-1 dhu 149/156/w1 asr 112/156/w1 mag 146/155/w-5 ish 148/156/w1
+  2027 A: faj 0/15/w-3 sun 62/156/w-1 dhu 149/156/w1 asr 0/20/w-3 mag 146/155/w-5 ish 0/7/w-3
+== my-perak-2026-zon1  point 4.1381,101.0569  span 2026-01-01..2026-12-31  n 365  amp fajr 14 isha 15
+  2026 B: faj 331/365/w1 sun 3/228/w-2 dhu 357/365/w-1 asr 262/365/w1 mag 330/365/w-1 ish 333/365/w-1
+  2026 A: faj 0/10/w-3 sun 3/228/w-2 dhu 357/365/w-1 asr 0/40/w-3 mag 330/365/w-1 ish 0/8/w-3
+== my-perak-2026-zon2  point 4.5859,100.7052  span 2026-01-01..2026-12-31  n 365  amp fajr 16 isha 17
+  2026 B: faj 340/365/w-1 sun 0/37/w-3 dhu 355/365/w1 asr 254/365/w1 mag 334/365/w1 ish 349/365/w1
+  2026 A: faj 0/14/w-3 sun 0/37/w-3 dhu 355/365/w1 asr 0/58/w-3 mag 334/365/w1 ish 0/8/w-3
+== my-perak-2026-zon3  point 5.2291,100.8564  span 2026-01-01..2026-12-31  n 365  amp fajr 19 isha 19
+  2026 B: faj 265/365/w1 sun 0/231/w-2 dhu 360/365/w-1 asr 252/365/w1 mag 274/365/w1 ish 255/365/w1
+  2026 A: faj 0/99/w-3 sun 0/231/w-2 dhu 360/365/w-1 asr 0/76/w-3 mag 274/365/w1 ish 0/107/w-3
+== my-perak-2026-zon4  point 5.4798,101.2028  span 2026-01-01..2026-12-31  n 365  amp fajr 20 isha 21
+  2026 B: faj 306/365/w1 sun 0/276/w-2 dhu 355/365/w1 asr 263/365/w1 mag 322/365/w1 ish 319/365/w1
+  2026 A: faj 0/58/w-3 sun 0/276/w-2 dhu 355/365/w1 asr 0/61/w-3 mag 322/365/w1 ish 0/44/w-3
+== my-perak-2026-zon5  point 4.1394,100.5145  span 2026-01-01..2026-12-31  n 365  amp fajr 14 isha 16
+  2026 B: faj 330/365/w1 sun 0/44/w-3 dhu 358/365/w-1 asr 267/364/w-2 mag 332/365/w-1 ish 319/365/w-1
+  2026 A: faj 0/16/w-3 sun 0/44/w-3 dhu 358/365/w-1 asr 0/43/w-4 mag 332/365/w-1 ish 0/18/w-3
+== my-perak-2026-zon6  point 5.1197,100.3539  span 2026-01-01..2026-12-31  n 365  amp fajr 18 isha 19
+  2026 B: faj 341/365/w-1 sun 0/214/w-2 dhu 359/365/w-1 asr 253/365/w1 mag 346/365/w-1 ish 335/365/w-1
+  2026 A: faj 0/2/w-3 sun 0/214/w-2 dhu 359/365/w-1 asr 0/45/w-3 mag 346/365/w-1 ish 0/0/w-3
+== my-perak-2026-zon7  point 4.9048,100.7829  span 2026-01-01..2026-12-31  n 365  amp fajr 18 isha 18
+  2026 B: faj 338/365/w-1 sun 0/0/w-5 dhu 359/365/w-1 asr 254/365/w1 mag 0/0/w6 ish 331/365/w-1
+  2026 A: faj 0/1/w-3 sun 0/0/w-5 dhu 359/365/w-1 asr 0/46/w-3 mag 0/0/w6 ish 0/0/w-3

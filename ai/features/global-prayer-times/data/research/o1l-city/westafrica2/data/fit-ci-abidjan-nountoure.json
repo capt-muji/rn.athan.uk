@@ -1,0 +1,100 @@
+{
+ "label": "CI Abidjan NounToure",
+ "file": "ci-abidjan-nountoure-2026.json",
+ "tz": "Africa/Abidjan",
+ "lat": 5.4533124815484,
+ "lon": -4.079353433401,
+ "days": 365,
+ "span": [
+  "2026-01-01",
+  "2026-12-31"
+ ],
+ "engine": "adhan 4.4.6 Rounding.None MiddleOfTheNight",
+ "recipe": {
+  "fajrAngle": 18.45,
+  "ishaAngle": 18.05,
+  "madhab": "Shafi",
+  "offsets": {
+   "fajr": 1,
+   "sunrise": 1,
+   "dhuhr": 23,
+   "asr": 0,
+   "maghrib": 1,
+   "isha": 1
+  }
+ },
+ "angleSearch": {
+  "fajr": {
+   "angle": 18.45,
+   "exact": 19,
+   "w1": 66,
+   "worst": 19,
+   "score": 66019
+  },
+  "isha": {
+   "angle": 18.05,
+   "exact": 21,
+   "w1": 75,
+   "worst": 27,
+   "score": 75021
+  }
+ },
+ "asrMadhab": {
+  "shafi": {
+   "exact": 59,
+   "w1": 108,
+   "worst": 31,
+   "n": 365
+  },
+  "hanafi": {
+   "exact": 0,
+   "w1": 0,
+   "worst": 63,
+   "n": 365
+  }
+ },
+ "perColumn": {
+  "fajr": {
+   "exact": 31,
+   "w1": 57,
+   "worst": 20,
+   "n": 365
+  },
+  "sunrise": {
+   "exact": 183,
+   "w1": 365,
+   "worst": 1,
+   "n": 365
+  },
+  "dhuhr": {
+   "exact": 32,
+   "w1": 57,
+   "worst": 23,
+   "n": 365
+  },
+  "asr": {
+   "exact": 59,
+   "w1": 108,
+   "worst": 31,
+   "n": 365
+  },
+  "maghrib": {
+   "exact": 97,
+   "w1": 210,
+   "worst": 28,
+   "n": 365
+  },
+  "isha": {
+   "exact": 36,
+   "w1": 62,
+   "worst": 26,
+   "n": 365
+  }
+ },
+ "totals": {
+  "within1": 859,
+  "of": 2190,
+  "exact": 438,
+  "worst": 31
+ }
+}

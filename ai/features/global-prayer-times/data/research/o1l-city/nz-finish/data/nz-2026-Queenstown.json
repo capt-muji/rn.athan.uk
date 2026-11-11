@@ -1,0 +1,277 @@
+{
+ "_source": "fianz.com/ramzan-calendar 1447H sheet, image captures/nz-fianzcom-1447-Queenstown.jpg (captured 2026-11-11 by O1l-19r), transcribed by OCR + geometry, structural checks suhoor=fajr-5 and day-to-day smoothness",
+ "_sheet_printed": "5 min between suhoor end and fajr; 5 min between sunset and maghrib/iftar; asr single shadow; double-shadow asr 40 min later; isha per shafaqul ahmar 15 min earlier",
+ "rows": {
+  "2026-02-19": {
+   "suhoorEnds": "05:26",
+   "fajr": "05:31",
+   "sunrise": "07:03",
+   "dhuhr": "14:00",
+   "asr": "17:50",
+   "maghrib": "21:01",
+   "isha": "22:23"
+  },
+  "2026-02-20": {
+   "suhoorEnds": "05:28",
+   "fajr": "05:33",
+   "sunrise": "07:05",
+   "dhuhr": "14:00",
+   "asr": "17:49",
+   "maghrib": "20:59",
+   "isha": "22:21"
+  },
+  "2026-02-21": {
+   "suhoorEnds": "05:30",
+   "fajr": "05:35",
+   "sunrise": "07:06",
+   "dhuhr": "14:00",
+   "asr": "17:48",
+   "maghrib": "20:58",
+   "isha": "22:19"
+  },
+  "2026-02-22": {
+   "suhoorEnds": "05:32",
+   "fajr": "05:37",
+   "sunrise": "07:08",
+   "dhuhr": "14:00",
+   "asr": "17:48",
+   "maghrib": "20:56",
+   "isha": "22:17"
+  },
+  "2026-02-23": {
+   "suhoorEnds": "05:33",
+   "fajr": "05:38",
+   "sunrise": "07:09",
+   "dhuhr": "14:00",
+   "asr": "17:47",
+   "maghrib": "20:54",
+   "isha": "22:15"
+  },
+  "2026-02-24": {
+   "suhoorEnds": "05:35",
+   "fajr": "05:40",
+   "sunrise": "07:11",
+   "dhuhr": "14:00",
+   "asr": "17:46",
+   "maghrib": "20:53",
+   "isha": "22:13"
+  },
+  "2026-02-25": {
+   "suhoorEnds": "05:37",
+   "fajr": "05:42",
+   "sunrise": "07:12",
+   "dhuhr": "14:00",
+   "asr": "17:45",
+   "maghrib": "20:51",
+   "isha": "22:10"
+  },
+  "2026-02-26": {
+   "suhoorEnds": "05:39",
+   "fajr": "05:44",
+   "sunrise": "07:13",
+   "dhuhr": "13:59",
+   "asr": "17:44",
+   "maghrib": "20:49",
+   "isha": "22:08"
+  },
+  "2026-02-27": {
+   "suhoorEnds": "05:41",
+   "fajr": "05:46",
+   "sunrise": "07:15",
+   "dhuhr": "13:59",
+   "asr": "17:43",
+   "maghrib": "20:47",
+   "isha": "22:06"
+  },
+  "2026-02-28": {
+   "suhoorEnds": "05:42",
+   "fajr": "05:47",
+   "sunrise": "07:16",
+   "dhuhr": "13:59",
+   "asr": "17:42",
+   "maghrib": "20:46",
+   "isha": "22:04"
+  },
+  "2026-03-01": {
+   "suhoorEnds": "05:46",
+   "fajr": "05:51",
+   "sunrise": "07:19",
+   "dhuhr": "13:59",
+   "asr": "17:40",
+   "maghrib": "20:42",
+   "isha": "22:00"
+  },
+  "2026-03-02": {
+   "suhoorEnds": "05:48",
+   "fajr": "05:53",
+   "sunrise": "07:20",
+   "dhuhr": "13:59",
+   "asr": "17:39",
+   "maghrib": "20:40",
+   "isha": "21:58"
+  },
+  "2026-03-03": {
+   "suhoorEnds": "05:49",
+   "fajr": "05:54",
+   "sunrise": "07:22",
+   "dhuhr": "13:58",
+   "asr": "17:38",
+   "maghrib": "20:39",
+   "isha": "21:56"
+  },
+  "2026-03-04": {
+   "suhoorEnds": "05:51",
+   "fajr": "05:56",
+   "sunrise": "07:23",
+   "dhuhr": "13:58",
+   "asr": "17:37",
+   "maghrib": "20:37",
+   "isha": "21:54"
+  },
+  "2026-03-05": {
+   "suhoorEnds": "05:53",
+   "fajr": "05:58",
+   "sunrise": "07:25",
+   "dhuhr": "13:58",
+   "asr": "17:36",
+   "maghrib": "20:35",
+   "isha": "21:52"
+  },
+  "2026-03-06": {
+   "suhoorEnds": "05:54",
+   "fajr": "05:59",
+   "sunrise": "07:26",
+   "dhuhr": "13:58",
+   "asr": "17:35",
+   "maghrib": "20:33",
+   "isha": "21:50"
+  },
+  "2026-03-07": {
+   "suhoorEnds": "05:56",
+   "fajr": "06:01",
+   "sunrise": "07:27",
+   "dhuhr": "13:57",
+   "asr": "17:34",
+   "maghrib": "20:31",
+   "isha": "21:48"
+  },
+  "2026-03-08": {
+   "suhoorEnds": "05:58",
+   "fajr": "06:03",
+   "sunrise": "07:29",
+   "dhuhr": "13:57",
+   "asr": "17:32",
+   "maghrib": "20:30",
+   "isha": "21:46"
+  },
+  "2026-03-09": {
+   "suhoorEnds": "05:59",
+   "fajr": "06:04",
+   "sunrise": "07:30",
+   "dhuhr": "13:57",
+   "asr": "17:31",
+   "maghrib": "20:28",
+   "isha": "21:44"
+  },
+  "2026-03-10": {
+   "suhoorEnds": "06:01",
+   "fajr": "06:06",
+   "sunrise": "07:31",
+   "dhuhr": "13:57",
+   "asr": "17:30",
+   "maghrib": "20:26",
+   "isha": "21:41"
+  },
+  "2026-03-11": {
+   "suhoorEnds": "06:02",
+   "fajr": "06:07",
+   "sunrise": "07:33",
+   "dhuhr": "13:56",
+   "asr": "17:29",
+   "maghrib": "20:24",
+   "isha": "21:39"
+  },
+  "2026-03-12": {
+   "suhoorEnds": "06:04",
+   "fajr": "06:09",
+   "sunrise": "07:34",
+   "dhuhr": "13:56",
+   "asr": "17:28",
+   "maghrib": "20:22",
+   "isha": "21:37"
+  },
+  "2026-03-13": {
+   "suhoorEnds": "06:05",
+   "fajr": "06:10",
+   "sunrise": "07:35",
+   "dhuhr": "13:56",
+   "asr": "17:27",
+   "maghrib": "20:20",
+   "isha": "21:35"
+  },
+  "2026-03-14": {
+   "suhoorEnds": "06:07",
+   "fajr": "06:12",
+   "sunrise": "07:37",
+   "dhuhr": "13:56",
+   "asr": "17:25",
+   "maghrib": "20:18",
+   "isha": "21:33"
+  },
+  "2026-03-15": {
+   "suhoorEnds": "06:08",
+   "fajr": "06:13",
+   "sunrise": "07:38",
+   "dhuhr": "13:55",
+   "asr": "17:24",
+   "maghrib": "20:17",
+   "isha": "21:31"
+  },
+  "2026-03-16": {
+   "suhoorEnds": "06:10",
+   "fajr": "06:15",
+   "sunrise": "07:39",
+   "dhuhr": "13:55",
+   "asr": "17:23",
+   "maghrib": "20:15",
+   "isha": "21:29"
+  },
+  "2026-03-17": {
+   "suhoorEnds": "06:11",
+   "fajr": "06:16",
+   "sunrise": "07:40",
+   "dhuhr": "13:55",
+   "asr": "17:22",
+   "maghrib": "20:13",
+   "isha": "21:27"
+  },
+  "2026-03-18": {
+   "suhoorEnds": "06:13",
+   "fajr": "06:18",
+   "sunrise": "07:42",
+   "dhuhr": "13:54",
+   "asr": "17:20",
+   "maghrib": "20:11",
+   "isha": "21:25"
+  },
+  "2026-03-19": {
+   "suhoorEnds": "06:14",
+   "fajr": "06:19",
+   "sunrise": "07:43",
+   "dhuhr": "13:54",
+   "asr": "17:19",
+   "maghrib": "20:09",
+   "isha": "21:23"
+  },
+  "2026-03-20": {
+   "suhoorEnds": "06:16",
+   "fajr": "06:21",
+   "sunrise": "07:44",
+   "dhuhr": "13:54",
+   "asr": "17:18",
+   "maghrib": "20:07",
+   "isha": "21:21"
+  }
+ },
+ "_clock": "sheets print a 12-hour clock; afternoon columns +12 when printed hour < 12"
+}

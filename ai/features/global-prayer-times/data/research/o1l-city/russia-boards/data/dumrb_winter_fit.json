@@ -1,0 +1,5641 @@
+{
+ "2025": {
+  "Давлеканово": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 18.6,
+   "dhuhrFixed": [
+    803,
+    804,
+    805,
+    806,
+    807,
+    808,
+    809,
+    810,
+    811,
+    812,
+    813,
+    814
+   ],
+   "suhurMedian": null,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 26.2,
+     "exact": 4.4,
+     "w1": 15.6,
+     "max": 9.3,
+     "mae": 5.14
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.23,
+     "exact": 56.7,
+     "w1": 93.3,
+     "max": 1.4,
+     "mae": 0.46
+    },
+    "dhuhr": {
+     "n": 0,
+     "offset": null,
+     "exact": null,
+     "w1": null,
+     "max": null,
+     "mae": null
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.1,
+     "exact": 65.6,
+     "w1": 95.6,
+     "max": 1.3,
+     "mae": 0.4
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.07,
+     "exact": 61.1,
+     "w1": 94.4,
+     "max": 1.6,
+     "mae": 0.44
+    },
+    "isha": {
+     "n": 90,
+     "offset": -26.87,
+     "exact": 26.7,
+     "w1": 42.2,
+     "max": 7.9,
+     "mae": 2.19
+    }
+   }
+  },
+  "Дюртюли": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 13.25,
+   "dhuhrFixed": [
+    804,
+    805,
+    806,
+    807,
+    808,
+    809,
+    810,
+    811,
+    812,
+    813,
+    814,
+    815
+   ],
+   "suhurMedian": null,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 28.73,
+     "exact": 5.6,
+     "w1": 10,
+     "max": 10.7,
+     "mae": 5.3
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": 5.28,
+     "exact": 48.9,
+     "w1": 82.2,
+     "max": 1.9,
+     "mae": 0.6
+    },
+    "dhuhr": {
+     "n": 0,
+     "offset": null,
+     "exact": null,
+     "w1": null,
+     "max": null,
+     "mae": null
+    },
+    "asr": {
+     "n": 90,
+     "offset": -2.02,
+     "exact": 46.7,
+     "w1": 86.7,
+     "max": 1.9,
+     "mae": 0.6
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.57,
+     "exact": 26.7,
+     "w1": 42.2,
+     "max": 2.7,
+     "mae": 1.16
+    },
+    "isha": {
+     "n": 90,
+     "offset": 12.65,
+     "exact": 26.7,
+     "w1": 47.8,
+     "max": 7.6,
+     "mae": 2.33
+    }
+   }
+  },
+  "Ишимбай": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 18.6,
+   "dhuhrFixed": [
+    799,
+    800,
+    801,
+    802,
+    803,
+    804,
+    805,
+    806,
+    807,
+    808,
+    809,
+    810
+   ],
+   "suhurMedian": null,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 25.27,
+     "exact": 10,
+     "w1": 14.4,
+     "max": 8.8,
+     "mae": 5.03
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.32,
+     "exact": 58.9,
+     "w1": 91.1,
+     "max": 1.3,
+     "mae": 0.45
+    },
+    "dhuhr": {
+     "n": 0,
+     "offset": null,
+     "exact": null,
+     "w1": null,
+     "max": null,
+     "mae": null
+    },
+    "asr": {
+     "n": 90,
+     "offset": -0.98,
+     "exact": 68.9,
+     "w1": 95.6,
+     "max": 1.5,
+     "mae": 0.37
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": 0.02,
+     "exact": 65.6,
+     "w1": 88.9,
+     "max": 1.5,
+     "mae": 0.45
+    },
+    "isha": {
+     "n": 90,
+     "offset": -26.42,
+     "exact": 25.6,
+     "w1": 45.6,
+     "max": 7.5,
+     "mae": 2.06
+    }
+   }
+  },
+  "с. Кармаскалы Кармаскалинский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 18.6,
+   "dhuhrFixed": [
+    799,
+    800,
+    801,
+    802,
+    803,
+    804,
+    805,
+    806,
+    807,
+    808,
+    809,
+    810
+   ],
+   "suhurMedian": null,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 26.1,
+     "exact": 7.8,
+     "w1": 13.3,
+     "max": 9.3,
+     "mae": 5.12
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.32,
+     "exact": 57.8,
+     "w1": 93.3,
+     "max": 1.1,
+     "mae": 0.45
+    },
+    "dhuhr": {
+     "n": 0,
+     "offset": null,
+     "exact": null,
+     "w1": null,
+     "max": null,
+     "mae": null
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.28,
+     "exact": 62.2,
+     "w1": 88.9,
+     "max": 1.8,
+     "mae": 0.47
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.12,
+     "exact": 76.7,
+     "w1": 92.2,
+     "max": 1.4,
+     "mae": 0.37
+    },
+    "isha": {
+     "n": 90,
+     "offset": -27.08,
+     "exact": 21.1,
+     "w1": 43.3,
+     "max": 7.9,
+     "mae": 2.19
+    }
+   }
+  },
+  "Кумертау": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 18.6,
+   "dhuhrFixed": [
+    800,
+    801,
+    802,
+    803,
+    804,
+    805,
+    806,
+    807,
+    808,
+    809,
+    810,
+    811
+   ],
+   "suhurMedian": null,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 25.03,
+     "exact": 6.7,
+     "w1": 14.4,
+     "max": 8.8,
+     "mae": 4.99
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.17,
+     "exact": 50,
+     "w1": 93.3,
+     "max": 1.5,
+     "mae": 0.51
+    },
+    "dhuhr": {
+     "n": 0,
+     "offset": null,
+     "exact": null,
+     "w1": null,
+     "max": null,
+     "mae": null
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.03,
+     "exact": 65.6,
+     "w1": 95.6,
+     "max": 1.2,
+     "mae": 0.38
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.1,
+     "exact": 63.3,
+     "w1": 91.1,
+     "max": 1.2,
+     "mae": 0.42
+    },
+    "isha": {
+     "n": 90,
+     "offset": -26.05,
+     "exact": 23.3,
+     "w1": 42.2,
+     "max": 7,
+     "mae": 2.07
+    }
+   }
+  },
+  "Межгорье": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 18.6,
+   "dhuhrFixed": [
+    792,
+    793,
+    794,
+    795,
+    796,
+    797,
+    798,
+    799,
+    800,
+    801,
+    802,
+    810
+   ],
+   "suhurMedian": null,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 26.18,
+     "exact": 6.7,
+     "w1": 13.3,
+     "max": 9.4,
+     "mae": 5.13
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.18,
+     "exact": 54.4,
+     "w1": 86.7,
+     "max": 1.4,
+     "mae": 0.51
+    },
+    "dhuhr": {
+     "n": 0,
+     "offset": null,
+     "exact": null,
+     "w1": null,
+     "max": null,
+     "mae": null
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.22,
+     "exact": 64.4,
+     "w1": 92.2,
+     "max": 1.6,
+     "mae": 0.43
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.15,
+     "exact": 70,
+     "w1": 95.6,
+     "max": 1.4,
+     "mae": 0.38
+    },
+    "isha": {
+     "n": 90,
+     "offset": -26.9,
+     "exact": 24.4,
+     "w1": 42.2,
+     "max": 8.2,
+     "mae": 2.16
+    }
+   }
+  },
+  "Мелеуз": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 18.6,
+   "dhuhrFixed": [
+    800,
+    801,
+    802,
+    803,
+    804,
+    805,
+    806,
+    807,
+    808,
+    809,
+    810
+   ],
+   "suhurMedian": null,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 25.45,
+     "exact": 8.9,
+     "w1": 13.3,
+     "max": 9.1,
+     "mae": 5
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.18,
+     "exact": 51.1,
+     "w1": 88.9,
+     "max": 1.4,
+     "mae": 0.51
+    },
+    "dhuhr": {
+     "n": 0,
+     "offset": null,
+     "exact": null,
+     "w1": null,
+     "max": null,
+     "mae": null
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.07,
+     "exact": 67.8,
+     "w1": 95.6,
+     "max": 1.5,
+     "mae": 0.39
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.1,
+     "exact": 63.3,
+     "w1": 92.2,
+     "max": 1.4,
+     "mae": 0.43
+    },
+    "isha": {
+     "n": 90,
+     "offset": -26.13,
+     "exact": 25.6,
+     "w1": 44.4,
+     "max": 7.1,
+     "mae": 2.11
+    }
+   }
+  },
+  "Миловка": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 12,
+   "ishaAngle": 11,
+   "dhuhrFixed": [
+    810,
+    811
+   ],
+   "suhurMedian": null,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": -23.25,
+     "exact": 26.7,
+     "w1": 40,
+     "max": 2.7,
+     "mae": 1.19
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -9.93,
+     "exact": 16.7,
+     "w1": 44.4,
+     "max": 4.5,
+     "mae": 1.48
+    },
+    "dhuhr": {
+     "n": 0,
+     "offset": null,
+     "exact": null,
+     "w1": null,
+     "max": null,
+     "mae": null
+    },
+    "asr": {
+     "n": 90,
+     "offset": 0.62,
+     "exact": 10,
+     "w1": 28.9,
+     "max": 3.3,
+     "mae": 1.75
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": 1.57,
+     "exact": 25.6,
+     "w1": 55.6,
+     "max": 4,
+     "mae": 1.33
+    },
+    "isha": {
+     "n": 90,
+     "offset": 22.38,
+     "exact": 31.1,
+     "w1": 52.2,
+     "max": 2.7,
+     "mae": 1.02
+    }
+   }
+  },
+  "Нефтекамск": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 18.6,
+   "dhuhrFixed": [
+    807,
+    808,
+    809,
+    810,
+    811,
+    812,
+    813,
+    814,
+    815,
+    816,
+    817
+   ],
+   "suhurMedian": null,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 27.35,
+     "exact": 6.7,
+     "w1": 10,
+     "max": 9.6,
+     "mae": 5.43
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.03,
+     "exact": 56.7,
+     "w1": 84.4,
+     "max": 1.7,
+     "mae": 0.51
+    },
+    "dhuhr": {
+     "n": 0,
+     "offset": null,
+     "exact": null,
+     "w1": null,
+     "max": null,
+     "mae": null
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.08,
+     "exact": 57.8,
+     "w1": 90,
+     "max": 1.5,
+     "mae": 0.46
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": 0.2,
+     "exact": 62.2,
+     "w1": 84.4,
+     "max": 1.6,
+     "mae": 0.49
+    },
+    "isha": {
+     "n": 90,
+     "offset": -28.18,
+     "exact": 35.6,
+     "w1": 45.6,
+     "max": 7.6,
+     "mae": 2.13
+    }
+   }
+  },
+  "Октябрьский": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 18.6,
+   "dhuhrFixed": [
+    810,
+    811,
+    812,
+    813,
+    814,
+    815,
+    816,
+    817,
+    818,
+    819,
+    820
+   ],
+   "suhurMedian": null,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 25.87,
+     "exact": 7.8,
+     "w1": 13.3,
+     "max": 8.9,
+     "mae": 4.96
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.47,
+     "exact": 73.3,
+     "w1": 95.6,
+     "max": 1.2,
+     "mae": 0.37
+    },
+    "dhuhr": {
+     "n": 0,
+     "offset": null,
+     "exact": null,
+     "w1": null,
+     "max": null,
+     "mae": null
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.8,
+     "exact": 46.7,
+     "w1": 78.9,
+     "max": 2.3,
+     "mae": 0.62
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.7,
+     "exact": 80,
+     "w1": 100,
+     "max": 0.8,
+     "mae": 0.3
+    },
+    "isha": {
+     "n": 90,
+     "offset": -27.22,
+     "exact": 18.9,
+     "w1": 44.4,
+     "max": 8,
+     "mae": 2.3
+    }
+   }
+  },
+  "Уфа": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 18.5,
+   "dhuhrFixed": [
+    810
+   ],
+   "suhurMedian": null,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 26.45,
+     "exact": 6.7,
+     "w1": 12.2,
+     "max": 9.4,
+     "mae": 5.19
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.18,
+     "exact": 54.4,
+     "w1": 88.9,
+     "max": 1.5,
+     "mae": 0.5
+    },
+    "dhuhr": {
+     "n": 0,
+     "offset": null,
+     "exact": null,
+     "w1": null,
+     "max": null,
+     "mae": null
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.25,
+     "exact": 63.3,
+     "w1": 94.4,
+     "max": 1.6,
+     "mae": 0.42
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.17,
+     "exact": 60,
+     "w1": 94.4,
+     "max": 1.3,
+     "mae": 0.42
+    },
+    "isha": {
+     "n": 90,
+     "offset": -26.55,
+     "exact": 24.4,
+     "w1": 44.4,
+     "max": 7.9,
+     "mae": 2.17
+    }
+   }
+  },
+  "Приютово": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 12,
+   "ishaAngle": 11,
+   "dhuhrFixed": [
+    793,
+    794,
+    795,
+    796,
+    797,
+    798,
+    799,
+    800,
+    801,
+    802,
+    803,
+    804,
+    805,
+    806,
+    807,
+    808,
+    809,
+    810,
+    811,
+    812,
+    813,
+    814,
+    815,
+    816,
+    817,
+    818
+   ],
+   "suhurMedian": null,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": -16.48,
+     "exact": 18.9,
+     "w1": 33.3,
+     "max": 5.3,
+     "mae": 1.81
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.22,
+     "exact": 84.4,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.26
+    },
+    "dhuhr": {
+     "n": 0,
+     "offset": null,
+     "exact": null,
+     "w1": null,
+     "max": null,
+     "mae": null
+    },
+    "asr": {
+     "n": 90,
+     "offset": -0.97,
+     "exact": 50,
+     "w1": 73.3,
+     "max": 2.7,
+     "mae": 0.72
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": 0.22,
+     "exact": 96.7,
+     "w1": 100,
+     "max": 0.6,
+     "mae": 0.19
+    },
+    "isha": {
+     "n": 90,
+     "offset": 23.6,
+     "exact": 15.6,
+     "w1": 34.4,
+     "max": 4.1,
+     "mae": 1.66
+    }
+   }
+  },
+  "Салават": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 18.6,
+   "dhuhrFixed": [
+    800,
+    801,
+    802,
+    803,
+    804,
+    805,
+    806,
+    807,
+    808,
+    809,
+    810
+   ],
+   "suhurMedian": null,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 25.67,
+     "exact": 8.9,
+     "w1": 12.2,
+     "max": 9,
+     "mae": 5.07
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.08,
+     "exact": 45.6,
+     "w1": 84.4,
+     "max": 1.5,
+     "mae": 0.57
+    },
+    "dhuhr": {
+     "n": 0,
+     "offset": null,
+     "exact": null,
+     "w1": null,
+     "max": null,
+     "mae": null
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.18,
+     "exact": 67.8,
+     "w1": 92.2,
+     "max": 1.7,
+     "mae": 0.41
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.28,
+     "exact": 63.3,
+     "w1": 97.8,
+     "max": 1.2,
+     "mae": 0.38
+    },
+    "isha": {
+     "n": 90,
+     "offset": -26.47,
+     "exact": 24.4,
+     "w1": 46.7,
+     "max": 7.2,
+     "mae": 2.12
+    }
+   }
+  },
+  "Сибай": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 11,
+   "dhuhrFixed": [
+    789,
+    790,
+    791,
+    792,
+    793,
+    794,
+    795,
+    796,
+    797,
+    798,
+    799,
+    800,
+    810
+   ],
+   "suhurMedian": null,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 25.23,
+     "exact": 10,
+     "w1": 15.6,
+     "max": 8.3,
+     "mae": 2.72
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": 0.32,
+     "exact": 50,
+     "w1": 65.6,
+     "max": 17.8,
+     "mae": 5.95
+    },
+    "dhuhr": {
+     "n": 0,
+     "offset": null,
+     "exact": null,
+     "w1": null,
+     "max": null,
+     "mae": null
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.43,
+     "exact": 44.4,
+     "w1": 64.4,
+     "max": 19.5,
+     "mae": 6.57
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.13,
+     "exact": 48.9,
+     "w1": 65.6,
+     "max": 19.9,
+     "mae": 6.65
+    },
+    "isha": {
+     "n": 90,
+     "offset": 21.7,
+     "exact": 10,
+     "w1": 26.7,
+     "max": 5.3,
+     "mae": 1.93
+    }
+   }
+  },
+  "Стерлитамак": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 18.6,
+   "dhuhrFixed": [
+    800,
+    801,
+    802,
+    803,
+    804,
+    805,
+    806,
+    807,
+    808,
+    809,
+    810,
+    811
+   ],
+   "suhurMedian": null,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 25.97,
+     "exact": 8.9,
+     "w1": 12.2,
+     "max": 9.4,
+     "mae": 5.14
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": 0.02,
+     "exact": 55.6,
+     "w1": 90,
+     "max": 1.6,
+     "mae": 0.51
+    },
+    "dhuhr": {
+     "n": 0,
+     "offset": null,
+     "exact": null,
+     "w1": null,
+     "max": null,
+     "mae": null
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.03,
+     "exact": 70,
+     "w1": 95.6,
+     "max": 1.4,
+     "mae": 0.39
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": 0.05,
+     "exact": 46.7,
+     "w1": 88.9,
+     "max": 1.5,
+     "mae": 0.52
+    },
+    "isha": {
+     "n": 90,
+     "offset": -26.58,
+     "exact": 32.2,
+     "w1": 44.4,
+     "max": 7.5,
+     "mae": 2.06
+    }
+   }
+  },
+  "Туймазы": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 18.6,
+   "dhuhrFixed": [
+    809,
+    810,
+    811,
+    812,
+    813,
+    814,
+    815,
+    816,
+    817,
+    818,
+    819
+   ],
+   "suhurMedian": null,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 26.35,
+     "exact": 7.8,
+     "w1": 14.4,
+     "max": 9.3,
+     "mae": 5.18
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.15,
+     "exact": 57.8,
+     "w1": 87.8,
+     "max": 1.5,
+     "mae": 0.49
+    },
+    "dhuhr": {
+     "n": 0,
+     "offset": null,
+     "exact": null,
+     "w1": null,
+     "max": null,
+     "mae": null
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.22,
+     "exact": 61.1,
+     "w1": 91.1,
+     "max": 1.7,
+     "mae": 0.44
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.13,
+     "exact": 63.3,
+     "w1": 95.6,
+     "max": 1.2,
+     "mae": 0.41
+    },
+    "isha": {
+     "n": 90,
+     "offset": -27.23,
+     "exact": 23.3,
+     "w1": 42.2,
+     "max": 7.3,
+     "mae": 2.17
+    }
+   }
+  },
+  "Учалы": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 18.6,
+   "dhuhrFixed": [
+    786,
+    787,
+    788,
+    789,
+    790,
+    791,
+    792,
+    793,
+    794,
+    795,
+    796,
+    810
+   ],
+   "suhurMedian": null,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 25.93,
+     "exact": 7.8,
+     "w1": 13.3,
+     "max": 9.1,
+     "mae": 5.09
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.4,
+     "exact": 64.4,
+     "w1": 96.7,
+     "max": 1.4,
+     "mae": 0.39
+    },
+    "dhuhr": {
+     "n": 0,
+     "offset": null,
+     "exact": null,
+     "w1": null,
+     "max": null,
+     "mae": null
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.35,
+     "exact": 53.3,
+     "w1": 88.9,
+     "max": 1.9,
+     "mae": 0.49
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.28,
+     "exact": 75.6,
+     "w1": 97.8,
+     "max": 1.1,
+     "mae": 0.32
+    },
+    "isha": {
+     "n": 90,
+     "offset": -27.03,
+     "exact": 22.2,
+     "w1": 40,
+     "max": 8.2,
+     "mae": 2.2
+    }
+   }
+  },
+  "п.г.т. Чишмы Чишминский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 18.6,
+   "dhuhrFixed": [
+    802,
+    803,
+    804,
+    805,
+    806,
+    807,
+    808,
+    809,
+    810,
+    811,
+    812,
+    813
+   ],
+   "suhurMedian": null,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 26.08,
+     "exact": 8.9,
+     "w1": 14.4,
+     "max": 9.2,
+     "mae": 5.17
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.15,
+     "exact": 58.9,
+     "w1": 90,
+     "max": 1.6,
+     "mae": 0.46
+    },
+    "dhuhr": {
+     "n": 0,
+     "offset": null,
+     "exact": null,
+     "w1": null,
+     "max": null,
+     "mae": null
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.22,
+     "exact": 65.6,
+     "w1": 93.3,
+     "max": 1.7,
+     "mae": 0.42
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.13,
+     "exact": 61.1,
+     "w1": 93.3,
+     "max": 1.3,
+     "mae": 0.41
+    },
+    "isha": {
+     "n": 90,
+     "offset": -27.17,
+     "exact": 27.8,
+     "w1": 44.4,
+     "max": 7.6,
+     "mae": 2.16
+    }
+   }
+  },
+  "Янаул": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 18.6,
+   "dhuhrFixed": [
+    804,
+    805,
+    806,
+    807,
+    808,
+    809,
+    810,
+    811,
+    812,
+    813,
+    814
+   ],
+   "suhurMedian": null,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 27.22,
+     "exact": 5.6,
+     "w1": 12.2,
+     "max": 9.5,
+     "mae": 5.39
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.12,
+     "exact": 55.6,
+     "w1": 83.3,
+     "max": 1.7,
+     "mae": 0.49
+    },
+    "dhuhr": {
+     "n": 0,
+     "offset": null,
+     "exact": null,
+     "w1": null,
+     "max": null,
+     "mae": null
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.4,
+     "exact": 63.3,
+     "w1": 84.4,
+     "max": 2,
+     "mae": 0.5
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.02,
+     "exact": 70,
+     "w1": 90,
+     "max": 1.5,
+     "mae": 0.41
+    },
+    "isha": {
+     "n": 90,
+     "offset": -28.3,
+     "exact": 26.7,
+     "w1": 44.4,
+     "max": 8.4,
+     "mae": 2.22
+    }
+   }
+  },
+  "Бирск": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 18.6,
+   "dhuhrFixed": [
+    801,
+    802,
+    803,
+    804,
+    805,
+    806,
+    807,
+    808,
+    809,
+    810,
+    811,
+    812
+   ],
+   "suhurMedian": null,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 27.08,
+     "exact": 7.8,
+     "w1": 15.6,
+     "max": 9.8,
+     "mae": 5.27
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.23,
+     "exact": 53.3,
+     "w1": 91.1,
+     "max": 1.3,
+     "mae": 0.49
+    },
+    "dhuhr": {
+     "n": 0,
+     "offset": null,
+     "exact": null,
+     "w1": null,
+     "max": null,
+     "mae": null
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.35,
+     "exact": 55.6,
+     "w1": 92.2,
+     "max": 1.9,
+     "mae": 0.48
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.08,
+     "exact": 62.2,
+     "w1": 90,
+     "max": 1.5,
+     "mae": 0.44
+    },
+    "isha": {
+     "n": 90,
+     "offset": -27.77,
+     "exact": 26.7,
+     "w1": 45.6,
+     "max": 8,
+     "mae": 2.22
+    }
+   }
+  },
+  "с. Аскарово Абзелиловский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "с. Раевский Альшеевский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "с. Архангельское Архангельский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "с. Аскино Аскинский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "с. Толбазы Аургазинский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "с. Бакалы Бакалинский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "с. Старобалтачево Балтачевский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "с. Новобелокатай Белокатайский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "с. Бижбуляк Бижбулякский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "с. Языково Благоварский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "с. Буздяк Буздякский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "с. Бураево Бураевский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "с. Старосубхангулово Бурзянский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "с. Красноусольский Гафурийский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "с. Месягутово Дуванский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "с. Ермекеево Ермекеевский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "с. Исянгулово Зианчуринский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "с. Зилаир Зилаирский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "с. Иглино Иглинский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "с. Верхнеяркеево Илишевский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "с. Калтасы Калтасинский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "с. Караидель Караидельский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "с. Верхние Киги Кигинский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "с. Николо-Березовка Краснокамский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "с. Мраково Кугарчинский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "с. Кушнаренково Кушнаренковский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "с. Ермолаево Куюргазинский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "с. Большеустьикинское Мечетлинский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "Агидель": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 18.6,
+   "dhuhrFixed": [
+    808,
+    809,
+    810,
+    811,
+    812,
+    813,
+    814,
+    815,
+    816,
+    817,
+    818
+   ],
+   "suhurMedian": null,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 26.98,
+     "exact": 5.6,
+     "w1": 11.1,
+     "max": 9.3,
+     "mae": 5.38
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.03,
+     "exact": 58.9,
+     "w1": 84.4,
+     "max": 1.7,
+     "mae": 0.52
+    },
+    "dhuhr": {
+     "n": 0,
+     "offset": null,
+     "exact": null,
+     "w1": null,
+     "max": null,
+     "mae": null
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.23,
+     "exact": 51.1,
+     "w1": 88.9,
+     "max": 1.8,
+     "mae": 0.51
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.07,
+     "exact": 63.3,
+     "w1": 93.3,
+     "max": 1.7,
+     "mae": 0.43
+    },
+    "isha": {
+     "n": 90,
+     "offset": -28.18,
+     "exact": 23.3,
+     "w1": 41.1,
+     "max": 8.1,
+     "mae": 2.23
+    }
+   }
+  },
+  "с. Мишкино Мишкинский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "с. Киргиз-Мияки Миякинский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "с. Красная Горка Нуримановский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "с. Стерлибашево Стерлибашевский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "с. Верхние Татышлы Татышлинский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "с. Федоровка Фёдоровский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "с. Акъяр Хайбуллинский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "с. Чекмагуш Чекмагушевский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "с. Шаран Шаранский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "с. Малояз Салаватский район": {
+   "note": "no winter half",
+   "months": 3
+  },
+  "Баймак": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 18.55,
+   "dhuhrFixed": [
+    790,
+    791,
+    792,
+    793,
+    794,
+    795,
+    796,
+    797,
+    798,
+    799,
+    800,
+    801,
+    810
+   ],
+   "suhurMedian": null,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 25.02,
+     "exact": 7.8,
+     "w1": 15.6,
+     "max": 8.6,
+     "mae": 4.98
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.1,
+     "exact": 53.3,
+     "w1": 88.9,
+     "max": 1.5,
+     "mae": 0.49
+    },
+    "dhuhr": {
+     "n": 0,
+     "offset": null,
+     "exact": null,
+     "w1": null,
+     "max": null,
+     "mae": null
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.02,
+     "exact": 67.8,
+     "w1": 96.7,
+     "max": 1.4,
+     "mae": 0.38
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.17,
+     "exact": 63.3,
+     "w1": 95.6,
+     "max": 1.5,
+     "mae": 0.42
+    },
+    "isha": {
+     "n": 90,
+     "offset": -25.65,
+     "exact": 26.7,
+     "w1": 44.4,
+     "max": 7.3,
+     "mae": 2.07
+    }
+   }
+  },
+  "Белебей": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 18.6,
+   "dhuhrFixed": [
+    807,
+    808,
+    809,
+    810,
+    811,
+    812,
+    813,
+    814,
+    815,
+    816,
+    817,
+    818
+   ],
+   "suhurMedian": null,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 25.77,
+     "exact": 10,
+     "w1": 14.4,
+     "max": 9,
+     "mae": 5.1
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.12,
+     "exact": 53.3,
+     "w1": 87.8,
+     "max": 1.6,
+     "mae": 0.51
+    },
+    "dhuhr": {
+     "n": 0,
+     "offset": null,
+     "exact": null,
+     "w1": null,
+     "max": null,
+     "mae": null
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.15,
+     "exact": 63.3,
+     "w1": 94.4,
+     "max": 1.7,
+     "mae": 0.43
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.15,
+     "exact": 54.4,
+     "w1": 94.4,
+     "max": 1.3,
+     "mae": 0.43
+    },
+    "isha": {
+     "n": 90,
+     "offset": -26.9,
+     "exact": 30,
+     "w1": 44.4,
+     "max": 7.8,
+     "mae": 2.1
+    }
+   }
+  },
+  "Белорецк": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 18.6,
+   "dhuhrFixed": [
+    790,
+    791,
+    792,
+    793,
+    794,
+    795,
+    796,
+    797,
+    798,
+    799,
+    800,
+    801,
+    810
+   ],
+   "suhurMedian": null,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 25.83,
+     "exact": 7.8,
+     "w1": 13.3,
+     "max": 9,
+     "mae": 5.07
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.23,
+     "exact": 57.8,
+     "w1": 95.6,
+     "max": 1.4,
+     "mae": 0.43
+    },
+    "dhuhr": {
+     "n": 0,
+     "offset": null,
+     "exact": null,
+     "w1": null,
+     "max": null,
+     "mae": null
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.22,
+     "exact": 65.6,
+     "w1": 95.6,
+     "max": 1.6,
+     "mae": 0.41
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": 0.17,
+     "exact": 66.7,
+     "w1": 84.4,
+     "max": 1.6,
+     "mae": 0.45
+    },
+    "isha": {
+     "n": 90,
+     "offset": -26.87,
+     "exact": 22.2,
+     "w1": 43.3,
+     "max": 7.9,
+     "mae": 2.13
+    }
+   }
+  },
+  "Благовещенск": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 18.6,
+   "dhuhrFixed": [
+    800,
+    801,
+    802,
+    803,
+    804,
+    805,
+    806,
+    807,
+    808,
+    809,
+    810
+   ],
+   "suhurMedian": null,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 26.68,
+     "exact": 7.8,
+     "w1": 15.6,
+     "max": 9.5,
+     "mae": 5.28
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": 0.03,
+     "exact": 54.4,
+     "w1": 82.2,
+     "max": 1.8,
+     "mae": 0.56
+    },
+    "dhuhr": {
+     "n": 0,
+     "offset": null,
+     "exact": null,
+     "w1": null,
+     "max": null,
+     "mae": null
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.22,
+     "exact": 61.1,
+     "w1": 92.2,
+     "max": 1.8,
+     "mae": 0.46
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.05,
+     "exact": 66.7,
+     "w1": 93.3,
+     "max": 1.4,
+     "mae": 0.4
+    },
+    "isha": {
+     "n": 90,
+     "offset": -27.37,
+     "exact": 26.7,
+     "w1": 44.4,
+     "max": 8.2,
+     "mae": 2.19
+    }
+   }
+  }
+ },
+ "2026": {
+  "Давлеканово": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.4,
+   "ishaAngle": 18.6,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 81,
+     "offset": 16.55,
+     "exact": 64.2,
+     "w1": 72.8,
+     "max": 101.2,
+     "mae": 24.11
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.28,
+     "exact": 62.2,
+     "w1": 94.4,
+     "max": 1.5,
+     "mae": 0.43
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.83,
+     "exact": 78.9,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.26
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.77,
+     "exact": 43.3,
+     "w1": 77.8,
+     "max": 2.2,
+     "mae": 0.68
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.87,
+     "exact": 33.3,
+     "w1": 86.7,
+     "max": 1.3,
+     "mae": 0.61
+    },
+    "isha": {
+     "n": 90,
+     "offset": -26.67,
+     "exact": 77.8,
+     "w1": 96.7,
+     "max": 1.3,
+     "mae": 0.34
+    }
+   }
+  },
+  "Дюртюли": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 13.75,
+   "ishaAngle": 14.5,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 15,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": -13.28,
+     "exact": 64.4,
+     "w1": 97.8,
+     "max": 1.2,
+     "mae": 0.39
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": 5.33,
+     "exact": 47.8,
+     "w1": 80,
+     "max": 7.3,
+     "mae": 0.76
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": 1.87,
+     "exact": 91.1,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.25
+    },
+    "asr": {
+     "n": 90,
+     "offset": -2.63,
+     "exact": 58.9,
+     "w1": 92.2,
+     "max": 1.8,
+     "mae": 0.47
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -2,
+     "exact": 37.8,
+     "w1": 64.4,
+     "max": 3.6,
+     "mae": 1.12
+    },
+    "isha": {
+     "n": 90,
+     "offset": 3.63,
+     "exact": 82.2,
+     "w1": 98.9,
+     "max": 1,
+     "mae": 0.3
+    }
+   }
+  },
+  "Ишимбай": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 18.3,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 17.45,
+     "exact": 83.3,
+     "w1": 100,
+     "max": 1,
+     "mae": 0.27
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.37,
+     "exact": 54.4,
+     "w1": 96.7,
+     "max": 1.3,
+     "mae": 0.47
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.8,
+     "exact": 81.1,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.26
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.72,
+     "exact": 45.6,
+     "w1": 82.2,
+     "max": 2.1,
+     "mae": 0.63
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.7,
+     "exact": 44.4,
+     "w1": 93.3,
+     "max": 1.4,
+     "mae": 0.55
+    },
+    "isha": {
+     "n": 90,
+     "offset": -24.18,
+     "exact": 83.3,
+     "w1": 98.9,
+     "max": 1.2,
+     "mae": 0.33
+    }
+   }
+  },
+  "с. Кармаскалы Кармаскалинский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.35,
+   "ishaAngle": 18.55,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 16.05,
+     "exact": 85.6,
+     "w1": 100,
+     "max": 0.9,
+     "mae": 0.29
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.25,
+     "exact": 62.2,
+     "w1": 93.3,
+     "max": 1.4,
+     "mae": 0.45
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.75,
+     "exact": 77.8,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.3
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.8,
+     "exact": 43.3,
+     "w1": 76.7,
+     "max": 2.2,
+     "mae": 0.71
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.83,
+     "exact": 44.4,
+     "w1": 84.4,
+     "max": 1.4,
+     "mae": 0.6
+    },
+    "isha": {
+     "n": 90,
+     "offset": -26.42,
+     "exact": 76.7,
+     "w1": 97.8,
+     "max": 1.3,
+     "mae": 0.34
+    }
+   }
+  },
+  "Кумертау": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.4,
+   "ishaAngle": 18.55,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 15.72,
+     "exact": 83.3,
+     "w1": 97.8,
+     "max": 4.1,
+     "mae": 0.34
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.47,
+     "exact": 52.2,
+     "w1": 94.4,
+     "max": 1.3,
+     "mae": 0.46
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.78,
+     "exact": 81.1,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.26
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.7,
+     "exact": 43.3,
+     "w1": 76.7,
+     "max": 2.2,
+     "mae": 0.69
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.77,
+     "exact": 46.7,
+     "w1": 83.3,
+     "max": 1.4,
+     "mae": 0.6
+    },
+    "isha": {
+     "n": 90,
+     "offset": -25.43,
+     "exact": 80,
+     "w1": 96.7,
+     "max": 1.1,
+     "mae": 0.32
+    }
+   }
+  },
+  "Межгорье": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.55,
+   "ishaAngle": 18.45,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 17.38,
+     "exact": 81.1,
+     "w1": 100,
+     "max": 0.8,
+     "mae": 0.28
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.35,
+     "exact": 65.6,
+     "w1": 95.6,
+     "max": 1.4,
+     "mae": 0.42
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.7,
+     "exact": 84.4,
+     "w1": 100,
+     "max": 0.8,
+     "mae": 0.29
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.78,
+     "exact": 45.6,
+     "w1": 74.4,
+     "max": 2.3,
+     "mae": 0.69
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.63,
+     "exact": 52.2,
+     "w1": 80,
+     "max": 1.5,
+     "mae": 0.56
+    },
+    "isha": {
+     "n": 90,
+     "offset": -25.67,
+     "exact": 75.6,
+     "w1": 96.7,
+     "max": 1.4,
+     "mae": 0.34
+    }
+   }
+  },
+  "Мелеуз": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 17.55,
+   "ishaAngle": 18.45,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 10.02,
+     "exact": 82.2,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.3
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.3,
+     "exact": 63.3,
+     "w1": 95.6,
+     "max": 1.3,
+     "mae": 0.44
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.75,
+     "exact": 77.8,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.3
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.72,
+     "exact": 43.3,
+     "w1": 75.6,
+     "max": 2,
+     "mae": 0.66
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.82,
+     "exact": 42.2,
+     "w1": 85.6,
+     "max": 1.5,
+     "mae": 0.6
+    },
+    "isha": {
+     "n": 90,
+     "offset": -24.9,
+     "exact": 76.7,
+     "w1": 98.9,
+     "max": 1.1,
+     "mae": 0.32
+    }
+   }
+  },
+  "Нефтекамск": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.45,
+   "ishaAngle": 18.5,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 15,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 17.57,
+     "exact": 82.2,
+     "w1": 100,
+     "max": 0.9,
+     "mae": 0.29
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.2,
+     "exact": 54.4,
+     "w1": 88.9,
+     "max": 1.5,
+     "mae": 0.48
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.65,
+     "exact": 87.8,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.27
+    },
+    "asr": {
+     "n": 90,
+     "offset": -2.02,
+     "exact": 43.3,
+     "w1": 70,
+     "max": 2.4,
+     "mae": 0.79
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.72,
+     "exact": 46.7,
+     "w1": 81.1,
+     "max": 1.5,
+     "mae": 0.6
+    },
+    "isha": {
+     "n": 90,
+     "offset": -27.35,
+     "exact": 77.8,
+     "w1": 95.6,
+     "max": 1.2,
+     "mae": 0.36
+    }
+   }
+  },
+  "Октябрьский": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 17.75,
+   "ishaAngle": 18.55,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 11.8,
+     "exact": 83.3,
+     "w1": 100,
+     "max": 0.8,
+     "mae": 0.27
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.35,
+     "exact": 64.4,
+     "w1": 97.8,
+     "max": 1.3,
+     "mae": 0.42
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.7,
+     "exact": 90,
+     "w1": 100,
+     "max": 0.8,
+     "mae": 0.25
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.8,
+     "exact": 43.3,
+     "w1": 76.7,
+     "max": 2.1,
+     "mae": 0.67
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.78,
+     "exact": 52.2,
+     "w1": 87.8,
+     "max": 1.3,
+     "mae": 0.53
+    },
+    "isha": {
+     "n": 90,
+     "offset": -26.53,
+     "exact": 76.7,
+     "w1": 94.4,
+     "max": 1.4,
+     "mae": 0.35
+    }
+   }
+  },
+  "Уфа": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.55,
+   "ishaAngle": 18.6,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 17.58,
+     "exact": 85.6,
+     "w1": 100,
+     "max": 0.9,
+     "mae": 0.25
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.28,
+     "exact": 55.6,
+     "w1": 94.4,
+     "max": 1.4,
+     "mae": 0.45
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.68,
+     "exact": 88.9,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.28
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.92,
+     "exact": 42.2,
+     "w1": 74.4,
+     "max": 2.4,
+     "mae": 0.71
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.93,
+     "exact": 40,
+     "w1": 90,
+     "max": 1.2,
+     "mae": 0.59
+    },
+    "isha": {
+     "n": 90,
+     "offset": -27.07,
+     "exact": 76.7,
+     "w1": 98.9,
+     "max": 1,
+     "mae": 0.35
+    }
+   }
+  },
+  "Салават": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.15,
+   "ishaAngle": 18.3,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 14.22,
+     "exact": 87.8,
+     "w1": 100,
+     "max": 0.9,
+     "mae": 0.29
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.3,
+     "exact": 63.3,
+     "w1": 96.7,
+     "max": 1.4,
+     "mae": 0.46
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.75,
+     "exact": 78.9,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.3
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.72,
+     "exact": 46.7,
+     "w1": 80,
+     "max": 2.1,
+     "mae": 0.64
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.7,
+     "exact": 41.1,
+     "w1": 88.9,
+     "max": 1.5,
+     "mae": 0.59
+    },
+    "isha": {
+     "n": 90,
+     "offset": -24.13,
+     "exact": 82.2,
+     "w1": 95.6,
+     "max": 1.3,
+     "mae": 0.34
+    }
+   }
+  },
+  "Сибай": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 12,
+   "ishaAngle": 11,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 15,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": -22.92,
+     "exact": 30,
+     "w1": 58.9,
+     "max": 7,
+     "mae": 1.58
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": 15.15,
+     "exact": 7.8,
+     "w1": 17.8,
+     "max": 10.9,
+     "mae": 3.35
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.75,
+     "exact": 78.9,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.3
+    },
+    "asr": {
+     "n": 90,
+     "offset": -18.48,
+     "exact": 15.6,
+     "w1": 26.7,
+     "max": 8.1,
+     "mae": 2.39
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -16.93,
+     "exact": 11.1,
+     "w1": 18.9,
+     "max": 12.1,
+     "mae": 3.85
+    },
+    "isha": {
+     "n": 90,
+     "offset": 20.95,
+     "exact": 26.7,
+     "w1": 54.4,
+     "max": 5.5,
+     "mae": 1.4
+    }
+   }
+  },
+  "Стерлитамак": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.5,
+   "ishaAngle": 18.45,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 16.73,
+     "exact": 83.3,
+     "w1": 100,
+     "max": 0.8,
+     "mae": 0.28
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.25,
+     "exact": 62.2,
+     "w1": 92.2,
+     "max": 1.3,
+     "mae": 0.44
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.68,
+     "exact": 84.4,
+     "w1": 100,
+     "max": 0.8,
+     "mae": 0.29
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.75,
+     "exact": 44.4,
+     "w1": 76.7,
+     "max": 2,
+     "mae": 0.69
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.87,
+     "exact": 46.7,
+     "w1": 86.7,
+     "max": 1.4,
+     "mae": 0.59
+    },
+    "isha": {
+     "n": 90,
+     "offset": -25.33,
+     "exact": 81.1,
+     "w1": 96.7,
+     "max": 1.2,
+     "mae": 0.33
+    }
+   }
+  },
+  "Туймазы": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.55,
+   "ishaAngle": 18.3,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 17.57,
+     "exact": 83.3,
+     "w1": 100,
+     "max": 1,
+     "mae": 0.27
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.32,
+     "exact": 52.2,
+     "w1": 91.1,
+     "max": 1.4,
+     "mae": 0.5
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.7,
+     "exact": 83.3,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.29
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.78,
+     "exact": 38.9,
+     "w1": 74.4,
+     "max": 2.3,
+     "mae": 0.71
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.82,
+     "exact": 36.7,
+     "w1": 86.7,
+     "max": 1.4,
+     "mae": 0.62
+    },
+    "isha": {
+     "n": 90,
+     "offset": -24.88,
+     "exact": 80,
+     "w1": 97.8,
+     "max": 1.2,
+     "mae": 0.34
+    }
+   }
+  },
+  "Учалы": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18,
+   "ishaAngle": 18.35,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 13.52,
+     "exact": 81.1,
+     "w1": 100,
+     "max": 0.8,
+     "mae": 0.29
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.3,
+     "exact": 60,
+     "w1": 94.4,
+     "max": 1.4,
+     "mae": 0.44
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.67,
+     "exact": 90,
+     "w1": 100,
+     "max": 0.8,
+     "mae": 0.25
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.78,
+     "exact": 44.4,
+     "w1": 76.7,
+     "max": 2.1,
+     "mae": 0.68
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.85,
+     "exact": 50,
+     "w1": 90,
+     "max": 1.3,
+     "mae": 0.54
+    },
+    "isha": {
+     "n": 90,
+     "offset": -25.07,
+     "exact": 78.9,
+     "w1": 95.6,
+     "max": 1.3,
+     "mae": 0.35
+    }
+   }
+  },
+  "п.г.т. Чишмы Чишминский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.1,
+   "ishaAngle": 18.3,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 14.3,
+     "exact": 85.6,
+     "w1": 100,
+     "max": 0.8,
+     "mae": 0.26
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.23,
+     "exact": 60,
+     "w1": 90,
+     "max": 1.3,
+     "mae": 0.47
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.67,
+     "exact": 87.8,
+     "w1": 100,
+     "max": 0.8,
+     "mae": 0.25
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.83,
+     "exact": 43.3,
+     "w1": 74.4,
+     "max": 2.2,
+     "mae": 0.69
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.68,
+     "exact": 43.3,
+     "w1": 88.9,
+     "max": 1.3,
+     "mae": 0.59
+    },
+    "isha": {
+     "n": 90,
+     "offset": -24.92,
+     "exact": 78.9,
+     "w1": 93.3,
+     "max": 1.4,
+     "mae": 0.36
+    }
+   }
+  },
+  "Янаул": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 18.25,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 15,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 18.7,
+     "exact": 81.1,
+     "w1": 100,
+     "max": 0.8,
+     "mae": 0.29
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.28,
+     "exact": 54.4,
+     "w1": 93.3,
+     "max": 1.5,
+     "mae": 0.47
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.73,
+     "exact": 80,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.29
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.93,
+     "exact": 44.4,
+     "w1": 73.3,
+     "max": 2.4,
+     "mae": 0.76
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.75,
+     "exact": 41.1,
+     "w1": 87.8,
+     "max": 1.7,
+     "mae": 0.57
+    },
+    "isha": {
+     "n": 90,
+     "offset": -25.6,
+     "exact": 72.2,
+     "w1": 95.6,
+     "max": 1.3,
+     "mae": 0.38
+    }
+   }
+  },
+  "Бирск": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.05,
+   "ishaAngle": 18.6,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 15,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 14.28,
+     "exact": 87.8,
+     "w1": 100,
+     "max": 0.8,
+     "mae": 0.3
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.27,
+     "exact": 63.3,
+     "w1": 94.4,
+     "max": 1.3,
+     "mae": 0.44
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.85,
+     "exact": 81.1,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.26
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.88,
+     "exact": 43.3,
+     "w1": 73.3,
+     "max": 2.2,
+     "mae": 0.7
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.83,
+     "exact": 45.6,
+     "w1": 88.9,
+     "max": 1.5,
+     "mae": 0.58
+    },
+    "isha": {
+     "n": 90,
+     "offset": -27.57,
+     "exact": 76.7,
+     "w1": 91.1,
+     "max": 1.4,
+     "mae": 0.36
+    }
+   }
+  },
+  "с. Аскарово Абзелиловский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.55,
+   "ishaAngle": 18.55,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 17.02,
+     "exact": 77.8,
+     "w1": 92.2,
+     "max": 12.3,
+     "mae": 0.78
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.3,
+     "exact": 64.4,
+     "w1": 93.3,
+     "max": 1.4,
+     "mae": 0.42
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.67,
+     "exact": 90,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.27
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.73,
+     "exact": 47.8,
+     "w1": 82.2,
+     "max": 2,
+     "mae": 0.63
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.78,
+     "exact": 43.3,
+     "w1": 80,
+     "max": 1.3,
+     "mae": 0.62
+    },
+    "isha": {
+     "n": 90,
+     "offset": -25.78,
+     "exact": 72.2,
+     "w1": 96.7,
+     "max": 1.1,
+     "mae": 0.35
+    }
+   }
+  },
+  "с. Раевский Альшеевский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.25,
+   "ishaAngle": 18.6,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 15.13,
+     "exact": 84.4,
+     "w1": 100,
+     "max": 0.9,
+     "mae": 0.26
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.28,
+     "exact": 58.9,
+     "w1": 95.6,
+     "max": 1.4,
+     "mae": 0.45
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.75,
+     "exact": 83.3,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.29
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.78,
+     "exact": 42.2,
+     "w1": 76.7,
+     "max": 2.2,
+     "mae": 0.67
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.65,
+     "exact": 32.2,
+     "w1": 80,
+     "max": 1.5,
+     "mae": 0.68
+    },
+    "isha": {
+     "n": 90,
+     "offset": -26.62,
+     "exact": 70,
+     "w1": 98.9,
+     "max": 1.1,
+     "mae": 0.35
+    }
+   }
+  },
+  "с. Архангельское Архангельский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.1,
+   "ishaAngle": 18.3,
+   "dhuhrFixed": [
+    810
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 14.27,
+     "exact": 86.7,
+     "w1": 100,
+     "max": 0.8,
+     "mae": 0.29
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.33,
+     "exact": 58.9,
+     "w1": 96.7,
+     "max": 1.3,
+     "mae": 0.43
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.83,
+     "exact": 80,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.26
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.77,
+     "exact": 41.1,
+     "w1": 74.4,
+     "max": 2.3,
+     "mae": 0.72
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -1.55,
+     "exact": 58.9,
+     "w1": 90,
+     "max": 1.6,
+     "mae": 0.51
+    },
+    "isha": {
+     "n": 90,
+     "offset": -24.8,
+     "exact": 85.6,
+     "w1": 96.7,
+     "max": 1.3,
+     "mae": 0.33
+    }
+   }
+  },
+  "с. Аскино Аскинский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.25,
+   "ishaAngle": 18.4,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 15,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 16.02,
+     "exact": 80,
+     "w1": 100,
+     "max": 0.8,
+     "mae": 0.31
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.3,
+     "exact": 45.6,
+     "w1": 66.7,
+     "max": 34.4,
+     "mae": 7.82
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.72,
+     "exact": 91.1,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.24
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.95,
+     "exact": 58.9,
+     "w1": 74.4,
+     "max": 2.4,
+     "mae": 0.66
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.8,
+     "exact": 41.1,
+     "w1": 85.6,
+     "max": 1.5,
+     "mae": 0.61
+    },
+    "isha": {
+     "n": 90,
+     "offset": -26.53,
+     "exact": 80,
+     "w1": 96.7,
+     "max": 1.4,
+     "mae": 0.32
+    }
+   }
+  },
+  "с. Толбазы Аургазинский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 17.65,
+   "ishaAngle": 18.6,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 11,
+     "exact": 85.6,
+     "w1": 100,
+     "max": 0.9,
+     "mae": 0.27
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.25,
+     "exact": 62.2,
+     "w1": 94.4,
+     "max": 1.5,
+     "mae": 0.44
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.63,
+     "exact": 87.8,
+     "w1": 100,
+     "max": 0.8,
+     "mae": 0.25
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.75,
+     "exact": 44.4,
+     "w1": 74.4,
+     "max": 2,
+     "mae": 0.69
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.75,
+     "exact": 32.2,
+     "w1": 86.7,
+     "max": 1.4,
+     "mae": 0.6
+    },
+    "isha": {
+     "n": 90,
+     "offset": -26.52,
+     "exact": 74.4,
+     "w1": 97.8,
+     "max": 1,
+     "mae": 0.35
+    }
+   }
+  },
+  "с. Бакалы Бакалинский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18,
+   "ishaAngle": 18.25,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 13.78,
+     "exact": 78.9,
+     "w1": 100,
+     "max": 0.8,
+     "mae": 0.31
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.27,
+     "exact": 55.6,
+     "w1": 88.9,
+     "max": 1.4,
+     "mae": 0.49
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.78,
+     "exact": 80,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.27
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.83,
+     "exact": 36.7,
+     "w1": 75.6,
+     "max": 2.4,
+     "mae": 0.77
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.87,
+     "exact": 43.3,
+     "w1": 91.1,
+     "max": 1.3,
+     "mae": 0.55
+    },
+    "isha": {
+     "n": 90,
+     "offset": -24.88,
+     "exact": 75.6,
+     "w1": 94.4,
+     "max": 1.3,
+     "mae": 0.36
+    }
+   }
+  },
+  "с. Старобалтачево Балтачевский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.4,
+   "ishaAngle": 18.4,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 15,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 17.08,
+     "exact": 84.4,
+     "w1": 100,
+     "max": 0.8,
+     "mae": 0.26
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.25,
+     "exact": 48.9,
+     "w1": 86.7,
+     "max": 1.5,
+     "mae": 0.54
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.78,
+     "exact": 78.9,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.29
+    },
+    "asr": {
+     "n": 90,
+     "offset": -2.08,
+     "exact": 52.2,
+     "w1": 70,
+     "max": 2.4,
+     "mae": 0.73
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.73,
+     "exact": 44.4,
+     "w1": 77.8,
+     "max": 1.6,
+     "mae": 0.6
+    },
+    "isha": {
+     "n": 90,
+     "offset": -26.45,
+     "exact": 70,
+     "w1": 94.4,
+     "max": 1.5,
+     "mae": 0.4
+    }
+   }
+  },
+  "с. Новобелокатай Белокатайский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.5,
+   "ishaAngle": 18.35,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 15,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 17.73,
+     "exact": 82.2,
+     "w1": 98.9,
+     "max": 1,
+     "mae": 0.3
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.33,
+     "exact": 61.1,
+     "w1": 95.6,
+     "max": 1.3,
+     "mae": 0.44
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.68,
+     "exact": 85.6,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.29
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.87,
+     "exact": 31.1,
+     "w1": 75.6,
+     "max": 2.4,
+     "mae": 0.75
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.87,
+     "exact": 40,
+     "w1": 83.3,
+     "max": 1.4,
+     "mae": 0.61
+    },
+    "isha": {
+     "n": 90,
+     "offset": -25.93,
+     "exact": 72.2,
+     "w1": 97.8,
+     "max": 1.2,
+     "mae": 0.36
+    }
+   }
+  },
+  "с. Бижбуляк Бижбулякский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 18.6,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 17.43,
+     "exact": 81.1,
+     "w1": 100,
+     "max": 0.9,
+     "mae": 0.29
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.28,
+     "exact": 64.4,
+     "w1": 91.1,
+     "max": 1.4,
+     "mae": 0.43
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.72,
+     "exact": 86.7,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.28
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.77,
+     "exact": 48.9,
+     "w1": 77.8,
+     "max": 2.1,
+     "mae": 0.64
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.87,
+     "exact": 48.9,
+     "w1": 83.3,
+     "max": 1.4,
+     "mae": 0.59
+    },
+    "isha": {
+     "n": 90,
+     "offset": -26.4,
+     "exact": 80,
+     "w1": 98.9,
+     "max": 1,
+     "mae": 0.32
+    }
+   }
+  },
+  "с. Языково Благоварский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 18.6,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 18,
+     "exact": 80,
+     "w1": 100,
+     "max": 0.9,
+     "mae": 0.3
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.27,
+     "exact": 60,
+     "w1": 91.1,
+     "max": 1.3,
+     "mae": 0.46
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.78,
+     "exact": 82.2,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.28
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.83,
+     "exact": 43.3,
+     "w1": 76.7,
+     "max": 2.3,
+     "mae": 0.7
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.75,
+     "exact": 48.9,
+     "w1": 91.1,
+     "max": 1.3,
+     "mae": 0.55
+    },
+    "isha": {
+     "n": 90,
+     "offset": -27.03,
+     "exact": 76.7,
+     "w1": 97.8,
+     "max": 1.1,
+     "mae": 0.34
+    }
+   }
+  },
+  "с. Буздяк Буздякский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 17.95,
+   "ishaAngle": 18.6,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 13.35,
+     "exact": 77.8,
+     "w1": 100,
+     "max": 0.8,
+     "mae": 0.31
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.28,
+     "exact": 62.2,
+     "w1": 93.3,
+     "max": 1.4,
+     "mae": 0.42
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.83,
+     "exact": 81.1,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.26
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.82,
+     "exact": 42.2,
+     "w1": 76.7,
+     "max": 2.3,
+     "mae": 0.72
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.85,
+     "exact": 47.8,
+     "w1": 82.2,
+     "max": 1.4,
+     "mae": 0.58
+    },
+    "isha": {
+     "n": 90,
+     "offset": -26.92,
+     "exact": 68.9,
+     "w1": 97.8,
+     "max": 1.4,
+     "mae": 0.35
+    }
+   }
+  },
+  "с. Бураево Бураевский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.55,
+   "ishaAngle": 18.1,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 15,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 18.07,
+     "exact": 82.2,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.28
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.23,
+     "exact": 51.1,
+     "w1": 66.7,
+     "max": 28.6,
+     "mae": 6.72
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.75,
+     "exact": 77.8,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.3
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.93,
+     "exact": 50,
+     "w1": 73.3,
+     "max": 2.5,
+     "mae": 0.71
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.73,
+     "exact": 44.4,
+     "w1": 85.6,
+     "max": 1.6,
+     "mae": 0.6
+    },
+    "isha": {
+     "n": 90,
+     "offset": -24.2,
+     "exact": 72.2,
+     "w1": 94.4,
+     "max": 1.3,
+     "mae": 0.39
+    }
+   }
+  },
+  "с. Старосубхангулово Бурзянский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 18.45,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 17.23,
+     "exact": 85.6,
+     "w1": 94.4,
+     "max": 9.2,
+     "mae": 0.59
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.28,
+     "exact": 67.8,
+     "w1": 92.2,
+     "max": 1.5,
+     "mae": 0.4
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.72,
+     "exact": 85.6,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.28
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.7,
+     "exact": 43.3,
+     "w1": 80,
+     "max": 1.8,
+     "mae": 0.63
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.78,
+     "exact": 45.6,
+     "w1": 83.3,
+     "max": 1.4,
+     "mae": 0.58
+    },
+    "isha": {
+     "n": 90,
+     "offset": -25.02,
+     "exact": 76.7,
+     "w1": 97.8,
+     "max": 1.1,
+     "mae": 0.34
+    }
+   }
+  },
+  "с. Красноусольский Гафурийский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 18.6,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 17.58,
+     "exact": 85.6,
+     "w1": 100,
+     "max": 0.9,
+     "mae": 0.28
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.28,
+     "exact": 64.4,
+     "w1": 94.4,
+     "max": 1.5,
+     "mae": 0.42
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.67,
+     "exact": 87.8,
+     "w1": 100,
+     "max": 0.8,
+     "mae": 0.29
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.77,
+     "exact": 48.9,
+     "w1": 77.8,
+     "max": 2.3,
+     "mae": 0.66
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.78,
+     "exact": 34.4,
+     "w1": 92.2,
+     "max": 1.4,
+     "mae": 0.6
+    },
+    "isha": {
+     "n": 90,
+     "offset": -26.45,
+     "exact": 75.6,
+     "w1": 96.7,
+     "max": 1.3,
+     "mae": 0.34
+    }
+   }
+  },
+  "с. Месягутово Дуванский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 18.6,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 15,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 18.28,
+     "exact": 86.7,
+     "w1": 100,
+     "max": 0.8,
+     "mae": 0.28
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.3,
+     "exact": 55.6,
+     "w1": 93.3,
+     "max": 1.5,
+     "mae": 0.47
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.7,
+     "exact": 86.7,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.29
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.83,
+     "exact": 47.8,
+     "w1": 75.6,
+     "max": 2.4,
+     "mae": 0.72
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.9,
+     "exact": 35.6,
+     "w1": 82.2,
+     "max": 1.4,
+     "mae": 0.65
+    },
+    "isha": {
+     "n": 90,
+     "offset": -27.62,
+     "exact": 78.9,
+     "w1": 97.8,
+     "max": 1.3,
+     "mae": 0.34
+    }
+   }
+  },
+  "с. Ермекеево Ермекеевский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.1,
+   "ishaAngle": 18.35,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 14.15,
+     "exact": 86.7,
+     "w1": 100,
+     "max": 0.8,
+     "mae": 0.26
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.33,
+     "exact": 60,
+     "w1": 92.2,
+     "max": 1.1,
+     "mae": 0.45
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.77,
+     "exact": 80,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.29
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.82,
+     "exact": 46.7,
+     "w1": 75.6,
+     "max": 2.3,
+     "mae": 0.66
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.67,
+     "exact": 35.6,
+     "w1": 80,
+     "max": 1.5,
+     "mae": 0.66
+    },
+    "isha": {
+     "n": 90,
+     "offset": -24.88,
+     "exact": 73.3,
+     "w1": 97.8,
+     "max": 1.4,
+     "mae": 0.35
+    }
+   }
+  },
+  "с. Исянгулово Зианчуринский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.45,
+   "ishaAngle": 18.45,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 15.82,
+     "exact": 91.1,
+     "w1": 100,
+     "max": 0.9,
+     "mae": 0.26
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.43,
+     "exact": 61.1,
+     "w1": 97.8,
+     "max": 1.2,
+     "mae": 0.42
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.7,
+     "exact": 90,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.24
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.63,
+     "exact": 44.4,
+     "w1": 78.9,
+     "max": 1.8,
+     "mae": 0.63
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.83,
+     "exact": 43.3,
+     "w1": 83.3,
+     "max": 1.6,
+     "mae": 0.61
+    },
+    "isha": {
+     "n": 90,
+     "offset": -24.53,
+     "exact": 78.9,
+     "w1": 97.8,
+     "max": 1.2,
+     "mae": 0.31
+    }
+   }
+  },
+  "с. Зилаир Зилаирский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 18.05,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 16.98,
+     "exact": 81.1,
+     "w1": 96.7,
+     "max": 4.7,
+     "mae": 0.38
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.33,
+     "exact": 64.4,
+     "w1": 95.6,
+     "max": 1.3,
+     "mae": 0.41
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.72,
+     "exact": 84.4,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.28
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.68,
+     "exact": 47.8,
+     "w1": 82.2,
+     "max": 2,
+     "mae": 0.61
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.77,
+     "exact": 44.4,
+     "w1": 83.3,
+     "max": 1.3,
+     "mae": 0.59
+    },
+    "isha": {
+     "n": 90,
+     "offset": -21.87,
+     "exact": 81.1,
+     "w1": 96.7,
+     "max": 1.3,
+     "mae": 0.33
+    }
+   }
+  },
+  "с. Иглино Иглинский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.15,
+   "ishaAngle": 18.55,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 14.78,
+     "exact": 83.3,
+     "w1": 100,
+     "max": 0.9,
+     "mae": 0.28
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.3,
+     "exact": 57.8,
+     "w1": 94.4,
+     "max": 1.3,
+     "mae": 0.42
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.75,
+     "exact": 77.8,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.3
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.85,
+     "exact": 44.4,
+     "w1": 76.7,
+     "max": 2.4,
+     "mae": 0.71
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.83,
+     "exact": 47.8,
+     "w1": 92.2,
+     "max": 1.2,
+     "mae": 0.53
+    },
+    "isha": {
+     "n": 90,
+     "offset": -26.73,
+     "exact": 78.9,
+     "w1": 95.6,
+     "max": 1.4,
+     "mae": 0.36
+    }
+   }
+  },
+  "с. Верхнеяркеево Илишевский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.05,
+   "ishaAngle": 18.55,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 15,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 14.35,
+     "exact": 87.8,
+     "w1": 100,
+     "max": 0.8,
+     "mae": 0.29
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.2,
+     "exact": 61.1,
+     "w1": 90,
+     "max": 2.8,
+     "mae": 0.5
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.75,
+     "exact": 82.2,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.25
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.85,
+     "exact": 45.6,
+     "w1": 72.2,
+     "max": 2.2,
+     "mae": 0.73
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.73,
+     "exact": 42.2,
+     "w1": 80,
+     "max": 1.6,
+     "mae": 0.62
+    },
+    "isha": {
+     "n": 90,
+     "offset": -27.15,
+     "exact": 76.7,
+     "w1": 91.1,
+     "max": 1.4,
+     "mae": 0.36
+    }
+   }
+  },
+  "с. Калтасы Калтасинский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 17.95,
+   "ishaAngle": 18.55,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 15,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 13.85,
+     "exact": 76.7,
+     "w1": 100,
+     "max": 0.8,
+     "mae": 0.32
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.17,
+     "exact": 65.6,
+     "w1": 90,
+     "max": 1.5,
+     "mae": 0.44
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.77,
+     "exact": 81.1,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.26
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.8,
+     "exact": 43.3,
+     "w1": 70,
+     "max": 2.4,
+     "mae": 0.71
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.85,
+     "exact": 36.7,
+     "w1": 90,
+     "max": 1.4,
+     "mae": 0.59
+    },
+    "isha": {
+     "n": 90,
+     "offset": -27.58,
+     "exact": 71.1,
+     "w1": 94.4,
+     "max": 1.5,
+     "mae": 0.36
+    }
+   }
+  },
+  "с. Караидель Караидельский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 17.75,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 15,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 18.43,
+     "exact": 81.1,
+     "w1": 100,
+     "max": 0.9,
+     "mae": 0.28
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.22,
+     "exact": 56.7,
+     "w1": 88.9,
+     "max": 1.6,
+     "mae": 0.5
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.77,
+     "exact": 80,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.29
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.93,
+     "exact": 51.1,
+     "w1": 73.3,
+     "max": 2.5,
+     "mae": 0.7
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.75,
+     "exact": 43.3,
+     "w1": 84.4,
+     "max": 1.6,
+     "mae": 0.61
+    },
+    "isha": {
+     "n": 90,
+     "offset": -21.68,
+     "exact": 71.1,
+     "w1": 94.4,
+     "max": 1.2,
+     "mae": 0.39
+    }
+   }
+  },
+  "с. Верхние Киги Кигинский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18,
+   "ishaAngle": 18.45,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 15,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 13.97,
+     "exact": 76.7,
+     "w1": 100,
+     "max": 0.9,
+     "mae": 0.3
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.23,
+     "exact": 53.3,
+     "w1": 92.2,
+     "max": 1.5,
+     "mae": 0.48
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.68,
+     "exact": 91.1,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.25
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.85,
+     "exact": 44.4,
+     "w1": 74.4,
+     "max": 2.4,
+     "mae": 0.7
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.7,
+     "exact": 47.8,
+     "w1": 83.3,
+     "max": 1.6,
+     "mae": 0.59
+    },
+    "isha": {
+     "n": 90,
+     "offset": -26.43,
+     "exact": 72.2,
+     "w1": 94.4,
+     "max": 1.5,
+     "mae": 0.38
+    }
+   }
+  },
+  "с. Николо-Березовка Краснокамский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.55,
+   "ishaAngle": 18.55,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 15,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 18.22,
+     "exact": 88.9,
+     "w1": 100,
+     "max": 0.9,
+     "mae": 0.27
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.35,
+     "exact": 64.4,
+     "w1": 94.4,
+     "max": 1.4,
+     "mae": 0.44
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.77,
+     "exact": 80,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.29
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.92,
+     "exact": 24.4,
+     "w1": 75.6,
+     "max": 2.4,
+     "mae": 0.84
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.75,
+     "exact": 45.6,
+     "w1": 82.2,
+     "max": 1.5,
+     "mae": 0.62
+    },
+    "isha": {
+     "n": 90,
+     "offset": -27.65,
+     "exact": 67.8,
+     "w1": 93.3,
+     "max": 1.3,
+     "mae": 0.4
+    }
+   }
+  },
+  "с. Мраково Кугарчинский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.5,
+   "ishaAngle": 18.6,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 16.5,
+     "exact": 86.7,
+     "w1": 98.9,
+     "max": 1,
+     "mae": 0.3
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.35,
+     "exact": 67.8,
+     "w1": 95.6,
+     "max": 1.3,
+     "mae": 0.39
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.63,
+     "exact": 91.1,
+     "w1": 100,
+     "max": 0.8,
+     "mae": 0.25
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.68,
+     "exact": 43.3,
+     "w1": 82.2,
+     "max": 1.9,
+     "mae": 0.63
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.82,
+     "exact": 41.1,
+     "w1": 83.3,
+     "max": 1.4,
+     "mae": 0.61
+    },
+    "isha": {
+     "n": 90,
+     "offset": -25.75,
+     "exact": 81.1,
+     "w1": 100,
+     "max": 1,
+     "mae": 0.32
+    }
+   }
+  },
+  "с. Кушнаренково Кушнаренковский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 17.25,
+   "ishaAngle": 18.5,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 8.52,
+     "exact": 82.2,
+     "w1": 100,
+     "max": 0.9,
+     "mae": 0.28
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.32,
+     "exact": 58.9,
+     "w1": 93.3,
+     "max": 1.3,
+     "mae": 0.46
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.7,
+     "exact": 92.2,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.25
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.83,
+     "exact": 43.3,
+     "w1": 77.8,
+     "max": 2.2,
+     "mae": 0.7
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.63,
+     "exact": 45.6,
+     "w1": 86.7,
+     "max": 1.3,
+     "mae": 0.57
+    },
+    "isha": {
+     "n": 90,
+     "offset": -26.6,
+     "exact": 71.1,
+     "w1": 96.7,
+     "max": 1.3,
+     "mae": 0.37
+    }
+   }
+  },
+  "с. Ермолаево Куюргазинский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.55,
+   "ishaAngle": 18.6,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 16.77,
+     "exact": 84.4,
+     "w1": 98.9,
+     "max": 1.9,
+     "mae": 0.29
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.33,
+     "exact": 64.4,
+     "w1": 96.7,
+     "max": 1.3,
+     "mae": 0.41
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.7,
+     "exact": 91.1,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.24
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.58,
+     "exact": 43.3,
+     "w1": 77.8,
+     "max": 1.9,
+     "mae": 0.64
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.75,
+     "exact": 41.1,
+     "w1": 81.1,
+     "max": 1.4,
+     "mae": 0.61
+    },
+    "isha": {
+     "n": 90,
+     "offset": -25.78,
+     "exact": 75.6,
+     "w1": 96.7,
+     "max": 1.2,
+     "mae": 0.33
+    }
+   }
+  },
+  "с. Большеустьикинское Мечетлинский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 18.55,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 15,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 18.55,
+     "exact": 80,
+     "w1": 100,
+     "max": 0.9,
+     "mae": 0.31
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.28,
+     "exact": 53.3,
+     "w1": 66.7,
+     "max": 29.7,
+     "mae": 6.95
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.78,
+     "exact": 84.4,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.27
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.98,
+     "exact": 53.3,
+     "w1": 72.2,
+     "max": 2.3,
+     "mae": 0.7
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.78,
+     "exact": 42.2,
+     "w1": 87.8,
+     "max": 1.5,
+     "mae": 0.6
+    },
+    "isha": {
+     "n": 90,
+     "offset": -27.53,
+     "exact": 80,
+     "w1": 96.7,
+     "max": 1.3,
+     "mae": 0.34
+    }
+   }
+  },
+  "Агидель": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 18.2,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 15,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 18.5,
+     "exact": 86.7,
+     "w1": 100,
+     "max": 0.8,
+     "mae": 0.27
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.22,
+     "exact": 66.7,
+     "w1": 91.1,
+     "max": 1.5,
+     "mae": 0.42
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.75,
+     "exact": 85.6,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.28
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.95,
+     "exact": 30,
+     "w1": 73.3,
+     "max": 2.6,
+     "mae": 0.8
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.9,
+     "exact": 43.3,
+     "w1": 85.6,
+     "max": 1.4,
+     "mae": 0.59
+    },
+    "isha": {
+     "n": 90,
+     "offset": -25.03,
+     "exact": 67.8,
+     "w1": 94.4,
+     "max": 1.5,
+     "mae": 0.4
+    }
+   }
+  },
+  "с. Мишкино Мишкинский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.45,
+   "ishaAngle": 18.55,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 15,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 17.32,
+     "exact": 81.1,
+     "w1": 100,
+     "max": 1,
+     "mae": 0.29
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.22,
+     "exact": 55.6,
+     "w1": 93.3,
+     "max": 1.4,
+     "mae": 0.49
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.67,
+     "exact": 87.8,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.29
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.9,
+     "exact": 46.7,
+     "w1": 72.2,
+     "max": 2.3,
+     "mae": 0.76
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.78,
+     "exact": 37.8,
+     "w1": 80,
+     "max": 1.6,
+     "mae": 0.67
+    },
+    "isha": {
+     "n": 90,
+     "offset": -27.2,
+     "exact": 72.2,
+     "w1": 96.7,
+     "max": 1.1,
+     "mae": 0.36
+    }
+   }
+  },
+  "с. Киргиз-Мияки Миякинский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 18.4,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 17.5,
+     "exact": 83.3,
+     "w1": 100,
+     "max": 1,
+     "mae": 0.28
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.38,
+     "exact": 60,
+     "w1": 96.7,
+     "max": 1.2,
+     "mae": 0.43
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.78,
+     "exact": 81.1,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.26
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.73,
+     "exact": 40,
+     "w1": 78.9,
+     "max": 2.1,
+     "mae": 0.67
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.68,
+     "exact": 45.6,
+     "w1": 71.1,
+     "max": 1.4,
+     "mae": 0.62
+    },
+    "isha": {
+     "n": 90,
+     "offset": -24.98,
+     "exact": 76.7,
+     "w1": 100,
+     "max": 1,
+     "mae": 0.32
+    }
+   }
+  },
+  "с. Красная Горка Нуримановский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.25,
+   "ishaAngle": 18.6,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 15.73,
+     "exact": 88.9,
+     "w1": 100,
+     "max": 0.9,
+     "mae": 0.26
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.25,
+     "exact": 54.4,
+     "w1": 93.3,
+     "max": 1.5,
+     "mae": 0.47
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.77,
+     "exact": 77.8,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.3
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.83,
+     "exact": 40,
+     "w1": 73.3,
+     "max": 2.4,
+     "mae": 0.72
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.73,
+     "exact": 44.4,
+     "w1": 81.1,
+     "max": 1.4,
+     "mae": 0.6
+    },
+    "isha": {
+     "n": 90,
+     "offset": -27.32,
+     "exact": 74.4,
+     "w1": 96.7,
+     "max": 1.3,
+     "mae": 0.35
+    }
+   }
+  },
+  "с. Стерлибашево Стерлибашевский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.5,
+   "ishaAngle": 18.3,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 16.67,
+     "exact": 88.9,
+     "w1": 100,
+     "max": 0.9,
+     "mae": 0.25
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.32,
+     "exact": 54.4,
+     "w1": 91.1,
+     "max": 1.3,
+     "mae": 0.5
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.68,
+     "exact": 86.7,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.28
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.7,
+     "exact": 44.4,
+     "w1": 81.1,
+     "max": 2,
+     "mae": 0.67
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.82,
+     "exact": 41.1,
+     "w1": 86.7,
+     "max": 1.4,
+     "mae": 0.59
+    },
+    "isha": {
+     "n": 90,
+     "offset": -24.18,
+     "exact": 75.6,
+     "w1": 98.9,
+     "max": 1.1,
+     "mae": 0.34
+    }
+   }
+  },
+  "с. Верхние Татышлы Татышлинский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 17.6,
+   "ishaAngle": 18.2,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 15,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 11.35,
+     "exact": 84.4,
+     "w1": 100,
+     "max": 0.9,
+     "mae": 0.28
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.23,
+     "exact": 62.2,
+     "w1": 88.9,
+     "max": 1.5,
+     "mae": 0.48
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.67,
+     "exact": 90,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.25
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.88,
+     "exact": 47.8,
+     "w1": 74.4,
+     "max": 2.5,
+     "mae": 0.68
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.72,
+     "exact": 44.4,
+     "w1": 88.9,
+     "max": 1.5,
+     "mae": 0.57
+    },
+    "isha": {
+     "n": 90,
+     "offset": -25.17,
+     "exact": 75.6,
+     "w1": 95.6,
+     "max": 1.4,
+     "mae": 0.34
+    }
+   }
+  },
+  "с. Федоровка Фёдоровский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 18.3,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 17.27,
+     "exact": 84.4,
+     "w1": 100,
+     "max": 0.8,
+     "mae": 0.27
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.4,
+     "exact": 61.1,
+     "w1": 96.7,
+     "max": 1.3,
+     "mae": 0.41
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.73,
+     "exact": 85.6,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.28
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.75,
+     "exact": 46.7,
+     "w1": 81.1,
+     "max": 2.1,
+     "mae": 0.64
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.72,
+     "exact": 43.3,
+     "w1": 82.2,
+     "max": 1.4,
+     "mae": 0.61
+    },
+    "isha": {
+     "n": 90,
+     "offset": -24.03,
+     "exact": 78.9,
+     "w1": 98.9,
+     "max": 1.2,
+     "mae": 0.32
+    }
+   }
+  },
+  "с. Акъяр Хайбуллинский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.5,
+   "ishaAngle": 18.3,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 13,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 16,
+     "exact": 73.3,
+     "w1": 84.4,
+     "max": 26.8,
+     "mae": 2.8
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.37,
+     "exact": 68.9,
+     "w1": 97.8,
+     "max": 1.2,
+     "mae": 0.38
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.65,
+     "exact": 88.9,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.28
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.62,
+     "exact": 48.9,
+     "w1": 83.3,
+     "max": 2,
+     "mae": 0.59
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.8,
+     "exact": 45.6,
+     "w1": 85.6,
+     "max": 1.5,
+     "mae": 0.59
+    },
+    "isha": {
+     "n": 90,
+     "offset": -23.35,
+     "exact": 85.6,
+     "w1": 98.9,
+     "max": 1.1,
+     "mae": 0.3
+    }
+   }
+  },
+  "с. Чекмагуш Чекмагушевский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.4,
+   "ishaAngle": 18.05,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 16.73,
+     "exact": 86.7,
+     "w1": 100,
+     "max": 0.8,
+     "mae": 0.27
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.33,
+     "exact": 60,
+     "w1": 95.6,
+     "max": 1.2,
+     "mae": 0.43
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.62,
+     "exact": 86.7,
+     "w1": 100,
+     "max": 0.8,
+     "mae": 0.28
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.87,
+     "exact": 44.4,
+     "w1": 76.7,
+     "max": 2.3,
+     "mae": 0.71
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.87,
+     "exact": 40,
+     "w1": 78.9,
+     "max": 1.4,
+     "mae": 0.63
+    },
+    "isha": {
+     "n": 90,
+     "offset": -23.42,
+     "exact": 75.6,
+     "w1": 98.9,
+     "max": 1.1,
+     "mae": 0.33
+    }
+   }
+  },
+  "с. Шаран Шаранский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 18.45,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 18,
+     "exact": 83.3,
+     "w1": 100,
+     "max": 0.9,
+     "mae": 0.27
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.3,
+     "exact": 55.6,
+     "w1": 90,
+     "max": 1.4,
+     "mae": 0.52
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.68,
+     "exact": 86.7,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.28
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.87,
+     "exact": 44.4,
+     "w1": 74.4,
+     "max": 2.4,
+     "mae": 0.69
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.72,
+     "exact": 42.2,
+     "w1": 77.8,
+     "max": 1.6,
+     "mae": 0.65
+    },
+    "isha": {
+     "n": 90,
+     "offset": -26.1,
+     "exact": 78.9,
+     "w1": 96.7,
+     "max": 1.3,
+     "mae": 0.36
+    }
+   }
+  },
+  "с. Малояз Салаватский район": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 17.85,
+   "ishaAngle": 18.5,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 12.83,
+     "exact": 85.6,
+     "w1": 100,
+     "max": 0.9,
+     "mae": 0.27
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.27,
+     "exact": 56.7,
+     "w1": 93.3,
+     "max": 1.5,
+     "mae": 0.48
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.62,
+     "exact": 84.4,
+     "w1": 100,
+     "max": 0.8,
+     "mae": 0.28
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.87,
+     "exact": 44.4,
+     "w1": 75.6,
+     "max": 2.3,
+     "mae": 0.69
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.82,
+     "exact": 43.3,
+     "w1": 78.9,
+     "max": 1.4,
+     "mae": 0.62
+    },
+    "isha": {
+     "n": 90,
+     "offset": -26.67,
+     "exact": 78.9,
+     "w1": 96.7,
+     "max": 1.2,
+     "mae": 0.34
+    }
+   }
+  },
+  "Баймак": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.55,
+   "ishaAngle": 18.4,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 16.75,
+     "exact": 87.8,
+     "w1": 100,
+     "max": 1,
+     "mae": 0.29
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.43,
+     "exact": 55.6,
+     "w1": 92.2,
+     "max": 1.3,
+     "mae": 0.47
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.78,
+     "exact": 87.8,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.25
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.68,
+     "exact": 46.7,
+     "w1": 80,
+     "max": 1.9,
+     "mae": 0.63
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.87,
+     "exact": 43.3,
+     "w1": 85.6,
+     "max": 1.4,
+     "mae": 0.59
+    },
+    "isha": {
+     "n": 90,
+     "offset": -24.4,
+     "exact": 80,
+     "w1": 97.8,
+     "max": 1.3,
+     "mae": 0.33
+    }
+   }
+  },
+  "Белебей": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 17.8,
+   "ishaAngle": 18.6,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 12.03,
+     "exact": 80,
+     "w1": 100,
+     "max": 0.9,
+     "mae": 0.3
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.37,
+     "exact": 66.7,
+     "w1": 93.3,
+     "max": 1.3,
+     "mae": 0.39
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.67,
+     "exact": 90,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.25
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.8,
+     "exact": 46.7,
+     "w1": 76.7,
+     "max": 2.2,
+     "mae": 0.67
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.72,
+     "exact": 33.3,
+     "w1": 84.4,
+     "max": 1.4,
+     "mae": 0.61
+    },
+    "isha": {
+     "n": 90,
+     "offset": -26.7,
+     "exact": 76.7,
+     "w1": 97.8,
+     "max": 1.2,
+     "mae": 0.34
+    }
+   }
+  },
+  "Белорецк": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.2,
+   "ishaAngle": 18.6,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 14.75,
+     "exact": 82.2,
+     "w1": 100,
+     "max": 0.9,
+     "mae": 0.27
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.27,
+     "exact": 61.1,
+     "w1": 93.3,
+     "max": 1.3,
+     "mae": 0.45
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.62,
+     "exact": 90,
+     "w1": 100,
+     "max": 0.8,
+     "mae": 0.25
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.73,
+     "exact": 45.6,
+     "w1": 73.3,
+     "max": 2.1,
+     "mae": 0.68
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.92,
+     "exact": 36.7,
+     "w1": 94.4,
+     "max": 1.3,
+     "mae": 0.57
+    },
+    "isha": {
+     "n": 90,
+     "offset": -26.52,
+     "exact": 71.1,
+     "w1": 100,
+     "max": 1,
+     "mae": 0.33
+    }
+   }
+  },
+  "Благовещенск": {
+   "months": 12,
+   "winterDays": 90,
+   "fajrAngle": 18.6,
+   "ishaAngle": 18.5,
+   "dhuhrFixed": [
+    810,
+    815
+   ],
+   "suhurMedian": 14,
+   "cols": {
+    "fajr": {
+     "n": 90,
+     "offset": 18.13,
+     "exact": 77.8,
+     "w1": 100,
+     "max": 0.9,
+     "mae": 0.3
+    },
+    "sunrise": {
+     "n": 90,
+     "offset": -0.25,
+     "exact": 62.2,
+     "w1": 93.3,
+     "max": 1.3,
+     "mae": 0.44
+    },
+    "dhuhr": {
+     "n": 90,
+     "offset": -0.7,
+     "exact": 86.7,
+     "w1": 100,
+     "max": 0.7,
+     "mae": 0.29
+    },
+    "asr": {
+     "n": 90,
+     "offset": -1.85,
+     "exact": 42.2,
+     "w1": 74.4,
+     "max": 2.3,
+     "mae": 0.71
+    },
+    "maghrib": {
+     "n": 90,
+     "offset": -0.72,
+     "exact": 41.1,
+     "w1": 93.3,
+     "max": 1.3,
+     "mae": 0.55
+    },
+    "isha": {
+     "n": 90,
+     "offset": -26.6,
+     "exact": 77.8,
+     "w1": 91.1,
+     "max": 1.2,
+     "mae": 0.35
+    }
+   }
+  }
+ }
+}

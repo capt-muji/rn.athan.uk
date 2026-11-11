@@ -1,0 +1,380 @@
+{
+ "Albuquerque, New Mexico, USA": {
+  "country": "US",
+  "display": "Albuquerque, Bernalillo County, New Mexico, United States",
+  "lat": 35.0841,
+  "lon": -106.651,
+  "osm": "relation/171262"
+ },
+ "Antioch, Tennessee, USA": {
+  "country": "US",
+  "display": "Antioch, Nashville, Davidson County, Middle Tennessee, Tennessee, 37011, United States",
+  "lat": 36.0601,
+  "lon": -86.6722,
+  "osm": "node/153526252"
+ },
+ "Brandon, Manitoba, Canada": {
+  "country": "CA",
+  "display": "Brandon, Manitoba, Canada",
+  "lat": 49.8511,
+  "lon": -99.9609,
+  "osm": "relation/11090856"
+ },
+ "Bridgeview, Illinois, USA": {
+  "country": "US",
+  "display": "Bridgeview, Lyons Township, Cook County, Illinois, 60455, United States",
+  "lat": 41.75,
+  "lon": -87.8042,
+  "osm": "relation/123137"
+ },
+ "Buffalo, New York, USA": {
+  "country": "US",
+  "display": "Buffalo, Erie County, New York, United States",
+  "lat": 42.8864,
+  "lon": -78.8781,
+  "osm": "relation/175031"
+ },
+ "Buford, Georgia, USA": {
+  "country": "US",
+  "display": "Buford, Gwinnett County, Georgia, United States",
+  "lat": 34.1207,
+  "lon": -84.0044,
+  "osm": "relation/119737"
+ },
+ "Cartagena de Indias, Colombia": {
+  "country": "CO",
+  "display": "Cartagena de Indias, Dique, Bol\u00edvar, RAP Caribe, Colombia",
+  "lat": 10.4266,
+  "lon": -75.5442,
+  "osm": "relation/1343457"
+ },
+ "Chaguanas, Trinidad and Tobago": {
+  "country": "TT",
+  "display": "Chaguanas, Trinidad and Tobago",
+  "lat": 10.5147,
+  "lon": -61.4077,
+  "osm": "relation/7363641"
+ },
+ "Charlotte, North Carolina, USA": {
+  "country": "US",
+  "display": "Charlotte, Mecklenburg County, North Carolina, United States",
+  "lat": 35.2272,
+  "lon": -80.8431,
+  "osm": "relation/177415"
+ },
+ "Chicago, Illinois, USA": {
+  "country": "US",
+  "display": "Chicago, South Chicago Township, Cook County, Illinois, United States",
+  "lat": 41.8756,
+  "lon": -87.6244,
+  "osm": "relation/122604"
+ },
+ "Cordova, Tennessee, USA": {
+  "country": "US",
+  "display": "Cordova, Memphis, Shelby County, West Tennessee, Tennessee, 38013, United States",
+  "lat": 35.1556,
+  "lon": -89.7762,
+  "osm": "node/153701647"
+ },
+ "Crown Point, Tobago, Trinidad and Tobago": {
+  "country": "TT",
+  "display": "Crown Point, Tobago, Trinidad and Tobago",
+  "lat": 11.1589,
+  "lon": -60.8346,
+  "osm": "node/1821476686"
+ },
+ "Culver City, California, USA": {
+  "country": "US",
+  "display": "Culver City, Los Angeles County, California, 90232, United States",
+  "lat": 34.0211,
+  "lon": -118.3965,
+  "osm": "relation/3492137"
+ },
+ "Edmonton, Alberta, Canada": {
+  "country": "CA",
+  "display": "Edmonton, Alberta, Canada",
+  "lat": 53.5462,
+  "lon": -113.4912,
+  "osm": "relation/2564500"
+ },
+ "Falls Church, Virginia, USA": {
+  "country": "US",
+  "display": "Falls Church, Virginia, 22046, United States",
+  "lat": 38.8823,
+  "lon": -77.1711,
+  "osm": "relation/206642"
+ },
+ "Franklin, Tennessee, USA": {
+  "country": "US",
+  "display": "Franklin, Williamson County, Middle Tennessee, Tennessee, United States",
+  "lat": 35.9252,
+  "lon": -86.8689,
+  "osm": "relation/197474"
+ },
+ "Getzville, New York, USA": {
+  "country": "US",
+  "display": "Getzville, Town of Amherst, Erie County, New York, 14068, United States",
+  "lat": 43.0243,
+  "lon": -78.7678,
+  "osm": "node/158570188"
+ },
+ "Glendale, Arizona, USA": {
+  "country": "US",
+  "display": "Glendale, Maricopa County, Arizona, United States",
+  "lat": 33.5387,
+  "lon": -112.186,
+  "osm": "relation/110806"
+ },
+ "Guaico, Trinidad and Tobago": {
+  "country": "TT",
+  "display": "Guaico, Sangre Grande, 450530, Trinidad and Tobago",
+  "lat": 10.5863,
+  "lon": -61.1446,
+  "osm": "node/2385649193"
+ },
+ "Halifax, Nova Scotia, Canada": {
+  "country": "CA",
+  "display": "Halifax, Halifax Regional Municipality, Halifax County, Nova Scotia, Canada",
+  "lat": 44.6486,
+  "lon": -63.5859,
+  "osm": "relation/9092218"
+ },
+ "Honolulu, Hawaii, USA": {
+  "country": "US",
+  "display": "Honolulu, Honolulu County, Hawaii, United States",
+  "lat": 21.3045,
+  "lon": -157.8557,
+  "osm": "relation/119231"
+ },
+ "Houston, Texas, USA": {
+  "country": "US",
+  "display": "Houston, Harris County, Texas, United States",
+  "lat": 29.7589,
+  "lon": -95.3677,
+  "osm": "relation/2688911"
+ },
+ "Jamaica, Queens, New York, USA": {
+  "country": "US",
+  "display": "Jamaica, Sutphin Boulevard, Queens, Queens County, New York, 11435, United States",
+  "lat": 40.6998,
+  "lon": -73.8077,
+  "osm": "node/7087272768"
+ },
+ "Johns Creek, Georgia, USA": {
+  "country": "US",
+  "display": "Johns Creek, Fulton County, Georgia, United States",
+  "lat": 34.0182,
+  "lon": -84.1902,
+  "osm": "relation/119373"
+ },
+ "Katy, Texas, USA": {
+  "country": "US",
+  "display": "Katy, Fort Bend County, Texas, United States",
+  "lat": 29.7858,
+  "lon": -95.8244,
+  "osm": "relation/6586787"
+ },
+ "Kent, Washington, USA": {
+  "country": "US",
+  "display": "Kent, King County, Washington, United States",
+  "lat": 47.3827,
+  "lon": -122.227,
+  "osm": "relation/237875"
+ },
+ "Kitchener, Ontario, Canada": {
+  "country": "CA",
+  "display": "Kitchener, Region of Waterloo, Southwestern Ontario, Ontario, Canada",
+  "lat": 43.4513,
+  "lon": -80.4928,
+  "osm": "relation/2062153"
+ },
+ "Livonia, Michigan, USA": {
+  "country": "US",
+  "display": "Livonia, Wayne County, Michigan, United States",
+  "lat": 42.3684,
+  "lon": -83.3527,
+  "osm": "relation/134556"
+ },
+ "Loganville, Georgia, USA": {
+  "country": "US",
+  "display": "Loganville, Walton County, Georgia, United States",
+  "lat": 33.839,
+  "lon": -83.9007,
+  "osm": "relation/119599"
+ },
+ "Lomita, California, USA": {
+  "country": "US",
+  "display": "Lomita, Los Angeles County, California, 90717, United States",
+  "lat": 33.8037,
+  "lon": -118.3195,
+  "osm": "relation/2317588"
+ },
+ "London, Ontario, Canada": {
+  "country": "CA",
+  "display": "London, Southwestern Ontario, Ontario, Canada",
+  "lat": 42.9837,
+  "lon": -81.2496,
+  "osm": "relation/7485368"
+ },
+ "Los Angeles, California, USA": {
+  "country": "US",
+  "display": "Los Angeles, Los Angeles County, California, United States",
+  "lat": 34.0537,
+  "lon": -118.2428,
+  "osm": "relation/207359"
+ },
+ "Lynnwood, Washington, USA": {
+  "country": "US",
+  "display": "Lynnwood, Snohomish County, Washington, 98037, United States",
+  "lat": 47.8279,
+  "lon": -122.3054,
+  "osm": "relation/237662"
+ },
+ "Marysville, Washington, USA": {
+  "country": "US",
+  "display": "Marysville, Snohomish County, Washington, United States",
+  "lat": 48.0517,
+  "lon": -122.1768,
+  "osm": "relation/237663"
+ },
+ "North Smithfield, Rhode Island, USA": {
+  "country": "US",
+  "display": "North Smithfield, Providence County, Rhode Island, United States",
+  "lat": 41.9668,
+  "lon": -71.5495,
+  "osm": "relation/7686761"
+ },
+ "Paramaribo, Suriname": {
+  "country": "SR",
+  "display": "Centrum, Paramaribo, Suriname",
+  "lat": 5.8242,
+  "lon": -55.1663,
+  "osm": "relation/13026345"
+ },
+ "Perrysburg, Ohio, USA": {
+  "country": "US",
+  "display": "Perrysburg, Wood County, Ohio, 43551, United States",
+  "lat": 41.5571,
+  "lon": -83.6279,
+  "osm": "relation/183395"
+ },
+ "Portland, Oregon, USA": {
+  "country": "US",
+  "display": "Portland, Multnomah County, Oregon, United States",
+  "lat": 45.5202,
+  "lon": -122.6742,
+  "osm": "relation/186579"
+ },
+ "Puyallup, Washington, USA": {
+  "country": "US",
+  "display": "Puyallup, Pierce County, Washington, United States",
+  "lat": 47.1849,
+  "lon": -122.2921,
+  "osm": "relation/237264"
+ },
+ "Quebec City, Quebec, Canada": {
+  "country": "CA",
+  "display": "Qu\u00e9bec, Agglom\u00e9ration de Qu\u00e9bec, Capitale-Nationale, Qu\u00e9bec, Canada",
+  "lat": 46.8137,
+  "lon": -71.2084,
+  "osm": "relation/2319206"
+ },
+ "Redmond, Washington, USA": {
+  "country": "US",
+  "display": "Redmond, King County, Washington, 98052, United States",
+  "lat": 47.6694,
+  "lon": -122.1239,
+  "osm": "relation/237376"
+ },
+ "Richardson, Texas, USA": {
+  "country": "US",
+  "display": "Richardson, Dallas County, Texas, United States",
+  "lat": 32.9482,
+  "lon": -96.7297,
+  "osm": "relation/6577487"
+ },
+ "Richmond, Texas, USA": {
+  "country": "US",
+  "display": "Richmond, Fort Bend County, Texas, 44769, United States",
+  "lat": 29.5822,
+  "lon": -95.7608,
+  "osm": "relation/6586811"
+ },
+ "San Antonio, Texas, USA": {
+  "country": "US",
+  "display": "San Antonio, Bexar County, Texas, United States",
+  "lat": 29.4246,
+  "lon": -98.4951,
+  "osm": "relation/253556"
+ },
+ "San Fernando, Trinidad and Tobago": {
+  "country": "TT",
+  "display": "San Fernando, Trinidad and Tobago",
+  "lat": 10.2807,
+  "lon": -61.4646,
+  "osm": "relation/7363416"
+ },
+ "Saskatoon, Saskatchewan, Canada": {
+  "country": "CA",
+  "display": "Saskatoon, Saskatchewan, Canada",
+  "lat": 52.1318,
+  "lon": -106.6608,
+  "osm": "relation/4189345"
+ },
+ "SeaTac, Washington, USA": {
+  "country": "US",
+  "display": "SeaTac, King County, Washington, United States",
+  "lat": 47.4449,
+  "lon": -122.2831,
+  "osm": "relation/237380"
+ },
+ "Seattle, Washington, USA": {
+  "country": "US",
+  "display": "Seattle, King County, Washington, United States",
+  "lat": 47.6038,
+  "lon": -122.3301,
+  "osm": "relation/237385"
+ },
+ "Suwanee, Georgia, USA": {
+  "country": "US",
+  "display": "Suwanee, Gwinnett County, Georgia, United States",
+  "lat": 34.0515,
+  "lon": -84.0713,
+  "osm": "relation/119378"
+ },
+ "Toronto, Ontario, Canada": {
+  "country": "CA",
+  "display": "Toronto, Ontario, Canada",
+  "lat": 43.6535,
+  "lon": -79.3839,
+  "osm": "relation/324211"
+ },
+ "Tukwila, Washington, USA": {
+  "country": "US",
+  "display": "Tukwila, King County, Washington, United States",
+  "lat": 47.4627,
+  "lon": -122.2559,
+  "osm": "relation/237384"
+ },
+ "Villa Park, Illinois, USA": {
+  "country": "US",
+  "display": "Villa Park, DuPage County, Illinois, 60181, United States",
+  "lat": 41.8893,
+  "lon": -87.9778,
+  "osm": "relation/125482"
+ },
+ "Waterbury, Connecticut, USA": {
+  "country": "US",
+  "display": "Waterbury, Naugatuck Valley Planning Region, Connecticut, United States",
+  "lat": 41.5541,
+  "lon": -73.0436,
+  "osm": "relation/6584604"
+ },
+ "Winnipeg, Manitoba, Canada": {
+  "country": "CA",
+  "display": "Winnipeg, Manitoba, Canada",
+  "lat": 49.8955,
+  "lon": -97.1385,
+  "osm": "relation/1790696"
+ }
+}

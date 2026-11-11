@@ -1,0 +1,16 @@
+afecc              days 365 core 120 | fajrDep 15.39 sd 0.08 | ishaDep 15.53 sd 0.08 | Jan 15.4 Jul 10.7
+iqra               days 365 core 120 | fajrDep 17.96 sd 0.07 | ishaDep 14.94 sd 0.13 | Jan 18.0 Jul 12.7
+falkirk            days 365 core 120 | fajrDep 17.95 sd 0.09 | ishaDep 17.92 sd 0.19 | Jan 18.0 Jul 10.7
+paisley            days 365 core 120 | fajrDep 15.48 sd 0.08 | ishaDep 15.43 sd 0.08 | Jan 15.5 Jul 10.7
+glasgow-dawatul    days 365 core 120 | fajrDep 15.41 sd 0.08 | ishaDep 15.51 sd 0.08 | Jan 15.4 Jul 12.8
+glasgow-alfurqan   days 365 core 120 | fajrDep 15.40 sd 0.08 | ishaDep 15.52 sd 0.08 | Jan 15.4 Jul 10.7
+glasgow-mena       days 365 core 120 | fajrDep 15.39 sd 0.08 | ishaDep 15.54 sd 0.08 | Jan 15.4 Jul 10.6
+edinburgh-polwarth days 365 core 120 | fajrDep 17.96 sd 0.07 | ishaDep 14.95 sd 0.12 | Jan 18.0 Jul 12.7
+luton-ic           days 365 core 120 | fajrDep 12.21 sd 0.08 | ishaDep 12.01 sd 0.12 | Jan 12.2 Jul 12.1
+bham-south         days 365 core 120 | fajrDep 12.51 sd 0.13 | ishaDep 14.45 sd 1.54 | Jan 12.5 Jul 11.9
+leicester-quba     days 365 core 120 | fajrDep 15.04 sd 0.10 | ishaDep 12.67 sd 0.13 | Jan 15.0 Jul 14.8
+middlesbrough      days 365 core 120 | fajrDep 14.10 sd 1.26 | ishaDep 13.91 sd 0.87 | Jan 13.9 Jul 9.8
+ilford-rmcc        days 365 core 120 | fajrDep 15.49 sd 0.60 | ishaDep 14.95 sd 0.38 | Jan 15.0 Jul 12.2
+watford            days 365 core 120 | fajrDep 15.67 sd 0.60 | ishaDep 15.74 sd 2.86 | Jan 15.2 Jul 12.2
+london-plashet     days 365 core 120 | fajrDep 15.41 sd 0.56 | ishaDep 14.88 sd 0.33 | Jan 14.9 Jul 12.2
+london-brent-ic    days 365 core 120 | fajrDep 15.54 sd 0.60 | ishaDep 14.82 sd 0.37 | Jan 15.0 Jul 12.2

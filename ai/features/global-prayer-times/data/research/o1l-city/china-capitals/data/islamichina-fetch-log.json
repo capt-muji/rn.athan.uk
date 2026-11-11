@@ -1,0 +1,174 @@
+{
+ "beijing": {
+  "index": "200",
+  "yearly": "200",
+  "url": "/beijing-prayer-times/2143-2026.html",
+  "rows": 365
+ },
+ "shanghai": {
+  "index": "200",
+  "yearly": "200",
+  "url": "/shanghai-prayer-times/2510-2026.html",
+  "rows": 365
+ },
+ "tianjin": {
+  "index": "200",
+  "yearly": "200",
+  "url": "/tianjin-prayer-times/2582-2026.html",
+  "rows": 365
+ },
+ "chongqing": {
+  "index": "200",
+  "yearly": "200",
+  "url": "/chongqing-prayer-times/2222-2026.html",
+  "rows": 365
+ },
+ "guangzhou": {
+  "index": "200",
+  "yearly": "200",
+  "url": "/guangzhou-prayer-times/2258-2026.html",
+  "rows": 365
+ },
+ "kunming": {
+  "index": "200",
+  "yearly": "200",
+  "url": "/kunming-prayer-times/2378-2026.html",
+  "rows": 365
+ },
+ "urumqi": {
+  "index": "200",
+  "yearly": "200",
+  "url": "/urumqi-prayer-times/2606-2026.html",
+  "rows": 365
+ },
+ "yinchuan": {
+  "index": "200",
+  "yearly": "200",
+  "url": "/yinchuan-prayer-times/2666-2026.html",
+  "rows": 365
+ },
+ "lanzhou": {
+  "index": "200",
+  "yearly": "200",
+  "url": "/lanzhou-prayer-times/2390-2026.html",
+  "rows": 365
+ },
+ "xining": {
+  "index": "200",
+  "yearly": "200",
+  "url": "/xining-prayer-times/2654-2026.html",
+  "rows": 365
+ },
+ "xian": {
+  "index": "200",
+  "yearly": "200",
+  "url": "/xian-prayer-times/2642-2026.html",
+  "rows": 365
+ },
+ "zhengzhou": {
+  "index": "200",
+  "yearly": "200",
+  "url": "/zhengzhou-prayer-times/2678-2026.html",
+  "rows": 365
+ },
+ "jinan": {
+  "index": "200",
+  "yearly": "200",
+  "url": "/jinan-prayer-times/2354-2026.html",
+  "rows": 365
+ },
+ "shenyang": {
+  "index": "200",
+  "yearly": "200",
+  "url": "/shenyang-prayer-times/2522-2026.html",
+  "rows": 365
+ },
+ "changchun": {
+  "index": "200",
+  "yearly": "200",
+  "url": "/changchun-prayer-times/2155-2026.html",
+  "rows": 365
+ },
+ "harbin": {
+  "index": "200",
+  "yearly": "200",
+  "url": "/harbin-prayer-times/2318-2026.html",
+  "rows": 365
+ },
+ "hohhot": {
+  "index": "200",
+  "yearly": "200",
+  "url": "/hohhot-prayer-times/2342-2026.html",
+  "rows": 365
+ },
+ "chengdu": {
+  "index": "200",
+  "yearly": "200",
+  "url": "/chengdu-prayer-times/2179-2026.html",
+  "rows": 365
+ },
+ "wuhan": {
+  "index": "200",
+  "yearly": "200",
+  "url": "/wuhan-prayer-times/2618-2026.html",
+  "rows": 365
+ },
+ "changsha": {
+  "index": "200",
+  "yearly": "200",
+  "url": "/changsha-prayer-times/2167-2026.html",
+  "rows": 365
+ },
+ "nanjing": {
+  "index": "200",
+  "yearly": "200",
+  "url": "/nanjing-prayer-times/2438-2026.html",
+  "rows": 365
+ },
+ "hangzhou": {
+  "index": "200",
+  "yearly": "200",
+  "url": "/hangzhou-prayer-times/2306-2026.html",
+  "rows": 365
+ },
+ "fuzhou": {
+  "index": "200",
+  "yearly": "200",
+  "url": "/fuzhou-prayer-times/2246-2026.html",
+  "rows": 365
+ },
+ "nanning": {
+  "index": "200",
+  "note": "no 2026 link found"
+ },
+ "guiyang": {
+  "index": "200",
+  "yearly": "200",
+  "url": "/guiyang-prayer-times/2282-2026.html",
+  "rows": 365
+ },
+ "hefei": {
+  "index": "200",
+  "yearly": "200",
+  "url": "/hefei-prayer-times/2330-2026.html",
+  "rows": 365
+ },
+ "shijiazhuang": {
+  "index": "200",
+  "yearly": "200",
+  "url": "/shijiazhuang-prayer-times/2546-2026.html",
+  "rows": 365
+ },
+ "taiyuan": {
+  "index": "200",
+  "yearly": "200",
+  "url": "/taiyuan-prayer-times/2570-2026.html",
+  "rows": 365
+ },
+ "lhasa": {
+  "index": "200",
+  "yearly": "200",
+  "url": "/lhasa-prayer-times/2402-2026.html",
+  "rows": 365
+ }
+}

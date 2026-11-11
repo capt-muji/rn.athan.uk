@@ -1,0 +1,262 @@
+{
+ "athlone": {
+  "fajr_summer_min": -56.09,
+  "fajr_winter_median": 15.44,
+  "isha_summer_min": 9.07,
+  "isha_winter_median": 14.82,
+  "lat": 53.47,
+  "lon": 171.44,
+  "rows": 335,
+  "solar_rms_min": 357.87
+ },
+ "ballyhaunis": {
+  "fajr_summer_min": 10.96,
+  "fajr_winter_median": 16.34,
+  "isha_summer_min": 8.73,
+  "isha_winter_median": 14.73,
+  "lat": 53.86,
+  "lon": -9.29,
+  "rows": 365,
+  "solar_rms_min": 3.84
+ },
+ "carlow": {
+  "fajr_summer_min": 11.68,
+  "fajr_winter_median": 16.63,
+  "isha_summer_min": 9.11,
+  "isha_winter_median": 15.06,
+  "lat": 52.97,
+  "lon": -7.41,
+  "rows": 364,
+  "solar_rms_min": 3.76
+ },
+ "castlebar": {
+  "fajr_summer_min": 10.94,
+  "fajr_winter_median": 16.3,
+  "isha_summer_min": 8.74,
+  "isha_winter_median": 14.71,
+  "lat": 53.89,
+  "lon": -9.81,
+  "rows": 365,
+  "solar_rms_min": 3.81
+ },
+ "cavan": {
+  "fajr_summer_min": 10.72,
+  "fajr_winter_median": 16.27,
+  "isha_summer_min": 8.58,
+  "isha_winter_median": 14.72,
+  "lat": 54.13,
+  "lon": -7.85,
+  "rows": 365,
+  "solar_rms_min": 5.28
+ },
+ "clonmel": {
+  "fajr_summer_min": 12.17,
+  "fajr_winter_median": 16.74,
+  "isha_summer_min": 9.4,
+  "isha_winter_median": 15.16,
+  "lat": 52.39,
+  "lon": -8.19,
+  "rows": 365,
+  "solar_rms_min": 3.65
+ },
+ "cork": {
+  "fajr_summer_min": 12.49,
+  "fajr_winter_median": 16.89,
+  "isha_summer_min": 9.56,
+  "isha_winter_median": 15.31,
+  "lat": 51.99,
+  "lon": -8.95,
+  "rows": 365,
+  "solar_rms_min": 3.6
+ },
+ "drogheda": {
+  "fajr_summer_min": 10.97,
+  "fajr_winter_median": 16.36,
+  "isha_summer_min": 8.75,
+  "isha_winter_median": 14.8,
+  "lat": 53.82,
+  "lon": -6.85,
+  "rows": 365,
+  "solar_rms_min": 3.8
+ },
+ "dublin": {
+  "fajr_summer_min": 11.31,
+  "fajr_winter_median": 16.45,
+  "isha_summer_min": 8.95,
+  "isha_winter_median": 14.89,
+  "lat": 53.42,
+  "lon": -6.71,
+  "rows": 365,
+  "solar_rms_min": 3.66
+ },
+ "dundalk": {
+  "fajr_summer_min": 10.76,
+  "fajr_winter_median": 16.26,
+  "isha_summer_min": 8.63,
+  "isha_winter_median": 14.71,
+  "lat": 54.09,
+  "lon": -6.92,
+  "rows": 365,
+  "solar_rms_min": 3.79
+ },
+ "ennis": {
+  "fajr_summer_min": 11.7,
+  "fajr_winter_median": 16.61,
+  "isha_summer_min": 9.16,
+  "isha_winter_median": 15.03,
+  "lat": 52.94,
+  "lon": -9.46,
+  "rows": 365,
+  "solar_rms_min": 3.69
+ },
+ "galway": {
+  "fajr_summer_min": 11.42,
+  "fajr_winter_median": 16.48,
+  "isha_summer_min": 9.0,
+  "isha_winter_median": 14.87,
+  "lat": 53.3,
+  "lon": -9.56,
+  "rows": 365,
+  "solar_rms_min": 3.79
+ },
+ "kilkenny": {
+  "fajr_summer_min": 11.86,
+  "fajr_winter_median": 16.68,
+  "isha_summer_min": 9.21,
+  "isha_winter_median": 15.1,
+  "lat": 52.76,
+  "lon": -7.73,
+  "rows": 365,
+  "solar_rms_min": 3.69
+ },
+ "letterkenny": {
+  "fajr_summer_min": 9.89,
+  "fajr_winter_median": 15.96,
+  "isha_summer_min": 8.14,
+  "isha_winter_median": 14.47,
+  "lat": 55.11,
+  "lon": -8.2,
+  "rows": 365,
+  "solar_rms_min": 5.36
+ },
+ "limerick": {
+  "fajr_summer_min": 11.87,
+  "fajr_winter_median": 16.67,
+  "isha_summer_min": 9.23,
+  "isha_winter_median": 15.04,
+  "lat": 52.75,
+  "lon": -9.13,
+  "rows": 365,
+  "solar_rms_min": 3.68
+ },
+ "longford": {
+  "fajr_summer_min": 10.95,
+  "fajr_winter_median": 16.36,
+  "isha_summer_min": 8.71,
+  "isha_winter_median": 14.77,
+  "lat": 53.85,
+  "lon": -8.31,
+  "rows": 365,
+  "solar_rms_min": 3.81
+ },
+ "mullingar": {
+  "fajr_summer_min": 11.11,
+  "fajr_winter_median": 16.42,
+  "isha_summer_min": 8.8,
+  "isha_winter_median": 14.83,
+  "lat": 53.66,
+  "lon": -7.85,
+  "rows": 365,
+  "solar_rms_min": 3.77
+ },
+ "naas": {
+  "fajr_summer_min": 11.42,
+  "fajr_winter_median": 16.51,
+  "isha_summer_min": 8.99,
+  "isha_winter_median": 14.89,
+  "lat": 53.3,
+  "lon": -7.17,
+  "rows": 365,
+  "solar_rms_min": 3.78
+ },
+ "navan": {
+  "fajr_summer_min": 11.01,
+  "fajr_winter_median": 16.37,
+  "isha_summer_min": 8.75,
+  "isha_winter_median": 14.78,
+  "lat": 53.78,
+  "lon": -7.17,
+  "rows": 365,
+  "solar_rms_min": 3.77
+ },
+ "portlaoise": {
+  "fajr_summer_min": 11.59,
+  "fajr_winter_median": 16.57,
+  "isha_summer_min": 9.08,
+  "isha_winter_median": 14.94,
+  "lat": 53.1,
+  "lon": -7.81,
+  "rows": 365,
+  "solar_rms_min": 3.76
+ },
+ "sligo": {
+  "fajr_summer_min": 10.51,
+  "fajr_winter_median": 16.16,
+  "isha_summer_min": 8.5,
+  "isha_winter_median": 14.64,
+  "lat": 54.37,
+  "lon": -8.95,
+  "rows": 365,
+  "solar_rms_min": 3.76
+ },
+ "thurles": {
+  "fajr_summer_min": 11.93,
+  "fajr_winter_median": 16.66,
+  "isha_summer_min": 9.27,
+  "isha_winter_median": 15.04,
+  "lat": 52.7,
+  "lon": -8.31,
+  "rows": 365,
+  "solar_rms_min": 3.75
+ },
+ "tralee": {
+  "fajr_summer_min": 12.16,
+  "fajr_winter_median": 16.8,
+  "isha_summer_min": 9.38,
+  "isha_winter_median": 15.16,
+  "lat": 52.39,
+  "lon": -10.19,
+  "rows": 365,
+  "solar_rms_min": 4.03
+ },
+ "tullamore": {
+  "fajr_summer_min": 11.31,
+  "fajr_winter_median": 16.47,
+  "isha_summer_min": 8.92,
+  "isha_winter_median": 14.91,
+  "lat": 53.41,
+  "lon": -7.96,
+  "rows": 365,
+  "solar_rms_min": 3.67
+ },
+ "waterford": {
+  "fajr_summer_min": 12.25,
+  "fajr_winter_median": 16.8,
+  "isha_summer_min": 9.45,
+  "isha_winter_median": 15.17,
+  "lat": 52.31,
+  "lon": -7.63,
+  "rows": 365,
+  "solar_rms_min": 3.66
+ },
+ "wexford": {
+  "fajr_summer_min": 12.17,
+  "fajr_winter_median": 16.75,
+  "isha_summer_min": 9.4,
+  "isha_winter_median": 15.15,
+  "lat": 52.39,
+  "lon": -6.95,
+  "rows": 365,
+  "solar_rms_min": 3.7
+ }
+}

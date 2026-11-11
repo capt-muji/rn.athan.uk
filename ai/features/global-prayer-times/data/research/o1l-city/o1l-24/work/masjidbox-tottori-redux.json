@@ -1,0 +1,326 @@
+{
+ "masjidbox": {
+  "masjidboxAthany": {
+   "name": "Tottori Mosque",
+   "address": "Tottori, Japan",
+   "country": "JP",
+   "verified": true,
+   "settings": {
+    "language": "en",
+    "timezone": "Asia/Tokyo",
+    "azan": 150
+   },
+   "athany": {
+    "slug": "tottori-masjid",
+    "theme": "#4A90E2",
+    "qrcode": "https://cdn.mbxsrc.com/core/FC9TNIEM/K6xJI1C4T.svg",
+    "showIqamah": true
+   },
+   "timetable": [
+    {
+     "date": "2026-11-11T00:00:00+09:00",
+     "fajr": "2026-11-11T05:07:00+09:00",
+     "sunrise": "2026-11-11T06:34:00+09:00",
+     "dhuhr": "2026-11-11T11:48:00+09:00",
+     "asr": "2026-11-11T14:38:00+09:00",
+     "maghrib": "2026-11-11T17:00:00+09:00",
+     "isha": "2026-11-11T18:22:00+09:00",
+     "hijri": {
+      "gregorian": "2026-11-11",
+      "day": "%u0627%u0644%u0623%u0631%u0628%u0639%u0627%u0621",
+      "dayOfMonth": 1,
+      "formatted": "%u0627%u0644%u0623%u0631%u0628%u0639%u0627%u0621 1 %u062C%u0645%u0627%u062F%u0649 %u0627%u0644%u0622%u062E%u0631%u0629 1448",
+      "month": "%u062C%u0645%u0627%u062F%u0649 %u0627%u0644%u0622%u062E%u0631%u0629",
+      "monthISO": "Jumada al-Akhira",
+      "monthOfYear": 6,
+      "year": 1448
+     },
+     "iqamah": {
+      "fajr": "2026-11-11T05:17:00+09:00",
+      "dhuhr": "2026-11-11T11:58:00+09:00",
+      "asr": "2026-11-11T14:48:00+09:00",
+      "maghrib": "2026-11-11T17:05:00+09:00",
+      "isha": "2026-11-11T18:32:00+09:00"
+     },
+     "special": {
+      "imsak": "2026-11-11T04:52:00+09:00",
+      "iftar": "2026-11-11T17:00:00+09:00"
+     }
+    },
+    {
+     "date": "2026-11-12T00:00:00+09:00",
+     "fajr": "2026-11-12T05:07:00+09:00",
+     "sunrise": "2026-11-12T06:35:00+09:00",
+     "dhuhr": "2026-11-12T11:48:00+09:00",
+     "asr": "2026-11-12T14:38:00+09:00",
+     "maghrib": "2026-11-12T16:59:00+09:00",
+     "isha": "2026-11-12T18:21:00+09:00",
+     "hijri": {
+      "gregorian": "2026-11-12",
+      "day": "%u0627%u0644%u062E%u0645%u064A%u0633",
+      "dayOfMonth": 2,
+      "formatted": "%u0627%u0644%u062E%u0645%u064A%u0633 2 %u062C%u0645%u0627%u062F%u0649 %u0627%u0644%u0622%u062E%u0631%u0629 1448",
+      "month": "%u062C%u0645%u0627%u062F%u0649 %u0627%u0644%u0622%u062E%u0631%u0629",
+      "monthISO": "Jumada al-Akhira",
+      "monthOfYear": 6,
+      "year": 1448
+     },
+     "iqamah": {
+      "fajr": "2026-11-12T05:17:00+09:00",
+      "dhuhr": "2026-11-12T11:58:00+09:00",
+      "asr": "2026-11-12T14:48:00+09:00",
+      "maghrib": "2026-11-12T17:04:00+09:00",
+      "isha": "2026-11-12T18:31:00+09:00"
+     },
+     "special": {
+      "imsak": "2026-11-12T04:52:00+09:00",
+      "iftar": "2026-11-12T16:59:00+09:00"
+     }
+    },
+    {
+     "date": "2026-11-13T00:00:00+09:00",
+     "fajr": "2026-11-13T05:08:00+09:00",
+     "sunrise": "2026-11-13T06:36:00+09:00",
+     "dhuhr": "2026-11-13T11:48:00+09:00",
+     "asr": "2026-11-13T14:37:00+09:00",
+     "maghrib": "2026-11-13T16:58:00+09:00",
+     "isha": "2026-11-13T18:21:00+09:00",
+     "jumuah": [
+      "2026-11-13T12:10:00+09:00"
+     ],
+     "hijri": {
+      "gregorian": "2026-11-13",
+      "day": "%u0627%u0644%u062C%u0645%u0639%u0629",
+      "dayOfMonth": 3,
+      "formatted": "%u0627%u0644%u062C%u0645%u0639%u0629 3 %u062C%u0645%u0627%u062F%u0649 %u0627%u0644%u0622%u062E%u0631%u0629 1448",
+      "month": "%u062C%u0645%u0627%u062F%u0649 %u0627%u0644%u0622%u062E%u0631%u0629",
+      "monthISO": "Jumada al-Akhira",
+      "monthOfYear": 6,
+      "year": 1448
+     },
+     "iqamah": {
+      "fajr": "2026-11-13T05:18:00+09:00",
+      "dhuhr": "2026-11-13T11:58:00+09:00",
+      "asr": "2026-11-13T14:47:00+09:00",
+      "maghrib": "2026-11-13T17:03:00+09:00",
+      "isha": "2026-11-13T18:31:00+09:00",
+      "jumuah": [
+       "2026-11-13T12:30:00+09:00"
+      ]
+     },
+     "special": {
+      "imsak": "2026-11-13T04:53:00+09:00",
+      "iftar": "2026-11-13T16:58:00+09:00"
+     }
+    },
+    {
+     "date": "2026-11-14T00:00:00+09:00",
+     "fajr": "2026-11-14T05:09:00+09:00",
+     "sunrise": "2026-11-14T06:37:00+09:00",
+     "dhuhr": "2026-11-14T11:48:00+09:00",
+     "asr": "2026-11-14T14:37:00+09:00",
+     "maghrib": "2026-11-14T16:57:00+09:00",
+     "isha": "2026-11-14T18:20:00+09:00",
+     "hijri": {
+      "gregorian": "2026-11-14",
+      "day": "%u0627%u0644%u0633%u0628%u062A",
+      "dayOfMonth": 4,
+      "formatted": "%u0627%u0644%u0633%u0628%u062A 4 %u062C%u0645%u0627%u062F%u0649 %u0627%u0644%u0622%u062E%u0631%u0629 1448",
+      "month": "%u062C%u0645%u0627%u062F%u0649 %u0627%u0644%u0622%u062E%u0631%u0629",
+      "monthISO": "Jumada al-Akhira",
+      "monthOfYear": 6,
+      "year": 1448
+     },
+     "iqamah": {
+      "fajr": "2026-11-14T05:19:00+09:00",
+      "dhuhr": "2026-11-14T11:58:00+09:00",
+      "asr": "2026-11-14T14:47:00+09:00",
+      "maghrib": "2026-11-14T17:02:00+09:00",
+      "isha": "2026-11-14T18:30:00+09:00"
+     },
+     "special": {
+      "imsak": "2026-11-14T04:54:00+09:00",
+      "iftar": "2026-11-14T16:57:00+09:00"
+     }
+    },
+    {
+     "date": "2026-11-15T00:00:00+09:00",
+     "fajr": "2026-11-15T05:10:00+09:00",
+     "sunrise": "2026-11-15T06:38:00+09:00",
+     "dhuhr": "2026-11-15T11:49:00+09:00",
+     "asr": "2026-11-15T14:36:00+09:00",
+     "maghrib": "2026-11-15T16:57:00+09:00",
+     "isha": "2026-11-15T18:20:00+09:00",
+     "hijri": {
+      "gregorian": "2026-11-15",
+      "day": "%u0627%u0644%u0623%u062D%u062F",
+      "dayOfMonth": 5,
+      "formatted": "%u0627%u0644%u0623%u062D%u062F 5 %u062C%u0645%u0627%u062F%u0649 %u0627%u0644%u0622%u062E%u0631%u0629 1448",
+      "month": "%u062C%u0645%u0627%u062F%u0649 %u0627%u0644%u0622%u062E%u0631%u0629",
+      "monthISO": "Jumada al-Akhira",
+      "monthOfYear": 6,
+      "year": 1448
+     },
+     "iqamah": {
+      "fajr": "2026-11-15T05:20:00+09:00",
+      "dhuhr": "2026-11-15T11:59:00+09:00",
+      "asr": "2026-11-15T14:46:00+09:00",
+      "maghrib": "2026-11-15T17:02:00+09:00",
+      "isha": "2026-11-15T18:30:00+09:00"
+     },
+     "special": {
+      "imsak": "2026-11-15T04:55:00+09:00",
+      "iftar": "2026-11-15T16:57:00+09:00"
+     }
+    },
+    {
+     "date": "2026-11-16T00:00:00+09:00",
+     "fajr": "2026-11-16T05:11:00+09:00",
+     "sunrise": "2026-11-16T06:39:00+09:00",
+     "dhuhr": "2026-11-16T11:49:00+09:00",
+     "asr": "2026-11-16T14:36:00+09:00",
+     "maghrib": "2026-11-16T16:56:00+09:00",
+     "isha": "2026-11-16T18:19:00+09:00",
+     "hijri": {
+      "gregorian": "2026-11-16",
+      "day": "%u0627%u0644%u0627%u062B%u0646%u064A%u0646",
+      "dayOfMonth": 6,
+      "formatted": "%u0627%u0644%u0627%u062B%u0646%u064A%u0646 6 %u062C%u0645%u0627%u062F%u0649 %u0627%u0644%u0622%u062E%u0631%u0629 1448",
+      "month": "%u062C%u0645%u0627%u062F%u0649 %u0627%u0644%u0622%u062E%u0631%u0629",
+      "monthISO": "Jumada al-Akhira",
+      "monthOfYear": 6,
+      "year": 1448
+     },
+     "iqamah": {
+      "fajr": "2026-11-16T05:21:00+09:00",
+      "dhuhr": "2026-11-16T11:59:00+09:00",
+      "asr": "2026-11-16T14:46:00+09:00",
+      "maghrib": "2026-11-16T17:01:00+09:00",
+      "isha": "2026-11-16T18:29:00+09:00"
+     },
+     "special": {
+      "imsak": "2026-11-16T04:56:00+09:00",
+      "iftar": "2026-11-16T16:56:00+09:00"
+     }
+    },
+    {
+     "date": "2026-11-17T00:00:00+09:00",
+     "fajr": "2026-11-17T05:12:00+09:00",
+     "sunrise": "2026-11-17T06:40:00+09:00",
+     "dhuhr": "2026-11-17T11:49:00+09:00",
+     "asr": "2026-11-17T14:35:00+09:00",
+     "maghrib": "2026-11-17T16:56:00+09:00",
+     "isha": "2026-11-17T18:19:00+09:00",
+     "hijri": {
+      "gregorian": "2026-11-17",
+      "day": "%u0627%u0644%u062B%u0644%u0627%u062B%u0627%u0621",
+      "dayOfMonth": 7,
+      "formatted": "%u0627%u0644%u062B%u0644%u0627%u062B%u0627%u0621 7 %u062C%u0645%u0627%u062F%u0649 %u0627%u0644%u0622%u062E%u0631%u0629 1448",
+      "month": "%u062C%u0645%u0627%u062F%u0649 %u0627%u0644%u0622%u062E%u0631%u0629",
+      "monthISO": "Jumada al-Akhira",
+      "monthOfYear": 6,
+      "year": 1448
+     },
+     "iqamah": {
+      "fajr": "2026-11-17T05:22:00+09:00",
+      "dhuhr": "2026-11-17T11:59:00+09:00",
+      "asr": "2026-11-17T14:45:00+09:00",
+      "maghrib": "2026-11-17T17:01:00+09:00",
+      "isha": "2026-11-17T18:29:00+09:00"
+     },
+     "special": {
+      "imsak": "2026-11-17T04:57:00+09:00",
+      "iftar": "2026-11-17T16:56:00+09:00"
+     }
+    }
+   ],
+   "isStale": false,
+   "settingLastUpdated": "2026-04-19T00:00:09.265Z"
+  },
+  "getMasjidboxAthanyRequest": {
+   "loading": false,
+   "error": false
+  },
+  "masjidboxApplications": {},
+  "getMasjidboxApplicationsRequest": {
+   "loading": null,
+   "error": null
+  },
+  "masjidboxDonations": {},
+  "masjidboxDonationsOne": {},
+  "getMasjidboxDonationsRequest": {
+   "loading": null,
+   "error": null
+  },
+  "getMasjidboxDonationsOneRequest": {
+   "loading": null,
+   "error": null
+  },
+  "countries": {},
+  "getCountriesRequest": {
+   "loading": null,
+   "error": null
+  },
+  "donationSecret": null,
+  "sendDonationRequest": {
+   "loading": null,
+   "error": null
+  },
+  "masjidboxCovid": {},
+  "subscribeCovidData": null,
+  "checkCovidData": {},
+  "generateCovidData": {},
+  "widgetData": {},
+  "articles": [],
+  "getMasjidboxCovidRequest": {
+   "loading": null,
+   "error": null
+  },
+  "subscribeCovidRequest": {
+   "loading": null,
+   "error": null
+  },
+  "checkCovidRequest": {
+   "loading": null,
+   "error": null
+  },
+  "confirmCovidRequest": {
+   "loading": null,
+   "error": null
+  },
+  "unsubscribeCovidRequest": {
+   "loading": null,
+   "error": null
+  },
+  "generateCovidRequest": {
+   "loading": null,
+   "error": null
+  },
+  "sendDonationsTokenRequest": {
+   "loading": null,
+   "error": null
+  },
+  "donationsSubscriptions": null,
+  "getDonationsSubscriptionRequest": {
+   "loading": null,
+   "error": null
+  },
+  "updateDonationsSubscriptionRequest": {
+   "loading": null,
+   "error": null
+  },
+  "cancelDonationsSubscriptionRequest": {
+   "loading": null,
+   "error": null
+  },
+  "getMasjidboxWidgetRequest": {
+   "loading": null,
+   "error": null
+  },
+  "getArticlesRequest": {
+   "loading": null,
+   "error": null
+  }
+ },
+ "misc": {}
+}

@@ -1,0 +1,1416 @@
+{
+ "my-esolat-2026-ngs01": {
+  "point": {
+   "lat": 2.7135,
+   "lon": 102.1997
+  },
+  "angles": {
+   "fajr": 18,
+   "isha": 18
+  },
+  "span": [
+   "2026-01-01",
+   "2026-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2026": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 288,
+      "within1": 365,
+      "mean": 0.21,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 3,
+      "within1": 337,
+      "mean": -1.07,
+      "worst": -2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 355,
+      "within1": 365,
+      "mean": 0.03,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 250,
+      "within1": 365,
+      "mean": 0.1,
+      "worst": 1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 292,
+      "within1": 365,
+      "mean": 0.17,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 294,
+      "within1": 365,
+      "mean": 0.19,
+      "worst": 1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 76,
+      "mean": -1.79,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 3,
+      "within1": 337,
+      "mean": -1.07,
+      "worst": -2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 355,
+      "within1": 365,
+      "mean": 0.03,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 75,
+      "mean": -1.9,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 292,
+      "within1": 365,
+      "mean": 0.17,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 70,
+      "mean": -1.81,
+      "worst": -3
+     }
+    }
+   }
+  },
+  "amplitude": {
+   "fajr": 9,
+   "isha": 10
+  }
+ },
+ "my-esolat-2026-ngs02": {
+  "point": {
+   "lat": 2.9026,
+   "lon": 101.919
+  },
+  "angles": {
+   "fajr": 18,
+   "isha": 18
+  },
+  "span": [
+   "2026-01-01",
+   "2026-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2026": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 310,
+      "within1": 365,
+      "mean": 0.13,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 29,
+      "within1": 345,
+      "mean": -0.98,
+      "worst": -2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 351,
+      "within1": 365,
+      "mean": 0.04,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 270,
+      "within1": 365,
+      "mean": 0.04,
+      "worst": 1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 308,
+      "within1": 365,
+      "mean": 0.14,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 297,
+      "within1": 365,
+      "mean": 0.17,
+      "worst": 1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 52,
+      "mean": -1.87,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 29,
+      "within1": 345,
+      "mean": -0.98,
+      "worst": -2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 351,
+      "within1": 365,
+      "mean": 0.04,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 54,
+      "mean": -1.96,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 308,
+      "within1": 365,
+      "mean": 0.14,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 65,
+      "mean": -1.83,
+      "worst": -3
+     }
+    }
+   }
+  },
+  "amplitude": {
+   "fajr": 10,
+   "isha": 11
+  }
+ },
+ "my-melaka-mufti-2025-2026": {
+  "point": {
+   "lat": 2.3986,
+   "lon": 101.9622
+  },
+  "angles": {
+   "fajr": 18,
+   "isha": 18
+  },
+  "span": [
+   "2025-06-27",
+   "2026-06-16"
+  ],
+  "days": 355,
+  "perYear": {
+   "2025": {
+    "days": 188,
+    "B": {
+     "fajr": {
+      "n": 188,
+      "exact": 178,
+      "within1": 188,
+      "mean": 0,
+      "worst": -1
+     },
+     "sunrise": {
+      "n": 188,
+      "exact": 6,
+      "within1": 185,
+      "mean": 0.98,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 188,
+      "exact": 181,
+      "within1": 188,
+      "mean": 0.04,
+      "worst": 1
+     },
+     "asr": {
+      "n": 188,
+      "exact": 161,
+      "within1": 188,
+      "mean": 0.02,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 188,
+      "exact": 176,
+      "within1": 188,
+      "mean": 0.02,
+      "worst": -1
+     },
+     "isha": {
+      "n": 188,
+      "exact": 173,
+      "within1": 188,
+      "mean": 0.02,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 188,
+      "exact": 0,
+      "within1": 5,
+      "mean": -2,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 188,
+      "exact": 6,
+      "within1": 185,
+      "mean": 0.98,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 188,
+      "exact": 181,
+      "within1": 188,
+      "mean": 0.04,
+      "worst": 1
+     },
+     "asr": {
+      "n": 188,
+      "exact": 0,
+      "within1": 15,
+      "mean": -1.98,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 188,
+      "exact": 176,
+      "within1": 188,
+      "mean": 0.02,
+      "worst": -1
+     },
+     "isha": {
+      "n": 188,
+      "exact": 0,
+      "within1": 9,
+      "mean": -1.98,
+      "worst": -3
+     }
+    }
+   },
+   "2026": {
+    "days": 167,
+    "B": {
+     "fajr": {
+      "n": 167,
+      "exact": 154,
+      "within1": 167,
+      "mean": -0.05,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 167,
+      "exact": 8,
+      "within1": 163,
+      "mean": 0.98,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 167,
+      "exact": 161,
+      "within1": 167,
+      "mean": 0.04,
+      "worst": 1
+     },
+     "asr": {
+      "n": 167,
+      "exact": 133,
+      "within1": 167,
+      "mean": -0.04,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 167,
+      "exact": 161,
+      "within1": 167,
+      "mean": -0.02,
+      "worst": -1
+     },
+     "isha": {
+      "n": 167,
+      "exact": 157,
+      "within1": 167,
+      "mean": -0.05,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 167,
+      "exact": 0,
+      "within1": 2,
+      "mean": -2.05,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 167,
+      "exact": 8,
+      "within1": 163,
+      "mean": 0.98,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 167,
+      "exact": 161,
+      "within1": 167,
+      "mean": 0.04,
+      "worst": 1
+     },
+     "asr": {
+      "n": 167,
+      "exact": 0,
+      "within1": 14,
+      "mean": -2.04,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 167,
+      "exact": 161,
+      "within1": 167,
+      "mean": -0.02,
+      "worst": -1
+     },
+     "isha": {
+      "n": 167,
+      "exact": 0,
+      "within1": 1,
+      "mean": -2.05,
+      "worst": -3
+     }
+    }
+   }
+  },
+  "amplitude": {
+   "fajr": 8,
+   "isha": 10
+  }
+ },
+ "my-penang-2026-2027-grid": {
+  "point": {
+   "lat": 5.3333,
+   "lon": 100.1633
+  },
+  "angles": {
+   "fajr": 18,
+   "isha": 18
+  },
+  "span": [
+   "2026-06-17",
+   "2027-06-05"
+  ],
+  "days": 354,
+  "perYear": {
+   "2026": {
+    "days": 198,
+    "B": {
+     "fajr": {
+      "n": 198,
+      "exact": 180,
+      "within1": 198,
+      "mean": 0.09,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 198,
+      "exact": 54,
+      "within1": 198,
+      "mean": -0.73,
+      "worst": -1
+     },
+     "dhuhr": {
+      "n": 198,
+      "exact": 196,
+      "within1": 198,
+      "mean": 0.01,
+      "worst": 1
+     },
+     "asr": {
+      "n": 198,
+      "exact": 141,
+      "within1": 198,
+      "mean": 0.01,
+      "worst": 1
+     },
+     "magrib": {
+      "n": 198,
+      "exact": 188,
+      "within1": 198,
+      "mean": 0.03,
+      "worst": 1
+     },
+     "isha": {
+      "n": 198,
+      "exact": 184,
+      "within1": 198,
+      "mean": 0.05,
+      "worst": 1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 198,
+      "exact": 0,
+      "within1": 18,
+      "mean": -1.91,
+      "worst": -2
+     },
+     "sunrise": {
+      "n": 198,
+      "exact": 54,
+      "within1": 198,
+      "mean": -0.73,
+      "worst": -1
+     },
+     "dhuhr": {
+      "n": 198,
+      "exact": 196,
+      "within1": 198,
+      "mean": 0.01,
+      "worst": 1
+     },
+     "asr": {
+      "n": 198,
+      "exact": 0,
+      "within1": 29,
+      "mean": -1.99,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 198,
+      "exact": 188,
+      "within1": 198,
+      "mean": 0.03,
+      "worst": 1
+     },
+     "isha": {
+      "n": 198,
+      "exact": 0,
+      "within1": 12,
+      "mean": -1.95,
+      "worst": -3
+     }
+    }
+   },
+   "2027": {
+    "days": 156,
+    "B": {
+     "fajr": {
+      "n": 156,
+      "exact": 139,
+      "within1": 156,
+      "mean": 0.08,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 156,
+      "exact": 62,
+      "within1": 156,
+      "mean": -0.6,
+      "worst": -1
+     },
+     "dhuhr": {
+      "n": 156,
+      "exact": 149,
+      "within1": 156,
+      "mean": 0.04,
+      "worst": 1
+     },
+     "asr": {
+      "n": 156,
+      "exact": 112,
+      "within1": 156,
+      "mean": -0.03,
+      "worst": 1
+     },
+     "magrib": {
+      "n": 156,
+      "exact": 146,
+      "within1": 155,
+      "mean": 0.01,
+      "worst": -5
+     },
+     "isha": {
+      "n": 156,
+      "exact": 148,
+      "within1": 156,
+      "mean": 0.04,
+      "worst": 1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 156,
+      "exact": 0,
+      "within1": 15,
+      "mean": -1.92,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 156,
+      "exact": 62,
+      "within1": 156,
+      "mean": -0.6,
+      "worst": -1
+     },
+     "dhuhr": {
+      "n": 156,
+      "exact": 149,
+      "within1": 156,
+      "mean": 0.04,
+      "worst": 1
+     },
+     "asr": {
+      "n": 156,
+      "exact": 0,
+      "within1": 20,
+      "mean": -2.03,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 156,
+      "exact": 146,
+      "within1": 155,
+      "mean": 0.01,
+      "worst": -5
+     },
+     "isha": {
+      "n": 156,
+      "exact": 0,
+      "within1": 7,
+      "mean": -1.96,
+      "worst": -3
+     }
+    }
+   }
+  },
+  "amplitude": {
+   "fajr": 19,
+   "isha": 19
+  }
+ },
+ "my-perak-2026-zon1": {
+  "point": {
+   "lat": 4.1381,
+   "lon": 101.0569
+  },
+  "angles": {
+   "fajr": 18,
+   "isha": 18
+  },
+  "span": [
+   "2026-01-01",
+   "2026-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2026": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 331,
+      "within1": 365,
+      "mean": -0.04,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 3,
+      "within1": 228,
+      "mean": -1.37,
+      "worst": -2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 357,
+      "within1": 365,
+      "mean": -0.02,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 262,
+      "within1": 365,
+      "mean": -0.06,
+      "worst": 1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 330,
+      "within1": 365,
+      "mean": -0.04,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 333,
+      "within1": 365,
+      "mean": -0.04,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 10,
+      "mean": -2.04,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 3,
+      "within1": 228,
+      "mean": -1.37,
+      "worst": -2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 357,
+      "within1": 365,
+      "mean": -0.02,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 40,
+      "mean": -2.06,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 330,
+      "within1": 365,
+      "mean": -0.04,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 8,
+      "mean": -2.04,
+      "worst": -3
+     }
+    }
+   }
+  },
+  "amplitude": {
+   "fajr": 14,
+   "isha": 15
+  }
+ },
+ "my-perak-2026-zon2": {
+  "point": {
+   "lat": 4.5859,
+   "lon": 100.7052
+  },
+  "angles": {
+   "fajr": 18,
+   "isha": 18
+  },
+  "span": [
+   "2026-01-01",
+   "2026-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2026": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 340,
+      "within1": 365,
+      "mean": 0.01,
+      "worst": -1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 0,
+      "within1": 37,
+      "mean": -2.04,
+      "worst": -3
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 355,
+      "within1": 365,
+      "mean": 0.03,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 254,
+      "within1": 365,
+      "mean": 0.01,
+      "worst": 1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 334,
+      "within1": 365,
+      "mean": 0,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 349,
+      "within1": 365,
+      "mean": 0,
+      "worst": 1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 14,
+      "mean": -1.99,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 0,
+      "within1": 37,
+      "mean": -2.04,
+      "worst": -3
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 355,
+      "within1": 365,
+      "mean": 0.03,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 58,
+      "mean": -1.99,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 334,
+      "within1": 365,
+      "mean": 0,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 8,
+      "mean": -2,
+      "worst": -3
+     }
+    }
+   }
+  },
+  "amplitude": {
+   "fajr": 16,
+   "isha": 17
+  }
+ },
+ "my-perak-2026-zon3": {
+  "point": {
+   "lat": 5.2291,
+   "lon": 100.8564
+  },
+  "angles": {
+   "fajr": 18,
+   "isha": 18
+  },
+  "span": [
+   "2026-01-01",
+   "2026-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2026": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 265,
+      "within1": 365,
+      "mean": 0.27,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 0,
+      "within1": 231,
+      "mean": -1.37,
+      "worst": -2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 360,
+      "within1": 365,
+      "mean": -0.01,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 252,
+      "within1": 365,
+      "mean": 0.11,
+      "worst": 1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 274,
+      "within1": 365,
+      "mean": 0.24,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 255,
+      "within1": 365,
+      "mean": 0.28,
+      "worst": 1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 99,
+      "mean": -1.73,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 0,
+      "within1": 231,
+      "mean": -1.37,
+      "worst": -2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 360,
+      "within1": 365,
+      "mean": -0.01,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 76,
+      "mean": -1.89,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 274,
+      "within1": 365,
+      "mean": 0.24,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 107,
+      "mean": -1.72,
+      "worst": -3
+     }
+    }
+   }
+  },
+  "amplitude": {
+   "fajr": 19,
+   "isha": 19
+  }
+ },
+ "my-perak-2026-zon4": {
+  "point": {
+   "lat": 5.4798,
+   "lon": 101.2028
+  },
+  "angles": {
+   "fajr": 18,
+   "isha": 18
+  },
+  "span": [
+   "2026-01-01",
+   "2026-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2026": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 306,
+      "within1": 365,
+      "mean": 0.16,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 0,
+      "within1": 276,
+      "mean": -1.24,
+      "worst": -2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 355,
+      "within1": 365,
+      "mean": 0.03,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 263,
+      "within1": 365,
+      "mean": 0.05,
+      "worst": 1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 322,
+      "within1": 365,
+      "mean": 0.1,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 319,
+      "within1": 365,
+      "mean": 0.12,
+      "worst": 1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 58,
+      "mean": -1.84,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 0,
+      "within1": 276,
+      "mean": -1.24,
+      "worst": -2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 355,
+      "within1": 365,
+      "mean": 0.03,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 61,
+      "mean": -1.95,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 322,
+      "within1": 365,
+      "mean": 0.1,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 44,
+      "mean": -1.88,
+      "worst": -3
+     }
+    }
+   }
+  },
+  "amplitude": {
+   "fajr": 20,
+   "isha": 21
+  }
+ },
+ "my-perak-2026-zon5": {
+  "point": {
+   "lat": 4.1394,
+   "lon": 100.5145
+  },
+  "angles": {
+   "fajr": 18,
+   "isha": 18
+  },
+  "span": [
+   "2026-01-01",
+   "2026-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2026": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 330,
+      "within1": 365,
+      "mean": -0.01,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 0,
+      "within1": 44,
+      "mean": -2.15,
+      "worst": -3
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 358,
+      "within1": 365,
+      "mean": -0.02,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 267,
+      "within1": 364,
+      "mean": -0.04,
+      "worst": -2
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 332,
+      "within1": 365,
+      "mean": -0.04,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 319,
+      "within1": 365,
+      "mean": -0.03,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 16,
+      "mean": -2.01,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 0,
+      "within1": 44,
+      "mean": -2.15,
+      "worst": -3
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 358,
+      "within1": 365,
+      "mean": -0.02,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 43,
+      "mean": -2.04,
+      "worst": -4
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 332,
+      "within1": 365,
+      "mean": -0.04,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 18,
+      "mean": -2.03,
+      "worst": -3
+     }
+    }
+   }
+  },
+  "amplitude": {
+   "fajr": 14,
+   "isha": 16
+  }
+ },
+ "my-perak-2026-zon6": {
+  "point": {
+   "lat": 5.1197,
+   "lon": 100.3539
+  },
+  "angles": {
+   "fajr": 18,
+   "isha": 18
+  },
+  "span": [
+   "2026-01-01",
+   "2026-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2026": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 341,
+      "within1": 365,
+      "mean": -0.05,
+      "worst": -1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 0,
+      "within1": 214,
+      "mean": -1.41,
+      "worst": -2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 359,
+      "within1": 365,
+      "mean": -0.02,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 253,
+      "within1": 365,
+      "mean": -0.06,
+      "worst": 1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 346,
+      "within1": 365,
+      "mean": -0.05,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 335,
+      "within1": 365,
+      "mean": -0.08,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 2,
+      "mean": -2.05,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 0,
+      "within1": 214,
+      "mean": -1.41,
+      "worst": -2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 359,
+      "within1": 365,
+      "mean": -0.02,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 45,
+      "mean": -2.06,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 346,
+      "within1": 365,
+      "mean": -0.05,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "mean": -2.08,
+      "worst": -3
+     }
+    }
+   }
+  },
+  "amplitude": {
+   "fajr": 18,
+   "isha": 19
+  }
+ },
+ "my-perak-2026-zon7": {
+  "point": {
+   "lat": 4.9048,
+   "lon": 100.7829
+  },
+  "angles": {
+   "fajr": 18,
+   "isha": 18
+  },
+  "span": [
+   "2026-01-01",
+   "2026-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2026": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 338,
+      "within1": 365,
+      "mean": -0.07,
+      "worst": -1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "mean": -4.27,
+      "worst": -5
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 359,
+      "within1": 365,
+      "mean": -0.02,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 254,
+      "within1": 365,
+      "mean": -0.05,
+      "worst": 1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "mean": 5.15,
+      "worst": 6
+     },
+     "isha": {
+      "n": 365,
+      "exact": 331,
+      "within1": 365,
+      "mean": -0.09,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 1,
+      "mean": -2.07,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "mean": -4.27,
+      "worst": -5
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 359,
+      "within1": 365,
+      "mean": -0.02,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 46,
+      "mean": -2.05,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "mean": 5.15,
+      "worst": 6
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "mean": -2.09,
+      "worst": -3
+     }
+    }
+   }
+  },
+  "amplitude": {
+   "fajr": 18,
+   "isha": 18
+  }
+ }
+}

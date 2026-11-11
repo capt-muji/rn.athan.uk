@@ -1,0 +1,5978 @@
+{
+ "İSTANBUL": {
+  "province": "İSTANBUL",
+  "capital": {
+   "district": "İSTANBUL",
+   "ilce": 9541
+  },
+  "districts": {
+   "ARNAVUTKOY": {
+    "district": "ARNAVUTKOY",
+    "ilce": 9535,
+    "days": 365,
+    "mae": 0.923,
+    "worst": 3,
+    "identicalPct": 21,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 0.641,
+      "bias": 0.51,
+      "worst": 2
+     },
+     "sunrise": {
+      "mae": 0.885,
+      "bias": 0.885,
+      "worst": 2
+     },
+     "dhuhr": {
+      "mae": 0.923,
+      "bias": 0.923,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 0.83,
+      "bias": 0.83,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 0.975,
+      "bias": 0.975,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 1.282,
+      "bias": 1.282,
+      "worst": 3
+     }
+    }
+   },
+   "AVCILAR": {
+    "district": "AVCILAR",
+    "ilce": 17865,
+    "days": 365,
+    "mae": 1.052,
+    "worst": 2,
+    "identicalPct": 1.6,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.115,
+      "bias": 1.115,
+      "worst": 2
+     },
+     "sunrise": {
+      "mae": 1.074,
+      "bias": 1.074,
+      "worst": 2
+     },
+     "dhuhr": {
+      "mae": 1.055,
+      "bias": 1.055,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.055,
+      "bias": 1.055,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 1.044,
+      "bias": 1.044,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 0.967,
+      "bias": 0.967,
+      "worst": 2
+     }
+    }
+   },
+   "BAŞAKŞEHİR": {
+    "district": "BAŞAKŞEHİR",
+    "ilce": 17866,
+    "days": 365,
+    "mae": 0.647,
+    "worst": 1,
+    "identicalPct": 35.3,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 0.658,
+      "bias": 0.658,
+      "worst": 1
+     },
+     "sunrise": {
+      "mae": 0.647,
+      "bias": 0.647,
+      "worst": 1
+     },
+     "dhuhr": {
+      "mae": 0.644,
+      "bias": 0.644,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 0.625,
+      "bias": 0.625,
+      "worst": 1
+     },
+     "maghrib": {
+      "mae": 0.682,
+      "bias": 0.682,
+      "worst": 1
+     },
+     "isha": {
+      "mae": 0.627,
+      "bias": 0.627,
+      "worst": 1
+     }
+    }
+   },
+   "BEYLİKDÜZÜ": {
+    "district": "BEYLİKDÜZÜ",
+    "ilce": 9536,
+    "days": 365,
+    "mae": 1.382,
+    "worst": 3,
+    "identicalPct": 6.8,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.836,
+      "bias": 1.836,
+      "worst": 3
+     },
+     "sunrise": {
+      "mae": 1.4,
+      "bias": 1.4,
+      "worst": 3
+     },
+     "dhuhr": {
+      "mae": 1.342,
+      "bias": 1.342,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.444,
+      "bias": 1.444,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 1.34,
+      "bias": 1.34,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 0.932,
+      "bias": 0.871,
+      "worst": 2
+     }
+    }
+   },
+   "BÜYÜKÇEKMECE": {
+    "district": "BÜYÜKÇEKMECE",
+    "ilce": 9537,
+    "days": 365,
+    "mae": 1.562,
+    "worst": 2,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.542,
+      "bias": 1.542,
+      "worst": 2
+     },
+     "sunrise": {
+      "mae": 1.575,
+      "bias": 1.575,
+      "worst": 2
+     },
+     "dhuhr": {
+      "mae": 1.545,
+      "bias": 1.545,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.562,
+      "bias": 1.562,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 1.589,
+      "bias": 1.589,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 1.556,
+      "bias": 1.556,
+      "worst": 2
+     }
+    }
+   },
+   "ÇATALCA": {
+    "district": "ÇATALCA",
+    "ilce": 9538,
+    "days": 365,
+    "mae": 2.06,
+    "worst": 3,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.775,
+      "bias": 1.775,
+      "worst": 3
+     },
+     "sunrise": {
+      "mae": 2.005,
+      "bias": 2.005,
+      "worst": 3
+     },
+     "dhuhr": {
+      "mae": 2.079,
+      "bias": 2.079,
+      "worst": 3
+     },
+     "asr": {
+      "mae": 2.019,
+      "bias": 2.019,
+      "worst": 3
+     },
+     "maghrib": {
+      "mae": 2.132,
+      "bias": 2.132,
+      "worst": 3
+     },
+     "isha": {
+      "mae": 2.351,
+      "bias": 2.351,
+      "worst": 3
+     }
+    }
+   },
+   "ÇEKMEKÖY": {
+    "district": "ÇEKMEKÖY",
+    "ilce": 9539,
+    "days": 365,
+    "mae": 0.811,
+    "worst": 1,
+    "identicalPct": 18.9,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 0.882,
+      "bias": -0.882,
+      "worst": 1
+     },
+     "sunrise": {
+      "mae": 0.805,
+      "bias": -0.805,
+      "worst": 1
+     },
+     "dhuhr": {
+      "mae": 0.816,
+      "bias": -0.816,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 0.833,
+      "bias": -0.833,
+      "worst": 1
+     },
+     "maghrib": {
+      "mae": 0.784,
+      "bias": -0.784,
+      "worst": 1
+     },
+     "isha": {
+      "mae": 0.742,
+      "bias": -0.742,
+      "worst": 1
+     }
+    }
+   },
+   "ESENYURT": {
+    "district": "ESENYURT",
+    "ilce": 9540,
+    "days": 365,
+    "mae": 1.164,
+    "worst": 2,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.118,
+      "bias": 1.118,
+      "worst": 2
+     },
+     "sunrise": {
+      "mae": 1.178,
+      "bias": 1.178,
+      "worst": 2
+     },
+     "dhuhr": {
+      "mae": 1.162,
+      "bias": 1.162,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.137,
+      "bias": 1.137,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 1.178,
+      "bias": 1.178,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 1.211,
+      "bias": 1.211,
+      "worst": 2
+     }
+    }
+   },
+   "KARTAL": {
+    "district": "KARTAL",
+    "ilce": 9542,
+    "days": 365,
+    "mae": 0.837,
+    "worst": 2,
+    "identicalPct": 22,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 0.589,
+      "bias": -0.556,
+      "worst": 1
+     },
+     "sunrise": {
+      "mae": 0.819,
+      "bias": -0.819,
+      "worst": 2
+     },
+     "dhuhr": {
+      "mae": 0.847,
+      "bias": -0.847,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 0.814,
+      "bias": -0.814,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 0.847,
+      "bias": -0.847,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 1.107,
+      "bias": -1.107,
+      "worst": 2
+     }
+    }
+   },
+   "KÜÇÜKÇEKMECE": {
+    "district": "KÜÇÜKÇEKMECE",
+    "ilce": 9543,
+    "days": 365,
+    "mae": 0.757,
+    "worst": 1,
+    "identicalPct": 24.3,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 0.797,
+      "bias": 0.797,
+      "worst": 1
+     },
+     "sunrise": {
+      "mae": 0.748,
+      "bias": 0.748,
+      "worst": 1
+     },
+     "dhuhr": {
+      "mae": 0.732,
+      "bias": 0.732,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 0.762,
+      "bias": 0.762,
+      "worst": 1
+     },
+     "maghrib": {
+      "mae": 0.781,
+      "bias": 0.781,
+      "worst": 1
+     },
+     "isha": {
+      "mae": 0.721,
+      "bias": 0.721,
+      "worst": 1
+     }
+    }
+   },
+   "MALTEPE": {
+    "district": "MALTEPE",
+    "ilce": 9544,
+    "days": 365,
+    "mae": 0.617,
+    "worst": 2,
+    "identicalPct": 39.6,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 0.433,
+      "bias": -0.4,
+      "worst": 1
+     },
+     "sunrise": {
+      "mae": 0.597,
+      "bias": -0.597,
+      "worst": 1
+     },
+     "dhuhr": {
+      "mae": 0.619,
+      "bias": -0.619,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 0.586,
+      "bias": -0.586,
+      "worst": 1
+     },
+     "maghrib": {
+      "mae": 0.63,
+      "bias": -0.63,
+      "worst": 1
+     },
+     "isha": {
+      "mae": 0.838,
+      "bias": -0.838,
+      "worst": 2
+     }
+    }
+   },
+   "PENDİK": {
+    "district": "PENDİK",
+    "ilce": 9545,
+    "days": 365,
+    "mae": 1.013,
+    "worst": 3,
+    "identicalPct": 12.1,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 0.718,
+      "bias": -0.707,
+      "worst": 2
+     },
+     "sunrise": {
+      "mae": 0.997,
+      "bias": -0.997,
+      "worst": 2
+     },
+     "dhuhr": {
+      "mae": 1.038,
+      "bias": -1.038,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 0.989,
+      "bias": -0.989,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 1.011,
+      "bias": -1.011,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 1.323,
+      "bias": -1.323,
+      "worst": 3
+     }
+    }
+   },
+   "SANCAKTEPE": {
+    "district": "SANCAKTEPE",
+    "ilce": 9546,
+    "days": 365,
+    "mae": 0.998,
+    "worst": 2,
+    "identicalPct": 3.2,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 0.926,
+      "bias": -0.926,
+      "worst": 2
+     },
+     "sunrise": {
+      "mae": 0.981,
+      "bias": -0.981,
+      "worst": 2
+     },
+     "dhuhr": {
+      "mae": 0.995,
+      "bias": -0.995,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 0.995,
+      "bias": -0.995,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 0.997,
+      "bias": -0.997,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 1.096,
+      "bias": -1.096,
+      "worst": 2
+     }
+    }
+   },
+   "ŞİLE": {
+    "district": "ŞİLE",
+    "ilce": 9547,
+    "days": 365,
+    "mae": 2.561,
+    "worst": 4,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 2.923,
+      "bias": -2.923,
+      "worst": 4
+     },
+     "sunrise": {
+      "mae": 2.51,
+      "bias": -2.51,
+      "worst": 4
+     },
+     "dhuhr": {
+      "mae": 2.57,
+      "bias": -2.57,
+      "worst": 3
+     },
+     "asr": {
+      "mae": 2.619,
+      "bias": -2.619,
+      "worst": 4
+     },
+     "maghrib": {
+      "mae": 2.526,
+      "bias": -2.526,
+      "worst": 4
+     },
+     "isha": {
+      "mae": 2.219,
+      "bias": -2.219,
+      "worst": 3
+     }
+    }
+   },
+   "SİLİVRİ": {
+    "district": "SİLİVRİ",
+    "ilce": 9548,
+    "days": 365,
+    "mae": 2.917,
+    "worst": 4,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 2.814,
+      "bias": 2.814,
+      "worst": 4
+     },
+     "sunrise": {
+      "mae": 2.86,
+      "bias": 2.86,
+      "worst": 4
+     },
+     "dhuhr": {
+      "mae": 2.934,
+      "bias": 2.934,
+      "worst": 3
+     },
+     "asr": {
+      "mae": 2.907,
+      "bias": 2.907,
+      "worst": 4
+     },
+     "maghrib": {
+      "mae": 2.942,
+      "bias": 2.942,
+      "worst": 4
+     },
+     "isha": {
+      "mae": 3.047,
+      "bias": 3.047,
+      "worst": 4
+     }
+    }
+   },
+   "SULTANBEYLİ": {
+    "district": "SULTANBEYLİ",
+    "ilce": 9549,
+    "days": 365,
+    "mae": 1.14,
+    "worst": 2,
+    "identicalPct": 0.5,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.049,
+      "bias": -1.049,
+      "worst": 2
+     },
+     "sunrise": {
+      "mae": 1.134,
+      "bias": -1.134,
+      "worst": 2
+     },
+     "dhuhr": {
+      "mae": 1.156,
+      "bias": -1.156,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.129,
+      "bias": -1.129,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 1.123,
+      "bias": -1.123,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 1.247,
+      "bias": -1.247,
+      "worst": 2
+     }
+    }
+   },
+   "SULTANGAZİ": {
+    "district": "SULTANGAZİ",
+    "ilce": 9550,
+    "days": 365,
+    "mae": 0.36,
+    "worst": 1,
+    "identicalPct": 64,
+    "daysDiffering": 347,
+    "perPrayer": {
+     "fajr": {
+      "mae": 0.249,
+      "bias": 0.085,
+      "worst": 1
+     },
+     "sunrise": {
+      "mae": 0.375,
+      "bias": 0.375,
+      "worst": 1
+     },
+     "dhuhr": {
+      "mae": 0.332,
+      "bias": 0.332,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 0.288,
+      "bias": 0.288,
+      "worst": 1
+     },
+     "maghrib": {
+      "mae": 0.381,
+      "bias": 0.381,
+      "worst": 1
+     },
+     "isha": {
+      "mae": 0.537,
+      "bias": 0.537,
+      "worst": 1
+     }
+    }
+   },
+   "TUZLA": {
+    "district": "TUZLA",
+    "ilce": 9551,
+    "days": 365,
+    "mae": 1.307,
+    "worst": 3,
+    "identicalPct": 7.3,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 0.915,
+      "bias": -0.866,
+      "worst": 2
+     },
+     "sunrise": {
+      "mae": 1.29,
+      "bias": -1.29,
+      "worst": 2
+     },
+     "dhuhr": {
+      "mae": 1.318,
+      "bias": -1.318,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.258,
+      "bias": -1.258,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 1.321,
+      "bias": -1.321,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 1.742,
+      "bias": -1.742,
+      "worst": 3
+     }
+    }
+   }
+  }
+ },
+ "ANKARA": {
+  "province": "ANKARA",
+  "capital": {
+   "district": "ANKARA",
+   "ilce": 9206
+  },
+  "districts": {
+   "AKYURT": {
+    "district": "AKYURT",
+    "ilce": 9205,
+    "days": 365,
+    "mae": 0.964,
+    "worst": 3,
+    "identicalPct": 19.5,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.373,
+      "bias": -1.373,
+      "worst": 3
+     },
+     "sunrise": {
+      "mae": 0.951,
+      "bias": -0.951,
+      "worst": 2
+     },
+     "dhuhr": {
+      "mae": 0.923,
+      "bias": -0.923,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 0.995,
+      "bias": -0.995,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 0.885,
+      "bias": -0.885,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 0.658,
+      "bias": -0.564,
+      "worst": 2
+     }
+    }
+   },
+   "AYAŞ": {
+    "district": "AYAŞ",
+    "ilce": 9207,
+    "days": 365,
+    "mae": 2.063,
+    "worst": 3,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.896,
+      "bias": 1.896,
+      "worst": 3
+     },
+     "sunrise": {
+      "mae": 2.082,
+      "bias": 2.082,
+      "worst": 3
+     },
+     "dhuhr": {
+      "mae": 2.077,
+      "bias": 2.077,
+      "worst": 3
+     },
+     "asr": {
+      "mae": 2.041,
+      "bias": 2.041,
+      "worst": 3
+     },
+     "maghrib": {
+      "mae": 2.082,
+      "bias": 2.082,
+      "worst": 3
+     },
+     "isha": {
+      "mae": 2.203,
+      "bias": 2.203,
+      "worst": 3
+     }
+    }
+   },
+   "BALA": {
+    "district": "BALA",
+    "ilce": 9208,
+    "days": 365,
+    "mae": 1.166,
+    "worst": 4,
+    "identicalPct": 21.4,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.027,
+      "bias": -0.277,
+      "worst": 2
+     },
+     "sunrise": {
+      "mae": 1.085,
+      "bias": -1.036,
+      "worst": 3
+     },
+     "dhuhr": {
+      "mae": 1.055,
+      "bias": -1.055,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 0.934,
+      "bias": -0.918,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 1.079,
+      "bias": -1.052,
+      "worst": 3
+     },
+     "isha": {
+      "mae": 1.814,
+      "bias": -1.814,
+      "worst": 4
+     }
+    }
+   },
+   "BEYPAZARI": {
+    "district": "BEYPAZARI",
+    "ilce": 9209,
+    "days": 365,
+    "mae": 3.696,
+    "worst": 6,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 3.164,
+      "bias": 3.164,
+      "worst": 5
+     },
+     "sunrise": {
+      "mae": 3.671,
+      "bias": 3.671,
+      "worst": 5
+     },
+     "dhuhr": {
+      "mae": 3.753,
+      "bias": 3.753,
+      "worst": 4
+     },
+     "asr": {
+      "mae": 3.619,
+      "bias": 3.619,
+      "worst": 5
+     },
+     "maghrib": {
+      "mae": 3.767,
+      "bias": 3.767,
+      "worst": 5
+     },
+     "isha": {
+      "mae": 4.203,
+      "bias": 4.203,
+      "worst": 6
+     }
+    }
+   },
+   "ÇAMLIDERE": {
+    "district": "ÇAMLIDERE",
+    "ilce": 9210,
+    "days": 365,
+    "mae": 1.683,
+    "worst": 6,
+    "identicalPct": 17,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.449,
+      "bias": 0.249,
+      "worst": 3
+     },
+     "sunrise": {
+      "mae": 1.512,
+      "bias": 1.441,
+      "worst": 4
+     },
+     "dhuhr": {
+      "mae": 1.562,
+      "bias": 1.562,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.296,
+      "bias": 1.268,
+      "worst": 3
+     },
+     "maghrib": {
+      "mae": 1.633,
+      "bias": 1.611,
+      "worst": 4
+     },
+     "isha": {
+      "mae": 2.644,
+      "bias": 2.644,
+      "worst": 6
+     }
+    }
+   },
+   "CUBUK": {
+    "district": "CUBUK",
+    "ilce": 9211,
+    "days": 365,
+    "mae": 0.865,
+    "worst": 3,
+    "identicalPct": 31.5,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.386,
+      "bias": -1.386,
+      "worst": 3
+     },
+     "sunrise": {
+      "mae": 0.808,
+      "bias": -0.742,
+      "worst": 2
+     },
+     "dhuhr": {
+      "mae": 0.701,
+      "bias": -0.701,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 0.786,
+      "bias": -0.786,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 0.762,
+      "bias": -0.647,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 0.748,
+      "bias": -0.085,
+      "worst": 2
+     }
+    }
+   },
+   "ELMADAĞ": {
+    "district": "ELMADAĞ",
+    "ilce": 9212,
+    "days": 365,
+    "mae": 1.538,
+    "worst": 2,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.545,
+      "bias": -1.545,
+      "worst": 2
+     },
+     "sunrise": {
+      "mae": 1.545,
+      "bias": -1.545,
+      "worst": 2
+     },
+     "dhuhr": {
+      "mae": 1.512,
+      "bias": -1.512,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.534,
+      "bias": -1.534,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 1.515,
+      "bias": -1.515,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 1.578,
+      "bias": -1.578,
+      "worst": 2
+     }
+    }
+   },
+   "EVREN": {
+    "district": "EVREN",
+    "ilce": 9213,
+    "days": 365,
+    "mae": 3.871,
+    "worst": 10,
+    "identicalPct": 1.7,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 2.819,
+      "bias": -1.915,
+      "worst": 6
+     },
+     "sunrise": {
+      "mae": 3.677,
+      "bias": -3.677,
+      "worst": 7
+     },
+     "dhuhr": {
+      "mae": 3.786,
+      "bias": -3.786,
+      "worst": 4
+     },
+     "asr": {
+      "mae": 3.471,
+      "bias": -3.471,
+      "worst": 6
+     },
+     "maghrib": {
+      "mae": 3.866,
+      "bias": -3.866,
+      "worst": 7
+     },
+     "isha": {
+      "mae": 5.608,
+      "bias": -5.608,
+      "worst": 10
+     }
+    }
+   },
+   "GÜDÜL": {
+    "district": "GÜDÜL",
+    "ilce": 9214,
+    "days": 365,
+    "mae": 2.423,
+    "worst": 5,
+    "identicalPct": 1.5,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.8,
+      "bias": 1.8,
+      "worst": 3
+     },
+     "sunrise": {
+      "mae": 2.403,
+      "bias": 2.403,
+      "worst": 4
+     },
+     "dhuhr": {
+      "mae": 2.477,
+      "bias": 2.477,
+      "worst": 3
+     },
+     "asr": {
+      "mae": 2.353,
+      "bias": 2.353,
+      "worst": 3
+     },
+     "maghrib": {
+      "mae": 2.501,
+      "bias": 2.501,
+      "worst": 4
+     },
+     "isha": {
+      "mae": 3.003,
+      "bias": 3.003,
+      "worst": 5
+     }
+    }
+   },
+   "HAYMANA": {
+    "district": "HAYMANA",
+    "ilce": 9215,
+    "days": 365,
+    "mae": 1.629,
+    "worst": 6,
+    "identicalPct": 14,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 2.447,
+      "bias": 2.447,
+      "worst": 6
+     },
+     "sunrise": {
+      "mae": 1.548,
+      "bias": 1.526,
+      "worst": 4
+     },
+     "dhuhr": {
+      "mae": 1.46,
+      "bias": 1.46,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.638,
+      "bias": 1.638,
+      "worst": 3
+     },
+     "maghrib": {
+      "mae": 1.392,
+      "bias": 1.37,
+      "worst": 3
+     },
+     "isha": {
+      "mae": 1.288,
+      "bias": 0.427,
+      "worst": 3
+     }
+    }
+   },
+   "KAHRAMANKAZAN": {
+    "district": "KAHRAMANKAZAN",
+    "ilce": 9217,
+    "days": 365,
+    "mae": 0.795,
+    "worst": 3,
+    "identicalPct": 34,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 0.652,
+      "bias": 0.077,
+      "worst": 2
+     },
+     "sunrise": {
+      "mae": 0.707,
+      "bias": 0.658,
+      "worst": 2
+     },
+     "dhuhr": {
+      "mae": 0.748,
+      "bias": 0.748,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 0.633,
+      "bias": 0.611,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 0.792,
+      "bias": 0.775,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 1.236,
+      "bias": 1.236,
+      "worst": 3
+     }
+    }
+   },
+   "KALECİK": {
+    "district": "KALECİK",
+    "ilce": 9216,
+    "days": 365,
+    "mae": 2.22,
+    "worst": 4,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 2.597,
+      "bias": -2.597,
+      "worst": 4
+     },
+     "sunrise": {
+      "mae": 2.23,
+      "bias": -2.23,
+      "worst": 3
+     },
+     "dhuhr": {
+      "mae": 2.159,
+      "bias": -2.159,
+      "worst": 3
+     },
+     "asr": {
+      "mae": 2.233,
+      "bias": -2.233,
+      "worst": 3
+     },
+     "maghrib": {
+      "mae": 2.189,
+      "bias": -2.189,
+      "worst": 3
+     },
+     "isha": {
+      "mae": 1.912,
+      "bias": -1.912,
+      "worst": 3
+     }
+    }
+   },
+   "KIZILCAHAMAM": {
+    "district": "KIZILCAHAMAM",
+    "ilce": 9218,
+    "days": 365,
+    "mae": 1.226,
+    "worst": 5,
+    "identicalPct": 23.7,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.323,
+      "bias": -0.397,
+      "worst": 4
+     },
+     "sunrise": {
+      "mae": 1.17,
+      "bias": 0.764,
+      "worst": 3
+     },
+     "dhuhr": {
+      "mae": 0.844,
+      "bias": 0.844,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 0.921,
+      "bias": 0.614,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 1.211,
+      "bias": 0.888,
+      "worst": 3
+     },
+     "isha": {
+      "mae": 1.885,
+      "bias": 1.885,
+      "worst": 5
+     }
+    }
+   },
+   "NALLIHAN": {
+    "district": "NALLIHAN",
+    "ilce": 9219,
+    "days": 365,
+    "mae": 6.001,
+    "worst": 8,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 5.474,
+      "bias": 5.474,
+      "worst": 7
+     },
+     "sunrise": {
+      "mae": 5.995,
+      "bias": 5.995,
+      "worst": 7
+     },
+     "dhuhr": {
+      "mae": 6.014,
+      "bias": 6.014,
+      "worst": 7
+     },
+     "asr": {
+      "mae": 5.94,
+      "bias": 5.94,
+      "worst": 7
+     },
+     "maghrib": {
+      "mae": 6.082,
+      "bias": 6.082,
+      "worst": 7
+     },
+     "isha": {
+      "mae": 6.504,
+      "bias": 6.504,
+      "worst": 8
+     }
+    }
+   },
+   "POLATLI": {
+    "district": "POLATLI",
+    "ilce": 9220,
+    "days": 365,
+    "mae": 2.931,
+    "worst": 6,
+    "identicalPct": 1.3,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 3.633,
+      "bias": 3.633,
+      "worst": 6
+     },
+     "sunrise": {
+      "mae": 2.934,
+      "bias": 2.934,
+      "worst": 5
+     },
+     "dhuhr": {
+      "mae": 2.907,
+      "bias": 2.907,
+      "worst": 3
+     },
+     "asr": {
+      "mae": 3.038,
+      "bias": 3.038,
+      "worst": 4
+     },
+     "maghrib": {
+      "mae": 2.893,
+      "bias": 2.893,
+      "worst": 4
+     },
+     "isha": {
+      "mae": 2.178,
+      "bias": 2.178,
+      "worst": 4
+     }
+    }
+   },
+   "ŞEREFLİKOÇHİSAR": {
+    "district": "ŞEREFLİKOÇHİSAR",
+    "ilce": 9221,
+    "days": 365,
+    "mae": 3.034,
+    "worst": 10,
+    "identicalPct": 10.5,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 2.614,
+      "bias": -0.718,
+      "worst": 5
+     },
+     "sunrise": {
+      "mae": 2.732,
+      "bias": -2.644,
+      "worst": 6
+     },
+     "dhuhr": {
+      "mae": 2.77,
+      "bias": -2.77,
+      "worst": 3
+     },
+     "asr": {
+      "mae": 2.463,
+      "bias": -2.419,
+      "worst": 5
+     },
+     "maghrib": {
+      "mae": 2.918,
+      "bias": -2.879,
+      "worst": 6
+     },
+     "isha": {
+      "mae": 4.707,
+      "bias": -4.707,
+      "worst": 10
+     }
+    }
+   }
+  }
+ },
+ "İZMİR": {
+  "province": "İZMİR",
+  "capital": {
+   "district": "İZMİR",
+   "ilce": 9560
+  },
+  "districts": {
+   "ALİAĞA": {
+    "district": "ALİAĞA",
+    "ilce": 9552,
+    "days": 365,
+    "mae": 0.891,
+    "worst": 3,
+    "identicalPct": 32.6,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 0.849,
+      "bias": -0.06,
+      "worst": 2
+     },
+     "sunrise": {
+      "mae": 0.847,
+      "bias": 0.688,
+      "worst": 2
+     },
+     "dhuhr": {
+      "mae": 0.701,
+      "bias": 0.701,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 0.721,
+      "bias": 0.573,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 0.86,
+      "bias": 0.729,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 1.367,
+      "bias": 1.367,
+      "worst": 3
+     }
+    }
+   },
+   "BAYINDIR": {
+    "district": "BAYINDIR",
+    "ilce": 9553,
+    "days": 365,
+    "mae": 1.983,
+    "worst": 4,
+    "identicalPct": 1,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.625,
+      "bias": -1.625,
+      "worst": 3
+     },
+     "sunrise": {
+      "mae": 1.926,
+      "bias": -1.926,
+      "worst": 3
+     },
+     "dhuhr": {
+      "mae": 2.011,
+      "bias": -2.011,
+      "worst": 3
+     },
+     "asr": {
+      "mae": 1.953,
+      "bias": -1.953,
+      "worst": 3
+     },
+     "maghrib": {
+      "mae": 2.014,
+      "bias": -2.014,
+      "worst": 3
+     },
+     "isha": {
+      "mae": 2.37,
+      "bias": -2.37,
+      "worst": 4
+     }
+    }
+   },
+   "BERGAMA": {
+    "district": "BERGAMA",
+    "ilce": 9554,
+    "days": 365,
+    "mae": 1.238,
+    "worst": 5,
+    "identicalPct": 30.4,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.852,
+      "bias": -1.54,
+      "worst": 5
+     },
+     "sunrise": {
+      "mae": 1.334,
+      "bias": -0.167,
+      "worst": 3
+     },
+     "dhuhr": {
+      "mae": 0.148,
+      "bias": -0.148,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 1.115,
+      "bias": -0.359,
+      "worst": 3
+     },
+     "maghrib": {
+      "mae": 1.318,
+      "bias": -0.085,
+      "worst": 3
+     },
+     "isha": {
+      "mae": 1.663,
+      "bias": 1.164,
+      "worst": 5
+     }
+    }
+   },
+   "BEYDAĞ": {
+    "district": "BEYDAĞ",
+    "ilce": 9555,
+    "days": 365,
+    "mae": 4.268,
+    "worst": 7,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 3.674,
+      "bias": -3.674,
+      "worst": 5
+     },
+     "sunrise": {
+      "mae": 4.222,
+      "bias": -4.222,
+      "worst": 6
+     },
+     "dhuhr": {
+      "mae": 4.277,
+      "bias": -4.277,
+      "worst": 5
+     },
+     "asr": {
+      "mae": 4.214,
+      "bias": -4.214,
+      "worst": 6
+     },
+     "maghrib": {
+      "mae": 4.318,
+      "bias": -4.318,
+      "worst": 6
+     },
+     "isha": {
+      "mae": 4.901,
+      "bias": -4.901,
+      "worst": 7
+     }
+    }
+   },
+   "CEŞME": {
+    "district": "CEŞME",
+    "ilce": 9556,
+    "days": 365,
+    "mae": 3.347,
+    "worst": 4,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 3.521,
+      "bias": 3.521,
+      "worst": 4
+     },
+     "sunrise": {
+      "mae": 3.375,
+      "bias": 3.375,
+      "worst": 4
+     },
+     "dhuhr": {
+      "mae": 3.332,
+      "bias": 3.332,
+      "worst": 4
+     },
+     "asr": {
+      "mae": 3.37,
+      "bias": 3.37,
+      "worst": 4
+     },
+     "maghrib": {
+      "mae": 3.315,
+      "bias": 3.315,
+      "worst": 4
+     },
+     "isha": {
+      "mae": 3.173,
+      "bias": 3.173,
+      "worst": 4
+     }
+    }
+   },
+   "DİKİLİ": {
+    "district": "DİKİLİ",
+    "ilce": 9557,
+    "days": 365,
+    "mae": 1.453,
+    "worst": 6,
+    "identicalPct": 17.9,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.493,
+      "bias": -0.293,
+      "worst": 4
+     },
+     "sunrise": {
+      "mae": 1.386,
+      "bias": 0.992,
+      "worst": 3
+     },
+     "dhuhr": {
+      "mae": 1.005,
+      "bias": 1.005,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.184,
+      "bias": 0.838,
+      "worst": 3
+     },
+     "maghrib": {
+      "mae": 1.441,
+      "bias": 1.101,
+      "worst": 4
+     },
+     "isha": {
+      "mae": 2.205,
+      "bias": 2.205,
+      "worst": 6
+     }
+    }
+   },
+   "FOÇA": {
+    "district": "FOÇA",
+    "ilce": 9558,
+    "days": 365,
+    "mae": 1.546,
+    "worst": 4,
+    "identicalPct": 5,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.066,
+      "bias": 1.06,
+      "worst": 2
+     },
+     "sunrise": {
+      "mae": 1.562,
+      "bias": 1.562,
+      "worst": 3
+     },
+     "dhuhr": {
+      "mae": 1.562,
+      "bias": 1.562,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.482,
+      "bias": 1.482,
+      "worst": 3
+     },
+     "maghrib": {
+      "mae": 1.6,
+      "bias": 1.6,
+      "worst": 3
+     },
+     "isha": {
+      "mae": 2.005,
+      "bias": 2.005,
+      "worst": 4
+     }
+    }
+   },
+   "GÜZELBAHÇE": {
+    "district": "GÜZELBAHÇE",
+    "ilce": 9559,
+    "days": 365,
+    "mae": 1.02,
+    "worst": 2,
+    "identicalPct": 5.5,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.142,
+      "bias": 1.142,
+      "worst": 2
+     },
+     "sunrise": {
+      "mae": 1.041,
+      "bias": 1.041,
+      "worst": 2
+     },
+     "dhuhr": {
+      "mae": 1.003,
+      "bias": 1.003,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.016,
+      "bias": 1.016,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 1,
+      "bias": 1,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 0.915,
+      "bias": 0.915,
+      "worst": 2
+     }
+    }
+   },
+   "KARABURUN": {
+    "district": "KARABURUN",
+    "ilce": 9561,
+    "days": 365,
+    "mae": 2.504,
+    "worst": 4,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 2.082,
+      "bias": 2.082,
+      "worst": 3
+     },
+     "sunrise": {
+      "mae": 2.515,
+      "bias": 2.515,
+      "worst": 4
+     },
+     "dhuhr": {
+      "mae": 2.515,
+      "bias": 2.515,
+      "worst": 3
+     },
+     "asr": {
+      "mae": 2.449,
+      "bias": 2.449,
+      "worst": 3
+     },
+     "maghrib": {
+      "mae": 2.542,
+      "bias": 2.542,
+      "worst": 4
+     },
+     "isha": {
+      "mae": 2.918,
+      "bias": 2.918,
+      "worst": 4
+     }
+    }
+   },
+   "KEMALPAŞA": {
+    "district": "KEMALPAŞA",
+    "ilce": 9562,
+    "days": 365,
+    "mae": 1.102,
+    "worst": 2,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.121,
+      "bias": -1.121,
+      "worst": 2
+     },
+     "sunrise": {
+      "mae": 1.079,
+      "bias": -1.079,
+      "worst": 2
+     },
+     "dhuhr": {
+      "mae": 1.085,
+      "bias": -1.085,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.126,
+      "bias": -1.126,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 1.096,
+      "bias": -1.096,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 1.107,
+      "bias": -1.107,
+      "worst": 2
+     }
+    }
+   },
+   "KINIK": {
+    "district": "KINIK",
+    "ilce": 9563,
+    "days": 365,
+    "mae": 1.486,
+    "worst": 6,
+    "identicalPct": 17.4,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 2.288,
+      "bias": -2.288,
+      "worst": 6
+     },
+     "sunrise": {
+      "mae": 1.422,
+      "bias": -1.011,
+      "worst": 4
+     },
+     "dhuhr": {
+      "mae": 0.989,
+      "bias": -0.989,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 1.326,
+      "bias": -1.151,
+      "worst": 3
+     },
+     "maghrib": {
+      "mae": 1.395,
+      "bias": -0.885,
+      "worst": 3
+     },
+     "isha": {
+      "mae": 1.499,
+      "bias": 0.255,
+      "worst": 4
+     }
+    }
+   },
+   "KİRAZ": {
+    "district": "KİRAZ",
+    "ilce": 9564,
+    "days": 365,
+    "mae": 4.23,
+    "worst": 6,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 3.904,
+      "bias": -3.904,
+      "worst": 5
+     },
+     "sunrise": {
+      "mae": 4.17,
+      "bias": -4.17,
+      "worst": 5
+     },
+     "dhuhr": {
+      "mae": 4.244,
+      "bias": -4.244,
+      "worst": 5
+     },
+     "asr": {
+      "mae": 4.197,
+      "bias": -4.197,
+      "worst": 5
+     },
+     "maghrib": {
+      "mae": 4.26,
+      "bias": -4.26,
+      "worst": 5
+     },
+     "isha": {
+      "mae": 4.603,
+      "bias": -4.603,
+      "worst": 6
+     }
+    }
+   },
+   "MENDERES": {
+    "district": "MENDERES",
+    "ilce": 17868,
+    "days": 365,
+    "mae": 0.297,
+    "worst": 2,
+    "identicalPct": 70.5,
+    "daysDiffering": 299,
+    "perPrayer": {
+     "fajr": {
+      "mae": 0.438,
+      "bias": 0.301,
+      "worst": 2
+     },
+     "sunrise": {
+      "mae": 0.301,
+      "bias": 0.077,
+      "worst": 1
+     },
+     "dhuhr": {
+      "mae": 0,
+      "bias": 0,
+      "worst": 0
+     },
+     "asr": {
+      "mae": 0.266,
+      "bias": 0.058,
+      "worst": 1
+     },
+     "maghrib": {
+      "mae": 0.288,
+      "bias": 0.014,
+      "worst": 1
+     },
+     "isha": {
+      "mae": 0.49,
+      "bias": -0.288,
+      "worst": 2
+     }
+    }
+   },
+   "MENEMEN": {
+    "district": "MENEMEN",
+    "ilce": 17869,
+    "days": 365,
+    "mae": 0.413,
+    "worst": 2,
+    "identicalPct": 60,
+    "daysDiffering": 342,
+    "perPrayer": {
+     "fajr": {
+      "mae": 0.395,
+      "bias": -0.071,
+      "worst": 1
+     },
+     "sunrise": {
+      "mae": 0.422,
+      "bias": 0.312,
+      "worst": 1
+     },
+     "dhuhr": {
+      "mae": 0.268,
+      "bias": 0.268,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 0.329,
+      "bias": 0.219,
+      "worst": 1
+     },
+     "maghrib": {
+      "mae": 0.405,
+      "bias": 0.307,
+      "worst": 1
+     },
+     "isha": {
+      "mae": 0.658,
+      "bias": 0.658,
+      "worst": 2
+     }
+    }
+   },
+   "ÖDEMİŞ": {
+    "district": "ÖDEMİŞ",
+    "ilce": 9565,
+    "days": 365,
+    "mae": 3.317,
+    "worst": 5,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 2.959,
+      "bias": -2.959,
+      "worst": 4
+     },
+     "sunrise": {
+      "mae": 3.293,
+      "bias": -3.293,
+      "worst": 4
+     },
+     "dhuhr": {
+      "mae": 3.326,
+      "bias": -3.326,
+      "worst": 4
+     },
+     "asr": {
+      "mae": 3.258,
+      "bias": -3.258,
+      "worst": 4
+     },
+     "maghrib": {
+      "mae": 3.356,
+      "bias": -3.356,
+      "worst": 4
+     },
+     "isha": {
+      "mae": 3.71,
+      "bias": -3.71,
+      "worst": 5
+     }
+    }
+   },
+   "SEFERIHİSAR": {
+    "district": "SEFERIHİSAR",
+    "ilce": 9566,
+    "days": 365,
+    "mae": 1.261,
+    "worst": 3,
+    "identicalPct": 9.7,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.69,
+      "bias": 1.69,
+      "worst": 3
+     },
+     "sunrise": {
+      "mae": 1.282,
+      "bias": 1.282,
+      "worst": 2
+     },
+     "dhuhr": {
+      "mae": 1.219,
+      "bias": 1.219,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.279,
+      "bias": 1.279,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 1.219,
+      "bias": 1.219,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 0.877,
+      "bias": 0.855,
+      "worst": 2
+     }
+    }
+   },
+   "SELÇUK": {
+    "district": "SELÇUK",
+    "ilce": 9567,
+    "days": 365,
+    "mae": 1.131,
+    "worst": 4,
+    "identicalPct": 24.4,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.126,
+      "bias": -0.014,
+      "worst": 3
+     },
+     "sunrise": {
+      "mae": 0.992,
+      "bias": -0.789,
+      "worst": 3
+     },
+     "dhuhr": {
+      "mae": 0.921,
+      "bias": -0.921,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 0.918,
+      "bias": -0.737,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 1.093,
+      "bias": -0.967,
+      "worst": 3
+     },
+     "isha": {
+      "mae": 1.734,
+      "bias": -1.734,
+      "worst": 4
+     }
+    }
+   },
+   "TİRE": {
+    "district": "TİRE",
+    "ilce": 9568,
+    "days": 365,
+    "mae": 2.35,
+    "worst": 5,
+    "identicalPct": 2.4,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.742,
+      "bias": -1.742,
+      "worst": 3
+     },
+     "sunrise": {
+      "mae": 2.299,
+      "bias": -2.299,
+      "worst": 4
+     },
+     "dhuhr": {
+      "mae": 2.378,
+      "bias": -2.378,
+      "worst": 3
+     },
+     "asr": {
+      "mae": 2.29,
+      "bias": -2.29,
+      "worst": 4
+     },
+     "maghrib": {
+      "mae": 2.422,
+      "bias": -2.422,
+      "worst": 4
+     },
+     "isha": {
+      "mae": 2.967,
+      "bias": -2.967,
+      "worst": 5
+     }
+    }
+   },
+   "TORBALI": {
+    "district": "TORBALI",
+    "ilce": 9569,
+    "days": 365,
+    "mae": 0.903,
+    "worst": 3,
+    "identicalPct": 26.5,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 0.729,
+      "bias": -0.345,
+      "worst": 2
+     },
+     "sunrise": {
+      "mae": 0.808,
+      "bias": -0.808,
+      "worst": 2
+     },
+     "dhuhr": {
+      "mae": 0.896,
+      "bias": -0.896,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 0.778,
+      "bias": -0.778,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 0.882,
+      "bias": -0.882,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 1.326,
+      "bias": -1.326,
+      "worst": 3
+     }
+    }
+   },
+   "URLA": {
+    "district": "URLA",
+    "ilce": 9570,
+    "days": 365,
+    "mae": 1.526,
+    "worst": 3,
+    "identicalPct": 0.2,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.715,
+      "bias": 1.715,
+      "worst": 3
+     },
+     "sunrise": {
+      "mae": 1.553,
+      "bias": 1.553,
+      "worst": 2
+     },
+     "dhuhr": {
+      "mae": 1.496,
+      "bias": 1.496,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.548,
+      "bias": 1.548,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 1.521,
+      "bias": 1.521,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 1.321,
+      "bias": 1.321,
+      "worst": 2
+     }
+    }
+   }
+  }
+ },
+ "KONYA": {
+  "province": "KONYA",
+  "capital": {
+   "district": "KONYA",
+   "ilce": 9676
+  },
+  "districts": {
+   "AHIRLI": {
+    "district": "AHIRLI",
+    "ilce": 9656,
+    "days": 365,
+    "mae": 1.766,
+    "worst": 6,
+    "identicalPct": 15.1,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 2.677,
+      "bias": 2.677,
+      "worst": 6
+     },
+     "sunrise": {
+      "mae": 1.674,
+      "bias": 1.619,
+      "worst": 4
+     },
+     "dhuhr": {
+      "mae": 1.501,
+      "bias": 1.501,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.723,
+      "bias": 1.723,
+      "worst": 4
+     },
+     "maghrib": {
+      "mae": 1.534,
+      "bias": 1.463,
+      "worst": 4
+     },
+     "isha": {
+      "mae": 1.488,
+      "bias": 0.463,
+      "worst": 3
+     }
+    }
+   },
+   "AKÖREN": {
+    "district": "AKÖREN",
+    "ilce": 9657,
+    "days": 365,
+    "mae": 0.847,
+    "worst": 4,
+    "identicalPct": 36.2,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.293,
+      "bias": 1.266,
+      "worst": 4
+     },
+     "sunrise": {
+      "mae": 0.825,
+      "bias": 0.551,
+      "worst": 2
+     },
+     "dhuhr": {
+      "mae": 0.477,
+      "bias": 0.477,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 0.781,
+      "bias": 0.611,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 0.781,
+      "bias": 0.436,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 0.929,
+      "bias": -0.227,
+      "worst": 2
+     }
+    }
+   },
+   "AKŞEHİR": {
+    "district": "AKŞEHİR",
+    "ilce": 9658,
+    "days": 365,
+    "mae": 4.238,
+    "worst": 8,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 3.351,
+      "bias": 3.351,
+      "worst": 5
+     },
+     "sunrise": {
+      "mae": 4.214,
+      "bias": 4.214,
+      "worst": 6
+     },
+     "dhuhr": {
+      "mae": 4.282,
+      "bias": 4.282,
+      "worst": 5
+     },
+     "asr": {
+      "mae": 4.153,
+      "bias": 4.153,
+      "worst": 6
+     },
+     "maghrib": {
+      "mae": 4.332,
+      "bias": 4.332,
+      "worst": 6
+     },
+     "isha": {
+      "mae": 5.099,
+      "bias": 5.099,
+      "worst": 8
+     }
+    }
+   },
+   "ALTINEKİN": {
+    "district": "ALTINEKİN",
+    "ilce": 9659,
+    "days": 365,
+    "mae": 1.59,
+    "worst": 5,
+    "identicalPct": 11.2,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 2.342,
+      "bias": -2.342,
+      "worst": 5
+     },
+     "sunrise": {
+      "mae": 1.537,
+      "bias": -1.537,
+      "worst": 3
+     },
+     "dhuhr": {
+      "mae": 1.51,
+      "bias": -1.51,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.6,
+      "bias": -1.6,
+      "worst": 3
+     },
+     "maghrib": {
+      "mae": 1.438,
+      "bias": -1.438,
+      "worst": 3
+     },
+     "isha": {
+      "mae": 1.115,
+      "bias": -0.66,
+      "worst": 3
+     }
+    }
+   },
+   "BEYŞEHİR": {
+    "district": "BEYŞEHİR",
+    "ilce": 9660,
+    "days": 365,
+    "mae": 3.053,
+    "worst": 5,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 3.384,
+      "bias": 3.384,
+      "worst": 5
+     },
+     "sunrise": {
+      "mae": 3.09,
+      "bias": 3.09,
+      "worst": 4
+     },
+     "dhuhr": {
+      "mae": 3.03,
+      "bias": 3.03,
+      "worst": 4
+     },
+     "asr": {
+      "mae": 3.093,
+      "bias": 3.093,
+      "worst": 4
+     },
+     "maghrib": {
+      "mae": 3.014,
+      "bias": 3.014,
+      "worst": 4
+     },
+     "isha": {
+      "mae": 2.707,
+      "bias": 2.707,
+      "worst": 4
+     }
+    }
+   },
+   "BOZKIR": {
+    "district": "BOZKIR",
+    "ilce": 9661,
+    "days": 365,
+    "mae": 1.483,
+    "worst": 6,
+    "identicalPct": 17.7,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 2.285,
+      "bias": 2.285,
+      "worst": 6
+     },
+     "sunrise": {
+      "mae": 1.427,
+      "bias": 1.104,
+      "worst": 4
+     },
+     "dhuhr": {
+      "mae": 1.022,
+      "bias": 1.022,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.334,
+      "bias": 1.181,
+      "worst": 3
+     },
+     "maghrib": {
+      "mae": 1.367,
+      "bias": 0.934,
+      "worst": 3
+     },
+     "isha": {
+      "mae": 1.46,
+      "bias": -0.151,
+      "worst": 3
+     }
+    }
+   },
+   "ÇELTİK": {
+    "district": "ÇELTİK",
+    "ilce": 9662,
+    "days": 365,
+    "mae": 3.171,
+    "worst": 10,
+    "identicalPct": 10,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 2.819,
+      "bias": 0.556,
+      "worst": 5
+     },
+     "sunrise": {
+      "mae": 2.849,
+      "bias": 2.674,
+      "worst": 7
+     },
+     "dhuhr": {
+      "mae": 2.781,
+      "bias": 2.781,
+      "worst": 3
+     },
+     "asr": {
+      "mae": 2.616,
+      "bias": 2.507,
+      "worst": 6
+     },
+     "maghrib": {
+      "mae": 3.085,
+      "bias": 2.964,
+      "worst": 7
+     },
+     "isha": {
+      "mae": 4.874,
+      "bias": 4.874,
+      "worst": 10
+     }
+    }
+   },
+   "CİHANBEYLİ": {
+    "district": "CİHANBEYLİ",
+    "ilce": 9663,
+    "days": 365,
+    "mae": 2.119,
+    "worst": 7,
+    "identicalPct": 13,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 3.244,
+      "bias": -3.244,
+      "worst": 7
+     },
+     "sunrise": {
+      "mae": 1.975,
+      "bias": -1.849,
+      "worst": 5
+     },
+     "dhuhr": {
+      "mae": 1.77,
+      "bias": -1.77,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.975,
+      "bias": -1.975,
+      "worst": 4
+     },
+     "maghrib": {
+      "mae": 1.89,
+      "bias": -1.677,
+      "worst": 5
+     },
+     "isha": {
+      "mae": 1.86,
+      "bias": -0.397,
+      "worst": 4
+     }
+    }
+   },
+   "ÇUMRA": {
+    "district": "ÇUMRA",
+    "ilce": 9664,
+    "days": 365,
+    "mae": 1.164,
+    "worst": 3,
+    "identicalPct": 16.3,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 0.819,
+      "bias": -0.556,
+      "worst": 2
+     },
+     "sunrise": {
+      "mae": 1.09,
+      "bias": -1.09,
+      "worst": 2
+     },
+     "dhuhr": {
+      "mae": 1.167,
+      "bias": -1.167,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.063,
+      "bias": -1.063,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 1.175,
+      "bias": -1.175,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 1.671,
+      "bias": -1.671,
+      "worst": 3
+     }
+    }
+   },
+   "DERBENT": {
+    "district": "DERBENT",
+    "ilce": 9665,
+    "days": 365,
+    "mae": 1.91,
+    "worst": 3,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.636,
+      "bias": 1.636,
+      "worst": 3
+     },
+     "sunrise": {
+      "mae": 1.918,
+      "bias": 1.918,
+      "worst": 3
+     },
+     "dhuhr": {
+      "mae": 1.907,
+      "bias": 1.907,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.882,
+      "bias": 1.882,
+      "worst": 3
+     },
+     "maghrib": {
+      "mae": 1.942,
+      "bias": 1.942,
+      "worst": 3
+     },
+     "isha": {
+      "mae": 2.173,
+      "bias": 2.173,
+      "worst": 3
+     }
+    }
+   },
+   "DEREBUCAK": {
+    "district": "DEREBUCAK",
+    "ilce": 9666,
+    "days": 365,
+    "mae": 3.957,
+    "worst": 7,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 4.808,
+      "bias": 4.808,
+      "worst": 7
+     },
+     "sunrise": {
+      "mae": 3.984,
+      "bias": 3.984,
+      "worst": 6
+     },
+     "dhuhr": {
+      "mae": 3.907,
+      "bias": 3.907,
+      "worst": 4
+     },
+     "asr": {
+      "mae": 4.071,
+      "bias": 4.071,
+      "worst": 6
+     },
+     "maghrib": {
+      "mae": 3.874,
+      "bias": 3.874,
+      "worst": 6
+     },
+     "isha": {
+      "mae": 3.099,
+      "bias": 3.099,
+      "worst": 5
+     }
+    }
+   },
+   "DOĞANHİSAR": {
+    "district": "DOĞANHİSAR",
+    "ilce": 9667,
+    "days": 365,
+    "mae": 3.232,
+    "worst": 5,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 2.715,
+      "bias": 2.715,
+      "worst": 4
+     },
+     "sunrise": {
+      "mae": 3.263,
+      "bias": 3.263,
+      "worst": 5
+     },
+     "dhuhr": {
+      "mae": 3.249,
+      "bias": 3.249,
+      "worst": 4
+     },
+     "asr": {
+      "mae": 3.17,
+      "bias": 3.17,
+      "worst": 4
+     },
+     "maghrib": {
+      "mae": 3.285,
+      "bias": 3.285,
+      "worst": 5
+     },
+     "isha": {
+      "mae": 3.712,
+      "bias": 3.712,
+      "worst": 5
+     }
+    }
+   },
+   "EMİRGAZİ": {
+    "district": "EMİRGAZİ",
+    "ilce": 9668,
+    "days": 365,
+    "mae": 5.346,
+    "worst": 6,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 5.395,
+      "bias": -5.395,
+      "worst": 6
+     },
+     "sunrise": {
+      "mae": 5.326,
+      "bias": -5.326,
+      "worst": 6
+     },
+     "dhuhr": {
+      "mae": 5.384,
+      "bias": -5.384,
+      "worst": 6
+     },
+     "asr": {
+      "mae": 5.337,
+      "bias": -5.337,
+      "worst": 6
+     },
+     "maghrib": {
+      "mae": 5.359,
+      "bias": -5.359,
+      "worst": 6
+     },
+     "isha": {
+      "mae": 5.277,
+      "bias": -5.277,
+      "worst": 6
+     }
+    }
+   },
+   "EREĞLİ": {
+    "district": "EREĞLİ",
+    "ilce": 9669,
+    "days": 365,
+    "mae": 6.186,
+    "worst": 9,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 5.521,
+      "bias": -5.521,
+      "worst": 7
+     },
+     "sunrise": {
+      "mae": 6.186,
+      "bias": -6.186,
+      "worst": 8
+     },
+     "dhuhr": {
+      "mae": 6.233,
+      "bias": -6.233,
+      "worst": 7
+     },
+     "asr": {
+      "mae": 6.115,
+      "bias": -6.115,
+      "worst": 7
+     },
+     "maghrib": {
+      "mae": 6.23,
+      "bias": -6.23,
+      "worst": 8
+     },
+     "isha": {
+      "mae": 6.83,
+      "bias": -6.83,
+      "worst": 9
+     }
+    }
+   },
+   "GÜNEYSINIR": {
+    "district": "GÜNEYSINIR",
+    "ilce": 9670,
+    "days": 365,
+    "mae": 1.295,
+    "worst": 5,
+    "identicalPct": 21,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.34,
+      "bias": 0.211,
+      "worst": 3
+     },
+     "sunrise": {
+      "mae": 1.211,
+      "bias": -0.855,
+      "worst": 3
+     },
+     "dhuhr": {
+      "mae": 0.901,
+      "bias": -0.901,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 1.071,
+      "bias": -0.775,
+      "worst": 3
+     },
+     "maghrib": {
+      "mae": 1.285,
+      "bias": -0.989,
+      "worst": 3
+     },
+     "isha": {
+      "mae": 1.959,
+      "bias": -1.959,
+      "worst": 5
+     }
+    }
+   },
+   "HADİM": {
+    "district": "HADİM",
+    "ilce": 16704,
+    "days": 365,
+    "mae": 1.484,
+    "worst": 6,
+    "identicalPct": 27,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 2.186,
+      "bias": 1.748,
+      "worst": 6
+     },
+     "sunrise": {
+      "mae": 1.564,
+      "bias": 0.277,
+      "worst": 3
+     },
+     "dhuhr": {
+      "mae": 0.164,
+      "bias": 0.164,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 1.397,
+      "bias": 0.351,
+      "worst": 3
+     },
+     "maghrib": {
+      "mae": 1.54,
+      "bias": 0.06,
+      "worst": 3
+     },
+     "isha": {
+      "mae": 2.052,
+      "bias": -1.323,
+      "worst": 5
+     }
+    }
+   },
+   "HALKAPINAR": {
+    "district": "HALKAPINAR",
+    "ilce": 9671,
+    "days": 365,
+    "mae": 6.764,
+    "worst": 10,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 5.984,
+      "bias": -5.984,
+      "worst": 8
+     },
+     "sunrise": {
+      "mae": 6.74,
+      "bias": -6.74,
+      "worst": 8
+     },
+     "dhuhr": {
+      "mae": 6.792,
+      "bias": -6.792,
+      "worst": 7
+     },
+     "asr": {
+      "mae": 6.69,
+      "bias": -6.69,
+      "worst": 8
+     },
+     "maghrib": {
+      "mae": 6.866,
+      "bias": -6.866,
+      "worst": 8
+     },
+     "isha": {
+      "mae": 7.512,
+      "bias": -7.512,
+      "worst": 10
+     }
+    }
+   },
+   "HÜYÜK": {
+    "district": "HÜYÜK",
+    "ilce": 9672,
+    "days": 365,
+    "mae": 3.597,
+    "worst": 5,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 3.449,
+      "bias": 3.449,
+      "worst": 4
+     },
+     "sunrise": {
+      "mae": 3.605,
+      "bias": 3.605,
+      "worst": 4
+     },
+     "dhuhr": {
+      "mae": 3.578,
+      "bias": 3.578,
+      "worst": 4
+     },
+     "asr": {
+      "mae": 3.614,
+      "bias": 3.614,
+      "worst": 4
+     },
+     "maghrib": {
+      "mae": 3.581,
+      "bias": 3.581,
+      "worst": 4
+     },
+     "isha": {
+      "mae": 3.756,
+      "bias": 3.756,
+      "worst": 5
+     }
+    }
+   },
+   "ILGIN": {
+    "district": "ILGIN",
+    "ilce": 9673,
+    "days": 365,
+    "mae": 2.277,
+    "worst": 5,
+    "identicalPct": 3.6,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.567,
+      "bias": 1.512,
+      "worst": 3
+     },
+     "sunrise": {
+      "mae": 2.277,
+      "bias": 2.277,
+      "worst": 4
+     },
+     "dhuhr": {
+      "mae": 2.315,
+      "bias": 2.315,
+      "worst": 3
+     },
+     "asr": {
+      "mae": 2.197,
+      "bias": 2.197,
+      "worst": 4
+     },
+     "maghrib": {
+      "mae": 2.353,
+      "bias": 2.353,
+      "worst": 4
+     },
+     "isha": {
+      "mae": 2.953,
+      "bias": 2.953,
+      "worst": 5
+     }
+    }
+   },
+   "KADINHANI": {
+    "district": "KADINHANI",
+    "ilce": 9674,
+    "days": 365,
+    "mae": 1.22,
+    "worst": 4,
+    "identicalPct": 17.8,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 0.948,
+      "bias": 0.449,
+      "worst": 2
+     },
+     "sunrise": {
+      "mae": 1.145,
+      "bias": 1.145,
+      "worst": 3
+     },
+     "dhuhr": {
+      "mae": 1.164,
+      "bias": 1.164,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.071,
+      "bias": 1.071,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 1.208,
+      "bias": 1.208,
+      "worst": 3
+     },
+     "isha": {
+      "mae": 1.781,
+      "bias": 1.781,
+      "worst": 4
+     }
+    }
+   },
+   "KARAPINAR": {
+    "district": "KARAPINAR",
+    "ilce": 9675,
+    "days": 365,
+    "mae": 4.21,
+    "worst": 6,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 3.929,
+      "bias": -3.929,
+      "worst": 5
+     },
+     "sunrise": {
+      "mae": 4.175,
+      "bias": -4.175,
+      "worst": 5
+     },
+     "dhuhr": {
+      "mae": 4.247,
+      "bias": -4.247,
+      "worst": 5
+     },
+     "asr": {
+      "mae": 4.178,
+      "bias": -4.178,
+      "worst": 5
+     },
+     "maghrib": {
+      "mae": 4.241,
+      "bias": -4.241,
+      "worst": 5
+     },
+     "isha": {
+      "mae": 4.488,
+      "bias": -4.488,
+      "worst": 6
+     }
+    }
+   },
+   "KARATAY": {
+    "district": "KARATAY",
+    "ilce": 17872,
+    "days": 365,
+    "mae": 0.031,
+    "worst": 1,
+    "identicalPct": 96.9,
+    "daysDiffering": 57,
+    "perPrayer": {
+     "fajr": {
+      "mae": 0.06,
+      "bias": -0.06,
+      "worst": 1
+     },
+     "sunrise": {
+      "mae": 0.025,
+      "bias": -0.025,
+      "worst": 1
+     },
+     "dhuhr": {
+      "mae": 0.019,
+      "bias": -0.019,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 0.025,
+      "bias": -0.025,
+      "worst": 1
+     },
+     "maghrib": {
+      "mae": 0.025,
+      "bias": -0.019,
+      "worst": 1
+     },
+     "isha": {
+      "mae": 0.03,
+      "bias": 0.003,
+      "worst": 1
+     }
+    }
+   },
+   "KULU": {
+    "district": "KULU",
+    "ilce": 9677,
+    "days": 365,
+    "mae": 3.012,
+    "worst": 11,
+    "identicalPct": 9.8,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 4.696,
+      "bias": -4.696,
+      "worst": 11
+     },
+     "sunrise": {
+      "mae": 2.841,
+      "bias": -2.474,
+      "worst": 7
+     },
+     "dhuhr": {
+      "mae": 2.323,
+      "bias": -2.323,
+      "worst": 3
+     },
+     "asr": {
+      "mae": 2.726,
+      "bias": -2.644,
+      "worst": 6
+     },
+     "maghrib": {
+      "mae": 2.693,
+      "bias": -2.178,
+      "worst": 6
+     },
+     "isha": {
+      "mae": 2.792,
+      "bias": -0.129,
+      "worst": 6
+     }
+    }
+   },
+   "MERAM": {
+    "district": "MERAM",
+    "ilce": 17870,
+    "days": 365,
+    "mae": 0.051,
+    "worst": 1,
+    "identicalPct": 94.9,
+    "daysDiffering": 97,
+    "perPrayer": {
+     "fajr": {
+      "mae": 0.058,
+      "bias": 0.019,
+      "worst": 1
+     },
+     "sunrise": {
+      "mae": 0.049,
+      "bias": 0.049,
+      "worst": 1
+     },
+     "dhuhr": {
+      "mae": 0.044,
+      "bias": 0.044,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 0.049,
+      "bias": 0.049,
+      "worst": 1
+     },
+     "maghrib": {
+      "mae": 0.038,
+      "bias": 0.038,
+      "worst": 1
+     },
+     "isha": {
+      "mae": 0.068,
+      "bias": 0.068,
+      "worst": 1
+     }
+    }
+   },
+   "SARAYÖNÜ": {
+    "district": "SARAYÖNÜ",
+    "ilce": 17874,
+    "days": 365,
+    "mae": 0.745,
+    "worst": 3,
+    "identicalPct": 40.7,
+    "daysDiffering": 362,
+    "perPrayer": {
+     "fajr": {
+      "mae": 0.942,
+      "bias": -0.427,
+      "worst": 3
+     },
+     "sunrise": {
+      "mae": 0.74,
+      "bias": 0.312,
+      "worst": 2
+     },
+     "dhuhr": {
+      "mae": 0.342,
+      "bias": 0.342,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 0.63,
+      "bias": 0.241,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 0.764,
+      "bias": 0.397,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 1.049,
+      "bias": 0.984,
+      "worst": 3
+     }
+    }
+   },
+   "SELÇUKLU": {
+    "district": "SELÇUKLU",
+    "ilce": 17871,
+    "days": 365,
+    "mae": 0.066,
+    "worst": 1,
+    "identicalPct": 93.4,
+    "daysDiffering": 119,
+    "perPrayer": {
+     "fajr": {
+      "mae": 0.082,
+      "bias": -0.005,
+      "worst": 1
+     },
+     "sunrise": {
+      "mae": 0.066,
+      "bias": 0.044,
+      "worst": 1
+     },
+     "dhuhr": {
+      "mae": 0.044,
+      "bias": 0.044,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 0.06,
+      "bias": 0.038,
+      "worst": 1
+     },
+     "maghrib": {
+      "mae": 0.06,
+      "bias": 0.044,
+      "worst": 1
+     },
+     "isha": {
+      "mae": 0.085,
+      "bias": 0.085,
+      "worst": 1
+     }
+    }
+   },
+   "SEYDİŞEHİR": {
+    "district": "SEYDİŞEHİR",
+    "ilce": 9678,
+    "days": 365,
+    "mae": 2.598,
+    "worst": 6,
+    "identicalPct": 3.1,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 3.392,
+      "bias": 3.392,
+      "worst": 6
+     },
+     "sunrise": {
+      "mae": 2.625,
+      "bias": 2.625,
+      "worst": 4
+     },
+     "dhuhr": {
+      "mae": 2.537,
+      "bias": 2.537,
+      "worst": 3
+     },
+     "asr": {
+      "mae": 2.699,
+      "bias": 2.699,
+      "worst": 4
+     },
+     "maghrib": {
+      "mae": 2.521,
+      "bias": 2.521,
+      "worst": 4
+     },
+     "isha": {
+      "mae": 1.816,
+      "bias": 1.8,
+      "worst": 4
+     }
+    }
+   },
+   "TAŞKENT": {
+    "district": "TAŞKENT",
+    "ilce": 17873,
+    "days": 365,
+    "mae": 1.553,
+    "worst": 6,
+    "identicalPct": 28,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 2.288,
+      "bias": 1.712,
+      "worst": 6
+     },
+     "sunrise": {
+      "mae": 1.666,
+      "bias": 0.132,
+      "worst": 3
+     },
+     "dhuhr": {
+      "mae": 0.022,
+      "bias": 0.022,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 1.471,
+      "bias": 0.244,
+      "worst": 3
+     },
+     "maghrib": {
+      "mae": 1.66,
+      "bias": -0.093,
+      "worst": 3
+     },
+     "isha": {
+      "mae": 2.211,
+      "bias": -1.564,
+      "worst": 6
+     }
+    }
+   },
+   "TUZLUKÇU": {
+    "district": "TUZLUKÇU",
+    "ilce": 9679,
+    "days": 365,
+    "mae": 3.442,
+    "worst": 8,
+    "identicalPct": 2.9,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 2.395,
+      "bias": 2.323,
+      "worst": 5
+     },
+     "sunrise": {
+      "mae": 3.364,
+      "bias": 3.364,
+      "worst": 6
+     },
+     "dhuhr": {
+      "mae": 3.458,
+      "bias": 3.458,
+      "worst": 4
+     },
+     "asr": {
+      "mae": 3.326,
+      "bias": 3.326,
+      "worst": 5
+     },
+     "maghrib": {
+      "mae": 3.548,
+      "bias": 3.548,
+      "worst": 6
+     },
+     "isha": {
+      "mae": 4.559,
+      "bias": 4.559,
+      "worst": 8
+     }
+    }
+   },
+   "YALIHÜYÜK": {
+    "district": "YALIHÜYÜK",
+    "ilce": 9680,
+    "days": 365,
+    "mae": 1.818,
+    "worst": 6,
+    "identicalPct": 12.3,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 2.71,
+      "bias": 2.71,
+      "worst": 6
+     },
+     "sunrise": {
+      "mae": 1.748,
+      "bias": 1.748,
+      "worst": 4
+     },
+     "dhuhr": {
+      "mae": 1.652,
+      "bias": 1.652,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.833,
+      "bias": 1.833,
+      "worst": 4
+     },
+     "maghrib": {
+      "mae": 1.581,
+      "bias": 1.581,
+      "worst": 4
+     },
+     "isha": {
+      "mae": 1.384,
+      "bias": 0.699,
+      "worst": 3
+     }
+    }
+   },
+   "YUNAK": {
+    "district": "YUNAK",
+    "ilce": 9681,
+    "days": 365,
+    "mae": 3.212,
+    "worst": 9,
+    "identicalPct": 6.7,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 2.488,
+      "bias": 1.244,
+      "worst": 5
+     },
+     "sunrise": {
+      "mae": 2.964,
+      "bias": 2.964,
+      "worst": 6
+     },
+     "dhuhr": {
+      "mae": 3.077,
+      "bias": 3.077,
+      "worst": 4
+     },
+     "asr": {
+      "mae": 2.814,
+      "bias": 2.814,
+      "worst": 6
+     },
+     "maghrib": {
+      "mae": 3.164,
+      "bias": 3.164,
+      "worst": 6
+     },
+     "isha": {
+      "mae": 4.767,
+      "bias": 4.767,
+      "worst": 9
+     }
+    }
+   }
+  }
+ },
+ "BURSA": {
+  "province": "BURSA",
+  "capital": {
+   "district": "BURSA",
+   "ilce": 9335
+  },
+  "districts": {
+   "BÜYÜK ORHAN": {
+    "district": "BÜYÜK ORHAN",
+    "ilce": 9336,
+    "days": 365,
+    "mae": 0.994,
+    "worst": 4,
+    "identicalPct": 31.5,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.592,
+      "bias": 1.592,
+      "worst": 4
+     },
+     "sunrise": {
+      "mae": 0.921,
+      "bias": 0.784,
+      "worst": 3
+     },
+     "dhuhr": {
+      "mae": 0.688,
+      "bias": 0.688,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 0.877,
+      "bias": 0.844,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 0.912,
+      "bias": 0.693,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 0.975,
+      "bias": -0.104,
+      "worst": 3
+     }
+    }
+   },
+   "GEMLİK": {
+    "district": "GEMLİK",
+    "ilce": 9337,
+    "days": 365,
+    "mae": 0.586,
+    "worst": 3,
+    "identicalPct": 48.1,
+    "daysDiffering": 362,
+    "perPrayer": {
+     "fajr": {
+      "mae": 0.942,
+      "bias": -0.942,
+      "worst": 3
+     },
+     "sunrise": {
+      "mae": 0.57,
+      "bias": -0.362,
+      "worst": 2
+     },
+     "dhuhr": {
+      "mae": 0.353,
+      "bias": -0.353,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 0.499,
+      "bias": -0.444,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 0.529,
+      "bias": -0.337,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 0.625,
+      "bias": 0.175,
+      "worst": 2
+     }
+    }
+   },
+   "HARMANCIK": {
+    "district": "HARMANCIK",
+    "ilce": 9338,
+    "days": 365,
+    "mae": 0.988,
+    "worst": 4,
+    "identicalPct": 31.7,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.326,
+      "bias": 0.718,
+      "worst": 4
+     },
+     "sunrise": {
+      "mae": 0.964,
+      "bias": -0.274,
+      "worst": 2
+     },
+     "dhuhr": {
+      "mae": 0.351,
+      "bias": -0.351,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 0.811,
+      "bias": -0.159,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 0.989,
+      "bias": -0.392,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 1.488,
+      "bias": -1.351,
+      "worst": 4
+     }
+    }
+   },
+   "İNEGÖL": {
+    "district": "İNEGÖL",
+    "ilce": 9339,
+    "days": 365,
+    "mae": 1.806,
+    "worst": 3,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.603,
+      "bias": -1.603,
+      "worst": 2
+     },
+     "sunrise": {
+      "mae": 1.789,
+      "bias": -1.789,
+      "worst": 3
+     },
+     "dhuhr": {
+      "mae": 1.825,
+      "bias": -1.825,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.811,
+      "bias": -1.811,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 1.808,
+      "bias": -1.808,
+      "worst": 3
+     },
+     "isha": {
+      "mae": 2,
+      "bias": -2,
+      "worst": 3
+     }
+    }
+   },
+   "İZNİK": {
+    "district": "İZNİK",
+    "ilce": 9340,
+    "days": 365,
+    "mae": 2.647,
+    "worst": 5,
+    "identicalPct": 0.2,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 3.175,
+      "bias": -3.175,
+      "worst": 5
+     },
+     "sunrise": {
+      "mae": 2.663,
+      "bias": -2.663,
+      "worst": 4
+     },
+     "dhuhr": {
+      "mae": 2.605,
+      "bias": -2.605,
+      "worst": 3
+     },
+     "asr": {
+      "mae": 2.748,
+      "bias": -2.748,
+      "worst": 4
+     },
+     "maghrib": {
+      "mae": 2.592,
+      "bias": -2.592,
+      "worst": 4
+     },
+     "isha": {
+      "mae": 2.099,
+      "bias": -2.099,
+      "worst": 3
+     }
+    }
+   },
+   "KARACABEY": {
+    "district": "KARACABEY",
+    "ilce": 9341,
+    "days": 365,
+    "mae": 2.823,
+    "worst": 3,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 2.784,
+      "bias": 2.784,
+      "worst": 3
+     },
+     "sunrise": {
+      "mae": 2.847,
+      "bias": 2.847,
+      "worst": 3
+     },
+     "dhuhr": {
+      "mae": 2.797,
+      "bias": 2.797,
+      "worst": 3
+     },
+     "asr": {
+      "mae": 2.786,
+      "bias": 2.786,
+      "worst": 3
+     },
+     "maghrib": {
+      "mae": 2.849,
+      "bias": 2.849,
+      "worst": 3
+     },
+     "isha": {
+      "mae": 2.877,
+      "bias": 2.877,
+      "worst": 3
+     }
+    }
+   },
+   "KELES": {
+    "district": "KELES",
+    "ilce": 9342,
+    "days": 365,
+    "mae": 0.764,
+    "worst": 3,
+    "identicalPct": 35.1,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 0.734,
+      "bias": -0.115,
+      "worst": 2
+     },
+     "sunrise": {
+      "mae": 0.671,
+      "bias": -0.627,
+      "worst": 2
+     },
+     "dhuhr": {
+      "mae": 0.66,
+      "bias": -0.66,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 0.611,
+      "bias": -0.584,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 0.726,
+      "bias": -0.688,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 1.184,
+      "bias": -1.184,
+      "worst": 3
+     }
+    }
+   },
+   "KESTEL": {
+    "district": "KESTEL",
+    "ilce": 17893,
+    "days": 365,
+    "mae": 0.625,
+    "worst": 1,
+    "identicalPct": 37.5,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 0.704,
+      "bias": -0.704,
+      "worst": 1
+     },
+     "sunrise": {
+      "mae": 0.603,
+      "bias": -0.603,
+      "worst": 1
+     },
+     "dhuhr": {
+      "mae": 0.6,
+      "bias": -0.6,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 0.644,
+      "bias": -0.644,
+      "worst": 1
+     },
+     "maghrib": {
+      "mae": 0.638,
+      "bias": -0.638,
+      "worst": 1
+     },
+     "isha": {
+      "mae": 0.559,
+      "bias": -0.559,
+      "worst": 1
+     }
+    }
+   },
+   "MUDANYA": {
+    "district": "MUDANYA",
+    "ilce": 9343,
+    "days": 365,
+    "mae": 0.727,
+    "worst": 3,
+    "identicalPct": 34.7,
+    "daysDiffering": 364,
+    "perPrayer": {
+     "fajr": {
+      "mae": 0.537,
+      "bias": 0.236,
+      "worst": 1
+     },
+     "sunrise": {
+      "mae": 0.721,
+      "bias": 0.721,
+      "worst": 2
+     },
+     "dhuhr": {
+      "mae": 0.682,
+      "bias": 0.682,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 0.603,
+      "bias": 0.603,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 0.71,
+      "bias": 0.71,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 1.112,
+      "bias": 1.112,
+      "worst": 3
+     }
+    }
+   },
+   "MUSTAFA KEMALPAŞA": {
+    "district": "MUSTAFA KEMALPAŞA",
+    "ilce": 9344,
+    "days": 365,
+    "mae": 2.602,
+    "worst": 4,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 2.847,
+      "bias": 2.847,
+      "worst": 4
+     },
+     "sunrise": {
+      "mae": 2.622,
+      "bias": 2.622,
+      "worst": 4
+     },
+     "dhuhr": {
+      "mae": 2.603,
+      "bias": 2.603,
+      "worst": 3
+     },
+     "asr": {
+      "mae": 2.671,
+      "bias": 2.671,
+      "worst": 3
+     },
+     "maghrib": {
+      "mae": 2.553,
+      "bias": 2.553,
+      "worst": 3
+     },
+     "isha": {
+      "mae": 2.315,
+      "bias": 2.315,
+      "worst": 3
+     }
+    }
+   },
+   "ORHANELİ": {
+    "district": "ORHANELİ",
+    "ilce": 17894,
+    "days": 365,
+    "mae": 0.575,
+    "worst": 3,
+    "identicalPct": 49.8,
+    "daysDiffering": 364,
+    "perPrayer": {
+     "fajr": {
+      "mae": 0.89,
+      "bias": 0.874,
+      "worst": 3
+     },
+     "sunrise": {
+      "mae": 0.532,
+      "bias": 0.362,
+      "worst": 2
+     },
+     "dhuhr": {
+      "mae": 0.312,
+      "bias": 0.312,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 0.488,
+      "bias": 0.395,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 0.54,
+      "bias": 0.293,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 0.688,
+      "bias": -0.205,
+      "worst": 2
+     }
+    }
+   },
+   "ORHANGAZİ": {
+    "district": "ORHANGAZİ",
+    "ilce": 9345,
+    "days": 365,
+    "mae": 1.094,
+    "worst": 4,
+    "identicalPct": 20.1,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.701,
+      "bias": -1.701,
+      "worst": 4
+     },
+     "sunrise": {
+      "mae": 1.008,
+      "bias": -1.008,
+      "worst": 2
+     },
+     "dhuhr": {
+      "mae": 0.989,
+      "bias": -0.989,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 1.107,
+      "bias": -1.107,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 0.912,
+      "bias": -0.912,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 0.847,
+      "bias": -0.332,
+      "worst": 2
+     }
+    }
+   },
+   "YENİŞEHİR": {
+    "district": "YENİŞEHİR",
+    "ilce": 9346,
+    "days": 365,
+    "mae": 2.365,
+    "worst": 3,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 2.551,
+      "bias": -2.551,
+      "worst": 3
+     },
+     "sunrise": {
+      "mae": 2.37,
+      "bias": -2.37,
+      "worst": 3
+     },
+     "dhuhr": {
+      "mae": 2.353,
+      "bias": -2.353,
+      "worst": 3
+     },
+     "asr": {
+      "mae": 2.4,
+      "bias": -2.4,
+      "worst": 3
+     },
+     "maghrib": {
+      "mae": 2.334,
+      "bias": -2.334,
+      "worst": 3
+     },
+     "isha": {
+      "mae": 2.181,
+      "bias": -2.181,
+      "worst": 3
+     }
+    }
+   }
+  }
+ },
+ "ANTALYA": {
+  "province": "ANTALYA",
+  "capital": {
+   "district": "ANTALYA",
+   "ilce": 9225
+  },
+  "districts": {
+   "AKSEKİ": {
+    "district": "AKSEKİ",
+    "ilce": 9222,
+    "days": 365,
+    "mae": 4.445,
+    "worst": 6,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 4.699,
+      "bias": -4.699,
+      "worst": 6
+     },
+     "sunrise": {
+      "mae": 4.43,
+      "bias": -4.43,
+      "worst": 5
+     },
+     "dhuhr": {
+      "mae": 4.455,
+      "bias": -4.455,
+      "worst": 5
+     },
+     "asr": {
+      "mae": 4.463,
+      "bias": -4.463,
+      "worst": 5
+     },
+     "maghrib": {
+      "mae": 4.449,
+      "bias": -4.449,
+      "worst": 5
+     },
+     "isha": {
+      "mae": 4.173,
+      "bias": -4.173,
+      "worst": 5
+     }
+    }
+   },
+   "AKSU": {
+    "district": "AKSU",
+    "ilce": 9223,
+    "days": 365,
+    "mae": 0.676,
+    "worst": 2,
+    "identicalPct": 32.7,
+    "daysDiffering": 364,
+    "perPrayer": {
+     "fajr": {
+      "mae": 0.786,
+      "bias": -0.786,
+      "worst": 2
+     },
+     "sunrise": {
+      "mae": 0.668,
+      "bias": -0.668,
+      "worst": 1
+     },
+     "dhuhr": {
+      "mae": 0.685,
+      "bias": -0.685,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 0.66,
+      "bias": -0.66,
+      "worst": 1
+     },
+     "maghrib": {
+      "mae": 0.704,
+      "bias": -0.704,
+      "worst": 1
+     },
+     "isha": {
+      "mae": 0.551,
+      "bias": -0.551,
+      "worst": 1
+     }
+    }
+   },
+   "ALANYA": {
+    "district": "ALANYA",
+    "ilce": 9224,
+    "days": 365,
+    "mae": 5.308,
+    "worst": 8,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 4.721,
+      "bias": -4.721,
+      "worst": 6
+     },
+     "sunrise": {
+      "mae": 5.282,
+      "bias": -5.282,
+      "worst": 7
+     },
+     "dhuhr": {
+      "mae": 5.315,
+      "bias": -5.315,
+      "worst": 6
+     },
+     "asr": {
+      "mae": 5.258,
+      "bias": -5.258,
+      "worst": 7
+     },
+     "maghrib": {
+      "mae": 5.397,
+      "bias": -5.397,
+      "worst": 7
+     },
+     "isha": {
+      "mae": 5.874,
+      "bias": -5.874,
+      "worst": 8
+     }
+    }
+   },
+   "DEMRE": {
+    "district": "DEMRE",
+    "ilce": 9226,
+    "days": 365,
+    "mae": 2.837,
+    "worst": 7,
+    "identicalPct": 3.2,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 3.874,
+      "bias": 3.874,
+      "worst": 7
+     },
+     "sunrise": {
+      "mae": 2.874,
+      "bias": 2.874,
+      "worst": 5
+     },
+     "dhuhr": {
+      "mae": 2.786,
+      "bias": 2.786,
+      "worst": 3
+     },
+     "asr": {
+      "mae": 2.874,
+      "bias": 2.874,
+      "worst": 5
+     },
+     "maghrib": {
+      "mae": 2.663,
+      "bias": 2.663,
+      "worst": 5
+     },
+     "isha": {
+      "mae": 1.953,
+      "bias": 1.773,
+      "worst": 4
+     }
+    }
+   },
+   "ELMALI": {
+    "district": "ELMALI",
+    "ilce": 9227,
+    "days": 365,
+    "mae": 3.07,
+    "worst": 4,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 3.301,
+      "bias": 3.301,
+      "worst": 4
+     },
+     "sunrise": {
+      "mae": 3.088,
+      "bias": 3.088,
+      "worst": 4
+     },
+     "dhuhr": {
+      "mae": 3.085,
+      "bias": 3.085,
+      "worst": 4
+     },
+     "asr": {
+      "mae": 3.101,
+      "bias": 3.101,
+      "worst": 4
+     },
+     "maghrib": {
+      "mae": 3.014,
+      "bias": 3.014,
+      "worst": 4
+     },
+     "isha": {
+      "mae": 2.833,
+      "bias": 2.833,
+      "worst": 4
+     }
+    }
+   },
+   "FİNİKE": {
+    "district": "FİNİKE",
+    "ilce": 9228,
+    "days": 365,
+    "mae": 2.247,
+    "worst": 6,
+    "identicalPct": 6,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 3.17,
+      "bias": 3.17,
+      "worst": 6
+     },
+     "sunrise": {
+      "mae": 2.236,
+      "bias": 2.236,
+      "worst": 4
+     },
+     "dhuhr": {
+      "mae": 2.17,
+      "bias": 2.17,
+      "worst": 3
+     },
+     "asr": {
+      "mae": 2.285,
+      "bias": 2.285,
+      "worst": 4
+     },
+     "maghrib": {
+      "mae": 2.063,
+      "bias": 2.063,
+      "worst": 4
+     },
+     "isha": {
+      "mae": 1.556,
+      "bias": 1.211,
+      "worst": 4
+     }
+    }
+   },
+   "GAZİPAŞA": {
+    "district": "GAZİPAŞA",
+    "ilce": 9229,
+    "days": 365,
+    "mae": 6.51,
+    "worst": 10,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 5.499,
+      "bias": -5.499,
+      "worst": 8
+     },
+     "sunrise": {
+      "mae": 6.479,
+      "bias": -6.479,
+      "worst": 9
+     },
+     "dhuhr": {
+      "mae": 6.529,
+      "bias": -6.529,
+      "worst": 7
+     },
+     "asr": {
+      "mae": 6.405,
+      "bias": -6.405,
+      "worst": 8
+     },
+     "maghrib": {
+      "mae": 6.625,
+      "bias": -6.625,
+      "worst": 9
+     },
+     "isha": {
+      "mae": 7.521,
+      "bias": -7.521,
+      "worst": 10
+     }
+    }
+   },
+   "GÜNDOĞMUŞ": {
+    "district": "GÜNDOĞMUŞ",
+    "ilce": 9230,
+    "days": 365,
+    "mae": 5.247,
+    "worst": 6,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 5.121,
+      "bias": -5.121,
+      "worst": 6
+     },
+     "sunrise": {
+      "mae": 5.23,
+      "bias": -5.23,
+      "worst": 6
+     },
+     "dhuhr": {
+      "mae": 5.247,
+      "bias": -5.247,
+      "worst": 6
+     },
+     "asr": {
+      "mae": 5.211,
+      "bias": -5.211,
+      "worst": 6
+     },
+     "maghrib": {
+      "mae": 5.285,
+      "bias": -5.285,
+      "worst": 6
+     },
+     "isha": {
+      "mae": 5.389,
+      "bias": -5.389,
+      "worst": 6
+     }
+    }
+   },
+   "İBRADI": {
+    "district": "İBRADI",
+    "ilce": 9231,
+    "days": 365,
+    "mae": 3.685,
+    "worst": 5,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 4.038,
+      "bias": -4.038,
+      "worst": 5
+     },
+     "sunrise": {
+      "mae": 3.696,
+      "bias": -3.696,
+      "worst": 5
+     },
+     "dhuhr": {
+      "mae": 3.69,
+      "bias": -3.69,
+      "worst": 4
+     },
+     "asr": {
+      "mae": 3.707,
+      "bias": -3.707,
+      "worst": 5
+     },
+     "maghrib": {
+      "mae": 3.666,
+      "bias": -3.666,
+      "worst": 5
+     },
+     "isha": {
+      "mae": 3.315,
+      "bias": -3.315,
+      "worst": 4
+     }
+    }
+   },
+   "KAŞ": {
+    "district": "KAŞ",
+    "ilce": 9232,
+    "days": 365,
+    "mae": 4.212,
+    "worst": 9,
+    "identicalPct": 1.1,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 5.353,
+      "bias": 5.353,
+      "worst": 9
+     },
+     "sunrise": {
+      "mae": 4.282,
+      "bias": 4.282,
+      "worst": 7
+     },
+     "dhuhr": {
+      "mae": 4.173,
+      "bias": 4.173,
+      "worst": 5
+     },
+     "asr": {
+      "mae": 4.318,
+      "bias": 4.318,
+      "worst": 6
+     },
+     "maghrib": {
+      "mae": 4.077,
+      "bias": 4.077,
+      "worst": 7
+     },
+     "isha": {
+      "mae": 3.068,
+      "bias": 3.068,
+      "worst": 6
+     }
+    }
+   },
+   "KEMER": {
+    "district": "KEMER",
+    "ilce": 9233,
+    "days": 365,
+    "mae": 0.62,
+    "worst": 3,
+    "identicalPct": 45.1,
+    "daysDiffering": 363,
+    "perPrayer": {
+     "fajr": {
+      "mae": 0.953,
+      "bias": 0.953,
+      "worst": 3
+     },
+     "sunrise": {
+      "mae": 0.614,
+      "bias": 0.493,
+      "worst": 2
+     },
+     "dhuhr": {
+      "mae": 0.452,
+      "bias": 0.452,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 0.567,
+      "bias": 0.518,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 0.556,
+      "bias": 0.403,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 0.575,
+      "bias": -0.022,
+      "worst": 2
+     }
+    }
+   },
+   "KORKUTELİ": {
+    "district": "KORKUTELİ",
+    "ilce": 9234,
+    "days": 365,
+    "mae": 1.935,
+    "worst": 3,
+    "identicalPct": 0.4,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.633,
+      "bias": 1.633,
+      "worst": 3
+     },
+     "sunrise": {
+      "mae": 1.934,
+      "bias": 1.934,
+      "worst": 3
+     },
+     "dhuhr": {
+      "mae": 1.962,
+      "bias": 1.962,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.91,
+      "bias": 1.91,
+      "worst": 3
+     },
+     "maghrib": {
+      "mae": 1.934,
+      "bias": 1.934,
+      "worst": 3
+     },
+     "isha": {
+      "mae": 2.236,
+      "bias": 2.236,
+      "worst": 3
+     }
+    }
+   },
+   "KUMLUCA": {
+    "district": "KUMLUCA",
+    "ilce": 9235,
+    "days": 365,
+    "mae": 1.697,
+    "worst": 5,
+    "identicalPct": 11,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 2.455,
+      "bias": 2.455,
+      "worst": 5
+     },
+     "sunrise": {
+      "mae": 1.677,
+      "bias": 1.677,
+      "worst": 4
+     },
+     "dhuhr": {
+      "mae": 1.564,
+      "bias": 1.564,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.699,
+      "bias": 1.699,
+      "worst": 3
+     },
+     "maghrib": {
+      "mae": 1.526,
+      "bias": 1.526,
+      "worst": 3
+     },
+     "isha": {
+      "mae": 1.26,
+      "bias": 0.762,
+      "worst": 3
+     }
+    }
+   },
+   "MANAVGAT": {
+    "district": "MANAVGAT",
+    "ilce": 9236,
+    "days": 365,
+    "mae": 3.055,
+    "worst": 4,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 2.899,
+      "bias": -2.899,
+      "worst": 4
+     },
+     "sunrise": {
+      "mae": 3.036,
+      "bias": -3.036,
+      "worst": 4
+     },
+     "dhuhr": {
+      "mae": 3.055,
+      "bias": -3.055,
+      "worst": 4
+     },
+     "asr": {
+      "mae": 3.03,
+      "bias": -3.03,
+      "worst": 4
+     },
+     "maghrib": {
+      "mae": 3.101,
+      "bias": -3.101,
+      "worst": 4
+     },
+     "isha": {
+      "mae": 3.211,
+      "bias": -3.211,
+      "worst": 4
+     }
+    }
+   },
+   "SERİK": {
+    "district": "SERİK",
+    "ilce": 9237,
+    "days": 365,
+    "mae": 1.668,
+    "worst": 2,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.701,
+      "bias": -1.701,
+      "worst": 2
+     },
+     "sunrise": {
+      "mae": 1.655,
+      "bias": -1.655,
+      "worst": 2
+     },
+     "dhuhr": {
+      "mae": 1.682,
+      "bias": -1.682,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.636,
+      "bias": -1.636,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 1.704,
+      "bias": -1.704,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 1.627,
+      "bias": -1.627,
+      "worst": 2
+     }
+    }
+   }
+  }
+ },
+ "DİYARBAKIR": {
+  "province": "DİYARBAKIR",
+  "capital": {
+   "district": "DİYARBAKIR",
+   "ilce": 9402
+  },
+  "districts": {
+   "BİSMİL": {
+    "district": "BİSMİL",
+    "ilce": 9397,
+    "days": 365,
+    "mae": 1.755,
+    "worst": 3,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.627,
+      "bias": -1.627,
+      "worst": 2
+     },
+     "sunrise": {
+      "mae": 1.734,
+      "bias": -1.734,
+      "worst": 2
+     },
+     "dhuhr": {
+      "mae": 1.773,
+      "bias": -1.773,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.726,
+      "bias": -1.726,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 1.792,
+      "bias": -1.792,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 1.879,
+      "bias": -1.879,
+      "worst": 3
+     }
+    }
+   },
+   "ÇERMİK": {
+    "district": "ÇERMİK",
+    "ilce": 9398,
+    "days": 365,
+    "mae": 3.073,
+    "worst": 5,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 2.663,
+      "bias": 2.663,
+      "worst": 4
+     },
+     "sunrise": {
+      "mae": 3.082,
+      "bias": 3.082,
+      "worst": 4
+     },
+     "dhuhr": {
+      "mae": 3.071,
+      "bias": 3.071,
+      "worst": 4
+     },
+     "asr": {
+      "mae": 3.044,
+      "bias": 3.044,
+      "worst": 4
+     },
+     "maghrib": {
+      "mae": 3.115,
+      "bias": 3.115,
+      "worst": 4
+     },
+     "isha": {
+      "mae": 3.46,
+      "bias": 3.46,
+      "worst": 5
+     }
+    }
+   },
+   "ÇINAR": {
+    "district": "ÇINAR",
+    "ilce": 9399,
+    "days": 365,
+    "mae": 0.764,
+    "worst": 2,
+    "identicalPct": 30.8,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 0.545,
+      "bias": -0.419,
+      "worst": 2
+     },
+     "sunrise": {
+      "mae": 0.715,
+      "bias": -0.715,
+      "worst": 2
+     },
+     "dhuhr": {
+      "mae": 0.767,
+      "bias": -0.767,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 0.696,
+      "bias": -0.696,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 0.789,
+      "bias": -0.789,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 1.074,
+      "bias": -1.074,
+      "worst": 2
+     }
+    }
+   },
+   "ÇÜNGÜŞ": {
+    "district": "ÇÜNGÜŞ",
+    "ilce": 9400,
+    "days": 365,
+    "mae": 3.704,
+    "worst": 6,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 3.178,
+      "bias": 3.178,
+      "worst": 5
+     },
+     "sunrise": {
+      "mae": 3.701,
+      "bias": 3.701,
+      "worst": 5
+     },
+     "dhuhr": {
+      "mae": 3.682,
+      "bias": 3.682,
+      "worst": 4
+     },
+     "asr": {
+      "mae": 3.666,
+      "bias": 3.666,
+      "worst": 5
+     },
+     "maghrib": {
+      "mae": 3.732,
+      "bias": 3.732,
+      "worst": 5
+     },
+     "isha": {
+      "mae": 4.266,
+      "bias": 4.266,
+      "worst": 6
+     }
+    }
+   },
+   "DİCLE": {
+    "district": "DİCLE",
+    "ilce": 9401,
+    "days": 365,
+    "mae": 0.944,
+    "worst": 4,
+    "identicalPct": 32.2,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.044,
+      "bias": -0.255,
+      "worst": 3
+     },
+     "sunrise": {
+      "mae": 0.888,
+      "bias": 0.592,
+      "worst": 2
+     },
+     "dhuhr": {
+      "mae": 0.586,
+      "bias": 0.586,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 0.789,
+      "bias": 0.515,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 0.918,
+      "bias": 0.649,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 1.441,
+      "bias": 1.436,
+      "worst": 4
+     }
+    }
+   },
+   "EĞİL": {
+    "district": "EĞİL",
+    "ilce": 9403,
+    "days": 365,
+    "mae": 0.771,
+    "worst": 3,
+    "identicalPct": 37.3,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 0.784,
+      "bias": -0.066,
+      "worst": 2
+     },
+     "sunrise": {
+      "mae": 0.718,
+      "bias": 0.559,
+      "worst": 2
+     },
+     "dhuhr": {
+      "mae": 0.559,
+      "bias": 0.559,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 0.633,
+      "bias": 0.479,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 0.726,
+      "bias": 0.6,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 1.205,
+      "bias": 1.205,
+      "worst": 3
+     }
+    }
+   },
+   "ERGANİ": {
+    "district": "ERGANİ",
+    "ilce": 9404,
+    "days": 365,
+    "mae": 1.845,
+    "worst": 4,
+    "identicalPct": 5.1,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.268,
+      "bias": 1.208,
+      "worst": 3
+     },
+     "sunrise": {
+      "mae": 1.836,
+      "bias": 1.836,
+      "worst": 3
+     },
+     "dhuhr": {
+      "mae": 1.83,
+      "bias": 1.83,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.781,
+      "bias": 1.781,
+      "worst": 3
+     },
+     "maghrib": {
+      "mae": 1.866,
+      "bias": 1.866,
+      "worst": 3
+     },
+     "isha": {
+      "mae": 2.49,
+      "bias": 2.49,
+      "worst": 4
+     }
+    }
+   },
+   "HANİ": {
+    "district": "HANİ",
+    "ilce": 9405,
+    "days": 365,
+    "mae": 1.048,
+    "worst": 4,
+    "identicalPct": 29.5,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.608,
+      "bias": -1.597,
+      "worst": 4
+     },
+     "sunrise": {
+      "mae": 1.022,
+      "bias": -0.742,
+      "worst": 3
+     },
+     "dhuhr": {
+      "mae": 0.69,
+      "bias": -0.69,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 0.923,
+      "bias": -0.786,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 0.942,
+      "bias": -0.63,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 1.104,
+      "bias": 0.195,
+      "worst": 3
+     }
+    }
+   },
+   "HAZRO": {
+    "district": "HAZRO",
+    "ilce": 9406,
+    "days": 365,
+    "mae": 2.233,
+    "worst": 5,
+    "identicalPct": 2.6,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 2.822,
+      "bias": -2.822,
+      "worst": 5
+     },
+     "sunrise": {
+      "mae": 2.244,
+      "bias": -2.244,
+      "worst": 4
+     },
+     "dhuhr": {
+      "mae": 2.247,
+      "bias": -2.247,
+      "worst": 3
+     },
+     "asr": {
+      "mae": 2.274,
+      "bias": -2.274,
+      "worst": 4
+     },
+     "maghrib": {
+      "mae": 2.211,
+      "bias": -2.211,
+      "worst": 4
+     },
+     "isha": {
+      "mae": 1.6,
+      "bias": -1.6,
+      "worst": 3
+     }
+    }
+   },
+   "KOCAKÖY": {
+    "district": "KOCAKÖY",
+    "ilce": 9407,
+    "days": 365,
+    "mae": 1.224,
+    "worst": 4,
+    "identicalPct": 17.8,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.822,
+      "bias": -1.822,
+      "worst": 4
+     },
+     "sunrise": {
+      "mae": 1.14,
+      "bias": -1.14,
+      "worst": 3
+     },
+     "dhuhr": {
+      "mae": 1.132,
+      "bias": -1.132,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.195,
+      "bias": -1.195,
+      "worst": 3
+     },
+     "maghrib": {
+      "mae": 1.11,
+      "bias": -1.104,
+      "worst": 3
+     },
+     "isha": {
+      "mae": 0.945,
+      "bias": -0.463,
+      "worst": 2
+     }
+    }
+   },
+   "KULP": {
+    "district": "KULP",
+    "ilce": 9408,
+    "days": 365,
+    "mae": 3.215,
+    "worst": 7,
+    "identicalPct": 2.7,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 4.299,
+      "bias": -4.299,
+      "worst": 7
+     },
+     "sunrise": {
+      "mae": 3.195,
+      "bias": -3.195,
+      "worst": 5
+     },
+     "dhuhr": {
+      "mae": 3.186,
+      "bias": -3.186,
+      "worst": 4
+     },
+     "asr": {
+      "mae": 3.301,
+      "bias": -3.301,
+      "worst": 5
+     },
+     "maghrib": {
+      "mae": 3.11,
+      "bias": -3.11,
+      "worst": 5
+     },
+     "isha": {
+      "mae": 2.2,
+      "bias": -2.118,
+      "worst": 4
+     }
+    }
+   },
+   "LİCE": {
+    "district": "LİCE",
+    "ilce": 9409,
+    "days": 365,
+    "mae": 1.837,
+    "worst": 6,
+    "identicalPct": 10.7,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 2.715,
+      "bias": -2.715,
+      "worst": 6
+     },
+     "sunrise": {
+      "mae": 1.764,
+      "bias": -1.764,
+      "worst": 4
+     },
+     "dhuhr": {
+      "mae": 1.701,
+      "bias": -1.701,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.814,
+      "bias": -1.814,
+      "worst": 4
+     },
+     "maghrib": {
+      "mae": 1.633,
+      "bias": -1.633,
+      "worst": 4
+     },
+     "isha": {
+      "mae": 1.395,
+      "bias": -0.726,
+      "worst": 3
+     }
+    }
+   },
+   "SİLVAN": {
+    "district": "SİLVAN",
+    "ilce": 9410,
+    "days": 365,
+    "mae": 3.176,
+    "worst": 5,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 3.581,
+      "bias": -3.581,
+      "worst": 5
+     },
+     "sunrise": {
+      "mae": 3.167,
+      "bias": -3.167,
+      "worst": 4
+     },
+     "dhuhr": {
+      "mae": 3.192,
+      "bias": -3.192,
+      "worst": 4
+     },
+     "asr": {
+      "mae": 3.189,
+      "bias": -3.189,
+      "worst": 4
+     },
+     "maghrib": {
+      "mae": 3.186,
+      "bias": -3.186,
+      "worst": 4
+     },
+     "isha": {
+      "mae": 2.742,
+      "bias": -2.742,
+      "worst": 4
+     }
+    }
+   }
+  }
+ },
+ "ERZURUM": {
+  "province": "ERZURUM",
+  "capital": {
+   "district": "ERZURUM",
+   "ilce": 9451
+  },
+  "districts": {
+   "AŞKALE": {
+    "district": "AŞKALE",
+    "ilce": 9448,
+    "days": 365,
+    "mae": 2.329,
+    "worst": 3,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 2.222,
+      "bias": 2.222,
+      "worst": 3
+     },
+     "sunrise": {
+      "mae": 2.307,
+      "bias": 2.307,
+      "worst": 3
+     },
+     "dhuhr": {
+      "mae": 2.359,
+      "bias": 2.359,
+      "worst": 3
+     },
+     "asr": {
+      "mae": 2.342,
+      "bias": 2.342,
+      "worst": 3
+     },
+     "maghrib": {
+      "mae": 2.403,
+      "bias": 2.403,
+      "worst": 3
+     },
+     "isha": {
+      "mae": 2.34,
+      "bias": 2.34,
+      "worst": 3
+     }
+    }
+   },
+   "AZİZİYE": {
+    "district": "AZİZİYE",
+    "ilce": 9449,
+    "days": 365,
+    "mae": 0.452,
+    "worst": 2,
+    "identicalPct": 54.9,
+    "daysDiffering": 360,
+    "perPrayer": {
+     "fajr": {
+      "mae": 0.323,
+      "bias": -0.268,
+      "worst": 1
+     },
+     "sunrise": {
+      "mae": 0.468,
+      "bias": -0.468,
+      "worst": 1
+     },
+     "dhuhr": {
+      "mae": 0.441,
+      "bias": -0.441,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 0.436,
+      "bias": -0.436,
+      "worst": 1
+     },
+     "maghrib": {
+      "mae": 0.4,
+      "bias": -0.4,
+      "worst": 1
+     },
+     "isha": {
+      "mae": 0.644,
+      "bias": -0.644,
+      "worst": 2
+     }
+    }
+   },
+   "ÇAT": {
+    "district": "ÇAT",
+    "ilce": 9450,
+    "days": 365,
+    "mae": 1.258,
+    "worst": 4,
+    "identicalPct": 13.4,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.784,
+      "bias": 1.784,
+      "worst": 4
+     },
+     "sunrise": {
+      "mae": 1.211,
+      "bias": 1.211,
+      "worst": 3
+     },
+     "dhuhr": {
+      "mae": 1.238,
+      "bias": 1.238,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.271,
+      "bias": 1.271,
+      "worst": 3
+     },
+     "maghrib": {
+      "mae": 1.156,
+      "bias": 1.156,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 0.888,
+      "bias": 0.614,
+      "worst": 2
+     }
+    }
+   },
+   "HINIS": {
+    "district": "HINIS",
+    "ilce": 9452,
+    "days": 365,
+    "mae": 1.801,
+    "worst": 6,
+    "identicalPct": 13.9,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.455,
+      "bias": -0.551,
+      "worst": 3
+     },
+     "sunrise": {
+      "mae": 1.627,
+      "bias": -1.627,
+      "worst": 4
+     },
+     "dhuhr": {
+      "mae": 1.679,
+      "bias": -1.679,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.534,
+      "bias": -1.534,
+      "worst": 3
+     },
+     "maghrib": {
+      "mae": 1.756,
+      "bias": -1.756,
+      "worst": 4
+     },
+     "isha": {
+      "mae": 2.756,
+      "bias": -2.756,
+      "worst": 6
+     }
+    }
+   },
+   "HORASAN": {
+    "district": "HORASAN",
+    "ilce": 9453,
+    "days": 365,
+    "mae": 3.597,
+    "worst": 5,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 3.94,
+      "bias": -3.94,
+      "worst": 5
+     },
+     "sunrise": {
+      "mae": 3.619,
+      "bias": -3.619,
+      "worst": 5
+     },
+     "dhuhr": {
+      "mae": 3.545,
+      "bias": -3.545,
+      "worst": 4
+     },
+     "asr": {
+      "mae": 3.611,
+      "bias": -3.611,
+      "worst": 4
+     },
+     "maghrib": {
+      "mae": 3.548,
+      "bias": -3.548,
+      "worst": 4
+     },
+     "isha": {
+      "mae": 3.318,
+      "bias": -3.318,
+      "worst": 4
+     }
+    }
+   },
+   "İSPİR": {
+    "district": "İSPİR",
+    "ilce": 9454,
+    "days": 365,
+    "mae": 1.45,
+    "worst": 6,
+    "identicalPct": 18.2,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.452,
+      "bias": -0.219,
+      "worst": 4
+     },
+     "sunrise": {
+      "mae": 1.296,
+      "bias": 0.995,
+      "worst": 3
+     },
+     "dhuhr": {
+      "mae": 1.121,
+      "bias": 1.121,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.123,
+      "bias": 0.838,
+      "worst": 3
+     },
+     "maghrib": {
+      "mae": 1.425,
+      "bias": 1.216,
+      "worst": 3
+     },
+     "isha": {
+      "mae": 2.282,
+      "bias": 2.282,
+      "worst": 6
+     }
+    }
+   },
+   "KARAÇOBAN": {
+    "district": "KARAÇOBAN",
+    "ilce": 9455,
+    "days": 365,
+    "mae": 3.296,
+    "worst": 7,
+    "identicalPct": 2.2,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 2.31,
+      "bias": -2.162,
+      "worst": 5
+     },
+     "sunrise": {
+      "mae": 3.266,
+      "bias": -3.266,
+      "worst": 5
+     },
+     "dhuhr": {
+      "mae": 3.329,
+      "bias": -3.329,
+      "worst": 4
+     },
+     "asr": {
+      "mae": 3.129,
+      "bias": -3.129,
+      "worst": 5
+     },
+     "maghrib": {
+      "mae": 3.353,
+      "bias": -3.353,
+      "worst": 6
+     },
+     "isha": {
+      "mae": 4.392,
+      "bias": -4.392,
+      "worst": 7
+     }
+    }
+   },
+   "KARAYAZI": {
+    "district": "KARAYAZI",
+    "ilce": 9456,
+    "days": 365,
+    "mae": 3.484,
+    "worst": 5,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 3.085,
+      "bias": -3.085,
+      "worst": 4
+     },
+     "sunrise": {
+      "mae": 3.507,
+      "bias": -3.507,
+      "worst": 5
+     },
+     "dhuhr": {
+      "mae": 3.474,
+      "bias": -3.474,
+      "worst": 4
+     },
+     "asr": {
+      "mae": 3.441,
+      "bias": -3.441,
+      "worst": 4
+     },
+     "maghrib": {
+      "mae": 3.488,
+      "bias": -3.488,
+      "worst": 5
+     },
+     "isha": {
+      "mae": 3.907,
+      "bias": -3.907,
+      "worst": 5
+     }
+    }
+   },
+   "KÖPRÜKÖY": {
+    "district": "KÖPRÜKÖY",
+    "ilce": 9457,
+    "days": 365,
+    "mae": 2.41,
+    "worst": 3,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 2.54,
+      "bias": -2.54,
+      "worst": 3
+     },
+     "sunrise": {
+      "mae": 2.436,
+      "bias": -2.436,
+      "worst": 3
+     },
+     "dhuhr": {
+      "mae": 2.384,
+      "bias": -2.384,
+      "worst": 3
+     },
+     "asr": {
+      "mae": 2.438,
+      "bias": -2.438,
+      "worst": 3
+     },
+     "maghrib": {
+      "mae": 2.395,
+      "bias": -2.395,
+      "worst": 3
+     },
+     "isha": {
+      "mae": 2.268,
+      "bias": -2.268,
+      "worst": 3
+     }
+    }
+   },
+   "NARMAN": {
+    "district": "NARMAN",
+    "ilce": 9458,
+    "days": 365,
+    "mae": 2.434,
+    "worst": 6,
+    "identicalPct": 3.1,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 3.342,
+      "bias": -3.342,
+      "worst": 6
+     },
+     "sunrise": {
+      "mae": 2.416,
+      "bias": -2.416,
+      "worst": 4
+     },
+     "dhuhr": {
+      "mae": 2.367,
+      "bias": -2.367,
+      "worst": 3
+     },
+     "asr": {
+      "mae": 2.551,
+      "bias": -2.551,
+      "worst": 4
+     },
+     "maghrib": {
+      "mae": 2.277,
+      "bias": -2.277,
+      "worst": 4
+     },
+     "isha": {
+      "mae": 1.649,
+      "bias": -1.468,
+      "worst": 4
+     }
+    }
+   },
+   "OLTU": {
+    "district": "OLTU",
+    "ilce": 9459,
+    "days": 365,
+    "mae": 3.019,
+    "worst": 8,
+    "identicalPct": 2.4,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 4.301,
+      "bias": -4.301,
+      "worst": 8
+     },
+     "sunrise": {
+      "mae": 2.981,
+      "bias": -2.981,
+      "worst": 5
+     },
+     "dhuhr": {
+      "mae": 2.855,
+      "bias": -2.855,
+      "worst": 3
+     },
+     "asr": {
+      "mae": 3.151,
+      "bias": -3.151,
+      "worst": 5
+     },
+     "maghrib": {
+      "mae": 2.751,
+      "bias": -2.751,
+      "worst": 5
+     },
+     "isha": {
+      "mae": 2.077,
+      "bias": -1.578,
+      "worst": 4
+     }
+    }
+   },
+   "OLUR": {
+    "district": "OLUR",
+    "ilce": 9460,
+    "days": 365,
+    "mae": 3.721,
+    "worst": 11,
+    "identicalPct": 3.3,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 5.526,
+      "bias": -5.526,
+      "worst": 11
+     },
+     "sunrise": {
+      "mae": 3.57,
+      "bias": -3.57,
+      "worst": 7
+     },
+     "dhuhr": {
+      "mae": 3.441,
+      "bias": -3.441,
+      "worst": 4
+     },
+     "asr": {
+      "mae": 3.795,
+      "bias": -3.795,
+      "worst": 7
+     },
+     "maghrib": {
+      "mae": 3.288,
+      "bias": -3.288,
+      "worst": 7
+     },
+     "isha": {
+      "mae": 2.71,
+      "bias": -1.57,
+      "worst": 5
+     }
+    }
+   },
+   "PASİNLER": {
+    "district": "PASİNLER",
+    "ilce": 9461,
+    "days": 365,
+    "mae": 1.624,
+    "worst": 3,
+    "identicalPct": 0,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.844,
+      "bias": -1.844,
+      "worst": 3
+     },
+     "sunrise": {
+      "mae": 1.668,
+      "bias": -1.668,
+      "worst": 2
+     },
+     "dhuhr": {
+      "mae": 1.573,
+      "bias": -1.573,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.641,
+      "bias": -1.641,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 1.562,
+      "bias": -1.562,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 1.458,
+      "bias": -1.458,
+      "worst": 2
+     }
+    }
+   },
+   "PAZARYOLU": {
+    "district": "PAZARYOLU",
+    "ilce": 9462,
+    "days": 365,
+    "mae": 2.06,
+    "worst": 6,
+    "identicalPct": 7.9,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.518,
+      "bias": 0.855,
+      "worst": 3
+     },
+     "sunrise": {
+      "mae": 1.91,
+      "bias": 1.91,
+      "worst": 4
+     },
+     "dhuhr": {
+      "mae": 2.003,
+      "bias": 2.003,
+      "worst": 3
+     },
+     "asr": {
+      "mae": 1.767,
+      "bias": 1.767,
+      "worst": 4
+     },
+     "maghrib": {
+      "mae": 2.115,
+      "bias": 2.115,
+      "worst": 4
+     },
+     "isha": {
+      "mae": 3.049,
+      "bias": 3.049,
+      "worst": 6
+     }
+    }
+   },
+   "ŞENKAYA": {
+    "district": "ŞENKAYA",
+    "ilce": 9463,
+    "days": 365,
+    "mae": 4.368,
+    "worst": 10,
+    "identicalPct": 2.1,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 5.753,
+      "bias": -5.753,
+      "worst": 10
+     },
+     "sunrise": {
+      "mae": 4.405,
+      "bias": -4.405,
+      "worst": 7
+     },
+     "dhuhr": {
+      "mae": 4.307,
+      "bias": -4.307,
+      "worst": 5
+     },
+     "asr": {
+      "mae": 4.551,
+      "bias": -4.551,
+      "worst": 7
+     },
+     "maghrib": {
+      "mae": 4.178,
+      "bias": -4.178,
+      "worst": 7
+     },
+     "isha": {
+      "mae": 3.011,
+      "bias": -2.956,
+      "worst": 6
+     }
+    }
+   },
+   "TEKMAN": {
+    "district": "TEKMAN",
+    "ilce": 9464,
+    "days": 365,
+    "mae": 0.99,
+    "worst": 3,
+    "identicalPct": 21.3,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 0.767,
+      "bias": -0.4,
+      "worst": 2
+     },
+     "sunrise": {
+      "mae": 0.921,
+      "bias": -0.921,
+      "worst": 2
+     },
+     "dhuhr": {
+      "mae": 0.934,
+      "bias": -0.934,
+      "worst": 1
+     },
+     "asr": {
+      "mae": 0.901,
+      "bias": -0.901,
+      "worst": 2
+     },
+     "maghrib": {
+      "mae": 0.942,
+      "bias": -0.942,
+      "worst": 2
+     },
+     "isha": {
+      "mae": 1.477,
+      "bias": -1.477,
+      "worst": 3
+     }
+    }
+   },
+   "TORTUM": {
+    "district": "TORTUM",
+    "ilce": 9465,
+    "days": 365,
+    "mae": 1.261,
+    "worst": 4,
+    "identicalPct": 18.2,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 1.967,
+      "bias": -1.967,
+      "worst": 4
+     },
+     "sunrise": {
+      "mae": 1.17,
+      "bias": -1.159,
+      "worst": 3
+     },
+     "dhuhr": {
+      "mae": 1.093,
+      "bias": -1.093,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.252,
+      "bias": -1.252,
+      "worst": 3
+     },
+     "maghrib": {
+      "mae": 1.063,
+      "bias": -1.03,
+      "worst": 3
+     },
+     "isha": {
+      "mae": 1.019,
+      "bias": -0.312,
+      "worst": 2
+     }
+    }
+   },
+   "UZUNDERE": {
+    "district": "UZUNDERE",
+    "ilce": 9466,
+    "days": 365,
+    "mae": 1.553,
+    "worst": 6,
+    "identicalPct": 17.6,
+    "daysDiffering": 365,
+    "perPrayer": {
+     "fajr": {
+      "mae": 2.49,
+      "bias": -2.49,
+      "worst": 6
+     },
+     "sunrise": {
+      "mae": 1.455,
+      "bias": -1.175,
+      "worst": 4
+     },
+     "dhuhr": {
+      "mae": 1.082,
+      "bias": -1.082,
+      "worst": 2
+     },
+     "asr": {
+      "mae": 1.384,
+      "bias": -1.329,
+      "worst": 3
+     },
+     "maghrib": {
+      "mae": 1.345,
+      "bias": -0.934,
+      "worst": 3
+     },
+     "isha": {
+      "mae": 1.564,
+      "bias": 0.227,
+      "worst": 4
+     }
+    }
+   }
+  }
+ }
+}

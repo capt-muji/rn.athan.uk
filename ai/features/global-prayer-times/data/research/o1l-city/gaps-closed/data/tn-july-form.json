@@ -1,0 +1,277 @@
+{
+ "job": "O1l-25 Tunisia July form",
+ "bankedRows": {
+  "delegations": 22,
+  "julyRows": 110,
+  "allRows": 434
+ },
+ "monthTable": [
+  {
+   "month": "01",
+   "n": 109,
+   "fajrResid": {
+    "n": 109,
+    "mean": 0.55,
+    "min": 0.03,
+    "max": 1.02
+   },
+   "ishaResid": {
+    "n": 109,
+    "mean": -0.5,
+    "min": -1.02,
+    "max": -0.03
+   }
+  },
+  {
+   "month": "04",
+   "n": 105,
+   "fajrResid": {
+    "n": 105,
+    "mean": 0.54,
+    "min": 0.03,
+    "max": 1.05
+   },
+   "ishaResid": {
+    "n": 105,
+    "mean": -0.62,
+    "min": -1.1,
+    "max": -0.07
+   }
+  },
+  {
+   "month": "07",
+   "n": 110,
+   "fajrResid": {
+    "n": 110,
+    "mean": 3.87,
+    "min": 0.33,
+    "max": 6.12
+   },
+   "ishaResid": {
+    "n": 110,
+    "mean": -3.73,
+    "min": -6.03,
+    "max": -0.2
+   }
+  },
+  {
+   "month": "10",
+   "n": 110,
+   "fajrResid": {
+    "n": 110,
+    "mean": 0.54,
+    "min": 0.02,
+    "max": 0.98
+   },
+   "ishaResid": {
+    "n": 110,
+    "mean": -0.51,
+    "min": -1,
+    "max": 0.03
+   }
+  }
+ ],
+ "julyResidualSpread": [
+  {
+   "name": "Sidi Bouzid/Hichria",
+   "n": 5,
+   "fajrMin": 4.45,
+   "fajrMax": 5.2,
+   "ishaMin": -5.28,
+   "ishaMax": -4.02
+  },
+  {
+   "name": "Sidi Bouzid/Regueb",
+   "n": 5,
+   "fajrMin": 3.27,
+   "fajrMax": 4.12,
+   "ishaMin": -4.08,
+   "ishaMax": -3.07
+  },
+  {
+   "name": "Sidi Bouzid/Meknassi",
+   "n": 5,
+   "fajrMin": 3.72,
+   "fajrMax": 4.32,
+   "ishaMin": -4.12,
+   "ishaMax": -3.55
+  },
+  {
+   "name": "Sidi Bouzid/Jelma",
+   "n": 5,
+   "fajrMin": 4.65,
+   "fajrMax": 5.52,
+   "ishaMin": -5.23,
+   "ishaMax": -4.47
+  },
+  {
+   "name": "Sidi Bouzid/Sabbalet Ouled Asker",
+   "n": 5,
+   "fajrMin": 4.8,
+   "fajrMax": 5.62,
+   "ishaMin": -5.55,
+   "ishaMax": -4.82
+  },
+  {
+   "name": "Sidi Bouzid/Bir El Hafey",
+   "n": 5,
+   "fajrMin": 4.77,
+   "fajrMax": 5.55,
+   "ishaMin": -5.42,
+   "ishaMax": -4.5
+  },
+  {
+   "name": "Sidi Bouzid/Sidi Ali Ben Aoun",
+   "n": 5,
+   "fajrMin": 0.33,
+   "fajrMax": 1.13,
+   "ishaMin": -0.85,
+   "ishaMax": -0.2
+  },
+  {
+   "name": "Sidi Bouzid/Menzel Bouzayane",
+   "n": 5,
+   "fajrMin": 4.2,
+   "fajrMax": 4.8,
+   "ishaMin": -4.93,
+   "ishaMax": -4.05
+  },
+  {
+   "name": "Sidi Bouzid/Mezouna",
+   "n": 5,
+   "fajrMin": 2.92,
+   "fajrMax": 4.12,
+   "ishaMin": -3.92,
+   "ishaMax": -2.88
+  },
+  {
+   "name": "Sidi Bouzid/Ouled Haffouz",
+   "n": 5,
+   "fajrMin": 3.52,
+   "fajrMax": 4.35,
+   "ishaMin": -3.98,
+   "ishaMax": -3.07
+  },
+  {
+   "name": "Sidi Bouzid/Souk Jedid",
+   "n": 5,
+   "fajrMin": 0.35,
+   "fajrMax": 1.12,
+   "ishaMin": -0.9,
+   "ishaMax": -0.25
+  },
+  {
+   "name": "Sidi Bouzid/Sidi Bouzid",
+   "n": 5,
+   "fajrMin": 4.02,
+   "fajrMax": 5.27,
+   "ishaMin": -5.22,
+   "ishaMax": -4.25
+  },
+  {
+   "name": "Kairouan/Sebikha",
+   "n": 5,
+   "fajrMin": 2.22,
+   "fajrMax": 3.03,
+   "ishaMin": -2.83,
+   "ishaMax": -2.33
+  },
+  {
+   "name": "Kairouan/Chebika",
+   "n": 5,
+   "fajrMin": 2.77,
+   "fajrMax": 3.63,
+   "ishaMin": -3.7,
+   "ishaMax": -2.45
+  },
+  {
+   "name": "Kairouan/Haffouz",
+   "n": 5,
+   "fajrMin": 3.97,
+   "fajrMax": 5.17,
+   "ishaMin": -4.75,
+   "ishaMax": -3.83
+  },
+  {
+   "name": "Kairouan/El Alaa",
+   "n": 5,
+   "fajrMin": 5.32,
+   "fajrMax": 5.75,
+   "ishaMin": -5.88,
+   "ishaMax": -5
+  },
+  {
+   "name": "Kairouan/Oueslatia",
+   "n": 5,
+   "fajrMin": 5.58,
+   "fajrMax": 6.12,
+   "ishaMin": -6.03,
+   "ishaMax": -5.02
+  },
+  {
+   "name": "Kairouan/Hajeb El Ayoun",
+   "n": 5,
+   "fajrMin": 4.62,
+   "fajrMax": 5.57,
+   "ishaMin": -5.27,
+   "ishaMax": -4.47
+  },
+  {
+   "name": "Kairouan/Nasrallah",
+   "n": 5,
+   "fajrMin": 3.22,
+   "fajrMax": 4.05,
+   "ishaMin": -3.57,
+   "ishaMax": -2.83
+  },
+  {
+   "name": "Kairouan/Bou Hajla",
+   "n": 5,
+   "fajrMin": 2.92,
+   "fajrMax": 3.73,
+   "ishaMin": -3.48,
+   "ishaMax": -2.75
+  },
+  {
+   "name": "Kairouan/Chrarda",
+   "n": 5,
+   "fajrMin": 2.6,
+   "fajrMax": 3.42,
+   "ishaMin": -3.22,
+   "ishaMax": -2.57
+  },
+  {
+   "name": "Kairouan/Kairouan",
+   "n": 5,
+   "fajrMin": 2.08,
+   "fajrMax": 2.93,
+   "ishaMin": -2.83,
+   "ishaMax": -2.07
+  }
+ ],
+ "julyClassAngle": {
+  "best": {
+   "fa": 17.5,
+   "ia": 17.5,
+   "f": 89,
+   "i": 90,
+   "both": 83,
+   "n": 110
+  },
+  "ridgeFa": [
+   17.5,
+   17.5
+  ],
+  "ridgeIa": [
+   17.5,
+   17.55
+  ],
+  "ridgeSize": 2,
+  "at18_1": {
+   "f": 10,
+   "i": 10,
+   "both": 10,
+   "n": 110
+  }
+ }
+}

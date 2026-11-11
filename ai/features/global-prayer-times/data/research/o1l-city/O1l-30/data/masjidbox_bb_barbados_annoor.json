@@ -1,0 +1,64 @@
+{
+ "meta": {
+  "address": "40 Clermont Road, Saint James Barbados",
+  "source": "captures/masjidbox_bb_barbados_annoor.html"
+ },
+ "rows": {
+  "2026-11-10": {
+   "fajr": "04:42",
+   "sunrise": "05:55",
+   "dhuhr": "11:42",
+   "asr": "15:53",
+   "maghrib": "17:29",
+   "isha": "18:43"
+  },
+  "2026-11-11": {
+   "fajr": "04:42",
+   "sunrise": "05:56",
+   "dhuhr": "11:42",
+   "asr": "15:52",
+   "maghrib": "17:29",
+   "isha": "18:43"
+  },
+  "2026-11-12": {
+   "fajr": "04:43",
+   "sunrise": "05:56",
+   "dhuhr": "11:43",
+   "asr": "15:52",
+   "maghrib": "17:29",
+   "isha": "18:42"
+  },
+  "2026-11-13": {
+   "fajr": "04:43",
+   "sunrise": "05:57",
+   "dhuhr": "11:43",
+   "asr": "15:52",
+   "maghrib": "17:29",
+   "isha": "18:42"
+  },
+  "2026-11-14": {
+   "fajr": "04:43",
+   "sunrise": "05:57",
+   "dhuhr": "11:43",
+   "asr": "15:52",
+   "maghrib": "17:29",
+   "isha": "18:42"
+  },
+  "2026-11-15": {
+   "fajr": "04:44",
+   "sunrise": "05:57",
+   "dhuhr": "11:43",
+   "asr": "15:52",
+   "maghrib": "17:29",
+   "isha": "18:42"
+  },
+  "2026-11-16": {
+   "fajr": "04:44",
+   "sunrise": "05:58",
+   "dhuhr": "11:43",
+   "asr": "15:52",
+   "maghrib": "17:29",
+   "isha": "18:43"
+  }
+ }
+}

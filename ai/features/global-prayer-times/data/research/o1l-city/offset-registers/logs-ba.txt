@@ -1,0 +1,52 @@
+72 429 wait
+72 429 wait
+72 None
+73 None
+74 429 wait
+74 429 wait
+74 Rogatica
+75 Rudo
+76 Sanski Most
+77 Sarajevo
+78 Skender-Vakuf
+79 Sokolac
+80 Srbac
+81 Srebrenica
+82 Srebrenik
+83 Stolac
+84 Šekovići
+85 Šipovo
+86 Široki Brijeg
+87 Teslić
+88 Tešanj
+89 Tomislav-Grad
+90 Travnik
+91 Trebinje
+92 Trnovo
+93 Tuzla
+94 Ugljevik
+95 Vareš
+96 Velika Kladuša
+97 Visoko
+98 Višegrad
+99 Vitez
+100 Vlasenica
+101 Zavidovići
+102 Zenica
+103 Zvornik
+104 Žepa
+105 Žepče
+106 Živinice
+107 Bijelo Polje
+108 Gusinje
+109 Nova Varoš
+110 Novi Pazar
+111 Plav
+112 Pljevlja
+113 Priboj
+114 Prijepolje
+115 Rožaje
+116 Sjenica
+117 Tutin
+118 None
+done 118

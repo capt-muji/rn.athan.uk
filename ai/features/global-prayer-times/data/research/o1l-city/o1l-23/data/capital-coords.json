@@ -1,0 +1,42 @@
+{
+ "İstanbul": {
+  "lat": 41.0064,
+  "lon": 28.9759,
+  "display": "İstanbul, Fatih, İstanbul, Marmara Bölgesi, 34122, Türkiye"
+ },
+ "Ankara": {
+  "lat": 39.9208,
+  "lon": 32.854,
+  "display": "Ankara, Çankaya, Ankara, İç Anadolu Bölgesi, 06420, Türkiye"
+ },
+ "İzmir": {
+  "lat": 38.4193,
+  "lon": 27.1285,
+  "display": "İzmir, Konak, İzmir, Ege Bölgesi, 35250, Türkiye"
+ },
+ "Konya": {
+  "lat": 37.8727,
+  "lon": 32.4924,
+  "display": "Konya, Selçuklu, Konya, İç Anadolu Bölgesi, 42040, Türkiye"
+ },
+ "Bursa": {
+  "lat": 40.1826,
+  "lon": 29.0675,
+  "display": "Bursa, Osmangazi, Bursa, Marmara Bölgesi, 16010, Türkiye"
+ },
+ "Antalya": {
+  "lat": 36.8866,
+  "lon": 30.703,
+  "display": "Antalya, Muratpaşa, Antalya, Akdeniz Bölgesi, 07050, Türkiye"
+ },
+ "Diyarbakır": {
+  "lat": 37.9162,
+  "lon": 40.2364,
+  "display": "Diyarbakır, Sur, Diyarbakır, Güneydoğu Anadolu Bölgesi, 21300, Türkiye"
+ },
+ "Erzurum": {
+  "lat": 39.9063,
+  "lon": 41.2728,
+  "display": "Erzurum, Yakutiye, Erzurum, Doğu Anadolu Bölgesi, 25050, Türkiye"
+ }
+}

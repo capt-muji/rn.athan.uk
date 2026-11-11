@@ -1,0 +1,1432 @@
+[
+ {
+  "slug": "Pestrezy",
+  "name": "Питрәч",
+  "year": "2025",
+  "lat": 55.75,
+  "lon": 49.62,
+  "days": 365,
+  "band": 96,
+  "fajrAngle": 18,
+  "ishaAngle": 14.95,
+  "dhuhrValues": [
+   720
+  ],
+  "mosqueGapMedian": 90,
+  "cols": {
+   "fajr": {
+    "n": 266,
+    "offset": -0.63,
+    "exact": 94.4,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   },
+   "sunrise": {
+    "n": 266,
+    "offset": -0.82,
+    "exact": 94.7,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.27
+   },
+   "dhuhr": {
+    "n": 266,
+    "offset": 18.52,
+    "exact": 3.4,
+    "w1": 7.1,
+    "max": 16.4,
+    "mae": 8.4
+   },
+   "asr": {
+    "n": 266,
+    "offset": -0.1,
+    "exact": 59.8,
+    "w1": 91.4,
+    "max": 1.4,
+    "mae": 0.46
+   },
+   "maghrib": {
+    "n": 266,
+    "offset": 0.47,
+    "exact": 93.6,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   },
+   "isha": {
+    "n": 266,
+    "offset": -0.27,
+    "exact": 93.2,
+    "w1": 100,
+    "max": 0.8,
+    "mae": 0.26
+   }
+  }
+ },
+ {
+  "slug": "Pestrezy",
+  "name": "Питрәч",
+  "year": "2026",
+  "lat": 55.75,
+  "lon": 49.62,
+  "days": 365,
+  "band": 95,
+  "fajrAngle": 18,
+  "ishaAngle": 15,
+  "dhuhrValues": [
+   720
+  ],
+  "mosqueGapMedian": 91,
+  "cols": {
+   "fajr": {
+    "n": 267,
+    "offset": -0.63,
+    "exact": 97,
+    "w1": 100,
+    "max": 0.7,
+    "mae": 0.24
+   },
+   "sunrise": {
+    "n": 267,
+    "offset": 0.18,
+    "exact": 94.4,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.24
+   },
+   "dhuhr": {
+    "n": 267,
+    "offset": 18.43,
+    "exact": 3.4,
+    "w1": 7.1,
+    "max": 16.5,
+    "mae": 8.42
+   },
+   "asr": {
+    "n": 267,
+    "offset": 0.87,
+    "exact": 53.6,
+    "w1": 92.1,
+    "max": 1.4,
+    "mae": 0.49
+   },
+   "maghrib": {
+    "n": 267,
+    "offset": 0.52,
+    "exact": 95.9,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   },
+   "isha": {
+    "n": 267,
+    "offset": 0.32,
+    "exact": 95.1,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   }
+  }
+ },
+ {
+  "slug": "RibnayaSlpboda",
+  "name": "Балык Бистәсе",
+  "year": "2025",
+  "lat": 55.46,
+  "lon": 50.09,
+  "days": 365,
+  "band": 113,
+  "fajrAngle": 18,
+  "ishaAngle": 15,
+  "dhuhrValues": [
+   720
+  ],
+  "mosqueGapMedian": 90,
+  "cols": {
+   "fajr": {
+    "n": 249,
+    "offset": -0.63,
+    "exact": 97.6,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.24
+   },
+   "sunrise": {
+    "n": 249,
+    "offset": -0.83,
+    "exact": 96.4,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   },
+   "dhuhr": {
+    "n": 249,
+    "offset": 20.62,
+    "exact": 4,
+    "w1": 7.6,
+    "max": 16.2,
+    "mae": 8.03
+   },
+   "asr": {
+    "n": 249,
+    "offset": -0.13,
+    "exact": 57,
+    "w1": 94,
+    "max": 1.3,
+    "mae": 0.48
+   },
+   "maghrib": {
+    "n": 249,
+    "offset": 0.57,
+    "exact": 92,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.23
+   },
+   "isha": {
+    "n": 249,
+    "offset": -0.72,
+    "exact": 91.6,
+    "w1": 100,
+    "max": 0.7,
+    "mae": 0.27
+   }
+  }
+ },
+ {
+  "slug": "RibnayaSlpboda",
+  "name": "Балык Бистәсе",
+  "year": "2026",
+  "lat": 55.46,
+  "lon": 50.09,
+  "days": 365,
+  "band": 111,
+  "fajrAngle": 18,
+  "ishaAngle": 15,
+  "dhuhrValues": [
+   720
+  ],
+  "mosqueGapMedian": 91,
+  "cols": {
+   "fajr": {
+    "n": 251,
+    "offset": -0.7,
+    "exact": 96,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.25
+   },
+   "sunrise": {
+    "n": 251,
+    "offset": 0.18,
+    "exact": 96.8,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.24
+   },
+   "dhuhr": {
+    "n": 251,
+    "offset": 20.65,
+    "exact": 3.6,
+    "w1": 8,
+    "max": 16.2,
+    "mae": 8.07
+   },
+   "asr": {
+    "n": 251,
+    "offset": 0.83,
+    "exact": 58.2,
+    "w1": 92,
+    "max": 1.3,
+    "mae": 0.46
+   },
+   "maghrib": {
+    "n": 251,
+    "offset": 0.32,
+    "exact": 88.8,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.24
+   },
+   "isha": {
+    "n": 251,
+    "offset": 0.3,
+    "exact": 92.8,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.24
+   }
+  }
+ },
+ {
+  "slug": "Sarmanovo2",
+  "name": "Сарман",
+  "year": "2025",
+  "lat": 55.25,
+  "lon": 52.55,
+  "days": 365,
+  "band": 133,
+  "fajrAngle": 18,
+  "ishaAngle": 15,
+  "dhuhrValues": [
+   720
+  ],
+  "mosqueGapMedian": 90,
+  "cols": {
+   "fajr": {
+    "n": 230,
+    "offset": -0.68,
+    "exact": 95.2,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   },
+   "sunrise": {
+    "n": 230,
+    "offset": -0.8,
+    "exact": 96.1,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   },
+   "dhuhr": {
+    "n": 230,
+    "offset": 30.43,
+    "exact": 4.3,
+    "w1": 8.3,
+    "max": 16.2,
+    "mae": 7.5
+   },
+   "asr": {
+    "n": 230,
+    "offset": -0.13,
+    "exact": 57.4,
+    "w1": 94.8,
+    "max": 1.3,
+    "mae": 0.46
+   },
+   "maghrib": {
+    "n": 230,
+    "offset": 0.5,
+    "exact": 97.4,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.23
+   },
+   "isha": {
+    "n": 230,
+    "offset": -0.68,
+    "exact": 91.3,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   }
+  }
+ },
+ {
+  "slug": "Sarmanovo2",
+  "name": "Сарман",
+  "year": "2026",
+  "lat": 55.25,
+  "lon": 52.55,
+  "days": 365,
+  "band": 134,
+  "fajrAngle": 18,
+  "ishaAngle": 15,
+  "dhuhrValues": [
+   720
+  ],
+  "mosqueGapMedian": 91,
+  "cols": {
+   "fajr": {
+    "n": 229,
+    "offset": -0.62,
+    "exact": 96.1,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.25
+   },
+   "sunrise": {
+    "n": 229,
+    "offset": 0.23,
+    "exact": 96.1,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.26
+   },
+   "dhuhr": {
+    "n": 229,
+    "offset": 30.23,
+    "exact": 3.9,
+    "w1": 8.7,
+    "max": 16.4,
+    "mae": 7.53
+   },
+   "asr": {
+    "n": 229,
+    "offset": 0.9,
+    "exact": 62.9,
+    "w1": 96.9,
+    "max": 1.2,
+    "mae": 0.46
+   },
+   "maghrib": {
+    "n": 229,
+    "offset": 0.43,
+    "exact": 96.1,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.28
+   },
+   "isha": {
+    "n": 229,
+    "offset": 0.3,
+    "exact": 91.3,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   }
+  }
+ },
+ {
+  "slug": "StaroeChuprale",
+  "name": "Иске Чүпрәле",
+  "year": "2025",
+  "lat": 54.73,
+  "lon": 47.52,
+  "days": 365,
+  "band": 159,
+  "fajrAngle": 18,
+  "ishaAngle": 14.95,
+  "dhuhrValues": [
+   735
+  ],
+  "mosqueGapMedian": 90,
+  "cols": {
+   "fajr": {
+    "n": 203,
+    "offset": -0.65,
+    "exact": 93.6,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   },
+   "sunrise": {
+    "n": 203,
+    "offset": -0.88,
+    "exact": 92.1,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.24
+   },
+   "dhuhr": {
+    "n": 203,
+    "offset": 24.97,
+    "exact": 4.9,
+    "w1": 9.4,
+    "max": 16.5,
+    "mae": 6.76
+   },
+   "asr": {
+    "n": 203,
+    "offset": -0.17,
+    "exact": 60.1,
+    "w1": 95.1,
+    "max": 1.2,
+    "mae": 0.46
+   },
+   "maghrib": {
+    "n": 203,
+    "offset": 0.55,
+    "exact": 91.6,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.27
+   },
+   "isha": {
+    "n": 203,
+    "offset": -0.25,
+    "exact": 88.7,
+    "w1": 100,
+    "max": 0.7,
+    "mae": 0.28
+   }
+  }
+ },
+ {
+  "slug": "StaroeChuprale",
+  "name": "Иске Чүпрәле",
+  "year": "2026",
+  "lat": 54.73,
+  "lon": 47.52,
+  "days": 365,
+  "band": 157,
+  "fajrAngle": 18,
+  "ishaAngle": 15,
+  "dhuhrValues": [
+   735
+  ],
+  "mosqueGapMedian": 91,
+  "cols": {
+   "fajr": {
+    "n": 205,
+    "offset": -0.65,
+    "exact": 95.6,
+    "w1": 100,
+    "max": 0.7,
+    "mae": 0.25
+   },
+   "sunrise": {
+    "n": 205,
+    "offset": 0.25,
+    "exact": 94.6,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   },
+   "dhuhr": {
+    "n": 205,
+    "offset": 25.35,
+    "exact": 4.4,
+    "w1": 9.8,
+    "max": 16.2,
+    "mae": 6.81
+   },
+   "asr": {
+    "n": 205,
+    "offset": 0.9,
+    "exact": 58.5,
+    "w1": 93.2,
+    "max": 1.2,
+    "mae": 0.47
+   },
+   "maghrib": {
+    "n": 205,
+    "offset": 0.4,
+    "exact": 94.1,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   },
+   "isha": {
+    "n": 205,
+    "offset": 0.3,
+    "exact": 92.2,
+    "w1": 100,
+    "max": 0.7,
+    "mae": 0.26
+   }
+  }
+ },
+ {
+  "slug": "Tet2",
+  "name": "Тәтеш",
+  "year": "2025",
+  "lat": 54.94,
+  "lon": 48.79,
+  "days": 365,
+  "band": 147,
+  "fajrAngle": 18,
+  "ishaAngle": 15,
+  "dhuhrValues": [
+   720
+  ],
+  "mosqueGapMedian": 90,
+  "cols": {
+   "fajr": {
+    "n": 215,
+    "offset": -0.7,
+    "exact": 92.6,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   },
+   "sunrise": {
+    "n": 215,
+    "offset": -0.78,
+    "exact": 93,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   },
+   "dhuhr": {
+    "n": 215,
+    "offset": 15.38,
+    "exact": 4.7,
+    "w1": 8.8,
+    "max": 16.2,
+    "mae": 7.13
+   },
+   "asr": {
+    "n": 215,
+    "offset": -0.13,
+    "exact": 62.3,
+    "w1": 92.6,
+    "max": 1.2,
+    "mae": 0.45
+   },
+   "maghrib": {
+    "n": 215,
+    "offset": 0.47,
+    "exact": 94,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   },
+   "isha": {
+    "n": 215,
+    "offset": -0.68,
+    "exact": 93,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   }
+  }
+ },
+ {
+  "slug": "Tet2",
+  "name": "Тәтеш",
+  "year": "2026",
+  "lat": 54.94,
+  "lon": 48.79,
+  "days": 365,
+  "band": 152,
+  "fajrAngle": 18,
+  "ishaAngle": 15,
+  "dhuhrValues": [
+   720
+  ],
+  "mosqueGapMedian": 91,
+  "cols": {
+   "fajr": {
+    "n": 210,
+    "offset": -0.65,
+    "exact": 98.6,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.23
+   },
+   "sunrise": {
+    "n": 210,
+    "offset": 0.13,
+    "exact": 91,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   },
+   "dhuhr": {
+    "n": 210,
+    "offset": 15.32,
+    "exact": 4.8,
+    "w1": 9,
+    "max": 16.3,
+    "mae": 6.97
+   },
+   "asr": {
+    "n": 210,
+    "offset": 0.88,
+    "exact": 61.4,
+    "w1": 96.7,
+    "max": 1.2,
+    "mae": 0.45
+   },
+   "maghrib": {
+    "n": 210,
+    "offset": 0.42,
+    "exact": 94.8,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.26
+   },
+   "isha": {
+    "n": 210,
+    "offset": 0.27,
+    "exact": 90,
+    "w1": 100,
+    "max": 0.7,
+    "mae": 0.26
+   }
+  }
+ },
+ {
+  "slug": "Tulyachi",
+  "name": "Теләче",
+  "year": "2025",
+  "lat": 55.9,
+  "lon": 50.19,
+  "days": 365,
+  "band": 97,
+  "fajrAngle": 18,
+  "ishaAngle": 15,
+  "dhuhrValues": [
+   720
+  ],
+  "mosqueGapMedian": 90,
+  "cols": {
+   "fajr": {
+    "n": 266,
+    "offset": -0.6,
+    "exact": 93.6,
+    "w1": 100,
+    "max": 0.7,
+    "mae": 0.25
+   },
+   "sunrise": {
+    "n": 266,
+    "offset": -0.83,
+    "exact": 95.5,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   },
+   "dhuhr": {
+    "n": 266,
+    "offset": 20.82,
+    "exact": 3.4,
+    "w1": 7.1,
+    "max": 16.4,
+    "mae": 8.43
+   },
+   "asr": {
+    "n": 266,
+    "offset": -0.12,
+    "exact": 60.5,
+    "w1": 93.6,
+    "max": 1.4,
+    "mae": 0.45
+   },
+   "maghrib": {
+    "n": 266,
+    "offset": 0.5,
+    "exact": 93.6,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   },
+   "isha": {
+    "n": 266,
+    "offset": -0.67,
+    "exact": 92.1,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   }
+  }
+ },
+ {
+  "slug": "Tulyachi",
+  "name": "Теләче",
+  "year": "2026",
+  "lat": 55.9,
+  "lon": 50.19,
+  "days": 365,
+  "band": 97,
+  "fajrAngle": 18,
+  "ishaAngle": 15,
+  "dhuhrValues": [
+   720
+  ],
+  "mosqueGapMedian": 91,
+  "cols": {
+   "fajr": {
+    "n": 266,
+    "offset": -0.63,
+    "exact": 94.7,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   },
+   "sunrise": {
+    "n": 266,
+    "offset": 0.18,
+    "exact": 95.1,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.23
+   },
+   "dhuhr": {
+    "n": 266,
+    "offset": 20.8,
+    "exact": 3,
+    "w1": 7.5,
+    "max": 16.4,
+    "mae": 8.43
+   },
+   "asr": {
+    "n": 266,
+    "offset": 0.92,
+    "exact": 52.3,
+    "w1": 93.6,
+    "max": 1.3,
+    "mae": 0.5
+   },
+   "maghrib": {
+    "n": 266,
+    "offset": 0.45,
+    "exact": 95.5,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   },
+   "isha": {
+    "n": 266,
+    "offset": 0.32,
+    "exact": 90.2,
+    "w1": 100,
+    "max": 0.7,
+    "mae": 0.26
+   }
+  }
+ },
+ {
+  "slug": "Urussu",
+  "name": "Урыссу",
+  "year": "2025",
+  "lat": 54.6,
+  "lon": 53.43,
+  "days": 365,
+  "band": 161,
+  "fajrAngle": 18,
+  "ishaAngle": 15,
+  "dhuhrValues": [
+   720
+  ],
+  "mosqueGapMedian": 90,
+  "cols": {
+   "fajr": {
+    "n": 201,
+    "offset": -0.65,
+    "exact": 98.5,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.24
+   },
+   "sunrise": {
+    "n": 201,
+    "offset": -0.77,
+    "exact": 96.5,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.24
+   },
+   "dhuhr": {
+    "n": 201,
+    "offset": 33.72,
+    "exact": 5,
+    "w1": 9.5,
+    "max": 16.4,
+    "mae": 6.63
+   },
+   "asr": {
+    "n": 201,
+    "offset": -0.07,
+    "exact": 60.2,
+    "w1": 98,
+    "max": 1.1,
+    "mae": 0.45
+   },
+   "maghrib": {
+    "n": 201,
+    "offset": 0.52,
+    "exact": 97,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.27
+   },
+   "isha": {
+    "n": 201,
+    "offset": -0.63,
+    "exact": 92,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.24
+   }
+  }
+ },
+ {
+  "slug": "Urussu",
+  "name": "Урыссу",
+  "year": "2026",
+  "lat": 54.6,
+  "lon": 53.43,
+  "days": 365,
+  "band": 164,
+  "fajrAngle": 18,
+  "ishaAngle": 15,
+  "dhuhrValues": [
+   720
+  ],
+  "mosqueGapMedian": 91,
+  "cols": {
+   "fajr": {
+    "n": 198,
+    "offset": -0.58,
+    "exact": 94.9,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.25
+   },
+   "sunrise": {
+    "n": 198,
+    "offset": 0.23,
+    "exact": 96.5,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   },
+   "dhuhr": {
+    "n": 198,
+    "offset": 33.9,
+    "exact": 5.1,
+    "w1": 9.6,
+    "max": 16.3,
+    "mae": 6.64
+   },
+   "asr": {
+    "n": 198,
+    "offset": 0.88,
+    "exact": 63.1,
+    "w1": 96.5,
+    "max": 1.2,
+    "mae": 0.41
+   },
+   "maghrib": {
+    "n": 198,
+    "offset": 0.48,
+    "exact": 98.5,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.24
+   },
+   "isha": {
+    "n": 198,
+    "offset": 0.28,
+    "exact": 91.9,
+    "w1": 100,
+    "max": 0.7,
+    "mae": 0.25
+   }
+  }
+ },
+ {
+  "slug": "VerhUslon",
+  "name": "Югары Ослан",
+  "year": "2025",
+  "lat": 55.77,
+  "lon": 48.94,
+  "days": 365,
+  "band": 95,
+  "fajrAngle": 18,
+  "ishaAngle": 15,
+  "dhuhrValues": [
+   720
+  ],
+  "mosqueGapMedian": 90,
+  "cols": {
+   "fajr": {
+    "n": 267,
+    "offset": -0.63,
+    "exact": 98.5,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.24
+   },
+   "sunrise": {
+    "n": 267,
+    "offset": -0.88,
+    "exact": 93.6,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   },
+   "dhuhr": {
+    "n": 267,
+    "offset": 15.77,
+    "exact": 3.7,
+    "w1": 7.1,
+    "max": 16.5,
+    "mae": 8.42
+   },
+   "asr": {
+    "n": 267,
+    "offset": -0.17,
+    "exact": 51.7,
+    "w1": 94.8,
+    "max": 1.4,
+    "mae": 0.48
+   },
+   "maghrib": {
+    "n": 267,
+    "offset": 0.5,
+    "exact": 97.4,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.24
+   },
+   "isha": {
+    "n": 267,
+    "offset": -0.72,
+    "exact": 93.3,
+    "w1": 100,
+    "max": 0.7,
+    "mae": 0.25
+   }
+  }
+ },
+ {
+  "slug": "VerhUslon",
+  "name": "Югары Ослан",
+  "year": "2026",
+  "lat": 55.77,
+  "lon": 48.94,
+  "days": 365,
+  "band": 95,
+  "fajrAngle": 18,
+  "ishaAngle": 15,
+  "dhuhrValues": [
+   720
+  ],
+  "mosqueGapMedian": 91,
+  "cols": {
+   "fajr": {
+    "n": 267,
+    "offset": -0.62,
+    "exact": 97.8,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   },
+   "sunrise": {
+    "n": 267,
+    "offset": 0.22,
+    "exact": 94,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   },
+   "dhuhr": {
+    "n": 267,
+    "offset": 15.73,
+    "exact": 3.4,
+    "w1": 7.1,
+    "max": 16.5,
+    "mae": 8.42
+   },
+   "asr": {
+    "n": 267,
+    "offset": 0.9,
+    "exact": 59.9,
+    "w1": 94,
+    "max": 1.4,
+    "mae": 0.45
+   },
+   "maghrib": {
+    "n": 267,
+    "offset": 0.48,
+    "exact": 94.4,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   },
+   "isha": {
+    "n": 267,
+    "offset": 0.3,
+    "exact": 91.4,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   }
+  }
+ },
+ {
+  "slug": "VicokayGora",
+  "name": "Биектау",
+  "year": "2025",
+  "lat": 55.91,
+  "lon": 49.27,
+  "days": 365,
+  "band": 97,
+  "fajrAngle": 18,
+  "ishaAngle": 15,
+  "dhuhrValues": [
+   720
+  ],
+  "mosqueGapMedian": 90,
+  "cols": {
+   "fajr": {
+    "n": 266,
+    "offset": -0.6,
+    "exact": 97.4,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.24
+   },
+   "sunrise": {
+    "n": 266,
+    "offset": -0.87,
+    "exact": 93.2,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   },
+   "dhuhr": {
+    "n": 266,
+    "offset": 17.12,
+    "exact": 3.4,
+    "w1": 7.1,
+    "max": 16.4,
+    "mae": 8.43
+   },
+   "asr": {
+    "n": 266,
+    "offset": -0.13,
+    "exact": 50,
+    "w1": 94,
+    "max": 1.4,
+    "mae": 0.5
+   },
+   "maghrib": {
+    "n": 266,
+    "offset": 0.55,
+    "exact": 94.7,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   },
+   "isha": {
+    "n": 266,
+    "offset": -0.7,
+    "exact": 91.7,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   }
+  }
+ },
+ {
+  "slug": "VicokayGora",
+  "name": "Биектау",
+  "year": "2026",
+  "lat": 55.91,
+  "lon": 49.27,
+  "days": 365,
+  "band": 97,
+  "fajrAngle": 18,
+  "ishaAngle": 14.95,
+  "dhuhrValues": [
+   720
+  ],
+  "mosqueGapMedian": 91,
+  "cols": {
+   "fajr": {
+    "n": 266,
+    "offset": -0.62,
+    "exact": 97.4,
+    "w1": 100,
+    "max": 0.7,
+    "mae": 0.25
+   },
+   "sunrise": {
+    "n": 266,
+    "offset": 0.28,
+    "exact": 97,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.24
+   },
+   "dhuhr": {
+    "n": 266,
+    "offset": 17.1,
+    "exact": 3,
+    "w1": 7.5,
+    "max": 16.4,
+    "mae": 8.43
+   },
+   "asr": {
+    "n": 266,
+    "offset": 0.83,
+    "exact": 59,
+    "w1": 94.4,
+    "max": 1.4,
+    "mae": 0.45
+   },
+   "maghrib": {
+    "n": 266,
+    "offset": 0.47,
+    "exact": 94,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   },
+   "isha": {
+    "n": 266,
+    "offset": 0.75,
+    "exact": 92.9,
+    "w1": 100,
+    "max": 0.8,
+    "mae": 0.26
+   }
+  }
+ },
+ {
+  "slug": "Zainsk",
+  "name": "Зәй",
+  "year": "2025",
+  "lat": 55.29,
+  "lon": 51.97,
+  "days": 365,
+  "band": 130,
+  "fajrAngle": 18,
+  "ishaAngle": 15,
+  "dhuhrValues": [
+   720
+  ],
+  "mosqueGapMedian": 90,
+  "cols": {
+   "fajr": {
+    "n": 233,
+    "offset": -0.65,
+    "exact": 95.7,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   },
+   "sunrise": {
+    "n": 233,
+    "offset": -0.82,
+    "exact": 94.8,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.27
+   },
+   "dhuhr": {
+    "n": 233,
+    "offset": 28.28,
+    "exact": 3.9,
+    "w1": 9,
+    "max": 16,
+    "mae": 7.67
+   },
+   "asr": {
+    "n": 233,
+    "offset": -0.13,
+    "exact": 58.4,
+    "w1": 95.3,
+    "max": 1.3,
+    "mae": 0.45
+   },
+   "maghrib": {
+    "n": 233,
+    "offset": 0.45,
+    "exact": 89.7,
+    "w1": 100,
+    "max": 0.7,
+    "mae": 0.26
+   },
+   "isha": {
+    "n": 233,
+    "offset": -0.67,
+    "exact": 94,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.24
+   }
+  }
+ },
+ {
+  "slug": "Zainsk",
+  "name": "Зәй",
+  "year": "2026",
+  "lat": 55.29,
+  "lon": 51.97,
+  "days": 365,
+  "band": 133,
+  "fajrAngle": 18,
+  "ishaAngle": 15,
+  "dhuhrValues": [
+   720
+  ],
+  "mosqueGapMedian": 91,
+  "cols": {
+   "fajr": {
+    "n": 230,
+    "offset": -0.65,
+    "exact": 97.8,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.24
+   },
+   "sunrise": {
+    "n": 230,
+    "offset": 0.22,
+    "exact": 96.5,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.25
+   },
+   "dhuhr": {
+    "n": 230,
+    "offset": 27.9,
+    "exact": 3.5,
+    "w1": 8.7,
+    "max": 16.4,
+    "mae": 7.55
+   },
+   "asr": {
+    "n": 230,
+    "offset": 0.97,
+    "exact": 63.9,
+    "w1": 96.5,
+    "max": 1.2,
+    "mae": 0.44
+   },
+   "maghrib": {
+    "n": 230,
+    "offset": 0.58,
+    "exact": 93,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.24
+   },
+   "isha": {
+    "n": 230,
+    "offset": 0.35,
+    "exact": 92.6,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   }
+  }
+ },
+ {
+  "slug": "Zelenodolsk",
+  "name": "Яшел Үзән",
+  "year": "2025",
+  "lat": 55.84,
+  "lon": 48.47,
+  "days": 365,
+  "band": 97,
+  "fajrAngle": 18,
+  "ishaAngle": 15,
+  "dhuhrValues": [
+   725
+  ],
+  "mosqueGapMedian": 90,
+  "cols": {
+   "fajr": {
+    "n": 267,
+    "offset": -0.68,
+    "exact": 93.6,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   },
+   "sunrise": {
+    "n": 267,
+    "offset": -0.88,
+    "exact": 93.6,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   },
+   "dhuhr": {
+    "n": 267,
+    "offset": 18.87,
+    "exact": 3.7,
+    "w1": 7.1,
+    "max": 16.5,
+    "mae": 8.42
+   },
+   "asr": {
+    "n": 267,
+    "offset": -0.2,
+    "exact": 58.1,
+    "w1": 90.3,
+    "max": 1.4,
+    "mae": 0.45
+   },
+   "maghrib": {
+    "n": 267,
+    "offset": 0.45,
+    "exact": 96.6,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   },
+   "isha": {
+    "n": 267,
+    "offset": -0.63,
+    "exact": 93.3,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   }
+  }
+ },
+ {
+  "slug": "Zelenodolsk",
+  "name": "Яшел Үзән",
+  "year": "2026",
+  "lat": 55.84,
+  "lon": 48.47,
+  "days": 365,
+  "band": 97,
+  "fajrAngle": 18,
+  "ishaAngle": 15,
+  "dhuhrValues": [
+   725
+  ],
+  "mosqueGapMedian": 91,
+  "cols": {
+   "fajr": {
+    "n": 267,
+    "offset": -0.67,
+    "exact": 92.9,
+    "w1": 100,
+    "max": 0.8,
+    "mae": 0.25
+   },
+   "sunrise": {
+    "n": 267,
+    "offset": 0.28,
+    "exact": 94,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.24
+   },
+   "dhuhr": {
+    "n": 267,
+    "offset": 18.83,
+    "exact": 3.4,
+    "w1": 7.1,
+    "max": 16.5,
+    "mae": 8.42
+   },
+   "asr": {
+    "n": 267,
+    "offset": 0.85,
+    "exact": 52.8,
+    "w1": 93.6,
+    "max": 1.3,
+    "mae": 0.49
+   },
+   "maghrib": {
+    "n": 267,
+    "offset": 0.47,
+    "exact": 95.1,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.25
+   },
+   "isha": {
+    "n": 267,
+    "offset": 0.4,
+    "exact": 92.5,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.24
+   }
+  }
+ }
+]

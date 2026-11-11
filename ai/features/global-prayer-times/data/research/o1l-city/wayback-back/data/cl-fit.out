@@ -1,0 +1,17 @@
+ant point -24.70/-70.44 geom-mae 0.45 | nearest Antofagasta 117 km | margins fajr 1.6 sunrise -0.5 dhuhr 0.3 asr 0.7 maghrib 6.0 isha -0.3 | exact 82 w1 100 worst 1
+anto point -31.75/-70.75 geom-mae 0.42 | nearest Vina del Mar 160 km | margins fajr 1.1 sunrise -0.1 dhuhr 1.0 asr 1.9 maghrib 7.2 isha 1.7 | exact 84 w1 99 worst 2
+ari point -18.65/-70.35 geom-mae 0.47 | nearest Arica 19 km | margins fajr 0.9 sunrise -0.4 dhuhr 0.5 asr 1.1 maghrib 6.5 isha 0.5 | exact 94 w1 100 worst 1
+cal point -33.00/-71.25 geom-mae 0.45 | nearest Vina del Mar 28 km | margins fajr 1.2 sunrise -0.6 dhuhr 0.3 asr 1.2 maghrib 6.3 isha 0.2 | exact 91 w1 100 worst 1
+conc point -36.75/-73.00 geom-mae 0.43 | nearest Concepcion 10 km | margins fajr 1.3 sunrise -0.3 dhuhr 0.7 asr 1.5 maghrib 6.7 isha 1.0 | exact 92 w1 99 worst 2
+cop point -28.60/-70.38 geom-mae 0.44 | nearest Copiapo 137 km | margins fajr 2.0 sunrise -0.4 dhuhr 0.3 asr 0.7 maghrib 6.2 isha -0.7 | exact 68 w1 100 worst 1
+coy point -46.26/-72.11 geom-mae 0.45 | nearest Coyhaique 76 km | margins fajr 3.0 sunrise -0.4 dhuhr 0.4 asr 1.6 maghrib 6.2 isha -1.0 | exact 70 w1 99 worst 2
+fel point -31.75/-70.25 geom-mae 0.42 | nearest Vina del Mar 187 km | margins fajr 0.9 sunrise -0.1 dhuhr 1.0 asr 1.8 maghrib 7.1 isha 1.7 | exact 85 w1 100 worst 1
+mon point -42.00/-73.00 geom-mae 0.34 | nearest Puerto Montt 59 km | margins fajr 2.3 sunrise -0.6 dhuhr 0.3 asr 1.3 maghrib 6.1 isha -0.6 | exact 81 w1 100 worst 1
+pun point -53.57/-70.96 geom-mae 0.46 | nearest Punta Arenas 45 km | margins fajr 3.7 sunrise -0.4 dhuhr 0.3 asr 1.7 maghrib 6.2 isha -1.0 | exact 70 w1 97 worst 3
+ran point -34.25/-70.75 geom-mae 0.33 | nearest Rancagua 9 km | margins fajr 1.3 sunrise -0.4 dhuhr 0.5 asr 1.2 maghrib 6.5 isha 0.4 | exact 95 w1 99 worst 2
+san point -34.25/-70.75 geom-mae 0.39 | nearest Rancagua 9 km | margins fajr 1.9 sunrise -0.6 dhuhr 0.2 asr 1.0 maghrib 6.1 isha -0.7 | exact 77 w1 100 worst 1
+ser point -30.50/-71.25 geom-mae 0.37 | nearest La Serena 66 km | margins fajr 1.8 sunrise -0.4 dhuhr 0.6 asr 1.1 maghrib 6.4 isha 0.0 | exact 83 w1 100 worst 1
+tal point -36.39/-71.71 geom-mae 0.46 | nearest Talca 107 km | margins fajr 2.8 sunrise -0.5 dhuhr 0.3 asr 1.4 maghrib 6.1 isha -0.9 | exact 70 w1 100 worst 1
+tem point -39.00/-72.50 geom-mae 0.49 | nearest Temuco 30 km | margins fajr 2.1 sunrise -0.3 dhuhr 0.9 asr 2.0 maghrib 6.8 isha 0.5 | exact 86 w1 100 worst 1
+val point -40.00/-73.25 geom-mae 0.36 | nearest Valdivia 21 km | margins fajr 1.8 sunrise -0.4 dhuhr 0.5 asr 1.3 maghrib 6.4 isha 0.2 | exact 92 w1 99 worst 2
+vin point -33.40/-71.54 geom-mae 0.48 | nearest Valparaiso 40 km | margins fajr 1.6 sunrise -0.5 dhuhr 0.5 asr 1.3 maghrib 6.5 isha 0.0 | exact 87 w1 100 worst 1

@@ -1,0 +1,11 @@
+{
+ "label": "ci-abidjan-aghien",
+ "name": "COMMUNAUTE MUSULMANE D'AGHIEN - Abidjan",
+ "url": "http://mawaqit.net/fr/aghien",
+ "latitude": 5.3822233,
+ "longitude": -3.9932946,
+ "timezone": "Africa/Abidjan",
+ "countryCode": "CI",
+ "site": "https://www.culture-savoir.fr",
+ "rows": 365
+}

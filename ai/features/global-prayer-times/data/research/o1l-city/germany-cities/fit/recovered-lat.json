@@ -1,0 +1,146 @@
+{
+ "bonn": {
+  "lat": 50.74000000000074,
+  "rms_min": {
+   "sunrise": "0.48",
+   "maghrib": "1.21",
+   "asr": "1.44"
+  }
+ },
+ "bremen": {
+  "lat": 53.092,
+  "rms_min": {
+   "sunrise": "0.49",
+   "maghrib": "1.33",
+   "asr": "1.60"
+  }
+ },
+ "dortmund": {
+  "lat": 51.52000000000086,
+  "rms_min": {
+   "sunrise": "0.49",
+   "maghrib": "1.25",
+   "asr": "1.51"
+  }
+ },
+ "dresden": {
+  "lat": 51.06000000000079,
+  "rms_min": {
+   "sunrise": "0.48",
+   "maghrib": "1.26",
+   "asr": "1.46"
+  }
+ },
+ "duisburg": {
+  "lat": 51.48000000000086,
+  "rms_min": {
+   "sunrise": "0.48",
+   "maghrib": "1.24",
+   "asr": "1.51"
+  }
+ },
+ "dusseldorf": {
+  "lat": 51.256,
+  "rms_min": {
+   "sunrise": "0.48",
+   "maghrib": "1.21",
+   "asr": "1.50"
+  }
+ },
+ "erfurt": {
+  "lat": 50.98000000000078,
+  "rms_min": {
+   "sunrise": "0.48",
+   "maghrib": "1.23",
+   "asr": "1.47"
+  }
+ },
+ "essen": {
+  "lat": 51.46000000000085,
+  "rms_min": {
+   "sunrise": "0.47",
+   "maghrib": "1.24",
+   "asr": "1.50"
+  }
+ },
+ "freiburg": {
+  "lat": 47.98000000000031,
+  "rms_min": {
+   "sunrise": "0.45",
+   "maghrib": "1.09",
+   "asr": "1.32"
+  }
+ },
+ "hannover": {
+  "lat": 52.396,
+  "rms_min": {
+   "sunrise": "0.50",
+   "maghrib": "1.28",
+   "asr": "1.54"
+  }
+ },
+ "karlsruhe": {
+  "lat": 49.018,
+  "rms_min": {
+   "sunrise": "0.44",
+   "maghrib": "1.14",
+   "asr": "1.35"
+  }
+ },
+ "kiel": {
+  "lat": 54.3200000000013,
+  "rms_min": {
+   "sunrise": "0.53",
+   "maghrib": "1.35",
+   "asr": "1.70"
+  }
+ },
+ "leipzig": {
+  "lat": 51.398,
+  "rms_min": {
+   "sunrise": "0.49",
+   "maghrib": "1.23",
+   "asr": "1.50"
+  }
+ },
+ "magdeburg": {
+  "lat": 52.134,
+  "rms_min": {
+   "sunrise": "0.49",
+   "maghrib": "1.25",
+   "asr": "1.56"
+  }
+ },
+ "mannheim": {
+  "lat": 49.52000000000055,
+  "rms_min": {
+   "sunrise": "0.47",
+   "maghrib": "1.15",
+   "asr": "1.39"
+  }
+ },
+ "nurnberg": {
+  "lat": 49.44000000000054,
+  "rms_min": {
+   "sunrise": "0.47",
+   "maghrib": "1.15",
+   "asr": "1.41"
+  }
+ },
+ "rostock": {
+  "lat": 54.09,
+  "rms_min": {
+   "sunrise": "0.52",
+   "maghrib": "1.35",
+   "asr": "1.67"
+  }
+ },
+ "saarbrucken": {
+  "lat": 49.226,
+  "rms_min": {
+   "sunrise": "0.45",
+   "maghrib": "1.16",
+   "asr": "1.38"
+  }
+ }
+}

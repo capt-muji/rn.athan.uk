@@ -1,0 +1,6 @@
+[
+ {"label":"eh-laayoune-gmt","file":"data/eh-laayoune-2026-11.json","tz":"Africa/Abidjan","lat":27.1536,"lon":-13.2033},
+ {"label":"eh-laayoune-plus1","file":"data/eh-laayoune-2026-11.json","tz":"Africa/El_Aaiun","lat":27.1536,"lon":-13.2033},
+ {"label":"eh-dakhla-gmt","file":"data/eh-dakhla-2026-11.json","tz":"Africa/Abidjan","lat":23.6848,"lon":-15.958},
+ {"label":"eh-dakhla-plus1","file":"data/eh-dakhla-2026-11.json","tz":"Africa/El_Aaiun","lat":23.6848,"lon":-15.958}
+]

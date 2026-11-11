@@ -1,0 +1,34 @@
+{
+ "label": "r394-النرويج",
+ "file": "captures/masjidi_region_394.json",
+ "rows": 366,
+ "lat": 59.92,
+ "k": 0,
+ "geoRms": 6.548,
+ "fajr": {
+  "kind": "angle",
+  "n": 366,
+  "angle": 15.9,
+  "darkIqr": 0.14
+ },
+ "isha": {
+  "kind": "angle",
+  "n": 366,
+  "angle": 14.27,
+  "darkIqr": 0.08,
+  "gap": 110
+ },
+ "asr": {
+  "school": "Shafi",
+  "shafiMae": 16.1,
+  "hanafiMae": 43.8
+ },
+ "clock": {
+  "lonImplied": -5.01,
+  "offsetMin": -20,
+  "driftRms": 0.2,
+  "runs": 1,
+  "steps": []
+ },
+ "amplitude": -265
+}

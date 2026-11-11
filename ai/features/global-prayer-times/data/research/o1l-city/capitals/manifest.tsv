@@ -1,0 +1,19 @@
+cc	city	slug	year	rows	gate_day	gate	file	bytes
+CA	Ottawa	ottawa-main-mosque-oma-ottawa-k1y-0m1-canada	2026	365	2026-11-11	PASS	mawaqit-ca-ottawa-2026.json	75518
+PS	Jerusalem	jam-shwman-jerusalem-5345645-palestinian-territories	2026	365	2026-11-11	PASS	mawaqit-ps-jerusalem-2026.json	66527
+CM	Yaounde	mosquee-hlm-waounde	2026	365	2026-10-29	PASS	mawaqit-cm-yaounde-2026.json	59506
+LV	Riga	latvijas-islama-kulturas-centrs-riga-lv1001-latvia	2026	365	2026-11-11	PASS	mawaqit-lv-riga-2026.json	62826
+MK	Skopje	xhamia-ikre-saraj-skopje-1000-north-macedonia	2026	365	2026-11-11	PASS	mawaqit-mk-skopje-2026.json	60640
+MD	Chisinau	muftiatul-musulmanilor-din-moldova	2026	365	2026-11-11	PASS	mawaqit-md-chisinau-2026.json	61979
+HU	Budapest	budapest	2026	365	2026-11-11	PASS	mawaqit-hu-budapest-2026.json	66086
+CZ	Prague	al-nour-mosque-mesita-al-nour-prague-110-00-czechia	2026	365	2026-11-11	PASS	mawaqit-cz-prague-2026.json	62937
+PL	Warsaw	osrodek-kultury-muzulmanskie-warsaw-02-389-poland	2026	365	2026-11-11	PASS	mawaqit-pl-warsaw-2026.json	70245
+RO	Bucharest	msjd-lrhmn-moscheea-ar-rahman-bucuresti-060316-romania	2026	365	2026-11-11	PASS	mawaqit-ro-bucharest-2026.json	63060
+ER	Asmara	masjid-al-khifa-al-rashidin-abbashawel-asmara-eritrea	2026	365	2026-11-09	PASS	mawaqit-er-asmara-2026.json	62735
+CV	Praia	aides-islamic-center-praia-cape-verde	2026	365	2026-11-11	PASS	mawaqit-cv-praia-2026.json	61686
+KM	Moroni	msjd-ljm-sima-97300-comoros	2026	365	2026-11-11	PASS	mawaqit-km-moroni-2026.json	61363
+UY	Montevideo	al-musallah-al-haazimi-11100-departamento-de-montevideo-uruguay	2026	365	2026-11-11	PASS	mawaqit-uy-montevideo-2026.json	63837
+NI	Managua	mezquita-de-managua-14038-managua-nicaragua	2026	365	2026-11-11	PASS	mawaqit-ni-managua-2026.json	66076
+AR	Buenos Aires	haazimi-musallah-buenos-aires-c1214	2026	365	2026-11-11	PASS	mawaqit-ar-buenos-aires-2026.json	66140
+SY	Damascus	anwar-akkad-mosque-damascus-00963-syria	2026	365	2026-11-11	PASS	mawaqit-sy-damascus-2026.json	66202
+AE	Abu Dhabi	masjid-suhail-mohammed-darwish-al-mazrouei-971-sweihan-abu-dhabi-united-arab-emirates	2026	365	2026-11-10	PASS	mawaqit-ae-abu-dhabi-2026.json	64147

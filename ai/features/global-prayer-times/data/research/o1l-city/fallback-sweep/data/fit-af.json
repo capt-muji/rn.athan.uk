@@ -1,0 +1,572 @@
+[
+ {
+  "label": "cf-bangui-saina",
+  "n": 365,
+  "angles": {
+   "fajr": {
+    "key": [
+     -0.48,
+     349
+    ],
+    "angle": 15.1,
+    "margin": 0.4,
+    "iqr": 0.48,
+    "nearest": {
+     "exact": 349,
+     "within1": 365,
+     "mae": 0.04,
+     "worst": 1
+    },
+    "floor": {
+     "exact": 186,
+     "within1": 365,
+     "mae": 0.49,
+     "worst": 1
+    }
+   },
+   "isha": {
+    "key": [
+     -0.45,
+     346
+    ],
+    "angle": 15.3,
+    "margin": -1.25,
+    "iqr": 0.45,
+    "nearest": {
+     "exact": 346,
+     "within1": 365,
+     "mae": 0.05,
+     "worst": 1
+    },
+    "floor": {
+     "exact": 186,
+     "within1": 365,
+     "mae": 0.49,
+     "worst": 1
+    }
+   }
+  },
+  "cols": {
+   "sunrise": {
+    "margin": -0.02,
+    "iqr": 0.5,
+    "nearest": {
+     "exact": 353,
+     "within1": 365,
+     "mae": 0.03,
+     "worst": 1
+    },
+    "floor": {
+     "exact": 186,
+     "within1": 365,
+     "mae": 0.49,
+     "worst": 1
+    }
+   },
+   "dhuhr": {
+    "margin": 73.5,
+    "iqr": 11.05,
+    "nearest": {
+     "exact": 14,
+     "within1": 42,
+     "mae": 7.17,
+     "worst": 17
+    },
+    "floor": {
+     "exact": 15,
+     "within1": 44,
+     "mae": 7.18,
+     "worst": 17
+    }
+   },
+   "asr": {
+    "margin": -0.08,
+    "iqr": 1.93,
+    "nearest": {
+     "exact": 83,
+     "within1": 310,
+     "mae": 0.92,
+     "worst": 2
+    },
+    "floor": {
+     "exact": 83,
+     "within1": 305,
+     "mae": 0.94,
+     "worst": 2
+    }
+   },
+   "maghrib": {
+    "margin": -0.03,
+    "iqr": 0.5,
+    "nearest": {
+     "exact": 352,
+     "within1": 365,
+     "mae": 0.04,
+     "worst": 1
+    },
+    "floor": {
+     "exact": 183,
+     "within1": 365,
+     "mae": 0.5,
+     "worst": 1
+    }
+   }
+  }
+ },
+ {
+  "label": "gw-bissau-attadamun",
+  "n": 365,
+  "angles": {
+   "fajr": {
+    "key": [
+     -16.97,
+     56
+    ],
+    "angle": 12.65,
+    "margin": -28.35,
+    "iqr": 16.97,
+    "nearest": {
+     "exact": 56,
+     "within1": 76,
+     "mae": 8.47,
+     "worst": 19
+    },
+    "floor": {
+     "exact": 55,
+     "within1": 77,
+     "mae": 8.53,
+     "worst": 19
+    }
+   },
+   "isha": {
+    "key": [
+     -3.38,
+     58
+    ],
+    "angle": 12,
+    "margin": -4.5,
+    "iqr": 3.38,
+    "nearest": {
+     "exact": 58,
+     "within1": 163,
+     "mae": 4.09,
+     "worst": 17
+    },
+    "floor": {
+     "exact": 74,
+     "within1": 143,
+     "mae": 4.1,
+     "worst": 17
+    }
+   }
+  },
+  "cols": {
+   "sunrise": {
+    "margin": 0,
+    "iqr": 0.48,
+    "nearest": {
+     "exact": 361,
+     "within1": 365,
+     "mae": 0.01,
+     "worst": 1
+    },
+    "floor": {
+     "exact": 188,
+     "within1": 365,
+     "mae": 0.48,
+     "worst": 1
+    }
+   },
+   "dhuhr": {
+    "margin": 36.93,
+    "iqr": 11.1,
+    "nearest": {
+     "exact": 13,
+     "within1": 42,
+     "mae": 7.17,
+     "worst": 17
+    },
+    "floor": {
+     "exact": 15,
+     "within1": 44,
+     "mae": 7.17,
+     "worst": 17
+    }
+   },
+   "asr": {
+    "margin": 10.58,
+    "iqr": 19.65,
+    "nearest": {
+     "exact": 7,
+     "within1": 19,
+     "mae": 9.4,
+     "worst": 18
+    },
+    "floor": {
+     "exact": 7,
+     "within1": 21,
+     "mae": 9.45,
+     "worst": 18
+    }
+   },
+   "maghrib": {
+    "margin": -2.83,
+    "iqr": 0.63,
+    "nearest": {
+     "exact": 250,
+     "within1": 289,
+     "mae": 2.04,
+     "worst": 13
+    },
+    "floor": {
+     "exact": 105,
+     "within1": 291,
+     "mae": 2.35,
+     "worst": 13
+    }
+   }
+  }
+ },
+ {
+  "label": "mg-mahajanga-vendredi",
+  "n": 365,
+  "angles": {
+   "fajr": {
+    "key": [
+     -0.65,
+     262
+    ],
+    "angle": 17.85,
+    "margin": -5.52,
+    "iqr": 0.65,
+    "nearest": {
+     "exact": 262,
+     "within1": 293,
+     "mae": 2.16,
+     "worst": 15
+    },
+    "floor": {
+     "exact": 115,
+     "within1": 294,
+     "mae": 2.48,
+     "worst": 15
+    }
+   },
+   "isha": {
+    "key": [
+     -25.92,
+     6
+    ],
+    "angle": 12,
+    "margin": 40.97,
+    "iqr": 25.92,
+    "nearest": {
+     "exact": 6,
+     "within1": 21,
+     "mae": 11.96,
+     "worst": 20
+    },
+    "floor": {
+     "exact": 9,
+     "within1": 23,
+     "mae": 11.97,
+     "worst": 21
+    }
+   }
+  },
+  "cols": {
+   "sunrise": {
+    "margin": 0,
+    "iqr": 0.53,
+    "nearest": {
+     "exact": 361,
+     "within1": 365,
+     "mae": 0.01,
+     "worst": 1
+    },
+    "floor": {
+     "exact": 187,
+     "within1": 365,
+     "mae": 0.49,
+     "worst": 1
+    }
+   },
+   "dhuhr": {
+    "margin": 19.62,
+    "iqr": 11.02,
+    "nearest": {
+     "exact": 14,
+     "within1": 42,
+     "mae": 7.17,
+     "worst": 17
+    },
+    "floor": {
+     "exact": 14,
+     "within1": 44,
+     "mae": 7.18,
+     "worst": 17
+    }
+   },
+   "asr": {
+    "margin": 0.75,
+    "iqr": 12.25,
+    "nearest": {
+     "exact": 12,
+     "within1": 35,
+     "mae": 7.44,
+     "worst": 28
+    },
+    "floor": {
+     "exact": 11,
+     "within1": 35,
+     "mae": 7.45,
+     "worst": 28
+    }
+   },
+   "maghrib": {
+    "margin": 12.63,
+    "iqr": 23,
+    "nearest": {
+     "exact": 8,
+     "within1": 26,
+     "mae": 10.78,
+     "worst": 22
+    },
+    "floor": {
+     "exact": 9,
+     "within1": 28,
+     "mae": 10.8,
+     "worst": 22
+    }
+   }
+  }
+ },
+ {
+  "label": "mg-mahajanga-tawhid",
+  "n": 365,
+  "angles": {
+   "fajr": {
+    "key": [
+     -0.57,
+     298
+    ],
+    "angle": 14.6,
+    "margin": -6.65,
+    "iqr": 0.57,
+    "nearest": {
+     "exact": 298,
+     "within1": 324,
+     "mae": 0.59,
+     "worst": 6
+    },
+    "floor": {
+     "exact": 143,
+     "within1": 326,
+     "mae": 0.95,
+     "worst": 6
+    }
+   },
+   "isha": {
+    "key": [
+     -30.28,
+     6
+    ],
+    "angle": 12,
+    "margin": 35.97,
+    "iqr": 30.28,
+    "nearest": {
+     "exact": 6,
+     "within1": 21,
+     "mae": 13.22,
+     "worst": 24
+    },
+    "floor": {
+     "exact": 8,
+     "within1": 23,
+     "mae": 13.22,
+     "worst": 24
+    }
+   }
+  },
+  "cols": {
+   "sunrise": {
+    "margin": 0,
+    "iqr": 0.53,
+    "nearest": {
+     "exact": 361,
+     "within1": 365,
+     "mae": 0.01,
+     "worst": 1
+    },
+    "floor": {
+     "exact": 189,
+     "within1": 365,
+     "mae": 0.48,
+     "worst": 1
+    }
+   },
+   "dhuhr": {
+    "margin": 14.62,
+    "iqr": 11.02,
+    "nearest": {
+     "exact": 14,
+     "within1": 42,
+     "mae": 7.17,
+     "worst": 17
+    },
+    "floor": {
+     "exact": 14,
+     "within1": 44,
+     "mae": 7.18,
+     "worst": 17
+    }
+   },
+   "asr": {
+    "margin": 1.82,
+    "iqr": 8.55,
+    "nearest": {
+     "exact": 58,
+     "within1": 106,
+     "mae": 5.19,
+     "worst": 27
+    },
+    "floor": {
+     "exact": 24,
+     "within1": 105,
+     "mae": 5.24,
+     "worst": 27
+    }
+   },
+   "maghrib": {
+    "margin": 10.63,
+    "iqr": 21.07,
+    "nearest": {
+     "exact": 8,
+     "within1": 26,
+     "mae": 10.09,
+     "worst": 22
+    },
+    "floor": {
+     "exact": 9,
+     "within1": 28,
+     "mae": 10.1,
+     "worst": 22
+    }
+   }
+  }
+ },
+ {
+  "label": "mg-nosybe-sengeniga",
+  "n": 365,
+  "angles": {
+   "fajr": {
+    "key": [
+     -24.75,
+     75
+    ],
+    "angle": 12.65,
+    "margin": -14.32,
+    "iqr": 24.75,
+    "nearest": {
+     "exact": 75,
+     "within1": 197,
+     "mae": 11.9,
+     "worst": 43
+    },
+    "floor": {
+     "exact": 14,
+     "within1": 162,
+     "mae": 11.94,
+     "worst": 42
+    }
+   },
+   "isha": {
+    "key": [
+     -25.5,
+     8
+    ],
+    "angle": 12,
+    "margin": 34.82,
+    "iqr": 25.5,
+    "nearest": {
+     "exact": 8,
+     "within1": 67,
+     "mae": 11.02,
+     "worst": 23
+    },
+    "floor": {
+     "exact": 11,
+     "within1": 73,
+     "mae": 11.07,
+     "worst": 23
+    }
+   }
+  },
+  "cols": {
+   "sunrise": {
+    "margin": 0.02,
+    "iqr": 0.53,
+    "nearest": {
+     "exact": 364,
+     "within1": 365,
+     "mae": 0,
+     "worst": 1
+    },
+    "floor": {
+     "exact": 187,
+     "within1": 365,
+     "mae": 0.49,
+     "worst": 1
+    }
+   },
+   "dhuhr": {
+    "margin": 17.37,
+    "iqr": 11,
+    "nearest": {
+     "exact": 14,
+     "within1": 42,
+     "mae": 7.18,
+     "worst": 17
+    },
+    "floor": {
+     "exact": 14,
+     "within1": 44,
+     "mae": 7.18,
+     "worst": 17
+    }
+   },
+   "asr": {
+    "margin": 7.68,
+    "iqr": 11,
+    "nearest": {
+     "exact": 14,
+     "within1": 44,
+     "mae": 7.24,
+     "worst": 31
+    },
+    "floor": {
+     "exact": 14,
+     "within1": 42,
+     "mae": 7.24,
+     "worst": 31
+    }
+   },
+   "maghrib": {
+    "margin": 9.17,
+    "iqr": 15.7,
+    "nearest": {
+     "exact": 13,
+     "within1": 62,
+     "mae": 7.77,
+     "worst": 17
+    },
+    "floor": {
+     "exact": 26,
+     "within1": 65,
+     "mae": 7.78,
+     "worst": 17
+    }
+   }
+  }
+ }
+]

@@ -1,0 +1,34 @@
+[
+ {
+  "tag": "dk-aarhus",
+  "file": "dk-adan-aarhus-2026.json",
+  "lat": 56.1629,
+  "lng": 10.2039,
+  "fa": 18,
+  "is": 17
+ },
+ {
+  "tag": "dk-odense",
+  "file": "dk-adan-odense-2026.json",
+  "lat": 55.4038,
+  "lng": 10.4024,
+  "fa": 18,
+  "is": 17
+ },
+ {
+  "tag": "dk-aalborg",
+  "file": "dk-adan-aalborg-2026.json",
+  "lat": 57.0488,
+  "lng": 9.9217,
+  "fa": 18,
+  "is": 17
+ },
+ {
+  "tag": "dk-esbjerg",
+  "file": "dk-adan-esbjerg-2026.json",
+  "lat": 55.4765,
+  "lng": 8.4594,
+  "fa": 18,
+  "is": 17
+ }
+]

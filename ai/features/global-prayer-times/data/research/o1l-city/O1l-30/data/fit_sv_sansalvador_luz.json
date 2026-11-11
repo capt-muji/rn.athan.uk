@@ -1,0 +1,83 @@
+{
+ "file": "data/mawaqit_sv_sansalvador_luz.json",
+ "name": "Mezquita de La Luz - SAN SALVADOR",
+ "lat": 13.7011634,
+ "lon": -89.1915464,
+ "tz": "America/El_Salvador",
+ "days": 365,
+ "candidates": [
+  {
+   "method": "MWL",
+   "madhab": "shafi",
+   "totalMae": 1.74
+  },
+  {
+   "method": "Turkey",
+   "madhab": "shafi",
+   "totalMae": 1.74
+  },
+  {
+   "method": "Kuwait",
+   "madhab": "shafi",
+   "totalMae": 3.64
+  }
+ ],
+ "refined": {
+  "method": "MWL",
+  "madhab": "shafi",
+  "fajrAngle": 18,
+  "ishaAngle": 16.55,
+  "offsets": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 2
+  },
+  "scores": {
+   "fajr": {
+    "med": 0,
+    "exact": 356,
+    "w1": 365,
+    "mae": 0.26,
+    "worst": 0.5
+   },
+   "sunrise": {
+    "med": 0,
+    "exact": 354,
+    "w1": 365,
+    "mae": 0.26,
+    "worst": 0.5
+   },
+   "dhuhr": {
+    "med": 0,
+    "exact": 358,
+    "w1": 365,
+    "mae": 0.25,
+    "worst": 0.5
+   },
+   "asr": {
+    "med": -0.1,
+    "exact": 110,
+    "w1": 356,
+    "mae": 0.73,
+    "worst": 1.7
+   },
+   "maghrib": {
+    "med": 0,
+    "exact": 359,
+    "w1": 365,
+    "mae": 0.25,
+    "worst": 0.5
+   },
+   "isha": {
+    "med": 0,
+    "exact": 337,
+    "w1": 365,
+    "mae": 0.25,
+    "worst": 0.6
+   }
+  }
+ }
+}

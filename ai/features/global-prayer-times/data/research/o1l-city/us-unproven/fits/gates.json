@@ -1,0 +1,236 @@
+[
+ {
+  "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/Albany-muna-center-of-albany-schenectady-12308-united-states-mawaqit.json",
+  "status": "MATCH",
+  "date": "2026-11-11"
+ },
+ {
+  "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/Baltimore-masjid-e-bilal-baltimore-21225-united-states-mawaqit.json",
+  "status": "MATCH",
+  "date": "2026-11-11"
+ },
+ {
+  "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/Baltimore-masjid-ul-haqq-baltimore-masjidbox.json",
+  "status": "MATCH",
+  "dates": [
+   "2024-08-28",
+   "2025-12-23",
+   "2028-01-03"
+  ]
+ },
+ {
+  "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/Baltimore-masjied-al-ihsan-baltimore-21207-united-states-mawaqit.json",
+  "status": "MISMATCH",
+  "live": [
+   "05:29",
+   "11:51",
+   "14:35",
+   "16:55",
+   "18:12"
+  ]
+ },
+ {
+  "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/Baton Rouge-4KB0kPA5-athanplus.json",
+  "status": "MATCH",
+  "dates": [
+   "2024-08-31",
+   "2025-12-31",
+   "2027-12-29"
+  ]
+ },
+ {
+  "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/Baton Rouge-jKZpJ7AX-athanplus.json",
+  "status": "MATCH",
+  "dates": [
+   "2024-08-31",
+   "2025-12-31",
+   "2027-12-29"
+  ]
+ },
+ {
+  "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/Birmingham-bis-adhans.json",
+  "status": "MATCH",
+  "dates": [
+   "2024-07-01",
+   "2025-07-02",
+   "2026-12-29"
+  ]
+ },
+ {
+  "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/Dearborn-islamic-house-of-wisdom-dearborn-heights-mawaqit.json",
+  "status": "MATCH",
+  "date": "2026-11-11"
+ },
+ {
+  "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/Detroit-4nL1kgda-athanplus.json",
+  "status": "MATCH",
+  "dates": [
+   "2024-08-31",
+   "2025-12-31",
+   "2027-12-29"
+  ]
+ },
+ {
+  "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/Detroit-baic-detroit-masjidbox.json",
+  "status": "MATCH",
+  "dates": [
+   "2024-08-31",
+   "2026-01-02",
+   "2028-01-03"
+  ]
+ },
+ {
+  "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/Detroit-tawheed-center-detroit-mawaqit.json",
+  "status": "MATCH",
+  "date": "2026-11-11"
+ },
+ {
+  "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/Flint-E5Avv2AX-athanplus.json",
+  "status": "MATCH",
+  "dates": [
+   "2024-08-31",
+   "2025-12-31",
+   "2027-12-29"
+  ]
+ },
+ {
+  "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/Gainesville-hoda-center-gainesville-42608-united-states-mawaqit.json",
+  "status": "MATCH",
+  "date": "2026-11-11"
+ },
+ {
+  "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/Gainesville-rdRvbbdG-athanplus.json",
+  "status": "MATCH",
+  "dates": [
+   "2024-08-31",
+   "2025-12-31",
+   "2027-12-29"
+  ]
+ },
+ {
+  "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/Grand Rapids-masjid-sunnah-grand-rapids-michigan-masjidbox.json",
+  "status": "MATCH",
+  "dates": [
+   "2024-08-31",
+   "2026-01-02",
+   "2028-01-03"
+  ]
+ },
+ {
+  "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/Harrisburg-isgh-alminaret.json",
+  "status": "JS_RENDERED_ONLY"
+ },
+ {
+  "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/Kansas City-islamic-society-of-greater-kansas-city-masjidbox.json",
+  "status": "MATCH",
+  "dates": [
+   "2024-08-31",
+   "2026-01-02",
+   "2028-01-03"
+  ]
+ },
+ {
+  "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/Knoxville-BYADPlAN-athanplus.json",
+  "status": "MATCH",
+  "dates": [
+   "2024-08-31",
+   "2025-12-31",
+   "2027-12-29"
+  ]
+ },
+ {
+  "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/Louisville-hira-institute-masjidbox.json",
+  "status": "MATCH",
+  "dates": [
+   "2024-08-31",
+   "2026-01-02",
+   "2028-01-03"
+  ]
+ },
+ {
+  "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/Montgomery-emis-madinaapps.json",
+  "status": "SINGLE_CAPTURE"
+ },
+ {
+  "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/New Orleans-islamic-center-of-new-orleans-new-orleans-70116-1541-united-states-mawaqit.json",
+  "status": "MATCH",
+  "date": "2026-01-11"
+ },
+ {
+  "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/Portland-3AO2n4Le-athanplus.json",
+  "status": "MATCH",
+  "dates": [
+   "2024-08-31",
+   "2025-12-31",
+   "2027-12-29"
+  ]
+ },
+ {
+  "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/Portland-adJmGxAk-athanplus.json",
+  "status": "MATCH",
+  "dates": [
+   "2024-08-31",
+   "2025-12-31",
+   "2027-12-29"
+  ]
+ },
+ {
+  "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/Providence-YAD4yNAN-athanplus.json",
+  "status": "MATCH",
+  "dates": [
+   "2024-08-31",
+   "2025-12-31",
+   "2027-12-29"
+  ]
+ },
+ {
+  "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/Raleigh-iarb-prayer-schedule.json",
+  "status": "MATCH",
+  "dates": [
+   "2024-01-01",
+   "2025-12-31",
+   "2027-12-31"
+  ]
+ },
+ {
+  "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/Rochester-Vdw3P8de-athanplus.json",
+  "status": "MATCH",
+  "dates": [
+   "2024-08-31",
+   "2025-12-31",
+   "2027-12-29"
+  ]
+ },
+ {
+  "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/Rochester-al-rahman-masjidbox.json",
+  "status": "MATCH",
+  "dates": [
+   "2024-08-31",
+   "2026-01-02",
+   "2028-01-03"
+  ]
+ },
+ {
+  "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/Rochester-ic-rochester-mawaqit.json",
+  "status": "MATCH",
+  "date": "2026-11-11"
+ },
+ {
+  "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/Tucson-Edol0GK7-athanplus.json",
+  "status": "MATCH",
+  "dates": [
+   "2024-08-31",
+   "2025-12-31",
+   "2027-12-29"
+  ]
+ },
+ {
+  "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/Wilmington-masjid-al-ikhlaas-masjidbox.json",
+  "status": "MATCH",
+  "dates": [
+   "2024-08-31",
+   "2026-01-02",
+   "2028-01-03"
+  ]
+ }
+]

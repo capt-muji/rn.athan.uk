@@ -1,0 +1,40 @@
+city	lat	n	exact%	within1%	MAE	worst	fajrMAE	sunMAE	dhuhrMAE	asrMAE	maghribMAE	ishaMAE
+turaif	31.6725	4254	81.85	99.91	0.182	2	0.59	0.06	0.02	0.32	0.05	0.05
+arar	30.99	4254	82.82	99.91	0.173	2	0.59	0.06	0.02	0.30	0.04	0.04
+sakaka	29.97	4254	83.59	99.81	0.166	2	0.53	0.07	0.02	0.28	0.05	0.05
+al-khobar	26.2794	4254	84.30	99.95	0.157	2	0.49	0.06	0.03	0.28	0.04	0.04
+jizan	16.89	4254	87.19	100.00	0.128	1	0.29	0.04	0.02	0.37	0.02	0.02
+samtah	16.6	4254	87.64	100.00	0.124	1	0.28	0.05	0.02	0.34	0.03	0.03
+
+POOLED n=25524 exact=84.56% within1=99.93% worst=2
+PER-PRAYER pooled:
+fajr	MAE 0.463	within1 100.00%	exact 53.7%	worst 1
+sunrise	MAE 0.057	within1 99.95%	exact 94.3%	worst 2
+dhuhr	MAE 0.021	within1 100.00%	exact 97.9%	worst 1
+asr	MAE 0.315	within1 99.91%	exact 68.6%	worst 2
+maghrib	MAE 0.038	within1 99.86%	exact 96.4%	worst 2
+isha	MAE 0.038	within1 99.86%	exact 96.4%	worst 2
+
+INTERVAL AUDIT (isha - maghrib, printed):
+turaif {"90":651,"120":58}
+arar {"90":651,"120":58}
+sakaka {"90":651,"120":58}
+al-khobar {"90":651,"120":58}
+jizan {"90":651,"120":58}
+samtah {"90":651,"120":58}
+
+120-RUNS per city:
+turaif 2027-02-08..2027-03-08 (29d) | 2028-01-28..2028-02-25 (29d)
+arar 2027-02-08..2027-03-08 (29d) | 2028-01-28..2028-02-25 (29d)
+sakaka 2027-02-08..2027-03-08 (29d) | 2028-01-28..2028-02-25 (29d)
+al-khobar 2027-02-08..2027-03-08 (29d) | 2028-01-28..2028-02-25 (29d)
+jizan 2027-02-08..2027-03-08 (29d) | 2028-01-28..2028-02-25 (29d)
+samtah 2027-02-08..2027-03-08 (29d) | 2028-01-28..2028-02-25 (29d)
+
+ALT isha (printed maghrib + interval):
+turaif	within1 99.86%	MAE 0.051
+arar	within1 99.86%	MAE 0.035
+sakaka	within1 99.58%	MAE 0.049
+al-khobar	within1 99.86%	MAE 0.042
+jizan	within1 100.00%	MAE 0.023
+samtah	within1 100.00%	MAE 0.025

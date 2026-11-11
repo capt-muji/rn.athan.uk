@@ -1,0 +1,39 @@
+000 0 103.7.13.69 aceh.kemenag.go.id hit=none
+000 0 103.7.13.251 sumut.kemenag.go.id hit=none
+200     3964 103.7.13.160 sumbar.kemenag.go.id hit=none
+000 0 103.7.13.78 riau.kemenag.go.id hit=none
+000 0 103.7.13.251 jambi.kemenag.go.id hit=none
+000 0 103.7.13.251 sumsel.kemenag.go.id hit=none
+000 0 103.7.13.78 bengkulu.kemenag.go.id hit=none
+000 0 103.7.13.69 lampung.kemenag.go.id hit=none
+000 0 103.7.13.251 babel.kemenag.go.id hit=none
+000 0 103.7.13.251 kepri.kemenag.go.id hit=none
+NODNS dki.kemenag.go.id
+NODNS jakarta.kemenag.go.id
+000 0 103.7.13.251 jabar.kemenag.go.id hit=none
+200   263071 103.9.227.236 jateng.kemenag.go.id hit=Jadwal Sholat
+000 0 103.7.13.251 jatim.kemenag.go.id hit=none
+000 0 103.7.13.251 banten.kemenag.go.id hit=none
+000 0 103.7.13.251 bali.kemenag.go.id hit=none
+000 0 103.7.13.251 ntb.kemenag.go.id hit=none
+000 0 103.7.13.251 ntt.kemenag.go.id hit=none
+000 0 103.7.13.251 kalbar.kemenag.go.id hit=none
+000 0 103.7.13.251 kalteng.kemenag.go.id hit=none
+000 0 103.7.13.251 kalsel.kemenag.go.id hit=none
+000 0 103.7.13.251 kaltim.kemenag.go.id hit=none
+000 0 103.7.13.251 kaltara.kemenag.go.id hit=none
+000 0 103.7.13.251 sulut.kemenag.go.id hit=none
+000 0 103.7.13.69 sulteng.kemenag.go.id hit=none
+000 0 103.7.13.78 sulsel.kemenag.go.id hit=none
+000 0 103.7.13.251 sultra.kemenag.go.id hit=none
+000 0 103.7.13.251 gorontalo.kemenag.go.id hit=none
+000 0 103.7.13.69 sulbar.kemenag.go.id hit=none
+000 0 103.7.13.251 maluku.kemenag.go.id hit=none
+000 0 103.7.13.251 malut.kemenag.go.id hit=none
+200   118867 216.239.36.21 papua.kemenag.go.id hit=none
+000 0 103.7.13.251 papuabarat.kemenag.go.id hit=none
+NODNS papuatengah.kemenag.go.id
+NODNS papuapegunungan.kemenag.go.id
+NODNS papuaselatan.kemenag.go.id
+NODNS papuabaratdaya.kemenag.go.id
+DONE

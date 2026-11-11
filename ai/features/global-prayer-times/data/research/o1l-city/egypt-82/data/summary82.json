@@ -1,0 +1,5334 @@
+{
+ "rows": [
+  {
+   "i": 0,
+   "key": "القاهرة",
+   "n": 365,
+   "lat": 30.09,
+   "lng": 31.29,
+   "allSixW1": 365,
+   "allSixExact": 168,
+   "exactPct": 46,
+   "per": {
+    "fajr": {
+     "exact": 339,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.07
+    },
+    "sunrise": {
+     "exact": 357,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.01
+    },
+    "dhuhr": {
+     "exact": 350,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.04
+    },
+    "asr": {
+     "exact": 244,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.33,
+     "max": 1,
+     "signed": 0.01
+    },
+    "maghrib": {
+     "exact": 318,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.13,
+     "max": 1,
+     "signed": 0.13
+    },
+    "isha": {
+     "exact": 346,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.05
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 4.9,
+   "amp": {
+    "fajr": 66,
+    "isha": 162
+   },
+   "cairoFixedW1": 365,
+   "cairoFixedWorst": 1
+  },
+  {
+   "i": 1,
+   "key": "الأسكندرية",
+   "n": 365,
+   "lat": 31.22,
+   "lng": 29.97,
+   "allSixW1": 365,
+   "allSixExact": 205,
+   "exactPct": 56.2,
+   "per": {
+    "fajr": {
+     "exact": 363,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0
+    },
+    "sunrise": {
+     "exact": 346,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.05
+    },
+    "dhuhr": {
+     "exact": 359,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "asr": {
+     "exact": 246,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.33,
+     "max": 1,
+     "signed": 0.01
+    },
+    "maghrib": {
+     "exact": 342,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.06
+    },
+    "isha": {
+     "exact": 348,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.04
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 5.5,
+   "amp": {
+    "fajr": 71,
+    "isha": 168
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 11
+  },
+  {
+   "i": 2,
+   "key": "طنطا",
+   "n": 365,
+   "lat": 30.77,
+   "lng": 30.99,
+   "allSixW1": 365,
+   "allSixExact": 214,
+   "exactPct": 58.6,
+   "per": {
+    "fajr": {
+     "exact": 352,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.04
+    },
+    "sunrise": {
+     "exact": 342,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": -0.06
+    },
+    "dhuhr": {
+     "exact": 354,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": -0.03
+    },
+    "asr": {
+     "exact": 259,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.29,
+     "max": 1,
+     "signed": 0.03
+    },
+    "maghrib": {
+     "exact": 353,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.03
+    },
+    "isha": {
+     "exact": 350,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.01
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 2.3,
+   "amp": {
+    "fajr": 69,
+    "isha": 166
+   },
+   "cairoFixedW1": 10,
+   "cairoFixedWorst": 5
+  },
+  {
+   "i": 3,
+   "key": "المنصورة",
+   "n": 365,
+   "lat": 31.04,
+   "lng": 31.4,
+   "allSixW1": 365,
+   "allSixExact": 206,
+   "exactPct": 56.4,
+   "per": {
+    "fajr": {
+     "exact": 358,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0
+    },
+    "sunrise": {
+     "exact": 354,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": -0.03
+    },
+    "dhuhr": {
+     "exact": 359,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "asr": {
+     "exact": 247,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": 0.03
+    },
+    "maghrib": {
+     "exact": 339,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.07
+    },
+    "isha": {
+     "exact": 349,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.03
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 1.9,
+   "amp": {
+    "fajr": 70,
+    "isha": 168
+   },
+   "cairoFixedW1": 62,
+   "cairoFixedWorst": 5
+  },
+  {
+   "i": 4,
+   "key": "الزقازيق",
+   "n": 365,
+   "lat": 30.58,
+   "lng": 31.49,
+   "allSixW1": 365,
+   "allSixExact": 203,
+   "exactPct": 55.6,
+   "per": {
+    "fajr": {
+     "exact": 348,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.05
+    },
+    "sunrise": {
+     "exact": 335,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.08
+    },
+    "dhuhr": {
+     "exact": 350,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.04
+    },
+    "asr": {
+     "exact": 251,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.31,
+     "max": 1,
+     "signed": -0.07
+    },
+    "maghrib": {
+     "exact": 363,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0
+    },
+    "isha": {
+     "exact": 346,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.05
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 1.4,
+   "amp": {
+    "fajr": 68,
+    "isha": 166
+   },
+   "cairoFixedW1": 68,
+   "cairoFixedWorst": 3
+  },
+  {
+   "i": 5,
+   "key": "أسيوط",
+   "n": 365,
+   "lat": 27.2,
+   "lng": 31.18,
+   "allSixW1": 365,
+   "allSixExact": 210,
+   "exactPct": 57.5,
+   "per": {
+    "fajr": {
+     "exact": 355,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.02
+    },
+    "sunrise": {
+     "exact": 350,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.04
+    },
+    "dhuhr": {
+     "exact": 364,
+     "w1": 365,
+     "n": 365,
+     "mae": 0,
+     "max": 1,
+     "signed": 0
+    },
+    "asr": {
+     "exact": 256,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.3,
+     "max": 1,
+     "signed": 0
+    },
+    "maghrib": {
+     "exact": 347,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.05
+    },
+    "isha": {
+     "exact": 349,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.02
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 2.1,
+   "amp": {
+    "fajr": 51,
+    "isha": 149
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 13
+  },
+  {
+   "i": 6,
+   "key": "سوهاج",
+   "n": 365,
+   "lat": 26.48,
+   "lng": 31.68,
+   "allSixW1": 365,
+   "allSixExact": 141,
+   "exactPct": 38.6,
+   "per": {
+    "fajr": {
+     "exact": 317,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.13,
+     "max": 1,
+     "signed": -0.13
+    },
+    "sunrise": {
+     "exact": 329,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": -0.09
+    },
+    "dhuhr": {
+     "exact": 347,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.05
+    },
+    "asr": {
+     "exact": 238,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.35,
+     "max": 1,
+     "signed": -0.07
+    },
+    "maghrib": {
+     "exact": 324,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.01
+    },
+    "isha": {
+     "exact": 312,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.15,
+     "max": 1,
+     "signed": 0
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 8.7,
+   "amp": {
+    "fajr": 48,
+    "isha": 146
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 16
+  },
+  {
+   "i": 7,
+   "key": "بنى سويف",
+   "n": 365,
+   "lat": 29.13,
+   "lng": 31.1,
+   "allSixW1": 365,
+   "allSixExact": 191,
+   "exactPct": 52.3,
+   "per": {
+    "fajr": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.08
+    },
+    "sunrise": {
+     "exact": 360,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0
+    },
+    "dhuhr": {
+     "exact": 345,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.05
+    },
+    "asr": {
+     "exact": 258,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.29,
+     "max": 1,
+     "signed": 0.04
+    },
+    "maghrib": {
+     "exact": 333,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": 0.09
+    },
+    "isha": {
+     "exact": 344,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.04
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 6.2,
+   "amp": {
+    "fajr": 61,
+    "isha": 158
+   },
+   "cairoFixedW1": 16,
+   "cairoFixedWorst": 5
+  },
+  {
+   "i": 8,
+   "key": "المنيا",
+   "n": 365,
+   "lat": 28.15,
+   "lng": 30.77,
+   "allSixW1": 365,
+   "allSixExact": 154,
+   "exactPct": 42.2,
+   "per": {
+    "fajr": {
+     "exact": 321,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": 0.12
+    },
+    "sunrise": {
+     "exact": 338,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.02
+    },
+    "dhuhr": {
+     "exact": 334,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.08
+    },
+    "asr": {
+     "exact": 258,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.29,
+     "max": 1,
+     "signed": 0.03
+    },
+    "maghrib": {
+     "exact": 332,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": 0.08
+    },
+    "isha": {
+     "exact": 331,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": -0.01
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 6.5,
+   "amp": {
+    "fajr": 55,
+    "isha": 153
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 11
+  },
+  {
+   "i": 9,
+   "key": "قنا",
+   "n": 365,
+   "lat": 26.19,
+   "lng": 32.71,
+   "allSixW1": 365,
+   "allSixExact": 202,
+   "exactPct": 55.3,
+   "per": {
+    "fajr": {
+     "exact": 340,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.05
+    },
+    "sunrise": {
+     "exact": 349,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.03
+    },
+    "dhuhr": {
+     "exact": 363,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0
+    },
+    "asr": {
+     "exact": 245,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.33,
+     "max": 1,
+     "signed": -0.02
+    },
+    "maghrib": {
+     "exact": 348,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.04
+    },
+    "isha": {
+     "exact": 348,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.02
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 3.3,
+   "amp": {
+    "fajr": 46,
+    "isha": 145
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 21
+  },
+  {
+   "i": 10,
+   "key": "أسوان",
+   "n": 365,
+   "lat": 23.9,
+   "lng": 32.92,
+   "allSixW1": 365,
+   "allSixExact": 200,
+   "exactPct": 54.8,
+   "per": {
+    "fajr": {
+     "exact": 344,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": -0.02
+    },
+    "sunrise": {
+     "exact": 341,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.04
+    },
+    "dhuhr": {
+     "exact": 360,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0.01
+    },
+    "asr": {
+     "exact": 258,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.29,
+     "max": 1,
+     "signed": 0.04
+    },
+    "maghrib": {
+     "exact": 343,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.06
+    },
+    "isha": {
+     "exact": 343,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.03
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 21.3,
+   "amp": {
+    "fajr": 35,
+    "isha": 136
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 29
+  },
+  {
+   "i": 11,
+   "key": "مطروح",
+   "n": 365,
+   "lat": 31.33,
+   "lng": 27.25,
+   "allSixW1": 365,
+   "allSixExact": 139,
+   "exactPct": 38.1,
+   "per": {
+    "fajr": {
+     "exact": 312,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.15,
+     "max": 1,
+     "signed": -0.09
+    },
+    "sunrise": {
+     "exact": 326,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": -0.08
+    },
+    "dhuhr": {
+     "exact": 363,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0
+    },
+    "asr": {
+     "exact": 234,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.36,
+     "max": 1,
+     "signed": -0.01
+    },
+    "maghrib": {
+     "exact": 324,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.07
+    },
+    "isha": {
+     "exact": 321,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": 0.08
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 2.8,
+   "amp": {
+    "fajr": 72,
+    "isha": 169
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 22
+  },
+  {
+   "i": 12,
+   "key": "الغردقة",
+   "n": 365,
+   "lat": 27.19,
+   "lng": 33.85,
+   "allSixW1": 365,
+   "allSixExact": 194,
+   "exactPct": 53.2,
+   "per": {
+    "fajr": {
+     "exact": 335,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.08
+    },
+    "sunrise": {
+     "exact": 352,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.02
+    },
+    "dhuhr": {
+     "exact": 349,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.04
+    },
+    "asr": {
+     "exact": 252,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.31,
+     "max": 1,
+     "signed": 0.06
+    },
+    "maghrib": {
+     "exact": 336,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.08
+    },
+    "isha": {
+     "exact": 352,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.02
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 8.3,
+   "amp": {
+    "fajr": 51,
+    "isha": 149
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 22
+  },
+  {
+   "i": 13,
+   "key": "الخارجة",
+   "n": 365,
+   "lat": 25.41,
+   "lng": 30.24,
+   "allSixW1": 365,
+   "allSixExact": 147,
+   "exactPct": 40.3,
+   "per": {
+    "fajr": {
+     "exact": 314,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.14,
+     "max": 1,
+     "signed": -0.14
+    },
+    "sunrise": {
+     "exact": 308,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.16,
+     "max": 1,
+     "signed": -0.16
+    },
+    "dhuhr": {
+     "exact": 327,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": -0.1
+    },
+    "asr": {
+     "exact": 262,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.28,
+     "max": 1,
+     "signed": -0.07
+    },
+    "maghrib": {
+     "exact": 356,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": -0.02
+    },
+    "isha": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.07
+    }
+   },
+   "gazW1": 128,
+   "spanKm": 31.1,
+   "amp": {
+    "fajr": 42,
+    "isha": 141
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 23
+  },
+  {
+   "i": 14,
+   "key": "الإسماعيلية",
+   "n": 365,
+   "lat": 30.63,
+   "lng": 32.24,
+   "allSixW1": 365,
+   "allSixExact": 174,
+   "exactPct": 47.7,
+   "per": {
+    "fajr": {
+     "exact": 341,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.02
+    },
+    "sunrise": {
+     "exact": 322,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": -0.12
+    },
+    "dhuhr": {
+     "exact": 341,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.07
+    },
+    "asr": {
+     "exact": 255,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.3,
+     "max": 1,
+     "signed": -0.07
+    },
+    "maghrib": {
+     "exact": 348,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.01
+    },
+    "isha": {
+     "exact": 335,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.08
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 4.2,
+   "amp": {
+    "fajr": 68,
+    "isha": 166
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 7
+  },
+  {
+   "i": 15,
+   "key": "دمياط",
+   "n": 365,
+   "lat": 31.39,
+   "lng": 31.81,
+   "allSixW1": 365,
+   "allSixExact": 195,
+   "exactPct": 53.4,
+   "per": {
+    "fajr": {
+     "exact": 339,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.06
+    },
+    "sunrise": {
+     "exact": 338,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.06
+    },
+    "dhuhr": {
+     "exact": 363,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": -0.01
+    },
+    "asr": {
+     "exact": 250,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": 0.04
+    },
+    "maghrib": {
+     "exact": 343,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.05
+    },
+    "isha": {
+     "exact": 341,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.03
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 3,
+   "amp": {
+    "fajr": 73,
+    "isha": 169
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 9
+  },
+  {
+   "i": 16,
+   "key": "السلوم",
+   "n": 365,
+   "lat": 31.57,
+   "lng": 25.18,
+   "allSixW1": 365,
+   "allSixExact": 166,
+   "exactPct": 45.5,
+   "per": {
+    "fajr": {
+     "exact": 328,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": 0.1
+    },
+    "sunrise": {
+     "exact": 341,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.01
+    },
+    "dhuhr": {
+     "exact": 351,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.04
+    },
+    "asr": {
+     "exact": 243,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.33,
+     "max": 1,
+     "signed": 0.07
+    },
+    "maghrib": {
+     "exact": 336,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.08
+    },
+    "isha": {
+     "exact": 343,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.01
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 2.8,
+   "amp": {
+    "fajr": 73,
+    "isha": 170
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 31
+  },
+  {
+   "i": 17,
+   "key": "نويبع",
+   "n": 365,
+   "lat": 29.05,
+   "lng": 34.67,
+   "allSixW1": 365,
+   "allSixExact": 181,
+   "exactPct": 49.6,
+   "per": {
+    "fajr": {
+     "exact": 350,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.01
+    },
+    "sunrise": {
+     "exact": 350,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0
+    },
+    "dhuhr": {
+     "exact": 345,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.05
+    },
+    "asr": {
+     "exact": 256,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.3,
+     "max": 1,
+     "signed": 0.05
+    },
+    "maghrib": {
+     "exact": 315,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.14,
+     "max": 1,
+     "signed": 0.14
+    },
+    "isha": {
+     "exact": 334,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.08
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 0.7,
+   "amp": {
+    "fajr": 60,
+    "isha": 158
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 18
+  },
+  {
+   "i": 18,
+   "key": "حلايب",
+   "n": 365,
+   "lat": 22.32,
+   "lng": 36.67,
+   "allSixW1": 365,
+   "allSixExact": 132,
+   "exactPct": 36.2,
+   "per": {
+    "fajr": {
+     "exact": 307,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.16,
+     "max": 1,
+     "signed": 0.15
+    },
+    "sunrise": {
+     "exact": 323,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": 0.03
+    },
+    "dhuhr": {
+     "exact": 339,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.07
+    },
+    "asr": {
+     "exact": 267,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.27,
+     "max": 1,
+     "signed": 0.05
+    },
+    "maghrib": {
+     "exact": 310,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.15,
+     "max": 1,
+     "signed": 0.12
+    },
+    "isha": {
+     "exact": 315,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.14,
+     "max": 1,
+     "signed": -0.01
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 11.1,
+   "amp": {
+    "fajr": 27,
+    "isha": 129
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 50
+  },
+  {
+   "i": 19,
+   "key": "شرم الشيخ",
+   "n": 365,
+   "lat": 27.93,
+   "lng": 34.31,
+   "allSixW1": 365,
+   "allSixExact": 129,
+   "exactPct": 35.3,
+   "per": {
+    "fajr": {
+     "exact": 315,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.14,
+     "max": 1,
+     "signed": 0.14
+    },
+    "sunrise": {
+     "exact": 325,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.01
+    },
+    "dhuhr": {
+     "exact": 340,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.07
+    },
+    "asr": {
+     "exact": 236,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.35,
+     "max": 1,
+     "signed": 0.01
+    },
+    "maghrib": {
+     "exact": 324,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.1
+    },
+    "isha": {
+     "exact": 315,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.14,
+     "max": 1,
+     "signed": 0.02
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 2.5,
+   "amp": {
+    "fajr": 54,
+    "isha": 152
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 21
+  },
+  {
+   "i": 20,
+   "key": "الفيوم",
+   "n": 365,
+   "lat": 29.27,
+   "lng": 30.83,
+   "allSixW1": 365,
+   "allSixExact": 177,
+   "exactPct": 48.5,
+   "per": {
+    "fajr": {
+     "exact": 336,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.07
+    },
+    "sunrise": {
+     "exact": 333,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": -0.08
+    },
+    "dhuhr": {
+     "exact": 365,
+     "w1": 365,
+     "n": 365,
+     "mae": 0,
+     "max": 0,
+     "signed": 0
+    },
+    "asr": {
+     "exact": 252,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.31,
+     "max": 1,
+     "signed": -0.03
+    },
+    "maghrib": {
+     "exact": 345,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.04
+    },
+    "isha": {
+     "exact": 334,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.02
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 4.6,
+   "amp": {
+    "fajr": 61,
+    "isha": 159
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 6
+  },
+  {
+   "i": 21,
+   "key": "6أكتوبر",
+   "n": 365,
+   "lat": 29.89,
+   "lng": 30.93,
+   "allSixW1": 365,
+   "allSixExact": 155,
+   "exactPct": 42.5,
+   "per": {
+    "fajr": {
+     "exact": 330,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": -0.07
+    },
+    "sunrise": {
+     "exact": 335,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.07
+    },
+    "dhuhr": {
+     "exact": 365,
+     "w1": 365,
+     "n": 365,
+     "mae": 0,
+     "max": 0,
+     "signed": 0
+    },
+    "asr": {
+     "exact": 248,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": -0.02
+    },
+    "maghrib": {
+     "exact": 326,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.05
+    },
+    "isha": {
+     "exact": 325,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.05
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 5.2,
+   "amp": {
+    "fajr": 65,
+    "isha": 162
+   },
+   "cairoFixedW1": 3,
+   "cairoFixedWorst": 3
+  },
+  {
+   "i": 22,
+   "key": "كفر الشيخ",
+   "n": 365,
+   "lat": 31.11,
+   "lng": 30.94,
+   "allSixW1": 365,
+   "allSixExact": 207,
+   "exactPct": 56.7,
+   "per": {
+    "fajr": {
+     "exact": 358,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "sunrise": {
+     "exact": 354,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": -0.03
+    },
+    "dhuhr": {
+     "exact": 358,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "asr": {
+     "exact": 239,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.35,
+     "max": 1,
+     "signed": 0.04
+    },
+    "maghrib": {
+     "exact": 340,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.07
+    },
+    "isha": {
+     "exact": 354,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.02
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 0.2,
+   "amp": {
+    "fajr": 71,
+    "isha": 168
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 6
+  },
+  {
+   "i": 23,
+   "key": "الحامول",
+   "n": 365,
+   "lat": 31.39,
+   "lng": 31.17,
+   "allSixW1": 365,
+   "allSixExact": 120,
+   "exactPct": 32.9,
+   "per": {
+    "fajr": {
+     "exact": 304,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.17,
+     "max": 1,
+     "signed": 0.17
+    },
+    "sunrise": {
+     "exact": 312,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.15,
+     "max": 1,
+     "signed": 0.05
+    },
+    "dhuhr": {
+     "exact": 343,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.06
+    },
+    "asr": {
+     "exact": 240,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.34,
+     "max": 1,
+     "signed": 0.04
+    },
+    "maghrib": {
+     "exact": 317,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.13,
+     "max": 1,
+     "signed": 0.08
+    },
+    "isha": {
+     "exact": 311,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.15,
+     "max": 1,
+     "signed": -0.02
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 9,
+   "amp": {
+    "fajr": 72,
+    "isha": 169
+   },
+   "cairoFixedW1": 35,
+   "cairoFixedWorst": 6
+  },
+  {
+   "i": 24,
+   "key": "بلطيم",
+   "n": 365,
+   "lat": 31.36,
+   "lng": 31.09,
+   "allSixW1": 365,
+   "allSixExact": 222,
+   "exactPct": 60.8,
+   "per": {
+    "fajr": {
+     "exact": 359,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": -0.01
+    },
+    "sunrise": {
+     "exact": 353,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": -0.03
+    },
+    "dhuhr": {
+     "exact": 364,
+     "w1": 365,
+     "n": 365,
+     "mae": 0,
+     "max": 1,
+     "signed": 0
+    },
+    "asr": {
+     "exact": 253,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.31,
+     "max": 1,
+     "signed": 0.05
+    },
+    "maghrib": {
+     "exact": 340,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.07
+    },
+    "isha": {
+     "exact": 356,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 21.7,
+   "amp": {
+    "fajr": 72,
+    "isha": 169
+   },
+   "cairoFixedW1": 16,
+   "cairoFixedWorst": 7
+  },
+  {
+   "i": 25,
+   "key": "طابا",
+   "n": 365,
+   "lat": 29.45,
+   "lng": 34.41,
+   "allSixW1": 365,
+   "allSixExact": 157,
+   "exactPct": 43,
+   "per": {
+    "fajr": {
+     "exact": 341,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.02
+    },
+    "sunrise": {
+     "exact": 350,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.01
+    },
+    "dhuhr": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.08
+    },
+    "asr": {
+     "exact": 255,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.3,
+     "max": 1,
+     "signed": 0.09
+    },
+    "maghrib": {
+     "exact": 320,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": 0.12
+    },
+    "isha": {
+     "exact": 314,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.14,
+     "max": 1,
+     "signed": 0.14
+    }
+   },
+   "gazW1": 0,
+   "spanKm": 47.2,
+   "amp": {
+    "fajr": 62,
+    "isha": 160
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 15
+  },
+  {
+   "i": 26,
+   "key": "راس سدر",
+   "n": 365,
+   "lat": 29.62,
+   "lng": 32.66,
+   "allSixW1": 365,
+   "allSixExact": 208,
+   "exactPct": 57,
+   "per": {
+    "fajr": {
+     "exact": 350,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.04
+    },
+    "sunrise": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.08
+    },
+    "dhuhr": {
+     "exact": 356,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": -0.02
+    },
+    "asr": {
+     "exact": 253,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.31,
+     "max": 1,
+     "signed": -0.01
+    },
+    "maghrib": {
+     "exact": 359,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "isha": {
+     "exact": 346,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.05
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 4.1,
+   "amp": {
+    "fajr": 63,
+    "isha": 160
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 8
+  },
+  {
+   "i": 27,
+   "key": "الطور",
+   "n": 365,
+   "lat": 28.18,
+   "lng": 33.64,
+   "allSixW1": 365,
+   "allSixExact": 152,
+   "exactPct": 41.6,
+   "per": {
+    "fajr": {
+     "exact": 334,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.01
+    },
+    "sunrise": {
+     "exact": 338,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.02
+    },
+    "dhuhr": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.08
+    },
+    "asr": {
+     "exact": 261,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.28,
+     "max": 1,
+     "signed": 0.1
+    },
+    "maghrib": {
+     "exact": 310,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.15,
+     "max": 1,
+     "signed": 0.15
+    },
+    "isha": {
+     "exact": 328,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": 0.09
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 7.1,
+   "amp": {
+    "fajr": 56,
+    "isha": 154
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 17
+  },
+  {
+   "i": 28,
+   "key": "دهب",
+   "n": 365,
+   "lat": 28.49,
+   "lng": 34.5,
+   "allSixW1": 365,
+   "allSixExact": 221,
+   "exactPct": 60.5,
+   "per": {
+    "fajr": {
+     "exact": 352,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.04
+    },
+    "sunrise": {
+     "exact": 342,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": -0.06
+    },
+    "dhuhr": {
+     "exact": 351,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.04
+    },
+    "asr": {
+     "exact": 264,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.28,
+     "max": 1,
+     "signed": 0
+    },
+    "maghrib": {
+     "exact": 357,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "isha": {
+     "exact": 357,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": -0.01
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 1,
+   "amp": {
+    "fajr": 58,
+    "isha": 155
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 20
+  },
+  {
+   "i": 29,
+   "key": "ابوزنيمة",
+   "n": 365,
+   "lat": 29.04,
+   "lng": 33.09,
+   "allSixW1": 365,
+   "allSixExact": 206,
+   "exactPct": 56.4,
+   "per": {
+    "fajr": {
+     "exact": 349,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.03
+    },
+    "sunrise": {
+     "exact": 356,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.01
+    },
+    "dhuhr": {
+     "exact": 356,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "asr": {
+     "exact": 263,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.28,
+     "max": 1,
+     "signed": 0.04
+    },
+    "maghrib": {
+     "exact": 328,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": 0.1
+    },
+    "isha": {
+     "exact": 345,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.05
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 2.1,
+   "amp": {
+    "fajr": 60,
+    "isha": 158
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 12
+  },
+  {
+   "i": 30,
+   "key": "راس غارب",
+   "n": 365,
+   "lat": 28.47,
+   "lng": 33.35,
+   "allSixW1": 365,
+   "allSixExact": 137,
+   "exactPct": 37.5,
+   "per": {
+    "fajr": {
+     "exact": 309,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.15,
+     "max": 1,
+     "signed": 0.15
+    },
+    "sunrise": {
+     "exact": 336,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.01
+    },
+    "dhuhr": {
+     "exact": 345,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.05
+    },
+    "asr": {
+     "exact": 230,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.37,
+     "max": 1,
+     "signed": 0.04
+    },
+    "maghrib": {
+     "exact": 327,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": 0.09
+    },
+    "isha": {
+     "exact": 331,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": 0.01
+    }
+   },
+   "gazW1": 228,
+   "spanKm": 29.3,
+   "amp": {
+    "fajr": 57,
+    "isha": 155
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 15
+  },
+  {
+   "i": 31,
+   "key": "القصير",
+   "n": 365,
+   "lat": 26.07,
+   "lng": 34.27,
+   "allSixW1": 365,
+   "allSixExact": 180,
+   "exactPct": 49.3,
+   "per": {
+    "fajr": {
+     "exact": 347,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.03
+    },
+    "sunrise": {
+     "exact": 320,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": -0.12
+    },
+    "dhuhr": {
+     "exact": 346,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.05
+    },
+    "asr": {
+     "exact": 261,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.28,
+     "max": 1,
+     "signed": -0.06
+    },
+    "maghrib": {
+     "exact": 355,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0
+    },
+    "isha": {
+     "exact": 330,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": -0.1
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 4.1,
+   "amp": {
+    "fajr": 45,
+    "isha": 144
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 28
+  },
+  {
+   "i": 32,
+   "key": "برنيس",
+   "n": 365,
+   "lat": 23.76,
+   "lng": 35.5,
+   "allSixW1": 365,
+   "allSixExact": 234,
+   "exactPct": 64.1,
+   "per": {
+    "fajr": {
+     "exact": 360,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0
+    },
+    "sunrise": {
+     "exact": 345,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.05
+    },
+    "dhuhr": {
+     "exact": 362,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0
+    },
+    "asr": {
+     "exact": 272,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.25,
+     "max": 1,
+     "signed": 0.02
+    },
+    "maghrib": {
+     "exact": 346,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.05
+    },
+    "isha": {
+     "exact": 357,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.01
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 20.7,
+   "amp": {
+    "fajr": 34,
+    "isha": 135
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 40
+  },
+  {
+   "i": 33,
+   "key": "سفاجة",
+   "n": 365,
+   "lat": 26.78,
+   "lng": 33.95,
+   "allSixW1": 365,
+   "allSixExact": 168,
+   "exactPct": 46,
+   "per": {
+    "fajr": {
+     "exact": 322,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": 0.1
+    },
+    "sunrise": {
+     "exact": 338,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.03
+    },
+    "dhuhr": {
+     "exact": 352,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.04
+    },
+    "asr": {
+     "exact": 255,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.3,
+     "max": 1,
+     "signed": 0
+    },
+    "maghrib": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.07
+    },
+    "isha": {
+     "exact": 335,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.01
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 3.6,
+   "amp": {
+    "fajr": 49,
+    "isha": 147
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 24
+  },
+  {
+   "i": 34,
+   "key": "مرسى علم",
+   "n": 365,
+   "lat": 25.02,
+   "lng": 34.86,
+   "allSixW1": 365,
+   "allSixExact": 148,
+   "exactPct": 40.5,
+   "per": {
+    "fajr": {
+     "exact": 329,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": -0.1
+    },
+    "sunrise": {
+     "exact": 317,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.13,
+     "max": 1,
+     "signed": -0.13
+    },
+    "dhuhr": {
+     "exact": 328,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": -0.1
+    },
+    "asr": {
+     "exact": 251,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.31,
+     "max": 1,
+     "signed": -0.06
+    },
+    "maghrib": {
+     "exact": 335,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.05
+    },
+    "isha": {
+     "exact": 334,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.06
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 5.7,
+   "amp": {
+    "fajr": 40,
+    "isha": 140
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 33
+  },
+  {
+   "i": 35,
+   "key": "شلاتين",
+   "n": 365,
+   "lat": 23.17,
+   "lng": 35.61,
+   "allSixW1": 365,
+   "allSixExact": 196,
+   "exactPct": 53.7,
+   "per": {
+    "fajr": {
+     "exact": 339,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.07
+    },
+    "sunrise": {
+     "exact": 342,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": -0.01
+    },
+    "dhuhr": {
+     "exact": 351,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.04
+    },
+    "asr": {
+     "exact": 268,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.27,
+     "max": 1,
+     "signed": 0.01
+    },
+    "maghrib": {
+     "exact": 338,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.07
+    },
+    "isha": {
+     "exact": 348,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.01
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 4.6,
+   "amp": {
+    "fajr": 32,
+    "isha": 133
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 43
+  },
+  {
+   "i": 36,
+   "key": "سيدى برانى",
+   "n": 365,
+   "lat": 31.73,
+   "lng": 25.93,
+   "allSixW1": 365,
+   "allSixExact": 203,
+   "exactPct": 55.6,
+   "per": {
+    "fajr": {
+     "exact": 347,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.04
+    },
+    "sunrise": {
+     "exact": 344,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": -0.05
+    },
+    "dhuhr": {
+     "exact": 365,
+     "w1": 365,
+     "n": 365,
+     "mae": 0,
+     "max": 0,
+     "signed": 0
+    },
+    "asr": {
+     "exact": 263,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.28,
+     "max": 1,
+     "signed": 0.04
+    },
+    "maghrib": {
+     "exact": 338,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.07
+    },
+    "isha": {
+     "exact": 343,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.03
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 13.1,
+   "amp": {
+    "fajr": 74,
+    "isha": 171
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 29
+  },
+  {
+   "i": 37,
+   "key": "الضبعة",
+   "n": 365,
+   "lat": 31.06,
+   "lng": 28.45,
+   "allSixW1": 365,
+   "allSixExact": 177,
+   "exactPct": 48.5,
+   "per": {
+    "fajr": {
+     "exact": 347,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.03
+    },
+    "sunrise": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.08
+    },
+    "dhuhr": {
+     "exact": 363,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0
+    },
+    "asr": {
+     "exact": 234,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.36,
+     "max": 1,
+     "signed": -0.04
+    },
+    "maghrib": {
+     "exact": 347,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.04
+    },
+    "isha": {
+     "exact": 343,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": -0.04
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 3.6,
+   "amp": {
+    "fajr": 70,
+    "isha": 168
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 16
+  },
+  {
+   "i": 38,
+   "key": "العلمين",
+   "n": 365,
+   "lat": 30.78,
+   "lng": 28.95,
+   "allSixW1": 365,
+   "allSixExact": 171,
+   "exactPct": 46.8,
+   "per": {
+    "fajr": {
+     "exact": 332,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": -0.06
+    },
+    "sunrise": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.05
+    },
+    "dhuhr": {
+     "exact": 364,
+     "w1": 365,
+     "n": 365,
+     "mae": 0,
+     "max": 1,
+     "signed": 0
+    },
+    "asr": {
+     "exact": 251,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.31,
+     "max": 1,
+     "signed": 0
+    },
+    "maghrib": {
+     "exact": 338,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.06
+    },
+    "isha": {
+     "exact": 327,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": 0.04
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 5.6,
+   "amp": {
+    "fajr": 70,
+    "isha": 167
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 13
+  },
+  {
+   "i": 39,
+   "key": "واحة سيوة",
+   "n": 365,
+   "lat": 29.19,
+   "lng": 25.53,
+   "allSixW1": 365,
+   "allSixExact": 208,
+   "exactPct": 57,
+   "per": {
+    "fajr": {
+     "exact": 355,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": -0.02
+    },
+    "sunrise": {
+     "exact": 344,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": -0.06
+    },
+    "dhuhr": {
+     "exact": 362,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0.01
+    },
+    "asr": {
+     "exact": 250,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": -0.01
+    },
+    "maghrib": {
+     "exact": 344,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.06
+    },
+    "isha": {
+     "exact": 353,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.01
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 1.8,
+   "amp": {
+    "fajr": 61,
+    "isha": 158
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 27
+  },
+  {
+   "i": 40,
+   "key": "موط (الداخلة )",
+   "n": 365,
+   "lat": 25.46,
+   "lng": 28.91,
+   "allSixW1": 365,
+   "allSixExact": 183,
+   "exactPct": 50.1,
+   "per": {
+    "fajr": {
+     "exact": 341,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.05
+    },
+    "sunrise": {
+     "exact": 344,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": -0.04
+    },
+    "dhuhr": {
+     "exact": 361,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": -0.01
+    },
+    "asr": {
+     "exact": 247,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": 0.02
+    },
+    "maghrib": {
+     "exact": 348,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.03
+    },
+    "isha": {
+     "exact": 329,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": 0.07
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 7.6,
+   "amp": {
+    "fajr": 43,
+    "isha": 142
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 28
+  },
+  {
+   "i": 41,
+   "key": "الفرافرة",
+   "n": 365,
+   "lat": 27.14,
+   "lng": 28,
+   "allSixW1": 365,
+   "allSixExact": 196,
+   "exactPct": 53.7,
+   "per": {
+    "fajr": {
+     "exact": 341,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.04
+    },
+    "sunrise": {
+     "exact": 342,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": -0.05
+    },
+    "dhuhr": {
+     "exact": 363,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0
+    },
+    "asr": {
+     "exact": 252,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.31,
+     "max": 1,
+     "signed": -0.02
+    },
+    "maghrib": {
+     "exact": 343,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.04
+    },
+    "isha": {
+     "exact": 348,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.02
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 9.7,
+   "amp": {
+    "fajr": 51,
+    "isha": 149
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 26
+  },
+  {
+   "i": 42,
+   "key": "البويطى",
+   "n": 365,
+   "lat": 28.36,
+   "lng": 28.95,
+   "allSixW1": 365,
+   "allSixExact": 219,
+   "exactPct": 60,
+   "per": {
+    "fajr": {
+     "exact": 363,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0.01
+    },
+    "sunrise": {
+     "exact": 344,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": -0.06
+    },
+    "dhuhr": {
+     "exact": 363,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0
+    },
+    "asr": {
+     "exact": 266,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.27,
+     "max": 1,
+     "signed": 0
+    },
+    "maghrib": {
+     "exact": 339,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.07
+    },
+    "isha": {
+     "exact": 355,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.01
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 8,
+   "amp": {
+    "fajr": 57,
+    "isha": 154
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 17
+  },
+  {
+   "i": 43,
+   "key": "باريس",
+   "n": 365,
+   "lat": 24.47,
+   "lng": 30.52,
+   "allSixW1": 365,
+   "allSixExact": 142,
+   "exactPct": 38.9,
+   "per": {
+    "fajr": {
+     "exact": 304,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.17,
+     "max": 1,
+     "signed": 0.16
+    },
+    "sunrise": {
+     "exact": 335,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.02
+    },
+    "dhuhr": {
+     "exact": 322,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": 0.12
+    },
+    "asr": {
+     "exact": 261,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.28,
+     "max": 1,
+     "signed": 0.07
+    },
+    "maghrib": {
+     "exact": 325,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.11
+    },
+    "isha": {
+     "exact": 324,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.03
+    }
+   },
+   "gazW1": 334,
+   "spanKm": 24.1,
+   "amp": {
+    "fajr": 37,
+    "isha": 137
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 26
+  },
+  {
+   "i": 44,
+   "key": "المحلة الكبرى",
+   "n": 365,
+   "lat": 31.05,
+   "lng": 30.95,
+   "allSixW1": 365,
+   "allSixExact": 141,
+   "exactPct": 38.6,
+   "per": {
+    "fajr": {
+     "exact": 315,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.14,
+     "max": 1,
+     "signed": 0.11
+    },
+    "sunrise": {
+     "exact": 315,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.14,
+     "max": 1,
+     "signed": -0.06
+    },
+    "dhuhr": {
+     "exact": 362,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0
+    },
+    "asr": {
+     "exact": 232,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.36,
+     "max": 1,
+     "signed": -0.06
+    },
+    "maghrib": {
+     "exact": 323,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": 0.04
+    },
+    "isha": {
+     "exact": 314,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.14,
+     "max": 1,
+     "signed": -0.1
+    }
+   },
+   "gazW1": 335,
+   "spanKm": 22.4,
+   "amp": {
+    "fajr": 70,
+    "isha": 167
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 6
+  },
+  {
+   "i": 45,
+   "key": "الحمام",
+   "n": 365,
+   "lat": 30.89,
+   "lng": 29.4,
+   "allSixW1": 365,
+   "allSixExact": 147,
+   "exactPct": 40.3,
+   "per": {
+    "fajr": {
+     "exact": 328,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": 0.07
+    },
+    "sunrise": {
+     "exact": 331,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": -0.05
+    },
+    "dhuhr": {
+     "exact": 355,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.03
+    },
+    "asr": {
+     "exact": 232,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.36,
+     "max": 1,
+     "signed": -0.04
+    },
+    "maghrib": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.07
+    },
+    "isha": {
+     "exact": 340,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.02
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 5.1,
+   "amp": {
+    "fajr": 69,
+    "isha": 166
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 11
+  },
+  {
+   "i": 46,
+   "key": "نجع حمادى",
+   "n": 365,
+   "lat": 26.12,
+   "lng": 32.24,
+   "allSixW1": 365,
+   "allSixExact": 166,
+   "exactPct": 45.5,
+   "per": {
+    "fajr": {
+     "exact": 316,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.13,
+     "max": 1,
+     "signed": 0.11
+    },
+    "sunrise": {
+     "exact": 340,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.01
+    },
+    "dhuhr": {
+     "exact": 358,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "asr": {
+     "exact": 253,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.31,
+     "max": 1,
+     "signed": -0.03
+    },
+    "maghrib": {
+     "exact": 326,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.07
+    },
+    "isha": {
+     "exact": 326,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": -0.04
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 7.8,
+   "amp": {
+    "fajr": 45,
+    "isha": 145
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 20
+  },
+  {
+   "i": 47,
+   "key": "بورسعيد",
+   "n": 365,
+   "lat": 31.28,
+   "lng": 32.29,
+   "allSixW1": 365,
+   "allSixExact": 176,
+   "exactPct": 48.2,
+   "per": {
+    "fajr": {
+     "exact": 348,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.05
+    },
+    "sunrise": {
+     "exact": 322,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": -0.12
+    },
+    "dhuhr": {
+     "exact": 338,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.07
+    },
+    "asr": {
+     "exact": 254,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.3,
+     "max": 1,
+     "signed": -0.05
+    },
+    "maghrib": {
+     "exact": 358,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.01
+    },
+    "isha": {
+     "exact": 336,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.08
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 2,
+   "amp": {
+    "fajr": 72,
+    "isha": 168
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 10
+  },
+  {
+   "i": 48,
+   "key": "السويس",
+   "n": 365,
+   "lat": 29.99,
+   "lng": 32.52,
+   "allSixW1": 365,
+   "allSixExact": 165,
+   "exactPct": 45.2,
+   "per": {
+    "fajr": {
+     "exact": 339,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.07
+    },
+    "sunrise": {
+     "exact": 322,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": -0.12
+    },
+    "dhuhr": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.08
+    },
+    "asr": {
+     "exact": 239,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.35,
+     "max": 1,
+     "signed": -0.09
+    },
+    "maghrib": {
+     "exact": 350,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.02
+    },
+    "isha": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.08
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 1.9,
+   "amp": {
+    "fajr": 65,
+    "isha": 162
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 6
+  },
+  {
+   "i": 49,
+   "key": "العريش",
+   "n": 365,
+   "lat": 31.19,
+   "lng": 33.78,
+   "allSixW1": 365,
+   "allSixExact": 123,
+   "exactPct": 33.7,
+   "per": {
+    "fajr": {
+     "exact": 310,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.15,
+     "max": 1,
+     "signed": 0.04
+    },
+    "sunrise": {
+     "exact": 329,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": -0.09
+    },
+    "dhuhr": {
+     "exact": 339,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.07
+    },
+    "asr": {
+     "exact": 238,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.35,
+     "max": 1,
+     "signed": -0.1
+    },
+    "maghrib": {
+     "exact": 323,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": -0.04
+    },
+    "isha": {
+     "exact": 306,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.16,
+     "max": 1,
+     "signed": -0.16
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 6.7,
+   "amp": {
+    "fajr": 70,
+    "isha": 168
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 15
+  },
+  {
+   "i": 50,
+   "key": "دمنهور",
+   "n": 365,
+   "lat": 31.08,
+   "lng": 30.46,
+   "allSixW1": 365,
+   "allSixExact": 160,
+   "exactPct": 43.8,
+   "per": {
+    "fajr": {
+     "exact": 342,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.03
+    },
+    "sunrise": {
+     "exact": 331,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": -0.09
+    },
+    "dhuhr": {
+     "exact": 349,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.04
+    },
+    "asr": {
+     "exact": 234,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.36,
+     "max": 1,
+     "signed": -0.04
+    },
+    "maghrib": {
+     "exact": 346,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.02
+    },
+    "isha": {
+     "exact": 331,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": -0.09
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 5.2,
+   "amp": {
+    "fajr": 71,
+    "isha": 168
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 8
+  },
+  {
+   "i": 51,
+   "key": "ادفو",
+   "n": 365,
+   "lat": 25.02,
+   "lng": 32.84,
+   "allSixW1": 365,
+   "allSixExact": 203,
+   "exactPct": 55.6,
+   "per": {
+    "fajr": {
+     "exact": 340,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.07
+    },
+    "sunrise": {
+     "exact": 348,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.01
+    },
+    "dhuhr": {
+     "exact": 359,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "asr": {
+     "exact": 259,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.29,
+     "max": 1,
+     "signed": 0.01
+    },
+    "maghrib": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.07
+    },
+    "isha": {
+     "exact": 349,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.01
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 5.9,
+   "amp": {
+    "fajr": 40,
+    "isha": 140
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 26
+  },
+  {
+   "i": 52,
+   "key": "اسنا",
+   "n": 365,
+   "lat": 25.23,
+   "lng": 32.54,
+   "allSixW1": 365,
+   "allSixExact": 147,
+   "exactPct": 40.3,
+   "per": {
+    "fajr": {
+     "exact": 317,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.13,
+     "max": 1,
+     "signed": -0.13
+    },
+    "sunrise": {
+     "exact": 321,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": -0.12
+    },
+    "dhuhr": {
+     "exact": 334,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.08
+    },
+    "asr": {
+     "exact": 259,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.29,
+     "max": 1,
+     "signed": 0.01
+    },
+    "maghrib": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.02
+    },
+    "isha": {
+     "exact": 325,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": -0.02
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 7.2,
+   "amp": {
+    "fajr": 42,
+    "isha": 141
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 23
+  },
+  {
+   "i": 53,
+   "key": "الأقصر",
+   "n": 365,
+   "lat": 25.74,
+   "lng": 32.67,
+   "allSixW1": 365,
+   "allSixExact": 153,
+   "exactPct": 41.9,
+   "per": {
+    "fajr": {
+     "exact": 323,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": 0.12
+    },
+    "sunrise": {
+     "exact": 342,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.02
+    },
+    "dhuhr": {
+     "exact": 339,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.07
+    },
+    "asr": {
+     "exact": 251,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.31,
+     "max": 1,
+     "signed": 0.04
+    },
+    "maghrib": {
+     "exact": 321,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": 0.12
+    },
+    "isha": {
+     "exact": 335,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.06
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 5.3,
+   "amp": {
+    "fajr": 44,
+    "isha": 143
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 22
+  },
+  {
+   "i": 54,
+   "key": "القاهرة الجديدة",
+   "n": 365,
+   "lat": 30.04,
+   "lng": 31.41,
+   "allSixW1": 365,
+   "allSixExact": 215,
+   "exactPct": 58.9,
+   "per": {
+    "fajr": {
+     "exact": 361,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0.01
+    },
+    "sunrise": {
+     "exact": 355,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": -0.03
+    },
+    "dhuhr": {
+     "exact": 359,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "asr": {
+     "exact": 255,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.3,
+     "max": 1,
+     "signed": 0.06
+    },
+    "maghrib": {
+     "exact": 332,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": 0.09
+    },
+    "isha": {
+     "exact": 355,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.02
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 5.9,
+   "amp": {
+    "fajr": 65,
+    "isha": 163
+   },
+   "cairoFixedW1": 365,
+   "cairoFixedWorst": 1
+  },
+  {
+   "i": 55,
+   "key": "توشكى",
+   "n": 365,
+   "lat": 22.77,
+   "lng": 31.43,
+   "allSixW1": 365,
+   "allSixExact": 208,
+   "exactPct": 57,
+   "per": {
+    "fajr": {
+     "exact": 352,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.04
+    },
+    "sunrise": {
+     "exact": 358,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0
+    },
+    "dhuhr": {
+     "exact": 350,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.04
+    },
+    "asr": {
+     "exact": 276,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.24,
+     "max": 1,
+     "signed": 0.05
+    },
+    "maghrib": {
+     "exact": 324,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.11
+    },
+    "isha": {
+     "exact": 347,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.05
+    }
+   },
+   "gazW1": 0,
+   "spanKm": 61.5,
+   "amp": {
+    "fajr": 30,
+    "isha": 130
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 28
+  },
+  {
+   "i": 56,
+   "key": "الدلنجات",
+   "n": 365,
+   "lat": 30.86,
+   "lng": 30.53,
+   "allSixW1": 365,
+   "allSixExact": 200,
+   "exactPct": 54.8,
+   "per": {
+    "fajr": {
+     "exact": 350,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.03
+    },
+    "sunrise": {
+     "exact": 346,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.03
+    },
+    "dhuhr": {
+     "exact": 361,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": -0.01
+    },
+    "asr": {
+     "exact": 264,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.28,
+     "max": 1,
+     "signed": 0.01
+    },
+    "maghrib": {
+     "exact": 346,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.04
+    },
+    "isha": {
+     "exact": 335,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.05
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 3.6,
+   "amp": {
+    "fajr": 69,
+    "isha": 166
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 7
+  },
+  {
+   "i": 57,
+   "key": "كاترين",
+   "n": 365,
+   "lat": 28.57,
+   "lng": 33.93,
+   "allSixW1": 365,
+   "allSixExact": 163,
+   "exactPct": 44.7,
+   "per": {
+    "fajr": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.08
+    },
+    "sunrise": {
+     "exact": 312,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.15,
+     "max": 1,
+     "signed": -0.15
+    },
+    "dhuhr": {
+     "exact": 339,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.07
+    },
+    "asr": {
+     "exact": 245,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.33,
+     "max": 1,
+     "signed": -0.07
+    },
+    "maghrib": {
+     "exact": 354,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": -0.03
+    },
+    "isha": {
+     "exact": 335,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.08
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 2.1,
+   "amp": {
+    "fajr": 58,
+    "isha": 156
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 17
+  },
+  {
+   "i": 58,
+   "key": "السادات",
+   "n": 365,
+   "lat": 30.41,
+   "lng": 30.52,
+   "allSixW1": 365,
+   "allSixExact": 204,
+   "exactPct": 55.9,
+   "per": {
+    "fajr": {
+     "exact": 352,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.02
+    },
+    "sunrise": {
+     "exact": 347,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.05
+    },
+    "dhuhr": {
+     "exact": 354,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.03
+    },
+    "asr": {
+     "exact": 257,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.3,
+     "max": 1,
+     "signed": 0.02
+    },
+    "maghrib": {
+     "exact": 342,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.06
+    },
+    "isha": {
+     "exact": 343,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.05
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 4.8,
+   "amp": {
+    "fajr": 67,
+    "isha": 164
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 5
+  },
+  {
+   "i": 59,
+   "key": "مدينة 15 مايو",
+   "n": 363,
+   "lat": 29.83,
+   "lng": 31.38,
+   "allSixW1": 363,
+   "allSixExact": 213,
+   "exactPct": 58.7,
+   "per": {
+    "fajr": {
+     "exact": 355,
+     "w1": 363,
+     "n": 363,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "sunrise": {
+     "exact": 354,
+     "w1": 363,
+     "n": 363,
+     "mae": 0.02,
+     "max": 1,
+     "signed": -0.02
+    },
+    "dhuhr": {
+     "exact": 352,
+     "w1": 363,
+     "n": 363,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.03
+    },
+    "asr": {
+     "exact": 249,
+     "w1": 363,
+     "n": 363,
+     "mae": 0.31,
+     "max": 1,
+     "signed": 0.01
+    },
+    "maghrib": {
+     "exact": 336,
+     "w1": 363,
+     "n": 363,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.07
+    },
+    "isha": {
+     "exact": 349,
+     "w1": 363,
+     "n": 363,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.03
+    }
+   },
+   "gazW1": 363,
+   "spanKm": 1,
+   "amp": {
+    "fajr": 64,
+    "isha": 161
+   },
+   "cairoFixedW1": 331,
+   "cairoFixedWorst": 2
+  },
+  {
+   "i": 60,
+   "key": "الصالحية الجديدة",
+   "n": 365,
+   "lat": 30.64,
+   "lng": 31.92,
+   "allSixW1": 365,
+   "allSixExact": 187,
+   "exactPct": 51.2,
+   "per": {
+    "fajr": {
+     "exact": 348,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.01
+    },
+    "sunrise": {
+     "exact": 326,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": -0.11
+    },
+    "dhuhr": {
+     "exact": 354,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": -0.03
+    },
+    "asr": {
+     "exact": 249,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": -0.03
+    },
+    "maghrib": {
+     "exact": 356,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.01
+    },
+    "isha": {
+     "exact": 338,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.07
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 2.1,
+   "amp": {
+    "fajr": 69,
+    "isha": 165
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 5
+  },
+  {
+   "i": 61,
+   "key": "العاشر من رمضان",
+   "n": 365,
+   "lat": 30.33,
+   "lng": 31.74,
+   "allSixW1": 365,
+   "allSixExact": 205,
+   "exactPct": 56.2,
+   "per": {
+    "fajr": {
+     "exact": 347,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.03
+    },
+    "sunrise": {
+     "exact": 345,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.05
+    },
+    "dhuhr": {
+     "exact": 358,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0
+    },
+    "asr": {
+     "exact": 255,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.3,
+     "max": 1,
+     "signed": 0
+    },
+    "maghrib": {
+     "exact": 344,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.06
+    },
+    "isha": {
+     "exact": 345,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.03
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 3.8,
+   "amp": {
+    "fajr": 66,
+    "isha": 163
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 3
+  },
+  {
+   "i": 62,
+   "key": "العاصمة الادارية الجديدة",
+   "n": 365,
+   "lat": 30.01,
+   "lng": 31.85,
+   "allSixW1": 365,
+   "allSixExact": 177,
+   "exactPct": 48.5,
+   "per": {
+    "fajr": {
+     "exact": 326,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.08
+    },
+    "sunrise": {
+     "exact": 336,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.04
+    },
+    "dhuhr": {
+     "exact": 358,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "asr": {
+     "exact": 264,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.28,
+     "max": 1,
+     "signed": 0.04
+    },
+    "maghrib": {
+     "exact": 336,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.05
+    },
+    "isha": {
+     "exact": 334,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.04
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 9.6,
+   "amp": {
+    "fajr": 64,
+    "isha": 162
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 3
+  },
+  {
+   "i": 63,
+   "key": "العبور",
+   "n": 365,
+   "lat": 30.2,
+   "lng": 31.59,
+   "allSixW1": 365,
+   "allSixExact": 154,
+   "exactPct": 42.2,
+   "per": {
+    "fajr": {
+     "exact": 334,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.01
+    },
+    "sunrise": {
+     "exact": 343,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.01
+    },
+    "dhuhr": {
+     "exact": 343,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.06
+    },
+    "asr": {
+     "exact": 250,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": 0.04
+    },
+    "maghrib": {
+     "exact": 322,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": 0.12
+    },
+    "isha": {
+     "exact": 320,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": 0.12
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 10.9,
+   "amp": {
+    "fajr": 66,
+    "isha": 164
+   },
+   "cairoFixedW1": 83,
+   "cairoFixedWorst": 2
+  },
+  {
+   "i": 64,
+   "key": "الفشن الجديدة",
+   "n": 365,
+   "lat": 28.87,
+   "lng": 30.67,
+   "allSixW1": 365,
+   "allSixExact": 163,
+   "exactPct": 44.7,
+   "per": {
+    "fajr": {
+     "exact": 325,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.1
+    },
+    "sunrise": {
+     "exact": 340,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0
+    },
+    "dhuhr": {
+     "exact": 354,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.03
+    },
+    "asr": {
+     "exact": 250,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": 0
+    },
+    "maghrib": {
+     "exact": 328,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": 0.09
+    },
+    "isha": {
+     "exact": 336,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.04
+    }
+   },
+   "gazW1": 315,
+   "spanKm": 22.9,
+   "amp": {
+    "fajr": 59,
+    "isha": 157
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 8
+  },
+  {
+   "i": 65,
+   "key": "المنصورة الجديدة",
+   "n": 365,
+   "lat": 31.48,
+   "lng": 31.43,
+   "allSixW1": 365,
+   "allSixExact": 169,
+   "exactPct": 46.3,
+   "per": {
+    "fajr": {
+     "exact": 346,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.05
+    },
+    "sunrise": {
+     "exact": 354,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.03
+    },
+    "dhuhr": {
+     "exact": 342,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.06
+    },
+    "asr": {
+     "exact": 245,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.33,
+     "max": 1,
+     "signed": 0.06
+    },
+    "maghrib": {
+     "exact": 326,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.11
+    },
+    "isha": {
+     "exact": 332,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": 0.09
+    }
+   },
+   "gazW1": 349,
+   "spanKm": 16.9,
+   "amp": {
+    "fajr": 72,
+    "isha": 170
+   },
+   "cairoFixedW1": 17,
+   "cairoFixedWorst": 7
+  },
+  {
+   "i": 66,
+   "key": "النوبارية الجديدة",
+   "n": 365,
+   "lat": 30.61,
+   "lng": 30.09,
+   "allSixW1": 365,
+   "allSixExact": 149,
+   "exactPct": 40.8,
+   "per": {
+    "fajr": {
+     "exact": 335,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.03
+    },
+    "sunrise": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.03
+    },
+    "dhuhr": {
+     "exact": 339,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.07
+    },
+    "asr": {
+     "exact": 250,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": 0.08
+    },
+    "maghrib": {
+     "exact": 312,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.15,
+     "max": 1,
+     "signed": 0.15
+    },
+    "isha": {
+     "exact": 301,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.18,
+     "max": 1,
+     "signed": 0.18
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 6.7,
+   "amp": {
+    "fajr": 68,
+    "isha": 166
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 8
+  },
+  {
+   "i": 67,
+   "key": "بدر",
+   "n": 365,
+   "lat": 30.19,
+   "lng": 31.75,
+   "allSixW1": 365,
+   "allSixExact": 169,
+   "exactPct": 46.3,
+   "per": {
+    "fajr": {
+     "exact": 325,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.07
+    },
+    "sunrise": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.04
+    },
+    "dhuhr": {
+     "exact": 360,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0.01
+    },
+    "asr": {
+     "exact": 249,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": 0.01
+    },
+    "maghrib": {
+     "exact": 335,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.06
+    },
+    "isha": {
+     "exact": 336,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.06
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 6.9,
+   "amp": {
+    "fajr": 66,
+    "isha": 163
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 3
+  },
+  {
+   "i": 68,
+   "key": "بنى مزار الجديدة",
+   "n": 365,
+   "lat": 28.49,
+   "lng": 30.94,
+   "allSixW1": 365,
+   "allSixExact": 174,
+   "exactPct": 47.7,
+   "per": {
+    "fajr": {
+     "exact": 322,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": -0.12
+    },
+    "sunrise": {
+     "exact": 333,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": -0.09
+    },
+    "dhuhr": {
+     "exact": 346,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.05
+    },
+    "asr": {
+     "exact": 265,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.27,
+     "max": 1,
+     "signed": -0.02
+    },
+    "maghrib": {
+     "exact": 345,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.02
+    },
+    "isha": {
+     "exact": 341,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 13.2,
+   "amp": {
+    "fajr": 58,
+    "isha": 156
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 8
+  },
+  {
+   "i": 69,
+   "key": "بورسعيد الجديدة سلام",
+   "n": 365,
+   "lat": 31.01,
+   "lng": 32.62,
+   "allSixW1": 365,
+   "allSixExact": 195,
+   "exactPct": 53.4,
+   "per": {
+    "fajr": {
+     "exact": 351,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.01
+    },
+    "sunrise": {
+     "exact": 353,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": -0.02
+    },
+    "dhuhr": {
+     "exact": 354,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.03
+    },
+    "asr": {
+     "exact": 254,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.3,
+     "max": 1,
+     "signed": 0.07
+    },
+    "maghrib": {
+     "exact": 336,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.08
+    },
+    "isha": {
+     "exact": 344,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.06
+    }
+   },
+   "gazW1": 31,
+   "spanKm": 37.4,
+   "amp": {
+    "fajr": 70,
+    "isha": 167
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 10
+  },
+  {
+   "i": 70,
+   "key": "بئر العبد الجديدة",
+   "n": 365,
+   "lat": 31.08,
+   "lng": 32.97,
+   "allSixW1": 365,
+   "allSixExact": 145,
+   "exactPct": 39.7,
+   "per": {
+    "fajr": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.01
+    },
+    "sunrise": {
+     "exact": 323,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": -0.12
+    },
+    "dhuhr": {
+     "exact": 343,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": -0.06
+    },
+    "asr": {
+     "exact": 230,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.37,
+     "max": 1,
+     "signed": -0.1
+    },
+    "maghrib": {
+     "exact": 336,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.03
+    },
+    "isha": {
+     "exact": 318,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.13,
+     "max": 1,
+     "signed": -0.13
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 8.3,
+   "amp": {
+    "fajr": 71,
+    "isha": 167
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 12
+  },
+  {
+   "i": 71,
+   "key": "توشكى الجديدة",
+   "n": 365,
+   "lat": 22.81,
+   "lng": 31.59,
+   "allSixW1": 365,
+   "allSixExact": 159,
+   "exactPct": 43.6,
+   "per": {
+    "fajr": {
+     "exact": 330,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": -0.01
+    },
+    "sunrise": {
+     "exact": 332,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": -0.03
+    },
+    "dhuhr": {
+     "exact": 359,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "asr": {
+     "exact": 244,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.33,
+     "max": 1,
+     "signed": 0.05
+    },
+    "maghrib": {
+     "exact": 331,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": 0.08
+    },
+    "isha": {
+     "exact": 323,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": 0.09
+    }
+   },
+   "gazW1": 1,
+   "spanKm": 50.1,
+   "amp": {
+    "fajr": 31,
+    "isha": 131
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 27
+  },
+  {
+   "i": 72,
+   "key": "حدائق العاصمة",
+   "n": 365,
+   "lat": 30.12,
+   "lng": 31.88,
+   "allSixW1": 365,
+   "allSixExact": 187,
+   "exactPct": 51.2,
+   "per": {
+    "fajr": {
+     "exact": 342,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": -0.06
+    },
+    "sunrise": {
+     "exact": 317,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.13,
+     "max": 1,
+     "signed": -0.13
+    },
+    "dhuhr": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.08
+    },
+    "asr": {
+     "exact": 265,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.27,
+     "max": 1,
+     "signed": -0.04
+    },
+    "maghrib": {
+     "exact": 360,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": -0.01
+    },
+    "isha": {
+     "exact": 349,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.04
+    }
+   },
+   "gazW1": 250,
+   "spanKm": 23.4,
+   "amp": {
+    "fajr": 65,
+    "isha": 163
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 3
+  },
+  {
+   "i": 73,
+   "key": "رشيد الجديدة",
+   "n": 365,
+   "lat": 31.42,
+   "lng": 30.38,
+   "allSixW1": 365,
+   "allSixExact": 161,
+   "exactPct": 44.1,
+   "per": {
+    "fajr": {
+     "exact": 332,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": 0.09
+    },
+    "sunrise": {
+     "exact": 350,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.01
+    },
+    "dhuhr": {
+     "exact": 338,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.07
+    },
+    "asr": {
+     "exact": 249,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": 0.05
+    },
+    "maghrib": {
+     "exact": 325,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.11
+    },
+    "isha": {
+     "exact": 341,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.03
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 4.2,
+   "amp": {
+    "fajr": 72,
+    "isha": 169
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 10
+  },
+  {
+   "i": 74,
+   "key": "رفح الجديدة",
+   "n": 365,
+   "lat": 31.2,
+   "lng": 34.18,
+   "allSixW1": 365,
+   "allSixExact": 217,
+   "exactPct": 59.5,
+   "per": {
+    "fajr": {
+     "exact": 354,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": -0.02
+    },
+    "sunrise": {
+     "exact": 351,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.04
+    },
+    "dhuhr": {
+     "exact": 365,
+     "w1": 365,
+     "n": 365,
+     "mae": 0,
+     "max": 0,
+     "signed": 0
+    },
+    "asr": {
+     "exact": 254,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.3,
+     "max": 1,
+     "signed": 0.01
+    },
+    "maghrib": {
+     "exact": 342,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.06
+    },
+    "isha": {
+     "exact": 359,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.01
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 10.7,
+   "amp": {
+    "fajr": 71,
+    "isha": 168
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 17
+  },
+  {
+   "i": 75,
+   "key": "سفنكس الجديدة",
+   "n": 365,
+   "lat": 30.1,
+   "lng": 30.77,
+   "allSixW1": 365,
+   "allSixExact": 137,
+   "exactPct": 37.5,
+   "per": {
+    "fajr": {
+     "exact": 332,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": 0.09
+    },
+    "sunrise": {
+     "exact": 355,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.03
+    },
+    "dhuhr": {
+     "exact": 322,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": 0.12
+    },
+    "asr": {
+     "exact": 242,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.34,
+     "max": 1,
+     "signed": 0.05
+    },
+    "maghrib": {
+     "exact": 313,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.14,
+     "max": 1,
+     "signed": 0.14
+    },
+    "isha": {
+     "exact": 335,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.08
+    }
+   },
+   "gazW1": 61,
+   "spanKm": 31.6,
+   "amp": {
+    "fajr": 66,
+    "isha": 163
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 3
+  },
+  {
+   "i": 76,
+   "key": "شرق العوينات",
+   "n": 365,
+   "lat": 22.8,
+   "lng": 28.71,
+   "allSixW1": 365,
+   "allSixExact": 154,
+   "exactPct": 42.2,
+   "per": {
+    "fajr": {
+     "exact": 324,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.04
+    },
+    "sunrise": {
+     "exact": 321,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": -0.06
+    },
+    "dhuhr": {
+     "exact": 348,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.05
+    },
+    "asr": {
+     "exact": 263,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.28,
+     "max": 1,
+     "signed": -0.05
+    },
+    "maghrib": {
+     "exact": 318,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.13,
+     "max": 1,
+     "signed": 0.01
+    },
+    "isha": {
+     "exact": 319,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.13,
+     "max": 1,
+     "signed": -0.09
+    }
+   },
+   "gazW1": 365,
+   "spanKm": 24.1,
+   "amp": {
+    "fajr": 30,
+    "isha": 131
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 39
+  },
+  {
+   "i": 77,
+   "key": "غرب النوبارية",
+   "n": 365,
+   "lat": 30.64,
+   "lng": 29.67,
+   "allSixW1": 365,
+   "allSixExact": 170,
+   "exactPct": 46.6,
+   "per": {
+    "fajr": {
+     "exact": 336,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0
+    },
+    "sunrise": {
+     "exact": 343,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": -0.04
+    },
+    "dhuhr": {
+     "exact": 353,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.03
+    },
+    "asr": {
+     "exact": 242,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.34,
+     "max": 1,
+     "signed": 0.05
+    },
+    "maghrib": {
+     "exact": 334,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.08
+    },
+    "isha": {
+     "exact": 330,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": 0.07
+    }
+   },
+   "gazW1": 129,
+   "spanKm": 26.8,
+   "amp": {
+    "fajr": 69,
+    "isha": 165
+   },
+   "cairoFixedW1": 0,
+   "cairoFixedWorst": 9
+  },
+  {
+   "i": 78,
+   "key": "منوف",
+   "empty": true
+  },
+  {
+   "i": 79,
+   "key": "ديرب نجم",
+   "empty": true
+  },
+  {
+   "i": 80,
+   "key": "ابو تشت",
+   "empty": true
+  },
+  {
+   "i": 81,
+   "key": "سمالوط",
+   "empty": true
+  }
+ ],
+ "totals": {
+  "cities": 78,
+  "days": 28468,
+  "w1": 28468,
+  "exact": 13794
+ }
+}

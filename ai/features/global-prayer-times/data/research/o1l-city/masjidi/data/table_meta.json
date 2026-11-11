@@ -1,0 +1,1004 @@
+{
+ "2": {
+  "country": "لبنان",
+  "tz": "Asia/Beirut",
+  "off": 120,
+  "tenants": 176
+ },
+ "3": {
+  "country": "لبنان",
+  "tz": "Asia/Beirut",
+  "off": 120,
+  "tenants": 14
+ },
+ "7508": {
+  "country": "لبنان",
+  "tz": "Asia/Beirut",
+  "off": 120,
+  "tenants": 6
+ },
+ "7203": {
+  "country": "لبنان",
+  "tz": "Asia/Beirut",
+  "off": 120,
+  "tenants": 5
+ },
+ "7202": {
+  "country": "لبنان",
+  "tz": "Asia/Beirut",
+  "off": 120,
+  "tenants": 7
+ },
+ "7199": {
+  "country": "لبنان",
+  "tz": "Asia/Beirut",
+  "off": 120,
+  "tenants": 13
+ },
+ "7213": {
+  "country": "لبنان",
+  "tz": "Asia/Beirut",
+  "off": 120,
+  "tenants": 7
+ },
+ "7200": {
+  "country": "لبنان",
+  "tz": "Asia/Beirut",
+  "off": 120,
+  "tenants": 4
+ },
+ "7509": {
+  "country": "لبنان",
+  "tz": "Asia/Beirut",
+  "off": 120,
+  "tenants": 2
+ },
+ "8166": {
+  "country": "لبنان",
+  "tz": "Asia/Beirut",
+  "off": 120,
+  "tenants": 2
+ },
+ "4": {
+  "country": "لبنان",
+  "tz": "Asia/Beirut",
+  "off": 120,
+  "tenants": 3
+ },
+ "8390": {
+  "country": "لبنان",
+  "tz": "Asia/Beirut",
+  "off": 120,
+  "tenants": 1
+ },
+ "5": {
+  "country": "لبنان",
+  "tz": "Asia/Beirut",
+  "off": 120,
+  "tenants": 1
+ },
+ "8389": {
+  "country": "لبنان",
+  "tz": "Asia/Beirut",
+  "off": 120,
+  "tenants": 1
+ },
+ "7204": {
+  "country": "لبنان",
+  "tz": "Asia/Beirut",
+  "off": 120,
+  "tenants": 1
+ },
+ "8140": {
+  "country": "لبنان",
+  "tz": "Asia/Beirut",
+  "off": 120,
+  "tenants": 1
+ },
+ "1051": {
+  "country": "المملكة العربية السعودية",
+  "tz": "Asia/Riyadh",
+  "off": 180,
+  "tenants": 7
+ },
+ "157": {
+  "country": "المملكة العربية السعودية",
+  "tz": "Asia/Riyadh",
+  "off": 180,
+  "tenants": 6
+ },
+ "1007": {
+  "country": "المملكة العربية السعودية",
+  "tz": "Asia/Riyadh",
+  "off": 180,
+  "tenants": 5
+ },
+ "1047": {
+  "country": "المملكة العربية السعودية",
+  "tz": "Asia/Riyadh",
+  "off": 180,
+  "tenants": 5
+ },
+ "1016": {
+  "country": "المملكة العربية السعودية",
+  "tz": "Asia/Riyadh",
+  "off": 180,
+  "tenants": 2
+ },
+ "1011": {
+  "country": "المملكة العربية السعودية",
+  "tz": "Asia/Riyadh",
+  "off": 180,
+  "tenants": 2
+ },
+ "1056": {
+  "country": "المملكة العربية السعودية",
+  "tz": "Asia/Riyadh",
+  "off": 180,
+  "tenants": 2
+ },
+ "155": {
+  "country": "المملكة العربية السعودية",
+  "tz": "Asia/Riyadh",
+  "off": 180,
+  "tenants": 2
+ },
+ "1008": {
+  "country": "المملكة العربية السعودية",
+  "tz": "Asia/Riyadh",
+  "off": 180,
+  "tenants": 2
+ },
+ "980": {
+  "country": "المملكة العربية السعودية",
+  "tz": "Asia/Riyadh",
+  "off": 180,
+  "tenants": 1
+ },
+ "1013": {
+  "country": "المملكة العربية السعودية",
+  "tz": "Asia/Riyadh",
+  "off": 180,
+  "tenants": 1
+ },
+ "1058": {
+  "country": "المملكة العربية السعودية",
+  "tz": "Asia/Riyadh",
+  "off": 180,
+  "tenants": 1
+ },
+ "1019": {
+  "country": "المملكة العربية السعودية",
+  "tz": "Asia/Riyadh",
+  "off": 180,
+  "tenants": 1
+ },
+ "967": {
+  "country": "المملكة العربية السعودية",
+  "tz": "Asia/Riyadh",
+  "off": 180,
+  "tenants": 1
+ },
+ "1003": {
+  "country": "المملكة العربية السعودية",
+  "tz": "Asia/Riyadh",
+  "off": 180,
+  "tenants": 1
+ },
+ "1054": {
+  "country": "المملكة العربية السعودية",
+  "tz": "Asia/Riyadh",
+  "off": 180,
+  "tenants": 1
+ },
+ "966": {
+  "country": "المملكة العربية السعودية",
+  "tz": "Asia/Riyadh",
+  "off": 180,
+  "tenants": 1
+ },
+ "977": {
+  "country": "المملكة العربية السعودية",
+  "tz": "Asia/Riyadh",
+  "off": 180,
+  "tenants": 1
+ },
+ "1053": {
+  "country": "المملكة العربية السعودية",
+  "tz": "Asia/Riyadh",
+  "off": 180,
+  "tenants": 1
+ },
+ "992": {
+  "country": "المملكة العربية السعودية",
+  "tz": "Asia / Riyadh",
+  "off": null,
+  "tenants": 1
+ },
+ "163": {
+  "country": "المملكة العربية السعودية",
+  "tz": "Asia/Riyadh",
+  "off": 180,
+  "tenants": 1
+ },
+ "1049": {
+  "country": "المملكة العربية السعودية",
+  "tz": "Asia/Riyadh",
+  "off": 180,
+  "tenants": 1
+ },
+ "976": {
+  "country": "المملكة العربية السعودية",
+  "tz": "Asia/Riyadh",
+  "off": 180,
+  "tenants": 1
+ },
+ "1036": {
+  "country": "المملكة العربية السعودية",
+  "tz": "Asia/Riyadh",
+  "off": 180,
+  "tenants": 1
+ },
+ "968": {
+  "country": "المملكة العربية السعودية",
+  "tz": "Asia/Riyadh",
+  "off": 180,
+  "tenants": 1
+ },
+ "3551": {
+  "country": "الجزائر",
+  "tz": "Africa/Algiers",
+  "off": 60,
+  "tenants": 4
+ },
+ "3612": {
+  "country": "الجزائر",
+  "tz": "Africa/Algiers",
+  "off": 60,
+  "tenants": 2
+ },
+ "3568": {
+  "country": "الجزائر",
+  "tz": "Africa/Algiers",
+  "off": 60,
+  "tenants": 2
+ },
+ "3581": {
+  "country": "الجزائر",
+  "tz": "Africa/Algiers",
+  "off": 60,
+  "tenants": 4
+ },
+ "3597": {
+  "country": "الجزائر",
+  "tz": "Africa/Algiers",
+  "off": 60,
+  "tenants": 1
+ },
+ "3605": {
+  "country": "الجزائر",
+  "tz": "Africa/Algiers",
+  "off": 60,
+  "tenants": 1
+ },
+ "3611": {
+  "country": "الجزائر",
+  "tz": "Africa/Algiers",
+  "off": 60,
+  "tenants": 1
+ },
+ "3563": {
+  "country": "الجزائر",
+  "tz": "Africa/Algiers",
+  "off": 60,
+  "tenants": 1
+ },
+ "3609": {
+  "country": "الجزائر",
+  "tz": "Africa/Algiers",
+  "off": 60,
+  "tenants": 1
+ },
+ "3576": {
+  "country": "الجزائر",
+  "tz": "Africa/Algiers",
+  "off": 60,
+  "tenants": 2
+ },
+ "3593": {
+  "country": "الجزائر",
+  "tz": "Africa/Algiers",
+  "off": 60,
+  "tenants": 1
+ },
+ "3582": {
+  "country": "الجزائر",
+  "tz": "Africa/Algiers",
+  "off": 60,
+  "tenants": 1
+ },
+ "3562": {
+  "country": "الجزائر",
+  "tz": "Africa/Algiers",
+  "off": 60,
+  "tenants": 1
+ },
+ "3565": {
+  "country": "الجزائر",
+  "tz": "Africa/Algiers",
+  "off": 60,
+  "tenants": 1
+ },
+ "3572": {
+  "country": "الجزائر",
+  "tz": "Africa/Algiers",
+  "off": 60,
+  "tenants": 1
+ },
+ "3584": {
+  "country": "الجزائر",
+  "tz": "Africa/Algiers",
+  "off": 60,
+  "tenants": 1
+ },
+ "3604": {
+  "country": "الجزائر",
+  "tz": "Africa/Algiers",
+  "off": 60,
+  "tenants": 1
+ },
+ "3558": {
+  "country": "الجزائر",
+  "tz": "Africa/Algiers",
+  "off": 60,
+  "tenants": 1
+ },
+ "3590": {
+  "country": "الجزائر",
+  "tz": "Africa/Algiers",
+  "off": 60,
+  "tenants": 1
+ },
+ "3580": {
+  "country": "الجزائر",
+  "tz": "Africa/Algiers",
+  "off": 60,
+  "tenants": 1
+ },
+ "3557": {
+  "country": "الجزائر",
+  "tz": "Africa/Algiers",
+  "off": 60,
+  "tenants": 1
+ },
+ "3577": {
+  "country": "الجزائر",
+  "tz": "Africa/Algiers",
+  "off": 60,
+  "tenants": 1
+ },
+ "7617": {
+  "country": "سوريا",
+  "tz": "Asia/Damascus",
+  "off": 180,
+  "tenants": 7
+ },
+ "7518": {
+  "country": "سوريا",
+  "tz": "Asia/Damascus",
+  "off": 180,
+  "tenants": 2
+ },
+ "7614": {
+  "country": "سوريا",
+  "tz": "Asia/Damascus",
+  "off": 180,
+  "tenants": 1
+ },
+ "7655": {
+  "country": "سوريا",
+  "tz": "Asia/Damascus",
+  "off": 180,
+  "tenants": 1
+ },
+ "8414": {
+  "country": "سوريا",
+  "tz": "Asia/Damascus",
+  "off": 180,
+  "tenants": 1
+ },
+ "8086": {
+  "country": "سوريا",
+  "tz": "Asia/Damascus",
+  "off": 180,
+  "tenants": 1
+ },
+ "7510": {
+  "country": "سوريا",
+  "tz": "Asia/Damascus",
+  "off": 180,
+  "tenants": 1
+ },
+ "8082": {
+  "country": "سوريا",
+  "tz": "Asia/Damascus",
+  "off": 180,
+  "tenants": 1
+ },
+ "7609": {
+  "country": "سوريا",
+  "tz": "Asia/Damascus",
+  "off": 180,
+  "tenants": 1
+ },
+ "7525": {
+  "country": "سوريا",
+  "tz": "Asia/Damascus",
+  "off": 180,
+  "tenants": 1
+ },
+ "7943": {
+  "country": "سوريا",
+  "tz": "Asia/Damascus",
+  "off": 180,
+  "tenants": 1
+ },
+ "7930": {
+  "country": "سوريا",
+  "tz": "Asia/Damascus",
+  "off": 180,
+  "tenants": 1
+ },
+ "8091": {
+  "country": "سوريا",
+  "tz": "Asia/Damascus",
+  "off": 180,
+  "tenants": 1
+ },
+ "6127": {
+  "country": "أندونيسيا",
+  "tz": "Asia/Jakarta",
+  "off": 420,
+  "tenants": 1
+ },
+ "6102": {
+  "country": "أندونيسيا",
+  "tz": "Asia/Jakarta",
+  "off": 420,
+  "tenants": 1
+ },
+ "6168": {
+  "country": "أندونيسيا",
+  "tz": "Asia/Jakarta",
+  "off": 420,
+  "tenants": 1
+ },
+ "6305": {
+  "country": "أندونيسيا",
+  "tz": "Asia/Makassar",
+  "off": 480,
+  "tenants": 1
+ },
+ "6026": {
+  "country": "أندونيسيا",
+  "tz": "Asia/Jakarta",
+  "off": 420,
+  "tenants": 1
+ },
+ "6009": {
+  "country": "أندونيسيا",
+  "tz": "Asia/Jakarta",
+  "off": 420,
+  "tenants": 1
+ },
+ "6338": {
+  "country": "أندونيسيا",
+  "tz": "Asia/Makassar",
+  "off": 480,
+  "tenants": 1
+ },
+ "6106": {
+  "country": "أندونيسيا",
+  "tz": "Asia/Jakarta",
+  "off": 420,
+  "tenants": 1
+ },
+ "6097": {
+  "country": "أندونيسيا",
+  "tz": "Asia/Jakarta",
+  "off": 420,
+  "tenants": 1
+ },
+ "5990": {
+  "country": "أندونيسيا",
+  "tz": "Asia/Jakarta",
+  "off": 420,
+  "tenants": 1
+ },
+ "6046": {
+  "country": "أندونيسيا",
+  "tz": "Asia/Jakarta",
+  "off": 420,
+  "tenants": 1
+ },
+ "6221": {
+  "country": "أندونيسيا",
+  "tz": "Asia/Makassar",
+  "off": 480,
+  "tenants": 1
+ },
+ "6131": {
+  "country": "أندونيسيا",
+  "tz": "Asia/Jakarta",
+  "off": 420,
+  "tenants": 1
+ },
+ "6174": {
+  "country": "أندونيسيا",
+  "tz": "Asia/Jakarta",
+  "off": 420,
+  "tenants": 1
+ },
+ "6189": {
+  "country": "أندونيسيا",
+  "tz": "Asia/Jakarta",
+  "off": 420,
+  "tenants": 1
+ },
+ "6185": {
+  "country": "أندونيسيا",
+  "tz": "Asia/Jakarta",
+  "off": 420,
+  "tenants": 1
+ },
+ "6146": {
+  "country": "أندونيسيا",
+  "tz": "Asia/Jakarta",
+  "off": 420,
+  "tenants": 1
+ },
+ "6048": {
+  "country": "أندونيسيا",
+  "tz": "Asia/Jakarta",
+  "off": 420,
+  "tenants": 1
+ },
+ "6134": {
+  "country": "أندونيسيا",
+  "tz": "Asia/Jakarta",
+  "off": 420,
+  "tenants": 2
+ },
+ "6115": {
+  "country": "أندونيسيا",
+  "tz": "Asia/Jakarta",
+  "off": 420,
+  "tenants": 1
+ },
+ "6316": {
+  "country": "أندونيسيا",
+  "tz": "Asia/Makassar",
+  "off": 480,
+  "tenants": 1
+ },
+ "6133": {
+  "country": "أندونيسيا",
+  "tz": "Asia/Jakarta",
+  "off": 420,
+  "tenants": 1
+ },
+ "46": {
+  "country": "عمان",
+  "tz": "Asia/Muscat",
+  "off": 240,
+  "tenants": 3
+ },
+ "95": {
+  "country": "عمان",
+  "tz": "Asia/Muscat",
+  "off": 240,
+  "tenants": 2
+ },
+ "63": {
+  "country": "عمان",
+  "tz": "Asia/Muscat",
+  "off": 240,
+  "tenants": 2
+ },
+ "45": {
+  "country": "عمان",
+  "tz": "Asia/Muscat",
+  "off": 240,
+  "tenants": 2
+ },
+ "53": {
+  "country": "عمان",
+  "tz": "Asia/Muscat",
+  "off": 240,
+  "tenants": 1
+ },
+ "98": {
+  "country": "عمان",
+  "tz": "Asia/Muscat",
+  "off": 240,
+  "tenants": 1
+ },
+ "71": {
+  "country": "عمان",
+  "tz": "Asia/Muscat",
+  "off": 240,
+  "tenants": 1
+ },
+ "78": {
+  "country": "عمان",
+  "tz": "Asia/Muscat",
+  "off": 240,
+  "tenants": 1
+ },
+ "80": {
+  "country": "عمان",
+  "tz": "Asia/Muscat",
+  "off": 240,
+  "tenants": 1
+ },
+ "50": {
+  "country": "عمان",
+  "tz": "Asia/Muscat",
+  "off": 240,
+  "tenants": 1
+ },
+ "103": {
+  "country": "عمان",
+  "tz": "Asia/Muscat",
+  "off": 240,
+  "tenants": 1
+ },
+ "247": {
+  "country": "الأردن",
+  "tz": "Asia/Amman",
+  "off": 180,
+  "tenants": 9
+ },
+ "248": {
+  "country": "الأردن",
+  "tz": "Asia/Amman",
+  "off": 180,
+  "tenants": 4
+ },
+ "255": {
+  "country": "الأردن",
+  "tz": "Asia/Amman",
+  "off": 180,
+  "tenants": 1
+ },
+ "250": {
+  "country": "الأردن",
+  "tz": "Asia/Amman",
+  "off": 180,
+  "tenants": 1
+ },
+ "8306": {
+  "country": "المغرب",
+  "tz": "Etc/GMT",
+  "off": 0,
+  "tenants": 2
+ },
+ "8221": {
+  "country": "المغرب",
+  "tz": "Etc/GMT",
+  "off": 0,
+  "tenants": 2
+ },
+ "8235": {
+  "country": "المغرب",
+  "tz": "Etc/GMT",
+  "off": 0,
+  "tenants": 1
+ },
+ "8167": {
+  "country": "المغرب",
+  "tz": "Etc/GMT",
+  "off": 0,
+  "tenants": 1
+ },
+ "8274": {
+  "country": "المغرب",
+  "tz": "Etc/GMT",
+  "off": 0,
+  "tenants": 1
+ },
+ "8367": {
+  "country": "المغرب",
+  "tz": "Etc/GMT",
+  "off": 0,
+  "tenants": 1
+ },
+ "8262": {
+  "country": "المغرب",
+  "tz": "Etc/GMT",
+  "off": 0,
+  "tenants": 1
+ },
+ "8383": {
+  "country": "المغرب",
+  "tz": "Etc/GMT",
+  "off": 0,
+  "tenants": 1
+ },
+ "8333": {
+  "country": "المغرب",
+  "tz": "Etc/GMT",
+  "off": 0,
+  "tenants": 1
+ },
+ "8354": {
+  "country": "المغرب",
+  "tz": "Etc/GMT",
+  "off": 0,
+  "tenants": 1
+ },
+ "8279": {
+  "country": "المغرب",
+  "tz": "Etc/GMT",
+  "off": 0,
+  "tenants": 1
+ },
+ "228": {
+  "country": "ماليزيا",
+  "tz": "Asia/Kuala_Lumpur",
+  "off": 480,
+  "tenants": 1
+ },
+ "211": {
+  "country": "ماليزيا",
+  "tz": "Asia/Kuala_Lumpur",
+  "off": 480,
+  "tenants": 2
+ },
+ "198": {
+  "country": "ماليزيا",
+  "tz": "Asia/Kuala_Lumpur",
+  "off": 480,
+  "tenants": 1
+ },
+ "207": {
+  "country": "ماليزيا",
+  "tz": "Asia/Kuala_Lumpur",
+  "off": 480,
+  "tenants": 1
+ },
+ "235": {
+  "country": "ماليزيا",
+  "tz": "Asia/Kuala_Lumpur",
+  "off": 480,
+  "tenants": 1
+ },
+ "220": {
+  "country": "ماليزيا",
+  "tz": "Asia/Kuala_Lumpur",
+  "off": 480,
+  "tenants": 1
+ },
+ "188": {
+  "country": "ماليزيا",
+  "tz": "Asia/Kuala_Lumpur",
+  "off": 480,
+  "tenants": 1
+ },
+ "223": {
+  "country": "ماليزيا",
+  "tz": "Asia/Kuala_Lumpur",
+  "off": 480,
+  "tenants": 1
+ },
+ "364": {
+  "country": "تونس",
+  "tz": "Africa/Tunis",
+  "off": 60,
+  "tenants": 2
+ },
+ "355": {
+  "country": "تونس",
+  "tz": "Africa/Tunis",
+  "off": 60,
+  "tenants": 1
+ },
+ "346": {
+  "country": "تونس",
+  "tz": "Africa/Tunis",
+  "off": 60,
+  "tenants": 1
+ },
+ "366": {
+  "country": "تونس",
+  "tz": "Africa/Tunis",
+  "off": 60,
+  "tenants": 1
+ },
+ "350": {
+  "country": "تونس",
+  "tz": "Africa/Tunis",
+  "off": 60,
+  "tenants": 1
+ },
+ "363": {
+  "country": "تونس",
+  "tz": "Africa/Tunis",
+  "off": 60,
+  "tenants": 1
+ },
+ "359": {
+  "country": "تونس",
+  "tz": "Africa/Tunis",
+  "off": 60,
+  "tenants": 1
+ },
+ "3109": {
+  "country": "مصر",
+  "tz": "Africa/Cairo",
+  "off": 120,
+  "tenants": 4
+ },
+ "3034": {
+  "country": "مصر",
+  "tz": "Africa/Cairo",
+  "off": 120,
+  "tenants": 1
+ },
+ "3046": {
+  "country": "مصر",
+  "tz": "Africa/Cairo",
+  "off": 120,
+  "tenants": 2
+ },
+ "173": {
+  "country": "العراق",
+  "tz": null,
+  "off": null,
+  "tenants": 2
+ },
+ "8145": {
+  "country": "العراق",
+  "tz": "Asia/Baghdad",
+  "off": 180,
+  "tenants": 2
+ },
+ "7208": {
+  "country": "العراق",
+  "tz": "Asia/Baghdad",
+  "off": 180,
+  "tenants": 1
+ },
+ "9": {
+  "country": "العراق",
+  "tz": "Asia/Baghdad",
+  "off": 180,
+  "tenants": 1
+ },
+ "156": {
+  "country": "المملكة المتحدة",
+  "tz": null,
+  "off": null,
+  "tenants": 1
+ },
+ "40": {
+  "country": "ليبيا",
+  "tz": "Africa/Tripoli",
+  "off": 120,
+  "tenants": 2
+ },
+ "20": {
+  "country": "ليبيا",
+  "tz": "Africa/Tripoli",
+  "off": 120,
+  "tenants": 1
+ },
+ "42": {
+  "country": "ليبيا",
+  "tz": "Africa/Tripoli",
+  "off": 120,
+  "tenants": 1
+ },
+ "44": {
+  "country": "ليبيا",
+  "tz": "Africa/Tripoli",
+  "off": 120,
+  "tenants": 1
+ },
+ "144": {
+  "country": "الكويت",
+  "tz": "Asia/Kuwait",
+  "off": 180,
+  "tenants": 4
+ },
+ "5885": {
+  "country": "فلسطين",
+  "tz": "Asia/Gaza",
+  "off": 120,
+  "tenants": 2
+ },
+ "5886": {
+  "country": "فلسطين",
+  "tz": "Asia/Gaza",
+  "off": 120,
+  "tenants": 2
+ },
+ "2905": {
+  "country": "ألمانيا",
+  "tz": "Europe/Berlin",
+  "off": 60,
+  "tenants": 1
+ },
+ "2448": {
+  "country": "ألمانيا",
+  "tz": "Europe/Berlin",
+  "off": 60,
+  "tenants": 1
+ },
+ "2772": {
+  "country": "ألمانيا",
+  "tz": "Europe/Berlin",
+  "off": 60,
+  "tenants": 1
+ },
+ "5587": {
+  "country": "السويد",
+  "tz": "Europe/Stockholm",
+  "off": 60,
+  "tenants": 1
+ },
+ "5622": {
+  "country": "السويد",
+  "tz": "Europe/Stockholm",
+  "off": 60,
+  "tenants": 1
+ },
+ "394": {
+  "country": "النرويج",
+  "tz": "Europe/Oslo",
+  "off": 60,
+  "tenants": 1
+ },
+ "444": {
+  "country": "النرويج",
+  "tz": "Europe/Oslo",
+  "off": 60,
+  "tenants": 1
+ },
+ "1641": {
+  "country": "بلجيكا",
+  "tz": "Europe/Brussels",
+  "off": 60,
+  "tenants": 1
+ },
+ "5733": {
+  "country": "رومانيا",
+  "tz": "Europe/Bucharest",
+  "off": 120,
+  "tenants": 1
+ },
+ "164": {
+  "country": "قطر",
+  "tz": "Asia/Qatar",
+  "off": 180,
+  "tenants": 1
+ },
+ "1142": {
+  "country": "البوسنة والهرسك",
+  "tz": "Europe/Sarajevo",
+  "off": 60,
+  "tenants": 1
+ },
+ "5883": {
+  "country": "البحرين",
+  "tz": "Asia/Bahrain",
+  "off": 180,
+  "tenants": 1
+ },
+ "1925": {
+  "country": "إيطاليا",
+  "tz": "Europe/Rome",
+  "off": 60,
+  "tenants": 1
+ }
+}

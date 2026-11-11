@@ -1,0 +1,185 @@
+{
+ "metro": "Harrisburg",
+ "surface": "isgh-alminaret",
+ "isna_15_15": {
+  "madhab": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 1,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "w1": 99.5,
+  "exact": 90,
+  "per_column": {
+   "fajr": {
+    "mae": 0.15,
+    "bias": -0.01,
+    "exact": 96.7,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "sunrise": {
+    "mae": 0.29,
+    "bias": -0.02,
+    "exact": 90,
+    "w1": 100,
+    "worst": 0.6
+   },
+   "dhuhr": {
+    "mae": 0.26,
+    "bias": -0.04,
+    "exact": 100,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "asr": {
+    "mae": 0.45,
+    "bias": -0.48,
+    "exact": 53.3,
+    "w1": 96.7,
+    "worst": 1.1
+   },
+   "maghrib": {
+    "mae": 0.25,
+    "bias": -0.08,
+    "exact": 100,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "isha": {
+    "mae": 0.25,
+    "bias": -0.1,
+    "exact": 100,
+    "w1": 100,
+    "worst": 0.5
+   }
+  }
+ },
+ "rows": 30,
+ "span": [
+  "2026-11-11",
+  "2026-12-10"
+ ],
+ "years": [
+  "2026"
+ ],
+ "coords": [
+  40.2370893,
+  -76.846049
+ ],
+ "tz": "America/New_York",
+ "recipe": {
+  "engine": "adhan 4.4.6",
+  "fajr_angle": 14.8,
+  "isha": [
+   "angle",
+   13.6
+  ],
+  "madhab": "shafi",
+  "high_latitude": "TwilightAngle",
+  "rounding": "None",
+  "margins": {
+   "fajr": -1,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 1,
+   "maghrib": 0,
+   "isha": 8
+  }
+ },
+ "per_column": {
+  "fajr": {
+   "mae": 0.18,
+   "bias": -0.09,
+   "exact": 93.3,
+   "w1": 100,
+   "worst": 0.6
+  },
+  "sunrise": {
+   "mae": 0.29,
+   "bias": -0.02,
+   "exact": 90,
+   "w1": 100,
+   "worst": 0.6
+  },
+  "dhuhr": {
+   "mae": 0.26,
+   "bias": -0.04,
+   "exact": 100,
+   "w1": 100,
+   "worst": 0.5
+  },
+  "asr": {
+   "mae": 0.45,
+   "bias": -0.48,
+   "exact": 53.3,
+   "w1": 96.7,
+   "worst": 1.1
+  },
+  "maghrib": {
+   "mae": 0.25,
+   "bias": -0.08,
+   "exact": 100,
+   "w1": 100,
+   "worst": 0.5
+  },
+  "isha": {
+   "mae": 0.43,
+   "bias": -0.43,
+   "exact": 60,
+   "w1": 100,
+   "worst": 0.9
+  }
+ },
+ "per_year": {
+  "2026": {
+   "fajr": {
+    "mae": 0.18,
+    "bias": -0.09,
+    "exact": 93.3,
+    "w1": 100,
+    "worst": 0.6
+   },
+   "sunrise": {
+    "mae": 0.29,
+    "bias": -0.02,
+    "exact": 90,
+    "w1": 100,
+    "worst": 0.6
+   },
+   "dhuhr": {
+    "mae": 0.26,
+    "bias": -0.04,
+    "exact": 100,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "asr": {
+    "mae": 0.45,
+    "bias": -0.48,
+    "exact": 53.3,
+    "w1": 96.7,
+    "worst": 1.1
+   },
+   "maghrib": {
+    "mae": 0.25,
+    "bias": -0.08,
+    "exact": 100,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "isha": {
+    "mae": 0.43,
+    "bias": -0.43,
+    "exact": 60,
+    "w1": 100,
+    "worst": 0.9
+   }
+  }
+ },
+ "seasonal_fajr_amplitude_min": null,
+ "fajr_later_in_january": null
+}

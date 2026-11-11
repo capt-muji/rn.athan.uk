@@ -1,0 +1,100 @@
+{
+ "label": "bf-ouaga-10yaar",
+ "file": "bf-ouaga-10yaar-2026.json",
+ "tz": "Africa/Ouagadougou",
+ "lat": 12.2850926,
+ "lon": -1.4918235,
+ "days": 365,
+ "span": [
+  "2026-01-01",
+  "2026-12-31"
+ ],
+ "engine": "adhan 4.4.6 Rounding.None MiddleOfTheNight",
+ "recipe": {
+  "fajrAngle": 16.55,
+  "ishaAngle": 17.45,
+  "madhab": "Shafi",
+  "offsets": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 18,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": 0
+  }
+ },
+ "angleSearch": {
+  "fajr": {
+   "angle": 16.55,
+   "exact": 251,
+   "w1": 365,
+   "worst": 1,
+   "score": 365251
+  },
+  "isha": {
+   "angle": 17.45,
+   "exact": 64,
+   "w1": 141,
+   "worst": 23,
+   "score": 141064
+  }
+ },
+ "asrMadhab": {
+  "shafi": {
+   "exact": 72,
+   "w1": 203,
+   "worst": 7,
+   "n": 365
+  },
+  "hanafi": {
+   "exact": 0,
+   "w1": 0,
+   "worst": 73,
+   "n": 365
+  }
+ },
+ "perColumn": {
+  "fajr": {
+   "exact": 251,
+   "w1": 365,
+   "worst": 1,
+   "n": 365
+  },
+  "sunrise": {
+   "exact": 292,
+   "w1": 365,
+   "worst": 1,
+   "n": 365
+  },
+  "dhuhr": {
+   "exact": 28,
+   "w1": 60,
+   "worst": 25,
+   "n": 365
+  },
+  "asr": {
+   "exact": 76,
+   "w1": 199,
+   "worst": 6,
+   "n": 365
+  },
+  "maghrib": {
+   "exact": 326,
+   "w1": 365,
+   "worst": 1,
+   "n": 365
+  },
+  "isha": {
+   "exact": 64,
+   "w1": 141,
+   "worst": 23,
+   "n": 365
+  }
+ },
+ "totals": {
+  "within1": 1495,
+  "of": 2190,
+  "exact": 1037,
+  "worst": 25
+ }
+}

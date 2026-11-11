@@ -1,0 +1,67 @@
+{
+ "label": "Tokyo Camii",
+ "source": "https://masjidbox.com/prayer-times/tokyo-camii",
+ "tier": "platform tenant (masjidbox)",
+ "lat": 35.6667,
+ "lon": 139.6867,
+ "tz": "Asia/Tokyo",
+ "year": 2026,
+ "days": {
+  "2026-11-11": {
+   "fajr": "04:46",
+   "sunrise": "06:06",
+   "dhuhr": "11:31",
+   "asr": "14:21",
+   "maghrib": "16:45",
+   "isha": "18:00"
+  },
+  "2026-11-12": {
+   "fajr": "04:46",
+   "sunrise": "06:07",
+   "dhuhr": "11:31",
+   "asr": "14:20",
+   "maghrib": "16:44",
+   "isha": "18:00"
+  },
+  "2026-11-13": {
+   "fajr": "04:47",
+   "sunrise": "06:08",
+   "dhuhr": "11:31",
+   "asr": "14:20",
+   "maghrib": "16:43",
+   "isha": "17:59"
+  },
+  "2026-11-14": {
+   "fajr": "04:48",
+   "sunrise": "06:09",
+   "dhuhr": "11:31",
+   "asr": "14:19",
+   "maghrib": "16:43",
+   "isha": "17:59"
+  },
+  "2026-11-15": {
+   "fajr": "04:49",
+   "sunrise": "06:10",
+   "dhuhr": "11:31",
+   "asr": "14:19",
+   "maghrib": "16:42",
+   "isha": "17:58"
+  },
+  "2026-11-16": {
+   "fajr": "04:50",
+   "sunrise": "06:11",
+   "dhuhr": "11:31",
+   "asr": "14:18",
+   "maghrib": "16:41",
+   "isha": "17:58"
+  },
+  "2026-11-17": {
+   "fajr": "04:51",
+   "sunrise": "06:12",
+   "dhuhr": "11:31",
+   "asr": "14:18",
+   "maghrib": "16:41",
+   "isha": "17:57"
+  }
+ }
+}

@@ -1,0 +1,107 @@
+{
+ "adana": {
+  "ilceId": 9146,
+  "file": "tr-2026-adana-9146.html",
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "antalya": {
+  "ilceId": 9225,
+  "file": "tr-2026-antalya-9225.html",
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "bursa": {
+  "ilceId": 9335,
+  "file": "tr-2026-bursa-9335.html",
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "denizli": {
+  "ilceId": 9392,
+  "file": "tr-2026-denizli-9392.html",
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "diyarbakir": {
+  "ilceId": 9402,
+  "file": "tr-2026-diyarbakir-9402.html",
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "erzurum": {
+  "ilceId": 9451,
+  "file": "tr-2026-erzurum-9451.html",
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "eskisehir": {
+  "ilceId": 9470,
+  "file": "tr-2026-eskisehir-9470.html",
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "izmir": {
+  "ilceId": 9560,
+  "file": "tr-2026-izmir-9560.html",
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "kayseri": {
+  "ilceId": 9620,
+  "file": "tr-2026-kayseri-9620.html",
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "konya": {
+  "ilceId": 9676,
+  "file": "tr-2026-konya-9676.html",
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "malatya": {
+  "ilceId": 9703,
+  "file": "tr-2026-malatya-9703.html",
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "samsun": {
+  "ilceId": 9819,
+  "file": "tr-2026-samsun-9819.html",
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "sanliurfa": {
+  "ilceId": 9831,
+  "file": "tr-2026-sanliurfa-9831.html",
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "trabzon": {
+  "ilceId": 9905,
+  "file": "tr-2026-trabzon-9905.html",
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "van": {
+  "ilceId": 9930,
+  "file": "tr-2026-van-9930.html",
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ }
+}

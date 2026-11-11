@@ -1,0 +1,178 @@
+{
+ "Baton Rouge|4KB0kPA5": {
+  "address": "820 W Chimes St, Baton Rouge, Louisiana 70802",
+  "geo": [
+   30.4179323,
+   -91.1860362,
+   "820, West Chimes Street, University Terrace, South Baton Rouge, Baton Rouge, East Baton Rouge Parish, Louisiana, 70802, United States"
+  ]
+ },
+ "Baton Rouge|jKZpJ7AX": {
+  "address": "285 E Airport Ave, Baton Rouge, LA 70806",
+  "geo": [
+   30.4492294,
+   -91.1008656,
+   "Islamic Center of Baton Rouge, 285, East Airport Avenue, Parkland Terrace, Goodwood, Baton Rouge, East Baton Rouge Parish, Louisiana, 70806, United States"
+  ]
+ },
+ "Detroit|4nL1kgda": {
+  "address": "879 W Auburn Rd, Rochester Hills, MI 48307",
+  "geo": [
+   42.635567,
+   -83.1494582,
+   "879, West Auburn Road, Supervisor's Plat No.5, Rochester Hills, Oakland County, Michigan, 48307, United States"
+  ]
+ },
+ "Flint|E5Avv2AX": {
+  "address": "5270 N Dyewood Dr, Flint, MI 48532",
+  "geo": [
+   43.0119211,
+   -83.7838324,
+   "5270, North Dyewood Drive, Dye Wood, Flint Charter Township, Genesee County, Michigan, 48532, United States"
+  ]
+ },
+ "Gainesville|rdRvbbdG": {
+  "address": "1010 W University Ave, Gainesville, FL 32601",
+  "geo": [
+   29.6521094,
+   -82.3357965,
+   "West University Avenue, Gainesville, Alachua County, Florida, 32601, United States"
+  ]
+ },
+ "Knoxville|BYADPlAN": {
+  "address": "1645 Downtown West Blvd, Knoxville, TN 37919",
+  "geo": [
+   35.9224822,
+   -84.052468,
+   "Mi Pueblo, 1645 UNIT 17, Downtown West Boulevard, Downtown West, Montvue, Bearden, Knoxville, Knox County, East Tennessee, Tennessee, 37919, United States"
+  ]
+ },
+ "Portland|3AO2n4Le": {
+  "address": "10502 NE Wasco St, Portland, Oregon 97220",
+  "geo": [
+   45.531852,
+   -122.5543341,
+   "10502, Northeast Wasco Street, Gateway, Hazelwood, Portland, Multnomah County, Oregon, 97220, United States"
+  ]
+ },
+ "Portland|adJmGxAk": {
+  "address": "10323 SW 43rd Ave, Portland, Oregon 97219",
+  "geo": [
+   45.4508384,
+   -122.7219224,
+   "Islamic Center of Portland, 10323, Southwest 43rd Avenue, West Portland Park, Portland, Multnomah County, Oregon, 97219, United States"
+  ]
+ },
+ "Providence|YAD4yNAN": {
+  "address": "40 Sayles Hill Rd, North Smithfield, RI 02896",
+  "geo": [
+   41.9659708,
+   -71.5056836,
+   "40, Sayles Hill Road, North Smithfield, Providence County, Rhode Island, 02896, United States"
+  ]
+ },
+ "Rochester|Vdw3P8de": {
+  "address": "15 Hudson Ave, Rochester, New York 14605",
+  "geo": [
+   43.1635327,
+   -77.6020721,
+   "15, Hudson Avenue, City of Rochester, Monroe County, New York, 14605, United States"
+  ]
+ },
+ "Tucson|Edol0GK7": {
+  "address": "901 E 1st St, Tucson, AZ 85719",
+  "geo": [
+   32.2345873,
+   -110.9576512,
+   "Islamic Center of Tucson, 901, East 1st Street, West University, Tucson, Pima County, Arizona, 85719, United States"
+  ]
+ },
+ "mb|al-rahman": {
+  "address": "300 Bay Street, Rochester, NY, USA",
+  "geo": [
+   43.1711901,
+   -77.5860372,
+   "300, Bay Street, North Marketview Heights, City of Rochester, Monroe County, New York, 14605, United States"
+  ]
+ },
+ "mb|baic-detroit": {
+  "address": "11063 16 1/2 Mile Road, Sterling Heights, MI, USA",
+  "geo": [
+   42.5739837,
+   -83.0194748,
+   "Bosnian American Islamic Center (BAIC), 11063, 16 1/2 Mile Road, Sterling Heights, Macomb County, Michigan, 48312, United States"
+  ]
+ },
+ "mb|hira-institute": {
+  "address": "4965 US 42, Louisville, KY",
+  "geo": [
+   38.2894087,
+   -85.6294913,
+   "US 42, Louisville"
+  ]
+ },
+ "mb|islamic-society-of-greater-kansas-city": {
+  "address": "8501 E 99th St, Kansas City, MO 64134, USA",
+  "geo": [
+   38.944321,
+   -94.4913067,
+   "8501, East 99th Street, Kansas City, Jackson County, Missouri, 64134, United States"
+  ]
+ },
+ "mb|masjid-al-ikhlaas": {
+  "address": "623-1/2 South Heald Street, Wilmington, DE 19801, USA",
+  "geo": [
+   39.7286668,
+   -75.5442576,
+   "South Heald Street, Southbridge, South Wilmington, Wilmington, New Castle County, Delaware, 19801, United States"
+  ]
+ },
+ "mb|masjid-sunnah-grand-rapids-michigan": {
+  "address": "2164 Division Avenue South, Grand Rapids, MI, USA",
+  "geo": [
+   42.923833,
+   -85.66638,
+   "2164, Division Avenue South, Grand Rapids, Kent County, Michigan, 49507, United States"
+  ]
+ },
+ "city|Raleigh": {
+  "address": "808 Atwater Street, Raleigh, NC 27606",
+  "geo": [
+   35.7898309,
+   -78.6912365,
+   "Islamic Association of Raleigh, 808, Atwater Street, Method, Raleigh, Wake County, North Carolina, 27607, United States"
+  ]
+ },
+ "city|Harrisburg": {
+  "address": "407 N Front Street, Steelton, PA 17113",
+  "geo": [
+   40.2370893,
+   -76.846049,
+   "407, North Front Street, Steelton, Dauphin County, Pennsylvania, 17113, United States"
+  ]
+ },
+ "city|Montgomery": {
+  "address": "8786 Vaughn Road, Montgomery, AL 36117",
+  "geo": [
+   32.3390287,
+   -86.1404409,
+   "8786, Vaughn Road, Ranchette Estates, Montgomery, Montgomery County, Alabama, 36117, United States"
+  ]
+ },
+ "city|Birmingham": {
+  "address": "2524 Hackberry Lane, Hoover, AL 35226",
+  "geo": [
+   33.4203243,
+   -86.8148844,
+   "2524, Hackberry Lane, Regent Forest Estates, Hoover, Jefferson County, Alabama, 35226, United States"
+  ]
+ },
+ "mb|masjid-ul-haqq-baltimore": {
+  "address": "514 Islamic Way, Baltimore, MD 21217",
+  "geo": [
+   39.305018,
+   -76.6331315,
+   "Masjid Ul-Haqq, 514, Islamic Way, Upton, Sowebo, Baltimore, Maryland, 21217, United States"
+  ]
+ }
+}

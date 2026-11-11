@@ -1,0 +1,3962 @@
+[
+ {
+  "id": "23",
+  "name": "مسجد ومركز العثمان - شانيه",
+  "address": "بيروت",
+  "country": "لبنان",
+  "city": "رأس-بيروت",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "24",
+  "name": "مسجد المجيدية",
+  "address": "بيروت الوسط التجاري",
+  "country": "لبنان",
+  "city": "رأس-بيروت",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "29",
+  "name": "مسجد حمزة بن عبد المطّلب",
+  "address": "الكولا",
+  "country": "لبنان",
+  "city": "رأس-بيروت",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "32",
+  "name": "مسجد الدعوة",
+  "address": "عائشة بكّار",
+  "country": "لبنان",
+  "city": "رأس-بيروت",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "35",
+  "name": "مسجد السلطان محمد الفاتح",
+  "address": "بيروت",
+  "country": "لبنان",
+  "city": "رأس-بيروت",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "44",
+  "name": "مسجد العرب - الحرج",
+  "address": "بيروت",
+  "country": "لبنان",
+  "city": "رأس-بيروت",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "58",
+  "name": "مسجد راس بيروت",
+  "address": "راس بيروت",
+  "country": "لبنان",
+  "city": "رأس-بيروت",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "69",
+  "name": "مسجد السلام",
+  "address": "ﭬردان",
+  "country": "لبنان",
+  "city": "رأس-بيروت",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "92",
+  "name": "مركز الفاروق الإسلامي",
+  "address": "بيروت",
+  "country": "لبنان",
+  "city": "رأس-بيروت",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "93",
+  "name": "مسجد أبو بكر الصديق",
+  "address": "الوسط التجاري",
+  "country": "لبنان",
+  "city": "رأس-بيروت",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "95",
+  "name": "مسجد خاتم الأنبياء والمرسلين محمد الأمين",
+  "address": "الوسط التجاري",
+  "country": "لبنان",
+  "city": "رأس-بيروت",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "97",
+  "name": "مسجد عمّاش",
+  "address": "الحمرا",
+  "country": "لبنان",
+  "city": "رأس-بيروت",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "114",
+  "name": "مسجد البرجاوي",
+  "address": "أرض جلول",
+  "country": "لبنان",
+  "city": "رأس-بيروت",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "117",
+  "name": "مسجد الإمام الشافعي",
+  "address": "الصنائع",
+  "country": "لبنان",
+  "city": "رأس-بيروت",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "118",
+  "name": "مسجد المجذوب",
+  "address": "ساقية الجنزير",
+  "country": "لبنان",
+  "city": "رأس-بيروت",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "333",
+  "name": "مسجد الرحمن",
+  "address": "كراكاس - راس بيروت",
+  "country": "لبنان",
+  "city": "رأس-بيروت",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "392",
+  "name": "مسجد خالد بن الوليد",
+  "address": "ساحة ساقية الجنزير",
+  "country": "لبنان",
+  "city": "رأس-بيروت",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "687",
+  "name": "مسجد الشهداء",
+  "address": "أرض جلول",
+  "country": "لبنان",
+  "city": "رأس-بيروت",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "720",
+  "name": "جامع الامير عساف",
+  "address": "الوسط التجاري",
+  "country": "لبنان",
+  "city": "رأس-بيروت",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1077",
+  "name": "مسجد القنطاري",
+  "address": "الحمرا سبيرز",
+  "country": "لبنان",
+  "city": "رأس-بيروت",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1203",
+  "name": "مسجد الخليفة الصدّيق أبي بكر رضي الله عنه",
+  "address": "البربير سوق الذهب",
+  "country": "لبنان",
+  "city": "رأس-بيروت",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1318",
+  "name": "مسجد و خلية خليل شهاب",
+  "address": "شارع السادات",
+  "country": "لبنان",
+  "city": "رأس-بيروت",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1321",
+  "name": "مسجد عائشة بكار",
+  "address": "عائشة بكار",
+  "country": "لبنان",
+  "city": "رأس-بيروت",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1920",
+  "name": "عمر بن الخطاب خلدة",
+  "address": "خلدة طلعة ابو ديب",
+  "country": "لبنان",
+  "city": "رأس-بيروت",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1997",
+  "name": "مسجد الحاج محمد البساتنة",
+  "address": "شاتيلا",
+  "country": "لبنان",
+  "city": "رأس-بيروت",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "2",
+  "name": "مسجد الإيمان",
+  "address": "صيدا ",
+  "country": "لبنان",
+  "city": "صيدا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "8",
+  "name": "مسجد المجذوب",
+  "address": "الشاكرية البلد القديمة",
+  "country": "لبنان",
+  "city": "صيدا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "10",
+  "name": "مسجد الحسين",
+  "address": "سهل الصباغ",
+  "country": "لبنان",
+  "city": "صيدا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "14",
+  "name": "مسجد البزري",
+  "address": "البستان الكبير",
+  "country": "لبنان",
+  "city": "صيدا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "16",
+  "name": "مسجد قطيش",
+  "address": "البلد القديمة",
+  "country": "لبنان",
+  "city": "صيدا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "18",
+  "name": "مسجد دار الأرقم",
+  "address": "دلاعة",
+  "country": "لبنان",
+  "city": "صيدا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "30",
+  "name": "مسجد الروضة",
+  "address": "الست نفيسة",
+  "country": "لبنان",
+  "city": "صيدا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "36",
+  "name": "جامع الزعتري",
+  "address": "ساحة النجمة",
+  "country": "لبنان",
+  "city": "صيدا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "40",
+  "name": "مجمع مسجد الحاج بهاء الدين الحريري",
+  "address": "مكسر العبد",
+  "country": "لبنان",
+  "city": "صيدا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "48",
+  "name": "مسجد باب السراي",
+  "address": "البلد القديمة",
+  "country": "لبنان",
+  "city": "صيدا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "49",
+  "name": "مسجد الكيخيا",
+  "address": "البلد القديمة",
+  "country": "لبنان",
+  "city": "صيدا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "67",
+  "name": "مسجد الزيتونة",
+  "address": "نزلة صيدون",
+  "country": "لبنان",
+  "city": "صيدا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "82",
+  "name": "مصلى شهداء القياعة",
+  "address": "قياعة",
+  "country": "لبنان",
+  "city": "صيدا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "98",
+  "name": "مسجد السيدة عائشة أم المؤمنين",
+  "address": "القناية",
+  "country": "لبنان",
+  "city": "صيدا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "110",
+  "name": "مسجد الشهداء",
+  "address": "ساحة الشهداء",
+  "country": "لبنان",
+  "city": "صيدا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "116",
+  "name": "مسجد الرضوان",
+  "address": "حي كفرشوبا، المية ومية",
+  "country": "لبنان",
+  "city": "صيدا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "134",
+  "name": "مسجد نحّولي",
+  "address": "شارع الحسبة - ملاصق مدرسة الشهداء",
+  "country": "لبنان",
+  "city": "صيدا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "139",
+  "name": "مصلى الإمام النووي رحمه الله",
+  "address": "الإسماعيلية",
+  "country": "لبنان",
+  "city": "صيدا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "216",
+  "name": "مسجد المصطفى  ﷺ",
+  "address": "الحسبة",
+  "country": "لبنان",
+  "city": "صيدا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "679",
+  "name": "مسجد ومجمع علي بن أبي طالب",
+  "address": "الفيلات",
+  "country": "لبنان",
+  "city": "صيدا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "716",
+  "name": "مسجد الصحابة",
+  "address": "حي الزهور",
+  "country": "لبنان",
+  "city": "صيدا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1162",
+  "name": "مسجد الصديق",
+  "address": "شارع المحكمة الشرعية",
+  "country": "لبنان",
+  "city": "صيدا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1228",
+  "name": "مسجد صلاح الدين",
+  "address": "قرية السلام",
+  "country": "لبنان",
+  "city": "صيدا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1962",
+  "name": "مسجد أبو نخلة",
+  "address": "صيدا القديمه",
+  "country": "لبنان",
+  "city": "صيدا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "39",
+  "name": "مسجد العرب",
+  "address": "الجيّة",
+  "country": "لبنان",
+  "city": "الجية",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "664",
+  "name": "مسجد العكاوي",
+  "address": "الجيّة،زاروت",
+  "country": "لبنان",
+  "city": "الجية",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "710",
+  "name": "مسجد الخطيب اشفا",
+  "address": "الجية",
+  "country": "لبنان",
+  "city": "الجية",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "925",
+  "name": "مسجد الامام علي",
+  "address": "شحيم مرج علي",
+  "country": "لبنان",
+  "city": "الجية",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "959",
+  "name": "مسجد الضيعة القديم",
+  "address": "داريا الضيعة",
+  "country": "لبنان",
+  "city": "الجية",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1322",
+  "name": "مسجد الرحمـٰن",
+  "address": "شحيم حي الجورة",
+  "country": "لبنان",
+  "city": "الجية",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1655",
+  "name": "جامع النُّعمان",
+  "address": "الجيّة، الطريق البحري، مفرق برجا",
+  "country": "لبنان",
+  "city": "الجية",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1712",
+  "name": "مسجد الشيخ عمار",
+  "address": "داريا الرويس",
+  "country": "لبنان",
+  "city": "الجية",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1741",
+  "name": "مسجد ابو بكر الصديق",
+  "address": "شحيم حي الشّريفة",
+  "country": "لبنان",
+  "city": "الجية",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1978",
+  "name": "مسجد النبي يونس عليه السلام",
+  "address": "حي النبي يونس عليه السلام",
+  "country": "لبنان",
+  "city": "الجية",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "22",
+  "name": "مسجد الإمام علي علي بن أبي طالب",
+  "address": "الطريق الجديدة",
+  "country": "لبنان",
+  "city": "المزرعة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "79",
+  "name": "مسجد جماعة عباد الرحمن",
+  "address": "المزرعة",
+  "country": "لبنان",
+  "city": "المزرعة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "120",
+  "name": "مسجد السمّان",
+  "address": "الطريق الجديدة، شارع السبيل",
+  "country": "لبنان",
+  "city": "المزرعة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "572",
+  "name": "مسجد الخلية السعودية - عمر بن الخطّاب",
+  "address": "المزرعة",
+  "country": "لبنان",
+  "city": "المزرعة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "719",
+  "name": "مسجد راشد الحوري",
+  "address": "الطريق الجديدة - الجامعة العربية",
+  "country": "لبنان",
+  "city": "المزرعة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1167",
+  "name": "مسجد صلاح الدين الأيوبي",
+  "address": "الطريق الجديدة , الدنا",
+  "country": "لبنان",
+  "city": "المزرعة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1314",
+  "name": "مسجد وخلية المكاوي",
+  "address": "الطريق الجديدة -شارع حمد",
+  "country": "لبنان",
+  "city": "المزرعة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "2146",
+  "name": "مسجد عمر بن عبد العزيز",
+  "address": "طريق الجديدة، شارع الرفاعي، طلعة مستشفى المقاصد",
+  "country": "لبنان",
+  "city": "المزرعة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "2148",
+  "name": "مسجد بوبس",
+  "address": "اونيسكو",
+  "country": "لبنان",
+  "city": "المزرعة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "17",
+  "name": "مسجد الإمام الرفاعي",
+  "address": "صور",
+  "country": "لبنان",
+  "city": "صور",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "54",
+  "name": "مسجد الخالصة",
+  "address": "الخالصة",
+  "country": "لبنان",
+  "city": "صور",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "77",
+  "name": "مصلى الرحمة",
+  "address": "المساكن",
+  "country": "لبنان",
+  "city": "صور",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "80",
+  "name": "مسجد صور القديم",
+  "address": "البلد القديمة",
+  "country": "لبنان",
+  "city": "صور",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "129",
+  "name": "مسجد السيدة فاطمة الزهراء رضي الله عنها",
+  "address": "النبطية - حبوش - حي الشريفة",
+  "country": "لبنان",
+  "city": "صور",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "131",
+  "name": "مسجد سيدنا إبراهيم الخليل",
+  "address": "الكفور - حي العرب",
+  "country": "لبنان",
+  "city": "صور",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "132",
+  "name": "مسجد فاطمة الزهراء",
+  "address": "حبوش -  الشريفة",
+  "country": "لبنان",
+  "city": "صور",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1887",
+  "name": "مسجد عبدالله بن عباس",
+  "address": "ابو الاسود",
+  "country": "لبنان",
+  "city": "صور",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "50",
+  "name": "مسجد بنواتي",
+  "address": "بنواتي",
+  "country": "لبنان",
+  "city": "الشوف",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "128",
+  "name": "مسجد الحاج ناجي العلي",
+  "address": "وادي الزينة",
+  "country": "لبنان",
+  "city": "الشوف",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "141",
+  "name": "مسجد البصة",
+  "address": "وادي الزينة",
+  "country": "لبنان",
+  "city": "الشوف",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "458",
+  "name": "مسجد السلام",
+  "address": "وادي الزينة",
+  "country": "لبنان",
+  "city": "الشوف",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "596",
+  "name": "مسجد أبي بكر الصديق",
+  "address": "حارة الناعمة",
+  "country": "لبنان",
+  "city": "الشوف",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "897",
+  "name": "مصلى محمد حمدان",
+  "address": "وادي الزينة",
+  "country": "لبنان",
+  "city": "الشوف",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1137",
+  "name": "مسجد السعديات",
+  "address": "الشوف - السعديات",
+  "country": "لبنان",
+  "city": "الشوف",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1853",
+  "name": "مسجد السيدة عائشة ام المؤمنين رضي الله عنها",
+  "address": "الناعمة",
+  "country": "لبنان",
+  "city": "الشوف",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "13",
+  "name": "مسجد الإمام علي - الكنيسة-وادي خالد",
+  "address": "وادي خالد",
+  "country": "لبنان",
+  "city": "وادي-خالد",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "265",
+  "name": "مسجد عمر المختار - الكنيسة - وادي خالد",
+  "address": "وادي خالد",
+  "country": "لبنان",
+  "city": "وادي-خالد",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1315",
+  "name": "مصلى البراء بن مالك",
+  "address": "وادي خالد/ الكنيسة",
+  "country": "لبنان",
+  "city": "وادي-خالد",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1848",
+  "name": "مسجد الراما",
+  "address": "الراما",
+  "country": "لبنان",
+  "city": "وادي-خالد",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1849",
+  "name": "مسجد الرامة ",
+  "address": "الرامة",
+  "country": "لبنان",
+  "city": "وادي-خالد",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1893",
+  "name": "مسجد المجدل وادي خالد",
+  "address": "المجدل",
+  "country": "لبنان",
+  "city": "وادي-خالد",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1906",
+  "name": "مسجد النورين",
+  "address": "الراما",
+  "country": "لبنان",
+  "city": "وادي-خالد",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "45",
+  "name": "مسجد خالد بن الوليد",
+  "address": "مخيم عين الحلوة",
+  "country": "لبنان",
+  "city": "عين-الحلوة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "64",
+  "name": "مسجد ومجمع الفاروق عمر بن الخطاب",
+  "address": "مخيم عين الحلوة",
+  "country": "لبنان",
+  "city": "عين-الحلوة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "83",
+  "name": "مسجد زيد بن ثابت",
+  "address": "مخيم عين الحلوة",
+  "country": "لبنان",
+  "city": "عين-الحلوة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "112",
+  "name": "مصلى بلال بن رباح",
+  "address": "مخيم عين الحلوة",
+  "country": "لبنان",
+  "city": "عين-الحلوة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "126",
+  "name": "مصلى الرأس الأحمر",
+  "address": "مخيم عين الحلوة - حي الرأس ا|لأحمر",
+  "country": "لبنان",
+  "city": "عين-الحلوة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "547",
+  "name": "مسجد زين العابدين",
+  "address": "صيدا عين الحلوة",
+  "country": "لبنان",
+  "city": "عين-الحلوة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "730",
+  "name": "مسجد النور",
+  "address": "عين الحلوة",
+  "country": "لبنان",
+  "city": "عين-الحلوة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "41",
+  "name": "مسجد فلسطين",
+  "address": "مخيم برج البراجنة",
+  "country": "لبنان",
+  "city": "مخيم-برج-البراجنة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "51",
+  "name": "مسجد خاتم الأنبياء",
+  "address": "مخيم برج البراجنة",
+  "country": "لبنان",
+  "city": "مخيم-برج-البراجنة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "68",
+  "name": "مسجد ومجمع الريّان",
+  "address": "مخيم برج البراجنة",
+  "country": "لبنان",
+  "city": "مخيم-برج-البراجنة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "96",
+  "name": "مسجد المهتدين",
+  "address": "مخيم برج البراجنة",
+  "country": "لبنان",
+  "city": "مخيم-برج-البراجنة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1364",
+  "name": "مسجد ومجمع الفرقان",
+  "address": "مخيم برج البراجنة",
+  "country": "لبنان",
+  "city": "مخيم-برج-البراجنة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1412",
+  "name": "مسجد غزة",
+  "address": "مخيم برج البراجنة",
+  "country": "لبنان",
+  "city": "مخيم-برج-البراجنة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "2048",
+  "name": "مسجد سيدنا حمزة",
+  "address": "                                   طريق المطار     ",
+  "country": "لبنان",
+  "city": "مخيم-برج-البراجنة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "303",
+  "name": "مسجد الإمام أحمد بن حنبل",
+  "address": "حي الصوانة، برجا",
+  "country": "لبنان",
+  "city": "برجا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "826",
+  "name": "مسجد الشيخ محمد الديماسي",
+  "address": "برجا - حي الديماس",
+  "country": "لبنان",
+  "city": "برجا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "829",
+  "name": "مسجد الرحمة",
+  "address": "برجا",
+  "country": "لبنان",
+  "city": "برجا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1668",
+  "name": "مسجد النبي يوسف عليه السلام",
+  "address": "برجا حي جب الغبره",
+  "country": "لبنان",
+  "city": "برجا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1901",
+  "name": "مسجد فضل الرحمن برجا",
+  "address": "برجا الصوانة",
+  "country": "لبنان",
+  "city": "برجا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "2066",
+  "name": "جامع برجا الكبير",
+  "address": "الضيعة، حي الجامع",
+  "country": "لبنان",
+  "city": "برجا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "86",
+  "name": "مسجد التقوى",
+  "address": "مخيم الرشيدية",
+  "country": "لبنان",
+  "city": "مخيم-الرشيدية",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "87",
+  "name": "مسجد التوبة",
+  "address": "مخيم الرشيدية",
+  "country": "لبنان",
+  "city": "مخيم-الرشيدية",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "89",
+  "name": "مسجد الرحمة",
+  "address": "مخيم الرشيدية",
+  "country": "لبنان",
+  "city": "مخيم-الرشيدية",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "94",
+  "name": "مسجد فلسطين",
+  "address": "مخيم الرشيدية",
+  "country": "لبنان",
+  "city": "مخيم-الرشيدية",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "109",
+  "name": "مسجد الفاروق عمر بن الخطاب",
+  "address": "مخيم الرشيدية",
+  "country": "لبنان",
+  "city": "مخيم-الرشيدية",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "756",
+  "name": "مسجد العودة",
+  "address": "مخيم الرشيدية",
+  "country": "لبنان",
+  "city": "مخيم-الرشيدية",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "85",
+  "name": "مسجد المصيطبة",
+  "address": "المصيطبة",
+  "country": "لبنان",
+  "city": "المصيطبة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "204",
+  "name": "مسجد سعد بن أبي وقاص",
+  "address": "بيروت الجناح",
+  "country": "لبنان",
+  "city": "المصيطبة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "697",
+  "name": "مسجد دار الحديث",
+  "address": "بيروت-المصيطبة-طلعة يزبك",
+  "country": "لبنان",
+  "city": "المصيطبة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "935",
+  "name": "مسجد الشيخ احمد كفتارو",
+  "address": "وطى المصيطبة",
+  "country": "لبنان",
+  "city": "المصيطبة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1212",
+  "name": "مسجد سليم سلام",
+  "address": "سليم سلام",
+  "country": "لبنان",
+  "city": "المصيطبة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1287",
+  "name": "مسجد الفتوة المؤقت",
+  "address": "مار الياس",
+  "country": "لبنان",
+  "city": "المصيطبة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "38",
+  "name": "مسجد السلام",
+  "address": "طرابلس",
+  "country": "لبنان",
+  "city": "طرابلس",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "366",
+  "name": "مسجد التقوى",
+  "address": "مستديرة نهر أبو علي",
+  "country": "لبنان",
+  "city": "طرابلس",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "705",
+  "name": "مسجد الأبرار",
+  "address": "طرابلس ـ أبي سمراء ـ السكة البيضا",
+  "country": "لبنان",
+  "city": "طرابلس",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1652",
+  "name": "مسجد الرحمن",
+  "address": "العيرونية",
+  "country": "لبنان",
+  "city": "طرابلس",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1729",
+  "name": "مسجد الناصرة",
+  "address": "نهرالبارد / حي صفورية",
+  "country": "لبنان",
+  "city": "طرابلس",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "33",
+  "name": "مسجد أنس بن مالك",
+  "address": "عاليه",
+  "country": "لبنان",
+  "city": "عاليه",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "555",
+  "name": "مسجد الفرقان",
+  "address": "عاليه، مدرسة الحياة",
+  "country": "لبنان",
+  "city": "عاليه",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "601",
+  "name": "مسجد الأمين",
+  "address": "عاليه",
+  "country": "لبنان",
+  "city": "عاليه",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "886",
+  "name": "مسجد عبد الله بن عباس",
+  "address": "ضاحية الجنوبية",
+  "country": "لبنان",
+  "city": "عاليه",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1805",
+  "name": "مسجد البايرقدار",
+  "address": "شانية العين",
+  "country": "لبنان",
+  "city": "عاليه",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "718",
+  "name": "مسجد العلا",
+  "address": "عرمون",
+  "country": "لبنان",
+  "city": "عرمون",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "724",
+  "name": "مسجد المكحل",
+  "address": "دوحة عرمون",
+  "country": "لبنان",
+  "city": "عرمون",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1273",
+  "name": "مسجد الحياة",
+  "address": "شارع روتانا عرمون",
+  "country": "لبنان",
+  "city": "عرمون",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1278",
+  "name": "مسجد الايمان عرمون",
+  "address": "دوحة عرمون مفرق مطعم الصوصة بجانب مدارس الايمان",
+  "country": "لبنان",
+  "city": "عرمون",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1346",
+  "name": "مسجد المصطفى ﷺ",
+  "address": "دوحة عرمون - شارع مريم",
+  "country": "لبنان",
+  "city": "عرمون",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "6",
+  "name": "مسجد الحسنين",
+  "address": "الفوار",
+  "country": "لبنان",
+  "city": "الفوار",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "66",
+  "name": "مسجد سيدنا إبراهيم عليه السلام",
+  "address": "مشاريع الهبة",
+  "country": "لبنان",
+  "city": "الفوار",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "111",
+  "name": "مسجد حبر الأمة عبدالله بن عباس",
+  "address": "الفوار",
+  "country": "لبنان",
+  "city": "الفوار",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "145",
+  "name": "مسجد عزالدين القسّام",
+  "address": "الفوار",
+  "country": "لبنان",
+  "city": "الفوار",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1865",
+  "name": "مصلى الرّيان",
+  "address": "الفوار - قرب مسجد القسام",
+  "country": "لبنان",
+  "city": "الفوار",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1",
+  "name": "مسجد الرحمة",
+  "address": "طلعة المحافظ",
+  "country": "لبنان",
+  "city": "عبرا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "4",
+  "name": "سيد الشهداء حمزة بن عبد المطلب",
+  "address": "عبرا",
+  "country": "لبنان",
+  "city": "عبرا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "7",
+  "name": "مسجد بلال بن رباح",
+  "address": "عبرا",
+  "country": "لبنان",
+  "city": "عبرا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "146",
+  "name": "مسجد التقوى",
+  "address": "عبرا",
+  "country": "لبنان",
+  "city": "عبرا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "11",
+  "name": "مسجد العثمان",
+  "address": "سيروب",
+  "country": "لبنان",
+  "city": "سيروب",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "43",
+  "name": "مسجد الأحمد",
+  "address": "سيروب",
+  "country": "لبنان",
+  "city": "سيروب",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "59",
+  "name": "مصلى المعروف",
+  "address": "سيروب",
+  "country": "لبنان",
+  "city": "سيروب",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1681",
+  "name": "مسجد العبدالله",
+  "address": "سيروب",
+  "country": "لبنان",
+  "city": "سيروب",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "12",
+  "name": "مسجد هند حجازي",
+  "address": "الشرحبيل",
+  "country": "لبنان",
+  "city": "بقسطا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "27",
+  "name": "مسجد شرحبيل بن حسنة",
+  "address": "شرحبيل/بقسطا",
+  "country": "لبنان",
+  "city": "بقسطا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "55",
+  "name": "مسجد سيدنا عثمان بن عفان",
+  "address": "بقسطا",
+  "country": "لبنان",
+  "city": "بقسطا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1660",
+  "name": "مسجد المصطفى الامين",
+  "address": "الشرحبيل شارع رقم ١٠٨",
+  "country": "لبنان",
+  "city": "بقسطا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "808",
+  "name": "مسجد  الامام الحسين",
+  "address": "مخيم الواسطة",
+  "country": "لبنان",
+  "city": "مخيم-الواسطة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1040",
+  "name": "مسجد الإمام الحسين",
+  "address": "مخيم الواسطة",
+  "country": "لبنان",
+  "city": "مخيم-الواسطة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "2081",
+  "name": "مسجد الجليل كفربدا",
+  "address": "كفربدا",
+  "country": "لبنان",
+  "city": "مخيم-الواسطة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "25",
+  "name": "مسجد حمانا",
+  "address": "حمانا",
+  "country": "لبنان",
+  "city": "بعبدا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "708",
+  "name": "جامع سبنيه",
+  "address": "سبنيه ـ بعبدا",
+  "country": "لبنان",
+  "city": "بعبدا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1900",
+  "name": "بلال بن رباح",
+  "address": "حمانا - القلعة شارع بدرية الدبوس",
+  "country": "لبنان",
+  "city": "بعبدا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "56",
+  "name": "مسجد أمير المؤمنين عثمان بن عفان ذي النورين",
+  "address": "راس النبع",
+  "country": "لبنان",
+  "city": "الباشورة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1187",
+  "name": "مسجد عبد الرحمن بن عوف رضي الله عنه",
+  "address": "رأس النبع، شارع محمد الحوت",
+  "country": "لبنان",
+  "city": "الباشورة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1325",
+  "name": "مسجد البسطة التحتا",
+  "address": "البسطة التحتا قرب مدافن الباشورة",
+  "country": "لبنان",
+  "city": "الباشورة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1301",
+  "name": "مسجد الإمام علي",
+  "address": "اقليم الخروب-مزبود",
+  "country": "لبنان",
+  "city": "مزبود",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1421",
+  "name": "مسجد الشيخ خالد احمد ضاهر",
+  "address": "فريسين - نزلة المستشفى المركزي",
+  "country": "لبنان",
+  "city": "مزبود",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "2058",
+  "name": "مسجد مزبود/ الساحة",
+  "address": "حي البركة",
+  "country": "لبنان",
+  "city": "مزبود",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "65",
+  "name": "مسجد النور",
+  "address": "مخيم البرج الشمالي",
+  "country": "لبنان",
+  "city": "مخيم-البرج-الشمالي",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "84",
+  "name": "مسجد الصحابة",
+  "address": "مخيم البرج الشمالي - حارة صفورية",
+  "country": "لبنان",
+  "city": "مخيم-البرج-الشمالي",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "90",
+  "name": "مسجد أُبي بن كعب",
+  "address": "مخيم برج الشمالي",
+  "country": "لبنان",
+  "city": "مخيم-البرج-الشمالي",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "47",
+  "name": "مسجد حمزة",
+  "address": "مخيم البص",
+  "country": "لبنان",
+  "city": "مخيم-البص",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "81",
+  "name": "مسجد أبو بكر الصديق",
+  "address": "مخيم البص",
+  "country": "لبنان",
+  "city": "مخيم-البص",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "526",
+  "name": "مسجد الشيخ احمد الجشي",
+  "address": "مخيم البص",
+  "country": "لبنان",
+  "city": "مخيم-البص",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "113",
+  "name": "مسجد عمر بن الخطاب",
+  "address": "كترمايا",
+  "country": "لبنان",
+  "city": "كترمايا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1401",
+  "name": "مسجد الشهداء - كترمايا",
+  "address": "كترمايا",
+  "country": "لبنان",
+  "city": "كترمايا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1710",
+  "name": "مسجد الفاروق عمر",
+  "address": "Lebanon",
+  "country": "لبنان",
+  "city": "كترمايا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "46",
+  "name": "مسجد شاتيلا",
+  "address": "شاتيلا",
+  "country": "لبنان",
+  "city": "مخيم-شاتيلا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "72",
+  "name": "مسجد جنين",
+  "address": "شاتيلا",
+  "country": "لبنان",
+  "city": "مخيم-شاتيلا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "930",
+  "name": "مسجد الحبيب",
+  "address": "مخيم شاتيلا",
+  "country": "لبنان",
+  "city": "مخيم-شاتيلا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "621",
+  "name": "مسجد ﷴ الراس",
+  "address": "سبلين ساحة الضيعة",
+  "country": "لبنان",
+  "city": "سبلين",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1166",
+  "name": "مصلى أبو عبيدة",
+  "address": "سبلين",
+  "country": "لبنان",
+  "city": "سبلين",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "2237",
+  "name": "مسجد أبي بكر الصديق رضي الله عنه (الكبير) ",
+  "address": "الطريق العام، قرب البلدية",
+  "country": "لبنان",
+  "city": "كامد-اللوز",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "2238",
+  "name": "مسجد أنس بن مالك رضي الله عنه (القديم)",
+  "address": "حي الساحة",
+  "country": "لبنان",
+  "city": "كامد-اللوز",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1763",
+  "name": "مسجد البدوي",
+  "address": "حارة شحيم التحتا",
+  "country": "لبنان",
+  "city": "شحيم",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "2154",
+  "name": "مسجد حمزة",
+  "address": "حفة الحجل ، خلة قمر",
+  "country": "لبنان",
+  "city": "شحيم",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "52",
+  "name": "مجمع القدس الخيري (مرشد)",
+  "address": "مخيم نهر البارد",
+  "country": "لبنان",
+  "city": "مخيم-نهر-البارد",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "861",
+  "name": "مسجد ومجمع التقوى",
+  "address": "مخيم نهر البارد - شارع المجلس",
+  "country": "لبنان",
+  "city": "مخيم-نهر-البارد",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "100",
+  "name": "مسجد الضيعة",
+  "address": "عانوت",
+  "country": "لبنان",
+  "city": "عانوت",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "101",
+  "name": "مسجد خالد بن الواليد",
+  "address": "عانوت",
+  "country": "لبنان",
+  "city": "عانوت",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "31",
+  "name": "مسجد ميسر",
+  "address": "مجدليون",
+  "country": "لبنان",
+  "city": "مجدليون",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "764",
+  "name": "مسجد الرحمن",
+  "address": "مجدليون",
+  "country": "لبنان",
+  "city": "مجدليون",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1680",
+  "name": "مسجد الطّبش",
+  "address": "بشامون، الينار",
+  "country": "لبنان",
+  "city": "دير-قوبل",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1720",
+  "name": "مسجد السيدة عاىشة رضي الله عنها",
+  "address": "كريدلي",
+  "country": "لبنان",
+  "city": "دير-قوبل",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1497",
+  "name": "مسجد الإمام الاوزاعي",
+  "address": "شارع الاوزاعي مقابل مؤسسه الدكتور محمد خالد الاجتماعيه",
+  "country": "لبنان",
+  "city": "الأوزاعي",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1498",
+  "name": "مقام الامام الاوزاعي",
+  "address": "شارع الاوزاعي",
+  "country": "لبنان",
+  "city": "الأوزاعي",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "607",
+  "name": "مسجد خربة روحا",
+  "address": "خربة روحا قضاء راشيا",
+  "country": "لبنان",
+  "city": "خربة-روحا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1231",
+  "name": "مسجد محمد الأمين",
+  "address": "خربة روحا",
+  "country": "لبنان",
+  "city": "خربة-روحا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "208",
+  "name": "مجمع بلال بن رباح",
+  "address": "صحراء الشويفات",
+  "country": "لبنان",
+  "city": "الشويفات",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1135",
+  "name": "مسجد سيّدنا الحسن بن علي",
+  "address": "دوحة الشويفات - القبّة",
+  "country": "لبنان",
+  "city": "الشويفات",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "19",
+  "name": "مسجد ذي النورين",
+  "address": "صور المعشوق",
+  "country": "لبنان",
+  "city": "المعشوق",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "71",
+  "name": "جامع المعشوق",
+  "address": "مجمع المعشوق",
+  "country": "لبنان",
+  "city": "المعشوق",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "37",
+  "name": "مسجد زاد الرحيل",
+  "address": "المصيلح",
+  "country": "لبنان",
+  "city": "النجارية",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "42",
+  "name": "مسجد البدر",
+  "address": "النجارية",
+  "country": "لبنان",
+  "city": "النجارية",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "3",
+  "name": "مسجد الفرقان",
+  "address": "الهلالية",
+  "country": "لبنان",
+  "city": "الهلالية",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "61",
+  "name": "مسجد السنّة",
+  "address": "الهلالية",
+  "country": "لبنان",
+  "city": "الهلالية",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "103",
+  "name": "مصلى مشعل",
+  "address": "القاسمية",
+  "country": "لبنان",
+  "city": "القاسمية",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "235",
+  "name": "مسجد الرسول الأكرم",
+  "address": "مخيم القاسمية الشارع العام",
+  "country": "لبنان",
+  "city": "القاسمية",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "70",
+  "name": "مسجد السيّدة خديجة رضي الله عنها",
+  "address": "عاليه، بشامون المدارس",
+  "country": "لبنان",
+  "city": "بشامون",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1753",
+  "name": "مسجد النور",
+  "address": "شارع الجسر - حي الوادي",
+  "country": "لبنان",
+  "city": "بشامون",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1861",
+  "name": "مسجد علي بن أبي طالب رضي الله عنه",
+  "address": "بعلول",
+  "country": "لبنان",
+  "city": "البقاع-الغربي",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "2091",
+  "name": "مركز ومسجد النور",
+  "address": "برالياس",
+  "country": "لبنان",
+  "city": "البقاع-الغربي",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1532",
+  "name": "مسجد الزعرورية",
+  "address": "زعرورية",
+  "country": "لبنان",
+  "city": "الزعرورية",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1541",
+  "name": "مسجد الحمد",
+  "address": "الزعرورية",
+  "country": "لبنان",
+  "city": "الزعرورية",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1654",
+  "name": "مسجد عمر بن الخطاب رضي الله عنه",
+  "address": "مخيم المية ومية",
+  "country": "لبنان",
+  "city": "مخيم-المية-ومية",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "53",
+  "name": "مسجد النور",
+  "address": "الدبية",
+  "country": "لبنان",
+  "city": "الدبية",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "2016",
+  "name": "مسجد عبدالله ابن عباس (قشلق)",
+  "address": "الشارع العام",
+  "country": "لبنان",
+  "city": "قشلق",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "2014",
+  "name": "مسجد السيدة عائشة",
+  "address": "العام",
+  "country": "لبنان",
+  "city": "الشيخ-عياش",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "2032",
+  "name": "مَسجِد_فاطمة",
+  "address": "الدلوحي",
+  "country": "لبنان",
+  "city": "العبودية",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "247",
+  "name": "مسجد أم المؤمنين خديجة",
+  "address": "البداوي",
+  "country": "لبنان",
+  "city": "البداوي",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1915",
+  "name": "مسجد البترون",
+  "address": "الشارع البحري",
+  "country": "لبنان",
+  "city": "البترون",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "787",
+  "name": "مسجد الأزهر",
+  "address": "مجدل عنجر",
+  "country": "لبنان",
+  "city": "مجدل-عنجر",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "711",
+  "name": "مسجد ابي عبيدة بن الجراح رضي الله عنه",
+  "address": "مشمش عكار",
+  "country": "لبنان",
+  "city": "مشمش",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "105",
+  "name": "مسجد عيسى بن مريم",
+  "address": "كفرجرّة",
+  "country": "لبنان",
+  "city": "كفرجرة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "295",
+  "name": "مسجد عمر بن الخطاب رضي الله عنه",
+  "address": "القرنة عكار",
+  "country": "لبنان",
+  "city": "القرنة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "2060",
+  "name": "مسجد خالد بن الوليد",
+  "address": "بعد حديقة اللقلوق يسارا",
+  "country": "لبنان",
+  "city": "اللقلوق",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "20",
+  "name": "مسجد جوار النخل",
+  "address": "جوار النخل",
+  "country": "لبنان",
+  "city": "جوار-النخل",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1846",
+  "name": "مسجد ابو بكر الصديق (القرعون)",
+  "address": "ساحة المسجد",
+  "country": "لبنان",
+  "city": "قرعون",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "102",
+  "name": "مسجد الإمام علي بن أبي طالب",
+  "address": "سعدنايل",
+  "country": "لبنان",
+  "city": "سعدنايل",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1649",
+  "name": "جامع ابو علي مهيد",
+  "address": "جرد عين الدبه",
+  "country": "لبنان",
+  "city": "جرد-عين-الدبة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1366",
+  "name": "مسجد عمر بن الخطاب",
+  "address": "حي تريلة شارع نهر الحمام",
+  "country": "لبنان",
+  "city": "داريا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1875",
+  "name": "مسجد دلهون",
+  "address": "دلهون الطريق العام",
+  "country": "لبنان",
+  "city": "دلهون",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "106",
+  "name": "مجمع ومسجد الصديقة مريم",
+  "address": "جدرا",
+  "country": "لبنان",
+  "city": "جدرا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1327",
+  "name": "مسجد أبي عبيدة بن الجراح",
+  "address": "قرب مستشفى الحكومي",
+  "country": "لبنان",
+  "city": "تعمير-عين-الحلوة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "2037",
+  "name": "مسجد أبي بكر الصّدّيق الكبير",
+  "address": "شارع الاستقلال",
+  "country": "لبنان",
+  "city": "تعلبايا",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "2098",
+  "name": "مسجد بيت الحاج",
+  "address": "بيت الحاج",
+  "country": "لبنان",
+  "city": "بيت-الحاج",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1134",
+  "name": "مسجد محمد الخطيب",
+  "address": "قبيع",
+  "country": "لبنان",
+  "city": "قبيع",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1907",
+  "name": "مسجد عثمان بن عفان",
+  "address": "العام",
+  "country": "لبنان",
+  "city": "برقايل",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1512",
+  "name": "مسجد عمر بن الخطاب رضي الله عنه",
+  "address": "الولي عزالدين",
+  "country": "لبنان",
+  "city": "الولي-عز-الدين",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "1164",
+  "name": "مسجد بيت الرحمن",
+  "address": "ضهر العين الطريق العام بعد الهوز مول",
+  "country": "لبنان",
+  "city": "ضهر-العين",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "115",
+  "name": "جامع المغيرية",
+  "address": "المغيرية، إقليم الخروب",
+  "country": "لبنان",
+  "city": "المغيرية",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "107",
+  "name": "مسجد الإمام الشافعي",
+  "address": "البقاع",
+  "country": "لبنان",
+  "city": "المرج",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "88",
+  "name": "مسجد خالد بن الوليد",
+  "address": "الكرنتينا",
+  "country": "لبنان",
+  "city": "المدور",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "2115",
+  "name": "مسجد السلام - حصروت",
+  "address": "حصروت",
+  "country": "لبنان",
+  "city": "حصروت",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "99",
+  "name": "مسجد عين المريسة",
+  "address": "عين المريسة",
+  "country": "لبنان",
+  "city": "عين-المريسة",
+  "country_en": "Lebanon"
+ },
+ {
+  "id": "214",
+  "name": "مسجد سليمان الشارخي",
+  "address": "6881, Al Safa, Dammam 34222",
+  "country": "المملكة العربية السعودية",
+  "city": "الدمام",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "294",
+  "name": "الواحة",
+  "address": "الدمام الفرسان",
+  "country": "المملكة العربية السعودية",
+  "city": "الدمام",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "505",
+  "name": "جامع الشيخ سالم بن صالح العجيمي",
+  "address": "حي الفيصلية",
+  "country": "المملكة العربية السعودية",
+  "city": "الدمام",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "739",
+  "name": "‏مسجد هيفاء بنت صالح الصقير",
+  "address": "الفرسان",
+  "country": "المملكة العربية السعودية",
+  "city": "الدمام",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "800",
+  "name": "جامع النعمان بن بشير",
+  "address": "حي احد",
+  "country": "المملكة العربية السعودية",
+  "city": "الدمام",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "984",
+  "name": "مسجد الطفيل",
+  "address": "الدمام مخطط 91",
+  "country": "المملكة العربية السعودية",
+  "city": "الدمام",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "2100",
+  "name": "هيفاء بنت صالح الصقير",
+  "address": "حي الفرسان",
+  "country": "المملكة العربية السعودية",
+  "city": "الدمام",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "133",
+  "name": "مسجد خديجة بنت خويلد",
+  "address": "الرصيفة - شارع المالكي",
+  "country": "المملكة العربية السعودية",
+  "city": "مكة-المكرمة",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "1093",
+  "name": "مسجد الشيخ سويدي",
+  "address": "الشعب",
+  "country": "المملكة العربية السعودية",
+  "city": "مكة-المكرمة",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "1396",
+  "name": "مسجد الزمان",
+  "address": "العزيزية",
+  "country": "المملكة العربية السعودية",
+  "city": "مكة-المكرمة",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "1535",
+  "name": "مسجد بن لادن",
+  "address": "الحفاير",
+  "country": "المملكة العربية السعودية",
+  "city": "مكة-المكرمة",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "1557",
+  "name": "المسجد الحرام",
+  "address": "مكة المكرمة",
+  "country": "المملكة العربية السعودية",
+  "city": "مكة-المكرمة",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "1896",
+  "name": "جامع دوس ال عياش",
+  "address": "دوس ال عياش",
+  "country": "المملكة العربية السعودية",
+  "city": "مكة-المكرمة",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "167",
+  "name": "جامع سعيد حويس",
+  "address": "حي الاصالة",
+  "country": "المملكة العربية السعودية",
+  "city": "جدة",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "1540",
+  "name": "مسجد ابي عبيدة",
+  "address": "شارع ام القرى",
+  "country": "المملكة العربية السعودية",
+  "city": "جدة",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "1644",
+  "name": "جامع عبداللطيف ونفيسة",
+  "address": "شارع ابن أبي الرجاء، حي الحمدانية",
+  "country": "المملكة العربية السعودية",
+  "city": "جدة",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "1792",
+  "name": "جامع الشيخ محمد بن عثيمين",
+  "address": "3902 عامر ابن ثابت، حي الربوة، JDBE7919، 7919، جدة 23446",
+  "country": "المملكة العربية السعودية",
+  "city": "جدة",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "2092",
+  "name": "Masjid Musarrat مسجد المسرات",
+  "address": "Yusuf As Sabai Street",
+  "country": "المملكة العربية السعودية",
+  "city": "جدة",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "163",
+  "name": "مسجد غروس",
+  "address": "الرياض العليا",
+  "country": "المملكة العربية السعودية",
+  "city": "الرياض",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "863",
+  "name": "مسجد الأنصار",
+  "address": "3813 رقم 22، 7442، الاسكان، 7442، الرياض 14317",
+  "country": "المملكة العربية السعودية",
+  "city": "الرياض",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "962",
+  "name": "جامع العروة الوثقى",
+  "address": "الرياض حي الضباط",
+  "country": "المملكة العربية السعودية",
+  "city": "الرياض",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "1585",
+  "name": "مسجد التقوى",
+  "address": "الرياض السليمانية",
+  "country": "المملكة العربية السعودية",
+  "city": "الرياض",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "1682",
+  "name": "جامع سلطان بن مطلق الحناكي",
+  "address": "العارض، عبدالله مدهر",
+  "country": "المملكة العربية السعودية",
+  "city": "الرياض",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "1037",
+  "name": "جامع أبو بكر الصديق بآل مسهر",
+  "address": "محايل طريق بحر ابو سكينة",
+  "country": "المملكة العربية السعودية",
+  "city": "محايل-عسير",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "1817",
+  "name": "مسجد   بر الوالدين",
+  "address": "العين بالدريب",
+  "country": "المملكة العربية السعودية",
+  "city": "محايل-عسير",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "124",
+  "name": "مسجد شركة أصالة بلس التجارية",
+  "address": "مدينة خميس مشيط - حي الشرقية",
+  "country": "المملكة العربية السعودية",
+  "city": "خميس-مشيط",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "870",
+  "name": "جامع العز بن عبدالسلام",
+  "address": "خميس مشيط",
+  "country": "المملكة العربية السعودية",
+  "city": "خميس-مشيط",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "142",
+  "name": "جامع العطاس",
+  "address": "مدينة جازان",
+  "country": "المملكة العربية السعودية",
+  "city": "جازان",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "362",
+  "name": "مسجد حسين بحري",
+  "address": "بيش",
+  "country": "المملكة العربية السعودية",
+  "city": "جازان",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "804",
+  "name": "مسجد خالد بن الوليد",
+  "address": "حي الموظفين",
+  "country": "المملكة العربية السعودية",
+  "city": "أبها",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "1408",
+  "name": "جامع الياقوت بأبها",
+  "address": "حي الياقوت",
+  "country": "المملكة العربية السعودية",
+  "city": "أبها",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "745",
+  "name": "مسجد جامع الرضوان",
+  "address": "الجبيل حي طيبة البلد",
+  "country": "المملكة العربية السعودية",
+  "city": "الجبيل",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "885",
+  "name": "حمزة بن عبدالمطلب",
+  "address": "https://maps.app.goo.gl/9AxMKEDSsRshvV1DA",
+  "country": "المملكة العربية السعودية",
+  "city": "الجبيل",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "315",
+  "name": "ثامر",
+  "address": "القصيم",
+  "country": "المملكة العربية السعودية",
+  "city": "الرس",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "1932",
+  "name": "خالد بن الوليد",
+  "address": "الدوحة غ",
+  "country": "المملكة العربية السعودية",
+  "city": "الخبر",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "394",
+  "name": "جامع البشرى",
+  "address": "2352 11 النهضة، ALWB6628، 6628، آل عامر 67517, Saudi Arabia",
+  "country": "المملكة العربية السعودية",
+  "city": "الباحة",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "1149",
+  "name": "عنيزة",
+  "address": "QAGC8515",
+  "country": "المملكة العربية السعودية",
+  "city": "عنيزة",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "1526",
+  "name": "مسجد مهيضة",
+  "address": "دغيبجة",
+  "country": "المملكة العربية السعودية",
+  "city": "دغيبجة",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "143",
+  "name": "جامع الأبرار",
+  "address": "حفر الباطن",
+  "country": "المملكة العربية السعودية",
+  "city": "حفر-الباطن",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "213",
+  "name": "مسجد سليمان الفنيدل رحمه الله",
+  "address": "حائل حي الوادي",
+  "country": "المملكة العربية السعودية",
+  "city": "حائل",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "818",
+  "name": "مسجد العقلاء",
+  "address": "الخرج المنتزه",
+  "country": "المملكة العربية السعودية",
+  "city": "الخرج",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "1271",
+  "name": "مسجد الوالدين رحمهما الله",
+  "address": "الدرب",
+  "country": "المملكة العربية السعودية",
+  "city": "الدرب",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "614",
+  "name": "جــامــع الــســحــلــي",
+  "address": "حي القادسية الثاني",
+  "country": "المملكة العربية السعودية",
+  "city": "تبوك",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "1599",
+  "name": "مسجد عقبة السمحان",
+  "address": "نمرة",
+  "country": "المملكة العربية السعودية",
+  "city": "بلقرن",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "1556",
+  "name": "المسجد النبوي",
+  "address": "المدينة المنورة",
+  "country": "المملكة العربية السعودية",
+  "city": "المدينة-المنورة",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "1988",
+  "name": "مسجد بنية فالح السراني",
+  "address": "حي ابو بريقاء",
+  "country": "المملكة العربية السعودية",
+  "city": "أبيار-علي",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "1604",
+  "name": "مسجد التوفيق",
+  "address": "الصخيرات شارع البحر الأحمر",
+  "country": "المملكة العربية السعودية",
+  "city": "العلا",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "1013",
+  "name": "مسجد الإحسان بالرميدة",
+  "address": "الطائف  - الرميدة",
+  "country": "المملكة العربية السعودية",
+  "city": "الطائف",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "2264",
+  "name": "مسجد العصيمي",
+  "address": "شارع فلورينا",
+  "country": "المملكة العربية السعودية",
+  "city": "الليث",
+  "country_en": "Saudi Arabia"
+ },
+ {
+  "id": "191",
+  "name": "مسجد البركة",
+  "address": "حي المشتشفي  بوسعادة",
+  "country": "الجزائر",
+  "city": "الجلفة",
+  "country_en": "Algeria"
+ },
+ {
+  "id": "618",
+  "name": "المسجد الجديد",
+  "address": "حي شونان",
+  "country": "الجزائر",
+  "city": "الجلفة",
+  "country_en": "Algeria"
+ },
+ {
+  "id": "848",
+  "name": "مسجد التوبة",
+  "address": "حي العواسيب الجلفة",
+  "country": "الجزائر",
+  "city": "الجلفة",
+  "country_en": "Algeria"
+ },
+ {
+  "id": "845",
+  "name": "حذيفة بن اليمان",
+  "address": "حذيفة بن اليمان",
+  "country": "الجزائر",
+  "city": "ورقلة",
+  "country_en": "Algeria"
+ },
+ {
+  "id": "2176",
+  "name": "مسجد الإمام الشافعي",
+  "address": "حي الطالب طرمون الندير الرويسات",
+  "country": "الجزائر",
+  "city": "ورقلة",
+  "country_en": "Algeria"
+ },
+ {
+  "id": "914",
+  "name": "مسجد علي ابن أبي طالب رضي الله عنه",
+  "address": "دوار نكاريف بلدية ماقضة",
+  "country": "الجزائر",
+  "city": "معسكر",
+  "country_en": "Algeria"
+ },
+ {
+  "id": "1840",
+  "name": "مسجد الأرقم بن أبي الأرقم",
+  "address": "حي المحطة، معسكر الجزائر",
+  "country": "الجزائر",
+  "city": "معسكر",
+  "country_en": "Algeria"
+ },
+ {
+  "id": "123",
+  "name": "مسجد سلمان الفارسي طمطماط",
+  "address": "بلدية الزعرورية ولاية سوق أهراس",
+  "country": "الجزائر",
+  "city": "طمطماط",
+  "country_en": "Algeria"
+ },
+ {
+  "id": "138",
+  "name": "مسجد الرحمن",
+  "address": "مدينة بسكرة - حي الضلعة",
+  "country": "الجزائر",
+  "city": "طمطماط",
+  "country_en": "Algeria"
+ },
+ {
+  "id": "1856",
+  "name": "مسجد حذيفة بن اليمان",
+  "address": "حي حيحي المكي",
+  "country": "الجزائر",
+  "city": "أم-البواقي",
+  "country_en": "Algeria"
+ },
+ {
+  "id": "1553",
+  "name": "مسجد قصر الشيخ العتيق",
+  "address": "قصر الشيخ",
+  "country": "الجزائر",
+  "city": "تيميمون",
+  "country_en": "Algeria"
+ },
+ {
+  "id": "663",
+  "name": "مسجد الوئام",
+  "address": "حي الوئام غرداية الجزائر",
+  "country": "الجزائر",
+  "city": "غرداية",
+  "country_en": "Algeria"
+ },
+ {
+  "id": "1146",
+  "name": "عقبة بن نافع حد الصحاري",
+  "address": "حي عقبة بن نافع حد الصحاري ولاية عين وسارة",
+  "country": "الجزائر",
+  "city": "عين-وسارة",
+  "country_en": "Algeria"
+ },
+ {
+  "id": "1854",
+  "name": "مسجد قاعد الحياة التاق",
+  "address": "تيقنتور",
+  "country": "الجزائر",
+  "city": "عين-صالح",
+  "country_en": "Algeria"
+ },
+ {
+  "id": "751",
+  "name": "مسجد التقوى",
+  "address": "عين الدفلى",
+  "country": "الجزائر",
+  "city": "عين-الدفلى",
+  "country_en": "Algeria"
+ },
+ {
+  "id": "1222",
+  "name": "مسجد الإصلاح حي المجاهد موسى شرشالي عدل 3000 مسكن بابا حسن الجزائر",
+  "address": "حي المجاهد موسى شرشالي عدل 3000 مسكن بابا حسن الجزائر",
+  "country": "الجزائر",
+  "city": "دويرة",
+  "country_en": "Algeria"
+ },
+ {
+  "id": "1559",
+  "name": "جامع عبدالرحمن نعاس - المسجد العتيق",
+  "address": "شارع سيدي النعاس",
+  "country": "الجزائر",
+  "city": "دار-الشيوخ",
+  "country_en": "Algeria"
+ },
+ {
+  "id": "1021",
+  "name": "مسجد الفرقان حي بن أعماروش",
+  "address": "حي بن أعماروش الشقفة",
+  "country": "الجزائر",
+  "city": "جيجل",
+  "country_en": "Algeria"
+ },
+ {
+  "id": "540",
+  "name": "مسجد بلال بن رباح",
+  "address": "مسجد بلال بن رباح - سيدي راشد",
+  "country": "الجزائر",
+  "city": "تيبازة",
+  "country_en": "Algeria"
+ },
+ {
+  "id": "717",
+  "name": "مسجد عمر بن الخطاب",
+  "address": "بلدية الخنق",
+  "country": "الجزائر",
+  "city": "الأغواط",
+  "country_en": "Algeria"
+ },
+ {
+  "id": "1060",
+  "name": "على ابن أبي طالب",
+  "address": "حي القروي بلدية السوقر",
+  "country": "الجزائر",
+  "city": "تيارت",
+  "country_en": "Algeria"
+ },
+ {
+  "id": "583",
+  "name": "مسجد معاذ بن جبل",
+  "address": "حي الافاق بوهناق منصورة تلمسان",
+  "country": "الجزائر",
+  "city": "تلمسان",
+  "country_en": "Algeria"
+ },
+ {
+  "id": "1618",
+  "name": "مسجد علي بن أبي طالب بوفاريك",
+  "address": "حي 18",
+  "country": "الجزائر",
+  "city": "بوفاريك",
+  "country_en": "Algeria"
+ },
+ {
+  "id": "1151",
+  "name": "ابي هريرة رضي الله عنه",
+  "address": "حي حاسي الفريد",
+  "country": "الجزائر",
+  "city": "بشار",
+  "country_en": "Algeria"
+ },
+ {
+  "id": "946",
+  "name": "مسجد السلام",
+  "address": "المنطقة الغربية رقم 01 الكورس بجانب مديرية التجارة بسكرة",
+  "country": "الجزائر",
+  "city": "بسكرة",
+  "country_en": "Algeria"
+ },
+ {
+  "id": "587",
+  "name": "مسجد الانبياء",
+  "address": "برج بوعريريج",
+  "country": "الجزائر",
+  "city": "برج-بوعريريج",
+  "country_en": "Algeria"
+ },
+ {
+  "id": "1339",
+  "name": "مسجد الفرقان",
+  "address": "القرية الفلاحية بلدية العطاف",
+  "country": "الجزائر",
+  "city": "العطاف",
+  "country_en": "Algeria"
+ },
+ {
+  "id": "954",
+  "name": "مسجد الامام مالك",
+  "address": "حي القراقش بقعة البرحين",
+  "country": "الجزائر",
+  "city": "الشلف",
+  "country_en": "Algeria"
+ },
+ {
+  "id": "839",
+  "name": "مسجد عمرو بن العاص",
+  "address": "حي المتقدمة الحجيرة",
+  "country": "الجزائر",
+  "city": "الحجيرة",
+  "country_en": "Algeria"
+ },
+ {
+  "id": "1519",
+  "name": "مسجد التوبة",
+  "address": "حي 40 مسكن - السويدانية - الجزائر",
+  "country": "الجزائر",
+  "city": "الجزائر",
+  "country_en": "Algeria"
+ },
+ {
+  "id": "147",
+  "name": "مسجد مسعود فضيل",
+  "address": "مدينة وهران",
+  "country": "الجزائر",
+  "city": "وهران",
+  "country_en": "Algeria"
+ },
+ {
+  "id": "877",
+  "name": "جامع الكنجلية",
+  "address": "الميدان",
+  "country": "سوريا",
+  "city": "برامكة",
+  "country_en": "Syria"
+ },
+ {
+  "id": "1044",
+  "name": "مسجد الإمام الشافعي",
+  "address": "مزة فيلات شرقية",
+  "country": "سوريا",
+  "city": "برامكة",
+  "country_en": "Syria"
+ },
+ {
+  "id": "1094",
+  "name": "جامع الشيخ علي الدقر",
+  "address": "كفرسوسة",
+  "country": "سوريا",
+  "city": "برامكة",
+  "country_en": "Syria"
+ },
+ {
+  "id": "1470",
+  "name": "سيدنا عمر بن الخطاب",
+  "address": "كفرسوسة متحلق جنوبي شارع الجهاد",
+  "country": "سوريا",
+  "city": "برامكة",
+  "country_en": "Syria"
+ },
+ {
+  "id": "1527",
+  "name": "جامع النعمان بن بشير",
+  "address": "مشروع دمر ج١١",
+  "country": "سوريا",
+  "city": "برامكة",
+  "country_en": "Syria"
+ },
+ {
+  "id": "1700",
+  "name": "ذات النطاقين",
+  "address": "القدم، المدنية",
+  "country": "سوريا",
+  "city": "برامكة",
+  "country_en": "Syria"
+ },
+ {
+  "id": "1444",
+  "name": "مسجد محاسنه",
+  "address": "شارع الخزان المي",
+  "country": "سوريا",
+  "city": "حرستا",
+  "country_en": "Syria"
+ },
+ {
+  "id": "1487",
+  "name": "مسجد صلاح الدين",
+  "address": "دوار الثانويه",
+  "country": "سوريا",
+  "city": "حرستا",
+  "country_en": "Syria"
+ },
+ {
+  "id": "1531",
+  "name": "مسجد علي بن أبي طالب",
+  "address": "الدانا",
+  "country": "سوريا",
+  "city": "إدلب",
+  "country_en": "Syria"
+ },
+ {
+  "id": "689",
+  "name": "مسجد شهداء التركي",
+  "address": "الجلاء - البوكمال - دير الزور",
+  "country": "سوريا",
+  "city": "دير-الزور",
+  "country_en": "Syria"
+ },
+ {
+  "id": "2015",
+  "name": "مسجد الرحمن",
+  "address": "الحي الجنوبي",
+  "country": "سوريا",
+  "city": "معرشحور",
+  "country_en": "Syria"
+ },
+ {
+  "id": "1624",
+  "name": "المسجد الكبير",
+  "address": "الحي الشمالي.شارع الكورنيش",
+  "country": "سوريا",
+  "city": "معرة-النعمان",
+  "country_en": "Syria"
+ },
+ {
+  "id": "2168",
+  "name": "مسجد مضايا الشمالي",
+  "address": "مضايا الشمالي",
+  "country": "سوريا",
+  "city": "مضايا",
+  "country_en": "Syria"
+ },
+ {
+  "id": "104",
+  "name": "مسجد لالا باشا",
+  "address": "دمشق",
+  "country": "سوريا",
+  "city": "شارع-بغداد",
+  "country_en": "Syria"
+ },
+ {
+  "id": "639",
+  "name": "مسجد علي بن أبي طالب",
+  "address": "حارة المجادمة",
+  "country": "سوريا",
+  "city": "دير-حافر",
+  "country_en": "Syria"
+ },
+ {
+  "id": "2063",
+  "name": "مسجد رستم باشا",
+  "address": "المرابط،شارع ملجأ الأيتام",
+  "country": "سوريا",
+  "city": "حماة",
+  "country_en": "Syria"
+ },
+ {
+  "id": "2169",
+  "name": "السيدة فاطمة",
+  "address": "الوعر",
+  "country": "سوريا",
+  "city": "حمص-المدينة",
+  "country_en": "Syria"
+ },
+ {
+  "id": "1828",
+  "name": "مسجد سيدنا ابو بكر",
+  "address": "البجاع",
+  "country": "سوريا",
+  "city": "البجاع",
+  "country_en": "Syria"
+ },
+ {
+  "id": "1579",
+  "name": "مسجد الأنصار",
+  "address": "هنانو.العرقوب",
+  "country": "سوريا",
+  "city": "حلب",
+  "country_en": "Syria"
+ },
+ {
+  "id": "1686",
+  "name": "الخلفاء الراشدين",
+  "address": "سوق الهال،أول طريق الفيض،",
+  "country": "سوريا",
+  "city": "جبلة",
+  "country_en": "Syria"
+ },
+ {
+  "id": "1400",
+  "name": "مسجد النور",
+  "address": "شارع الجمعيات",
+  "country": "سوريا",
+  "city": "المليحة",
+  "country_en": "Syria"
+ },
+ {
+  "id": "395",
+  "name": "مسجد سيدنا حمزة بن عبد المطلب",
+  "address": "تل الشور",
+  "country": "سوريا",
+  "city": "المدينة",
+  "country_en": "Syria"
+ },
+ {
+  "id": "1208",
+  "name": "مسجد زيد بن الحارثة",
+  "address": "السماقيات",
+  "country": "سوريا",
+  "city": "القصير",
+  "country_en": "Syria"
+ },
+ {
+  "id": "1171",
+  "name": "خالد بن الوليد",
+  "address": "قرية الكيارية ريف حلب",
+  "country": "سوريا",
+  "city": "منبج",
+  "country_en": "Syria"
+ },
+ {
+  "id": "2069",
+  "name": "Mahad Tahfidz Bukaka",
+  "address": "PT. Bukaka Teknik Utama",
+  "country": "أندونيسيا",
+  "city": "Bogor",
+  "country_en": "Indonesia"
+ },
+ {
+  "id": "1850",
+  "name": "Masjid Jami' Harapan Kita",
+  "address": "JL MENUR III NO A4/12, BENCONGAN INDAH, KELAPA DUA",
+  "country": "أندونيسيا",
+  "city": "Kabupaten-Tangerang",
+  "country_en": "Indonesia"
+ },
+ {
+  "id": "2097",
+  "name": "Masjid Ulul Albab UNNES",
+  "address": "Masjid Kampus",
+  "country": "أندونيسيا",
+  "city": "Semarang",
+  "country_en": "Indonesia"
+ },
+ {
+  "id": "1456",
+  "name": "Masjid Jami' Al-Ma'ruf Samarinda",
+  "address": "Jl. Ramania No. 1, Sidodadi, Samarinda",
+  "country": "أندونيسيا",
+  "city": "Samarinda",
+  "country_en": "Indonesia"
+ },
+ {
+  "id": "993",
+  "name": "Al muttaqin",
+  "address": "Jalan Limbungan Rumbai Pekanbaru",
+  "country": "أندونيسيا",
+  "city": "Pekanbaru",
+  "country_en": "Indonesia"
+ },
+ {
+  "id": "1717",
+  "name": "Masjid Al-Hidayah Siteba",
+  "address": "Jl. Semarang Belakang Pasar Nanggalo",
+  "country": "أندونيسيا",
+  "city": "Padang",
+  "country_en": "Indonesia"
+ },
+ {
+  "id": "1219",
+  "name": "MASJID DARUN NA'IM",
+  "address": "Jl. Nipa-Nipa Raya No.1 Perumnas Antang Block 3",
+  "country": "أندونيسيا",
+  "city": "Makassar",
+  "country_en": "Indonesia"
+ },
+ {
+  "id": "2006",
+  "name": "Masjid Al-Jannah",
+  "address": "Grha Artajasa Building, Jl. Letnan Sutopo Kav. B1/3 Sektor Komersial IIIB BSD City, Lengkong Gudang Timur, Serpong, Kota Tangerang Selatan, Banten, Indonesia",
+  "country": "أندونيسيا",
+  "city": "Kota-Tangerang-Selatan",
+  "country_en": "Indonesia"
+ },
+ {
+  "id": "2064",
+  "name": "Masjid jaami' Al mabrur",
+  "address": "jl yos sudarso no 70 way lunik",
+  "country": "أندونيسيا",
+  "city": "Kota",
+  "country_en": "Indonesia"
+ },
+ {
+  "id": "857",
+  "name": "Masjid Taqwa Ranting Muhammadiyah Padang Bulan",
+  "address": "Jl. Sembada Padang No. 33 P.Bulan",
+  "country": "أندونيسيا",
+  "city": "Ketika",
+  "country_en": "Indonesia"
+ },
+ {
+  "id": "1237",
+  "name": "Surau Al-Ikhlas",
+  "address": "Pangkal Duri",
+  "country": "أندونيسيا",
+  "city": "Kabupaten-Tanjung-Jabung-Timur",
+  "country_en": "Indonesia"
+ },
+ {
+  "id": "1944",
+  "name": "Musholla Al-Ma'ruf",
+  "address": "Jalan Anggrek, Tunggal Sari, Dauh Peken, Tabanan - Bali",
+  "country": "أندونيسيا",
+  "city": "Kabupaten-Tabanan",
+  "country_en": "Indonesia"
+ },
+ {
+  "id": "1714",
+  "name": "Masjid Al-Hijrah",
+  "address": "Permata Mansion, Cluster Sapphire, Kel Serua, Bojongsari, Depok",
+  "country": "أندونيسيا",
+  "city": "Depok",
+  "country_en": "Indonesia"
+ },
+ {
+  "id": "1225",
+  "name": "Al-Munir",
+  "address": "Pojok V",
+  "country": "أندونيسيا",
+  "city": "Kabupaten-Sleman",
+  "country_en": "Indonesia"
+ },
+ {
+  "id": "1925",
+  "name": "Nurul Qur'an",
+  "address": "Dusun Banu RT 06 RW 02 Desa Banturejo",
+  "country": "أندونيسيا",
+  "city": "Kabupaten-Malang",
+  "country_en": "Indonesia"
+ },
+ {
+  "id": "1927",
+  "name": "Al-Mubarokah",
+  "address": "V5XP+FMH, Jl. Raya Plaosan - Babat No.11, Plaosan, Kec. Babat, Kabupaten Lamongan, Jawa Timur 62271",
+  "country": "أندونيسيا",
+  "city": "Kabupaten-Lamongan",
+  "country_en": "Indonesia"
+ },
+ {
+  "id": "1718",
+  "name": "MASJID BESAR AL MUKARROMAH KARANGANYAR",
+  "address": "l. Kapten Mulyadi, Karanganyar, Kec. Karanganyar, Kabupaten Karanganyar, Jawa Tengah 57711",
+  "country": "أندونيسيا",
+  "city": "Kabupaten-Karanganyar",
+  "country_en": "Indonesia"
+ },
+ {
+  "id": "971",
+  "name": "Al Mughni",
+  "address": "Lrg. Bukit Beliung RT 21",
+  "country": "أندونيسيا",
+  "city": "Jambi-City",
+  "country_en": "Indonesia"
+ },
+ {
+  "id": "1340",
+  "name": "Masjid AL Ibadah",
+  "address": "Kemang Jakarta selatan",
+  "country": "أندونيسيا",
+  "city": "Jakarta-Selatan",
+  "country_en": "Indonesia"
+ },
+ {
+  "id": "1600",
+  "name": "Masjid Baiturrahim",
+  "address": "Komplek Angkasa Pura, Jalan Mokmer 1 Blok i No. 19 Rt 005/05",
+  "country": "أندونيسيا",
+  "city": "Jakarta-Pusat",
+  "country_en": "Indonesia"
+ },
+ {
+  "id": "2250",
+  "name": "MASJID NURUL JADID",
+  "address": "Blok Citra RT.02/01 Desa Pagedangan Kec. Tukdana Kab. Indramayu Prov. Jawa Barat",
+  "country": "أندونيسيا",
+  "city": "Indramayu",
+  "country_en": "Indonesia"
+ },
+ {
+  "id": "1689",
+  "name": "Masjid Ar-Rahman",
+  "address": "Jl. Usman Isa, Kel. Lekobalo, Kec. Kota Barat, Kota Gorontalo",
+  "country": "أندونيسيا",
+  "city": "Gorontalo",
+  "country_en": "Indonesia"
+ },
+ {
+  "id": "1038",
+  "name": "Al Muhajirin Universitas Siliwangi",
+  "address": "Jl.Siliwangi No.24 Kota Tasikmalaya",
+  "country": "أندونيسيا",
+  "city": "Tasikmalaya",
+  "country_en": "Indonesia"
+ },
+ {
+  "id": "612",
+  "name": "جامع الإيمان",
+  "address": "منطقة الصناعيه",
+  "country": "عمان",
+  "city": "صلالة",
+  "country_en": "Oman"
+ },
+ {
+  "id": "623",
+  "name": "جامع الشيخه سلمى بنت أحمد المعشنيه",
+  "address": "شارع طاقة",
+  "country": "عمان",
+  "city": "صلالة",
+  "country_en": "Oman"
+ },
+ {
+  "id": "1330",
+  "name": "جامع الشيخ العفيف",
+  "address": "طاقه",
+  "country": "عمان",
+  "city": "صلالة",
+  "country_en": "Oman"
+ },
+ {
+  "id": "783",
+  "name": "جامع هيل",
+  "address": "سمائل - هيل",
+  "country": "عمان",
+  "city": "سمائل",
+  "country_en": "Oman"
+ },
+ {
+  "id": "1955",
+  "name": "مسجد الهدى",
+  "address": "العزم",
+  "country": "عمان",
+  "city": "سمائل",
+  "country_en": "Oman"
+ },
+ {
+  "id": "681",
+  "name": "مسجد العوان",
+  "address": "الخابورة",
+  "country": "عمان",
+  "city": "الخابورة",
+  "country_en": "Oman"
+ },
+ {
+  "id": "853",
+  "name": "جامع قصبية البوسعيد",
+  "address": "قصبية البوسعيد،الخابورة،سلطنة عمان",
+  "country": "عمان",
+  "city": "الخابورة",
+  "country_en": "Oman"
+ },
+ {
+  "id": "335",
+  "name": "جامع حذيفةً بن اليمان",
+  "address": "السيب، الحيل الجنوبية",
+  "country": "عمان",
+  "city": "مسقط",
+  "country_en": "Oman"
+ },
+ {
+  "id": "1726",
+  "name": "جامع الفلاح",
+  "address": "hgqw227",
+  "country": "عمان",
+  "city": "مسقط",
+  "country_en": "Oman"
+ },
+ {
+  "id": "545",
+  "name": "مسجد الشريعة (العلوي)",
+  "address": "إبراء",
+  "country": "عمان",
+  "city": "إبراء",
+  "country_en": "Oman"
+ },
+ {
+  "id": "390",
+  "name": "مسجد المحاربي",
+  "address": "خضراء البورشيد",
+  "country": "عمان",
+  "city": "السويق",
+  "country_en": "Oman"
+ },
+ {
+  "id": "1954",
+  "name": "مسجدنا",
+  "address": "محيول",
+  "country": "عمان",
+  "city": "الكامل-والوافي",
+  "country_en": "Oman"
+ },
+ {
+  "id": "322",
+  "name": "الخوبي الشرقية",
+  "address": "بدبد - الخوبي",
+  "country": "عمان",
+  "city": "بدبد",
+  "country_en": "Oman"
+ },
+ {
+  "id": "891",
+  "name": "مسجد المصطفى",
+  "address": "ولاية بركاء مزرع الحرث",
+  "country": "عمان",
+  "city": "بركاء",
+  "country_en": "Oman"
+ },
+ {
+  "id": "231",
+  "name": "جامع البديع",
+  "address": "فلج القبائل",
+  "country": "عمان",
+  "city": "صحار",
+  "country_en": "Oman"
+ },
+ {
+  "id": "1255",
+  "name": "جامع مُخيليف",
+  "address": "صحم",
+  "country": "عمان",
+  "city": "صحم",
+  "country_en": "Oman"
+ },
+ {
+  "id": "227",
+  "name": "مسجد مخيمر ابو جاموس / ماركا الشماليه",
+  "address": "ماركا الشماليه",
+  "country": "الأردن",
+  "city": "عمان",
+  "country_en": "Jordan"
+ },
+ {
+  "id": "549",
+  "name": "مسجد ابو صلاح",
+  "address": "القويسمة",
+  "country": "الأردن",
+  "city": "عمان",
+  "country_en": "Jordan"
+ },
+ {
+  "id": "772",
+  "name": "مسجد محمد عبده ابو قوره",
+  "address": "عمان",
+  "country": "الأردن",
+  "city": "عمان",
+  "country_en": "Jordan"
+ },
+ {
+  "id": "1227",
+  "name": "مسجد ابراهيم الخليل",
+  "address": "مسجد ابراهيم الخليل",
+  "country": "الأردن",
+  "city": "عمان",
+  "country_en": "Jordan"
+ },
+ {
+  "id": "1233",
+  "name": "مسجد سليم عيسى الجمل",
+  "address": "الاردن",
+  "country": "الأردن",
+  "city": "عمان",
+  "country_en": "Jordan"
+ },
+ {
+  "id": "1397",
+  "name": "مسجد المرابطين",
+  "address": "جبل النزهة",
+  "country": "الأردن",
+  "city": "عمان",
+  "country_en": "Jordan"
+ },
+ {
+  "id": "289",
+  "name": "مسجد الشهيد محمد زيد العزام",
+  "address": "إربد،  الحي الشمالي",
+  "country": "الأردن",
+  "city": "إربد",
+  "country_en": "Jordan"
+ },
+ {
+  "id": "311",
+  "name": "مسجد آل المقري",
+  "address": "شرق دوار المريسي",
+  "country": "الأردن",
+  "city": "إربد",
+  "country_en": "Jordan"
+ },
+ {
+  "id": "443",
+  "name": "خليل الرحمن",
+  "address": "اربد-الحي الشرقي",
+  "country": "الأردن",
+  "city": "إربد",
+  "country_en": "Jordan"
+ },
+ {
+  "id": "1447",
+  "name": "مسجد المهاجرين",
+  "address": "هام",
+  "country": "الأردن",
+  "city": "إربد",
+  "country_en": "Jordan"
+ },
+ {
+  "id": "1076",
+  "name": "خالد بن الوليد ",
+  "address": "ام قصير لواء الجيزه عمان",
+  "country": "الأردن",
+  "city": "الجيزة",
+  "country_en": "Jordan"
+ },
+ {
+  "id": "1246",
+  "name": "مسجد ممدوح كريشان",
+  "address": "اللبن الشرقية",
+  "country": "الأردن",
+  "city": "الجيزة",
+  "country_en": "Jordan"
+ },
+ {
+  "id": "2043",
+  "name": "اصحاب الحق",
+  "address": "الدفيانه",
+  "country": "الأردن",
+  "city": "أم-القطين",
+  "country_en": "Jordan"
+ },
+ {
+  "id": "1276",
+  "name": "قثم  ابن  العباس",
+  "address": "الزرقاء  جبل  المغير",
+  "country": "الأردن",
+  "city": "الزرقاء",
+  "country_en": "Jordan"
+ },
+ {
+  "id": "1126",
+  "name": "مسجد عبدالرحمن بن عوف رضِي اللَّه عنه",
+  "address": "الطفيلة بصيرا",
+  "country": "الأردن",
+  "city": "بصيرا",
+  "country_en": "Jordan"
+ },
+ {
+  "id": "819",
+  "name": "مسجد الإمام مالك (الصابوني)",
+  "address": "طريق طايرت وجدة",
+  "country": "المغرب",
+  "city": "وجدة-أنجاد",
+  "country_en": "Morocco"
+ },
+ {
+  "id": "867",
+  "name": "مسجد أم سلمة",
+  "address": "M38G+V9Q, Oujda 60000",
+  "country": "المغرب",
+  "city": "وجدة-أنجاد",
+  "country_en": "Morocco"
+ },
+ {
+  "id": "439",
+  "name": "مسجد ابي هريرة",
+  "address": "حي الولاء سدي مومن الدار البيضاء",
+  "country": "المغرب",
+  "city": "الدار-البيضاء",
+  "country_en": "Morocco"
+ },
+ {
+  "id": "2009",
+  "name": "مسجد الوحدة",
+  "address": "عين سبع شارع الوحدة",
+  "country": "المغرب",
+  "city": "الدار-البيضاء",
+  "country_en": "Morocco"
+ },
+ {
+  "id": "741",
+  "name": "مسجد السلسبيل",
+  "address": "تجزئة السبيل",
+  "country": "المغرب",
+  "city": "الجديدة",
+  "country_en": "Morocco"
+ },
+ {
+  "id": "1066",
+  "name": "دعاة الخير",
+  "address": "via telgia 44/4",
+  "country": "المغرب",
+  "city": "الرباط",
+  "country_en": "Morocco"
+ },
+ {
+  "id": "2107",
+  "name": "مسجد سوق سبتة",
+  "address": "طريق الرباط سوق سبتة",
+  "country": "المغرب",
+  "city": "القصر-الكبير",
+  "country_en": "Morocco"
+ },
+ {
+  "id": "347",
+  "name": "مسجد الإمام مالك بن أنس",
+  "address": "280",
+  "country": "المغرب",
+  "city": "تمارة",
+  "country_en": "Morocco"
+ },
+ {
+  "id": "548",
+  "name": "مسجد عمر بن عبد العزيز",
+  "address": "حي اولاد عمرو",
+  "country": "المغرب",
+  "city": "جرادة",
+  "country_en": "Morocco"
+ },
+ {
+  "id": "1007",
+  "name": "اولاد عامر",
+  "address": "اولاد عامر اولاد صالح النواصر-الدارالبيضاء",
+  "country": "المغرب",
+  "city": "زاوية-النواصر",
+  "country_en": "Morocco"
+ },
+ {
+  "id": "1975",
+  "name": "مسجد الحاج موسى",
+  "address": "حي الغماريين زنقة 56 سيدي سليمان",
+  "country": "المغرب",
+  "city": "سيدي-سليمان",
+  "country_en": "Morocco"
+ },
+ {
+  "id": "1032",
+  "name": "مسجد الرحمة",
+  "address": "شارع جبل طارق",
+  "country": "المغرب",
+  "city": "طنجة",
+  "country_en": "Morocco"
+ },
+ {
+  "id": "1634",
+  "name": "مسجد زينب أم المؤمنين",
+  "address": "أطلس حي الشريفية، بوعكاز",
+  "country": "المغرب",
+  "city": "مراكش",
+  "country_en": "Morocco"
+ },
+ {
+  "id": "1251",
+  "name": "Masjid Nurhidayah",
+  "address": "Kampung Klias Kecil, Beaufort, Sabah",
+  "country": "ماليزيا",
+  "city": "Beaufort",
+  "country_en": "Malaysia"
+ },
+ {
+  "id": "684",
+  "name": "Surau Aspura",
+  "address": "daniahmadsemeksah@gmail.com",
+  "country": "ماليزيا",
+  "city": "Kangar",
+  "country_en": "Malaysia"
+ },
+ {
+  "id": "1275",
+  "name": "Surau Pak Do Pa",
+  "address": "Dewan Kecil",
+  "country": "ماليزيا",
+  "city": "Kota-Bharu",
+  "country_en": "Malaysia"
+ },
+ {
+  "id": "1811",
+  "name": "SURAU RAUDHATUL FIRDAUS",
+  "address": "8 RAMD",
+  "country": "ماليزيا",
+  "city": "Kuala-Lipis",
+  "country_en": "Malaysia"
+ },
+ {
+  "id": "1320",
+  "name": "Musholla Al-Irfan",
+  "address": "Jalan Tuanku Syed Sirajuddin, 02600, Arau, Perlis",
+  "country": "ماليزيا",
+  "city": "Kuala-Perlis",
+  "country_en": "Malaysia"
+ },
+ {
+  "id": "1685",
+  "name": "Masjid Darul Huda",
+  "address": "Jalan Haji Fauzi, Kampung Kuala Lama",
+  "country": "ماليزيا",
+  "city": "Mukah",
+  "country_en": "Malaysia"
+ },
+ {
+  "id": "1728",
+  "name": "Masjid Al-Falah Kg. Karamunting",
+  "address": "Masjid Al-Falah, Kampung Karamunting, Peti Surat 217",
+  "country": "ماليزيا",
+  "city": "Sandakan",
+  "country_en": "Malaysia"
+ },
+ {
+  "id": "1406",
+  "name": "Masjid Ubudiyyah Mukim Bendang Nyior",
+  "address": "Jalan Kota Tinggi ke Skudai",
+  "country": "ماليزيا",
+  "city": "Skudai",
+  "country_en": "Malaysia"
+ },
+ {
+  "id": "1075",
+  "name": "SURAU AL FURQAN SMK KUHARA TAWAU",
+  "address": "JALAN KUHARA TAWAU",
+  "country": "ماليزيا",
+  "city": "Tawau",
+  "country_en": "Malaysia"
+ },
+ {
+  "id": "1697",
+  "name": "جامع السلام ذهيبة",
+  "address": "ذهيبة الشرقية",
+  "country": "تونس",
+  "city": "تطاوين",
+  "country_en": "Tunisia"
+ },
+ {
+  "id": "2104",
+  "name": "جامع الرحمة الرقبة تطاوين",
+  "address": "الرقبة",
+  "country": "تونس",
+  "city": "تطاوين",
+  "country_en": "Tunisia"
+ },
+ {
+  "id": "1938",
+  "name": "مسجد بيت الله - المهدية",
+  "address": "شارع الحبيب بورقيبة",
+  "country": "تونس",
+  "city": "المهدية",
+  "country_en": "Tunisia"
+ },
+ {
+  "id": "1528",
+  "name": "جامع الحرمين الشريفين المروج الثالث",
+  "address": "شارع الحرمين الشريفين المروج الثالث",
+  "country": "تونس",
+  "city": "بن-عروس",
+  "country_en": "Tunisia"
+ },
+ {
+  "id": "945",
+  "name": "مسجد الأحمدي باب الخضراء",
+  "address": "نهج الناصر بن جعفر بطحاء باب الخضراء",
+  "country": "تونس",
+  "city": "تونس",
+  "country_en": "Tunisia"
+ },
+ {
+  "id": "645",
+  "name": "جابر بن عبد الله الانصاري لعشايشية بوعوان",
+  "address": "لعشاشية بوعوان جندوبة تونس",
+  "country": "تونس",
+  "city": "جندوبة",
+  "country_en": "Tunisia"
+ },
+ {
+  "id": "943",
+  "name": "مسجد الصحابة -القلعة الكبرى",
+  "address": "نهج صلاح الدين بوشوشة القلعة الكبرى",
+  "country": "تونس",
+  "city": "سوسة",
+  "country_en": "Tunisia"
+ },
+ {
+  "id": "122",
+  "name": "مسجد السلام",
+  "address": "نابل",
+  "country": "تونس",
+  "city": "نابل",
+  "country_en": "Tunisia"
+ },
+ {
+  "id": "168",
+  "name": "مسجد أبو المعاطي",
+  "address": "محلية 12 - الحي الأول - مدينة العبور",
+  "country": "مصر",
+  "city": "القاهرة",
+  "country_en": "Egypt"
+ },
+ {
+  "id": "609",
+  "name": "مسجد الرحمن - المداح - كفرالديب",
+  "address": "كفر الديب",
+  "country": "مصر",
+  "city": "القاهرة",
+  "country_en": "Egypt"
+ },
+ {
+  "id": "1683",
+  "name": "مسجد الهداية - مدينة العبور",
+  "address": "الحي الاول - محلية 8 - مدينة العبور",
+  "country": "مصر",
+  "city": "القاهرة",
+  "country_en": "Egypt"
+ },
+ {
+  "id": "1832",
+  "name": "مسجد البدر",
+  "address": "عبد المجيد",
+  "country": "مصر",
+  "city": "الجيزة",
+  "country_en": "Egypt"
+ },
+ {
+  "id": "2267",
+  "name": "جامع نور الهدى",
+  "address": "جديلة",
+  "country": "مصر",
+  "city": "المنصورة",
+  "country_en": "Egypt"
+ },
+ {
+  "id": "941",
+  "name": "مسجد الدعوة بدمياط الجديدة",
+  "address": "دمياط الجديدة",
+  "country": "مصر",
+  "city": "دمياط",
+  "country_en": "Egypt"
+ },
+ {
+  "id": "1781",
+  "name": "مسجد السقا",
+  "address": "شرباص - شارع المقابر",
+  "country": "مصر",
+  "city": "فارسكور",
+  "country_en": "Egypt"
+ },
+ {
+  "id": "910",
+  "name": "Islamic Caltural Center",
+  "address": "40461 Eugen St",
+  "country": "الولايات المتحدة",
+  "city": "أبفيل",
+  "country_en": "United States"
+ },
+ {
+  "id": "1205",
+  "name": "Masjid Al-Etihad Al-Ittihad",
+  "address": "568 Poole Pl SW Atlanta Georgia",
+  "country": "الولايات المتحدة",
+  "city": "أتلانتا",
+  "country_en": "United States"
+ },
+ {
+  "id": "1232",
+  "name": "Darul Arqam",
+  "address": "1801 Cabrillo Ave",
+  "country": "الولايات المتحدة",
+  "city": "تورانس",
+  "country_en": "United States"
+ },
+ {
+  "id": "1056",
+  "name": "Masjid Muath Bin Jabal",
+  "address": "4001 Miller St Detroit, MI 48211",
+  "country": "الولايات المتحدة",
+  "city": "ديترويت",
+  "country_en": "United States"
+ },
+ {
+  "id": "1768",
+  "name": "KANKAKEE ISLAMIC CENTER",
+  "address": "920 N Kenndy DR Kankakee IL",
+  "country": "الولايات المتحدة",
+  "city": "مقاطعة-كانكاكي",
+  "country_en": "United States"
+ },
+ {
+  "id": "771",
+  "name": "Masjid Gul",
+  "address": "14366 Memorial Dr, Houston, TX 77079",
+  "country": "الولايات المتحدة",
+  "city": "هيوستن",
+  "country_en": "United States"
+ },
+ {
+  "id": "1517",
+  "name": "جامع الحاجة مريم",
+  "address": "الحويجة حي القادة",
+  "country": "العراق",
+  "city": "الحويجة",
+  "country_en": "Iraq"
+ },
+ {
+  "id": "1628",
+  "name": "جامع المصطفى",
+  "address": "شارع عزيري غربي",
+  "country": "العراق",
+  "city": "الحويجة",
+  "country_en": "Iraq"
+ },
+ {
+  "id": "1916",
+  "name": "Masjid qalam - مزگەوتی قەڵەم",
+  "address": "السليمانية كنه كاوه دواجن",
+  "country": "العراق",
+  "city": "السليمانية",
+  "country_en": "Iraq"
+ },
+ {
+  "id": "2247",
+  "name": "مزگەوتی سروشت",
+  "address": "الحی سروشت",
+  "country": "العراق",
+  "city": "السليمانية",
+  "country_en": "Iraq"
+ },
+ {
+  "id": "888",
+  "name": "جامع الامين",
+  "address": "قضاء بيجي",
+  "country": "العراق",
+  "city": "بيجي",
+  "country_en": "Iraq"
+ },
+ {
+  "id": "130",
+  "name": "مسجد التوحيد (مزگەوتی تەوحید)",
+  "address": "أربيل - حرير",
+  "country": "العراق",
+  "city": "حرير",
+  "country_en": "Iraq"
+ },
+ {
+  "id": "769",
+  "name": "جامع العزيزية",
+  "address": "117 Stoke Newington Rd, London N16 8BU",
+  "country": "المملكة المتحدة",
+  "city": "لندن-الكبرى",
+  "country_en": "United Kingdom"
+ },
+ {
+  "id": "1857",
+  "name": "Baitul Aman Mosque & Culture Centre",
+  "address": "101 Braintree St, Bethnal Green, London E2 0FT",
+  "country": "المملكة المتحدة",
+  "city": "لندن-الكبرى",
+  "country_en": "United Kingdom"
+ },
+ {
+  "id": "1799",
+  "name": "Masjid Abi Hurairah",
+  "address": "North Road, Stoke-on-Trent, ST6 2BP",
+  "country": "المملكة المتحدة",
+  "city": "ستوك-أون-ترينت",
+  "country_en": "United Kingdom"
+ },
+ {
+  "id": "1646",
+  "name": "Al-Emaan Centre",
+  "address": "Croydon Rd, Bromley, Keston BR2 8HF",
+  "country": "المملكة المتحدة",
+  "city": "كستون",
+  "country_en": "United Kingdom"
+ },
+ {
+  "id": "2036",
+  "name": "Ummah Masjid",
+  "address": "14 Duckpool Road, Newport NP19 8FH",
+  "country": "المملكة المتحدة",
+  "city": "نيوبورت",
+  "country_en": "United Kingdom"
+ },
+ {
+  "id": "1449",
+  "name": "مسجد بن زهرة العتيق",
+  "address": "طريق ال16  الغرارات",
+  "country": "ليبيا",
+  "city": "طرابلس",
+  "country_en": "Libya"
+ },
+ {
+  "id": "2252",
+  "name": "الامام مسلم",
+  "address": "الشارع الغربي",
+  "country": "ليبيا",
+  "city": "طرابلس",
+  "country_en": "Libya"
+ },
+ {
+  "id": "1949",
+  "name": "مسجد الإخلاص",
+  "address": "مسجد الإخلاص",
+  "country": "ليبيا",
+  "city": "الزاوية",
+  "country_en": "Libya"
+ },
+ {
+  "id": "1073",
+  "name": "ابوبكر الصديق",
+  "address": "القلعة",
+  "country": "ليبيا",
+  "city": "غريان",
+  "country_en": "Libya"
+ },
+ {
+  "id": "1142",
+  "name": "                                                                                     علي مفتاح ملودة.",
+  "address": "الغيران،محلة الإستقلال",
+  "country": "ليبيا",
+  "city": "مصراته",
+  "country_en": "Libya"
+ },
+ {
+  "id": "932",
+  "name": "محمد عبدالوهاب التركيت",
+  "address": "salmiya sayed yasen street block 9",
+  "country": "الكويت",
+  "city": "السالمية",
+  "country_en": "Kuwait"
+ },
+ {
+  "id": "1264",
+  "name": "فهد سند العبدالهادي العجمي",
+  "address": "قطعة 9 شارع 73",
+  "country": "الكويت",
+  "city": "الفروانية",
+  "country_en": "Kuwait"
+ },
+ {
+  "id": "1373",
+  "name": "مسجد أبوسنان الأسدي",
+  "address": "قطعة 7",
+  "country": "الكويت",
+  "city": "بيان",
+  "country_en": "Kuwait"
+ },
+ {
+  "id": "1742",
+  "name": "جامع الرمال",
+  "address": "hfqw227",
+  "country": "الكويت",
+  "city": "ميناء-عبد-الله",
+  "country_en": "Kuwait"
+ },
+ {
+  "id": "790",
+  "name": "Aasiya Musallah",
+  "address": "2 Sheppard Street Regina SK Canada",
+  "country": "كندا",
+  "city": "ريجينا",
+  "country_en": "Canada"
+ },
+ {
+  "id": "1064",
+  "name": "ICNL",
+  "address": "10 Paton Street",
+  "country": "كندا",
+  "city": "سانت-جون",
+  "country_en": "Canada"
+ },
+ {
+  "id": "140",
+  "name": "Ontario Muslim Academy",
+  "address": "82 Beverly st Cambridge on N1R 3Z7",
+  "country": "كندا",
+  "city": "كامبريدج",
+  "country_en": "Canada"
+ },
+ {
+  "id": "344",
+  "name": "MORDEN MOSQUE",
+  "address": "300 A, NORTH RAILWAY ST, MORDEN, MANITOBA R6M1T5",
+  "country": "كندا",
+  "city": "موردن",
+  "country_en": "Canada"
+ },
+ {
+  "id": "1929",
+  "name": "مسجد التوحيد اليامون",
+  "address": "اليامون . المصرارة",
+  "country": "فلسطين",
+  "city": "جنين",
+  "country_en": "Palestine"
+ },
+ {
+  "id": "1971",
+  "name": "مسجد عمر بن الخطاب",
+  "address": "اليامون",
+  "country": "فلسطين",
+  "city": "جنين",
+  "country_en": "Palestine"
+ },
+ {
+  "id": "1267",
+  "name": "مسجد الرحمة",
+  "address": "شارع المقاطعة باتجاه مفرق أبو صفية",
+  "country": "فلسطين",
+  "city": "طولكرم",
+  "country_en": "Palestine"
+ },
+ {
+  "id": "1772",
+  "name": "مسجد الهدي",
+  "address": "الصوانة",
+  "country": "فلسطين",
+  "city": "طولكرم",
+  "country_en": "Palestine"
+ },
+ {
+  "id": "1465",
+  "name": "مسجد التقوى",
+  "address": "Krummerweg, 19  Biberach an der Riss ",
+  "country": "ألمانيا",
+  "city": "Biberach-an-der-Riß",
+  "country_en": "Germany"
+ },
+ {
+  "id": "119",
+  "name": "Masjid Ibrahim Khalil",
+  "address": "برلين",
+  "country": "ألمانيا",
+  "city": "برلين",
+  "country_en": "Germany"
+ },
+ {
+  "id": "1260",
+  "name": "ATİB Mülheim Merkez Cami",
+  "address": "Neustadtstraße 23, 45476 Mülheim an der Ruhr",
+  "country": "ألمانيا",
+  "city": "مولهايم",
+  "country_en": "Germany"
+ },
+ {
+  "id": "1306",
+  "name": "Masjid As Sunnah",
+  "address": "132 Haldon Street, Lakemba 2195 NSW",
+  "country": "أستراليا",
+  "city": "لاكيمبا",
+  "country_en": "Australia"
+ },
+ {
+  "id": "1984",
+  "name": "House of Guidance Mosque",
+  "address": "House of Guidance Mosque, 198 E Derwent Hwy, Lindisfarne TAS 7015",
+  "country": "أستراليا",
+  "city": "هوبارت",
+  "country_en": "Australia"
+ },
+ {
+  "id": "682",
+  "name": "Fagersta Moské",
+  "address": "Vilhelminavägen 7C, 737 40 Fagersta",
+  "country": "السويد",
+  "city": "فاجيرستا",
+  "country_en": "Sweden"
+ },
+ {
+  "id": "1136",
+  "name": "Lidköpings Moské",
+  "address": "Norra torngatan 1",
+  "country": "السويد",
+  "city": "ليدكوبينغ",
+  "country_en": "Sweden"
+ },
+ {
+  "id": "1825",
+  "name": "Masjid Badar",
+  "address": "gamle borgen vei 4",
+  "country": "النرويج",
+  "city": "Asker",
+  "country_en": "Norway"
+ },
+ {
+  "id": "136",
+  "name": "Masjid Darussalam Norge",
+  "address": "Holmegate 21 1610 Fredrikstad",
+  "country": "النرويج",
+  "city": "Fredrikstad",
+  "country_en": "Norway"
+ },
+ {
+  "id": "512",
+  "name": "مسجد السلام olvega",
+  "address": "olvega  _soria",
+  "country": "إسبانيا",
+  "city": "سوريا",
+  "country_en": "Spain"
+ },
+ {
+  "id": "890",
+  "name": "centro islamico crevillente",
+  "address": "calle cardenal tarancon n6 crevillente",
+  "country": "إسبانيا",
+  "city": "كريفيلينتي",
+  "country_en": "Spain"
+ },
+ {
+  "id": "2177",
+  "name": "MASJID AL EMAN",
+  "address": "CH ROAD SAYED NAGAR",
+  "country": "الهند",
+  "city": "تاليبارامبا",
+  "country_en": "India"
+ },
+ {
+  "id": "1597",
+  "name": "Masjid Ayesha",
+  "address": "paramount colony, tolichowki",
+  "country": "الهند",
+  "city": "हैदराबाद",
+  "country_en": "India"
+ },
+ {
+  "id": "579",
+  "name": "Mustafa Masjid",
+  "address": "Şanlıurfa Turkey",
+  "country": "تركيا",
+  "city": "Suruç",
+  "country_en": "Turkey"
+ },
+ {
+  "id": "186",
+  "name": "Sakina Masjid",
+  "address": "rue broucheterre 1,6000",
+  "country": "بلجيكا",
+  "city": "شارلروا",
+  "country_en": "Belgium"
+ },
+ {
+  "id": "1099",
+  "name": "Ramadan",
+  "address": "Шоссе Академика Королёва, 48",
+  "country": "روسيا",
+  "city": "بالاكوفو",
+  "country_en": "Russia"
+ },
+ {
+  "id": "1390",
+  "name": "المركز الإسلامي الثقافي (طيبة) كونستانتا",
+  "address": "Strada Maior Șofran nr 12",
+  "country": "رومانيا",
+  "city": "Constanţa",
+  "country_en": "Romania"
+ },
+ {
+  "id": "2002",
+  "name": "Madina masjid",
+  "address": "Madina masjid mehrabpur",
+  "country": "باكستان",
+  "city": "مهرابور",
+  "country_en": "Pakistan"
+ },
+ {
+  "id": "755",
+  "name": "مسجد غانم ناصر ال علي المعاضيد",
+  "address": "ام السنيم",
+  "country": "قطر",
+  "city": "الريان",
+  "country_en": "Qatar"
+ },
+ {
+  "id": "1374",
+  "name": "Dzamija Luka",
+  "address": "N.N. Luka",
+  "country": "البوسنة والهرسك",
+  "city": "Srebrenik",
+  "country_en": "Bosnia and Herzegovina"
+ },
+ {
+  "id": "125",
+  "name": "مركز سبيكة بنت ابراهيم الأنصاري الإسلامي",
+  "address": "المنامة",
+  "country": "البحرين",
+  "city": "المنامة",
+  "country_en": "Bahrain"
+ },
+ {
+  "id": "1016",
+  "name": "Moschea Donoratico",
+  "address": "دونوراتيكو",
+  "country": "إيطاليا",
+  "city": "دونوراتيكو",
+  "country_en": "Italy"
+ }
+]

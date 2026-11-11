@@ -1,0 +1,262 @@
+{
+ "athlone": {
+  "dhuhr_margin": -357.97,
+  "fajr_winter": 0.63,
+  "horizon": 35.68,
+  "isha_winter": 0.63,
+  "lat": 70.52,
+  "lon": 82.12,
+  "rows": 335,
+  "solar_rms_min": 21.34
+ },
+ "ballyhaunis": {
+  "dhuhr_margin": 1.98,
+  "fajr_winter": 16.03,
+  "horizon": -1.25,
+  "isha_winter": 14.99,
+  "lat": 53.77,
+  "lon": -8.77,
+  "rows": 365,
+  "solar_rms_min": 0.94
+ },
+ "carlow": {
+  "dhuhr_margin": 2.02,
+  "fajr_winter": 16.31,
+  "horizon": -1.26,
+  "isha_winter": 15.3,
+  "lat": 52.84,
+  "lon": -6.92,
+  "rows": 364,
+  "solar_rms_min": 0.88
+ },
+ "castlebar": {
+  "dhuhr_margin": 1.98,
+  "fajr_winter": 16.0,
+  "horizon": -1.25,
+  "isha_winter": 14.98,
+  "lat": 53.85,
+  "lon": -9.3,
+  "rows": 365,
+  "solar_rms_min": 0.93
+ },
+ "cavan": {
+  "dhuhr_margin": 2.02,
+  "fajr_winter": 15.86,
+  "horizon": -1.25,
+  "isha_winter": 15.04,
+  "lat": 53.99,
+  "lon": -7.19,
+  "rows": 365,
+  "solar_rms_min": 6.33
+ },
+ "clonmel": {
+  "dhuhr_margin": 1.98,
+  "fajr_winter": 16.44,
+  "horizon": -1.27,
+  "isha_winter": 15.43,
+  "lat": 52.36,
+  "lon": -7.71,
+  "rows": 365,
+  "solar_rms_min": 0.87
+ },
+ "cork": {
+  "dhuhr_margin": 1.99,
+  "fajr_winter": 16.59,
+  "horizon": -1.27,
+  "isha_winter": 15.56,
+  "lat": 51.9,
+  "lon": -8.47,
+  "rows": 365,
+  "solar_rms_min": 0.86
+ },
+ "drogheda": {
+  "dhuhr_margin": 2.0,
+  "fajr_winter": 16.05,
+  "horizon": -1.26,
+  "isha_winter": 15.05,
+  "lat": 53.72,
+  "lon": -6.35,
+  "rows": 365,
+  "solar_rms_min": 0.91
+ },
+ "dublin": {
+  "dhuhr_margin": 1.99,
+  "fajr_winter": 16.16,
+  "horizon": -1.26,
+  "isha_winter": 15.14,
+  "lat": 53.34,
+  "lon": -6.25,
+  "rows": 365,
+  "solar_rms_min": 0.9
+ },
+ "dundalk": {
+  "dhuhr_margin": 2.04,
+  "fajr_winter": 15.95,
+  "horizon": -1.25,
+  "isha_winter": 14.96,
+  "lat": 54.01,
+  "lon": -6.41,
+  "rows": 365,
+  "solar_rms_min": 0.93
+ },
+ "ennis": {
+  "dhuhr_margin": 2.0,
+  "fajr_winter": 16.31,
+  "horizon": -1.26,
+  "isha_winter": 15.27,
+  "lat": 52.84,
+  "lon": -8.99,
+  "rows": 365,
+  "solar_rms_min": 0.9
+ },
+ "galway": {
+  "dhuhr_margin": 1.95,
+  "fajr_winter": 16.18,
+  "horizon": -1.26,
+  "isha_winter": 15.14,
+  "lat": 53.27,
+  "lon": -9.05,
+  "rows": 365,
+  "solar_rms_min": 0.91
+ },
+ "kilkenny": {
+  "dhuhr_margin": 1.98,
+  "fajr_winter": 16.37,
+  "horizon": -1.26,
+  "isha_winter": 15.34,
+  "lat": 52.66,
+  "lon": -7.25,
+  "rows": 365,
+  "solar_rms_min": 0.89
+ },
+ "letterkenny": {
+  "dhuhr_margin": 1.99,
+  "fajr_winter": 15.73,
+  "horizon": -1.24,
+  "isha_winter": 14.6,
+  "lat": 54.95,
+  "lon": -7.86,
+  "rows": 365,
+  "solar_rms_min": 10.51
+ },
+ "limerick": {
+  "dhuhr_margin": 2.0,
+  "fajr_winter": 16.36,
+  "horizon": -1.26,
+  "isha_winter": 15.31,
+  "lat": 52.66,
+  "lon": -8.62,
+  "rows": 365,
+  "solar_rms_min": 0.88
+ },
+ "longford": {
+  "dhuhr_margin": 1.95,
+  "fajr_winter": 16.04,
+  "horizon": -1.26,
+  "isha_winter": 15.01,
+  "lat": 53.73,
+  "lon": -7.8,
+  "rows": 365,
+  "solar_rms_min": 0.92
+ },
+ "mullingar": {
+  "dhuhr_margin": 2.03,
+  "fajr_winter": 16.1,
+  "horizon": -1.25,
+  "isha_winter": 15.08,
+  "lat": 53.54,
+  "lon": -7.35,
+  "rows": 365,
+  "solar_rms_min": 0.92
+ },
+ "naas": {
+  "dhuhr_margin": 2.03,
+  "fajr_winter": 16.2,
+  "horizon": -1.26,
+  "isha_winter": 15.15,
+  "lat": 53.22,
+  "lon": -6.66,
+  "rows": 365,
+  "solar_rms_min": 0.9
+ },
+ "navan": {
+  "dhuhr_margin": 2.0,
+  "fajr_winter": 16.06,
+  "horizon": -1.25,
+  "isha_winter": 15.01,
+  "lat": 53.66,
+  "lon": -6.68,
+  "rows": 365,
+  "solar_rms_min": 0.92
+ },
+ "portlaoise": {
+  "dhuhr_margin": 1.97,
+  "fajr_winter": 16.26,
+  "horizon": -1.26,
+  "isha_winter": 15.21,
+  "lat": 53.04,
+  "lon": -7.3,
+  "rows": 365,
+  "solar_rms_min": 0.89
+ },
+ "sligo": {
+  "dhuhr_margin": 1.99,
+  "fajr_winter": 15.87,
+  "horizon": -1.25,
+  "isha_winter": 14.87,
+  "lat": 54.27,
+  "lon": -8.47,
+  "rows": 365,
+  "solar_rms_min": 0.95
+ },
+ "thurles": {
+  "dhuhr_margin": 1.98,
+  "fajr_winter": 16.33,
+  "horizon": -1.26,
+  "isha_winter": 15.35,
+  "lat": 52.69,
+  "lon": -7.76,
+  "rows": 365,
+  "solar_rms_min": 3.27
+ },
+ "tralee": {
+  "dhuhr_margin": 2.24,
+  "fajr_winter": 16.46,
+  "horizon": -1.29,
+  "isha_winter": 15.46,
+  "lat": 52.33,
+  "lon": -9.64,
+  "rows": 365,
+  "solar_rms_min": 1.62
+ },
+ "tullamore": {
+  "dhuhr_margin": 2.0,
+  "fajr_winter": 16.16,
+  "horizon": -1.26,
+  "isha_winter": 15.13,
+  "lat": 53.28,
+  "lon": -7.49,
+  "rows": 365,
+  "solar_rms_min": 0.91
+ },
+ "waterford": {
+  "dhuhr_margin": 2.01,
+  "fajr_winter": 16.48,
+  "horizon": -1.27,
+  "isha_winter": 15.45,
+  "lat": 52.26,
+  "lon": -7.11,
+  "rows": 365,
+  "solar_rms_min": 0.87
+ },
+ "wexford": {
+  "dhuhr_margin": 1.99,
+  "fajr_winter": 16.45,
+  "horizon": -1.27,
+  "isha_winter": 15.42,
+  "lat": 52.34,
+  "lon": -6.46,
+  "rows": 365,
+  "solar_rms_min": 0.88
+ }
+}

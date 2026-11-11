@@ -1,0 +1,399 @@
+{
+ "job": "O1l-8 Iraq second cities",
+ "rows": 365,
+ "span": {
+  "from": "2026-01-01",
+  "to": "2026-12-31"
+ },
+ "surfaceNote": "one national row per date; city/city_id/governorate/lat/lng query params all ignored (identical bytes)",
+ "freeFit": {
+  "fajr": {
+   "theta": 18.1,
+   "pad": 1,
+   "mode": "floor",
+   "score": {
+    "exactPct": 84.9,
+    "w1Pct": 100,
+    "mae": 0.151,
+    "max": 1,
+    "n": 365
+   }
+  },
+  "isha": {
+   "theta": 16.9,
+   "pad": 0,
+   "mode": "ceil",
+   "score": {
+    "exactPct": 85.5,
+    "w1Pct": 100,
+    "mae": 0.145,
+    "max": 1,
+    "n": 365
+   }
+  },
+  "sunrise": {
+   "pad": -1,
+   "mode": "round",
+   "score": {
+    "exactPct": 84.7,
+    "w1Pct": 100,
+    "mae": 0.153,
+    "max": 1,
+    "n": 365
+   }
+  },
+  "dhuhr": {
+   "pad": 5,
+   "mode": "round",
+   "score": {
+    "exactPct": 88.2,
+    "w1Pct": 100,
+    "mae": 0.118,
+    "max": 1,
+    "n": 365
+   }
+  },
+  "asr_shafi": {
+   "pad": 3,
+   "mode": "round",
+   "score": {
+    "exactPct": 78.6,
+    "w1Pct": 100,
+    "mae": 0.214,
+    "max": 1,
+    "n": 365
+   }
+  },
+  "maghrib": {
+   "pad": 3,
+   "mode": "round",
+   "score": {
+    "exactPct": 79.5,
+    "w1Pct": 100,
+    "mae": 0.205,
+    "max": 1,
+    "n": 365
+   }
+  }
+ },
+ "recorded117": {
+  "baghdad": {
+   "perColumn": {
+    "fajr": {
+     "exactPct": 84.9,
+     "w1Pct": 100,
+     "mae": 0.151,
+     "max": 1,
+     "n": 365
+    },
+    "sunrise": {
+     "exactPct": 48.8,
+     "w1Pct": 100,
+     "mae": 0.512,
+     "max": 1,
+     "n": 365
+    },
+    "dhuhr": {
+     "exactPct": 61.9,
+     "w1Pct": 100,
+     "mae": 0.381,
+     "max": 1,
+     "n": 365
+    },
+    "asr": {
+     "exactPct": 44.1,
+     "w1Pct": 100,
+     "mae": 0.559,
+     "max": 1,
+     "n": 365
+    },
+    "maghrib": {
+     "exactPct": 67.9,
+     "w1Pct": 100,
+     "mae": 0.321,
+     "max": 1,
+     "n": 365
+    },
+    "isha": {
+     "exactPct": 84.4,
+     "w1Pct": 100,
+     "mae": 0.156,
+     "max": 1,
+     "n": 365
+    }
+   },
+   "total": {
+    "exactPct": 65.3,
+    "w1Pct": 100,
+    "mae": 0.347,
+    "max": 1,
+    "n": 2190
+   }
+  },
+  "basra": {
+   "perColumn": {
+    "fajr": {
+     "exactPct": 0.3,
+     "w1Pct": 9.6,
+     "mae": 9.912,
+     "max": 18,
+     "n": 365
+    },
+    "sunrise": {
+     "exactPct": 0,
+     "w1Pct": 0,
+     "mae": 12.86,
+     "max": 21,
+     "n": 365
+    },
+    "dhuhr": {
+     "exactPct": 0,
+     "w1Pct": 0,
+     "mae": 14.058,
+     "max": 15,
+     "n": 365
+    },
+    "asr": {
+     "exactPct": 0,
+     "w1Pct": 0,
+     "mae": 14.403,
+     "max": 22,
+     "n": 365
+    },
+    "maghrib": {
+     "exactPct": 0,
+     "w1Pct": 0,
+     "mae": 14.244,
+     "max": 22,
+     "n": 365
+    },
+    "isha": {
+     "exactPct": 0,
+     "w1Pct": 0,
+     "mae": 16.934,
+     "max": 27,
+     "n": 365
+    }
+   },
+   "total": {
+    "exactPct": 0,
+    "w1Pct": 1.6,
+    "mae": 13.735,
+    "max": 27,
+    "n": 2190
+   }
+  },
+  "mosul": {
+   "perColumn": {
+    "fajr": {
+     "exactPct": 4.1,
+     "w1Pct": 11.5,
+     "mae": 6.121,
+     "max": 11,
+     "n": 365
+    },
+    "sunrise": {
+     "exactPct": 6,
+     "w1Pct": 16.7,
+     "mae": 6.129,
+     "max": 14,
+     "n": 365
+    },
+    "dhuhr": {
+     "exactPct": 0,
+     "w1Pct": 0,
+     "mae": 4.611,
+     "max": 5,
+     "n": 365
+    },
+    "asr": {
+     "exactPct": 5.8,
+     "w1Pct": 16.2,
+     "mae": 5.411,
+     "max": 12,
+     "n": 365
+    },
+    "maghrib": {
+     "exactPct": 3,
+     "w1Pct": 14.8,
+     "mae": 6.203,
+     "max": 13,
+     "n": 365
+    },
+    "isha": {
+     "exactPct": 3.3,
+     "w1Pct": 14.8,
+     "mae": 9.342,
+     "max": 20,
+     "n": 365
+    }
+   },
+   "total": {
+    "exactPct": 3.7,
+    "w1Pct": 12.3,
+    "mae": 6.303,
+    "max": 20,
+    "n": 2190
+   }
+  },
+  "erbil": {
+   "perColumn": {
+    "fajr": {
+     "exactPct": 4.9,
+     "w1Pct": 13.2,
+     "mae": 5.855,
+     "max": 14,
+     "n": 365
+    },
+    "sunrise": {
+     "exactPct": 5.5,
+     "w1Pct": 14.5,
+     "mae": 4.773,
+     "max": 10,
+     "n": 365
+    },
+    "dhuhr": {
+     "exactPct": 1.6,
+     "w1Pct": 95.1,
+     "mae": 1.033,
+     "max": 2,
+     "n": 365
+    },
+    "asr": {
+     "exactPct": 4.7,
+     "w1Pct": 16.7,
+     "mae": 4.323,
+     "max": 8,
+     "n": 365
+    },
+    "maghrib": {
+     "exactPct": 3.8,
+     "w1Pct": 13.7,
+     "mae": 4.863,
+     "max": 9,
+     "n": 365
+    },
+    "isha": {
+     "exactPct": 5.2,
+     "w1Pct": 17,
+     "mae": 6.57,
+     "max": 16,
+     "n": 365
+    }
+   },
+   "total": {
+    "exactPct": 4.3,
+    "w1Pct": 28.4,
+    "mae": 4.569,
+    "max": 16,
+    "n": 2190
+   }
+  },
+  "kirkuk": {
+   "perColumn": {
+    "fajr": {
+     "exactPct": 6,
+     "w1Pct": 20.8,
+     "mae": 4.605,
+     "max": 12,
+     "n": 365
+    },
+    "sunrise": {
+     "exactPct": 6,
+     "w1Pct": 19.7,
+     "mae": 3.468,
+     "max": 6,
+     "n": 365
+    },
+    "dhuhr": {
+     "exactPct": 47.7,
+     "w1Pct": 100,
+     "mae": 0.523,
+     "max": 1,
+     "n": 365
+    },
+    "asr": {
+     "exactPct": 6.8,
+     "w1Pct": 21.4,
+     "mae": 3.255,
+     "max": 7,
+     "n": 365
+    },
+    "maghrib": {
+     "exactPct": 6.3,
+     "w1Pct": 20,
+     "mae": 3.493,
+     "max": 7,
+     "n": 365
+    },
+    "isha": {
+     "exactPct": 7.1,
+     "w1Pct": 20,
+     "mae": 4.386,
+     "max": 11,
+     "n": 365
+    }
+   },
+   "total": {
+    "exactPct": 13.3,
+    "w1Pct": 33.7,
+    "mae": 3.289,
+    "max": 12,
+    "n": 2190
+   }
+  },
+  "najaf": {
+   "perColumn": {
+    "fajr": {
+     "exactPct": 11.5,
+     "w1Pct": 37.3,
+     "mae": 2.712,
+     "max": 7,
+     "n": 365
+    },
+    "sunrise": {
+     "exactPct": 11.5,
+     "w1Pct": 32.6,
+     "mae": 2.167,
+     "max": 5,
+     "n": 365
+    },
+    "dhuhr": {
+     "exactPct": 77,
+     "w1Pct": 100,
+     "mae": 0.23,
+     "max": 1,
+     "n": 365
+    },
+    "asr": {
+     "exactPct": 11.2,
+     "w1Pct": 32.3,
+     "mae": 2,
+     "max": 4,
+     "n": 365
+    },
+    "maghrib": {
+     "exactPct": 10.1,
+     "w1Pct": 32.9,
+     "mae": 2.068,
+     "max": 4,
+     "n": 365
+    },
+    "isha": {
+     "exactPct": 9.9,
+     "w1Pct": 35.1,
+     "mae": 2.542,
+     "max": 6,
+     "n": 365
+    }
+   },
+   "total": {
+    "exactPct": 21.9,
+    "w1Pct": 45,
+    "mae": 1.953,
+    "max": 7,
+    "n": 2190
+   }
+  }
+ }
+}

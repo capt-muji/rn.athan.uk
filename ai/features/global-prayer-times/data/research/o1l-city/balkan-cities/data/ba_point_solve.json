@@ -1,0 +1,1161 @@
+[
+ {
+  "id": 1,
+  "place": "Banja Luka",
+  "trueLat": 44.7722,
+  "trueLon": 17.191,
+  "lat": 44.77,
+  "lon": 16.64,
+  "dLat": 0,
+  "dLon": -0.55,
+  "scatter": 1.09,
+  "temkin": {
+   "fajr": 0.58,
+   "sunrise": -8.37,
+   "dhuhr": -1.13,
+   "asr": -1.45,
+   "maghrib": 3.92,
+   "isha": -4.26
+  }
+ },
+ {
+  "id": 2,
+  "place": "Bihać",
+  "trueLat": 44.8169,
+  "trueLon": 15.87,
+  "lat": 44.72,
+  "lon": 15.27,
+  "dLat": -0.1,
+  "dLon": -0.6,
+  "scatter": 1.04,
+  "temkin": {
+   "fajr": 0.08,
+   "sunrise": -8.7,
+   "dhuhr": -1.6,
+   "asr": -1.87,
+   "maghrib": 3.51,
+   "isha": -4.48
+  }
+ },
+ {
+  "id": 3,
+  "place": "Bijeljina",
+  "trueLat": 44.7575,
+  "trueLon": 19.2144,
+  "lat": 44.66,
+  "lon": 18.96,
+  "dLat": -0.1,
+  "dLon": -0.25,
+  "scatter": 0.99,
+  "temkin": {
+   "fajr": 1.33,
+   "sunrise": -7.27,
+   "dhuhr": 0.13,
+   "asr": -0.39,
+   "maghrib": 5.05,
+   "isha": -2.82
+  }
+ },
+ {
+  "id": 4,
+  "place": "Bileća",
+  "trueLat": 42.8758,
+  "trueLon": 18.4297,
+  "lat": 44.58,
+  "lon": 17.93,
+  "dLat": 1.7,
+  "dLon": -0.5,
+  "scatter": 0.99,
+  "temkin": {
+   "fajr": 0.27,
+   "sunrise": -8.07,
+   "dhuhr": -0.99,
+   "asr": -1.52,
+   "maghrib": 4,
+   "isha": -3.65
+  }
+ },
+ {
+  "id": 5,
+  "place": "Bosanski Brod",
+  "trueLat": 45.1333,
+  "trueLon": 18,
+  "lat": 44.83,
+  "lon": 17.4,
+  "dLat": -0.3,
+  "dLon": -0.6,
+  "scatter": 1.25,
+  "temkin": {
+   "fajr": 0.48,
+   "sunrise": -8.64,
+   "dhuhr": -1.09,
+   "asr": -1.62,
+   "maghrib": 3.69,
+   "isha": -4.65
+  }
+ },
+ {
+  "id": 14,
+  "place": "Brčko",
+  "trueLat": 44.8728,
+  "trueLon": 18.8106,
+  "lat": 44.77,
+  "lon": 18.41,
+  "dLat": -0.1,
+  "dLon": -0.4,
+  "scatter": 1.05,
+  "temkin": {
+   "fajr": 1.17,
+   "sunrise": -7.77,
+   "dhuhr": -1.05,
+   "asr": -0.95,
+   "maghrib": 4.42,
+   "isha": -3.78
+  }
+ },
+ {
+  "id": 16,
+  "place": "Bugojno",
+  "trueLat": 44.0531,
+  "trueLon": 17.4508,
+  "lat": 44.05,
+  "lon": 17,
+  "dLat": 0,
+  "dLon": -0.45,
+  "scatter": 0.65,
+  "temkin": {
+   "fajr": -1.15,
+   "sunrise": -7.95,
+   "dhuhr": -0.72,
+   "asr": -1.62,
+   "maghrib": 4.3,
+   "isha": -2.11
+  }
+ },
+ {
+  "id": 19,
+  "place": "Cazin",
+  "trueLat": 44.9667,
+  "trueLon": 15.9431,
+  "lat": 44.87,
+  "lon": 16.39,
+  "dLat": -0.1,
+  "dLon": 0.45,
+  "scatter": 1.16,
+  "temkin": {
+   "fajr": 4.78,
+   "sunrise": -4.5,
+   "dhuhr": 2.87,
+   "asr": 2.89,
+   "maghrib": 8.16,
+   "isha": -0.25
+  }
+ },
+ {
+  "id": 20,
+  "place": "Čajniče",
+  "trueLat": 43.5567,
+  "trueLon": 19.0722,
+  "lat": 44.06,
+  "lon": 18.47,
+  "dLat": 0.5,
+  "dLon": -0.6,
+  "scatter": 0.69,
+  "temkin": {
+   "fajr": -1.87,
+   "sunrise": -8.65,
+   "dhuhr": -1.82,
+   "asr": -2.25,
+   "maghrib": 3.67,
+   "isha": -2.74
+  }
+ },
+ {
+  "id": 21,
+  "place": "Čapljina",
+  "trueLat": 43.1194,
+  "trueLon": 17.6853,
+  "lat": 44.52,
+  "lon": 17.39,
+  "dLat": 1.4,
+  "dLon": -0.3,
+  "scatter": 0.79,
+  "temkin": {
+   "fajr": 0.82,
+   "sunrise": -7.33,
+   "dhuhr": -0.16,
+   "asr": -0.78,
+   "maghrib": 4.78,
+   "isha": -2.76
+  }
+ },
+ {
+  "id": 24,
+  "place": "Čitluk",
+  "trueLat": 43.2333,
+  "trueLon": 17.7,
+  "lat": 44.33,
+  "lon": 18.2,
+  "dLat": 1.1,
+  "dLon": 0.5,
+  "scatter": 0.76,
+  "temkin": {
+   "fajr": 3.65,
+   "sunrise": -3.94,
+   "dhuhr": 3.08,
+   "asr": 2.35,
+   "maghrib": 8.07,
+   "isha": 0.98
+  }
+ },
+ {
+  "id": 26,
+  "place": "Doboj",
+  "trueLat": 44.7308,
+  "trueLon": 18.0856,
+  "lat": 44.63,
+  "lon": 17.59,
+  "dLat": -0.1,
+  "dLon": -0.5,
+  "scatter": 1,
+  "temkin": {
+   "fajr": 0.24,
+   "sunrise": -8.27,
+   "dhuhr": -1.36,
+   "asr": -1.44,
+   "maghrib": 4.07,
+   "isha": -3.76
+  }
+ },
+ {
+  "id": 30,
+  "place": "Fojnica",
+  "trueLat": 43.9608,
+  "trueLon": 17.8953,
+  "lat": 43.86,
+  "lon": 17.4,
+  "dLat": -0.1,
+  "dLon": -0.5,
+  "scatter": 0.68,
+  "temkin": {
+   "fajr": -1.94,
+   "sunrise": -8.16,
+   "dhuhr": -1.12,
+   "asr": -2.01,
+   "maghrib": 4.07,
+   "isha": -1.89
+  }
+ },
+ {
+  "id": 32,
+  "place": "Glamoč",
+  "trueLat": 44.0475,
+  "trueLon": 16.8506,
+  "lat": 44.05,
+  "lon": 16.5,
+  "dLat": 0,
+  "dLon": -0.35,
+  "scatter": 0.64,
+  "temkin": {
+   "fajr": -0.59,
+   "sunrise": -7.36,
+   "dhuhr": -0.72,
+   "asr": -1.21,
+   "maghrib": 4.73,
+   "isha": -1.67
+  }
+ },
+ {
+  "id": 33,
+  "place": "Goražde",
+  "trueLat": 43.6667,
+  "trueLon": 18.9764,
+  "lat": 43.97,
+  "lon": 18.68,
+  "dLat": 0.3,
+  "dLon": -0.3,
+  "scatter": 0.67,
+  "temkin": {
+   "fajr": -0.91,
+   "sunrise": -7.42,
+   "dhuhr": 0,
+   "asr": -1.15,
+   "maghrib": 4.85,
+   "isha": -1.37
+  }
+ },
+ {
+  "id": 34,
+  "place": "Gornji Vakuf",
+  "trueLat": 43.9392,
+  "trueLon": 17.5908,
+  "lat": 44.04,
+  "lon": 16.99,
+  "dLat": 0.1,
+  "dLon": -0.6,
+  "scatter": 0.66,
+  "temkin": {
+   "fajr": -1.84,
+   "sunrise": -8.58,
+   "dhuhr": -1.76,
+   "asr": -2.33,
+   "maghrib": 3.6,
+   "isha": -2.78
+  }
+ },
+ {
+  "id": 39,
+  "place": "Han-Pijesak",
+  "trueLat": 44.0667,
+  "trueLon": 18.95,
+  "lat": 44.07,
+  "lon": 19.55,
+  "dLat": 0,
+  "dLon": 0.6,
+  "scatter": 0.65,
+  "temkin": {
+   "fajr": 3.15,
+   "sunrise": -3.66,
+   "dhuhr": 3.52,
+   "asr": 2.57,
+   "maghrib": 8.47,
+   "isha": 2.05
+  }
+ },
+ {
+  "id": 40,
+  "place": "Hlivno",
+  "trueLat": 43.8269,
+  "trueLon": 17.0075,
+  "lat": 43.83,
+  "lon": 16.46,
+  "dLat": 0,
+  "dLon": -0.55,
+  "scatter": 0.57,
+  "temkin": {
+   "fajr": -1.87,
+   "sunrise": -7.96,
+   "dhuhr": -0.9,
+   "asr": -1.92,
+   "maghrib": 4.16,
+   "isha": -1.73
+  }
+ },
+ {
+  "id": 41,
+  "place": "Ilijaš",
+  "trueLat": 43.9519,
+  "trueLon": 18.2736,
+  "lat": 44.05,
+  "lon": 17.72,
+  "dLat": 0.1,
+  "dLon": -0.55,
+  "scatter": 0.71,
+  "temkin": {
+   "fajr": -1.55,
+   "sunrise": -8.32,
+   "dhuhr": -0.81,
+   "asr": -2.07,
+   "maghrib": 3.85,
+   "isha": -2.55
+  }
+ },
+ {
+  "id": 43,
+  "place": "Jajce",
+  "trueLat": 44.3394,
+  "trueLon": 17.2697,
+  "lat": 44.24,
+  "lon": 16.67,
+  "dLat": -0.1,
+  "dLon": -0.6,
+  "scatter": 0.82,
+  "temkin": {
+   "fajr": -1.08,
+   "sunrise": -8.41,
+   "dhuhr": -1.02,
+   "asr": -2,
+   "maghrib": 3.78,
+   "isha": -3.09
+  }
+ },
+ {
+  "id": 44,
+  "place": "Kakanj",
+  "trueLat": 44.1286,
+  "trueLon": 18.1144,
+  "lat": 44.13,
+  "lon": 17.51,
+  "dLat": 0,
+  "dLon": -0.6,
+  "scatter": 0.66,
+  "temkin": {
+   "fajr": -1.55,
+   "sunrise": -8.55,
+   "dhuhr": -1.64,
+   "asr": -2.37,
+   "maghrib": 3.51,
+   "isha": -3.08
+  }
+ },
+ {
+  "id": 45,
+  "place": "Kalesija",
+  "trueLat": 44.45,
+  "trueLon": 18.8667,
+  "lat": 44.45,
+  "lon": 18.37,
+  "dLat": 0,
+  "dLon": -0.5,
+  "scatter": 0.93,
+  "temkin": {
+   "fajr": -0.2,
+   "sunrise": -8.17,
+   "dhuhr": -1.25,
+   "asr": -1.41,
+   "maghrib": 4.21,
+   "isha": -3.16
+  }
+ },
+ {
+  "id": 49,
+  "place": "Ključ",
+  "trueLat": 44.5333,
+  "trueLon": 16.7833,
+  "lat": 44.43,
+  "lon": 16.38,
+  "dLat": -0.1,
+  "dLon": -0.4,
+  "scatter": 0.91,
+  "temkin": {
+   "fajr": 0.22,
+   "sunrise": -7.7,
+   "dhuhr": -0.18,
+   "asr": -1.03,
+   "maghrib": 4.61,
+   "isha": -2.71
+  }
+ },
+ {
+  "id": 50,
+  "place": "Konjic",
+  "trueLat": 43.6514,
+  "trueLon": 17.96,
+  "lat": 44.05,
+  "lon": 17.51,
+  "dLat": 0.4,
+  "dLon": -0.45,
+  "scatter": 0.69,
+  "temkin": {
+   "fajr": -1.2,
+   "sunrise": -7.99,
+   "dhuhr": -0.67,
+   "asr": -1.68,
+   "maghrib": 4.24,
+   "isha": -2.15
+  }
+ },
+ {
+  "id": 53,
+  "place": "Kupres",
+  "trueLat": 43.9833,
+  "trueLon": 17.3,
+  "lat": 44.08,
+  "lon": 16.75,
+  "dLat": 0.1,
+  "dLon": -0.55,
+  "scatter": 0.7,
+  "temkin": {
+   "fajr": -1.33,
+   "sunrise": -8.19,
+   "dhuhr": -0.72,
+   "asr": -2.01,
+   "maghrib": 3.88,
+   "isha": -2.62
+  }
+ },
+ {
+  "id": 55,
+  "place": "Lopare",
+  "trueLat": 44.6333,
+  "trueLon": 18.85,
+  "lat": 44.53,
+  "lon": 18.4,
+  "dLat": -0.1,
+  "dLon": -0.45,
+  "scatter": 0.92,
+  "temkin": {
+   "fajr": 0.26,
+   "sunrise": -7.93,
+   "dhuhr": -1.09,
+   "asr": -1.22,
+   "maghrib": 4.32,
+   "isha": -3.21
+  }
+ },
+ {
+  "id": 57,
+  "place": "Ljubinje",
+  "trueLat": 42.95,
+  "trueLon": 18.0833,
+  "lat": 44.55,
+  "lon": 17.68,
+  "dLat": 1.6,
+  "dLon": -0.4,
+  "scatter": 0.91,
+  "temkin": {
+   "fajr": 0.44,
+   "sunrise": -7.81,
+   "dhuhr": -0.99,
+   "asr": -1.11,
+   "maghrib": 4.44,
+   "isha": -3.15
+  }
+ },
+ {
+  "id": 59,
+  "place": "Maglaj",
+  "trueLat": 44.5497,
+  "trueLon": 18.0997,
+  "lat": 44.45,
+  "lon": 17.6,
+  "dLat": -0.1,
+  "dLon": -0.5,
+  "scatter": 0.89,
+  "temkin": {
+   "fajr": -0.2,
+   "sunrise": -8.16,
+   "dhuhr": -1.31,
+   "asr": -1.55,
+   "maghrib": 4.05,
+   "isha": -3.29
+  }
+ },
+ {
+  "id": 61,
+  "place": "Mostar",
+  "trueLat": 43.3438,
+  "trueLon": 17.8078,
+  "lat": 44.24,
+  "lon": 17.21,
+  "dLat": 0.9,
+  "dLon": -0.6,
+  "scatter": 0.77,
+  "temkin": {
+   "fajr": -1.17,
+   "sunrise": -8.52,
+   "dhuhr": -1.9,
+   "asr": -2.18,
+   "maghrib": 3.59,
+   "isha": -3.27
+  }
+ },
+ {
+  "id": 64,
+  "place": "Nevesinje",
+  "trueLat": 43.2581,
+  "trueLon": 18.1133,
+  "lat": 44.26,
+  "lon": 18.66,
+  "dLat": 1,
+  "dLon": 0.55,
+  "scatter": 0.79,
+  "temkin": {
+   "fajr": 3.38,
+   "sunrise": -4.02,
+   "dhuhr": 2.95,
+   "asr": 2.48,
+   "maghrib": 8.25,
+   "isha": 1.36
+  }
+ },
+ {
+  "id": 65,
+  "place": "Novi Travnik",
+  "trueLat": 44.1667,
+  "trueLon": 17.65,
+  "lat": 44.07,
+  "lon": 17.25,
+  "dLat": -0.1,
+  "dLon": -0.4,
+  "scatter": 0.68,
+  "temkin": {
+   "fajr": -0.97,
+   "sunrise": -7.79,
+   "dhuhr": -0.72,
+   "asr": -1.45,
+   "maghrib": 4.47,
+   "isha": -1.99
+  }
+ },
+ {
+  "id": 66,
+  "place": "Odžak",
+  "trueLat": 45,
+  "trueLon": 18.3333,
+  "lat": 44.8,
+  "lon": 17.93,
+  "dLat": -0.2,
+  "dLon": -0.4,
+  "scatter": 1.15,
+  "temkin": {
+   "fajr": 1.34,
+   "sunrise": -7.68,
+   "dhuhr": -0.99,
+   "asr": -0.91,
+   "maghrib": 4.41,
+   "isha": -3.84
+  }
+ },
+ {
+  "id": 68,
+  "place": "Orašje",
+  "trueLat": 45.0333,
+  "trueLon": 18.7,
+  "lat": 44.83,
+  "lon": 18.15,
+  "dLat": -0.2,
+  "dLon": -0.55,
+  "scatter": 1.19,
+  "temkin": {
+   "fajr": 0.65,
+   "sunrise": -8.47,
+   "dhuhr": -1.09,
+   "asr": -1.28,
+   "maghrib": 4.02,
+   "isha": -4.32
+  }
+ },
+ {
+  "id": 71,
+  "place": "Prijedor",
+  "trueLat": 44.98,
+  "trueLon": 16.7133,
+  "lat": 44.88,
+  "lon": 16.16,
+  "dLat": -0.1,
+  "dLon": -0.55,
+  "scatter": 1.15,
+  "temkin": {
+   "fajr": 0.88,
+   "sunrise": -8.41,
+   "dhuhr": -1.04,
+   "asr": -1.29,
+   "maghrib": 3.97,
+   "isha": -4.44
+  }
+ },
+ {
+  "id": 73,
+  "place": "Prozor",
+  "trueLat": 43.8167,
+  "trueLon": 17.6,
+  "lat": 43.82,
+  "lon": 17.2,
+  "dLat": 0,
+  "dLon": -0.4,
+  "scatter": 0.61,
+  "temkin": {
+   "fajr": -1.93,
+   "sunrise": -7.99,
+   "dhuhr": -0.92,
+   "asr": -1.97,
+   "maghrib": 4.14,
+   "isha": -1.73
+  }
+ },
+ {
+  "id": 77,
+  "place": "Sarajevo",
+  "trueLat": 43.8563,
+  "trueLon": 18.4131,
+  "lat": 43.86,
+  "lon": 17.91,
+  "dLat": 0,
+  "dLon": -0.5,
+  "scatter": 0.57,
+  "temkin": {
+   "fajr": -1.98,
+   "sunrise": -8.16,
+   "dhuhr": -1.05,
+   "asr": -2.1,
+   "maghrib": 3.96,
+   "isha": -1.98
+  }
+ },
+ {
+  "id": 78,
+  "place": "Skender-Vakuf",
+  "trueLat": 44.4667,
+  "trueLon": 17.55,
+  "lat": 44.47,
+  "lon": 17.15,
+  "dLat": 0,
+  "dLon": -0.4,
+  "scatter": 0.89,
+  "temkin": {
+   "fajr": 0.97,
+   "sunrise": -7.04,
+   "dhuhr": -0.1,
+   "asr": -0.44,
+   "maghrib": 5.17,
+   "isha": -2.23
+  }
+ },
+ {
+  "id": 79,
+  "place": "Sokolac",
+  "trueLat": 43.9333,
+  "trueLon": 18.7833,
+  "lat": 44.03,
+  "lon": 18.23,
+  "dLat": 0.1,
+  "dLon": -0.55,
+  "scatter": 0.67,
+  "temkin": {
+   "fajr": -1.67,
+   "sunrise": -8.37,
+   "dhuhr": -0.78,
+   "asr": -2.13,
+   "maghrib": 3.82,
+   "isha": -2.54
+  }
+ },
+ {
+  "id": 84,
+  "place": "Šekovići",
+  "trueLat": 44.2833,
+  "trueLon": 18.85,
+  "lat": 44.28,
+  "lon": 18.75,
+  "dLat": 0,
+  "dLon": -0.1,
+  "scatter": 0.81,
+  "temkin": {
+   "fajr": 0.95,
+   "sunrise": -6.49,
+   "dhuhr": 0.28,
+   "asr": -0.07,
+   "maghrib": 5.67,
+   "isha": -1.31
+  }
+ },
+ {
+  "id": 88,
+  "place": "Tešanj",
+  "trueLat": 44.6103,
+  "trueLon": 17.9833,
+  "lat": 44.51,
+  "lon": 17.43,
+  "dLat": -0.1,
+  "dLon": -0.55,
+  "scatter": 0.99,
+  "temkin": {
+   "fajr": -0.27,
+   "sunrise": -8.39,
+   "dhuhr": -0.99,
+   "asr": -1.62,
+   "maghrib": 3.97,
+   "isha": -3.57
+  }
+ },
+ {
+  "id": 90,
+  "place": "Travnik",
+  "trueLat": 44.2269,
+  "trueLon": 17.6656,
+  "lat": 44.13,
+  "lon": 17.27,
+  "dLat": -0.1,
+  "dLon": -0.4,
+  "scatter": 0.74,
+  "temkin": {
+   "fajr": -0.63,
+   "sunrise": -7.63,
+   "dhuhr": -0.63,
+   "asr": -1.36,
+   "maghrib": 4.52,
+   "isha": -2.07
+  }
+ },
+ {
+  "id": 91,
+  "place": "Trebinje",
+  "trueLat": 42.7111,
+  "trueLon": 18.3436,
+  "lat": 44.81,
+  "lon": 18.69,
+  "dLat": 2.1,
+  "dLon": 0.35,
+  "scatter": 1.04,
+  "temkin": {
+   "fajr": 4.36,
+   "sunrise": -4.73,
+   "dhuhr": 2.05,
+   "asr": 2.2,
+   "maghrib": 7.53,
+   "isha": -0.75
+  }
+ },
+ {
+  "id": 93,
+  "place": "Tuzla",
+  "trueLat": 44.5384,
+  "trueLon": 18.6763,
+  "lat": 44.44,
+  "lon": 18.13,
+  "dLat": -0.1,
+  "dLon": -0.55,
+  "scatter": 0.86,
+  "temkin": {
+   "fajr": -0.45,
+   "sunrise": -8.38,
+   "dhuhr": -1.21,
+   "asr": -1.73,
+   "maghrib": 3.9,
+   "isha": -3.42
+  }
+ },
+ {
+  "id": 95,
+  "place": "Vareš",
+  "trueLat": 44.1611,
+  "trueLon": 18.3289,
+  "lat": 44.16,
+  "lon": 18.93,
+  "dLat": 0,
+  "dLon": 0.6,
+  "scatter": 0.79,
+  "temkin": {
+   "fajr": 3.29,
+   "sunrise": -3.78,
+   "dhuhr": 3.01,
+   "asr": 2.63,
+   "maghrib": 8.49,
+   "isha": 1.82
+  }
+ },
+ {
+  "id": 96,
+  "place": "Velika Kladuša",
+  "trueLat": 45.1833,
+  "trueLon": 15.8,
+  "lat": 44.98,
+  "lon": 15.4,
+  "dLat": -0.2,
+  "dLon": -0.4,
+  "scatter": 1.33,
+  "temkin": {
+   "fajr": 1.76,
+   "sunrise": -7.87,
+   "dhuhr": -1.1,
+   "asr": -0.61,
+   "maghrib": 4.59,
+   "isha": -4.12
+  }
+ },
+ {
+  "id": 97,
+  "place": "Visoko",
+  "trueLat": 44,
+  "trueLon": 18.1833,
+  "lat": 43.9,
+  "lon": 17.63,
+  "dLat": -0.1,
+  "dLon": -0.55,
+  "scatter": 0.66,
+  "temkin": {
+   "fajr": -2.02,
+   "sunrise": -8.35,
+   "dhuhr": -1.18,
+   "asr": -2.12,
+   "maghrib": 3.93,
+   "isha": -2.11
+  }
+ },
+ {
+  "id": 98,
+  "place": "Višegrad",
+  "trueLat": 43.7856,
+  "trueLon": 19.2933,
+  "lat": 43.99,
+  "lon": 18.89,
+  "dLat": 0.2,
+  "dLon": -0.4,
+  "scatter": 0.71,
+  "temkin": {
+   "fajr": -1.06,
+   "sunrise": -7.64,
+   "dhuhr": -0.12,
+   "asr": -1.52,
+   "maghrib": 4.48,
+   "isha": -1.79
+  }
+ },
+ {
+  "id": 99,
+  "place": "Vitez",
+  "trueLat": 44.15,
+  "trueLon": 17.7833,
+  "lat": 44.15,
+  "lon": 17.18,
+  "dLat": 0,
+  "dLon": -0.6,
+  "scatter": 0.74,
+  "temkin": {
+   "fajr": -1.48,
+   "sunrise": -8.51,
+   "dhuhr": -0.99,
+   "asr": -2.09,
+   "maghrib": 3.77,
+   "isha": -2.88
+  }
+ },
+ {
+  "id": 102,
+  "place": "Zenica",
+  "trueLat": 44.2036,
+  "trueLon": 17.9078,
+  "lat": 44.2,
+  "lon": 17.41,
+  "dLat": 0,
+  "dLon": -0.5,
+  "scatter": 0.71,
+  "temkin": {
+   "fajr": -0.83,
+   "sunrise": -8.05,
+   "dhuhr": -1.07,
+   "asr": -1.75,
+   "maghrib": 4.06,
+   "isha": -2.7
+  }
+ },
+ {
+  "id": 103,
+  "place": "Zvornik",
+  "trueLat": 44.3831,
+  "trueLon": 19.1019,
+  "lat": 44.38,
+  "lon": 18.7,
+  "dLat": 0,
+  "dLon": -0.4,
+  "scatter": 0.87,
+  "temkin": {
+   "fajr": -0.1,
+   "sunrise": -7.85,
+   "dhuhr": -0.91,
+   "asr": -1.12,
+   "maghrib": 4.55,
+   "isha": -2.63
+  }
+ },
+ {
+  "id": 107,
+  "place": "Bijelo Polje",
+  "trueLat": 43.0386,
+  "trueLon": 19.7461,
+  "lat": 43.84,
+  "lon": 19.2,
+  "dLat": 0.8,
+  "dLon": -0.55,
+  "scatter": 0.58,
+  "temkin": {
+   "fajr": -1.87,
+   "sunrise": -8.01,
+   "dhuhr": -0.94,
+   "asr": -1.98,
+   "maghrib": 4.11,
+   "isha": -1.8
+  }
+ },
+ {
+  "id": 108,
+  "place": "Gusinje",
+  "trueLat": 42.563667,
+  "trueLon": 19.832955,
+  "lat": 43.86,
+  "lon": 19.43,
+  "dLat": 1.3,
+  "dLon": -0.4,
+  "scatter": 0.57,
+  "temkin": {
+   "fajr": -1.86,
+   "sunrise": -8.07,
+   "dhuhr": -0.99,
+   "asr": -2,
+   "maghrib": 4.06,
+   "isha": -1.92
+  }
+ },
+ {
+  "id": 109,
+  "place": "Nova Varoš",
+  "trueLat": 43.4597,
+  "trueLon": 19.8231,
+  "lat": 44.26,
+  "lon": 20.17,
+  "dLat": 0.8,
+  "dLon": 0.35,
+  "scatter": 0.82,
+  "temkin": {
+   "fajr": 3.16,
+   "sunrise": -4.23,
+   "dhuhr": 2.99,
+   "asr": 2.61,
+   "maghrib": 8.37,
+   "isha": 1.47
+  }
+ },
+ {
+  "id": 110,
+  "place": "Novi Pazar",
+  "trueLat": 43.1367,
+  "trueLon": 20.5122,
+  "lat": 44.44,
+  "lon": 20.11,
+  "dLat": 1.3,
+  "dLon": -0.4,
+  "scatter": 0.96,
+  "temkin": {
+   "fajr": 0.15,
+   "sunrise": -7.78,
+   "dhuhr": -0.27,
+   "asr": -0.77,
+   "maghrib": 4.86,
+   "isha": -2.47
+  }
+ },
+ {
+  "id": 111,
+  "place": "Plav",
+  "trueLat": 42.5967,
+  "trueLon": 19.9419,
+  "lat": 43.9,
+  "lon": 19.64,
+  "dLat": 1.3,
+  "dLon": -0.3,
+  "scatter": 0.59,
+  "temkin": {
+   "fajr": -0.92,
+   "sunrise": -7.24,
+   "dhuhr": -0.13,
+   "asr": -1.17,
+   "maghrib": 4.87,
+   "isha": -1.16
+  }
+ },
+ {
+  "id": 112,
+  "place": "Pljevlja",
+  "trueLat": 43.3572,
+  "trueLon": 19.3592,
+  "lat": 43.86,
+  "lon": 18.91,
+  "dLat": 0.5,
+  "dLon": -0.45,
+  "scatter": 0.56,
+  "temkin": {
+   "fajr": -0.98,
+   "sunrise": -7.18,
+   "dhuhr": -0.06,
+   "asr": -1.11,
+   "maghrib": 4.95,
+   "isha": -0.99
+  }
+ },
+ {
+  "id": 113,
+  "place": "Priboj",
+  "trueLat": 43.5842,
+  "trueLon": 19.5244,
+  "lat": 44.18,
+  "lon": 18.92,
+  "dLat": 0.6,
+  "dLon": -0.6,
+  "scatter": 0.77,
+  "temkin": {
+   "fajr": -1.09,
+   "sunrise": -8.23,
+   "dhuhr": -1.01,
+   "asr": -1.62,
+   "maghrib": 4.21,
+   "isha": -2.52
+  }
+ },
+ {
+  "id": 114,
+  "place": "Prijepolje",
+  "trueLat": 43.3867,
+  "trueLon": 19.6461,
+  "lat": 44.09,
+  "lon": 19.25,
+  "dLat": 0.7,
+  "dLon": -0.4,
+  "scatter": 0.76,
+  "temkin": {
+   "fajr": -0.1,
+   "sunrise": -6.96,
+   "dhuhr": 0.27,
+   "asr": -0.36,
+   "maghrib": 5.53,
+   "isha": -0.97
+  }
+ },
+ {
+  "id": 115,
+  "place": "Rožaje",
+  "trueLat": 42.8397,
+  "trueLon": 20.1667,
+  "lat": 43.84,
+  "lon": 19.72,
+  "dLat": 1,
+  "dLon": -0.45,
+  "scatter": 0.59,
+  "temkin": {
+   "fajr": -1.81,
+   "sunrise": -7.93,
+   "dhuhr": -0.85,
+   "asr": -1.9,
+   "maghrib": 4.21,
+   "isha": -1.74
+  }
+ },
+ {
+  "id": 116,
+  "place": "Sjenica",
+  "trueLat": 43.2722,
+  "trueLon": 20.0017,
+  "lat": 44.17,
+  "lon": 19.4,
+  "dLat": 0.9,
+  "dLon": -0.6,
+  "scatter": 0.89,
+  "temkin": {
+   "fajr": -1.21,
+   "sunrise": -8.33,
+   "dhuhr": -1.09,
+   "asr": -1.37,
+   "maghrib": 4.48,
+   "isha": -2.24
+  }
+ },
+ {
+  "id": 117,
+  "place": "Tutin",
+  "trueLat": 42.9917,
+  "trueLon": 20.3333,
+  "lat": 44.29,
+  "lon": 19.93,
+  "dLat": 1.3,
+  "dLon": -0.4,
+  "scatter": 0.89,
+  "temkin": {
+   "fajr": 1.29,
+   "sunrise": -6.19,
+   "dhuhr": 1.01,
+   "asr": 0.83,
+   "maghrib": 6.59,
+   "isha": -0.41
+  }
+ }
+]

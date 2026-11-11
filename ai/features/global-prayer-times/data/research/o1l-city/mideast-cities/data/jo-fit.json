@@ -1,0 +1,2989 @@
+{
+ "job": "O1l-8 Jordan second cities",
+ "groups": {
+  "1": {
+   "name": "amman+balqa+zarqa+madaba",
+   "label": "Amman",
+   "lat": 31.9539,
+   "lon": 35.9106,
+   "rows": 10,
+   "span": {
+    "from": "2026-11-11",
+    "to": "2026-11-20"
+   },
+   "freeFit": {
+    "fajr": {
+     "theta": 17.55,
+     "pad": -2,
+     "mode": "floor",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "isha": {
+     "theta": 17.75,
+     "pad": 1,
+     "mode": "ceil",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "sunrise": {
+     "pad": -6,
+     "mode": "floor",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "dhuhr": {
+     "pad": 1,
+     "mode": "floor",
+     "score": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "asr": {
+     "pad": 1,
+     "mode": "floor",
+     "score": {
+      "exactPct": 80,
+      "w1Pct": 100,
+      "mae": 0.2,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "maghrib": {
+     "pad": 7,
+     "mode": "floor",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "ishaFixed": {
+     "pad": 1,
+     "mode": "floor",
+     "score": {
+      "exactPct": 80,
+      "w1Pct": 100,
+      "mae": 0.2,
+      "max": 1,
+      "n": 10
+     }
+    }
+   },
+   "freeRecipe": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "sunrise": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "dhuhr": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     },
+     "asr": {
+      "exactPct": 80,
+      "w1Pct": 100,
+      "mae": 0.2,
+      "max": 1,
+      "n": 10
+     },
+     "maghrib": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "isha": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "total": {
+     "exactPct": 95,
+     "w1Pct": 100,
+     "mae": 0.05,
+     "max": 1,
+     "n": 60
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 80,
+      "w1Pct": 100,
+      "mae": 0.2,
+      "max": 1,
+      "n": 10
+     },
+     "sunrise": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "dhuhr": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     },
+     "asr": {
+      "exactPct": 80,
+      "w1Pct": 100,
+      "mae": 0.2,
+      "max": 1,
+      "n": 10
+     },
+     "maghrib": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "isha": {
+      "exactPct": 80,
+      "w1Pct": 100,
+      "mae": 0.2,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "total": {
+     "exactPct": 88.3,
+     "w1Pct": 100,
+     "mae": 0.117,
+     "max": 1,
+     "n": 60
+    }
+   }
+  },
+  "2": {
+   "name": "irbid",
+   "label": "Irbid",
+   "lat": 32.5556,
+   "lon": 35.85,
+   "rows": 10,
+   "span": {
+    "from": "2026-11-11",
+    "to": "2026-11-20"
+   },
+   "freeFit": {
+    "fajr": {
+     "theta": 18.05,
+     "pad": 0,
+     "mode": "floor",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "isha": {
+     "theta": 17.95,
+     "pad": 0,
+     "mode": "ceil",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "sunrise": {
+     "pad": -5,
+     "mode": "floor",
+     "score": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "dhuhr": {
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "asr": {
+     "pad": 1,
+     "mode": "round",
+     "score": {
+      "exactPct": 80,
+      "w1Pct": 100,
+      "mae": 0.2,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "maghrib": {
+     "pad": 6,
+     "mode": "round",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "ishaFixed": {
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 80,
+      "w1Pct": 100,
+      "mae": 0.2,
+      "max": 1,
+      "n": 10
+     }
+    }
+   },
+   "freeRecipe": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "sunrise": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     },
+     "dhuhr": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     },
+     "asr": {
+      "exactPct": 80,
+      "w1Pct": 100,
+      "mae": 0.2,
+      "max": 1,
+      "n": 10
+     },
+     "maghrib": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "isha": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "total": {
+     "exactPct": 93.3,
+     "w1Pct": 100,
+     "mae": 0.067,
+     "max": 1,
+     "n": 60
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 70,
+      "w1Pct": 100,
+      "mae": 0.3,
+      "max": 1,
+      "n": 10
+     },
+     "sunrise": {
+      "exactPct": 0,
+      "w1Pct": 90,
+      "mae": 1.1,
+      "max": 2,
+      "n": 10
+     },
+     "dhuhr": {
+      "exactPct": 70,
+      "w1Pct": 100,
+      "mae": 0.3,
+      "max": 1,
+      "n": 10
+     },
+     "asr": {
+      "exactPct": 70,
+      "w1Pct": 100,
+      "mae": 0.3,
+      "max": 1,
+      "n": 10
+     },
+     "maghrib": {
+      "exactPct": 40,
+      "w1Pct": 100,
+      "mae": 0.6,
+      "max": 1,
+      "n": 10
+     },
+     "isha": {
+      "exactPct": 60,
+      "w1Pct": 100,
+      "mae": 0.4,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "total": {
+     "exactPct": 51.7,
+     "w1Pct": 98.3,
+     "mae": 0.5,
+     "max": 2,
+     "n": 60
+    }
+   }
+  },
+  "3": {
+   "name": "karak",
+   "label": "Karak",
+   "lat": 31.1853,
+   "lon": 35.7047,
+   "rows": 10,
+   "span": {
+    "from": "2026-11-11",
+    "to": "2026-11-20"
+   },
+   "freeFit": {
+    "fajr": {
+     "theta": 17.5,
+     "pad": -2,
+     "mode": "floor",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "isha": {
+     "theta": 17.7,
+     "pad": 1,
+     "mode": "ceil",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "sunrise": {
+     "pad": -7,
+     "mode": "round",
+     "score": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "dhuhr": {
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "asr": {
+     "pad": 1,
+     "mode": "floor",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "maghrib": {
+     "pad": 7,
+     "mode": "floor",
+     "score": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "ishaFixed": {
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     }
+    }
+   },
+   "freeRecipe": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "sunrise": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     },
+     "dhuhr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "asr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "maghrib": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     },
+     "isha": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "total": {
+     "exactPct": 96.7,
+     "w1Pct": 100,
+     "mae": 0.033,
+     "max": 1,
+     "n": 60
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 70,
+      "w1Pct": 100,
+      "mae": 0.3,
+      "max": 1,
+      "n": 10
+     },
+     "sunrise": {
+      "exactPct": 60,
+      "w1Pct": 100,
+      "mae": 0.4,
+      "max": 1,
+      "n": 10
+     },
+     "dhuhr": {
+      "exactPct": 50,
+      "w1Pct": 100,
+      "mae": 0.5,
+      "max": 1,
+      "n": 10
+     },
+     "asr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "maghrib": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     },
+     "isha": {
+      "exactPct": 50,
+      "w1Pct": 100,
+      "mae": 0.5,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "total": {
+     "exactPct": 70,
+     "w1Pct": 100,
+     "mae": 0.3,
+     "max": 1,
+     "n": 60
+    }
+   }
+  },
+  "4": {
+   "name": "tafilah",
+   "label": "Tafilah",
+   "lat": 30.8375,
+   "lon": 35.6042,
+   "rows": 10,
+   "span": {
+    "from": "2026-11-11",
+    "to": "2026-11-20"
+   },
+   "freeFit": {
+    "fajr": {
+     "theta": 17.5,
+     "pad": -2,
+     "mode": "floor",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "isha": {
+     "theta": 18,
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "sunrise": {
+     "pad": -8,
+     "mode": "round",
+     "score": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "dhuhr": {
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "asr": {
+     "pad": 1,
+     "mode": "floor",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "maghrib": {
+     "pad": 8,
+     "mode": "floor",
+     "score": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "ishaFixed": {
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    }
+   },
+   "freeRecipe": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "sunrise": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     },
+     "dhuhr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "asr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "maghrib": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     },
+     "isha": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "total": {
+     "exactPct": 96.7,
+     "w1Pct": 100,
+     "mae": 0.033,
+     "max": 1,
+     "n": 60
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 70,
+      "w1Pct": 100,
+      "mae": 0.3,
+      "max": 1,
+      "n": 10
+     },
+     "sunrise": {
+      "exactPct": 0,
+      "w1Pct": 60,
+      "mae": 1.4,
+      "max": 2,
+      "n": 10
+     },
+     "dhuhr": {
+      "exactPct": 70,
+      "w1Pct": 100,
+      "mae": 0.3,
+      "max": 1,
+      "n": 10
+     },
+     "asr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "maghrib": {
+      "exactPct": 0,
+      "w1Pct": 90,
+      "mae": 1.1,
+      "max": 2,
+      "n": 10
+     },
+     "isha": {
+      "exactPct": 40,
+      "w1Pct": 100,
+      "mae": 0.6,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "total": {
+     "exactPct": 46.7,
+     "w1Pct": 91.7,
+     "mae": 0.617,
+     "max": 2,
+     "n": 60
+    }
+   }
+  },
+  "5": {
+   "name": "maan",
+   "label": "Ma'an",
+   "lat": 30.1962,
+   "lon": 35.7341,
+   "rows": 10,
+   "span": {
+    "from": "2026-11-11",
+    "to": "2026-11-20"
+   },
+   "freeFit": {
+    "fajr": {
+     "theta": 17.45,
+     "pad": -2,
+     "mode": "floor",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "isha": {
+     "theta": 18,
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "sunrise": {
+     "pad": -6,
+     "mode": "round",
+     "score": {
+      "exactPct": 80,
+      "w1Pct": 100,
+      "mae": 0.2,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "dhuhr": {
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "asr": {
+     "pad": 1,
+     "mode": "floor",
+     "score": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "maghrib": {
+     "pad": 6,
+     "mode": "round",
+     "score": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "ishaFixed": {
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    }
+   },
+   "freeRecipe": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "sunrise": {
+      "exactPct": 80,
+      "w1Pct": 100,
+      "mae": 0.2,
+      "max": 1,
+      "n": 10
+     },
+     "dhuhr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "asr": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     },
+     "maghrib": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     },
+     "isha": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "total": {
+     "exactPct": 93.3,
+     "w1Pct": 100,
+     "mae": 0.067,
+     "max": 1,
+     "n": 60
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 50,
+      "w1Pct": 100,
+      "mae": 0.5,
+      "max": 1,
+      "n": 10
+     },
+     "sunrise": {
+      "exactPct": 60,
+      "w1Pct": 100,
+      "mae": 0.4,
+      "max": 1,
+      "n": 10
+     },
+     "dhuhr": {
+      "exactPct": 40,
+      "w1Pct": 100,
+      "mae": 0.6,
+      "max": 1,
+      "n": 10
+     },
+     "asr": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     },
+     "maghrib": {
+      "exactPct": 70,
+      "w1Pct": 100,
+      "mae": 0.3,
+      "max": 1,
+      "n": 10
+     },
+     "isha": {
+      "exactPct": 50,
+      "w1Pct": 100,
+      "mae": 0.5,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "total": {
+     "exactPct": 60,
+     "w1Pct": 100,
+     "mae": 0.4,
+     "max": 1,
+     "n": 60
+    }
+   }
+  },
+  "6": {
+   "name": "aqaba",
+   "label": "Aqaba",
+   "lat": 29.5321,
+   "lon": 35.0063,
+   "rows": 10,
+   "span": {
+    "from": "2026-11-11",
+    "to": "2026-11-20"
+   },
+   "freeFit": {
+    "fajr": {
+     "theta": 17.5,
+     "pad": -2,
+     "mode": "floor",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "isha": {
+     "theta": 18,
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "sunrise": {
+     "pad": -4,
+     "mode": "ceil",
+     "score": {
+      "exactPct": 10,
+      "w1Pct": 100,
+      "mae": 0.9,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "dhuhr": {
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "asr": {
+     "pad": 1,
+     "mode": "floor",
+     "score": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "maghrib": {
+     "pad": 5,
+     "mode": "floor",
+     "score": {
+      "exactPct": 10,
+      "w1Pct": 100,
+      "mae": 0.9,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "ishaFixed": {
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    }
+   },
+   "freeRecipe": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "sunrise": {
+      "exactPct": 10,
+      "w1Pct": 100,
+      "mae": 0.9,
+      "max": 1,
+      "n": 10
+     },
+     "dhuhr": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     },
+     "asr": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     },
+     "maghrib": {
+      "exactPct": 10,
+      "w1Pct": 100,
+      "mae": 0.9,
+      "max": 1,
+      "n": 10
+     },
+     "isha": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "total": {
+     "exactPct": 66.7,
+     "w1Pct": 100,
+     "mae": 0.333,
+     "max": 1,
+     "n": 60
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 70,
+      "w1Pct": 100,
+      "mae": 0.3,
+      "max": 1,
+      "n": 10
+     },
+     "sunrise": {
+      "exactPct": 0,
+      "w1Pct": 0,
+      "mae": 3.9,
+      "max": 4,
+      "n": 10
+     },
+     "dhuhr": {
+      "exactPct": 40,
+      "w1Pct": 100,
+      "mae": 0.6,
+      "max": 1,
+      "n": 10
+     },
+     "asr": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     },
+     "maghrib": {
+      "exactPct": 0,
+      "w1Pct": 0,
+      "mae": 2.9,
+      "max": 3,
+      "n": 10
+     },
+     "isha": {
+      "exactPct": 50,
+      "w1Pct": 100,
+      "mae": 0.5,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "total": {
+     "exactPct": 41.7,
+     "w1Pct": 66.7,
+     "mae": 1.383,
+     "max": 4,
+     "n": 60
+    }
+   }
+  },
+  "7": {
+   "name": "north-jordan-valley",
+   "label": "North Jordan Valley",
+   "lat": 32.1976,
+   "lon": 35.6179,
+   "rows": 10,
+   "span": {
+    "from": "2026-11-11",
+    "to": "2026-11-20"
+   },
+   "freeFit": {
+    "fajr": {
+     "theta": 17.7,
+     "pad": -1,
+     "mode": "round",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "isha": {
+     "theta": 17.6,
+     "pad": 1,
+     "mode": "ceil",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "sunrise": {
+     "pad": -4,
+     "mode": "ceil",
+     "score": {
+      "exactPct": 0,
+      "w1Pct": 0,
+      "mae": 3.6,
+      "max": 4,
+      "n": 10
+     }
+    },
+    "dhuhr": {
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "asr": {
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 80,
+      "w1Pct": 100,
+      "mae": 0.2,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "maghrib": {
+     "pad": 5,
+     "mode": "floor",
+     "score": {
+      "exactPct": 0,
+      "w1Pct": 0,
+      "mae": 4.3,
+      "max": 5,
+      "n": 10
+     }
+    },
+    "ishaFixed": {
+     "pad": 0,
+     "mode": "floor",
+     "score": {
+      "exactPct": 70,
+      "w1Pct": 100,
+      "mae": 0.3,
+      "max": 1,
+      "n": 10
+     }
+    }
+   },
+   "freeRecipe": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "sunrise": {
+      "exactPct": 0,
+      "w1Pct": 0,
+      "mae": 3.6,
+      "max": 4,
+      "n": 10
+     },
+     "dhuhr": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     },
+     "asr": {
+      "exactPct": 80,
+      "w1Pct": 100,
+      "mae": 0.2,
+      "max": 1,
+      "n": 10
+     },
+     "maghrib": {
+      "exactPct": 0,
+      "w1Pct": 0,
+      "mae": 4.3,
+      "max": 5,
+      "n": 10
+     },
+     "isha": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "total": {
+     "exactPct": 61.7,
+     "w1Pct": 66.7,
+     "mae": 1.367,
+     "max": 5,
+     "n": 60
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 10,
+      "w1Pct": 100,
+      "mae": 0.9,
+      "max": 1,
+      "n": 10
+     },
+     "sunrise": {
+      "exactPct": 0,
+      "w1Pct": 0,
+      "mae": 6.6,
+      "max": 7,
+      "n": 10
+     },
+     "dhuhr": {
+      "exactPct": 70,
+      "w1Pct": 100,
+      "mae": 0.3,
+      "max": 1,
+      "n": 10
+     },
+     "asr": {
+      "exactPct": 30,
+      "w1Pct": 100,
+      "mae": 0.7,
+      "max": 1,
+      "n": 10
+     },
+     "maghrib": {
+      "exactPct": 0,
+      "w1Pct": 0,
+      "mae": 6.3,
+      "max": 7,
+      "n": 10
+     },
+     "isha": {
+      "exactPct": 30,
+      "w1Pct": 100,
+      "mae": 0.7,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "total": {
+     "exactPct": 23.3,
+     "w1Pct": 66.7,
+     "mae": 2.583,
+     "max": 7,
+     "n": 60
+    }
+   }
+  },
+  "8": {
+   "name": "jarash+ajloun",
+   "label": "Jerash",
+   "lat": 32.2808,
+   "lon": 35.8992,
+   "rows": 10,
+   "span": {
+    "from": "2026-11-11",
+    "to": "2026-11-20"
+   },
+   "freeFit": {
+    "fajr": {
+     "theta": 17.85,
+     "pad": -1,
+     "mode": "round",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "isha": {
+     "theta": 18,
+     "pad": 1,
+     "mode": "floor",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "sunrise": {
+     "pad": -6,
+     "mode": "floor",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "dhuhr": {
+     "pad": 1,
+     "mode": "floor",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "asr": {
+     "pad": 1,
+     "mode": "round",
+     "score": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "maghrib": {
+     "pad": 7,
+     "mode": "round",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "ishaFixed": {
+     "pad": 1,
+     "mode": "floor",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    }
+   },
+   "freeRecipe": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "sunrise": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "dhuhr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "asr": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     },
+     "maghrib": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "isha": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "total": {
+     "exactPct": 98.3,
+     "w1Pct": 100,
+     "mae": 0.017,
+     "max": 1,
+     "n": 60
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 80,
+      "w1Pct": 100,
+      "mae": 0.2,
+      "max": 1,
+      "n": 10
+     },
+     "sunrise": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "dhuhr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "asr": {
+      "exactPct": 50,
+      "w1Pct": 100,
+      "mae": 0.5,
+      "max": 1,
+      "n": 10
+     },
+     "maghrib": {
+      "exactPct": 40,
+      "w1Pct": 100,
+      "mae": 0.6,
+      "max": 1,
+      "n": 10
+     },
+     "isha": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "total": {
+     "exactPct": 78.3,
+     "w1Pct": 100,
+     "mae": 0.217,
+     "max": 1,
+     "n": 60
+    }
+   }
+  },
+  "9": {
+   "name": "mafraq",
+   "label": "Mafraq",
+   "lat": 32.34,
+   "lon": 36.208,
+   "rows": 10,
+   "span": {
+    "from": "2026-11-11",
+    "to": "2026-11-20"
+   },
+   "freeFit": {
+    "fajr": {
+     "theta": 17.65,
+     "pad": -2,
+     "mode": "floor",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "isha": {
+     "theta": 17.75,
+     "pad": 1,
+     "mode": "ceil",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "sunrise": {
+     "pad": -5,
+     "mode": "floor",
+     "score": {
+      "exactPct": 80,
+      "w1Pct": 100,
+      "mae": 0.2,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "dhuhr": {
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "asr": {
+     "pad": 1,
+     "mode": "floor",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "maghrib": {
+     "pad": 7,
+     "mode": "round",
+     "score": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "ishaFixed": {
+     "pad": 0,
+     "mode": "ceil",
+     "score": {
+      "exactPct": 80,
+      "w1Pct": 100,
+      "mae": 0.2,
+      "max": 1,
+      "n": 10
+     }
+    }
+   },
+   "freeRecipe": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "sunrise": {
+      "exactPct": 80,
+      "w1Pct": 100,
+      "mae": 0.2,
+      "max": 1,
+      "n": 10
+     },
+     "dhuhr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "asr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "maghrib": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     },
+     "isha": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "total": {
+     "exactPct": 95,
+     "w1Pct": 100,
+     "mae": 0.05,
+     "max": 1,
+     "n": 60
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 70,
+      "w1Pct": 100,
+      "mae": 0.3,
+      "max": 1,
+      "n": 10
+     },
+     "sunrise": {
+      "exactPct": 20,
+      "w1Pct": 100,
+      "mae": 0.8,
+      "max": 1,
+      "n": 10
+     },
+     "dhuhr": {
+      "exactPct": 50,
+      "w1Pct": 100,
+      "mae": 0.5,
+      "max": 1,
+      "n": 10
+     },
+     "asr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "maghrib": {
+      "exactPct": 70,
+      "w1Pct": 100,
+      "mae": 0.3,
+      "max": 1,
+      "n": 10
+     },
+     "isha": {
+      "exactPct": 70,
+      "w1Pct": 100,
+      "mae": 0.3,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "total": {
+     "exactPct": 63.3,
+     "w1Pct": 100,
+     "mae": 0.367,
+     "max": 1,
+     "n": 60
+    }
+   }
+  },
+  "11": {
+   "name": "dhiban",
+   "label": "Dhiban",
+   "lat": 31.4975,
+   "lon": 35.7837,
+   "rows": 10,
+   "span": {
+    "from": "2026-11-11",
+    "to": "2026-11-20"
+   },
+   "freeFit": {
+    "fajr": {
+     "theta": 18,
+     "pad": -1,
+     "mode": "ceil",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "isha": {
+     "theta": 18,
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "sunrise": {
+     "pad": -6,
+     "mode": "floor",
+     "score": {
+      "exactPct": 70,
+      "w1Pct": 100,
+      "mae": 0.3,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "dhuhr": {
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "asr": {
+     "pad": 1,
+     "mode": "floor",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "maghrib": {
+     "pad": 6,
+     "mode": "floor",
+     "score": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "ishaFixed": {
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    }
+   },
+   "freeRecipe": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "sunrise": {
+      "exactPct": 70,
+      "w1Pct": 100,
+      "mae": 0.3,
+      "max": 1,
+      "n": 10
+     },
+     "dhuhr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "asr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "maghrib": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     },
+     "isha": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "total": {
+     "exactPct": 93.3,
+     "w1Pct": 100,
+     "mae": 0.067,
+     "max": 1,
+     "n": 60
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     },
+     "sunrise": {
+      "exactPct": 70,
+      "w1Pct": 100,
+      "mae": 0.3,
+      "max": 1,
+      "n": 10
+     },
+     "dhuhr": {
+      "exactPct": 40,
+      "w1Pct": 100,
+      "mae": 0.6,
+      "max": 1,
+      "n": 10
+     },
+     "asr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "maghrib": {
+      "exactPct": 10,
+      "w1Pct": 100,
+      "mae": 0.9,
+      "max": 1,
+      "n": 10
+     },
+     "isha": {
+      "exactPct": 50,
+      "w1Pct": 100,
+      "mae": 0.5,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "total": {
+     "exactPct": 60,
+     "w1Pct": 100,
+     "mae": 0.4,
+     "max": 1,
+     "n": 60
+    }
+   }
+  },
+  "12": {
+   "name": "azraq",
+   "label": "Azraq",
+   "lat": 31.8821,
+   "lon": 36.8306,
+   "rows": 10,
+   "span": {
+    "from": "2026-11-11",
+    "to": "2026-11-20"
+   },
+   "freeFit": {
+    "fajr": {
+     "theta": 18,
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "isha": {
+     "theta": 18.45,
+     "pad": -2,
+     "mode": "round",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "sunrise": {
+     "pad": -4,
+     "mode": "round",
+     "score": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "dhuhr": {
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "asr": {
+     "pad": 1,
+     "mode": "floor",
+     "score": {
+      "exactPct": 80,
+      "w1Pct": 100,
+      "mae": 0.2,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "maghrib": {
+     "pad": 5,
+     "mode": "floor",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "ishaFixed": {
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 80,
+      "w1Pct": 100,
+      "mae": 0.2,
+      "max": 1,
+      "n": 10
+     }
+    }
+   },
+   "freeRecipe": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "sunrise": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     },
+     "dhuhr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "asr": {
+      "exactPct": 80,
+      "w1Pct": 100,
+      "mae": 0.2,
+      "max": 1,
+      "n": 10
+     },
+     "maghrib": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "isha": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "total": {
+     "exactPct": 95,
+     "w1Pct": 100,
+     "mae": 0.05,
+     "max": 1,
+     "n": 60
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 50,
+      "w1Pct": 100,
+      "mae": 0.5,
+      "max": 1,
+      "n": 10
+     },
+     "sunrise": {
+      "exactPct": 0,
+      "w1Pct": 0,
+      "mae": 2.3,
+      "max": 3,
+      "n": 10
+     },
+     "dhuhr": {
+      "exactPct": 50,
+      "w1Pct": 100,
+      "mae": 0.5,
+      "max": 1,
+      "n": 10
+     },
+     "asr": {
+      "exactPct": 80,
+      "w1Pct": 100,
+      "mae": 0.2,
+      "max": 1,
+      "n": 10
+     },
+     "maghrib": {
+      "exactPct": 0,
+      "w1Pct": 0,
+      "mae": 2,
+      "max": 2,
+      "n": 10
+     },
+     "isha": {
+      "exactPct": 70,
+      "w1Pct": 100,
+      "mae": 0.3,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "total": {
+     "exactPct": 41.7,
+     "w1Pct": 66.7,
+     "mae": 0.967,
+     "max": 3,
+     "n": 60
+    }
+   }
+  },
+  "13": {
+   "name": "central-jordan-valley",
+   "label": "Central Jordan Valley",
+   "lat": 31.8936,
+   "lon": 35.6169,
+   "rows": 10,
+   "span": {
+    "from": "2026-11-11",
+    "to": "2026-11-20"
+   },
+   "freeFit": {
+    "fajr": {
+     "theta": 18,
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "isha": {
+     "theta": 18,
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "sunrise": {
+     "pad": -4,
+     "mode": "ceil",
+     "score": {
+      "exactPct": 0,
+      "w1Pct": 0,
+      "mae": 2.7,
+      "max": 3,
+      "n": 10
+     }
+    },
+    "dhuhr": {
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "asr": {
+     "pad": 1,
+     "mode": "floor",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "maghrib": {
+     "pad": 5,
+     "mode": "floor",
+     "score": {
+      "exactPct": 0,
+      "w1Pct": 0,
+      "mae": 3.8,
+      "max": 4,
+      "n": 10
+     }
+    },
+    "ishaFixed": {
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    }
+   },
+   "freeRecipe": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "sunrise": {
+      "exactPct": 0,
+      "w1Pct": 0,
+      "mae": 2.7,
+      "max": 3,
+      "n": 10
+     },
+     "dhuhr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "asr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "maghrib": {
+      "exactPct": 0,
+      "w1Pct": 0,
+      "mae": 3.8,
+      "max": 4,
+      "n": 10
+     },
+     "isha": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "total": {
+     "exactPct": 66.7,
+     "w1Pct": 66.7,
+     "mae": 1.083,
+     "max": 4,
+     "n": 60
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 50,
+      "w1Pct": 100,
+      "mae": 0.5,
+      "max": 1,
+      "n": 10
+     },
+     "sunrise": {
+      "exactPct": 0,
+      "w1Pct": 0,
+      "mae": 5.7,
+      "max": 6,
+      "n": 10
+     },
+     "dhuhr": {
+      "exactPct": 60,
+      "w1Pct": 100,
+      "mae": 0.4,
+      "max": 1,
+      "n": 10
+     },
+     "asr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "maghrib": {
+      "exactPct": 0,
+      "w1Pct": 0,
+      "mae": 5.8,
+      "max": 6,
+      "n": 10
+     },
+     "isha": {
+      "exactPct": 60,
+      "w1Pct": 100,
+      "mae": 0.4,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "total": {
+     "exactPct": 45,
+     "w1Pct": 66.7,
+     "mae": 2.133,
+     "max": 6,
+     "n": 60
+    }
+   }
+  },
+  "14": {
+   "name": "shobak+petra",
+   "label": "Wadi Musa",
+   "lat": 30.3216,
+   "lon": 35.4799,
+   "rows": 10,
+   "span": {
+    "from": "2026-11-11",
+    "to": "2026-11-20"
+   },
+   "freeFit": {
+    "fajr": {
+     "theta": 17.45,
+     "pad": -2,
+     "mode": "floor",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "isha": {
+     "theta": 17.65,
+     "pad": 1,
+     "mode": "ceil",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "sunrise": {
+     "pad": -8,
+     "mode": "round",
+     "score": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "dhuhr": {
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "asr": {
+     "pad": 0,
+     "mode": "ceil",
+     "score": {
+      "exactPct": 80,
+      "w1Pct": 100,
+      "mae": 0.2,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "maghrib": {
+     "pad": 8,
+     "mode": "floor",
+     "score": {
+      "exactPct": 80,
+      "w1Pct": 100,
+      "mae": 0.2,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "ishaFixed": {
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     }
+    }
+   },
+   "freeRecipe": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "sunrise": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     },
+     "dhuhr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "asr": {
+      "exactPct": 80,
+      "w1Pct": 100,
+      "mae": 0.2,
+      "max": 1,
+      "n": 10
+     },
+     "maghrib": {
+      "exactPct": 80,
+      "w1Pct": 100,
+      "mae": 0.2,
+      "max": 1,
+      "n": 10
+     },
+     "isha": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "total": {
+     "exactPct": 91.7,
+     "w1Pct": 100,
+     "mae": 0.083,
+     "max": 1,
+     "n": 60
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 40,
+      "w1Pct": 100,
+      "mae": 0.6,
+      "max": 1,
+      "n": 10
+     },
+     "sunrise": {
+      "exactPct": 0,
+      "w1Pct": 60,
+      "mae": 1.4,
+      "max": 2,
+      "n": 10
+     },
+     "dhuhr": {
+      "exactPct": 30,
+      "w1Pct": 100,
+      "mae": 0.7,
+      "max": 1,
+      "n": 10
+     },
+     "asr": {
+      "exactPct": 70,
+      "w1Pct": 100,
+      "mae": 0.3,
+      "max": 1,
+      "n": 10
+     },
+     "maghrib": {
+      "exactPct": 0,
+      "w1Pct": 80,
+      "mae": 1.2,
+      "max": 2,
+      "n": 10
+     },
+     "isha": {
+      "exactPct": 30,
+      "w1Pct": 100,
+      "mae": 0.7,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "total": {
+     "exactPct": 28.3,
+     "w1Pct": 90,
+     "mae": 0.817,
+     "max": 2,
+     "n": 60
+    }
+   }
+  },
+  "15": {
+   "name": "dhlail+hashimiyya",
+   "label": "Dhlail",
+   "lat": 32.15,
+   "lon": 36.05,
+   "rows": 10,
+   "span": {
+    "from": "2026-11-11",
+    "to": "2026-11-20"
+   },
+   "freeFit": {
+    "fajr": {
+     "theta": 17.65,
+     "pad": -2,
+     "mode": "floor",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "isha": {
+     "theta": 18.05,
+     "pad": 0,
+     "mode": "floor",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "sunrise": {
+     "pad": -6,
+     "mode": "ceil",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "dhuhr": {
+     "pad": 0,
+     "mode": "floor",
+     "score": {
+      "exactPct": 80,
+      "w1Pct": 100,
+      "mae": 0.2,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "asr": {
+     "pad": 1,
+     "mode": "floor",
+     "score": {
+      "exactPct": 80,
+      "w1Pct": 100,
+      "mae": 0.2,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "maghrib": {
+     "pad": 5,
+     "mode": "floor",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "ishaFixed": {
+     "pad": 0,
+     "mode": "floor",
+     "score": {
+      "exactPct": 70,
+      "w1Pct": 100,
+      "mae": 0.3,
+      "max": 1,
+      "n": 10
+     }
+    }
+   },
+   "freeRecipe": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "sunrise": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "dhuhr": {
+      "exactPct": 80,
+      "w1Pct": 100,
+      "mae": 0.2,
+      "max": 1,
+      "n": 10
+     },
+     "asr": {
+      "exactPct": 80,
+      "w1Pct": 100,
+      "mae": 0.2,
+      "max": 1,
+      "n": 10
+     },
+     "maghrib": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "isha": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "total": {
+     "exactPct": 93.3,
+     "w1Pct": 100,
+     "mae": 0.067,
+     "max": 1,
+     "n": 60
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 60,
+      "w1Pct": 100,
+      "mae": 0.4,
+      "max": 1,
+      "n": 10
+     },
+     "sunrise": {
+      "exactPct": 10,
+      "w1Pct": 100,
+      "mae": 0.9,
+      "max": 1,
+      "n": 10
+     },
+     "dhuhr": {
+      "exactPct": 20,
+      "w1Pct": 100,
+      "mae": 0.8,
+      "max": 1,
+      "n": 10
+     },
+     "asr": {
+      "exactPct": 80,
+      "w1Pct": 100,
+      "mae": 0.2,
+      "max": 1,
+      "n": 10
+     },
+     "maghrib": {
+      "exactPct": 0,
+      "w1Pct": 0,
+      "mae": 2,
+      "max": 2,
+      "n": 10
+     },
+     "isha": {
+      "exactPct": 30,
+      "w1Pct": 100,
+      "mae": 0.7,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "total": {
+     "exactPct": 33.3,
+     "w1Pct": 83.3,
+     "mae": 0.833,
+     "max": 2,
+     "n": 60
+    }
+   }
+  },
+  "19": {
+   "name": "ruwaished",
+   "label": "Ruwaished",
+   "lat": 32.5083,
+   "lon": 38.2,
+   "rows": 10,
+   "span": {
+    "from": "2026-11-11",
+    "to": "2026-11-20"
+   },
+   "freeFit": {
+    "fajr": {
+     "theta": 18.1,
+     "pad": 1,
+     "mode": "floor",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "isha": {
+     "theta": 18,
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "sunrise": {
+     "pad": -5,
+     "mode": "round",
+     "score": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "dhuhr": {
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "asr": {
+     "pad": 1,
+     "mode": "floor",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "maghrib": {
+     "pad": 5,
+     "mode": "floor",
+     "score": {
+      "exactPct": 80,
+      "w1Pct": 100,
+      "mae": 0.2,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "ishaFixed": {
+     "pad": 0,
+     "mode": "round",
+     "score": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    }
+   },
+   "freeRecipe": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "sunrise": {
+      "exactPct": 90,
+      "w1Pct": 100,
+      "mae": 0.1,
+      "max": 1,
+      "n": 10
+     },
+     "dhuhr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "asr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "maghrib": {
+      "exactPct": 80,
+      "w1Pct": 100,
+      "mae": 0.2,
+      "max": 1,
+      "n": 10
+     },
+     "isha": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     }
+    },
+    "total": {
+     "exactPct": 95,
+     "w1Pct": 100,
+     "mae": 0.05,
+     "max": 1,
+     "n": 60
+    }
+   },
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 40,
+      "w1Pct": 100,
+      "mae": 0.6,
+      "max": 1,
+      "n": 10
+     },
+     "sunrise": {
+      "exactPct": 0,
+      "w1Pct": 40,
+      "mae": 1.6,
+      "max": 2,
+      "n": 10
+     },
+     "dhuhr": {
+      "exactPct": 50,
+      "w1Pct": 100,
+      "mae": 0.5,
+      "max": 1,
+      "n": 10
+     },
+     "asr": {
+      "exactPct": 100,
+      "w1Pct": 100,
+      "mae": 0,
+      "max": 0,
+      "n": 10
+     },
+     "maghrib": {
+      "exactPct": 0,
+      "w1Pct": 20,
+      "mae": 1.8,
+      "max": 2,
+      "n": 10
+     },
+     "isha": {
+      "exactPct": 50,
+      "w1Pct": 100,
+      "mae": 0.5,
+      "max": 1,
+      "n": 10
+     }
+    },
+    "total": {
+     "exactPct": 40,
+     "w1Pct": 76.7,
+     "mae": 0.833,
+     "max": 2,
+     "n": 60
+    }
+   }
+  }
+ },
+ "recipeHeld": {
+  "fajr": "18 deg",
+  "isha": "18 deg",
+  "asr": "Shafi",
+  "margins": {
+   "sunrise": -6,
+   "dhuhr": 1,
+   "asr": 1,
+   "maghrib": 7,
+   "isha": 1
+  },
+  "clock": "Asia/Amman"
+ },
+ "notes": []
+}

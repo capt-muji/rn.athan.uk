@@ -1,0 +1,3510 @@
+{
+ "Ashburton-1": {
+  "city": "Ashburton-1",
+  "town": [
+   "Ashburton",
+   -43.9,
+   171.75
+  ],
+  "days": 30,
+  "pair": [
+   14.98,
+   15.06
+  ],
+  "pair_int": [
+   15,
+   15
+  ],
+  "point": {
+   "lat": -43.9,
+   "lon": 171.75,
+   "solved": false
+  },
+  "resid": {
+   "fajr": {
+    "mean": -0.01,
+    "min": -0.5,
+    "max": 0.5,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": -0.08,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": -0.08,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -2.04,
+    "min": -2.6,
+    "max": -1.4,
+    "within1": 0
+   },
+   "maghrib": {
+    "mean": -0.1,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   },
+   "isha": {
+    "mean": 0.04,
+    "min": -0.3,
+    "max": 0.6,
+    "within1": 1
+   }
+  },
+  "resid_int": {
+   "fajr": {
+    "mean": -0.13,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": -0.08,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": -0.08,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -2.04,
+    "min": -2.6,
+    "max": -1.4,
+    "within1": 0
+   },
+   "maghrib": {
+    "mean": -0.1,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   },
+   "isha": {
+    "mean": -0.32,
+    "min": -0.7,
+    "max": 0.2,
+    "within1": 1
+   }
+  },
+  "dhuhr_off": -0.08,
+  "dl_excess": 0,
+  "worst_pair": 0.6,
+  "worst_all": 2.6,
+  "worst_all_int": 2.6
+ },
+ "Auckland": {
+  "city": "Auckland",
+  "town": [
+   "Auckland",
+   -36.85,
+   174.76
+  ],
+  "days": 30,
+  "pair": [
+   18.06,
+   18.06
+  ],
+  "pair_int": [
+   18,
+   18
+  ],
+  "point": {
+   "lat": -36.85,
+   "lon": 174.76,
+   "solved": false
+  },
+  "resid": {
+   "fajr": {
+    "mean": -0.23,
+    "min": -0.7,
+    "max": 0.2,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": -0.14,
+    "min": -0.5,
+    "max": 0.5,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": -0.15,
+    "min": -0.6,
+    "max": 0.3,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -0.23,
+    "min": -0.8,
+    "max": 0.2,
+    "within1": 1
+   },
+   "maghrib": {
+    "mean": -0.29,
+    "min": -0.8,
+    "max": 0.2,
+    "within1": 1
+   },
+   "isha": {
+    "mean": -0.03,
+    "min": -0.5,
+    "max": 0.5,
+    "within1": 1
+   }
+  },
+  "resid_int": {
+   "fajr": {
+    "mean": 0.09,
+    "min": -0.4,
+    "max": 0.6,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": -0.14,
+    "min": -0.5,
+    "max": 0.5,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": -0.15,
+    "min": -0.6,
+    "max": 0.3,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -0.23,
+    "min": -0.8,
+    "max": 0.2,
+    "within1": 1
+   },
+   "maghrib": {
+    "mean": -0.29,
+    "min": -0.8,
+    "max": 0.2,
+    "within1": 1
+   },
+   "isha": {
+    "mean": -0.36,
+    "min": -0.8,
+    "max": 0.1,
+    "within1": 1
+   }
+  },
+  "dhuhr_off": -0.15,
+  "dl_excess": 0.2,
+  "worst_pair": 0.7,
+  "worst_all": 0.8,
+  "worst_all_int": 0.8
+ },
+ "Balclutha": {
+  "city": "Balclutha",
+  "town": [
+   "Balclutha",
+   -46.24,
+   169.74
+  ],
+  "days": 30,
+  "pair": [
+   14.98,
+   15.04
+  ],
+  "pair_int": [
+   15,
+   15
+  ],
+  "point": {
+   "lat": -46.24,
+   "lon": 169.74,
+   "solved": false
+  },
+  "resid": {
+   "fajr": {
+    "mean": 0.01,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": -0.16,
+    "min": -0.6,
+    "max": 0.3,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": -0.08,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -2.13,
+    "min": -2.8,
+    "max": -1.5,
+    "within1": 0
+   },
+   "maghrib": {
+    "mean": -0.18,
+    "min": -0.7,
+    "max": 0.3,
+    "within1": 1
+   },
+   "isha": {
+    "mean": -0.03,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   }
+  },
+  "resid_int": {
+   "fajr": {
+    "mean": -0.12,
+    "min": -0.6,
+    "max": 0.3,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": -0.16,
+    "min": -0.6,
+    "max": 0.3,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": -0.08,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -2.13,
+    "min": -2.8,
+    "max": -1.5,
+    "within1": 0
+   },
+   "maghrib": {
+    "mean": -0.18,
+    "min": -0.7,
+    "max": 0.3,
+    "within1": 1
+   },
+   "isha": {
+    "mean": -0.29,
+    "min": -0.8,
+    "max": 0.2,
+    "within1": 1
+   }
+  },
+  "dhuhr_off": -0.08,
+  "dl_excess": 0,
+  "worst_pair": 0.5,
+  "worst_all": 2.8,
+  "worst_all_int": 2.8
+ },
+ "Blenheim": {
+  "city": "Blenheim",
+  "town": [
+   "Blenheim",
+   -41.51,
+   173.96
+  ],
+  "days": 30,
+  "pair": [
+   15.02,
+   15.06
+  ],
+  "pair_int": [
+   15,
+   15
+  ],
+  "point": {
+   "lat": -41.51,
+   "lon": 173.96,
+   "solved": false
+  },
+  "resid": {
+   "fajr": {
+    "mean": -0.15,
+    "min": -0.6,
+    "max": 0.3,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": 0,
+    "min": -0.5,
+    "max": 0.5,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": -0.06,
+    "min": -0.5,
+    "max": 0.5,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -1.92,
+    "min": -2.5,
+    "max": -1.3,
+    "within1": 0
+   },
+   "maghrib": {
+    "mean": -0.03,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "isha": {
+    "mean": 0.07,
+    "min": -0.4,
+    "max": 0.5,
+    "within1": 1
+   }
+  },
+  "resid_int": {
+   "fajr": {
+    "mean": -0.04,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": 0,
+    "min": -0.5,
+    "max": 0.5,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": -0.06,
+    "min": -0.5,
+    "max": 0.5,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -1.92,
+    "min": -2.5,
+    "max": -1.3,
+    "within1": 0
+   },
+   "maghrib": {
+    "mean": -0.03,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "isha": {
+    "mean": -0.27,
+    "min": -0.7,
+    "max": 0.2,
+    "within1": 1
+   }
+  },
+  "dhuhr_off": -0.06,
+  "dl_excess": 0,
+  "worst_pair": 0.6,
+  "worst_all": 2.5,
+  "worst_all_int": 2.5
+ },
+ "Christchurch": {
+  "city": "Christchurch",
+  "town": [
+   "Christchurch",
+   -43.53,
+   172.63
+  ],
+  "days": 30,
+  "pair": [
+   15.96,
+   15.1
+  ],
+  "pair_int": [
+   16,
+   15
+  ],
+  "point": {
+   "lat": -43.53,
+   "lon": 172.63,
+   "solved": false
+  },
+  "resid": {
+   "fajr": {
+    "mean": 0.24,
+    "min": -0.2,
+    "max": 0.7,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": -0.07,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": -0.3,
+    "min": -0.8,
+    "max": 0.2,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -0.48,
+    "min": -1,
+    "max": 0.1,
+    "within1": 1
+   },
+   "maghrib": {
+    "mean": -0.54,
+    "min": -1,
+    "max": -0.1,
+    "within1": 1
+   },
+   "isha": {
+    "mean": -0.01,
+    "min": -0.5,
+    "max": 0.5,
+    "within1": 1
+   }
+  },
+  "resid_int": {
+   "fajr": {
+    "mean": 0,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": -0.07,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": -0.3,
+    "min": -0.8,
+    "max": 0.2,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -0.48,
+    "min": -1,
+    "max": 0.1,
+    "within1": 1
+   },
+   "maghrib": {
+    "mean": -0.54,
+    "min": -1,
+    "max": -0.1,
+    "within1": 1
+   },
+   "isha": {
+    "mean": -0.61,
+    "min": -1.1,
+    "max": -0.1,
+    "within1": 0.867
+   }
+  },
+  "dhuhr_off": -0.3,
+  "dl_excess": 0.5,
+  "worst_pair": 0.7,
+  "worst_all": 1,
+  "worst_all_int": 1.1
+ },
+ "Dannevirke": {
+  "city": "Dannevirke",
+  "town": [
+   "Dannevirke",
+   -40.21,
+   176.1
+  ],
+  "days": 30,
+  "pair": [
+   17.96,
+   17.02
+  ],
+  "pair_int": [
+   18,
+   17
+  ],
+  "point": {
+   "lat": -40.21,
+   "lon": 176.1,
+   "solved": false
+  },
+  "resid": {
+   "fajr": {
+    "mean": 0.2,
+    "min": -0.4,
+    "max": 0.7,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": -0.04,
+    "min": -0.5,
+    "max": 0.5,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": 0.06,
+    "min": -0.5,
+    "max": 0.5,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -1.76,
+    "min": -2.2,
+    "max": -1.3,
+    "within1": 0
+   },
+   "maghrib": {
+    "mean": -0.06,
+    "min": -0.5,
+    "max": 0.5,
+    "within1": 1
+   },
+   "isha": {
+    "mean": -0.04,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   }
+  },
+  "resid_int": {
+   "fajr": {
+    "mean": -0.04,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": -0.04,
+    "min": -0.5,
+    "max": 0.5,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": 0.06,
+    "min": -0.5,
+    "max": 0.5,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -1.76,
+    "min": -2.2,
+    "max": -1.3,
+    "within1": 0
+   },
+   "maghrib": {
+    "mean": -0.06,
+    "min": -0.5,
+    "max": 0.5,
+    "within1": 1
+   },
+   "isha": {
+    "mean": -0.15,
+    "min": -0.7,
+    "max": 0.3,
+    "within1": 1
+   }
+  },
+  "dhuhr_off": 0.06,
+  "dl_excess": 0,
+  "worst_pair": 0.7,
+  "worst_all": 2.2,
+  "worst_all_int": 2.2
+ },
+ "Dargaville": {
+  "city": "Dargaville",
+  "town": [
+   "Dargaville",
+   -35.94,
+   173.87
+  ],
+  "days": 30,
+  "pair": [
+   17.98,
+   17
+  ],
+  "pair_int": [
+   18,
+   17
+  ],
+  "point": {
+   "lat": -35.94,
+   "lon": 173.87,
+   "solved": false
+  },
+  "resid": {
+   "fajr": {
+    "mean": 0.15,
+    "min": -0.4,
+    "max": 0.5,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": 0.07,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": 0.01,
+    "min": -0.5,
+    "max": 0.5,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -1.66,
+    "min": -2.2,
+    "max": -1.1,
+    "within1": 0
+   },
+   "maghrib": {
+    "mean": -0.03,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "isha": {
+    "mean": -0.16,
+    "min": -0.6,
+    "max": 0.3,
+    "within1": 1
+   }
+  },
+  "resid_int": {
+   "fajr": {
+    "mean": 0.05,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": 0.07,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": 0.01,
+    "min": -0.5,
+    "max": 0.5,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -1.66,
+    "min": -2.2,
+    "max": -1.1,
+    "within1": 0
+   },
+   "maghrib": {
+    "mean": -0.03,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "isha": {
+    "mean": -0.16,
+    "min": -0.6,
+    "max": 0.3,
+    "within1": 1
+   }
+  },
+  "dhuhr_off": 0.01,
+  "dl_excess": 0.1,
+  "worst_pair": 0.6,
+  "worst_all": 2.2,
+  "worst_all_int": 2.2
+ },
+ "Dunedin": {
+  "city": "Dunedin",
+  "town": [
+   "Dunedin",
+   -45.87,
+   170.5
+  ],
+  "days": 30,
+  "pair": [
+   15.98,
+   15.15
+  ],
+  "pair_int": [
+   16,
+   15
+  ],
+  "point": {
+   "lat": -46.07,
+   "lon": 170.5,
+   "solved": true,
+   "dlat": -0.2,
+   "dlon": 0
+  },
+  "resid": {
+   "fajr": {
+    "mean": -0.02,
+    "min": -1.1,
+    "max": 1.5,
+    "within1": 0.833
+   },
+   "sunrise": {
+    "mean": 0.8,
+    "min": -0.1,
+    "max": 2.1,
+    "within1": 0.667
+   },
+   "dhuhr": {
+    "mean": -0.02,
+    "min": -0.5,
+    "max": 0.6,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -0.89,
+    "min": -1.8,
+    "max": -0.1,
+    "within1": 0.733
+   },
+   "maghrib": {
+    "mean": -0.41,
+    "min": -2,
+    "max": 0.6,
+    "within1": 0.7
+   },
+   "isha": {
+    "mean": -0.27,
+    "min": -2,
+    "max": 0.8,
+    "within1": 0.667
+   }
+  },
+  "resid_int": {
+   "fajr": {
+    "mean": -0.15,
+    "min": -1.3,
+    "max": 1.4,
+    "within1": 0.767
+   },
+   "sunrise": {
+    "mean": 0.8,
+    "min": -0.1,
+    "max": 2.1,
+    "within1": 0.667
+   },
+   "dhuhr": {
+    "mean": -0.02,
+    "min": -0.5,
+    "max": 0.6,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -0.89,
+    "min": -1.8,
+    "max": -0.1,
+    "within1": 0.733
+   },
+   "maghrib": {
+    "mean": -0.41,
+    "min": -2,
+    "max": 0.6,
+    "within1": 0.7
+   },
+   "isha": {
+    "mean": -1.23,
+    "min": -3,
+    "max": -0.1,
+    "within1": 0.6
+   }
+  },
+  "dhuhr_off": -0.02,
+  "dl_excess": 1.2,
+  "worst_pair": 2,
+  "worst_all": 2.1,
+  "worst_all_int": 3
+ },
+ "Fielding": {
+  "city": "Fielding",
+  "town": [
+   "Feilding",
+   -40.22,
+   175.57
+  ],
+  "days": 30,
+  "pair": [
+   17.96,
+   17.02
+  ],
+  "pair_int": [
+   18,
+   17
+  ],
+  "point": {
+   "lat": -40.22,
+   "lon": 175.57,
+   "solved": false
+  },
+  "resid": {
+   "fajr": {
+    "mean": 0.19,
+    "min": -0.3,
+    "max": 0.7,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": -0.06,
+    "min": -0.5,
+    "max": 0.5,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": 0.04,
+    "min": -0.5,
+    "max": 0.5,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -1.7,
+    "min": -2.2,
+    "max": -1.2,
+    "within1": 0
+   },
+   "maghrib": {
+    "mean": -0.04,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "isha": {
+    "mean": -0.1,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   }
+  },
+  "resid_int": {
+   "fajr": {
+    "mean": -0.04,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": -0.06,
+    "min": -0.5,
+    "max": 0.5,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": 0.04,
+    "min": -0.5,
+    "max": 0.5,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -1.7,
+    "min": -2.2,
+    "max": -1.2,
+    "within1": 0
+   },
+   "maghrib": {
+    "mean": -0.04,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "isha": {
+    "mean": -0.21,
+    "min": -0.7,
+    "max": 0.3,
+    "within1": 1
+   }
+  },
+  "dhuhr_off": 0.04,
+  "dl_excess": 0,
+  "worst_pair": 0.7,
+  "worst_all": 2.2,
+  "worst_all_int": 2.2
+ },
+ "Gisborne": {
+  "city": "Gisborne",
+  "town": [
+   "Gisborne",
+   -38.66,
+   178.02
+  ],
+  "days": 30,
+  "pair": [
+   17.96,
+   16.75
+  ],
+  "pair_int": [
+   18,
+   17
+  ],
+  "point": {
+   "lat": -38.66,
+   "lon": 178.02,
+   "solved": false
+  },
+  "resid": {
+   "fajr": {
+    "mean": 0.09,
+    "min": -0.5,
+    "max": 0.8,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": 0.28,
+    "min": -0.1,
+    "max": 0.8,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": 0.67,
+    "min": 0.2,
+    "max": 1.1,
+    "within1": 0.833
+   },
+   "asr": {
+    "mean": -0.94,
+    "min": -1.5,
+    "max": -0.3,
+    "within1": 0.467
+   },
+   "maghrib": {
+    "mean": 0.87,
+    "min": 0.3,
+    "max": 1.4,
+    "within1": 0.6
+   },
+   "isha": {
+    "mean": -0.18,
+    "min": -0.7,
+    "max": 0.5,
+    "within1": 1
+   }
+  },
+  "resid_int": {
+   "fajr": {
+    "mean": -0.13,
+    "min": -0.8,
+    "max": 0.6,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": 0.28,
+    "min": -0.1,
+    "max": 0.8,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": 0.67,
+    "min": 0.2,
+    "max": 1.1,
+    "within1": 0.833
+   },
+   "asr": {
+    "mean": -0.94,
+    "min": -1.5,
+    "max": -0.3,
+    "within1": 0.467
+   },
+   "maghrib": {
+    "mean": 0.87,
+    "min": 0.3,
+    "max": 1.4,
+    "within1": 0.6
+   },
+   "isha": {
+    "mean": 1.2,
+    "min": 0.7,
+    "max": 1.9,
+    "within1": 0.333
+   }
+  },
+  "dhuhr_off": 0.67,
+  "dl_excess": -0.6,
+  "worst_pair": 0.8,
+  "worst_all": 1.5,
+  "worst_all_int": 1.9
+ },
+ "Gore": {
+  "city": "Gore",
+  "town": [
+   "Gore",
+   -46.1,
+   168.94
+  ],
+  "days": 30,
+  "pair": [
+   15.81,
+   15.44
+  ],
+  "pair_int": [
+   16,
+   15
+  ],
+  "point": {
+   "lat": -46.1,
+   "lon": 168.94,
+   "solved": false
+  },
+  "resid": {
+   "fajr": {
+    "mean": 0.15,
+    "min": -0.9,
+    "max": 1.8,
+    "within1": 0.7
+   },
+   "sunrise": {
+    "mean": -0.42,
+    "min": -1.4,
+    "max": 1,
+    "within1": 0.733
+   },
+   "dhuhr": {
+    "mean": -1.41,
+    "min": -2,
+    "max": -0.9,
+    "within1": 0.133
+   },
+   "asr": {
+    "mean": -2.33,
+    "min": -3.4,
+    "max": -1.5,
+    "within1": 0
+   },
+   "maghrib": {
+    "mean": -1.92,
+    "min": -3.5,
+    "max": -0.9,
+    "within1": 0.133
+   },
+   "isha": {
+    "mean": -0.25,
+    "min": -2.1,
+    "max": 0.9,
+    "within1": 0.667
+   }
+  },
+  "resid_int": {
+   "fajr": {
+    "mean": -1.09,
+    "min": -2.1,
+    "max": 0.5,
+    "within1": 0.333
+   },
+   "sunrise": {
+    "mean": -0.42,
+    "min": -1.4,
+    "max": 1,
+    "within1": 0.733
+   },
+   "dhuhr": {
+    "mean": -1.41,
+    "min": -2,
+    "max": -0.9,
+    "within1": 0.133
+   },
+   "asr": {
+    "mean": -2.33,
+    "min": -3.4,
+    "max": -1.5,
+    "within1": 0
+   },
+   "maghrib": {
+    "mean": -1.92,
+    "min": -3.5,
+    "max": -0.9,
+    "within1": 0.133
+   },
+   "isha": {
+    "mean": -3.08,
+    "min": -5.1,
+    "max": -1.8,
+    "within1": 0
+   }
+  },
+  "dhuhr_off": -1.41,
+  "dl_excess": 1.5,
+  "worst_pair": 2.1,
+  "worst_all": 3.5,
+  "worst_all_int": 5.1
+ },
+ "Greymouth": {
+  "city": "Greymouth",
+  "town": [
+   "Greymouth",
+   -42.45,
+   171.21
+  ],
+  "days": 30,
+  "pair": [
+   14.98,
+   15.06
+  ],
+  "pair_int": [
+   15,
+   15
+  ],
+  "point": {
+   "lat": -42.45,
+   "lon": 171.21,
+   "solved": false
+  },
+  "resid": {
+   "fajr": {
+    "mean": 0.01,
+    "min": -0.4,
+    "max": 0.5,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": -0.08,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": -0.09,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -2.02,
+    "min": -2.5,
+    "max": -1.2,
+    "within1": 0
+   },
+   "maghrib": {
+    "mean": -0.07,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "isha": {
+    "mean": 0.1,
+    "min": -0.4,
+    "max": 0.5,
+    "within1": 1
+   }
+  },
+  "resid_int": {
+   "fajr": {
+    "mean": -0.11,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": -0.08,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": -0.09,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -2.02,
+    "min": -2.5,
+    "max": -1.2,
+    "within1": 0
+   },
+   "maghrib": {
+    "mean": -0.07,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "isha": {
+    "mean": -0.25,
+    "min": -0.7,
+    "max": 0.2,
+    "within1": 1
+   }
+  },
+  "dhuhr_off": -0.09,
+  "dl_excess": 0,
+  "worst_pair": 0.5,
+  "worst_all": 2.5,
+  "worst_all_int": 2.5
+ },
+ "Hamilton": {
+  "city": "Hamilton",
+  "town": [
+   "Hamilton",
+   -37.79,
+   175.28
+  ],
+  "days": 30,
+  "pair": [
+   17.96,
+   18
+  ],
+  "pair_int": [
+   18,
+   18
+  ],
+  "point": {
+   "lat": -37.79,
+   "lon": 175.28,
+   "solved": false
+  },
+  "resid": {
+   "fajr": {
+    "mean": 0.13,
+    "min": -0.4,
+    "max": 0.6,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": -0.17,
+    "min": -0.6,
+    "max": 0.5,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": -0.23,
+    "min": -0.7,
+    "max": 0.3,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -0.24,
+    "min": -0.7,
+    "max": 0.2,
+    "within1": 1
+   },
+   "maghrib": {
+    "mean": -0.34,
+    "min": -0.9,
+    "max": 0.1,
+    "within1": 1
+   },
+   "isha": {
+    "mean": -0.37,
+    "min": -0.9,
+    "max": 0,
+    "within1": 1
+   }
+  },
+  "resid_int": {
+   "fajr": {
+    "mean": -0.09,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": -0.17,
+    "min": -0.6,
+    "max": 0.5,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": -0.23,
+    "min": -0.7,
+    "max": 0.3,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -0.24,
+    "min": -0.7,
+    "max": 0.2,
+    "within1": 1
+   },
+   "maghrib": {
+    "mean": -0.34,
+    "min": -0.9,
+    "max": 0.1,
+    "within1": 1
+   },
+   "isha": {
+    "mean": -0.37,
+    "min": -0.9,
+    "max": 0,
+    "within1": 1
+   }
+  },
+  "dhuhr_off": -0.23,
+  "dl_excess": 0.2,
+  "worst_pair": 0.9,
+  "worst_all": 0.9,
+  "worst_all_int": 0.9
+ },
+ "Hastings": {
+  "city": "Hastings",
+  "town": [
+   "Hastings",
+   -39.64,
+   176.84
+  ],
+  "days": 30,
+  "pair": [
+   15,
+   15.04
+  ],
+  "pair_int": [
+   15,
+   15
+  ],
+  "point": {
+   "lat": -39.64,
+   "lon": 176.84,
+   "solved": false
+  },
+  "resid": {
+   "fajr": {
+    "mean": 0.1,
+    "min": -0.4,
+    "max": 0.5,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": -0.05,
+    "min": -0.5,
+    "max": 0.5,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": 0.06,
+    "min": -0.5,
+    "max": 0.5,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -1.7,
+    "min": -2.1,
+    "max": -1.3,
+    "within1": 0
+   },
+   "maghrib": {
+    "mean": -0.12,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "isha": {
+    "mean": 0.06,
+    "min": -0.4,
+    "max": 0.5,
+    "within1": 1
+   }
+  },
+  "resid_int": {
+   "fajr": {
+    "mean": 0.1,
+    "min": -0.4,
+    "max": 0.5,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": -0.05,
+    "min": -0.5,
+    "max": 0.5,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": 0.06,
+    "min": -0.5,
+    "max": 0.5,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -1.7,
+    "min": -2.1,
+    "max": -1.3,
+    "within1": 0
+   },
+   "maghrib": {
+    "mean": -0.12,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "isha": {
+    "mean": -0.16,
+    "min": -0.7,
+    "max": 0.3,
+    "within1": 1
+   }
+  },
+  "dhuhr_off": 0.06,
+  "dl_excess": 0.1,
+  "worst_pair": 0.5,
+  "worst_all": 2.1,
+  "worst_all_int": 2.1
+ },
+ "Hawera": {
+  "city": "Hawera",
+  "town": [
+   "Hawera",
+   -39.59,
+   174.28
+  ],
+  "days": 30,
+  "pair": [
+   16.85,
+   17.19
+  ],
+  "pair_int": [
+   17,
+   17
+  ],
+  "point": {
+   "lat": -39.59,
+   "lon": 174.28,
+   "solved": false
+  },
+  "resid": {
+   "fajr": {
+    "mean": 0.18,
+    "min": -0.4,
+    "max": 0.8,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": 0.27,
+    "min": -0.3,
+    "max": 0.9,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": -0.93,
+    "min": -1.4,
+    "max": -0.5,
+    "within1": 0.533
+   },
+   "asr": {
+    "mean": -0.98,
+    "min": -1.6,
+    "max": -0.2,
+    "within1": 0.5
+   },
+   "maghrib": {
+    "mean": -0.56,
+    "min": -1.1,
+    "max": 0,
+    "within1": 0.933
+   },
+   "isha": {
+    "mean": 0,
+    "min": -0.6,
+    "max": 0.6,
+    "within1": 1
+   }
+  },
+  "resid_int": {
+   "fajr": {
+    "mean": -0.67,
+    "min": -1.2,
+    "max": -0.1,
+    "within1": 0.8
+   },
+   "sunrise": {
+    "mean": 0.27,
+    "min": -0.3,
+    "max": 0.9,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": -0.93,
+    "min": -1.4,
+    "max": -0.5,
+    "within1": 0.533
+   },
+   "asr": {
+    "mean": -0.98,
+    "min": -1.6,
+    "max": -0.2,
+    "within1": 0.5
+   },
+   "maghrib": {
+    "mean": -0.56,
+    "min": -1.1,
+    "max": 0,
+    "within1": 0.933
+   },
+   "isha": {
+    "mean": -1.08,
+    "min": -1.7,
+    "max": -0.5,
+    "within1": 0.467
+   }
+  },
+  "dhuhr_off": -0.93,
+  "dl_excess": 0.8,
+  "worst_pair": 0.8,
+  "worst_all": 1.6,
+  "worst_all_int": 1.7
+ },
+ "Invercargill": {
+  "city": "Invercargill",
+  "town": [
+   "Invercargill",
+   -46.41,
+   168.35
+  ],
+  "days": 30,
+  "pair": [
+   15.92,
+   15.08
+  ],
+  "pair_int": [
+   16,
+   15
+  ],
+  "point": {
+   "lat": -46.61,
+   "lon": 168.25,
+   "solved": true,
+   "dlat": -0.2,
+   "dlon": -0.1
+  },
+  "resid": {
+   "fajr": {
+    "mean": -0.09,
+    "min": -1.4,
+    "max": 1.1,
+    "within1": 0.633
+   },
+   "sunrise": {
+    "mean": 0.64,
+    "min": -0.2,
+    "max": 1.9,
+    "within1": 0.767
+   },
+   "dhuhr": {
+    "mean": -0.08,
+    "min": -0.6,
+    "max": 0.5,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -1,
+    "min": -1.7,
+    "max": -0.1,
+    "within1": 0.567
+   },
+   "maghrib": {
+    "mean": -0.31,
+    "min": -1.8,
+    "max": 0.8,
+    "within1": 0.733
+   },
+   "isha": {
+    "mean": -0.27,
+    "min": -1.9,
+    "max": 0.9,
+    "within1": 0.7
+   }
+  },
+  "resid_int": {
+   "fajr": {
+    "mean": -0.61,
+    "min": -1.9,
+    "max": 0.6,
+    "within1": 0.567
+   },
+   "sunrise": {
+    "mean": 0.64,
+    "min": -0.2,
+    "max": 1.9,
+    "within1": 0.767
+   },
+   "dhuhr": {
+    "mean": -0.08,
+    "min": -0.6,
+    "max": 0.5,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -1,
+    "min": -1.7,
+    "max": -0.1,
+    "within1": 0.567
+   },
+   "maghrib": {
+    "mean": -0.31,
+    "min": -1.8,
+    "max": 0.8,
+    "within1": 0.733
+   },
+   "isha": {
+    "mean": -0.8,
+    "min": -2.5,
+    "max": 0.3,
+    "within1": 0.667
+   }
+  },
+  "dhuhr_off": -0.08,
+  "dl_excess": 0.9,
+  "worst_pair": 1.9,
+  "worst_all": 1.9,
+  "worst_all_int": 2.5
+ },
+ "Masterton": {
+  "city": "Masterton",
+  "town": [
+   "Masterton",
+   -40.95,
+   175.66
+  ],
+  "days": 30,
+  "pair": [
+   17.1,
+   17.37
+  ],
+  "pair_int": [
+   17,
+   17
+  ],
+  "point": {
+   "lat": -40.95,
+   "lon": 175.66,
+   "solved": false
+  },
+  "resid": {
+   "fajr": {
+    "mean": 0.24,
+    "min": -0.3,
+    "max": 0.7,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": 2.23,
+    "min": 1.8,
+    "max": 2.7,
+    "within1": 0
+   },
+   "dhuhr": {
+    "mean": -0.12,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -1.07,
+    "min": -1.6,
+    "max": -0.4,
+    "within1": 0.4
+   },
+   "maghrib": {
+    "mean": -2.53,
+    "min": -3,
+    "max": -2,
+    "within1": 0
+   },
+   "isha": {
+    "mean": 0.01,
+    "min": -0.5,
+    "max": 0.5,
+    "within1": 1
+   }
+  },
+  "resid_int": {
+   "fajr": {
+    "mean": 0.82,
+    "min": 0.4,
+    "max": 1.3,
+    "within1": 0.7
+   },
+   "sunrise": {
+    "mean": 2.23,
+    "min": 1.8,
+    "max": 2.7,
+    "within1": 0
+   },
+   "dhuhr": {
+    "mean": -0.12,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -1.07,
+    "min": -1.6,
+    "max": -0.4,
+    "within1": 0.4
+   },
+   "maghrib": {
+    "mean": -2.53,
+    "min": -3,
+    "max": -2,
+    "within1": 0
+   },
+   "isha": {
+    "mean": -2.14,
+    "min": -2.7,
+    "max": -1.7,
+    "within1": 0
+   }
+  },
+  "dhuhr_off": -0.12,
+  "dl_excess": 4.8,
+  "worst_pair": 0.7,
+  "worst_all": 3,
+  "worst_all_int": 3
+ },
+ "Napier": {
+  "city": "Napier",
+  "town": [
+   "Napier",
+   -39.49,
+   176.91
+  ],
+  "days": 30,
+  "pair": [
+   16.02,
+   15.1
+  ],
+  "pair_int": [
+   16,
+   15
+  ],
+  "point": {
+   "lat": -39.49,
+   "lon": 176.91,
+   "solved": false
+  },
+  "resid": {
+   "fajr": {
+    "mean": -0.17,
+    "min": -0.6,
+    "max": 0.3,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": -0.12,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": -0.25,
+    "min": -0.8,
+    "max": 0.2,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -0.45,
+    "min": -0.9,
+    "max": 0.1,
+    "within1": 1
+   },
+   "maghrib": {
+    "mean": -0.48,
+    "min": -1,
+    "max": 0,
+    "within1": 1
+   },
+   "isha": {
+    "mean": -0.02,
+    "min": -0.5,
+    "max": 0.5,
+    "within1": 1
+   }
+  },
+  "resid_int": {
+   "fajr": {
+    "mean": -0.06,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": -0.12,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": -0.25,
+    "min": -0.8,
+    "max": 0.2,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -0.45,
+    "min": -0.9,
+    "max": 0.1,
+    "within1": 1
+   },
+   "maghrib": {
+    "mean": -0.48,
+    "min": -1,
+    "max": 0,
+    "within1": 1
+   },
+   "isha": {
+    "mean": -0.57,
+    "min": -1,
+    "max": 0,
+    "within1": 0.967
+   }
+  },
+  "dhuhr_off": -0.25,
+  "dl_excess": 0.4,
+  "worst_pair": 0.6,
+  "worst_all": 1,
+  "worst_all_int": 1
+ },
+ "Nelson": {
+  "city": "Nelson",
+  "town": [
+   "Nelson",
+   -41.27,
+   173.28
+  ],
+  "days": 30,
+  "pair": [
+   16,
+   15.1
+  ],
+  "pair_int": [
+   16,
+   15
+  ],
+  "point": {
+   "lat": -41.27,
+   "lon": 173.28,
+   "solved": false
+  },
+  "resid": {
+   "fajr": {
+    "mean": 0.1,
+    "min": -0.3,
+    "max": 0.5,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": -0.04,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": -0.23,
+    "min": -0.7,
+    "max": 0.3,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -0.04,
+    "min": -0.8,
+    "max": 2,
+    "within1": 0.833
+   },
+   "maghrib": {
+    "mean": -0.43,
+    "min": -0.9,
+    "max": 0,
+    "within1": 1
+   },
+   "isha": {
+    "mean": 0.1,
+    "min": -0.4,
+    "max": 0.6,
+    "within1": 1
+   }
+  },
+  "resid_int": {
+   "fajr": {
+    "mean": 0.1,
+    "min": -0.3,
+    "max": 0.5,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": -0.04,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": -0.23,
+    "min": -0.7,
+    "max": 0.3,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -0.04,
+    "min": -0.8,
+    "max": 2,
+    "within1": 0.833
+   },
+   "maghrib": {
+    "mean": -0.43,
+    "min": -0.9,
+    "max": 0,
+    "within1": 1
+   },
+   "isha": {
+    "mean": -0.48,
+    "min": -0.9,
+    "max": 0,
+    "within1": 1
+   }
+  },
+  "dhuhr_off": -0.23,
+  "dl_excess": 0.4,
+  "worst_pair": 0.6,
+  "worst_all": 2,
+  "worst_all_int": 2
+ },
+ "New-Plymouth": {
+  "city": "New-Plymouth",
+  "town": [
+   "New Plymouth",
+   -39.06,
+   174.08
+  ],
+  "days": 30,
+  "pair": [
+   17.02,
+   17.25
+  ],
+  "pair_int": [
+   17,
+   17
+  ],
+  "point": {
+   "lat": -39.06,
+   "lon": 174.08,
+   "solved": false
+  },
+  "resid": {
+   "fajr": {
+    "mean": -0.03,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": 0.78,
+    "min": 0.3,
+    "max": 1.2,
+    "within1": 0.933
+   },
+   "dhuhr": {
+    "mean": -0.13,
+    "min": -0.6,
+    "max": 0.3,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -0.64,
+    "min": -1.1,
+    "max": -0.3,
+    "within1": 0.867
+   },
+   "maghrib": {
+    "mean": -0.59,
+    "min": -1,
+    "max": -0.1,
+    "within1": 0.967
+   },
+   "isha": {
+    "mean": 0.1,
+    "min": -0.4,
+    "max": 0.6,
+    "within1": 1
+   }
+  },
+  "resid_int": {
+   "fajr": {
+    "mean": 0.08,
+    "min": -0.4,
+    "max": 0.5,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": 0.78,
+    "min": 0.3,
+    "max": 1.2,
+    "within1": 0.933
+   },
+   "dhuhr": {
+    "mean": -0.13,
+    "min": -0.6,
+    "max": 0.3,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -0.64,
+    "min": -1.1,
+    "max": -0.3,
+    "within1": 0.867
+   },
+   "maghrib": {
+    "mean": -0.59,
+    "min": -1,
+    "max": -0.1,
+    "within1": 0.967
+   },
+   "isha": {
+    "mean": -1.3,
+    "min": -1.8,
+    "max": -0.8,
+    "within1": 0.233
+   }
+  },
+  "dhuhr_off": -0.13,
+  "dl_excess": 1.4,
+  "worst_pair": 0.6,
+  "worst_all": 1.2,
+  "worst_all_int": 1.8
+ },
+ "Oamaru": {
+  "city": "Oamaru",
+  "town": [
+   "Oamaru",
+   -45.1,
+   170.97
+  ],
+  "days": 30,
+  "pair": [
+   15,
+   15
+  ],
+  "pair_int": [
+   15,
+   15
+  ],
+  "point": {
+   "lat": -45.1,
+   "lon": 170.97,
+   "solved": false
+  },
+  "resid": {
+   "fajr": {
+    "mean": -0.03,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": -0.06,
+    "min": -0.5,
+    "max": 0.5,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": 0.04,
+    "min": -0.4,
+    "max": 0.5,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -1.97,
+    "min": -2.5,
+    "max": -1.4,
+    "within1": 0
+   },
+   "maghrib": {
+    "mean": -0.05,
+    "min": -0.5,
+    "max": 0.5,
+    "within1": 1
+   },
+   "isha": {
+    "mean": -0.09,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   }
+  },
+  "resid_int": {
+   "fajr": {
+    "mean": -0.03,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": -0.06,
+    "min": -0.5,
+    "max": 0.5,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": 0.04,
+    "min": -0.4,
+    "max": 0.5,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -1.97,
+    "min": -2.5,
+    "max": -1.4,
+    "within1": 0
+   },
+   "maghrib": {
+    "mean": -0.05,
+    "min": -0.5,
+    "max": 0.5,
+    "within1": 1
+   },
+   "isha": {
+    "mean": -0.09,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   }
+  },
+  "dhuhr_off": 0.04,
+  "dl_excess": 0,
+  "worst_pair": 0.6,
+  "worst_all": 2.5,
+  "worst_all_int": 2.5
+ },
+ "Palmerston-North": {
+  "city": "Palmerston-North",
+  "town": [
+   "Palmerston North",
+   -40.35,
+   175.61
+  ],
+  "days": 30,
+  "pair": [
+   17.04,
+   17.02
+  ],
+  "pair_int": [
+   17,
+   17
+  ],
+  "point": {
+   "lat": -40.35,
+   "lon": 175.61,
+   "solved": false
+  },
+  "resid": {
+   "fajr": {
+    "mean": 0.15,
+    "min": -0.3,
+    "max": 0.6,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": 0.31,
+    "min": -0.2,
+    "max": 0.7,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": 0.11,
+    "min": -0.4,
+    "max": 0.6,
+    "within1": 1
+   },
+   "asr": {
+    "mean": 0.06,
+    "min": -0.5,
+    "max": 0.5,
+    "within1": 1
+   },
+   "maghrib": {
+    "mean": -0.1,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   },
+   "isha": {
+    "mean": -0.03,
+    "min": -0.5,
+    "max": 0.5,
+    "within1": 1
+   }
+  },
+  "resid_int": {
+   "fajr": {
+    "mean": 0.38,
+    "min": -0.1,
+    "max": 0.8,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": 0.31,
+    "min": -0.2,
+    "max": 0.7,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": 0.11,
+    "min": -0.4,
+    "max": 0.6,
+    "within1": 1
+   },
+   "asr": {
+    "mean": 0.06,
+    "min": -0.5,
+    "max": 0.5,
+    "within1": 1
+   },
+   "maghrib": {
+    "mean": -0.1,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   },
+   "isha": {
+    "mean": -0.14,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   }
+  },
+  "dhuhr_off": 0.11,
+  "dl_excess": 0.4,
+  "worst_pair": 0.6,
+  "worst_all": 0.7,
+  "worst_all_int": 0.8
+ },
+ "Queenstown": {
+  "city": "Queenstown",
+  "town": [
+   "Queenstown",
+   -45.03,
+   168.66
+  ],
+  "days": 30,
+  "pair": [
+   15.92,
+   15.21
+  ],
+  "pair_int": [
+   16,
+   15
+  ],
+  "point": {
+   "lat": -45.23,
+   "lon": 168.5,
+   "solved": true,
+   "dlat": -0.2,
+   "dlon": -0.16
+  },
+  "resid": {
+   "fajr": {
+    "mean": 0,
+    "min": -1.1,
+    "max": 1.4,
+    "within1": 0.833
+   },
+   "sunrise": {
+    "mean": 3.58,
+    "min": 2.6,
+    "max": 4.9,
+    "within1": 0
+   },
+   "dhuhr": {
+    "mean": -0.35,
+    "min": -0.9,
+    "max": 0.2,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -1.27,
+    "min": -2.2,
+    "max": -0.5,
+    "within1": 0.3
+   },
+   "maghrib": {
+    "mean": -3.93,
+    "min": -5.4,
+    "max": -2.9,
+    "within1": 0
+   },
+   "isha": {
+    "mean": -0.19,
+    "min": -1.9,
+    "max": 0.9,
+    "within1": 0.7
+   }
+  },
+  "resid_int": {
+   "fajr": {
+    "mean": -0.51,
+    "min": -1.6,
+    "max": 0.9,
+    "within1": 0.7
+   },
+   "sunrise": {
+    "mean": 3.58,
+    "min": 2.6,
+    "max": 4.9,
+    "within1": 0
+   },
+   "dhuhr": {
+    "mean": -0.35,
+    "min": -0.9,
+    "max": 0.2,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -1.27,
+    "min": -2.2,
+    "max": -0.5,
+    "within1": 0.3
+   },
+   "maghrib": {
+    "mean": -3.93,
+    "min": -5.4,
+    "max": -2.9,
+    "within1": 0
+   },
+   "isha": {
+    "mean": -1.51,
+    "min": -3.3,
+    "max": -0.4,
+    "within1": 0.5
+   }
+  },
+  "dhuhr_off": -0.35,
+  "dl_excess": 7.5,
+  "worst_pair": 1.9,
+  "worst_all": 5.4,
+  "worst_all_int": 5.4
+ },
+ "Rotorua": {
+  "city": "Rotorua",
+  "town": [
+   "Rotorua",
+   -38.14,
+   176.25
+  ],
+  "days": 30,
+  "pair": [
+   16.83,
+   17.11
+  ],
+  "pair_int": [
+   17,
+   17
+  ],
+  "point": {
+   "lat": -38.14,
+   "lon": 176.25,
+   "solved": false
+  },
+  "resid": {
+   "fajr": {
+    "mean": 0.21,
+    "min": -0.3,
+    "max": 0.9,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": 2.65,
+    "min": 2.2,
+    "max": 3.4,
+    "within1": 0
+   },
+   "dhuhr": {
+    "mean": -0.34,
+    "min": -0.8,
+    "max": 0.1,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -0.82,
+    "min": -1.3,
+    "max": -0.2,
+    "within1": 0.7
+   },
+   "maghrib": {
+    "mean": -2.93,
+    "min": -3.5,
+    "max": -2.5,
+    "within1": 0
+   },
+   "isha": {
+    "mean": -0.38,
+    "min": -1,
+    "max": 0.1,
+    "within1": 1
+   }
+  },
+  "resid_int": {
+   "fajr": {
+    "mean": -0.73,
+    "min": -1.3,
+    "max": 0,
+    "within1": 0.8
+   },
+   "sunrise": {
+    "mean": 2.65,
+    "min": 2.2,
+    "max": 3.4,
+    "within1": 0
+   },
+   "dhuhr": {
+    "mean": -0.34,
+    "min": -0.8,
+    "max": 0.1,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -0.82,
+    "min": -1.3,
+    "max": -0.2,
+    "within1": 0.7
+   },
+   "maghrib": {
+    "mean": -2.93,
+    "min": -3.5,
+    "max": -2.5,
+    "within1": 0
+   },
+   "isha": {
+    "mean": -0.98,
+    "min": -1.6,
+    "max": -0.5,
+    "within1": 0.6
+   }
+  },
+  "dhuhr_off": -0.34,
+  "dl_excess": 5.6,
+  "worst_pair": 1,
+  "worst_all": 3.5,
+  "worst_all_int": 3.5
+ },
+ "Taihape": {
+  "city": "Taihape",
+  "town": [
+   "Taihape",
+   -39.68,
+   175.8
+  ],
+  "days": 30,
+  "pair": [
+   17.12,
+   17.35
+  ],
+  "pair_int": [
+   17,
+   17
+  ],
+  "point": {
+   "lat": -39.68,
+   "lon": 175.8,
+   "solved": false
+  },
+  "resid": {
+   "fajr": {
+    "mean": 0.09,
+    "min": -0.4,
+    "max": 0.6,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": 4.11,
+    "min": 3.6,
+    "max": 4.7,
+    "within1": 0
+   },
+   "dhuhr": {
+    "mean": -0.05,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -1,
+    "min": -1.5,
+    "max": -0.5,
+    "within1": 0.533
+   },
+   "maghrib": {
+    "mean": -4.33,
+    "min": -4.8,
+    "max": -3.9,
+    "within1": 0
+   },
+   "isha": {
+    "mean": 0,
+    "min": -0.5,
+    "max": 0.5,
+    "within1": 1
+   }
+  },
+  "resid_int": {
+   "fajr": {
+    "mean": 0.77,
+    "min": 0.3,
+    "max": 1.3,
+    "within1": 0.733
+   },
+   "sunrise": {
+    "mean": 4.11,
+    "min": 3.6,
+    "max": 4.7,
+    "within1": 0
+   },
+   "dhuhr": {
+    "mean": -0.05,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -1,
+    "min": -1.5,
+    "max": -0.5,
+    "within1": 0.533
+   },
+   "maghrib": {
+    "mean": -4.33,
+    "min": -4.8,
+    "max": -3.9,
+    "within1": 0
+   },
+   "isha": {
+    "mean": -1.98,
+    "min": -2.5,
+    "max": -1.5,
+    "within1": 0
+   }
+  },
+  "dhuhr_off": -0.05,
+  "dl_excess": 8.4,
+  "worst_pair": 0.6,
+  "worst_all": 4.8,
+  "worst_all_int": 4.8
+ },
+ "Taupo": {
+  "city": "Taupo",
+  "town": [
+   "Taupo",
+   -38.69,
+   176.08
+  ],
+  "days": 30,
+  "pair": [
+   17.17,
+   17.31
+  ],
+  "pair_int": [
+   17,
+   17
+  ],
+  "point": {
+   "lat": -38.69,
+   "lon": 176.08,
+   "solved": false
+  },
+  "resid": {
+   "fajr": {
+    "mean": -0.24,
+    "min": -0.8,
+    "max": 0.2,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": 3.89,
+    "min": 3.2,
+    "max": 4.1,
+    "within1": 0
+   },
+   "dhuhr": {
+    "mean": -0.1,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -0.99,
+    "min": -1.5,
+    "max": -0.3,
+    "within1": 0.533
+   },
+   "maghrib": {
+    "mean": -3.89,
+    "min": -4.4,
+    "max": -3.4,
+    "within1": 0
+   },
+   "isha": {
+    "mean": -0.16,
+    "min": -0.7,
+    "max": 0.3,
+    "within1": 1
+   }
+  },
+  "resid_int": {
+   "fajr": {
+    "mean": 0.71,
+    "min": 0.3,
+    "max": 1.1,
+    "within1": 0.767
+   },
+   "sunrise": {
+    "mean": 3.89,
+    "min": 3.2,
+    "max": 4.1,
+    "within1": 0
+   },
+   "dhuhr": {
+    "mean": -0.1,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -0.99,
+    "min": -1.5,
+    "max": -0.3,
+    "within1": 0.533
+   },
+   "maghrib": {
+    "mean": -3.89,
+    "min": -4.4,
+    "max": -3.4,
+    "within1": 0
+   },
+   "isha": {
+    "mean": -1.88,
+    "min": -2.4,
+    "max": -1.4,
+    "within1": 0
+   }
+  },
+  "dhuhr_off": -0.1,
+  "dl_excess": 7.8,
+  "worst_pair": 0.8,
+  "worst_all": 4.4,
+  "worst_all_int": 4.4
+ },
+ "Tauranga": {
+  "city": "Tauranga",
+  "town": [
+   "Tauranga",
+   -37.69,
+   176.17
+  ],
+  "days": 30,
+  "pair": [
+   16.88,
+   17.15
+  ],
+  "pair_int": [
+   17,
+   17
+  ],
+  "point": {
+   "lat": -37.69,
+   "lon": 176.17,
+   "solved": false
+  },
+  "resid": {
+   "fajr": {
+    "mean": 0.16,
+    "min": -0.5,
+    "max": 0.7,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": 0.37,
+    "min": -0.2,
+    "max": 1.1,
+    "within1": 0.933
+   },
+   "dhuhr": {
+    "mean": -0.13,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -0.6,
+    "min": -1,
+    "max": 0,
+    "within1": 0.933
+   },
+   "maghrib": {
+    "mean": -0.27,
+    "min": -0.8,
+    "max": 0.3,
+    "within1": 1
+   },
+   "isha": {
+    "mean": 0.1,
+    "min": -0.5,
+    "max": 0.8,
+    "within1": 1
+   }
+  },
+  "resid_int": {
+   "fajr": {
+    "mean": -0.5,
+    "min": -1.1,
+    "max": 0.1,
+    "within1": 0.9
+   },
+   "sunrise": {
+    "mean": 0.37,
+    "min": -0.2,
+    "max": 1.1,
+    "within1": 0.933
+   },
+   "dhuhr": {
+    "mean": -0.13,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -0.6,
+    "min": -1,
+    "max": 0,
+    "within1": 0.933
+   },
+   "maghrib": {
+    "mean": -0.27,
+    "min": -0.8,
+    "max": 0.3,
+    "within1": 1
+   },
+   "isha": {
+    "mean": -0.72,
+    "min": -1.3,
+    "max": 0,
+    "within1": 0.8
+   }
+  },
+  "dhuhr_off": -0.13,
+  "dl_excess": 0.6,
+  "worst_pair": 0.8,
+  "worst_all": 1.1,
+  "worst_all_int": 1.3
+ },
+ "Te-Kuiti": {
+  "city": "Te-Kuiti",
+  "town": [
+   "Te Kuiti",
+   -38.33,
+   175.17
+  ],
+  "days": 30,
+  "pair": [
+   17.98,
+   17
+  ],
+  "pair_int": [
+   18,
+   17
+  ],
+  "point": {
+   "lat": -38.33,
+   "lon": 175.17,
+   "solved": false
+  },
+  "resid": {
+   "fajr": {
+    "mean": 0,
+    "min": -0.4,
+    "max": 0.5,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": -0.13,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": -0.03,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -1.72,
+    "min": -2.2,
+    "max": -1.2,
+    "within1": 0
+   },
+   "maghrib": {
+    "mean": -0.05,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "isha": {
+    "mean": -0.27,
+    "min": -0.7,
+    "max": 0.2,
+    "within1": 1
+   }
+  },
+  "resid_int": {
+   "fajr": {
+    "mean": -0.11,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": -0.13,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": -0.03,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -1.72,
+    "min": -2.2,
+    "max": -1.2,
+    "within1": 0
+   },
+   "maghrib": {
+    "mean": -0.05,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "isha": {
+    "mean": -0.27,
+    "min": -0.7,
+    "max": 0.2,
+    "within1": 1
+   }
+  },
+  "dhuhr_off": -0.03,
+  "dl_excess": -0.1,
+  "worst_pair": 0.7,
+  "worst_all": 2.2,
+  "worst_all_int": 2.2
+ },
+ "Te-Puke": {
+  "city": "Te-Puke",
+  "town": [
+   "Te Puke",
+   -37.78,
+   176.33
+  ],
+  "days": 30,
+  "pair": [
+   17.96,
+   17.08
+  ],
+  "pair_int": [
+   18,
+   17
+  ],
+  "point": {
+   "lat": -37.78,
+   "lon": 176.33,
+   "solved": false
+  },
+  "resid": {
+   "fajr": {
+    "mean": 0.15,
+    "min": -0.3,
+    "max": 0.6,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": -0.1,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": -0.03,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -1.81,
+    "min": -2.3,
+    "max": -1.2,
+    "within1": 0
+   },
+   "maghrib": {
+    "mean": -0.01,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   },
+   "isha": {
+    "mean": 0.2,
+    "min": -0.3,
+    "max": 0.7,
+    "within1": 1
+   }
+  },
+  "resid_int": {
+   "fajr": {
+    "mean": -0.08,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": -0.1,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": -0.03,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -1.81,
+    "min": -2.3,
+    "max": -1.2,
+    "within1": 0
+   },
+   "maghrib": {
+    "mean": -0.01,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   },
+   "isha": {
+    "mean": -0.24,
+    "min": -0.7,
+    "max": 0.2,
+    "within1": 1
+   }
+  },
+  "dhuhr_off": -0.03,
+  "dl_excess": -0.1,
+  "worst_pair": 0.7,
+  "worst_all": 2.3,
+  "worst_all_int": 2.3
+ },
+ "Timaru": {
+  "city": "Timaru",
+  "town": [
+   "Timaru",
+   -44.4,
+   171.25
+  ],
+  "days": 30,
+  "pair": [
+   14.98,
+   15.02
+  ],
+  "pair_int": [
+   15,
+   15
+  ],
+  "point": {
+   "lat": -44.4,
+   "lon": 171.25,
+   "solved": false
+  },
+  "resid": {
+   "fajr": {
+    "mean": 0.02,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": -0.06,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": -0.08,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -2.06,
+    "min": -2.6,
+    "max": -1.4,
+    "within1": 0
+   },
+   "maghrib": {
+    "mean": -0.1,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   },
+   "isha": {
+    "mean": -0.02,
+    "min": -0.2,
+    "max": 0.1,
+    "within1": 1
+   }
+  },
+  "resid_int": {
+   "fajr": {
+    "mean": -0.1,
+    "min": -0.6,
+    "max": 0.3,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": -0.06,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": -0.08,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -2.06,
+    "min": -2.6,
+    "max": -1.4,
+    "within1": 0
+   },
+   "maghrib": {
+    "mean": -0.1,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   },
+   "isha": {
+    "mean": -0.14,
+    "min": -0.3,
+    "max": 0,
+    "within1": 1
+   }
+  },
+  "dhuhr_off": -0.08,
+  "dl_excess": 0,
+  "worst_pair": 0.5,
+  "worst_all": 2.6,
+  "worst_all_int": 2.6
+ },
+ "Wairoa": {
+  "city": "Wairoa",
+  "town": [
+   "Wairoa",
+   -39.03,
+   177.37
+  ],
+  "days": 30,
+  "pair": [
+   18.04,
+   16.96
+  ],
+  "pair_int": [
+   18,
+   17
+  ],
+  "point": {
+   "lat": -39.03,
+   "lon": 177.37,
+   "solved": false
+  },
+  "resid": {
+   "fajr": {
+    "mean": -0.04,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": 0.13,
+    "min": -0.3,
+    "max": 0.7,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": 0.21,
+    "min": -0.3,
+    "max": 0.7,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -1.59,
+    "min": -2,
+    "max": -1,
+    "within1": 0.033
+   },
+   "maghrib": {
+    "mean": 0.17,
+    "min": -0.3,
+    "max": 0.7,
+    "within1": 1
+   },
+   "isha": {
+    "mean": -0.2,
+    "min": -0.7,
+    "max": 0.3,
+    "within1": 1
+   }
+  },
+  "resid_int": {
+   "fajr": {
+    "mean": 0.19,
+    "min": -0.3,
+    "max": 0.7,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": 0.13,
+    "min": -0.3,
+    "max": 0.7,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": 0.21,
+    "min": -0.3,
+    "max": 0.7,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -1.59,
+    "min": -2,
+    "max": -1,
+    "within1": 0.033
+   },
+   "maghrib": {
+    "mean": 0.17,
+    "min": -0.3,
+    "max": 0.7,
+    "within1": 1
+   },
+   "isha": {
+    "mean": 0.02,
+    "min": -0.4,
+    "max": 0.5,
+    "within1": 1
+   }
+  },
+  "dhuhr_off": 0.21,
+  "dl_excess": 0,
+  "worst_pair": 0.7,
+  "worst_all": 2,
+  "worst_all_int": 2
+ },
+ "Wanganui": {
+  "city": "Wanganui",
+  "town": [
+   "Whanganui",
+   -39.93,
+   175.05
+  ],
+  "days": 30,
+  "pair": [
+   17.94,
+   17.06
+  ],
+  "pair_int": [
+   18,
+   17
+  ],
+  "point": {
+   "lat": -39.93,
+   "lon": 175.05,
+   "solved": false
+  },
+  "resid": {
+   "fajr": {
+    "mean": 0.2,
+    "min": -0.3,
+    "max": 0.6,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": -0.15,
+    "min": -0.6,
+    "max": 0.3,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": -0.18,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -1.89,
+    "min": -2.5,
+    "max": -1.3,
+    "within1": 0
+   },
+   "maghrib": {
+    "mean": -0.18,
+    "min": -0.6,
+    "max": 0.3,
+    "within1": 1
+   },
+   "isha": {
+    "mean": 0.05,
+    "min": -0.4,
+    "max": 0.5,
+    "within1": 1
+   }
+  },
+  "resid_int": {
+   "fajr": {
+    "mean": -0.15,
+    "min": -0.6,
+    "max": 0.3,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": -0.15,
+    "min": -0.6,
+    "max": 0.3,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": -0.18,
+    "min": -0.6,
+    "max": 0.4,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -1.89,
+    "min": -2.5,
+    "max": -1.3,
+    "within1": 0
+   },
+   "maghrib": {
+    "mean": -0.18,
+    "min": -0.6,
+    "max": 0.3,
+    "within1": 1
+   },
+   "isha": {
+    "mean": -0.29,
+    "min": -0.7,
+    "max": 0.2,
+    "within1": 1
+   }
+  },
+  "dhuhr_off": -0.18,
+  "dl_excess": 0,
+  "worst_pair": 0.6,
+  "worst_all": 2.5,
+  "worst_all_int": 2.5
+ },
+ "Wellington": {
+  "city": "Wellington",
+  "town": [
+   "Wellington",
+   -41.29,
+   174.78
+  ],
+  "days": 30,
+  "pair": [
+   16.04,
+   15.19
+  ],
+  "pair_int": [
+   16,
+   15
+  ],
+  "point": {
+   "lat": -41.29,
+   "lon": 174.78,
+   "solved": false
+  },
+  "resid": {
+   "fajr": {
+    "mean": 0.12,
+    "min": -0.6,
+    "max": 0.9,
+    "within1": 1
+   },
+   "sunrise": {
+    "mean": 4.24,
+    "min": 3.6,
+    "max": 4.8,
+    "within1": 0
+   },
+   "dhuhr": {
+    "mean": 1.47,
+    "min": 1,
+    "max": 2,
+    "within1": 0.067
+   },
+   "asr": {
+    "mean": -0.73,
+    "min": -1.3,
+    "max": -0.3,
+    "within1": 0.833
+   },
+   "maghrib": {
+    "mean": 0.92,
+    "min": 0.5,
+    "max": 1.3,
+    "within1": 0.533
+   },
+   "isha": {
+    "mean": -0.03,
+    "min": -0.5,
+    "max": 0.4,
+    "within1": 1
+   }
+  },
+  "resid_int": {
+   "fajr": {
+    "mean": 0.35,
+    "min": -0.4,
+    "max": 1.1,
+    "within1": 0.967
+   },
+   "sunrise": {
+    "mean": 4.24,
+    "min": 3.6,
+    "max": 4.8,
+    "within1": 0
+   },
+   "dhuhr": {
+    "mean": 1.47,
+    "min": 1,
+    "max": 2,
+    "within1": 0.067
+   },
+   "asr": {
+    "mean": -0.73,
+    "min": -1.3,
+    "max": -0.3,
+    "within1": 0.833
+   },
+   "maghrib": {
+    "mean": 0.92,
+    "min": 0.5,
+    "max": 1.3,
+    "within1": 0.533
+   },
+   "isha": {
+    "mean": -1.13,
+    "min": -1.6,
+    "max": -0.6,
+    "within1": 0.367
+   }
+  },
+  "dhuhr_off": 1.47,
+  "dl_excess": 3.3,
+  "worst_pair": 0.9,
+  "worst_all": 4.8,
+  "worst_all_int": 4.8
+ },
+ "Whangarei": {
+  "city": "Whangarei",
+  "town": [
+   "Whangarei",
+   -35.73,
+   174.32
+  ],
+  "days": 30,
+  "pair": [
+   19.02,
+   18.36
+  ],
+  "pair_int": [
+   19,
+   18
+  ],
+  "point": {
+   "lat": -35.73,
+   "lon": 174.32,
+   "solved": false
+  },
+  "resid": {
+   "fajr": {
+    "mean": -0.03,
+    "min": -0.8,
+    "max": 1.2,
+    "within1": 0.9
+   },
+   "sunrise": {
+    "mean": 0.28,
+    "min": -0.5,
+    "max": 0.9,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": -0.09,
+    "min": -0.6,
+    "max": 0.5,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -0.54,
+    "min": -1.3,
+    "max": 0.1,
+    "within1": 0.833
+   },
+   "maghrib": {
+    "mean": 0.07,
+    "min": -1.3,
+    "max": 1,
+    "within1": 0.9
+   },
+   "isha": {
+    "mean": -0.32,
+    "min": -2.6,
+    "max": 2.8,
+    "within1": 0.467
+   }
+  },
+  "resid_int": {
+   "fajr": {
+    "mean": 0.08,
+    "min": -0.7,
+    "max": 1.3,
+    "within1": 0.867
+   },
+   "sunrise": {
+    "mean": 0.28,
+    "min": -0.5,
+    "max": 0.9,
+    "within1": 1
+   },
+   "dhuhr": {
+    "mean": -0.09,
+    "min": -0.6,
+    "max": 0.5,
+    "within1": 1
+   },
+   "asr": {
+    "mean": -0.54,
+    "min": -1.3,
+    "max": 0.1,
+    "within1": 0.833
+   },
+   "maghrib": {
+    "mean": 0.07,
+    "min": -1.3,
+    "max": 1,
+    "within1": 0.9
+   },
+   "isha": {
+    "mean": -2.23,
+    "min": -4.4,
+    "max": 0.7,
+    "within1": 0.167
+   }
+  },
+  "dhuhr_off": -0.09,
+  "dl_excess": 0.2,
+  "worst_pair": 2.8,
+  "worst_all": 2.8,
+  "worst_all_int": 4.4
+ }
+}

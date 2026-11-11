@@ -1,0 +1,83 @@
+{
+ "file": "data/mawaqit_havana_abdallah.json",
+ "name": "Mosque Abdallah - HAVANA",
+ "lat": 23.1374373,
+ "lon": -82.3489425,
+ "tz": "America/Havana",
+ "days": 365,
+ "candidates": [
+  {
+   "method": "Egyptian",
+   "madhab": "shafi",
+   "totalMae": 6.62
+  },
+  {
+   "method": "Singapore",
+   "madhab": "shafi",
+   "totalMae": 8.91
+  },
+  {
+   "method": "Kuwait",
+   "madhab": "shafi",
+   "totalMae": 12.36
+  }
+ ],
+ "refined": {
+  "method": "Egyptian",
+  "madhab": "shafi",
+  "fajrAngle": 18.05,
+  "ishaAngle": 16.1,
+  "offsets": {
+   "fajr": -7,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 1,
+   "maghrib": 3,
+   "isha": 7
+  },
+  "scores": {
+   "fajr": {
+    "med": -0.1,
+    "exact": 158,
+    "w1": 301,
+    "mae": 0.8,
+    "worst": 2.7
+   },
+   "sunrise": {
+    "med": 0,
+    "exact": 358,
+    "w1": 365,
+    "mae": 0.25,
+    "worst": 0.5
+   },
+   "dhuhr": {
+    "med": 0,
+    "exact": 359,
+    "w1": 365,
+    "mae": 0.24,
+    "worst": 0.5
+   },
+   "asr": {
+    "med": 0,
+    "exact": 53,
+    "w1": 263,
+    "mae": 1.13,
+    "worst": 2.1
+   },
+   "maghrib": {
+    "med": 0,
+    "exact": 359,
+    "w1": 365,
+    "mae": 0.26,
+    "worst": 0.5
+   },
+   "isha": {
+    "med": -0.1,
+    "exact": 272,
+    "w1": 365,
+    "mae": 0.36,
+    "worst": 1.3
+   }
+  }
+ }
+}

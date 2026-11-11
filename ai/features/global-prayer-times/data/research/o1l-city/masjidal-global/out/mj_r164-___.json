@@ -1,0 +1,34 @@
+{
+ "label": "r164-قطر",
+ "file": "captures/masjidi_region_164.json",
+ "rows": 366,
+ "lat": 25.24,
+ "k": 0,
+ "geoRms": 6.339,
+ "fajr": {
+  "kind": "angle",
+  "n": 366,
+  "angle": 18.22,
+  "darkIqr": 0.14
+ },
+ "isha": {
+  "kind": "interval",
+  "n": 366,
+  "angle": 20.17,
+  "darkIqr": 0.74,
+  "gap": 90
+ },
+ "asr": {
+  "school": "Shafi",
+  "shafiMae": 0.4,
+  "hanafiMae": 59
+ },
+ "clock": {
+  "lonImplied": 6.27,
+  "offsetMin": 25,
+  "driftRms": 0.3,
+  "runs": 1,
+  "steps": []
+ },
+ "amplitude": -94
+}

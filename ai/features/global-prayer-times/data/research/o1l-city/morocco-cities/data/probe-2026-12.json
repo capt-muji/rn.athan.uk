@@ -1,0 +1,61 @@
+{
+ "watch": "habous December 2026 month file",
+ "url": "https://www.habous.gov.ma/data/horaires-2026-12.js",
+ "due": "2026-12-01 (expected monthly roll; the portal serves current + previous month)",
+ "probes": [
+  {
+   "utc": "2026-11-11T05:39:57Z",
+   "status": 404,
+   "bytes": 555,
+   "body": "<html><head><title>404 Not Found</title></head><body><center><h1>404 Not Found</h1></center><hr><center>nginx/1.31.8</center></body></html>",
+   "verdict": "not published"
+  },
+  {
+   "utc": "2026-11-11T05:57:02Z",
+   "status": 404,
+   "bytes": 555,
+   "body": "identical nginx 404",
+   "verdict": "not published"
+  },
+  {
+   "utc": "2026-11-11T05:58:52Z",
+   "status": 404,
+   "bytes": 555,
+   "body": "identical nginx 404",
+   "verdict": "not published"
+  }
+ ],
+ "control_probes": [
+  {
+   "url": "https://www.habous.gov.ma/data/horaires-2026-11.js",
+   "utc": "2026-11-11T05:39:57Z",
+   "status": 200,
+   "bytes": 292088
+  },
+  {
+   "url": "https://www.habous.gov.ma/data/horaires-2027-01.js",
+   "utc": "2026-11-11T05:39:57Z",
+   "status": 404,
+   "bytes": 555
+  }
+ ],
+ "portal_index_evidence": {
+  "url": "https://www.habous.gov.ma/",
+  "captured": "captures/ma-habous-root.html",
+  "bytes": 8836,
+  "month_files_referenced": [
+   "data/horaires-2026-10.js?v=426bec493c",
+   "data/horaires-2026-11.js?v=17f3372351"
+  ],
+  "note": "the root page is the portal's own index of published months; it lists October and November only"
+ },
+ "fuseau_field": {
+  "checked_against_december_row": false,
+  "reason": "no December file exists, so no December row exists to carry the field",
+  "checked_against": [
+   "2026-10 fuseau:\"GMT\"",
+   "2026-11 fuseau:\"GMT\"",
+   "assets/js/prieres.js DECALAGE_MAROC_MINUTES = 0"
+  ]
+ }
+}

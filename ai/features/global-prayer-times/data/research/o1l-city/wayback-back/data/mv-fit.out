@@ -1,0 +1,16 @@
+male 2027 n=365 | exact 71.6 pc within-1 100.0 pc worst 1 | fajr 53/100 sunrise 58/100 dhuhr 90/100 asr 75/100 maghrib 90/100 isha 63/100
+male 2031 n=365 | exact 71.7 pc within-1 100.0 pc worst 1 | fajr 54/100 sunrise 58/100 dhuhr 89/100 asr 76/100 maghrib 90/100 isha 63/100
+male 2036 n=366 | exact 65.8 pc within-1 99.9 pc worst 2 | fajr 55/100 sunrise 49/100 dhuhr 78/100 asr 72/99 maghrib 79/100 isha 63/100
+thuraakunu 2027 n=62 | exact 67.5 pc within-1 98.7 pc worst 3 | fajr 85/100 sunrise 81/100 dhuhr 63/98 asr 73/100 maghrib 76/100 isha 27/94
+thuraakunu 2031 n=62 | exact 67.5 pc within-1 98.7 pc worst 3 | fajr 87/100 sunrise 79/100 dhuhr 63/98 asr 73/100 maghrib 76/100 isha 27/94
+thuraakunu 2036 n=62 | exact 63.2 pc within-1 97.8 pc worst 3 | fajr 87/100 sunrise 74/100 dhuhr 66/98 asr 74/100 maghrib 56/100 isha 21/89
+hoadedhdhoo 2027 n=62 | exact 69.6 pc within-1 100.0 pc worst 1 | fajr 65/100 sunrise 76/100 dhuhr 77/100 asr 74/100 maghrib 84/100 isha 42/100
+hoadedhdhoo 2031 n=62 | exact 68.5 pc within-1 100.0 pc worst 1 | fajr 63/100 sunrise 74/100 dhuhr 79/100 asr 69/100 maghrib 84/100 isha 42/100
+hoadedhdhoo 2036 n=62 | exact 65.6 pc within-1 100.0 pc worst 1 | fajr 55/100 sunrise 66/100 dhuhr 76/100 asr 71/100 maghrib 87/100 isha 39/100
+sweep male 2031 best: {"fajr":5,"sunrise":-2,"dhuhr":4,"asr":1,"maghrib":2,"isha":4} exact 71.7 within-1 100.0 worst 1
+male year-diff (month-day aligned): 2027 vs 2031 0/365 differ; 2027 vs 2036 0/365 differ
+thuraakunu year-diff (month-day aligned): 2027 vs 2031 0/62 differ; 2027 vs 2036 0/62 differ
+hoadedhdhoo year-diff (month-day aligned): 2027 vs 2031 0/62 differ; 2027 vs 2036 0/62 differ
+male 2027 fajr Jan 04:54..05:05 Jul 04:39..04:46
+thuraakunu 2027 fajr Jan 05:02..05:11 Jul 04:36..04:45
+hoadedhdhoo 2027 fajr Jan 04:51..05:03 Jul 04:49..04:54

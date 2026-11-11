@@ -1,0 +1,105 @@
+
+== barcelona (Centre Cultural Islamic Catala) 41.4088906,2.1884856 Europe/Madrid n=365
+fajr 18.00 (meanAbs 0.05) | isha 16.99 (meanAbs 0.13)
+margins sunrise 0 dhuhr 0 asr 0 maghrib 0
+sunrise hist {"0":357,"1":6,"-1":2} dhuhr hist {"0":360,"1":5} maghrib hist {"0":354,"1":9,"-1":2} asr hist {"0":70,"1":100,"2":45,"-1":108,"-2":42}
+fajr 365/365 mae 0.05 | sunrise 365/365 mae 0.03 | dhuhr 365/365 mae 0.00 | asr 280/365 mae 1.04 | maghrib 365/365 mae 0.03 | isha 365/365 mae 0.13
+all6 280/365 | amplitude fajr 153 isha 274
+
+== bologna (Moschea Annur Bologna) 44.4905805,11.4024705 Europe/Rome n=365
+fajr 18.00 (meanAbs 0.06) | isha 16.98 (meanAbs 0.15)
+margins sunrise 0 dhuhr 0 asr 0 maghrib 0
+sunrise hist {"0":353,"1":10,"-1":2} dhuhr hist {"0":361,"1":4} maghrib hist {"0":345,"1":13,"-1":7} asr hist {"0":53,"1":84,"2":72,"-1":87,"-2":69}
+fajr 365/365 mae 0.06 | sunrise 365/365 mae 0.03 | dhuhr 365/365 mae 0.01 | asr 224/365 mae 1.24 | maghrib 365/365 mae 0.05 | isha 365/365 mae 0.15
+all6 224/365 | amplitude fajr 186 isha 305
+
+== granada2 (Masjid An-Noor Granada) 37.2041371,-3.6020483 Europe/Madrid n=365
+fajr 18.00 (meanAbs 0.04) | isha 17.00 (meanAbs 0.09)
+margins sunrise 0 dhuhr 0 asr 0 maghrib 3
+sunrise hist {"0":355,"1":6,"-1":4} dhuhr hist {"0":355,"1":10} maghrib hist {"2":5,"3":357,"4":3} asr hist {"0":81,"1":111,"2":30,"-1":118,"-2":25}
+fajr 365/365 mae 0.04 | sunrise 365/365 mae 0.03 | dhuhr 365/365 mae 0.00 | asr 306/365 mae 0.95 | maghrib 365/365 mae 0.02 | isha 365/365 mae 0.09
+all6 306/365 | amplitude fajr 122 isha 240
+
+== granada3 (Masjid Omar Granada) 37.11,-3.36 Europe/Madrid n=365
+fajr 18.00 (meanAbs 0.03) | isha 18.00 (meanAbs 0.13)
+margins sunrise 0 dhuhr 0 asr 0 maghrib 0
+sunrise hist {"0":355,"1":8,"-1":2} dhuhr hist {"0":360,"1":5} maghrib hist {"0":357,"1":8} asr hist {"0":71,"1":91,"2":54,"-1":113,"-2":36}
+fajr 365/365 mae 0.03 | sunrise 365/365 mae 0.02 | dhuhr 365/365 mae 0.01 | asr 274/365 mae 1.05 | maghrib 365/365 mae 0.02 | isha 365/365 mae 0.13
+all6 274/365 | amplitude fajr 122 isha 241
+
+== lille2 (Mosquee Assalam Lille) 50.6201929149,3.0749747546324 Europe/Paris n=365
+fajr 12.58 (meanAbs 3.26) | isha 12.64 (meanAbs 1.13)
+margins sunrise 0 dhuhr 12 asr 0 maghrib 3
+sunrise hist {"0":123,"1":157,"2":8,"3":1,"-1":68,"-2":2,"-3":1,"-59":5} dhuhr hist {"5":72,"6":34,"7":19,"8":14,"9":14,"10":15,"11":12,"12":14,"13":15,"14":16,"15":21,"16":25,"17":5,"18":4,"19":5,"20":6,"21":5,"22":5,"23":6,"24":7,"25":6,"26":8,"27":9,"28":16,"29":12} maghrib hist {"2":152,"3":127,"4":86} asr hist {"0":202,"1":31,"2":2,"3":1,"4":2,"5":1,"6":1,"7":2,"8":2,"9":1,"10":2,"11":1,"12":2,"13":2,"14":2,"15":1,"16":1,"17":2,"18":2,"19":2,"20":1,"21":2,"22":1,"23":2,"24":2,"25":2,"26":2,"27":3,"28":2,"29":3,"30":2,"31":3,"32":4,"33":5,"34":11,"-1":37,"-2":20,"-3":1}
+fajr 265/365 mae 3.26 | sunrise 348/365 mae 1.48 | dhuhr 41/365 mae 6.35 | asr 269/365 mae 4.79 | maghrib 365/365 mae 0.65 | isha 261/365 mae 1.13
+all6 14/365 | amplitude fajr 203 isha 355
+
+== lille (Grande Mosquee de Lille) 50.6134747,3.0612652 Europe/Paris n=365
+fajr 12.51 (meanAbs 1.01) | isha 12.66 (meanAbs 1.30)
+margins sunrise 0 dhuhr 5 asr 0 maghrib 3
+sunrise hist {"0":352,"1":8,"-1":5} dhuhr hist {"5":360,"6":5} maghrib hist {"2":7,"3":339,"4":19} asr hist {"0":35,"1":41,"2":53,"3":66,"4":5,"-1":44,"-2":50,"-3":59,"-4":12}
+fajr 302/365 mae 1.01 | sunrise 365/365 mae 0.04 | dhuhr 365/365 mae 0.00 | asr 120/365 mae 2.00 | maghrib 365/365 mae 0.06 | isha 283/365 mae 1.30
+all6 42/365 | amplitude fajr 228 isha 355
+
+== lyon2 (Masjid Attawba Lyon) 45.7882926,4.7930922 Europe/Paris n=365
+fajr 14.42 (meanAbs 0.57) | isha 13.47 (meanAbs 0.64)
+margins sunrise -1 dhuhr 5 asr 0 maghrib 2
+sunrise hist {"0":152,"1":21,"-1":145,"-2":47} dhuhr hist {"5":225,"6":140} maghrib hist {"1":57,"2":154,"3":131,"4":23} asr hist {"0":160,"1":107,"2":39,"-1":59}
+fajr 329/365 mae 0.57 | sunrise 348/365 mae 0.65 | dhuhr 365/365 mae 0.35 | asr 326/365 mae 0.67 | maghrib 344/365 mae 0.63 | isha 325/365 mae 0.64
+all6 254/365 | amplitude fajr 179 isha 302
+
+== lyon (Grande mosquee de Lyon) 45.7368163,4.8902183 Europe/Paris n=365
+fajr 14.42 (meanAbs 0.65) | isha 13.54 (meanAbs 0.64)
+margins sunrise 0 dhuhr 6 asr 1 maghrib 3
+sunrise hist {"0":153,"1":65,"121":1,"-1":144,"-2":2} dhuhr hist {"5":92,"6":273} maghrib hist {"1":3,"2":165,"3":125,"4":70,"5":1,"-1":1} asr hist {"0":154,"1":118,"2":75,"-1":18}
+fajr 313/365 mae 0.65 | sunrise 361/365 mae 0.92 | dhuhr 365/365 mae 0.27 | asr 345/365 mae 0.74 | maghrib 360/365 mae 0.68 | isha 321/365 mae 0.64
+all6 258/365 | amplitude fajr 179 isha 302
+
+== marseille2 (Mosquee Khalid ibn al-Walid Marseille) 43.305,5.372 Europe/Paris n=365
+fajr 12.92 (meanAbs 0.71) | isha 12.84 (meanAbs 1.84)
+margins sunrise 1 dhuhr 5 asr 0 maghrib 4
+sunrise hist {"0":90,"1":275} dhuhr hist {"4":31,"5":331,"6":3} maghrib hist {"3":159,"4":206} asr hist {"0":194,"1":81,"-1":90}
+fajr 305/365 mae 0.71 | sunrise 365/365 mae 0.25 | dhuhr 365/365 mae 0.10 | asr 365/365 mae 0.47 | maghrib 365/365 mae 0.44 | isha 265/365 mae 1.84
+all6 259/365 | amplitude fajr 147 isha 274
+
+== marseille (Mosquee Mariam Marseille) 43.335260258005,5.3605473922175 Europe/Paris n=365
+fajr 13.03 (meanAbs 0.75) | isha 13.02 (meanAbs 0.75)
+margins sunrise 0 dhuhr 5 asr 1 maghrib 3
+sunrise hist {"0":349,"1":11,"-1":5} dhuhr hist {"5":361,"6":4} maghrib hist {"2":3,"3":353,"4":9} asr hist {"0":88,"1":58,"2":68,"3":84,"-1":67}
+fajr 284/365 mae 0.75 | sunrise 365/365 mae 0.04 | dhuhr 365/365 mae 0.00 | asr 212/365 mae 1.26 | maghrib 365/365 mae 0.04 | isha 288/365 mae 0.75
+all6 125/365 | amplitude fajr 148 isha 274
+
+== milano (Bangla Assoc. Viale Marche Milano) 45.4959642,9.193773 Europe/Rome n=365
+fajr 18.00 (meanAbs 0.08) | isha 17.01 (meanAbs 0.20)
+margins sunrise 0 dhuhr 0 asr 0 maghrib 0
+sunrise hist {"0":354,"1":8,"-1":3} dhuhr hist {"0":358,"1":7} maghrib hist {"0":354,"1":9,"-1":2} asr hist {"0":58,"1":66,"2":85,"-1":75,"-2":81}
+fajr 365/365 mae 0.08 | sunrise 365/365 mae 0.05 | dhuhr 365/365 mae 0.01 | asr 204/365 mae 1.28 | maghrib 365/365 mae 0.04 | isha 365/365 mae 0.20
+all6 204/365 | amplitude fajr 200 isha 319
+
+== sevilla2 (Mezquita Alwahda Sevilla) 37.3562048,-6.0327019 Europe/Madrid n=365
+fajr 18.00 (meanAbs 0.04) | isha 17.00 (meanAbs 0.13)
+margins sunrise 0 dhuhr 0 asr 2 maghrib 0
+sunrise hist {"0":352,"1":12,"-1":1} dhuhr hist {"0":361,"1":4} maghrib hist {"0":354,"1":7,"-1":4} asr hist {"0":93,"1":64,"2":46,"3":59,"4":95,"5":4,"-1":4}
+fajr 365/365 mae 0.04 | sunrise 365/365 mae 0.04 | dhuhr 365/365 mae 0.01 | asr 170/365 mae 1.42 | maghrib 365/365 mae 0.03 | isha 365/365 mae 0.13
+all6 170/365 | amplitude fajr 124 isha 241
+
+== sevilla (Comunidad Islamica Carretera Amarilla) 37.3884636,-5.9516786 Europe/Madrid n=365
+fajr 18.00 (meanAbs 0.05) | isha 17.00 (meanAbs 0.08)
+margins sunrise 0 dhuhr 0 asr 2 maghrib 0
+sunrise hist {"0":350,"1":12,"-1":3} dhuhr hist {"0":359,"1":6} maghrib hist {"0":354,"1":9,"-1":2} asr hist {"0":43,"1":110,"2":57,"3":100,"4":55}
+fajr 365/365 mae 0.05 | sunrise 365/365 mae 0.03 | dhuhr 365/365 mae 0.01 | asr 265/365 mae 1.11 | maghrib 365/365 mae 0.02 | isha 365/365 mae 0.08
+all6 265/365 | amplitude fajr 124 isha 241
+
+== torino (Moschea Taiba Torino) 45.0836517,7.6896654 Europe/Rome n=365
+fajr 15.00 (meanAbs 0.06) | isha 14.99 (meanAbs 0.15)
+margins sunrise 0 dhuhr 0 asr 0 maghrib 0
+sunrise hist {"0":347,"1":12,"-1":6} dhuhr hist {"0":359,"1":6} maghrib hist {"0":350,"1":12,"-1":3} asr hist {"0":39,"1":50,"2":86,"3":27,"-1":59,"-2":79,"-3":25}
+fajr 365/365 mae 0.06 | sunrise 365/365 mae 0.04 | dhuhr 365/365 mae 0.00 | asr 150/365 mae 1.63 | maghrib 365/365 mae 0.04 | isha 365/365 mae 0.15
+all6 150/365 | amplitude fajr 174 isha 302
+
+== valencia (Gran Mezquita de Valencia) 39.4783469,-0.3530271 Europe/Madrid n=365
+fajr 18.00 (meanAbs 0.03) | isha 16.99 (meanAbs 0.12)
+margins sunrise 0 dhuhr 0 asr 0 maghrib 0
+sunrise hist {"0":351,"1":12,"-1":2} dhuhr hist {"0":357,"1":8} maghrib hist {"0":359,"1":4,"-1":2} asr hist {"0":71,"1":135,"2":16,"-1":131,"-2":12}
+fajr 365/365 mae 0.03 | sunrise 365/365 mae 0.04 | dhuhr 365/365 mae 0.00 | asr 339/365 mae 0.87 | maghrib 365/365 mae 0.02 | isha 365/365 mae 0.12
+all6 339/365 | amplitude fajr 138 isha 257

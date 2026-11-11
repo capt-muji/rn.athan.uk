@@ -1,0 +1,83 @@
+{
+ "file": "data/mawaqit_pr_ponce.json",
+ "name": "Centro islamico de Ponce",
+ "lat": 18.0102775,
+ "lon": -66.6135014,
+ "tz": "America/Puerto_Rico",
+ "days": 365,
+ "candidates": [
+  {
+   "method": "MWL",
+   "madhab": "shafi",
+   "totalMae": 1.72
+  },
+  {
+   "method": "Turkey",
+   "madhab": "shafi",
+   "totalMae": 1.72
+  },
+  {
+   "method": "Kuwait",
+   "madhab": "shafi",
+   "totalMae": 3.67
+  }
+ ],
+ "refined": {
+  "method": "MWL",
+  "madhab": "shafi",
+  "fajrAngle": 18,
+  "ishaAngle": 17,
+  "offsets": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "scores": {
+   "fajr": {
+    "med": 0,
+    "exact": 359,
+    "w1": 365,
+    "mae": 0.25,
+    "worst": 0.5
+   },
+   "sunrise": {
+    "med": 0,
+    "exact": 356,
+    "w1": 365,
+    "mae": 0.25,
+    "worst": 0.5
+   },
+   "dhuhr": {
+    "med": 0,
+    "exact": 360,
+    "w1": 365,
+    "mae": 0.24,
+    "worst": 0.5
+   },
+   "asr": {
+    "med": 0,
+    "exact": 109,
+    "w1": 358,
+    "mae": 0.74,
+    "worst": 1.6
+   },
+   "maghrib": {
+    "med": 0,
+    "exact": 360,
+    "w1": 365,
+    "mae": 0.24,
+    "worst": 0.5
+   },
+   "isha": {
+    "med": 0,
+    "exact": 349,
+    "w1": 365,
+    "mae": 0.25,
+    "worst": 0.6
+   }
+  }
+ }
+}

@@ -1,0 +1,105 @@
+OK id=1 lokacija=Banja Luka bytes=   21347
+OK id=2 lokacija=Bihać bytes=   21343
+OK id=3 lokacija=Bijeljina bytes=   21346
+OK id=33 lokacija=Goražde bytes=   21346
+OK id=61 lokacija=Mostar bytes=   21344
+OK id=77 lokacija=Sarajevo bytes=   21346
+OK id=90 lokacija=Travnik bytes=   21345
+OK id=93 lokacija=Tuzla bytes=   21343
+OK id=102 lokacija=Zenica bytes=   21345
+OK id=4 lokacija=Bileća bytes=   21344
+OK id=20 lokacija=Čajniče bytes=   21347
+OK id=49 lokacija=Ključ bytes=   21344
+OK id=88 lokacija=Tešanj bytes=   21345
+OK id=21 lokacija=Čapljina bytes=   21347
+OK id=44 lokacija=Kakanj bytes=   21344
+OK id=55 lokacija=Lopare bytes=   21344
+OK id=45 lokacija=Kalesija bytes=   21346
+OK id=41 lokacija=Ilijaš bytes=   21345
+OK id=40 lokacija=Hlivno bytes=   21344
+OK id=99 lokacija=Vitez bytes=   21343
+OK id=65 lokacija=Novi Travnik bytes=   21350
+OK id=43 lokacija=Jajce bytes=   21343
+OK id=30 lokacija=Fojnica bytes=   21345
+OK id=66 lokacija=Odžak bytes=   21344
+OK id=84 lokacija=Šekovići bytes=   21348
+OK id=5 lokacija=Bosanski Brod bytes=   21350
+OK id=68 lokacija=Orašje bytes=   21345
+OK id=91 lokacija=Trebinje bytes=   21346
+OK id=96 lokacija=Velika Kladuša bytes=   21353
+OK id=98 lokacija=Višegrad bytes=   21347
+OK id=71 lokacija=Prijedor bytes=   21346
+OK id=24 lokacija=Čitluk bytes=   21345
+OK id=26 lokacija=Doboj bytes=   21343
+OK id=57 lokacija=Ljubinje bytes=   21346
+OK id=59 lokacija=Maglaj bytes=   21344
+OK id=110 lokacija=Novi Pazar bytes=   21349
+OK id=116 lokacija=Sjenica bytes=   21346
+  retry 1 http=503 id=117
+  retry 2 http=503 id=117
+  retry 3 http=503 id=117
+  retry 4 http=503 id=117
+OK id=117 lokacija=Tutin bytes=   21344
+OK id=114 lokacija=Prijepolje bytes=   21349
+OK id=113 lokacija=Priboj bytes=   21345
+OK id=109 lokacija=Nova Varoš bytes=   21350
+OK id=107 lokacija=Bijelo Polje bytes=   21351
+OK id=111 lokacija=Plav bytes=   21343
+OK id=115 lokacija=Rožaje bytes=   21346
+OK id=112 lokacija=Pljevlja bytes=   21347
+OK id=108 lokacija=Gusinje bytes=   21346
+DONE
+OK id=32 lokacija=Glamoč bytes=   21345
+OK id=53 lokacija=Kupres bytes=   21344
+OK id=95 lokacija=Vareš bytes=   21344
+OK id=79 lokacija=Sokolac bytes=   21345
+OK id=39 lokacija=Han-Pijesak bytes=   21349
+OK id=64 lokacija=Nevesinje bytes=   21347
+OK id=34 lokacija=Gornji Vakuf bytes=   21350
+OK id=16 lokacija=Bugojno bytes=   21345
+OK id=73 lokacija=Prozor bytes=   21344
+OK id=50 lokacija=Konjic bytes=   21344
+OK id=97 lokacija=Visoko bytes=   21344
+OK id=103 lokacija=Zvornik bytes=   21346
+OK id=14 lokacija=Brčko bytes=   21344
+OK id=19 lokacija=Cazin bytes=   21343
+OK id=78 lokacija=Skender-Vakuf bytes=   21351
+OK id=52 lokacija=Kreševo bytes=   21346
+OK id=47 lokacija=Kiseljak bytes=   21346
+OK id=67 lokacija=Olovo bytes=   21343
+OK id=100 lokacija=Vlasenica bytes=   21348
+OK id=85 lokacija=Šipovo bytes=   21345
+OK id=8 lokacija=Bosansko Grahovo bytes=   21353
+OK id=11 lokacija=Bosanski Petrovac bytes=   21355
+OK id=83 lokacija=Stolac bytes=   21344
+OK id=37 lokacija=Grude bytes=   21343
+OK id=58 lokacija=Ljubuški bytes=   21347
+OK id=70 lokacija=Posušje bytes=   21346
+OK id=86 lokacija=Široki Brijeg bytes=   21352
+OK id=28 lokacija=Drvar bytes=   21343
+OK id=81 lokacija=Srebrenica bytes=   21348
+OK id=13 lokacija=Bratunac bytes=   21346
+OK id=36 lokacija=Gradačac bytes=   21347
+OK id=35 lokacija=Gračanica bytes=   21348
+OK id=105 lokacija=Žepče bytes=   21346
+OK id=87 lokacija=Teslić bytes=   21345
+OK id=72 lokacija=Prnjavor bytes=   21346
+OK id=25 lokacija=Derventa bytes=   21346
+OK id=76 lokacija=Sanski Most bytes=   21349
+  retry 1 http=503 id=74
+  retry 2 http=503 id=74
+  retry 3 http=503 id=74
+  retry 4 http=503 id=74
+OK id=74 lokacija=Rogatica bytes=   21346
+OK id=75 lokacija=Rudo bytes=   21342
+OK id=92 lokacija=Trnovo bytes=   21344
+OK id=69 lokacija=Pale bytes=   21342
+OK id=48 lokacija=Kladanj bytes=   21345
+OK id=56 lokacija=Lukavac bytes=   21345
+OK id=82 lokacija=Srebrenik bytes=   21347
+OK id=0 lokacija=Banovići bytes=   21346
+OK id=106 lokacija=Živinice bytes=   21348
+OK id=15 lokacija=Breza bytes=   21343
+OK id=17 lokacija=Busovača bytes=   21347
+OK id=94 lokacija=Ugljevik bytes=   21346
+DONE

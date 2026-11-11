@@ -1,0 +1,205 @@
+{
+ "salalah": {
+  "rows": 3285,
+  "res": {
+   "18/18 round": {
+    "fajrExact": 95.7,
+    "fajrW1": 100,
+    "ishaExact": 71.2,
+    "ishaW1": 100
+   },
+   "18/18 ceil": {
+    "fajrExact": 45.9,
+    "fajrW1": 100,
+    "ishaExact": 44.8,
+    "ishaW1": 97.5
+   },
+   "17.8/18.15 round": {
+    "fajrExact": 14.9,
+    "fajrW1": 100,
+    "ishaExact": 40.1,
+    "ishaW1": 99.9
+   },
+   "17.8/18.15 ceil": {
+    "fajrExact": 66.4,
+    "fajrW1": 100,
+    "ishaExact": 67.2,
+    "ishaW1": 100
+   }
+  }
+ },
+ "sohar": {
+  "rows": 3285,
+  "res": {
+   "18/18 round": {
+    "fajrExact": 97.6,
+    "fajrW1": 100,
+    "ishaExact": 59.1,
+    "ishaW1": 100
+   },
+   "18/18 ceil": {
+    "fajrExact": 48.9,
+    "fajrW1": 100,
+    "ishaExact": 53.1,
+    "ishaW1": 95.1
+   },
+   "17.8/18.15 round": {
+    "fajrExact": 6.4,
+    "fajrW1": 98,
+    "ishaExact": 33,
+    "ishaW1": 95.2
+   },
+   "17.8/18.15 ceil": {
+    "fajrExact": 56.2,
+    "fajrW1": 100,
+    "ishaExact": 53.6,
+    "ishaW1": 100
+   }
+  }
+ },
+ "nizwa": {
+  "rows": 3285,
+  "res": {
+   "18/18 round": {
+    "fajrExact": 97.4,
+    "fajrW1": 100,
+    "ishaExact": 62.7,
+    "ishaW1": 100
+   },
+   "18/18 ceil": {
+    "fajrExact": 47.4,
+    "fajrW1": 100,
+    "ishaExact": 48.9,
+    "ishaW1": 95.9
+   },
+   "17.8/18.15 round": {
+    "fajrExact": 8.2,
+    "fajrW1": 99.3,
+    "ishaExact": 34,
+    "ishaW1": 96.9
+   },
+   "17.8/18.15 ceil": {
+    "fajrExact": 60.3,
+    "fajrW1": 100,
+    "ishaExact": 57.6,
+    "ishaW1": 100
+   }
+  }
+ },
+ "sur": {
+  "rows": 3285,
+  "res": {
+   "18/18 round": {
+    "fajrExact": 98.4,
+    "fajrW1": 100,
+    "ishaExact": 62.6,
+    "ishaW1": 100
+   },
+   "18/18 ceil": {
+    "fajrExact": 46.9,
+    "fajrW1": 100,
+    "ishaExact": 52.5,
+    "ishaW1": 96.6
+   },
+   "17.8/18.15 round": {
+    "fajrExact": 7.7,
+    "fajrW1": 99.3,
+    "ishaExact": 32.1,
+    "ishaW1": 96.6
+   },
+   "17.8/18.15 ceil": {
+    "fajrExact": 59.2,
+    "fajrW1": 100,
+    "ishaExact": 57.4,
+    "ishaW1": 100
+   }
+  }
+ },
+ "ibri": {
+  "rows": 3285,
+  "res": {
+   "18/18 round": {
+    "fajrExact": 97.7,
+    "fajrW1": 100,
+    "ishaExact": 61,
+    "ishaW1": 100
+   },
+   "18/18 ceil": {
+    "fajrExact": 47.2,
+    "fajrW1": 100,
+    "ishaExact": 50.7,
+    "ishaW1": 95.2
+   },
+   "17.8/18.15 round": {
+    "fajrExact": 8.7,
+    "fajrW1": 98.8,
+    "ishaExact": 32.4,
+    "ishaW1": 96.9
+   },
+   "17.8/18.15 ceil": {
+    "fajrExact": 59.2,
+    "fajrW1": 100,
+    "ishaExact": 55.4,
+    "ishaW1": 100
+   }
+  }
+ },
+ "buraimi": {
+  "rows": 3285,
+  "res": {
+   "18/18 round": {
+    "fajrExact": 97.4,
+    "fajrW1": 100,
+    "ishaExact": 59.4,
+    "ishaW1": 100
+   },
+   "18/18 ceil": {
+    "fajrExact": 47.5,
+    "fajrW1": 100,
+    "ishaExact": 53.1,
+    "ishaW1": 95.1
+   },
+   "17.8/18.15 round": {
+    "fajrExact": 8.7,
+    "fajrW1": 98.9,
+    "ishaExact": 31.5,
+    "ishaW1": 95.3
+   },
+   "17.8/18.15 ceil": {
+    "fajrExact": 57.9,
+    "fajrW1": 100,
+    "ishaExact": 54.9,
+    "ishaW1": 100
+   }
+  }
+ },
+ "muscat": {
+  "rows": 4015,
+  "res": {
+   "18/18 round": {
+    "fajrExact": 57.2,
+    "fajrW1": 100,
+    "ishaExact": 59.6,
+    "ishaW1": 98.3
+   },
+   "18/18 ceil": {
+    "fajrExact": 7.2,
+    "fajrW1": 100,
+    "ishaExact": 23.6,
+    "ishaW1": 83.4
+   },
+   "17.8/18.15 round": {
+    "fajrExact": 48,
+    "fajrW1": 100,
+    "ishaExact": 52.7,
+    "ishaW1": 100
+   },
+   "17.8/18.15 ceil": {
+    "fajrExact": 94.1,
+    "fajrW1": 100,
+    "ishaExact": 64.4,
+    "ishaW1": 100
+   }
+  }
+ }
+}

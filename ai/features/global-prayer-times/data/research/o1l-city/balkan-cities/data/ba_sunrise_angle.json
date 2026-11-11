@@ -1,0 +1,612 @@
+[
+ {
+  "place": "Banja Luka",
+  "lat": 44.7722,
+  "elevM": 166,
+  "angle": 1.83,
+  "resMean": 0.01,
+  "resSd": 1.27,
+  "dipDeg": 0.414,
+  "horizon": 0.9970000000000001
+ },
+ {
+  "place": "Bihać",
+  "lat": 44.8169,
+  "elevM": 225,
+  "angle": 1.85,
+  "resMean": 0.05,
+  "resSd": 1.15,
+  "dipDeg": 0.482,
+  "horizon": 1.0170000000000001
+ },
+ {
+  "place": "Bijeljina",
+  "lat": 44.7575,
+  "elevM": 92,
+  "angle": 1.84,
+  "resMean": -0.02,
+  "resSd": 1.21,
+  "dipDeg": 0.308,
+  "horizon": 1.0070000000000001
+ },
+ {
+  "place": "Bileća",
+  "lat": 42.8758,
+  "elevM": 467,
+  "angle": 1.9,
+  "resMean": -0.01,
+  "resSd": 5.03,
+  "dipDeg": 0.694,
+  "horizon": 1.067
+ },
+ {
+  "place": "Bosanski Brod",
+  "lat": 45.1333,
+  "elevM": 84,
+  "angle": 1.82,
+  "resMean": -0.03,
+  "resSd": 1.25,
+  "dipDeg": 0.294,
+  "horizon": 0.9870000000000001
+ },
+ {
+  "place": "Brčko",
+  "lat": 44.8728,
+  "elevM": 96,
+  "angle": 1.83,
+  "resMean": -0.01,
+  "resSd": 1.08,
+  "dipDeg": 0.315,
+  "horizon": 0.9970000000000001
+ },
+ {
+  "place": "Bugojno",
+  "lat": 44.0531,
+  "elevM": 570,
+  "angle": 1.84,
+  "resMean": -0.02,
+  "resSd": 1.1,
+  "dipDeg": 0.766,
+  "horizon": 1.0070000000000001
+ },
+ {
+  "place": "Cazin",
+  "lat": 44.9667,
+  "elevM": 325,
+  "angle": 1.85,
+  "resMean": 0.01,
+  "resSd": 1.26,
+  "dipDeg": 0.579,
+  "horizon": 1.0170000000000001
+ },
+ {
+  "place": "Čajniče",
+  "lat": 43.5567,
+  "elevM": 812,
+  "angle": 1.88,
+  "resMean": 0,
+  "resSd": 1.98,
+  "dipDeg": 0.915,
+  "horizon": 1.047
+ },
+ {
+  "place": "Čapljina",
+  "lat": 43.1194,
+  "elevM": 32,
+  "angle": 1.89,
+  "resMean": -0.01,
+  "resSd": 3.95,
+  "dipDeg": 0.182,
+  "horizon": 1.057
+ },
+ {
+  "place": "Čitluk",
+  "lat": 43.2333,
+  "elevM": 238,
+  "angle": 1.86,
+  "resMean": 0.01,
+  "resSd": 3.47,
+  "dipDeg": 0.495,
+  "horizon": 1.0270000000000001
+ },
+ {
+  "place": "Doboj",
+  "lat": 44.7308,
+  "elevM": 144,
+  "angle": 1.84,
+  "resMean": -0.01,
+  "resSd": 1.13,
+  "dipDeg": 0.385,
+  "horizon": 1.0070000000000001
+ },
+ {
+  "place": "Fojnica",
+  "lat": 43.9608,
+  "elevM": 667,
+  "angle": 1.84,
+  "resMean": 0,
+  "resSd": 0.97,
+  "dipDeg": 0.829,
+  "horizon": 1.0070000000000001
+ },
+ {
+  "place": "Glamoč",
+  "lat": 44.0475,
+  "elevM": 945,
+  "angle": 1.81,
+  "resMean": 0,
+  "resSd": 0.98,
+  "dipDeg": 0.987,
+  "horizon": 0.9770000000000001
+ },
+ {
+  "place": "Goražde",
+  "lat": 43.6667,
+  "elevM": 337,
+  "angle": 1.87,
+  "resMean": -0.01,
+  "resSd": 1.48,
+  "dipDeg": 0.589,
+  "horizon": 1.0370000000000001
+ },
+ {
+  "place": "Gornji Vakuf",
+  "lat": 43.9392,
+  "elevM": 673,
+  "angle": 1.85,
+  "resMean": -0.03,
+  "resSd": 1.07,
+  "dipDeg": 0.833,
+  "horizon": 1.0170000000000001
+ },
+ {
+  "place": "Han-Pijesak",
+  "lat": 44.0667,
+  "elevM": 1082,
+  "angle": 1.83,
+  "resMean": 0,
+  "resSd": 1.07,
+  "dipDeg": 1.056,
+  "horizon": 0.9970000000000001
+ },
+ {
+  "place": "Hlivno",
+  "lat": 43.8269,
+  "elevM": 748,
+  "angle": 1.79,
+  "resMean": 0.01,
+  "resSd": 0.98,
+  "dipDeg": 0.878,
+  "horizon": 0.9570000000000001
+ },
+ {
+  "place": "Ilijaš",
+  "lat": 43.9519,
+  "elevM": 463,
+  "angle": 1.84,
+  "resMean": 0.01,
+  "resSd": 1,
+  "dipDeg": 0.691,
+  "horizon": 1.0070000000000001
+ },
+ {
+  "place": "Jajce",
+  "lat": 44.3394,
+  "elevM": 393,
+  "angle": 1.81,
+  "resMean": 0.01,
+  "resSd": 1.12,
+  "dipDeg": 0.636,
+  "horizon": 0.9770000000000001
+ },
+ {
+  "place": "Kakanj",
+  "lat": 44.1286,
+  "elevM": 428,
+  "angle": 1.84,
+  "resMean": 0,
+  "resSd": 0.95,
+  "dipDeg": 0.664,
+  "horizon": 1.0070000000000001
+ },
+ {
+  "place": "Kalesija",
+  "lat": 44.45,
+  "elevM": 263,
+  "angle": 1.84,
+  "resMean": 0.02,
+  "resSd": 1,
+  "dipDeg": 0.521,
+  "horizon": 1.0070000000000001
+ },
+ {
+  "place": "Ključ",
+  "lat": 44.5333,
+  "elevM": 253,
+  "angle": 1.82,
+  "resMean": -0.02,
+  "resSd": 1.14,
+  "dipDeg": 0.511,
+  "horizon": 0.9870000000000001
+ },
+ {
+  "place": "Konjic",
+  "lat": 43.6514,
+  "elevM": 304,
+  "angle": 1.87,
+  "resMean": -0.01,
+  "resSd": 1.62,
+  "dipDeg": 0.56,
+  "horizon": 1.0370000000000001
+ },
+ {
+  "place": "Kupres",
+  "lat": 43.9833,
+  "elevM": 1255,
+  "angle": 1.82,
+  "resMean": -0.01,
+  "resSd": 0.96,
+  "dipDeg": 1.137,
+  "horizon": 0.9870000000000001
+ },
+ {
+  "place": "Lopare",
+  "lat": 44.6333,
+  "elevM": 276,
+  "angle": 1.83,
+  "resMean": -0.01,
+  "resSd": 1.09,
+  "dipDeg": 0.533,
+  "horizon": 0.9970000000000001
+ },
+ {
+  "place": "Ljubinje",
+  "lat": 42.95,
+  "elevM": 461,
+  "angle": 1.92,
+  "resMean": 0.01,
+  "resSd": 4.79,
+  "dipDeg": 0.689,
+  "horizon": 1.087
+ },
+ {
+  "place": "Maglaj",
+  "lat": 44.5497,
+  "elevM": 173,
+  "angle": 1.83,
+  "resMean": -0.01,
+  "resSd": 1.1,
+  "dipDeg": 0.422,
+  "horizon": 0.9970000000000001
+ },
+ {
+  "place": "Mostar",
+  "lat": 43.3438,
+  "elevM": 65,
+  "angle": 1.88,
+  "resMean": 0.03,
+  "resSd": 2.92,
+  "dipDeg": 0.259,
+  "horizon": 1.047
+ },
+ {
+  "place": "Nevesinje",
+  "lat": 43.2581,
+  "elevM": 892,
+  "angle": 1.9,
+  "resMean": 0.01,
+  "resSd": 3.36,
+  "dipDeg": 0.959,
+  "horizon": 1.067
+ },
+ {
+  "place": "Novi Travnik",
+  "lat": 44.1667,
+  "elevM": 535,
+  "angle": 1.84,
+  "resMean": -0.01,
+  "resSd": 1.06,
+  "dipDeg": 0.742,
+  "horizon": 1.0070000000000001
+ },
+ {
+  "place": "Odžak",
+  "lat": 45,
+  "elevM": 94,
+  "angle": 1.81,
+  "resMean": 0.02,
+  "resSd": 1.23,
+  "dipDeg": 0.311,
+  "horizon": 0.9770000000000001
+ },
+ {
+  "place": "Orašje",
+  "lat": 45.0333,
+  "elevM": 82,
+  "angle": 1.84,
+  "resMean": 0.01,
+  "resSd": 1.36,
+  "dipDeg": 0.291,
+  "horizon": 1.0070000000000001
+ },
+ {
+  "place": "Prijedor",
+  "lat": 44.98,
+  "elevM": 139,
+  "angle": 1.84,
+  "resMean": 0.03,
+  "resSd": 1.23,
+  "dipDeg": 0.378,
+  "horizon": 1.0070000000000001
+ },
+ {
+  "place": "Prozor",
+  "lat": 43.8167,
+  "elevM": 849,
+  "angle": 1.9,
+  "resMean": 0.04,
+  "resSd": 0.99,
+  "dipDeg": 0.935,
+  "horizon": 1.067
+ },
+ {
+  "place": "Sarajevo",
+  "lat": 43.8563,
+  "elevM": 538,
+  "angle": 1.85,
+  "resMean": 0,
+  "resSd": 0.95,
+  "dipDeg": 0.745,
+  "horizon": 1.0170000000000001
+ },
+ {
+  "place": "Skender-Vakuf",
+  "lat": 44.4667,
+  "elevM": 532,
+  "angle": 1.72,
+  "resMean": 0.02,
+  "resSd": 0.98,
+  "dipDeg": 0.74,
+  "horizon": 0.887
+ },
+ {
+  "place": "Sokolac",
+  "lat": 43.9333,
+  "elevM": 950,
+  "angle": 1.85,
+  "resMean": 0,
+  "resSd": 1.12,
+  "dipDeg": 0.989,
+  "horizon": 1.0170000000000001
+ },
+ {
+  "place": "Šekovići",
+  "lat": 44.2833,
+  "elevM": 587,
+  "angle": 1.83,
+  "resMean": -0.01,
+  "resSd": 1.07,
+  "dipDeg": 0.778,
+  "horizon": 0.9970000000000001
+ },
+ {
+  "place": "Tešanj",
+  "lat": 44.6103,
+  "elevM": 279,
+  "angle": 1.83,
+  "resMean": -0.02,
+  "resSd": 1.09,
+  "dipDeg": 0.536,
+  "horizon": 0.9970000000000001
+ },
+ {
+  "place": "Travnik",
+  "lat": 44.2269,
+  "elevM": 509,
+  "angle": 1.81,
+  "resMean": -0.03,
+  "resSd": 1,
+  "dipDeg": 0.724,
+  "horizon": 0.9770000000000001
+ },
+ {
+  "place": "Trebinje",
+  "lat": 42.7111,
+  "elevM": 279,
+  "angle": 1.92,
+  "resMean": -0.01,
+  "resSd": 5.87,
+  "dipDeg": 0.536,
+  "horizon": 1.087
+ },
+ {
+  "place": "Tuzla",
+  "lat": 44.5384,
+  "elevM": 230,
+  "angle": 1.83,
+  "resMean": -0.02,
+  "resSd": 1.11,
+  "dipDeg": 0.487,
+  "horizon": 0.9970000000000001
+ },
+ {
+  "place": "Vareš",
+  "lat": 44.1611,
+  "elevM": 853,
+  "angle": 1.85,
+  "resMean": 0.02,
+  "resSd": 1,
+  "dipDeg": 0.938,
+  "horizon": 1.0170000000000001
+ },
+ {
+  "place": "Velika Kladuša",
+  "lat": 45.1833,
+  "elevM": 149,
+  "angle": 1.84,
+  "resMean": 0.02,
+  "resSd": 1.33,
+  "dipDeg": 0.392,
+  "horizon": 1.0070000000000001
+ },
+ {
+  "place": "Visoko",
+  "lat": 44,
+  "elevM": 460,
+  "angle": 1.84,
+  "resMean": 0.01,
+  "resSd": 0.88,
+  "dipDeg": 0.688,
+  "horizon": 1.0070000000000001
+ },
+ {
+  "place": "Višegrad",
+  "lat": 43.7856,
+  "elevM": 290,
+  "angle": 1.83,
+  "resMean": -0.02,
+  "resSd": 1.29,
+  "dipDeg": 0.547,
+  "horizon": 0.9970000000000001
+ },
+ {
+  "place": "Vitez",
+  "lat": 44.15,
+  "elevM": 425,
+  "angle": 1.84,
+  "resMean": 0.01,
+  "resSd": 1.18,
+  "dipDeg": 0.662,
+  "horizon": 1.0070000000000001
+ },
+ {
+  "place": "Zenica",
+  "lat": 44.2036,
+  "elevM": 319,
+  "angle": 1.82,
+  "resMean": 0,
+  "resSd": 0.96,
+  "dipDeg": 0.573,
+  "horizon": 0.9870000000000001
+ },
+ {
+  "place": "Zvornik",
+  "lat": 44.3831,
+  "elevM": 171,
+  "angle": 1.85,
+  "resMean": -0.01,
+  "resSd": 0.99,
+  "dipDeg": 0.42,
+  "horizon": 1.0170000000000001
+ },
+ {
+  "place": "Bijelo Polje",
+  "lat": 43.0386,
+  "elevM": 616,
+  "angle": 1.83,
+  "resMean": 0.01,
+  "resSd": 2.53,
+  "dipDeg": 0.797,
+  "horizon": 0.9970000000000001
+ },
+ {
+  "place": "Gusinje",
+  "lat": 42.563667,
+  "elevM": 925,
+  "angle": 1.96,
+  "resMean": -0.02,
+  "resSd": 3.6,
+  "dipDeg": 0.976,
+  "horizon": 1.127
+ },
+ {
+  "place": "Nova Varoš",
+  "lat": 43.4597,
+  "elevM": 1027,
+  "angle": 1.79,
+  "resMean": 0.01,
+  "resSd": 2.58,
+  "dipDeg": 1.029,
+  "horizon": 0.9570000000000001
+ },
+ {
+  "place": "Novi Pazar",
+  "lat": 43.1367,
+  "elevM": 511,
+  "angle": 1.9,
+  "resMean": -0.01,
+  "resSd": 3.72,
+  "dipDeg": 0.726,
+  "horizon": 1.067
+ },
+ {
+  "place": "Plav",
+  "lat": 42.5967,
+  "elevM": 950,
+  "angle": 1.89,
+  "resMean": 0.01,
+  "resSd": 3.48,
+  "dipDeg": 0.989,
+  "horizon": 1.057
+ },
+ {
+  "place": "Pljevlja",
+  "lat": 43.3572,
+  "elevM": 770,
+  "angle": 1.74,
+  "resMean": 0.02,
+  "resSd": 1.84,
+  "dipDeg": 0.891,
+  "horizon": 0.907
+ },
+ {
+  "place": "Priboj",
+  "lat": 43.5842,
+  "elevM": 403,
+  "angle": 1.82,
+  "resMean": 0.02,
+  "resSd": 2.3,
+  "dipDeg": 0.644,
+  "horizon": 0.9870000000000001
+ },
+ {
+  "place": "Prijepolje",
+  "lat": 43.3867,
+  "elevM": 486,
+  "angle": 1.74,
+  "resMean": -0.01,
+  "resSd": 2.75,
+  "dipDeg": 0.708,
+  "horizon": 0.907
+ },
+ {
+  "place": "Rožaje",
+  "lat": 42.8397,
+  "elevM": 1050,
+  "angle": 1.89,
+  "resMean": -0.01,
+  "resSd": 2.95,
+  "dipDeg": 1.04,
+  "horizon": 1.057
+ },
+ {
+  "place": "Sjenica",
+  "lat": 43.2722,
+  "elevM": 1003,
+  "angle": 1.85,
+  "resMean": 0.02,
+  "resSd": 3,
+  "dipDeg": 1.017,
+  "horizon": 1.0170000000000001
+ },
+ {
+  "place": "Tutin",
+  "lat": 42.9917,
+  "elevM": 867,
+  "angle": 1.64,
+  "resMean": 0.01,
+  "resSd": 3.65,
+  "dipDeg": 0.945,
+  "horizon": 0.8069999999999999
+ }
+]

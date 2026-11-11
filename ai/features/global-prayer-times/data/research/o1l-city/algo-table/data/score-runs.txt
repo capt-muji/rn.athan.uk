@@ -1,0 +1,209 @@
+== MONTENEGRO ==
+[
+ {
+  "label": "ME declared 19.5/17.5 Shafi @Podgorica",
+  "field": "fajr",
+  "n": 365,
+  "mean_min": -1.41,
+  "within1": "50/365",
+  "worst_min": -62.07,
+  "worstDate": "2026-03-29",
+  "exact_nearest": "31/365",
+  "exact_ceil": "30/365",
+  "exact_floor": "21/365",
+  "mean_winter": 4.05,
+  "mean_summer": -7.43
+ },
+ {
+  "label": "ME declared 19.5/17.5 Shafi @Podgorica",
+  "field": "sunrise",
+  "n": 365,
+  "mean_min": -6.98,
+  "within1": "8/365",
+  "worst_min": -65.9,
+  "worstDate": "2026-03-29",
+  "exact_nearest": "1/365",
+  "exact_ceil": "0/365",
+  "exact_floor": "8/365",
+  "mean_winter": -2.16,
+  "mean_summer": -11.84
+ },
+ {
+  "label": "ME declared 19.5/17.5 Shafi @Podgorica",
+  "field": "dhuhr",
+  "n": 365,
+  "mean_min": -0.64,
+  "within1": "310/365",
+  "worst_min": -60.72,
+  "worstDate": "2026-03-29",
+  "exact_nearest": "131/365",
+  "exact_ceil": "8/365",
+  "exact_floor": "298/365",
+  "mean_winter": -0.58,
+  "mean_summer": -0.84
+ },
+ {
+  "label": "ME declared 19.5/17.5 Shafi @Podgorica",
+  "field": "asr",
+  "n": 365,
+  "mean_min": -1.48,
+  "within1": "82/365",
+  "worst_min": -61.58,
+  "worstDate": "2026-03-29",
+  "exact_nearest": "42/365",
+  "exact_ceil": "51/365",
+  "exact_floor": "30/365",
+  "mean_winter": -5.44,
+  "mean_summer": 1.7
+ },
+ {
+  "label": "ME declared 19.5/17.5 Shafi @Podgorica",
+  "field": "maghrib",
+  "n": 365,
+  "mean_min": 5.61,
+  "within1": "52/365",
+  "worst_min": 64.12,
+  "worstDate": "2026-10-25",
+  "exact_nearest": "28/365",
+  "exact_ceil": "40/365",
+  "exact_floor": "10/365",
+  "mean_winter": 1.18,
+  "mean_summer": 9.82
+ },
+ {
+  "label": "ME declared 19.5/17.5 Shafi @Podgorica",
+  "field": "isha",
+  "n": 365,
+  "mean_min": -0.17,
+  "within1": "47/365",
+  "worst_min": -60.72,
+  "worstDate": "2026-03-29",
+  "exact_nearest": "26/365",
+  "exact_ceil": "21/365",
+  "exact_floor": "26/365",
+  "mean_winter": -5.47,
+  "mean_summer": 5.47
+ }
+]
+== BAHRAIN ==
+[
+ {
+  "label": "BH declared dhuhr transit+1 @Salman",
+  "field": "dhuhr",
+  "n": 355,
+  "mean_min": -1.43,
+  "within1": "33/355",
+  "worst_min": -1.92,
+  "worstDate": "2026-06-30",
+  "exact_nearest": "0/355",
+  "exact_ceil": "0/355",
+  "exact_floor": "28/355",
+  "mean_winter": -1.41,
+  "mean_summer": -1.49
+ },
+ {
+  "label": "BH declared isha 18deg @Salman",
+  "field": "isha",
+  "n": 355,
+  "mean_min": -1.43,
+  "within1": "35/355",
+  "worst_min": -2.08,
+  "worstDate": "2026-06-16",
+  "exact_nearest": "0/355",
+  "exact_ceil": "0/355",
+  "exact_floor": "31/355",
+  "mean_winter": -1.33,
+  "mean_summer": -1.55
+ },
+ {
+  "label": "BH declared maghrib sunset @Salman",
+  "field": "magrib",
+  "n": 355,
+  "mean_min": 0.04,
+  "within1": "355/355",
+  "worst_min": 0.65,
+  "worstDate": "2026-11-19",
+  "exact_nearest": "323/355",
+  "exact_ceil": "193/355",
+  "exact_floor": "167/355",
+  "mean_winter": 0.11,
+  "mean_summer": -0.12
+ },
+ {
+  "label": "BH sunrise @Dilmunia (site declared, no margin stated)",
+  "field": "sunrise",
+  "n": 355,
+  "mean_min": -0.46,
+  "within1": "350/355",
+  "worst_min": -1.08,
+  "worstDate": "2026-12-15",
+  "exact_nearest": "196/355",
+  "exact_ceil": "18/355",
+  "exact_floor": "334/355",
+  "mean_winter": -0.57,
+  "mean_summer": -0.39
+ }
+]
+== TORONTO 13-vs-15 (America/Toronto) ==
+13deg 2026-6-1: fajr 4.17h isha 22.35h
+15deg 2026-6-1: fajr 3.88h isha 22.65h
+== TORONTO 13-vs-15 winter (America/Toronto) ==
+13deg 2026-12-1: fajr 6.29h isha 17.93h
+15deg 2026-12-1: fajr 6.10h isha 18.12h
+== BERLIN isha 17-vs-16 winter (Europe/Berlin) ==
+17deg 2026-1-15: fajr 0.22h isha 12.32h
+16deg 2026-1-15: fajr 0.33h isha 12.20h
+== BERLIN isha 17-vs-16 summer (Europe/Berlin) ==
+17deg 2026-6-21: fajr 20.69h isha 17.59h
+16deg 2026-6-21: fajr 20.81h isha 17.47h
+== STOCKHOLM isha 17-vs-16 winter (Europe/Stockholm) ==
+17deg 2026-1-15: fajr 0.09h isha 11.82h
+16deg 2026-1-15: fajr 0.23h isha 11.69h
+== TORONTO 13-vs-15 (America/Toronto) ==
+13deg 2026-6-1: fajr 10.17h isha 4.35h
+15deg 2026-6-1: fajr 9.88h isha 4.65h
+== TORONTO 13-vs-15 winter (America/Toronto) ==
+13deg 2026-12-1: fajr 12.29h isha 23.93h
+15deg 2026-12-1: fajr 12.10h isha 0.12h
+== BERLIN isha 17-vs-16 winter (Europe/Berlin) ==
+17deg 2026-1-15: fajr 6.22h isha 18.32h
+16deg 2026-1-15: fajr 6.33h isha 18.20h
+== BERLIN isha 17-vs-16 summer (Europe/Berlin) ==
+17deg 2026-6-21: fajr 2.69h isha 23.59h
+16deg 2026-6-21: fajr 2.81h isha 23.47h
+== STOCKHOLM isha 17-vs-16 winter (Europe/Stockholm) ==
+17deg 2026-1-15: fajr 6.09h isha 17.82h
+16deg 2026-1-15: fajr 6.23h isha 17.69h
+== TORONTO 13-vs-15 (America/Toronto) ==
+13deg 2026-6-1: fajr 10.17h isha 4.35h
+15deg 2026-6-1: fajr 9.88h isha 4.65h
+== TORONTO 13-vs-15 winter (America/Toronto) ==
+13deg 2026-12-1: fajr 12.29h isha 23.93h
+15deg 2026-12-1: fajr 12.10h isha 0.12h
+== BERLIN isha 17-vs-16 winter (Europe/Berlin) ==
+17deg 2026-1-15: fajr 6.22h isha 18.32h
+16deg 2026-1-15: fajr 6.33h isha 18.20h
+== BERLIN isha 17-vs-16 summer (Europe/Berlin) ==
+17deg 2026-6-21: fajr 2.69h isha 23.59h
+16deg 2026-6-21: fajr 2.81h isha 23.47h
+== STOCKHOLM isha 17-vs-16 winter (Europe/Stockholm) ==
+17deg 2026-1-15: fajr 6.09h isha 17.82h
+16deg 2026-1-15: fajr 6.23h isha 17.69h
+
+=== FINLAND / Helsinki, scored 2026-11-11 by O1l-21r (zero web) ===
+table: o1k-wide/europe/data/fi-helsinki-rukousaika-2026.json (365 rows)
+engine: own solar engine (NOAA-class declination/EoT), Helsinki 60.1699/24.9384, TZ Europe/Helsinki, altitude -0.833 sunrise/sunset, altitude crossings to 1-min resolution
+asr Shafi (shadow 1 + noon shadow), zero margin:
+## 18/17 fifth=true asr=shafi rows=365 fifthDays=123
+   fajr     mean -20.35 exact 211 within1 227 worst 191 n 365
+   sunrise  mean -3.98 exact 0 within1 0 worst -6 n 365
+   dhuhr    mean 2.03 exact 0 within1 51 worst 3 n 365
+   asr      mean 0.10 exact 260 within1 365 worst 1 n 365
+   maghrib  mean 4.05 exact 0 within1 0 worst 6 n 365
+   isha     mean -2.88 exact 227 within1 238 worst -221 n 365
+## 18/17 fifth=true asr=hanafi rows=365 fifthDays=123
+clean-day twilights + summer rules:
+fajr 18 clean days 236 exact 211 within1 227 worst 153
+isha 17 clean days 233 exact 226 within1 233 worst 1
+summer days (min alt > -17.2) 118 isha=maghrib+85 within1 43 worst -5
+fajr outliers 9 2026-04-16:153@min-19.5 2026-04-17:135@min-19.1 2026-04-18:115@min-18.8 2026-04-19:99@min-18.4 2026-08-22:82@min-18.3 2026-08-23:100@min-18.6 2026-08-24:113@min-19.0 2026-08-25:128@min-19.3 2026-08-26:147@min-19.7

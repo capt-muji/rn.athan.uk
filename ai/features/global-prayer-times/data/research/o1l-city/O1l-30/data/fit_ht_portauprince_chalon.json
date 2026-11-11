@@ -1,0 +1,83 @@
+{
+ "file": "data/mawaqit_ht_portauprince_chalon.json",
+ "name": "Madinah Islamic center Haiti - CHALON",
+ "lat": 18.407,
+ "lon": -73.09,
+ "tz": "America/Port-au-Prince",
+ "days": 365,
+ "candidates": [
+  {
+   "method": "Karachi",
+   "madhab": "shafi",
+   "totalMae": 43.04
+  },
+  {
+   "method": "Dubai",
+   "madhab": "shafi",
+   "totalMae": 43.34
+  },
+  {
+   "method": "MoonsightingCommittee",
+   "madhab": "shafi",
+   "totalMae": 45.02
+  }
+ ],
+ "refined": {
+  "method": "Karachi",
+  "madhab": "shafi",
+  "fajrAngle": 18,
+  "ishaAngle": 16.6,
+  "offsets": {
+   "fajr": 10,
+   "sunrise": 0,
+   "dhuhr": 15,
+   "asr": 6,
+   "maghrib": 5,
+   "isha": 8
+  },
+  "scores": {
+   "fajr": {
+    "med": 0,
+    "exact": 352,
+    "w1": 363,
+    "mae": 0.27,
+    "worst": 2.1
+   },
+   "sunrise": {
+    "med": 0,
+    "exact": 356,
+    "w1": 365,
+    "mae": 0.26,
+    "worst": 0.5
+   },
+   "dhuhr": {
+    "med": 0,
+    "exact": 358,
+    "w1": 365,
+    "mae": 0.25,
+    "worst": 0.5
+   },
+   "asr": {
+    "med": -0.1,
+    "exact": 92,
+    "w1": 166,
+    "mae": 6.68,
+    "worst": 33.7
+   },
+   "maghrib": {
+    "med": 0,
+    "exact": 332,
+    "w1": 352,
+    "mae": 0.32,
+    "worst": 2
+   },
+   "isha": {
+    "med": 0,
+    "exact": 208,
+    "w1": 343,
+    "mae": 0.56,
+    "worst": 2.8
+   }
+  }
+ }
+}

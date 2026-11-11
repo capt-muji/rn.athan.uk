@@ -1,0 +1,102 @@
+{
+ "meta": {
+  "engine": "adhan-js 4.4.6",
+  "source": "Constantine directorate Ramadan 1447 table, internews.dz 2026-02-18",
+  "tz": "Africa/Algiers",
+  "recipe": {
+   "fajrAngle": 17.8,
+   "ishaAngle": 16.1,
+   "madhab": "shafi",
+   "per": {
+    "fajr": {
+     "margin": 0,
+     "mode": "floor"
+    },
+    "sunrise": {
+     "margin": 1,
+     "mode": "floor"
+    },
+    "dhuhr": {
+     "margin": 1,
+     "mode": "floor"
+    },
+    "asr": {
+     "margin": 1,
+     "mode": "floor"
+    },
+    "magrib": {
+     "margin": 4,
+     "mode": "floor"
+    },
+    "isha": {
+     "margin": 5,
+     "mode": "nearest"
+    }
+   }
+  }
+ },
+ "days": 29,
+ "declared": {
+  "site": {
+   "name": "Constantine",
+   "lat": 36.365,
+   "lon": 6.6147
+  },
+  "exact": 75,
+  "within1": 170,
+  "n": 174,
+  "worst": 2,
+  "per": {
+   "fajr": {
+    "exact": 1,
+    "within1": 27,
+    "worst": 2,
+    "mae": 1.03,
+    "n": 29
+   },
+   "sunrise": {
+    "exact": 17,
+    "within1": 29,
+    "worst": 1,
+    "mae": 0.41,
+    "n": 29
+   },
+   "dhuhr": {
+    "exact": 23,
+    "within1": 29,
+    "worst": 1,
+    "mae": 0.21,
+    "n": 29
+   },
+   "asr": {
+    "exact": 20,
+    "within1": 29,
+    "worst": 1,
+    "mae": 0.31,
+    "n": 29
+   },
+   "magrib": {
+    "exact": 0,
+    "within1": 27,
+    "worst": 2,
+    "mae": 1.07,
+    "n": 29
+   },
+   "isha": {
+    "exact": 14,
+    "within1": 29,
+    "worst": 1,
+    "mae": 0.52,
+    "n": 29
+   }
+  }
+ },
+ "impliedPoint": {
+  "lat": 36.09,
+  "lon": 6.48,
+  "exact": 120,
+  "within1": 174,
+  "worst": 1,
+  "n": 174
+ }
+}

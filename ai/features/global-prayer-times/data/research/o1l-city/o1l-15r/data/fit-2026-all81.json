@@ -1,0 +1,3485 @@
+{
+ "ADANA": {
+  "ilce": "9146",
+  "slug": "adana",
+  "coords": [
+   36.9864,
+   35.3253
+  ],
+  "anchor": [
+   36.9864,
+   35.3253
+  ],
+  "days": 365,
+  "mae": 0.3771689497716895,
+  "w1Pct": 98.99543378995433,
+  "exactPct": 63.28767123287671,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.08,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.13,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.09,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.63,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.58,
+    "worst": 1
+   },
+   "isha": {
+    "mae": 0.75,
+    "worst": 2
+   }
+  }
+ },
+ "ADIYAMAN": {
+  "ilce": "9158",
+  "slug": "adiyaman",
+  "coords": [
+   37.7603,
+   38.2773
+  ],
+  "anchor": [
+   37.7603,
+   38.2773
+  ],
+  "days": 365,
+  "mae": 0.37625570776255707,
+  "w1Pct": 98.85844748858447,
+  "exactPct": 63.51598173515982,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.08,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.12,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.09,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.69,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.56,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.72,
+    "worst": 2
+   }
+  }
+ },
+ "AFYONKARAHİSAR": {
+  "ilce": "9167",
+  "slug": "afyonkarahisar",
+  "coords": [
+   38.7569,
+   30.5387
+  ],
+  "anchor": [
+   38.7569,
+   30.5387
+  ],
+  "days": 365,
+  "mae": 0.4004566210045662,
+  "w1Pct": 98.2648401826484,
+  "exactPct": 61.68949771689498,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.12,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.08,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.74,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.62,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.75,
+    "worst": 2
+   }
+  }
+ },
+ "AĞRI": {
+  "ilce": "9185",
+  "slug": "agri",
+  "coords": [
+   39.7191,
+   43.0505
+  ],
+  "anchor": [
+   39.7191,
+   43.0505
+  ],
+  "days": 365,
+  "mae": 0.40136986301369865,
+  "w1Pct": 98.17351598173516,
+  "exactPct": 61.68949771689498,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.12,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.08,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.7,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.64,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.77,
+    "worst": 2
+   }
+  }
+ },
+ "AKSARAY": {
+  "ilce": "9193",
+  "slug": "aksaray",
+  "coords": [
+   38.3705,
+   34.0269
+  ],
+  "anchor": [
+   38.3705,
+   34.0269
+  ],
+  "days": 365,
+  "mae": 0.40821917808219177,
+  "w1Pct": 98.53881278538813,
+  "exactPct": 60.63926940639269,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.07,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.16,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.07,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.69,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.63,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.82,
+    "worst": 2
+   }
+  }
+ },
+ "AMASYA": {
+  "ilce": "9198",
+  "slug": "amasya",
+  "coords": [
+   40.6503,
+   35.8329
+  ],
+  "anchor": [
+   40.6503,
+   35.8329
+  ],
+  "days": 365,
+  "mae": 0.4278538812785388,
+  "w1Pct": 97.1689497716895,
+  "exactPct": 60.045662100456624,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.08,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.14,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.11,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.74,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.65,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.85,
+    "worst": 2
+   }
+  }
+ },
+ "ANKARA": {
+  "ilce": "9206",
+  "slug": "ankara",
+  "coords": [
+   39.9208,
+   32.854
+  ],
+  "anchor": [
+   39.9208,
+   32.854
+  ],
+  "days": 365,
+  "mae": 0.4410958904109589,
+  "w1Pct": 97.1689497716895,
+  "exactPct": 58.721461187214615,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.14,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.09,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.75,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.72,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.84,
+    "worst": 2
+   }
+  }
+ },
+ "ANTALYA": {
+  "ilce": "9225",
+  "slug": "antalya",
+  "coords": [
+   36.8866,
+   30.703
+  ],
+  "anchor": [
+   36.8866,
+   30.703
+  ],
+  "days": 365,
+  "mae": 0.39452054794520547,
+  "w1Pct": 97.44292237442923,
+  "exactPct": 63.10502283105023,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.14,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.15,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.67,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.55,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.76,
+    "worst": 2
+   }
+  }
+ },
+ "ARDAHAN": {
+  "ilce": "9238",
+  "slug": "ardahan",
+  "coords": [
+   41.1103,
+   42.7036
+  ],
+  "anchor": [
+   41.1103,
+   42.7036
+  ],
+  "days": 365,
+  "mae": 0.4278538812785388,
+  "w1Pct": 97.48858447488584,
+  "exactPct": 59.726027397260275,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.07,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.18,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.08,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.72,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.66,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.85,
+    "worst": 2
+   }
+  }
+ },
+ "ARTVİN": {
+  "ilce": "9246",
+  "slug": "artvin",
+  "coords": [
+   41.1831,
+   41.8287
+  ],
+  "anchor": [
+   41.1831,
+   41.8287
+  ],
+  "days": 365,
+  "mae": 0.4337899543378995,
+  "w1Pct": 97.07762557077625,
+  "exactPct": 59.54337899543379,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.12,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.15,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.75,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.64,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.84,
+    "worst": 2
+   }
+  }
+ },
+ "AYDIN": {
+  "ilce": "9252",
+  "slug": "aydin",
+  "coords": [
+   37.8484,
+   27.8436
+  ],
+  "anchor": [
+   37.8484,
+   27.8436
+  ],
+  "days": 365,
+  "mae": 0.4041095890410959,
+  "w1Pct": 98.2648401826484,
+  "exactPct": 61.32420091324201,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.14,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.11,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.69,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.59,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.79,
+    "worst": 2
+   }
+  }
+ },
+ "BALIKESİR": {
+  "ilce": "9270",
+  "slug": "balikesir",
+  "coords": [
+   39.6474,
+   27.888
+  ],
+  "anchor": [
+   39.6474,
+   27.888
+  ],
+  "days": 365,
+  "mae": 0.4315068493150685,
+  "w1Pct": 96.57534246575342,
+  "exactPct": 60.273972602739725,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.15,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.18,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.11,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.78,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.53,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.84,
+    "worst": 2
+   }
+  }
+ },
+ "BARTIN": {
+  "ilce": "9285",
+  "slug": "bartin",
+  "coords": [
+   41.635,
+   32.3366
+  ],
+  "anchor": [
+   41.635,
+   32.3366
+  ],
+  "days": 365,
+  "mae": 0.45251141552511415,
+  "w1Pct": 96.21004566210046,
+  "exactPct": 58.538812785388124,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.17,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.77,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.67,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.91,
+    "worst": 2
+   }
+  }
+ },
+ "BATMAN": {
+  "ilce": "9288",
+  "slug": "batman",
+  "coords": [
+   37.8836,
+   41.1278
+  ],
+  "anchor": [
+   37.8836,
+   41.1278
+  ],
+  "days": 365,
+  "mae": 0.3963470319634703,
+  "w1Pct": 97.67123287671232,
+  "exactPct": 62.694063926940636,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.17,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.15,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.7,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.55,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.71,
+    "worst": 2
+   }
+  }
+ },
+ "BAYBURT": {
+  "ilce": "9295",
+  "slug": "bayburt",
+  "coords": [
+   40.2552,
+   40.2205
+  ],
+  "anchor": [
+   40.2552,
+   40.2205
+  ],
+  "days": 365,
+  "mae": 0.41141552511415524,
+  "w1Pct": 98.12785388127854,
+  "exactPct": 60.730593607305934,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.04,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.15,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.11,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.73,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.6,
+    "worst": 1
+   },
+   "isha": {
+    "mae": 0.84,
+    "worst": 2
+   }
+  }
+ },
+ "BİLECİK": {
+  "ilce": "9297",
+  "slug": "bilecik",
+  "coords": [
+   40.1435,
+   29.9753
+  ],
+  "anchor": [
+   40.1435,
+   29.9753
+  ],
+  "days": 365,
+  "mae": 0.4383561643835616,
+  "w1Pct": 97.44292237442923,
+  "exactPct": 58.721461187214615,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.07,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.15,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.12,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.77,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.68,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.84,
+    "worst": 2
+   }
+  }
+ },
+ "BİNGÖL": {
+  "ilce": "9303",
+  "slug": "bingol",
+  "coords": [
+   38.8861,
+   40.4972
+  ],
+  "anchor": [
+   38.8861,
+   40.4972
+  ],
+  "days": 365,
+  "mae": 0.4031963470319635,
+  "w1Pct": 97.99086757990868,
+  "exactPct": 61.68949771689498,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.09,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.12,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.12,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.71,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.64,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.74,
+    "worst": 2
+   }
+  }
+ },
+ "BİTLİS": {
+  "ilce": "9311",
+  "slug": "bitlis",
+  "coords": [
+   38.4021,
+   42.1085
+  ],
+  "anchor": [
+   38.4021,
+   42.1085
+  ],
+  "days": 365,
+  "mae": 0.3735159817351598,
+  "w1Pct": 98.67579908675799,
+  "exactPct": 63.97260273972603,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.07,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.14,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.09,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.7,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.59,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.65,
+    "worst": 2
+   }
+  }
+ },
+ "BOLU": {
+  "ilce": "9315",
+  "slug": "bolu",
+  "coords": [
+   40.7333,
+   31.611
+  ],
+  "anchor": [
+   40.7333,
+   31.611
+  ],
+  "days": 365,
+  "mae": 0.4360730593607306,
+  "w1Pct": 96.7579908675799,
+  "exactPct": 59.63470319634703,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.14,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.11,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.73,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.66,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.88,
+    "worst": 2
+   }
+  }
+ },
+ "BURDUR": {
+  "ilce": "9327",
+  "slug": "burdur",
+  "coords": [
+   37.7248,
+   30.2887
+  ],
+  "anchor": [
+   37.7248,
+   30.2887
+  ],
+  "days": 365,
+  "mae": 0.3908675799086758,
+  "w1Pct": 98.40182648401826,
+  "exactPct": 62.51141552511415,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.09,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.13,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.07,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.7,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.58,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.76,
+    "worst": 2
+   }
+  }
+ },
+ "BURSA": {
+  "ilce": "9335",
+  "slug": "bursa",
+  "coords": [
+   40.1826,
+   29.0675
+  ],
+  "anchor": [
+   40.1826,
+   29.0675
+  ],
+  "days": 365,
+  "mae": 0.4337899543378995,
+  "w1Pct": 97.30593607305936,
+  "exactPct": 59.31506849315068,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.13,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.16,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.08,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.74,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.65,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.85,
+    "worst": 2
+   }
+  }
+ },
+ "ÇANAKKALE": {
+  "ilce": "9352",
+  "slug": "canakkale",
+  "coords": [
+   40.1463,
+   26.4029
+  ],
+  "anchor": [
+   40.1463,
+   26.4029
+  ],
+  "days": 365,
+  "mae": 0.45251141552511415,
+  "w1Pct": 96.5296803652968,
+  "exactPct": 58.21917808219178,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.12,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.19,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.09,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.81,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.66,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.85,
+    "worst": 2
+   }
+  }
+ },
+ "ÇANKIRI": {
+  "ilce": "9359",
+  "slug": "cankiri",
+  "coords": [
+   40.5972,
+   33.6213
+  ],
+  "anchor": [
+   40.5972,
+   33.6213
+  ],
+  "days": 365,
+  "mae": 0.43333333333333335,
+  "w1Pct": 96.80365296803653,
+  "exactPct": 59.863013698630134,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.09,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.16,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.09,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.76,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.63,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.87,
+    "worst": 2
+   }
+  }
+ },
+ "ÇORUM": {
+  "ilce": "9370",
+  "slug": "corum",
+  "coords": [
+   40.5499,
+   34.9537
+  ],
+  "anchor": [
+   40.5499,
+   34.9537
+  ],
+  "days": 365,
+  "mae": 0.42420091324200915,
+  "w1Pct": 96.84931506849315,
+  "exactPct": 60.730593607305934,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.05,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.13,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.08,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.74,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.66,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.88,
+    "worst": 2
+   }
+  }
+ },
+ "DENİZLİ": {
+  "ilce": "9392",
+  "slug": "denizli",
+  "coords": [
+   37.7828,
+   29.0966
+  ],
+  "anchor": [
+   37.7828,
+   29.0966
+  ],
+  "days": 365,
+  "mae": 0.42420091324200915,
+  "w1Pct": 97.67123287671232,
+  "exactPct": 59.90867579908676,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.14,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.15,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.12,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.68,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.65,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.8,
+    "worst": 2
+   }
+  }
+ },
+ "DİYARBAKIR": {
+  "ilce": "9402",
+  "slug": "diyarbakir",
+  "coords": [
+   37.9162,
+   40.2364
+  ],
+  "anchor": [
+   37.9162,
+   40.2364
+  ],
+  "days": 365,
+  "mae": 0.38767123287671235,
+  "w1Pct": 98.44748858447488,
+  "exactPct": 62.78538812785388,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.11,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.15,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.64,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.57,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.77,
+    "worst": 2
+   }
+  }
+ },
+ "DÜZCE": {
+  "ilce": "9414",
+  "slug": "duzce",
+  "coords": [
+   40.8392,
+   31.1595
+  ],
+  "anchor": [
+   40.8392,
+   31.1595
+  ],
+  "days": 365,
+  "mae": 0.4511415525114155,
+  "w1Pct": 96.34703196347031,
+  "exactPct": 58.538812785388124,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.14,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.08,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.79,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.7,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.91,
+    "worst": 2
+   }
+  }
+ },
+ "EDİRNE": {
+  "ilce": "9419",
+  "slug": "edirne",
+  "coords": [
+   41.6759,
+   26.5587
+  ],
+  "anchor": [
+   41.6759,
+   26.5587
+  ],
+  "days": 365,
+  "mae": 0.46986301369863015,
+  "w1Pct": 95.20547945205479,
+  "exactPct": 57.80821917808219,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.11,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.19,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.8,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.7,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.93,
+    "worst": 2
+   }
+  }
+ },
+ "ELAZIĞ": {
+  "ilce": "9432",
+  "slug": "elazig",
+  "coords": [
+   38.6747,
+   39.2227
+  ],
+  "anchor": [
+   38.6747,
+   39.2227
+  ],
+  "days": 365,
+  "mae": 0.41643835616438357,
+  "w1Pct": 98.03652968036529,
+  "exactPct": 60.31963470319635,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.12,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.12,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.71,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.63,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.82,
+    "worst": 2
+   }
+  }
+ },
+ "ERZİNCAN": {
+  "ilce": "9440",
+  "slug": "erzincan",
+  "coords": [
+   39.7468,
+   39.491
+  ],
+  "anchor": [
+   39.7468,
+   39.491
+  ],
+  "days": 365,
+  "mae": 0.4214611872146119,
+  "w1Pct": 98.21917808219177,
+  "exactPct": 59.63470319634703,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.08,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.13,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.09,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.73,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.68,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.82,
+    "worst": 2
+   }
+  }
+ },
+ "ERZURUM": {
+  "ilce": "9451",
+  "slug": "erzurum",
+  "coords": [
+   39.9063,
+   41.2728
+  ],
+  "anchor": [
+   39.9063,
+   41.2728
+  ],
+  "days": 365,
+  "mae": 0.3954337899543379,
+  "w1Pct": 97.99086757990868,
+  "exactPct": 62.465753424657535,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.08,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.12,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.07,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.71,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.61,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.78,
+    "worst": 2
+   }
+  }
+ },
+ "ESKİŞEHİR": {
+  "ilce": "9470",
+  "slug": "eskisehir",
+  "coords": [
+   39.7744,
+   30.5191
+  ],
+  "anchor": [
+   39.7744,
+   30.5191
+  ],
+  "days": 365,
+  "mae": 0.4328767123287671,
+  "w1Pct": 97.62557077625571,
+  "exactPct": 59.08675799086758,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.09,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.16,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.75,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.66,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.84,
+    "worst": 2
+   }
+  }
+ },
+ "GAZİANTEP": {
+  "ilce": "9479",
+  "slug": "gaziantep",
+  "coords": [
+   37.0628,
+   37.3793
+  ],
+  "anchor": [
+   37.0628,
+   37.3793
+  ],
+  "days": 365,
+  "mae": 0.36666666666666664,
+  "w1Pct": 98.53881278538813,
+  "exactPct": 64.79452054794521,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.07,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.12,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.08,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.65,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.56,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.73,
+    "worst": 2
+   }
+  }
+ },
+ "GİRESUN": {
+  "ilce": "9494",
+  "slug": "giresun",
+  "coords": [
+   40.9176,
+   38.3842
+  ],
+  "anchor": [
+   40.9176,
+   38.3842
+  ],
+  "days": 365,
+  "mae": 0.4273972602739726,
+  "w1Pct": 97.21461187214612,
+  "exactPct": 60.045662100456624,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.08,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.12,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.09,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.74,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.65,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.89,
+    "worst": 2
+   }
+  }
+ },
+ "GÜMÜŞHANE": {
+  "ilce": "9501",
+  "slug": "gumushane",
+  "coords": [
+   40.4618,
+   39.4757
+  ],
+  "anchor": [
+   40.4618,
+   39.4757
+  ],
+  "days": 365,
+  "mae": 0.4292237442922374,
+  "w1Pct": 97.26027397260275,
+  "exactPct": 59.817351598173516,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.09,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.12,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.13,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.74,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.65,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.84,
+    "worst": 2
+   }
+  }
+ },
+ "HAKKARİ": {
+  "ilce": "9507",
+  "slug": "hakkari",
+  "coords": [
+   37.5767,
+   43.7378
+  ],
+  "anchor": [
+   37.5767,
+   43.7378
+  ],
+  "days": 365,
+  "mae": 0.363013698630137,
+  "w1Pct": 98.72146118721462,
+  "exactPct": 64.9771689497717,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.06,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.14,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.65,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.55,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.68,
+    "worst": 2
+   }
+  }
+ },
+ "HATAY": {
+  "ilce": "20089",
+  "slug": "hatay",
+  "coords": [
+   36.2025,
+   36.1603
+  ],
+  "anchor": [
+   36.2025,
+   36.1603
+  ],
+  "days": 365,
+  "mae": 0.37168949771689497,
+  "w1Pct": 98.35616438356165,
+  "exactPct": 64.47488584474885,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.09,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.14,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.09,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.66,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.53,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.72,
+    "worst": 2
+   }
+  }
+ },
+ "IĞDIR": {
+  "ilce": "9522",
+  "slug": "igdir",
+  "coords": [
+   39.9219,
+   44.0436
+  ],
+  "anchor": [
+   39.9219,
+   44.0436
+  ],
+  "days": 365,
+  "mae": 0.40365296803652967,
+  "w1Pct": 98.21917808219177,
+  "exactPct": 61.41552511415525,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.07,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.11,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.08,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.72,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.63,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.82,
+    "worst": 2
+   }
+  }
+ },
+ "ISPARTA": {
+  "ilce": "9528",
+  "slug": "isparta",
+  "coords": [
+   37.7637,
+   30.5551
+  ],
+  "anchor": [
+   37.7637,
+   30.5551
+  ],
+  "days": 365,
+  "mae": 0.39817351598173517,
+  "w1Pct": 98.53881278538813,
+  "exactPct": 61.64383561643836,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.13,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.08,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.72,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.6,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.76,
+    "worst": 2
+   }
+  }
+ },
+ "İSTANBUL": {
+  "ilce": "9541",
+  "slug": "istanbul",
+  "coords": [
+   41.0064,
+   28.9759
+  ],
+  "anchor": [
+   41.0064,
+   28.9759
+  ],
+  "days": 365,
+  "mae": 0.45707762557077625,
+  "w1Pct": 96.34703196347031,
+  "exactPct": 57.945205479452056,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.16,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.13,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.78,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.7,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.88,
+    "worst": 2
+   }
+  }
+ },
+ "İZMİR": {
+  "ilce": "9560",
+  "slug": "izmir",
+  "coords": [
+   38.4193,
+   27.1285
+  ],
+  "anchor": [
+   38.4193,
+   27.1285
+  ],
+  "days": 365,
+  "mae": 0.41141552511415524,
+  "w1Pct": 98.03652968036529,
+  "exactPct": 60.821917808219176,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.12,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.14,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.09,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.75,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.61,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.76,
+    "worst": 2
+   }
+  }
+ },
+ "KAHRAMANMARAŞ": {
+  "ilce": "9577",
+  "slug": "kahramanmaras",
+  "coords": [
+   37.5813,
+   36.9275
+  ],
+  "anchor": [
+   37.5813,
+   36.9275
+  ],
+  "days": 365,
+  "mae": 0.3771689497716895,
+  "w1Pct": 99.04109589041096,
+  "exactPct": 63.242009132420094,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.07,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.11,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.08,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.68,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.59,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.73,
+    "worst": 2
+   }
+  }
+ },
+ "KARABÜK": {
+  "ilce": "9581",
+  "slug": "karabuk",
+  "coords": [
+   41.1955,
+   32.6231
+  ],
+  "anchor": [
+   41.1955,
+   32.6231
+  ],
+  "days": 365,
+  "mae": 0.4534246575342466,
+  "w1Pct": 96.21004566210046,
+  "exactPct": 58.44748858447488,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.13,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.15,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.76,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.72,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.87,
+    "worst": 2
+   }
+  }
+ },
+ "KARAMAN": {
+  "ilce": "9587",
+  "slug": "karaman",
+  "coords": [
+   37.1809,
+   33.2195
+  ],
+  "anchor": [
+   37.1809,
+   33.2195
+  ],
+  "days": 365,
+  "mae": 0.3881278538812785,
+  "w1Pct": 98.85844748858447,
+  "exactPct": 62.32876712328767,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.12,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.12,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.71,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.55,
+    "worst": 1
+   },
+   "isha": {
+    "mae": 0.73,
+    "worst": 2
+   }
+  }
+ },
+ "KARS": {
+  "ilce": "9594",
+  "slug": "kars",
+  "coords": [
+   40.6071,
+   43.0948
+  ],
+  "anchor": [
+   40.6071,
+   43.0948
+  ],
+  "days": 365,
+  "mae": 0.40821917808219177,
+  "w1Pct": 97.8082191780822,
+  "exactPct": 61.36986301369863,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.08,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.13,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.72,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.62,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.8,
+    "worst": 2
+   }
+  }
+ },
+ "KASTAMONU": {
+  "ilce": "9609",
+  "slug": "kastamonu",
+  "coords": [
+   41.3765,
+   33.777
+  ],
+  "anchor": [
+   41.3765,
+   33.777
+  ],
+  "days": 365,
+  "mae": 0.44018264840182647,
+  "w1Pct": 96.80365296803653,
+  "exactPct": 59.178082191780824,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.08,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.13,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.07,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.78,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.71,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.87,
+    "worst": 2
+   }
+  }
+ },
+ "KAYSERİ": {
+  "ilce": "9620",
+  "slug": "kayseri",
+  "coords": [
+   38.7219,
+   35.4873
+  ],
+  "anchor": [
+   38.7219,
+   35.4873
+  ],
+  "days": 365,
+  "mae": 0.4132420091324201,
+  "w1Pct": 98.40182648401826,
+  "exactPct": 60.273972602739725,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.07,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.12,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.11,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.7,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.63,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.85,
+    "worst": 2
+   }
+  }
+ },
+ "KİLİS": {
+  "ilce": "9629",
+  "slug": "kilis",
+  "coords": [
+   36.7166,
+   37.1146
+  ],
+  "anchor": [
+   36.7166,
+   37.1146
+  ],
+  "days": 365,
+  "mae": 0.3639269406392694,
+  "w1Pct": 98.76712328767124,
+  "exactPct": 64.84018264840182,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.07,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.11,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.09,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.62,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.58,
+    "worst": 1
+   },
+   "isha": {
+    "mae": 0.72,
+    "worst": 2
+   }
+  }
+ },
+ "KIRIKKALE": {
+  "ilce": "9635",
+  "slug": "kirikkale",
+  "coords": [
+   39.841,
+   33.5059
+  ],
+  "anchor": [
+   39.841,
+   33.5059
+  ],
+  "days": 365,
+  "mae": 0.4214611872146119,
+  "w1Pct": 97.57990867579909,
+  "exactPct": 60.273972602739725,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.14,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.73,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.64,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.81,
+    "worst": 2
+   }
+  }
+ },
+ "KIRKLARELİ": {
+  "ilce": "9638",
+  "slug": "kirklareli",
+  "coords": [
+   41.737,
+   27.2236
+  ],
+  "anchor": [
+   41.737,
+   27.2236
+  ],
+  "days": 365,
+  "mae": 0.4817351598173516,
+  "w1Pct": 95.52511415525115,
+  "exactPct": 56.3013698630137,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.13,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.18,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.13,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.85,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.69,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.91,
+    "worst": 2
+   }
+  }
+ },
+ "KIRŞEHİR": {
+  "ilce": "9646",
+  "slug": "kirsehir",
+  "coords": [
+   39.1461,
+   34.1606
+  ],
+  "anchor": [
+   39.1461,
+   34.1606
+  ],
+  "days": 365,
+  "mae": 0.4155251141552511,
+  "w1Pct": 97.35159817351598,
+  "exactPct": 61.0958904109589,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.09,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.15,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.08,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.75,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.62,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.81,
+    "worst": 2
+   }
+  }
+ },
+ "KOCAELİ": {
+  "ilce": "9654",
+  "slug": "kocaeli",
+  "coords": [
+   40.7654,
+   29.9407
+  ],
+  "anchor": [
+   40.7654,
+   29.9407
+  ],
+  "days": 365,
+  "mae": 0.4657534246575342,
+  "w1Pct": 95.20547945205479,
+  "exactPct": 58.21917808219178,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.22,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.08,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.8,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.69,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.91,
+    "worst": 2
+   }
+  }
+ },
+ "KONYA": {
+  "ilce": "9676",
+  "slug": "konya",
+  "coords": [
+   37.8727,
+   32.4924
+  ],
+  "anchor": [
+   37.8727,
+   32.4924
+  ],
+  "days": 365,
+  "mae": 0.4004566210045662,
+  "w1Pct": 98.53881278538813,
+  "exactPct": 61.41552511415525,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.13,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.68,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.6,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.78,
+    "worst": 2
+   }
+  }
+ },
+ "KÜTAHYA": {
+  "ilce": "9689",
+  "slug": "kutahya",
+  "coords": [
+   39.4199,
+   29.9858
+  ],
+  "anchor": [
+   39.4199,
+   29.9858
+  ],
+  "days": 365,
+  "mae": 0.4351598173515982,
+  "w1Pct": 97.62557077625571,
+  "exactPct": 58.858447488584474,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.11,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.16,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.13,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.72,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.65,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.84,
+    "worst": 2
+   }
+  }
+ },
+ "MALATYA": {
+  "ilce": "9703",
+  "slug": "malatya",
+  "coords": [
+   38.3487,
+   38.3191
+  ],
+  "anchor": [
+   38.3487,
+   38.3191
+  ],
+  "days": 365,
+  "mae": 0.3872146118721461,
+  "w1Pct": 98.35616438356165,
+  "exactPct": 62.922374429223744,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.08,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.15,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.09,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.7,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.59,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.72,
+    "worst": 2
+   }
+  }
+ },
+ "MANİSA": {
+  "ilce": "9716",
+  "slug": "manisa",
+  "coords": [
+   38.6126,
+   27.4334
+  ],
+  "anchor": [
+   38.6126,
+   27.4334
+  ],
+  "days": 365,
+  "mae": 0.43424657534246575,
+  "w1Pct": 97.8082191780822,
+  "exactPct": 58.76712328767123,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.12,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.18,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.08,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.76,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.64,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.83,
+    "worst": 2
+   }
+  }
+ },
+ "MARDİN": {
+  "ilce": "9726",
+  "slug": "mardin",
+  "coords": [
+   37.3133,
+   40.7354
+  ],
+  "anchor": [
+   37.3133,
+   40.7354
+  ],
+  "days": 365,
+  "mae": 0.3730593607305936,
+  "w1Pct": 99.3607305936073,
+  "exactPct": 63.333333333333336,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.06,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.12,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.11,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.64,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.58,
+    "worst": 1
+   },
+   "isha": {
+    "mae": 0.73,
+    "worst": 2
+   }
+  }
+ },
+ "MERSİN": {
+  "ilce": "9737",
+  "slug": "mersin",
+  "coords": [
+   36.7978,
+   34.6298
+  ],
+  "anchor": [
+   36.7978,
+   34.6298
+  ],
+  "days": 365,
+  "mae": 0.38767123287671235,
+  "w1Pct": 98.72146118721462,
+  "exactPct": 62.51141552511415,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.07,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.16,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.09,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.66,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.59,
+    "worst": 1
+   },
+   "isha": {
+    "mae": 0.76,
+    "worst": 2
+   }
+  }
+ },
+ "MUĞLA": {
+  "ilce": "9747",
+  "slug": "mugla",
+  "coords": [
+   37.2152,
+   28.3637
+  ],
+  "anchor": [
+   37.2152,
+   28.3637
+  ],
+  "days": 365,
+  "mae": 0.4031963470319635,
+  "w1Pct": 97.44292237442923,
+  "exactPct": 62.23744292237443,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.15,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.72,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.58,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.76,
+    "worst": 2
+   }
+  }
+ },
+ "MUŞ": {
+  "ilce": "9755",
+  "slug": "mus",
+  "coords": [
+   38.7322,
+   41.4899
+  ],
+  "anchor": [
+   38.7322,
+   41.4899
+  ],
+  "days": 365,
+  "mae": 0.39315068493150684,
+  "w1Pct": 98.53881278538813,
+  "exactPct": 62.146118721461185,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.05,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.12,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.69,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.6,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.8,
+    "worst": 2
+   }
+  }
+ },
+ "NEVŞEHİR": {
+  "ilce": "9760",
+  "slug": "nevsehir",
+  "coords": [
+   38.625,
+   34.7151
+  ],
+  "anchor": [
+   38.625,
+   34.7151
+  ],
+  "days": 365,
+  "mae": 0.42557077625570777,
+  "w1Pct": 98.35616438356165,
+  "exactPct": 59.08675799086758,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.11,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.13,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.72,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.66,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.83,
+    "worst": 2
+   }
+  }
+ },
+ "NİĞDE": {
+  "ilce": "9766",
+  "slug": "nigde",
+  "coords": [
+   37.9698,
+   34.6764
+  ],
+  "anchor": [
+   37.9698,
+   34.6764
+  ],
+  "days": 365,
+  "mae": 0.3917808219178082,
+  "w1Pct": 98.4931506849315,
+  "exactPct": 62.32876712328767,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.07,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.15,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.08,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.68,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.6,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.76,
+    "worst": 2
+   }
+  }
+ },
+ "ORDU": {
+  "ilce": "9782",
+  "slug": "ordu",
+  "coords": [
+   40.9852,
+   37.8798
+  ],
+  "anchor": [
+   40.9852,
+   37.8798
+  ],
+  "days": 365,
+  "mae": 0.42648401826484017,
+  "w1Pct": 97.21461187214612,
+  "exactPct": 60.136986301369866,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.13,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.08,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.76,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.61,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.87,
+    "worst": 2
+   }
+  }
+ },
+ "OSMANİYE": {
+  "ilce": "9788",
+  "slug": "osmaniye",
+  "coords": [
+   37.0734,
+   36.2508
+  ],
+  "anchor": [
+   37.0734,
+   36.2508
+  ],
+  "days": 365,
+  "mae": 0.38995433789954337,
+  "w1Pct": 98.85844748858447,
+  "exactPct": 62.146118721461185,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.09,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.16,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.66,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.58,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.74,
+    "worst": 2
+   }
+  }
+ },
+ "RİZE": {
+  "ilce": "9799",
+  "slug": "rize",
+  "coords": [
+   41.0248,
+   40.5199
+  ],
+  "anchor": [
+   41.0248,
+   40.5199
+  ],
+  "days": 365,
+  "mae": 0.4269406392694064,
+  "w1Pct": 97.30593607305936,
+  "exactPct": 60,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.09,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.12,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.73,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.67,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.84,
+    "worst": 2
+   }
+  }
+ },
+ "SAKARYA": {
+  "ilce": "9807",
+  "slug": "sakarya",
+  "coords": [
+   40.7726,
+   30.4039
+  ],
+  "anchor": [
+   40.7726,
+   30.4039
+  ],
+  "days": 365,
+  "mae": 0.4575342465753425,
+  "w1Pct": 96.98630136986301,
+  "exactPct": 57.26027397260274,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.18,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.08,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.83,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.7,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.87,
+    "worst": 2
+   }
+  }
+ },
+ "SAMSUN": {
+  "ilce": "9819",
+  "slug": "samsun",
+  "coords": [
+   41.2946,
+   36.3321
+  ],
+  "anchor": [
+   41.2946,
+   36.3321
+  ],
+  "days": 365,
+  "mae": 0.43881278538812785,
+  "w1Pct": 96.94063926940639,
+  "exactPct": 59.178082191780824,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.11,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.15,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.73,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.67,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.87,
+    "worst": 2
+   }
+  }
+ },
+ "ŞANLIURFA": {
+  "ilce": "9831",
+  "slug": "sanliurfa",
+  "coords": [
+   37.1596,
+   38.7919
+  ],
+  "anchor": [
+   37.1596,
+   38.7919
+  ],
+  "days": 365,
+  "mae": 0.36575342465753424,
+  "w1Pct": 98.99543378995433,
+  "exactPct": 64.42922374429224,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.07,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.13,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.08,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.62,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.56,
+    "worst": 1
+   },
+   "isha": {
+    "mae": 0.73,
+    "worst": 2
+   }
+  }
+ },
+ "SİİRT": {
+  "ilce": "9839",
+  "slug": "siirt",
+  "coords": [
+   37.9274,
+   41.9422
+  ],
+  "anchor": [
+   37.9274,
+   41.9422
+  ],
+  "days": 365,
+  "mae": 0.3698630136986301,
+  "w1Pct": 98.76712328767124,
+  "exactPct": 64.24657534246575,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.05,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.07,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.67,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.58,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.75,
+    "worst": 2
+   }
+  }
+ },
+ "SİNOP": {
+  "ilce": "9847",
+  "slug": "sinop",
+  "coords": [
+   42.0266,
+   35.1512
+  ],
+  "anchor": [
+   42.0266,
+   35.1512
+  ],
+  "days": 365,
+  "mae": 0.4589041095890411,
+  "w1Pct": 95.57077625570776,
+  "exactPct": 58.538812785388124,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.07,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.15,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.08,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.84,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.67,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.94,
+    "worst": 2
+   }
+  }
+ },
+ "ŞIRNAK": {
+  "ilce": "9854",
+  "slug": "sirnak",
+  "coords": [
+   37.522,
+   42.457
+  ],
+  "anchor": [
+   37.522,
+   42.457
+  ],
+  "days": 365,
+  "mae": 0.36118721461187214,
+  "w1Pct": 99.22374429223744,
+  "exactPct": 64.65753424657534,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.07,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.09,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.08,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.65,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.59,
+    "worst": 1
+   },
+   "isha": {
+    "mae": 0.69,
+    "worst": 2
+   }
+  }
+ },
+ "SİVAS": {
+  "ilce": "9868",
+  "slug": "sivas",
+  "coords": [
+   39.7504,
+   37.0145
+  ],
+  "anchor": [
+   39.7504,
+   37.0145
+  ],
+  "days": 365,
+  "mae": 0.4136986301369863,
+  "w1Pct": 98.12785388127854,
+  "exactPct": 60.50228310502283,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.08,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.13,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.08,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.72,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.66,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.81,
+    "worst": 2
+   }
+  }
+ },
+ "TEKİRDAĞ": {
+  "ilce": "9879",
+  "slug": "tekirdag",
+  "coords": [
+   40.9781,
+   27.5108
+  ],
+  "anchor": [
+   40.9781,
+   27.5108
+  ],
+  "days": 365,
+  "mae": 0.45662100456621,
+  "w1Pct": 97.1689497716895,
+  "exactPct": 57.1689497716895,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.11,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.21,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.09,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.77,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.7,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.86,
+    "worst": 2
+   }
+  }
+ },
+ "TOKAT": {
+  "ilce": "9887",
+  "slug": "tokat",
+  "coords": [
+   40.3234,
+   36.5522
+  ],
+  "anchor": [
+   40.3234,
+   36.5522
+  ],
+  "days": 365,
+  "mae": 0.4292237442922374,
+  "w1Pct": 97.48858447488584,
+  "exactPct": 59.58904109589041,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.11,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.11,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.08,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.77,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.67,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.84,
+    "worst": 2
+   }
+  }
+ },
+ "TRABZON": {
+  "ilce": "9905",
+  "slug": "trabzon",
+  "coords": [
+   41.0055,
+   39.7301
+  ],
+  "anchor": [
+   41.0055,
+   39.7301
+  ],
+  "days": 365,
+  "mae": 0.4680365296803653,
+  "w1Pct": 95.662100456621,
+  "exactPct": 57.534246575342465,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.21,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.19,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.16,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.76,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.65,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.84,
+    "worst": 2
+   }
+  }
+ },
+ "TUNCELİ": {
+  "ilce": "9914",
+  "slug": "tunceli",
+  "coords": [
+   39.1061,
+   39.5483
+  ],
+  "anchor": [
+   39.1061,
+   39.5483
+  ],
+  "days": 365,
+  "mae": 0.38995433789954337,
+  "w1Pct": 98.58447488584476,
+  "exactPct": 62.42009132420091,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.08,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.14,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.08,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.68,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.57,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.78,
+    "worst": 2
+   }
+  }
+ },
+ "UŞAK": {
+  "ilce": "9919",
+  "slug": "usak",
+  "coords": [
+   38.674,
+   29.4058
+  ],
+  "anchor": [
+   38.674,
+   29.4058
+  ],
+  "days": 365,
+  "mae": 0.4273972602739726,
+  "w1Pct": 97.53424657534246,
+  "exactPct": 59.726027397260275,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.11,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.16,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.09,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.76,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.61,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.83,
+    "worst": 2
+   }
+  }
+ },
+ "VAN": {
+  "ilce": "9930",
+  "slug": "van",
+  "coords": [
+   38.5009,
+   43.3946
+  ],
+  "anchor": [
+   38.5009,
+   43.3946
+  ],
+  "days": 365,
+  "mae": 0.36940639269406395,
+  "w1Pct": 98.17351598173516,
+  "exactPct": 64.88584474885845,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.09,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.11,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.09,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.71,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.51,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.71,
+    "worst": 2
+   }
+  }
+ },
+ "YALOVA": {
+  "ilce": "9935",
+  "slug": "yalova",
+  "coords": [
+   40.6583,
+   29.27
+  ],
+  "anchor": [
+   40.6583,
+   29.27
+  ],
+  "days": 365,
+  "mae": 0.44018264840182647,
+  "w1Pct": 96.7579908675799,
+  "exactPct": 59.22374429223744,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.13,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.13,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.11,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.76,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.68,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.84,
+    "worst": 2
+   }
+  }
+ },
+ "YOZGAT": {
+  "ilce": "9949",
+  "slug": "yozgat",
+  "coords": [
+   39.8222,
+   34.8081
+  ],
+  "anchor": [
+   39.8222,
+   34.8081
+  ],
+  "days": 365,
+  "mae": 0.4232876712328767,
+  "w1Pct": 97.8082191780822,
+  "exactPct": 59.863013698630134,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.1,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.13,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.08,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.73,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.68,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.81,
+    "worst": 2
+   }
+  }
+ },
+ "ZONGULDAK": {
+  "ilce": "9955",
+  "slug": "zonguldak",
+  "coords": [
+   41.4527,
+   31.7876
+  ],
+  "anchor": [
+   41.4527,
+   31.7876
+  ],
+  "days": 365,
+  "mae": 0.44337899543378995,
+  "w1Pct": 96.25570776255708,
+  "exactPct": 59.406392694063925,
+  "worst": 2,
+  "perPrayer": {
+   "fajr": {
+    "mae": 0.08,
+    "worst": 1
+   },
+   "sunrise": {
+    "mae": 0.16,
+    "worst": 1
+   },
+   "dhuhr": {
+    "mae": 0.07,
+    "worst": 1
+   },
+   "asr": {
+    "mae": 0.79,
+    "worst": 2
+   },
+   "maghrib": {
+    "mae": 0.69,
+    "worst": 2
+   },
+   "isha": {
+    "mae": 0.88,
+    "worst": 2
+   }
+  }
+ }
+}

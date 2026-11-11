@@ -1,0 +1,34 @@
+{
+ "label": "r5622-السويد",
+ "file": "captures/masjidi_region_5622.json",
+ "rows": 366,
+ "lat": 58.56,
+ "k": 0,
+ "geoRms": 8.1,
+ "fajr": {
+  "kind": "angle",
+  "n": 366,
+  "angle": 16.98,
+  "darkIqr": 0.09
+ },
+ "isha": {
+  "kind": "angle",
+  "n": 366,
+  "angle": 15.01,
+  "darkIqr": 0.08,
+  "gap": 111
+ },
+ "asr": {
+  "school": "Shafi",
+  "shafiMae": 0.8,
+  "hanafiMae": 50.5
+ },
+ "clock": {
+  "lonImplied": -1.85,
+  "offsetMin": -7,
+  "driftRms": 0.2,
+  "runs": 1,
+  "steps": []
+ },
+ "amplitude": -249
+}

@@ -1,0 +1,53 @@
+{
+ "engine": "adhan 4.4.6",
+ "tz": "Asia/Hong_Kong",
+ "year": 2027,
+ "rows": 365,
+ "fajr": {
+  "best_angle": {
+   "angle": 18,
+   "mae": 0.27
+  },
+  "at_18_4": {
+   "mean": 1.75,
+   "mae": 1.75,
+   "within1": 0
+  }
+ },
+ "asr": {
+  "Shafi": {
+   "base_mean": 61.35,
+   "base_mae": 61.35
+  },
+  "Hanafi": {
+   "base_mean": 0.89,
+   "base_mae": 0.89
+  }
+ },
+ "dhuhr_margin_on_noon": {
+  "mean": 4.88,
+  "mae": 4.88,
+  "within1": 0
+ },
+ "maghrib_margin_on_sunset": {
+  "mean": 2.86,
+  "mae": 2.86,
+  "within1": 0
+ },
+ "sunrise": {
+  "mean": -0.1,
+  "mae": 0.26,
+  "within1": 1
+ },
+ "isha": {
+  "interval_on_printed_maghrib": {
+   "mean": 77.68,
+   "mae": 77.68,
+   "within1": 0
+  },
+  "best_angle": {
+   "angle": 18.4,
+   "mae": 0.29
+  }
+ }
+}

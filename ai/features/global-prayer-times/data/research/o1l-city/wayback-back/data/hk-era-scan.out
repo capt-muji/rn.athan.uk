@@ -1,0 +1,24 @@
+
+== Era2 2022 Oct-Dec (suspected Hanafi/maghrib+0) (2022-10-01..2022-12-31, n=92) top4 ==
+  18.4/Hanafi/m+0: fajrExact 30/92 asrExact 38 maghribExact 82 iv 75..80
+  18.2/Hanafi/m+0: fajrExact 2/92 asrExact 38 maghribExact 82 iv 75..80
+  17.5/Hanafi/m+0: fajrExact 0/92 asrExact 38 maghribExact 82 iv 75..80
+  17.8/Hanafi/m+0: fajrExact 0/92 asrExact 38 maghribExact 82 iv 75..80
+
+== Era3a 2023 Jan-Feb (maghrib suspect) (2023-01-01..2023-02-28, n=59) top4 ==
+  18.4/Shafi/m+0: fajrExact 55/59 asrExact 42 maghribExact 56 iv 76..81
+  18.2/Shafi/m+0: fajrExact 16/59 asrExact 42 maghribExact 56 iv 76..81
+  18.4/Hanafi/m+0: fajrExact 55/59 asrExact 0 maghribExact 56 iv 76..81
+  18.4/Shafi/m+1: fajrExact 55/59 asrExact 42 maghribExact 3 iv 76..81
+
+== Era3-clean 2023 May-Jul (2023-05-01..2023-07-31, n=92) top4 ==
+  18.4/Shafi/m+3: fajrExact 89/92 asrExact 85 maghribExact 90 iv 80..80
+  18.4/Hanafi/m+3: fajrExact 89/92 asrExact 0 maghribExact 90 iv 80..80
+  18.2/Shafi/m+3: fajrExact 2/92 asrExact 85 maghribExact 90 iv 80..80
+  18.4/Shafi/m+2: fajrExact 89/92 asrExact 85 maghribExact 2 iv 80..80
+
+== Era3d 2023 Aug-Dec (fajr +2 suspect) (2023-08-01..2023-12-31, n=153) top4 ==
+  18/Shafi/m+3: fajrExact 109/153 asrExact 117 maghribExact 153 iv 72..80
+  17.8/Shafi/m+3: fajrExact 56/153 asrExact 117 maghribExact 153 iv 72..80
+  17.5/Shafi/m+3: fajrExact 0/153 asrExact 117 maghribExact 153 iv 72..80
+  18.2/Shafi/m+3: fajrExact 0/153 asrExact 117 maghribExact 153 iv 72..80

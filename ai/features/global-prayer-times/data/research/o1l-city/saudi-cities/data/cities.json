@@ -1,0 +1,352 @@
+{
+ "recipe": {
+  "fajr": "18.5 deg",
+  "isha": "maghrib + 90 min; + 120 on the API's own Ramadan days (hijri month 9)",
+  "offsets": {
+   "fajr": 1,
+   "sunrise": 0,
+   "dhuhr": 1,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": "inherits maghrib"
+  },
+  "rounding": "floor(raw + 1) single formulation; sunrise floor(raw)",
+  "madhab": "Shafi",
+  "highLat": "MiddleOfTheNight",
+  "clock": "UTC+3 (zone=3)",
+  "engine": "adhan-js 4.4.6 CalculationParameters Other(18.5,18) Rounding.None"
+ },
+ "cities": [
+  {
+   "name": "yanbu",
+   "lat": 24.0895,
+   "lon": 38.0618,
+   "gov": "Al Madinah",
+   "anchor": "city-point"
+  },
+  {
+   "name": "jubail",
+   "lat": 27.0046,
+   "lon": 49.646,
+   "gov": "Ash Sharqiyah",
+   "anchor": "city-point"
+  },
+  {
+   "name": "khamis-mushait",
+   "lat": 18.3,
+   "lon": 42.7333,
+   "gov": "Asir",
+   "anchor": "city-point"
+  },
+  {
+   "name": "najran",
+   "capture": "najran-pub",
+   "lat": 17.52,
+   "lon": 44.2,
+   "gov": "Najran",
+   "anchor": "publisher-anchor",
+   "alt": {
+    "capture": "najran",
+    "lat": 17.4917,
+    "lon": 44.1322
+   }
+  },
+  {
+   "name": "jizan",
+   "capture": "jizan-pub",
+   "lat": 16.89,
+   "lon": 42.54,
+   "gov": "Jazan",
+   "anchor": "publisher-anchor",
+   "alt": {
+    "capture": "jizan",
+    "lat": 16.8892,
+    "lon": 42.5511
+   }
+  },
+  {
+   "name": "arar",
+   "capture": "arar-pub",
+   "lat": 30.99,
+   "lon": 41.02,
+   "gov": "Al Hudud ash Shamaliyah",
+   "anchor": "publisher-anchor",
+   "alt": {
+    "capture": "arar",
+    "lat": 30.9753,
+    "lon": 41.0381
+   }
+  },
+  {
+   "name": "sakaka",
+   "capture": "sakaka-pub",
+   "lat": 29.97,
+   "lon": 40.2,
+   "gov": "Al Jawf",
+   "anchor": "publisher-anchor",
+   "alt": {
+    "capture": "sakaka",
+    "lat": 29.9697,
+    "lon": 40.2064
+   }
+  },
+  {
+   "name": "al-baha",
+   "capture": "al-baha-pub",
+   "lat": 20.01,
+   "lon": 41.47,
+   "gov": "Al Bahah",
+   "anchor": "publisher-anchor",
+   "alt": {
+    "capture": "al-baha",
+    "lat": 20.0129,
+    "lon": 41.4677
+   }
+  },
+  {
+   "name": "al-khobar",
+   "lat": 26.2794,
+   "lon": 50.2083,
+   "gov": "Ash Sharqiyah",
+   "anchor": "city-point"
+  },
+  {
+   "name": "hofuf",
+   "lat": 25.3647,
+   "lon": 49.5872,
+   "gov": "Ash Sharqiyah (Al Ahsa)",
+   "anchor": "city-point"
+  },
+  {
+   "name": "hafar-al-batin",
+   "lat": 28.4328,
+   "lon": 45.9708,
+   "gov": "Ash Sharqiyah",
+   "anchor": "city-point"
+  },
+  {
+   "name": "al-qatif",
+   "lat": 26.5196,
+   "lon": 50.0115,
+   "gov": "Ash Sharqiyah",
+   "anchor": "city-point"
+  },
+  {
+   "name": "unaizah",
+   "lat": 26.084,
+   "lon": 43.9936,
+   "gov": "Al Qassim",
+   "anchor": "city-point"
+  },
+  {
+   "name": "al-kharj",
+   "lat": 24.1483,
+   "lon": 47.305,
+   "gov": "Ar Riyad",
+   "anchor": "city-point"
+  },
+  {
+   "name": "dawadmi",
+   "lat": 24.5,
+   "lon": 44.3833,
+   "gov": "Ar Riyad",
+   "anchor": "city-point"
+  },
+  {
+   "name": "wadi-ad-dawasir",
+   "lat": 20.4667,
+   "lon": 44.8,
+   "gov": "Ar Riyad",
+   "anchor": "city-point"
+  },
+  {
+   "name": "bishah",
+   "lat": 19.9844,
+   "lon": 42.6,
+   "gov": "Asir",
+   "anchor": "city-point"
+  },
+  {
+   "name": "al-lith",
+   "lat": 20.15,
+   "lon": 40.2833,
+   "gov": "Makkah",
+   "anchor": "city-point"
+  },
+  {
+   "name": "al-ula",
+   "lat": 26.6085,
+   "lon": 37.9236,
+   "gov": "Al Madinah",
+   "anchor": "city-point"
+  },
+  {
+   "name": "rafha",
+   "lat": 29.6267,
+   "lon": 43.5014,
+   "gov": "Al Hudud ash Shamaliyah",
+   "anchor": "city-point"
+  },
+  {
+   "name": "turaif",
+   "lat": 31.6725,
+   "lon": 38.6636,
+   "gov": "Al Hudud ash Shamaliyah",
+   "anchor": "city-point"
+  },
+  {
+   "name": "sharurah",
+   "lat": 17.4833,
+   "lon": 47.1167,
+   "gov": "Najran",
+   "anchor": "city-point"
+  },
+  {
+   "name": "al-qurayyat",
+   "lat": 31.3319,
+   "lon": 37.3428,
+   "gov": "Al Jawf",
+   "anchor": "city-point"
+  },
+  {
+   "name": "al-wajh",
+   "lat": 26.2456,
+   "lon": 36.4667,
+   "gov": "Tabuk",
+   "anchor": "city-point"
+  },
+  {
+   "name": "umluj",
+   "lat": 25.05,
+   "lon": 37.2667,
+   "gov": "Tabuk",
+   "anchor": "city-point"
+  },
+  {
+   "name": "duba",
+   "lat": 27.35,
+   "lon": 35.7,
+   "gov": "Tabuk",
+   "anchor": "city-point"
+  },
+  {
+   "name": "haql",
+   "lat": 29.2833,
+   "lon": 34.9333,
+   "gov": "Tabuk",
+   "anchor": "city-point"
+  },
+  {
+   "name": "tayma",
+   "lat": 27.6333,
+   "lon": 38.55,
+   "gov": "Tabuk",
+   "anchor": "city-point"
+  },
+  {
+   "name": "al-sulayyil",
+   "lat": 20.4667,
+   "lon": 45.5833,
+   "gov": "Ar Riyad",
+   "anchor": "city-point"
+  },
+  {
+   "name": "al-aflaj",
+   "lat": 22.2833,
+   "lon": 46.7333,
+   "gov": "Ar Riyad",
+   "anchor": "city-point"
+  },
+  {
+   "name": "ranyah",
+   "lat": 21.25,
+   "lon": 42.85,
+   "gov": "Makkah",
+   "anchor": "city-point"
+  },
+  {
+   "name": "turbah",
+   "lat": 21.2167,
+   "lon": 41.6333,
+   "gov": "Makkah",
+   "anchor": "city-point"
+  },
+  {
+   "name": "al-khurma",
+   "lat": 22.0833,
+   "lon": 42.0333,
+   "gov": "Makkah",
+   "anchor": "city-point"
+  },
+  {
+   "name": "mahd-adh-dhahab",
+   "lat": 23.5,
+   "lon": 40.85,
+   "gov": "Al Madinah",
+   "anchor": "city-point"
+  },
+  {
+   "name": "al-majmaah",
+   "lat": 25.9,
+   "lon": 45.3667,
+   "gov": "Ar Riyad",
+   "anchor": "city-point"
+  },
+  {
+   "name": "al-rass",
+   "lat": 25.8667,
+   "lon": 43.5,
+   "gov": "Al Qassim",
+   "anchor": "city-point"
+  },
+  {
+   "name": "al-zulfi",
+   "lat": 26.2833,
+   "lon": 44.8,
+   "gov": "Ar Riyad",
+   "anchor": "city-point"
+  },
+  {
+   "name": "abu-arish",
+   "lat": 16.9667,
+   "lon": 42.8333,
+   "gov": "Jazan",
+   "anchor": "city-point"
+  },
+  {
+   "name": "sabya",
+   "lat": 17.15,
+   "lon": 42.6333,
+   "gov": "Jazan",
+   "anchor": "city-point"
+  },
+  {
+   "name": "samtah",
+   "lat": 16.6,
+   "lon": 42.95,
+   "gov": "Jazan",
+   "anchor": "city-point"
+  },
+  {
+   "name": "farasan",
+   "lat": 16.7,
+   "lon": 42.1167,
+   "gov": "Jazan",
+   "anchor": "city-point"
+  },
+  {
+   "name": "al-namas",
+   "lat": 19.15,
+   "lon": 42.2833,
+   "gov": "Asir",
+   "anchor": "city-point"
+  },
+  {
+   "name": "baljurashi",
+   "lat": 19.8667,
+   "lon": 41.5667,
+   "gov": "Al Bahah",
+   "anchor": "city-point"
+  }
+ ]
+}

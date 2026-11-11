@@ -1,0 +1,100 @@
+{
+ "label": "ghana-accra-national-ghanamasjid-2026-11",
+ "file": "ghana-accra-national-ghanamasjid-2026-11.json",
+ "tz": "Africa/Accra",
+ "lat": 5.5905296,
+ "lon": -0.1922801,
+ "days": 30,
+ "span": [
+  "2026-11-01",
+  "2026-11-30"
+ ],
+ "engine": "adhan 4.4.6 Rounding.None MiddleOfTheNight",
+ "recipe": {
+  "fajrAngle": 17.9,
+  "ishaAngle": 17.15,
+  "madhab": "Shafi",
+  "offsets": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 1,
+   "maghrib": 0,
+   "isha": 0
+  }
+ },
+ "angleSearch": {
+  "fajr": {
+   "angle": 17.9,
+   "exact": 29,
+   "w1": 30,
+   "worst": 1,
+   "score": 30029
+  },
+  "isha": {
+   "angle": 17.15,
+   "exact": 28,
+   "w1": 30,
+   "worst": 1,
+   "score": 30028
+  }
+ },
+ "asrMadhab": {
+  "shafi": {
+   "exact": 0,
+   "w1": 24,
+   "worst": 2,
+   "n": 30
+  },
+  "hanafi": {
+   "exact": 0,
+   "w1": 0,
+   "worst": 56,
+   "n": 30
+  }
+ },
+ "perColumn": {
+  "fajr": {
+   "exact": 29,
+   "w1": 30,
+   "worst": 1,
+   "n": 30
+  },
+  "sunrise": {
+   "exact": 15,
+   "w1": 30,
+   "worst": 1,
+   "n": 30
+  },
+  "dhuhr": {
+   "exact": 18,
+   "w1": 30,
+   "worst": 1,
+   "n": 30
+  },
+  "asr": {
+   "exact": 24,
+   "w1": 30,
+   "worst": 1,
+   "n": 30
+  },
+  "maghrib": {
+   "exact": 18,
+   "w1": 30,
+   "worst": 1,
+   "n": 30
+  },
+  "isha": {
+   "exact": 28,
+   "w1": 30,
+   "worst": 1,
+   "n": 30
+  }
+ },
+ "totals": {
+  "within1": 180,
+  "of": 180,
+  "exact": 132,
+  "worst": 1
+ }
+}

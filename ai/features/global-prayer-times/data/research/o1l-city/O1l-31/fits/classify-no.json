@@ -1,0 +1,11 @@
+[
+ {"tag":"mw-stavanger","file":"no-mawaqeet-stavanger-2026.json","lat":59.102013,"lng":5.712610,"fa":18,"is":15},
+ {"tag":"mw-haugesund","file":"no-mawaqeet-haugesund-2026.json","lat":59.468248,"lng":5.082381,"fa":18,"is":15},
+ {"tag":"mw-alesund","file":"no-mawaqeet-alesund-2026.json","lat":62.767125,"lng":6.168668,"fa":18,"is":15},
+ {"tag":"mw-sandnes","file":"no-mawaqeet-sandnes-2026.json","lat":58.983132,"lng":6.394641,"fa":18,"is":15},
+ {"tag":"mw-fredrikstad","file":"no-mawaqeet-fredrikstad-2026.json","lat":59.186201,"lng":10.868024,"fa":18,"is":15},
+ {"tag":"mw-sarpsborg","file":"no-mawaqeet-sarpsborg-2026.json","lat":59.254954,"lng":11.229781,"fa":18,"is":15},
+ {"tag":"ju-oslo","file":"no-jamiat-oslo-2026.json","lat":59.972397,"lng":10.775729,"fa":18,"is":15},
+ {"tag":"ju-stavanger","file":"no-jamiat-stavanger-2026.json","lat":59.102013,"lng":5.712610,"fa":18,"is":15},
+ {"tag":"ju-haugesund","file":"no-jamiat-haugesund-2026.json","lat":59.468248,"lng":5.082381,"fa":18,"is":15}
+]

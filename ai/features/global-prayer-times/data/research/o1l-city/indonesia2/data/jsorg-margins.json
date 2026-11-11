@@ -1,0 +1,1598 @@
+{
+ "banda_aceh": {
+  "n": 613,
+  "perCol": {
+   "fajr": {
+    "median": 1.92,
+    "min": 0.5,
+    "max": 3.03,
+    "within1": 94
+   },
+   "sunrise": {
+    "median": -2.12,
+    "min": -3.4,
+    "max": -1.1,
+    "within1": 97.4
+   },
+   "dhuhr": {
+    "median": 1.85,
+    "min": 0.9,
+    "max": 2.72,
+    "within1": 100
+   },
+   "asr": {
+    "median": 1.85,
+    "min": 1.05,
+    "max": 3.3,
+    "within1": 98.4
+   },
+   "maghrib": {
+    "median": 1.9,
+    "min": 0.83,
+    "max": 2.87,
+    "within1": 99.7
+   },
+   "isha": {
+    "median": 1.88,
+    "min": 0.73,
+    "max": 2.87,
+    "within1": 99
+   }
+  },
+  "lines": {}
+ },
+ "bandung": {
+  "n": 613,
+  "perCol": {
+   "fajr": {
+    "median": 2.18,
+    "min": 1.03,
+    "max": 3.23,
+    "within1": 98.9
+   },
+   "sunrise": {
+    "median": -1.78,
+    "min": -2.82,
+    "max": -0.77,
+    "within1": 99.7
+   },
+   "dhuhr": {
+    "median": 2.13,
+    "min": 1.23,
+    "max": 3.05,
+    "within1": 100
+   },
+   "asr": {
+    "median": 2.08,
+    "min": 1.23,
+    "max": 3.55,
+    "within1": 96.4
+   },
+   "maghrib": {
+    "median": 2.17,
+    "min": 1.38,
+    "max": 3.18,
+    "within1": 99.8
+   },
+   "isha": {
+    "median": 2.18,
+    "min": 1.3,
+    "max": 3.15,
+    "within1": 100
+   }
+  },
+  "lines": {}
+ },
+ "surabaya": {
+  "n": 613,
+  "perCol": {
+   "fajr": {
+    "median": 1.97,
+    "min": 0.93,
+    "max": 3.05,
+    "within1": 99.5
+   },
+   "sunrise": {
+    "median": -2,
+    "min": -2.97,
+    "max": -0.97,
+    "within1": 99.8
+   },
+   "dhuhr": {
+    "median": 1.98,
+    "min": 1.02,
+    "max": 2.83,
+    "within1": 100
+   },
+   "asr": {
+    "median": 1.85,
+    "min": 1.05,
+    "max": 3.35,
+    "within1": 97.2
+   },
+   "maghrib": {
+    "median": 2,
+    "min": 1.13,
+    "max": 2.97,
+    "within1": 100
+   },
+   "isha": {
+    "median": 2.1,
+    "min": 1,
+    "max": 2.97,
+    "within1": 99.3
+   }
+  },
+  "lines": {}
+ },
+ "medan": {
+  "n": 613,
+  "perCol": {
+   "fajr": {
+    "median": 2.03,
+    "min": 1.17,
+    "max": 2.97,
+    "within1": 100
+   },
+   "sunrise": {
+    "median": -1.97,
+    "min": -2.82,
+    "max": -1.03,
+    "within1": 100
+   },
+   "dhuhr": {
+    "median": 2.1,
+    "min": 1.13,
+    "max": 2.93,
+    "within1": 100
+   },
+   "asr": {
+    "median": 2.08,
+    "min": 1.18,
+    "max": 3.47,
+    "within1": 97.7
+   },
+   "maghrib": {
+    "median": 2.08,
+    "min": 1.17,
+    "max": 2.95,
+    "within1": 100
+   },
+   "isha": {
+    "median": 2.07,
+    "min": 1.23,
+    "max": 3.07,
+    "within1": 100
+   }
+  },
+  "lines": {}
+ },
+ "makassar": {
+  "n": 613,
+  "perCol": {
+   "fajr": {
+    "median": 61.8,
+    "min": 60.78,
+    "max": 62.77,
+    "within1": 99.8
+   },
+   "sunrise": {
+    "median": 57.85,
+    "min": 56.9,
+    "max": 58.82,
+    "within1": 100
+   },
+   "dhuhr": {
+    "median": 61.87,
+    "min": 60.93,
+    "max": 62.7,
+    "within1": 100
+   },
+   "asr": {
+    "median": 61.75,
+    "min": 60.88,
+    "max": 63.03,
+    "within1": 98
+   },
+   "maghrib": {
+    "median": 61.8,
+    "min": 61.03,
+    "max": 62.77,
+    "within1": 100
+   },
+   "isha": {
+    "median": 61.93,
+    "min": 60.97,
+    "max": 62.73,
+    "within1": 100
+   }
+  },
+  "lines": {}
+ },
+ "jayapura": {
+  "n": 613,
+  "perCol": {
+   "fajr": {
+    "median": 123.27,
+    "min": 116.78,
+    "max": 128.98,
+    "within1": 7.3
+   },
+   "sunrise": {
+    "median": 119.23,
+    "min": 113.1,
+    "max": 124.45,
+    "within1": 8.3
+   },
+   "dhuhr": {
+    "median": 123.07,
+    "min": 122.1,
+    "max": 123.88,
+    "within1": 100
+   },
+   "asr": {
+    "median": 123.27,
+    "min": 117.02,
+    "max": 129.32,
+    "within1": 50.2
+   },
+   "maghrib": {
+    "median": 123.62,
+    "min": 116.83,
+    "max": 128.63,
+    "within1": 7.7
+   },
+   "isha": {
+    "median": 123.53,
+    "min": 116.38,
+    "max": 128.92,
+    "within1": 7.5
+   }
+  },
+  "lines": {}
+ },
+ "yogyakarta": {
+  "n": 365,
+  "perCol": {
+   "fajr": {
+    "median": 1.97,
+    "min": 0.87,
+    "max": 2.93,
+    "within1": 98.6
+   },
+   "sunrise": {
+    "median": -2.12,
+    "min": -3.07,
+    "max": -1.07,
+    "within1": 99.7
+   },
+   "dhuhr": {
+    "median": 1.92,
+    "min": 1,
+    "max": 2.72,
+    "within1": 100
+   },
+   "asr": {
+    "median": 1.85,
+    "min": 0.88,
+    "max": 3.1,
+    "within1": 98.1
+   },
+   "maghrib": {
+    "median": 1.92,
+    "min": 1.13,
+    "max": 2.8,
+    "within1": 100
+   },
+   "isha": {
+    "median": 1.93,
+    "min": 0.95,
+    "max": 2.88,
+    "within1": 100
+   }
+  },
+  "lines": {}
+ },
+ "semarang": {
+  "n": 365,
+  "perCol": {
+   "fajr": {
+    "median": 1.72,
+    "min": 0.8,
+    "max": 2.75,
+    "within1": 98.6
+   },
+   "sunrise": {
+    "median": -2.25,
+    "min": -3.12,
+    "max": -1.25,
+    "within1": 100
+   },
+   "dhuhr": {
+    "median": 1.8,
+    "min": 0.85,
+    "max": 2.6,
+    "within1": 100
+   },
+   "asr": {
+    "median": 1.77,
+    "min": 0.78,
+    "max": 2.92,
+    "within1": 98.9
+   },
+   "maghrib": {
+    "median": 1.8,
+    "min": 0.78,
+    "max": 2.73,
+    "within1": 99.5
+   },
+   "isha": {
+    "median": 1.75,
+    "min": 0.75,
+    "max": 2.72,
+    "within1": 100
+   }
+  },
+  "lines": {}
+ },
+ "denpasar": {
+  "n": 365,
+  "perCol": {
+   "fajr": {
+    "median": 62.05,
+    "min": 61.07,
+    "max": 63.07,
+    "within1": 99.7
+   },
+   "sunrise": {
+    "median": 58.03,
+    "min": 57.1,
+    "max": 59.05,
+    "within1": 99.7
+   },
+   "dhuhr": {
+    "median": 62.05,
+    "min": 61.12,
+    "max": 62.82,
+    "within1": 100
+   },
+   "asr": {
+    "median": 62.02,
+    "min": 61.05,
+    "max": 63.1,
+    "within1": 99.2
+   },
+   "maghrib": {
+    "median": 62,
+    "min": 61,
+    "max": 62.97,
+    "within1": 100
+   },
+   "isha": {
+    "median": 61.97,
+    "min": 60.93,
+    "max": 63,
+    "within1": 99.5
+   }
+  },
+  "lines": {}
+ },
+ "pontianak": {
+  "n": 365,
+  "perCol": {
+   "fajr": {
+    "median": 2.15,
+    "min": 1.2,
+    "max": 2.93,
+    "within1": 100
+   },
+   "sunrise": {
+    "median": -1.83,
+    "min": -2.77,
+    "max": -1.05,
+    "within1": 100
+   },
+   "dhuhr": {
+    "median": 2.12,
+    "min": 1.23,
+    "max": 2.95,
+    "within1": 100
+   },
+   "asr": {
+    "median": 2.1,
+    "min": 1.15,
+    "max": 3.48,
+    "within1": 95.1
+   },
+   "maghrib": {
+    "median": 2.15,
+    "min": 1.15,
+    "max": 2.97,
+    "within1": 100
+   },
+   "isha": {
+    "median": 2.17,
+    "min": 1.1,
+    "max": 3.02,
+    "within1": 98.9
+   }
+  },
+  "lines": {}
+ },
+ "padang": {
+  "n": 365,
+  "perCol": {
+   "fajr": {
+    "median": 2.08,
+    "min": -2.28,
+    "max": 5.47,
+    "within1": 20.5
+   },
+   "sunrise": {
+    "median": -1.95,
+    "min": -6.05,
+    "max": 1.17,
+    "within1": 22.2
+   },
+   "dhuhr": {
+    "median": 1.92,
+    "min": 1.03,
+    "max": 2.73,
+    "within1": 100
+   },
+   "asr": {
+    "median": 1.88,
+    "min": -1.9,
+    "max": 6.43,
+    "within1": 55.6
+   },
+   "maghrib": {
+    "median": 2.3,
+    "min": -2.2,
+    "max": 5.43,
+    "within1": 21.9
+   },
+   "isha": {
+    "median": 2.28,
+    "min": -2.4,
+    "max": 5.65,
+    "within1": 20.5
+   }
+  },
+  "lines": {}
+ },
+ "palembang": {
+  "n": 365,
+  "perCol": {
+   "fajr": {
+    "median": 2.18,
+    "min": 1.13,
+    "max": 2.95,
+    "within1": 99.5
+   },
+   "sunrise": {
+    "median": -1.85,
+    "min": -2.78,
+    "max": -0.98,
+    "within1": 100
+   },
+   "dhuhr": {
+    "median": 2.13,
+    "min": 1.18,
+    "max": 2.93,
+    "within1": 100
+   },
+   "asr": {
+    "median": 2.1,
+    "min": 1.25,
+    "max": 3.37,
+    "within1": 93.4
+   },
+   "maghrib": {
+    "median": 2.13,
+    "min": 1.2,
+    "max": 2.97,
+    "within1": 100
+   },
+   "isha": {
+    "median": 2.13,
+    "min": 1.17,
+    "max": 2.97,
+    "within1": 100
+   }
+  },
+  "lines": {}
+ },
+ "banjarmasin": {
+  "n": 365,
+  "perCol": {
+   "fajr": {
+    "median": 62.08,
+    "min": 61.1,
+    "max": 62.95,
+    "within1": 100
+   },
+   "sunrise": {
+    "median": 58.03,
+    "min": 57.18,
+    "max": 58.95,
+    "within1": 100
+   },
+   "dhuhr": {
+    "median": 62.03,
+    "min": 61.2,
+    "max": 62.85,
+    "within1": 100
+   },
+   "asr": {
+    "median": 62.05,
+    "min": 61.12,
+    "max": 63.25,
+    "within1": 97.5
+   },
+   "maghrib": {
+    "median": 62.05,
+    "min": 61.17,
+    "max": 62.9,
+    "within1": 100
+   },
+   "isha": {
+    "median": 62.08,
+    "min": 61.12,
+    "max": 62.87,
+    "within1": 100
+   }
+  },
+  "lines": {}
+ },
+ "manado": {
+  "n": 365,
+  "perCol": {
+   "fajr": {
+    "median": 62.05,
+    "min": 61.17,
+    "max": 62.85,
+    "within1": 100
+   },
+   "sunrise": {
+    "median": 58.12,
+    "min": 57.15,
+    "max": 58.83,
+    "within1": 100
+   },
+   "dhuhr": {
+    "median": 62.02,
+    "min": 61.2,
+    "max": 62.83,
+    "within1": 100
+   },
+   "asr": {
+    "median": 62.05,
+    "min": 61.22,
+    "max": 63.33,
+    "within1": 98.1
+   },
+   "maghrib": {
+    "median": 62.12,
+    "min": 61.15,
+    "max": 62.9,
+    "within1": 100
+   },
+   "isha": {
+    "median": 62.03,
+    "min": 61.15,
+    "max": 62.97,
+    "within1": 100
+   }
+  },
+  "lines": {}
+ },
+ "mataram": {
+  "n": 365,
+  "perCol": {
+   "fajr": {
+    "median": 61.97,
+    "min": 60.95,
+    "max": 63,
+    "within1": 99.5
+   },
+   "sunrise": {
+    "median": 57.93,
+    "min": 57.03,
+    "max": 58.97,
+    "within1": 99.7
+   },
+   "dhuhr": {
+    "median": 61.97,
+    "min": 61.03,
+    "max": 62.75,
+    "within1": 100
+   },
+   "asr": {
+    "median": 61.93,
+    "min": 61,
+    "max": 63.18,
+    "within1": 97.3
+   },
+   "maghrib": {
+    "median": 62,
+    "min": 61.1,
+    "max": 62.95,
+    "within1": 100
+   },
+   "isha": {
+    "median": 61.98,
+    "min": 60.92,
+    "max": 62.95,
+    "within1": 99.5
+   }
+  },
+  "lines": {}
+ },
+ "kupang": {
+  "n": 365,
+  "perCol": {
+   "fajr": {
+    "median": 62.2,
+    "min": 61.2,
+    "max": 63.27,
+    "within1": 99.5
+   },
+   "sunrise": {
+    "median": 58.22,
+    "min": 57.25,
+    "max": 59.27,
+    "within1": 99.7
+   },
+   "dhuhr": {
+    "median": 62.18,
+    "min": 61.3,
+    "max": 63,
+    "within1": 100
+   },
+   "asr": {
+    "median": 62.18,
+    "min": 61.17,
+    "max": 63.22,
+    "within1": 99.2
+   },
+   "maghrib": {
+    "median": 62.2,
+    "min": 61.18,
+    "max": 63.22,
+    "within1": 99.5
+   },
+   "isha": {
+    "median": 62.18,
+    "min": 61.12,
+    "max": 63.18,
+    "within1": 98.4
+   }
+  },
+  "lines": {}
+ },
+ "ambon": {
+  "n": 365,
+  "perCol": {
+   "fajr": {
+    "median": 122.13,
+    "min": 121.2,
+    "max": 123.07,
+    "within1": 100
+   },
+   "sunrise": {
+    "median": 118.15,
+    "min": 117.25,
+    "max": 119.03,
+    "within1": 100
+   },
+   "dhuhr": {
+    "median": 122.17,
+    "min": 121.27,
+    "max": 122.98,
+    "within1": 100
+   },
+   "asr": {
+    "median": 122.15,
+    "min": 121.32,
+    "max": 123.53,
+    "within1": 97.3
+   },
+   "maghrib": {
+    "median": 122.12,
+    "min": 121.25,
+    "max": 122.93,
+    "within1": 100
+   },
+   "isha": {
+    "median": 122.15,
+    "min": 121.23,
+    "max": 123,
+    "within1": 100
+   }
+  },
+  "lines": {}
+ },
+ "ternate": {
+  "n": 365,
+  "perCol": {
+   "fajr": {
+    "median": 122.18,
+    "min": 119.42,
+    "max": 123.85,
+    "within1": 47.7
+   },
+   "sunrise": {
+    "median": 118.15,
+    "min": 115.53,
+    "max": 119.68,
+    "within1": 54.2
+   },
+   "dhuhr": {
+    "median": 121.97,
+    "min": 121.05,
+    "max": 122.78,
+    "within1": 100
+   },
+   "asr": {
+    "median": 121.8,
+    "min": 119.6,
+    "max": 125.13,
+    "within1": 74.5
+   },
+   "maghrib": {
+    "median": 122.32,
+    "min": 119.25,
+    "max": 123.97,
+    "within1": 45.2
+   },
+   "isha": {
+    "median": 122.27,
+    "min": 119.2,
+    "max": 124.17,
+    "within1": 44.1
+   }
+  },
+  "lines": {}
+ },
+ "pekanbaru": {
+  "n": 365,
+  "perCol": {
+   "fajr": {
+    "median": 2.13,
+    "min": 1.12,
+    "max": 2.9,
+    "within1": 99.7
+   },
+   "sunrise": {
+    "median": -1.9,
+    "min": -2.83,
+    "max": -1.12,
+    "within1": 100
+   },
+   "dhuhr": {
+    "median": 2.12,
+    "min": 1.22,
+    "max": 2.87,
+    "within1": 100
+   },
+   "asr": {
+    "median": 2.03,
+    "min": 1.18,
+    "max": 3.23,
+    "within1": 98.1
+   },
+   "maghrib": {
+    "median": 2.07,
+    "min": 1.2,
+    "max": 2.88,
+    "within1": 100
+   },
+   "isha": {
+    "median": 2.15,
+    "min": 1.2,
+    "max": 2.95,
+    "within1": 100
+   }
+  },
+  "lines": {}
+ },
+ "samarinda": {
+  "n": 365,
+  "perCol": {
+   "fajr": {
+    "median": 62.25,
+    "min": 59.65,
+    "max": 63.87,
+    "within1": 51.8
+   },
+   "sunrise": {
+    "median": 58.25,
+    "min": 55.77,
+    "max": 59.7,
+    "within1": 56.7
+   },
+   "dhuhr": {
+    "median": 62.07,
+    "min": 61.13,
+    "max": 62.85,
+    "within1": 100
+   },
+   "asr": {
+    "median": 61.92,
+    "min": 59.87,
+    "max": 64.58,
+    "within1": 76.4
+   },
+   "maghrib": {
+    "median": 62.37,
+    "min": 59.53,
+    "max": 63.98,
+    "within1": 51.8
+   },
+   "isha": {
+    "median": 62.38,
+    "min": 59.4,
+    "max": 64.1,
+    "within1": 47.1
+   }
+  },
+  "lines": {}
+ },
+ "tanjung_pinang": {
+  "n": 365,
+  "perCol": {
+   "fajr": {
+    "median": 2.02,
+    "min": 1.07,
+    "max": 2.85,
+    "within1": 100
+   },
+   "sunrise": {
+    "median": -1.95,
+    "min": -2.95,
+    "max": -1.2,
+    "within1": 100
+   },
+   "dhuhr": {
+    "median": 2.03,
+    "min": 1.15,
+    "max": 2.83,
+    "within1": 100
+   },
+   "asr": {
+    "median": 1.98,
+    "min": 1.02,
+    "max": 3.35,
+    "within1": 95.1
+   },
+   "maghrib": {
+    "median": 2,
+    "min": 1.12,
+    "max": 2.85,
+    "within1": 100
+   },
+   "isha": {
+    "median": 1.97,
+    "min": 1.15,
+    "max": 2.88,
+    "within1": 100
+   }
+  },
+  "lines": {}
+ },
+ "serang": {
+  "n": 365,
+  "perCol": {
+   "fajr": {
+    "median": 1.98,
+    "min": 0.9,
+    "max": 2.92,
+    "within1": 98.6
+   },
+   "sunrise": {
+    "median": -2.05,
+    "min": -2.98,
+    "max": -1.05,
+    "within1": 100
+   },
+   "dhuhr": {
+    "median": 1.98,
+    "min": 1.05,
+    "max": 2.78,
+    "within1": 100
+   },
+   "asr": {
+    "median": 1.93,
+    "min": 0.97,
+    "max": 3.13,
+    "within1": 97.5
+   },
+   "maghrib": {
+    "median": 1.95,
+    "min": 1.13,
+    "max": 2.85,
+    "within1": 100
+   },
+   "isha": {
+    "median": 1.98,
+    "min": 1.03,
+    "max": 2.92,
+    "within1": 100
+   }
+  },
+  "lines": {}
+ },
+ "bengkulu": {
+  "n": 365,
+  "perCol": {
+   "fajr": {
+    "median": 1.85,
+    "min": 0.78,
+    "max": 2.7,
+    "within1": 99.7
+   },
+   "sunrise": {
+    "median": -2.18,
+    "min": -3.15,
+    "max": -1.27,
+    "within1": 100
+   },
+   "dhuhr": {
+    "median": 1.8,
+    "min": 0.97,
+    "max": 2.65,
+    "within1": 100
+   },
+   "asr": {
+    "median": 1.78,
+    "min": 0.88,
+    "max": 3.05,
+    "within1": 98.1
+   },
+   "maghrib": {
+    "median": 1.85,
+    "min": 0.98,
+    "max": 2.68,
+    "within1": 100
+   },
+   "isha": {
+    "median": 1.82,
+    "min": 0.87,
+    "max": 2.67,
+    "within1": 100
+   }
+  },
+  "lines": {}
+ },
+ "bandar_lampung": {
+  "n": 365,
+  "perCol": {
+   "fajr": {
+    "median": 1.98,
+    "min": 1.07,
+    "max": 2.98,
+    "within1": 100
+   },
+   "sunrise": {
+    "median": -1.95,
+    "min": -2.88,
+    "max": -1.07,
+    "within1": 100
+   },
+   "dhuhr": {
+    "median": 1.98,
+    "min": 1.07,
+    "max": 2.82,
+    "within1": 100
+   },
+   "asr": {
+    "median": 2.05,
+    "min": 1,
+    "max": 3.3,
+    "within1": 97.5
+   },
+   "maghrib": {
+    "median": 2.02,
+    "min": 0.98,
+    "max": 2.92,
+    "within1": 99.7
+   },
+   "isha": {
+    "median": 1.97,
+    "min": 0.9,
+    "max": 2.9,
+    "within1": 99.5
+   }
+  },
+  "lines": {}
+ },
+ "pangkal_pinang": {
+  "n": 365,
+  "perCol": {
+   "fajr": {
+    "median": 2.08,
+    "min": 1.1,
+    "max": 2.97,
+    "within1": 100
+   },
+   "sunrise": {
+    "median": -1.95,
+    "min": -2.78,
+    "max": -1.05,
+    "within1": 100
+   },
+   "dhuhr": {
+    "median": 2.08,
+    "min": 1.2,
+    "max": 2.88,
+    "within1": 100
+   },
+   "asr": {
+    "median": 2.08,
+    "min": 1.15,
+    "max": 3.32,
+    "within1": 96.2
+   },
+   "maghrib": {
+    "median": 2.1,
+    "min": 1.18,
+    "max": 2.88,
+    "within1": 100
+   },
+   "isha": {
+    "median": 2.07,
+    "min": 1.17,
+    "max": 2.9,
+    "within1": 100
+   }
+  },
+  "lines": {}
+ },
+ "gorontalo": {
+  "n": 365,
+  "perCol": {
+   "fajr": {
+    "median": 61.97,
+    "min": 61,
+    "max": 62.77,
+    "within1": 100
+   },
+   "sunrise": {
+    "median": 58,
+    "min": 57.05,
+    "max": 58.77,
+    "within1": 100
+   },
+   "dhuhr": {
+    "median": 61.98,
+    "min": 61.1,
+    "max": 62.8,
+    "within1": 100
+   },
+   "asr": {
+    "median": 61.98,
+    "min": 61.1,
+    "max": 63.42,
+    "within1": 93.4
+   },
+   "maghrib": {
+    "median": 62,
+    "min": 61.05,
+    "max": 62.8,
+    "within1": 100
+   },
+   "isha": {
+    "median": 61.97,
+    "min": 61.08,
+    "max": 62.8,
+    "within1": 100
+   }
+  },
+  "lines": {}
+ },
+ "jambi": {
+  "n": 365,
+  "perCol": {
+   "fajr": {
+    "median": 2.2,
+    "min": 1.23,
+    "max": 3.05,
+    "within1": 100
+   },
+   "sunrise": {
+    "median": -1.77,
+    "min": -2.65,
+    "max": -0.93,
+    "within1": 100
+   },
+   "dhuhr": {
+    "median": 2.2,
+    "min": 1.37,
+    "max": 3.03,
+    "within1": 100
+   },
+   "asr": {
+    "median": 2.18,
+    "min": 1.23,
+    "max": 3.35,
+    "within1": 97.3
+   },
+   "maghrib": {
+    "median": 2.23,
+    "min": 1.35,
+    "max": 3.02,
+    "within1": 100
+   },
+   "isha": {
+    "median": 2.25,
+    "min": 1.27,
+    "max": 3.03,
+    "within1": 100
+   }
+  },
+  "lines": {}
+ },
+ "kendari": {
+  "n": 365,
+  "perCol": {
+   "fajr": {
+    "median": 62.18,
+    "min": 61.2,
+    "max": 63.07,
+    "within1": 100
+   },
+   "sunrise": {
+    "median": 58.17,
+    "min": 57.33,
+    "max": 59.07,
+    "within1": 100
+   },
+   "dhuhr": {
+    "median": 62.13,
+    "min": 61.25,
+    "max": 62.95,
+    "within1": 100
+   },
+   "asr": {
+    "median": 62.08,
+    "min": 61.15,
+    "max": 63.3,
+    "within1": 97
+   },
+   "maghrib": {
+    "median": 62.13,
+    "min": 61.18,
+    "max": 63,
+    "within1": 100
+   },
+   "isha": {
+    "median": 62.13,
+    "min": 61.13,
+    "max": 63.02,
+    "within1": 100
+   }
+  },
+  "lines": {}
+ },
+ "palu": {
+  "n": 365,
+  "perCol": {
+   "fajr": {
+    "median": 62.27,
+    "min": 58.03,
+    "max": 65.42,
+    "within1": 24.4
+   },
+   "sunrise": {
+    "median": 58.22,
+    "min": 54.32,
+    "max": 61.1,
+    "within1": 23.8
+   },
+   "dhuhr": {
+    "median": 62.03,
+    "min": 61.08,
+    "max": 62.8,
+    "within1": 100
+   },
+   "asr": {
+    "median": 61.93,
+    "min": 58.07,
+    "max": 66.12,
+    "within1": 58.4
+   },
+   "maghrib": {
+    "median": 62.43,
+    "min": 58.17,
+    "max": 65.38,
+    "within1": 22.5
+   },
+   "isha": {
+    "median": 62.4,
+    "min": 58.05,
+    "max": 65.57,
+    "within1": 21.1
+   }
+  },
+  "lines": {}
+ },
+ "mamuju": {
+  "n": 365,
+  "perCol": {
+   "fajr": {
+    "median": 61.93,
+    "min": 60.95,
+    "max": 62.8,
+    "within1": 100
+   },
+   "sunrise": {
+    "median": 57.93,
+    "min": 56.95,
+    "max": 58.78,
+    "within1": 100
+   },
+   "dhuhr": {
+    "median": 61.93,
+    "min": 61.02,
+    "max": 62.73,
+    "within1": 100
+   },
+   "asr": {
+    "median": 61.88,
+    "min": 60.93,
+    "max": 63.28,
+    "within1": 94.5
+   },
+   "maghrib": {
+    "median": 61.93,
+    "min": 61.07,
+    "max": 62.73,
+    "within1": 100
+   },
+   "isha": {
+    "median": 61.95,
+    "min": 60.98,
+    "max": 62.77,
+    "within1": 100
+   }
+  },
+  "lines": {}
+ },
+ "tanjung_selor": {
+  "n": 365,
+  "perCol": {
+   "fajr": {
+    "median": 62,
+    "min": 61.1,
+    "max": 62.87,
+    "within1": 100
+   },
+   "sunrise": {
+    "median": 58.02,
+    "min": 57.17,
+    "max": 58.78,
+    "within1": 100
+   },
+   "dhuhr": {
+    "median": 62.02,
+    "min": 61.07,
+    "max": 62.78,
+    "within1": 100
+   },
+   "asr": {
+    "median": 61.98,
+    "min": 61.12,
+    "max": 63.47,
+    "within1": 94.5
+   },
+   "maghrib": {
+    "median": 62.02,
+    "min": 61.12,
+    "max": 62.92,
+    "within1": 100
+   },
+   "isha": {
+    "median": 62.07,
+    "min": 61.17,
+    "max": 62.97,
+    "within1": 100
+   }
+  },
+  "lines": {}
+ },
+ "sorong": {
+  "n": 365,
+  "perCol": {
+   "fajr": {
+    "median": 122.33,
+    "min": 118.38,
+    "max": 125.33,
+    "within1": 23
+   },
+   "sunrise": {
+    "median": 118.37,
+    "min": 114.58,
+    "max": 121.07,
+    "within1": 26.3
+   },
+   "dhuhr": {
+    "median": 122.22,
+    "min": 121.32,
+    "max": 122.98,
+    "within1": 100
+   },
+   "asr": {
+    "median": 122.17,
+    "min": 118.62,
+    "max": 126.62,
+    "within1": 58.4
+   },
+   "maghrib": {
+    "median": 122.57,
+    "min": 118.35,
+    "max": 125.33,
+    "within1": 23.6
+   },
+   "isha": {
+    "median": 122.6,
+    "min": 118.13,
+    "max": 125.53,
+    "within1": 22.5
+   }
+  },
+  "lines": {}
+ },
+ "manokwari": {
+  "n": 365,
+  "perCol": {
+   "fajr": {
+    "median": 122.17,
+    "min": 118.08,
+    "max": 125.27,
+    "within1": 23
+   },
+   "sunrise": {
+    "median": 118.18,
+    "min": 114.37,
+    "max": 121.02,
+    "within1": 24.1
+   },
+   "dhuhr": {
+    "median": 122,
+    "min": 121.13,
+    "max": 122.8,
+    "within1": 100
+   },
+   "asr": {
+    "median": 121.98,
+    "min": 118.48,
+    "max": 125.82,
+    "within1": 58.4
+   },
+   "maghrib": {
+    "median": 122.42,
+    "min": 118.1,
+    "max": 125.23,
+    "within1": 23.6
+   },
+   "isha": {
+    "median": 122.4,
+    "min": 117.88,
+    "max": 125.45,
+    "within1": 22.2
+   }
+  },
+  "lines": {}
+ },
+ "nabire": {
+  "n": 365,
+  "perCol": {
+   "fajr": {
+    "median": 121.72,
+    "min": 120.87,
+    "max": 122.63,
+    "within1": 100
+   },
+   "sunrise": {
+    "median": 117.72,
+    "min": 116.95,
+    "max": 118.62,
+    "within1": 100
+   },
+   "dhuhr": {
+    "median": 121.73,
+    "min": 120.88,
+    "max": 122.53,
+    "within1": 100
+   },
+   "asr": {
+    "median": 121.73,
+    "min": 120.78,
+    "max": 122.93,
+    "within1": 97.5
+   },
+   "maghrib": {
+    "median": 121.72,
+    "min": 120.8,
+    "max": 122.62,
+    "within1": 100
+   },
+   "isha": {
+    "median": 121.77,
+    "min": 120.7,
+    "max": 122.6,
+    "within1": 99.2
+   }
+  },
+  "lines": {}
+ },
+ "wamena": {
+  "n": 365,
+  "perCol": {
+   "fajr": {
+    "median": 123.1,
+    "min": 122.07,
+    "max": 124.1,
+    "within1": 99.5
+   },
+   "sunrise": {
+    "median": 119.08,
+    "min": 118.08,
+    "max": 120.03,
+    "within1": 100
+   },
+   "dhuhr": {
+    "median": 123.12,
+    "min": 122.22,
+    "max": 123.88,
+    "within1": 100
+   },
+   "asr": {
+    "median": 123.12,
+    "min": 122.05,
+    "max": 124.87,
+    "within1": 96.7
+   },
+   "maghrib": {
+    "median": 123.18,
+    "min": 121.88,
+    "max": 124.03,
+    "within1": 94.5
+   },
+   "isha": {
+    "median": 123.17,
+    "min": 121.72,
+    "max": 123.98,
+    "within1": 93.4
+   }
+  },
+  "lines": {}
+ },
+ "merauke": {
+  "n": 365,
+  "perCol": {
+   "fajr": {
+    "median": 122.2,
+    "min": 121.27,
+    "max": 123.22,
+    "within1": 99.7
+   },
+   "sunrise": {
+    "median": 118.1,
+    "min": 117.3,
+    "max": 119.18,
+    "within1": 99.5
+   },
+   "dhuhr": {
+    "median": 122.17,
+    "min": 121.23,
+    "max": 122.98,
+    "within1": 100
+   },
+   "asr": {
+    "median": 122.15,
+    "min": 121.17,
+    "max": 123.42,
+    "within1": 97.8
+   },
+   "maghrib": {
+    "median": 122.17,
+    "min": 121.08,
+    "max": 123.17,
+    "within1": 98.9
+   },
+   "isha": {
+    "median": 122.2,
+    "min": 121.02,
+    "max": 123.18,
+    "within1": 97.8
+   }
+  },
+  "lines": {}
+ },
+ "jakarta_pusat": {
+  "n": 365,
+  "perCol": {
+   "fajr": {
+    "median": 2.08,
+    "min": 1.08,
+    "max": 3.03,
+    "within1": 100
+   },
+   "sunrise": {
+    "median": -1.95,
+    "min": -2.85,
+    "max": -0.93,
+    "within1": 99.7
+   },
+   "dhuhr": {
+    "median": 2.07,
+    "min": 1.18,
+    "max": 2.9,
+    "within1": 100
+   },
+   "asr": {
+    "median": 2.08,
+    "min": 1.07,
+    "max": 3.27,
+    "within1": 98.4
+   },
+   "maghrib": {
+    "median": 2.12,
+    "min": 1.18,
+    "max": 3.02,
+    "within1": 100
+   },
+   "isha": {
+    "median": 2.12,
+    "min": 1.05,
+    "max": 3.03,
+    "within1": 98.9
+   }
+  },
+  "lines": {}
+ },
+ "sleman": {
+  "n": 365,
+  "perCol": {
+   "fajr": {
+    "median": 2.07,
+    "min": 1.03,
+    "max": 3.03,
+    "within1": 99.5
+   },
+   "sunrise": {
+    "median": -2,
+    "min": -2.87,
+    "max": -1.02,
+    "within1": 100
+   },
+   "dhuhr": {
+    "median": 2.02,
+    "min": 1.13,
+    "max": 2.8,
+    "within1": 100
+   },
+   "asr": {
+    "median": 2.02,
+    "min": 1.03,
+    "max": 3.17,
+    "within1": 98.9
+   },
+   "maghrib": {
+    "median": 2.03,
+    "min": 1.17,
+    "max": 2.9,
+    "within1": 100
+   },
+   "isha": {
+    "median": 2.07,
+    "min": 1.03,
+    "max": 3.02,
+    "within1": 99.5
+   }
+  },
+  "lines": {}
+ }
+}

@@ -1,0 +1,83 @@
+{
+ "file": "data/mawaqit_pr_sanjuan_ebadur.json",
+ "name": "Masjid Ebadur Rahman - SAN JUAN",
+ "lat": 18.3383383,
+ "lon": -66.0679144,
+ "tz": "America/Puerto_Rico",
+ "days": 365,
+ "candidates": [
+  {
+   "method": "MWL",
+   "madhab": "shafi",
+   "totalMae": 2.1
+  },
+  {
+   "method": "Turkey",
+   "madhab": "shafi",
+   "totalMae": 2.1
+  },
+  {
+   "method": "Kuwait",
+   "madhab": "shafi",
+   "totalMae": 4.07
+  }
+ ],
+ "refined": {
+  "method": "MWL",
+  "madhab": "shafi",
+  "fajrAngle": 18,
+  "ishaAngle": 17,
+  "offsets": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "scores": {
+   "fajr": {
+    "med": 0,
+    "exact": 357,
+    "w1": 365,
+    "mae": 0.25,
+    "worst": 0.5
+   },
+   "sunrise": {
+    "med": 0,
+    "exact": 361,
+    "w1": 365,
+    "mae": 0.25,
+    "worst": 0.5
+   },
+   "dhuhr": {
+    "med": 0,
+    "exact": 364,
+    "w1": 365,
+    "mae": 0.25,
+    "worst": 0.5
+   },
+   "asr": {
+    "med": 0,
+    "exact": 72,
+    "w1": 257,
+    "mae": 1.1,
+    "worst": 2.1
+   },
+   "maghrib": {
+    "med": 0,
+    "exact": 356,
+    "w1": 365,
+    "mae": 0.25,
+    "worst": 0.5
+   },
+   "isha": {
+    "med": 0,
+    "exact": 351,
+    "w1": 365,
+    "mae": 0.25,
+    "worst": 0.6
+   }
+  }
+ }
+}

@@ -1,0 +1,185 @@
+{
+ "metro": "Gainesville",
+ "surface": "hoda-center-gainesville-42608-united-states-mawaqit",
+ "isna_15_15": {
+  "madhab": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "w1": 88.5,
+  "exact": 82.5,
+  "per_column": {
+   "fajr": {
+    "mae": 0.26,
+    "bias": -0.02,
+    "exact": 98.4,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "sunrise": {
+    "mae": 0.25,
+    "bias": 0.03,
+    "exact": 96.2,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "dhuhr": {
+    "mae": 0.25,
+    "bias": 0.03,
+    "exact": 97.5,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "asr": {
+    "mae": 1.27,
+    "bias": -0.04,
+    "exact": 13.9,
+    "w1": 31.1,
+    "worst": 2.4
+   },
+   "maghrib": {
+    "mae": 0.25,
+    "bias": 0.05,
+    "exact": 97,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "isha": {
+    "mae": 0.26,
+    "bias": 0.03,
+    "exact": 92.1,
+    "w1": 100,
+    "worst": 0.6
+   }
+  }
+ },
+ "rows": 366,
+ "span": [
+  "2026-01-01",
+  "2026-12-31"
+ ],
+ "years": [
+  "2026"
+ ],
+ "coords": [
+  29.6047666,
+  -82.342879
+ ],
+ "tz": "America/New_York",
+ "recipe": {
+  "engine": "adhan 4.4.6",
+  "fajr_angle": 15,
+  "isha": [
+   "angle",
+   15
+  ],
+  "madhab": "shafi",
+  "high_latitude": "TwilightAngle",
+  "rounding": "None",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  }
+ },
+ "per_column": {
+  "fajr": {
+   "mae": 0.26,
+   "bias": -0.02,
+   "exact": 98.4,
+   "w1": 100,
+   "worst": 0.5
+  },
+  "sunrise": {
+   "mae": 0.25,
+   "bias": 0.03,
+   "exact": 96.2,
+   "w1": 100,
+   "worst": 0.5
+  },
+  "dhuhr": {
+   "mae": 0.25,
+   "bias": 0.03,
+   "exact": 97.5,
+   "w1": 100,
+   "worst": 0.5
+  },
+  "asr": {
+   "mae": 1.27,
+   "bias": -0.04,
+   "exact": 13.9,
+   "w1": 31.1,
+   "worst": 2.4
+  },
+  "maghrib": {
+   "mae": 0.25,
+   "bias": 0.05,
+   "exact": 97,
+   "w1": 100,
+   "worst": 0.5
+  },
+  "isha": {
+   "mae": 0.26,
+   "bias": 0.03,
+   "exact": 92.1,
+   "w1": 100,
+   "worst": 0.6
+  }
+ },
+ "per_year": {
+  "2026": {
+   "fajr": {
+    "mae": 0.26,
+    "bias": -0.02,
+    "exact": 98.4,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "sunrise": {
+    "mae": 0.25,
+    "bias": 0.03,
+    "exact": 96.2,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "dhuhr": {
+    "mae": 0.25,
+    "bias": 0.03,
+    "exact": 97.5,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "asr": {
+    "mae": 1.27,
+    "bias": -0.04,
+    "exact": 13.9,
+    "w1": 31.1,
+    "worst": 2.4
+   },
+   "maghrib": {
+    "mae": 0.25,
+    "bias": 0.05,
+    "exact": 97,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "isha": {
+    "mae": 0.26,
+    "bias": 0.03,
+    "exact": 92.1,
+    "w1": 100,
+    "worst": 0.6
+   }
+  }
+ },
+ "seasonal_fajr_amplitude_min": 50,
+ "fajr_later_in_january": true
+}

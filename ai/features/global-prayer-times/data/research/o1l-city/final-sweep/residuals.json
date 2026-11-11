@@ -1,0 +1,728 @@
+{
+ "summary": {
+  "fajr": {
+   "n": 2550,
+   "median": 0,
+   "min": -1,
+   "max": 1,
+   "zero": 2494
+  },
+  "sunrise": {
+   "n": 2550,
+   "median": 0,
+   "min": -1,
+   "max": 1,
+   "zero": 2506
+  },
+  "dhuhr": {
+   "n": 2550,
+   "median": -1,
+   "min": -2,
+   "max": 0,
+   "zero": 21
+  },
+  "asr": {
+   "n": 2550,
+   "median": 0,
+   "min": -2,
+   "max": 2,
+   "zero": 1530
+  },
+  "maghrib": {
+   "n": 2550,
+   "median": 0,
+   "min": -1,
+   "max": 1,
+   "zero": 2507
+  },
+  "isha": {
+   "n": 2550,
+   "median": 0,
+   "min": -1,
+   "max": 1,
+   "zero": 2407
+  }
+ },
+ "perCity": {
+  "kiribati__bairiki-village": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "kiribati__betio-village": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "kiribati__bikenibeu-village": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "kiribati__south-tarawa": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "kiribati__teaoraereke-village": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "liberia__bensonville": {
+   "fajr": 1,
+   "sunrise": 1,
+   "dhuhr": 0,
+   "asr": 2,
+   "maghrib": 1,
+   "isha": 1
+  },
+  "liberia__ganta": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 1,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "liberia__gbarnga": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 1,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "liberia__greenville": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "liberia__harper": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "liberia__kakata": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "liberia__monrovia": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 1,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "liberia__new-yekepa": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "liberia__robertsport": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 1,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "liberia__zwedru": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "myanmar__bago": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "myanmar__mandalay": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "myanmar__mawlamyine": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "myanmar__monywa": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "myanmar__myitkyina": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "myanmar__naypyidaw": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "myanmar__pathein": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "myanmar__sittwe": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "myanmar__taunggyi": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "myanmar__yangon": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "nepal__bharatpur": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "nepal__biratnagar": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "nepal__birganj": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "nepal__butwal": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "nepal__dhangadhi": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "nepal__dharan": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "nepal__janakpur": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "nepal__kathmandu": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 1,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "nepal__lalitpur": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 1,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "nepal__pokhara": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "papua-new-guinea__bulolo": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "papua-new-guinea__daru": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "papua-new-guinea__goroka": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "papua-new-guinea__kimbe": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "papua-new-guinea__kokopo": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "papua-new-guinea__lae": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "papua-new-guinea__madang": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "papua-new-guinea__mount-hagen": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "papua-new-guinea__port-moresby": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "papua-new-guinea__wewak": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "samoa__apia": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": -1,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "samoa__asau": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": -1,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "samoa__faleula": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": -1,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "samoa__fasitoouta": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": -1,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "samoa__malie": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": -1,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "samoa__mulifanua": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": -1,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "samoa__savaii": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": -1,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "samoa__siusega": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": -1,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "samoa__upolu": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": -1,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "samoa__vaiala": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": -1,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "solomon-islands__auki": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "solomon-islands__gizo": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "solomon-islands__honiara": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "south-sudan__bentiu": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 1,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "south-sudan__bor": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "south-sudan__juba": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "south-sudan__malakal": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 1,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "south-sudan__maridi": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "south-sudan__rumbek": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "south-sudan__torit": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "south-sudan__wau": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "south-sudan__yambio": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "south-sudan__yei": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "turkmenistan__ashgabat": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "turkmenistan__atamyrat": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 1,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "turkmenistan__balkanabat": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 1,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "turkmenistan__bayramaly": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 1,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "turkmenistan__dasoguz": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 1,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "turkmenistan__gumdag": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "turkmenistan__mary": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "turkmenistan__tejen": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 1,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "turkmenistan__turkmenabat": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "turkmenistan__turkmenbasy": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 1,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "vanuatu__isangel": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "vanuatu__lakatoro": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "vanuatu__lenakel": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "vanuatu__luganville": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "vanuatu__norsup": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "vanuatu__port-vila": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": -1,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "vanuatu__sola": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  }
+ }
+}

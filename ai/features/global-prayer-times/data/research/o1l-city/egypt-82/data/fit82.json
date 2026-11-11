@@ -1,0 +1,11984 @@
+{
+ "0": {
+  "i": 0,
+  "key": "القاهرة",
+  "lat0": 30.06263,
+  "lng0": 31.24967,
+  "source": "geonames:Cairo",
+  "implied": {
+   "lat": 30.09,
+   "lng": 31.29,
+   "obj": 0.75
+  },
+  "spanKm": 4.9,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 168,
+   "per": {
+    "fajr": {
+     "exact": 339,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.07
+    },
+    "sunrise": {
+     "exact": 357,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.01
+    },
+    "dhuhr": {
+     "exact": 350,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.04
+    },
+    "asr": {
+     "exact": 244,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.33,
+     "max": 1,
+     "signed": 0.01
+    },
+    "maghrib": {
+     "exact": 318,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.13,
+     "max": 1,
+     "signed": 0.13
+    },
+    "isha": {
+     "exact": 346,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.05
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-03",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": -1,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 130,
+   "per": {
+    "fajr": {
+     "exact": 319,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.13,
+     "max": 1,
+     "signed": -0.13
+    },
+    "sunrise": {
+     "exact": 315,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.14,
+     "max": 1,
+     "signed": -0.14
+    },
+    "dhuhr": {
+     "exact": 313,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.14,
+     "max": 1,
+     "signed": -0.14
+    },
+    "asr": {
+     "exact": 239,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.35,
+     "max": 1,
+     "signed": -0.14
+    },
+    "maghrib": {
+     "exact": 348,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.05
+    },
+    "isha": {
+     "exact": 336,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.08
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 1,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "1": {
+  "i": 1,
+  "key": "الأسكندرية",
+  "lat0": 31.20176,
+  "lng0": 29.91582,
+  "source": "geonames:Alexandria",
+  "implied": {
+   "lat": 31.22,
+   "lng": 29.97,
+   "obj": 0.87
+  },
+  "spanKm": 5.5,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 205,
+   "per": {
+    "fajr": {
+     "exact": 363,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0
+    },
+    "sunrise": {
+     "exact": 346,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.05
+    },
+    "dhuhr": {
+     "exact": 359,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "asr": {
+     "exact": 246,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.33,
+     "max": 1,
+     "signed": 0.01
+    },
+    "maghrib": {
+     "exact": 342,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.06
+    },
+    "isha": {
+     "exact": 348,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.04
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-07",
+    "delta": {
+     "fajr": -1,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 74,
+   "per": {
+    "fajr": {
+     "exact": 267,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.27,
+     "max": 1,
+     "signed": -0.27
+    },
+    "sunrise": {
+     "exact": 267,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.27,
+     "max": 1,
+     "signed": -0.27
+    },
+    "dhuhr": {
+     "exact": 296,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.19,
+     "max": 1,
+     "signed": -0.19
+    },
+    "asr": {
+     "exact": 237,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.35,
+     "max": 1,
+     "signed": -0.2
+    },
+    "maghrib": {
+     "exact": 310,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.15,
+     "max": 1,
+     "signed": -0.15
+    },
+    "isha": {
+     "exact": 310,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.15,
+     "max": 1,
+     "signed": -0.15
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "2": {
+  "i": 2,
+  "key": "طنطا",
+  "lat0": 30.78847,
+  "lng0": 31.00192,
+  "source": "geonames:Tanta",
+  "implied": {
+   "lat": 30.77,
+   "lng": 30.99,
+   "obj": 0.83
+  },
+  "spanKm": 2.3,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 214,
+   "per": {
+    "fajr": {
+     "exact": 352,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.04
+    },
+    "sunrise": {
+     "exact": 342,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": -0.06
+    },
+    "dhuhr": {
+     "exact": 354,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": -0.03
+    },
+    "asr": {
+     "exact": 259,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.29,
+     "max": 1,
+     "signed": 0.03
+    },
+    "maghrib": {
+     "exact": 353,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.03
+    },
+    "isha": {
+     "exact": 350,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.01
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-03",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 1,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 218,
+   "per": {
+    "fajr": {
+     "exact": 355,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.03
+    },
+    "sunrise": {
+     "exact": 357,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": -0.02
+    },
+    "dhuhr": {
+     "exact": 357,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "asr": {
+     "exact": 264,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.28,
+     "max": 1,
+     "signed": 0.07
+    },
+    "maghrib": {
+     "exact": 336,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.08
+    },
+    "isha": {
+     "exact": 348,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.04
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": -1,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "3": {
+  "i": 3,
+  "key": "المنصورة",
+  "lat0": 31.03637,
+  "lng0": 31.38069,
+  "source": "geonames:Al Mansurah",
+  "implied": {
+   "lat": 31.04,
+   "lng": 31.4,
+   "obj": 0.86
+  },
+  "spanKm": 1.9,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 206,
+   "per": {
+    "fajr": {
+     "exact": 358,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0
+    },
+    "sunrise": {
+     "exact": 354,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": -0.03
+    },
+    "dhuhr": {
+     "exact": 359,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "asr": {
+     "exact": 247,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": 0.03
+    },
+    "maghrib": {
+     "exact": 339,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.07
+    },
+    "isha": {
+     "exact": 349,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.03
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 172,
+   "per": {
+    "fajr": {
+     "exact": 326,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": -0.11
+    },
+    "sunrise": {
+     "exact": 321,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": -0.12
+    },
+    "dhuhr": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.08
+    },
+    "asr": {
+     "exact": 250,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": -0.03
+    },
+    "maghrib": {
+     "exact": 355,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": -0.01
+    },
+    "isha": {
+     "exact": 348,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.05
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 1,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "4": {
+  "i": 4,
+  "key": "الزقازيق",
+  "lat0": 30.58768,
+  "lng0": 31.502,
+  "source": "geonames:Zagazig",
+  "implied": {
+   "lat": 30.58,
+   "lng": 31.49,
+   "obj": 0.89
+  },
+  "spanKm": 1.4,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 203,
+   "per": {
+    "fajr": {
+     "exact": 348,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.05
+    },
+    "sunrise": {
+     "exact": 335,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.08
+    },
+    "dhuhr": {
+     "exact": 350,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.04
+    },
+    "asr": {
+     "exact": 251,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.31,
+     "max": 1,
+     "signed": -0.07
+    },
+    "maghrib": {
+     "exact": 363,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0
+    },
+    "isha": {
+     "exact": 346,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.05
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 216,
+   "per": {
+    "fajr": {
+     "exact": 361,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0.01
+    },
+    "sunrise": {
+     "exact": 352,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.04
+    },
+    "dhuhr": {
+     "exact": 359,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.01
+    },
+    "asr": {
+     "exact": 249,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": -0.02
+    },
+    "maghrib": {
+     "exact": 347,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.05
+    },
+    "isha": {
+     "exact": 352,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.01
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "5": {
+  "i": 5,
+  "key": "أسيوط",
+  "lat0": 27.18096,
+  "lng0": 31.18368,
+  "source": "geonames:Assiut",
+  "implied": {
+   "lat": 27.2,
+   "lng": 31.18,
+   "obj": 0.82
+  },
+  "spanKm": 2.1,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 210,
+   "per": {
+    "fajr": {
+     "exact": 355,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.02
+    },
+    "sunrise": {
+     "exact": 350,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.04
+    },
+    "dhuhr": {
+     "exact": 364,
+     "w1": 365,
+     "n": 365,
+     "mae": 0,
+     "max": 1,
+     "signed": 0
+    },
+    "asr": {
+     "exact": 256,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.3,
+     "max": 1,
+     "signed": 0
+    },
+    "maghrib": {
+     "exact": 347,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.05
+    },
+    "isha": {
+     "exact": 349,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.02
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": -1,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 214,
+   "per": {
+    "fajr": {
+     "exact": 357,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "sunrise": {
+     "exact": 357,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": -0.02
+    },
+    "dhuhr": {
+     "exact": 363,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0.01
+    },
+    "asr": {
+     "exact": 256,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.3,
+     "max": 1,
+     "signed": 0.02
+    },
+    "maghrib": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.08
+    },
+    "isha": {
+     "exact": 349,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.04
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": -1,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "6": {
+  "i": 6,
+  "key": "سوهاج",
+  "lat0": 26.55695,
+  "lng0": 31.69478,
+  "source": "geonames:Sohag",
+  "implied": {
+   "lat": 26.48,
+   "lng": 31.68,
+   "obj": 0.81
+  },
+  "spanKm": 8.7,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 141,
+   "per": {
+    "fajr": {
+     "exact": 317,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.13,
+     "max": 1,
+     "signed": -0.13
+    },
+    "sunrise": {
+     "exact": 329,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": -0.09
+    },
+    "dhuhr": {
+     "exact": 347,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.05
+    },
+    "asr": {
+     "exact": 238,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.35,
+     "max": 1,
+     "signed": -0.07
+    },
+    "maghrib": {
+     "exact": 324,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.01
+    },
+    "isha": {
+     "exact": 312,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.15,
+     "max": 1,
+     "signed": 0
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 214,
+   "per": {
+    "fajr": {
+     "exact": 362,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0.01
+    },
+    "sunrise": {
+     "exact": 348,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.05
+    },
+    "dhuhr": {
+     "exact": 363,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0.01
+    },
+    "asr": {
+     "exact": 249,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": -0.02
+    },
+    "maghrib": {
+     "exact": 343,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.06
+    },
+    "isha": {
+     "exact": 357,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.01
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 1,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "7": {
+  "i": 7,
+  "key": "بنى سويف",
+  "lat0": 29.07441,
+  "lng0": 31.09785,
+  "source": "geonames:Banī Suwayf",
+  "implied": {
+   "lat": 29.13,
+   "lng": 31.1,
+   "obj": 0.83
+  },
+  "spanKm": 6.2,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 191,
+   "per": {
+    "fajr": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.08
+    },
+    "sunrise": {
+     "exact": 360,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0
+    },
+    "dhuhr": {
+     "exact": 345,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.05
+    },
+    "asr": {
+     "exact": 258,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.29,
+     "max": 1,
+     "signed": 0.04
+    },
+    "maghrib": {
+     "exact": 333,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": 0.09
+    },
+    "isha": {
+     "exact": 344,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.04
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 1,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 180,
+   "per": {
+    "fajr": {
+     "exact": 334,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.01
+    },
+    "sunrise": {
+     "exact": 344,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.01
+    },
+    "dhuhr": {
+     "exact": 349,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.04
+    },
+    "asr": {
+     "exact": 257,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.3,
+     "max": 1,
+     "signed": 0.03
+    },
+    "maghrib": {
+     "exact": 325,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.11
+    },
+    "isha": {
+     "exact": 339,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.07
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-03",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "8": {
+  "i": 8,
+  "key": "المنيا",
+  "lat0": 28.09193,
+  "lng0": 30.75813,
+  "source": "geonames:Minya",
+  "implied": {
+   "lat": 28.15,
+   "lng": 30.77,
+   "obj": 0.84
+  },
+  "spanKm": 6.5,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 154,
+   "per": {
+    "fajr": {
+     "exact": 321,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": 0.12
+    },
+    "sunrise": {
+     "exact": 338,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.02
+    },
+    "dhuhr": {
+     "exact": 334,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.08
+    },
+    "asr": {
+     "exact": 258,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.29,
+     "max": 1,
+     "signed": 0.03
+    },
+    "maghrib": {
+     "exact": 332,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": 0.08
+    },
+    "isha": {
+     "exact": 331,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": -0.01
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": -1,
+     "asr": -1,
+     "maghrib": -1,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 237,
+   "per": {
+    "fajr": {
+     "exact": 362,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0.01
+    },
+    "sunrise": {
+     "exact": 359,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": -0.02
+    },
+    "dhuhr": {
+     "exact": 358,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "asr": {
+     "exact": 262,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.28,
+     "max": 1,
+     "signed": -0.01
+    },
+    "maghrib": {
+     "exact": 357,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "isha": {
+     "exact": 354,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.02
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": -1,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "9": {
+  "i": 9,
+  "key": "قنا",
+  "lat0": 26.16418,
+  "lng0": 32.72671,
+  "source": "geonames:Qina",
+  "implied": {
+   "lat": 26.19,
+   "lng": 32.71,
+   "obj": 0.87
+  },
+  "spanKm": 3.3,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 202,
+   "per": {
+    "fajr": {
+     "exact": 340,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.05
+    },
+    "sunrise": {
+     "exact": 349,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.03
+    },
+    "dhuhr": {
+     "exact": 363,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0
+    },
+    "asr": {
+     "exact": 245,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.33,
+     "max": 1,
+     "signed": -0.02
+    },
+    "maghrib": {
+     "exact": 348,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.04
+    },
+    "isha": {
+     "exact": 348,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.02
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 1,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 160,
+   "per": {
+    "fajr": {
+     "exact": 332,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": 0.09
+    },
+    "sunrise": {
+     "exact": 358,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "dhuhr": {
+     "exact": 330,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": 0.1
+    },
+    "asr": {
+     "exact": 239,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.35,
+     "max": 1,
+     "signed": 0.07
+    },
+    "maghrib": {
+     "exact": 326,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.11
+    },
+    "isha": {
+     "exact": 342,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.06
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": -1,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "10": {
+  "i": 10,
+  "key": "أسوان",
+  "lat0": 24.09082,
+  "lng0": 32.89942,
+  "source": "geonames:Aswān",
+  "implied": {
+   "lat": 23.9,
+   "lng": 32.92,
+   "obj": 0.82
+  },
+  "spanKm": 21.3,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 200,
+   "per": {
+    "fajr": {
+     "exact": 344,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": -0.02
+    },
+    "sunrise": {
+     "exact": 341,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.04
+    },
+    "dhuhr": {
+     "exact": 360,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0.01
+    },
+    "asr": {
+     "exact": 258,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.29,
+     "max": 1,
+     "signed": 0.04
+    },
+    "maghrib": {
+     "exact": 343,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.06
+    },
+    "isha": {
+     "exact": 343,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.03
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-04",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 79,
+   "per": {
+    "fajr": {
+     "exact": 279,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.24,
+     "max": 1,
+     "signed": 0.06
+    },
+    "sunrise": {
+     "exact": 287,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.21,
+     "max": 1,
+     "signed": -0.12
+    },
+    "dhuhr": {
+     "exact": 344,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": -0.06
+    },
+    "asr": {
+     "exact": 231,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.37,
+     "max": 1,
+     "signed": -0.14
+    },
+    "maghrib": {
+     "exact": 283,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.22,
+     "max": 1,
+     "signed": -0.03
+    },
+    "isha": {
+     "exact": 266,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.27,
+     "max": 1,
+     "signed": -0.21
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 1,
+     "dhuhr": 0,
+     "asr": -1,
+     "maghrib": -1,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "11": {
+  "i": 11,
+  "key": "مطروح",
+  "lat0": 31.3529,
+  "lng0": 27.23725,
+  "source": "geonames:Marsa Matruh",
+  "implied": {
+   "lat": 31.33,
+   "lng": 27.25,
+   "obj": 0.87
+  },
+  "spanKm": 2.8,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 139,
+   "per": {
+    "fajr": {
+     "exact": 312,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.15,
+     "max": 1,
+     "signed": -0.09
+    },
+    "sunrise": {
+     "exact": 326,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": -0.08
+    },
+    "dhuhr": {
+     "exact": 363,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0
+    },
+    "asr": {
+     "exact": 234,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.36,
+     "max": 1,
+     "signed": -0.01
+    },
+    "maghrib": {
+     "exact": 324,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.07
+    },
+    "isha": {
+     "exact": 321,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": 0.08
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": -1,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 155,
+   "per": {
+    "fajr": {
+     "exact": 326,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": -0.11
+    },
+    "sunrise": {
+     "exact": 323,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": -0.12
+    },
+    "dhuhr": {
+     "exact": 346,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.05
+    },
+    "asr": {
+     "exact": 240,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.34,
+     "max": 1,
+     "signed": -0.07
+    },
+    "maghrib": {
+     "exact": 345,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.01
+    },
+    "isha": {
+     "exact": 335,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.01
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "12": {
+  "i": 12,
+  "key": "الغردقة",
+  "lat0": 27.25738,
+  "lng0": 33.81291,
+  "source": "geonames:Hurghada",
+  "implied": {
+   "lat": 27.19,
+   "lng": 33.85,
+   "obj": 0.84
+  },
+  "spanKm": 8.3,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 194,
+   "per": {
+    "fajr": {
+     "exact": 335,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.08
+    },
+    "sunrise": {
+     "exact": 352,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.02
+    },
+    "dhuhr": {
+     "exact": 349,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.04
+    },
+    "asr": {
+     "exact": 252,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.31,
+     "max": 1,
+     "signed": 0.06
+    },
+    "maghrib": {
+     "exact": 336,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.08
+    },
+    "isha": {
+     "exact": 352,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.02
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 1,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 111,
+   "per": {
+    "fajr": {
+     "exact": 319,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.13,
+     "max": 1,
+     "signed": -0.01
+    },
+    "sunrise": {
+     "exact": 306,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.16,
+     "max": 1,
+     "signed": -0.15
+    },
+    "dhuhr": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.08
+    },
+    "asr": {
+     "exact": 238,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.35,
+     "max": 1,
+     "signed": -0.1
+    },
+    "maghrib": {
+     "exact": 310,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.15,
+     "max": 1,
+     "signed": -0.09
+    },
+    "isha": {
+     "exact": 298,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.18,
+     "max": 1,
+     "signed": -0.18
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 1,
+     "sunrise": 1,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "13": {
+  "i": 13,
+  "key": "الخارجة",
+  "lat0": 25.45101,
+  "lng0": 30.54653,
+  "source": "geonames:Al Khārjah",
+  "implied": {
+   "lat": 25.41,
+   "lng": 30.24,
+   "obj": 0.8
+  },
+  "spanKm": 31.1,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 147,
+   "per": {
+    "fajr": {
+     "exact": 314,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.14,
+     "max": 1,
+     "signed": -0.14
+    },
+    "sunrise": {
+     "exact": 308,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.16,
+     "max": 1,
+     "signed": -0.16
+    },
+    "dhuhr": {
+     "exact": 327,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": -0.1
+    },
+    "asr": {
+     "exact": 262,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.28,
+     "max": 1,
+     "signed": -0.07
+    },
+    "maghrib": {
+     "exact": 356,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": -0.02
+    },
+    "isha": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.07
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 1,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 1
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 128,
+   "allSixExact": 0,
+   "per": {
+    "fajr": {
+     "exact": 0,
+     "w1": 315,
+     "n": 365,
+     "mae": 1.14,
+     "max": 2,
+     "signed": 1.14
+    },
+    "sunrise": {
+     "exact": 0,
+     "w1": 326,
+     "n": 365,
+     "mae": 1.11,
+     "max": 2,
+     "signed": 1.11
+    },
+    "dhuhr": {
+     "exact": 0,
+     "w1": 307,
+     "n": 365,
+     "mae": 1.16,
+     "max": 2,
+     "signed": 1.16
+    },
+    "asr": {
+     "exact": 30,
+     "w1": 279,
+     "n": 365,
+     "mae": 1.15,
+     "max": 2,
+     "signed": 1.15
+    },
+    "maghrib": {
+     "exact": 0,
+     "w1": 303,
+     "n": 365,
+     "mae": 1.17,
+     "max": 2,
+     "signed": 1.17
+    },
+    "isha": {
+     "exact": 0,
+     "w1": 317,
+     "n": 365,
+     "mae": 1.13,
+     "max": 2,
+     "signed": 1.13
+    }
+   },
+   "worst": {
+    "dev": 2,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": -1,
+     "sunrise": -1,
+     "dhuhr": -1,
+     "asr": -2,
+     "maghrib": -1,
+     "isha": -1
+    }
+   }
+  }
+ },
+ "14": {
+  "i": 14,
+  "key": "الإسماعيلية",
+  "lat0": 30.60427,
+  "lng0": 32.27225,
+  "source": "geonames:Ismailia",
+  "implied": {
+   "lat": 30.63,
+   "lng": 32.24,
+   "obj": 0.9
+  },
+  "spanKm": 4.2,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 174,
+   "per": {
+    "fajr": {
+     "exact": 341,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.02
+    },
+    "sunrise": {
+     "exact": 322,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": -0.12
+    },
+    "dhuhr": {
+     "exact": 341,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.07
+    },
+    "asr": {
+     "exact": 255,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.3,
+     "max": 1,
+     "signed": -0.07
+    },
+    "maghrib": {
+     "exact": 348,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.01
+    },
+    "isha": {
+     "exact": 335,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.08
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 1,
+     "sunrise": 1,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 169,
+   "per": {
+    "fajr": {
+     "exact": 334,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.08
+    },
+    "sunrise": {
+     "exact": 355,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.03
+    },
+    "dhuhr": {
+     "exact": 326,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.11
+    },
+    "asr": {
+     "exact": 254,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.3,
+     "max": 1,
+     "signed": 0.05
+    },
+    "maghrib": {
+     "exact": 319,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.13,
+     "max": 1,
+     "signed": 0.13
+    },
+    "isha": {
+     "exact": 345,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.05
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": -1,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "15": {
+  "i": 15,
+  "key": "دمياط",
+  "lat0": 31.41648,
+  "lng0": 31.81332,
+  "source": "geonames:Damietta",
+  "implied": {
+   "lat": 31.39,
+   "lng": 31.81,
+   "obj": 0.92
+  },
+  "spanKm": 3,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 195,
+   "per": {
+    "fajr": {
+     "exact": 339,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.06
+    },
+    "sunrise": {
+     "exact": 338,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.06
+    },
+    "dhuhr": {
+     "exact": 363,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": -0.01
+    },
+    "asr": {
+     "exact": 250,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": 0.04
+    },
+    "maghrib": {
+     "exact": 343,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.05
+    },
+    "isha": {
+     "exact": 341,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.03
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 220,
+   "per": {
+    "fajr": {
+     "exact": 364,
+     "w1": 365,
+     "n": 365,
+     "mae": 0,
+     "max": 1,
+     "signed": 0
+    },
+    "sunrise": {
+     "exact": 349,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.04
+    },
+    "dhuhr": {
+     "exact": 362,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0.01
+    },
+    "asr": {
+     "exact": 253,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.31,
+     "max": 1,
+     "signed": 0.04
+    },
+    "maghrib": {
+     "exact": 340,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.07
+    },
+    "isha": {
+     "exact": 355,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.01
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": -1,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "16": {
+  "i": 16,
+  "key": "السلوم",
+  "lat0": 31.55371,
+  "lng0": 25.15793,
+  "source": "geonames:As Sallūm",
+  "implied": {
+   "lat": 31.57,
+   "lng": 25.18,
+   "obj": 0.66
+  },
+  "spanKm": 2.8,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 166,
+   "per": {
+    "fajr": {
+     "exact": 328,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": 0.1
+    },
+    "sunrise": {
+     "exact": 341,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.01
+    },
+    "dhuhr": {
+     "exact": 351,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.04
+    },
+    "asr": {
+     "exact": 243,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.33,
+     "max": 1,
+     "signed": 0.07
+    },
+    "maghrib": {
+     "exact": 336,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.08
+    },
+    "isha": {
+     "exact": 343,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.01
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-03",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": -1,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 190,
+   "per": {
+    "fajr": {
+     "exact": 348,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.01
+    },
+    "sunrise": {
+     "exact": 325,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": -0.11
+    },
+    "dhuhr": {
+     "exact": 352,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.04
+    },
+    "asr": {
+     "exact": 249,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": -0.02
+    },
+    "maghrib": {
+     "exact": 359,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "isha": {
+     "exact": 340,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.07
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "17": {
+  "i": 17,
+  "key": "نويبع",
+  "lat0": 29.04681,
+  "lng0": 34.6634,
+  "source": "geonames:Nuwaybi‘a",
+  "implied": {
+   "lat": 29.05,
+   "lng": 34.67,
+   "obj": 0.7
+  },
+  "spanKm": 0.7,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 181,
+   "per": {
+    "fajr": {
+     "exact": 350,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.01
+    },
+    "sunrise": {
+     "exact": 350,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0
+    },
+    "dhuhr": {
+     "exact": 345,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.05
+    },
+    "asr": {
+     "exact": 256,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.3,
+     "max": 1,
+     "signed": 0.05
+    },
+    "maghrib": {
+     "exact": 315,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.14,
+     "max": 1,
+     "signed": 0.14
+    },
+    "isha": {
+     "exact": 334,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.08
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": -1,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 189,
+   "per": {
+    "fajr": {
+     "exact": 346,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.02
+    },
+    "sunrise": {
+     "exact": 349,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.03
+    },
+    "dhuhr": {
+     "exact": 353,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.03
+    },
+    "asr": {
+     "exact": 254,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.3,
+     "max": 1,
+     "signed": 0.02
+    },
+    "maghrib": {
+     "exact": 330,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": 0.1
+    },
+    "isha": {
+     "exact": 335,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.05
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": -1,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "18": {
+  "i": 18,
+  "key": "حلايب",
+  "lat0": 22.22273,
+  "lng0": 36.64679,
+  "source": "geonames:Hala'ib",
+  "implied": {
+   "lat": 22.32,
+   "lng": 36.67,
+   "obj": 0.78
+  },
+  "spanKm": 11.1,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 132,
+   "per": {
+    "fajr": {
+     "exact": 307,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.16,
+     "max": 1,
+     "signed": 0.15
+    },
+    "sunrise": {
+     "exact": 323,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": 0.03
+    },
+    "dhuhr": {
+     "exact": 339,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.07
+    },
+    "asr": {
+     "exact": 267,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.27,
+     "max": 1,
+     "signed": 0.05
+    },
+    "maghrib": {
+     "exact": 310,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.15,
+     "max": 1,
+     "signed": 0.12
+    },
+    "isha": {
+     "exact": 315,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.14,
+     "max": 1,
+     "signed": -0.01
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": -1,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 238,
+   "per": {
+    "fajr": {
+     "exact": 360,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": -0.01
+    },
+    "sunrise": {
+     "exact": 347,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.05
+    },
+    "dhuhr": {
+     "exact": 361,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": -0.01
+    },
+    "asr": {
+     "exact": 275,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.25,
+     "max": 1,
+     "signed": -0.03
+    },
+    "maghrib": {
+     "exact": 349,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.04
+    },
+    "isha": {
+     "exact": 357,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": -0.02
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "19": {
+  "i": 19,
+  "key": "شرم الشيخ",
+  "lat0": 27.91582,
+  "lng0": 34.32995,
+  "source": "geonames:Sharm el-Sheikh",
+  "implied": {
+   "lat": 27.93,
+   "lng": 34.31,
+   "obj": 0.91
+  },
+  "spanKm": 2.5,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 129,
+   "per": {
+    "fajr": {
+     "exact": 315,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.14,
+     "max": 1,
+     "signed": 0.14
+    },
+    "sunrise": {
+     "exact": 325,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.01
+    },
+    "dhuhr": {
+     "exact": 340,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.07
+    },
+    "asr": {
+     "exact": 236,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.35,
+     "max": 1,
+     "signed": 0.01
+    },
+    "maghrib": {
+     "exact": 324,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.1
+    },
+    "isha": {
+     "exact": 315,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.14,
+     "max": 1,
+     "signed": 0.02
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": -1,
+     "isha": -1
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 109,
+   "per": {
+    "fajr": {
+     "exact": 296,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.19,
+     "max": 1,
+     "signed": 0.19
+    },
+    "sunrise": {
+     "exact": 326,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.1
+    },
+    "dhuhr": {
+     "exact": 314,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.14,
+     "max": 1,
+     "signed": 0.14
+    },
+    "asr": {
+     "exact": 241,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.34,
+     "max": 1,
+     "signed": 0.12
+    },
+    "maghrib": {
+     "exact": 293,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.2,
+     "max": 1,
+     "signed": 0.2
+    },
+    "isha": {
+     "exact": 315,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.14,
+     "max": 1,
+     "signed": 0.12
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": -1,
+     "isha": -1
+    }
+   }
+  }
+ },
+ "20": {
+  "i": 20,
+  "key": "الفيوم",
+  "lat0": 29.30995,
+  "lng0": 30.8418,
+  "source": "geonames:Al Fayyum",
+  "implied": {
+   "lat": 29.27,
+   "lng": 30.83,
+   "obj": 0.82
+  },
+  "spanKm": 4.6,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 177,
+   "per": {
+    "fajr": {
+     "exact": 336,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.07
+    },
+    "sunrise": {
+     "exact": 333,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": -0.08
+    },
+    "dhuhr": {
+     "exact": 365,
+     "w1": 365,
+     "n": 365,
+     "mae": 0,
+     "max": 0,
+     "signed": 0
+    },
+    "asr": {
+     "exact": 252,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.31,
+     "max": 1,
+     "signed": -0.03
+    },
+    "maghrib": {
+     "exact": 345,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.04
+    },
+    "isha": {
+     "exact": 334,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.02
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 213,
+   "per": {
+    "fajr": {
+     "exact": 349,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.04
+    },
+    "sunrise": {
+     "exact": 358,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": -0.02
+    },
+    "dhuhr": {
+     "exact": 359,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "asr": {
+     "exact": 252,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.31,
+     "max": 1,
+     "signed": 0.01
+    },
+    "maghrib": {
+     "exact": 335,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.08
+    },
+    "isha": {
+     "exact": 356,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.01
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": -1,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "21": {
+  "i": 21,
+  "key": "6أكتوبر",
+  "lat0": 29.9361,
+  "lng0": 30.9188,
+  "source": "manual:6 October City core",
+  "implied": {
+   "lat": 29.89,
+   "lng": 30.93,
+   "obj": 0.79
+  },
+  "spanKm": 5.2,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 155,
+   "per": {
+    "fajr": {
+     "exact": 330,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": -0.07
+    },
+    "sunrise": {
+     "exact": 335,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.07
+    },
+    "dhuhr": {
+     "exact": 365,
+     "w1": 365,
+     "n": 365,
+     "mae": 0,
+     "max": 0,
+     "signed": 0
+    },
+    "asr": {
+     "exact": 248,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": -0.02
+    },
+    "maghrib": {
+     "exact": 326,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.05
+    },
+    "isha": {
+     "exact": 325,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.05
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 1
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 196,
+   "per": {
+    "fajr": {
+     "exact": 343,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": -0.06
+    },
+    "sunrise": {
+     "exact": 331,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": -0.09
+    },
+    "dhuhr": {
+     "exact": 354,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": -0.03
+    },
+    "asr": {
+     "exact": 249,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": -0.07
+    },
+    "maghrib": {
+     "exact": 358,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.01
+    },
+    "isha": {
+     "exact": 350,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.04
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 1
+    }
+   }
+  }
+ },
+ "22": {
+  "i": 22,
+  "key": "كفر الشيخ",
+  "lat0": 31.11174,
+  "lng0": 30.93991,
+  "source": "geonames:Kafr ash Shaykh",
+  "implied": {
+   "lat": 31.11,
+   "lng": 30.94,
+   "obj": 0.85
+  },
+  "spanKm": 0.2,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 207,
+   "per": {
+    "fajr": {
+     "exact": 358,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "sunrise": {
+     "exact": 354,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": -0.03
+    },
+    "dhuhr": {
+     "exact": 358,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "asr": {
+     "exact": 239,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.35,
+     "max": 1,
+     "signed": 0.04
+    },
+    "maghrib": {
+     "exact": 340,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.07
+    },
+    "isha": {
+     "exact": 354,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.02
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-03",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": -1,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 206,
+   "per": {
+    "fajr": {
+     "exact": 356,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "sunrise": {
+     "exact": 353,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": -0.03
+    },
+    "dhuhr": {
+     "exact": 358,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "asr": {
+     "exact": 240,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.34,
+     "max": 1,
+     "signed": 0.04
+    },
+    "maghrib": {
+     "exact": 339,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.07
+    },
+    "isha": {
+     "exact": 353,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.02
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-03",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": -1,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "23": {
+  "i": 23,
+  "key": "الحامول",
+  "lat0": 31.31146,
+  "lng0": 31.14766,
+  "source": "geonames:Al Ḩāmūl",
+  "implied": {
+   "lat": 31.39,
+   "lng": 31.17,
+   "obj": 0.83
+  },
+  "spanKm": 9,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 120,
+   "per": {
+    "fajr": {
+     "exact": 304,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.17,
+     "max": 1,
+     "signed": 0.17
+    },
+    "sunrise": {
+     "exact": 312,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.15,
+     "max": 1,
+     "signed": 0.05
+    },
+    "dhuhr": {
+     "exact": 343,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.06
+    },
+    "asr": {
+     "exact": 240,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.34,
+     "max": 1,
+     "signed": 0.04
+    },
+    "maghrib": {
+     "exact": 317,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.13,
+     "max": 1,
+     "signed": 0.08
+    },
+    "isha": {
+     "exact": 311,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.15,
+     "max": 1,
+     "signed": -0.02
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": -1,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 208,
+   "per": {
+    "fajr": {
+     "exact": 359,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": -0.02
+    },
+    "sunrise": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.08
+    },
+    "dhuhr": {
+     "exact": 357,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": -0.02
+    },
+    "asr": {
+     "exact": 247,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": -0.03
+    },
+    "maghrib": {
+     "exact": 357,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "isha": {
+     "exact": 357,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": -0.01
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 1,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "24": {
+  "i": 24,
+  "key": "بلطيم",
+  "lat0": 31.55582,
+  "lng0": 31.08918,
+  "source": "geonames:Balţīm",
+  "implied": {
+   "lat": 31.36,
+   "lng": 31.09,
+   "obj": 0.87
+  },
+  "spanKm": 21.7,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 222,
+   "per": {
+    "fajr": {
+     "exact": 359,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": -0.01
+    },
+    "sunrise": {
+     "exact": 353,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": -0.03
+    },
+    "dhuhr": {
+     "exact": 364,
+     "w1": 365,
+     "n": 365,
+     "mae": 0,
+     "max": 1,
+     "signed": 0
+    },
+    "asr": {
+     "exact": 253,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.31,
+     "max": 1,
+     "signed": 0.05
+    },
+    "maghrib": {
+     "exact": 340,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.07
+    },
+    "isha": {
+     "exact": 356,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-04",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 55,
+   "per": {
+    "fajr": {
+     "exact": 223,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.39,
+     "max": 1,
+     "signed": 0.26
+    },
+    "sunrise": {
+     "exact": 260,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.29,
+     "max": 1,
+     "signed": -0.04
+    },
+    "dhuhr": {
+     "exact": 364,
+     "w1": 365,
+     "n": 365,
+     "mae": 0,
+     "max": 1,
+     "signed": 0
+    },
+    "asr": {
+     "exact": 225,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.38,
+     "max": 1,
+     "signed": -0.01
+    },
+    "maghrib": {
+     "exact": 262,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.28,
+     "max": 1,
+     "signed": 0.05
+    },
+    "isha": {
+     "exact": 244,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.33,
+     "max": 1,
+     "signed": -0.22
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": -1,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "25": {
+  "i": 25,
+  "key": "طابا",
+  "lat0": 29.49199,
+  "lng0": 34.89572,
+  "source": "geonames:Taba",
+  "implied": {
+   "lat": 29.45,
+   "lng": 34.41,
+   "obj": 0.85
+  },
+  "spanKm": 47.2,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 157,
+   "per": {
+    "fajr": {
+     "exact": 341,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.02
+    },
+    "sunrise": {
+     "exact": 350,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.01
+    },
+    "dhuhr": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.08
+    },
+    "asr": {
+     "exact": 255,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.3,
+     "max": 1,
+     "signed": 0.09
+    },
+    "maghrib": {
+     "exact": 320,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": 0.12
+    },
+    "isha": {
+     "exact": 314,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.14,
+     "max": 1,
+     "signed": 0.14
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-03",
+    "delta": {
+     "fajr": 0,
+     "sunrise": -1,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 0,
+   "allSixExact": 0,
+   "per": {
+    "fajr": {
+     "exact": 0,
+     "w1": 0,
+     "n": 365,
+     "mae": 2.04,
+     "max": 3,
+     "signed": 2.04
+    },
+    "sunrise": {
+     "exact": 0,
+     "w1": 12,
+     "n": 365,
+     "mae": 1.97,
+     "max": 2,
+     "signed": 1.97
+    },
+    "dhuhr": {
+     "exact": 0,
+     "w1": 0,
+     "n": 365,
+     "mae": 2.02,
+     "max": 3,
+     "signed": 2.02
+    },
+    "asr": {
+     "exact": 0,
+     "w1": 44,
+     "n": 365,
+     "mae": 2.04,
+     "max": 3,
+     "signed": 2.04
+    },
+    "maghrib": {
+     "exact": 0,
+     "w1": 0,
+     "n": 365,
+     "mae": 2.07,
+     "max": 3,
+     "signed": 2.07
+    },
+    "isha": {
+     "exact": 0,
+     "w1": 2,
+     "n": 365,
+     "mae": 2.02,
+     "max": 3,
+     "signed": 2.02
+    }
+   },
+   "worst": {
+    "dev": 3,
+    "day": "2026-01-09",
+    "delta": {
+     "fajr": -2,
+     "sunrise": -2,
+     "dhuhr": -3,
+     "asr": -2,
+     "maghrib": -2,
+     "isha": -2
+    }
+   }
+  }
+ },
+ "26": {
+  "i": 26,
+  "key": "راس سدر",
+  "lat0": 29.5833,
+  "lng0": 32.6667,
+  "source": "manual:Ras Sedr",
+  "implied": {
+   "lat": 29.62,
+   "lng": 32.66,
+   "obj": 0.78
+  },
+  "spanKm": 4.1,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 208,
+   "per": {
+    "fajr": {
+     "exact": 350,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.04
+    },
+    "sunrise": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.08
+    },
+    "dhuhr": {
+     "exact": 356,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": -0.02
+    },
+    "asr": {
+     "exact": 253,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.31,
+     "max": 1,
+     "signed": -0.01
+    },
+    "maghrib": {
+     "exact": 359,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "isha": {
+     "exact": 346,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.05
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 1,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 208,
+   "per": {
+    "fajr": {
+     "exact": 348,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.04
+    },
+    "sunrise": {
+     "exact": 352,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.04
+    },
+    "dhuhr": {
+     "exact": 363,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": -0.01
+    },
+    "asr": {
+     "exact": 250,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": 0.02
+    },
+    "maghrib": {
+     "exact": 347,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.05
+    },
+    "isha": {
+     "exact": 353,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": -1,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "27": {
+  "i": 27,
+  "key": "الطور",
+  "lat0": 28.24168,
+  "lng0": 33.6222,
+  "source": "geonames:El-Tor",
+  "implied": {
+   "lat": 28.18,
+   "lng": 33.64,
+   "obj": 0.92
+  },
+  "spanKm": 7.1,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 152,
+   "per": {
+    "fajr": {
+     "exact": 334,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.01
+    },
+    "sunrise": {
+     "exact": 338,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.02
+    },
+    "dhuhr": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.08
+    },
+    "asr": {
+     "exact": 261,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.28,
+     "max": 1,
+     "signed": 0.1
+    },
+    "maghrib": {
+     "exact": 310,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.15,
+     "max": 1,
+     "signed": 0.15
+    },
+    "isha": {
+     "exact": 328,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": 0.09
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": -1,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 215,
+   "per": {
+    "fajr": {
+     "exact": 360,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0.01
+    },
+    "sunrise": {
+     "exact": 334,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.08
+    },
+    "dhuhr": {
+     "exact": 360,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": -0.01
+    },
+    "asr": {
+     "exact": 259,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.29,
+     "max": 1,
+     "signed": 0
+    },
+    "maghrib": {
+     "exact": 348,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.05
+    },
+    "isha": {
+     "exact": 350,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.03
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 1,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "28": {
+  "i": 28,
+  "key": "دهب",
+  "lat0": 28.48208,
+  "lng0": 34.49505,
+  "source": "geonames:Dahab",
+  "implied": {
+   "lat": 28.49,
+   "lng": 34.5,
+   "obj": 0.92
+  },
+  "spanKm": 1,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 221,
+   "per": {
+    "fajr": {
+     "exact": 352,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.04
+    },
+    "sunrise": {
+     "exact": 342,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": -0.06
+    },
+    "dhuhr": {
+     "exact": 351,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.04
+    },
+    "asr": {
+     "exact": 264,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.28,
+     "max": 1,
+     "signed": 0
+    },
+    "maghrib": {
+     "exact": 357,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "isha": {
+     "exact": 357,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": -0.01
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 1,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 204,
+   "per": {
+    "fajr": {
+     "exact": 341,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.07
+    },
+    "sunrise": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.08
+    },
+    "dhuhr": {
+     "exact": 342,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": -0.06
+    },
+    "asr": {
+     "exact": 266,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.27,
+     "max": 1,
+     "signed": -0.01
+    },
+    "maghrib": {
+     "exact": 357,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "isha": {
+     "exact": 354,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": -0.01
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 1,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "29": {
+  "i": 29,
+  "key": "ابوزنيمة",
+  "lat0": 29.0475,
+  "lng0": 33.11034,
+  "source": "geonames:Abū Zanīmah",
+  "implied": {
+   "lat": 29.04,
+   "lng": 33.09,
+   "obj": 0.86
+  },
+  "spanKm": 2.1,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 206,
+   "per": {
+    "fajr": {
+     "exact": 349,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.03
+    },
+    "sunrise": {
+     "exact": 356,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.01
+    },
+    "dhuhr": {
+     "exact": 356,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "asr": {
+     "exact": 263,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.28,
+     "max": 1,
+     "signed": 0.04
+    },
+    "maghrib": {
+     "exact": 328,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": 0.1
+    },
+    "isha": {
+     "exact": 345,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.05
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-07",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 126,
+   "per": {
+    "fajr": {
+     "exact": 318,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.13,
+     "max": 1,
+     "signed": 0.13
+    },
+    "sunrise": {
+     "exact": 334,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.08
+    },
+    "dhuhr": {
+     "exact": 327,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": 0.1
+    },
+    "asr": {
+     "exact": 258,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.29,
+     "max": 1,
+     "signed": 0.11
+    },
+    "maghrib": {
+     "exact": 293,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.2,
+     "max": 1,
+     "signed": 0.2
+    },
+    "isha": {
+     "exact": 314,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.14,
+     "max": 1,
+     "signed": 0.14
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-03",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": -1,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "30": {
+  "i": 30,
+  "key": "راس غارب",
+  "lat0": 28.35831,
+  "lng0": 33.07829,
+  "source": "geonames:Ras Gharib",
+  "implied": {
+   "lat": 28.47,
+   "lng": 33.35,
+   "obj": 0.79
+  },
+  "spanKm": 29.3,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 137,
+   "per": {
+    "fajr": {
+     "exact": 309,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.15,
+     "max": 1,
+     "signed": 0.15
+    },
+    "sunrise": {
+     "exact": 336,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.01
+    },
+    "dhuhr": {
+     "exact": 345,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.05
+    },
+    "asr": {
+     "exact": 230,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.37,
+     "max": 1,
+     "signed": 0.04
+    },
+    "maghrib": {
+     "exact": 327,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": 0.09
+    },
+    "isha": {
+     "exact": 331,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": 0.01
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": -1,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 228,
+   "allSixExact": 0,
+   "per": {
+    "fajr": {
+     "exact": 0,
+     "w1": 326,
+     "n": 365,
+     "mae": 1.11,
+     "max": 2,
+     "signed": -1.11
+    },
+    "sunrise": {
+     "exact": 3,
+     "w1": 333,
+     "n": 365,
+     "mae": 1.08,
+     "max": 2,
+     "signed": -1.08
+    },
+    "dhuhr": {
+     "exact": 0,
+     "w1": 361,
+     "n": 365,
+     "mae": 1.01,
+     "max": 2,
+     "signed": -1.01
+    },
+    "asr": {
+     "exact": 64,
+     "w1": 297,
+     "n": 365,
+     "mae": 1.01,
+     "max": 2,
+     "signed": -1.01
+    },
+    "maghrib": {
+     "exact": 14,
+     "w1": 357,
+     "n": 365,
+     "mae": 0.98,
+     "max": 2,
+     "signed": -0.98
+    },
+    "isha": {
+     "exact": 23,
+     "w1": 350,
+     "n": 365,
+     "mae": 0.98,
+     "max": 2,
+     "signed": -0.98
+    }
+   },
+   "worst": {
+    "dev": 2,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 1,
+     "sunrise": 1,
+     "dhuhr": 1,
+     "asr": 2,
+     "maghrib": 1,
+     "isha": 1
+    }
+   }
+  }
+ },
+ "31": {
+  "i": 31,
+  "key": "القصير",
+  "lat0": 26.10611,
+  "lng0": 34.27716,
+  "source": "geonames:Al Quşayr",
+  "implied": {
+   "lat": 26.07,
+   "lng": 34.27,
+   "obj": 0.91
+  },
+  "spanKm": 4.1,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 180,
+   "per": {
+    "fajr": {
+     "exact": 347,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.03
+    },
+    "sunrise": {
+     "exact": 320,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": -0.12
+    },
+    "dhuhr": {
+     "exact": 346,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.05
+    },
+    "asr": {
+     "exact": 261,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.28,
+     "max": 1,
+     "signed": -0.06
+    },
+    "maghrib": {
+     "exact": 355,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0
+    },
+    "isha": {
+     "exact": 330,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": -0.1
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": -1,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 151,
+   "per": {
+    "fajr": {
+     "exact": 328,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": 0.04
+    },
+    "sunrise": {
+     "exact": 321,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": -0.11
+    },
+    "dhuhr": {
+     "exact": 357,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": -0.02
+    },
+    "asr": {
+     "exact": 258,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.29,
+     "max": 1,
+     "signed": -0.04
+    },
+    "maghrib": {
+     "exact": 332,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": 0.03
+    },
+    "isha": {
+     "exact": 312,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.15,
+     "max": 1,
+     "signed": -0.11
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": -1
+    }
+   }
+  }
+ },
+ "32": {
+  "i": 32,
+  "key": "برنيس",
+  "lat0": 23.94556,
+  "lng0": 35.48417,
+  "source": "geonames:Barnis/Berenice",
+  "implied": {
+   "lat": 23.76,
+   "lng": 35.5,
+   "obj": 0.92
+  },
+  "spanKm": 20.7,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 234,
+   "per": {
+    "fajr": {
+     "exact": 360,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0
+    },
+    "sunrise": {
+     "exact": 345,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.05
+    },
+    "dhuhr": {
+     "exact": 362,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0
+    },
+    "asr": {
+     "exact": 272,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.25,
+     "max": 1,
+     "signed": 0.02
+    },
+    "maghrib": {
+     "exact": 346,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.05
+    },
+    "isha": {
+     "exact": 357,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.01
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 1
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 69,
+   "per": {
+    "fajr": {
+     "exact": 252,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.31,
+     "max": 1,
+     "signed": 0.1
+    },
+    "sunrise": {
+     "exact": 267,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.27,
+     "max": 1,
+     "signed": -0.12
+    },
+    "dhuhr": {
+     "exact": 342,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": -0.06
+    },
+    "asr": {
+     "exact": 214,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.41,
+     "max": 1,
+     "signed": -0.15
+    },
+    "maghrib": {
+     "exact": 277,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.24,
+     "max": 1,
+     "signed": -0.04
+    },
+    "isha": {
+     "exact": 254,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.3,
+     "max": 1,
+     "signed": -0.23
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 1,
+     "dhuhr": 0,
+     "asr": -1,
+     "maghrib": -1,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "33": {
+  "i": 33,
+  "key": "سفاجة",
+  "lat0": 26.74906,
+  "lng0": 33.93891,
+  "source": "geonames:Safaga",
+  "implied": {
+   "lat": 26.78,
+   "lng": 33.95,
+   "obj": 0.81
+  },
+  "spanKm": 3.6,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 168,
+   "per": {
+    "fajr": {
+     "exact": 322,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": 0.1
+    },
+    "sunrise": {
+     "exact": 338,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.03
+    },
+    "dhuhr": {
+     "exact": 352,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.04
+    },
+    "asr": {
+     "exact": 255,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.3,
+     "max": 1,
+     "signed": 0
+    },
+    "maghrib": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.07
+    },
+    "isha": {
+     "exact": 335,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.01
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": -1
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 204,
+   "per": {
+    "fajr": {
+     "exact": 347,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.01
+    },
+    "sunrise": {
+     "exact": 338,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.07
+    },
+    "dhuhr": {
+     "exact": 360,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": -0.01
+    },
+    "asr": {
+     "exact": 254,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.3,
+     "max": 1,
+     "signed": -0.04
+    },
+    "maghrib": {
+     "exact": 350,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.04
+    },
+    "isha": {
+     "exact": 352,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.02
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "34": {
+  "i": 34,
+  "key": "مرسى علم",
+  "lat0": 25.06305,
+  "lng0": 34.89005,
+  "source": "geonames:Marsa Alam",
+  "implied": {
+   "lat": 25.02,
+   "lng": 34.86,
+   "obj": 0.89
+  },
+  "spanKm": 5.7,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 148,
+   "per": {
+    "fajr": {
+     "exact": 329,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": -0.1
+    },
+    "sunrise": {
+     "exact": 317,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.13,
+     "max": 1,
+     "signed": -0.13
+    },
+    "dhuhr": {
+     "exact": 328,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": -0.1
+    },
+    "asr": {
+     "exact": 251,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.31,
+     "max": 1,
+     "signed": -0.06
+    },
+    "maghrib": {
+     "exact": 335,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.05
+    },
+    "isha": {
+     "exact": 334,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.06
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 1,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 216,
+   "per": {
+    "fajr": {
+     "exact": 356,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "sunrise": {
+     "exact": 357,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": -0.02
+    },
+    "dhuhr": {
+     "exact": 354,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.03
+    },
+    "asr": {
+     "exact": 260,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.29,
+     "max": 1,
+     "signed": 0.02
+    },
+    "maghrib": {
+     "exact": 335,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.08
+    },
+    "isha": {
+     "exact": 357,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-04",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": -1,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "35": {
+  "i": 35,
+  "key": "شلاتين",
+  "lat0": 23.13235,
+  "lng0": 35.59094,
+  "source": "geonames:Shalateen",
+  "implied": {
+   "lat": 23.17,
+   "lng": 35.61,
+   "obj": 0.8
+  },
+  "spanKm": 4.6,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 196,
+   "per": {
+    "fajr": {
+     "exact": 339,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.07
+    },
+    "sunrise": {
+     "exact": 342,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": -0.01
+    },
+    "dhuhr": {
+     "exact": 351,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.04
+    },
+    "asr": {
+     "exact": 268,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.27,
+     "max": 1,
+     "signed": 0.01
+    },
+    "maghrib": {
+     "exact": 338,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.07
+    },
+    "isha": {
+     "exact": 348,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.01
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": -1,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 209,
+   "per": {
+    "fajr": {
+     "exact": 348,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.05
+    },
+    "sunrise": {
+     "exact": 328,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": -0.1
+    },
+    "dhuhr": {
+     "exact": 350,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.04
+    },
+    "asr": {
+     "exact": 266,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.27,
+     "max": 1,
+     "signed": -0.04
+    },
+    "maghrib": {
+     "exact": 358,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "isha": {
+     "exact": 352,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.03
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-03",
+    "delta": {
+     "fajr": 1,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "36": {
+  "i": 36,
+  "key": "سيدى برانى",
+  "lat0": 31.61166,
+  "lng0": 25.92539,
+  "source": "geonames:Sīdī Barānī",
+  "implied": {
+   "lat": 31.73,
+   "lng": 25.93,
+   "obj": 0.76
+  },
+  "spanKm": 13.1,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 203,
+   "per": {
+    "fajr": {
+     "exact": 347,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.04
+    },
+    "sunrise": {
+     "exact": 344,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": -0.05
+    },
+    "dhuhr": {
+     "exact": 365,
+     "w1": 365,
+     "n": 365,
+     "mae": 0,
+     "max": 0,
+     "signed": 0
+    },
+    "asr": {
+     "exact": 263,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.28,
+     "max": 1,
+     "signed": 0.04
+    },
+    "maghrib": {
+     "exact": 338,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.07
+    },
+    "isha": {
+     "exact": 343,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.03
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-03",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 82,
+   "per": {
+    "fajr": {
+     "exact": 254,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.3,
+     "max": 1,
+     "signed": -0.23
+    },
+    "sunrise": {
+     "exact": 286,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.22,
+     "max": 1,
+     "signed": -0.08
+    },
+    "dhuhr": {
+     "exact": 364,
+     "w1": 365,
+     "n": 365,
+     "mae": 0,
+     "max": 1,
+     "signed": 0
+    },
+    "asr": {
+     "exact": 225,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.38,
+     "max": 1,
+     "signed": 0.03
+    },
+    "maghrib": {
+     "exact": 280,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.23,
+     "max": 1,
+     "signed": 0.07
+    },
+    "isha": {
+     "exact": 249,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": 0.2
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "37": {
+  "i": 37,
+  "key": "الضبعة",
+  "lat0": 31.02819,
+  "lng0": 28.44498,
+  "source": "geonames:El Dabaa",
+  "implied": {
+   "lat": 31.06,
+   "lng": 28.45,
+   "obj": 0.88
+  },
+  "spanKm": 3.6,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 177,
+   "per": {
+    "fajr": {
+     "exact": 347,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.03
+    },
+    "sunrise": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.08
+    },
+    "dhuhr": {
+     "exact": 363,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0
+    },
+    "asr": {
+     "exact": 234,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.36,
+     "max": 1,
+     "signed": -0.04
+    },
+    "maghrib": {
+     "exact": 347,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.04
+    },
+    "isha": {
+     "exact": 343,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": -0.04
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 1,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 191,
+   "per": {
+    "fajr": {
+     "exact": 352,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.04
+    },
+    "sunrise": {
+     "exact": 330,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": -0.1
+    },
+    "dhuhr": {
+     "exact": 355,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": -0.03
+    },
+    "asr": {
+     "exact": 244,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.33,
+     "max": 1,
+     "signed": -0.08
+    },
+    "maghrib": {
+     "exact": 354,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.03
+    },
+    "isha": {
+     "exact": 349,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.01
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-05",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "38": {
+  "i": 38,
+  "key": "العلمين",
+  "lat0": 30.83007,
+  "lng0": 28.95502,
+  "source": "geonames:Al ‘Alamayn",
+  "implied": {
+   "lat": 30.78,
+   "lng": 28.95,
+   "obj": 0.77
+  },
+  "spanKm": 5.6,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 171,
+   "per": {
+    "fajr": {
+     "exact": 332,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": -0.06
+    },
+    "sunrise": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.05
+    },
+    "dhuhr": {
+     "exact": 364,
+     "w1": 365,
+     "n": 365,
+     "mae": 0,
+     "max": 1,
+     "signed": 0
+    },
+    "asr": {
+     "exact": 251,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.31,
+     "max": 1,
+     "signed": 0
+    },
+    "maghrib": {
+     "exact": 338,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.06
+    },
+    "isha": {
+     "exact": 327,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": 0.04
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-03",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 1
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 213,
+   "per": {
+    "fajr": {
+     "exact": 359,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "sunrise": {
+     "exact": 352,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.04
+    },
+    "dhuhr": {
+     "exact": 363,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0.01
+    },
+    "asr": {
+     "exact": 253,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.31,
+     "max": 1,
+     "signed": 0.01
+    },
+    "maghrib": {
+     "exact": 334,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.08
+    },
+    "isha": {
+     "exact": 358,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-03",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "39": {
+  "i": 39,
+  "key": "واحة سيوة",
+  "lat0": 29.2032,
+  "lng0": 25.51965,
+  "source": "geonames:Sīwah",
+  "implied": {
+   "lat": 29.19,
+   "lng": 25.53,
+   "obj": 0.87
+  },
+  "spanKm": 1.8,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 208,
+   "per": {
+    "fajr": {
+     "exact": 355,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": -0.02
+    },
+    "sunrise": {
+     "exact": 344,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": -0.06
+    },
+    "dhuhr": {
+     "exact": 362,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0.01
+    },
+    "asr": {
+     "exact": 250,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": -0.01
+    },
+    "maghrib": {
+     "exact": 344,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.06
+    },
+    "isha": {
+     "exact": 353,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.01
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-07",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 204,
+   "per": {
+    "fajr": {
+     "exact": 346,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.05
+    },
+    "sunrise": {
+     "exact": 334,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.08
+    },
+    "dhuhr": {
+     "exact": 354,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": -0.03
+    },
+    "asr": {
+     "exact": 254,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.3,
+     "max": 1,
+     "signed": -0.04
+    },
+    "maghrib": {
+     "exact": 358,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "isha": {
+     "exact": 353,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": -0.02
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-06",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 1
+    }
+   }
+  }
+ },
+ "40": {
+  "i": 40,
+  "key": "موط (الداخلة )",
+  "lat0": 25.48742,
+  "lng0": 28.97918,
+  "source": "geonames:Mut (Dakhla)",
+  "implied": {
+   "lat": 25.46,
+   "lng": 28.91,
+   "obj": 0.79
+  },
+  "spanKm": 7.6,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 183,
+   "per": {
+    "fajr": {
+     "exact": 341,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.05
+    },
+    "sunrise": {
+     "exact": 344,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": -0.04
+    },
+    "dhuhr": {
+     "exact": 361,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": -0.01
+    },
+    "asr": {
+     "exact": 247,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": 0.02
+    },
+    "maghrib": {
+     "exact": 348,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.03
+    },
+    "isha": {
+     "exact": 329,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": 0.07
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 1,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 53,
+   "per": {
+    "fajr": {
+     "exact": 271,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.26,
+     "max": 1,
+     "signed": 0.26
+    },
+    "sunrise": {
+     "exact": 289,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.21,
+     "max": 1,
+     "signed": 0.21
+    },
+    "dhuhr": {
+     "exact": 269,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.26,
+     "max": 1,
+     "signed": 0.26
+    },
+    "asr": {
+     "exact": 252,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.31,
+     "max": 1,
+     "signed": 0.28
+    },
+    "maghrib": {
+     "exact": 245,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.33,
+     "max": 1,
+     "signed": 0.33
+    },
+    "isha": {
+     "exact": 248,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": 0.32
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": -1,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "41": {
+  "i": 41,
+  "key": "الفرافرة",
+  "lat0": 27.0568,
+  "lng0": 27.96979,
+  "source": "geonames:Qasr al Farafirah",
+  "implied": {
+   "lat": 27.14,
+   "lng": 28,
+   "obj": 0.89
+  },
+  "spanKm": 9.7,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 196,
+   "per": {
+    "fajr": {
+     "exact": 341,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.04
+    },
+    "sunrise": {
+     "exact": 342,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": -0.05
+    },
+    "dhuhr": {
+     "exact": 363,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0
+    },
+    "asr": {
+     "exact": 252,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.31,
+     "max": 1,
+     "signed": -0.02
+    },
+    "maghrib": {
+     "exact": 343,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.04
+    },
+    "isha": {
+     "exact": 348,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.02
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 1,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 126,
+   "per": {
+    "fajr": {
+     "exact": 300,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.18,
+     "max": 1,
+     "signed": -0.18
+    },
+    "sunrise": {
+     "exact": 304,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.17,
+     "max": 1,
+     "signed": -0.17
+    },
+    "dhuhr": {
+     "exact": 323,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": -0.12
+    },
+    "asr": {
+     "exact": 251,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.31,
+     "max": 1,
+     "signed": -0.12
+    },
+    "maghrib": {
+     "exact": 339,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.05
+    },
+    "isha": {
+     "exact": 319,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.13,
+     "max": 1,
+     "signed": -0.11
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "42": {
+  "i": 42,
+  "key": "البويطى",
+  "lat0": 28.34827,
+  "lng0": 28.86936,
+  "source": "geonames:Al Bawīţī",
+  "implied": {
+   "lat": 28.36,
+   "lng": 28.95,
+   "obj": 0.88
+  },
+  "spanKm": 8,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 219,
+   "per": {
+    "fajr": {
+     "exact": 363,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0.01
+    },
+    "sunrise": {
+     "exact": 344,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": -0.06
+    },
+    "dhuhr": {
+     "exact": 363,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0
+    },
+    "asr": {
+     "exact": 266,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.27,
+     "max": 1,
+     "signed": 0
+    },
+    "maghrib": {
+     "exact": 339,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.07
+    },
+    "isha": {
+     "exact": 355,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.01
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-07",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 1,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 35,
+   "per": {
+    "fajr": {
+     "exact": 255,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.3,
+     "max": 1,
+     "signed": -0.3
+    },
+    "sunrise": {
+     "exact": 220,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.4,
+     "max": 1,
+     "signed": -0.4
+    },
+    "dhuhr": {
+     "exact": 244,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.33,
+     "max": 1,
+     "signed": -0.33
+    },
+    "asr": {
+     "exact": 232,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.36,
+     "max": 1,
+     "signed": -0.3
+    },
+    "maghrib": {
+     "exact": 257,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.3,
+     "max": 1,
+     "signed": -0.3
+    },
+    "isha": {
+     "exact": 246,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.33,
+     "max": 1,
+     "signed": -0.33
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 1,
+     "sunrise": 1,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 1,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "43": {
+  "i": 43,
+  "key": "باريس",
+  "lat0": 24.67379,
+  "lng0": 30.60101,
+  "source": "geonames:Bārīs",
+  "implied": {
+   "lat": 24.47,
+   "lng": 30.52,
+   "obj": 0.79
+  },
+  "spanKm": 24.1,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 142,
+   "per": {
+    "fajr": {
+     "exact": 304,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.17,
+     "max": 1,
+     "signed": 0.16
+    },
+    "sunrise": {
+     "exact": 335,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.02
+    },
+    "dhuhr": {
+     "exact": 322,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": 0.12
+    },
+    "asr": {
+     "exact": 261,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.28,
+     "max": 1,
+     "signed": 0.07
+    },
+    "maghrib": {
+     "exact": 325,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.11
+    },
+    "isha": {
+     "exact": 324,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.03
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": -1,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 334,
+   "allSixExact": 10,
+   "per": {
+    "fajr": {
+     "exact": 156,
+     "w1": 336,
+     "n": 365,
+     "mae": 0.65,
+     "max": 2,
+     "signed": 0.65
+    },
+    "sunrise": {
+     "exact": 214,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.41,
+     "max": 1,
+     "signed": 0.33
+    },
+    "dhuhr": {
+     "exact": 212,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.42,
+     "max": 1,
+     "signed": 0.42
+    },
+    "asr": {
+     "exact": 186,
+     "w1": 363,
+     "n": 365,
+     "mae": 0.5,
+     "max": 2,
+     "signed": 0.29
+    },
+    "maghrib": {
+     "exact": 209,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.43,
+     "max": 1,
+     "signed": 0.39
+    },
+    "isha": {
+     "exact": 213,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.42,
+     "max": 1,
+     "signed": 0.19
+    }
+   },
+   "worst": {
+    "dev": 2,
+    "day": "2026-05-13",
+    "delta": {
+     "fajr": -2,
+     "sunrise": -1,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 1
+    }
+   }
+  }
+ },
+ "44": {
+  "i": 44,
+  "key": "المحلة الكبرى",
+  "lat0": 30.97063,
+  "lng0": 31.1669,
+  "source": "geonames:Al Maḩallah al Kubrá",
+  "implied": {
+   "lat": 31.05,
+   "lng": 30.95,
+   "obj": 0.88
+  },
+  "spanKm": 22.4,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 141,
+   "per": {
+    "fajr": {
+     "exact": 315,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.14,
+     "max": 1,
+     "signed": 0.11
+    },
+    "sunrise": {
+     "exact": 315,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.14,
+     "max": 1,
+     "signed": -0.06
+    },
+    "dhuhr": {
+     "exact": 362,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0
+    },
+    "asr": {
+     "exact": 232,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.36,
+     "max": 1,
+     "signed": -0.06
+    },
+    "maghrib": {
+     "exact": 323,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": 0.04
+    },
+    "isha": {
+     "exact": 314,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.14,
+     "max": 1,
+     "signed": -0.1
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 1,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 335,
+   "allSixExact": 0,
+   "per": {
+    "fajr": {
+     "exact": 60,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.84,
+     "max": 1,
+     "signed": 0.84
+    },
+    "sunrise": {
+     "exact": 75,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.79,
+     "max": 1,
+     "signed": 0.79
+    },
+    "dhuhr": {
+     "exact": 45,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.88,
+     "max": 1,
+     "signed": 0.88
+    },
+    "asr": {
+     "exact": 97,
+     "w1": 335,
+     "n": 365,
+     "mae": 0.82,
+     "max": 2,
+     "signed": 0.82
+    },
+    "maghrib": {
+     "exact": 28,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.92,
+     "max": 1,
+     "signed": 0.92
+    },
+    "isha": {
+     "exact": 44,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.88,
+     "max": 1,
+     "signed": 0.88
+    }
+   },
+   "worst": {
+    "dev": 2,
+    "day": "2026-08-05",
+    "delta": {
+     "fajr": 0,
+     "sunrise": -1,
+     "dhuhr": -1,
+     "asr": -2,
+     "maghrib": -1,
+     "isha": -1
+    }
+   }
+  }
+ },
+ "45": {
+  "i": 45,
+  "key": "الحمام",
+  "lat0": 30.84532,
+  "lng0": 29.38818,
+  "source": "geonames:Al Ḩammām",
+  "implied": {
+   "lat": 30.89,
+   "lng": 29.4,
+   "obj": 0.86
+  },
+  "spanKm": 5.1,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 147,
+   "per": {
+    "fajr": {
+     "exact": 328,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": 0.07
+    },
+    "sunrise": {
+     "exact": 331,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": -0.05
+    },
+    "dhuhr": {
+     "exact": 355,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.03
+    },
+    "asr": {
+     "exact": 232,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.36,
+     "max": 1,
+     "signed": -0.04
+    },
+    "maghrib": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.07
+    },
+    "isha": {
+     "exact": 340,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.02
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 1,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": -1,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 189,
+   "per": {
+    "fajr": {
+     "exact": 354,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": -0.03
+    },
+    "sunrise": {
+     "exact": 331,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": -0.09
+    },
+    "dhuhr": {
+     "exact": 354,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": -0.03
+    },
+    "asr": {
+     "exact": 232,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.36,
+     "max": 1,
+     "signed": -0.1
+    },
+    "maghrib": {
+     "exact": 357,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "isha": {
+     "exact": 354,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": -0.03
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-03",
+    "delta": {
+     "fajr": 1,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "46": {
+  "i": 46,
+  "key": "نجع حمادى",
+  "lat0": 26.04949,
+  "lng0": 32.24142,
+  "source": "geonames:Nag Hammâdi",
+  "implied": {
+   "lat": 26.12,
+   "lng": 32.24,
+   "obj": 0.89
+  },
+  "spanKm": 7.8,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 166,
+   "per": {
+    "fajr": {
+     "exact": 316,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.13,
+     "max": 1,
+     "signed": 0.11
+    },
+    "sunrise": {
+     "exact": 340,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.01
+    },
+    "dhuhr": {
+     "exact": 358,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "asr": {
+     "exact": 253,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.31,
+     "max": 1,
+     "signed": -0.03
+    },
+    "maghrib": {
+     "exact": 326,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.07
+    },
+    "isha": {
+     "exact": 326,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": -0.04
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": -1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 209,
+   "per": {
+    "fajr": {
+     "exact": 351,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.04
+    },
+    "sunrise": {
+     "exact": 359,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": -0.02
+    },
+    "dhuhr": {
+     "exact": 355,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.03
+    },
+    "asr": {
+     "exact": 270,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.26,
+     "max": 1,
+     "signed": 0
+    },
+    "maghrib": {
+     "exact": 325,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.11
+    },
+    "isha": {
+     "exact": 349,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.04
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-03",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": -1,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "47": {
+  "i": 47,
+  "key": "بورسعيد",
+  "lat0": 31.26531,
+  "lng0": 32.3019,
+  "source": "geonames:Port Said",
+  "implied": {
+   "lat": 31.28,
+   "lng": 32.29,
+   "obj": 0.81
+  },
+  "spanKm": 2,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 176,
+   "per": {
+    "fajr": {
+     "exact": 348,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.05
+    },
+    "sunrise": {
+     "exact": 322,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": -0.12
+    },
+    "dhuhr": {
+     "exact": 338,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.07
+    },
+    "asr": {
+     "exact": 254,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.3,
+     "max": 1,
+     "signed": -0.05
+    },
+    "maghrib": {
+     "exact": 358,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.01
+    },
+    "isha": {
+     "exact": 336,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.08
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 223,
+   "per": {
+    "fajr": {
+     "exact": 364,
+     "w1": 365,
+     "n": 365,
+     "mae": 0,
+     "max": 1,
+     "signed": 0
+    },
+    "sunrise": {
+     "exact": 336,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.08
+    },
+    "dhuhr": {
+     "exact": 363,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": -0.01
+    },
+    "asr": {
+     "exact": 260,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.29,
+     "max": 1,
+     "signed": 0.02
+    },
+    "maghrib": {
+     "exact": 347,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.05
+    },
+    "isha": {
+     "exact": 352,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "48": {
+  "i": 48,
+  "key": "السويس",
+  "lat0": 29.97371,
+  "lng0": 32.52627,
+  "source": "geonames:Suez",
+  "implied": {
+   "lat": 29.99,
+   "lng": 32.52,
+   "obj": 0.77
+  },
+  "spanKm": 1.9,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 165,
+   "per": {
+    "fajr": {
+     "exact": 339,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.07
+    },
+    "sunrise": {
+     "exact": 322,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": -0.12
+    },
+    "dhuhr": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.08
+    },
+    "asr": {
+     "exact": 239,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.35,
+     "max": 1,
+     "signed": -0.09
+    },
+    "maghrib": {
+     "exact": 350,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.02
+    },
+    "isha": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.08
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 1,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 190,
+   "per": {
+    "fajr": {
+     "exact": 340,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.07
+    },
+    "sunrise": {
+     "exact": 331,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": -0.09
+    },
+    "dhuhr": {
+     "exact": 348,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.05
+    },
+    "asr": {
+     "exact": 246,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.33,
+     "max": 1,
+     "signed": -0.06
+    },
+    "maghrib": {
+     "exact": 357,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": -0.01
+    },
+    "isha": {
+     "exact": 347,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.05
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 1,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "49": {
+  "i": 49,
+  "key": "العريش",
+  "lat0": 31.13159,
+  "lng0": 33.79844,
+  "source": "geonames:Arīsh",
+  "implied": {
+   "lat": 31.19,
+   "lng": 33.78,
+   "obj": 0.87
+  },
+  "spanKm": 6.7,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 123,
+   "per": {
+    "fajr": {
+     "exact": 310,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.15,
+     "max": 1,
+     "signed": 0.04
+    },
+    "sunrise": {
+     "exact": 329,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": -0.09
+    },
+    "dhuhr": {
+     "exact": 339,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.07
+    },
+    "asr": {
+     "exact": 238,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.35,
+     "max": 1,
+     "signed": -0.1
+    },
+    "maghrib": {
+     "exact": 323,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": -0.04
+    },
+    "isha": {
+     "exact": 306,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.16,
+     "max": 1,
+     "signed": -0.16
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 1,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": -1,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 200,
+   "per": {
+    "fajr": {
+     "exact": 350,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.02
+    },
+    "sunrise": {
+     "exact": 351,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.04
+    },
+    "dhuhr": {
+     "exact": 365,
+     "w1": 365,
+     "n": 365,
+     "mae": 0,
+     "max": 0,
+     "signed": 0
+    },
+    "asr": {
+     "exact": 248,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": 0
+    },
+    "maghrib": {
+     "exact": 338,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.07
+    },
+    "isha": {
+     "exact": 352,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.01
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": -1,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "50": {
+  "i": 50,
+  "key": "دمنهور",
+  "lat0": 31.03408,
+  "lng0": 30.46823,
+  "source": "geonames:Damanhur",
+  "implied": {
+   "lat": 31.08,
+   "lng": 30.46,
+   "obj": 0.84
+  },
+  "spanKm": 5.2,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 160,
+   "per": {
+    "fajr": {
+     "exact": 342,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.03
+    },
+    "sunrise": {
+     "exact": 331,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": -0.09
+    },
+    "dhuhr": {
+     "exact": 349,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.04
+    },
+    "asr": {
+     "exact": 234,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.36,
+     "max": 1,
+     "signed": -0.04
+    },
+    "maghrib": {
+     "exact": 346,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.02
+    },
+    "isha": {
+     "exact": 331,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": -0.09
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 1,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 208,
+   "per": {
+    "fajr": {
+     "exact": 365,
+     "w1": 365,
+     "n": 365,
+     "mae": 0,
+     "max": 0,
+     "signed": 0
+    },
+    "sunrise": {
+     "exact": 348,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.05
+    },
+    "dhuhr": {
+     "exact": 361,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0.01
+    },
+    "asr": {
+     "exact": 241,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.34,
+     "max": 1,
+     "signed": -0.03
+    },
+    "maghrib": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.08
+    },
+    "isha": {
+     "exact": 360,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-03",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": -1,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "51": {
+  "i": 51,
+  "key": "ادفو",
+  "lat0": 24.97916,
+  "lng0": 32.87722,
+  "source": "geonames:Edfu",
+  "implied": {
+   "lat": 25.02,
+   "lng": 32.84,
+   "obj": 0.75
+  },
+  "spanKm": 5.9,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 203,
+   "per": {
+    "fajr": {
+     "exact": 340,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.07
+    },
+    "sunrise": {
+     "exact": 348,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.01
+    },
+    "dhuhr": {
+     "exact": 359,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "asr": {
+     "exact": 259,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.29,
+     "max": 1,
+     "signed": 0.01
+    },
+    "maghrib": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.07
+    },
+    "isha": {
+     "exact": 349,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.01
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": -1,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 95,
+   "per": {
+    "fajr": {
+     "exact": 302,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.17,
+     "max": 1,
+     "signed": 0.17
+    },
+    "sunrise": {
+     "exact": 318,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.13,
+     "max": 1,
+     "signed": 0.13
+    },
+    "dhuhr": {
+     "exact": 310,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.15,
+     "max": 1,
+     "signed": 0.15
+    },
+    "asr": {
+     "exact": 250,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": 0.18
+    },
+    "maghrib": {
+     "exact": 279,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.24,
+     "max": 1,
+     "signed": 0.24
+    },
+    "isha": {
+     "exact": 293,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.2,
+     "max": 1,
+     "signed": 0.2
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": -1,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "52": {
+  "i": 52,
+  "key": "اسنا",
+  "lat0": 25.29336,
+  "lng0": 32.55402,
+  "source": "geonames:Esna",
+  "implied": {
+   "lat": 25.23,
+   "lng": 32.54,
+   "obj": 0.84
+  },
+  "spanKm": 7.2,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 147,
+   "per": {
+    "fajr": {
+     "exact": 317,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.13,
+     "max": 1,
+     "signed": -0.13
+    },
+    "sunrise": {
+     "exact": 321,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": -0.12
+    },
+    "dhuhr": {
+     "exact": 334,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.08
+    },
+    "asr": {
+     "exact": 259,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.29,
+     "max": 1,
+     "signed": 0.01
+    },
+    "maghrib": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.02
+    },
+    "isha": {
+     "exact": 325,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": -0.02
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 1
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 231,
+   "per": {
+    "fajr": {
+     "exact": 360,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": -0.01
+    },
+    "sunrise": {
+     "exact": 352,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.04
+    },
+    "dhuhr": {
+     "exact": 362,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": -0.01
+    },
+    "asr": {
+     "exact": 262,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.28,
+     "max": 1,
+     "signed": 0.03
+    },
+    "maghrib": {
+     "exact": 352,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.04
+    },
+    "isha": {
+     "exact": 350,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.01
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 1
+    }
+   }
+  }
+ },
+ "53": {
+  "i": 53,
+  "key": "الأقصر",
+  "lat0": 25.69893,
+  "lng0": 32.6421,
+  "source": "geonames:Luxor",
+  "implied": {
+   "lat": 25.74,
+   "lng": 32.67,
+   "obj": 0.89
+  },
+  "spanKm": 5.3,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 153,
+   "per": {
+    "fajr": {
+     "exact": 323,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": 0.12
+    },
+    "sunrise": {
+     "exact": 342,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.02
+    },
+    "dhuhr": {
+     "exact": 339,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.07
+    },
+    "asr": {
+     "exact": 251,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.31,
+     "max": 1,
+     "signed": 0.04
+    },
+    "maghrib": {
+     "exact": 321,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": 0.12
+    },
+    "isha": {
+     "exact": 335,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.06
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": -1
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 199,
+   "per": {
+    "fajr": {
+     "exact": 352,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.04
+    },
+    "sunrise": {
+     "exact": 328,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": -0.1
+    },
+    "dhuhr": {
+     "exact": 352,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.04
+    },
+    "asr": {
+     "exact": 258,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.29,
+     "max": 1,
+     "signed": -0.07
+    },
+    "maghrib": {
+     "exact": 359,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "isha": {
+     "exact": 348,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.04
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "54": {
+  "i": 54,
+  "key": "القاهرة الجديدة",
+  "lat0": 30.03,
+  "lng0": 31.47,
+  "source": "geonames:New Cairo",
+  "implied": {
+   "lat": 30.04,
+   "lng": 31.41,
+   "obj": 0.92
+  },
+  "spanKm": 5.9,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 215,
+   "per": {
+    "fajr": {
+     "exact": 361,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0.01
+    },
+    "sunrise": {
+     "exact": 355,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": -0.03
+    },
+    "dhuhr": {
+     "exact": 359,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "asr": {
+     "exact": 255,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.3,
+     "max": 1,
+     "signed": 0.06
+    },
+    "maghrib": {
+     "exact": 332,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": 0.09
+    },
+    "isha": {
+     "exact": 355,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.02
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-05",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": -1,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 58,
+   "per": {
+    "fajr": {
+     "exact": 283,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.22,
+     "max": 1,
+     "signed": 0.22
+    },
+    "sunrise": {
+     "exact": 290,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.21,
+     "max": 1,
+     "signed": 0.21
+    },
+    "dhuhr": {
+     "exact": 277,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.24,
+     "max": 1,
+     "signed": 0.24
+    },
+    "asr": {
+     "exact": 238,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.35,
+     "max": 1,
+     "signed": 0.27
+    },
+    "maghrib": {
+     "exact": 238,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.35,
+     "max": 1,
+     "signed": 0.35
+    },
+    "isha": {
+     "exact": 262,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.28,
+     "max": 1,
+     "signed": 0.28
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": -1,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "55": {
+  "i": 55,
+  "key": "توشكى",
+  "lat0": 22.5224,
+  "lng0": 31.96734,
+  "source": "geonames:Tushkah Sharq",
+  "implied": {
+   "lat": 22.77,
+   "lng": 31.43,
+   "obj": 0.79
+  },
+  "spanKm": 61.5,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 208,
+   "per": {
+    "fajr": {
+     "exact": 352,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.04
+    },
+    "sunrise": {
+     "exact": 358,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0
+    },
+    "dhuhr": {
+     "exact": 350,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.04
+    },
+    "asr": {
+     "exact": 276,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.24,
+     "max": 1,
+     "signed": 0.05
+    },
+    "maghrib": {
+     "exact": 324,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.11
+    },
+    "isha": {
+     "exact": 347,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.05
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 0,
+   "allSixExact": 0,
+   "per": {
+    "fajr": {
+     "exact": 0,
+     "w1": 73,
+     "n": 365,
+     "mae": 1.97,
+     "max": 3,
+     "signed": 1.97
+    },
+    "sunrise": {
+     "exact": 0,
+     "w1": 35,
+     "n": 365,
+     "mae": 2.14,
+     "max": 3,
+     "signed": 2.14
+    },
+    "dhuhr": {
+     "exact": 0,
+     "w1": 0,
+     "n": 365,
+     "mae": 2.19,
+     "max": 3,
+     "signed": 2.19
+    },
+    "asr": {
+     "exact": 0,
+     "w1": 34,
+     "n": 365,
+     "mae": 2.25,
+     "max": 4,
+     "signed": 2.25
+    },
+    "maghrib": {
+     "exact": 0,
+     "w1": 19,
+     "n": 365,
+     "mae": 2.24,
+     "max": 3,
+     "signed": 2.24
+    },
+    "isha": {
+     "exact": 0,
+     "w1": 8,
+     "n": 365,
+     "mae": 2.39,
+     "max": 3,
+     "signed": 2.39
+    }
+   },
+   "worst": {
+    "dev": 4,
+    "day": "2026-07-23",
+    "delta": {
+     "fajr": -1,
+     "sunrise": -2,
+     "dhuhr": -2,
+     "asr": -4,
+     "maghrib": -3,
+     "isha": -3
+    }
+   }
+  }
+ },
+ "56": {
+  "i": 56,
+  "key": "الدلنجات",
+  "lat0": 30.82796,
+  "lng0": 30.53552,
+  "source": "geonames:Ad Dilinjāt",
+  "implied": {
+   "lat": 30.86,
+   "lng": 30.53,
+   "obj": 0.85
+  },
+  "spanKm": 3.6,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 200,
+   "per": {
+    "fajr": {
+     "exact": 350,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.03
+    },
+    "sunrise": {
+     "exact": 346,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.03
+    },
+    "dhuhr": {
+     "exact": 361,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": -0.01
+    },
+    "asr": {
+     "exact": 264,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.28,
+     "max": 1,
+     "signed": 0.01
+    },
+    "maghrib": {
+     "exact": 346,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.04
+    },
+    "isha": {
+     "exact": 335,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.05
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 223,
+   "per": {
+    "fajr": {
+     "exact": 362,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0.01
+    },
+    "sunrise": {
+     "exact": 353,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": -0.03
+    },
+    "dhuhr": {
+     "exact": 364,
+     "w1": 365,
+     "n": 365,
+     "mae": 0,
+     "max": 1,
+     "signed": 0
+    },
+    "asr": {
+     "exact": 256,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.3,
+     "max": 1,
+     "signed": 0.06
+    },
+    "maghrib": {
+     "exact": 342,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.06
+    },
+    "isha": {
+     "exact": 353,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.02
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "57": {
+  "i": 57,
+  "key": "كاترين",
+  "lat0": 28.56199,
+  "lng0": 33.95005,
+  "source": "geonames:Sant Katrina",
+  "implied": {
+   "lat": 28.57,
+   "lng": 33.93,
+   "obj": 0.83
+  },
+  "spanKm": 2.1,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 163,
+   "per": {
+    "fajr": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.08
+    },
+    "sunrise": {
+     "exact": 312,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.15,
+     "max": 1,
+     "signed": -0.15
+    },
+    "dhuhr": {
+     "exact": 339,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.07
+    },
+    "asr": {
+     "exact": 245,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.33,
+     "max": 1,
+     "signed": -0.07
+    },
+    "maghrib": {
+     "exact": 354,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": -0.03
+    },
+    "isha": {
+     "exact": 335,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.08
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 207,
+   "per": {
+    "fajr": {
+     "exact": 364,
+     "w1": 365,
+     "n": 365,
+     "mae": 0,
+     "max": 1,
+     "signed": 0
+    },
+    "sunrise": {
+     "exact": 343,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": -0.06
+    },
+    "dhuhr": {
+     "exact": 361,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0.01
+    },
+    "asr": {
+     "exact": 249,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": 0.02
+    },
+    "maghrib": {
+     "exact": 345,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.05
+    },
+    "isha": {
+     "exact": 356,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "58": {
+  "i": 58,
+  "key": "السادات",
+  "lat0": 30.36742,
+  "lng0": 30.50871,
+  "source": "geonames:Madinat as Sadat",
+  "implied": {
+   "lat": 30.41,
+   "lng": 30.52,
+   "obj": 0.9
+  },
+  "spanKm": 4.8,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 204,
+   "per": {
+    "fajr": {
+     "exact": 352,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.02
+    },
+    "sunrise": {
+     "exact": 347,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.05
+    },
+    "dhuhr": {
+     "exact": 354,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.03
+    },
+    "asr": {
+     "exact": 257,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.3,
+     "max": 1,
+     "signed": 0.02
+    },
+    "maghrib": {
+     "exact": 342,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.06
+    },
+    "isha": {
+     "exact": 343,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.05
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 134,
+   "per": {
+    "fajr": {
+     "exact": 318,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.13,
+     "max": 1,
+     "signed": -0.1
+    },
+    "sunrise": {
+     "exact": 318,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.13,
+     "max": 1,
+     "signed": -0.11
+    },
+    "dhuhr": {
+     "exact": 352,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.04
+    },
+    "asr": {
+     "exact": 255,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.3,
+     "max": 1,
+     "signed": -0.02
+    },
+    "maghrib": {
+     "exact": 328,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": 0.02
+    },
+    "isha": {
+     "exact": 316,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.13,
+     "max": 1,
+     "signed": 0.04
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 1
+    }
+   }
+  }
+ },
+ "59": {
+  "i": 59,
+  "key": "مدينة 15 مايو",
+  "lat0": 29.82983,
+  "lng0": 31.36965,
+  "source": "geonames:15 May City",
+  "implied": {
+   "lat": 29.83,
+   "lng": 31.38,
+   "obj": 0.9
+  },
+  "spanKm": 1,
+  "atImplied": {
+   "n": 363,
+   "allSixW1": 363,
+   "allSixExact": 213,
+   "per": {
+    "fajr": {
+     "exact": 355,
+     "w1": 363,
+     "n": 363,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "sunrise": {
+     "exact": 354,
+     "w1": 363,
+     "n": 363,
+     "mae": 0.02,
+     "max": 1,
+     "signed": -0.02
+    },
+    "dhuhr": {
+     "exact": 352,
+     "w1": 363,
+     "n": 363,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.03
+    },
+    "asr": {
+     "exact": 249,
+     "w1": 363,
+     "n": 363,
+     "mae": 0.31,
+     "max": 1,
+     "signed": 0.01
+    },
+    "maghrib": {
+     "exact": 336,
+     "w1": 363,
+     "n": 363,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.07
+    },
+    "isha": {
+     "exact": 349,
+     "w1": 363,
+     "n": 363,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.03
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 363,
+   "allSixW1": 363,
+   "allSixExact": 210,
+   "per": {
+    "fajr": {
+     "exact": 356,
+     "w1": 363,
+     "n": 363,
+     "mae": 0.02,
+     "max": 1,
+     "signed": -0.02
+    },
+    "sunrise": {
+     "exact": 343,
+     "w1": 363,
+     "n": 363,
+     "mae": 0.06,
+     "max": 1,
+     "signed": -0.06
+    },
+    "dhuhr": {
+     "exact": 353,
+     "w1": 363,
+     "n": 363,
+     "mae": 0.03,
+     "max": 1,
+     "signed": -0.03
+    },
+    "asr": {
+     "exact": 251,
+     "w1": 363,
+     "n": 363,
+     "mae": 0.31,
+     "max": 1,
+     "signed": -0.02
+    },
+    "maghrib": {
+     "exact": 353,
+     "w1": 363,
+     "n": 363,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.03
+    },
+    "isha": {
+     "exact": 345,
+     "w1": 363,
+     "n": 363,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.03
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "60": {
+  "i": 60,
+  "key": "الصالحية الجديدة",
+  "lat0": 30.63146,
+  "lng0": 31.93927,
+  "source": "geonames:Aş Şāliḩīyah al Jadīdah",
+  "implied": {
+   "lat": 30.64,
+   "lng": 31.92,
+   "obj": 0.7
+  },
+  "spanKm": 2.1,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 187,
+   "per": {
+    "fajr": {
+     "exact": 348,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.01
+    },
+    "sunrise": {
+     "exact": 326,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": -0.11
+    },
+    "dhuhr": {
+     "exact": 354,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": -0.03
+    },
+    "asr": {
+     "exact": 249,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": -0.03
+    },
+    "maghrib": {
+     "exact": 356,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.01
+    },
+    "isha": {
+     "exact": 338,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": -0.07
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 1,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 208,
+   "per": {
+    "fajr": {
+     "exact": 352,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.04
+    },
+    "sunrise": {
+     "exact": 356,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": -0.02
+    },
+    "dhuhr": {
+     "exact": 357,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "asr": {
+     "exact": 253,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.31,
+     "max": 1,
+     "signed": 0.09
+    },
+    "maghrib": {
+     "exact": 342,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.06
+    },
+    "isha": {
+     "exact": 353,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.01
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": -1
+    }
+   }
+  }
+ },
+ "61": {
+  "i": 61,
+  "key": "العاشر من رمضان",
+  "lat0": 30.29636,
+  "lng0": 31.74633,
+  "source": "geonames:Al ‘Āshir min Ramaḑān",
+  "implied": {
+   "lat": 30.33,
+   "lng": 31.74,
+   "obj": 0.84
+  },
+  "spanKm": 3.8,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 205,
+   "per": {
+    "fajr": {
+     "exact": 347,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.03
+    },
+    "sunrise": {
+     "exact": 345,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.05
+    },
+    "dhuhr": {
+     "exact": 358,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0
+    },
+    "asr": {
+     "exact": 255,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.3,
+     "max": 1,
+     "signed": 0
+    },
+    "maghrib": {
+     "exact": 344,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.06
+    },
+    "isha": {
+     "exact": 345,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.03
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-03",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 1,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 218,
+   "per": {
+    "fajr": {
+     "exact": 356,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0
+    },
+    "sunrise": {
+     "exact": 357,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": -0.02
+    },
+    "dhuhr": {
+     "exact": 355,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.03
+    },
+    "asr": {
+     "exact": 254,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.3,
+     "max": 1,
+     "signed": 0.02
+    },
+    "maghrib": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.08
+    },
+    "isha": {
+     "exact": 351,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.03
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-03",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "62": {
+  "i": 62,
+  "key": "العاصمة الادارية الجديدة",
+  "lat0": 30.0167,
+  "lng0": 31.75,
+  "source": "manual:New Administrative Capital",
+  "implied": {
+   "lat": 30.01,
+   "lng": 31.85,
+   "obj": 0.86
+  },
+  "spanKm": 9.6,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 177,
+   "per": {
+    "fajr": {
+     "exact": 326,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.08
+    },
+    "sunrise": {
+     "exact": 336,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.04
+    },
+    "dhuhr": {
+     "exact": 358,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "asr": {
+     "exact": 264,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.28,
+     "max": 1,
+     "signed": 0.04
+    },
+    "maghrib": {
+     "exact": 336,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.05
+    },
+    "isha": {
+     "exact": 334,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.04
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-07",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": -1,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 18,
+   "per": {
+    "fajr": {
+     "exact": 245,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.33,
+     "max": 1,
+     "signed": -0.33
+    },
+    "sunrise": {
+     "exact": 215,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.41,
+     "max": 1,
+     "signed": -0.41
+    },
+    "dhuhr": {
+     "exact": 220,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.4,
+     "max": 1,
+     "signed": -0.4
+    },
+    "asr": {
+     "exact": 211,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.42,
+     "max": 1,
+     "signed": -0.39
+    },
+    "maghrib": {
+     "exact": 247,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": -0.32
+    },
+    "isha": {
+     "exact": 203,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.44,
+     "max": 1,
+     "signed": -0.44
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 1,
+     "dhuhr": 1,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "63": {
+  "i": 63,
+  "key": "العبور",
+  "lat0": 30.22886,
+  "lng0": 31.48149,
+  "source": "geonames:Al-'Ubūr",
+  "implied": {
+   "lat": 30.2,
+   "lng": 31.59,
+   "obj": 0.85
+  },
+  "spanKm": 10.9,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 154,
+   "per": {
+    "fajr": {
+     "exact": 334,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.01
+    },
+    "sunrise": {
+     "exact": 343,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.01
+    },
+    "dhuhr": {
+     "exact": 343,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.06
+    },
+    "asr": {
+     "exact": 250,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": 0.04
+    },
+    "maghrib": {
+     "exact": 322,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": 0.12
+    },
+    "isha": {
+     "exact": 320,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": 0.12
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-03",
+    "delta": {
+     "fajr": 0,
+     "sunrise": -1,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 15,
+   "per": {
+    "fajr": {
+     "exact": 211,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.42,
+     "max": 1,
+     "signed": -0.42
+    },
+    "sunrise": {
+     "exact": 205,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.44,
+     "max": 1,
+     "signed": -0.44
+    },
+    "dhuhr": {
+     "exact": 228,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.38,
+     "max": 1,
+     "signed": -0.38
+    },
+    "asr": {
+     "exact": 226,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.38,
+     "max": 1,
+     "signed": -0.37
+    },
+    "maghrib": {
+     "exact": 243,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.33,
+     "max": 1,
+     "signed": -0.33
+    },
+    "isha": {
+     "exact": 231,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.37,
+     "max": 1,
+     "signed": -0.37
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 1,
+     "sunrise": 0,
+     "dhuhr": 1,
+     "asr": 0,
+     "maghrib": 1,
+     "isha": 1
+    }
+   }
+  }
+ },
+ "64": {
+  "i": 64,
+  "key": "الفشن الجديدة",
+  "lat0": 28.82306,
+  "lng0": 30.89903,
+  "source": "geonames:Al Fashn",
+  "implied": {
+   "lat": 28.87,
+   "lng": 30.67,
+   "obj": 0.86
+  },
+  "spanKm": 22.9,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 163,
+   "per": {
+    "fajr": {
+     "exact": 325,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.1
+    },
+    "sunrise": {
+     "exact": 340,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0
+    },
+    "dhuhr": {
+     "exact": 354,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.03
+    },
+    "asr": {
+     "exact": 250,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": 0
+    },
+    "maghrib": {
+     "exact": 328,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": 0.09
+    },
+    "isha": {
+     "exact": 336,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.04
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-04",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": -1,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 315,
+   "allSixExact": 0,
+   "per": {
+    "fajr": {
+     "exact": 12,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.97,
+     "max": 1,
+     "signed": 0.97
+    },
+    "sunrise": {
+     "exact": 36,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.9,
+     "max": 1,
+     "signed": 0.9
+    },
+    "dhuhr": {
+     "exact": 16,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.96,
+     "max": 1,
+     "signed": 0.96
+    },
+    "asr": {
+     "exact": 71,
+     "w1": 318,
+     "n": 365,
+     "mae": 0.93,
+     "max": 2,
+     "signed": 0.93
+    },
+    "maghrib": {
+     "exact": 1,
+     "w1": 362,
+     "n": 365,
+     "mae": 1.01,
+     "max": 2,
+     "signed": 1.01
+    },
+    "isha": {
+     "exact": 20,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.95,
+     "max": 1,
+     "signed": 0.95
+    }
+   },
+   "worst": {
+    "dev": 2,
+    "day": "2026-01-04",
+    "delta": {
+     "fajr": -1,
+     "sunrise": -1,
+     "dhuhr": -1,
+     "asr": 0,
+     "maghrib": -2,
+     "isha": -1
+    }
+   }
+  }
+ },
+ "65": {
+  "i": 65,
+  "key": "المنصورة الجديدة",
+  "lat0": 31.3667,
+  "lng0": 31.55,
+  "source": "manual:New Mansoura (coastal)",
+  "implied": {
+   "lat": 31.48,
+   "lng": 31.43,
+   "obj": 0.76
+  },
+  "spanKm": 16.9,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 169,
+   "per": {
+    "fajr": {
+     "exact": 346,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.05
+    },
+    "sunrise": {
+     "exact": 354,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.03
+    },
+    "dhuhr": {
+     "exact": 342,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.06
+    },
+    "asr": {
+     "exact": 245,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.33,
+     "max": 1,
+     "signed": 0.06
+    },
+    "maghrib": {
+     "exact": 326,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.11
+    },
+    "isha": {
+     "exact": 332,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": 0.09
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 349,
+   "allSixExact": 0,
+   "per": {
+    "fajr": {
+     "exact": 224,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.39,
+     "max": 1,
+     "signed": 0.39
+    },
+    "sunrise": {
+     "exact": 193,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.47,
+     "max": 1,
+     "signed": 0.47
+    },
+    "dhuhr": {
+     "exact": 154,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.58,
+     "max": 1,
+     "signed": 0.58
+    },
+    "asr": {
+     "exact": 158,
+     "w1": 353,
+     "n": 365,
+     "mae": 0.6,
+     "max": 2,
+     "signed": 0.59
+    },
+    "maghrib": {
+     "exact": 142,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.61,
+     "max": 1,
+     "signed": 0.61
+    },
+    "isha": {
+     "exact": 113,
+     "w1": 361,
+     "n": 365,
+     "mae": 0.7,
+     "max": 2,
+     "signed": 0.7
+    }
+   },
+   "worst": {
+    "dev": 2,
+    "day": "2026-06-07",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": -1,
+     "maghrib": 0,
+     "isha": -2
+    }
+   }
+  }
+ },
+ "66": {
+  "i": 66,
+  "key": "النوبارية الجديدة",
+  "lat0": 30.6687,
+  "lng0": 30.07391,
+  "source": "geonames:An Nubariyah",
+  "implied": {
+   "lat": 30.61,
+   "lng": 30.09,
+   "obj": 0.97
+  },
+  "spanKm": 6.7,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 149,
+   "per": {
+    "fajr": {
+     "exact": 335,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.03
+    },
+    "sunrise": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.03
+    },
+    "dhuhr": {
+     "exact": 339,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.07
+    },
+    "asr": {
+     "exact": 250,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": 0.08
+    },
+    "maghrib": {
+     "exact": 312,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.15,
+     "max": 1,
+     "signed": 0.15
+    },
+    "isha": {
+     "exact": 301,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.18,
+     "max": 1,
+     "signed": 0.18
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-03",
+    "delta": {
+     "fajr": -1,
+     "sunrise": -1,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 203,
+   "per": {
+    "fajr": {
+     "exact": 353,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.03
+    },
+    "sunrise": {
+     "exact": 359,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": -0.02
+    },
+    "dhuhr": {
+     "exact": 358,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "asr": {
+     "exact": 249,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": -0.01
+    },
+    "maghrib": {
+     "exact": 332,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": 0.09
+    },
+    "isha": {
+     "exact": 353,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.03
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": -1,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "67": {
+  "i": 67,
+  "key": "بدر",
+  "lat0": 30.136,
+  "lng0": 31.715,
+  "source": "geonames:Badr City",
+  "implied": {
+   "lat": 30.19,
+   "lng": 31.75,
+   "obj": 0.86
+  },
+  "spanKm": 6.9,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 169,
+   "per": {
+    "fajr": {
+     "exact": 325,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.07
+    },
+    "sunrise": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.04
+    },
+    "dhuhr": {
+     "exact": 360,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": 0.01
+    },
+    "asr": {
+     "exact": 249,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": 0.01
+    },
+    "maghrib": {
+     "exact": 335,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.06
+    },
+    "isha": {
+     "exact": 336,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.06
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 1,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 119,
+   "per": {
+    "fajr": {
+     "exact": 320,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": -0.12
+    },
+    "sunrise": {
+     "exact": 306,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.16,
+     "max": 1,
+     "signed": -0.16
+    },
+    "dhuhr": {
+     "exact": 317,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.13,
+     "max": 1,
+     "signed": -0.13
+    },
+    "asr": {
+     "exact": 246,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.33,
+     "max": 1,
+     "signed": -0.11
+    },
+    "maghrib": {
+     "exact": 336,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.08
+    },
+    "isha": {
+     "exact": 321,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": -0.12
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "68": {
+  "i": 68,
+  "key": "بنى مزار الجديدة",
+  "lat0": 28.49456,
+  "lng0": 30.80526,
+  "source": "geonames:Bani Mazar",
+  "implied": {
+   "lat": 28.49,
+   "lng": 30.94,
+   "obj": 0.8
+  },
+  "spanKm": 13.2,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 174,
+   "per": {
+    "fajr": {
+     "exact": 322,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": -0.12
+    },
+    "sunrise": {
+     "exact": 333,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": -0.09
+    },
+    "dhuhr": {
+     "exact": 346,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.05
+    },
+    "asr": {
+     "exact": 265,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.27,
+     "max": 1,
+     "signed": -0.02
+    },
+    "maghrib": {
+     "exact": 345,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": 0.02
+    },
+    "isha": {
+     "exact": 341,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-06",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 1,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 2,
+   "per": {
+    "fajr": {
+     "exact": 126,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.65,
+     "max": 1,
+     "signed": -0.65
+    },
+    "sunrise": {
+     "exact": 123,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.66,
+     "max": 1,
+     "signed": -0.66
+    },
+    "dhuhr": {
+     "exact": 166,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.55,
+     "max": 1,
+     "signed": -0.55
+    },
+    "asr": {
+     "exact": 152,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.58,
+     "max": 1,
+     "signed": -0.58
+    },
+    "maghrib": {
+     "exact": 184,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.5,
+     "max": 1,
+     "signed": -0.5
+    },
+    "isha": {
+     "exact": 177,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.52,
+     "max": 1,
+     "signed": -0.52
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 1
+    }
+   }
+  }
+ },
+ "69": {
+  "i": 69,
+  "key": "بورسعيد الجديدة سلام",
+  "lat0": 31.1833,
+  "lng0": 32.2833,
+  "source": "manual:New Port Said (Salam)",
+  "implied": {
+   "lat": 31.01,
+   "lng": 32.62,
+   "obj": 0.77
+  },
+  "spanKm": 37.4,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 195,
+   "per": {
+    "fajr": {
+     "exact": 351,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.01
+    },
+    "sunrise": {
+     "exact": 353,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": -0.02
+    },
+    "dhuhr": {
+     "exact": 354,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.03
+    },
+    "asr": {
+     "exact": 254,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.3,
+     "max": 1,
+     "signed": 0.07
+    },
+    "maghrib": {
+     "exact": 336,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.08
+    },
+    "isha": {
+     "exact": 344,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.06
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": -1,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 31,
+   "allSixExact": 0,
+   "per": {
+    "fajr": {
+     "exact": 38,
+     "w1": 288,
+     "n": 365,
+     "mae": 1.11,
+     "max": 2,
+     "signed": -1.11
+    },
+    "sunrise": {
+     "exact": 0,
+     "w1": 246,
+     "n": 365,
+     "mae": 1.33,
+     "max": 2,
+     "signed": -1.33
+    },
+    "dhuhr": {
+     "exact": 0,
+     "w1": 260,
+     "n": 365,
+     "mae": 1.29,
+     "max": 2,
+     "signed": -1.29
+    },
+    "asr": {
+     "exact": 19,
+     "w1": 228,
+     "n": 365,
+     "mae": 1.32,
+     "max": 2,
+     "signed": -1.32
+    },
+    "maghrib": {
+     "exact": 4,
+     "w1": 246,
+     "n": 365,
+     "mae": 1.32,
+     "max": 2,
+     "signed": -1.32
+    },
+    "isha": {
+     "exact": 0,
+     "w1": 186,
+     "n": 365,
+     "mae": 1.49,
+     "max": 2,
+     "signed": -1.49
+    }
+   },
+   "worst": {
+    "dev": 2,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 2,
+     "sunrise": 1,
+     "dhuhr": 1,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 1
+    }
+   }
+  }
+ },
+ "70": {
+  "i": 70,
+  "key": "بئر العبد الجديدة",
+  "lat0": 31.0167,
+  "lng0": 33.0167,
+  "source": "manual:Bir al-Abd",
+  "implied": {
+   "lat": 31.08,
+   "lng": 32.97,
+   "obj": 0.84
+  },
+  "spanKm": 8.3,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 145,
+   "per": {
+    "fajr": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.01
+    },
+    "sunrise": {
+     "exact": 323,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": -0.12
+    },
+    "dhuhr": {
+     "exact": 343,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": -0.06
+    },
+    "asr": {
+     "exact": 230,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.37,
+     "max": 1,
+     "signed": -0.1
+    },
+    "maghrib": {
+     "exact": 336,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.03
+    },
+    "isha": {
+     "exact": 318,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.13,
+     "max": 1,
+     "signed": -0.13
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 131,
+   "per": {
+    "fajr": {
+     "exact": 326,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.11
+    },
+    "sunrise": {
+     "exact": 341,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.07
+    },
+    "dhuhr": {
+     "exact": 307,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.16,
+     "max": 1,
+     "signed": 0.16
+    },
+    "asr": {
+     "exact": 252,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.31,
+     "max": 1,
+     "signed": 0.14
+    },
+    "maghrib": {
+     "exact": 303,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.17,
+     "max": 1,
+     "signed": 0.17
+    },
+    "isha": {
+     "exact": 311,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.15,
+     "max": 1,
+     "signed": 0.15
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": -1,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "71": {
+  "i": 71,
+  "key": "توشكى الجديدة",
+  "lat0": 22.5224,
+  "lng0": 31.96734,
+  "source": "geonames:Tushkah Sharq",
+  "implied": {
+   "lat": 22.81,
+   "lng": 31.59,
+   "obj": 0.96
+  },
+  "spanKm": 50.1,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 159,
+   "per": {
+    "fajr": {
+     "exact": 330,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": -0.01
+    },
+    "sunrise": {
+     "exact": 332,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": -0.03
+    },
+    "dhuhr": {
+     "exact": 359,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.02
+    },
+    "asr": {
+     "exact": 244,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.33,
+     "max": 1,
+     "signed": 0.05
+    },
+    "maghrib": {
+     "exact": 331,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": 0.08
+    },
+    "isha": {
+     "exact": 323,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": 0.09
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": -1,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 1,
+   "allSixExact": 0,
+   "per": {
+    "fajr": {
+     "exact": 52,
+     "w1": 219,
+     "n": 365,
+     "mae": 1.26,
+     "max": 3,
+     "signed": 1.26
+    },
+    "sunrise": {
+     "exact": 15,
+     "w1": 197,
+     "n": 365,
+     "mae": 1.45,
+     "max": 3,
+     "signed": 1.45
+    },
+    "dhuhr": {
+     "exact": 0,
+     "w1": 175,
+     "n": 365,
+     "mae": 1.52,
+     "max": 2,
+     "signed": 1.52
+    },
+    "asr": {
+     "exact": 13,
+     "w1": 169,
+     "n": 365,
+     "mae": 1.63,
+     "max": 3,
+     "signed": 1.63
+    },
+    "maghrib": {
+     "exact": 4,
+     "w1": 175,
+     "n": 365,
+     "mae": 1.57,
+     "max": 3,
+     "signed": 1.57
+    },
+    "isha": {
+     "exact": 0,
+     "w1": 126,
+     "n": 365,
+     "mae": 1.83,
+     "max": 3,
+     "signed": 1.83
+    }
+   },
+   "worst": {
+    "dev": 3,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": -2,
+     "sunrise": -3,
+     "dhuhr": -2,
+     "asr": -1,
+     "maghrib": -1,
+     "isha": -1
+    }
+   }
+  }
+ },
+ "72": {
+  "i": 72,
+  "key": "حدائق العاصمة",
+  "lat0": 30.05,
+  "lng0": 31.65,
+  "source": "manual:Capital Gardens",
+  "implied": {
+   "lat": 30.12,
+   "lng": 31.88,
+   "obj": 0.9
+  },
+  "spanKm": 23.4,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 187,
+   "per": {
+    "fajr": {
+     "exact": 342,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": -0.06
+    },
+    "sunrise": {
+     "exact": 317,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.13,
+     "max": 1,
+     "signed": -0.13
+    },
+    "dhuhr": {
+     "exact": 337,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": -0.08
+    },
+    "asr": {
+     "exact": 265,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.27,
+     "max": 1,
+     "signed": -0.04
+    },
+    "maghrib": {
+     "exact": 360,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": -0.01
+    },
+    "isha": {
+     "exact": 349,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.04
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-02",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 250,
+   "allSixExact": 0,
+   "per": {
+    "fajr": {
+     "exact": 11,
+     "w1": 326,
+     "n": 365,
+     "mae": 1.08,
+     "max": 2,
+     "signed": -1.08
+    },
+    "sunrise": {
+     "exact": 19,
+     "w1": 333,
+     "n": 365,
+     "mae": 1.04,
+     "max": 2,
+     "signed": -1.04
+    },
+    "dhuhr": {
+     "exact": 7,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.98,
+     "max": 1,
+     "signed": -0.98
+    },
+    "asr": {
+     "exact": 71,
+     "w1": 318,
+     "n": 365,
+     "mae": 0.93,
+     "max": 2,
+     "signed": -0.93
+    },
+    "maghrib": {
+     "exact": 37,
+     "w1": 357,
+     "n": 365,
+     "mae": 0.92,
+     "max": 2,
+     "signed": -0.92
+    },
+    "isha": {
+     "exact": 44,
+     "w1": 357,
+     "n": 365,
+     "mae": 0.9,
+     "max": 2,
+     "signed": -0.9
+    }
+   },
+   "worst": {
+    "dev": 2,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 1,
+     "sunrise": 0,
+     "dhuhr": 1,
+     "asr": 1,
+     "maghrib": 2,
+     "isha": 1
+    }
+   }
+  }
+ },
+ "73": {
+  "i": 73,
+  "key": "رشيد الجديدة",
+  "lat0": 31.39951,
+  "lng0": 30.41718,
+  "source": "geonames:Rosetta",
+  "implied": {
+   "lat": 31.42,
+   "lng": 30.38,
+   "obj": 0.9
+  },
+  "spanKm": 4.2,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 161,
+   "per": {
+    "fajr": {
+     "exact": 332,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": 0.09
+    },
+    "sunrise": {
+     "exact": 350,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": 0.01
+    },
+    "dhuhr": {
+     "exact": 338,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.07
+    },
+    "asr": {
+     "exact": 249,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": 0.05
+    },
+    "maghrib": {
+     "exact": 325,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.11
+    },
+    "isha": {
+     "exact": 341,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "max": 1,
+     "signed": 0.03
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": -1,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 72,
+   "per": {
+    "fajr": {
+     "exact": 290,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.21,
+     "max": 1,
+     "signed": 0.21
+    },
+    "sunrise": {
+     "exact": 300,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.18,
+     "max": 1,
+     "signed": 0.18
+    },
+    "dhuhr": {
+     "exact": 284,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.22,
+     "max": 1,
+     "signed": 0.22
+    },
+    "asr": {
+     "exact": 241,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.34,
+     "max": 1,
+     "signed": 0.16
+    },
+    "maghrib": {
+     "exact": 273,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.25,
+     "max": 1,
+     "signed": 0.25
+    },
+    "isha": {
+     "exact": 289,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.21,
+     "max": 1,
+     "signed": 0.21
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": -1,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": -1,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "74": {
+  "i": 74,
+  "key": "رفح الجديدة",
+  "lat0": 31.28204,
+  "lng0": 34.23869,
+  "source": "geonames:Rafah",
+  "implied": {
+   "lat": 31.2,
+   "lng": 34.18,
+   "obj": 0.87
+  },
+  "spanKm": 10.7,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 217,
+   "per": {
+    "fajr": {
+     "exact": 354,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": -0.02
+    },
+    "sunrise": {
+     "exact": 351,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.04,
+     "max": 1,
+     "signed": -0.04
+    },
+    "dhuhr": {
+     "exact": 365,
+     "w1": 365,
+     "n": 365,
+     "mae": 0,
+     "max": 0,
+     "signed": 0
+    },
+    "asr": {
+     "exact": 254,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.3,
+     "max": 1,
+     "signed": 0.01
+    },
+    "maghrib": {
+     "exact": 342,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": 0.06
+    },
+    "isha": {
+     "exact": 359,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.02,
+     "max": 1,
+     "signed": 0.01
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-04",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 1,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 41,
+   "per": {
+    "fajr": {
+     "exact": 238,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.35,
+     "max": 1,
+     "signed": 0.35
+    },
+    "sunrise": {
+     "exact": 285,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.22,
+     "max": 1,
+     "signed": 0.22
+    },
+    "dhuhr": {
+     "exact": 282,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.23,
+     "max": 1,
+     "signed": 0.23
+    },
+    "asr": {
+     "exact": 237,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.35,
+     "max": 1,
+     "signed": 0.23
+    },
+    "maghrib": {
+     "exact": 258,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.29,
+     "max": 1,
+     "signed": 0.29
+    },
+    "isha": {
+     "exact": 294,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.19,
+     "max": 1,
+     "signed": 0.16
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": -1,
+     "isha": -1
+    }
+   }
+  }
+ },
+ "75": {
+  "i": 75,
+  "key": "سفنكس الجديدة",
+  "lat0": 29.95,
+  "lng0": 31.05,
+  "source": "manual:Sphinx City",
+  "implied": {
+   "lat": 30.1,
+   "lng": 30.77,
+   "obj": 0.79
+  },
+  "spanKm": 31.6,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 137,
+   "per": {
+    "fajr": {
+     "exact": 332,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.09,
+     "max": 1,
+     "signed": 0.09
+    },
+    "sunrise": {
+     "exact": 355,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.03
+    },
+    "dhuhr": {
+     "exact": 322,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": 0.12
+    },
+    "asr": {
+     "exact": 242,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.34,
+     "max": 1,
+     "signed": 0.05
+    },
+    "maghrib": {
+     "exact": 313,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.14,
+     "max": 1,
+     "signed": 0.14
+    },
+    "isha": {
+     "exact": 335,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.08
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": -1,
+     "sunrise": 0,
+     "dhuhr": -1,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 61,
+   "allSixExact": 0,
+   "per": {
+    "fajr": {
+     "exact": 54,
+     "w1": 316,
+     "n": 365,
+     "mae": 0.99,
+     "max": 2,
+     "signed": 0.99
+    },
+    "sunrise": {
+     "exact": 16,
+     "w1": 302,
+     "n": 365,
+     "mae": 1.13,
+     "max": 2,
+     "signed": 1.13
+    },
+    "dhuhr": {
+     "exact": 0,
+     "w1": 277,
+     "n": 365,
+     "mae": 1.24,
+     "max": 2,
+     "signed": 1.24
+    },
+    "asr": {
+     "exact": 38,
+     "w1": 254,
+     "n": 365,
+     "mae": 1.2,
+     "max": 2,
+     "signed": 1.2
+    },
+    "maghrib": {
+     "exact": 5,
+     "w1": 267,
+     "n": 365,
+     "mae": 1.25,
+     "max": 2,
+     "signed": 1.25
+    },
+    "isha": {
+     "exact": 1,
+     "w1": 230,
+     "n": 365,
+     "mae": 1.37,
+     "max": 2,
+     "signed": 1.37
+    }
+   },
+   "worst": {
+    "dev": 2,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": -2,
+     "sunrise": -1,
+     "dhuhr": -2,
+     "asr": 0,
+     "maghrib": -1,
+     "isha": -1
+    }
+   }
+  }
+ },
+ "76": {
+  "i": 76,
+  "key": "شرق العوينات",
+  "lat0": 22.5833,
+  "lng0": 28.7167,
+  "source": "manual:East Oweinat",
+  "implied": {
+   "lat": 22.8,
+   "lng": 28.71,
+   "obj": 0.74
+  },
+  "spanKm": 24.1,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 154,
+   "per": {
+    "fajr": {
+     "exact": 324,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.11,
+     "max": 1,
+     "signed": 0.04
+    },
+    "sunrise": {
+     "exact": 321,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.12,
+     "max": 1,
+     "signed": -0.06
+    },
+    "dhuhr": {
+     "exact": 348,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.05,
+     "max": 1,
+     "signed": -0.05
+    },
+    "asr": {
+     "exact": 263,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.28,
+     "max": 1,
+     "signed": -0.05
+    },
+    "maghrib": {
+     "exact": 318,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.13,
+     "max": 1,
+     "signed": 0.01
+    },
+    "isha": {
+     "exact": 319,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.13,
+     "max": 1,
+     "signed": -0.09
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 1,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": -1
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 117,
+   "per": {
+    "fajr": {
+     "exact": 293,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.2,
+     "max": 1,
+     "signed": -0.12
+    },
+    "sunrise": {
+     "exact": 304,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.17,
+     "max": 1,
+     "signed": -0.03
+    },
+    "dhuhr": {
+     "exact": 361,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.01,
+     "max": 1,
+     "signed": -0.01
+    },
+    "asr": {
+     "exact": 250,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.32,
+     "max": 1,
+     "signed": 0.04
+    },
+    "maghrib": {
+     "exact": 312,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.15,
+     "max": 1,
+     "signed": 0.04
+    },
+    "isha": {
+     "exact": 291,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.2,
+     "max": 1,
+     "signed": 0.09
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  }
+ },
+ "77": {
+  "i": 77,
+  "key": "غرب النوبارية",
+  "lat0": 30.65,
+  "lng0": 29.95,
+  "source": "manual:West Nubaria",
+  "implied": {
+   "lat": 30.64,
+   "lng": 29.67,
+   "obj": 0.7
+  },
+  "spanKm": 26.8,
+  "atImplied": {
+   "n": 365,
+   "allSixW1": 365,
+   "allSixExact": 170,
+   "per": {
+    "fajr": {
+     "exact": 336,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0
+    },
+    "sunrise": {
+     "exact": 343,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.06,
+     "max": 1,
+     "signed": -0.04
+    },
+    "dhuhr": {
+     "exact": 353,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.03,
+     "max": 1,
+     "signed": 0.03
+    },
+    "asr": {
+     "exact": 242,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.34,
+     "max": 1,
+     "signed": 0.05
+    },
+    "maghrib": {
+     "exact": 334,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "max": 1,
+     "signed": 0.08
+    },
+    "isha": {
+     "exact": 330,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.1,
+     "max": 1,
+     "signed": 0.07
+    }
+   },
+   "worst": {
+    "dev": 1,
+    "day": "2026-01-05",
+    "delta": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 1,
+     "maghrib": 0,
+     "isha": 0
+    }
+   }
+  },
+  "atGazetteer": {
+   "n": 365,
+   "allSixW1": 129,
+   "allSixExact": 0,
+   "per": {
+    "fajr": {
+     "exact": 0,
+     "w1": 325,
+     "n": 365,
+     "mae": 1.11,
+     "max": 2,
+     "signed": 1.11
+    },
+    "sunrise": {
+     "exact": 0,
+     "w1": 335,
+     "n": 365,
+     "mae": 1.08,
+     "max": 2,
+     "signed": 1.08
+    },
+    "dhuhr": {
+     "exact": 0,
+     "w1": 315,
+     "n": 365,
+     "mae": 1.14,
+     "max": 2,
+     "signed": 1.14
+    },
+    "asr": {
+     "exact": 24,
+     "w1": 271,
+     "n": 365,
+     "mae": 1.19,
+     "max": 2,
+     "signed": 1.19
+    },
+    "maghrib": {
+     "exact": 0,
+     "w1": 299,
+     "n": 365,
+     "mae": 1.18,
+     "max": 2,
+     "signed": 1.18
+    },
+    "isha": {
+     "exact": 0,
+     "w1": 300,
+     "n": 365,
+     "mae": 1.18,
+     "max": 2,
+     "signed": 1.18
+    }
+   },
+   "worst": {
+    "dev": 2,
+    "day": "2026-01-01",
+    "delta": {
+     "fajr": -2,
+     "sunrise": -1,
+     "dhuhr": -1,
+     "asr": -1,
+     "maghrib": -1,
+     "isha": -2
+    }
+   }
+  }
+ },
+ "78": {
+  "i": 78,
+  "key": "منوف",
+  "lat0": 30.46597,
+  "lng0": 30.93199,
+  "source": "geonames:Munūf",
+  "implied": {
+   "lat": 30,
+   "lng": 31,
+   "obj": null
+  },
+  "spanKm": 52.1,
+  "atImplied": {
+   "n": 0,
+   "allSixW1": 0,
+   "allSixExact": 0,
+   "per": {
+    "fajr": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "sunrise": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "dhuhr": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "asr": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "maghrib": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "isha": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    }
+   },
+   "worst": {
+    "dev": -1
+   }
+  },
+  "atGazetteer": {
+   "n": 0,
+   "allSixW1": 0,
+   "allSixExact": 0,
+   "per": {
+    "fajr": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "sunrise": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "dhuhr": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "asr": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "maghrib": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "isha": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    }
+   },
+   "worst": {
+    "dev": -1
+   }
+  }
+ },
+ "79": {
+  "i": 79,
+  "key": "ديرب نجم",
+  "lat0": 30.75438,
+  "lng0": 31.44016,
+  "source": "geonames:Diyarb Najm",
+  "implied": {
+   "lat": 30,
+   "lng": 31,
+   "obj": null
+  },
+  "spanKm": 93.8,
+  "atImplied": {
+   "n": 0,
+   "allSixW1": 0,
+   "allSixExact": 0,
+   "per": {
+    "fajr": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "sunrise": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "dhuhr": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "asr": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "maghrib": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "isha": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    }
+   },
+   "worst": {
+    "dev": -1
+   }
+  },
+  "atGazetteer": {
+   "n": 0,
+   "allSixW1": 0,
+   "allSixExact": 0,
+   "per": {
+    "fajr": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "sunrise": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "dhuhr": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "asr": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "maghrib": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "isha": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    }
+   },
+   "worst": {
+    "dev": -1
+   }
+  }
+ },
+ "80": {
+  "i": 80,
+  "key": "ابو تشت",
+  "lat0": 26.12039,
+  "lng0": 32.09543,
+  "source": "geonames:Abu Tisht",
+  "implied": {
+   "lat": 30,
+   "lng": 31,
+   "obj": null
+  },
+  "spanKm": 443.3,
+  "atImplied": {
+   "n": 0,
+   "allSixW1": 0,
+   "allSixExact": 0,
+   "per": {
+    "fajr": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "sunrise": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "dhuhr": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "asr": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "maghrib": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "isha": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    }
+   },
+   "worst": {
+    "dev": -1
+   }
+  },
+  "atGazetteer": {
+   "n": 0,
+   "allSixW1": 0,
+   "allSixExact": 0,
+   "per": {
+    "fajr": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "sunrise": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "dhuhr": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "asr": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "maghrib": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "isha": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    }
+   },
+   "worst": {
+    "dev": -1
+   }
+  }
+ },
+ "81": {
+  "i": 81,
+  "key": "سمالوط",
+  "lat0": 28.31214,
+  "lng0": 30.71007,
+  "source": "geonames:Samālūţ",
+  "implied": {
+   "lat": 30,
+   "lng": 31,
+   "obj": null
+  },
+  "spanKm": 189.4,
+  "atImplied": {
+   "n": 0,
+   "allSixW1": 0,
+   "allSixExact": 0,
+   "per": {
+    "fajr": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "sunrise": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "dhuhr": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "asr": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "maghrib": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "isha": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    }
+   },
+   "worst": {
+    "dev": -1
+   }
+  },
+  "atGazetteer": {
+   "n": 0,
+   "allSixW1": 0,
+   "allSixExact": 0,
+   "per": {
+    "fajr": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "sunrise": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "dhuhr": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "asr": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "maghrib": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    },
+    "isha": {
+     "exact": 0,
+     "w1": 0,
+     "n": 0,
+     "mae": null,
+     "max": 0,
+     "signed": null
+    }
+   },
+   "worst": {
+    "dev": -1
+   }
+  }
+ }
+}

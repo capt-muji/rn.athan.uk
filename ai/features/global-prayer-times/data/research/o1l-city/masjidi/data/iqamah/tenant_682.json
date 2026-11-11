@@ -1,0 +1,50 @@
+{
+ "tenantId": "682",
+ "name": "Fagersta Moské",
+ "city": "فاجيرستا",
+ "country": "السويد",
+ "timezone": "Europe/Stockholm",
+ "timingsType": "table-api",
+ "tableId": 5587,
+ "iqamah": {
+  "Fajr": {
+   "iqamaWaitDuration": 15,
+   "timeOffset": -17
+  },
+  "Sunrise": {
+   "iqamaWaitDuration": 0,
+   "timeOffset": 0
+  },
+  "Dhuhr": {
+   "iqamaWaitDuration": 15,
+   "timeOffset": -5
+  },
+  "Asr": {
+   "iqamaWaitDuration": 15,
+   "timeOffset": 10
+  },
+  "Maghrib": {
+   "iqamaWaitDuration": 15,
+   "timeOffset": -22
+  },
+  "Isha": {
+   "iqamaWaitDuration": 15,
+   "timeOffset": 16
+  }
+ },
+ "overrides": {
+  "Dhuhr": [
+   {
+    "name": "Jumaa",
+    "iqamaWaitDuration": 0,
+    "duration": 0,
+    "date": {
+     "gregorian": {
+      "dayOfWeek": 6
+     }
+    }
+   }
+  ]
+ },
+ "note": "athan times come from the regional table; the iqamah layer is the wait in minutes after the athan, plus Friday (Jumu'ah) overrides."
+}

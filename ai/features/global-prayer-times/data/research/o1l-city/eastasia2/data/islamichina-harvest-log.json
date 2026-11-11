@@ -1,0 +1,558 @@
+{
+ "beijing": {
+  "2026": {
+   "code": "cached",
+   "url": "/beijing-prayer-times/2143-2026.html",
+   "rows": 365
+  },
+  "2027": {
+   "code": "cached",
+   "url": "/beijing-prayer-times/2857-2027.html",
+   "rows": 365
+  },
+  "2028": {
+   "code": "cached",
+   "url": "/beijing-prayer-times/2858-2028.html",
+   "rows": 366
+  },
+  "2029": {
+   "code": "cached",
+   "url": "/beijing-prayer-times/2859-2029.html",
+   "rows": 365
+  }
+ },
+ "changchun": {
+  "2025": {
+   "code": "cached",
+   "url": "/changchun-prayer-times/2746-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/changchun-prayer-times/2155-2026.html",
+   "rows": 365
+  }
+ },
+ "changsha": {
+  "2025": {
+   "code": "cached",
+   "url": "/changsha-prayer-times/2749-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/changsha-prayer-times/2167-2026.html",
+   "rows": 365
+  }
+ },
+ "chengdu": {
+  "2025": {
+   "code": "cached",
+   "url": "/chengdu-prayer-times/2743-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/chengdu-prayer-times/2179-2026.html",
+   "rows": 365
+  }
+ },
+ "chongqing": {
+  "2025": {
+   "code": "cached",
+   "url": "/chongqing-prayer-times/2752-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/chongqing-prayer-times/2222-2026.html",
+   "rows": 365
+  }
+ },
+ "dalian": {
+  "2025": {
+   "code": "cached",
+   "url": "/dalian-prayer-times/2755-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/dalian-prayer-times/2210-2026.html",
+   "rows": 365
+  }
+ },
+ "dunhuang": {
+  "2025": {
+   "code": "cached",
+   "url": "/dunhuang-prayer-times/2760-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/dunhuang-prayer-times/2234-2026.html",
+   "rows": 365
+  }
+ },
+ "fuzhou": {
+  "2025": {
+   "code": "cached",
+   "url": "/fuzhou-prayer-times/2763-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/fuzhou-prayer-times/2246-2026.html",
+   "rows": 365
+  }
+ },
+ "guangzhou": {
+  "2025": {
+   "code": "cached",
+   "url": "/guangzhou-prayer-times/2722-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/guangzhou-prayer-times/2258-2026.html",
+   "rows": 365
+  },
+  "2027": {
+   "code": "cached",
+   "url": "/guangzhou-prayer-times/2863-2027.html",
+   "rows": 365
+  },
+  "2028": {
+   "code": "cached",
+   "url": "/guangzhou-prayer-times/2864-2028.html",
+   "rows": 366
+  },
+  "2029": {
+   "code": "cached",
+   "url": "/guangzhou-prayer-times/2865-2029.html",
+   "rows": 365
+  }
+ },
+ "guilin": {
+  "2025": {
+   "code": "cached",
+   "url": "/guilin-prayer-times/2731-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/guilin-prayer-times/2270-2026.html",
+   "rows": 365
+  }
+ },
+ "guiyang": {
+  "2025": {
+   "code": "cached",
+   "url": "/guiyang-prayer-times/2766-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/guiyang-prayer-times/2282-2026.html",
+   "rows": 365
+  }
+ },
+ "haikou": {
+  "2025": {
+   "code": "cached",
+   "url": "/haikou-prayer-times/2769-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/haikou-prayer-times/2294-2026.html",
+   "rows": 365
+  }
+ },
+ "hangzhou": {
+  "2026": {
+   "code": "cached",
+   "url": "/hangzhou-prayer-times/2306-2026.html",
+   "rows": 365
+  },
+  "2027": {
+   "code": "cached",
+   "url": "/hangzhou-prayer-times/2866-2027.html",
+   "rows": 365
+  },
+  "2028": {
+   "code": "cached",
+   "url": "/hangzhou-prayer-times/2867-2028.html",
+   "rows": 366
+  },
+  "2029": {
+   "code": "cached",
+   "url": "/hangzhou-prayer-times/2868-2029.html",
+   "rows": 365
+  }
+ },
+ "harbin": {
+  "2025": {
+   "code": "cached",
+   "url": "/harbin-prayer-times/2772-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/harbin-prayer-times/2318-2026.html",
+   "rows": 365
+  }
+ },
+ "hefei": {
+  "2025": {
+   "code": "cached",
+   "url": "/hefei-prayer-times/2775-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/hefei-prayer-times/2330-2026.html",
+   "rows": 365
+  }
+ },
+ "hohhot": {
+  "2025": {
+   "code": "cached",
+   "url": "/hohhot-prayer-times/2778-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/hohhot-prayer-times/2342-2026.html",
+   "rows": 365
+  }
+ },
+ "jinan": {
+  "2025": {
+   "code": "cached",
+   "url": "/jinan-prayer-times/2781-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/jinan-prayer-times/2354-2026.html",
+   "rows": 365
+  }
+ },
+ "kashgar": {
+  "2025": {
+   "code": "cached",
+   "url": "/kashgar-prayer-times/2784-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/kashgar-prayer-times/2366-2026.html",
+   "rows": 365
+  }
+ },
+ "kunming": {
+  "2025": {
+   "code": "cached",
+   "url": "/kunming-prayer-times/2740-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/kunming-prayer-times/2378-2026.html",
+   "rows": 365
+  }
+ },
+ "lanzhou": {
+  "2025": {
+   "code": "cached",
+   "url": "/lanzhou-prayer-times/2787-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/lanzhou-prayer-times/2390-2026.html",
+   "rows": 365
+  }
+ },
+ "lhasa": {
+  "2025": {
+   "code": "cached",
+   "url": "/lhasa-prayer-times/2829-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/lhasa-prayer-times/2402-2026.html",
+   "rows": 365
+  }
+ },
+ "luoyang": {
+  "2025": {
+   "code": "cached",
+   "url": "/luoyang-prayer-times/2790-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/luoyang-prayer-times/2414-2026.html",
+   "rows": 365
+  }
+ },
+ "nanchang": {},
+ "nanjing": {
+  "2025": {
+   "code": "cached",
+   "url": "/nanjing-prayer-times/2793-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/nanjing-prayer-times/2438-2026.html",
+   "rows": 365
+  }
+ },
+ "nanning": {},
+ "ningbo": {
+  "2025": {
+   "code": "cached",
+   "url": "/ningbo-prayer-times/2802-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/ningbo-prayer-times/2462-2026.html",
+   "rows": 365
+  }
+ },
+ "qingdao": {
+  "2025": {
+   "code": "cached",
+   "url": "/qingdao-prayer-times/2808-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/qingdao-prayer-times/2474-2026.html",
+   "rows": 365
+  }
+ },
+ "quanzhou": {
+  "2025": {
+   "code": "cached",
+   "url": "/quanzhou-prayer-times/2805-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/quanzhou-prayer-times/2486-2026.html",
+   "rows": 365
+  }
+ },
+ "sanya": {
+  "2025": {
+   "code": "cached",
+   "url": "/sanya-prayer-times/2811-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/sanya-prayer-times/2498-2026.html",
+   "rows": 365
+  }
+ },
+ "shanghai": {
+  "2025": {
+   "code": "cached",
+   "url": "/shanghai-prayer-times/2719-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/shanghai-prayer-times/2510-2026.html",
+   "rows": 365
+  },
+  "2027": {
+   "code": "cached",
+   "url": "/shanghai-prayer-times/2860-2027.html",
+   "rows": 365
+  },
+  "2028": {
+   "code": "cached",
+   "url": "/shanghai-prayer-times/2861-2028.html",
+   "rows": 366
+  },
+  "2029": {
+   "code": "cached",
+   "url": "/shanghai-prayer-times/2862-2029.html",
+   "rows": 365
+  }
+ },
+ "shenyang": {
+  "2025": {
+   "code": "cached",
+   "url": "/shenyang-prayer-times/2814-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/shenyang-prayer-times/2522-2026.html",
+   "rows": 365
+  }
+ },
+ "shenzhen": {
+  "2025": {
+   "code": "cached",
+   "url": "/shenzhen-prayer-times/2734-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/shenzhen-prayer-times/2534-2026.html",
+   "rows": 365
+  }
+ },
+ "shijiazhuang": {
+  "2025": {
+   "code": "cached",
+   "url": "/shijiazhuang-prayer-times/2817-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/shijiazhuang-prayer-times/2546-2026.html",
+   "rows": 365
+  }
+ },
+ "suzhou": {
+  "2025": {
+   "code": "cached",
+   "url": "/suzhou-prayer-times/2737-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/suzhou-prayer-times/2558-2026.html",
+   "rows": 365
+  }
+ },
+ "taiyuan": {
+  "2025": {
+   "code": "cached",
+   "url": "/taiyuan-prayer-times/2820-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/taiyuan-prayer-times/2570-2026.html",
+   "rows": 365
+  }
+ },
+ "tianjin": {
+  "2025": {
+   "code": "cached",
+   "url": "/tianjin-prayer-times/2823-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/tianjin-prayer-times/2582-2026.html",
+   "rows": 365
+  }
+ },
+ "turpan": {
+  "2025": {
+   "code": "cached",
+   "url": "/turpan-prayer-times/2826-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/turpan-prayer-times/2594-2026.html",
+   "rows": 365
+  }
+ },
+ "urumqi": {
+  "2025": {
+   "code": "cached",
+   "url": "/urumqi-prayer-times/2832-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/urumqi-prayer-times/2606-2026.html",
+   "rows": 365
+  }
+ },
+ "wuhan": {
+  "2025": {
+   "code": "cached",
+   "url": "/wuhan-prayer-times/2835-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/wuhan-prayer-times/2618-2026.html",
+   "rows": 365
+  }
+ },
+ "xiamen": {
+  "2025": {
+   "code": "cached",
+   "url": "/xiamen-prayer-times/2838-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/xiamen-prayer-times/2630-2026.html",
+   "rows": 365
+  }
+ },
+ "xian": {
+  "2025": {
+   "code": "cached",
+   "url": "/xian-prayer-times/2728-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/xian-prayer-times/2642-2026.html",
+   "rows": 365
+  }
+ },
+ "xining": {
+  "2025": {
+   "code": "cached",
+   "url": "/xining-prayer-times/2841-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/xining-prayer-times/2654-2026.html",
+   "rows": 365
+  }
+ },
+ "yinchuan": {
+  "2025": {
+   "code": "cached",
+   "url": "/yinchuan-prayer-times/2844-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/yinchuan-prayer-times/2666-2026.html",
+   "rows": 365
+  }
+ },
+ "zhengzhou": {
+  "2025": {
+   "code": "cached",
+   "url": "/zhengzhou-prayer-times/2847-2025.html",
+   "rows": 365
+  },
+  "2026": {
+   "code": "cached",
+   "url": "/zhengzhou-prayer-times/2678-2026.html",
+   "rows": 365
+  }
+ }
+}

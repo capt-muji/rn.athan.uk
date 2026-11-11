@@ -1,0 +1,83 @@
+{
+ "file": "data/mawaqit_bz_belizecity_falah.json",
+ "name": "Masjid Al Falah - BELIZE CITY",
+ "lat": 17.5045661,
+ "lon": -88.1962133,
+ "tz": "America/Belize",
+ "days": 365,
+ "candidates": [
+  {
+   "method": "NorthAmerica",
+   "madhab": "shafi",
+   "totalMae": 1.66
+  },
+  {
+   "method": "Tehran",
+   "madhab": "shafi",
+   "totalMae": 17.65
+  },
+  {
+   "method": "MWL",
+   "madhab": "shafi",
+   "totalMae": 23.44
+  }
+ ],
+ "refined": {
+  "method": "NorthAmerica",
+  "madhab": "shafi",
+  "fajrAngle": 14.75,
+  "ishaAngle": 14.55,
+  "offsets": {
+   "fajr": -1,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 2
+  },
+  "scores": {
+   "fajr": {
+    "med": -0.1,
+    "exact": 334,
+    "w1": 365,
+    "mae": 0.25,
+    "worst": 0.7
+   },
+   "sunrise": {
+    "med": 0,
+    "exact": 354,
+    "w1": 365,
+    "mae": 0.26,
+    "worst": 0.5
+   },
+   "dhuhr": {
+    "med": 0,
+    "exact": 362,
+    "w1": 365,
+    "mae": 0.25,
+    "worst": 0.5
+   },
+   "asr": {
+    "med": -0.1,
+    "exact": 139,
+    "w1": 365,
+    "mae": 0.66,
+    "worst": 1.5
+   },
+   "maghrib": {
+    "med": 0,
+    "exact": 357,
+    "w1": 365,
+    "mae": 0.25,
+    "worst": 0.5
+   },
+   "isha": {
+    "med": 0,
+    "exact": 334,
+    "w1": 365,
+    "mae": 0.25,
+    "worst": 0.7
+   }
+  }
+ }
+}

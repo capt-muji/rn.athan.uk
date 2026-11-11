@@ -1,0 +1,185 @@
+{
+ "metro": "Rochester",
+ "surface": "ic-rochester-mawaqit",
+ "isna_15_15": {
+  "madhab": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "w1": 87,
+  "exact": 78.9,
+  "per_column": {
+   "fajr": {
+    "mae": 0.25,
+    "bias": 0.03,
+    "exact": 92.6,
+    "w1": 100,
+    "worst": 0.6
+   },
+   "sunrise": {
+    "mae": 0.25,
+    "bias": 0,
+    "exact": 94.5,
+    "w1": 100,
+    "worst": 0.6
+   },
+   "dhuhr": {
+    "mae": 0.24,
+    "bias": 0.03,
+    "exact": 97.5,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "asr": {
+    "mae": 1.7,
+    "bias": -0.07,
+    "exact": 8.7,
+    "w1": 22.1,
+    "worst": 3
+   },
+   "maghrib": {
+    "mae": 0.25,
+    "bias": -0.03,
+    "exact": 95.4,
+    "w1": 100,
+    "worst": 0.6
+   },
+   "isha": {
+    "mae": 0.29,
+    "bias": 0.02,
+    "exact": 84.7,
+    "w1": 100,
+    "worst": 0.8
+   }
+  }
+ },
+ "rows": 366,
+ "span": [
+  "2026-01-01",
+  "2026-12-31"
+ ],
+ "years": [
+  "2026"
+ ],
+ "coords": [
+  43.114386,
+  -77.6021387
+ ],
+ "tz": "America/New_York",
+ "recipe": {
+  "engine": "adhan 4.4.6",
+  "fajr_angle": 15,
+  "isha": [
+   "angle",
+   15
+  ],
+  "madhab": "shafi",
+  "high_latitude": "TwilightAngle",
+  "rounding": "None",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  }
+ },
+ "per_column": {
+  "fajr": {
+   "mae": 0.25,
+   "bias": 0.03,
+   "exact": 92.6,
+   "w1": 100,
+   "worst": 0.6
+  },
+  "sunrise": {
+   "mae": 0.25,
+   "bias": 0,
+   "exact": 94.5,
+   "w1": 100,
+   "worst": 0.6
+  },
+  "dhuhr": {
+   "mae": 0.24,
+   "bias": 0.03,
+   "exact": 97.5,
+   "w1": 100,
+   "worst": 0.5
+  },
+  "asr": {
+   "mae": 1.7,
+   "bias": -0.07,
+   "exact": 8.7,
+   "w1": 22.1,
+   "worst": 3
+  },
+  "maghrib": {
+   "mae": 0.25,
+   "bias": -0.03,
+   "exact": 95.4,
+   "w1": 100,
+   "worst": 0.6
+  },
+  "isha": {
+   "mae": 0.29,
+   "bias": 0.02,
+   "exact": 84.7,
+   "w1": 100,
+   "worst": 0.8
+  }
+ },
+ "per_year": {
+  "2026": {
+   "fajr": {
+    "mae": 0.25,
+    "bias": 0.03,
+    "exact": 92.6,
+    "w1": 100,
+    "worst": 0.6
+   },
+   "sunrise": {
+    "mae": 0.25,
+    "bias": 0,
+    "exact": 94.5,
+    "w1": 100,
+    "worst": 0.6
+   },
+   "dhuhr": {
+    "mae": 0.24,
+    "bias": 0.03,
+    "exact": 97.5,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "asr": {
+    "mae": 1.7,
+    "bias": -0.07,
+    "exact": 8.7,
+    "w1": 22.1,
+    "worst": 3
+   },
+   "maghrib": {
+    "mae": 0.25,
+    "bias": -0.03,
+    "exact": 95.4,
+    "w1": 100,
+    "worst": 0.6
+   },
+   "isha": {
+    "mae": 0.29,
+    "bias": 0.02,
+    "exact": 84.7,
+    "w1": 100,
+    "worst": 0.8
+   }
+  }
+ },
+ "seasonal_fajr_amplitude_min": 129.1,
+ "fajr_later_in_january": true
+}

@@ -1,0 +1,1009 @@
+{
+ "İstanbul": {
+  "Arnavutköy": {
+   "lat": 41.1845,
+   "lon": 28.7412,
+   "display": "Arnavutköy, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Avcılar": {
+   "lat": 40.9799,
+   "lon": 28.7217,
+   "display": "Avcılar, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Bağcılar": {
+   "lat": 41.0345,
+   "lon": 28.8568,
+   "display": "Bağcılar, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Bahçelievler": {
+   "lat": 41.003,
+   "lon": 28.8658,
+   "display": "Bahçelievler, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Bakırköy": {
+   "lat": 40.9783,
+   "lon": 28.8744,
+   "display": "Bakırköy, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Başakşehir": {
+   "lat": 41.1076,
+   "lon": 28.7951,
+   "display": "Başakşehir, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Bayrampaşa": {
+   "lat": 41.0346,
+   "lon": 28.9118,
+   "display": "Bayrampaşa, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Beşiktaş": {
+   "lat": 41.0428,
+   "lon": 29.0075,
+   "display": "Beşiktaş, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Beylikdüzü": {
+   "lat": 41.0038,
+   "lon": 28.6373,
+   "display": "Beylikdüzü, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Beyoğlu": {
+   "lat": 41.0284,
+   "lon": 28.9737,
+   "display": "Beyoğlu, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Büyükçekmece": {
+   "lat": 41.0217,
+   "lon": 28.5798,
+   "display": "Büyükçekmece, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Çatalca": {
+   "lat": 41.1437,
+   "lon": 28.4605,
+   "display": "Çatalca, İstanbul, Marmara Bölgesi, 34540, Türkiye"
+  },
+  "Esenler": {
+   "lat": 41.0376,
+   "lon": 28.8825,
+   "display": "Esenler, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Esenyurt": {
+   "lat": 41.0343,
+   "lon": 28.6801,
+   "display": "Esenyurt, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Eyüpsultan": {
+   "lat": 41.0478,
+   "lon": 28.9327,
+   "display": "Eyüpsultan, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Fatih": {
+   "lat": 41.0193,
+   "lon": 28.9479,
+   "display": "Fatih, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Gaziosmanpaşa": {
+   "lat": 41.0578,
+   "lon": 28.9122,
+   "display": "Gaziosmanpaşa, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Güngören": {
+   "lat": 41.0253,
+   "lon": 28.8726,
+   "display": "Güngören, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Kâğıthane": {
+   "lat": 41.0812,
+   "lon": 28.973,
+   "display": "Kâğıthane, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Küçükçekmece": {
+   "lat": 40.9919,
+   "lon": 28.7712,
+   "display": "Küçükçekmece, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Sarıyer": {
+   "lat": 41.1686,
+   "lon": 29.0573,
+   "display": "Sarıyer, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Silivri": {
+   "lat": 41.0742,
+   "lon": 28.2482,
+   "display": "Silivri, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Sultangazi": {
+   "lat": 41.1043,
+   "lon": 28.8614,
+   "display": "Sultangazi, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Şişli": {
+   "lat": 41.0638,
+   "lon": 28.9832,
+   "display": "Şişli, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Zeytinburnu": {
+   "lat": 40.9899,
+   "lon": 28.9037,
+   "display": "Zeytinburnu, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Adalar": {
+   "lat": 40.8742,
+   "lon": 29.1293,
+   "display": "Adalar, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Ataşehir": {
+   "lat": 40.9929,
+   "lon": 29.1135,
+   "display": "Ataşehir, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Beykoz": {
+   "lat": 41.1343,
+   "lon": 29.092,
+   "display": "Beykoz, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Çekmeköy": {
+   "lat": 41.0352,
+   "lon": 29.1739,
+   "display": "Çekmeköy, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Kadıköy": {
+   "lat": 40.9913,
+   "lon": 29.0246,
+   "display": "Kadıköy, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Kartal": {
+   "lat": 40.8885,
+   "lon": 29.1859,
+   "display": "Kartal, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Maltepe": {
+   "lat": 40.9248,
+   "lon": 29.1311,
+   "display": "Maltepe, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Pendik": {
+   "lat": 40.8769,
+   "lon": 29.235,
+   "display": "Pendik, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Sancaktepe": {
+   "lat": 40.9905,
+   "lon": 29.2289,
+   "display": "Sancaktepe, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Sultanbeyli": {
+   "lat": 40.967,
+   "lon": 29.2671,
+   "display": "Sultanbeyli, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Şile": {
+   "lat": 41.1744,
+   "lon": 29.6125,
+   "display": "Şile, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Tuzla": {
+   "lat": 40.8162,
+   "lon": 29.3034,
+   "display": "Tuzla, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Ümraniye": {
+   "lat": 41.0256,
+   "lon": 29.0963,
+   "display": "Ümraniye, İstanbul, Marmara Bölgesi, Türkiye"
+  },
+  "Üsküdar": {
+   "lat": 41.0265,
+   "lon": 29.0151,
+   "display": "Üsküdar, İstanbul, Marmara Bölgesi, Türkiye"
+  }
+ },
+ "Ankara": {
+  "Akyurt": {
+   "lat": 40.1308,
+   "lon": 33.0871,
+   "display": "Akyurt, Ankara, İç Anadolu Bölgesi, 06750, Türkiye"
+  },
+  "Altındağ": {
+   "lat": 39.9524,
+   "lon": 32.8662,
+   "display": "Altındağ, Ankara, İç Anadolu Bölgesi, Türkiye"
+  },
+  "Ayaş": {
+   "lat": 40.0151,
+   "lon": 32.3324,
+   "display": "Ayaş, Ankara, İç Anadolu Bölgesi, 06710, Türkiye"
+  },
+  "Balâ": {
+   "lat": 39.5534,
+   "lon": 33.1238,
+   "display": "Balâ, Ankara, İç Anadolu Bölgesi, 06720, Türkiye"
+  },
+  "Beypazarı": {
+   "lat": 40.1656,
+   "lon": 31.9205,
+   "display": "Beypazarı, Ankara, İç Anadolu Bölgesi, 06730, Türkiye"
+  },
+  "Çamlıdere": {
+   "lat": 40.4915,
+   "lon": 32.4758,
+   "display": "Çamlıdere, Ankara, İç Anadolu Bölgesi, Türkiye"
+  },
+  "Çankaya": {
+   "lat": 39.8853,
+   "lon": 32.8555,
+   "display": "Çankaya, Ankara, İç Anadolu Bölgesi, Türkiye"
+  },
+  "Çubuk": {
+   "lat": 40.2389,
+   "lon": 33.0289,
+   "display": "Çubuk, Ankara, İç Anadolu Bölgesi, Türkiye"
+  },
+  "Elmadağ": {
+   "lat": 39.9241,
+   "lon": 33.2277,
+   "display": "Elmadağ, Atatürk Bulvarı, Kemalpaşa, Kemalpaşa Mahallesi, Elmadağ, Ankara, İç Anadolu Bölgesi, 06780, Türkiye"
+  },
+  "Etimesgut": {
+   "lat": 39.9492,
+   "lon": 32.6631,
+   "display": "Etimesgut, İkinci Yüzyıl Cumhuriyet Caddesi, Etiler Mahallesi, Etimesgut, Ankara, İç Anadolu Bölgesi, 06796, Türkiye"
+  },
+  "Evren": {
+   "lat": 39.0221,
+   "lon": 33.8079,
+   "display": "Evren, Ankara, İç Anadolu Bölgesi, 06770, Türkiye"
+  },
+  "Gölbaşı": {
+   "lat": 39.7925,
+   "lon": 32.8067,
+   "display": "Gölbaşı, Ankara, İç Anadolu Bölgesi, 06830, Türkiye"
+  },
+  "Güdül": {
+   "lat": 40.2105,
+   "lon": 32.2432,
+   "display": "Güdül, Ankara, İç Anadolu Bölgesi, 06840, Türkiye"
+  },
+  "Haymana": {
+   "lat": 39.4341,
+   "lon": 32.4988,
+   "display": "Haymana, Ankara, İç Anadolu Bölgesi, 06860, Türkiye"
+  },
+  "Kahramankazan": {
+   "lat": 40.2054,
+   "lon": 32.6813,
+   "display": "Kahramankazan, Ankara, İç Anadolu Bölgesi, 06980, Türkiye"
+  },
+  "Kalecik": {
+   "lat": 40.0764,
+   "lon": 33.445,
+   "display": "Kalecik, Kırıkkale-Çankırı yolu, Ahikemal Şenyurt Mahallesi, Kalecik, Ankara, İç Anadolu Bölgesi, Türkiye"
+  },
+  "Keçiören": {
+   "lat": 39.9777,
+   "lon": 32.867,
+   "display": "Keçiören, Ankara, İç Anadolu Bölgesi, Türkiye"
+  },
+  "Kızılcahamam": {
+   "lat": 40.4701,
+   "lon": 32.6529,
+   "display": "Kızılcahamam, Ankara, İç Anadolu Bölgesi, 06890, Türkiye"
+  },
+  "Mamak": {
+   "lat": 39.931,
+   "lon": 32.9123,
+   "display": "Mamak, Mamak Caddesi, Hüseyingazi Mahallesi, Mamak, Ankara, İç Anadolu Bölgesi, 06260, Türkiye"
+  },
+  "Nallıhan": {
+   "lat": 40.1888,
+   "lon": 31.3503,
+   "display": "Nallıhan, Ankara, İç Anadolu Bölgesi, 06920, Türkiye"
+  },
+  "Polatlı": {
+   "lat": 39.5857,
+   "lon": 32.1417,
+   "display": "Polatlı, Turan Caddesi, Cumhuriyet Mahallesi, Polatlı, Ankara, İç Anadolu Bölgesi, 06900, Türkiye"
+  },
+  "Pursaklar": {
+   "lat": 40.0381,
+   "lon": 32.8969,
+   "display": "Pursaklar, Ankara, İç Anadolu Bölgesi, Türkiye"
+  },
+  "Sincan": {
+   "lat": 39.964,
+   "lon": 32.5856,
+   "display": "Sincan, Atatürk Caddesi, İstasyon Mahallesi, Sincan, Ankara, İç Anadolu Bölgesi, Türkiye"
+  },
+  "Şereflikoçhisar": {
+   "lat": 38.9389,
+   "lon": 33.5439,
+   "display": "Şereflikoçhisar, Ankara, İç Anadolu Bölgesi, 06950, Türkiye"
+  },
+  "Yenimahalle": {
+   "lat": 39.9661,
+   "lon": 32.8088,
+   "display": "Yenimahalle, Ankara, İç Anadolu Bölgesi, Türkiye"
+  }
+ },
+ "İzmir": {
+  "Aliağa": {
+   "lat": 38.8034,
+   "lon": 26.9714,
+   "display": "Aliağa, İzmir, Ege Bölgesi, Türkiye"
+  },
+  "Balçova": {
+   "lat": 38.3953,
+   "lon": 27.0579,
+   "display": "Balçova, İzmir, Ege Bölgesi, 35330, Türkiye"
+  },
+  "Bayındır": {
+   "lat": 38.2128,
+   "lon": 27.6496,
+   "display": "Bayındır, Atatürk Caddesi, Fatih Mahallesi, Bayındır, İzmir, Ege Bölgesi, 35840, Türkiye"
+  },
+  "Bayraklı": {
+   "lat": 38.4639,
+   "lon": 27.1644,
+   "display": "Bayraklı, Bayraklı İZBAN, Bayraklı Mahallesi, Bayraklı, İzmir, Ege Bölgesi, 35530, Türkiye"
+  },
+  "Bergama": {
+   "lat": 39.1189,
+   "lon": 27.1774,
+   "display": "Bergama, İzmir, Ege Bölgesi, 35700, Türkiye"
+  },
+  "Beydağ": {
+   "lat": 38.087,
+   "lon": 28.2107,
+   "display": "Beydağ, İzmir, Ege Bölgesi, 35790, Türkiye"
+  },
+  "Bornova": {
+   "lat": 38.4662,
+   "lon": 27.2192,
+   "display": "Bornova, İzmir, Ege Bölgesi, Türkiye"
+  },
+  "Buca": {
+   "lat": 38.3835,
+   "lon": 27.1687,
+   "display": "Buca, İzmir, Ege Bölgesi, Türkiye"
+  },
+  "Çeşme": {
+   "lat": 38.3244,
+   "lon": 26.303,
+   "display": "Çeşme, İzmir, Ege Bölgesi, Türkiye"
+  },
+  "Çiğli": {
+   "lat": 38.4917,
+   "lon": 27.0634,
+   "display": "Çiğli, Semra Aksu Caddesi, Ataşehir Mahallesi, Çiğli, İzmir, Ege Bölgesi, 35620, Türkiye"
+  },
+  "Dikili": {
+   "lat": 39.075,
+   "lon": 26.8892,
+   "display": "Dikili, İzmir, Ege Bölgesi, 35980, Türkiye"
+  },
+  "Foça": {
+   "lat": 38.6689,
+   "lon": 26.7548,
+   "display": "Foça, İzmir, Ege Bölgesi, Türkiye"
+  },
+  "Gaziemir": {
+   "lat": 38.3263,
+   "lon": 27.14,
+   "display": "Gaziemir, 351. Sokak, Dokuz Eylül Mahallesi, Gaziemir, İzmir, Ege Bölgesi, 35410, Türkiye"
+  },
+  "Güzelbahçe": {
+   "lat": 38.3755,
+   "lon": 26.8756,
+   "display": "Güzelbahçe, İzmir, Ege Bölgesi, 35310, Türkiye"
+  },
+  "Karabağlar": {
+   "lat": 38.399,
+   "lon": 27.1269,
+   "display": "Karabağlar, İzmir, Ege Bölgesi, Türkiye"
+  },
+  "Karaburun": {
+   "lat": 38.6354,
+   "lon": 26.5098,
+   "display": "Karaburun, İzmir, Ege Bölgesi, Türkiye"
+  },
+  "Karşıyaka": {
+   "lat": 38.5034,
+   "lon": 27.1135,
+   "display": "Karşıyaka, İzmir, Ege Bölgesi, Türkiye"
+  },
+  "Kemalpaşa": {
+   "lat": 38.4695,
+   "lon": 27.4002,
+   "display": "Kemalpaşa, Bursa-İzmir Otoyolu, Ansızca Mahallesi, Kemalpaşa, İzmir, Ege Bölgesi, 35730, Türkiye"
+  },
+  "Kınık": {
+   "lat": 39.0876,
+   "lon": 27.3805,
+   "display": "Kınık, İzmir, Ege Bölgesi, 35990, Türkiye"
+  },
+  "Kiraz": {
+   "lat": 38.2304,
+   "lon": 28.2016,
+   "display": "Kiraz, İzmir, Ege Bölgesi, 35890, Türkiye"
+  },
+  "Konak": {
+   "lat": 38.4187,
+   "lon": 27.1283,
+   "display": "Konak, İzmir, Ege Bölgesi, Türkiye"
+  },
+  "Menderes": {
+   "lat": 38.2552,
+   "lon": 27.1381,
+   "display": "Menderes, İzmir, Ege Bölgesi, Türkiye"
+  },
+  "Menemen": {
+   "lat": 38.6034,
+   "lon": 27.0764,
+   "display": "Menemen, Niyazi Kaplangı Caddesi, Menemen, Esatpaşa Mahallesi, Menemen, İzmir, Ege Bölgesi, 35660, Türkiye"
+  },
+  "Narlıdere": {
+   "lat": 38.3954,
+   "lon": 27.0011,
+   "display": "Narlıdere, İzmir, Ege Bölgesi, 35320, Türkiye"
+  },
+  "Ödemiş": {
+   "lat": 38.2221,
+   "lon": 27.9656,
+   "display": "Ödemiş, Fakülte Caddesi, Emmioğlu Mahallesi, Üç Eylül Mahallesi, Ödemiş, İzmir, Ege Bölgesi, 35750, Türkiye"
+  },
+  "Seferihisar": {
+   "lat": 38.195,
+   "lon": 26.8342,
+   "display": "Seferihisar, İzmir, Ege Bölgesi, Türkiye"
+  },
+  "Selçuk": {
+   "lat": 37.948,
+   "lon": 27.3685,
+   "display": "Selçuk, İzmir, Ege Bölgesi, 35920, Türkiye"
+  },
+  "Tire": {
+   "lat": 38.0926,
+   "lon": 27.728,
+   "display": "Tire, Fahrettin Altay Caddesi, Fatih, Fatih Mahallesi, Tire, İzmir, Ege Bölgesi, 35900, Türkiye"
+  },
+  "Torbalı": {
+   "lat": 38.1701,
+   "lon": 27.3473,
+   "display": "Torbalı, 5058 Sk., Torbalı Mahallesi, Torbalı, İzmir, Ege Bölgesi, 35860, Türkiye"
+  },
+  "Urla": {
+   "lat": 38.3228,
+   "lon": 26.7673,
+   "display": "Urla, İzmir, Ege Bölgesi, Türkiye"
+  }
+ },
+ "Konya": {
+  "Ahırlı": {
+   "lat": 37.2387,
+   "lon": 32.1189,
+   "display": "Ahırlı, Konya, İç Anadolu Bölgesi, Türkiye"
+  },
+  "Akören": {
+   "lat": 37.4523,
+   "lon": 32.3725,
+   "display": "Akören, Konya, İç Anadolu Bölgesi, Türkiye"
+  },
+  "Akşehir": {
+   "lat": 38.3589,
+   "lon": 31.4202,
+   "display": "Akşehir, Konya, İç Anadolu Bölgesi, 42550, Türkiye"
+  },
+  "Altınekin": {
+   "lat": 38.3073,
+   "lon": 32.8691,
+   "display": "Altınekin, Konya, İç Anadolu Bölgesi, 42450, Türkiye"
+  },
+  "Beyşehir": {
+   "lat": 37.6802,
+   "lon": 31.7228,
+   "display": "Beyşehir, Konya, İç Anadolu Bölgesi, 42700, Türkiye"
+  },
+  "Bozkır": {
+   "lat": 37.1899,
+   "lon": 32.2472,
+   "display": "Bozkır, Konya, İç Anadolu Bölgesi, 42630, Türkiye"
+  },
+  "Cihanbeyli": {
+   "lat": 38.659,
+   "lon": 32.9237,
+   "display": "Cihanbeyli, Konya, İç Anadolu Bölgesi, Türkiye"
+  },
+  "Çeltik": {
+   "lat": 39.0016,
+   "lon": 31.8468,
+   "display": "Çeltik, Konya, İç Anadolu Bölgesi, Türkiye"
+  },
+  "Çumra": {
+   "lat": 37.572,
+   "lon": 32.7846,
+   "display": "Çumra, Cahit Aküzüm Caddesi, Çumra, Konya, İç Anadolu Bölgesi, 42500, Türkiye"
+  },
+  "Derbent": {
+   "lat": 38.0137,
+   "lon": 32.0172,
+   "display": "Derbent, Konya, İç Anadolu Bölgesi, Türkiye"
+  },
+  "Derebucak": {
+   "lat": 37.3915,
+   "lon": 31.5107,
+   "display": "Derebucak, Konya, İç Anadolu Bölgesi, Türkiye"
+  },
+  "Doğanhisar": {
+   "lat": 38.146,
+   "lon": 31.6769,
+   "display": "Doğanhisar, Konya, İç Anadolu Bölgesi, Türkiye"
+  },
+  "Emirgazi": {
+   "lat": 37.9035,
+   "lon": 33.836,
+   "display": "Emirgazi, Konya, İç Anadolu Bölgesi, Türkiye"
+  },
+  "Ereğli": {
+   "lat": 37.5141,
+   "lon": 34.0473,
+   "display": "Ereğli, Konya, İç Anadolu Bölgesi, Türkiye"
+  },
+  "Güneysınır": {
+   "lat": 37.2981,
+   "lon": 32.7211,
+   "display": "Güneysınır, Konya, İç Anadolu Bölgesi, Türkiye"
+  },
+  "Hadim": {
+   "lat": 36.9861,
+   "lon": 32.4558,
+   "display": "Hadim, Konya, İç Anadolu Bölgesi, Türkiye"
+  },
+  "Halkapınar": {
+   "lat": 37.4335,
+   "lon": 34.1866,
+   "display": "Halkapınar, Konya, İç Anadolu Bölgesi, 42980, Türkiye"
+  },
+  "Hüyük": {
+   "lat": 37.9548,
+   "lon": 31.5973,
+   "display": "Hüyük, Konya, İç Anadolu Bölgesi, 42690, Türkiye"
+  },
+  "Ilgın": {
+   "lat": 38.2907,
+   "lon": 31.9102,
+   "display": "Ilgın, Konya-Afyon yolu, İstasyon Mahallesi, Ilgın, Konya, İç Anadolu Bölgesi, 42600, Türkiye"
+  },
+  "Kadınhanı": {
+   "lat": 38.2401,
+   "lon": 32.2122,
+   "display": "Kadınhanı, Konya, İç Anadolu Bölgesi, 42800, Türkiye"
+  },
+  "Karapınar": {
+   "lat": 37.7178,
+   "lon": 33.5476,
+   "display": "Karapınar, Konya, İç Anadolu Bölgesi, 42400, Türkiye"
+  },
+  "Karatay": {
+   "lat": 37.871,
+   "lon": 32.503,
+   "display": "Karatay, Konya, İç Anadolu Bölgesi, Türkiye"
+  },
+  "Kulu": {
+   "lat": 39.0371,
+   "lon": 33.0286,
+   "display": "Kulu, Konya, İç Anadolu Bölgesi, Türkiye"
+  },
+  "Meram": {
+   "lat": 37.868,
+   "lon": 32.4947,
+   "display": "Meram, Konya, İç Anadolu Bölgesi, Türkiye"
+  },
+  "Sarayönü": {
+   "lat": 38.2559,
+   "lon": 32.404,
+   "display": "Sarayönü, 42-02, Saraç Mahallesi, Sarayönü, Konya, İç Anadolu Bölgesi, 42430, Türkiye"
+  },
+  "Selçuklu": {
+   "lat": 37.8769,
+   "lon": 32.4874,
+   "display": "Selçuklu, Konya, İç Anadolu Bölgesi, Türkiye"
+  },
+  "Seydişehir": {
+   "lat": 37.4194,
+   "lon": 31.8483,
+   "display": "Seydişehir, Konya, İç Anadolu Bölgesi, Türkiye"
+  },
+  "Taşkent": {
+   "lat": 36.9239,
+   "lon": 32.4926,
+   "display": "Taşkent, Konya, İç Anadolu Bölgesi, 42960, Türkiye"
+  },
+  "Tuzlukçu": {
+   "lat": 38.4729,
+   "lon": 31.6271,
+   "display": "Tuzlukçu, Konya, İç Anadolu Bölgesi, Türkiye"
+  },
+  "Yalıhüyük": {
+   "lat": 37.3006,
+   "lon": 32.0854,
+   "display": "Yalıhüyük, Konya, İç Anadolu Bölgesi, Türkiye"
+  },
+  "Yunak": {
+   "lat": 38.818,
+   "lon": 32.014,
+   "display": "Yunak, Konya, İç Anadolu Bölgesi, Türkiye"
+  }
+ },
+ "Bursa": {
+  "Büyükorhan": {
+   "lat": 39.7709,
+   "lon": 28.8854,
+   "display": "Büyükorhan, Bursa, Marmara Bölgesi, Türkiye"
+  },
+  "Gemlik": {
+   "lat": 40.4302,
+   "lon": 29.1571,
+   "display": "Gemlik, Bursa, Marmara Bölgesi, 16600, Türkiye"
+  },
+  "Gürsu": {
+   "lat": 40.2176,
+   "lon": 29.1936,
+   "display": "Gürsu, Bursa, Marmara Bölgesi, 16580, Türkiye"
+  },
+  "Harmancık": {
+   "lat": 39.6772,
+   "lon": 29.1538,
+   "display": "Harmancık, Bursa, Marmara Bölgesi, 16770, Türkiye"
+  },
+  "İnegöl": {
+   "lat": 40.08,
+   "lon": 29.5097,
+   "display": "İnegöl, Bursa, Marmara Bölgesi, 16400, Türkiye"
+  },
+  "İznik": {
+   "lat": 40.4303,
+   "lon": 29.7224,
+   "display": "İznik, Bursa, Marmara Bölgesi, 16860, Türkiye"
+  },
+  "Karacabey": {
+   "lat": 40.216,
+   "lon": 28.3591,
+   "display": "Karacabey, Bursa, Marmara Bölgesi, 16700, Türkiye"
+  },
+  "Keles": {
+   "lat": 39.9129,
+   "lon": 29.2342,
+   "display": "Keles, Bursa, Marmara Bölgesi, Türkiye"
+  },
+  "Kestel": {
+   "lat": 40.2008,
+   "lon": 29.2129,
+   "display": "Kestel, Bursa, Marmara Bölgesi, 16450, Türkiye"
+  },
+  "Mudanya": {
+   "lat": 40.3753,
+   "lon": 28.8838,
+   "display": "Mudanya, Bursa, Marmara Bölgesi, Türkiye"
+  },
+  "Mustafakemalpaşa": {
+   "lat": 40.035,
+   "lon": 28.4133,
+   "display": "Mustafakemalpaşa, Bursa, Marmara Bölgesi, 16500, Türkiye"
+  },
+  "Nilüfer": {
+   "lat": 40.217,
+   "lon": 28.9848,
+   "display": "Nilüfer, Bursa, Marmara Bölgesi, Türkiye"
+  },
+  "Orhaneli": {
+   "lat": 39.9027,
+   "lon": 28.9867,
+   "display": "Orhaneli, Bursa, Marmara Bölgesi, 16980, Türkiye"
+  },
+  "Orhangazi": {
+   "lat": 40.4955,
+   "lon": 29.3108,
+   "display": "Orhangazi, Bursa, Marmara Bölgesi, Türkiye"
+  },
+  "Osmangazi": {
+   "lat": 40.1982,
+   "lon": 29.0612,
+   "display": "Osmangazi, Bursa, Marmara Bölgesi, Türkiye"
+  },
+  "Yenişehir": {
+   "lat": 40.2626,
+   "lon": 29.6522,
+   "display": "Yenişehir, Bursa, Marmara Bölgesi, 16900, Türkiye"
+  },
+  "Yıldırım": {
+   "lat": 40.1866,
+   "lon": 29.1282,
+   "display": "Yıldırım, Bursa, Marmara Bölgesi, Türkiye"
+  }
+ },
+ "Antalya": {
+  "Akseki": {
+   "lat": 37.0456,
+   "lon": 31.7897,
+   "display": "Akseki, Antalya, Akdeniz Bölgesi, Türkiye"
+  },
+  "Aksu": {
+   "lat": 36.9475,
+   "lon": 30.8477,
+   "display": "Aksu, Antalya, Akdeniz Bölgesi, Türkiye"
+  },
+  "Alanya": {
+   "lat": 36.5437,
+   "lon": 32.0019,
+   "display": "Alanya, Antalya, Akdeniz Bölgesi, Türkiye",
+   "corrected": true
+  },
+  "Demre": {
+   "lat": 36.2446,
+   "lon": 29.9876,
+   "display": "Demre, Antalya, Akdeniz Bölgesi, Türkiye"
+  },
+  "Döşemealtı": {
+   "lat": 37.023,
+   "lon": 30.6013,
+   "display": "Döşemealtı, Antalya, Akdeniz Bölgesi, Türkiye"
+  },
+  "Elmalı": {
+   "lat": 36.7384,
+   "lon": 29.9184,
+   "display": "Elmalı, Antalya, Akdeniz Bölgesi, 07700, Türkiye"
+  },
+  "Finike": {
+   "lat": 36.3046,
+   "lon": 30.1445,
+   "display": "Finike, Antalya, Akdeniz Bölgesi, Türkiye"
+  },
+  "Gazipaşa": {
+   "lat": 36.2683,
+   "lon": 32.3175,
+   "display": "Gazipaşa, Antalya, Akdeniz Bölgesi, 07900, Türkiye"
+  },
+  "Gündoğmuş": {
+   "lat": 36.8143,
+   "lon": 31.9983,
+   "display": "Gündoğmuş, Antalya, Akdeniz Bölgesi, Türkiye"
+  },
+  "İbradı": {
+   "lat": 37.0969,
+   "lon": 31.5969,
+   "display": "İbradı, Antalya, Akdeniz Bölgesi, Türkiye"
+  },
+  "Kaş": {
+   "lat": 36.1994,
+   "lon": 29.6413,
+   "display": "Kaş, Antalya, Akdeniz Bölgesi, Türkiye"
+  },
+  "Kemer": {
+   "lat": 36.6014,
+   "lon": 30.5639,
+   "display": "Kemer, Antalya, Akdeniz Bölgesi, Türkiye"
+  },
+  "Kepez": {
+   "lat": 36.9176,
+   "lon": 30.715,
+   "display": "Kepez, Antalya, Akdeniz Bölgesi, Türkiye"
+  },
+  "Konyaaltı": {
+   "lat": 36.8726,
+   "lon": 30.6504,
+   "display": "Konyaaltı, Antalya, Akdeniz Bölgesi, Türkiye"
+  },
+  "Korkuteli": {
+   "lat": 37.0667,
+   "lon": 30.197,
+   "display": "Korkuteli, Antalya, Akdeniz Bölgesi, Türkiye"
+  },
+  "Kumluca": {
+   "lat": 36.3669,
+   "lon": 30.2858,
+   "display": "Kumluca, Antalya, Akdeniz Bölgesi, Türkiye"
+  },
+  "Manavgat": {
+   "lat": 36.787,
+   "lon": 31.4407,
+   "display": "Manavgat, Antalya, Akdeniz Bölgesi, Türkiye"
+  },
+  "Muratpaşa": {
+   "lat": 36.8889,
+   "lon": 30.7209,
+   "display": "Muratpaşa, Antalya, Akdeniz Bölgesi, Türkiye"
+  },
+  "Serik": {
+   "lat": 36.9169,
+   "lon": 31.1047,
+   "display": "Serik, Antalya, Akdeniz Bölgesi, Türkiye"
+  }
+ },
+ "Diyarbakır": {
+  "Bağlar": {
+   "lat": 37.9173,
+   "lon": 40.2083,
+   "display": "Bağlar, Diyarbakır, Güneydoğu Anadolu Bölgesi, Türkiye"
+  },
+  "Bismil": {
+   "lat": 37.8528,
+   "lon": 40.662,
+   "display": "Bismil, Nato Caddesi, Kurtuluş Mah., Kurtuluş Mahallesi, Bismil, Diyarbakır, Güneydoğu Anadolu Bölgesi, Türkiye"
+  },
+  "Çermik": {
+   "lat": 38.1355,
+   "lon": 39.4497,
+   "display": "Çermik, Diyarbakır, Güneydoğu Anadolu Bölgesi, 21600, Türkiye"
+  },
+  "Çınar": {
+   "lat": 37.7237,
+   "lon": 40.4151,
+   "display": "Çınar, Diyarbakır, Güneydoğu Anadolu Bölgesi, Türkiye"
+  },
+  "Çüngüş": {
+   "lat": 38.2117,
+   "lon": 39.2882,
+   "display": "Çüngüş, Diyarbakır, Güneydoğu Anadolu Bölgesi, Türkiye"
+  },
+  "Dicle": {
+   "lat": 38.3728,
+   "lon": 40.0718,
+   "display": "Dicle, Diyarbakır, Güneydoğu Anadolu Bölgesi, Türkiye"
+  },
+  "Eğil": {
+   "lat": 38.2576,
+   "lon": 40.0845,
+   "display": "Eğil, Diyarbakır, Güneydoğu Anadolu Bölgesi, Türkiye"
+  },
+  "Ergani": {
+   "lat": 38.2328,
+   "lon": 39.7549,
+   "display": "Ergani, İstasyon Caddesi, Fatih Mah., Yayvantepe, Ergani, Diyarbakır, Güneydoğu Anadolu Bölgesi, 21950, Türkiye"
+  },
+  "Hani": {
+   "lat": 38.4116,
+   "lon": 40.3951,
+   "display": "Hani, Diyarbakır, Güneydoğu Anadolu Bölgesi, Türkiye"
+  },
+  "Hazro": {
+   "lat": 38.2538,
+   "lon": 40.7809,
+   "display": "Hazro, Diyarbakır, Güneydoğu Anadolu Bölgesi, Türkiye"
+  },
+  "Kayapınar": {
+   "lat": 37.9438,
+   "lon": 40.1846,
+   "display": "Kayapınar, Diyarbakır, Güneydoğu Anadolu Bölgesi, 21070, Türkiye"
+  },
+  "Kocaköy": {
+   "lat": 38.2906,
+   "lon": 40.5043,
+   "display": "Kocaköy, Diyarbakır, Güneydoğu Anadolu Bölgesi, Türkiye"
+  },
+  "Kulp": {
+   "lat": 38.5004,
+   "lon": 41.012,
+   "display": "Kulp, Diyarbakır, Güneydoğu Anadolu Bölgesi, Türkiye"
+  },
+  "Lice": {
+   "lat": 38.4603,
+   "lon": 40.6477,
+   "display": "Lice, Diyarbakır, Güneydoğu Anadolu Bölgesi, 21700, Türkiye"
+  },
+  "Silvan": {
+   "lat": 38.1412,
+   "lon": 41.0056,
+   "display": "Silvan, Diyarbakır, Güneydoğu Anadolu Bölgesi, Türkiye"
+  },
+  "Sur": {
+   "lat": 37.9111,
+   "lon": 40.2366,
+   "display": "Sur, Diyarbakır, Güneydoğu Anadolu Bölgesi, Türkiye"
+  },
+  "Yenişehir": {
+   "lat": 37.92,
+   "lon": 40.2299,
+   "display": "Yenişehir, Diyarbakır, Güneydoğu Anadolu Bölgesi, Türkiye"
+  }
+ },
+ "Erzurum": {
+  "Aşkale": {
+   "lat": 39.9218,
+   "lon": 40.6827,
+   "display": "Aşkale, Mehmet Akif Ersoy Caddesi, Cahit Aybar, Gümüşseren, Aşkale, Erzurum, Doğu Anadolu Bölgesi, 25500, Türkiye"
+  },
+  "Aziziye": {
+   "lat": 39.9455,
+   "lon": 41.106,
+   "display": "Aziziye, Erzurum, Doğu Anadolu Bölgesi, Türkiye"
+  },
+  "Çat": {
+   "lat": 39.6119,
+   "lon": 40.9774,
+   "display": "Çat, Erzurum, Doğu Anadolu Bölgesi, 25750, Türkiye"
+  },
+  "Hınıs": {
+   "lat": 39.3585,
+   "lon": 41.7003,
+   "display": "Hınıs, Erzurum, Doğu Anadolu Bölgesi, 25600, Türkiye"
+  },
+  "Horasan": {
+   "lat": 40.0408,
+   "lon": 42.1625,
+   "display": "Horasan, Şehit Harun Lal Caddesi, Esentepe, Horasan, Erzurum, Doğu Anadolu Bölgesi, 25800, Türkiye"
+  },
+  "İspir": {
+   "lat": 40.4834,
+   "lon": 41,
+   "display": "İspir, Erzurum, Doğu Anadolu Bölgesi, Türkiye"
+  },
+  "Karaçoban": {
+   "lat": 39.3505,
+   "lon": 42.1116,
+   "display": "Karaçoban, Erzurum, Doğu Anadolu Bölgesi, Türkiye"
+  },
+  "Karayazı": {
+   "lat": 39.7017,
+   "lon": 42.1431,
+   "display": "Karayazı, Erzurum, Doğu Anadolu Bölgesi, Türkiye"
+  },
+  "Köprüköy": {
+   "lat": 39.9685,
+   "lon": 41.8682,
+   "display": "Köprüköy, Necati Erer Cd., Şehitler, Köprüköy, Erzurum, Doğu Anadolu Bölgesi, 25320, Türkiye"
+  },
+  "Narman": {
+   "lat": 40.3452,
+   "lon": 41.8711,
+   "display": "Narman, Erzurum, Doğu Anadolu Bölgesi, Türkiye"
+  },
+  "Oltu": {
+   "lat": 40.5459,
+   "lon": 41.996,
+   "display": "Oltu, Erzurum, Doğu Anadolu Bölgesi, 25400, Türkiye"
+  },
+  "Olur": {
+   "lat": 40.8268,
+   "lon": 42.1332,
+   "display": "Olur, Erzurum, Doğu Anadolu Bölgesi, Türkiye"
+  },
+  "Palandöken": {
+   "lat": 39.9319,
+   "lon": 41.1715,
+   "display": "Palandöken, E80 Karayolu Bulvarı, Selçuklu Mahallesi, Gez Köyü OSB, Aziziye, Erzurum, Doğu Anadolu Bölgesi, 25080, Türkiye"
+  },
+  "Pasinler": {
+   "lat": 39.9773,
+   "lon": 41.6745,
+   "display": "Pasinler, Erzurum, Doğu Anadolu Bölgesi, Türkiye"
+  },
+  "Pazaryolu": {
+   "lat": 40.4143,
+   "lon": 40.7738,
+   "display": "Pazaryolu, Erzurum, Doğu Anadolu Bölgesi, Türkiye"
+  },
+  "Şenkaya": {
+   "lat": 40.5611,
+   "lon": 42.3453,
+   "display": "Şenkaya, Erzurum, Doğu Anadolu Bölgesi, Türkiye"
+  },
+  "Tekman": {
+   "lat": 39.6467,
+   "lon": 41.5094,
+   "display": "Tekman, Erzurum, Doğu Anadolu Bölgesi, Türkiye"
+  },
+  "Tortum": {
+   "lat": 40.2971,
+   "lon": 41.5508,
+   "display": "Tortum, Erzurum, Doğu Anadolu Bölgesi, Türkiye"
+  },
+  "Uzundere": {
+   "lat": 40.5327,
+   "lon": 41.5483,
+   "display": "Uzundere, Erzurum, Doğu Anadolu Bölgesi, Türkiye"
+  },
+  "Yakutiye": {
+   "lat": 39.9183,
+   "lon": 41.2794,
+   "display": "Yakutiye, Erzurum, Doğu Anadolu Bölgesi, Türkiye"
+  }
+ }
+}

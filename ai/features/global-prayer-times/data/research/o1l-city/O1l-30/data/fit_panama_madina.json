@@ -1,0 +1,83 @@
+{
+ "file": "data/mawaqit_panama_madina.json",
+ "name": "MADINA MASJID PANAMA - Panama",
+ "lat": 9.0030643,
+ "lon": -79.5216043,
+ "tz": "America/Panama",
+ "days": 365,
+ "candidates": [
+  {
+   "method": "Dubai",
+   "madhab": "shafi",
+   "totalMae": 9.19
+  },
+  {
+   "method": "Karachi",
+   "madhab": "shafi",
+   "totalMae": 9.89
+  },
+  {
+   "method": "MoonsightingCommittee",
+   "madhab": "shafi",
+   "totalMae": 10.18
+  }
+ ],
+ "refined": {
+  "method": "Dubai",
+  "madhab": "shafi",
+  "fajrAngle": 16.85,
+  "ishaAngle": 16.85,
+  "offsets": {
+   "fajr": -5,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 6,
+   "isha": 7
+  },
+  "scores": {
+   "fajr": {
+    "med": -0.1,
+    "exact": 243,
+    "w1": 365,
+    "mae": 0.37,
+    "worst": 1
+   },
+   "sunrise": {
+    "med": 0,
+    "exact": 359,
+    "w1": 365,
+    "mae": 0.24,
+    "worst": 0.5
+   },
+   "dhuhr": {
+    "med": 0,
+    "exact": 356,
+    "w1": 365,
+    "mae": 0.26,
+    "worst": 0.5
+   },
+   "asr": {
+    "med": -0.1,
+    "exact": 91,
+    "w1": 331,
+    "mae": 0.86,
+    "worst": 1.9
+   },
+   "maghrib": {
+    "med": 0,
+    "exact": 361,
+    "w1": 365,
+    "mae": 0.23,
+    "worst": 0.5
+   },
+   "isha": {
+    "med": 0.2,
+    "exact": 265,
+    "w1": 365,
+    "mae": 0.36,
+    "worst": 1
+   }
+  }
+ }
+}

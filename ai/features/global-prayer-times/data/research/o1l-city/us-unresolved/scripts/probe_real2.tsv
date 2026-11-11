@@ -1,0 +1,31 @@
+domain	metro	state	verdict	detail
+masmn.org	Flint	MI	miss	HTTP 403       
+cliftonmosque.org	Cincinnati	OH	miss	HTTP 200  masjidbox.com/prayer-times/islamic-association-of-cincinnati     href="https://masjidbox.com/prayer-times/islamic-association-of-cincinnati" 
+masjidfatima.com	Baltimore	MD	miss	HTTP 200    mohid.co/md/baltimore/fatima/masjid/online/donation   
+masjidubk.org	Grand	Rapids	miss	HTTP 404       
+islamichouseofwisdom.com	Dearborn	MI	miss	HTTP 200       href="/prayer-schedule" href="/friday-prayers" 
+themuslimcenter.com	Detroit	MI	miss	HTTP 200       
+masonmasjid.com	Cincinnati	OH	miss	HTTP 404       
+amcdearborn.webnovare.com	Dearborn	MI	miss	HTTP 200       
+triadmuslims.org	Greensboro	NC	miss	HTTP 200 masjid_id=OLnR9WLM    athanplus.com/masjid/widgets/embed?theme=3&amp  href="/prayer-times" href="/prayer-times" 
+hicny.org	New	York	miss	HTTP 200       
+apexmosque.org	Greensboro	NC	HIT_Dpt	rows=1 size=129213
+masdetroit.org	Detroit	MI	miss	HTTP 404       
+fayettevillemasjidnc.com	Greensboro	NC	miss	HTTP 404       href="https://fayettevillemasjidnc.com/local-prayer-schedule/" href="https://fayettevillemasjidnc.com/the-prophets-prayer-described/" 
+albukhariorlando.org	Orlando	FL	miss	HTTP 404       href="https://albukhariorlando.org/prayer-timings" href="https://albukhariorlando.org/prayer-timings" 
+nwicstl.com	St.	Louis	miss	HTTP 200 masjid_id=rdRvQDdG    athanplus.com/masjid/widgets/embed?theme=1&amp  
+masjidtaqwa.org	Orlando	FL	miss	HTTP 200 masjid_id=p8KXaELM   mohid.co/fl/florida/masjidtaqwa/masjid/online/donation athanplus.com/masjid/widgets/embed?theme=1&masjid_id=p8KXaELM&color=0da352&header=no&monthly=no  href="prayer-times.php" href="prayer-times.php" 
+masjidarrahmannyc.org	New	York	miss	HTTP 404       
+massic.org	New	York	miss	HTTP 404 masjid_id=3OA8V3Kp    athanplus.com/masjid/widgets/embed?theme=3&masjid_id=3OA8V3Kp  
+southlakemasjid.com	Salt	Lake	miss	HTTP 200       href="/prayer-times" href="/prayer-times" 
+icct.org	Hartford	CT	miss	HTTP 000       
+ummatey.com	Orlando	FL	miss	HTTP 200       
+matwproject.org	Baton	Rouge	miss	HTTP 200       
+masjidalislahi.org	Baton	Rouge	miss	HTTP 200 masjid_id=53387      
+macclm.info	Worcester	MA	miss	HTTP 200 masjid_id=rGAEj9dn   mohid.co/ma/boston/macclm/masjid/online/donation athanplus.com/masjid/widgets/embed?theme=1&amp  href="/prayer-timetable" href="/prayer-guide" 
+boroughsislamicsociety.com	Worcester	MA	miss	HTTP 200       
+icopct.com	Hartford	CT	miss	HTTP 404 masjid_id=8KXr2zAM    athanplus.com/masjid/widgets/embed?theme=1&  
+icjc.org	Kansas	City	miss	HTTP 404       
+mccpdx.org	Portland	OR	miss	HTTP 404       
+daraljalal.com	St.	Louis	miss	HTTP 404       
+berlinmosque.org	Hartford	CT	miss	HTTP 200       href="https://www.berlinmosque.org/activities/prayer-times/" href="https://www.berlinmosque.org/activities/prayer-times/" 

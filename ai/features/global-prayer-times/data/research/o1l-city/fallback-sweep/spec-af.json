@@ -1,0 +1,7 @@
+[
+ {"label":"cf-bangui-saina","file":"data/cf-bangui-saina-2026.json","tz":"Africa/Bangui","lat":4.3585649,"lon":18.5373133},
+ {"label":"gw-bissau-attadamun","file":"data/gw-bissau-attadamun-2026.json","tz":"Africa/Bissau","lat":11.8611568,"lon":-15.6133961},
+ {"label":"mg-mahajanga-vendredi","file":"data/mg-mahajanga-vendredi-2026.json","tz":"Indian/Antananarivo","lat":-15.717,"lon":46.32},
+ {"label":"mg-mahajanga-tawhid","file":"data/mg-mahajanga-tawhid-2026.json","tz":"Indian/Antananarivo","lat":-15.724905508048,"lon":46.321791543231},
+ {"label":"mg-nosybe-sengeniga","file":"data/mg-nosybe-sengeniga-2026.json","tz":"Indian/Antananarivo","lat":-13.3150186,"lon":48.2592606}
+]

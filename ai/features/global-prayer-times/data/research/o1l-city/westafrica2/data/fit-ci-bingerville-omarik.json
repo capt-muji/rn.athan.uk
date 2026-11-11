@@ -1,0 +1,100 @@
+{
+ "label": "ci-bingerville-omarik",
+ "file": "ci-bingerville-omarik-2026.json",
+ "tz": "Africa/Abidjan",
+ "lat": 5.357650809359,
+ "lon": -3.8829274717316,
+ "days": 365,
+ "span": [
+  "2026-01-01",
+  "2026-12-31"
+ ],
+ "engine": "adhan 4.4.6 Rounding.None MiddleOfTheNight",
+ "recipe": {
+  "fajrAngle": 20,
+  "ishaAngle": 12,
+  "madhab": "Shafi",
+  "offsets": {
+   "fajr": -1,
+   "sunrise": 1,
+   "dhuhr": -11,
+   "asr": -22,
+   "maghrib": -21,
+   "isha": -8
+  }
+ },
+ "angleSearch": {
+  "fajr": {
+   "angle": 20,
+   "exact": 59,
+   "w1": 163,
+   "worst": 14,
+   "score": 163059
+  },
+  "isha": {
+   "angle": 12,
+   "exact": 5,
+   "w1": 42,
+   "worst": 24,
+   "score": 42005
+  }
+ },
+ "asrMadhab": {
+  "shafi": {
+   "exact": 11,
+   "w1": 39,
+   "worst": 23,
+   "n": 365
+  },
+  "hanafi": {
+   "exact": 0,
+   "w1": 0,
+   "worst": 86,
+   "n": 365
+  }
+ },
+ "perColumn": {
+  "fajr": {
+   "exact": 79,
+   "w1": 156,
+   "worst": 15,
+   "n": 365
+  },
+  "sunrise": {
+   "exact": 187,
+   "w1": 365,
+   "worst": 1,
+   "n": 365
+  },
+  "dhuhr": {
+   "exact": 26,
+   "w1": 59,
+   "worst": 22,
+   "n": 365
+  },
+  "asr": {
+   "exact": 75,
+   "w1": 129,
+   "worst": 29,
+   "n": 365
+  },
+  "maghrib": {
+   "exact": 115,
+   "w1": 233,
+   "worst": 25,
+   "n": 365
+  },
+  "isha": {
+   "exact": 44,
+   "w1": 93,
+   "worst": 32,
+   "n": 365
+  }
+ },
+ "totals": {
+  "within1": 1035,
+  "of": 2190,
+  "exact": 526,
+  "worst": 32
+ }
+}

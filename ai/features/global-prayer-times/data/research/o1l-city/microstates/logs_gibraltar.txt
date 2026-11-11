@@ -1,0 +1,33 @@
+gibraltar 2011-01: 31
+gibraltar 2011-02: 28
+gibraltar 2011-03: 31
+gibraltar 2011-04: 30
+gibraltar 2011-05: 31
+gibraltar 2011-06: 30
+  http 504
+gibraltar 2011-07: 31
+gibraltar 2011-08: 31
+gibraltar 2011-09: 30
+gibraltar 2011-10: 31
+gibraltar 2011-11: 30
+gibraltar 2011-12: 31
+gibraltar 2011: 365 rows written
+gibraltar 2014-01: 31
+gibraltar 2014-02: 28
+gibraltar 2014-03: 31
+gibraltar 2014-04: 30
+  http 502
+  http 503
+gibraltar 2014-05: 31
+gibraltar 2014-06: 30
+  http 502
+  http 503
+gibraltar 2014-07: 31
+gibraltar 2014-08: 31
+gibraltar 2014-09: 30
+gibraltar 2014-10: 31
+gibraltar 2014-11: 30
+gibraltar 2014-12: 31
+gibraltar 2014: 365 rows written
+  http 502
+  http 503

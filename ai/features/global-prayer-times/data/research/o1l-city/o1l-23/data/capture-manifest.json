@@ -1,0 +1,1522 @@
+[
+ {
+  "prov": "İSTANBUL",
+  "district": "ARNAVUTKOY",
+  "ilce": 9535,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İSTANBUL",
+  "district": "AVCILAR",
+  "ilce": 17865,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İSTANBUL",
+  "district": "BAŞAKŞEHİR",
+  "ilce": 17866,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İSTANBUL",
+  "district": "BEYLİKDÜZÜ",
+  "ilce": 9536,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İSTANBUL",
+  "district": "BÜYÜKÇEKMECE",
+  "ilce": 9537,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İSTANBUL",
+  "district": "ÇATALCA",
+  "ilce": 9538,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İSTANBUL",
+  "district": "ÇEKMEKÖY",
+  "ilce": 9539,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İSTANBUL",
+  "district": "ESENYURT",
+  "ilce": 9540,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İSTANBUL",
+  "district": "İSTANBUL",
+  "ilce": 9541,
+  "isCapital": true,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İSTANBUL",
+  "district": "KARTAL",
+  "ilce": 9542,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İSTANBUL",
+  "district": "KÜÇÜKÇEKMECE",
+  "ilce": 9543,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İSTANBUL",
+  "district": "MALTEPE",
+  "ilce": 9544,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İSTANBUL",
+  "district": "PENDİK",
+  "ilce": 9545,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İSTANBUL",
+  "district": "SANCAKTEPE",
+  "ilce": 9546,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İSTANBUL",
+  "district": "ŞİLE",
+  "ilce": 9547,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İSTANBUL",
+  "district": "SİLİVRİ",
+  "ilce": 9548,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İSTANBUL",
+  "district": "SULTANBEYLİ",
+  "ilce": 9549,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İSTANBUL",
+  "district": "SULTANGAZİ",
+  "ilce": 9550,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İSTANBUL",
+  "district": "TUZLA",
+  "ilce": 9551,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ANKARA",
+  "district": "AKYURT",
+  "ilce": 9205,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ANKARA",
+  "district": "ANKARA",
+  "ilce": 9206,
+  "isCapital": true,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ANKARA",
+  "district": "AYAŞ",
+  "ilce": 9207,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ANKARA",
+  "district": "BALA",
+  "ilce": 9208,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ANKARA",
+  "district": "BEYPAZARI",
+  "ilce": 9209,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ANKARA",
+  "district": "ÇAMLIDERE",
+  "ilce": 9210,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ANKARA",
+  "district": "CUBUK",
+  "ilce": 9211,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ANKARA",
+  "district": "ELMADAĞ",
+  "ilce": 9212,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ANKARA",
+  "district": "EVREN",
+  "ilce": 9213,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ANKARA",
+  "district": "GÜDÜL",
+  "ilce": 9214,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ANKARA",
+  "district": "HAYMANA",
+  "ilce": 9215,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ANKARA",
+  "district": "KAHRAMANKAZAN",
+  "ilce": 9217,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ANKARA",
+  "district": "KALECİK",
+  "ilce": 9216,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ANKARA",
+  "district": "KIZILCAHAMAM",
+  "ilce": 9218,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ANKARA",
+  "district": "NALLIHAN",
+  "ilce": 9219,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ANKARA",
+  "district": "POLATLI",
+  "ilce": 9220,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ANKARA",
+  "district": "ŞEREFLİKOÇHİSAR",
+  "ilce": 9221,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İZMİR",
+  "district": "ALİAĞA",
+  "ilce": 9552,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İZMİR",
+  "district": "BAYINDIR",
+  "ilce": 9553,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İZMİR",
+  "district": "BERGAMA",
+  "ilce": 9554,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İZMİR",
+  "district": "BEYDAĞ",
+  "ilce": 9555,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İZMİR",
+  "district": "CEŞME",
+  "ilce": 9556,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İZMİR",
+  "district": "DİKİLİ",
+  "ilce": 9557,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İZMİR",
+  "district": "FOÇA",
+  "ilce": 9558,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İZMİR",
+  "district": "GÜZELBAHÇE",
+  "ilce": 9559,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İZMİR",
+  "district": "İZMİR",
+  "ilce": 9560,
+  "isCapital": true,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İZMİR",
+  "district": "KARABURUN",
+  "ilce": 9561,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İZMİR",
+  "district": "KEMALPAŞA",
+  "ilce": 9562,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İZMİR",
+  "district": "KINIK",
+  "ilce": 9563,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İZMİR",
+  "district": "KİRAZ",
+  "ilce": 9564,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İZMİR",
+  "district": "MENDERES",
+  "ilce": 17868,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İZMİR",
+  "district": "MENEMEN",
+  "ilce": 17869,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İZMİR",
+  "district": "ÖDEMİŞ",
+  "ilce": 9565,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İZMİR",
+  "district": "SEFERIHİSAR",
+  "ilce": 9566,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İZMİR",
+  "district": "SELÇUK",
+  "ilce": 9567,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İZMİR",
+  "district": "TİRE",
+  "ilce": 9568,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İZMİR",
+  "district": "TORBALI",
+  "ilce": 9569,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "İZMİR",
+  "district": "URLA",
+  "ilce": 9570,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "KONYA",
+  "district": "AHIRLI",
+  "ilce": 9656,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "KONYA",
+  "district": "AKÖREN",
+  "ilce": 9657,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "KONYA",
+  "district": "AKŞEHİR",
+  "ilce": 9658,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "KONYA",
+  "district": "ALTINEKİN",
+  "ilce": 9659,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "KONYA",
+  "district": "BEYŞEHİR",
+  "ilce": 9660,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "KONYA",
+  "district": "BOZKIR",
+  "ilce": 9661,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "KONYA",
+  "district": "ÇELTİK",
+  "ilce": 9662,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "KONYA",
+  "district": "CİHANBEYLİ",
+  "ilce": 9663,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "KONYA",
+  "district": "ÇUMRA",
+  "ilce": 9664,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "KONYA",
+  "district": "DERBENT",
+  "ilce": 9665,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "KONYA",
+  "district": "DEREBUCAK",
+  "ilce": 9666,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "KONYA",
+  "district": "DOĞANHİSAR",
+  "ilce": 9667,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "KONYA",
+  "district": "EMİRGAZİ",
+  "ilce": 9668,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "KONYA",
+  "district": "EREĞLİ",
+  "ilce": 9669,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "KONYA",
+  "district": "GÜNEYSINIR",
+  "ilce": 9670,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "KONYA",
+  "district": "HADİM",
+  "ilce": 16704,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "KONYA",
+  "district": "HALKAPINAR",
+  "ilce": 9671,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "KONYA",
+  "district": "HÜYÜK",
+  "ilce": 9672,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "KONYA",
+  "district": "ILGIN",
+  "ilce": 9673,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "KONYA",
+  "district": "KADINHANI",
+  "ilce": 9674,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "KONYA",
+  "district": "KARAPINAR",
+  "ilce": 9675,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "KONYA",
+  "district": "KARATAY",
+  "ilce": 17872,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "KONYA",
+  "district": "KONYA",
+  "ilce": 9676,
+  "isCapital": true,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "KONYA",
+  "district": "KULU",
+  "ilce": 9677,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "KONYA",
+  "district": "MERAM",
+  "ilce": 17870,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "KONYA",
+  "district": "SARAYÖNÜ",
+  "ilce": 17874,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "KONYA",
+  "district": "SELÇUKLU",
+  "ilce": 17871,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "KONYA",
+  "district": "SEYDİŞEHİR",
+  "ilce": 9678,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "KONYA",
+  "district": "TAŞKENT",
+  "ilce": 17873,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "KONYA",
+  "district": "TUZLUKÇU",
+  "ilce": 9679,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "KONYA",
+  "district": "YALIHÜYÜK",
+  "ilce": 9680,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "KONYA",
+  "district": "YUNAK",
+  "ilce": 9681,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "BURSA",
+  "district": "BURSA",
+  "ilce": 9335,
+  "isCapital": true,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "BURSA",
+  "district": "BÜYÜK ORHAN",
+  "ilce": 9336,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "BURSA",
+  "district": "GEMLİK",
+  "ilce": 9337,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "BURSA",
+  "district": "HARMANCIK",
+  "ilce": 9338,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "BURSA",
+  "district": "İNEGÖL",
+  "ilce": 9339,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "BURSA",
+  "district": "İZNİK",
+  "ilce": 9340,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "BURSA",
+  "district": "KARACABEY",
+  "ilce": 9341,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "BURSA",
+  "district": "KELES",
+  "ilce": 9342,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "BURSA",
+  "district": "KESTEL",
+  "ilce": 17893,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "BURSA",
+  "district": "MUDANYA",
+  "ilce": 9343,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "BURSA",
+  "district": "MUSTAFA KEMALPAŞA",
+  "ilce": 9344,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "BURSA",
+  "district": "ORHANELİ",
+  "ilce": 17894,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "BURSA",
+  "district": "ORHANGAZİ",
+  "ilce": 9345,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "BURSA",
+  "district": "YENİŞEHİR",
+  "ilce": 9346,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ANTALYA",
+  "district": "AKSEKİ",
+  "ilce": 9222,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ANTALYA",
+  "district": "AKSU",
+  "ilce": 9223,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ANTALYA",
+  "district": "ALANYA",
+  "ilce": 9224,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ANTALYA",
+  "district": "ANTALYA",
+  "ilce": 9225,
+  "isCapital": true,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ANTALYA",
+  "district": "DEMRE",
+  "ilce": 9226,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ANTALYA",
+  "district": "ELMALI",
+  "ilce": 9227,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ANTALYA",
+  "district": "FİNİKE",
+  "ilce": 9228,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ANTALYA",
+  "district": "GAZİPAŞA",
+  "ilce": 9229,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ANTALYA",
+  "district": "GÜNDOĞMUŞ",
+  "ilce": 9230,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ANTALYA",
+  "district": "İBRADI",
+  "ilce": 9231,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ANTALYA",
+  "district": "KAŞ",
+  "ilce": 9232,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ANTALYA",
+  "district": "KEMER",
+  "ilce": 9233,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ANTALYA",
+  "district": "KORKUTELİ",
+  "ilce": 9234,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ANTALYA",
+  "district": "KUMLUCA",
+  "ilce": 9235,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ANTALYA",
+  "district": "MANAVGAT",
+  "ilce": 9236,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ANTALYA",
+  "district": "SERİK",
+  "ilce": 9237,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "DİYARBAKIR",
+  "district": "BİSMİL",
+  "ilce": 9397,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "DİYARBAKIR",
+  "district": "ÇERMİK",
+  "ilce": 9398,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "DİYARBAKIR",
+  "district": "ÇINAR",
+  "ilce": 9399,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "DİYARBAKIR",
+  "district": "ÇÜNGÜŞ",
+  "ilce": 9400,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "DİYARBAKIR",
+  "district": "DİCLE",
+  "ilce": 9401,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "DİYARBAKIR",
+  "district": "DİYARBAKIR",
+  "ilce": 9402,
+  "isCapital": true,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "DİYARBAKIR",
+  "district": "EĞİL",
+  "ilce": 9403,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "DİYARBAKIR",
+  "district": "ERGANİ",
+  "ilce": 9404,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "DİYARBAKIR",
+  "district": "HANİ",
+  "ilce": 9405,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "DİYARBAKIR",
+  "district": "HAZRO",
+  "ilce": 9406,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "DİYARBAKIR",
+  "district": "KOCAKÖY",
+  "ilce": 9407,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "DİYARBAKIR",
+  "district": "KULP",
+  "ilce": 9408,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "DİYARBAKIR",
+  "district": "LİCE",
+  "ilce": 9409,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "DİYARBAKIR",
+  "district": "SİLVAN",
+  "ilce": 9410,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ERZURUM",
+  "district": "AŞKALE",
+  "ilce": 9448,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ERZURUM",
+  "district": "AZİZİYE",
+  "ilce": 9449,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ERZURUM",
+  "district": "ÇAT",
+  "ilce": 9450,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ERZURUM",
+  "district": "ERZURUM",
+  "ilce": 9451,
+  "isCapital": true,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ERZURUM",
+  "district": "HINIS",
+  "ilce": 9452,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ERZURUM",
+  "district": "HORASAN",
+  "ilce": 9453,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ERZURUM",
+  "district": "İSPİR",
+  "ilce": 9454,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ERZURUM",
+  "district": "KARAÇOBAN",
+  "ilce": 9455,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ERZURUM",
+  "district": "KARAYAZI",
+  "ilce": 9456,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ERZURUM",
+  "district": "KÖPRÜKÖY",
+  "ilce": 9457,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ERZURUM",
+  "district": "NARMAN",
+  "ilce": 9458,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ERZURUM",
+  "district": "OLTU",
+  "ilce": 9459,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ERZURUM",
+  "district": "OLUR",
+  "ilce": 9460,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ERZURUM",
+  "district": "PASİNLER",
+  "ilce": 9461,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ERZURUM",
+  "district": "PAZARYOLU",
+  "ilce": 9462,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ERZURUM",
+  "district": "ŞENKAYA",
+  "ilce": 9463,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ERZURUM",
+  "district": "TEKMAN",
+  "ilce": 9464,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ERZURUM",
+  "district": "TORTUM",
+  "ilce": 9465,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ },
+ {
+  "prov": "ERZURUM",
+  "district": "UZUNDERE",
+  "ilce": 9466,
+  "isCapital": false,
+  "days": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "status": 200
+ }
+]

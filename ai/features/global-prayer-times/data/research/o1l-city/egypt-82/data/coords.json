@@ -1,0 +1,728 @@
+[
+ {
+  "i": 0,
+  "key": "القاهرة",
+  "value": "القـاهـرة",
+  "lat": 30.06263,
+  "lng": 31.24967,
+  "source": "geonames:Cairo",
+  "rivals": []
+ },
+ {
+  "i": 1,
+  "key": "الأسكندرية",
+  "value": "الأسكندرية",
+  "lat": 31.20176,
+  "lng": 29.91582,
+  "source": "geonames:Alexandria",
+  "rivals": []
+ },
+ {
+  "i": 2,
+  "key": "طنطا",
+  "value": "طنطــا",
+  "lat": 30.78847,
+  "lng": 31.00192,
+  "source": "geonames:Tanta",
+  "rivals": []
+ },
+ {
+  "i": 3,
+  "key": "المنصورة",
+  "value": "المنصورة",
+  "lat": 31.03637,
+  "lng": 31.38069,
+  "source": "geonames:Al Mansurah",
+  "rivals": []
+ },
+ {
+  "i": 4,
+  "key": "الزقازيق",
+  "value": "الزقـازيق",
+  "lat": 30.58768,
+  "lng": 31.502,
+  "source": "geonames:Zagazig",
+  "rivals": []
+ },
+ {
+  "i": 5,
+  "key": "أسيوط",
+  "value": "أسيــوط",
+  "lat": 27.18096,
+  "lng": 31.18368,
+  "source": "geonames:Assiut",
+  "rivals": []
+ },
+ {
+  "i": 6,
+  "key": "سوهاج",
+  "value": "سـوهاج",
+  "lat": 26.55695,
+  "lng": 31.69478,
+  "source": "geonames:Sohag",
+  "rivals": []
+ },
+ {
+  "i": 7,
+  "key": "بنى سويف",
+  "value": "بنى سويف",
+  "lat": 29.07441,
+  "lng": 31.09785,
+  "source": "geonames:Banī Suwayf",
+  "rivals": []
+ },
+ {
+  "i": 8,
+  "key": "المنيا",
+  "value": "المنـيـا",
+  "lat": 28.09193,
+  "lng": 30.75813,
+  "source": "geonames:Minya",
+  "rivals": []
+ },
+ {
+  "i": 9,
+  "key": "قنا",
+  "value": "قـــنا",
+  "lat": 26.16418,
+  "lng": 32.72671,
+  "source": "geonames:Qina",
+  "rivals": []
+ },
+ {
+  "i": 10,
+  "key": "أسوان",
+  "value": "أســوان",
+  "lat": 24.09082,
+  "lng": 32.89942,
+  "source": "geonames:Aswān",
+  "rivals": []
+ },
+ {
+  "i": 11,
+  "key": "مطروح",
+  "value": "مطـروح",
+  "lat": 31.3529,
+  "lng": 27.23725,
+  "source": "geonames:Marsa Matruh"
+ },
+ {
+  "i": 12,
+  "key": "الغردقة",
+  "value": "الغردقـة",
+  "lat": 27.25738,
+  "lng": 33.81291,
+  "source": "geonames:Hurghada",
+  "rivals": []
+ },
+ {
+  "i": 13,
+  "key": "الخارجة",
+  "value": "الخارجـة",
+  "lat": 25.45101,
+  "lng": 30.54653,
+  "source": "geonames:Al Khārjah",
+  "rivals": []
+ },
+ {
+  "i": 14,
+  "key": "الإسماعيلية",
+  "value": "الإسماعيلية",
+  "lat": 30.60427,
+  "lng": 32.27225,
+  "source": "geonames:Ismailia",
+  "rivals": []
+ },
+ {
+  "i": 15,
+  "key": "دمياط",
+  "value": "دميـاط",
+  "lat": 31.41648,
+  "lng": 31.81332,
+  "source": "geonames:Damietta",
+  "rivals": []
+ },
+ {
+  "i": 16,
+  "key": "السلوم",
+  "value": "السـلوم",
+  "lat": 31.55371,
+  "lng": 25.15793,
+  "source": "geonames:As Sallūm",
+  "rivals": []
+ },
+ {
+  "i": 17,
+  "key": "نويبع",
+  "value": "نويـبع",
+  "lat": 29.04681,
+  "lng": 34.6634,
+  "source": "geonames:Nuwaybi‘a",
+  "rivals": []
+ },
+ {
+  "i": 18,
+  "key": "حلايب",
+  "value": "حلايــب",
+  "lat": 22.22273,
+  "lng": 36.64679,
+  "source": "geonames:Hala'ib"
+ },
+ {
+  "i": 19,
+  "key": "شرم الشيخ",
+  "value": "شرم الشيخ",
+  "lat": 27.91582,
+  "lng": 34.32995,
+  "source": "geonames:Sharm el-Sheikh",
+  "rivals": []
+ },
+ {
+  "i": 20,
+  "key": "الفيوم",
+  "value": "الفـيــوم",
+  "lat": 29.30995,
+  "lng": 30.8418,
+  "source": "geonames:Al Fayyum",
+  "rivals": []
+ },
+ {
+  "i": 21,
+  "key": "6أكتوبر",
+  "value": "6أكتـوبر",
+  "lat": 29.9361,
+  "lng": 30.9188,
+  "source": "manual:6 October City core"
+ },
+ {
+  "i": 22,
+  "key": "كفر الشيخ",
+  "value": "كفر الشيخ",
+  "lat": 31.11174,
+  "lng": 30.93991,
+  "source": "geonames:Kafr ash Shaykh",
+  "rivals": []
+ },
+ {
+  "i": 23,
+  "key": "الحامول",
+  "value": "الحامول",
+  "lat": 31.31146,
+  "lng": 31.14766,
+  "source": "geonames:Al Ḩāmūl",
+  "rivals": [
+   "Al Ḩāmūl@30.47788,30.97655(0)"
+  ]
+ },
+ {
+  "i": 24,
+  "key": "بلطيم",
+  "value": "بلطيم",
+  "lat": 31.55582,
+  "lng": 31.08918,
+  "source": "geonames:Balţīm",
+  "rivals": []
+ },
+ {
+  "i": 25,
+  "key": "طابا",
+  "value": "طابا",
+  "lat": 29.49199,
+  "lng": 34.89572,
+  "source": "geonames:Taba",
+  "rivals": []
+ },
+ {
+  "i": 26,
+  "key": "راس سدر",
+  "value": "راس سدر",
+  "lat": 29.5833,
+  "lng": 32.6667,
+  "source": "manual:Ras Sedr"
+ },
+ {
+  "i": 27,
+  "key": "الطور",
+  "value": "الطور",
+  "lat": 28.24168,
+  "lng": 33.6222,
+  "source": "geonames:El-Tor",
+  "rivals": []
+ },
+ {
+  "i": 28,
+  "key": "دهب",
+  "value": "دهب",
+  "lat": 28.48208,
+  "lng": 34.49505,
+  "source": "geonames:Dahab",
+  "rivals": []
+ },
+ {
+  "i": 29,
+  "key": "ابوزنيمة",
+  "value": "ابوزنيمة",
+  "lat": 29.0475,
+  "lng": 33.11034,
+  "source": "geonames:Abū Zanīmah",
+  "rivals": []
+ },
+ {
+  "i": 30,
+  "key": "راس غارب",
+  "value": "راس غارب",
+  "lat": 28.35831,
+  "lng": 33.07829,
+  "source": "geonames:Ras Gharib"
+ },
+ {
+  "i": 31,
+  "key": "القصير",
+  "value": "القصير",
+  "lat": 26.10611,
+  "lng": 34.27716,
+  "source": "geonames:Al Quşayr",
+  "rivals": [
+   "Al Quşayr@27.45914,30.8598(0)"
+  ]
+ },
+ {
+  "i": 32,
+  "key": "برنيس",
+  "value": "برنيس",
+  "lat": 23.94556,
+  "lng": 35.48417,
+  "source": "geonames:Barnis/Berenice"
+ },
+ {
+  "i": 33,
+  "key": "سفاجة",
+  "value": "سفاجة",
+  "lat": 26.74906,
+  "lng": 33.93891,
+  "source": "geonames:Safaga"
+ },
+ {
+  "i": 34,
+  "key": "مرسى علم",
+  "value": "مرسى علم",
+  "lat": 25.06305,
+  "lng": 34.89005,
+  "source": "geonames:Marsa Alam",
+  "rivals": []
+ },
+ {
+  "i": 35,
+  "key": "شلاتين",
+  "value": "شلاتين",
+  "lat": 23.13235,
+  "lng": 35.59094,
+  "source": "geonames:Shalateen",
+  "rivals": [
+   "Shalātīn@23.13905,35.59821(12421)"
+  ]
+ },
+ {
+  "i": 36,
+  "key": "سيدى برانى",
+  "value": "سيدى برانى",
+  "lat": 31.61166,
+  "lng": 25.92539,
+  "source": "geonames:Sīdī Barānī",
+  "rivals": []
+ },
+ {
+  "i": 37,
+  "key": "الضبعة",
+  "value": "الضبعة",
+  "lat": 31.02819,
+  "lng": 28.44498,
+  "source": "geonames:El Dabaa",
+  "rivals": [
+   "Aḑ Ḑab‘ah@31.26456,30.92026(0)"
+  ]
+ },
+ {
+  "i": 38,
+  "key": "العلمين",
+  "value": "العلمين",
+  "lat": 30.83007,
+  "lng": 28.95502,
+  "source": "geonames:Al ‘Alamayn",
+  "rivals": []
+ },
+ {
+  "i": 39,
+  "key": "واحة سيوة",
+  "value": "واحة سيوة",
+  "lat": 29.2032,
+  "lng": 25.51965,
+  "source": "geonames:Sīwah",
+  "rivals": []
+ },
+ {
+  "i": 40,
+  "key": "موط (الداخلة )",
+  "value": "موط (الداخلة )",
+  "lat": 25.48742,
+  "lng": 28.97918,
+  "source": "geonames:Mut (Dakhla)"
+ },
+ {
+  "i": 41,
+  "key": "الفرافرة",
+  "value": "الفرافرة",
+  "lat": 27.0568,
+  "lng": 27.96979,
+  "source": "geonames:Qasr al Farafirah"
+ },
+ {
+  "i": 42,
+  "key": "البويطى",
+  "value": "البويطى",
+  "lat": 28.34827,
+  "lng": 28.86936,
+  "source": "geonames:Al Bawīţī",
+  "rivals": []
+ },
+ {
+  "i": 43,
+  "key": "باريس",
+  "value": "باريس",
+  "lat": 24.67379,
+  "lng": 30.60101,
+  "source": "geonames:Bārīs",
+  "rivals": []
+ },
+ {
+  "i": 44,
+  "key": "المحلة الكبرى",
+  "value": "المحلة الكبرى",
+  "lat": 30.97063,
+  "lng": 31.1669,
+  "source": "geonames:Al Maḩallah al Kubrá",
+  "rivals": []
+ },
+ {
+  "i": 45,
+  "key": "الحمام",
+  "value": "الحمام",
+  "lat": 30.84532,
+  "lng": 29.38818,
+  "source": "geonames:Al Ḩammām",
+  "rivals": [
+   "Al Ḩammām@27.26174,31.17811(0)"
+  ]
+ },
+ {
+  "i": 46,
+  "key": "نجع حمادى",
+  "value": "نجع حمادى",
+  "lat": 26.04949,
+  "lng": 32.24142,
+  "source": "geonames:Nag Hammâdi",
+  "rivals": []
+ },
+ {
+  "i": 47,
+  "key": "بورسعيد",
+  "value": "بورسعيـد",
+  "lat": 31.26531,
+  "lng": 32.3019,
+  "source": "geonames:Port Said",
+  "rivals": [
+   "Būr Sa‘īd@24.79342,30.59166(0)"
+  ]
+ },
+ {
+  "i": 48,
+  "key": "السويس",
+  "value": "السـويس",
+  "lat": 29.97371,
+  "lng": 32.52627,
+  "source": "geonames:Suez",
+  "rivals": []
+ },
+ {
+  "i": 49,
+  "key": "العريش",
+  "value": "العريـش",
+  "lat": 31.13159,
+  "lng": 33.79844,
+  "source": "geonames:Arīsh",
+  "rivals": []
+ },
+ {
+  "i": 50,
+  "key": "دمنهور",
+  "value": "دمنـهـور",
+  "lat": 31.03408,
+  "lng": 30.46823,
+  "source": "geonames:Damanhur",
+  "rivals": []
+ },
+ {
+  "i": 51,
+  "key": "ادفو",
+  "value": "ادفو",
+  "lat": 24.97916,
+  "lng": 32.87722,
+  "source": "geonames:Edfu",
+  "rivals": []
+ },
+ {
+  "i": 52,
+  "key": "اسنا",
+  "value": "اسنا",
+  "lat": 25.29336,
+  "lng": 32.55402,
+  "source": "geonames:Esna",
+  "rivals": []
+ },
+ {
+  "i": 53,
+  "key": "الأقصر",
+  "value": "الأقصر",
+  "lat": 25.69893,
+  "lng": 32.6421,
+  "source": "geonames:Luxor",
+  "rivals": []
+ },
+ {
+  "i": 54,
+  "key": "القاهرة الجديدة",
+  "value": "القاهرة الجديدة",
+  "lat": 30.03,
+  "lng": 31.47,
+  "source": "geonames:New Cairo",
+  "rivals": [
+   "Al Qāhirah al Jadīdah@30.04214,31.44446(313139)"
+  ]
+ },
+ {
+  "i": 55,
+  "key": "توشكى",
+  "value": "توشكى",
+  "lat": 22.5224,
+  "lng": 31.96734,
+  "source": "geonames:Tushkah Sharq"
+ },
+ {
+  "i": 56,
+  "key": "الدلنجات",
+  "value": "الدلنجات",
+  "lat": 30.82796,
+  "lng": 30.53552,
+  "source": "geonames:Ad Dilinjāt",
+  "rivals": []
+ },
+ {
+  "i": 57,
+  "key": "كاترين",
+  "value": "كاترين",
+  "lat": 28.56199,
+  "lng": 33.95005,
+  "source": "geonames:Sant Katrina"
+ },
+ {
+  "i": 58,
+  "key": "السادات",
+  "value": "السادات",
+  "lat": 30.36742,
+  "lng": 30.50871,
+  "source": "geonames:Madinat as Sadat"
+ },
+ {
+  "i": 59,
+  "key": "مدينة 15 مايو",
+  "value": "مدينة 15 مايو",
+  "lat": 29.82983,
+  "lng": 31.36965,
+  "source": "geonames:15 May City",
+  "rivals": []
+ },
+ {
+  "i": 60,
+  "key": "الصالحية الجديدة",
+  "value": "الصالحية الجديدة",
+  "lat": 30.63146,
+  "lng": 31.93927,
+  "source": "geonames:Aş Şāliḩīyah al Jadīdah",
+  "rivals": [
+   "Sakan aş Şāliḩīyah al Jadīdah@31.2216,29.97836(0)"
+  ]
+ },
+ {
+  "i": 61,
+  "key": "العاشر من رمضان",
+  "value": "العاشر من رمضان",
+  "lat": 30.29636,
+  "lng": 31.74633,
+  "source": "geonames:Al ‘Āshir min Ramaḑān",
+  "rivals": []
+ },
+ {
+  "i": 62,
+  "key": "العاصمة الادارية الجديدة",
+  "value": "العاصمة الادارية الجديدة",
+  "lat": 30.0167,
+  "lng": 31.75,
+  "source": "manual:New Administrative Capital"
+ },
+ {
+  "i": 63,
+  "key": "العبور",
+  "value": "العبور",
+  "lat": 30.22886,
+  "lng": 31.48149,
+  "source": "geonames:Al-'Ubūr",
+  "rivals": []
+ },
+ {
+  "i": 64,
+  "key": "الفشن الجديدة",
+  "value": "الفشن الجديدة",
+  "lat": 28.82306,
+  "lng": 30.89903,
+  "source": "geonames:Al Fashn"
+ },
+ {
+  "i": 65,
+  "key": "المنصورة الجديدة",
+  "value": "المنصورة الجديدة",
+  "lat": 31.3667,
+  "lng": 31.55,
+  "source": "manual:New Mansoura (coastal)"
+ },
+ {
+  "i": 66,
+  "key": "النوبارية الجديدة",
+  "value": "النوبارية الجديدة",
+  "lat": 30.6687,
+  "lng": 30.07391,
+  "source": "geonames:An Nubariyah"
+ },
+ {
+  "i": 67,
+  "key": "بدر",
+  "value": "بدر",
+  "lat": 30.136,
+  "lng": 31.715,
+  "source": "geonames:Badr City"
+ },
+ {
+  "i": 68,
+  "key": "بنى مزار الجديدة",
+  "value": "بنى مزار الجديدة",
+  "lat": 28.49456,
+  "lng": 30.80526,
+  "source": "geonames:Bani Mazar"
+ },
+ {
+  "i": 69,
+  "key": "بورسعيد الجديدة سلام",
+  "value": "بورسعيد الجديدة سلام",
+  "lat": 31.1833,
+  "lng": 32.2833,
+  "source": "manual:New Port Said (Salam)"
+ },
+ {
+  "i": 70,
+  "key": "بئر العبد الجديدة",
+  "value": "بئر العبد الجديدة",
+  "lat": 31.0167,
+  "lng": 33.0167,
+  "source": "manual:Bir al-Abd"
+ },
+ {
+  "i": 71,
+  "key": "توشكى الجديدة",
+  "value": "توشكى الجديدة",
+  "lat": 22.5224,
+  "lng": 31.96734,
+  "source": "geonames:Tushkah Sharq"
+ },
+ {
+  "i": 72,
+  "key": "حدائق العاصمة",
+  "value": "حدائق العاصمة",
+  "lat": 30.05,
+  "lng": 31.65,
+  "source": "manual:Capital Gardens"
+ },
+ {
+  "i": 73,
+  "key": "رشيد الجديدة",
+  "value": "رشيد الجديدة",
+  "lat": 31.39951,
+  "lng": 30.41718,
+  "source": "geonames:Rosetta"
+ },
+ {
+  "i": 74,
+  "key": "رفح الجديدة",
+  "value": "رفح الجديدة",
+  "lat": 31.28204,
+  "lng": 34.23869,
+  "source": "geonames:Rafah"
+ },
+ {
+  "i": 75,
+  "key": "سفنكس الجديدة",
+  "value": "سفنكس الجديدة",
+  "lat": 29.95,
+  "lng": 31.05,
+  "source": "manual:Sphinx City"
+ },
+ {
+  "i": 76,
+  "key": "شرق العوينات",
+  "value": "شرق العوينات",
+  "lat": 22.5833,
+  "lng": 28.7167,
+  "source": "manual:East Oweinat"
+ },
+ {
+  "i": 77,
+  "key": "غرب النوبارية",
+  "value": "غرب النوبارية",
+  "lat": 30.65,
+  "lng": 29.95,
+  "source": "manual:West Nubaria"
+ },
+ {
+  "i": 78,
+  "key": "منوف",
+  "value": "منوف",
+  "lat": 30.46597,
+  "lng": 30.93199,
+  "source": "geonames:Munūf",
+  "rivals": []
+ },
+ {
+  "i": 79,
+  "key": "ديرب نجم",
+  "value": "ديرب نجم",
+  "lat": 30.75438,
+  "lng": 31.44016,
+  "source": "geonames:Diyarb Najm",
+  "rivals": []
+ },
+ {
+  "i": 80,
+  "key": "ابو تشت",
+  "value": "ابو تشت",
+  "lat": 26.12039,
+  "lng": 32.09543,
+  "source": "geonames:Abu Tisht"
+ },
+ {
+  "i": 81,
+  "key": "سمالوط",
+  "value": "سمالوط",
+  "lat": 28.31214,
+  "lng": 30.71007,
+  "source": "geonames:Samālūţ",
+  "rivals": []
+ }
+]

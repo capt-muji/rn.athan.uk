@@ -1,0 +1,407 @@
+[
+ {
+  "slug": "kiribati__bairiki-village",
+  "first": "2026-09-27",
+  "last": "2026-10-02"
+ },
+ {
+  "slug": "kiribati__betio-village",
+  "first": "2026-09-27",
+  "last": "2026-10-02"
+ },
+ {
+  "slug": "kiribati__bikenibeu-village",
+  "first": "2026-09-27",
+  "last": "2026-10-02"
+ },
+ {
+  "slug": "kiribati__south-tarawa",
+  "first": "2026-09-27",
+  "last": "2026-10-02"
+ },
+ {
+  "slug": "kiribati__teaoraereke-village",
+  "first": "2026-09-27",
+  "last": "2026-10-02"
+ },
+ {
+  "slug": "liberia__ganta",
+  "first": "2026-09-29",
+  "last": "2026-10-01"
+ },
+ {
+  "slug": "liberia__gbarnga",
+  "first": "2026-09-29",
+  "last": "2026-10-02"
+ },
+ {
+  "slug": "liberia__greenville",
+  "first": "2026-09-29",
+  "last": "2026-10-01"
+ },
+ {
+  "slug": "liberia__harper",
+  "first": "2026-09-29",
+  "last": "2026-10-01"
+ },
+ {
+  "slug": "liberia__kakata",
+  "first": "2026-09-27",
+  "last": "2026-10-01"
+ },
+ {
+  "slug": "liberia__monrovia",
+  "first": "2026-09-29",
+  "last": "2026-10-01"
+ },
+ {
+  "slug": "liberia__new-yekepa",
+  "first": "2026-09-29",
+  "last": "2026-10-01"
+ },
+ {
+  "slug": "liberia__robertsport",
+  "first": "2026-09-27",
+  "last": "2026-10-01"
+ },
+ {
+  "slug": "liberia__zwedru",
+  "first": "2026-09-27",
+  "last": "2026-10-02"
+ },
+ {
+  "slug": "myanmar__bago",
+  "first": "2026-09-27",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "myanmar__mandalay",
+  "first": "2026-09-28",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "myanmar__mawlamyine",
+  "first": "2026-09-28",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "myanmar__monywa",
+  "first": "2026-09-28",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "myanmar__myitkyina",
+  "first": "2026-09-28",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "myanmar__naypyidaw",
+  "first": "2026-09-28",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "myanmar__pathein",
+  "first": "2026-09-29",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "myanmar__sittwe",
+  "first": "2026-09-28",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "myanmar__taunggyi",
+  "first": "2026-09-29",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "myanmar__yangon",
+  "first": "2026-09-28",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "nepal__bharatpur",
+  "first": "2026-09-28",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "nepal__biratnagar",
+  "first": "2026-09-29",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "nepal__butwal",
+  "first": "2026-09-28",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "nepal__dhangadhi",
+  "first": "2026-09-28",
+  "last": "2026-09-29"
+ },
+ {
+  "slug": "nepal__dharan",
+  "first": "2026-09-29",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "nepal__janakpur",
+  "first": "2026-09-28",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "nepal__kathmandu",
+  "first": "2026-09-29",
+  "last": "2026-09-29"
+ },
+ {
+  "slug": "nepal__lalitpur",
+  "first": "2026-09-29",
+  "last": "2026-09-29"
+ },
+ {
+  "slug": "nepal__pokhara",
+  "first": "2026-09-29",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "papua-new-guinea__bulolo",
+  "first": "2026-09-28",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "papua-new-guinea__daru",
+  "first": "2026-09-27",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "papua-new-guinea__goroka",
+  "first": "2026-09-28",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "papua-new-guinea__kimbe",
+  "first": "2026-09-28",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "papua-new-guinea__kokopo",
+  "first": "2026-09-29",
+  "last": "2026-10-01"
+ },
+ {
+  "slug": "papua-new-guinea__lae",
+  "first": "2026-09-30",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "papua-new-guinea__madang",
+  "first": "2026-09-29",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "papua-new-guinea__mount-hagen",
+  "first": "2026-09-28",
+  "last": "2026-10-01"
+ },
+ {
+  "slug": "papua-new-guinea__port-moresby",
+  "first": "2026-09-28",
+  "last": "2026-10-01"
+ },
+ {
+  "slug": "papua-new-guinea__wewak",
+  "first": "2026-09-29",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "samoa__apia",
+  "first": "2026-09-28",
+  "last": "2026-10-01"
+ },
+ {
+  "slug": "samoa__asau",
+  "first": "2026-09-29",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "samoa__faleula",
+  "first": "2026-09-28",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "samoa__fasitoouta",
+  "first": "2026-09-28",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "samoa__malie",
+  "first": "2026-09-27",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "samoa__mulifanua",
+  "first": "2026-09-28",
+  "last": "2026-10-01"
+ },
+ {
+  "slug": "samoa__savaii",
+  "first": "2026-09-27",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "samoa__siusega",
+  "first": "2026-09-29",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "samoa__upolu",
+  "first": "2026-09-29",
+  "last": "2026-10-01"
+ },
+ {
+  "slug": "samoa__vaiala",
+  "first": "2026-09-29",
+  "last": "2026-10-01"
+ },
+ {
+  "slug": "solomon-islands__auki",
+  "first": "2026-09-28",
+  "last": "2026-10-01"
+ },
+ {
+  "slug": "solomon-islands__gizo",
+  "first": "2026-09-28",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "solomon-islands__honiara",
+  "first": "2026-09-28",
+  "last": "2026-10-01"
+ },
+ {
+  "slug": "south-sudan__bentiu",
+  "first": "2026-09-28",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "south-sudan__juba",
+  "first": "2026-09-28",
+  "last": "2026-10-03"
+ },
+ {
+  "slug": "south-sudan__malakal",
+  "first": "2026-09-27",
+  "last": "2026-10-01"
+ },
+ {
+  "slug": "south-sudan__maridi",
+  "first": "2026-09-29",
+  "last": "2026-10-01"
+ },
+ {
+  "slug": "south-sudan__rumbek",
+  "first": "2026-09-27",
+  "last": "2026-10-01"
+ },
+ {
+  "slug": "south-sudan__torit",
+  "first": "2026-09-28",
+  "last": "2026-10-01"
+ },
+ {
+  "slug": "south-sudan__wau",
+  "first": "2026-09-29",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "south-sudan__yambio",
+  "first": "2026-09-27",
+  "last": "2026-10-02"
+ },
+ {
+  "slug": "south-sudan__yei",
+  "first": "2026-09-27",
+  "last": "2026-10-02"
+ },
+ {
+  "slug": "turkmenistan__ashgabat",
+  "first": "2026-09-29",
+  "last": "2026-09-29"
+ },
+ {
+  "slug": "turkmenistan__atamyrat",
+  "first": "2026-09-28",
+  "last": "2026-09-29"
+ },
+ {
+  "slug": "turkmenistan__balkanabat",
+  "first": "2026-09-28",
+  "last": "2026-09-29"
+ },
+ {
+  "slug": "turkmenistan__bayramaly",
+  "first": "2026-09-29",
+  "last": "2026-09-29"
+ },
+ {
+  "slug": "turkmenistan__gumdag",
+  "first": "2026-09-28",
+  "last": "2026-09-29"
+ },
+ {
+  "slug": "turkmenistan__mary",
+  "first": "2026-09-29",
+  "last": "2026-09-29"
+ },
+ {
+  "slug": "turkmenistan__tejen",
+  "first": "2026-09-29",
+  "last": "2026-09-29"
+ },
+ {
+  "slug": "turkmenistan__turkmenabat",
+  "first": "2026-09-29",
+  "last": "2026-09-29"
+ },
+ {
+  "slug": "turkmenistan__turkmenbasy",
+  "first": "2026-09-29",
+  "last": "2026-09-29"
+ },
+ {
+  "slug": "vanuatu__isangel",
+  "first": "2026-09-29",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "vanuatu__lakatoro",
+  "first": "2026-09-28",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "vanuatu__lenakel",
+  "first": "2026-09-28",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "vanuatu__luganville",
+  "first": "2026-09-28",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "vanuatu__norsup",
+  "first": "2026-09-28",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "vanuatu__port-vila",
+  "first": "2026-09-29",
+  "last": "2026-09-30"
+ },
+ {
+  "slug": "vanuatu__sola",
+  "first": "2026-09-29",
+  "last": "2026-09-30"
+ }
+]

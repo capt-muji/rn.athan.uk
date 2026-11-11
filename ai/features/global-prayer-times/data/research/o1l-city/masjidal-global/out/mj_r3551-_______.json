@@ -1,0 +1,34 @@
+{
+ "label": "r3551-الجزائر",
+ "file": "captures/masjidi_region_3551.json",
+ "rows": 366,
+ "lat": 34.64,
+ "k": 0,
+ "geoRms": 6.4,
+ "fajr": {
+  "kind": "angle",
+  "n": 366,
+  "angle": 18,
+  "darkIqr": 0.1
+ },
+ "isha": {
+  "kind": "angle",
+  "n": 366,
+  "angle": 16.43,
+  "darkIqr": 0.11,
+  "gap": 80
+ },
+ "asr": {
+  "school": "Shafi",
+  "shafiMae": 0.4,
+  "hanafiMae": 55.3
+ },
+ "clock": {
+  "lonImplied": -12.24,
+  "offsetMin": -49,
+  "driftRms": 0.3,
+  "runs": 1,
+  "steps": []
+ },
+ "amplitude": -141
+}

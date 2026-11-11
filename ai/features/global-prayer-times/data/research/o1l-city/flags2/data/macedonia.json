@@ -1,0 +1,37 @@
+{
+ "flag": "F3",
+ "item": "North Macedonia, Skopje, fajr +45 min",
+ "sources": {
+  "bfi": "balkan-cities/data/mk_bfi_2026-11-11.json (https://bfi.mk/ home widget, one day, five columns)",
+  "vaktija": "balkan-cities/data/eu_vaktijaeu_2026.json (https://vaktija.eu/skopje, 30 rows, November 2026)"
+ },
+ "row_2026_11_11": {
+  "bfi": {"fajr": "05:28", "dhuhr": "11:25", "asr": "13:56", "maghrib": "16:25", "isha": "17:35"},
+  "vaktija": {"fajr": "04:43", "sunrise": "06:20", "dhuhr": "11:19", "asr": "13:48", "maghrib": "16:17", "isha": "17:45"},
+  "delta_bfi_minus_vaktija": {"fajr": 45, "dhuhr": 6, "asr": 8, "maghrib": 8, "isha": -10}
+ },
+ "engine": "adhan 4.4.6, Rounding.None, TZ Europe/Skopje, 42.0N 21.4333E",
+ "vaktija_month_fit_18_16_shafi": {
+  "fajr": {"mean": 0.23, "min": -1, "max": 2, "within1": "27/30"},
+  "sunrise": {"mean": 1.4, "min": -1, "max": 3, "within1": "16/30"},
+  "dhuhr": {"mean": 1.0, "min": 1, "max": 1, "within1": "30/30"},
+  "asr": {"mean": -6.33, "min": -8, "max": -5, "within1": "0/30"},
+  "maghrib": {"mean": -0.17, "min": -2, "max": 1, "within1": "28/30"},
+  "isha": {"mean": 2.17, "min": 1, "max": 4, "within1": "12/30"},
+  "all_six_within1": "113/180"
+ },
+ "bfi_implied": {
+  "fajr_angle_at_skopje_deg": 9.79,
+  "isha_angle_at_skopje_deg": 14.68,
+  "fajr_minutes_before_engine_sunrise": 51.0,
+  "isha_minutes_after_engine_maghrib": 77.9,
+  "solar_shift_minutes": {"dhuhr": 6.7, "asr": 1.4, "maghrib": 7.9},
+  "solar_shift_implied_longitude_west_deg": {"dhuhr": 1.68, "asr": 0.34, "maghrib": 1.98}
+ },
+ "excluded_causes": {
+  "timezone_field": "a tz field error shifts every column by a whole hour, observed spread is 55 min",
+  "dst": "a DST defect shifts every column by a uniform 60 min, observed deltas 45/6/8/8/-10",
+  "city_point": "a point shift moves dhuhr, asr and maghrib together at 4 min per degree, bfi's asr moves +1.4 against +6.7 and +7.9"
+ },
+ "verdict": "bfi.mk is the anomaly. Its row is not one point's output and not a clock defect: it carries a different fajr and isha rule (about 9.8 deg and 14.7 deg at Skopje, or an interval of 51 min before sunrise and 70 min after maghrib at the implied western point) with about +7 min on the solar columns. vaktija.eu's month is an internally consistent 18/16 Shafi table at the Skopje point. One day cannot separate bfi's angle rule from an interval rule."
+}

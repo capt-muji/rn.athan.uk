@@ -1,0 +1,320 @@
+{
+ "metro": "Baton Rouge",
+ "surface": "4KB0kPA5-athanplus",
+ "isna_15_15": {
+  "madhab": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "w1": 96.4,
+  "exact": 86.2,
+  "per_column": {
+   "fajr": {
+    "mae": 0.25,
+    "bias": 0.02,
+    "exact": 96.9,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "sunrise": {
+    "mae": 0.25,
+    "bias": 0,
+    "exact": 97.4,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "dhuhr": {
+    "mae": 0.25,
+    "bias": -0.02,
+    "exact": 98,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "asr": {
+    "mae": 0.68,
+    "bias": -0.05,
+    "exact": 34.1,
+    "w1": 78.2,
+    "worst": 1.5
+   },
+   "maghrib": {
+    "mae": 0.25,
+    "bias": 0.03,
+    "exact": 97.4,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "isha": {
+    "mae": 0.26,
+    "bias": 0,
+    "exact": 93.2,
+    "w1": 100,
+    "worst": 0.6
+   }
+  }
+ },
+ "rows": 1461,
+ "span": [
+  "2024-01-01",
+  "2027-12-31"
+ ],
+ "years": [
+  "2024",
+  "2025",
+  "2026",
+  "2027"
+ ],
+ "coords": [
+  30.4179323,
+  -91.1860362
+ ],
+ "tz": "America/Chicago",
+ "recipe": {
+  "engine": "adhan 4.4.6",
+  "fajr_angle": 15,
+  "isha": [
+   "angle",
+   15
+  ],
+  "madhab": "shafi",
+  "high_latitude": "TwilightAngle",
+  "rounding": "None",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  }
+ },
+ "per_column": {
+  "fajr": {
+   "mae": 0.25,
+   "bias": 0.02,
+   "exact": 96.9,
+   "w1": 100,
+   "worst": 0.5
+  },
+  "sunrise": {
+   "mae": 0.25,
+   "bias": 0,
+   "exact": 97.4,
+   "w1": 100,
+   "worst": 0.5
+  },
+  "dhuhr": {
+   "mae": 0.25,
+   "bias": -0.02,
+   "exact": 98,
+   "w1": 100,
+   "worst": 0.5
+  },
+  "asr": {
+   "mae": 0.68,
+   "bias": -0.05,
+   "exact": 34.1,
+   "w1": 78.2,
+   "worst": 1.5
+  },
+  "maghrib": {
+   "mae": 0.25,
+   "bias": 0.03,
+   "exact": 97.4,
+   "w1": 100,
+   "worst": 0.5
+  },
+  "isha": {
+   "mae": 0.26,
+   "bias": 0,
+   "exact": 93.2,
+   "w1": 100,
+   "worst": 0.6
+  }
+ },
+ "per_year": {
+  "2024": {
+   "fajr": {
+    "mae": 0.25,
+    "bias": 0.02,
+    "exact": 97.5,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "sunrise": {
+    "mae": 0.26,
+    "bias": 0,
+    "exact": 97.3,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "dhuhr": {
+    "mae": 0.25,
+    "bias": -0.02,
+    "exact": 97,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "asr": {
+    "mae": 0.68,
+    "bias": -0.05,
+    "exact": 33.6,
+    "w1": 77.9,
+    "worst": 1.5
+   },
+   "maghrib": {
+    "mae": 0.25,
+    "bias": 0.07,
+    "exact": 97.8,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "isha": {
+    "mae": 0.25,
+    "bias": 0.02,
+    "exact": 93.4,
+    "w1": 100,
+    "worst": 0.6
+   }
+  },
+  "2025": {
+   "fajr": {
+    "mae": 0.26,
+    "bias": 0,
+    "exact": 97,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "sunrise": {
+    "mae": 0.25,
+    "bias": 0.05,
+    "exact": 97.5,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "dhuhr": {
+    "mae": 0.25,
+    "bias": 0,
+    "exact": 98.9,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "asr": {
+    "mae": 0.68,
+    "bias": -0.05,
+    "exact": 33.4,
+    "w1": 76.7,
+    "worst": 1.5
+   },
+   "maghrib": {
+    "mae": 0.24,
+    "bias": 0.05,
+    "exact": 96.2,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "isha": {
+    "mae": 0.26,
+    "bias": 0,
+    "exact": 92.3,
+    "w1": 100,
+    "worst": 0.6
+   }
+  },
+  "2026": {
+   "fajr": {
+    "mae": 0.25,
+    "bias": 0.03,
+    "exact": 96.4,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "sunrise": {
+    "mae": 0.24,
+    "bias": -0.02,
+    "exact": 97.3,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "dhuhr": {
+    "mae": 0.25,
+    "bias": -0.02,
+    "exact": 97.3,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "asr": {
+    "mae": 0.67,
+    "bias": -0.05,
+    "exact": 35.3,
+    "w1": 79.7,
+    "worst": 1.5
+   },
+   "maghrib": {
+    "mae": 0.25,
+    "bias": 0,
+    "exact": 98.1,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "isha": {
+    "mae": 0.26,
+    "bias": 0.02,
+    "exact": 93.2,
+    "w1": 100,
+    "worst": 0.6
+   }
+  },
+  "2027": {
+   "fajr": {
+    "mae": 0.25,
+    "bias": 0,
+    "exact": 96.4,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "sunrise": {
+    "mae": 0.25,
+    "bias": -0.03,
+    "exact": 97.5,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "dhuhr": {
+    "mae": 0.25,
+    "bias": -0.03,
+    "exact": 98.9,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "asr": {
+    "mae": 0.68,
+    "bias": -0.05,
+    "exact": 34,
+    "w1": 78.4,
+    "worst": 1.5
+   },
+   "maghrib": {
+    "mae": 0.26,
+    "bias": 0.03,
+    "exact": 97.5,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "isha": {
+    "mae": 0.25,
+    "bias": 0,
+    "exact": 94,
+    "w1": 100,
+    "worst": 0.6
+   }
+  }
+ },
+ "seasonal_fajr_amplitude_min": 53.5,
+ "fajr_later_in_january": true
+}

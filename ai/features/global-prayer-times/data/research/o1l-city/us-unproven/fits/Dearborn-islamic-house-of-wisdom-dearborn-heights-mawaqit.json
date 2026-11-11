@@ -1,0 +1,185 @@
+{
+ "metro": "Dearborn",
+ "surface": "islamic-house-of-wisdom-dearborn-heights-mawaqit",
+ "isna_15_15": {
+  "madhab": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "w1": 87.2,
+  "exact": 79.9,
+  "per_column": {
+   "fajr": {
+    "mae": 0.26,
+    "bias": -0.02,
+    "exact": 95.4,
+    "w1": 100,
+    "worst": 0.6
+   },
+   "sunrise": {
+    "mae": 0.25,
+    "bias": 0.03,
+    "exact": 95.4,
+    "w1": 100,
+    "worst": 0.6
+   },
+   "dhuhr": {
+    "mae": 0.26,
+    "bias": 0.02,
+    "exact": 96.2,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "asr": {
+    "mae": 1.7,
+    "bias": -0.09,
+    "exact": 10.1,
+    "w1": 23.2,
+    "worst": 3
+   },
+   "maghrib": {
+    "mae": 0.25,
+    "bias": 0.03,
+    "exact": 95.9,
+    "w1": 100,
+    "worst": 0.6
+   },
+   "isha": {
+    "mae": 0.28,
+    "bias": 0.02,
+    "exact": 86.6,
+    "w1": 100,
+    "worst": 0.8
+   }
+  }
+ },
+ "rows": 366,
+ "span": [
+  "2026-01-01",
+  "2026-12-31"
+ ],
+ "years": [
+  "2026"
+ ],
+ "coords": [
+  42.3397739,
+  -83.2617235
+ ],
+ "tz": "America/Detroit",
+ "recipe": {
+  "engine": "adhan 4.4.6",
+  "fajr_angle": 15,
+  "isha": [
+   "angle",
+   15
+  ],
+  "madhab": "shafi",
+  "high_latitude": "TwilightAngle",
+  "rounding": "None",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  }
+ },
+ "per_column": {
+  "fajr": {
+   "mae": 0.26,
+   "bias": -0.02,
+   "exact": 95.4,
+   "w1": 100,
+   "worst": 0.6
+  },
+  "sunrise": {
+   "mae": 0.25,
+   "bias": 0.03,
+   "exact": 95.4,
+   "w1": 100,
+   "worst": 0.6
+  },
+  "dhuhr": {
+   "mae": 0.26,
+   "bias": 0.02,
+   "exact": 96.2,
+   "w1": 100,
+   "worst": 0.5
+  },
+  "asr": {
+   "mae": 1.7,
+   "bias": -0.09,
+   "exact": 10.1,
+   "w1": 23.2,
+   "worst": 3
+  },
+  "maghrib": {
+   "mae": 0.25,
+   "bias": 0.03,
+   "exact": 95.9,
+   "w1": 100,
+   "worst": 0.6
+  },
+  "isha": {
+   "mae": 0.28,
+   "bias": 0.02,
+   "exact": 86.6,
+   "w1": 100,
+   "worst": 0.8
+  }
+ },
+ "per_year": {
+  "2026": {
+   "fajr": {
+    "mae": 0.26,
+    "bias": -0.02,
+    "exact": 95.4,
+    "w1": 100,
+    "worst": 0.6
+   },
+   "sunrise": {
+    "mae": 0.25,
+    "bias": 0.03,
+    "exact": 95.4,
+    "w1": 100,
+    "worst": 0.6
+   },
+   "dhuhr": {
+    "mae": 0.26,
+    "bias": 0.02,
+    "exact": 96.2,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "asr": {
+    "mae": 1.7,
+    "bias": -0.09,
+    "exact": 10.1,
+    "w1": 23.2,
+    "worst": 3
+   },
+   "maghrib": {
+    "mae": 0.25,
+    "bias": 0.03,
+    "exact": 95.9,
+    "w1": 100,
+    "worst": 0.6
+   },
+   "isha": {
+    "mae": 0.28,
+    "bias": 0.02,
+    "exact": 86.6,
+    "w1": 100,
+    "worst": 0.8
+   }
+  }
+ },
+ "seasonal_fajr_amplitude_min": 123.1,
+ "fajr_later_in_january": true
+}

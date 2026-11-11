@@ -1,0 +1,429 @@
+{
+ "102": {
+  "place": "Zenica",
+  "days": 365,
+  "file": "ba_zenica_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "103": {
+  "place": "Zvornik",
+  "days": 365,
+  "file": "ba_zvornik_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "107": {
+  "place": "Bijelo Polje",
+  "days": 365,
+  "file": "ba_bijelo_polje_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "108": {
+  "place": "Gusinje",
+  "days": 365,
+  "file": "ba_gusinje_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "109": {
+  "place": "Nova Varoš",
+  "days": 365,
+  "file": "ba_nova_varo_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "110": {
+  "place": "Novi Pazar",
+  "days": 365,
+  "file": "ba_novi_pazar_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "111": {
+  "place": "Plav",
+  "days": 365,
+  "file": "ba_plav_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "112": {
+  "place": "Pljevlja",
+  "days": 365,
+  "file": "ba_pljevlja_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "113": {
+  "place": "Priboj",
+  "days": 365,
+  "file": "ba_priboj_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "114": {
+  "place": "Prijepolje",
+  "days": 365,
+  "file": "ba_prijepolje_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "115": {
+  "place": "Rožaje",
+  "days": 365,
+  "file": "ba_ro_aje_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "116": {
+  "place": "Sjenica",
+  "days": 365,
+  "file": "ba_sjenica_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "117": {
+  "place": "Tutin",
+  "days": 365,
+  "file": "ba_tutin_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "14": {
+  "place": "Brčko",
+  "days": 365,
+  "file": "ba_br_ko_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "16": {
+  "place": "Bugojno",
+  "days": 365,
+  "file": "ba_bugojno_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "19": {
+  "place": "Cazin",
+  "days": 365,
+  "file": "ba_cazin_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "1": {
+  "place": "Banja Luka",
+  "days": 365,
+  "file": "ba_banja_luka_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "20": {
+  "place": "Čajniče",
+  "days": 365,
+  "file": "ba_ajni_e_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "21": {
+  "place": "Čapljina",
+  "days": 365,
+  "file": "ba_apljina_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "24": {
+  "place": "Čitluk",
+  "days": 365,
+  "file": "ba_itluk_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "26": {
+  "place": "Doboj",
+  "days": 365,
+  "file": "ba_doboj_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "2": {
+  "place": "Bihać",
+  "days": 365,
+  "file": "ba_biha_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "30": {
+  "place": "Fojnica",
+  "days": 365,
+  "file": "ba_fojnica_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "32": {
+  "place": "Glamoč",
+  "days": 365,
+  "file": "ba_glamo_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "33": {
+  "place": "Goražde",
+  "days": 365,
+  "file": "ba_gora_de_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "34": {
+  "place": "Gornji Vakuf",
+  "days": 365,
+  "file": "ba_gornji_vakuf_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "39": {
+  "place": "Han-Pijesak",
+  "days": 365,
+  "file": "ba_han_pijesak_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "3": {
+  "place": "Bijeljina",
+  "days": 365,
+  "file": "ba_bijeljina_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "40": {
+  "place": "Hlivno",
+  "days": 365,
+  "file": "ba_hlivno_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "41": {
+  "place": "Ilijaš",
+  "days": 365,
+  "file": "ba_ilija_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "43": {
+  "place": "Jajce",
+  "days": 365,
+  "file": "ba_jajce_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "44": {
+  "place": "Kakanj",
+  "days": 365,
+  "file": "ba_kakanj_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "45": {
+  "place": "Kalesija",
+  "days": 365,
+  "file": "ba_kalesija_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "49": {
+  "place": "Ključ",
+  "days": 365,
+  "file": "ba_klju_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "4": {
+  "place": "Bileća",
+  "days": 365,
+  "file": "ba_bile_a_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "50": {
+  "place": "Konjic",
+  "days": 365,
+  "file": "ba_konjic_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "53": {
+  "place": "Kupres",
+  "days": 365,
+  "file": "ba_kupres_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "55": {
+  "place": "Lopare",
+  "days": 365,
+  "file": "ba_lopare_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "57": {
+  "place": "Ljubinje",
+  "days": 365,
+  "file": "ba_ljubinje_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "59": {
+  "place": "Maglaj",
+  "days": 365,
+  "file": "ba_maglaj_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "5": {
+  "place": "Bosanski Brod",
+  "days": 365,
+  "file": "ba_bosanski_brod_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "61": {
+  "place": "Mostar",
+  "days": 365,
+  "file": "ba_mostar_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "64": {
+  "place": "Nevesinje",
+  "days": 365,
+  "file": "ba_nevesinje_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "65": {
+  "place": "Novi Travnik",
+  "days": 365,
+  "file": "ba_novi_travnik_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "66": {
+  "place": "Odžak",
+  "days": 365,
+  "file": "ba_od_ak_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "68": {
+  "place": "Orašje",
+  "days": 365,
+  "file": "ba_ora_je_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "71": {
+  "place": "Prijedor",
+  "days": 365,
+  "file": "ba_prijedor_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "73": {
+  "place": "Prozor",
+  "days": 365,
+  "file": "ba_prozor_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "77": {
+  "place": "Sarajevo",
+  "days": 365,
+  "file": "ba_sarajevo_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "78": {
+  "place": "Skender-Vakuf",
+  "days": 365,
+  "file": "ba_skender_vakuf_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "79": {
+  "place": "Sokolac",
+  "days": 365,
+  "file": "ba_sokolac_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "84": {
+  "place": "Šekovići",
+  "days": 365,
+  "file": "ba_ekovi_i_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "88": {
+  "place": "Tešanj",
+  "days": 365,
+  "file": "ba_te_anj_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "90": {
+  "place": "Travnik",
+  "days": 365,
+  "file": "ba_travnik_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "91": {
+  "place": "Trebinje",
+  "days": 365,
+  "file": "ba_trebinje_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "93": {
+  "place": "Tuzla",
+  "days": 365,
+  "file": "ba_tuzla_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "95": {
+  "place": "Vareš",
+  "days": 365,
+  "file": "ba_vare_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "96": {
+  "place": "Velika Kladuša",
+  "days": 365,
+  "file": "ba_velika_kladu_a_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "97": {
+  "place": "Visoko",
+  "days": 365,
+  "file": "ba_visoko_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "98": {
+  "place": "Višegrad",
+  "days": 365,
+  "file": "ba_vi_egrad_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ },
+ "99": {
+  "place": "Vitez",
+  "days": 365,
+  "file": "ba_vitez_2026.json",
+  "first": "2026-01-01",
+  "last": "2026-12-31"
+ }
+}

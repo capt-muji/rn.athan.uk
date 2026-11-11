@@ -1,0 +1,73 @@
+{
+  "agent": "O1l-66",
+  "register": ["A53", "D9"],
+  "engine": "adhan 4.4.6",
+  "buggy_scripts": [
+    {
+      "path": "o1l-city/us-states/fit_masjidal.js",
+      "lines": [40, 42, 55, 57],
+      "form": "const isha in the const list, then isha += 1440",
+      "fits": 39,
+      "workspace": "us-states"
+    },
+    {
+      "path": "o1l-city/us-unresolved/scripts/fit_debug.mjs",
+      "lines": [40, 42, 55, 57],
+      "form": "const isha in the const list, then isha += 1440",
+      "fits": 39,
+      "workspace": "us-unresolved"
+    }
+  ],
+  "patched_before_bank": [
+    "o1l-city/us-unresolved/scripts/fit_masjidal.js (let isha, 05:53Z; bank 05:54Z)"
+  ],
+  "fits_inspected": 78,
+  "classification_year_drop": {
+    "span": 1,
+    "score": 0,
+    "no_op": 77,
+    "span_detail": {
+      "fit": "8KXm93LM",
+      "place": "Newark NJ, NIA",
+      "year": 2025,
+      "banked": "3 y / 1,097 rows",
+      "if_dropped": "2 y / 732 rows",
+      "bank_escaped": true,
+      "why": "us-unresolved production fitter patched to let at 05:53Z, banked 05:54Z"
+    }
+  },
+  "classification_score_residue_after_let": {
+    "material": 1,
+    "cosmetic": 1,
+    "unaffected": 76,
+    "detail": {
+      "material": {
+        "fit": "8KXm93LM",
+        "year": 2025,
+        "banked_geo_rms": 26.657,
+        "corrected_geo_rms": 0.849,
+        "banked_isha_worst": 722,
+        "corrected_isha_worst": 3,
+        "cause": "five AM/PM-rendered capture days (2025-03-31, 2025-10-12..15)"
+      },
+      "cosmetic": {
+        "fit": "0aAeyzAj",
+        "year": 2024,
+        "banked_dhuhr_worst": -714,
+        "corrected_dhuhr_worst": 6,
+        "banked_dhuhr_exact": 26,
+        "corrected_dhuhr_exact": 26
+      }
+    }
+  },
+  "triggering_surfaces_in_archive": [
+    {"id": "M9L2byLZ", "place": "Birkenhead GB", "after_midnight_days": [66, 66, 65], "fitter": "masjidal-global/fit2.js", "safe": true},
+    {"id": "RKxqeRLO", "place": "London GB", "after_midnight_days": [40, 40, 0], "fitter": "masjidal-global/fit2.js", "safe": true},
+    {"id": "pVdwyVLe", "place": "Edmonton CA", "after_midnight_days": [56, 55, 55], "fitter": "o1k-wide/usmap/measure2.js", "safe": true},
+    {"id": "8KXm93LM", "place": "Newark NJ", "after_midnight_days": [0, 5, 0], "fitter": "us-unresolved/scripts/fit_masjidal.js", "safe": false}
+  ],
+  "corrected_bank": "out/corrected-us-unresolved/ (39)",
+  "verified_bank": "out/verified-us-states/ (39)",
+  "buggy_bank": "out/buggy-us-unresolved/ (39)",
+  "deltas": "deltas.tsv"
+}

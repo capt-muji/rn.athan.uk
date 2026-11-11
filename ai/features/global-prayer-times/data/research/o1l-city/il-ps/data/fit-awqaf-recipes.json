@@ -1,0 +1,392 @@
+{
+ "record-18/18 nearest": {
+  "live": {
+   "mae": 0.55,
+   "n": 462,
+   "per": {
+    "fajr": {
+     "mae": 0.857,
+     "exactPct": 35.1,
+     "w1": "61/77",
+     "worst": 2,
+     "signed": 0.857
+    },
+    "sunrise": {
+     "mae": 0.377,
+     "exactPct": 62.3,
+     "w1": "77/77",
+     "worst": 1,
+     "signed": 0.065
+    },
+    "dhuhr": {
+     "mae": 0.442,
+     "exactPct": 55.8,
+     "w1": "77/77",
+     "worst": 1,
+     "signed": 0.442
+    },
+    "asr": {
+     "mae": 0.571,
+     "exactPct": 45.5,
+     "w1": "75/77",
+     "worst": 2,
+     "signed": 0.364
+    },
+    "maghrib": {
+     "mae": 0.468,
+     "exactPct": 53.2,
+     "w1": "77/77",
+     "worst": 1,
+     "signed": -0.13
+    },
+    "isha": {
+     "mae": 0.584,
+     "exactPct": 41.6,
+     "w1": "77/77",
+     "worst": 1,
+     "signed": 0.091
+    }
+   },
+   "years": {
+    "2024": {
+     "days": 50,
+     "mae": 0.51,
+     "exactPct": 51,
+     "w1Pct": 98,
+     "worst": 2
+    },
+    "2025": {
+     "days": 22,
+     "mae": 0.598,
+     "exactPct": 47.7,
+     "w1Pct": 92.4,
+     "worst": 2
+    },
+    "2026": {
+     "days": 5,
+     "mae": 0.733,
+     "exactPct": 33.3,
+     "w1Pct": 93.3,
+     "worst": 2
+    }
+   }
+  },
+  "perpetual": {
+   "mae": 0.546,
+   "n": 2196,
+   "per": {
+    "fajr": {
+     "mae": 0.803,
+     "exactPct": 45.9,
+     "w1": "289/366",
+     "worst": 4,
+     "signed": 0.585
+    },
+    "sunrise": {
+     "mae": 0.59,
+     "exactPct": 46.2,
+     "w1": "347/366",
+     "worst": 2,
+     "signed": -0.098
+    },
+    "dhuhr": {
+     "mae": 0.44,
+     "exactPct": 56,
+     "w1": "366/366",
+     "worst": 1,
+     "signed": 0.44
+    },
+    "asr": {
+     "mae": 0.478,
+     "exactPct": 56.3,
+     "w1": "351/366",
+     "worst": 2,
+     "signed": 0.407
+    },
+    "maghrib": {
+     "mae": 0.391,
+     "exactPct": 60.9,
+     "w1": "366/366",
+     "worst": 1,
+     "signed": -0.057
+    },
+    "isha": {
+     "mae": 0.574,
+     "exactPct": 43.7,
+     "w1": "362/366",
+     "worst": 2,
+     "signed": 0.235
+    }
+   },
+   "years": {
+    "2026": {
+     "days": 366,
+     "mae": 0.546,
+     "exactPct": 51.5,
+     "w1Pct": 94.8,
+     "worst": 4
+    }
+   }
+  }
+ },
+ "record-18/18 dhuhr-floor": {
+  "live": {
+   "mae": 0.5,
+   "n": 462,
+   "per": {
+    "fajr": {
+     "mae": 0.857,
+     "exactPct": 35.1,
+     "w1": "61/77",
+     "worst": 2,
+     "signed": 0.857
+    },
+    "sunrise": {
+     "mae": 0.377,
+     "exactPct": 62.3,
+     "w1": "77/77",
+     "worst": 1,
+     "signed": 0.065
+    },
+    "dhuhr": {
+     "mae": 0.143,
+     "exactPct": 85.7,
+     "w1": "77/77",
+     "worst": 1,
+     "signed": -0.117
+    },
+    "asr": {
+     "mae": 0.571,
+     "exactPct": 45.5,
+     "w1": "75/77",
+     "worst": 2,
+     "signed": 0.364
+    },
+    "maghrib": {
+     "mae": 0.468,
+     "exactPct": 53.2,
+     "w1": "77/77",
+     "worst": 1,
+     "signed": -0.13
+    },
+    "isha": {
+     "mae": 0.584,
+     "exactPct": 41.6,
+     "w1": "77/77",
+     "worst": 1,
+     "signed": 0.091
+    }
+   },
+   "years": {
+    "2024": {
+     "days": 50,
+     "mae": 0.473,
+     "exactPct": 54.7,
+     "w1Pct": 98,
+     "worst": 2
+    },
+    "2025": {
+     "days": 22,
+     "mae": 0.53,
+     "exactPct": 54.5,
+     "w1Pct": 92.4,
+     "worst": 2
+    },
+    "2026": {
+     "days": 5,
+     "mae": 0.633,
+     "exactPct": 43.3,
+     "w1Pct": 93.3,
+     "worst": 2
+    }
+   }
+  },
+  "perpetual": {
+   "mae": 0.485,
+   "n": 2196,
+   "per": {
+    "fajr": {
+     "mae": 0.803,
+     "exactPct": 45.9,
+     "w1": "289/366",
+     "worst": 4,
+     "signed": 0.585
+    },
+    "sunrise": {
+     "mae": 0.59,
+     "exactPct": 46.2,
+     "w1": "347/366",
+     "worst": 2,
+     "signed": -0.098
+    },
+    "dhuhr": {
+     "mae": 0.077,
+     "exactPct": 92.3,
+     "w1": "366/366",
+     "worst": 1,
+     "signed": -0.066
+    },
+    "asr": {
+     "mae": 0.478,
+     "exactPct": 56.3,
+     "w1": "351/366",
+     "worst": 2,
+     "signed": 0.407
+    },
+    "maghrib": {
+     "mae": 0.391,
+     "exactPct": 60.9,
+     "w1": "366/366",
+     "worst": 1,
+     "signed": -0.057
+    },
+    "isha": {
+     "mae": 0.574,
+     "exactPct": 43.7,
+     "w1": "362/366",
+     "worst": 2,
+     "signed": 0.235
+    }
+   },
+   "years": {
+    "2026": {
+     "days": 366,
+     "mae": 0.485,
+     "exactPct": 57.6,
+     "w1Pct": 94.8,
+     "worst": 4
+    }
+   }
+  }
+ },
+ "grid 18.25/17.9": {
+  "live": {
+   "mae": 0.53,
+   "n": 462,
+   "per": {
+    "fajr": {
+     "mae": 0.61,
+     "exactPct": 48.1,
+     "w1": "70/77",
+     "worst": 2,
+     "signed": 0.506
+    },
+    "sunrise": {
+     "mae": 0.377,
+     "exactPct": 62.3,
+     "w1": "77/77",
+     "worst": 1,
+     "signed": 0.065
+    },
+    "dhuhr": {
+     "mae": 0.442,
+     "exactPct": 55.8,
+     "w1": "77/77",
+     "worst": 1,
+     "signed": 0.442
+    },
+    "asr": {
+     "mae": 0.571,
+     "exactPct": 45.5,
+     "w1": "75/77",
+     "worst": 2,
+     "signed": 0.364
+    },
+    "maghrib": {
+     "mae": 0.468,
+     "exactPct": 53.2,
+     "w1": "77/77",
+     "worst": 1,
+     "signed": -0.13
+    },
+    "isha": {
+     "mae": 0.714,
+     "exactPct": 39,
+     "w1": "69/77",
+     "worst": 2,
+     "signed": -0.429
+    }
+   },
+   "years": {
+    "2024": {
+     "days": 50,
+     "mae": 0.483,
+     "exactPct": 54.7,
+     "w1Pct": 97,
+     "worst": 2
+    },
+    "2025": {
+     "days": 22,
+     "mae": 0.583,
+     "exactPct": 46.2,
+     "w1Pct": 95.5,
+     "worst": 2
+    },
+    "2026": {
+     "days": 5,
+     "mae": 0.767,
+     "exactPct": 30,
+     "w1Pct": 93.3,
+     "worst": 2
+    }
+   }
+  },
+  "perpetual": {
+   "mae": 0.514,
+   "n": 2196,
+   "per": {
+    "fajr": {
+     "mae": 0.672,
+     "exactPct": 51.9,
+     "w1": "302/366",
+     "worst": 4,
+     "signed": 0.284
+    },
+    "sunrise": {
+     "mae": 0.59,
+     "exactPct": 46.2,
+     "w1": "347/366",
+     "worst": 2,
+     "signed": -0.098
+    },
+    "dhuhr": {
+     "mae": 0.44,
+     "exactPct": 56,
+     "w1": "366/366",
+     "worst": 1,
+     "signed": 0.44
+    },
+    "asr": {
+     "mae": 0.478,
+     "exactPct": 56.3,
+     "w1": "351/366",
+     "worst": 2,
+     "signed": 0.407
+    },
+    "maghrib": {
+     "mae": 0.391,
+     "exactPct": 60.9,
+     "w1": "366/366",
+     "worst": 1,
+     "signed": -0.057
+    },
+    "isha": {
+     "mae": 0.514,
+     "exactPct": 50.8,
+     "w1": "358/366",
+     "worst": 2,
+     "signed": -0.268
+    }
+   },
+   "years": {
+    "2026": {
+     "days": 366,
+     "mae": 0.514,
+     "exactPct": 53.7,
+     "w1Pct": 95.2,
+     "worst": 4
+    }
+   }
+  }
+ }
+}

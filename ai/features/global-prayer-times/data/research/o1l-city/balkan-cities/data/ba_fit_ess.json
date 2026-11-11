@@ -1,0 +1,4232 @@
+[
+ {
+  "id": 1,
+  "place": "Banja Luka",
+  "lat": 44.7722,
+  "lon": 17.191,
+  "coordSource": "api.vaktija.eu/v4/locations id=134 slug=banja-luka country=BA",
+  "terrain": {
+   "elevationM": 166,
+   "horizonEastDeg": 2.005,
+   "horizonWestDeg": 3.3
+  },
+  "margins": {
+   "fajr": {
+    "m": 1.5,
+    "mode": "round",
+    "exact": 144,
+    "within1": 279,
+    "mae": 1.15,
+    "sd": 1.63
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 101,
+    "within1": 264,
+    "mae": 1.01,
+    "sd": 1.26
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 308,
+    "within1": 365,
+    "mae": 0.16,
+    "sd": 0.39
+   },
+   "asr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 78,
+    "within1": 244,
+    "mae": 1.22,
+    "sd": 1.51
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 141,
+    "within1": 302,
+    "mae": 0.79,
+    "sd": 1.07
+   },
+   "isha": {
+    "m": -1.5,
+    "mode": "floor",
+    "exact": 116,
+    "within1": 243,
+    "mae": 1.11,
+    "sd": 1.46
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 888,
+    "within1": 1697,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 2,
+  "place": "Bihać",
+  "lat": 44.8169,
+  "lon": 15.87,
+  "coordSource": "api.vaktija.eu/v4/locations id=135 slug=bihac country=BA",
+  "terrain": {
+   "elevationM": 225,
+   "horizonEastDeg": 2.811,
+   "horizonWestDeg": 6.255
+  },
+  "margins": {
+   "fajr": {
+    "m": 1.5,
+    "mode": "round",
+    "exact": 155,
+    "within1": 277,
+    "mae": 1.15,
+    "sd": 1.67
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 111,
+    "within1": 287,
+    "mae": 0.93,
+    "sd": 1.17
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 278,
+    "within1": 365,
+    "mae": 0.24,
+    "sd": 0.43
+   },
+   "asr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 98,
+    "within1": 257,
+    "mae": 1.16,
+    "sd": 1.47
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 131,
+    "within1": 326,
+    "mae": 0.75,
+    "sd": 0.99
+   },
+   "isha": {
+    "m": -1.5,
+    "mode": "floor",
+    "exact": 110,
+    "within1": 246,
+    "mae": 1.19,
+    "sd": 1.56
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 883,
+    "within1": 1758,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 3,
+  "place": "Bijeljina",
+  "lat": 44.7575,
+  "lon": 19.2144,
+  "coordSource": "api.vaktija.eu/v4/locations id=136 slug=bijeljina country=BA",
+  "terrain": {
+   "elevationM": 92,
+   "horizonEastDeg": 0.029,
+   "horizonWestDeg": 0.363
+  },
+  "margins": {
+   "fajr": {
+    "m": 1.5,
+    "mode": "round",
+    "exact": 167,
+    "within1": 280,
+    "mae": 1.08,
+    "sd": 1.63
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 102,
+    "within1": 277,
+    "mae": 0.98,
+    "sd": 1.21
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 293,
+    "within1": 365,
+    "mae": 0.2,
+    "sd": 0.42
+   },
+   "asr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 92,
+    "within1": 268,
+    "mae": 1.09,
+    "sd": 1.35
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 156,
+    "within1": 331,
+    "mae": 0.67,
+    "sd": 0.94
+   },
+   "isha": {
+    "m": -1.5,
+    "mode": "floor",
+    "exact": 121,
+    "within1": 251,
+    "mae": 1.04,
+    "sd": 1.37
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 931,
+    "within1": 1772,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 4,
+  "place": "Bileća",
+  "lat": 42.8758,
+  "lon": 18.4297,
+  "coordSource": "api.vaktija.eu/v4/locations id=137 slug=bileca country=BA",
+  "terrain": {
+   "elevationM": 467,
+   "horizonEastDeg": 6.862,
+   "horizonWestDeg": 2.805
+  },
+  "margins": {
+   "fajr": {
+    "m": -1.5,
+    "mode": "floor",
+    "exact": 32,
+    "within1": 61,
+    "mae": 5.04,
+    "sd": 5.88
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 9,
+    "within1": 61,
+    "mae": 4.48,
+    "sd": 5.09
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 311,
+    "within1": 365,
+    "mae": 0.15,
+    "sd": 0.38
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 25,
+    "within1": 95,
+    "mae": 3.67,
+    "sd": 4.23
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 20,
+    "within1": 69,
+    "mae": 4.13,
+    "sd": 4.7
+   },
+   "isha": {
+    "m": 1.5,
+    "mode": "round",
+    "exact": 9,
+    "within1": 62,
+    "mae": 4.81,
+    "sd": 5.51
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 406,
+    "within1": 713,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 5,
+  "place": "Bosanski Brod",
+  "lat": 45.1333,
+  "lon": 18,
+  "coordSource": "api.vaktija.eu/v4/locations id=138 slug=bosanski-brod country=BA",
+  "terrain": {
+   "elevationM": 84,
+   "horizonEastDeg": 0.095,
+   "horizonWestDeg": 0.172
+  },
+  "margins": {
+   "fajr": {
+    "m": 2.5,
+    "mode": "round",
+    "exact": 120,
+    "within1": 257,
+    "mae": 1.59,
+    "sd": 2.35
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 78,
+    "within1": 267,
+    "mae": 1.07,
+    "sd": 1.27
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 256,
+    "within1": 365,
+    "mae": 0.3,
+    "sd": 0.47
+   },
+   "asr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 83,
+    "within1": 225,
+    "mae": 1.36,
+    "sd": 1.74
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 154,
+    "within1": 297,
+    "mae": 0.79,
+    "sd": 1.12
+   },
+   "isha": {
+    "m": -2.5,
+    "mode": "floor",
+    "exact": 90,
+    "within1": 234,
+    "mae": 1.36,
+    "sd": 1.8
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 781,
+    "within1": 1645,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 14,
+  "place": "Brčko",
+  "lat": 44.8728,
+  "lon": 18.8106,
+  "coordSource": "api.vaktija.eu/v4/locations id=147 slug=brcko country=BA",
+  "terrain": null,
+  "margins": {
+   "fajr": {
+    "m": 1.5,
+    "mode": "round",
+    "exact": 157,
+    "within1": 275,
+    "mae": 1.31,
+    "sd": 1.88
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 109,
+    "within1": 300,
+    "mae": 0.89,
+    "sd": 1.12
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 207,
+    "within1": 365,
+    "mae": 0.43,
+    "sd": 0.5
+   },
+   "asr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 84,
+    "within1": 249,
+    "mae": 1.19,
+    "sd": 1.46
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 141,
+    "within1": 326,
+    "mae": 0.73,
+    "sd": 1
+   },
+   "isha": {
+    "m": -1.5,
+    "mode": "floor",
+    "exact": 109,
+    "within1": 254,
+    "mae": 1.17,
+    "sd": 1.51
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 807,
+    "within1": 1769,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 16,
+  "place": "Bugojno",
+  "lat": 44.0531,
+  "lon": 17.4508,
+  "coordSource": "api.vaktija.eu/v4/locations id=149 slug=bugojno country=BA",
+  "terrain": null,
+  "margins": {
+   "fajr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 183,
+    "within1": 365,
+    "mae": 0.5,
+    "sd": 0.58
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 83,
+    "within1": 301,
+    "mae": 0.95,
+    "sd": 1.13
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 303,
+    "within1": 365,
+    "mae": 0.17,
+    "sd": 0.4
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 138,
+    "within1": 291,
+    "mae": 0.83,
+    "sd": 1.1
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 161,
+    "within1": 351,
+    "mae": 0.6,
+    "sd": 0.81
+   },
+   "isha": {
+    "m": 0,
+    "mode": "round",
+    "exact": 108,
+    "within1": 342,
+    "mae": 0.77,
+    "sd": 0.89
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 976,
+    "within1": 2015,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 19,
+  "place": "Cazin",
+  "lat": 44.9667,
+  "lon": 15.9431,
+  "coordSource": "api.vaktija.eu/v4/locations id=152 slug=cazin country=BA",
+  "terrain": null,
+  "margins": {
+   "fajr": {
+    "m": 2.5,
+    "mode": "round",
+    "exact": 100,
+    "within1": 248,
+    "mae": 1.44,
+    "sd": 2.07
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 84,
+    "within1": 264,
+    "mae": 1.07,
+    "sd": 1.28
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 307,
+    "within1": 365,
+    "mae": 0.16,
+    "sd": 0.4
+   },
+   "asr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 82,
+    "within1": 234,
+    "mae": 1.27,
+    "sd": 1.59
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 142,
+    "within1": 308,
+    "mae": 0.79,
+    "sd": 1.04
+   },
+   "isha": {
+    "m": -1.5,
+    "mode": "floor",
+    "exact": 105,
+    "within1": 232,
+    "mae": 1.29,
+    "sd": 1.7
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 820,
+    "within1": 1651,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 20,
+  "place": "Čajniče",
+  "lat": 43.5567,
+  "lon": 19.0722,
+  "coordSource": "api.vaktija.eu/v4/locations id=153 slug=cajnice country=BA",
+  "terrain": {
+   "elevationM": 812,
+   "horizonEastDeg": 10.389,
+   "horizonWestDeg": 6.673
+  },
+  "margins": {
+   "fajr": {
+    "m": -0.5,
+    "mode": "floor",
+    "exact": 74,
+    "within1": 159,
+    "mae": 1.56,
+    "sd": 1.89
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 58,
+    "within1": 169,
+    "mae": 1.72,
+    "sd": 2.07
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 217,
+    "within1": 365,
+    "mae": 0.41,
+    "sd": 0.49
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 76,
+    "within1": 200,
+    "mae": 1.38,
+    "sd": 1.67
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 52,
+    "within1": 186,
+    "mae": 1.46,
+    "sd": 1.7
+   },
+   "isha": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 56,
+    "within1": 147,
+    "mae": 1.68,
+    "sd": 1.96
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 533,
+    "within1": 1226,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 21,
+  "place": "Čapljina",
+  "lat": 43.1194,
+  "lon": 17.6853,
+  "coordSource": "api.vaktija.eu/v4/locations id=154 slug=capljina country=BA",
+  "terrain": {
+   "elevationM": 32,
+   "horizonEastDeg": 1.34,
+   "horizonWestDeg": 6.88
+  },
+  "margins": {
+   "fajr": {
+    "m": -0.5,
+    "mode": "floor",
+    "exact": 33,
+    "within1": 71,
+    "mae": 3.87,
+    "sd": 4.5
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 9,
+    "within1": 78,
+    "mae": 3.55,
+    "sd": 4.01
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 313,
+    "within1": 365,
+    "mae": 0.14,
+    "sd": 0.38
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 29,
+    "within1": 111,
+    "mae": 2.84,
+    "sd": 3.3
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 21,
+    "within1": 88,
+    "mae": 3.2,
+    "sd": 3.66
+   },
+   "isha": {
+    "m": 1.5,
+    "mode": "round",
+    "exact": 26,
+    "within1": 80,
+    "mae": 3.67,
+    "sd": 4.26
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 431,
+    "within1": 793,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 24,
+  "place": "Čitluk",
+  "lat": 43.2333,
+  "lon": 17.7,
+  "coordSource": "api.vaktija.eu/v4/locations id=157 slug=citluk country=BA",
+  "terrain": {
+   "elevationM": 238,
+   "horizonEastDeg": 2.329,
+   "horizonWestDeg": 0.464
+  },
+  "margins": {
+   "fajr": {
+    "m": -0.5,
+    "mode": "floor",
+    "exact": 48,
+    "within1": 70,
+    "mae": 3.32,
+    "sd": 3.89
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 10,
+    "within1": 88,
+    "mae": 3.16,
+    "sd": 3.57
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 303,
+    "within1": 365,
+    "mae": 0.17,
+    "sd": 0.4
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 36,
+    "within1": 114,
+    "mae": 2.5,
+    "sd": 2.88
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 24,
+    "within1": 93,
+    "mae": 2.82,
+    "sd": 3.18
+   },
+   "isha": {
+    "m": 1.5,
+    "mode": "round",
+    "exact": 37,
+    "within1": 78,
+    "mae": 3.22,
+    "sd": 3.68
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 458,
+    "within1": 808,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 26,
+  "place": "Doboj",
+  "lat": 44.7308,
+  "lon": 18.0856,
+  "coordSource": "api.vaktija.eu/v4/locations id=159 slug=doboj country=BA",
+  "terrain": {
+   "elevationM": 144,
+   "horizonEastDeg": 2.824,
+   "horizonWestDeg": 3.015
+  },
+  "margins": {
+   "fajr": {
+    "m": 1.5,
+    "mode": "round",
+    "exact": 154,
+    "within1": 282,
+    "mae": 1.1,
+    "sd": 1.68
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 101,
+    "within1": 303,
+    "mae": 0.9,
+    "sd": 1.09
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 234,
+    "within1": 365,
+    "mae": 0.36,
+    "sd": 0.48
+   },
+   "asr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 113,
+    "within1": 269,
+    "mae": 1.07,
+    "sd": 1.39
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 146,
+    "within1": 330,
+    "mae": 0.7,
+    "sd": 0.95
+   },
+   "isha": {
+    "m": -1.5,
+    "mode": "floor",
+    "exact": 113,
+    "within1": 262,
+    "mae": 1.06,
+    "sd": 1.4
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 861,
+    "within1": 1811,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 30,
+  "place": "Fojnica",
+  "lat": 43.9608,
+  "lon": 17.8953,
+  "coordSource": "api.vaktija.eu/v4/locations id=163 slug=fojnica country=BA",
+  "terrain": {
+   "elevationM": 667,
+   "horizonEastDeg": 5.124,
+   "horizonWestDeg": 6.221
+  },
+  "margins": {
+   "fajr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 216,
+    "within1": 359,
+    "mae": 0.42,
+    "sd": 0.57
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 116,
+    "within1": 349,
+    "mae": 0.73,
+    "sd": 0.89
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 306,
+    "within1": 365,
+    "mae": 0.16,
+    "sd": 0.38
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 116,
+    "within1": 309,
+    "mae": 0.84,
+    "sd": 1.07
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 152,
+    "within1": 358,
+    "mae": 0.6,
+    "sd": 0.8
+   },
+   "isha": {
+    "m": 0,
+    "mode": "round",
+    "exact": 140,
+    "within1": 329,
+    "mae": 0.72,
+    "sd": 0.94
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 1046,
+    "within1": 2069,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 32,
+  "place": "Glamoč",
+  "lat": 44.0475,
+  "lon": 16.8506,
+  "coordSource": "api.vaktija.eu/v4/locations id=165 slug=glamoc country=BA",
+  "terrain": {
+   "elevationM": 945,
+   "horizonEastDeg": 3.582,
+   "horizonWestDeg": 4.299
+  },
+  "margins": {
+   "fajr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 195,
+    "within1": 362,
+    "mae": 0.47,
+    "sd": 0.67
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 136,
+    "within1": 338,
+    "mae": 0.7,
+    "sd": 0.92
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 253,
+    "within1": 365,
+    "mae": 0.31,
+    "sd": 0.46
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 128,
+    "within1": 313,
+    "mae": 0.79,
+    "sd": 1.02
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 186,
+    "within1": 353,
+    "mae": 0.52,
+    "sd": 0.76
+   },
+   "isha": {
+    "m": 0,
+    "mode": "round",
+    "exact": 138,
+    "within1": 332,
+    "mae": 0.71,
+    "sd": 0.9
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 1036,
+    "within1": 2063,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 33,
+  "place": "Goražde",
+  "lat": 43.6667,
+  "lon": 18.9764,
+  "coordSource": "api.vaktija.eu/v4/locations id=166 slug=gorazde country=BA",
+  "terrain": {
+   "elevationM": 337,
+   "horizonEastDeg": 7.745,
+   "horizonWestDeg": 7.651
+  },
+  "margins": {
+   "fajr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 145,
+    "within1": 262,
+    "mae": 0.98,
+    "sd": 1.25
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 67,
+    "within1": 217,
+    "mae": 1.34,
+    "sd": 1.59
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 277,
+    "within1": 365,
+    "mae": 0.24,
+    "sd": 0.45
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 84,
+    "within1": 266,
+    "mae": 1.09,
+    "sd": 1.35
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 93,
+    "within1": 268,
+    "mae": 1.02,
+    "sd": 1.26
+   },
+   "isha": {
+    "m": 0,
+    "mode": "round",
+    "exact": 102,
+    "within1": 236,
+    "mae": 1.17,
+    "sd": 1.4
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 768,
+    "within1": 1614,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 34,
+  "place": "Gornji Vakuf",
+  "lat": 43.9392,
+  "lon": 17.5908,
+  "coordSource": "api.vaktija.eu/v4/locations id=167 slug=gornji-vakuf country=BA",
+  "terrain": null,
+  "margins": {
+   "fajr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 224,
+    "within1": 365,
+    "mae": 0.39,
+    "sd": 0.57
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 119,
+    "within1": 316,
+    "mae": 0.81,
+    "sd": 1.02
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 240,
+    "within1": 365,
+    "mae": 0.34,
+    "sd": 0.47
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 127,
+    "within1": 308,
+    "mae": 0.81,
+    "sd": 1.06
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 152,
+    "within1": 341,
+    "mae": 0.65,
+    "sd": 0.89
+   },
+   "isha": {
+    "m": 0,
+    "mode": "round",
+    "exact": 130,
+    "within1": 333,
+    "mae": 0.73,
+    "sd": 0.94
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 992,
+    "within1": 2028,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 39,
+  "place": "Han-Pijesak",
+  "lat": 44.0667,
+  "lon": 18.95,
+  "coordSource": "api.vaktija.eu/v4/locations id=172 slug=han-pijesak country=BA",
+  "terrain": {
+   "elevationM": 1082,
+   "horizonEastDeg": 1.718,
+   "horizonWestDeg": 2.596
+  },
+  "margins": {
+   "fajr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 211,
+    "within1": 365,
+    "mae": 0.42,
+    "sd": 0.59
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 97,
+    "within1": 305,
+    "mae": 0.9,
+    "sd": 1.11
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 302,
+    "within1": 365,
+    "mae": 0.17,
+    "sd": 0.41
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 141,
+    "within1": 298,
+    "mae": 0.8,
+    "sd": 1.07
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 162,
+    "within1": 353,
+    "mae": 0.59,
+    "sd": 0.8
+   },
+   "isha": {
+    "m": 0,
+    "mode": "round",
+    "exact": 111,
+    "within1": 341,
+    "mae": 0.76,
+    "sd": 0.88
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 1024,
+    "within1": 2027,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 40,
+  "place": "Hlivno",
+  "lat": 43.8269,
+  "lon": 17.0075,
+  "coordSource": "api.vaktija.eu/v4/locations id=173 slug=hlivno country=BA",
+  "terrain": {
+   "elevationM": 748,
+   "horizonEastDeg": 8.119,
+   "horizonWestDeg": 0.783
+  },
+  "margins": {
+   "fajr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 239,
+    "within1": 365,
+    "mae": 0.35,
+    "sd": 0.49
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 117,
+    "within1": 326,
+    "mae": 0.79,
+    "sd": 0.98
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 244,
+    "within1": 365,
+    "mae": 0.33,
+    "sd": 0.48
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 134,
+    "within1": 298,
+    "mae": 0.82,
+    "sd": 1.06
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 179,
+    "within1": 334,
+    "mae": 0.59,
+    "sd": 0.79
+   },
+   "isha": {
+    "m": 0,
+    "mode": "round",
+    "exact": 157,
+    "within1": 315,
+    "mae": 0.71,
+    "sd": 0.89
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 1070,
+    "within1": 2003,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 41,
+  "place": "Ilijaš",
+  "lat": 43.9519,
+  "lon": 18.2736,
+  "coordSource": "api.vaktija.eu/v4/locations id=174 slug=ilijas country=BA",
+  "terrain": {
+   "elevationM": 463,
+   "horizonEastDeg": 5.474,
+   "horizonWestDeg": 3.852
+  },
+  "margins": {
+   "fajr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 195,
+    "within1": 365,
+    "mae": 0.47,
+    "sd": 0.57
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 122,
+    "within1": 302,
+    "mae": 0.84,
+    "sd": 1.08
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 208,
+    "within1": 365,
+    "mae": 0.43,
+    "sd": 0.5
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 134,
+    "within1": 278,
+    "mae": 0.9,
+    "sd": 1.22
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 156,
+    "within1": 334,
+    "mae": 0.66,
+    "sd": 0.9
+   },
+   "isha": {
+    "m": 0,
+    "mode": "round",
+    "exact": 106,
+    "within1": 333,
+    "mae": 0.8,
+    "sd": 0.98
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 921,
+    "within1": 1977,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 43,
+  "place": "Jajce",
+  "lat": 44.3394,
+  "lon": 17.2697,
+  "coordSource": "api.vaktija.eu/v4/locations id=176 slug=jajce country=BA",
+  "terrain": {
+   "elevationM": 393,
+   "horizonEastDeg": 8.792,
+   "horizonWestDeg": 5.73
+  },
+  "margins": {
+   "fajr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 186,
+    "within1": 300,
+    "mae": 0.74,
+    "sd": 1.01
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 116,
+    "within1": 306,
+    "mae": 0.84,
+    "sd": 1.08
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 215,
+    "within1": 365,
+    "mae": 0.41,
+    "sd": 0.5
+   },
+   "asr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 117,
+    "within1": 274,
+    "mae": 1.01,
+    "sd": 1.24
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 154,
+    "within1": 335,
+    "mae": 0.66,
+    "sd": 0.9
+   },
+   "isha": {
+    "m": -0.5,
+    "mode": "floor",
+    "exact": 139,
+    "within1": 301,
+    "mae": 0.81,
+    "sd": 1.09
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 927,
+    "within1": 1881,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 44,
+  "place": "Kakanj",
+  "lat": 44.1286,
+  "lon": 18.1144,
+  "coordSource": "api.vaktija.eu/v4/locations id=177 slug=kakanj country=BA",
+  "terrain": {
+   "elevationM": 428,
+   "horizonEastDeg": 4.526,
+   "horizonWestDeg": 4.821
+  },
+  "margins": {
+   "fajr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 203,
+    "within1": 363,
+    "mae": 0.45,
+    "sd": 0.66
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 134,
+    "within1": 318,
+    "mae": 0.76,
+    "sd": 1
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 269,
+    "within1": 365,
+    "mae": 0.26,
+    "sd": 0.44
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 143,
+    "within1": 296,
+    "mae": 0.8,
+    "sd": 1.08
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 155,
+    "within1": 350,
+    "mae": 0.62,
+    "sd": 0.83
+   },
+   "isha": {
+    "m": -0.5,
+    "mode": "floor",
+    "exact": 168,
+    "within1": 310,
+    "mae": 0.7,
+    "sd": 0.96
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 1072,
+    "within1": 2002,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 45,
+  "place": "Kalesija",
+  "lat": 44.45,
+  "lon": 18.8667,
+  "coordSource": "api.vaktija.eu/v4/locations id=178 slug=kalesija country=BA",
+  "terrain": {
+   "elevationM": 263,
+   "horizonEastDeg": 3.567,
+   "horizonWestDeg": 1.346
+  },
+  "margins": {
+   "fajr": {
+    "m": 1.5,
+    "mode": "round",
+    "exact": 108,
+    "within1": 301,
+    "mae": 0.92,
+    "sd": 1.19
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 134,
+    "within1": 326,
+    "mae": 0.74,
+    "sd": 0.96
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 272,
+    "within1": 365,
+    "mae": 0.25,
+    "sd": 0.44
+   },
+   "asr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 100,
+    "within1": 258,
+    "mae": 1.12,
+    "sd": 1.39
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 110,
+    "within1": 312,
+    "mae": 0.85,
+    "sd": 1.06
+   },
+   "isha": {
+    "m": -0.5,
+    "mode": "floor",
+    "exact": 74,
+    "within1": 257,
+    "mae": 1.12,
+    "sd": 1.34
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 798,
+    "within1": 1819,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 49,
+  "place": "Ključ",
+  "lat": 44.5333,
+  "lon": 16.7833,
+  "coordSource": "api.vaktija.eu/v4/locations id=182 slug=kljuc country=BA",
+  "terrain": {
+   "elevationM": 253,
+   "horizonEastDeg": 6.692,
+   "horizonWestDeg": 5.654
+  },
+  "margins": {
+   "fajr": {
+    "m": 1.5,
+    "mode": "round",
+    "exact": 162,
+    "within1": 303,
+    "mae": 0.82,
+    "sd": 1.25
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 80,
+    "within1": 293,
+    "mae": 0.98,
+    "sd": 1.17
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 197,
+    "within1": 365,
+    "mae": 0.46,
+    "sd": 0.51
+   },
+   "asr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 121,
+    "within1": 279,
+    "mae": 1.02,
+    "sd": 1.36
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 144,
+    "within1": 337,
+    "mae": 0.68,
+    "sd": 0.89
+   },
+   "isha": {
+    "m": -0.5,
+    "mode": "floor",
+    "exact": 97,
+    "within1": 279,
+    "mae": 0.99,
+    "sd": 1.18
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 801,
+    "within1": 1856,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 50,
+  "place": "Konjic",
+  "lat": 43.6514,
+  "lon": 17.96,
+  "coordSource": "api.vaktija.eu/v4/locations id=183 slug=konjic country=BA",
+  "terrain": null,
+  "margins": {
+   "fajr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 132,
+    "within1": 238,
+    "mae": 1.13,
+    "sd": 1.43
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 65,
+    "within1": 195,
+    "mae": 1.44,
+    "sd": 1.7
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 296,
+    "within1": 365,
+    "mae": 0.19,
+    "sd": 0.42
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 67,
+    "within1": 250,
+    "mae": 1.2,
+    "sd": 1.44
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 88,
+    "within1": 243,
+    "mae": 1.13,
+    "sd": 1.39
+   },
+   "isha": {
+    "m": 0,
+    "mode": "round",
+    "exact": 95,
+    "within1": 231,
+    "mae": 1.3,
+    "sd": 1.58
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 743,
+    "within1": 1522,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 53,
+  "place": "Kupres",
+  "lat": 43.9833,
+  "lon": 17.3,
+  "coordSource": "api.vaktija.eu/v4/locations id=186 slug=kupres country=BA",
+  "terrain": {
+   "elevationM": 1255,
+   "horizonEastDeg": 5.937,
+   "horizonWestDeg": -0.252
+  },
+  "margins": {
+   "fajr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 212,
+    "within1": 358,
+    "mae": 0.44,
+    "sd": 0.53
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 136,
+    "within1": 316,
+    "mae": 0.76,
+    "sd": 1.01
+   },
+   "dhuhr": {
+    "m": 1.5,
+    "mode": "round",
+    "exact": 190,
+    "within1": 364,
+    "mae": 0.48,
+    "sd": 0.51
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 133,
+    "within1": 304,
+    "mae": 0.81,
+    "sd": 1.07
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 188,
+    "within1": 342,
+    "mae": 0.55,
+    "sd": 0.82
+   },
+   "isha": {
+    "m": 0,
+    "mode": "round",
+    "exact": 139,
+    "within1": 336,
+    "mae": 0.7,
+    "sd": 0.91
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 998,
+    "within1": 2020,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 55,
+  "place": "Lopare",
+  "lat": 44.6333,
+  "lon": 18.85,
+  "coordSource": "api.vaktija.eu/v4/locations id=188 slug=lopare country=BA",
+  "terrain": {
+   "elevationM": 276,
+   "horizonEastDeg": 2.119,
+   "horizonWestDeg": 4.194
+  },
+  "margins": {
+   "fajr": {
+    "m": 1.5,
+    "mode": "round",
+    "exact": 153,
+    "within1": 280,
+    "mae": 0.98,
+    "sd": 1.43
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 123,
+    "within1": 302,
+    "mae": 0.84,
+    "sd": 1.09
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 252,
+    "within1": 365,
+    "mae": 0.31,
+    "sd": 0.46
+   },
+   "asr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 103,
+    "within1": 280,
+    "mae": 1.01,
+    "sd": 1.26
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 172,
+    "within1": 343,
+    "mae": 0.59,
+    "sd": 0.85
+   },
+   "isha": {
+    "m": -1.5,
+    "mode": "floor",
+    "exact": 114,
+    "within1": 279,
+    "mae": 0.96,
+    "sd": 1.21
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 917,
+    "within1": 1849,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 57,
+  "place": "Ljubinje",
+  "lat": 42.95,
+  "lon": 18.0833,
+  "coordSource": "api.vaktija.eu/v4/locations id=190 slug=ljubinje country=BA",
+  "terrain": {
+   "elevationM": 461,
+   "horizonEastDeg": 5.937,
+   "horizonWestDeg": 5.417
+  },
+  "margins": {
+   "fajr": {
+    "m": -1.5,
+    "mode": "floor",
+    "exact": 37,
+    "within1": 63,
+    "mae": 4.67,
+    "sd": 5.51
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 20,
+    "within1": 66,
+    "mae": 4.23,
+    "sd": 4.83
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 232,
+    "within1": 365,
+    "mae": 0.36,
+    "sd": 0.48
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 6,
+    "within1": 63,
+    "mae": 3.64,
+    "sd": 4.07
+   },
+   "maghrib": {
+    "m": 6.5,
+    "mode": "round",
+    "exact": 10,
+    "within1": 54,
+    "mae": 4.05,
+    "sd": 4.51
+   },
+   "isha": {
+    "m": 1.5,
+    "mode": "round",
+    "exact": 1,
+    "within1": 41,
+    "mae": 4.67,
+    "sd": 5.27
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 306,
+    "within1": 652,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 59,
+  "place": "Maglaj",
+  "lat": 44.5497,
+  "lon": 18.0997,
+  "coordSource": "api.vaktija.eu/v4/locations id=192 slug=maglaj country=BA",
+  "terrain": {
+   "elevationM": 173,
+   "horizonEastDeg": 5.067,
+   "horizonWestDeg": 6.089
+  },
+  "margins": {
+   "fajr": {
+    "m": 1.5,
+    "mode": "round",
+    "exact": 144,
+    "within1": 293,
+    "mae": 0.89,
+    "sd": 1.28
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 113,
+    "within1": 296,
+    "mae": 0.88,
+    "sd": 1.12
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 252,
+    "within1": 365,
+    "mae": 0.31,
+    "sd": 0.46
+   },
+   "asr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 107,
+    "within1": 276,
+    "mae": 1.03,
+    "sd": 1.26
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 165,
+    "within1": 330,
+    "mae": 0.65,
+    "sd": 0.93
+   },
+   "isha": {
+    "m": -0.5,
+    "mode": "floor",
+    "exact": 120,
+    "within1": 271,
+    "mae": 1.01,
+    "sd": 1.23
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 901,
+    "within1": 1831,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 61,
+  "place": "Mostar",
+  "lat": 43.3438,
+  "lon": 17.8078,
+  "coordSource": "api.vaktija.eu/v4/locations id=194 slug=mostar country=BA",
+  "terrain": {
+   "elevationM": 65,
+   "horizonEastDeg": 11.273,
+   "horizonWestDeg": 6.598
+  },
+  "margins": {
+   "fajr": {
+    "m": -0.5,
+    "mode": "floor",
+    "exact": 31,
+    "within1": 102,
+    "mae": 2.72,
+    "sd": 3.14
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 25,
+    "within1": 85,
+    "mae": 2.66,
+    "sd": 2.99
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 203,
+    "within1": 365,
+    "mae": 0.44,
+    "sd": 0.5
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 45,
+    "within1": 127,
+    "mae": 2.01,
+    "sd": 2.34
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 33,
+    "within1": 103,
+    "mae": 2.24,
+    "sd": 2.53
+   },
+   "isha": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 29,
+    "within1": 95,
+    "mae": 2.58,
+    "sd": 2.95
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 366,
+    "within1": 877,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 64,
+  "place": "Nevesinje",
+  "lat": 43.2581,
+  "lon": 18.1133,
+  "coordSource": "api.vaktija.eu/v4/locations id=197 slug=nevesinje country=BA",
+  "terrain": null,
+  "margins": {
+   "fajr": {
+    "m": -0.5,
+    "mode": "floor",
+    "exact": 36,
+    "within1": 78,
+    "mae": 3.21,
+    "sd": 3.72
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 18,
+    "within1": 85,
+    "mae": 3.01,
+    "sd": 3.42
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 267,
+    "within1": 365,
+    "mae": 0.27,
+    "sd": 0.44
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 43,
+    "within1": 105,
+    "mae": 2.32,
+    "sd": 2.69
+   },
+   "maghrib": {
+    "m": 6.5,
+    "mode": "round",
+    "exact": 32,
+    "within1": 97,
+    "mae": 2.57,
+    "sd": 2.91
+   },
+   "isha": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 28,
+    "within1": 87,
+    "mae": 2.99,
+    "sd": 3.41
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 424,
+    "within1": 817,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 65,
+  "place": "Novi Travnik",
+  "lat": 44.1667,
+  "lon": 17.65,
+  "coordSource": "api.vaktija.eu/v4/locations id=198 slug=novi-travnik country=BA",
+  "terrain": {
+   "elevationM": 535,
+   "horizonEastDeg": 3.69,
+   "horizonWestDeg": 6.588
+  },
+  "margins": {
+   "fajr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 205,
+    "within1": 349,
+    "mae": 0.48,
+    "sd": 0.75
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 105,
+    "within1": 315,
+    "mae": 0.85,
+    "sd": 1.05
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 309,
+    "within1": 365,
+    "mae": 0.15,
+    "sd": 0.38
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 142,
+    "within1": 298,
+    "mae": 0.8,
+    "sd": 1.07
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 163,
+    "within1": 350,
+    "mae": 0.59,
+    "sd": 0.82
+   },
+   "isha": {
+    "m": -0.5,
+    "mode": "floor",
+    "exact": 147,
+    "within1": 302,
+    "mae": 0.78,
+    "sd": 1.01
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 1071,
+    "within1": 1979,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 66,
+  "place": "Odžak",
+  "lat": 45,
+  "lon": 18.3333,
+  "coordSource": "api.vaktija.eu/v4/locations id=199 slug=odzak country=BA",
+  "terrain": {
+   "elevationM": 94,
+   "horizonEastDeg": 0.038,
+   "horizonWestDeg": 1.226
+  },
+  "margins": {
+   "fajr": {
+    "m": 2.5,
+    "mode": "round",
+    "exact": 140,
+    "within1": 261,
+    "mae": 1.33,
+    "sd": 1.98
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 116,
+    "within1": 269,
+    "mae": 0.97,
+    "sd": 1.26
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 232,
+    "within1": 365,
+    "mae": 0.36,
+    "sd": 0.48
+   },
+   "asr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 87,
+    "within1": 244,
+    "mae": 1.26,
+    "sd": 1.61
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 135,
+    "within1": 304,
+    "mae": 0.81,
+    "sd": 1.09
+   },
+   "isha": {
+    "m": -2.5,
+    "mode": "floor",
+    "exact": 87,
+    "within1": 222,
+    "mae": 1.38,
+    "sd": 1.76
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 797,
+    "within1": 1665,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 68,
+  "place": "Orašje",
+  "lat": 45.0333,
+  "lon": 18.7,
+  "coordSource": "api.vaktija.eu/v4/locations id=201 slug=orasje country=BA",
+  "terrain": {
+   "elevationM": 82,
+   "horizonEastDeg": 0.08,
+   "horizonWestDeg": 0.019
+  },
+  "margins": {
+   "fajr": {
+    "m": 2.5,
+    "mode": "round",
+    "exact": 106,
+    "within1": 249,
+    "mae": 1.49,
+    "sd": 2.17
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 82,
+    "within1": 258,
+    "mae": 1.09,
+    "sd": 1.31
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 302,
+    "within1": 365,
+    "mae": 0.17,
+    "sd": 0.41
+   },
+   "asr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 73,
+    "within1": 230,
+    "mae": 1.31,
+    "sd": 1.62
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 140,
+    "within1": 301,
+    "mae": 0.81,
+    "sd": 1.1
+   },
+   "isha": {
+    "m": -1.5,
+    "mode": "floor",
+    "exact": 106,
+    "within1": 251,
+    "mae": 1.3,
+    "sd": 1.69
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 809,
+    "within1": 1654,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 71,
+  "place": "Prijedor",
+  "lat": 44.98,
+  "lon": 16.7133,
+  "coordSource": "api.vaktija.eu/v4/locations id=204 slug=prijedor country=BA",
+  "terrain": {
+   "elevationM": 139,
+   "horizonEastDeg": 2.445,
+   "horizonWestDeg": 0.602
+  },
+  "margins": {
+   "fajr": {
+    "m": 2.5,
+    "mode": "round",
+    "exact": 106,
+    "within1": 251,
+    "mae": 1.46,
+    "sd": 2.13
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 88,
+    "within1": 274,
+    "mae": 1.02,
+    "sd": 1.25
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 294,
+    "within1": 365,
+    "mae": 0.19,
+    "sd": 0.42
+   },
+   "asr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 96,
+    "within1": 238,
+    "mae": 1.19,
+    "sd": 1.53
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 136,
+    "within1": 323,
+    "mae": 0.75,
+    "sd": 0.98
+   },
+   "isha": {
+    "m": -1.5,
+    "mode": "floor",
+    "exact": 89,
+    "within1": 256,
+    "mae": 1.27,
+    "sd": 1.6
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 809,
+    "within1": 1707,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 73,
+  "place": "Prozor",
+  "lat": 43.8167,
+  "lon": 17.6,
+  "coordSource": "api.vaktija.eu/v4/locations id=206 slug=prozor country=BA",
+  "terrain": null,
+  "margins": {
+   "fajr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 243,
+    "within1": 365,
+    "mae": 0.33,
+    "sd": 0.47
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 121,
+    "within1": 306,
+    "mae": 0.83,
+    "sd": 0.98
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 252,
+    "within1": 365,
+    "mae": 0.31,
+    "sd": 0.46
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 120,
+    "within1": 306,
+    "mae": 0.85,
+    "sd": 1.03
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 135,
+    "within1": 354,
+    "mae": 0.66,
+    "sd": 0.8
+   },
+   "isha": {
+    "m": 0,
+    "mode": "round",
+    "exact": 108,
+    "within1": 358,
+    "mae": 0.72,
+    "sd": 0.86
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 979,
+    "within1": 2054,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 77,
+  "place": "Sarajevo",
+  "lat": 43.8563,
+  "lon": 18.4131,
+  "coordSource": "api.vaktija.eu/v4/locations id=132 slug=sarajevo country=BA",
+  "terrain": {
+   "elevationM": 538,
+   "horizonEastDeg": 8.587,
+   "horizonWestDeg": 3.567
+  },
+  "margins": {
+   "fajr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 310,
+    "within1": 365,
+    "mae": 0.15,
+    "sd": 0.39
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 118,
+    "within1": 336,
+    "mae": 0.76,
+    "sd": 0.94
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 316,
+    "within1": 365,
+    "mae": 0.13,
+    "sd": 0.36
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 126,
+    "within1": 316,
+    "mae": 0.79,
+    "sd": 1.02
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 160,
+    "within1": 359,
+    "mae": 0.58,
+    "sd": 0.78
+   },
+   "isha": {
+    "m": 0,
+    "mode": "round",
+    "exact": 126,
+    "within1": 356,
+    "mae": 0.68,
+    "sd": 0.85
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 1156,
+    "within1": 2097,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 78,
+  "place": "Skender-Vakuf",
+  "lat": 44.4667,
+  "lon": 17.55,
+  "coordSource": "api.vaktija.eu/v4/locations id=210 slug=skender-vakuf country=BA",
+  "terrain": null,
+  "margins": {
+   "fajr": {
+    "m": 1.5,
+    "mode": "round",
+    "exact": 173,
+    "within1": 294,
+    "mae": 0.86,
+    "sd": 1.25
+   },
+   "sunrise": {
+    "m": -4.5,
+    "mode": "floor",
+    "exact": 120,
+    "within1": 316,
+    "mae": 0.81,
+    "sd": 0.94
+   },
+   "dhuhr": {
+    "m": 1.5,
+    "mode": "round",
+    "exact": 190,
+    "within1": 364,
+    "mae": 0.48,
+    "sd": 0.51
+   },
+   "asr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 110,
+    "within1": 263,
+    "mae": 1.04,
+    "sd": 1.35
+   },
+   "maghrib": {
+    "m": 6.5,
+    "mode": "round",
+    "exact": 108,
+    "within1": 320,
+    "mae": 0.83,
+    "sd": 1.01
+   },
+   "isha": {
+    "m": -0.5,
+    "mode": "floor",
+    "exact": 127,
+    "within1": 273,
+    "mae": 0.95,
+    "sd": 1.22
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 828,
+    "within1": 1830,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 79,
+  "place": "Sokolac",
+  "lat": 43.9333,
+  "lon": 18.7833,
+  "coordSource": "api.vaktija.eu/v4/locations id=211 slug=sokolac country=BA",
+  "terrain": {
+   "elevationM": 950,
+   "horizonEastDeg": 1.764,
+   "horizonWestDeg": 2.7
+  },
+  "margins": {
+   "fajr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 217,
+    "within1": 365,
+    "mae": 0.41,
+    "sd": 0.57
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 113,
+    "within1": 276,
+    "mae": 0.93,
+    "sd": 1.18
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 198,
+    "within1": 365,
+    "mae": 0.46,
+    "sd": 0.51
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 136,
+    "within1": 301,
+    "mae": 0.83,
+    "sd": 1.13
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 182,
+    "within1": 339,
+    "mae": 0.57,
+    "sd": 0.84
+   },
+   "isha": {
+    "m": 0,
+    "mode": "round",
+    "exact": 136,
+    "within1": 343,
+    "mae": 0.69,
+    "sd": 0.89
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 982,
+    "within1": 1989,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 84,
+  "place": "Šekovići",
+  "lat": 44.2833,
+  "lon": 18.85,
+  "coordSource": "api.vaktija.eu/v4/locations id=216 slug=sekovici country=BA",
+  "terrain": {
+   "elevationM": 587,
+   "horizonEastDeg": 4.972,
+   "horizonWestDeg": 3.719
+  },
+  "margins": {
+   "fajr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 189,
+    "within1": 328,
+    "mae": 0.6,
+    "sd": 0.86
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 112,
+    "within1": 303,
+    "mae": 0.86,
+    "sd": 1.09
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 252,
+    "within1": 365,
+    "mae": 0.31,
+    "sd": 0.46
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 124,
+    "within1": 272,
+    "mae": 0.97,
+    "sd": 1.26
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 159,
+    "within1": 338,
+    "mae": 0.64,
+    "sd": 0.88
+   },
+   "isha": {
+    "m": -0.5,
+    "mode": "floor",
+    "exact": 119,
+    "within1": 301,
+    "mae": 0.86,
+    "sd": 1.11
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 955,
+    "within1": 1907,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 88,
+  "place": "Tešanj",
+  "lat": 44.6103,
+  "lon": 17.9833,
+  "coordSource": "api.vaktija.eu/v4/locations id=220 slug=tesanj country=BA",
+  "terrain": {
+   "elevationM": 279,
+   "horizonEastDeg": 1.804,
+   "horizonWestDeg": 1.604
+  },
+  "margins": {
+   "fajr": {
+    "m": 1.5,
+    "mode": "round",
+    "exact": 151,
+    "within1": 286,
+    "mae": 0.98,
+    "sd": 1.48
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 119,
+    "within1": 305,
+    "mae": 0.84,
+    "sd": 1.06
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 271,
+    "within1": 365,
+    "mae": 0.26,
+    "sd": 0.46
+   },
+   "asr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 126,
+    "within1": 271,
+    "mae": 1.04,
+    "sd": 1.4
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 134,
+    "within1": 324,
+    "mae": 0.76,
+    "sd": 1
+   },
+   "isha": {
+    "m": -1.5,
+    "mode": "floor",
+    "exact": 101,
+    "within1": 232,
+    "mae": 1.14,
+    "sd": 1.4
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 902,
+    "within1": 1783,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 90,
+  "place": "Travnik",
+  "lat": 44.2269,
+  "lon": 17.6656,
+  "coordSource": "api.vaktija.eu/v4/locations id=222 slug=travnik country=BA",
+  "terrain": {
+   "elevationM": 509,
+   "horizonEastDeg": 7.538,
+   "horizonWestDeg": 5.843
+  },
+  "margins": {
+   "fajr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 196,
+    "within1": 323,
+    "mae": 0.59,
+    "sd": 0.9
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 139,
+    "within1": 334,
+    "mae": 0.7,
+    "sd": 0.93
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 315,
+    "within1": 365,
+    "mae": 0.14,
+    "sd": 0.37
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 120,
+    "within1": 288,
+    "mae": 0.9,
+    "sd": 1.14
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 176,
+    "within1": 343,
+    "mae": 0.58,
+    "sd": 0.83
+   },
+   "isha": {
+    "m": -0.5,
+    "mode": "floor",
+    "exact": 134,
+    "within1": 310,
+    "mae": 0.79,
+    "sd": 1.02
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 1080,
+    "within1": 1963,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 91,
+  "place": "Trebinje",
+  "lat": 42.7111,
+  "lon": 18.3436,
+  "coordSource": "api.vaktija.eu/v4/locations id=223 slug=trebinje country=BA",
+  "terrain": {
+   "elevationM": 279,
+   "horizonEastDeg": 7.745,
+   "horizonWestDeg": 6.39
+  },
+  "margins": {
+   "fajr": {
+    "m": -1.5,
+    "mode": "floor",
+    "exact": 25,
+    "within1": 57,
+    "mae": 5.96,
+    "sd": 6.93
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 11,
+    "within1": 46,
+    "mae": 5.23,
+    "sd": 5.93
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 242,
+    "within1": 365,
+    "mae": 0.34,
+    "sd": 0.47
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 5,
+    "within1": 53,
+    "mae": 4.27,
+    "sd": 4.79
+   },
+   "maghrib": {
+    "m": 6.5,
+    "mode": "round",
+    "exact": 7,
+    "within1": 43,
+    "mae": 4.79,
+    "sd": 5.35
+   },
+   "isha": {
+    "m": 2.5,
+    "mode": "round",
+    "exact": 10,
+    "within1": 30,
+    "mae": 5.59,
+    "sd": 6.33
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 300,
+    "within1": 594,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 93,
+  "place": "Tuzla",
+  "lat": 44.5384,
+  "lon": 18.6763,
+  "coordSource": "api.vaktija.eu/v4/locations id=225 slug=tuzla country=BA",
+  "terrain": {
+   "elevationM": 230,
+   "horizonEastDeg": 1.985,
+   "horizonWestDeg": 0.796
+  },
+  "margins": {
+   "fajr": {
+    "m": 1.5,
+    "mode": "round",
+    "exact": 140,
+    "within1": 302,
+    "mae": 0.85,
+    "sd": 1.21
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 128,
+    "within1": 294,
+    "mae": 0.85,
+    "sd": 1.12
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 310,
+    "within1": 365,
+    "mae": 0.15,
+    "sd": 0.39
+   },
+   "asr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 108,
+    "within1": 275,
+    "mae": 1.01,
+    "sd": 1.22
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 162,
+    "within1": 334,
+    "mae": 0.65,
+    "sd": 0.92
+   },
+   "isha": {
+    "m": -0.5,
+    "mode": "floor",
+    "exact": 115,
+    "within1": 281,
+    "mae": 0.98,
+    "sd": 1.21
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 963,
+    "within1": 1851,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 95,
+  "place": "Vareš",
+  "lat": 44.1611,
+  "lon": 18.3289,
+  "coordSource": "api.vaktija.eu/v4/locations id=228 slug=vares country=BA",
+  "terrain": {
+   "elevationM": 853,
+   "horizonEastDeg": 5.692,
+   "horizonWestDeg": 7.275
+  },
+  "margins": {
+   "fajr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 189,
+    "within1": 362,
+    "mae": 0.49,
+    "sd": 0.7
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 125,
+    "within1": 317,
+    "mae": 0.79,
+    "sd": 1
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 229,
+    "within1": 365,
+    "mae": 0.37,
+    "sd": 0.48
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 102,
+    "within1": 264,
+    "mae": 1.01,
+    "sd": 1.25
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 112,
+    "within1": 337,
+    "mae": 0.77,
+    "sd": 0.96
+   },
+   "isha": {
+    "m": -0.5,
+    "mode": "floor",
+    "exact": 136,
+    "within1": 286,
+    "mae": 0.86,
+    "sd": 1.09
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 893,
+    "within1": 1931,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 96,
+  "place": "Velika Kladuša",
+  "lat": 45.1833,
+  "lon": 15.8,
+  "coordSource": "api.vaktija.eu/v4/locations id=229 slug=velika-kladusa country=BA",
+  "terrain": {
+   "elevationM": 149,
+   "horizonEastDeg": 1.623,
+   "horizonWestDeg": 1.108
+  },
+  "margins": {
+   "fajr": {
+    "m": 2.5,
+    "mode": "round",
+    "exact": 123,
+    "within1": 262,
+    "mae": 1.61,
+    "sd": 2.45
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 89,
+    "within1": 261,
+    "mae": 1.09,
+    "sd": 1.35
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 190,
+    "within1": 364,
+    "mae": 0.48,
+    "sd": 0.51
+   },
+   "asr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 69,
+    "within1": 215,
+    "mae": 1.4,
+    "sd": 1.72
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 138,
+    "within1": 290,
+    "mae": 0.85,
+    "sd": 1.16
+   },
+   "isha": {
+    "m": -2.5,
+    "mode": "floor",
+    "exact": 87,
+    "within1": 222,
+    "mae": 1.46,
+    "sd": 1.93
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 696,
+    "within1": 1614,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 97,
+  "place": "Visoko",
+  "lat": 44,
+  "lon": 18.1833,
+  "coordSource": "api.vaktija.eu/v4/locations id=230 slug=visoko country=BA",
+  "terrain": null,
+  "margins": {
+   "fajr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 206,
+    "within1": 344,
+    "mae": 0.49,
+    "sd": 0.63
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 113,
+    "within1": 344,
+    "mae": 0.75,
+    "sd": 0.92
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 312,
+    "within1": 365,
+    "mae": 0.15,
+    "sd": 0.38
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 112,
+    "within1": 306,
+    "mae": 0.86,
+    "sd": 1.08
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 160,
+    "within1": 358,
+    "mae": 0.58,
+    "sd": 0.78
+   },
+   "isha": {
+    "m": 0,
+    "mode": "round",
+    "exact": 142,
+    "within1": 331,
+    "mae": 0.7,
+    "sd": 0.93
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 1045,
+    "within1": 2048,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 98,
+  "place": "Višegrad",
+  "lat": 43.7856,
+  "lon": 19.2933,
+  "coordSource": "api.vaktija.eu/v4/locations id=231 slug=visegrad country=BA",
+  "terrain": {
+   "elevationM": 290,
+   "horizonEastDeg": 5.72,
+   "horizonWestDeg": 7.726
+  },
+  "margins": {
+   "fajr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 111,
+    "within1": 346,
+    "mae": 0.75,
+    "sd": 0.92
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 94,
+    "within1": 245,
+    "mae": 1.08,
+    "sd": 1.33
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 186,
+    "within1": 365,
+    "mae": 0.49,
+    "sd": 0.51
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 141,
+    "within1": 285,
+    "mae": 0.88,
+    "sd": 1.24
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 144,
+    "within1": 309,
+    "mae": 0.76,
+    "sd": 1.04
+   },
+   "isha": {
+    "m": 0,
+    "mode": "round",
+    "exact": 146,
+    "within1": 288,
+    "mae": 0.81,
+    "sd": 1.08
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 822,
+    "within1": 1838,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 99,
+  "place": "Vitez",
+  "lat": 44.15,
+  "lon": 17.7833,
+  "coordSource": "api.vaktija.eu/v4/locations id=232 slug=vitez country=BA",
+  "terrain": {
+   "elevationM": 425,
+   "horizonEastDeg": 2.119,
+   "horizonWestDeg": 7.134
+  },
+  "margins": {
+   "fajr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 228,
+    "within1": 365,
+    "mae": 0.38,
+    "sd": 0.61
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 80,
+    "within1": 282,
+    "mae": 1.01,
+    "sd": 1.2
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 197,
+    "within1": 365,
+    "mae": 0.46,
+    "sd": 0.51
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 116,
+    "within1": 299,
+    "mae": 0.87,
+    "sd": 1.08
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 171,
+    "within1": 348,
+    "mae": 0.58,
+    "sd": 0.8
+   },
+   "isha": {
+    "m": -0.5,
+    "mode": "floor",
+    "exact": 143,
+    "within1": 307,
+    "mae": 0.77,
+    "sd": 0.91
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 935,
+    "within1": 1966,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 102,
+  "place": "Zenica",
+  "lat": 44.2036,
+  "lon": 17.9078,
+  "coordSource": "api.vaktija.eu/v4/locations id=235 slug=zenica country=BA",
+  "terrain": {
+   "elevationM": 319,
+   "horizonEastDeg": 4.726,
+   "horizonWestDeg": 4.422
+  },
+  "margins": {
+   "fajr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 210,
+    "within1": 333,
+    "mae": 0.51,
+    "sd": 0.81
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 132,
+    "within1": 326,
+    "mae": 0.75,
+    "sd": 0.98
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 313,
+    "within1": 365,
+    "mae": 0.14,
+    "sd": 0.37
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 124,
+    "within1": 288,
+    "mae": 0.9,
+    "sd": 1.16
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 168,
+    "within1": 344,
+    "mae": 0.6,
+    "sd": 0.84
+   },
+   "isha": {
+    "m": -0.5,
+    "mode": "floor",
+    "exact": 138,
+    "within1": 314,
+    "mae": 0.76,
+    "sd": 0.98
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 1085,
+    "within1": 1970,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 103,
+  "place": "Zvornik",
+  "lat": 44.3831,
+  "lon": 19.1019,
+  "coordSource": "api.vaktija.eu/v4/locations id=236 slug=zvornik country=BA",
+  "terrain": null,
+  "margins": {
+   "fajr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 187,
+    "within1": 301,
+    "mae": 0.73,
+    "sd": 1.02
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 131,
+    "within1": 312,
+    "mae": 0.79,
+    "sd": 1.01
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 255,
+    "within1": 365,
+    "mae": 0.3,
+    "sd": 0.46
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 103,
+    "within1": 255,
+    "mae": 1.07,
+    "sd": 1.27
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 142,
+    "within1": 325,
+    "mae": 0.73,
+    "sd": 0.98
+   },
+   "isha": {
+    "m": -0.5,
+    "mode": "floor",
+    "exact": 87,
+    "within1": 280,
+    "mae": 1.01,
+    "sd": 1.25
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 905,
+    "within1": 1838,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 107,
+  "place": "Bijelo Polje",
+  "lat": 43.0386,
+  "lon": 19.7461,
+  "coordSource": "api.vaktija.eu/v4/locations id=467 slug=bijelo-polje country=ME",
+  "terrain": {
+   "elevationM": 616,
+   "horizonEastDeg": 3.928,
+   "horizonWestDeg": 5.275
+  },
+  "margins": {
+   "fajr": {
+    "m": -0.5,
+    "mode": "floor",
+    "exact": 35,
+    "within1": 120,
+    "mae": 2.62,
+    "sd": 3.14
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 36,
+    "within1": 111,
+    "mae": 2.24,
+    "sd": 2.57
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 259,
+    "within1": 365,
+    "mae": 0.29,
+    "sd": 0.47
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 63,
+    "within1": 186,
+    "mae": 1.54,
+    "sd": 1.85
+   },
+   "maghrib": {
+    "m": 6.5,
+    "mode": "round",
+    "exact": 44,
+    "within1": 145,
+    "mae": 1.91,
+    "sd": 2.19
+   },
+   "isha": {
+    "m": 1.5,
+    "mode": "round",
+    "exact": 40,
+    "within1": 105,
+    "mae": 2.47,
+    "sd": 2.88
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 477,
+    "within1": 1032,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 108,
+  "place": "Gusinje",
+  "lat": 42.563667,
+  "lon": 19.832955,
+  "coordSource": "api.vaktija.eu/v4/locations id=1537 slug=gusinje country=ME",
+  "terrain": {
+   "elevationM": 925,
+   "horizonEastDeg": 10.583,
+   "horizonWestDeg": 8.773
+  },
+  "margins": {
+   "fajr": {
+    "m": -2.5,
+    "mode": "floor",
+    "exact": 28,
+    "within1": 74,
+    "mae": 4.05,
+    "sd": 4.84
+   },
+   "sunrise": {
+    "m": -6.5,
+    "mode": "floor",
+    "exact": 24,
+    "within1": 78,
+    "mae": 3.22,
+    "sd": 3.67
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 232,
+    "within1": 365,
+    "mae": 0.36,
+    "sd": 0.48
+   },
+   "asr": {
+    "m": -0.5,
+    "mode": "floor",
+    "exact": 45,
+    "within1": 107,
+    "mae": 2.31,
+    "sd": 2.68
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 28,
+    "within1": 91,
+    "mae": 2.86,
+    "sd": 3.27
+   },
+   "isha": {
+    "m": 1.5,
+    "mode": "round",
+    "exact": 25,
+    "within1": 74,
+    "mae": 3.72,
+    "sd": 4.34
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 382,
+    "within1": 789,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 109,
+  "place": "Nova Varoš",
+  "lat": 43.4597,
+  "lon": 19.8231,
+  "coordSource": "api.vaktija.eu/v4/locations id=462 slug=nova-varos country=RS",
+  "terrain": {
+   "elevationM": 1027,
+   "horizonEastDeg": 2.157,
+   "horizonWestDeg": 4.821
+  },
+  "margins": {
+   "fajr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 45,
+    "within1": 104,
+    "mae": 2.31,
+    "sd": 2.67
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 33,
+    "within1": 107,
+    "mae": 2.31,
+    "sd": 2.61
+   },
+   "dhuhr": {
+    "m": 1.5,
+    "mode": "round",
+    "exact": 218,
+    "within1": 365,
+    "mae": 0.4,
+    "sd": 0.49
+   },
+   "asr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 64,
+    "within1": 156,
+    "mae": 1.86,
+    "sd": 2.24
+   },
+   "maghrib": {
+    "m": 6.5,
+    "mode": "round",
+    "exact": 53,
+    "within1": 156,
+    "mae": 1.98,
+    "sd": 2.4
+   },
+   "isha": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 52,
+    "within1": 155,
+    "mae": 2.28,
+    "sd": 2.8
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 465,
+    "within1": 1043,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 110,
+  "place": "Novi Pazar",
+  "lat": 43.1367,
+  "lon": 20.5122,
+  "coordSource": "api.vaktija.eu/v4/locations id=452 slug=novi-pazar country=RS",
+  "terrain": {
+   "elevationM": 511,
+   "horizonEastDeg": 3.194,
+   "horizonWestDeg": 3.862
+  },
+  "margins": {
+   "fajr": {
+    "m": -0.5,
+    "mode": "floor",
+    "exact": 28,
+    "within1": 80,
+    "mae": 3.64,
+    "sd": 4.23
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 15,
+    "within1": 78,
+    "mae": 3.36,
+    "sd": 3.79
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 235,
+    "within1": 365,
+    "mae": 0.36,
+    "sd": 0.49
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 45,
+    "within1": 118,
+    "mae": 2.85,
+    "sd": 3.44
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 35,
+    "within1": 101,
+    "mae": 3.19,
+    "sd": 3.8
+   },
+   "isha": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 40,
+    "within1": 94,
+    "mae": 3.67,
+    "sd": 4.47
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 398,
+    "within1": 836,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 111,
+  "place": "Plav",
+  "lat": 42.5967,
+  "lon": 19.9419,
+  "coordSource": "api.vaktija.eu/v4/locations id=475 slug=plav country=ME",
+  "terrain": {
+   "elevationM": 950,
+   "horizonEastDeg": 11.75,
+   "horizonWestDeg": 7.988
+  },
+  "margins": {
+   "fajr": {
+    "m": -1.5,
+    "mode": "floor",
+    "exact": 24,
+    "within1": 75,
+    "mae": 3.95,
+    "sd": 4.7
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 24,
+    "within1": 78,
+    "mae": 3.14,
+    "sd": 3.57
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 306,
+    "within1": 365,
+    "mae": 0.16,
+    "sd": 0.4
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 40,
+    "within1": 134,
+    "mae": 2.23,
+    "sd": 2.58
+   },
+   "maghrib": {
+    "m": 6.5,
+    "mode": "round",
+    "exact": 32,
+    "within1": 86,
+    "mae": 2.83,
+    "sd": 3.19
+   },
+   "isha": {
+    "m": 1.5,
+    "mode": "round",
+    "exact": 28,
+    "within1": 82,
+    "mae": 3.66,
+    "sd": 4.26
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 454,
+    "within1": 820,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 112,
+  "place": "Pljevlja",
+  "lat": 43.3572,
+  "lon": 19.3592,
+  "coordSource": "api.vaktija.eu/v4/locations id=476 slug=pljevlja country=ME",
+  "terrain": {
+   "elevationM": 770,
+   "horizonEastDeg": 6.711,
+   "horizonWestDeg": 2.233
+  },
+  "margins": {
+   "fajr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 69,
+    "within1": 202,
+    "mae": 1.62,
+    "sd": 1.99
+   },
+   "sunrise": {
+    "m": -4.5,
+    "mode": "floor",
+    "exact": 54,
+    "within1": 171,
+    "mae": 1.62,
+    "sd": 1.87
+   },
+   "dhuhr": {
+    "m": 1.5,
+    "mode": "round",
+    "exact": 264,
+    "within1": 365,
+    "mae": 0.28,
+    "sd": 0.45
+   },
+   "asr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 103,
+    "within1": 260,
+    "mae": 1.14,
+    "sd": 1.38
+   },
+   "maghrib": {
+    "m": 6.5,
+    "mode": "round",
+    "exact": 69,
+    "within1": 225,
+    "mae": 1.25,
+    "sd": 1.49
+   },
+   "isha": {
+    "m": 1.5,
+    "mode": "round",
+    "exact": 55,
+    "within1": 161,
+    "mae": 1.61,
+    "sd": 1.89
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 614,
+    "within1": 1384,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 113,
+  "place": "Priboj",
+  "lat": 43.5842,
+  "lon": 19.5244,
+  "coordSource": "api.vaktija.eu/v4/locations id=460 slug=priboj country=RS",
+  "terrain": {
+   "elevationM": 403,
+   "horizonEastDeg": 10.037,
+   "horizonWestDeg": 16.699
+  },
+  "margins": {
+   "fajr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 51,
+    "within1": 135,
+    "mae": 1.87,
+    "sd": 2.17
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 39,
+    "within1": 114,
+    "mae": 2.07,
+    "sd": 2.35
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 208,
+    "within1": 365,
+    "mae": 0.43,
+    "sd": 0.5
+   },
+   "asr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 69,
+    "within1": 185,
+    "mae": 1.56,
+    "sd": 1.83
+   },
+   "maghrib": {
+    "m": 6.5,
+    "mode": "round",
+    "exact": 52,
+    "within1": 174,
+    "mae": 1.63,
+    "sd": 1.9
+   },
+   "isha": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 47,
+    "within1": 179,
+    "mae": 1.81,
+    "sd": 2.17
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 466,
+    "within1": 1152,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 114,
+  "place": "Prijepolje",
+  "lat": 43.3867,
+  "lon": 19.6461,
+  "coordSource": "api.vaktija.eu/v4/locations id=461 slug=prijepolje country=RS",
+  "terrain": {
+   "elevationM": 486,
+   "horizonEastDeg": 6.88,
+   "horizonWestDeg": 10.056
+  },
+  "margins": {
+   "fajr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 34,
+    "within1": 100,
+    "mae": 2.52,
+    "sd": 2.91
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 31,
+    "within1": 107,
+    "mae": 2.47,
+    "sd": 2.78
+   },
+   "dhuhr": {
+    "m": 1.5,
+    "mode": "round",
+    "exact": 306,
+    "within1": 365,
+    "mae": 0.16,
+    "sd": 0.38
+   },
+   "asr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 52,
+    "within1": 147,
+    "mae": 1.83,
+    "sd": 2.15
+   },
+   "maghrib": {
+    "m": 6.5,
+    "mode": "round",
+    "exact": 58,
+    "within1": 147,
+    "mae": 1.96,
+    "sd": 2.33
+   },
+   "isha": {
+    "m": 1.5,
+    "mode": "round",
+    "exact": 49,
+    "within1": 128,
+    "mae": 2.3,
+    "sd": 2.75
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 530,
+    "within1": 994,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 115,
+  "place": "Rožaje",
+  "lat": 42.8397,
+  "lon": 20.1667,
+  "coordSource": "api.vaktija.eu/v4/locations id=478 slug=rozaje country=ME",
+  "terrain": {
+   "elevationM": 1050,
+   "horizonEastDeg": 6.079,
+   "horizonWestDeg": 3.091
+  },
+  "margins": {
+   "fajr": {
+    "m": -1.5,
+    "mode": "floor",
+    "exact": 35,
+    "within1": 94,
+    "mae": 3.21,
+    "sd": 3.87
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 29,
+    "within1": 96,
+    "mae": 2.65,
+    "sd": 3.03
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 316,
+    "within1": 365,
+    "mae": 0.13,
+    "sd": 0.36
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 50,
+    "within1": 171,
+    "mae": 1.87,
+    "sd": 2.19
+   },
+   "maghrib": {
+    "m": 5.5,
+    "mode": "round",
+    "exact": 34,
+    "within1": 110,
+    "mae": 2.31,
+    "sd": 2.63
+   },
+   "isha": {
+    "m": 1.5,
+    "mode": "round",
+    "exact": 29,
+    "within1": 88,
+    "mae": 2.99,
+    "sd": 3.48
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 493,
+    "within1": 924,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 116,
+  "place": "Sjenica",
+  "lat": 43.2722,
+  "lon": 20.0017,
+  "coordSource": "api.vaktija.eu/v4/locations id=458 slug=sjenica country=RS",
+  "terrain": {
+   "elevationM": 1003,
+   "horizonEastDeg": 1.718,
+   "horizonWestDeg": 3.966
+  },
+  "margins": {
+   "fajr": {
+    "m": -0.5,
+    "mode": "floor",
+    "exact": 32,
+    "within1": 89,
+    "mae": 2.84,
+    "sd": 3.31
+   },
+   "sunrise": {
+    "m": -5.5,
+    "mode": "floor",
+    "exact": 23,
+    "within1": 83,
+    "mae": 2.73,
+    "sd": 3.06
+   },
+   "dhuhr": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 257,
+    "within1": 365,
+    "mae": 0.3,
+    "sd": 0.46
+   },
+   "asr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 44,
+    "within1": 115,
+    "mae": 2.37,
+    "sd": 2.74
+   },
+   "maghrib": {
+    "m": 6.5,
+    "mode": "round",
+    "exact": 44,
+    "within1": 112,
+    "mae": 2.56,
+    "sd": 2.98
+   },
+   "isha": {
+    "m": 0.5,
+    "mode": "round",
+    "exact": 48,
+    "within1": 126,
+    "mae": 2.95,
+    "sd": 3.52
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 448,
+    "within1": 890,
+    "n": 2190
+   }
+  ]
+ },
+ {
+  "id": 117,
+  "place": "Tutin",
+  "lat": 42.9917,
+  "lon": 20.3333,
+  "coordSource": "api.vaktija.eu/v4/locations id=459 slug=tutin country=RS",
+  "terrain": {
+   "elevationM": 867,
+   "horizonEastDeg": 4.545,
+   "horizonWestDeg": 4.555
+  },
+  "margins": {
+   "fajr": {
+    "m": 0,
+    "mode": "round",
+    "exact": 26,
+    "within1": 72,
+    "mae": 3.69,
+    "sd": 4.3
+   },
+   "sunrise": {
+    "m": -4.5,
+    "mode": "floor",
+    "exact": 12,
+    "within1": 69,
+    "mae": 3.29,
+    "sd": 3.68
+   },
+   "dhuhr": {
+    "m": 2.5,
+    "mode": "round",
+    "exact": 232,
+    "within1": 365,
+    "mae": 0.36,
+    "sd": 0.48
+   },
+   "asr": {
+    "m": 1.5,
+    "mode": "round",
+    "exact": 40,
+    "within1": 112,
+    "mae": 2.75,
+    "sd": 3.19
+   },
+   "maghrib": {
+    "m": 7.5,
+    "mode": "round",
+    "exact": 44,
+    "within1": 111,
+    "mae": 3.04,
+    "sd": 3.58
+   },
+   "isha": {
+    "m": 2.5,
+    "mode": "round",
+    "exact": 38,
+    "within1": 104,
+    "mae": 3.67,
+    "sd": 4.41
+   }
+  },
+  "perYear": [
+   {
+    "year": "2026",
+    "exact": 392,
+    "within1": 833,
+    "n": 2190
+   }
+  ]
+ }
+]

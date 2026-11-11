@@ -1,0 +1,402 @@
+[
+ {
+  "prov": "MB",
+  "city": "Winnipeg",
+  "label": "mawaqit:waverley-grand-masjid-wi",
+  "file": "mawaqit-mb-winnipeg-waverley-grand-masjid-wi-2026.json",
+  "fajr": {
+   "margin": -12,
+   "meanAbs": 9.8,
+   "w1Pct": 38.9
+  },
+  "isha": {
+   "margin": 14,
+   "meanAbs": 13.7,
+   "w1Pct": 49.3
+  }
+ },
+ {
+  "prov": "MB",
+  "city": "Winnipeg",
+  "label": "mawaqit:al-haqq-masjid-winnipeg-",
+  "file": "mawaqit-mb-winnipeg-al-haqq-masjid-winnipeg--2026.json",
+  "fajr": {
+   "margin": -13,
+   "meanAbs": 14.2,
+   "w1Pct": 44.9
+  },
+  "isha": {
+   "margin": 17,
+   "meanAbs": 13.8,
+   "w1Pct": 9.3
+  }
+ },
+ {
+  "prov": "MB",
+  "city": "Winnipeg",
+  "label": "mawaqit:rahma-wpg",
+  "file": "mawaqit-mb-winnipeg-rahma-wpg-2026.json",
+  "fajr": {
+   "margin": 46,
+   "meanAbs": 20.7,
+   "w1Pct": 16.2
+  },
+  "isha": {
+   "margin": 73,
+   "meanAbs": 24.7,
+   "w1Pct": 21.6
+  }
+ },
+ {
+  "prov": "MB",
+  "city": "Winnipeg",
+  "label": "mawaqit:manitoba-dawah-center-wi",
+  "file": "mawaqit-mb-winnipeg-manitoba-dawah-center-wi-2026.json",
+  "fajr": {
+   "margin": -12,
+   "meanAbs": 14.3,
+   "w1Pct": 44.1
+  },
+  "isha": {
+   "margin": 18,
+   "meanAbs": 13.8,
+   "w1Pct": 9.3
+  }
+ },
+ {
+  "prov": "SK",
+  "city": "Regina",
+  "label": "mawaqit:al-ummah-islamic-center-",
+  "file": "mawaqit-sk-regina-al-ummah-islamic-center--2026.json",
+  "fajr": {
+   "margin": -13,
+   "meanAbs": 4.9,
+   "w1Pct": 60.5
+  },
+  "isha": {
+   "margin": 14,
+   "meanAbs": 4.9,
+   "w1Pct": 60.5
+  }
+ },
+ {
+  "prov": "NS",
+  "city": "Dartmouth",
+  "label": "mawaqit:coleharbour-muslim-commu",
+  "file": "mawaqit-ns-dartmouth-coleharbour-muslim-commu-2026.json",
+  "fajr": {
+   "margin": -12,
+   "meanAbs": 2,
+   "w1Pct": 65.5
+  },
+  "isha": {
+   "margin": 13,
+   "meanAbs": 2.1,
+   "w1Pct": 63.8
+  }
+ },
+ {
+  "prov": "NB",
+  "city": "Moncton",
+  "label": "mawaqit:moncton-masjid-moncton-e",
+  "file": "mawaqit-nb-moncton-moncton-masjid-moncton-e-2026.json",
+  "fajr": {
+   "margin": -11,
+   "meanAbs": 2.6,
+   "w1Pct": 54.5
+  },
+  "isha": {
+   "margin": 14,
+   "meanAbs": 2.5,
+   "w1Pct": 48.8
+  }
+ },
+ {
+  "prov": "NB",
+  "city": "Moncton",
+  "label": "mawaqit:masjid-yusuf-moncton-e1a-",
+  "file": "mawaqit-nb-moncton-masjid-yusuf-moncton-e1a-2026.json",
+  "fajr": {
+   "margin": -11,
+   "meanAbs": 2.5,
+   "w1Pct": 54.2
+  },
+  "isha": {
+   "margin": 14,
+   "meanAbs": 2.5,
+   "w1Pct": 49.3
+  }
+ },
+ {
+  "prov": "NB",
+  "city": "Moncton",
+  "label": "mawaqit:north-end-mussallah-monc",
+  "file": "mawaqit-nb-moncton-north-end-mussallah-monc-2026.json",
+  "fajr": {
+   "margin": -12,
+   "meanAbs": 2.5,
+   "w1Pct": 46
+  },
+  "isha": {
+   "margin": 13,
+   "meanAbs": 2.5,
+   "w1Pct": 57.8
+  }
+ },
+ {
+  "prov": "NB",
+  "city": "Moncton",
+  "label": "mawaqit:hassnain-e-karimain-masj",
+  "file": "mawaqit-nb-moncton-hassnain-e-karimain-masj-2026.json",
+  "fajr": {
+   "margin": -12,
+   "meanAbs": 2.3,
+   "w1Pct": 66.3
+  },
+  "isha": {
+   "margin": 28,
+   "meanAbs": 2.3,
+   "w1Pct": 66.3
+  }
+ },
+ {
+  "prov": "PE",
+  "city": "Charlottetown",
+  "label": "mawaqit:dar-as-salam-mosque-char",
+  "file": "mawaqit-pe-charlottetown-dar-as-salam-mosque-char-2026.json",
+  "fajr": {
+   "margin": -11,
+   "meanAbs": 2.9,
+   "w1Pct": 52.3
+  },
+  "isha": {
+   "margin": 14,
+   "meanAbs": 2.8,
+   "w1Pct": 45.8
+  }
+ },
+ {
+  "prov": "ON",
+  "city": "Kingston",
+  "label": "mawaqit:islamic-centre-of-kingst",
+  "file": "mawaqit-on-kingston-islamic-centre-of-kingst-2026.json",
+  "fajr": {
+   "margin": -11,
+   "meanAbs": 2.1,
+   "w1Pct": 47.7
+  },
+  "isha": {
+   "margin": 13,
+   "meanAbs": 1.8,
+   "w1Pct": 65.8
+  }
+ },
+ {
+  "prov": "QC",
+  "city": "Trois-Rivieres",
+  "label": "mawaqit:ccim3r",
+  "file": "mawaqit-qc-trois-rivieres-ccim3r-2026.json",
+  "fajr": {
+   "margin": -12,
+   "meanAbs": 2.4,
+   "w1Pct": 66
+  },
+  "isha": {
+   "margin": 13,
+   "meanAbs": 2.4,
+   "w1Pct": 65.8
+  }
+ },
+ {
+  "prov": "QC",
+  "city": "Trois-Rivieres",
+  "label": "mawaqit:assounna-annabawiyya-3r",
+  "file": "mawaqit-qc-trois-rivieres-assounna-annabawiyya-3r-2026.json",
+  "fajr": {
+   "margin": -12,
+   "meanAbs": 2.3,
+   "w1Pct": 65.8
+  },
+  "isha": {
+   "margin": 13,
+   "meanAbs": 2.3,
+   "w1Pct": 65.5
+  }
+ },
+ {
+  "prov": "QC",
+  "city": "Sherbrooke",
+  "label": "mawaqit:annour-sherbrooke",
+  "file": "mawaqit-qc-sherbrooke-annour-sherbrooke-2026.json",
+  "fajr": {
+   "margin": -12,
+   "meanAbs": 2.2,
+   "w1Pct": 66.8
+  },
+  "isha": {
+   "margin": 13,
+   "meanAbs": 2.2,
+   "w1Pct": 65.8
+  }
+ },
+ {
+  "prov": "ON",
+  "city": "Windsor",
+  "label": "WIA 2026 PDF",
+  "file": "dpt-on-windsor-2026.json",
+  "fajr": {
+   "margin": -20,
+   "meanAbs": 2.9,
+   "w1Pct": 54
+  },
+  "isha": {
+   "margin": 12,
+   "meanAbs": 1.6,
+   "w1Pct": 68.2
+  }
+ },
+ {
+  "prov": "NL",
+  "city": "St John's",
+  "label": "MANAL 2026 PDF",
+  "file": "pdf-nl-stjohns-2026.json",
+  "fajr": {
+   "margin": -11,
+   "meanAbs": 1.9,
+   "w1Pct": 66.3
+  },
+  "isha": {
+   "margin": 14,
+   "meanAbs": 2.1,
+   "w1Pct": 67.7
+  }
+ },
+ {
+  "prov": "ON",
+  "city": "London",
+  "label": "londonmosque.ca CMS 2025-26",
+  "file": "cms-on-london-2025-2026.json",
+  "fajr": {
+   "margin": -12,
+   "meanAbs": 2.1,
+   "w1Pct": 43.2
+  },
+  "isha": {
+   "margin": 13,
+   "meanAbs": 3.2,
+   "w1Pct": 64.9
+  }
+ },
+ {
+  "prov": "SK",
+  "city": "Saskatoon",
+  "label": "dpt IASK 2026",
+  "file": "dpt-sk-saskatoon-iask-2026.json",
+  "fajr": {
+   "margin": 2,
+   "meanAbs": 10.2,
+   "w1Pct": 40
+  },
+  "isha": {
+   "margin": 0,
+   "meanAbs": 10.2,
+   "w1Pct": 73.2
+  }
+ },
+ {
+  "prov": "SK",
+  "city": "Saskatoon",
+  "label": "dpt PMA 2026",
+  "file": "dpt-sk-saskatoon-pma-2026.json",
+  "fajr": {
+   "margin": -13,
+   "meanAbs": 9.8,
+   "w1Pct": 37.3
+  },
+  "isha": {
+   "margin": 2,
+   "meanAbs": 14.5,
+   "w1Pct": 11
+  }
+ },
+ {
+  "prov": "SK",
+  "city": "Saskatoon",
+  "label": "dpt Dawah 2026",
+  "file": "dpt-sk-saskatoon-dawah-2026.json",
+  "fajr": {
+   "margin": -13,
+   "meanAbs": 8.1,
+   "w1Pct": 53.7
+  },
+  "isha": {
+   "margin": 14,
+   "meanAbs": 8,
+   "w1Pct": 57.5
+  }
+ },
+ {
+  "prov": "SK",
+  "city": "Saskatoon",
+  "label": "dpt JRJ 2025-label",
+  "file": "dpt-sk-saskatoon-jrj-2025.json",
+  "fajr": {
+   "margin": -13,
+   "meanAbs": 9.6,
+   "w1Pct": 47.4
+  },
+  "isha": {
+   "margin": 0,
+   "meanAbs": 20.7,
+   "w1Pct": 4.4
+  }
+ },
+ {
+  "prov": "NS",
+  "city": "Halifax",
+  "label": "dpt UMCC 2025",
+  "file": "dpt-ns-halifax-umcc-2025.json",
+  "fajr": {
+   "margin": -12,
+   "meanAbs": 2.1,
+   "w1Pct": 58.9
+  },
+  "isha": {
+   "margin": 13,
+   "meanAbs": 2.1,
+   "w1Pct": 58.1
+  }
+ },
+ {
+  "prov": "ON",
+  "city": "London",
+  "label": "ICSWO dpt 2026",
+  "file": "dpt-on-london-icswo-2026.json",
+  "fajr": {
+   "margin": 1120,
+   "meanAbs": 62.4,
+   "w1Pct": 1.1
+  },
+  "isha": {
+   "margin": -331,
+   "meanAbs": 62.4,
+   "w1Pct": 1.1
+  }
+ },
+ {
+  "prov": "NB",
+  "city": "Saint John",
+  "label": "masjidal Vdw3zode 2026",
+  "file": "masjidal-nb-saintjohn-2026.json",
+  "fajr": {
+   "margin": -12,
+   "meanAbs": 2.3,
+   "w1Pct": 49
+  },
+  "isha": {
+   "margin": 13,
+   "meanAbs": 2.3,
+   "w1Pct": 49
+  }
+ }
+]

@@ -1,0 +1,16 @@
+prov	city	slug	year	rows	gate_day	gate	lat	lon	tz	file
+MB	Winnipeg	waverley-grand-masjid-winnipeg-r3y-1s3-canada	2026	365	2026-11-11	PASS	49.791412349223	-97.175030480951	America/Winnipeg	mawaqit-mb-winnipeg-waverley-grand-masjid-wi-2026.json
+MB	Winnipeg	al-haqq-masjid-winnipeg-r3y-1g4-canada	2026	365	2026-11-11	PASS	49.8171876	-97.1903284	America/Winnipeg	mawaqit-mb-winnipeg-al-haqq-masjid-winnipeg--2026.json
+MB	Winnipeg	rahma-wpg	2026	365	2026-11-11	PASS	49.919	-97.097	America/Winnipeg	mawaqit-mb-winnipeg-rahma-wpg-2026.json
+MB	Winnipeg	manitoba-dawah-center-winnipeg-r3b-2l3-canada	2026	365	2026-11-11	PASS	49.895	-97.149	America/Winnipeg	mawaqit-mb-winnipeg-manitoba-dawah-center-wi-2026.json
+SK	Regina	al-ummah-islamic-center-regina-s4p-1t4-canada	2026	365	2026-11-11	PASS	50.4500367	-104.6031807	America/Regina	mawaqit-sk-regina-al-ummah-islamic-center--2026.json
+NS	Dartmouth	coleharbour-muslim-community-dartmouth-b2v-1m9-canada	2026	365	2026-11-11	PASS	44.6730059	-63.4801435	America/Halifax	mawaqit-ns-dartmouth-coleharbour-muslim-commu-2026.json
+NB	Moncton	moncton-masjid-moncton-e1c-1m6-canada	2026	365	2026-11-11	PASS	46.087923022995	-64.790040850639	America/Halifax	mawaqit-nb-moncton-moncton-masjid-moncton-e-2026.json
+NB	Moncton	masjid-yusuf-moncton-e1a-4p8-canada	2026	365	2026-11-11	PASS	46.1125296	-64.7803148	America/Halifax	mawaqit-nb-moncton-masjid-yusuf-moncton-e1a-2026.json
+NB	Moncton	north-end-mussallah-moncton-e1g-4w4-canada	2026	365	2026-11-11	PASS	46.114	-64.867	America/Halifax	mawaqit-nb-moncton-north-end-mussallah-monc-2026.json
+NB	Moncton	hassnain-e-karimain-masjid-hk-masjid-moncton-e1c-3s4-canada	2026	365	2026-11-11	PASS	46.0961427	-64.8213837	America/Halifax	mawaqit-nb-moncton-hassnain-e-karimain-masj-2026.json
+PE	Charlottetown	dar-as-salam-mosque-charlottetown-c1e-2a1-canada	2026	365	2026-11-11	PASS	46.2789204	-63.1373385	America/Halifax	mawaqit-pe-charlottetown-dar-as-salam-mosque-char-2026.json
+ON	Kingston	islamic-centre-of-kingston-kingston-k7l-4v4-canada	2026	365	2026-11-11	PASS	44.284464700612	-76.542028337717	America/Toronto	mawaqit-on-kingston-islamic-centre-of-kingst-2026.json
+QC	Trois-Rivieres	ccim3r	2026	365	2026-11-11	PASS	46.3330911	-72.5861298	America/Toronto	mawaqit-qc-trois-rivieres-ccim3r-2026.json
+QC	Trois-Rivieres	assounna-annabawiyya-3r	2026	365	2026-11-11	PASS	46.354	-72.581	America/Toronto	mawaqit-qc-trois-rivieres-assounna-annabawiyya-3r-2026.json
+QC	Sherbrooke	annour-sherbrooke	2026	365	2026-11-11	PASS	45.41009197158	-71.94841434446	America/Toronto	mawaqit-qc-sherbrooke-annour-sherbrooke-2026.json

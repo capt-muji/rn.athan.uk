@@ -1,0 +1,40 @@
+{
+  "register": "jo-awqaf-regional-selector",
+  "publisher": "وزارة الأوقاف والشؤون والمقدسات الإسلامية (Jordanian Ministry of Awqaf, Islamic Affairs and Holy Sites)",
+  "country": "JO",
+  "verdict": "DEGENERATE: the publisher offers 16 regional labels and serves ONE table for all of them",
+  "endpoint": "https://www.awqaf.gov.jo/ar/Pages/PrayerTime (ASP.NET postback, field ctl00$MainContent$DropCompany)",
+  "artifact": "captures/jo-awqaf-prayertime.html, captures/jo-awqaf-aqaba-post.html",
+  "provenance": "The record's JO-AWQAF object notes 'governorate value 1 covers Amman, Balqa, Zarqa and Madaba', which reads as a per-governorate layer. Tested here: all 16 selector values were posted and each response confirmed its own label as selected while printing byte-identical times.",
+  "test": {
+    "regionsPosted": 16,
+    "daysPerRegion": 10,
+    "columns": 6,
+    "distinctTablesReturned": 1,
+    "evidence": "each POST echoes its own label in the selected option (e.g. 'العقبة') and prints 05:37:00 06:55:00 12:21:00 03:18:00 05:46:00 07:03:00, identical to region 1 on every row",
+    "whyItCannotBeReal": "Aqaba and Irbid differ by 2-3 minutes in a genuine November table at 1 degree of latitude and 0.6 degrees of longitude apart; identical output on 60 cells is not a coincidence"
+  },
+  "regions": [
+    {"value": 1, "label": "عمان، البلقاء، الزرقاء، مادبا", "labelEn": "Amman, Balqa, Zarqa, Madaba"},
+    {"value": 2, "label": "اربد", "labelEn": "Irbid"},
+    {"value": 3, "label": "الكرك", "labelEn": "Karak"},
+    {"value": 4, "label": "الطفيلة", "labelEn": "Tafilah"},
+    {"value": 5, "label": "معان", "labelEn": "Ma'an"},
+    {"value": 6, "label": "العقبة", "labelEn": "Aqaba"},
+    {"value": 7, "label": "الأغوار الشمالية", "labelEn": "Northern Jordan Valley"},
+    {"value": 8, "label": "جرش وعجلون", "labelEn": "Jerash and Ajloun"},
+    {"value": 9, "label": "المفرق", "labelEn": "Mafraq"},
+    {"value": 11, "label": "ذيبان", "labelEn": "Dhiban"},
+    {"value": 12, "label": "الأزرق", "labelEn": "Azraq"},
+    {"value": 13, "label": "الأغوار الوسطى", "labelEn": "Central Jordan Valley"},
+    {"value": 14, "label": "الشوبك والبتراء", "labelEn": "Shobak and Petra"},
+    {"value": 15, "label": "الظليل والهاشمية", "labelEn": "Dhulayl and Hashimiyya"},
+    {"value": 19, "label": "الرويشد", "labelEn": "Ruwaished"},
+    {"value": 33, "label": "القدس", "labelEn": "Jerusalem"}
+  ],
+  "notes": [
+    "Values 10, 16, 17, 18 and 20-32 are absent from the selector; the numbering is a legacy database key, not a sequence.",
+    "The page serves a rolling 10-day window from tomorrow. Only November was observable, so the test is a November test; the degeneracy is strong enough there to stand.",
+    "Consequence for the resolver: Jordan must be modelled as ONE point with one recipe, never as a regional ladder. The 16 labels carry no time information."
+  ]
+}

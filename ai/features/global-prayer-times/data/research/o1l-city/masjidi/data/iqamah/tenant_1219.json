@@ -1,0 +1,50 @@
+{
+ "tenantId": "1219",
+ "name": "MASJID DARUN NA'IM",
+ "city": "Makassar",
+ "country": "أندونيسيا",
+ "timezone": "Asia/Makassar",
+ "timingsType": "table-api",
+ "tableId": 6338,
+ "iqamah": {
+  "Fajr": {
+   "iqamaWaitDuration": 17,
+   "timeOffset": 2
+  },
+  "Sunrise": {
+   "iqamaWaitDuration": 0,
+   "timeOffset": 0
+  },
+  "Dhuhr": {
+   "iqamaWaitDuration": 16,
+   "timeOffset": 4
+  },
+  "Asr": {
+   "iqamaWaitDuration": 16,
+   "timeOffset": 1
+  },
+  "Maghrib": {
+   "iqamaWaitDuration": 11,
+   "timeOffset": 3
+  },
+  "Isha": {
+   "iqamaWaitDuration": 16,
+   "timeOffset": 3
+  }
+ },
+ "overrides": {
+  "Dhuhr": [
+   {
+    "name": "Jumat",
+    "iqamaWaitDuration": 0,
+    "duration": 0,
+    "date": {
+     "gregorian": {
+      "dayOfWeek": 6
+     }
+    }
+   }
+  ]
+ },
+ "note": "athan times come from the regional table; the iqamah layer is the wait in minutes after the athan, plus Friday (Jumu'ah) overrides."
+}

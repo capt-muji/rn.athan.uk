@@ -1,0 +1,92 @@
+{
+ "windsor": {
+  "prov": "ON",
+  "city": "Windsor",
+  "source": "WIA 2026 Prayer Times PDF",
+  "lat": 42.3149,
+  "lon": -83.0364,
+  "tz": "America/Toronto",
+  "rows": 365
+ },
+ "stjohns": {
+  "prov": "NL",
+  "city": "St Johns",
+  "source": "MANAL StJohnsPrayerTimes2026.pdf",
+  "lat": 47.5615,
+  "lon": -52.7126,
+  "tz": "America/St_Johns",
+  "rows": 365
+ },
+ "london": {
+  "prov": "ON",
+  "city": "London",
+  "source": "londonmosque.ca monthly pray_time pages",
+  "lat": 42.9849,
+  "lon": -81.2453,
+  "tz": "America/Toronto",
+  "rows": 730
+ },
+ "saskatoon-iask": {
+  "prov": "SK",
+  "city": "Saskatoon",
+  "source": "dpt filter=year (2026 label)",
+  "lat": 52.1332,
+  "lon": -106.67,
+  "tz": "America/Regina",
+  "rows": 365
+ },
+ "saskatoon-pma": {
+  "prov": "SK",
+  "city": "Saskatoon",
+  "source": "dpt filter=year (2026 label)",
+  "lat": 52.1332,
+  "lon": -106.67,
+  "tz": "America/Regina",
+  "rows": 365
+ },
+ "saskatoon-dawah": {
+  "prov": "SK",
+  "city": "Saskatoon",
+  "source": "dpt filter=year (2026 label)",
+  "lat": 52.1332,
+  "lon": -106.67,
+  "tz": "America/Regina",
+  "rows": 365
+ },
+ "saskatoon-jrj": {
+  "prov": "SK",
+  "city": "Saskatoon",
+  "source": "dpt filter=year (2025 label)",
+  "lat": 52.1332,
+  "lon": -106.67,
+  "tz": "America/Regina",
+  "rows": 365
+ },
+ "halifax-umcc": {
+  "prov": "NS",
+  "city": "Halifax",
+  "source": "dpt filter=year (2025 label)",
+  "lat": 44.6488,
+  "lon": -63.5752,
+  "tz": "America/Halifax",
+  "rows": 365
+ },
+ "london-icswo": {
+  "prov": "ON",
+  "city": "London",
+  "source": "dpt filter=year (2026 label)",
+  "lat": 42.9849,
+  "lon": -81.2453,
+  "tz": "America/Toronto",
+  "rows": 364
+ },
+ "saintjohn": {
+  "prov": "NB",
+  "city": "Saint John",
+  "source": "masjidal range API Vdw3zode",
+  "lat": 45.2733,
+  "lon": -66.0633,
+  "tz": "America/Moncton",
+  "rows": 365
+ }
+}

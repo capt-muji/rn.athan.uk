@@ -1,0 +1,720 @@
+Albany	https://www.assalammasjid.org	200	371824	{}
+Albany	https://www.assalammasjid.org/prayer-times	503	0	{}
+Albany	https://www.assalammasjid.org/prayer-times/	503	0	{}
+Albany	https://www.assalammasjid.org/prayers	503	0	{}
+Albany	https://www.assalammasjid.org/prayer	404	0	{}
+Albany	https://www.assalammasjid.org/prayertimes	404	0	{}
+Albany	https://www.assalammasjid.org/prayer-timings	503	0	{}
+Albany	https://www.assalammasjid.org/salah	503	0	{}
+Albany	https://www.assalammasjid.org/prayer-schedule	404	0	{}
+Albany	https://www.assalammasjid.org/prayer-times/monthly	503	0	{}
+Albany	https://www.al-hidaya.org	200	1342196	{"mohid": ["ny/newyork/icct"]}
+Albany	https://www.al-hidaya.org/prayer-times	200	845313	{"mohid": ["ny/newyork/icct"]}
+Albany	https://www.al-hidaya.org/prayer-times/	200	845313	{"mohid": ["ny/newyork/icct"]}
+Albany	https://www.al-hidaya.org/prayers	404	0	{}
+Albany	https://www.al-hidaya.org/prayer	404	0	{}
+Albany	https://www.al-hidaya.org/prayertimes	404	0	{}
+Albany	https://www.al-hidaya.org/prayer-timings	404	0	{}
+Albany	https://www.al-hidaya.org/salah	404	0	{}
+Albany	https://www.al-hidaya.org/prayer-schedule	404	0	{}
+Albany	https://www.al-hidaya.org/prayer-times/monthly	200	844467	{"mohid": ["ny/newyork/icct"]}
+Albany	http://alfatemahic.com	200	17206	{}
+Albany	http://alfatemahic.com/prayer-times	404	0	{}
+Albany	http://alfatemahic.com/prayer-times/	404	0	{}
+Albany	http://alfatemahic.com/prayers	404	0	{}
+Albany	http://alfatemahic.com/prayer	404	0	{}
+Albany	http://alfatemahic.com/prayertimes	404	0	{}
+Albany	http://alfatemahic.com/prayer-timings	404	0	{}
+Albany	http://alfatemahic.com/salah	404	0	{}
+Albany	http://alfatemahic.com/prayer-schedule	404	0	{}
+Albany	http://alfatemahic.com/prayer-times/monthly	404	0	{}
+Baltimore	https://isb.org	200	57950	{"mohid": ["md/mdrgn/isb"], "pdf": ["https://isb.org/wp-content/uploads/2026/02/2026-Calendar-for-Review-ISB.pdf"]}
+Baltimore	https://isb.org/prayer-times	404	0	{}
+Baltimore	https://isb.org/prayer-times/	404	0	{}
+Baltimore	https://isb.org/prayers	404	0	{}
+Baltimore	https://isb.org/prayer	404	0	{}
+Baltimore	https://isb.org/prayertimes	404	0	{}
+Baltimore	https://isb.org/prayer-timings	404	0	{}
+Baltimore	https://isb.org/salah	200	19821	{"mohid": ["md/mdrgn/isb"]}
+Baltimore	https://isb.org/prayer-schedule	404	0	{}
+Baltimore	https://isb.org/prayer-times/monthly	404	0	{}
+Baltimore	https://muhb.org	ERR:RemoteDisconnected	0	{}
+Baltimore	https://muhb.org/prayer-times	ERR:RemoteDisconnected	0	{}
+Baltimore	https://muhb.org/prayer-times/	ERR:RemoteDisconnected	0	{}
+Baltimore	https://muhb.org/prayers	ERR:RemoteDisconnected	0	{}
+Baltimore	https://muhb.org/prayer	ERR:RemoteDisconnected	0	{}
+Baltimore	https://muhb.org/prayertimes	ERR:RemoteDisconnected	0	{}
+Baltimore	https://muhb.org/prayer-timings	ERR:RemoteDisconnected	0	{}
+Baltimore	https://muhb.org/salah	ERR:RemoteDisconnected	0	{}
+Baltimore	https://muhb.org/prayer-schedule	ERR:RemoteDisconnected	0	{}
+Baltimore	https://muhb.org/prayer-times/monthly	ERR:RemoteDisconnected	0	{}
+Baltimore	https://taqwa.net	200	230040	{"athanplus": ["QL0BzpdZ"], "json": ["https://taqwa.net/wp-content/uploads/2023/03/prayer_22.jpg"], "masjidal": ["QL0BzpdZ"], "mohid": ["md/columbia1/dat"]}
+Baltimore	https://taqwa.net/prayer-times	404	0	{}
+Baltimore	https://taqwa.net/prayer-times/	404	0	{}
+Baltimore	https://taqwa.net/prayers	404	0	{}
+Baltimore	https://taqwa.net/prayer	200	164042	{"mohid": ["md/columbia1/dat"]}
+Baltimore	https://taqwa.net/prayertimes	404	0	{}
+Baltimore	https://taqwa.net/prayer-timings	404	0	{}
+Baltimore	https://taqwa.net/salah	404	0	{}
+Baltimore	https://taqwa.net/prayer-schedule	404	0	{}
+Baltimore	https://taqwa.net/prayer-times/monthly	404	0	{}
+Baltimore	https://annurfoundation.org	200	241167	{}
+Baltimore	https://annurfoundation.org/prayer-times	404	0	{}
+Baltimore	https://annurfoundation.org/prayer-times/	404	0	{}
+Baltimore	https://annurfoundation.org/prayers	404	0	{}
+Baltimore	https://annurfoundation.org/prayer	404	0	{}
+Baltimore	https://annurfoundation.org/prayertimes	404	0	{}
+Baltimore	https://annurfoundation.org/prayer-timings	404	0	{}
+Baltimore	https://annurfoundation.org/salah	404	0	{}
+Baltimore	https://annurfoundation.org/prayer-schedule	404	0	{}
+Baltimore	https://annurfoundation.org/prayer-times/monthly	404	0	{}
+Baltimore	https://isnb.org	200	148133	{"mawaqit": ["masjid-al-kareem-lutherville-21093-united-states"]}
+Baltimore	https://isnb.org/prayer-times	404	0	{}
+Baltimore	https://isnb.org/prayer-times/	404	0	{}
+Baltimore	https://isnb.org/prayers	404	0	{}
+Baltimore	https://isnb.org/prayer	404	0	{}
+Baltimore	https://isnb.org/prayertimes	404	0	{}
+Baltimore	https://isnb.org/prayer-timings	404	0	{}
+Baltimore	https://isnb.org/salah	404	0	{}
+Baltimore	https://isnb.org/prayer-schedule	404	0	{}
+Baltimore	https://isnb.org/prayer-times/monthly	404	0	{}
+Baltimore	https://us.mohid.co/md/baltimore/fmbwi	200	31490	{"mohid": ["md/baltimore/fmbwi"]}
+Baltimore	https://us.mohid.co/md/baltimore/fmbwi/prayer-times	404	0	{}
+Baltimore	https://us.mohid.co/md/baltimore/fmbwi/prayer-times/	404	0	{}
+Baltimore	https://us.mohid.co/md/baltimore/fmbwi/prayers	404	0	{}
+Baltimore	https://us.mohid.co/md/baltimore/fmbwi/prayer	404	0	{}
+Baltimore	https://us.mohid.co/md/baltimore/fmbwi/prayertimes	404	0	{}
+Baltimore	https://us.mohid.co/md/baltimore/fmbwi/prayer-timings	404	0	{}
+Baltimore	https://us.mohid.co/md/baltimore/fmbwi/salah	404	0	{}
+Baltimore	https://us.mohid.co/md/baltimore/fmbwi/prayer-schedule	404	0	{}
+Baltimore	https://us.mohid.co/md/baltimore/fmbwi/prayer-times/monthly	404	0	{}
+Baton Rouge	https://icbrsite.org	200	305961	{"athanplus": ["4KB0kPA5", "jKZpJ7AX"], "json": ["https://icbrsite.org/wp-json/elementskit/v1/"], "masjidal": ["4KB0kPA5", "jKZpJ7AX"], "pdf": ["https://icbrsite.org/wp-content/uploads/2025/09/Committees-and-Responsibilities-draft.pdf", "https://icbrsite.org/wp-content/uploads/2025/09/ICBR-ELECTION-SCHEDULE-.pdf", "https://icbrsite.org/wp-content/uploads/2025/09/Membership-Form-1.pdf", "https://icbrsite.org/wp-content/uploads/2025/10/ICBR-Equipment-Rental-Form.pdf", "https://icbrsite.org/wp-content/uploads/2025/10/ICBR-Nikkah-Service-Form-.pdf", "https://icbrsite.org/wp-content/uploads/2025/10/ICBR-Volunteer-for-Committees.pdf"]}
+Baton Rouge	https://icbrsite.org/prayer-times	404	0	{}
+Baton Rouge	https://icbrsite.org/prayer-times/	404	0	{}
+Baton Rouge	https://icbrsite.org/prayers	404	0	{}
+Baton Rouge	https://icbrsite.org/prayer	404	0	{}
+Baton Rouge	https://icbrsite.org/prayertimes	404	0	{}
+Baton Rouge	https://icbrsite.org/prayer-timings	404	0	{}
+Baton Rouge	https://icbrsite.org/salah	404	0	{}
+Baton Rouge	https://icbrsite.org/prayer-schedule	404	0	{}
+Baton Rouge	https://icbrsite.org/prayer-times/monthly	404	0	{}
+Baton Rouge	https://omarmosque.org	ERR:RemoteDisconnected	0	{}
+Baton Rouge	https://omarmosque.org/prayer-times	ERR:RemoteDisconnected	0	{}
+Baton Rouge	https://omarmosque.org/prayer-times/	ERR:RemoteDisconnected	0	{}
+Baton Rouge	https://omarmosque.org/prayers	ERR:RemoteDisconnected	0	{}
+Baton Rouge	https://omarmosque.org/prayer	ERR:RemoteDisconnected	0	{}
+Baton Rouge	https://omarmosque.org/prayertimes	ERR:RemoteDisconnected	0	{}
+Baton Rouge	https://omarmosque.org/prayer-timings	ERR:RemoteDisconnected	0	{}
+Baton Rouge	https://omarmosque.org/salah	ERR:RemoteDisconnected	0	{}
+Baton Rouge	https://omarmosque.org/prayer-schedule	ERR:RemoteDisconnected	0	{}
+Baton Rouge	https://omarmosque.org/prayer-times/monthly	ERR:RemoteDisconnected	0	{}
+Birmingham	https://www.bisweb.org	200	369999	{"mohid": ["al/birmingham/birminghamis"], "pdf": ["/wp-content/uploads/2026/08/Financial-Aid-Application.pdf"]}
+Birmingham	https://www.bisweb.org/prayer-times	404	0	{}
+Birmingham	https://www.bisweb.org/prayer-times/	404	0	{}
+Birmingham	https://www.bisweb.org/prayers	404	0	{}
+Birmingham	https://www.bisweb.org/prayer	404	0	{}
+Birmingham	https://www.bisweb.org/prayertimes	404	0	{}
+Birmingham	https://www.bisweb.org/prayer-timings	404	0	{}
+Birmingham	https://www.bisweb.org/salah	404	0	{}
+Birmingham	https://www.bisweb.org/prayer-schedule	404	0	{}
+Birmingham	https://www.bisweb.org/prayer-times/monthly	404	0	{}
+Birmingham	https://arrahmacentre.com	200	42527	{}
+Birmingham	https://arrahmacentre.com/prayer-times	404	0	{}
+Birmingham	https://arrahmacentre.com/prayer-times/	404	0	{}
+Birmingham	https://arrahmacentre.com/prayers	404	0	{}
+Birmingham	https://arrahmacentre.com/prayer	404	0	{}
+Birmingham	https://arrahmacentre.com/prayertimes	404	0	{}
+Birmingham	https://arrahmacentre.com/prayer-timings	404	0	{}
+Birmingham	https://arrahmacentre.com/salah	404	0	{}
+Birmingham	https://arrahmacentre.com/prayer-schedule	404	0	{}
+Birmingham	https://arrahmacentre.com/prayer-times/monthly	200	22586	{}
+Dearborn	https://amsdearborn.org	200	130705	{"mohid": ["mi/detroit/amsdix"]}
+Dearborn	https://amsdearborn.org/prayer-times	200	205742	{"mohid": ["mi/detroit/amsdix"]}
+Dearborn	https://amsdearborn.org/prayer-times/	200	205742	{"mohid": ["mi/detroit/amsdix"]}
+Dearborn	https://amsdearborn.org/prayers	200	205742	{"mohid": ["mi/detroit/amsdix"]}
+Dearborn	https://amsdearborn.org/prayer	404	0	{}
+Dearborn	https://amsdearborn.org/prayertimes	404	0	{}
+Dearborn	https://amsdearborn.org/prayer-timings	404	0	{}
+Dearborn	https://amsdearborn.org/salah	404	0	{}
+Dearborn	https://amsdearborn.org/prayer-schedule	404	0	{}
+Dearborn	https://amsdearborn.org/prayer-times/monthly	404	0	{}
+Dearborn	https://www.alhudamosque.org	200	143067	{"ifinder": ["4990510|shafi|5|0|15.0"]}
+Dearborn	https://www.alhudamosque.org/prayer-times	404	0	{}
+Dearborn	https://www.alhudamosque.org/prayer-times/	404	0	{}
+Dearborn	https://www.alhudamosque.org/prayers	404	0	{}
+Dearborn	https://www.alhudamosque.org/prayer	404	0	{}
+Dearborn	https://www.alhudamosque.org/prayertimes	200	98847	{}
+Dearborn	https://www.alhudamosque.org/prayer-timings	404	0	{}
+Dearborn	https://www.alhudamosque.org/salah	404	0	{}
+Dearborn	https://www.alhudamosque.org/prayer-schedule	404	0	{}
+Dearborn	https://www.alhudamosque.org/prayer-times/monthly	404	0	{}
+Dearborn	https://icofa.com	200	244694	{}
+Dearborn	https://icofa.com/prayer-times	200	117125	{}
+Dearborn	https://icofa.com/prayer-times/	200	117125	{}
+Dearborn	https://icofa.com/prayers	404	0	{}
+Dearborn	https://icofa.com/prayer	200	117125	{}
+Dearborn	https://icofa.com/prayertimes	404	0	{}
+Dearborn	https://icofa.com/prayer-timings	404	0	{}
+Dearborn	https://icofa.com/salah	404	0	{}
+Dearborn	https://icofa.com/prayer-schedule	404	0	{}
+Dearborn	https://icofa.com/prayer-times/monthly	404	0	{}
+Dearborn	https://amcdearborn.webnovare.com	200	244738	{}
+Dearborn	https://amcdearborn.webnovare.com/prayer-times	404	0	{}
+Dearborn	https://amcdearborn.webnovare.com/prayer-times/	404	0	{}
+Dearborn	https://amcdearborn.webnovare.com/prayers	404	0	{}
+Dearborn	https://amcdearborn.webnovare.com/prayer	404	0	{}
+Dearborn	https://amcdearborn.webnovare.com/prayertimes	404	0	{}
+Dearborn	https://amcdearborn.webnovare.com/prayer-timings	404	0	{}
+Dearborn	https://amcdearborn.webnovare.com/salah	404	0	{}
+Dearborn	https://amcdearborn.webnovare.com/prayer-schedule	404	0	{}
+Dearborn	https://amcdearborn.webnovare.com/prayer-times/monthly	404	0	{}
+Detroit	https://icdonline.org	ERR:RemoteDisconnected	0	{}
+Detroit	https://icdonline.org/prayer-times	ERR:RemoteDisconnected	0	{}
+Detroit	https://icdonline.org/prayer-times/	ERR:RemoteDisconnected	0	{}
+Detroit	https://icdonline.org/prayers	ERR:RemoteDisconnected	0	{}
+Detroit	https://icdonline.org/prayer	ERR:RemoteDisconnected	0	{}
+Detroit	https://icdonline.org/prayertimes	ERR:RemoteDisconnected	0	{}
+Detroit	https://icdonline.org/prayer-timings	ERR:RemoteDisconnected	0	{}
+Detroit	https://icdonline.org/salah	ERR:RemoteDisconnected	0	{}
+Detroit	https://icdonline.org/prayer-schedule	ERR:RemoteDisconnected	0	{}
+Detroit	https://icdonline.org/prayer-times/monthly	ERR:RemoteDisconnected	0	{}
+Detroit	https://masjidalfalah.org	200	134696	{}
+Detroit	https://masjidalfalah.org/prayer-times	404	0	{}
+Detroit	https://masjidalfalah.org/prayer-times/	404	0	{}
+Detroit	https://masjidalfalah.org/prayers	404	0	{}
+Detroit	https://masjidalfalah.org/prayer	404	0	{}
+Detroit	https://masjidalfalah.org/prayertimes	404	0	{}
+Detroit	https://masjidalfalah.org/prayer-timings	404	0	{}
+Detroit	https://masjidalfalah.org/salah	404	0	{}
+Detroit	https://masjidalfalah.org/prayer-schedule	404	0	{}
+Detroit	https://masjidalfalah.org/prayer-times/monthly	404	0	{}
+Detroit	https://www.themuslimcenter.com	200	604	{}
+Detroit	https://www.themuslimcenter.com/prayer-times	200	604	{}
+Detroit	https://www.themuslimcenter.com/prayer-times/	200	604	{}
+Detroit	https://www.themuslimcenter.com/prayers	200	604	{}
+Detroit	https://www.themuslimcenter.com/prayer	200	604	{}
+Detroit	https://www.themuslimcenter.com/prayertimes	200	604	{}
+Detroit	https://www.themuslimcenter.com/prayer-timings	200	604	{}
+Detroit	https://www.themuslimcenter.com/salah	200	604	{}
+Detroit	https://www.themuslimcenter.com/prayer-schedule	200	604	{}
+Detroit	https://www.themuslimcenter.com/prayer-times/monthly	200	604	{}
+Detroit	https://iagd.net	200	1180985	{"athanplus": ["4nL1kgda"], "masjidal": ["4nL1kgda"], "pdf": ["https://iagd.net/wp-content/uploads/2026/10/Prayer_Time_IAGD-2026-November.pdf"]}
+Detroit	https://iagd.net/prayer-times	200	190320	{}
+Detroit	https://iagd.net/prayer-times/	200	190318	{}
+Detroit	https://iagd.net/prayers	404	0	{}
+Detroit	https://iagd.net/prayer	200	190321	{}
+Detroit	https://iagd.net/prayertimes	404	0	{}
+Detroit	https://iagd.net/prayer-timings	404	0	{}
+Detroit	https://iagd.net/salah	404	0	{}
+Detroit	https://iagd.net/prayer-schedule	404	0	{}
+Detroit	https://iagd.net/prayer-times/monthly	404	0	{}
+Flint	https://flintislamiccenter.com	200	1697	{}
+Flint	https://flintislamiccenter.com/prayer-times	200	1697	{}
+Flint	https://flintislamiccenter.com/prayer-times/	200	1697	{}
+Flint	https://flintislamiccenter.com/prayers	200	1697	{}
+Flint	https://flintislamiccenter.com/prayer	200	1697	{}
+Flint	https://flintislamiccenter.com/prayertimes	200	1697	{}
+Flint	https://flintislamiccenter.com/prayer-timings	200	1697	{}
+Flint	https://flintislamiccenter.com/salah	200	1697	{}
+Flint	https://flintislamiccenter.com/prayer-schedule	200	1697	{}
+Flint	https://flintislamiccenter.com/prayer-times/monthly	200	1697	{}
+Gainesville	https://iccgfl.org	200	512009	{"athanplus": ["rdRvbbdG"], "json": ["https://iccgfl.org/wp-json/elementskit/v1/"], "masjidal": ["rdRvbbdG"], "pdf": ["https://iccgfl.org/wp-content/uploads/2025/03/ICCG-Ramadan-Calendar-2025.pdf"]}
+Gainesville	https://iccgfl.org/prayer-times	404	0	{}
+Gainesville	https://iccgfl.org/prayer-times/	404	0	{}
+Gainesville	https://iccgfl.org/prayers	404	0	{}
+Gainesville	https://iccgfl.org/prayer	404	0	{}
+Gainesville	https://iccgfl.org/prayertimes	404	0	{}
+Gainesville	https://iccgfl.org/prayer-timings	404	0	{}
+Gainesville	https://iccgfl.org/salah	404	0	{}
+Gainesville	https://iccgfl.org/prayer-schedule	404	0	{}
+Gainesville	https://iccgfl.org/prayer-times/monthly	404	0	{}
+Gainesville	https://icnef.org	200	156796	{"pdf": ["https://icnef.org/wp-content/uploads/2026/06/Jul-Aug-Sep-26.xls.pdf", "https://icnef.org/wp-content/uploads/2026/11/Oct_Nov_Dec_26.xls.pdf"]}
+Gainesville	https://icnef.org/prayer-times	404	0	{}
+Gainesville	https://icnef.org/prayer-times/	404	0	{}
+Gainesville	https://icnef.org/prayers	200	72555	{"pdf": ["https://icnef.org/wp-content/uploads/2018/07/Jul-Aug-Sep-18.pdf"]}
+Gainesville	https://icnef.org/prayer	200	72555	{"pdf": ["https://icnef.org/wp-content/uploads/2018/07/Jul-Aug-Sep-18.pdf"]}
+Gainesville	https://icnef.org/prayertimes	200	72436	{}
+Gainesville	https://icnef.org/prayer-timings	404	0	{}
+Gainesville	https://icnef.org/salah	404	0	{}
+Gainesville	https://icnef.org/prayer-schedule	404	0	{}
+Gainesville	https://icnef.org/prayer-times/monthly	ERR:TimeoutError	0	{}
+Grand Rapids	https://grmasjid.org	200	145069	{"pdf": ["https://grmasjid.org/wp/wp-content/uploads/funeral_services.pdf"]}
+Grand Rapids	https://grmasjid.org/prayer-times	404	0	{}
+Grand Rapids	https://grmasjid.org/prayer-times/	404	0	{}
+Grand Rapids	https://grmasjid.org/prayers	404	0	{}
+Grand Rapids	https://grmasjid.org/prayer	404	0	{}
+Grand Rapids	https://grmasjid.org/prayertimes	404	0	{}
+Grand Rapids	https://grmasjid.org/prayer-timings	404	0	{}
+Grand Rapids	https://grmasjid.org/salah	404	0	{}
+Grand Rapids	https://grmasjid.org/prayer-schedule	404	0	{}
+Grand Rapids	https://grmasjid.org/prayer-times/monthly	404	0	{}
+Grand Rapids	http://islamiccentergr.org	200	20617	{}
+Grand Rapids	http://islamiccentergr.org/prayer-times	404	0	{}
+Grand Rapids	http://islamiccentergr.org/prayer-times/	404	0	{}
+Grand Rapids	http://islamiccentergr.org/prayers	404	0	{}
+Grand Rapids	http://islamiccentergr.org/prayer	404	0	{}
+Grand Rapids	http://islamiccentergr.org/prayertimes	404	0	{}
+Grand Rapids	http://islamiccentergr.org/prayer-timings	404	0	{}
+Grand Rapids	http://islamiccentergr.org/salah	404	0	{}
+Grand Rapids	http://islamiccentergr.org/prayer-schedule	404	0	{}
+Grand Rapids	http://islamiccentergr.org/prayer-times/monthly	404	0	{}
+Grand Rapids	https://icwweb.org	200	285989	{}
+Grand Rapids	https://icwweb.org/prayer-times	404	0	{}
+Grand Rapids	https://icwweb.org/prayer-times/	404	0	{}
+Grand Rapids	https://icwweb.org/prayers	404	0	{}
+Grand Rapids	https://icwweb.org/prayer	404	0	{}
+Grand Rapids	https://icwweb.org/prayertimes	404	0	{}
+Grand Rapids	https://icwweb.org/prayer-timings	404	0	{}
+Grand Rapids	https://icwweb.org/salah	404	0	{}
+Grand Rapids	https://icwweb.org/prayer-schedule	404	0	{}
+Grand Rapids	https://icwweb.org/prayer-times/monthly	404	0	{}
+Harrisburg	https://isghpa.alminaret.com	200	56683	{}
+Harrisburg	https://isghpa.alminaret.com/prayer-times	404	0	{}
+Harrisburg	https://isghpa.alminaret.com/prayer-times/	404	0	{}
+Harrisburg	https://isghpa.alminaret.com/prayers	404	0	{}
+Harrisburg	https://isghpa.alminaret.com/prayer	404	0	{}
+Harrisburg	https://isghpa.alminaret.com/prayertimes	404	0	{}
+Harrisburg	https://isghpa.alminaret.com/prayer-timings	404	0	{}
+Harrisburg	https://isghpa.alminaret.com/salah	200	32918	{}
+Harrisburg	https://isghpa.alminaret.com/prayer-schedule	404	0	{}
+Harrisburg	https://isghpa.alminaret.com/prayer-times/monthly	404	0	{}
+Harrisburg	https://sabereenpa.alminaret.com	200	55406	{"alminaret": ["donate"]}
+Harrisburg	https://sabereenpa.alminaret.com/prayer-times	404	0	{}
+Harrisburg	https://sabereenpa.alminaret.com/prayer-times/	404	0	{}
+Harrisburg	https://sabereenpa.alminaret.com/prayers	404	0	{}
+Harrisburg	https://sabereenpa.alminaret.com/prayer	404	0	{}
+Harrisburg	https://sabereenpa.alminaret.com/prayertimes	404	0	{}
+Harrisburg	https://sabereenpa.alminaret.com/prayer-timings	404	0	{}
+Harrisburg	https://sabereenpa.alminaret.com/salah	200	35776	{}
+Harrisburg	https://sabereenpa.alminaret.com/prayer-schedule	404	0	{}
+Harrisburg	https://sabereenpa.alminaret.com/prayer-times/monthly	404	0	{}
+Harrisburg	https://muwahhideen.org	200	115818	{}
+Harrisburg	https://muwahhideen.org/prayer-times	404	0	{}
+Harrisburg	https://muwahhideen.org/prayer-times/	404	0	{}
+Harrisburg	https://muwahhideen.org/prayers	404	0	{}
+Harrisburg	https://muwahhideen.org/prayer	404	0	{}
+Harrisburg	https://muwahhideen.org/prayertimes	404	0	{}
+Harrisburg	https://muwahhideen.org/prayer-timings	404	0	{}
+Harrisburg	https://muwahhideen.org/salah	404	0	{}
+Harrisburg	https://muwahhideen.org/prayer-schedule	404	0	{}
+Harrisburg	https://muwahhideen.org/prayer-times/monthly	404	0	{}
+Kansas City	https://icnkc.org	200	173089	{"mohid": ["mo/kansascity/icnorthland"]}
+Kansas City	https://icnkc.org/prayer-times	404	0	{}
+Kansas City	https://icnkc.org/prayer-times/	404	0	{}
+Kansas City	https://icnkc.org/prayers	404	0	{}
+Kansas City	https://icnkc.org/prayer	404	0	{}
+Kansas City	https://icnkc.org/prayertimes	404	0	{}
+Kansas City	https://icnkc.org/prayer-timings	404	0	{}
+Kansas City	https://icnkc.org/salah	200	106782	{}
+Kansas City	https://icnkc.org/prayer-schedule	404	0	{}
+Kansas City	https://icnkc.org/prayer-times/monthly	404	0	{}
+Kansas City	https://ickansas.org	200	69597	{"pdf": ["https://ickansas.org/wp-content/uploads/2015/05/ICK-BYLAWS-Final.pdf"]}
+Kansas City	https://ickansas.org/prayer-times	404	0	{}
+Kansas City	https://ickansas.org/prayer-times/	404	0	{}
+Kansas City	https://ickansas.org/prayers	404	0	{}
+Kansas City	https://ickansas.org/prayer	404	0	{}
+Kansas City	https://ickansas.org/prayertimes	404	0	{}
+Kansas City	https://ickansas.org/prayer-timings	404	0	{}
+Kansas City	https://ickansas.org/salah	404	0	{}
+Kansas City	https://ickansas.org/prayer-schedule	404	0	{}
+Kansas City	https://ickansas.org/prayer-times/monthly	200	109773	{"pdf": ["https://ickansas.org/wp-content/uploads/2015/05/ICK-BYLAWS-Final.pdf"]}
+Kansas City	https://www.isgkc.org	200	280302	{"json": ["https://isgkc.bayyan.org/api/displayCurrentTime?%27.$timestamp", "https://www.isgkc.org/wp-json/elementskit/v1/"], "mohid": ["mo/kansascity/isgkc"]}
+Kansas City	https://www.isgkc.org/prayer-times	404	0	{}
+Kansas City	https://www.isgkc.org/prayer-times/	404	0	{}
+Kansas City	https://www.isgkc.org/prayers	404	0	{}
+Kansas City	https://www.isgkc.org/prayer	200	147778	{"json": ["https://www.isgkc.org/wp-json/elementskit/v1/"], "mohid": ["mo/kansascity/isgkc"]}
+Kansas City	https://www.isgkc.org/prayertimes	404	0	{}
+Kansas City	https://www.isgkc.org/prayer-timings	404	0	{}
+Kansas City	https://www.isgkc.org/salah	404	0	{}
+Kansas City	https://www.isgkc.org/prayer-schedule	404	0	{}
+Kansas City	https://www.isgkc.org/prayer-times/monthly	404	0	{}
+Kansas City	https://alhudakc.org	200	124528	{}
+Kansas City	https://alhudakc.org/prayer-times	404	0	{}
+Kansas City	https://alhudakc.org/prayer-times/	404	0	{}
+Kansas City	https://alhudakc.org/prayers	404	0	{}
+Kansas City	https://alhudakc.org/prayer	404	0	{}
+Kansas City	https://alhudakc.org/prayertimes	404	0	{}
+Kansas City	https://alhudakc.org/prayer-timings	404	0	{}
+Kansas City	https://alhudakc.org/salah	404	0	{}
+Kansas City	https://alhudakc.org/prayer-schedule	404	0	{}
+Kansas City	https://alhudakc.org/prayer-times/monthly	200	88079	{}
+Kansas City	https://masjidalsalaamkc.org	200	137919	{}
+Kansas City	https://masjidalsalaamkc.org/prayer-times	404	0	{}
+Kansas City	https://masjidalsalaamkc.org/prayer-times/	404	0	{}
+Kansas City	https://masjidalsalaamkc.org/prayers	404	0	{}
+Kansas City	https://masjidalsalaamkc.org/prayer	404	0	{}
+Kansas City	https://masjidalsalaamkc.org/prayertimes	404	0	{}
+Kansas City	https://masjidalsalaamkc.org/prayer-timings	404	0	{}
+Kansas City	https://masjidalsalaamkc.org/salah	404	0	{}
+Kansas City	https://masjidalsalaamkc.org/prayer-schedule	404	0	{}
+Kansas City	https://masjidalsalaamkc.org/prayer-times/monthly	404	0	{}
+Knoxville	https://muslimknoxville.org	200	176607	{}
+Knoxville	https://muslimknoxville.org/prayer-times	404	0	{}
+Knoxville	https://muslimknoxville.org/prayer-times/	404	0	{}
+Knoxville	https://muslimknoxville.org/prayers	200	176253	{}
+Knoxville	https://muslimknoxville.org/prayer	200	176253	{}
+Knoxville	https://muslimknoxville.org/prayertimes	404	0	{}
+Knoxville	https://muslimknoxville.org/prayer-timings	404	0	{}
+Knoxville	https://muslimknoxville.org/salah	404	0	{}
+Knoxville	https://muslimknoxville.org/prayer-schedule	404	0	{}
+Knoxville	https://muslimknoxville.org/prayer-times/monthly	404	0	{}
+Knoxville	https://www.islamiccenteroftennessee.org	200	89081	{"athanplus": ["rdRvm3dG"], "masjidal": ["rdRvm3dG"], "mohid": ["tn/nashville/ictn"]}
+Knoxville	https://www.islamiccenteroftennessee.org/prayer-times	404	0	{}
+Knoxville	https://www.islamiccenteroftennessee.org/prayer-times/	404	0	{}
+Knoxville	https://www.islamiccenteroftennessee.org/prayers	404	0	{}
+Knoxville	https://www.islamiccenteroftennessee.org/prayer	404	0	{}
+Knoxville	https://www.islamiccenteroftennessee.org/prayertimes	404	0	{}
+Knoxville	https://www.islamiccenteroftennessee.org/prayer-timings	404	0	{}
+Knoxville	https://www.islamiccenteroftennessee.org/salah	404	0	{}
+Knoxville	https://www.islamiccenteroftennessee.org/prayer-schedule	404	0	{}
+Knoxville	https://www.islamiccenteroftennessee.org/prayer-times/monthly	404	0	{}
+Louisville	https://www.alnurmasjid.org	200	414	{}
+Louisville	https://www.alnurmasjid.org/prayer-times	404	0	{}
+Louisville	https://www.alnurmasjid.org/prayer-times/	404	0	{}
+Louisville	https://www.alnurmasjid.org/prayers	404	0	{}
+Louisville	https://www.alnurmasjid.org/prayer	404	0	{}
+Louisville	https://www.alnurmasjid.org/prayertimes	404	0	{}
+Louisville	https://www.alnurmasjid.org/prayer-timings	404	0	{}
+Louisville	https://www.alnurmasjid.org/salah	404	0	{}
+Louisville	https://www.alnurmasjid.org/prayer-schedule	404	0	{}
+Louisville	https://www.alnurmasjid.org/prayer-times/monthly	404	0	{}
+Louisville	https://www.louisvilleislamiccenter.org	200	207349	{"mohid": ["ky/louisville/lic"]}
+Louisville	https://www.louisvilleislamiccenter.org/prayer-times	404	0	{}
+Louisville	https://www.louisvilleislamiccenter.org/prayer-times/	404	0	{}
+Louisville	https://www.louisvilleislamiccenter.org/prayers	404	0	{}
+Louisville	https://www.louisvilleislamiccenter.org/prayer	404	0	{}
+Louisville	https://www.louisvilleislamiccenter.org/prayertimes	404	0	{}
+Louisville	https://www.louisvilleislamiccenter.org/prayer-timings	404	0	{}
+Louisville	https://www.louisvilleislamiccenter.org/salah	404	0	{}
+Louisville	https://www.louisvilleislamiccenter.org/prayer-schedule	404	0	{}
+Louisville	https://www.louisvilleislamiccenter.org/prayer-times/monthly	404	0	{}
+Louisville	https://www.guidinglightcenter.org	200	1549677	{"mohid": ["ky/louisville/glic"]}
+Louisville	https://www.guidinglightcenter.org/prayer-times	404	0	{}
+Louisville	https://www.guidinglightcenter.org/prayer-times/	404	0	{}
+Louisville	https://www.guidinglightcenter.org/prayers	404	0	{}
+Louisville	https://www.guidinglightcenter.org/prayer	404	0	{}
+Louisville	https://www.guidinglightcenter.org/prayertimes	404	0	{}
+Louisville	https://www.guidinglightcenter.org/prayer-timings	404	0	{}
+Louisville	https://www.guidinglightcenter.org/salah	404	0	{}
+Louisville	https://www.guidinglightcenter.org/prayer-schedule	404	0	{}
+Louisville	https://www.guidinglightcenter.org/prayer-times/monthly	404	0	{}
+Louisville	https://us.mohid.co/ky/louisville/mccol	200	35779	{"mohid": ["ky/louisville/mccol"]}
+Louisville	https://us.mohid.co/ky/louisville/mccol/prayer-times	404	0	{}
+Louisville	https://us.mohid.co/ky/louisville/mccol/prayer-times/	404	0	{}
+Louisville	https://us.mohid.co/ky/louisville/mccol/prayers	404	0	{}
+Louisville	https://us.mohid.co/ky/louisville/mccol/prayer	404	0	{}
+Louisville	https://us.mohid.co/ky/louisville/mccol/prayertimes	404	0	{}
+Louisville	https://us.mohid.co/ky/louisville/mccol/prayer-timings	404	0	{}
+Louisville	https://us.mohid.co/ky/louisville/mccol/salah	404	0	{}
+Louisville	https://us.mohid.co/ky/louisville/mccol/prayer-schedule	404	0	{}
+Louisville	https://us.mohid.co/ky/louisville/mccol/prayer-times/monthly	404	0	{}
+Montgomery	https://emismosque.com	200	295031	{}
+Montgomery	https://emismosque.com/prayer-times	404	0	{}
+Montgomery	https://emismosque.com/prayer-times/	404	0	{}
+Montgomery	https://emismosque.com/prayers	404	0	{}
+Montgomery	https://emismosque.com/prayer	404	0	{}
+Montgomery	https://emismosque.com/prayertimes	404	0	{}
+Montgomery	https://emismosque.com/prayer-timings	404	0	{}
+Montgomery	https://emismosque.com/salah	404	0	{}
+Montgomery	https://emismosque.com/prayer-schedule	404	0	{}
+Montgomery	https://emismosque.com/prayer-times/monthly	404	0	{}
+Montgomery	https://www.mcmontgomery.org	200	775588	{}
+Montgomery	https://www.mcmontgomery.org/prayer-times	404	0	{}
+Montgomery	https://www.mcmontgomery.org/prayer-times/	404	0	{}
+Montgomery	https://www.mcmontgomery.org/prayers	404	0	{}
+Montgomery	https://www.mcmontgomery.org/prayer	404	0	{}
+Montgomery	https://www.mcmontgomery.org/prayertimes	404	0	{}
+Montgomery	https://www.mcmontgomery.org/prayer-timings	404	0	{}
+Montgomery	https://www.mcmontgomery.org/salah	404	0	{}
+Montgomery	https://www.mcmontgomery.org/prayer-schedule	404	0	{}
+Montgomery	https://www.mcmontgomery.org/prayer-times/monthly	404	0	{}
+Montgomery	https://madisonmasjid.com	ERR:URLError	0	{}
+Montgomery	https://madisonmasjid.com/prayer-times	404	0	{}
+Montgomery	https://madisonmasjid.com/prayer-times/	404	0	{}
+Montgomery	https://madisonmasjid.com/prayers	404	0	{}
+Montgomery	https://madisonmasjid.com/prayer	404	0	{}
+Montgomery	https://madisonmasjid.com/prayertimes	404	0	{}
+Montgomery	https://madisonmasjid.com/prayer-timings	404	0	{}
+Montgomery	https://madisonmasjid.com/salah	ERR:URLError	0	{}
+Montgomery	https://madisonmasjid.com/prayer-schedule	ERR:URLError	0	{}
+Montgomery	https://madisonmasjid.com/prayer-times/monthly	ERR:URLError	0	{}
+New Orleans	https://islamiccenternola.com	200	478	{}
+New Orleans	https://islamiccenternola.com/prayer-times	200	478	{}
+New Orleans	https://islamiccenternola.com/prayer-times/	200	478	{}
+New Orleans	https://islamiccenternola.com/prayers	200	478	{}
+New Orleans	https://islamiccenternola.com/prayer	200	478	{}
+New Orleans	https://islamiccenternola.com/prayertimes	200	478	{}
+New Orleans	https://islamiccenternola.com/prayer-timings	200	478	{}
+New Orleans	https://islamiccenternola.com/salah	200	478	{}
+New Orleans	https://islamiccenternola.com/prayer-schedule	200	478	{}
+New Orleans	https://islamiccenternola.com/prayer-times/monthly	200	478	{}
+New Orleans	https://jmanola.org	200	139017	{}
+New Orleans	https://jmanola.org/prayer-times	404	0	{}
+New Orleans	https://jmanola.org/prayer-times/	404	0	{}
+New Orleans	https://jmanola.org/prayers	404	0	{}
+New Orleans	https://jmanola.org/prayer	404	0	{}
+New Orleans	https://jmanola.org/prayertimes	404	0	{}
+New Orleans	https://jmanola.org/prayer-timings	404	0	{}
+New Orleans	https://jmanola.org/salah	404	0	{}
+New Orleans	https://jmanola.org/prayer-schedule	404	0	{}
+New Orleans	https://jmanola.org/prayer-times/monthly	404	0	{}
+New Orleans	https://masjidomarharvey.org	200	204011	{"json": ["https://masjidomarharvey.org/wp-json/elementskit/v1/"]}
+New Orleans	https://masjidomarharvey.org/prayer-times	404	0	{}
+New Orleans	https://masjidomarharvey.org/prayer-times/	404	0	{}
+New Orleans	https://masjidomarharvey.org/prayers	404	0	{}
+New Orleans	https://masjidomarharvey.org/prayer	404	0	{}
+New Orleans	https://masjidomarharvey.org/prayertimes	404	0	{}
+New Orleans	https://masjidomarharvey.org/prayer-timings	404	0	{}
+New Orleans	https://masjidomarharvey.org/salah	200	175385	{"json": ["https://masjidomarharvey.org/wp-json/elementskit/v1/"]}
+New Orleans	https://masjidomarharvey.org/prayer-schedule	404	0	{}
+New Orleans	https://masjidomarharvey.org/prayer-times/monthly	404	0	{}
+New Orleans	https://www.islamicacademy.org/html/Times/New_Orleans.htm	200	5308	{}
+New Orleans	https://www.islamicacademy.org/html/Times/New_Orleans.htm/prayer-times	404	0	{}
+New Orleans	https://www.islamicacademy.org/html/Times/New_Orleans.htm/prayer-times/	404	0	{}
+New Orleans	https://www.islamicacademy.org/html/Times/New_Orleans.htm/prayers	404	0	{}
+New Orleans	https://www.islamicacademy.org/html/Times/New_Orleans.htm/prayer	404	0	{}
+New Orleans	https://www.islamicacademy.org/html/Times/New_Orleans.htm/prayertimes	404	0	{}
+New Orleans	https://www.islamicacademy.org/html/Times/New_Orleans.htm/prayer-timings	404	0	{}
+New Orleans	https://www.islamicacademy.org/html/Times/New_Orleans.htm/salah	404	0	{}
+New Orleans	https://www.islamicacademy.org/html/Times/New_Orleans.htm/prayer-schedule	404	0	{}
+New Orleans	https://www.islamicacademy.org/html/Times/New_Orleans.htm/prayer-times/monthly	404	0	{}
+Norfolk	https://masjidashshura.org	200	15653	{}
+Norfolk	https://masjidashshura.org/prayer-times	404	0	{}
+Norfolk	https://masjidashshura.org/prayer-times/	404	0	{}
+Norfolk	https://masjidashshura.org/prayers	404	0	{}
+Norfolk	https://masjidashshura.org/prayer	404	0	{}
+Norfolk	https://masjidashshura.org/prayertimes	404	0	{}
+Norfolk	https://masjidashshura.org/prayer-timings	404	0	{}
+Norfolk	https://masjidashshura.org/salah	404	0	{}
+Norfolk	https://masjidashshura.org/prayer-schedule	404	0	{}
+Norfolk	https://masjidashshura.org/prayer-times/monthly	404	0	{}
+Norfolk	https://mcthr.org	200	717744	{}
+Norfolk	https://mcthr.org/prayer-times	200	255158	{}
+Norfolk	https://mcthr.org/prayer-times/	200	255158	{}
+Norfolk	https://mcthr.org/prayers	200	255158	{}
+Norfolk	https://mcthr.org/prayer	200	255158	{}
+Norfolk	https://mcthr.org/prayertimes	200	255158	{}
+Norfolk	https://mcthr.org/prayer-timings	200	255158	{}
+Norfolk	https://mcthr.org/salah	200	255158	{}
+Norfolk	https://mcthr.org/prayer-schedule	200	255158	{}
+Norfolk	https://mcthr.org/prayer-times/monthly	200	255158	{}
+Norfolk	https://us.mohid.co/va/norfolk/mct	200	32747	{"mohid": ["va/norfolk/mct"]}
+Norfolk	https://us.mohid.co/va/norfolk/mct/prayer-times	404	0	{}
+Norfolk	https://us.mohid.co/va/norfolk/mct/prayer-times/	404	0	{}
+Norfolk	https://us.mohid.co/va/norfolk/mct/prayers	404	0	{}
+Norfolk	https://us.mohid.co/va/norfolk/mct/prayer	404	0	{}
+Norfolk	https://us.mohid.co/va/norfolk/mct/prayertimes	404	0	{}
+Norfolk	https://us.mohid.co/va/norfolk/mct/prayer-timings	404	0	{}
+Norfolk	https://us.mohid.co/va/norfolk/mct/salah	404	0	{}
+Norfolk	https://us.mohid.co/va/norfolk/mct/prayer-schedule	404	0	{}
+Norfolk	https://us.mohid.co/va/norfolk/mct/prayer-times/monthly	404	0	{}
+Oklahoma City	https://www.isgoc.com	200	195074	{"pdf": ["/s/Impact-Report-2025.pdf"]}
+Oklahoma City	https://www.isgoc.com/prayer-times	404	0	{}
+Oklahoma City	https://www.isgoc.com/prayer-times/	404	0	{}
+Oklahoma City	https://www.isgoc.com/prayers	404	0	{}
+Oklahoma City	https://www.isgoc.com/prayer	404	0	{}
+Oklahoma City	https://www.isgoc.com/prayertimes	404	0	{}
+Oklahoma City	https://www.isgoc.com/prayer-timings	404	0	{}
+Oklahoma City	https://www.isgoc.com/salah	404	0	{}
+Oklahoma City	https://www.isgoc.com/prayer-schedule	404	0	{}
+Oklahoma City	https://www.isgoc.com/prayer-times/monthly	404	0	{}
+Oklahoma City	https://edmondmasjid.org	200	38570	{"mohid": ["ok/oklahomacity/ise"]}
+Oklahoma City	https://edmondmasjid.org/prayer-times	404	0	{}
+Oklahoma City	https://edmondmasjid.org/prayer-times/	404	0	{}
+Oklahoma City	https://edmondmasjid.org/prayers	404	0	{}
+Oklahoma City	https://edmondmasjid.org/prayer	200	25208	{"mohid": ["ok/oklahomacity/ise"]}
+Oklahoma City	https://edmondmasjid.org/prayertimes	404	0	{}
+Oklahoma City	https://edmondmasjid.org/prayer-timings	200	25208	{"mohid": ["ok/oklahomacity/ise"]}
+Oklahoma City	https://edmondmasjid.org/salah	404	0	{}
+Oklahoma City	https://edmondmasjid.org/prayer-schedule	404	0	{}
+Oklahoma City	https://edmondmasjid.org/prayer-times/monthly	404	0	{}
+Portland	https://assaber.org	200	1871	{}
+Portland	https://assaber.org/prayer-times	200	1871	{}
+Portland	https://assaber.org/prayer-times/	200	1871	{}
+Portland	https://assaber.org/prayers	200	1871	{}
+Portland	https://assaber.org/prayer	200	1871	{}
+Portland	https://assaber.org/prayertimes	200	1871	{}
+Portland	https://assaber.org/prayer-timings	200	1871	{}
+Portland	https://assaber.org/salah	200	1871	{}
+Portland	https://assaber.org/prayer-schedule	200	1871	{}
+Portland	https://assaber.org/prayer-times/monthly	200	1871	{}
+Portland	https://www.towhidic.org	200	20594	{"athanplus": ["3AO2n4Le"], "masjidal": ["3AO2n4Le"]}
+Portland	https://www.towhidic.org/prayer-times	404	0	{}
+Portland	https://www.towhidic.org/prayer-times/	404	0	{}
+Portland	https://www.towhidic.org/prayers	404	0	{}
+Portland	https://www.towhidic.org/prayer	404	0	{}
+Portland	https://www.towhidic.org/prayertimes	200	36697	{"athanplus": ["3AO2n4Le"], "masjidal": ["3AO2n4Le"]}
+Portland	https://www.towhidic.org/prayer-timings	404	0	{}
+Portland	https://www.towhidic.org/salah	404	0	{}
+Portland	https://www.towhidic.org/prayer-schedule	404	0	{}
+Portland	https://www.towhidic.org/prayer-times/monthly	404	0	{}
+Portland	https://bilalmasjid.net	200	1363	{}
+Portland	https://bilalmasjid.net/prayer-times	200	1363	{}
+Portland	https://bilalmasjid.net/prayer-times/	200	1363	{}
+Portland	https://bilalmasjid.net/prayers	200	1363	{}
+Portland	https://bilalmasjid.net/prayer	200	1363	{}
+Portland	https://bilalmasjid.net/prayertimes	200	1363	{}
+Portland	https://bilalmasjid.net/prayer-timings	200	1363	{}
+Portland	https://bilalmasjid.net/salah	200	1363	{}
+Portland	https://bilalmasjid.net/prayer-schedule	200	1363	{}
+Portland	https://bilalmasjid.net/prayer-times/monthly	200	1363	{}
+Portland	https://masjidabubakarpdx.com	200	194237	{}
+Portland	https://masjidabubakarpdx.com/prayer-times	404	0	{}
+Portland	https://masjidabubakarpdx.com/prayer-times/	404	0	{}
+Portland	https://masjidabubakarpdx.com/prayers	404	0	{}
+Portland	https://masjidabubakarpdx.com/prayer	404	0	{}
+Portland	https://masjidabubakarpdx.com/prayertimes	404	0	{}
+Portland	https://masjidabubakarpdx.com/prayer-timings	404	0	{}
+Portland	https://masjidabubakarpdx.com/salah	404	0	{}
+Portland	https://masjidabubakarpdx.com/prayer-schedule	404	0	{}
+Portland	https://masjidabubakarpdx.com/prayer-times/monthly	404	0	{}
+Portland	https://www.annoorpdx.org	200	192052	{}
+Portland	https://www.annoorpdx.org/prayer-times	404	0	{}
+Portland	https://www.annoorpdx.org/prayer-times/	404	0	{}
+Portland	https://www.annoorpdx.org/prayers	404	0	{}
+Portland	https://www.annoorpdx.org/prayer	404	0	{}
+Portland	https://www.annoorpdx.org/prayertimes	404	0	{}
+Portland	https://www.annoorpdx.org/prayer-timings	404	0	{}
+Portland	https://www.annoorpdx.org/salah	404	0	{}
+Portland	https://www.annoorpdx.org/prayer-schedule	404	0	{}
+Portland	https://www.annoorpdx.org/prayer-times/monthly	404	0	{}
+Providence	https://masjid-alkareem.org	200	54916	{}
+Providence	https://masjid-alkareem.org/prayer-times	404	0	{}
+Providence	https://masjid-alkareem.org/prayer-times/	404	0	{}
+Providence	https://masjid-alkareem.org/prayers	404	0	{}
+Providence	https://masjid-alkareem.org/prayer	404	0	{}
+Providence	https://masjid-alkareem.org/prayertimes	404	0	{}
+Providence	https://masjid-alkareem.org/prayer-timings	404	0	{}
+Providence	https://masjid-alkareem.org/salah	404	0	{}
+Providence	https://masjid-alkareem.org/prayer-schedule	404	0	{}
+Providence	https://masjid-alkareem.org/prayer-times/monthly	404	0	{}
+Providence	https://masjid-ali.com	200	58132	{}
+Providence	https://masjid-ali.com/prayer-times	404	0	{}
+Providence	https://masjid-ali.com/prayer-times/	404	0	{}
+Providence	https://masjid-ali.com/prayers	404	0	{}
+Providence	https://masjid-ali.com/prayer	404	0	{}
+Providence	https://masjid-ali.com/prayertimes	404	0	{}
+Providence	https://masjid-ali.com/prayer-timings	404	0	{}
+Providence	https://masjid-ali.com/salah	404	0	{}
+Providence	https://masjid-ali.com/prayer-schedule	404	0	{}
+Providence	https://masjid-ali.com/prayer-times/monthly	404	0	{}
+Raleigh	https://raleighmasjid.org	200	398359	{"json": ["https://raleighmasjid.org/wp-json/elementskit/v1/"], "pdf": ["https://raleighmasjid.org/files/LAST-WILL-AND-TESTAMENT.pdf"]}
+Raleigh	https://raleighmasjid.org/prayer-times	200	97495	{"json": ["https://raleighmasjid.org/wp-json/elementskit/v1/"]}
+Raleigh	https://raleighmasjid.org/prayer-times/	200	97495	{"json": ["https://raleighmasjid.org/wp-json/elementskit/v1/"]}
+Raleigh	https://raleighmasjid.org/prayers	404	0	{}
+Raleigh	https://raleighmasjid.org/prayer	403	0	{}
+Raleigh	https://raleighmasjid.org/prayertimes	404	0	{}
+Raleigh	https://raleighmasjid.org/prayer-timings	200	277139	{"json": ["https://raleighmasjid.org/wp-json/elementskit/v1/"], "pdf": ["https://raleighmasjid.org/files/LAST-WILL-AND-TESTAMENT.pdf"]}
+Raleigh	https://raleighmasjid.org/salah	200	279235	{"json": ["https://raleighmasjid.org/wp-json/elementskit/v1/"], "pdf": ["https://raleighmasjid.org/files/LAST-WILL-AND-TESTAMENT.pdf"]}
+Raleigh	https://raleighmasjid.org/prayer-schedule	404	0	{}
+Raleigh	https://raleighmasjid.org/prayer-times/monthly	404	0	{}
+Rochester	https://theicr.org	403	0	{}
+Rochester	https://theicr.org/prayer-times	403	0	{}
+Rochester	https://theicr.org/prayer-times/	404	0	{}
+Rochester	https://theicr.org/prayers	404	0	{}
+Rochester	https://theicr.org/prayer	404	0	{}
+Rochester	https://theicr.org/prayertimes	404	0	{}
+Rochester	https://theicr.org/prayer-timings	404	0	{}
+Rochester	https://theicr.org/salah	403	0	{}
+Rochester	https://theicr.org/prayer-schedule	404	0	{}
+Rochester	https://theicr.org/prayer-times/monthly	404	0	{}
+Rochester	https://masjidtawfeeq.org	200	389985	{}
+Rochester	https://masjidtawfeeq.org/prayer-times	404	0	{}
+Rochester	https://masjidtawfeeq.org/prayer-times/	404	0	{}
+Rochester	https://masjidtawfeeq.org/prayers	404	0	{}
+Rochester	https://masjidtawfeeq.org/prayer	404	0	{}
+Rochester	https://masjidtawfeeq.org/prayertimes	404	0	{}
+Rochester	https://masjidtawfeeq.org/prayer-timings	404	0	{}
+Rochester	https://masjidtawfeeq.org/salah	404	0	{}
+Rochester	https://masjidtawfeeq.org/prayer-schedule	404	0	{}
+Rochester	https://masjidtawfeeq.org/prayer-times/monthly	404	0	{}
+Salt Lake City	https://utislamiccenter.org	200	323525	{"mohid": ["ut/westjordan/uic"], "pdf": ["https://utislamiccenter.org/wp-content/uploads/2026/07/Senator-Luz-Escamilla-to-Pursue-Legislative-Action-Following-Anti-Muslim-Hate-Motivated-Attack.pdf"]}
+Salt Lake City	https://utislamiccenter.org/prayer-times	404	0	{}
+Salt Lake City	https://utislamiccenter.org/prayer-times/	404	0	{}
+Salt Lake City	https://utislamiccenter.org/prayers	404	0	{}
+Salt Lake City	https://utislamiccenter.org/prayer	404	0	{}
+Salt Lake City	https://utislamiccenter.org/prayertimes	404	0	{}
+Salt Lake City	https://utislamiccenter.org/prayer-timings	404	0	{}
+Salt Lake City	https://utislamiccenter.org/salah	404	0	{}
+Salt Lake City	https://utislamiccenter.org/prayer-schedule	404	0	{}
+Salt Lake City	https://utislamiccenter.org/prayer-times/monthly	200	90657	{}
+Salt Lake City	https://www.utahmuslims.com	200	359778	{}
+Salt Lake City	https://www.utahmuslims.com/prayer-times	404	0	{}
+Salt Lake City	https://www.utahmuslims.com/prayer-times/	404	0	{}
+Salt Lake City	https://www.utahmuslims.com/prayers	404	0	{}
+Salt Lake City	https://www.utahmuslims.com/prayer	404	0	{}
+Salt Lake City	https://www.utahmuslims.com/prayertimes	404	0	{}
+Salt Lake City	https://www.utahmuslims.com/prayer-timings	404	0	{}
+Salt Lake City	https://www.utahmuslims.com/salah	404	0	{}
+Salt Lake City	https://www.utahmuslims.com/prayer-schedule	404	0	{}
+Salt Lake City	https://www.utahmuslims.com/prayer-times/monthly	404	0	{}
+Tallahassee	https://ictlh.org	200	113260	{}
+Tallahassee	https://ictlh.org/prayer-times	404	0	{}
+Tallahassee	https://ictlh.org/prayer-times/	404	0	{}
+Tallahassee	https://ictlh.org/prayers	404	0	{}
+Tallahassee	https://ictlh.org/prayer	404	0	{}
+Tallahassee	https://ictlh.org/prayertimes	404	0	{}
+Tallahassee	https://ictlh.org/prayer-timings	404	0	{}
+Tallahassee	https://ictlh.org/salah	404	0	{}
+Tallahassee	https://ictlh.org/prayer-schedule	404	0	{}
+Tallahassee	https://ictlh.org/prayer-times/monthly	404	0	{}
+Tallahassee	https://islamictallahassee.cfd	200	9483	{}
+Tallahassee	https://islamictallahassee.cfd/prayer-times	404	0	{}
+Tallahassee	https://islamictallahassee.cfd/prayer-times/	404	0	{}
+Tallahassee	https://islamictallahassee.cfd/prayers	404	0	{}
+Tallahassee	https://islamictallahassee.cfd/prayer	404	0	{}
+Tallahassee	https://islamictallahassee.cfd/prayertimes	404	0	{}
+Tallahassee	https://islamictallahassee.cfd/prayer-timings	404	0	{}
+Tallahassee	https://islamictallahassee.cfd/salah	404	0	{}
+Tallahassee	https://islamictallahassee.cfd/prayer-schedule	404	0	{}
+Tallahassee	https://islamictallahassee.cfd/prayer-times/monthly	404	0	{}
+Tucson	https://ictucson.org	200	227991	{}
+Tucson	https://ictucson.org/prayer-times	404	0	{}
+Tucson	https://ictucson.org/prayer-times/	404	0	{}
+Tucson	https://ictucson.org/prayers	404	0	{}
+Tucson	https://ictucson.org/prayer	200	137108	{"masjidal": ["Edol0GK7"]}
+Tucson	https://ictucson.org/prayertimes	404	0	{}
+Tucson	https://ictucson.org/prayer-timings	404	0	{}
+Tucson	https://ictucson.org/salah	200	114616	{}
+Tucson	https://ictucson.org/prayer-schedule	404	0	{}
+Tucson	https://ictucson.org/prayer-times/monthly	404	0	{}
+Tucson	https://www.mcctucson.org	200	138509	{"ifinder": ["5318313|shafi|5|0|15.0"]}
+Tucson	https://www.mcctucson.org/prayer-times	404	0	{}
+Tucson	https://www.mcctucson.org/prayer-times/	404	0	{}
+Tucson	https://www.mcctucson.org/prayers	404	0	{}
+Tucson	https://www.mcctucson.org/prayer	404	0	{}
+Tucson	https://www.mcctucson.org/prayertimes	404	0	{}
+Tucson	https://www.mcctucson.org/prayer-timings	404	0	{}
+Tucson	https://www.mcctucson.org/salah	404	0	{}
+Tucson	https://www.mcctucson.org/prayer-schedule	404	0	{}
+Tucson	https://www.mcctucson.org/prayer-times/monthly	404	0	{}
+Tucson	https://iahiccenter.org	200	151179	{}
+Tucson	https://iahiccenter.org/prayer-times	200	151179	{}
+Tucson	https://iahiccenter.org/prayer-times/	200	151179	{}
+Tucson	https://iahiccenter.org/prayers	200	151179	{}
+Tucson	https://iahiccenter.org/prayer	200	151179	{}
+Tucson	https://iahiccenter.org/prayertimes	200	151179	{}
+Tucson	https://iahiccenter.org/prayer-timings	200	151179	{}
+Tucson	https://iahiccenter.org/salah	200	151179	{}
+Tucson	https://iahiccenter.org/prayer-schedule	200	151179	{}
+Tucson	https://iahiccenter.org/prayer-times/monthly	200	151179	{}
+Tucson	https://www.masjidtucson.org	200	20158	{"pdf": ["submission/perspectives/happiness/Happiness_Now_and_Forever.pdf"]}
+Tucson	https://www.masjidtucson.org/prayer-times	404	0	{}
+Tucson	https://www.masjidtucson.org/prayer-times/	404	0	{}
+Tucson	https://www.masjidtucson.org/prayers	404	0	{}
+Tucson	https://www.masjidtucson.org/prayer	404	0	{}
+Tucson	https://www.masjidtucson.org/prayertimes	404	0	{}
+Tucson	https://www.masjidtucson.org/prayer-timings	404	0	{}
+Tucson	https://www.masjidtucson.org/salah	404	0	{}
+Tucson	https://www.masjidtucson.org/prayer-schedule	404	0	{}
+Tucson	https://www.masjidtucson.org/prayer-times/monthly	404	0	{}
+Wilmington	https://isdonline.org	200	254717	{"mohid": ["de/newark/isd"]}
+Wilmington	https://isdonline.org/prayer-times	404	0	{}
+Wilmington	https://isdonline.org/prayer-times/	404	0	{}
+Wilmington	https://isdonline.org/prayers	404	0	{}
+Wilmington	https://isdonline.org/prayer	404	0	{}
+Wilmington	https://isdonline.org/prayertimes	404	0	{}
+Wilmington	https://isdonline.org/prayer-timings	404	0	{}
+Wilmington	https://isdonline.org/salah	404	0	{}
+Wilmington	https://isdonline.org/prayer-schedule	404	0	{}
+Wilmington	https://isdonline.org/prayer-times/monthly	404	0	{}

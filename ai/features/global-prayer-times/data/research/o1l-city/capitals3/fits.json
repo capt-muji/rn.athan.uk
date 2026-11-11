@@ -1,0 +1,179 @@
+{
+ "colonia_yap_athanpro": {
+  "cityZone": "Pacific/Yap",
+  "deltaMin": 0,
+  "grade": "provisional",
+  "joint": "113 exact / 150 within-1 of 150",
+  "recipe": {
+   "asr": "Shafi",
+   "fajrAngle": 18,
+   "ishaAngle": 17
+  },
+  "renderZone": "Pacific/Chuuk",
+  "rows": 30,
+  "solarGateAfter": 1,
+  "solarGateBefore": 61,
+  "source": "athanpro.com/countries/micronesia/colonia",
+  "tier": "platform",
+  "verdict": "NOT coverage for Palikir; Colonia is Yap, 2223 km from Palikir. The 61 min failure was our zone choice (Pacific/Pohnpei).",
+  "worst": 1
+ },
+ "georgetown_athanpro": {
+  "cityZone": "America/Guyana",
+  "deltaMin": -240,
+  "grade": "provisional",
+  "joint": "94 exact / 150 within-1 of 150",
+  "recipe": {
+   "asr": "Shafi",
+   "fajrAngle": 18,
+   "ishaAngle": 17
+  },
+  "renderZone": "Atlantic/St_Helena",
+  "rows": 30,
+  "solarGateAfter": 1,
+  "solarGateBefore": 239,
+  "source": "athanpro.com/countries/guyana/georgetown",
+  "tier": "platform",
+  "worst": 1
+ },
+ "kingston_athanpro": {
+  "cityZone": "America/Jamaica",
+  "deltaMin": -960,
+  "grade": "provisional",
+  "joint": "92 exact / 150 within-1 of 150",
+  "recipe": {
+   "asr": "Shafi",
+   "fajrAngle": 18,
+   "ishaAngle": 17
+  },
+  "renderZone": "Pacific/Norfolk",
+  "rows": 30,
+  "solarGateAfter": 1,
+  "solarGateBefore": 481,
+  "source": "athanpro.com/countries/jamaica/kingston",
+  "span": "2026-09-01..2026-09-30",
+  "tier": "platform",
+  "worst": 1
+ },
+ "kingston_jic_liveblock": {
+  "defects": [
+   "jamaat column prints 5 min before the adhan column",
+   "times are Kingston's, not the Spanish Town address's"
+  ],
+  "grade": "candidate",
+  "joint": "5 of 5 within-1 on 5 consecutive days",
+  "recipe": {
+   "asr": "Shafi",
+   "fajrAngle": 17.5,
+   "ishaAngle": 17
+  },
+  "recoveredWindow": "2026-11-08..2026-11-12",
+  "rows": 1,
+  "solarGate": null,
+  "source": "jamaicaislamiccentre.com",
+  "tier": "community"
+ },
+ "koror_mawaqit": {
+  "deltas": {
+   "asr": "+83..+104",
+   "dhuhr": "+60/+61 on 243 of 365",
+   "fajr": "+33..+37",
+   "isha": "+70..+72"
+  },
+  "grade": "candidate",
+  "liveGate": "PASS 2026-10-01",
+  "rows": 365,
+  "source": "mawaqit palau-central-mosque-main-st-koror-96940-palau",
+  "span": "2026-01-01..2026-12-31",
+  "tier": "community",
+  "verdict": "hand-set board with a mid-year regime change, no recipe"
+ },
+ "newdelhi_athanpro": {
+  "coords": "28.6139,77.2090",
+  "grade": "provisional",
+  "joint": "104 exact / 150 within-1 of 150",
+  "matches": "New Delhi 28.6139,77.2089 (10 m); Delhi 28.61,77.23 is 2.1 km east",
+  "recipe": {
+   "asr": "Shafi",
+   "fajrAngle": 18,
+   "ishaAngle": 17
+  },
+  "rows": 30,
+  "ruling": "counts for New Delhi",
+  "solarGate": 1,
+  "source": "athanpro.com/countries/india/delhi",
+  "tier": "platform",
+  "worst": 1
+ },
+ "note": "measured this wave; athanpro joint figures are exact-within-1 of the five non-sunrise columns",
+ "palau_own_site": {
+  "bestReproduction": "worst 11 min at a +165 min shift, fajr at the 12 deg edge",
+  "dated": "2026-11-11 (Wed, 1 Jumada al-Thani 1448)",
+  "grade": "F",
+  "rows": 1,
+  "source": "palaucentralmosque.com",
+  "tier": "community",
+  "verdict": "theme demo data, internally inconsistent"
+ },
+ "sanjose_athanpro": {
+  "cityZone": "America/Costa_Rica",
+  "deltaMin": 60,
+  "grade": "provisional",
+  "joint": "96 exact / 150 within-1 of 150",
+  "recipe": {
+   "asr": "Shafi",
+   "fajrAngle": 18,
+   "ishaAngle": 17
+  },
+  "renderZone": "America/Los_Angeles",
+  "rows": 30,
+  "solarGateAfter": 1,
+  "solarGateBefore": 61,
+  "source": "athanpro.com/countries/costa-rica/san-jose",
+  "tier": "platform",
+  "worst": 1
+ },
+ "sanjose_mawaqit": {
+  "amplitudeFajrJanJul": -36,
+  "amplitudeIshaJanJul": 30,
+  "grade": "provisional",
+  "joint": "885 exact / 1788 within-1 of 1825",
+  "liveGate": "PASS 2026-10-01",
+  "pctWithin1": 97.97,
+  "per": {
+   "asr": 328,
+   "dhuhr": 365,
+   "fajr": 365,
+   "isha": 365,
+   "maghrib": 365,
+   "sunrise": 365
+  },
+  "recipe": {
+   "asr": "Shafi",
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "maghribOffsetMin": 8
+  },
+  "rows": 365,
+  "source": "mawaqit mezquita-luz-y-fe-mercedes-costa-rica-40002-costa-rica",
+  "span": "2026-01-01..2026-12-31",
+  "stability": "one cycle, not measurable",
+  "tier": "community",
+  "worst": 2
+ },
+ "tehran_athanpro": {
+  "claim": "candidate only; Iran stays closed",
+  "grade": "candidate",
+  "isha": "prints maghrib +80..84; no angle 10-19 reproduces it, worst 38",
+  "joint": "fajr 30/30, sunrise 30/30, dhuhr 30/30, maghrib 30/30, asr 21/30, isha 0/30",
+  "recipe": {
+   "asr": "Shafi",
+   "fajrAngle": 17.75,
+   "ishaAngle": "unresolved"
+  },
+  "rows": 30,
+  "solarGate": 2,
+  "source": "athanpro.com/countries/iran/tehran",
+  "tier": "platform"
+ }
+}

@@ -1,0 +1,436 @@
+[
+ {
+  "spec": {
+   "label": "ci-abidjan-mouaz",
+   "file": "data/ci-abidjan-mouaz-2026.json",
+   "tz": "Africa/Abidjan",
+   "lat": 5.3693666095994,
+   "lon": -3.9319547607409
+  },
+  "n": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "best": {
+   "key": 1002,
+   "fajr": 15.1,
+   "isha": 15,
+   "per": {
+    "fajr": {
+     "exact": 15,
+     "within1": 49,
+     "mae": 5.3,
+     "worst": 11,
+     "margin": -19.63
+    },
+    "sunrise": {
+     "exact": 359,
+     "within1": 365,
+     "mae": 0.02,
+     "worst": 1,
+     "margin": 0
+    },
+    "dhuhr": {
+     "exact": 13,
+     "within1": 42,
+     "mae": 7.17,
+     "worst": 17,
+     "margin": 28.65
+    },
+    "asr": {
+     "exact": 10,
+     "within1": 24,
+     "mae": 10.03,
+     "worst": 21,
+     "margin": 10.05
+    },
+    "maghrib": {
+     "exact": 202,
+     "within1": 262,
+     "mae": 3.6,
+     "worst": 18,
+     "margin": -9.75
+    },
+    "isha": {
+     "exact": 203,
+     "within1": 260,
+     "mae": 3.81,
+     "worst": 19,
+     "margin": 0.23
+    }
+   },
+   "n": 365
+  }
+ },
+ {
+  "spec": {
+   "label": "ci-abidjan-aghien",
+   "file": "data/ci-abidjan-aghien-2026.json",
+   "tz": "Africa/Abidjan",
+   "lat": 5.3822233,
+   "lon": -3.9932946
+  },
+  "n": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "best": {
+   "key": 788,
+   "fajr": 15,
+   "isha": 15,
+   "per": {
+    "fajr": {
+     "exact": 16,
+     "within1": 50,
+     "mae": 7.56,
+     "worst": 18,
+     "margin": 4.73
+    },
+    "sunrise": {
+     "exact": 351,
+     "within1": 365,
+     "mae": 0.04,
+     "worst": 1,
+     "margin": -0.02
+    },
+    "dhuhr": {
+     "exact": 13,
+     "within1": 42,
+     "mae": 7.16,
+     "worst": 17,
+     "margin": 43.4
+    },
+    "asr": {
+     "exact": 10,
+     "within1": 24,
+     "mae": 10.03,
+     "worst": 21,
+     "margin": 24.82
+    },
+    "maghrib": {
+     "exact": 22,
+     "within1": 72,
+     "mae": 8.62,
+     "worst": 27,
+     "margin": 6.43
+    },
+    "isha": {
+     "exact": 147,
+     "within1": 235,
+     "mae": 5.95,
+     "worst": 25,
+     "margin": 8.9
+    }
+   },
+   "n": 365
+  }
+ },
+ {
+  "spec": {
+   "label": "ci-abidjan-ibrahim",
+   "file": "data/ci-abidjan-ibrahim-2026.json",
+   "tz": "Africa/Abidjan",
+   "lat": 5.25777,
+   "lon": -3.90455
+  },
+  "n": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "best": {
+   "key": 627,
+   "fajr": 15.3,
+   "isha": 16.6,
+   "per": {
+    "fajr": {
+     "exact": 14,
+     "within1": 48,
+     "mae": 8.21,
+     "worst": 23,
+     "margin": -3.72
+    },
+    "sunrise": {
+     "exact": 354,
+     "within1": 365,
+     "mae": 0.03,
+     "worst": 1,
+     "margin": 0.05
+    },
+    "dhuhr": {
+     "exact": 13,
+     "within1": 42,
+     "mae": 7.17,
+     "worst": 17,
+     "margin": 43.77
+    },
+    "asr": {
+     "exact": 8,
+     "within1": 24,
+     "mae": 10.04,
+     "worst": 21,
+     "margin": -4.92
+    },
+    "maghrib": {
+     "exact": 21,
+     "within1": 73,
+     "mae": 8.96,
+     "worst": 27,
+     "margin": -13.17
+    },
+    "isha": {
+     "exact": 20,
+     "within1": 75,
+     "mae": 9.3,
+     "worst": 26,
+     "margin": -13.62
+    }
+   },
+   "n": 365
+  }
+ },
+ {
+  "spec": {
+   "label": "ci-abidjan-rayyane",
+   "file": "data/ci-abidjan-rayyane-2026.json",
+   "tz": "Africa/Abidjan",
+   "lat": 5.361106889531,
+   "lon": -3.9577174186707
+  },
+  "n": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "best": {
+   "key": 626,
+   "fajr": 16.7,
+   "isha": 16.2,
+   "per": {
+    "fajr": {
+     "exact": 16,
+     "within1": 49,
+     "mae": 8.22,
+     "worst": 22,
+     "margin": 2
+    },
+    "sunrise": {
+     "exact": 354,
+     "within1": 365,
+     "mae": 0.03,
+     "worst": 1,
+     "margin": 0
+    },
+    "dhuhr": {
+     "exact": 13,
+     "within1": 42,
+     "mae": 7.16,
+     "worst": 17,
+     "margin": 28.55
+    },
+    "asr": {
+     "exact": 10,
+     "within1": 24,
+     "mae": 10.04,
+     "worst": 21,
+     "margin": 9.95
+    },
+    "maghrib": {
+     "exact": 21,
+     "within1": 71,
+     "mae": 9.02,
+     "worst": 27,
+     "margin": 1.6
+    },
+    "isha": {
+     "exact": 21,
+     "within1": 75,
+     "mae": 8.69,
+     "worst": 26,
+     "margin": 2.73
+    }
+   },
+   "n": 365
+  }
+ },
+ {
+  "spec": {
+   "label": "ci-abidjan-omar-bingerville",
+   "file": "data/ci-abidjan-omar-bingerville-2026.json",
+   "tz": "Africa/Abidjan",
+   "lat": 5.357650809359,
+   "lon": -3.8829274717316
+  },
+  "n": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "best": {
+   "key": 806,
+   "fajr": 19.9,
+   "isha": 16.2,
+   "per": {
+    "fajr": {
+     "exact": 14,
+     "within1": 67,
+     "mae": 4.09,
+     "worst": 12,
+     "margin": 0.68
+    },
+    "sunrise": {
+     "exact": 358,
+     "within1": 365,
+     "mae": 0.02,
+     "worst": 1,
+     "margin": 0.02
+    },
+    "dhuhr": {
+     "exact": 13,
+     "within1": 42,
+     "mae": 7.16,
+     "worst": 17,
+     "margin": -6.15
+    },
+    "asr": {
+     "exact": 10,
+     "within1": 24,
+     "mae": 8.63,
+     "worst": 21,
+     "margin": -14.75
+    },
+    "maghrib": {
+     "exact": 155,
+     "within1": 233,
+     "mae": 6.05,
+     "worst": 25,
+     "margin": -21.67
+    },
+    "isha": {
+     "exact": 21,
+     "within1": 75,
+     "mae": 8.58,
+     "worst": 26,
+     "margin": -19.97
+    }
+   },
+   "n": 365
+  }
+ },
+ {
+  "spec": {
+   "label": "ci-abidjan-firad",
+   "file": "data/ci-abidjan-firad-2026.json",
+   "tz": "Africa/Abidjan",
+   "lat": 5.4071625,
+   "lon": -3.9762031
+  },
+  "n": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "best": {
+   "key": 628,
+   "fajr": 15.1,
+   "isha": 15.9,
+   "per": {
+    "fajr": {
+     "exact": 14,
+     "within1": 50,
+     "mae": 7.45,
+     "worst": 17,
+     "margin": -4.78
+    },
+    "sunrise": {
+     "exact": 361,
+     "within1": 365,
+     "mae": 0.01,
+     "worst": 1,
+     "margin": 0
+    },
+    "dhuhr": {
+     "exact": 13,
+     "within1": 42,
+     "mae": 7.16,
+     "worst": 17,
+     "margin": 73.47
+    },
+    "asr": {
+     "exact": 10,
+     "within1": 24,
+     "mae": 10.03,
+     "worst": 21,
+     "margin": 24.9
+    },
+    "maghrib": {
+     "exact": 22,
+     "within1": 72,
+     "mae": 7.96,
+     "worst": 27,
+     "margin": 6.47
+    },
+    "isha": {
+     "exact": 20,
+     "within1": 75,
+     "mae": 9.36,
+     "worst": 27,
+     "margin": 3.88
+    }
+   },
+   "n": 365
+  }
+ },
+ {
+  "spec": {
+   "label": "ci-abidjan-riadh",
+   "file": "data/ci-abidjan-riadh-2026.json",
+   "tz": "Africa/Abidjan",
+   "lat": 5.3521184,
+   "lon": -3.9229219
+  },
+  "n": 365,
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "best": {
+   "key": 1014,
+   "fajr": 17.8,
+   "isha": 16.2,
+   "per": {
+    "fajr": {
+     "exact": 88,
+     "within1": 227,
+     "mae": 2.57,
+     "worst": 10,
+     "margin": -6.72
+    },
+    "sunrise": {
+     "exact": 358,
+     "within1": 365,
+     "mae": 0.02,
+     "worst": 1,
+     "margin": 0
+    },
+    "dhuhr": {
+     "exact": 13,
+     "within1": 42,
+     "mae": 7.17,
+     "worst": 17,
+     "margin": 58.68
+    },
+    "asr": {
+     "exact": 10,
+     "within1": 24,
+     "mae": 10.04,
+     "worst": 21,
+     "margin": 10.08
+    },
+    "maghrib": {
+     "exact": 225,
+     "within1": 281,
+     "mae": 2.24,
+     "worst": 13,
+     "margin": -4.77
+    },
+    "isha": {
+     "exact": 21,
+     "within1": 75,
+     "mae": 9.32,
+     "worst": 26,
+     "margin": -12.12
+    }
+   },
+   "n": 365
+  }
+ }
+]

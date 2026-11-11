@@ -1,0 +1,1434 @@
+[
+ {
+  "slug": "BogatyeSaby",
+  "name": "Байлар Сабасы",
+  "year": "2025",
+  "lat": 56.01,
+  "lon": 50.41,
+  "days": 365,
+  "band": 97,
+  "fajrAngle": 18,
+  "ishaAngle": 15,
+  "dhuhrValues": [
+   720
+  ],
+  "mosqueGapMedian": 90,
+  "cols": {
+   "fajr": {
+    "n": 265,
+    "offset": -0.6,
+    "exact": 96.6,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.24
+   },
+   "sunrise": {
+    "n": 265,
+    "offset": -0.83,
+    "exact": 96.2,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   },
+   "dhuhr": {
+    "n": 265,
+    "offset": 21.62,
+    "exact": 3.8,
+    "w1": 7.2,
+    "max": 16.5,
+    "mae": 8.45
+   },
+   "asr": {
+    "n": 265,
+    "offset": -0.13,
+    "exact": 47.5,
+    "w1": 91.7,
+    "max": 1.4,
+    "mae": 0.51
+   },
+   "maghrib": {
+    "n": 265,
+    "offset": 0.55,
+    "exact": 93.6,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   },
+   "isha": {
+    "n": 265,
+    "offset": -0.65,
+    "exact": 92.5,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   }
+  }
+ },
+ {
+  "slug": "BogatyeSaby",
+  "name": "Байлар Сабасы",
+  "year": "2026",
+  "lat": 56.01,
+  "lon": 50.41,
+  "days": 365,
+  "band": 97,
+  "fajrAngle": 18,
+  "ishaAngle": 15,
+  "dhuhrValues": [
+   720
+  ],
+  "mosqueGapMedian": 91,
+  "cols": {
+   "fajr": {
+    "n": 265,
+    "offset": -0.63,
+    "exact": 96.6,
+    "w1": 100,
+    "max": 0.7,
+    "mae": 0.26
+   },
+   "sunrise": {
+    "n": 265,
+    "offset": 0.22,
+    "exact": 94.3,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.24
+   },
+   "dhuhr": {
+    "n": 265,
+    "offset": 21.58,
+    "exact": 3.4,
+    "w1": 7.2,
+    "max": 16.5,
+    "mae": 8.45
+   },
+   "asr": {
+    "n": 265,
+    "offset": 0.9,
+    "exact": 59.6,
+    "w1": 93.6,
+    "max": 1.4,
+    "mae": 0.46
+   },
+   "maghrib": {
+    "n": 265,
+    "offset": 0.43,
+    "exact": 98.5,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.25
+   },
+   "isha": {
+    "n": 265,
+    "offset": 0.3,
+    "exact": 92.1,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   }
+  }
+ },
+ {
+  "slug": "Bolgary",
+  "name": "Болгар",
+  "year": "2025",
+  "lat": 54.98,
+  "lon": 48.99,
+  "days": 365,
+  "band": 152,
+  "fajrAngle": 18,
+  "ishaAngle": 15,
+  "dhuhrValues": [
+   720
+  ],
+  "mosqueGapMedian": 90,
+  "cols": {
+   "fajr": {
+    "n": 211,
+    "offset": -0.6,
+    "exact": 94.8,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.27
+   },
+   "sunrise": {
+    "n": 211,
+    "offset": -0.83,
+    "exact": 93.8,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.24
+   },
+   "dhuhr": {
+    "n": 211,
+    "offset": 16.2,
+    "exact": 4.7,
+    "w1": 9,
+    "max": 16.2,
+    "mae": 7.01
+   },
+   "asr": {
+    "n": 211,
+    "offset": -0.1,
+    "exact": 59.2,
+    "w1": 92.4,
+    "max": 1.3,
+    "mae": 0.46
+   },
+   "maghrib": {
+    "n": 211,
+    "offset": 0.5,
+    "exact": 92.9,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   },
+   "isha": {
+    "n": 211,
+    "offset": -0.67,
+    "exact": 91,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   }
+  }
+ },
+ {
+  "slug": "Bolgary",
+  "name": "Болгар",
+  "year": "2026",
+  "lat": 54.98,
+  "lon": 48.99,
+  "days": 365,
+  "band": 142,
+  "fajrAngle": 18,
+  "ishaAngle": 15,
+  "dhuhrValues": [
+   720
+  ],
+  "mosqueGapMedian": 91,
+  "cols": {
+   "fajr": {
+    "n": 221,
+    "offset": -0.6,
+    "exact": 92.3,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   },
+   "sunrise": {
+    "n": 221,
+    "offset": 0.23,
+    "exact": 93.7,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.27
+   },
+   "dhuhr": {
+    "n": 221,
+    "offset": 16.15,
+    "exact": 4.5,
+    "w1": 8.6,
+    "max": 16.3,
+    "mae": 7.28
+   },
+   "asr": {
+    "n": 221,
+    "offset": 0.97,
+    "exact": 59.3,
+    "w1": 94.1,
+    "max": 1.2,
+    "mae": 0.45
+   },
+   "maghrib": {
+    "n": 221,
+    "offset": 0.5,
+    "exact": 93.2,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   },
+   "isha": {
+    "n": 221,
+    "offset": 0.32,
+    "exact": 93.2,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   }
+  }
+ },
+ {
+  "slug": "BolshAtna",
+  "name": "Олы Әтнә",
+  "year": "2025",
+  "lat": 56.24,
+  "lon": 49.41,
+  "days": 365,
+  "band": 99,
+  "fajrAngle": 18,
+  "ishaAngle": 15,
+  "dhuhrValues": [
+   720
+  ],
+  "mosqueGapMedian": 90,
+  "cols": {
+   "fajr": {
+    "n": 263,
+    "offset": -0.67,
+    "exact": 97.7,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   },
+   "sunrise": {
+    "n": 263,
+    "offset": -0.82,
+    "exact": 96.2,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.26
+   },
+   "dhuhr": {
+    "n": 263,
+    "offset": 17.65,
+    "exact": 3.4,
+    "w1": 7.2,
+    "max": 16.5,
+    "mae": 8.49
+   },
+   "asr": {
+    "n": 263,
+    "offset": -0.18,
+    "exact": 50.6,
+    "w1": 94.3,
+    "max": 1.4,
+    "mae": 0.5
+   },
+   "maghrib": {
+    "n": 263,
+    "offset": 0.5,
+    "exact": 97.3,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.25
+   },
+   "isha": {
+    "n": 263,
+    "offset": -0.65,
+    "exact": 89,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   }
+  }
+ },
+ {
+  "slug": "BolshAtna",
+  "name": "Олы Әтнә",
+  "year": "2026",
+  "lat": 56.24,
+  "lon": 49.41,
+  "days": 365,
+  "band": 99,
+  "fajrAngle": 18,
+  "ishaAngle": 15.05,
+  "dhuhrValues": [
+   720
+  ],
+  "mosqueGapMedian": 91,
+  "cols": {
+   "fajr": {
+    "n": 263,
+    "offset": -0.68,
+    "exact": 95.1,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   },
+   "sunrise": {
+    "n": 263,
+    "offset": 0.18,
+    "exact": 95.1,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   },
+   "dhuhr": {
+    "n": 263,
+    "offset": 17.6,
+    "exact": 3.4,
+    "w1": 7.2,
+    "max": 16.5,
+    "mae": 8.49
+   },
+   "asr": {
+    "n": 263,
+    "offset": 0.9,
+    "exact": 58.2,
+    "w1": 93.2,
+    "max": 1.4,
+    "mae": 0.48
+   },
+   "maghrib": {
+    "n": 263,
+    "offset": 0.4,
+    "exact": 96.6,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   },
+   "isha": {
+    "n": 263,
+    "offset": -0.13,
+    "exact": 91.6,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   }
+  }
+ },
+ {
+  "slug": "BolshieKaybesy",
+  "name": "Олы Кайбыч",
+  "year": "2025",
+  "lat": 55.41,
+  "lon": 48.15,
+  "days": 365,
+  "band": 126,
+  "fajrAngle": 18,
+  "ishaAngle": 15,
+  "dhuhrValues": [
+   720,
+   725
+  ],
+  "mosqueGapMedian": 90,
+  "cols": {
+   "fajr": {
+    "n": 236,
+    "offset": -0.63,
+    "exact": 98.7,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.25
+   },
+   "sunrise": {
+    "n": 236,
+    "offset": -0.88,
+    "exact": 94.1,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   },
+   "dhuhr": {
+    "n": 236,
+    "offset": 12.62,
+    "exact": 3.8,
+    "w1": 7.6,
+    "max": 16.5,
+    "mae": 7.07
+   },
+   "asr": {
+    "n": 236,
+    "offset": -0.13,
+    "exact": 57.6,
+    "w1": 93.2,
+    "max": 1.4,
+    "mae": 0.48
+   },
+   "maghrib": {
+    "n": 236,
+    "offset": 0.5,
+    "exact": 92.8,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   },
+   "isha": {
+    "n": 236,
+    "offset": -0.67,
+    "exact": 94.9,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   }
+  }
+ },
+ {
+  "slug": "BolshieKaybesy",
+  "name": "Олы Кайбыч",
+  "year": "2026",
+  "lat": 55.41,
+  "lon": 48.15,
+  "days": 365,
+  "band": 111,
+  "fajrAngle": 18,
+  "ishaAngle": 14.95,
+  "dhuhrValues": [
+   720,
+   725
+  ],
+  "mosqueGapMedian": 91,
+  "cols": {
+   "fajr": {
+    "n": 251,
+    "offset": -0.7,
+    "exact": 92.8,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   },
+   "sunrise": {
+    "n": 251,
+    "offset": 0.23,
+    "exact": 94,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   },
+   "dhuhr": {
+    "n": 251,
+    "offset": 13.55,
+    "exact": 3.6,
+    "w1": 8.4,
+    "max": 15.5,
+    "mae": 7.46
+   },
+   "asr": {
+    "n": 251,
+    "offset": 0.92,
+    "exact": 58.2,
+    "w1": 94.4,
+    "max": 1.2,
+    "mae": 0.47
+   },
+   "maghrib": {
+    "n": 251,
+    "offset": 0.45,
+    "exact": 95.6,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.24
+   },
+   "isha": {
+    "n": 251,
+    "offset": 0.73,
+    "exact": 91.6,
+    "w1": 100,
+    "max": 0.9,
+    "mae": 0.26
+   }
+  }
+ },
+ {
+  "slug": "Bugulma",
+  "name": "Бөгелмә",
+  "year": "2025",
+  "lat": 54.54,
+  "lon": 52.75,
+  "days": 365,
+  "band": 165,
+  "fajrAngle": 18,
+  "ishaAngle": 15,
+  "dhuhrValues": [
+   720
+  ],
+  "mosqueGapMedian": 90,
+  "cols": {
+   "fajr": {
+    "n": 197,
+    "offset": -0.65,
+    "exact": 98,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.25
+   },
+   "sunrise": {
+    "n": 197,
+    "offset": -0.9,
+    "exact": 93.9,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   },
+   "dhuhr": {
+    "n": 197,
+    "offset": 31.25,
+    "exact": 5.1,
+    "w1": 9.6,
+    "max": 16.2,
+    "mae": 6.55
+   },
+   "asr": {
+    "n": 197,
+    "offset": -0.13,
+    "exact": 60.4,
+    "w1": 97,
+    "max": 1.2,
+    "mae": 0.44
+   },
+   "maghrib": {
+    "n": 197,
+    "offset": 0.48,
+    "exact": 94.4,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.27
+   },
+   "isha": {
+    "n": 197,
+    "offset": -0.65,
+    "exact": 92.4,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.24
+   }
+  }
+ },
+ {
+  "slug": "Bugulma",
+  "name": "Бөгелмә",
+  "year": "2026",
+  "lat": 54.54,
+  "lon": 52.75,
+  "days": 365,
+  "band": 167,
+  "fajrAngle": 18,
+  "ishaAngle": 15,
+  "dhuhrValues": [
+   720
+  ],
+  "mosqueGapMedian": 91,
+  "cols": {
+   "fajr": {
+    "n": 195,
+    "offset": -0.63,
+    "exact": 99.5,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.24
+   },
+   "sunrise": {
+    "n": 195,
+    "offset": 0.25,
+    "exact": 96.4,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.24
+   },
+   "dhuhr": {
+    "n": 195,
+    "offset": 30.97,
+    "exact": 4.6,
+    "w1": 9.7,
+    "max": 16.5,
+    "mae": 6.52
+   },
+   "asr": {
+    "n": 195,
+    "offset": 0.9,
+    "exact": 64.6,
+    "w1": 98.5,
+    "max": 1.1,
+    "mae": 0.43
+   },
+   "maghrib": {
+    "n": 195,
+    "offset": 0.37,
+    "exact": 94.9,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.25
+   },
+   "isha": {
+    "n": 195,
+    "offset": 0.37,
+    "exact": 93.8,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   }
+  }
+ },
+ {
+  "slug": "Buinsk",
+  "name": "Буа",
+  "year": "2025",
+  "lat": 54.98,
+  "lon": 48.26,
+  "days": 365,
+  "band": 151,
+  "fajrAngle": 18,
+  "ishaAngle": 15,
+  "dhuhrValues": [
+   735
+  ],
+  "mosqueGapMedian": 90,
+  "cols": {
+   "fajr": {
+    "n": 212,
+    "offset": -0.63,
+    "exact": 92.5,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.27
+   },
+   "sunrise": {
+    "n": 212,
+    "offset": -0.83,
+    "exact": 94.3,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.23
+   },
+   "dhuhr": {
+    "n": 212,
+    "offset": 28.27,
+    "exact": 4.7,
+    "w1": 9,
+    "max": 16.2,
+    "mae": 7.05
+   },
+   "asr": {
+    "n": 212,
+    "offset": -0.12,
+    "exact": 56.6,
+    "w1": 91.5,
+    "max": 1.3,
+    "mae": 0.49
+   },
+   "maghrib": {
+    "n": 212,
+    "offset": 0.52,
+    "exact": 91.5,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   },
+   "isha": {
+    "n": 212,
+    "offset": -0.65,
+    "exact": 93.4,
+    "w1": 100,
+    "max": 0.7,
+    "mae": 0.24
+   }
+  }
+ },
+ {
+  "slug": "Buinsk",
+  "name": "Буа",
+  "year": "2026",
+  "lat": 54.98,
+  "lon": 48.26,
+  "days": 365,
+  "band": 146,
+  "fajrAngle": 18,
+  "ishaAngle": 15,
+  "dhuhrValues": [
+   735
+  ],
+  "mosqueGapMedian": 91,
+  "cols": {
+   "fajr": {
+    "n": 217,
+    "offset": -0.58,
+    "exact": 95.4,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   },
+   "sunrise": {
+    "n": 217,
+    "offset": 0.25,
+    "exact": 93.1,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.27
+   },
+   "dhuhr": {
+    "n": 217,
+    "offset": 28.2,
+    "exact": 4.6,
+    "w1": 8.8,
+    "max": 16.3,
+    "mae": 7.18
+   },
+   "asr": {
+    "n": 217,
+    "offset": 0.97,
+    "exact": 59,
+    "w1": 94.5,
+    "max": 1.3,
+    "mae": 0.47
+   },
+   "maghrib": {
+    "n": 217,
+    "offset": 0.5,
+    "exact": 91.2,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.26
+   },
+   "isha": {
+    "n": 217,
+    "offset": 0.37,
+    "exact": 94,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   }
+  }
+ },
+ {
+  "slug": "Cheremsan",
+  "name": "Чирмешән",
+  "year": "2025",
+  "lat": 54.66,
+  "lon": 51.46,
+  "days": 365,
+  "band": 159,
+  "fajrAngle": 18,
+  "ishaAngle": 15,
+  "dhuhrValues": [
+   720
+  ],
+  "mosqueGapMedian": 90,
+  "cols": {
+   "fajr": {
+    "n": 203,
+    "offset": -0.65,
+    "exact": 98,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.23
+   },
+   "sunrise": {
+    "n": 203,
+    "offset": -0.9,
+    "exact": 94.6,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.23
+   },
+   "dhuhr": {
+    "n": 203,
+    "offset": 25.82,
+    "exact": 4.9,
+    "w1": 9.4,
+    "max": 16.5,
+    "mae": 6.72
+   },
+   "asr": {
+    "n": 203,
+    "offset": -0.18,
+    "exact": 62.6,
+    "w1": 93.6,
+    "max": 1.3,
+    "mae": 0.44
+   },
+   "maghrib": {
+    "n": 203,
+    "offset": 0.43,
+    "exact": 95.1,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.24
+   },
+   "isha": {
+    "n": 203,
+    "offset": -0.65,
+    "exact": 91.1,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   }
+  }
+ },
+ {
+  "slug": "Cheremsan",
+  "name": "Чирмешән",
+  "year": "2026",
+  "lat": 54.66,
+  "lon": 51.46,
+  "days": 365,
+  "band": 160,
+  "fajrAngle": 18,
+  "ishaAngle": 15,
+  "dhuhrValues": [
+   720
+  ],
+  "mosqueGapMedian": 91,
+  "cols": {
+   "fajr": {
+    "n": 202,
+    "offset": -0.65,
+    "exact": 99.5,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.26
+   },
+   "sunrise": {
+    "n": 202,
+    "offset": 0.27,
+    "exact": 94.6,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   },
+   "dhuhr": {
+    "n": 202,
+    "offset": 25.85,
+    "exact": 4,
+    "w1": 9.9,
+    "max": 16.4,
+    "mae": 6.69
+   },
+   "asr": {
+    "n": 202,
+    "offset": 0.88,
+    "exact": 63.9,
+    "w1": 95.5,
+    "max": 1.2,
+    "mae": 0.44
+   },
+   "maghrib": {
+    "n": 202,
+    "offset": 0.47,
+    "exact": 95.5,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   },
+   "isha": {
+    "n": 202,
+    "offset": 0.28,
+    "exact": 93.1,
+    "w1": 100,
+    "max": 0.7,
+    "mae": 0.26
+   }
+  }
+ },
+ {
+  "slug": "Chistop",
+  "name": "Чистай",
+  "year": "2025",
+  "lat": 55.37,
+  "lon": 50.6,
+  "days": 365,
+  "band": 129,
+  "fajrAngle": 18,
+  "ishaAngle": 14.95,
+  "dhuhrValues": [
+   720
+  ],
+  "mosqueGapMedian": 90,
+  "cols": {
+   "fajr": {
+    "n": 233,
+    "offset": -0.58,
+    "exact": 96.1,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.27
+   },
+   "sunrise": {
+    "n": 233,
+    "offset": -0.9,
+    "exact": 93.1,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   },
+   "dhuhr": {
+    "n": 233,
+    "offset": 22.43,
+    "exact": 3.9,
+    "w1": 8.2,
+    "max": 16.4,
+    "mae": 7.67
+   },
+   "asr": {
+    "n": 233,
+    "offset": -0.05,
+    "exact": 56.7,
+    "w1": 94.8,
+    "max": 1.3,
+    "mae": 0.47
+   },
+   "maghrib": {
+    "n": 233,
+    "offset": 0.57,
+    "exact": 92.3,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   },
+   "isha": {
+    "n": 233,
+    "offset": -0.25,
+    "exact": 92.3,
+    "w1": 100,
+    "max": 0.9,
+    "mae": 0.26
+   }
+  }
+ },
+ {
+  "slug": "Chistop",
+  "name": "Чистай",
+  "year": "2026",
+  "lat": 55.37,
+  "lon": 50.6,
+  "days": 365,
+  "band": 123,
+  "fajrAngle": 18,
+  "ishaAngle": 15,
+  "dhuhrValues": [
+   720
+  ],
+  "mosqueGapMedian": 91,
+  "cols": {
+   "fajr": {
+    "n": 239,
+    "offset": -0.6,
+    "exact": 95.8,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   },
+   "sunrise": {
+    "n": 239,
+    "offset": 0.23,
+    "exact": 96.2,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   },
+   "dhuhr": {
+    "n": 239,
+    "offset": 22.67,
+    "exact": 3.8,
+    "w1": 8.4,
+    "max": 16.2,
+    "mae": 7.81
+   },
+   "asr": {
+    "n": 239,
+    "offset": 0.87,
+    "exact": 61.5,
+    "w1": 93.7,
+    "max": 1.3,
+    "mae": 0.44
+   },
+   "maghrib": {
+    "n": 239,
+    "offset": 0.52,
+    "exact": 97.5,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.24
+   },
+   "isha": {
+    "n": 239,
+    "offset": 0.3,
+    "exact": 91.6,
+    "w1": 100,
+    "max": 0.7,
+    "mae": 0.27
+   }
+  }
+ },
+ {
+  "slug": "Elabuga",
+  "name": "Алабуга",
+  "year": "2025",
+  "lat": 55.76,
+  "lon": 52.02,
+  "days": 365,
+  "band": 95,
+  "fajrAngle": 18,
+  "ishaAngle": 15,
+  "dhuhrValues": [
+   720
+  ],
+  "mosqueGapMedian": 90,
+  "cols": {
+   "fajr": {
+    "n": 267,
+    "offset": -0.57,
+    "exact": 94.4,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   },
+   "sunrise": {
+    "n": 267,
+    "offset": -0.77,
+    "exact": 95.9,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.24
+   },
+   "dhuhr": {
+    "n": 267,
+    "offset": 28.07,
+    "exact": 3.7,
+    "w1": 7.1,
+    "max": 16.4,
+    "mae": 8.42
+   },
+   "asr": {
+    "n": 267,
+    "offset": -0.13,
+    "exact": 59.2,
+    "w1": 96.3,
+    "max": 1.4,
+    "mae": 0.46
+   },
+   "maghrib": {
+    "n": 267,
+    "offset": 0.57,
+    "exact": 94,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   },
+   "isha": {
+    "n": 267,
+    "offset": -0.63,
+    "exact": 93.3,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   }
+  }
+ },
+ {
+  "slug": "Elabuga",
+  "name": "Алабуга",
+  "year": "2026",
+  "lat": 55.76,
+  "lon": 52.02,
+  "days": 365,
+  "band": 97,
+  "fajrAngle": 18,
+  "ishaAngle": 15,
+  "dhuhrValues": [
+   720
+  ],
+  "mosqueGapMedian": 91,
+  "cols": {
+   "fajr": {
+    "n": 265,
+    "offset": -0.65,
+    "exact": 98.1,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.25
+   },
+   "sunrise": {
+    "n": 265,
+    "offset": 0.2,
+    "exact": 96.2,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   },
+   "dhuhr": {
+    "n": 265,
+    "offset": 28.1,
+    "exact": 3,
+    "w1": 7.5,
+    "max": 16.4,
+    "mae": 8.39
+   },
+   "asr": {
+    "n": 265,
+    "offset": 0.88,
+    "exact": 55.8,
+    "w1": 96.6,
+    "max": 1.3,
+    "mae": 0.48
+   },
+   "maghrib": {
+    "n": 265,
+    "offset": 0.47,
+    "exact": 95.8,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.25
+   },
+   "isha": {
+    "n": 265,
+    "offset": 0.33,
+    "exact": 93.6,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   }
+  }
+ },
+ {
+  "slug": "KamskoeUstye",
+  "name": "Кама Тамагы",
+  "year": "2025",
+  "lat": 55.2,
+  "lon": 49.23,
+  "days": 365,
+  "band": 135,
+  "fajrAngle": 18,
+  "ishaAngle": 15,
+  "dhuhrValues": [
+   720
+  ],
+  "mosqueGapMedian": 90,
+  "cols": {
+   "fajr": {
+    "n": 227,
+    "offset": -0.62,
+    "exact": 98.2,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.24
+   },
+   "sunrise": {
+    "n": 227,
+    "offset": -0.82,
+    "exact": 96,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.24
+   },
+   "dhuhr": {
+    "n": 227,
+    "offset": 17.32,
+    "exact": 4,
+    "w1": 9.3,
+    "max": 16,
+    "mae": 7.51
+   },
+   "asr": {
+    "n": 227,
+    "offset": -0.12,
+    "exact": 60.4,
+    "w1": 95.2,
+    "max": 1.3,
+    "mae": 0.45
+   },
+   "maghrib": {
+    "n": 227,
+    "offset": 0.55,
+    "exact": 96,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   },
+   "isha": {
+    "n": 227,
+    "offset": -0.65,
+    "exact": 89.9,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   }
+  }
+ },
+ {
+  "slug": "KamskoeUstye",
+  "name": "Кама Тамагы",
+  "year": "2026",
+  "lat": 55.2,
+  "lon": 49.23,
+  "days": 365,
+  "band": 135,
+  "fajrAngle": 18,
+  "ishaAngle": 15.05,
+  "dhuhrValues": [
+   720
+  ],
+  "mosqueGapMedian": 91,
+  "cols": {
+   "fajr": {
+    "n": 227,
+    "offset": -0.67,
+    "exact": 94.7,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.25
+   },
+   "sunrise": {
+    "n": 227,
+    "offset": 0.23,
+    "exact": 96,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.26
+   },
+   "dhuhr": {
+    "n": 227,
+    "offset": 16.95,
+    "exact": 3.5,
+    "w1": 8.8,
+    "max": 16.4,
+    "mae": 7.48
+   },
+   "asr": {
+    "n": 227,
+    "offset": 0.88,
+    "exact": 60.8,
+    "w1": 95.2,
+    "max": 1.3,
+    "mae": 0.46
+   },
+   "maghrib": {
+    "n": 227,
+    "offset": 0.47,
+    "exact": 98.2,
+    "w1": 100,
+    "max": 0.5,
+    "mae": 0.24
+   },
+   "isha": {
+    "n": 227,
+    "offset": -0.13,
+    "exact": 91.6,
+    "w1": 100,
+    "max": 0.7,
+    "mae": 0.26
+   }
+  }
+ },
+ {
+  "slug": "Kazan",
+  "name": "Казань",
+  "year": "2025",
+  "lat": 55.79,
+  "lon": 49.08,
+  "days": 365,
+  "band": 96,
+  "fajrAngle": 18,
+  "ishaAngle": 15,
+  "dhuhrValues": [
+   720
+  ],
+  "mosqueGapMedian": 90,
+  "cols": {
+   "fajr": {
+    "n": 267,
+    "offset": -0.62,
+    "exact": 95.5,
+    "w1": 100,
+    "max": 0.7,
+    "mae": 0.26
+   },
+   "sunrise": {
+    "n": 267,
+    "offset": -0.83,
+    "exact": 91.8,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   },
+   "dhuhr": {
+    "n": 267,
+    "offset": 16.32,
+    "exact": 3.7,
+    "w1": 7.1,
+    "max": 16.4,
+    "mae": 8.42
+   },
+   "asr": {
+    "n": 267,
+    "offset": -0.08,
+    "exact": 59.6,
+    "w1": 92.5,
+    "max": 1.4,
+    "mae": 0.47
+   },
+   "maghrib": {
+    "n": 267,
+    "offset": 0.48,
+    "exact": 94.8,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   },
+   "isha": {
+    "n": 267,
+    "offset": -0.7,
+    "exact": 91.8,
+    "w1": 100,
+    "max": 0.7,
+    "mae": 0.26
+   }
+  }
+ },
+ {
+  "slug": "Kazan",
+  "name": "Казань",
+  "year": "2026",
+  "lat": 55.79,
+  "lon": 49.08,
+  "days": 365,
+  "band": 96,
+  "fajrAngle": 18,
+  "ishaAngle": 14.95,
+  "dhuhrValues": [
+   720
+  ],
+  "mosqueGapMedian": 91,
+  "cols": {
+   "fajr": {
+    "n": 267,
+    "offset": -0.62,
+    "exact": 92.9,
+    "w1": 100,
+    "max": 0.7,
+    "mae": 0.25
+   },
+   "sunrise": {
+    "n": 267,
+    "offset": 0.13,
+    "exact": 93.6,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.24
+   },
+   "dhuhr": {
+    "n": 267,
+    "offset": 16.28,
+    "exact": 3.4,
+    "w1": 7.1,
+    "max": 16.5,
+    "mae": 8.42
+   },
+   "asr": {
+    "n": 267,
+    "offset": 0.83,
+    "exact": 57.3,
+    "w1": 91.8,
+    "max": 1.5,
+    "mae": 0.51
+   },
+   "maghrib": {
+    "n": 267,
+    "offset": 0.48,
+    "exact": 94,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.25
+   },
+   "isha": {
+    "n": 267,
+    "offset": 0.7,
+    "exact": 92.9,
+    "w1": 100,
+    "max": 0.6,
+    "mae": 0.26
+   }
+  }
+ }
+]

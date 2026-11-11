@@ -1,0 +1,37 @@
+r1051-المملكة العربية السعودية	lat 26.38	k0	rms 6.273	fajr angle 18.31	isha interval 19.97 int90	asr Shafi	clock 20min drift0.3 steps0	amp -99
+r1142-البوسنة والهرسك	lat 44.74	k0	rms 7.745	fajr angle 16.79	isha angle 14.79	asr Shafi	clock 12min drift0.7 steps0	amp -214
+r144-الكويت	lat 29.28	k0	rms 6.282	fajr angle 18.01	isha angle 17.51	asr Shafi	clock 12min drift0.3 steps0	amp -113
+r164-قطر	lat 25.24	k0	rms 6.339	fajr angle 18.22	isha interval 20.17 int90	asr Shafi	clock 25min drift0.3 steps0	amp -94
+r1641-بلجيكا	lat 50.34	k0	rms 6.376	fajr angle 17.83	isha angle 17	asr Shafi	clock -42min drift0.4 steps0	amp -259
+r173-العراق	lat 35	k0	rms 6.311	fajr angle 16.05	isha interval 16.24 int80	asr Shafi	clock -8min drift1 steps0	amp -131
+r1925-إيطاليا	lat 43.3	k0	rms 6.33	fajr angle 17.93	isha angle 17.01	asr Shafi	clock -18min drift0.4 steps0	amp -204
+r198-ماليزيا	lat 6.02	k0	rms 6.21	fajr angle 17.76	isha angle 16.99	asr Shafi	clock -72min drift0.2 steps0	amp -23
+r2-لبنان	lat 33.92	k0	rms 6.492	fajr angle 19.6	isha angle 16.64	asr Shafi	clock 20min drift0.3 steps0	amp -142
+r20-ليبيا	lat 32.74	k0	rms 6.421	fajr angle 18.29	isha angle 17.55	asr Shafi	clock -70min drift0.3 steps0	amp -130
+r211-ماليزيا	lat 6.44	k0	rms 6.209	fajr angle 17.84	isha angle 17.97	asr Shafi	clock -80min drift0.2 steps0	amp -26
+r228-ماليزيا	lat 5.08	k0	rms 6.273	fajr angle 17.76	isha angle 18.01	asr Shafi	clock -18min drift0.8 steps0	amp -21
+r2448-ألمانيا	lat 52.6	k0	rms 8.057	fajr interval 15.06	isha interval 13 int90	asr Shafi	clock -7min drift0.2 steps0	amp -246
+r247-الأردن	lat 31.88	k0	rms 6.282	fajr angle 15.02	isha angle 15.02	asr Shafi	clock -36min drift0.3 steps0	amp -122
+r2772-ألمانيا	lat 51.34	k0	rms 8.059	fajr interval 15.57	isha interval 13.44 int90	asr Shafi	clock -33min drift0.2 steps0	amp -234
+r2905-ألمانيا	lat 48.36	k0	rms 7.977	fajr interval 16.56	isha interval 14.46 int90	asr Shafi	clock -21min drift0.4 steps0	amp -211
+r3109-مصر	lat 30	k0	rms 6.254	fajr angle 19.51	isha angle 17.5	asr Shafi	clock 5min drift0.3 steps0	amp -118
+r355-تونس	lat 35.48	k0	rms 6.359	fajr angle 18	isha angle 17.65	asr Shafi	clock -17min drift0.3 steps0	amp -146
+r3551-الجزائر	lat 34.64	k0	rms 6.4	fajr angle 18	isha angle 16.43	asr Shafi	clock -49min drift0.3 steps0	amp -141
+r364-تونس	lat 32.96	k0	rms 6.774	fajr angle 18.01	isha angle 17.63	asr Shafi	clock -19min drift0.3 steps0	amp -132
+r394-النرويج	lat 59.92	k0	rms 6.548	fajr angle 15.9	isha angle 14.27	asr Shafi	clock -20min drift0.2 steps0	amp -265
+r40-ليبيا	lat 32.82	k0	rms 6.289	fajr angle 18.01	isha angle 17	asr Shafi	clock -67min drift0.3 steps0	amp -131
+r444-النرويج	lat 59.18	k0	rms 6.542	fajr angle 15.9	isha angle 14.27	asr Shafi	clock -19min drift0.2 steps0	amp -269
+r46-عمان	lat 17.1	k0	rms 6.43	fajr angle 18	isha angle 16.85	asr Shafi	clock -26min drift0.2 steps0	amp -61
+r5587-السويد	lat 60	k0	rms 8.098	fajr angle 17.06	isha angle 15.06	asr Shafi	clock 3min drift0.8 steps0	amp -263
+r5622-السويد	lat 58.56	k0	rms 8.1	fajr angle 16.98	isha angle 15.01	asr Shafi	clock -7min drift0.2 steps0	amp -249
+r5733-رومانيا	lat 44.3	k0	rms 8.026	fajr angle 16.83	isha angle 14.82	asr Shafi	clock -6min drift0.2 steps0	amp -213
+r5883-البحرين	lat 26.14	k0	rms 6.254	fajr angle 18.04	isha angle 17.71	asr Shafi	clock 22min drift0.3 steps0	amp -98
+r5885-فلسطين	lat 31.98	k0	rms 7.002	fajr angle 17.52	isha angle 16.72	asr Shafi	clock 19min drift0.3 steps0	amp -125
+r5886-فلسطين	lat 31.98	k0	rms 7.002	fajr angle 17.52	isha angle 16.72	asr Shafi	clock 18min drift0.3 steps0	amp -125
+r6102-أندونيسيا	lat -6.24	k0	rms 6.573	fajr angle 18.65	isha angle 17.85	asr Shafi	clock 6min drift0.2 steps0	amp 17
+r6127-أندونيسيا	lat -6.52	k0	rms 8.088	fajr angle 17.66	isha angle 16.85	asr Shafi	clock 7min drift0.2 steps0	amp 19
+r6168-أندونيسيا	lat -6.94	k0	rms 6.566	fajr angle 18.65	isha angle 17.84	asr Shafi	clock 22min drift0.2 steps0	amp 20
+r7617-سوريا	lat 33.46	k0	rms 6.341	fajr angle 18.01	isha angle 16.62	asr Shafi	clock -36min drift0.3 steps0	amp -135
+r8145-العراق	lat 35.58	k0	rms 6.753	fajr angle 16.83	isha angle 15.79	asr Shafi	clock -2min drift0.4 steps0	amp -133
+r8221-المغرب	lat 33.58	k0	rms 6.549	fajr angle 19.01	isha angle 16.03	asr Shafi	clock -33min drift0.3 steps0	amp -137
+r8306-المغرب	lat 34.24	k0	rms 6.549	fajr angle 18.99	isha angle 16.06	asr Shafi	clock -12min drift0.3 steps0	amp -140

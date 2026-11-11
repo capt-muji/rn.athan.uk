@@ -1,0 +1,25 @@
+{
+  "register": "xk-bik-takvim-place-offset",
+  "publisher": "Bashkësia Islame e Kosovës (BIK), Kryesia",
+  "country": "XK (plus Presheva / Preševo in Serbia's south valley, printed in the same book)",
+  "base": "the Takvim's own computed column ('T'), valid for the whole territory",
+  "unit": "minutes, one delta on every column",
+  "artifact": "captures/xk-takvim-2026-p6.txt (from c37-kosovo/ks_2026.pdf page 6); cross-checked against the 2024 and 2025 prints, same page",
+  "artifactVerbatim": "Sharri: T +2 min.; Ferizaj: T -1 min.; Gjilani: T -1 min.; Prishtina: T -1 min.; Podujeva: T -1 min.; Vushtrria T -1 min dhe Presheva: T -2 min.",
+  "provenance": "c37-kosovo/RESULTS.md recorded the register in prose ('7 place offsets (Sharri +2, Presheva -2, five at -1)') without banking it. Re-read here from the raw PDFs: 2024 p6, 2025 p6 and 2026 p6 carry the same seven places at identical values. The 2023 print does not carry the list on any page searched.",
+  "stability": "identical on the 2024, 2025 and 2026 editions",
+  "rows": [
+    {"place": "Sharri", "deltaMin": 2, "note": "the Sharr mountains, the one positive rung"},
+    {"place": "Ferizaj", "deltaMin": -1},
+    {"place": "Gjilani", "deltaMin": -1},
+    {"place": "Prishtina", "deltaMin": -1},
+    {"place": "Podujeva", "deltaMin": -1},
+    {"place": "Vushtrria", "deltaMin": -1},
+    {"place": "Presheva", "deltaMin": -2, "note": "Preševo, Serbia"}
+  ],
+  "rowCount": 7,
+  "notes": [
+    "Prishtina carries -1 against the base, so the printed column is NOT computed at Pristina. The record's XK-BIK object anchors the point at Pristina and calls it nominal; that anchor is 1 minute late for Pristina itself.",
+    "The print attributes the deltas to latitude AND elevation ('gjerësisë gjeografike ose lartësisë mbidetare'), so the register is a fused geographic+elevation ladder, not a longitude ladder."
+  ]
+}

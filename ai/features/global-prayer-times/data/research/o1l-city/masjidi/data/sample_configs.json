@@ -1,0 +1,5162 @@
+[
+ {
+  "id": "23",
+  "tag": "LB-beirut",
+  "name": "مسجد ومركز العثمان - شانيه",
+  "city": "رأس بيروت",
+  "country": "لبنان",
+  "address": "بيروت",
+  "timezone": "Asia/Beirut",
+  "timingsType": "table-api",
+  "tableId": 2,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 30,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 30,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 7,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 7,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "24",
+  "tag": "LB-beirut",
+  "name": "مسجد المجيدية",
+  "city": "رأس بيروت",
+  "country": "لبنان",
+  "address": "بيروت الوسط التجاري",
+  "timezone": "Asia/Beirut",
+  "timingsType": "table-api",
+  "tableId": 2,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 30,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 12,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 1,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 12,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 7,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 7,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "29",
+  "tag": "LB-beirut",
+  "name": "مسجد حمزة بن عبد المطّلب",
+  "city": "رأس بيروت",
+  "country": "لبنان",
+  "address": "الكولا",
+  "timezone": "Asia/Beirut",
+  "timingsType": "table-api",
+  "tableId": 2,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 30,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 60,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "32",
+  "tag": "LB-beirut",
+  "name": "مسجد الدعوة",
+  "city": "رأس بيروت",
+  "country": "لبنان",
+  "address": "عائشة بكّار",
+  "timezone": "Asia/Beirut",
+  "timingsType": "table-api",
+  "tableId": 2,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 31,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 14,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 30,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 14,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 7,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 9,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "2",
+  "tag": "LB-sidon",
+  "name": "مسجد الإيمان",
+  "city": "صيدا",
+  "country": "لبنان",
+  "address": "صيدا ",
+  "timezone": "Asia/Beirut",
+  "timingsType": "table-api",
+  "tableId": 2,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 23,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 18,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 15,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 18,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "8",
+  "tag": "LB-sidon",
+  "name": "مسجد المجذوب",
+  "city": "صيدا",
+  "country": "لبنان",
+  "address": "الشاكرية البلد القديمة",
+  "timezone": "Asia/Beirut",
+  "timingsType": "table-api",
+  "tableId": 2,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 30,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 40,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "10",
+  "tag": "LB-sidon",
+  "name": "مسجد الحسين",
+  "city": "صيدا",
+  "country": "لبنان",
+  "address": "سهل الصباغ",
+  "timezone": "Asia/Beirut",
+  "timingsType": "table-api",
+  "tableId": 2,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 48,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 18,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 1,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 18,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 13,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "38",
+  "tag": "LB-tripoli",
+  "name": "مسجد السلام",
+  "city": "طرابلس",
+  "country": "لبنان",
+  "address": "طرابلس",
+  "timezone": "Asia/Beirut",
+  "timingsType": "table-api",
+  "tableId": 7508,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "366",
+  "tag": "LB-tripoli",
+  "name": "مسجد التقوى",
+  "city": "طرابلس",
+  "country": "لبنان",
+  "address": "مستديرة نهر أبو علي",
+  "timezone": "Asia/Beirut",
+  "timingsType": "table-api",
+  "tableId": 7508,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 30,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 12,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "705",
+  "tag": "LB-tripoli",
+  "name": "مسجد الأبرار",
+  "city": "طرابلس",
+  "country": "لبنان",
+  "address": "طرابلس ـ أبي سمراء ـ السكة البيضا",
+  "timezone": "Asia/Beirut",
+  "timingsType": "table-api",
+  "tableId": 7508,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "214",
+  "tag": "SA",
+  "name": "مسجد سليمان الشارخي",
+  "city": "الدمام",
+  "country": "المملكة العربية السعودية",
+  "address": "6881, Al Safa, Dammam 34222",
+  "timezone": "Asia/Riyadh",
+  "timingsType": "table-api",
+  "tableId": 1051,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 30,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "294",
+  "tag": "SA",
+  "name": "الواحة",
+  "city": "الدمام",
+  "country": "المملكة العربية السعودية",
+  "address": "الدمام الفرسان",
+  "timezone": "Asia/Riyadh",
+  "timingsType": "table-api",
+  "tableId": 1051,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 25,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 25,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 12,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "133",
+  "tag": "SA",
+  "name": "مسجد خديجة بنت خويلد",
+  "city": "مكة المكرمة",
+  "country": "المملكة العربية السعودية",
+  "address": "الرصيفة - شارع المالكي",
+  "timezone": "Asia/Riyadh",
+  "timingsType": "table-api",
+  "tableId": 157,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 30,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 30,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "1093",
+  "tag": "SA",
+  "name": "مسجد الشيخ سويدي",
+  "city": "مكة المكرمة",
+  "country": "المملكة العربية السعودية",
+  "address": "الشعب",
+  "timezone": "Asia/Riyadh",
+  "timingsType": "table-api",
+  "tableId": 157,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "167",
+  "tag": "SA",
+  "name": "جامع سعيد حويس",
+  "city": "جدة",
+  "country": "المملكة العربية السعودية",
+  "address": "حي الاصالة",
+  "timezone": "Asia/Riyadh",
+  "timingsType": "table-api",
+  "tableId": 1007,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 25,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 12,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "1540",
+  "tag": "SA",
+  "name": "مسجد ابي عبيدة",
+  "city": "جدة",
+  "country": "المملكة العربية السعودية",
+  "address": "شارع ام القرى",
+  "timezone": "Asia/Riyadh",
+  "timingsType": "table-api",
+  "tableId": 1007,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 15,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "163",
+  "tag": "SA",
+  "name": "مسجد غروس",
+  "city": "الرياض",
+  "country": "المملكة العربية السعودية",
+  "address": "الرياض العليا",
+  "timezone": "Asia/Riyadh",
+  "timingsType": "table-api",
+  "tableId": 1047,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "863",
+  "tag": "SA",
+  "name": "مسجد الأنصار",
+  "city": "الرياض",
+  "country": "المملكة العربية السعودية",
+  "address": "3813 رقم 22، 7442، الاسكان، 7442، الرياض 14317",
+  "timezone": "Asia/Riyadh",
+  "timingsType": "table-api",
+  "tableId": 1047,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "1556",
+  "tag": "SA",
+  "name": "المسجد النبوي",
+  "city": "المدينة المنورة",
+  "country": "المملكة العربية السعودية",
+  "address": "المدينة المنورة",
+  "timezone": "Asia/Riyadh",
+  "timingsType": "table-api",
+  "tableId": 163,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 15,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "804",
+  "tag": "SA",
+  "name": "مسجد خالد بن الوليد",
+  "city": "أبها",
+  "country": "المملكة العربية السعودية",
+  "address": "حي الموظفين",
+  "timezone": "Asia/Riyadh",
+  "timingsType": "table-api",
+  "tableId": 155,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 27,
+    "timeOffset": 1,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 21,
+    "timeOffset": 1,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 22,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 11,
+    "timeOffset": 1,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 21,
+    "timeOffset": 1,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "1519",
+  "tag": "DZ",
+  "name": "مسجد التوبة",
+  "city": "الجزائر",
+  "country": "الجزائر",
+  "address": "حي 40 مسكن - السويدانية - الجزائر",
+  "timezone": "Africa/Algiers",
+  "timingsType": "table-api",
+  "tableId": 3576,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 10,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 8,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "147",
+  "tag": "DZ",
+  "name": "مسجد مسعود فضيل",
+  "city": "وهران",
+  "country": "الجزائر",
+  "address": "مدينة وهران",
+  "timezone": "Africa/Algiers",
+  "timingsType": "table-api",
+  "tableId": 3577,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 30,
+    "timeOffset": 5,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 13,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 30,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 15,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 18,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 19,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "191",
+  "tag": "DZ",
+  "name": "مسجد البركة",
+  "city": "الجلفة",
+  "country": "الجزائر",
+  "address": "حي المشتشفي  بوسعادة",
+  "timezone": "Africa/Algiers",
+  "timingsType": "table-api",
+  "tableId": 3551,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 20,
+    "timeOffset": -2,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": -3,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 15,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": -4,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 5,
+    "timeOffset": -2,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": -3,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "845",
+  "tag": "DZ",
+  "name": "حذيفة بن اليمان",
+  "city": "ورقلة",
+  "country": "الجزائر",
+  "address": "حذيفة بن اليمان",
+  "timezone": "Africa/Algiers",
+  "timingsType": "table-api",
+  "tableId": 3612,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "583",
+  "tag": "DZ",
+  "name": "مسجد معاذ بن جبل",
+  "city": "تلمسان",
+  "country": "الجزائر",
+  "address": "حي الافاق بوهناق منصورة تلمسان",
+  "timezone": "Africa/Algiers",
+  "timingsType": "table-api",
+  "tableId": 3572,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 5,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "1151",
+  "tag": "DZ",
+  "name": "ابي هريرة رضي الله عنه",
+  "city": "بشار",
+  "country": "الجزائر",
+  "address": "حي حاسي الفريد",
+  "timezone": "Africa/Algiers",
+  "timingsType": "table-api",
+  "tableId": 3604,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "946",
+  "tag": "DZ",
+  "name": "مسجد السلام",
+  "city": "بسكرة",
+  "country": "الجزائر",
+  "address": "المنطقة الغربية رقم 01 الكورس بجانب مديرية التجارة بسكرة",
+  "timezone": "Africa/Algiers",
+  "timingsType": "table-api",
+  "tableId": 3558,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "1600",
+  "tag": "ID",
+  "name": "Masjid Baiturrahim",
+  "city": "Jakarta Pusat",
+  "country": "أندونيسيا",
+  "address": "Komplek Angkasa Pura, Jalan Mokmer 1 Blok i No. 19 Rt 005/05",
+  "timezone": "Asia/Jakarta",
+  "timingsType": "table-api",
+  "tableId": 6134,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "Jumat",
+      "iqamaWaitDuration": 0,
+      "duration": 15,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "1340",
+  "tag": "ID",
+  "name": "Masjid AL Ibadah",
+  "city": "Jakarta Selatan",
+  "country": "أندونيسيا",
+  "address": "Kemang Jakarta selatan",
+  "timezone": "Asia/Jakarta",
+  "timingsType": "table-api",
+  "tableId": 6134,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "Jumaa",
+      "iqamaWaitDuration": 0,
+      "duration": 5,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "2069",
+  "tag": "ID",
+  "name": "Mahad Tahfidz Bukaka",
+  "city": "Bogor",
+  "country": "أندونيسيا",
+  "address": "PT. Bukaka Teknik Utama",
+  "timezone": "Asia/Jakarta",
+  "timingsType": "table-api",
+  "tableId": 6127,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": -1,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 1,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 15,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 2,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": -5,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": -2,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "2097",
+  "tag": "ID",
+  "name": "Masjid Ulul Albab UNNES",
+  "city": "Semarang",
+  "country": "أندونيسيا",
+  "address": "Masjid Kampus",
+  "timezone": "Asia/Jakarta",
+  "timingsType": "table-api",
+  "tableId": 6168,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "Jumat",
+      "iqamaWaitDuration": 0,
+      "duration": 15,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "1219",
+  "tag": "ID",
+  "name": "MASJID DARUN NA'IM",
+  "city": "Makassar",
+  "country": "أندونيسيا",
+  "address": "Jl. Nipa-Nipa Raya No.1 Perumnas Antang Block 3",
+  "timezone": "Asia/Makassar",
+  "timingsType": "table-api",
+  "tableId": 6338,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 17,
+    "timeOffset": 2,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 16,
+    "timeOffset": 4,
+    "dateOverrides": [
+     {
+      "name": "Jumat",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 16,
+    "timeOffset": 1,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 11,
+    "timeOffset": 3,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 16,
+    "timeOffset": 3,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "1717",
+  "tag": "ID",
+  "name": "Masjid Al-Hidayah Siteba",
+  "city": "Padang",
+  "country": "أندونيسيا",
+  "address": "Jl. Semarang Belakang Pasar Nanggalo",
+  "timezone": "Asia/Jakarta",
+  "timingsType": "table-api",
+  "tableId": 6009,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "Jumat",
+      "iqamaWaitDuration": 0,
+      "duration": 15,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "993",
+  "tag": "ID",
+  "name": "Al muttaqin",
+  "city": "Pekanbaru",
+  "country": "أندونيسيا",
+  "address": "Jalan Limbungan Rumbai Pekanbaru",
+  "timezone": "Asia/Jakarta",
+  "timingsType": "table-api",
+  "tableId": 6026,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "Jumat",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "1925",
+  "tag": "ID",
+  "name": "Nurul Qur'an",
+  "city": "Kabupaten Malang",
+  "country": "أندونيسيا",
+  "address": "Dusun Banu RT 06 RW 02 Desa Banturejo",
+  "timezone": "Asia/Jakarta",
+  "timingsType": "table-api",
+  "tableId": 6189,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "Jumat",
+      "iqamaWaitDuration": 0,
+      "duration": 15,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "335",
+  "tag": "OM",
+  "name": "جامع حذيفةً بن اليمان",
+  "city": "مسقط",
+  "country": "عمان",
+  "address": "السيب، الحيل الجنوبية",
+  "timezone": "Asia/Muscat",
+  "timingsType": "table-api",
+  "tableId": 45,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 25,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 25,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 25,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "1726",
+  "tag": "OM",
+  "name": "جامع الفلاح",
+  "city": "مسقط",
+  "country": "عمان",
+  "address": "hgqw227",
+  "timezone": "Asia/Muscat",
+  "timingsType": "table-api",
+  "tableId": 45,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 25,
+    "timeOffset": 14,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 20,
+    "timeOffset": -2,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 96,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 20,
+    "timeOffset": -15,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 10,
+    "timeOffset": -10,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 2,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "612",
+  "tag": "OM",
+  "name": "جامع الإيمان",
+  "city": "صلالة",
+  "country": "عمان",
+  "address": "منطقة الصناعيه",
+  "timezone": "Asia/Muscat",
+  "timingsType": "table-api",
+  "tableId": 46,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 25,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 8,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 6,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "231",
+  "tag": "OM",
+  "name": "جامع البديع",
+  "city": "صحار",
+  "country": "عمان",
+  "address": "فلج القبائل",
+  "timezone": "Asia/Muscat",
+  "timingsType": "table-api",
+  "tableId": 50,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 25,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 5,
+    "timeOffset": 1,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 1,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "783",
+  "tag": "OM",
+  "name": "جامع هيل",
+  "city": "سمائل",
+  "country": "عمان",
+  "address": "سمائل - هيل",
+  "timezone": "Asia/Muscat",
+  "timingsType": "table-api",
+  "tableId": 95,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 25,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 25,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 30,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "891",
+  "tag": "OM",
+  "name": "مسجد المصطفى",
+  "city": "بركاء",
+  "country": "عمان",
+  "address": "ولاية بركاء مزرع الحرث",
+  "timezone": "Asia/Muscat",
+  "timingsType": "table-api",
+  "tableId": 80,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "227",
+  "tag": "JO",
+  "name": "مسجد مخيمر ابو جاموس / ماركا الشماليه",
+  "city": "عمان",
+  "country": "الأردن",
+  "address": "ماركا الشماليه",
+  "timezone": "Asia/Amman",
+  "timingsType": "table-api",
+  "tableId": 247,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 23,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 18,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 20,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 18,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 13,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "549",
+  "tag": "JO",
+  "name": "مسجد ابو صلاح",
+  "city": "عمان",
+  "country": "الأردن",
+  "address": "القويسمة",
+  "timezone": "Asia/Amman",
+  "timingsType": "table-api",
+  "tableId": 247,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "772",
+  "tag": "JO",
+  "name": "مسجد محمد عبده ابو قوره",
+  "city": "عمان",
+  "country": "الأردن",
+  "address": "عمان",
+  "timezone": "Asia/Amman",
+  "timingsType": "table-api",
+  "tableId": 247,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "289",
+  "tag": "JO",
+  "name": "مسجد الشهيد محمد زيد العزام",
+  "city": "إربد",
+  "country": "الأردن",
+  "address": "إربد،  الحي الشمالي",
+  "timezone": "Asia/Amman",
+  "timingsType": "table-api",
+  "tableId": 248,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 30,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 8,
+    "timeOffset": 1,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 1,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "311",
+  "tag": "JO",
+  "name": "مسجد آل المقري",
+  "city": "إربد",
+  "country": "الأردن",
+  "address": "شرق دوار المريسي",
+  "timezone": "Asia/Amman",
+  "timingsType": "table-api",
+  "tableId": 248,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 24,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 19,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 30,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 19,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 11,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 13,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "1276",
+  "tag": "JO",
+  "name": "قثم  ابن  العباس",
+  "city": "الزرقاء",
+  "country": "الأردن",
+  "address": "الزرقاء  جبل  المغير",
+  "timezone": "Asia/Amman",
+  "timingsType": "table-api",
+  "tableId": 247,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 15,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "439",
+  "tag": "MA",
+  "name": "مسجد ابي هريرة",
+  "city": "الدار البيضاء",
+  "country": "المغرب",
+  "address": "حي الولاء سدي مومن الدار البيضاء",
+  "timezone": "Etc/GMT",
+  "timingsType": "table-api",
+  "tableId": 8221,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 1,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 2,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 1,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "1066",
+  "tag": "MA",
+  "name": "دعاة الخير",
+  "city": "الرباط",
+  "country": "المغرب",
+  "address": "via telgia 44/4",
+  "timezone": "Etc/GMT",
+  "timingsType": "table-api",
+  "tableId": 8167,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "1032",
+  "tag": "MA",
+  "name": "مسجد الرحمة",
+  "city": "طنجة",
+  "country": "المغرب",
+  "address": "شارع جبل طارق",
+  "timezone": "Etc/GMT",
+  "timingsType": "table-api",
+  "tableId": 8354,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 30,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "1634",
+  "tag": "MA",
+  "name": "مسجد زينب أم المؤمنين",
+  "city": "مراكش",
+  "country": "المغرب",
+  "address": "أطلس حي الشريفية، بوعكاز",
+  "timezone": "Etc/GMT",
+  "timingsType": "table-api",
+  "tableId": 8279,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": -1,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 15,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 1,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "819",
+  "tag": "MA",
+  "name": "مسجد الإمام مالك (الصابوني)",
+  "city": "وجدة أنجاد",
+  "country": "المغرب",
+  "address": "طريق طايرت وجدة",
+  "timezone": "Etc/GMT",
+  "timingsType": "table-api",
+  "tableId": 8306,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "741",
+  "tag": "MA",
+  "name": "مسجد السلسبيل",
+  "city": "الجديدة",
+  "country": "المغرب",
+  "address": "تجزئة السبيل",
+  "timezone": "Etc/GMT",
+  "timingsType": "table-api",
+  "tableId": 8235,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": -60,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": -60,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": -60,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 13,
+    "timeOffset": -60,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": -60,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "877",
+  "tag": "سوريا",
+  "name": "جامع الكنجلية",
+  "city": "برامكة",
+  "country": "سوريا",
+  "address": "الميدان",
+  "timezone": "Asia/Damascus",
+  "timingsType": "table-api",
+  "tableId": 7617,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 25,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "1044",
+  "tag": "سوريا",
+  "name": "مسجد الإمام الشافعي",
+  "city": "برامكة",
+  "country": "سوريا",
+  "address": "مزة فيلات شرقية",
+  "timezone": "Asia/Damascus",
+  "timingsType": "table-api",
+  "tableId": 7617,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 30,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 10,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "1697",
+  "tag": "تونس",
+  "name": "جامع السلام ذهيبة",
+  "city": "تطاوين",
+  "country": "تونس",
+  "address": "ذهيبة الشرقية",
+  "timezone": "Africa/Tunis",
+  "timingsType": "table-api",
+  "tableId": 364,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 15,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "2104",
+  "tag": "تونس",
+  "name": "جامع الرحمة الرقبة تطاوين",
+  "city": "تطاوين",
+  "country": "تونس",
+  "address": "الرقبة",
+  "timezone": "Africa/Tunis",
+  "timingsType": "table-api",
+  "tableId": 364,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 20,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "168",
+  "tag": "مصر",
+  "name": "مسجد أبو المعاطي",
+  "city": "القاهرة",
+  "country": "مصر",
+  "address": "محلية 12 - الحي الأول - مدينة العبور",
+  "timezone": "Africa/Cairo",
+  "timingsType": "table-api",
+  "tableId": 3109,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 35,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "609",
+  "tag": "مصر",
+  "name": "مسجد الرحمن - المداح - كفرالديب",
+  "city": "القاهرة",
+  "country": "مصر",
+  "address": "كفر الديب",
+  "timezone": "Africa/Cairo",
+  "timingsType": "table-api",
+  "tableId": 3109,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 14,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 16,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 45,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 16,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 13,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "1251",
+  "tag": "ماليزيا",
+  "name": "Masjid Nurhidayah",
+  "city": "Beaufort",
+  "country": "ماليزيا",
+  "address": "Kampung Klias Kecil, Beaufort, Sabah",
+  "timezone": "Asia/Kuala_Lumpur",
+  "timingsType": "table-api",
+  "tableId": 228,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "Jumaat",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "684",
+  "tag": "ماليزيا",
+  "name": "Surau Aspura",
+  "city": "Kangar",
+  "country": "ماليزيا",
+  "address": "daniahmadsemeksah@gmail.com",
+  "timezone": "Asia/Kuala_Lumpur",
+  "timingsType": "table-api",
+  "tableId": 211,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "Jumaat",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "1517",
+  "tag": "العراق",
+  "name": "جامع الحاجة مريم",
+  "city": "الحويجة",
+  "country": "العراق",
+  "address": "الحويجة حي القادة",
+  "timezone": null,
+  "timingsType": "table-api",
+  "tableId": 173,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 20,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "1628",
+  "tag": "العراق",
+  "name": "جامع المصطفى",
+  "city": "الحويجة",
+  "country": "العراق",
+  "address": "شارع عزيري غربي",
+  "timezone": null,
+  "timingsType": "table-api",
+  "tableId": 173,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 15,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 5,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "932",
+  "tag": "الكويت",
+  "name": "محمد عبدالوهاب التركيت",
+  "city": "السالمية",
+  "country": "الكويت",
+  "address": "salmiya sayed yasen street block 9",
+  "timezone": "Asia/Kuwait",
+  "timingsType": "table-api",
+  "tableId": 144,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 15,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "1264",
+  "tag": "الكويت",
+  "name": "فهد سند العبدالهادي العجمي",
+  "city": "الفروانية",
+  "country": "الكويت",
+  "address": "قطعة 9 شارع 73",
+  "timezone": "Asia/Kuwait",
+  "timingsType": "table-api",
+  "tableId": 144,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 12,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 15,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "1929",
+  "tag": "فلسطين",
+  "name": "مسجد التوحيد اليامون",
+  "city": "جنين",
+  "country": "فلسطين",
+  "address": "اليامون . المصرارة",
+  "timezone": "Asia/Gaza",
+  "timingsType": "table-api",
+  "tableId": 5885,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 23,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 30,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "1971",
+  "tag": "فلسطين",
+  "name": "مسجد عمر بن الخطاب",
+  "city": "جنين",
+  "country": "فلسطين",
+  "address": "اليامون",
+  "timezone": "Asia/Gaza",
+  "timingsType": "table-api",
+  "tableId": 5885,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 17,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 30,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 17,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "755",
+  "tag": "قطر",
+  "name": "مسجد غانم ناصر ال علي المعاضيد",
+  "city": "الريان",
+  "country": "قطر",
+  "address": "ام السنيم",
+  "timezone": "Asia/Qatar",
+  "timingsType": "table-api",
+  "tableId": 164,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 25,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 15,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 25,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "125",
+  "tag": "البحرين",
+  "name": "مركز سبيكة بنت ابراهيم الأنصاري الإسلامي",
+  "city": "المنامة",
+  "country": "البحرين",
+  "address": "المنامة",
+  "timezone": "Asia/Bahrain",
+  "timingsType": "table-api",
+  "tableId": 5883,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 30,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 30,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "1449",
+  "tag": "ليبيا",
+  "name": "مسجد بن زهرة العتيق",
+  "city": "طرابلس",
+  "country": "ليبيا",
+  "address": "طريق ال16  الغرارات",
+  "timezone": "Africa/Tripoli",
+  "timingsType": "table-api",
+  "tableId": 40,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 15,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "579",
+  "tag": "تركيا",
+  "name": "Mustafa Masjid",
+  "city": "Suruç",
+  "country": "تركيا",
+  "address": "Şanlıurfa Turkey",
+  "timezone": "Europe/Istanbul",
+  "timingsType": "aladhan-api",
+  "tableId": null,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "Cuma",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "769",
+  "tag": "المملكة المتحدة",
+  "name": "جامع العزيزية",
+  "city": "لندن الكبرى",
+  "country": "المملكة المتحدة",
+  "address": "117 Stoke Newington Rd, London N16 8BU",
+  "timezone": "Europe/London",
+  "timingsType": "aladhan-api",
+  "tableId": null,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": -2,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 5,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 4,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 9,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": -5,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "910",
+  "tag": "الولايات المتحدة",
+  "name": "Islamic Caltural Center",
+  "city": "أبفيل",
+  "country": "الولايات المتحدة",
+  "address": "40461 Eugen St",
+  "timezone": "America/New_York",
+  "timingsType": "aladhan-api",
+  "tableId": null,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "790",
+  "tag": "كندا",
+  "name": "Aasiya Musallah",
+  "city": "ريجينا",
+  "country": "كندا",
+  "address": "2 Sheppard Street Regina SK Canada",
+  "timezone": "America/Toronto",
+  "timingsType": "aladhan-api",
+  "tableId": null,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 15,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 30,
+    "timeOffset": 10,
+    "dateOverrides": [
+     {
+      "name": "Jumaa",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 60,
+    "timeOffset": 30,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 10,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 30,
+    "timeOffset": 40,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "1465",
+  "tag": "ألمانيا",
+  "name": "مسجد التقوى",
+  "city": "Biberach an der Riß",
+  "country": "ألمانيا",
+  "address": "Krummerweg, 19  Biberach an der Riss ",
+  "timezone": "Europe/Berlin",
+  "timingsType": "table-api",
+  "tableId": 2905,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 10,
+    "timeOffset": -4,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 12,
+    "timeOffset": -2,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 15,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 2,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 2,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "682",
+  "tag": "السويد",
+  "name": "Fagersta Moské",
+  "city": "فاجيرستا",
+  "country": "السويد",
+  "address": "Vilhelminavägen 7C, 737 40 Fagersta",
+  "timezone": "Europe/Stockholm",
+  "timingsType": "table-api",
+  "tableId": 5587,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": -17,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": -5,
+    "dateOverrides": [
+     {
+      "name": "Jumaa",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 10,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": -22,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 16,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "1825",
+  "tag": "النرويج",
+  "name": "Masjid Badar",
+  "city": "Asker",
+  "country": "النرويج",
+  "address": "gamle borgen vei 4",
+  "timezone": "Europe/Oslo",
+  "timingsType": "table-api",
+  "tableId": 394,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "Jumaa",
+      "iqamaWaitDuration": 0,
+      "duration": 15,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "186",
+  "tag": "بلجيكا",
+  "name": "Sakina Masjid",
+  "city": "شارلروا",
+  "country": "بلجيكا",
+  "address": "rue broucheterre 1,6000",
+  "timezone": "Europe/Brussels",
+  "timingsType": "table-api",
+  "tableId": 1641,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 3,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 3,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "Jumaa",
+      "iqamaWaitDuration": 0,
+      "duration": 1,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 3,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 3,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 3,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "1016",
+  "tag": "إيطاليا",
+  "name": "Moschea Donoratico",
+  "city": "دونوراتيكو",
+  "country": "إيطاليا",
+  "address": "دونوراتيكو",
+  "timezone": "Europe/Rome",
+  "timingsType": "table-api",
+  "tableId": 1925,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "512",
+  "tag": "إسبانيا",
+  "name": "مسجد السلام olvega",
+  "city": "سوريا",
+  "country": "إسبانيا",
+  "address": "olvega  _soria",
+  "timezone": "Europe/Madrid",
+  "timingsType": "aladhan-api",
+  "tableId": null,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 10,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 10,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 10,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 10,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 10,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "1390",
+  "tag": "رومانيا",
+  "name": "المركز الإسلامي الثقافي (طيبة) كونستانتا",
+  "city": "Constanţa",
+  "country": "رومانيا",
+  "address": "Strada Maior Șofran nr 12",
+  "timezone": "Europe/Bucharest",
+  "timingsType": "table-api",
+  "tableId": 5733,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 90,
+    "timeOffset": 1,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 60,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 10,
+    "timeOffset": -1,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 10,
+    "timeOffset": -1,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "1374",
+  "tag": "البوسنة والهرسك",
+  "name": "Dzamija Luka",
+  "city": "Srebrenik",
+  "country": "البوسنة والهرسك",
+  "address": "N.N. Luka",
+  "timezone": "Europe/Sarajevo",
+  "timingsType": "table-api",
+  "tableId": 1142,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "Jumaa",
+      "iqamaWaitDuration": 0,
+      "duration": 15,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "1099",
+  "tag": "روسيا",
+  "name": "Ramadan",
+  "city": "بالاكوفو",
+  "country": "روسيا",
+  "address": "Шоссе Академика Королёва, 48",
+  "timezone": "Europe/Moscow",
+  "timingsType": "aladhan-api",
+  "tableId": null,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 30,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "Джума",
+      "iqamaWaitDuration": 0,
+      "duration": 0,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 5,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "2177",
+  "tag": "الهند",
+  "name": "MASJID AL EMAN",
+  "city": "تاليبارامبا",
+  "country": "الهند",
+  "address": "CH ROAD SAYED NAGAR",
+  "timezone": "Asia/Kolkata",
+  "timingsType": "aladhan-api",
+  "tableId": null,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "Jumaa",
+      "iqamaWaitDuration": 0,
+      "duration": 15,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "2002",
+  "tag": "باكستان",
+  "name": "Madina masjid",
+  "city": "مهرابور",
+  "country": "باكستان",
+  "address": "Madina masjid mehrabpur",
+  "timezone": "Asia/Karachi",
+  "timingsType": "aladhan-api",
+  "tableId": null,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "الجمعة",
+      "iqamaWaitDuration": 0,
+      "duration": 15,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ },
+ {
+  "id": "1306",
+  "tag": "أستراليا",
+  "name": "Masjid As Sunnah",
+  "city": "لاكيمبا",
+  "country": "أستراليا",
+  "address": "132 Haldon Street, Lakemba 2195 NSW",
+  "timezone": "Australia/Sydney",
+  "timingsType": "aladhan-api",
+  "tableId": null,
+  "prayers": [
+   {
+    "key": "Fajr",
+    "iqamaWaitDuration": 30,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Sunrise",
+    "iqamaWaitDuration": 0,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Dhuhr",
+    "iqamaWaitDuration": 15,
+    "timeOffset": 0,
+    "dateOverrides": [
+     {
+      "name": "Jumaa",
+      "iqamaWaitDuration": 0,
+      "duration": 15,
+      "date": {
+       "gregorian": {
+        "dayOfWeek": 6
+       }
+      }
+     }
+    ]
+   },
+   {
+    "key": "Asr",
+    "iqamaWaitDuration": 20,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Maghrib",
+    "iqamaWaitDuration": 5,
+    "timeOffset": 0,
+    "dateOverrides": []
+   },
+   {
+    "key": "Isha",
+    "iqamaWaitDuration": 10,
+    "timeOffset": 0,
+    "dateOverrides": []
+   }
+  ]
+ }
+]

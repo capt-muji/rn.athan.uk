@@ -1,0 +1,429 @@
+{
+ "1": {
+  "cityElevationM": 166.0,
+  "horizonEastDeg": 2.005,
+  "horizonWestDeg": 3.3,
+  "horizonAllDeg": 5.805,
+  "ringMaxTerrainM": 617.0
+ },
+ "2": {
+  "cityElevationM": 225.0,
+  "horizonEastDeg": 2.811,
+  "horizonWestDeg": 6.255,
+  "horizonAllDeg": 6.255,
+  "ringMaxTerrainM": 1321.0
+ },
+ "3": {
+  "cityElevationM": 92.0,
+  "horizonEastDeg": 0.029,
+  "horizonWestDeg": 0.363,
+  "horizonAllDeg": 0.363,
+  "ringMaxTerrainM": 146.0
+ },
+ "4": {
+  "cityElevationM": 467.0,
+  "horizonEastDeg": 6.862,
+  "horizonWestDeg": 2.805,
+  "horizonAllDeg": 6.862,
+  "ringMaxTerrainM": 1274.0
+ },
+ "5": {
+  "cityElevationM": 84.0,
+  "horizonEastDeg": 0.095,
+  "horizonWestDeg": 0.172,
+  "horizonAllDeg": 0.922,
+  "ringMaxTerrainM": 245.0
+ },
+ "14": {
+  "cityElevationM": 96.0,
+  "horizonEastDeg": 0.172,
+  "horizonWestDeg": 0.172,
+  "horizonAllDeg": 0.395,
+  "ringMaxTerrainM": 165.0
+ },
+ "16": {
+  "cityElevationM": 570.0,
+  "horizonEastDeg": 4.526,
+  "horizonWestDeg": 4.619,
+  "horizonAllDeg": 4.619,
+  "ringMaxTerrainM": 1378.0
+ },
+ "19": {
+  "cityElevationM": 325.0,
+  "horizonEastDeg": 2.1,
+  "horizonWestDeg": 1.088,
+  "horizonAllDeg": 2.862,
+  "ringMaxTerrainM": 475.0
+ },
+ "20": {
+  "cityElevationM": 812.0,
+  "horizonEastDeg": 10.389,
+  "horizonWestDeg": 6.673,
+  "horizonAllDeg": 10.389,
+  "ringMaxTerrainM": 1411.0
+ },
+ "21": {
+  "cityElevationM": 32.0,
+  "horizonEastDeg": 1.34,
+  "horizonWestDeg": 6.88,
+  "horizonAllDeg": 6.88,
+  "ringMaxTerrainM": 400.0
+ },
+ "24": {
+  "cityElevationM": 238.0,
+  "horizonEastDeg": 2.329,
+  "horizonWestDeg": 0.464,
+  "horizonAllDeg": 2.92,
+  "ringMaxTerrainM": 497.0
+ },
+ "26": {
+  "cityElevationM": 144.0,
+  "horizonEastDeg": 2.824,
+  "horizonWestDeg": 3.015,
+  "horizonAllDeg": 3.015,
+  "ringMaxTerrainM": 441.0
+ },
+ "30": {
+  "cityElevationM": 667.0,
+  "horizonEastDeg": 5.124,
+  "horizonWestDeg": 6.221,
+  "horizonAllDeg": 16.049,
+  "ringMaxTerrainM": 1847.0
+ },
+ "32": {
+  "cityElevationM": 945.0,
+  "horizonEastDeg": 3.582,
+  "horizonWestDeg": 4.299,
+  "horizonAllDeg": 6.805,
+  "ringMaxTerrainM": 1716.0
+ },
+ "33": {
+  "cityElevationM": 337.0,
+  "horizonEastDeg": 7.745,
+  "horizonWestDeg": 7.651,
+  "horizonAllDeg": 10.795,
+  "ringMaxTerrainM": 1148.0
+ },
+ "34": {
+  "cityElevationM": 673.0,
+  "horizonEastDeg": 14.234,
+  "horizonWestDeg": 4.08,
+  "horizonAllDeg": 14.234,
+  "ringMaxTerrainM": 1890.0
+ },
+ "39": {
+  "cityElevationM": 1082.0,
+  "horizonEastDeg": 1.718,
+  "horizonWestDeg": 2.596,
+  "horizonAllDeg": 2.596,
+  "ringMaxTerrainM": 1349.0
+ },
+ "40": {
+  "cityElevationM": 748.0,
+  "horizonEastDeg": 8.119,
+  "horizonWestDeg": 0.783,
+  "horizonAllDeg": 8.997,
+  "ringMaxTerrainM": 1632.0
+ },
+ "41": {
+  "cityElevationM": 463.0,
+  "horizonEastDeg": 5.474,
+  "horizonWestDeg": 3.852,
+  "horizonAllDeg": 5.474,
+  "ringMaxTerrainM": 1104.0
+ },
+ "43": {
+  "cityElevationM": 393.0,
+  "horizonEastDeg": 8.792,
+  "horizonWestDeg": 5.73,
+  "horizonAllDeg": 8.792,
+  "ringMaxTerrainM": 1297.0
+ },
+ "44": {
+  "cityElevationM": 428.0,
+  "horizonEastDeg": 4.526,
+  "horizonWestDeg": 4.821,
+  "horizonAllDeg": 4.821,
+  "ringMaxTerrainM": 1212.0
+ },
+ "45": {
+  "cityElevationM": 263.0,
+  "horizonEastDeg": 3.567,
+  "horizonWestDeg": 1.346,
+  "horizonAllDeg": 5.048,
+  "ringMaxTerrainM": 793.0
+ },
+ "49": {
+  "cityElevationM": 253.0,
+  "horizonEastDeg": 6.692,
+  "horizonWestDeg": 5.654,
+  "horizonAllDeg": 7.407,
+  "ringMaxTerrainM": 1175.0
+ },
+ "50": {
+  "cityElevationM": 304.0,
+  "horizonEastDeg": 8.941,
+  "horizonWestDeg": 6.334,
+  "horizonAllDeg": 10.869,
+  "ringMaxTerrainM": 1683.0
+ },
+ "53": {
+  "cityElevationM": 1255.0,
+  "horizonEastDeg": 5.937,
+  "horizonWestDeg": -0.252,
+  "horizonAllDeg": 5.956,
+  "ringMaxTerrainM": 1568.0
+ },
+ "55": {
+  "cityElevationM": 276.0,
+  "horizonEastDeg": 2.119,
+  "horizonWestDeg": 4.194,
+  "horizonAllDeg": 4.194,
+  "ringMaxTerrainM": 716.0
+ },
+ "57": {
+  "cityElevationM": 461.0,
+  "horizonEastDeg": 5.937,
+  "horizonWestDeg": 5.417,
+  "horizonAllDeg": 5.937,
+  "ringMaxTerrainM": 1151.0
+ },
+ "59": {
+  "cityElevationM": 173.0,
+  "horizonEastDeg": 5.067,
+  "horizonWestDeg": 6.089,
+  "horizonAllDeg": 6.089,
+  "ringMaxTerrainM": 586.0
+ },
+ "61": {
+  "cityElevationM": 65.0,
+  "horizonEastDeg": 11.273,
+  "horizonWestDeg": 6.598,
+  "horizonAllDeg": 11.273,
+  "ringMaxTerrainM": 1352.0
+ },
+ "64": {
+  "cityElevationM": 892.0,
+  "horizonEastDeg": 0.848,
+  "horizonWestDeg": 5.692,
+  "horizonAllDeg": 6.173,
+  "ringMaxTerrainM": 1541.0
+ },
+ "65": {
+  "cityElevationM": 535.0,
+  "horizonEastDeg": 3.69,
+  "horizonWestDeg": 6.588,
+  "horizonAllDeg": 6.588,
+  "ringMaxTerrainM": 1568.0
+ },
+ "66": {
+  "cityElevationM": 94.0,
+  "horizonEastDeg": 0.038,
+  "horizonWestDeg": 1.226,
+  "horizonAllDeg": 1.226,
+  "ringMaxTerrainM": 308.0
+ },
+ "68": {
+  "cityElevationM": 82.0,
+  "horizonEastDeg": 0.08,
+  "horizonWestDeg": 0.019,
+  "horizonAllDeg": 0.08,
+  "ringMaxTerrainM": 96.0
+ },
+ "71": {
+  "cityElevationM": 139.0,
+  "horizonEastDeg": 2.445,
+  "horizonWestDeg": 0.602,
+  "horizonAllDeg": 2.445,
+  "ringMaxTerrainM": 566.0
+ },
+ "73": {
+  "cityElevationM": 849.0,
+  "horizonEastDeg": 3.536,
+  "horizonWestDeg": 5.109,
+  "horizonAllDeg": 7.895,
+  "ringMaxTerrainM": 1743.0
+ },
+ "77": {
+  "cityElevationM": 538.0,
+  "horizonEastDeg": 8.587,
+  "horizonWestDeg": 3.567,
+  "horizonAllDeg": 11.933,
+  "ringMaxTerrainM": 1458.0
+ },
+ "78": {
+  "cityElevationM": 532.0,
+  "horizonEastDeg": 6.126,
+  "horizonWestDeg": 12.097,
+  "horizonAllDeg": 12.097,
+  "ringMaxTerrainM": 1268.0
+ },
+ "79": {
+  "cityElevationM": 950.0,
+  "horizonEastDeg": 1.764,
+  "horizonWestDeg": 2.7,
+  "horizonAllDeg": 2.868,
+  "ringMaxTerrainM": 1451.0
+ },
+ "84": {
+  "cityElevationM": 587.0,
+  "horizonEastDeg": 4.972,
+  "horizonWestDeg": 3.719,
+  "horizonAllDeg": 4.972,
+  "ringMaxTerrainM": 977.0
+ },
+ "88": {
+  "cityElevationM": 279.0,
+  "horizonEastDeg": 1.804,
+  "horizonWestDeg": 1.604,
+  "horizonAllDeg": 3.405,
+  "ringMaxTerrainM": 636.0
+ },
+ "90": {
+  "cityElevationM": 509.0,
+  "horizonEastDeg": 7.538,
+  "horizonWestDeg": 5.843,
+  "horizonAllDeg": 17.589,
+  "ringMaxTerrainM": 1744.0
+ },
+ "91": {
+  "cityElevationM": 279.0,
+  "horizonEastDeg": 7.745,
+  "horizonWestDeg": 6.39,
+  "horizonAllDeg": 10.813,
+  "ringMaxTerrainM": 917.0
+ },
+ "93": {
+  "cityElevationM": 230.0,
+  "horizonEastDeg": 1.985,
+  "horizonWestDeg": 0.796,
+  "horizonAllDeg": 3.719,
+  "ringMaxTerrainM": 686.0
+ },
+ "95": {
+  "cityElevationM": 853.0,
+  "horizonEastDeg": 5.692,
+  "horizonWestDeg": 7.275,
+  "horizonAllDeg": 7.275,
+  "ringMaxTerrainM": 1329.0
+ },
+ "96": {
+  "cityElevationM": 149.0,
+  "horizonEastDeg": 1.623,
+  "horizonWestDeg": 1.108,
+  "horizonAllDeg": 1.707,
+  "ringMaxTerrainM": 447.0
+ },
+ "97": {
+  "cityElevationM": 460.0,
+  "horizonEastDeg": 2.937,
+  "horizonWestDeg": 2.491,
+  "horizonAllDeg": 4.175,
+  "ringMaxTerrainM": 973.0
+ },
+ "98": {
+  "cityElevationM": 290.0,
+  "horizonEastDeg": 5.72,
+  "horizonWestDeg": 7.726,
+  "horizonAllDeg": 7.745,
+  "ringMaxTerrainM": 1344.0
+ },
+ "99": {
+  "cityElevationM": 425.0,
+  "horizonEastDeg": 2.119,
+  "horizonWestDeg": 7.134,
+  "horizonAllDeg": 7.134,
+  "ringMaxTerrainM": 1552.0
+ },
+ "102": {
+  "cityElevationM": 319.0,
+  "horizonEastDeg": 4.726,
+  "horizonWestDeg": 4.422,
+  "horizonAllDeg": 5.607,
+  "ringMaxTerrainM": 1140.0
+ },
+ "103": {
+  "cityElevationM": 171.0,
+  "horizonEastDeg": 4.242,
+  "horizonWestDeg": 2.862,
+  "horizonAllDeg": 4.242,
+  "ringMaxTerrainM": 616.0
+ },
+ "107": {
+  "cityElevationM": 616.0,
+  "horizonEastDeg": 3.928,
+  "horizonWestDeg": 5.275,
+  "horizonAllDeg": 5.275,
+  "ringMaxTerrainM": 1170.0
+ },
+ "108": {
+  "cityElevationM": 925.0,
+  "horizonEastDeg": 10.583,
+  "horizonWestDeg": 8.773,
+  "horizonAllDeg": 19.086,
+  "ringMaxTerrainM": 2114.0
+ },
+ "109": {
+  "cityElevationM": 1027.0,
+  "horizonEastDeg": 2.157,
+  "horizonWestDeg": 4.821,
+  "horizonAllDeg": 4.934,
+  "ringMaxTerrainM": 1545.0
+ },
+ "110": {
+  "cityElevationM": 511.0,
+  "horizonEastDeg": 3.194,
+  "horizonWestDeg": 3.862,
+  "horizonAllDeg": 4.745,
+  "ringMaxTerrainM": 1195.0
+ },
+ "111": {
+  "cityElevationM": 950.0,
+  "horizonEastDeg": 11.75,
+  "horizonWestDeg": 7.988,
+  "horizonAllDeg": 11.75,
+  "ringMaxTerrainM": 2234.0
+ },
+ "112": {
+  "cityElevationM": 770.0,
+  "horizonEastDeg": 6.711,
+  "horizonWestDeg": 2.233,
+  "horizonAllDeg": 8.605,
+  "ringMaxTerrainM": 1404.0
+ },
+ "113": {
+  "cityElevationM": 403.0,
+  "horizonEastDeg": 10.037,
+  "horizonWestDeg": 16.699,
+  "horizonAllDeg": 16.699,
+  "ringMaxTerrainM": 1303.0
+ },
+ "114": {
+  "cityElevationM": 486.0,
+  "horizonEastDeg": 6.88,
+  "horizonWestDeg": 10.056,
+  "horizonAllDeg": 10.056,
+  "ringMaxTerrainM": 1456.0
+ },
+ "115": {
+  "cityElevationM": 1050.0,
+  "horizonEastDeg": 6.079,
+  "horizonWestDeg": 3.091,
+  "horizonAllDeg": 6.079,
+  "ringMaxTerrainM": 2049.0
+ },
+ "116": {
+  "cityElevationM": 1003.0,
+  "horizonEastDeg": 1.718,
+  "horizonWestDeg": 3.966,
+  "horizonAllDeg": 3.966,
+  "ringMaxTerrainM": 1400.0
+ },
+ "117": {
+  "cityElevationM": 867.0,
+  "horizonEastDeg": 4.545,
+  "horizonWestDeg": 4.555,
+  "horizonAllDeg": 5.219,
+  "ringMaxTerrainM": 1344.0
+ }
+}

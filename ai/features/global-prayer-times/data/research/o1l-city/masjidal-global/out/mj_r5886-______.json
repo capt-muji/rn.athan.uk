@@ -1,0 +1,34 @@
+{
+ "label": "r5886-فلسطين",
+ "file": "captures/masjidi_region_5886.json",
+ "rows": 366,
+ "lat": 31.98,
+ "k": 0,
+ "geoRms": 7.002,
+ "fajr": {
+  "kind": "angle",
+  "n": 366,
+  "angle": 17.52,
+  "darkIqr": 0.13
+ },
+ "isha": {
+  "kind": "angle",
+  "n": 366,
+  "angle": 16.72,
+  "darkIqr": 0.14,
+  "gap": 79
+ },
+ "asr": {
+  "school": "Shafi",
+  "shafiMae": 0.5,
+  "hanafiMae": 56.2
+ },
+ "clock": {
+  "lonImplied": 4.59,
+  "offsetMin": 18,
+  "driftRms": 0.3,
+  "runs": 1,
+  "steps": []
+ },
+ "amplitude": -125
+}

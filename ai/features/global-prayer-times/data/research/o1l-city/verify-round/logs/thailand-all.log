@@ -1,0 +1,17 @@
+leap	printed=169092	exact=140111 (82.86%)	within1=169080 (99.993%)	worst=2	fails=12
+  chonburi/leap 2028-06-28 fajr model=266 printed=264
+  chonburi/leap 2028-07-07 fajr model=269 printed=267
+  kalasin/leap 2028-03-11 sunrise model=378 printed=380
+  kalasin/leap 2028-03-15 sunrise model=375 printed=377
+  kalasin/leap 2028-03-19 sunrise model=372 printed=374
+  kalasin/leap 2028-03-28 sunrise model=365 printed=367
+  kalasin/leap 2028-04-01 sunrise model=362 printed=364
+  kalasin/leap 2028-04-09 sunrise model=356 printed=358
+  kalasin/leap 2028-04-16 sunrise model=351 printed=353
+  kalasin/leap 2028-04-19 sunrise model=349 printed=351
+  kalasin/leap 2028-09-09 isha model=1166 printed=1168
+  krabi/leap 2028-08-31 asr model=928 printed=930
+normal	printed=168624	exact=140559 (83.36%)	within1=168623 (99.999%)	worst=2	fails=1
+  chonburi 2026-06-25 fajr model=265 printed=263
+
+Nan at printed 18.733333/103.75: within1 0.00% MAE 12.00 worst 13

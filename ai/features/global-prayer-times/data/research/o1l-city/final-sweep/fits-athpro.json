@@ -1,0 +1,4597 @@
+[
+ {
+  "slug": "kiribati__bairiki-village",
+  "country": "kiribati",
+  "city": "Bairiki village",
+  "coord": [
+   1.3292,
+   172.9751
+  ],
+  "tz": "Pacific/Tarawa",
+  "renderTz": "Pacific/Tarawa",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "117/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 28,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   }
+  }
+ },
+ {
+  "slug": "kiribati__betio-village",
+  "country": "kiribati",
+  "city": "Betio village",
+  "coord": [
+   1.3656,
+   172.941
+  ],
+  "tz": "Pacific/Tarawa",
+  "renderTz": "Pacific/Tarawa",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "119/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "kiribati__bikenibeu-village",
+  "country": "kiribati",
+  "city": "Bikenibeu village",
+  "coord": [
+   1.3674,
+   172.941
+  ],
+  "tz": "Pacific/Tarawa",
+  "renderTz": "Pacific/Tarawa",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "119/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "kiribati__south-tarawa",
+  "country": "kiribati",
+  "city": "South tarawa",
+  "coord": [
+   1.3278,
+   172.9766
+  ],
+  "tz": "Pacific/Tarawa",
+  "renderTz": "Pacific/Tarawa",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "118/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 28,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   }
+  }
+ },
+ {
+  "slug": "kiribati__teaoraereke-village",
+  "country": "kiribati",
+  "city": "Teaoraereke village",
+  "coord": [
+   1.3297,
+   172.9766
+  ],
+  "tz": "Pacific/Tarawa",
+  "renderTz": "Pacific/Tarawa",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "118/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 28,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   }
+  }
+ },
+ {
+  "slug": "liberia__bensonville",
+  "country": "liberia",
+  "city": "Bensonville",
+  "coord": [
+   6.4461,
+   -10.6125
+  ],
+  "tz": "Africa/Monrovia",
+  "renderTz": "Africa/Monrovia",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 15,
+   "ishaAngle": 15,
+   "asr": "Shafi"
+  },
+  "joint": "48/126 of 150",
+  "pct": 84,
+  "worst": 2,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 9,
+    "within1": 30,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 7,
+    "within1": 30,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 20,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 4,
+    "within1": 6,
+    "worst": 2
+   },
+   "maghrib": {
+    "exact": 7,
+    "within1": 30,
+    "worst": 1
+   },
+   "isha": {
+    "exact": 8,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "liberia__ganta",
+  "country": "liberia",
+  "city": "Ganta",
+  "coord": [
+   7.3022,
+   -8.5306
+  ],
+  "tz": "Africa/Monrovia",
+  "renderTz": "Africa/Monrovia",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "99/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 12,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "isha": {
+    "exact": 28,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "liberia__gbarnga",
+  "country": "liberia",
+  "city": "Gbarnga",
+  "coord": [
+   7.0094,
+   -9.4894
+  ],
+  "tz": "Africa/Monrovia",
+  "renderTz": "Africa/Monrovia",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "101/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 13,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 28,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "liberia__greenville",
+  "country": "liberia",
+  "city": "Greenville",
+  "coord": [
+   5.0111,
+   -9.0389
+  ],
+  "tz": "Africa/Monrovia",
+  "renderTz": "Africa/Monrovia",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "104/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 17,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "isha": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "liberia__harper",
+  "country": "liberia",
+  "city": "Harper",
+  "coord": [
+   4.375,
+   -7.7169
+  ],
+  "tz": "Africa/Monrovia",
+  "renderTz": "Africa/Monrovia",
+  "deltaMin": 0,
+  "gate": 2,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "107/149 of 150",
+  "pct": 99.3,
+  "worst": 2,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 29,
+    "worst": 2
+   },
+   "asr": {
+    "exact": 18,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "liberia__kakata",
+  "country": "liberia",
+  "city": "Kakata",
+  "coord": [
+   6.5268,
+   -10.3496
+  ],
+  "tz": "Africa/Monrovia",
+  "renderTz": "Africa/Monrovia",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "104/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 17,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 27,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "liberia__monrovia",
+  "country": "liberia",
+  "city": "Monrovia",
+  "coord": [
+   6.3008,
+   -10.7972
+  ],
+  "tz": "Africa/Monrovia",
+  "renderTz": "Africa/Monrovia",
+  "deltaMin": 0,
+  "gate": 2,
+  "recipe": {
+   "fajrAngle": 15,
+   "ishaAngle": 15,
+   "asr": "Shafi"
+  },
+  "joint": "87/134 of 150",
+  "pct": 89.3,
+  "worst": 2,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 25,
+    "worst": 2
+   },
+   "asr": {
+    "exact": 0,
+    "within1": 19,
+    "worst": 2
+   },
+   "maghrib": {
+    "exact": 28,
+    "within1": 30,
+    "worst": 1
+   },
+   "isha": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "liberia__new-yekepa",
+  "country": "liberia",
+  "city": "New yekepa",
+  "coord": [
+   7.5797,
+   -8.5376
+  ],
+  "tz": "Africa/Monrovia",
+  "renderTz": "Africa/Monrovia",
+  "deltaMin": 0,
+  "gate": 2,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "106/147 of 150",
+  "pct": 98,
+  "worst": 2,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 27,
+    "worst": 2
+   },
+   "asr": {
+    "exact": 19,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 27,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "liberia__robertsport",
+  "country": "liberia",
+  "city": "Robertsport",
+  "coord": [
+   6.7533,
+   -11.3686
+  ],
+  "tz": "Africa/Monrovia",
+  "renderTz": "Africa/Monrovia",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "99/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 12,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 28,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "liberia__zwedru",
+  "country": "liberia",
+  "city": "Zwedru",
+  "coord": [
+   6.0667,
+   -8.1281
+  ],
+  "tz": "Africa/Monrovia",
+  "renderTz": "Africa/Monrovia",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "103/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 16,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 28,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "myanmar__bago",
+  "country": "myanmar",
+  "city": "Bago",
+  "coord": [
+   17.3226,
+   96.4668
+  ],
+  "tz": "Asia/Yangon",
+  "renderTz": "Asia/Yangon",
+  "deltaMin": 0,
+  "gate": 2,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "108/149 of 150",
+  "pct": 99.3,
+  "worst": 2,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 29,
+    "worst": 2
+   },
+   "asr": {
+    "exact": 20,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 28,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "myanmar__mandalay",
+  "country": "myanmar",
+  "city": "Mandalay",
+  "coord": [
+   21.9588,
+   96.0891
+  ],
+  "tz": "Asia/Yangon",
+  "renderTz": "Asia/Yangon",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "106/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 18,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 28,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "myanmar__mawlamyine",
+  "country": "myanmar",
+  "city": "Mawlamyine",
+  "coord": [
+   16.4897,
+   97.6256
+  ],
+  "tz": "Asia/Yangon",
+  "renderTz": "Asia/Yangon",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "109/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 21,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "myanmar__monywa",
+  "country": "myanmar",
+  "city": "Monywa",
+  "coord": [
+   22.1082,
+   95.1412
+  ],
+  "tz": "Asia/Yangon",
+  "renderTz": "Asia/Yangon",
+  "deltaMin": 0,
+  "gate": 2,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "112/148 of 150",
+  "pct": 98.7,
+  "worst": 2,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 28,
+    "worst": 2
+   },
+   "asr": {
+    "exact": 23,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "myanmar__myitkyina",
+  "country": "myanmar",
+  "city": "Myitkyina",
+  "coord": [
+   25.3833,
+   97.4
+  ],
+  "tz": "Asia/Yangon",
+  "renderTz": "Asia/Yangon",
+  "deltaMin": 0,
+  "gate": 2,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "106/149 of 150",
+  "pct": 99.3,
+  "worst": 2,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 29,
+    "worst": 2
+   },
+   "asr": {
+    "exact": 17,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "myanmar__naypyidaw",
+  "country": "myanmar",
+  "city": "Naypyidaw",
+  "coord": [
+   19.7633,
+   96.0785
+  ],
+  "tz": "Asia/Yangon",
+  "renderTz": "Asia/Yangon",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "106/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 19,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 27,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "myanmar__pathein",
+  "country": "myanmar",
+  "city": "Pathein",
+  "coord": [
+   16.7808,
+   94.7328
+  ],
+  "tz": "Asia/Yangon",
+  "renderTz": "Asia/Yangon",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "110/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 20,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   }
+  }
+ },
+ {
+  "slug": "myanmar__sittwe",
+  "country": "myanmar",
+  "city": "Sittwe",
+  "coord": [
+   20.1462,
+   92.8986
+  ],
+  "tz": "Asia/Yangon",
+  "renderTz": "Asia/Yangon",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "107/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 17,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   }
+  }
+ },
+ {
+  "slug": "myanmar__taunggyi",
+  "country": "myanmar",
+  "city": "Taunggyi",
+  "coord": [
+   20.7892,
+   97.0378
+  ],
+  "tz": "Asia/Yangon",
+  "renderTz": "Asia/Yangon",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "107/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 18,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "isha": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   }
+  }
+ },
+ {
+  "slug": "myanmar__yangon",
+  "country": "myanmar",
+  "city": "Yangon",
+  "coord": [
+   16.8661,
+   96.1951
+  ],
+  "tz": "Asia/Yangon",
+  "renderTz": "Asia/Yangon",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "109/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 21,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 28,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "nepal__bharatpur",
+  "country": "nepal",
+  "city": "Bharatpur",
+  "coord": [
+   27.6766,
+   84.4323
+  ],
+  "tz": "Asia/Kathmandu",
+  "renderTz": "Asia/Kathmandu",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "102/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 16,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 26,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "nepal__biratnagar",
+  "country": "nepal",
+  "city": "Biratnagar",
+  "coord": [
+   26.8067,
+   87.2833
+  ],
+  "tz": "Asia/Kathmandu",
+  "renderTz": "Asia/Kathmandu",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "106/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 18,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 28,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "nepal__birganj",
+  "country": "nepal",
+  "city": "Birganj",
+  "coord": [
+   27.0104,
+   84.877
+  ],
+  "tz": "Asia/Kathmandu",
+  "renderTz": "Asia/Kathmandu",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "102/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 1,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 16,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "isha": {
+    "exact": 26,
+    "within1": 30,
+    "worst": 1
+   }
+  },
+  "coordPrinted": [
+   27.7172,
+   85.324
+  ],
+  "coordFix": "page field carries Kathmandu 27.7172/85.324; table is Birgunj, fitted at Birgunj"
+ },
+ {
+  "slug": "nepal__butwal",
+  "country": "nepal",
+  "city": "Butwal",
+  "coord": [
+   27.7006,
+   83.4482
+  ],
+  "tz": "Asia/Kathmandu",
+  "renderTz": "Asia/Kathmandu",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "107/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 18,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   }
+  }
+ },
+ {
+  "slug": "nepal__dhangadhi",
+  "country": "nepal",
+  "city": "Dhangadhi",
+  "coord": [
+   28.7051,
+   80.5933
+  ],
+  "tz": "Asia/Kathmandu",
+  "renderTz": "Asia/Kathmandu",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "104/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 16,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 28,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "nepal__dharan",
+  "country": "nepal",
+  "city": "Dharan",
+  "coord": [
+   26.8124,
+   87.2797
+  ],
+  "tz": "Asia/Kathmandu",
+  "renderTz": "Asia/Kathmandu",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "105/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 18,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 27,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "nepal__janakpur",
+  "country": "nepal",
+  "city": "Janakpur",
+  "coord": [
+   26.728,
+   85.9246
+  ],
+  "tz": "Asia/Kathmandu",
+  "renderTz": "Asia/Kathmandu",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "106/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 18,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "nepal__kathmandu",
+  "country": "nepal",
+  "city": "Kathmandu",
+  "coord": [
+   27.7172,
+   85.324
+  ],
+  "tz": "Asia/Kathmandu",
+  "renderTz": "Asia/Kathmandu",
+  "deltaMin": 0,
+  "gate": 2,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "102/149 of 150",
+  "pct": 99.3,
+  "worst": 2,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 29,
+    "worst": 2
+   },
+   "asr": {
+    "exact": 14,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 28,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "nepal__lalitpur",
+  "country": "nepal",
+  "city": "Lalitpur",
+  "coord": [
+   27.6644,
+   85.3182
+  ],
+  "tz": "Asia/Kathmandu",
+  "renderTz": "Asia/Kathmandu",
+  "deltaMin": 0,
+  "gate": 2,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "103/149 of 150",
+  "pct": 99.3,
+  "worst": 2,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 29,
+    "worst": 2
+   },
+   "asr": {
+    "exact": 14,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "nepal__pokhara",
+  "country": "nepal",
+  "city": "Pokhara",
+  "coord": [
+   28.2096,
+   83.9856
+  ],
+  "tz": "Asia/Kathmandu",
+  "renderTz": "Asia/Kathmandu",
+  "deltaMin": 0,
+  "gate": 2,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "106/149 of 150",
+  "pct": 99.3,
+  "worst": 2,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 29,
+    "worst": 2
+   },
+   "asr": {
+    "exact": 18,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 28,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "papua-new-guinea__bulolo",
+  "country": "papua-new-guinea",
+  "city": "Bulolo",
+  "coord": [
+   -7.2,
+   146.6333
+  ],
+  "tz": "Pacific/Port_Moresby",
+  "renderTz": "Pacific/Port_Moresby",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "116/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 26,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   }
+  }
+ },
+ {
+  "slug": "papua-new-guinea__daru",
+  "country": "papua-new-guinea",
+  "city": "Daru",
+  "coord": [
+   -9.0763,
+   143.2095
+  ],
+  "tz": "Pacific/Port_Moresby",
+  "renderTz": "Pacific/Port_Moresby",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "116/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 26,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   }
+  }
+ },
+ {
+  "slug": "papua-new-guinea__goroka",
+  "country": "papua-new-guinea",
+  "city": "Goroka",
+  "coord": [
+   -6.0833,
+   145.3874
+  ],
+  "tz": "Pacific/Port_Moresby",
+  "renderTz": "Pacific/Port_Moresby",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "116/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "isha": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "papua-new-guinea__kimbe",
+  "country": "papua-new-guinea",
+  "city": "Kimbe",
+  "coord": [
+   -5.5502,
+   150.1429
+  ],
+  "tz": "Pacific/Port_Moresby",
+  "renderTz": "Pacific/Port_Moresby",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "116/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 26,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   }
+  }
+ },
+ {
+  "slug": "papua-new-guinea__kokopo",
+  "country": "papua-new-guinea",
+  "city": "Kokopo",
+  "coord": [
+   -4.352,
+   152.2633
+  ],
+  "tz": "Pacific/Port_Moresby",
+  "renderTz": "Pacific/Port_Moresby",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "116/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 28,
+    "within1": 30,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 28,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   }
+  }
+ },
+ {
+  "slug": "papua-new-guinea__lae",
+  "country": "papua-new-guinea",
+  "city": "Lae",
+  "coord": [
+   -6.722,
+   146.9847
+  ],
+  "tz": "Pacific/Port_Moresby",
+  "renderTz": "Pacific/Port_Moresby",
+  "deltaMin": 0,
+  "gate": 2,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "115/149 of 150",
+  "pct": 99.3,
+  "worst": 2,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 28,
+    "within1": 30,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 29,
+    "worst": 2
+   },
+   "asr": {
+    "exact": 27,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   }
+  }
+ },
+ {
+  "slug": "papua-new-guinea__madang",
+  "country": "papua-new-guinea",
+  "city": "Madang",
+  "coord": [
+   -5.2246,
+   145.7966
+  ],
+  "tz": "Pacific/Port_Moresby",
+  "renderTz": "Pacific/Port_Moresby",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "116/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 27,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "papua-new-guinea__mount-hagen",
+  "country": "papua-new-guinea",
+  "city": "Mount hagen",
+  "coord": [
+   -5.8632,
+   144.2265
+  ],
+  "tz": "Pacific/Port_Moresby",
+  "renderTz": "Pacific/Port_Moresby",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "119/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   }
+  }
+ },
+ {
+  "slug": "papua-new-guinea__port-moresby",
+  "country": "papua-new-guinea",
+  "city": "Port moresby",
+  "coord": [
+   -9.4438,
+   147.1803
+  ],
+  "tz": "Pacific/Port_Moresby",
+  "renderTz": "Pacific/Port_Moresby",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "114/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 24,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   }
+  }
+ },
+ {
+  "slug": "papua-new-guinea__wewak",
+  "country": "papua-new-guinea",
+  "city": "Wewak",
+  "coord": [
+   -3.5534,
+   143.6268
+  ],
+  "tz": "Pacific/Port_Moresby",
+  "renderTz": "Pacific/Port_Moresby",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "114/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 24,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   }
+  }
+ },
+ {
+  "slug": "samoa__apia",
+  "country": "samoa",
+  "city": "Apia",
+  "coord": [
+   -13.8415,
+   -171.7528
+  ],
+  "tz": "Pacific/Apia",
+  "renderTz": "Pacific/Apia",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "100/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 10,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   }
+  }
+ },
+ {
+  "slug": "samoa__asau",
+  "country": "samoa",
+  "city": "Asau",
+  "coord": [
+   -13.5197,
+   -172.6378
+  ],
+  "tz": "Pacific/Apia",
+  "renderTz": "Pacific/Apia",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "96/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 6,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   }
+  }
+ },
+ {
+  "slug": "samoa__faleula",
+  "country": "samoa",
+  "city": "Faleula",
+  "coord": [
+   -13.8483,
+   -171.9068
+  ],
+  "tz": "Pacific/Apia",
+  "renderTz": "Pacific/Apia",
+  "deltaMin": 0,
+  "gate": 2,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "99/149 of 150",
+  "pct": 99.3,
+  "worst": 2,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 29,
+    "worst": 2
+   },
+   "asr": {
+    "exact": 9,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   }
+  }
+ },
+ {
+  "slug": "samoa__fasitoouta",
+  "country": "samoa",
+  "city": "Fasitoouta",
+  "coord": [
+   -13.8239,
+   -171.9207
+  ],
+  "tz": "Pacific/Apia",
+  "renderTz": "Pacific/Apia",
+  "deltaMin": 0,
+  "gate": 2,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "99/148 of 150",
+  "pct": 98.7,
+  "worst": 2,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 28,
+    "worst": 2
+   },
+   "asr": {
+    "exact": 10,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "samoa__malie",
+  "country": "samoa",
+  "city": "Malie",
+  "coord": [
+   -13.8039,
+   -171.864
+  ],
+  "tz": "Pacific/Apia",
+  "renderTz": "Pacific/Apia",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "93/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 5,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "samoa__mulifanua",
+  "country": "samoa",
+  "city": "Mulifanua",
+  "coord": [
+   -13.8271,
+   -172.0032
+  ],
+  "tz": "Pacific/Apia",
+  "renderTz": "Pacific/Apia",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "99/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 10,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "isha": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   }
+  }
+ },
+ {
+  "slug": "samoa__savaii",
+  "country": "samoa",
+  "city": "Savai'i",
+  "coord": [
+   -13.6525,
+   -172.4053
+  ],
+  "tz": "Pacific/Apia",
+  "renderTz": "Pacific/Apia",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "97/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 8,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "isha": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   }
+  }
+ },
+ {
+  "slug": "samoa__siusega",
+  "country": "samoa",
+  "city": "Siusega",
+  "coord": [
+   -13.8332,
+   -171.8398
+  ],
+  "tz": "Pacific/Apia",
+  "renderTz": "Pacific/Apia",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "95/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 5,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   }
+  }
+ },
+ {
+  "slug": "samoa__upolu",
+  "country": "samoa",
+  "city": "Upolu",
+  "coord": [
+   -13.8767,
+   -171.5633
+  ],
+  "tz": "Pacific/Apia",
+  "renderTz": "Pacific/Apia",
+  "deltaMin": 0,
+  "gate": 2,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "95/149 of 150",
+  "pct": 99.3,
+  "worst": 2,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 29,
+    "worst": 2
+   },
+   "asr": {
+    "exact": 6,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   }
+  }
+ },
+ {
+  "slug": "samoa__vaiala",
+  "country": "samoa",
+  "city": "Vaiala",
+  "coord": [
+   -13.8296,
+   -171.7931
+  ],
+  "tz": "Pacific/Apia",
+  "renderTz": "Pacific/Apia",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "99/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 10,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "isha": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   }
+  }
+ },
+ {
+  "slug": "solomon-islands__auki",
+  "country": "solomon-islands",
+  "city": "Auki",
+  "coord": [
+   -8.7676,
+   160.7034
+  ],
+  "tz": "Pacific/Guadalcanal",
+  "renderTz": "Pacific/Guadalcanal",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "118/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 28,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   }
+  }
+ },
+ {
+  "slug": "solomon-islands__gizo",
+  "country": "solomon-islands",
+  "city": "Gizo",
+  "coord": [
+   -8.103,
+   156.8419
+  ],
+  "tz": "Pacific/Guadalcanal",
+  "renderTz": "Pacific/Guadalcanal",
+  "deltaMin": 0,
+  "gate": 2,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "119/149 of 150",
+  "pct": 99.3,
+  "worst": 2,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 29,
+    "worst": 2
+   },
+   "asr": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   }
+  }
+ },
+ {
+  "slug": "solomon-islands__honiara",
+  "country": "solomon-islands",
+  "city": "Honiara",
+  "coord": [
+   -9.4333,
+   159.95
+  ],
+  "tz": "Pacific/Guadalcanal",
+  "renderTz": "Pacific/Guadalcanal",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "118/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 28,
+    "within1": 30,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   }
+  }
+ },
+ {
+  "slug": "south-sudan__bentiu",
+  "country": "south-sudan",
+  "city": "Bentiu",
+  "coord": [
+   9.2317,
+   29.8389
+  ],
+  "tz": "Africa/Juba",
+  "renderTz": "Africa/Juba",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "98/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 9,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "south-sudan__bor",
+  "country": "south-sudan",
+  "city": "Bor",
+  "coord": [
+   6.2076,
+   31.5597
+  ],
+  "tz": "Africa/Juba",
+  "renderTz": "Europe/Istanbul",
+  "deltaMin": -60,
+  "gate": 2,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "107/149 of 150",
+  "pct": 99.3,
+  "worst": 2,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 29,
+    "worst": 2
+   },
+   "asr": {
+    "exact": 18,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "south-sudan__juba",
+  "country": "south-sudan",
+  "city": "Juba",
+  "coord": [
+   4.8594,
+   31.5713
+  ],
+  "tz": "Africa/Juba",
+  "renderTz": "Africa/Juba",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "108/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 19,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "south-sudan__malakal",
+  "country": "south-sudan",
+  "city": "Malakal",
+  "coord": [
+   9.5369,
+   31.6561
+  ],
+  "tz": "Africa/Juba",
+  "renderTz": "Africa/Juba",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "93/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 8,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 28,
+    "within1": 30,
+    "worst": 1
+   },
+   "isha": {
+    "exact": 28,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "south-sudan__maridi",
+  "country": "south-sudan",
+  "city": "Maridi",
+  "coord": [
+   4.915,
+   29.476
+  ],
+  "tz": "Africa/Juba",
+  "renderTz": "Africa/Juba",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "106/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 17,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   }
+  }
+ },
+ {
+  "slug": "south-sudan__rumbek",
+  "country": "south-sudan",
+  "city": "Rumbek",
+  "coord": [
+   6.805,
+   29.6821
+  ],
+  "tz": "Africa/Juba",
+  "renderTz": "Africa/Juba",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "105/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 17,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "isha": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "south-sudan__torit",
+  "country": "south-sudan",
+  "city": "Torit",
+  "coord": [
+   4.4118,
+   32.5705
+  ],
+  "tz": "Africa/Juba",
+  "renderTz": "Africa/Juba",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "111/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 21,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   }
+  }
+ },
+ {
+  "slug": "south-sudan__wau",
+  "country": "south-sudan",
+  "city": "Wau",
+  "coord": [
+   7.7055,
+   27.9959
+  ],
+  "tz": "Africa/Juba",
+  "renderTz": "Africa/Juba",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "107/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 21,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "isha": {
+    "exact": 27,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "south-sudan__yambio",
+  "country": "south-sudan",
+  "city": "Yambio",
+  "coord": [
+   4.568,
+   28.398
+  ],
+  "tz": "Africa/Juba",
+  "renderTz": "Africa/Juba",
+  "deltaMin": 0,
+  "gate": 2,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "109/149 of 150",
+  "pct": 99.3,
+  "worst": 2,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 29,
+    "worst": 2
+   },
+   "asr": {
+    "exact": 22,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 28,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "south-sudan__yei",
+  "country": "south-sudan",
+  "city": "Yei",
+  "coord": [
+   4.0907,
+   30.6773
+  ],
+  "tz": "Africa/Juba",
+  "renderTz": "Africa/Juba",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "111/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 21,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   }
+  }
+ },
+ {
+  "slug": "turkmenistan__ashgabat",
+  "country": "turkmenistan",
+  "city": "Ashgabat",
+  "coord": [
+   37.9601,
+   58.3261
+  ],
+  "tz": "Asia/Ashgabat",
+  "renderTz": "Asia/Ashgabat",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "103/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 19,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "isha": {
+    "exact": 26,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "turkmenistan__atamyrat",
+  "country": "turkmenistan",
+  "city": "Atamyrat",
+  "coord": [
+   37.8367,
+   65.215
+  ],
+  "tz": "Asia/Ashgabat",
+  "renderTz": "Asia/Ashgabat",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "92/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 8,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 25,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "turkmenistan__balkanabat",
+  "country": "turkmenistan",
+  "city": "Balkanabat",
+  "coord": [
+   39.5124,
+   54.3676
+  ],
+  "tz": "Asia/Ashgabat",
+  "renderTz": "Asia/Ashgabat",
+  "deltaMin": 0,
+  "gate": 2,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "98/149 of 150",
+  "pct": 99.3,
+  "worst": 2,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 29,
+    "worst": 2
+   },
+   "asr": {
+    "exact": 14,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 24,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "turkmenistan__bayramaly",
+  "country": "turkmenistan",
+  "city": "Bayramaly",
+  "coord": [
+   38.919,
+   54.4077
+  ],
+  "tz": "Asia/Ashgabat",
+  "renderTz": "Asia/Ashgabat",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "89/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 4,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 25,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "turkmenistan__dasoguz",
+  "country": "turkmenistan",
+  "city": "Daşoguz",
+  "coord": [
+   41.8335,
+   59.9666
+  ],
+  "tz": "Asia/Ashgabat",
+  "renderTz": "Asia/Ashgabat",
+  "deltaMin": 0,
+  "gate": 2,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "94/149 of 150",
+  "pct": 99.3,
+  "worst": 2,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 28,
+    "within1": 30,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 29,
+    "worst": 2
+   },
+   "asr": {
+    "exact": 15,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "isha": {
+    "exact": 22,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "turkmenistan__gumdag",
+  "country": "turkmenistan",
+  "city": "Gumdag",
+  "coord": [
+   39.2062,
+   54.5957
+  ],
+  "tz": "Asia/Ashgabat",
+  "renderTz": "Asia/Ashgabat",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "102/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 16,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 26,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "turkmenistan__mary",
+  "country": "turkmenistan",
+  "city": "Mary",
+  "coord": [
+   37.5938,
+   61.8308
+  ],
+  "tz": "Asia/Ashgabat",
+  "renderTz": "Asia/Ashgabat",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "105/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 20,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 25,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "turkmenistan__tejen",
+  "country": "turkmenistan",
+  "city": "Tejen",
+  "coord": [
+   37.3789,
+   60.4966
+  ],
+  "tz": "Asia/Ashgabat",
+  "renderTz": "Asia/Ashgabat",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "92/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 9,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 23,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "turkmenistan__turkmenabat",
+  "country": "turkmenistan",
+  "city": "Turkmenabat",
+  "coord": [
+   39.0732,
+   63.5786
+  ],
+  "tz": "Asia/Ashgabat",
+  "renderTz": "Asia/Ashgabat",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "105/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 19,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 27,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "turkmenistan__turkmenbasy",
+  "country": "turkmenistan",
+  "city": "Türkmenbaşy",
+  "coord": [
+   40.0234,
+   52.9721
+  ],
+  "tz": "Asia/Ashgabat",
+  "renderTz": "Asia/Ashgabat",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "90/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 5,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 26,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "vanuatu__isangel",
+  "country": "vanuatu",
+  "city": "Isangel",
+  "coord": [
+   -19.5413,
+   169.2621
+  ],
+  "tz": "Pacific/Efate",
+  "renderTz": "Pacific/Efate",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "117/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 28,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   }
+  }
+ },
+ {
+  "slug": "vanuatu__lakatoro",
+  "country": "vanuatu",
+  "city": "Lakatoro",
+  "coord": [
+   -16.0996,
+   167.4161
+  ],
+  "tz": "Pacific/Efate",
+  "renderTz": "Pacific/Efate",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "119/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   }
+  }
+ },
+ {
+  "slug": "vanuatu__lenakel",
+  "country": "vanuatu",
+  "city": "Lenakel",
+  "coord": [
+   -19.5385,
+   169.2206
+  ],
+  "tz": "Pacific/Efate",
+  "renderTz": "Pacific/Efate",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "113/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 26,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 28,
+    "within1": 30,
+    "worst": 1
+   },
+   "isha": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   }
+  }
+ },
+ {
+  "slug": "vanuatu__luganville",
+  "country": "vanuatu",
+  "city": "Luganville",
+  "coord": [
+   -15.5119,
+   167.1773
+  ],
+  "tz": "Pacific/Efate",
+  "renderTz": "Pacific/Efate",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "117/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "isha": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "vanuatu__norsup",
+  "country": "vanuatu",
+  "city": "Norsup",
+  "coord": [
+   -16.0754,
+   167.3826
+  ],
+  "tz": "Pacific/Efate",
+  "renderTz": "Pacific/Efate",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "116/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 26,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   }
+  }
+ },
+ {
+  "slug": "vanuatu__port-vila",
+  "country": "vanuatu",
+  "city": "Port vila",
+  "coord": [
+   -17.7416,
+   168.322
+  ],
+  "tz": "Pacific/Efate",
+  "renderTz": "Pacific/Efate",
+  "deltaMin": 0,
+  "gate": 2,
+  "recipe": {
+   "fajrAngle": 15,
+   "ishaAngle": 15,
+   "asr": "Shafi"
+  },
+  "joint": "83/142 of 150",
+  "pct": 94.7,
+  "worst": 2,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 25,
+    "within1": 30,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 26,
+    "within1": 30,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 24,
+    "worst": 2
+   },
+   "asr": {
+    "exact": 0,
+    "within1": 28,
+    "worst": 2
+   },
+   "maghrib": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   },
+   "isha": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "vanuatu__sola",
+  "country": "vanuatu",
+  "city": "Sola",
+  "coord": [
+   -13.8491,
+   167.5513
+  ],
+  "tz": "Pacific/Efate",
+  "renderTz": "Pacific/Efate",
+  "deltaMin": 0,
+  "gate": 1,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "asr": "Shafi"
+  },
+  "joint": "112/150 of 150",
+  "pct": 100,
+  "worst": 1,
+  "rows": 30,
+  "per": {
+   "fajr": {
+    "exact": 27,
+    "within1": 30,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "dhuhr": {
+    "exact": 0,
+    "within1": 30,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 26,
+    "within1": 30,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0
+   },
+   "isha": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1
+   }
+  }
+ }
+]

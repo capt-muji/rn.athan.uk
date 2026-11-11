@@ -1,0 +1,12864 @@
+[
+ {
+  "slug": "bowen",
+  "id": "11223",
+  "zone": "Australia/Brisbane",
+  "zoneExpected": "Australia/Brisbane",
+  "clockDefect": false,
+  "lat": -20.001,
+  "lon": 148.189,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    4,
+    365
+   ],
+   "dhuhr": [
+    4,
+    365
+   ],
+   "asr": [
+    4,
+    365
+   ],
+   "maghrib": [
+    4,
+    365
+   ],
+   "isha": [
+    10,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.32,
+   "sunrise": 0.3,
+   "dhuhr": 0.29,
+   "asr": 0.34,
+   "maghrib": 0.33,
+   "isha": 0.37
+  },
+  "bias": {
+   "fajr": 0.05,
+   "sunrise": 0.03,
+   "dhuhr": 0.04,
+   "asr": 0.06,
+   "maghrib": 0.06,
+   "isha": 0.06
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -67,
+   "isha": 73
+  },
+  "worst": 0.87,
+  "worstAt": "isha@2026-11-11"
+ },
+ {
+  "slug": "townsville",
+  "id": "11224",
+  "zone": "Australia/Brisbane",
+  "zoneExpected": "Australia/Brisbane",
+  "clockDefect": false,
+  "lat": -19.249,
+  "lon": 146.793,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    6,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    11,
+    365
+   ],
+   "maghrib": [
+    9,
+    365
+   ],
+   "isha": [
+    5,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.32,
+   "sunrise": 0.31,
+   "dhuhr": 0.29,
+   "asr": 0.32,
+   "maghrib": 0.33,
+   "isha": 0.36
+  },
+  "bias": {
+   "fajr": -0.03,
+   "sunrise": -0.05,
+   "dhuhr": -0.02,
+   "asr": -0.05,
+   "maghrib": -0.04,
+   "isha": -0.06
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -63,
+   "isha": 70
+  },
+  "worst": 0.9,
+  "worstAt": "isha@2026-03-16"
+ },
+ {
+  "slug": "cairns",
+  "id": "11225",
+  "zone": "Australia/Brisbane",
+  "zoneExpected": "Australia/Brisbane",
+  "clockDefect": false,
+  "lat": -16.867,
+  "lon": 145.751,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    4,
+    365
+   ],
+   "sunrise": [
+    6,
+    365
+   ],
+   "dhuhr": [
+    8,
+    365
+   ],
+   "asr": [
+    11,
+    365
+   ],
+   "maghrib": [
+    5,
+    365
+   ],
+   "isha": [
+    10,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.31,
+   "sunrise": 0.3,
+   "dhuhr": 0.3,
+   "asr": 0.33,
+   "maghrib": 0.33,
+   "isha": 0.35
+  },
+  "bias": {
+   "fajr": 0,
+   "sunrise": -0.05,
+   "dhuhr": -0.04,
+   "asr": -0.02,
+   "maghrib": -0.02,
+   "isha": -0.07
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -54,
+   "isha": 61
+  },
+  "worst": 0.87,
+  "worstAt": "isha@2026-03-07"
+ },
+ {
+  "slug": "emerald-q",
+  "id": "11226",
+  "zone": "Australia/Brisbane",
+  "zoneExpected": "Australia/Brisbane",
+  "clockDefect": false,
+  "lat": -23.464,
+  "lon": 148.137,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    8,
+    365
+   ],
+   "sunrise": [
+    3,
+    365
+   ],
+   "dhuhr": [
+    7,
+    365
+   ],
+   "asr": [
+    6,
+    365
+   ],
+   "maghrib": [
+    11,
+    365
+   ],
+   "isha": [
+    5,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.33,
+   "sunrise": 0.33,
+   "dhuhr": 0.28,
+   "asr": 0.35,
+   "maghrib": 0.35,
+   "isha": 0.37
+  },
+  "bias": {
+   "fajr": 0.08,
+   "sunrise": 0.05,
+   "dhuhr": 0.03,
+   "asr": 0.02,
+   "maghrib": 0.07,
+   "isha": 0
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -80,
+   "isha": 86
+  },
+  "worst": 0.87,
+  "worstAt": "isha@2026-02-07"
+ },
+ {
+  "slug": "frankston",
+  "id": "11227",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -38.112,
+  "lon": 145.105,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    10,
+    362
+   ],
+   "sunrise": [
+    13,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    7,
+    365
+   ],
+   "maghrib": [
+    7,
+    365
+   ],
+   "isha": [
+    4,
+    348
+   ]
+  },
+  "rms": {
+   "fajr": 0.42,
+   "sunrise": 0.33,
+   "dhuhr": 0.29,
+   "asr": 0.45,
+   "maghrib": 0.44,
+   "isha": 0.57
+  },
+  "bias": {
+   "fajr": 0.09,
+   "sunrise": 0.04,
+   "dhuhr": 0.04,
+   "asr": 0.08,
+   "maghrib": 0.03,
+   "isha": 0
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -97,
+   "isha": 221
+  },
+  "worst": 1.25,
+  "worstAt": "isha@2026-02-15"
+ },
+ {
+  "slug": "fremantle",
+  "id": "11228",
+  "zone": "Australia/Perth",
+  "zoneExpected": "Australia/Perth",
+  "clockDefect": false,
+  "lat": -32.044,
+  "lon": 115.772,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    9,
+    365
+   ],
+   "sunrise": [
+    3,
+    365
+   ],
+   "dhuhr": [
+    5,
+    365
+   ],
+   "asr": [
+    6,
+    356
+   ],
+   "maghrib": [
+    4,
+    357
+   ],
+   "isha": [
+    4,
+    347
+   ]
+  },
+  "rms": {
+   "fajr": 0.32,
+   "sunrise": 0.31,
+   "dhuhr": 0.31,
+   "asr": 0.46,
+   "maghrib": 0.47,
+   "isha": 0.52
+  },
+  "bias": {
+   "fajr": -0.07,
+   "sunrise": -0.08,
+   "dhuhr": -0.08,
+   "asr": -0.09,
+   "maghrib": -0.09,
+   "isha": -0.1
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -121,
+   "isha": 126
+  },
+  "worst": 1.32,
+  "worstAt": "isha@2026-03-02"
+ },
+ {
+  "slug": "george-town-t",
+  "id": "11229",
+  "zone": "Australia/Hobart",
+  "zoneExpected": "Australia/Hobart",
+  "clockDefect": false,
+  "lat": -41.084,
+  "lon": 146.793,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    3,
+    356
+   ],
+   "sunrise": [
+    7,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    10,
+    365
+   ],
+   "maghrib": [
+    4,
+    365
+   ],
+   "isha": [
+    8,
+    335
+   ]
+  },
+  "rms": {
+   "fajr": 0.46,
+   "sunrise": 0.35,
+   "dhuhr": 0.3,
+   "asr": 0.47,
+   "maghrib": 0.48,
+   "isha": 0.61
+  },
+  "bias": {
+   "fajr": 0.09,
+   "sunrise": 0.08,
+   "dhuhr": 0.08,
+   "asr": 0.07,
+   "maghrib": 0.07,
+   "isha": 0.03
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -119,
+   "isha": 243
+  },
+  "worst": 1.3,
+  "worstAt": "isha@2026-03-01"
+ },
+ {
+  "slug": "geraldton",
+  "id": "11230",
+  "zone": "Australia/Perth",
+  "zoneExpected": "Australia/Perth",
+  "clockDefect": false,
+  "lat": -28.735,
+  "lon": 114.595,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    7,
+    365
+   ],
+   "sunrise": [
+    3,
+    365
+   ],
+   "dhuhr": [
+    9,
+    365
+   ],
+   "asr": [
+    3,
+    360
+   ],
+   "maghrib": [
+    1,
+    365
+   ],
+   "isha": [
+    5,
+    356
+   ]
+  },
+  "rms": {
+   "fajr": 0.31,
+   "sunrise": 0.29,
+   "dhuhr": 0.29,
+   "asr": 0.43,
+   "maghrib": 0.41,
+   "isha": 0.49
+  },
+  "bias": {
+   "fajr": 0.04,
+   "sunrise": -0.02,
+   "dhuhr": 0.02,
+   "asr": -0.02,
+   "maghrib": 0,
+   "isha": -0.05
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -104,
+   "isha": 110
+  },
+  "worst": 1.18,
+  "worstAt": "isha@2026-02-26"
+ },
+ {
+  "slug": "gladstone",
+  "id": "11231",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -23.802,
+  "lon": 151.262,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    6,
+    365
+   ],
+   "dhuhr": [
+    2,
+    365
+   ],
+   "asr": [
+    6,
+    365
+   ],
+   "maghrib": [
+    3,
+    365
+   ],
+   "isha": [
+    9,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.32,
+   "sunrise": 0.31,
+   "dhuhr": 0.3,
+   "asr": 0.34,
+   "maghrib": 0.37,
+   "isha": 0.4
+  },
+  "bias": {
+   "fajr": -0.04,
+   "sunrise": -0.05,
+   "dhuhr": -0.06,
+   "asr": -0.06,
+   "maghrib": -0.08,
+   "isha": -0.09
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -22,
+   "isha": 148
+  },
+  "worst": 0.98,
+  "worstAt": "isha@2026-03-24"
+ },
+ {
+  "slug": "glenorchy",
+  "id": "11232",
+  "zone": "Australia/Hobart",
+  "zoneExpected": "Australia/Hobart",
+  "clockDefect": false,
+  "lat": -42.826,
+  "lon": 147.272,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    356
+   ],
+   "sunrise": [
+    6,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    6,
+    360
+   ],
+   "maghrib": [
+    4,
+    358
+   ],
+   "isha": [
+    1,
+    316
+   ]
+  },
+  "rms": {
+   "fajr": 0.48,
+   "sunrise": 0.36,
+   "dhuhr": 0.3,
+   "asr": 0.47,
+   "maghrib": 0.49,
+   "isha": 0.67
+  },
+  "bias": {
+   "fajr": -0.05,
+   "sunrise": -0.09,
+   "dhuhr": -0.06,
+   "asr": -0.06,
+   "maghrib": -0.05,
+   "isha": -0.09
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -133,
+   "isha": 257
+  },
+  "worst": 1.48,
+  "worstAt": "isha@2026-02-26"
+ },
+ {
+  "slug": "gosford",
+  "id": "11233",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -33.39,
+  "lon": 151.325,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    4,
+    365
+   ],
+   "sunrise": [
+    11,
+    365
+   ],
+   "dhuhr": [
+    3,
+    365
+   ],
+   "asr": [
+    3,
+    365
+   ],
+   "maghrib": [
+    5,
+    365
+   ],
+   "isha": [
+    2,
+    360
+   ]
+  },
+  "rms": {
+   "fajr": 0.39,
+   "sunrise": 0.33,
+   "dhuhr": 0.29,
+   "asr": 0.39,
+   "maghrib": 0.39,
+   "isha": 0.47
+  },
+  "bias": {
+   "fajr": 0.04,
+   "sunrise": 0.03,
+   "dhuhr": 0.03,
+   "asr": 0.03,
+   "maghrib": 0.02,
+   "isha": 0
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -68,
+   "isha": 193
+  },
+  "worst": 1.1,
+  "worstAt": "isha@2026-03-07"
+ },
+ {
+  "slug": "goulburn",
+  "id": "11234",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -34.708,
+  "lon": 149.689,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    5,
+    360
+   ],
+   "sunrise": [
+    5,
+    365
+   ],
+   "dhuhr": [
+    3,
+    365
+   ],
+   "asr": [
+    10,
+    365
+   ],
+   "maghrib": [
+    9,
+    365
+   ],
+   "isha": [
+    3,
+    359
+   ]
+  },
+  "rms": {
+   "fajr": 0.42,
+   "sunrise": 0.33,
+   "dhuhr": 0.29,
+   "asr": 0.41,
+   "maghrib": 0.41,
+   "isha": 0.48
+  },
+  "bias": {
+   "fajr": 0.12,
+   "sunrise": 0.02,
+   "dhuhr": 0.03,
+   "asr": 0.06,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -75,
+   "isha": 201
+  },
+  "worst": 1.2,
+  "worstAt": "isha@2026-02-24"
+ },
+ {
+  "slug": "grafton",
+  "id": "11235",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -29.684,
+  "lon": 152.939,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    7,
+    365
+   ],
+   "dhuhr": [
+    3,
+    365
+   ],
+   "asr": [
+    4,
+    365
+   ],
+   "maghrib": [
+    9,
+    365
+   ],
+   "isha": [
+    7,
+    363
+   ]
+  },
+  "rms": {
+   "fajr": 0.36,
+   "sunrise": 0.32,
+   "dhuhr": 0.29,
+   "asr": 0.35,
+   "maghrib": 0.36,
+   "isha": 0.44
+  },
+  "bias": {
+   "fajr": 0.03,
+   "sunrise": -0.02,
+   "dhuhr": -0.02,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": -0.05
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -49,
+   "isha": 174
+  },
+  "worst": 1.05,
+  "worstAt": "isha@2026-03-11"
+ },
+ {
+  "slug": "gympie",
+  "id": "11236",
+  "zone": "Australia/Brisbane",
+  "zoneExpected": "Australia/Brisbane",
+  "clockDefect": false,
+  "lat": -26.149,
+  "lon": 152.658,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    3,
+    365
+   ],
+   "sunrise": [
+    9,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    11,
+    365
+   ],
+   "maghrib": [
+    11,
+    365
+   ],
+   "isha": [
+    7,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.37,
+   "sunrise": 0.32,
+   "dhuhr": 0.29,
+   "asr": 0.35,
+   "maghrib": 0.36,
+   "isha": 0.38
+  },
+  "bias": {
+   "fajr": 0.08,
+   "sunrise": 0.03,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0.01,
+   "isha": 0.01
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -93,
+   "isha": 98
+  },
+  "worst": 0.95,
+  "worstAt": "isha@2026-03-12"
+ },
+ {
+  "slug": "hamilton-tasmania",
+  "id": "11237",
+  "zone": "Australia/Hobart",
+  "zoneExpected": "Australia/Hobart",
+  "clockDefect": false,
+  "lat": -42.567,
+  "lon": 146.856,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    7,
+    362
+   ],
+   "sunrise": [
+    5,
+    365
+   ],
+   "dhuhr": [
+    7,
+    365
+   ],
+   "asr": [
+    4,
+    363
+   ],
+   "maghrib": [
+    4,
+    359
+   ],
+   "isha": [
+    3,
+    317
+   ]
+  },
+  "rms": {
+   "fajr": 0.49,
+   "sunrise": 0.36,
+   "dhuhr": 0.28,
+   "asr": 0.48,
+   "maghrib": 0.49,
+   "isha": 0.66
+  },
+  "bias": {
+   "fajr": 0.01,
+   "sunrise": 0,
+   "dhuhr": 0.03,
+   "asr": 0,
+   "maghrib": 0.04,
+   "isha": 0.04
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -131,
+   "isha": 254
+  },
+  "worst": 1.45,
+  "worstAt": "isha@2026-11-17"
+ },
+ {
+  "slug": "horsham",
+  "id": "11238",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -36.712,
+  "lon": 142.189,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    4,
+    365
+   ],
+   "sunrise": [
+    3,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    5,
+    364
+   ],
+   "maghrib": [
+    2,
+    364
+   ],
+   "isha": [
+    2,
+    349
+   ]
+  },
+  "rms": {
+   "fajr": 0.37,
+   "sunrise": 0.33,
+   "dhuhr": 0.29,
+   "asr": 0.43,
+   "maghrib": 0.45,
+   "isha": 0.52
+  },
+  "bias": {
+   "fajr": 0.02,
+   "sunrise": -0.02,
+   "dhuhr": -0.01,
+   "asr": -0.03,
+   "maghrib": -0.02,
+   "isha": 0
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -88,
+   "isha": 212
+  },
+  "worst": 1.23,
+  "worstAt": "isha@2026-02-27"
+ },
+ {
+  "slug": "hurstville",
+  "id": "11239",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -33.949,
+  "lon": 151.106,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    10,
+    365
+   ],
+   "sunrise": [
+    5,
+    365
+   ],
+   "dhuhr": [
+    9,
+    365
+   ],
+   "asr": [
+    3,
+    365
+   ],
+   "maghrib": [
+    6,
+    365
+   ],
+   "isha": [
+    4,
+    356
+   ]
+  },
+  "rms": {
+   "fajr": 0.37,
+   "sunrise": 0.34,
+   "dhuhr": 0.28,
+   "asr": 0.39,
+   "maghrib": 0.41,
+   "isha": 0.48
+  },
+  "bias": {
+   "fajr": -0.04,
+   "sunrise": -0.06,
+   "dhuhr": -0.02,
+   "asr": -0.05,
+   "maghrib": -0.03,
+   "isha": -0.06
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -71,
+   "isha": 196
+  },
+  "worst": 1.15,
+  "worstAt": "isha@2026-03-11"
+ },
+ {
+  "slug": "ingham",
+  "id": "11240",
+  "zone": "Australia/Brisbane",
+  "zoneExpected": "Australia/Brisbane",
+  "clockDefect": false,
+  "lat": -18.659,
+  "lon": 146.137,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    7,
+    365
+   ],
+   "sunrise": [
+    6,
+    365
+   ],
+   "dhuhr": [
+    8,
+    365
+   ],
+   "asr": [
+    2,
+    365
+   ],
+   "maghrib": [
+    8,
+    365
+   ],
+   "isha": [
+    8,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.31,
+   "sunrise": 0.31,
+   "dhuhr": 0.28,
+   "asr": 0.33,
+   "maghrib": 0.34,
+   "isha": 0.36
+  },
+  "bias": {
+   "fajr": 0.06,
+   "sunrise": 0.06,
+   "dhuhr": 0.03,
+   "asr": 0.04,
+   "maghrib": 0.03,
+   "isha": 0.05
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -61,
+   "isha": 68
+  },
+  "worst": 0.82,
+  "worstAt": "isha@2026-11-16"
+ },
+ {
+  "slug": "inverell",
+  "id": "11241",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -29.811,
+  "lon": 151.106,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    3,
+    365
+   ],
+   "sunrise": [
+    10,
+    365
+   ],
+   "dhuhr": [
+    9,
+    365
+   ],
+   "asr": [
+    6,
+    365
+   ],
+   "maghrib": [
+    3,
+    365
+   ],
+   "isha": [
+    6,
+    364
+   ]
+  },
+  "rms": {
+   "fajr": 0.37,
+   "sunrise": 0.33,
+   "dhuhr": 0.28,
+   "asr": 0.41,
+   "maghrib": 0.39,
+   "isha": 0.42
+  },
+  "bias": {
+   "fajr": -0.02,
+   "sunrise": 0.01,
+   "dhuhr": 0.02,
+   "asr": 0.04,
+   "maghrib": 0,
+   "isha": 0.05
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -49,
+   "isha": 174
+  },
+  "worst": 1.02,
+  "worstAt": "isha@2026-11-16"
+ },
+ {
+  "slug": "ipswich",
+  "id": "11242",
+  "zone": "Australia/Brisbane",
+  "zoneExpected": "Australia/Brisbane",
+  "clockDefect": false,
+  "lat": -27.652,
+  "lon": 152.772,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    7,
+    365
+   ],
+   "sunrise": [
+    8,
+    365
+   ],
+   "dhuhr": [
+    5,
+    365
+   ],
+   "asr": [
+    4,
+    365
+   ],
+   "maghrib": [
+    4,
+    365
+   ],
+   "isha": [
+    5,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.37,
+   "sunrise": 0.34,
+   "dhuhr": 0.3,
+   "asr": 0.38,
+   "maghrib": 0.37,
+   "isha": 0.45
+  },
+  "bias": {
+   "fajr": -0.09,
+   "sunrise": -0.06,
+   "dhuhr": -0.07,
+   "asr": -0.02,
+   "maghrib": -0.05,
+   "isha": -0.05
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -99,
+   "isha": 104
+  },
+  "worst": 1,
+  "worstAt": "isha@2026-03-24"
+ },
+ {
+  "slug": "katoomba",
+  "id": "11243",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -33.705,
+  "lon": 150.293,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    2,
+    365
+   ],
+   "sunrise": [
+    4,
+    365
+   ],
+   "dhuhr": [
+    5,
+    365
+   ],
+   "asr": [
+    13,
+    365
+   ],
+   "maghrib": [
+    7,
+    365
+   ],
+   "isha": [
+    6,
+    358
+   ]
+  },
+  "rms": {
+   "fajr": 0.39,
+   "sunrise": 0.32,
+   "dhuhr": 0.3,
+   "asr": 0.39,
+   "maghrib": 0.41,
+   "isha": 0.47
+  },
+  "bias": {
+   "fajr": 0.09,
+   "sunrise": 0.11,
+   "dhuhr": 0.08,
+   "asr": 0.07,
+   "maghrib": 0.08,
+   "isha": 0.08
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -69,
+   "isha": 195
+  },
+  "worst": 1.07,
+  "worstAt": "isha@2026-11-18"
+ },
+ {
+  "slug": "kempsey",
+  "id": "11244",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -31.059,
+  "lon": 152.804,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    10,
+    365
+   ],
+   "sunrise": [
+    8,
+    365
+   ],
+   "dhuhr": [
+    8,
+    365
+   ],
+   "asr": [
+    6,
+    365
+   ],
+   "maghrib": [
+    6,
+    365
+   ],
+   "isha": [
+    4,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.37,
+   "sunrise": 0.34,
+   "dhuhr": 0.31,
+   "asr": 0.38,
+   "maghrib": 0.41,
+   "isha": 0.45
+  },
+  "bias": {
+   "fajr": 0.1,
+   "sunrise": 0.09,
+   "dhuhr": 0.1,
+   "asr": 0.08,
+   "maghrib": 0.11,
+   "isha": 0.07
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -55,
+   "isha": 181
+  },
+  "worst": 0.98,
+  "worstAt": "isha@2026-02-23"
+ },
+ {
+  "slug": "kingaroy",
+  "id": "11245",
+  "zone": "Australia/Brisbane",
+  "zoneExpected": "Australia/Brisbane",
+  "clockDefect": false,
+  "lat": -26.504,
+  "lon": 151.835,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    10,
+    365
+   ],
+   "dhuhr": [
+    4,
+    365
+   ],
+   "asr": [
+    12,
+    365
+   ],
+   "maghrib": [
+    7,
+    365
+   ],
+   "isha": [
+    6,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.36,
+   "sunrise": 0.32,
+   "dhuhr": 0.29,
+   "asr": 0.35,
+   "maghrib": 0.36,
+   "isha": 0.41
+  },
+  "bias": {
+   "fajr": 0.03,
+   "sunrise": 0.01,
+   "dhuhr": 0.05,
+   "asr": 0.01,
+   "maghrib": 0.03,
+   "isha": -0.03
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -93,
+   "isha": 100
+  },
+  "worst": 0.9,
+  "worstAt": "isha@2026-03-01"
+ },
+ {
+  "slug": "launceston",
+  "id": "11246",
+  "zone": "Australia/Hobart",
+  "zoneExpected": "Australia/Hobart",
+  "clockDefect": false,
+  "lat": -41.417,
+  "lon": 147.126,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    5,
+    356
+   ],
+   "sunrise": [
+    10,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    1,
+    364
+   ],
+   "maghrib": [
+    6,
+    363
+   ],
+   "isha": [
+    2,
+    328
+   ]
+  },
+  "rms": {
+   "fajr": 0.48,
+   "sunrise": 0.35,
+   "dhuhr": 0.28,
+   "asr": 0.47,
+   "maghrib": 0.5,
+   "isha": 0.62
+  },
+  "bias": {
+   "fajr": 0.07,
+   "sunrise": 0.01,
+   "dhuhr": 0.02,
+   "asr": 0.02,
+   "maghrib": 0.05,
+   "isha": -0.04
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -122,
+   "isha": 245
+  },
+  "worst": 1.42,
+  "worstAt": "isha@2026-02-13"
+ },
+ {
+  "slug": "lidcombe",
+  "id": "11247",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -33.844,
+  "lon": 151.044,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    15,
+    365
+   ],
+   "dhuhr": [
+    5,
+    365
+   ],
+   "asr": [
+    2,
+    365
+   ],
+   "maghrib": [
+    7,
+    365
+   ],
+   "isha": [
+    3,
+    356
+   ]
+  },
+  "rms": {
+   "fajr": 0.37,
+   "sunrise": 0.31,
+   "dhuhr": 0.29,
+   "asr": 0.4,
+   "maghrib": 0.41,
+   "isha": 0.49
+  },
+  "bias": {
+   "fajr": 0,
+   "sunrise": -0.02,
+   "dhuhr": 0,
+   "asr": -0.03,
+   "maghrib": -0.03,
+   "isha": -0.04
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -71,
+   "isha": 195
+  },
+  "worst": 1.17,
+  "worstAt": "isha@2026-02-28"
+ },
+ {
+  "slug": "lithgow",
+  "id": "11248",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -33.455,
+  "lon": 150.137,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    9,
+    365
+   ],
+   "dhuhr": [
+    7,
+    365
+   ],
+   "asr": [
+    8,
+    365
+   ],
+   "maghrib": [
+    4,
+    365
+   ],
+   "isha": [
+    7,
+    358
+   ]
+  },
+  "rms": {
+   "fajr": 0.39,
+   "sunrise": 0.34,
+   "dhuhr": 0.28,
+   "asr": 0.39,
+   "maghrib": 0.39,
+   "isha": 0.47
+  },
+  "bias": {
+   "fajr": 0.04,
+   "sunrise": -0.01,
+   "dhuhr": -0.02,
+   "asr": -0.02,
+   "maghrib": 0.01,
+   "isha": -0.04
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -69,
+   "isha": 193
+  },
+  "worst": 1.15,
+  "worstAt": "isha@2026-02-13"
+ },
+ {
+  "slug": "lismore",
+  "id": "11249",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -28.819,
+  "lon": 153.293,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    3,
+    365
+   ],
+   "dhuhr": [
+    5,
+    365
+   ],
+   "asr": [
+    4,
+    365
+   ],
+   "maghrib": [
+    5,
+    365
+   ],
+   "isha": [
+    7,
+    364
+   ]
+  },
+  "rms": {
+   "fajr": 0.37,
+   "sunrise": 0.33,
+   "dhuhr": 0.29,
+   "asr": 0.38,
+   "maghrib": 0.37,
+   "isha": 0.41
+  },
+  "bias": {
+   "fajr": -0.06,
+   "sunrise": -0.04,
+   "dhuhr": -0.02,
+   "asr": -0.04,
+   "maghrib": -0.04,
+   "isha": -0.05
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -45,
+   "isha": 170
+  },
+  "worst": 1.02,
+  "worstAt": "isha@2026-03-09"
+ },
+ {
+  "slug": "liverpool",
+  "id": "11250",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -33.887,
+  "lon": 150.897,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    5,
+    365
+   ],
+   "sunrise": [
+    8,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    4,
+    365
+   ],
+   "maghrib": [
+    1,
+    365
+   ],
+   "isha": [
+    4,
+    360
+   ]
+  },
+  "rms": {
+   "fajr": 0.4,
+   "sunrise": 0.35,
+   "dhuhr": 0.29,
+   "asr": 0.4,
+   "maghrib": 0.4,
+   "isha": 0.47
+  },
+  "bias": {
+   "fajr": 0.11,
+   "sunrise": 0.03,
+   "dhuhr": 0.03,
+   "asr": 0.07,
+   "maghrib": 0.06,
+   "isha": 0.01
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -70,
+   "isha": 196
+  },
+  "worst": 1.07,
+  "worstAt": "isha@2026-02-27"
+ },
+ {
+  "slug": "mackay",
+  "id": "11251",
+  "zone": "Australia/Brisbane",
+  "zoneExpected": "Australia/Brisbane",
+  "clockDefect": false,
+  "lat": -21.13,
+  "lon": 149.158,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    9,
+    365
+   ],
+   "dhuhr": [
+    7,
+    365
+   ],
+   "asr": [
+    3,
+    365
+   ],
+   "maghrib": [
+    2,
+    365
+   ],
+   "isha": [
+    4,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.32,
+   "sunrise": 0.3,
+   "dhuhr": 0.29,
+   "asr": 0.34,
+   "maghrib": 0.33,
+   "isha": 0.36
+  },
+  "bias": {
+   "fajr": 0.02,
+   "sunrise": 0.01,
+   "dhuhr": 0,
+   "asr": 0.01,
+   "maghrib": 0.01,
+   "isha": 0
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -71,
+   "isha": 77
+  },
+  "worst": 0.85,
+  "worstAt": "isha@2026-03-05"
+ },
+ {
+  "slug": "maitland",
+  "id": "11252",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -32.733,
+  "lon": 151.585,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    7,
+    365
+   ],
+   "sunrise": [
+    7,
+    365
+   ],
+   "dhuhr": [
+    4,
+    365
+   ],
+   "asr": [
+    6,
+    365
+   ],
+   "maghrib": [
+    6,
+    365
+   ],
+   "isha": [
+    5,
+    360
+   ]
+  },
+  "rms": {
+   "fajr": 0.38,
+   "sunrise": 0.33,
+   "dhuhr": 0.29,
+   "asr": 0.38,
+   "maghrib": 0.39,
+   "isha": 0.46
+  },
+  "bias": {
+   "fajr": 0.04,
+   "sunrise": 0.04,
+   "dhuhr": 0.04,
+   "asr": 0.02,
+   "maghrib": 0.03,
+   "isha": -0.02
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -64,
+   "isha": 190
+  },
+  "worst": 1.08,
+  "worstAt": "isha@2026-02-27"
+ },
+ {
+  "slug": "mosman",
+  "id": "11253",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -33.834,
+  "lon": 151.252,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    7,
+    365
+   ],
+   "dhuhr": [
+    9,
+    365
+   ],
+   "asr": [
+    6,
+    365
+   ],
+   "maghrib": [
+    7,
+    365
+   ],
+   "isha": [
+    3,
+    357
+   ]
+  },
+  "rms": {
+   "fajr": 0.38,
+   "sunrise": 0.33,
+   "dhuhr": 0.3,
+   "asr": 0.4,
+   "maghrib": 0.4,
+   "isha": 0.49
+  },
+  "bias": {
+   "fajr": -0.07,
+   "sunrise": -0.03,
+   "dhuhr": -0.06,
+   "asr": -0.07,
+   "maghrib": -0.05,
+   "isha": -0.04
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -70,
+   "isha": 195
+  },
+  "worst": 1.13,
+  "worstAt": "isha@2026-02-18"
+ },
+ {
+  "slug": "maryborough-v",
+  "id": "11254",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -37.033,
+  "lon": 143.751,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    4,
+    365
+   ],
+   "sunrise": [
+    6,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    1,
+    361
+   ],
+   "maghrib": [
+    8,
+    359
+   ],
+   "isha": [
+    3,
+    340
+   ]
+  },
+  "rms": {
+   "fajr": 0.42,
+   "sunrise": 0.34,
+   "dhuhr": 0.31,
+   "asr": 0.47,
+   "maghrib": 0.44,
+   "isha": 0.57
+  },
+  "bias": {
+   "fajr": -0.05,
+   "sunrise": -0.11,
+   "dhuhr": -0.09,
+   "asr": -0.13,
+   "maghrib": -0.1,
+   "isha": -0.1
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -90,
+   "isha": 214
+  },
+  "worst": 1.35,
+  "worstAt": "isha@2026-03-05"
+ },
+ {
+  "slug": "manly",
+  "id": "11255",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -33.762,
+  "lon": 151.293,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    10,
+    365
+   ],
+   "sunrise": [
+    11,
+    365
+   ],
+   "dhuhr": [
+    5,
+    365
+   ],
+   "asr": [
+    6,
+    365
+   ],
+   "maghrib": [
+    5,
+    363
+   ],
+   "isha": [
+    7,
+    350
+   ]
+  },
+  "rms": {
+   "fajr": 0.36,
+   "sunrise": 0.32,
+   "dhuhr": 0.3,
+   "asr": 0.4,
+   "maghrib": 0.4,
+   "isha": 0.49
+  },
+  "bias": {
+   "fajr": -0.03,
+   "sunrise": -0.05,
+   "dhuhr": -0.05,
+   "asr": -0.07,
+   "maghrib": -0.07,
+   "isha": -0.13
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -70,
+   "isha": 195
+  },
+  "worst": 1.22,
+  "worstAt": "isha@2026-02-14"
+ },
+ {
+  "slug": "maryborough-q",
+  "id": "11256",
+  "zone": "Australia/Brisbane",
+  "zoneExpected": "Australia/Brisbane",
+  "clockDefect": false,
+  "lat": -25.523,
+  "lon": 152.699,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    7,
+    365
+   ],
+   "sunrise": [
+    7,
+    365
+   ],
+   "dhuhr": [
+    7,
+    365
+   ],
+   "asr": [
+    9,
+    365
+   ],
+   "maghrib": [
+    7,
+    365
+   ],
+   "isha": [
+    5,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.33,
+   "sunrise": 0.31,
+   "dhuhr": 0.3,
+   "asr": 0.35,
+   "maghrib": 0.33,
+   "isha": 0.38
+  },
+  "bias": {
+   "fajr": 0.07,
+   "sunrise": 0.03,
+   "dhuhr": 0.02,
+   "asr": 0.04,
+   "maghrib": 0.06,
+   "isha": 0.02
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -90,
+   "isha": 95
+  },
+  "worst": 0.88,
+  "worstAt": "isha@2026-03-03"
+ },
+ {
+  "slug": "millecent",
+  "id": "11257",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -37.618,
+  "lon": 147.855,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    3,
+    365
+   ],
+   "sunrise": [
+    8,
+    365
+   ],
+   "dhuhr": [
+    8,
+    365
+   ],
+   "asr": [
+    5,
+    365
+   ],
+   "maghrib": [
+    8,
+    364
+   ],
+   "isha": [
+    7,
+    346
+   ]
+  },
+  "rms": {
+   "fajr": 0.41,
+   "sunrise": 0.35,
+   "dhuhr": 0.28,
+   "asr": 0.43,
+   "maghrib": 0.45,
+   "isha": 0.54
+  },
+  "bias": {
+   "fajr": -0.05,
+   "sunrise": -0.06,
+   "dhuhr": -0.01,
+   "asr": -0.05,
+   "maghrib": -0.04,
+   "isha": -0.02
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -93,
+   "isha": 218
+  },
+  "worst": 1.22,
+  "worstAt": "isha@2026-03-06"
+ },
+ {
+  "slug": "moe",
+  "id": "11258",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -38.156,
+  "lon": 146.251,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    4,
+    365
+   ],
+   "sunrise": [
+    5,
+    365
+   ],
+   "dhuhr": [
+    7,
+    365
+   ],
+   "asr": [
+    6,
+    365
+   ],
+   "maghrib": [
+    5,
+    364
+   ],
+   "isha": [
+    3,
+    339
+   ]
+  },
+  "rms": {
+   "fajr": 0.4,
+   "sunrise": 0.35,
+   "dhuhr": 0.3,
+   "asr": 0.43,
+   "maghrib": 0.44,
+   "isha": 0.56
+  },
+  "bias": {
+   "fajr": 0.01,
+   "sunrise": -0.02,
+   "dhuhr": -0.04,
+   "asr": -0.04,
+   "maghrib": -0.02,
+   "isha": -0.07
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -97,
+   "isha": 222
+  },
+  "worst": 1.27,
+  "worstAt": "isha@2026-02-06"
+ },
+ {
+  "slug": "mona-vale",
+  "id": "11259",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -33.655,
+  "lon": 151.293,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    5,
+    365
+   ],
+   "sunrise": [
+    4,
+    365
+   ],
+   "dhuhr": [
+    5,
+    365
+   ],
+   "asr": [
+    6,
+    365
+   ],
+   "maghrib": [
+    7,
+    365
+   ],
+   "isha": [
+    5,
+    357
+   ]
+  },
+  "rms": {
+   "fajr": 0.39,
+   "sunrise": 0.33,
+   "dhuhr": 0.29,
+   "asr": 0.39,
+   "maghrib": 0.39,
+   "isha": 0.47
+  },
+  "bias": {
+   "fajr": 0.07,
+   "sunrise": 0.04,
+   "dhuhr": 0.03,
+   "asr": 0.02,
+   "maghrib": 0.03,
+   "isha": -0.01
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -69,
+   "isha": 195
+  },
+  "worst": 1.12,
+  "worstAt": "isha@2026-02-27"
+ },
+ {
+  "slug": "mooroolbark",
+  "id": "11260",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -37.8,
+  "lon": 145.293,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    10,
+    365
+   ],
+   "sunrise": [
+    6,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    4,
+    365
+   ],
+   "maghrib": [
+    9,
+    365
+   ],
+   "isha": [
+    3,
+    337
+   ]
+  },
+  "rms": {
+   "fajr": 0.42,
+   "sunrise": 0.32,
+   "dhuhr": 0.29,
+   "asr": 0.43,
+   "maghrib": 0.46,
+   "isha": 0.59
+  },
+  "bias": {
+   "fajr": 0.03,
+   "sunrise": 0.04,
+   "dhuhr": 0.06,
+   "asr": 0.07,
+   "maghrib": 0.08,
+   "isha": 0.1
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -94,
+   "isha": 219
+  },
+  "worst": 1.28,
+  "worstAt": "isha@2026-11-06"
+ },
+ {
+  "slug": "mornington-q",
+  "id": "11261",
+  "zone": "Australia/Brisbane",
+  "zoneExpected": "Australia/Brisbane",
+  "clockDefect": false,
+  "lat": -16.587,
+  "lon": 139.189,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    3,
+    365
+   ],
+   "sunrise": [
+    3,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    8,
+    365
+   ],
+   "maghrib": [
+    7,
+    365
+   ],
+   "isha": [
+    3,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.3,
+   "sunrise": 0.3,
+   "dhuhr": 0.29,
+   "asr": 0.35,
+   "maghrib": 0.32,
+   "isha": 0.36
+  },
+  "bias": {
+   "fajr": 0.01,
+   "sunrise": 0,
+   "dhuhr": -0.02,
+   "asr": -0.03,
+   "maghrib": -0.01,
+   "isha": -0.04
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -53,
+   "isha": 60
+  },
+  "worst": 0.88,
+  "worstAt": "isha@2026-02-23"
+ },
+ {
+  "slug": "morwell",
+  "id": "11262",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -38.211,
+  "lon": 146.387,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    9,
+    362
+   ],
+   "sunrise": [
+    5,
+    365
+   ],
+   "dhuhr": [
+    8,
+    365
+   ],
+   "asr": [
+    7,
+    365
+   ],
+   "maghrib": [
+    0,
+    365
+   ],
+   "isha": [
+    7,
+    336
+   ]
+  },
+  "rms": {
+   "fajr": 0.43,
+   "sunrise": 0.33,
+   "dhuhr": 0.28,
+   "asr": 0.43,
+   "maghrib": 0.47,
+   "isha": 0.58
+  },
+  "bias": {
+   "fajr": 0.1,
+   "sunrise": 0.04,
+   "dhuhr": 0.02,
+   "asr": 0.03,
+   "maghrib": 0.04,
+   "isha": -0.01
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -98,
+   "isha": 222
+  },
+  "worst": 1.25,
+  "worstAt": "isha@2026-02-22"
+ },
+ {
+  "slug": "mount-gambier",
+  "id": "11263",
+  "zone": "Australia/Adelaide",
+  "zoneExpected": "Australia/Adelaide",
+  "clockDefect": false,
+  "lat": -37.849,
+  "lon": 140.772,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    5,
+    365
+   ],
+   "sunrise": [
+    6,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    5,
+    364
+   ],
+   "maghrib": [
+    11,
+    363
+   ],
+   "isha": [
+    7,
+    340
+   ]
+  },
+  "rms": {
+   "fajr": 0.4,
+   "sunrise": 0.33,
+   "dhuhr": 0.3,
+   "asr": 0.42,
+   "maghrib": 0.44,
+   "isha": 0.56
+  },
+  "bias": {
+   "fajr": -0.06,
+   "sunrise": 0.01,
+   "dhuhr": -0.01,
+   "asr": 0,
+   "maghrib": -0.03,
+   "isha": 0.02
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -95,
+   "isha": 219
+  },
+  "worst": 1.2,
+  "worstAt": "isha@2026-02-21"
+ },
+ {
+  "slug": "mount-isa",
+  "id": "11264",
+  "zone": "Australia/Brisbane",
+  "zoneExpected": "Australia/Brisbane",
+  "clockDefect": false,
+  "lat": -20.705,
+  "lon": 139.491,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    9,
+    365
+   ],
+   "sunrise": [
+    7,
+    365
+   ],
+   "dhuhr": [
+    3,
+    365
+   ],
+   "asr": [
+    5,
+    365
+   ],
+   "maghrib": [
+    5,
+    365
+   ],
+   "isha": [
+    3,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.32,
+   "sunrise": 0.3,
+   "dhuhr": 0.31,
+   "asr": 0.36,
+   "maghrib": 0.35,
+   "isha": 0.39
+  },
+  "bias": {
+   "fajr": -0.05,
+   "sunrise": -0.04,
+   "dhuhr": -0.07,
+   "asr": -0.04,
+   "maghrib": -0.07,
+   "isha": -0.08
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -70,
+   "isha": 76
+  },
+  "worst": 0.97,
+  "worstAt": "isha@2026-03-14"
+ },
+ {
+  "slug": "mundiwindi",
+  "id": "11265",
+  "zone": "Australia/Perth",
+  "zoneExpected": "Australia/Perth",
+  "clockDefect": false,
+  "lat": -23.714,
+  "lon": 120.075,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    10,
+    365
+   ],
+   "sunrise": [
+    5,
+    365
+   ],
+   "dhuhr": [
+    5,
+    365
+   ],
+   "asr": [
+    5,
+    365
+   ],
+   "maghrib": [
+    10,
+    365
+   ],
+   "isha": [
+    7,
+    361
+   ]
+  },
+  "rms": {
+   "fajr": 0.35,
+   "sunrise": 0.32,
+   "dhuhr": 0.29,
+   "asr": 0.4,
+   "maghrib": 0.35,
+   "isha": 0.42
+  },
+  "bias": {
+   "fajr": 0.08,
+   "sunrise": 0.02,
+   "dhuhr": 0.03,
+   "asr": -0.04,
+   "maghrib": 0.03,
+   "isha": -0.05
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -82,
+   "isha": 87
+  },
+  "worst": 1.07,
+  "worstAt": "isha@2026-02-20"
+ },
+ {
+  "slug": "murray-bridge",
+  "id": "11266",
+  "zone": "Australia/Adelaide",
+  "zoneExpected": "Australia/Adelaide",
+  "clockDefect": false,
+  "lat": -35.101,
+  "lon": 139.273,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    3,
+    365
+   ],
+   "sunrise": [
+    9,
+    365
+   ],
+   "dhuhr": [
+    5,
+    365
+   ],
+   "asr": [
+    6,
+    362
+   ],
+   "maghrib": [
+    5,
+    361
+   ],
+   "isha": [
+    5,
+    338
+   ]
+  },
+  "rms": {
+   "fajr": 0.38,
+   "sunrise": 0.32,
+   "dhuhr": 0.3,
+   "asr": 0.44,
+   "maghrib": 0.44,
+   "isha": 0.53
+  },
+  "bias": {
+   "fajr": 0.02,
+   "sunrise": -0.07,
+   "dhuhr": -0.06,
+   "asr": -0.09,
+   "maghrib": -0.07,
+   "isha": -0.12
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -77,
+   "isha": 203
+  },
+  "worst": 1.25,
+  "worstAt": "isha@2026-02-16"
+ },
+ {
+  "slug": "murwillumbah",
+  "id": "11267",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -28.294,
+  "lon": 153.387,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    4,
+    365
+   ],
+   "dhuhr": [
+    8,
+    365
+   ],
+   "asr": [
+    5,
+    365
+   ],
+   "maghrib": [
+    6,
+    365
+   ],
+   "isha": [
+    5,
+    363
+   ]
+  },
+  "rms": {
+   "fajr": 0.35,
+   "sunrise": 0.33,
+   "dhuhr": 0.28,
+   "asr": 0.36,
+   "maghrib": 0.35,
+   "isha": 0.41
+  },
+  "bias": {
+   "fajr": 0.06,
+   "sunrise": 0.03,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0.04,
+   "isha": -0.03
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -43,
+   "isha": 167
+  },
+  "worst": 1.03,
+  "worstAt": "isha@2026-03-09"
+ },
+ {
+  "slug": "nambour",
+  "id": "11268",
+  "zone": "Australia/Brisbane",
+  "zoneExpected": "Australia/Brisbane",
+  "clockDefect": false,
+  "lat": -26.598,
+  "lon": 152.949,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    11,
+    365
+   ],
+   "dhuhr": [
+    7,
+    365
+   ],
+   "asr": [
+    6,
+    365
+   ],
+   "maghrib": [
+    9,
+    365
+   ],
+   "isha": [
+    6,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.33,
+   "sunrise": 0.32,
+   "dhuhr": 0.29,
+   "asr": 0.35,
+   "maghrib": 0.38,
+   "isha": 0.39
+  },
+  "bias": {
+   "fajr": 0.05,
+   "sunrise": 0.03,
+   "dhuhr": 0.02,
+   "asr": 0.01,
+   "maghrib": 0.03,
+   "isha": 0.02
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -94,
+   "isha": 100
+  },
+  "worst": 0.93,
+  "worstAt": "isha@2026-02-26"
+ },
+ {
+  "slug": "narrabri",
+  "id": "11269",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -30.348,
+  "lon": 149.793,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    4,
+    365
+   ],
+   "sunrise": [
+    5,
+    365
+   ],
+   "dhuhr": [
+    5,
+    365
+   ],
+   "asr": [
+    9,
+    365
+   ],
+   "maghrib": [
+    10,
+    365
+   ],
+   "isha": [
+    3,
+    359
+   ]
+  },
+  "rms": {
+   "fajr": 0.37,
+   "sunrise": 0.33,
+   "dhuhr": 0.3,
+   "asr": 0.39,
+   "maghrib": 0.41,
+   "isha": 0.44
+  },
+  "bias": {
+   "fajr": -0.08,
+   "sunrise": -0.06,
+   "dhuhr": -0.04,
+   "asr": -0.06,
+   "maghrib": -0.09,
+   "isha": -0.07
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -51,
+   "isha": 178
+  },
+  "worst": 1.1,
+  "worstAt": "isha@2026-03-02"
+ },
+ {
+  "slug": "nelson-bay",
+  "id": "11270",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -32.715,
+  "lon": 152.137,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    3,
+    365
+   ],
+   "dhuhr": [
+    7,
+    365
+   ],
+   "asr": [
+    11,
+    365
+   ],
+   "maghrib": [
+    8,
+    365
+   ],
+   "isha": [
+    9,
+    364
+   ]
+  },
+  "rms": {
+   "fajr": 0.38,
+   "sunrise": 0.33,
+   "dhuhr": 0.28,
+   "asr": 0.39,
+   "maghrib": 0.38,
+   "isha": 0.47
+  },
+  "bias": {
+   "fajr": 0.03,
+   "sunrise": 0.05,
+   "dhuhr": 0.02,
+   "asr": 0.06,
+   "maghrib": 0.04,
+   "isha": 0.03
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -64,
+   "isha": 189
+  },
+  "worst": 1.02,
+  "worstAt": "isha@2026-11-23"
+ },
+ {
+  "slug": "nowra",
+  "id": "11271",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -34.883,
+  "lon": 150.585,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    9,
+    365
+   ],
+   "sunrise": [
+    4,
+    365
+   ],
+   "dhuhr": [
+    3,
+    365
+   ],
+   "asr": [
+    8,
+    365
+   ],
+   "maghrib": [
+    7,
+    365
+   ],
+   "isha": [
+    5,
+    355
+   ]
+  },
+  "rms": {
+   "fajr": 0.4,
+   "sunrise": 0.32,
+   "dhuhr": 0.29,
+   "asr": 0.4,
+   "maghrib": 0.4,
+   "isha": 0.49
+  },
+  "bias": {
+   "fajr": 0.02,
+   "sunrise": 0.01,
+   "dhuhr": 0.05,
+   "asr": 0.02,
+   "maghrib": 0.05,
+   "isha": 0.04
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -77,
+   "isha": 202
+  },
+  "worst": 1.12,
+  "worstAt": "isha@2026-11-20"
+ },
+ {
+  "slug": "nunawading",
+  "id": "11272",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -37.784,
+  "lon": 145.179,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    5,
+    365
+   ],
+   "sunrise": [
+    6,
+    365
+   ],
+   "dhuhr": [
+    4,
+    365
+   ],
+   "asr": [
+    3,
+    363
+   ],
+   "maghrib": [
+    3,
+    362
+   ],
+   "isha": [
+    6,
+    343
+   ]
+  },
+  "rms": {
+   "fajr": 0.4,
+   "sunrise": 0.35,
+   "dhuhr": 0.3,
+   "asr": 0.45,
+   "maghrib": 0.44,
+   "isha": 0.54
+  },
+  "bias": {
+   "fajr": 0,
+   "sunrise": -0.05,
+   "dhuhr": -0.07,
+   "asr": -0.08,
+   "maghrib": -0.05,
+   "isha": -0.11
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -95,
+   "isha": 219
+  },
+  "worst": 1.38,
+  "worstAt": "isha@2026-02-20"
+ },
+ {
+  "slug": "oodnadatta",
+  "id": "11273",
+  "zone": "Australia/Adelaide",
+  "zoneExpected": "Australia/Adelaide",
+  "clockDefect": false,
+  "lat": -27.467,
+  "lon": 135.428,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    9,
+    365
+   ],
+   "sunrise": [
+    6,
+    365
+   ],
+   "dhuhr": [
+    5,
+    365
+   ],
+   "asr": [
+    11,
+    365
+   ],
+   "maghrib": [
+    8,
+    365
+   ],
+   "isha": [
+    4,
+    361
+   ]
+  },
+  "rms": {
+   "fajr": 0.34,
+   "sunrise": 0.31,
+   "dhuhr": 0.29,
+   "asr": 0.39,
+   "maghrib": 0.39,
+   "isha": 0.46
+  },
+  "bias": {
+   "fajr": 0.09,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": -0.03,
+   "maghrib": 0,
+   "isha": -0.03
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -38,
+   "isha": 164
+  },
+  "worst": 1.08,
+  "worstAt": "isha@2026-02-22"
+ },
+ {
+  "slug": "orange",
+  "id": "11274",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -33.305,
+  "lon": 149.106,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    3,
+    365
+   ],
+   "sunrise": [
+    7,
+    365
+   ],
+   "dhuhr": [
+    8,
+    365
+   ],
+   "asr": [
+    5,
+    365
+   ],
+   "maghrib": [
+    10,
+    365
+   ],
+   "isha": [
+    1,
+    356
+   ]
+  },
+  "rms": {
+   "fajr": 0.38,
+   "sunrise": 0.32,
+   "dhuhr": 0.28,
+   "asr": 0.4,
+   "maghrib": 0.4,
+   "isha": 0.48
+  },
+  "bias": {
+   "fajr": -0.05,
+   "sunrise": -0.04,
+   "dhuhr": -0.01,
+   "asr": -0.06,
+   "maghrib": -0.04,
+   "isha": -0.01
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -67,
+   "isha": 193
+  },
+  "worst": 1.1,
+  "worstAt": "isha@2026-03-04"
+ },
+ {
+  "slug": "parramatta",
+  "id": "11275",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -33.805,
+  "lon": 151.002,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    8,
+    365
+   ],
+   "sunrise": [
+    4,
+    365
+   ],
+   "dhuhr": [
+    9,
+    365
+   ],
+   "asr": [
+    7,
+    365
+   ],
+   "maghrib": [
+    6,
+    365
+   ],
+   "isha": [
+    5,
+    360
+   ]
+  },
+  "rms": {
+   "fajr": 0.38,
+   "sunrise": 0.32,
+   "dhuhr": 0.3,
+   "asr": 0.4,
+   "maghrib": 0.39,
+   "isha": 0.49
+  },
+  "bias": {
+   "fajr": -0.03,
+   "sunrise": 0.01,
+   "dhuhr": -0.04,
+   "asr": -0.03,
+   "maghrib": -0.03,
+   "isha": -0.02
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -70,
+   "isha": 195
+  },
+  "worst": 1.13,
+  "worstAt": "isha@2026-03-07"
+ },
+ {
+  "slug": "penrith",
+  "id": "11276",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -33.743,
+  "lon": 150.689,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    4,
+    365
+   ],
+   "sunrise": [
+    3,
+    365
+   ],
+   "dhuhr": [
+    3,
+    365
+   ],
+   "asr": [
+    2,
+    365
+   ],
+   "maghrib": [
+    8,
+    365
+   ],
+   "isha": [
+    6,
+    359
+   ]
+  },
+  "rms": {
+   "fajr": 0.38,
+   "sunrise": 0.34,
+   "dhuhr": 0.29,
+   "asr": 0.38,
+   "maghrib": 0.4,
+   "isha": 0.5
+  },
+  "bias": {
+   "fajr": 0.01,
+   "sunrise": -0.02,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0.02,
+   "isha": -0.02
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -70,
+   "isha": 195
+  },
+  "worst": 1.12,
+  "worstAt": "isha@2026-02-26"
+ },
+ {
+  "slug": "port-hedland",
+  "id": "11277",
+  "zone": "Australia/Perth",
+  "zoneExpected": "Australia/Perth",
+  "clockDefect": false,
+  "lat": -20.284,
+  "lon": 118.606,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    8,
+    365
+   ],
+   "dhuhr": [
+    7,
+    365
+   ],
+   "asr": [
+    4,
+    365
+   ],
+   "maghrib": [
+    4,
+    365
+   ],
+   "isha": [
+    5,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.31,
+   "sunrise": 0.29,
+   "dhuhr": 0.29,
+   "asr": 0.38,
+   "maghrib": 0.35,
+   "isha": 0.39
+  },
+  "bias": {
+   "fajr": -0.03,
+   "sunrise": -0.02,
+   "dhuhr": -0.01,
+   "asr": -0.02,
+   "maghrib": -0.04,
+   "isha": -0.05
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -68,
+   "isha": 74
+  },
+  "worst": 0.98,
+  "worstAt": "isha@2026-03-23"
+ },
+ {
+  "slug": "portland",
+  "id": "11278",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -38.28,
+  "lon": 141.606,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    2,
+    357
+   ],
+   "sunrise": [
+    3,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    7,
+    363
+   ],
+   "maghrib": [
+    4,
+    360
+   ],
+   "isha": [
+    4,
+    335
+   ]
+  },
+  "rms": {
+   "fajr": 0.45,
+   "sunrise": 0.34,
+   "dhuhr": 0.28,
+   "asr": 0.46,
+   "maghrib": 0.45,
+   "isha": 0.58
+  },
+  "bias": {
+   "fajr": 0.08,
+   "sunrise": -0.04,
+   "dhuhr": -0.01,
+   "asr": -0.02,
+   "maghrib": -0.04,
+   "isha": -0.16
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -98,
+   "isha": 222
+  },
+  "worst": 1.48,
+  "worstAt": "isha@2026-02-18"
+ },
+ {
+  "slug": "port-macquarie",
+  "id": "11279",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -31.421,
+  "lon": 152.897,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    9,
+    365
+   ],
+   "sunrise": [
+    6,
+    365
+   ],
+   "dhuhr": [
+    5,
+    365
+   ],
+   "asr": [
+    5,
+    365
+   ],
+   "maghrib": [
+    8,
+    365
+   ],
+   "isha": [
+    6,
+    364
+   ]
+  },
+  "rms": {
+   "fajr": 0.39,
+   "sunrise": 0.32,
+   "dhuhr": 0.29,
+   "asr": 0.37,
+   "maghrib": 0.37,
+   "isha": 0.47
+  },
+  "bias": {
+   "fajr": 0.11,
+   "sunrise": 0.05,
+   "dhuhr": 0.03,
+   "asr": 0.06,
+   "maghrib": 0.06,
+   "isha": 0.01
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -57,
+   "isha": 182
+  },
+  "worst": 1.03,
+  "worstAt": "isha@2026-03-06"
+ },
+ {
+  "slug": "prahran",
+  "id": "11280",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -37.851,
+  "lon": 145.001,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    8,
+    365
+   ],
+   "sunrise": [
+    10,
+    365
+   ],
+   "dhuhr": [
+    7,
+    365
+   ],
+   "asr": [
+    5,
+    361
+   ],
+   "maghrib": [
+    3,
+    361
+   ],
+   "isha": [
+    4,
+    342
+   ]
+  },
+  "rms": {
+   "fajr": 0.41,
+   "sunrise": 0.33,
+   "dhuhr": 0.31,
+   "asr": 0.42,
+   "maghrib": 0.44,
+   "isha": 0.57
+  },
+  "bias": {
+   "fajr": -0.07,
+   "sunrise": -0.07,
+   "dhuhr": -0.08,
+   "asr": -0.04,
+   "maghrib": -0.08,
+   "isha": -0.09
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -95,
+   "isha": 219
+  },
+  "worst": 1.33,
+  "worstAt": "isha@2026-02-18"
+ },
+ {
+  "slug": "preston",
+  "id": "11281",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -37.734,
+  "lon": 145.001,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    3,
+    365
+   ],
+   "sunrise": [
+    7,
+    365
+   ],
+   "dhuhr": [
+    7,
+    365
+   ],
+   "asr": [
+    6,
+    362
+   ],
+   "maghrib": [
+    6,
+    363
+   ],
+   "isha": [
+    3,
+    342
+   ]
+  },
+  "rms": {
+   "fajr": 0.4,
+   "sunrise": 0.34,
+   "dhuhr": 0.3,
+   "asr": 0.43,
+   "maghrib": 0.44,
+   "isha": 0.58
+  },
+  "bias": {
+   "fajr": -0.05,
+   "sunrise": -0.02,
+   "dhuhr": -0.03,
+   "asr": -0.04,
+   "maghrib": -0.03,
+   "isha": -0.03
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -95,
+   "isha": 219
+  },
+  "worst": 1.23,
+  "worstAt": "isha@2026-02-19"
+ },
+ {
+  "slug": "queanbeyan",
+  "id": "11282",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -35.351,
+  "lon": 149.221,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    5,
+    365
+   ],
+   "sunrise": [
+    8,
+    365
+   ],
+   "dhuhr": [
+    4,
+    365
+   ],
+   "asr": [
+    5,
+    365
+   ],
+   "maghrib": [
+    7,
+    365
+   ],
+   "isha": [
+    8,
+    353
+   ]
+  },
+  "rms": {
+   "fajr": 0.39,
+   "sunrise": 0.31,
+   "dhuhr": 0.3,
+   "asr": 0.41,
+   "maghrib": 0.4,
+   "isha": 0.51
+  },
+  "bias": {
+   "fajr": -0.01,
+   "sunrise": -0.01,
+   "dhuhr": -0.01,
+   "asr": 0,
+   "maghrib": -0.02,
+   "isha": 0
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -79,
+   "isha": 204
+  },
+  "worst": 1.1,
+  "worstAt": "isha@2026-03-14"
+ },
+ {
+  "slug": "redcliffe",
+  "id": "11283",
+  "zone": "Australia/Brisbane",
+  "zoneExpected": "Australia/Brisbane",
+  "clockDefect": false,
+  "lat": -27.249,
+  "lon": 153.106,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    9,
+    365
+   ],
+   "sunrise": [
+    6,
+    365
+   ],
+   "dhuhr": [
+    10,
+    365
+   ],
+   "asr": [
+    9,
+    365
+   ],
+   "maghrib": [
+    9,
+    365
+   ],
+   "isha": [
+    5,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.34,
+   "sunrise": 0.33,
+   "dhuhr": 0.28,
+   "asr": 0.37,
+   "maghrib": 0.37,
+   "isha": 0.41
+  },
+  "bias": {
+   "fajr": -0.04,
+   "sunrise": -0.03,
+   "dhuhr": 0,
+   "asr": -0.01,
+   "maghrib": -0.02,
+   "isha": 0
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -97,
+   "isha": 103
+  },
+  "worst": 0.95,
+  "worstAt": "isha@2026-12-01"
+ },
+ {
+  "slug": "richmond-q",
+  "id": "11284",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -20.746,
+  "lon": 143.126,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    7,
+    365
+   ],
+   "sunrise": [
+    8,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    7,
+    365
+   ],
+   "maghrib": [
+    9,
+    365
+   ],
+   "isha": [
+    7,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.32,
+   "sunrise": 0.31,
+   "dhuhr": 0.28,
+   "asr": 0.35,
+   "maghrib": 0.34,
+   "isha": 0.37
+  },
+  "bias": {
+   "fajr": 0.02,
+   "sunrise": 0.01,
+   "dhuhr": 0.02,
+   "asr": 0.02,
+   "maghrib": 0.01,
+   "isha": 0.03
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -10,
+   "isha": 136
+  },
+  "worst": 0.9,
+  "worstAt": "isha@2026-11-29"
+ },
+ {
+  "slug": "rockhampton",
+  "id": "11285",
+  "zone": "Australia/Brisbane",
+  "zoneExpected": "Australia/Brisbane",
+  "clockDefect": false,
+  "lat": -23.368,
+  "lon": 150.522,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    9,
+    365
+   ],
+   "sunrise": [
+    5,
+    365
+   ],
+   "dhuhr": [
+    5,
+    365
+   ],
+   "asr": [
+    6,
+    365
+   ],
+   "maghrib": [
+    9,
+    365
+   ],
+   "isha": [
+    8,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.34,
+   "sunrise": 0.3,
+   "dhuhr": 0.31,
+   "asr": 0.34,
+   "maghrib": 0.36,
+   "isha": 0.39
+  },
+  "bias": {
+   "fajr": -0.06,
+   "sunrise": -0.06,
+   "dhuhr": -0.07,
+   "asr": -0.06,
+   "maghrib": -0.08,
+   "isha": -0.08
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -80,
+   "isha": 86
+  },
+  "worst": 0.98,
+  "worstAt": "isha@2026-03-11"
+ },
+ {
+  "slug": "rockingham",
+  "id": "11286",
+  "zone": "Australia/Perth",
+  "zoneExpected": "Australia/Perth",
+  "clockDefect": false,
+  "lat": -32.248,
+  "lon": 115.741,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    2,
+    365
+   ],
+   "sunrise": [
+    9,
+    365
+   ],
+   "dhuhr": [
+    4,
+    365
+   ],
+   "asr": [
+    6,
+    357
+   ],
+   "maghrib": [
+    3,
+    362
+   ],
+   "isha": [
+    5,
+    340
+   ]
+  },
+  "rms": {
+   "fajr": 0.34,
+   "sunrise": 0.3,
+   "dhuhr": 0.31,
+   "asr": 0.47,
+   "maghrib": 0.44,
+   "isha": 0.54
+  },
+  "bias": {
+   "fajr": 0,
+   "sunrise": -0.06,
+   "dhuhr": -0.07,
+   "asr": -0.06,
+   "maghrib": -0.05,
+   "isha": -0.11
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -122,
+   "isha": 127
+  },
+  "worst": 1.32,
+  "worstAt": "isha@2026-03-14"
+ },
+ {
+  "slug": "roma",
+  "id": "11287",
+  "zone": "Australia/Brisbane",
+  "zoneExpected": "Australia/Brisbane",
+  "clockDefect": false,
+  "lat": -26.544,
+  "lon": 148.793,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    5,
+    365
+   ],
+   "sunrise": [
+    8,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    5,
+    365
+   ],
+   "maghrib": [
+    5,
+    365
+   ],
+   "isha": [
+    5,
+    361
+   ]
+  },
+  "rms": {
+   "fajr": 0.34,
+   "sunrise": 0.32,
+   "dhuhr": 0.29,
+   "asr": 0.37,
+   "maghrib": 0.35,
+   "isha": 0.41
+  },
+  "bias": {
+   "fajr": -0.04,
+   "sunrise": -0.07,
+   "dhuhr": -0.04,
+   "asr": -0.04,
+   "maghrib": -0.04,
+   "isha": -0.09
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -94,
+   "isha": 100
+  },
+  "worst": 1.07,
+  "worstAt": "isha@2026-02-21"
+ },
+ {
+  "slug": "sale",
+  "id": "11288",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -38.1,
+  "lon": 147.043,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    7,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    3,
+    365
+   ],
+   "maghrib": [
+    11,
+    365
+   ],
+   "isha": [
+    7,
+    345
+   ]
+  },
+  "rms": {
+   "fajr": 0.41,
+   "sunrise": 0.34,
+   "dhuhr": 0.29,
+   "asr": 0.42,
+   "maghrib": 0.44,
+   "isha": 0.54
+  },
+  "bias": {
+   "fajr": 0.07,
+   "sunrise": 0.04,
+   "dhuhr": 0.04,
+   "asr": 0.03,
+   "maghrib": 0.06,
+   "isha": 0.02
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -97,
+   "isha": 221
+  },
+  "worst": 1.17,
+  "worstAt": "isha@2026-02-17"
+ },
+ {
+  "slug": "southportq",
+  "id": "11289",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -27.964,
+  "lon": 153.387,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    2,
+    365
+   ],
+   "sunrise": [
+    4,
+    365
+   ],
+   "dhuhr": [
+    8,
+    365
+   ],
+   "asr": [
+    4,
+    365
+   ],
+   "maghrib": [
+    4,
+    365
+   ],
+   "isha": [
+    3,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.35,
+   "sunrise": 0.32,
+   "dhuhr": 0.28,
+   "asr": 0.35,
+   "maghrib": 0.37,
+   "isha": 0.4
+  },
+  "bias": {
+   "fajr": 0.03,
+   "sunrise": 0.04,
+   "dhuhr": 0.02,
+   "asr": 0.04,
+   "maghrib": 0.02,
+   "isha": 0.01
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -40,
+   "isha": 166
+  },
+  "worst": 0.92,
+  "worstAt": "isha@2026-03-22"
+ },
+ {
+  "slug": "springwood-q",
+  "id": "11290",
+  "zone": "Australia/Brisbane",
+  "zoneExpected": "Australia/Brisbane",
+  "clockDefect": false,
+  "lat": -27.579,
+  "lon": 153.127,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    7,
+    365
+   ],
+   "sunrise": [
+    5,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    3,
+    365
+   ],
+   "maghrib": [
+    2,
+    365
+   ],
+   "isha": [
+    8,
+    364
+   ]
+  },
+  "rms": {
+   "fajr": 0.34,
+   "sunrise": 0.31,
+   "dhuhr": 0.28,
+   "asr": 0.34,
+   "maghrib": 0.36,
+   "isha": 0.39
+  },
+  "bias": {
+   "fajr": 0.01,
+   "sunrise": -0.03,
+   "dhuhr": 0,
+   "asr": -0.01,
+   "maghrib": -0.01,
+   "isha": -0.02
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -99,
+   "isha": 104
+  },
+  "worst": 1.02,
+  "worstAt": "isha@2026-03-10"
+ },
+ {
+  "slug": "sunbury",
+  "id": "11291",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -37.559,
+  "lon": 144.7,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    8,
+    362
+   ],
+   "sunrise": [
+    7,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    9,
+    365
+   ],
+   "maghrib": [
+    6,
+    365
+   ],
+   "isha": [
+    2,
+    351
+   ]
+  },
+  "rms": {
+   "fajr": 0.39,
+   "sunrise": 0.32,
+   "dhuhr": 0.29,
+   "asr": 0.44,
+   "maghrib": 0.46,
+   "isha": 0.55
+  },
+  "bias": {
+   "fajr": 0.05,
+   "sunrise": 0.04,
+   "dhuhr": 0.01,
+   "asr": 0.05,
+   "maghrib": 0.04,
+   "isha": 0
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -93,
+   "isha": 218
+  },
+  "worst": 1.18,
+  "worstAt": "isha@2026-03-02"
+ },
+ {
+  "slug": "sunshine",
+  "id": "11292",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -37.8,
+  "lon": 144.793,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    10,
+    365
+   ],
+   "sunrise": [
+    5,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    3,
+    365
+   ],
+   "maghrib": [
+    6,
+    360
+   ],
+   "isha": [
+    3,
+    339
+   ]
+  },
+  "rms": {
+   "fajr": 0.42,
+   "sunrise": 0.33,
+   "dhuhr": 0.3,
+   "asr": 0.44,
+   "maghrib": 0.49,
+   "isha": 0.59
+  },
+  "bias": {
+   "fajr": 0.09,
+   "sunrise": 0.09,
+   "dhuhr": 0.1,
+   "asr": 0.12,
+   "maghrib": 0.14,
+   "isha": 0.14
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -94,
+   "isha": 219
+  },
+  "worst": 1.32,
+  "worstAt": "isha@2026-11-30"
+ },
+ {
+  "slug": "sutherland",
+  "id": "11293",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -34.009,
+  "lon": 151.044,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    7,
+    365
+   ],
+   "sunrise": [
+    5,
+    365
+   ],
+   "dhuhr": [
+    5,
+    365
+   ],
+   "asr": [
+    10,
+    365
+   ],
+   "maghrib": [
+    8,
+    365
+   ],
+   "isha": [
+    11,
+    359
+   ]
+  },
+  "rms": {
+   "fajr": 0.38,
+   "sunrise": 0.34,
+   "dhuhr": 0.29,
+   "asr": 0.39,
+   "maghrib": 0.4,
+   "isha": 0.48
+  },
+  "bias": {
+   "fajr": 0.04,
+   "sunrise": 0,
+   "dhuhr": 0.02,
+   "asr": 0.02,
+   "maghrib": 0.03,
+   "isha": -0.01
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -72,
+   "isha": 196
+  },
+  "worst": 1.15,
+  "worstAt": "isha@2026-02-24"
+ },
+ {
+  "slug": "swan-hill",
+  "id": "11294",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -35.346,
+  "lon": 143.543,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    9,
+    365
+   ],
+   "sunrise": [
+    3,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    2,
+    365
+   ],
+   "maghrib": [
+    4,
+    365
+   ],
+   "isha": [
+    5,
+    356
+   ]
+  },
+  "rms": {
+   "fajr": 0.39,
+   "sunrise": 0.33,
+   "dhuhr": 0.29,
+   "asr": 0.41,
+   "maghrib": 0.45,
+   "isha": 0.51
+  },
+  "bias": {
+   "fajr": 0,
+   "sunrise": -0.01,
+   "dhuhr": 0,
+   "asr": 0.01,
+   "maghrib": 0.02,
+   "isha": -0.01
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -80,
+   "isha": 204
+  },
+  "worst": 1.17,
+  "worstAt": "isha@2026-03-02"
+ },
+ {
+  "slug": "tamworth",
+  "id": "11295",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -31.093,
+  "lon": 150.929,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    4,
+    365
+   ],
+   "sunrise": [
+    4,
+    365
+   ],
+   "dhuhr": [
+    2,
+    365
+   ],
+   "asr": [
+    7,
+    365
+   ],
+   "maghrib": [
+    7,
+    365
+   ],
+   "isha": [
+    8,
+    361
+   ]
+  },
+  "rms": {
+   "fajr": 0.37,
+   "sunrise": 0.32,
+   "dhuhr": 0.29,
+   "asr": 0.39,
+   "maghrib": 0.38,
+   "isha": 0.45
+  },
+  "bias": {
+   "fajr": -0.05,
+   "sunrise": -0.04,
+   "dhuhr": -0.07,
+   "asr": -0.04,
+   "maghrib": -0.06,
+   "isha": -0.08
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -56,
+   "isha": 181
+  },
+  "worst": 1.1,
+  "worstAt": "isha@2026-03-01"
+ },
+ {
+  "slug": "toowoomba",
+  "id": "11296",
+  "zone": "Australia/Brisbane",
+  "zoneExpected": "Australia/Brisbane",
+  "clockDefect": false,
+  "lat": -27.492,
+  "lon": 151.939,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    6,
+    365
+   ],
+   "dhuhr": [
+    3,
+    365
+   ],
+   "asr": [
+    4,
+    365
+   ],
+   "maghrib": [
+    6,
+    365
+   ],
+   "isha": [
+    4,
+    363
+   ]
+  },
+  "rms": {
+   "fajr": 0.36,
+   "sunrise": 0.34,
+   "dhuhr": 0.29,
+   "asr": 0.38,
+   "maghrib": 0.36,
+   "isha": 0.43
+  },
+  "bias": {
+   "fajr": 0.09,
+   "sunrise": 0.06,
+   "dhuhr": 0.04,
+   "asr": 0.03,
+   "maghrib": 0.04,
+   "isha": 0.01
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -98,
+   "isha": 104
+  },
+  "worst": 1.03,
+  "worstAt": "isha@2026-02-22"
+ },
+ {
+  "slug": "torquay-q",
+  "id": "11297",
+  "zone": "Australia/Brisbane",
+  "zoneExpected": "Australia/Brisbane",
+  "clockDefect": false,
+  "lat": -25.284,
+  "lon": 152.856,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    5,
+    365
+   ],
+   "sunrise": [
+    13,
+    365
+   ],
+   "dhuhr": [
+    10,
+    365
+   ],
+   "asr": [
+    8,
+    365
+   ],
+   "maghrib": [
+    7,
+    365
+   ],
+   "isha": [
+    4,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.32,
+   "sunrise": 0.31,
+   "dhuhr": 0.28,
+   "asr": 0.34,
+   "maghrib": 0.34,
+   "isha": 0.4
+  },
+  "bias": {
+   "fajr": 0.03,
+   "sunrise": -0.01,
+   "dhuhr": 0.03,
+   "asr": 0.03,
+   "maghrib": 0.02,
+   "isha": 0.02
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -89,
+   "isha": 94
+  },
+  "worst": 0.88,
+  "worstAt": "isha@2026-03-04"
+ },
+ {
+  "slug": "ulladulla",
+  "id": "11298",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -35.361,
+  "lon": 150.471,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    8,
+    365
+   ],
+   "dhuhr": [
+    4,
+    365
+   ],
+   "asr": [
+    6,
+    365
+   ],
+   "maghrib": [
+    2,
+    365
+   ],
+   "isha": [
+    4,
+    354
+   ]
+  },
+  "rms": {
+   "fajr": 0.39,
+   "sunrise": 0.32,
+   "dhuhr": 0.3,
+   "asr": 0.41,
+   "maghrib": 0.4,
+   "isha": 0.51
+  },
+  "bias": {
+   "fajr": -0.03,
+   "sunrise": -0.02,
+   "dhuhr": -0.02,
+   "asr": -0.01,
+   "maghrib": -0.03,
+   "isha": 0
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -79,
+   "isha": 204
+  },
+  "worst": 1.12,
+  "worstAt": "isha@2026-02-18"
+ },
+ {
+  "slug": "wagga-wagga",
+  "id": "11299",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -35.124,
+  "lon": 147.345,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    9,
+    365
+   ],
+   "dhuhr": [
+    9,
+    365
+   ],
+   "asr": [
+    6,
+    365
+   ],
+   "maghrib": [
+    5,
+    365
+   ],
+   "isha": [
+    2,
+    354
+   ]
+  },
+  "rms": {
+   "fajr": 0.38,
+   "sunrise": 0.33,
+   "dhuhr": 0.29,
+   "asr": 0.41,
+   "maghrib": 0.43,
+   "isha": 0.51
+  },
+  "bias": {
+   "fajr": 0,
+   "sunrise": -0.02,
+   "dhuhr": 0.02,
+   "asr": 0.01,
+   "maghrib": -0.04,
+   "isha": 0
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -78,
+   "isha": 203
+  },
+  "worst": 1.08,
+  "worstAt": "isha@2026-02-20"
+ },
+ {
+  "slug": "wangaratta",
+  "id": "11300",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -36.361,
+  "lon": 146.293,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    5,
+    365
+   ],
+   "sunrise": [
+    7,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    6,
+    365
+   ],
+   "maghrib": [
+    7,
+    365
+   ],
+   "isha": [
+    5,
+    355
+   ]
+  },
+  "rms": {
+   "fajr": 0.38,
+   "sunrise": 0.31,
+   "dhuhr": 0.29,
+   "asr": 0.43,
+   "maghrib": 0.43,
+   "isha": 0.5
+  },
+  "bias": {
+   "fajr": 0.02,
+   "sunrise": 0.04,
+   "dhuhr": 0.02,
+   "asr": 0.01,
+   "maghrib": 0.01,
+   "isha": 0.03
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -86,
+   "isha": 210
+  },
+  "worst": 1.17,
+  "worstAt": "isha@2026-11-14"
+ },
+ {
+  "slug": "warrnambool",
+  "id": "11301",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -38.359,
+  "lon": 142.47,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    3,
+    365
+   ],
+   "dhuhr": [
+    3,
+    365
+   ],
+   "asr": [
+    8,
+    364
+   ],
+   "maghrib": [
+    4,
+    359
+   ],
+   "isha": [
+    4,
+    346
+   ]
+  },
+  "rms": {
+   "fajr": 0.4,
+   "sunrise": 0.32,
+   "dhuhr": 0.3,
+   "asr": 0.43,
+   "maghrib": 0.47,
+   "isha": 0.57
+  },
+  "bias": {
+   "fajr": 0.05,
+   "sunrise": -0.03,
+   "dhuhr": -0.02,
+   "asr": -0.01,
+   "maghrib": 0,
+   "isha": -0.04
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -99,
+   "isha": 223
+  },
+  "worst": 1.32,
+  "worstAt": "isha@2026-02-19"
+ },
+ {
+  "slug": "whyalla",
+  "id": "11302",
+  "zone": "Australia/Adelaide",
+  "zoneExpected": "Australia/Adelaide",
+  "clockDefect": false,
+  "lat": -33.054,
+  "lon": 137.543,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    4,
+    365
+   ],
+   "sunrise": [
+    4,
+    365
+   ],
+   "dhuhr": [
+    4,
+    365
+   ],
+   "asr": [
+    9,
+    365
+   ],
+   "maghrib": [
+    4,
+    365
+   ],
+   "isha": [
+    1,
+    354
+   ]
+  },
+  "rms": {
+   "fajr": 0.38,
+   "sunrise": 0.32,
+   "dhuhr": 0.29,
+   "asr": 0.44,
+   "maghrib": 0.43,
+   "isha": 0.52
+  },
+  "bias": {
+   "fajr": 0.01,
+   "sunrise": 0.03,
+   "dhuhr": 0.06,
+   "asr": 0.07,
+   "maghrib": 0.05,
+   "isha": 0.08
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -66,
+   "isha": 191
+  },
+  "worst": 1.22,
+  "worstAt": "isha@2026-11-16"
+ },
+ {
+  "slug": "windorah",
+  "id": "11303",
+  "zone": "Australia/Brisbane",
+  "zoneExpected": "Australia/Brisbane",
+  "clockDefect": false,
+  "lat": -25.438,
+  "lon": 142.637,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    2,
+    365
+   ],
+   "sunrise": [
+    5,
+    365
+   ],
+   "dhuhr": [
+    10,
+    365
+   ],
+   "asr": [
+    10,
+    365
+   ],
+   "maghrib": [
+    5,
+    365
+   ],
+   "isha": [
+    3,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.35,
+   "sunrise": 0.31,
+   "dhuhr": 0.28,
+   "asr": 0.38,
+   "maghrib": 0.38,
+   "isha": 0.4
+  },
+  "bias": {
+   "fajr": 0.01,
+   "sunrise": -0.02,
+   "dhuhr": 0,
+   "asr": 0.02,
+   "maghrib": 0.03,
+   "isha": 0.02
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -89,
+   "isha": 95
+  },
+  "worst": 0.95,
+  "worstAt": "isha@2026-11-20"
+ },
+ {
+  "slug": "windsor",
+  "id": "11304",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -33.674,
+  "lon": 150.856,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    5,
+    365
+   ],
+   "dhuhr": [
+    9,
+    365
+   ],
+   "asr": [
+    7,
+    365
+   ],
+   "maghrib": [
+    5,
+    365
+   ],
+   "isha": [
+    5,
+    360
+   ]
+  },
+  "rms": {
+   "fajr": 0.36,
+   "sunrise": 0.31,
+   "dhuhr": 0.28,
+   "asr": 0.39,
+   "maghrib": 0.4,
+   "isha": 0.47
+  },
+  "bias": {
+   "fajr": 0.02,
+   "sunrise": -0.01,
+   "dhuhr": 0.01,
+   "asr": -0.01,
+   "maghrib": -0.01,
+   "isha": -0.02
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -69,
+   "isha": 194
+  },
+  "worst": 1.13,
+  "worstAt": "isha@2026-02-24"
+ },
+ {
+  "slug": "wodonga",
+  "id": "11305",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -36.141,
+  "lon": 146.866,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    7,
+    365
+   ],
+   "sunrise": [
+    10,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    6,
+    365
+   ],
+   "maghrib": [
+    10,
+    365
+   ],
+   "isha": [
+    4,
+    350
+   ]
+  },
+  "rms": {
+   "fajr": 0.39,
+   "sunrise": 0.32,
+   "dhuhr": 0.28,
+   "asr": 0.43,
+   "maghrib": 0.4,
+   "isha": 0.52
+  },
+  "bias": {
+   "fajr": 0.02,
+   "sunrise": 0.03,
+   "dhuhr": 0.02,
+   "asr": 0.04,
+   "maghrib": 0,
+   "isha": 0.02
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -84,
+   "isha": 208
+  },
+  "worst": 1.17,
+  "worstAt": "isha@2026-11-17"
+ },
+ {
+  "slug": "young",
+  "id": "11306",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -34.292,
+  "lon": 148.293,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    8,
+    365
+   ],
+   "sunrise": [
+    1,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    5,
+    365
+   ],
+   "maghrib": [
+    2,
+    365
+   ],
+   "isha": [
+    3,
+    353
+   ]
+  },
+  "rms": {
+   "fajr": 0.39,
+   "sunrise": 0.31,
+   "dhuhr": 0.29,
+   "asr": 0.4,
+   "maghrib": 0.41,
+   "isha": 0.5
+  },
+  "bias": {
+   "fajr": -0.05,
+   "sunrise": -0.04,
+   "dhuhr": -0.02,
+   "asr": -0.03,
+   "maghrib": -0.03,
+   "isha": -0.05
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -73,
+   "isha": 198
+  },
+  "worst": 1.2,
+  "worstAt": "isha@2026-03-02"
+ },
+ {
+  "slug": "burnsidesa",
+  "id": "11307",
+  "zone": "Australia/Adelaide",
+  "zoneExpected": "Australia/Adelaide",
+  "clockDefect": false,
+  "lat": -34.909,
+  "lon": 138.679,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    2,
+    365
+   ],
+   "sunrise": [
+    2,
+    365
+   ],
+   "dhuhr": [
+    4,
+    365
+   ],
+   "asr": [
+    6,
+    365
+   ],
+   "maghrib": [
+    8,
+    363
+   ],
+   "isha": [
+    0,
+    345
+   ]
+  },
+  "rms": {
+   "fajr": 0.37,
+   "sunrise": 0.34,
+   "dhuhr": 0.29,
+   "asr": 0.42,
+   "maghrib": 0.43,
+   "isha": 0.51
+  },
+  "bias": {
+   "fajr": -0.01,
+   "sunrise": -0.05,
+   "dhuhr": -0.05,
+   "asr": -0.02,
+   "maghrib": -0.05,
+   "isha": -0.08
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -77,
+   "isha": 202
+  },
+  "worst": 1.2,
+  "worstAt": "isha@2026-02-25"
+ },
+ {
+  "slug": "enfieldsa",
+  "id": "11308",
+  "zone": "Australia/Adelaide",
+  "zoneExpected": "Australia/Adelaide",
+  "clockDefect": false,
+  "lat": -34.836,
+  "lon": 138.574,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    11,
+    365
+   ],
+   "sunrise": [
+    9,
+    365
+   ],
+   "dhuhr": [
+    1,
+    365
+   ],
+   "asr": [
+    5,
+    365
+   ],
+   "maghrib": [
+    6,
+    365
+   ],
+   "isha": [
+    0,
+    357
+   ]
+  },
+  "rms": {
+   "fajr": 0.38,
+   "sunrise": 0.31,
+   "dhuhr": 0.29,
+   "asr": 0.43,
+   "maghrib": 0.42,
+   "isha": 0.5
+  },
+  "bias": {
+   "fajr": 0.05,
+   "sunrise": 0.01,
+   "dhuhr": 0.04,
+   "asr": 0.03,
+   "maghrib": 0.06,
+   "isha": 0.01
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -76,
+   "isha": 202
+  },
+  "worst": 1.18,
+  "worstAt": "isha@2026-02-21"
+ },
+ {
+  "slug": "noarlunga",
+  "id": "11309",
+  "zone": "Australia/Adelaide",
+  "zoneExpected": "Australia/Adelaide",
+  "clockDefect": false,
+  "lat": -35.17,
+  "lon": 138.502,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    8,
+    365
+   ],
+   "sunrise": [
+    6,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    4,
+    363
+   ],
+   "maghrib": [
+    5,
+    363
+   ],
+   "isha": [
+    5,
+    349
+   ]
+  },
+  "rms": {
+   "fajr": 0.37,
+   "sunrise": 0.32,
+   "dhuhr": 0.3,
+   "asr": 0.44,
+   "maghrib": 0.44,
+   "isha": 0.52
+  },
+  "bias": {
+   "fajr": 0,
+   "sunrise": -0.04,
+   "dhuhr": -0.05,
+   "asr": -0.04,
+   "maghrib": -0.01,
+   "isha": -0.05
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -79,
+   "isha": 203
+  },
+  "worst": 1.22,
+  "worstAt": "isha@2026-02-14"
+ },
+ {
+  "slug": "payneham",
+  "id": "11310",
+  "zone": "Australia/Adelaide",
+  "zoneExpected": "Australia/Adelaide",
+  "clockDefect": false,
+  "lat": -34.876,
+  "lon": 138.616,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    8,
+    365
+   ],
+   "dhuhr": [
+    7,
+    365
+   ],
+   "asr": [
+    2,
+    365
+   ],
+   "maghrib": [
+    6,
+    365
+   ],
+   "isha": [
+    6,
+    358
+   ]
+  },
+  "rms": {
+   "fajr": 0.36,
+   "sunrise": 0.32,
+   "dhuhr": 0.28,
+   "asr": 0.43,
+   "maghrib": 0.43,
+   "isha": 0.51
+  },
+  "bias": {
+   "fajr": 0.03,
+   "sunrise": -0.01,
+   "dhuhr": 0.02,
+   "asr": 0,
+   "maghrib": 0.01,
+   "isha": 0.02
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -77,
+   "isha": 202
+  },
+  "worst": 1.12,
+  "worstAt": "isha@2026-02-23"
+ },
+ {
+  "slug": "port-adelaide",
+  "id": "11311",
+  "zone": "Australia/Adelaide",
+  "zoneExpected": "Australia/Adelaide",
+  "clockDefect": false,
+  "lat": -34.839,
+  "lon": 138.523,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    5,
+    365
+   ],
+   "sunrise": [
+    6,
+    365
+   ],
+   "dhuhr": [
+    3,
+    365
+   ],
+   "asr": [
+    9,
+    360
+   ],
+   "maghrib": [
+    6,
+    359
+   ],
+   "isha": [
+    3,
+    344
+   ]
+  },
+  "rms": {
+   "fajr": 0.37,
+   "sunrise": 0.34,
+   "dhuhr": 0.31,
+   "asr": 0.43,
+   "maghrib": 0.44,
+   "isha": 0.54
+  },
+  "bias": {
+   "fajr": -0.09,
+   "sunrise": -0.08,
+   "dhuhr": -0.09,
+   "asr": -0.07,
+   "maghrib": -0.1,
+   "isha": -0.09
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -76,
+   "isha": 201
+  },
+  "worst": 1.28,
+  "worstAt": "isha@2026-02-24"
+ },
+ {
+  "slug": "woodville",
+  "id": "11312",
+  "zone": "Australia/Adelaide",
+  "zoneExpected": "Australia/Adelaide",
+  "clockDefect": false,
+  "lat": -34.853,
+  "lon": 138.532,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    2,
+    365
+   ],
+   "sunrise": [
+    4,
+    365
+   ],
+   "dhuhr": [
+    3,
+    365
+   ],
+   "asr": [
+    5,
+    363
+   ],
+   "maghrib": [
+    3,
+    364
+   ],
+   "isha": [
+    2,
+    346
+   ]
+  },
+  "rms": {
+   "fajr": 0.38,
+   "sunrise": 0.31,
+   "dhuhr": 0.3,
+   "asr": 0.42,
+   "maghrib": 0.43,
+   "isha": 0.54
+  },
+  "bias": {
+   "fajr": -0.01,
+   "sunrise": -0.02,
+   "dhuhr": -0.02,
+   "asr": -0.03,
+   "maghrib": -0.04,
+   "isha": -0.06
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -76,
+   "isha": 201
+  },
+  "worst": 1.23,
+  "worstAt": "isha@2026-02-14"
+ },
+ {
+  "slug": "barrov-creek",
+  "id": "11313",
+  "zone": "Australia/Darwin",
+  "zoneExpected": "Australia/Darwin",
+  "clockDefect": false,
+  "lat": -21.545,
+  "lon": 133.877,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    8,
+    365
+   ],
+   "sunrise": [
+    4,
+    365
+   ],
+   "dhuhr": [
+    9,
+    365
+   ],
+   "asr": [
+    8,
+    365
+   ],
+   "maghrib": [
+    6,
+    365
+   ],
+   "isha": [
+    11,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.34,
+   "sunrise": 0.3,
+   "dhuhr": 0.28,
+   "asr": 0.36,
+   "maghrib": 0.35,
+   "isha": 0.39
+  },
+  "bias": {
+   "fajr": 0.04,
+   "sunrise": 0,
+   "dhuhr": -0.01,
+   "asr": 0.02,
+   "maghrib": -0.02,
+   "isha": -0.01
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -73,
+   "isha": 79
+  },
+  "worst": 0.92,
+  "worstAt": "isha@2026-03-14"
+ },
+ {
+  "slug": "finke",
+  "id": "11314",
+  "zone": "Australia/Darwin",
+  "zoneExpected": "Australia/Darwin",
+  "clockDefect": false,
+  "lat": -25.585,
+  "lon": 134.544,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    7,
+    365
+   ],
+   "sunrise": [
+    5,
+    365
+   ],
+   "dhuhr": [
+    4,
+    365
+   ],
+   "asr": [
+    6,
+    365
+   ],
+   "maghrib": [
+    4,
+    365
+   ],
+   "isha": [
+    10,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.34,
+   "sunrise": 0.31,
+   "dhuhr": 0.3,
+   "asr": 0.4,
+   "maghrib": 0.39,
+   "isha": 0.44
+  },
+  "bias": {
+   "fajr": 0.05,
+   "sunrise": 0.05,
+   "dhuhr": 0.07,
+   "asr": 0.06,
+   "maghrib": 0.05,
+   "isha": 0.04
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -89,
+   "isha": 96
+  },
+  "worst": 0.95,
+  "worstAt": "isha@2026-11-17"
+ },
+ {
+  "slug": "hatches-creek",
+  "id": "11315",
+  "zone": "Australia/Darwin",
+  "zoneExpected": "Australia/Darwin",
+  "clockDefect": false,
+  "lat": -22.098,
+  "lon": 134.502,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    4,
+    365
+   ],
+   "sunrise": [
+    4,
+    365
+   ],
+   "dhuhr": [
+    5,
+    365
+   ],
+   "asr": [
+    7,
+    365
+   ],
+   "maghrib": [
+    10,
+    365
+   ],
+   "isha": [
+    5,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.34,
+   "sunrise": 0.31,
+   "dhuhr": 0.31,
+   "asr": 0.36,
+   "maghrib": 0.36,
+   "isha": 0.41
+  },
+  "bias": {
+   "fajr": -0.08,
+   "sunrise": -0.05,
+   "dhuhr": -0.06,
+   "asr": -0.06,
+   "maghrib": -0.05,
+   "isha": -0.02
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -75,
+   "isha": 81
+  },
+  "worst": 0.97,
+  "worstAt": "isha@2026-03-16"
+ },
+ {
+  "slug": "santa-teresa",
+  "id": "11316",
+  "zone": "Australia/Darwin",
+  "zoneExpected": "Australia/Darwin",
+  "clockDefect": false,
+  "lat": -24.09,
+  "lon": 134.356,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    10,
+    365
+   ],
+   "sunrise": [
+    8,
+    365
+   ],
+   "dhuhr": [
+    8,
+    365
+   ],
+   "asr": [
+    4,
+    365
+   ],
+   "maghrib": [
+    4,
+    365
+   ],
+   "isha": [
+    3,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.34,
+   "sunrise": 0.31,
+   "dhuhr": 0.29,
+   "asr": 0.37,
+   "maghrib": 0.35,
+   "isha": 0.39
+  },
+  "bias": {
+   "fajr": 0.08,
+   "sunrise": 0.04,
+   "dhuhr": 0.04,
+   "asr": 0.01,
+   "maghrib": 0.05,
+   "isha": 0
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -83,
+   "isha": 89
+  },
+  "worst": 0.98,
+  "worstAt": "isha@2026-02-15"
+ },
+ {
+  "slug": "ayr",
+  "id": "11317",
+  "zone": "Australia/Brisbane",
+  "zoneExpected": "Australia/Brisbane",
+  "clockDefect": false,
+  "lat": -19.608,
+  "lon": 147.387,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    7,
+    365
+   ],
+   "sunrise": [
+    8,
+    365
+   ],
+   "dhuhr": [
+    8,
+    365
+   ],
+   "asr": [
+    11,
+    365
+   ],
+   "maghrib": [
+    7,
+    365
+   ],
+   "isha": [
+    5,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.33,
+   "sunrise": 0.32,
+   "dhuhr": 0.28,
+   "asr": 0.33,
+   "maghrib": 0.34,
+   "isha": 0.36
+  },
+  "bias": {
+   "fajr": 0.03,
+   "sunrise": 0.06,
+   "dhuhr": 0.02,
+   "asr": 0.06,
+   "maghrib": 0.04,
+   "isha": 0.06
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -65,
+   "isha": 71
+  },
+  "worst": 0.92,
+  "worstAt": "isha@2026-11-16"
+ },
+ {
+  "slug": "ashgrove",
+  "id": "11318",
+  "zone": "Australia/Brisbane",
+  "zoneExpected": "Australia/Brisbane",
+  "clockDefect": false,
+  "lat": -27.419,
+  "lon": 152.991,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    10,
+    365
+   ],
+   "sunrise": [
+    5,
+    365
+   ],
+   "dhuhr": [
+    5,
+    365
+   ],
+   "asr": [
+    6,
+    365
+   ],
+   "maghrib": [
+    7,
+    365
+   ],
+   "isha": [
+    3,
+    358
+   ]
+  },
+  "rms": {
+   "fajr": 0.33,
+   "sunrise": 0.32,
+   "dhuhr": 0.3,
+   "asr": 0.37,
+   "maghrib": 0.35,
+   "isha": 0.4
+  },
+  "bias": {
+   "fajr": -0.04,
+   "sunrise": -0.06,
+   "dhuhr": -0.06,
+   "asr": -0.1,
+   "maghrib": -0.05,
+   "isha": -0.08
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -98,
+   "isha": 104
+  },
+  "worst": 1.05,
+  "worstAt": "isha@2026-02-28"
+ },
+ {
+  "slug": "indooroopilly",
+  "id": "11319",
+  "zone": "Australia/Brisbane",
+  "zoneExpected": "Australia/Brisbane",
+  "clockDefect": false,
+  "lat": -27.443,
+  "lon": 152.981,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    11,
+    365
+   ],
+   "dhuhr": [
+    5,
+    365
+   ],
+   "asr": [
+    6,
+    365
+   ],
+   "maghrib": [
+    10,
+    365
+   ],
+   "isha": [
+    3,
+    361
+   ]
+  },
+  "rms": {
+   "fajr": 0.34,
+   "sunrise": 0.33,
+   "dhuhr": 0.3,
+   "asr": 0.38,
+   "maghrib": 0.35,
+   "isha": 0.42
+  },
+  "bias": {
+   "fajr": 0,
+   "sunrise": -0.03,
+   "dhuhr": -0.04,
+   "asr": -0.06,
+   "maghrib": -0.05,
+   "isha": -0.08
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -98,
+   "isha": 104
+  },
+  "worst": 1.07,
+  "worstAt": "isha@2026-02-10"
+ },
+ {
+  "slug": "mount-gravatt",
+  "id": "11320",
+  "zone": "Australia/Brisbane",
+  "zoneExpected": "Australia/Brisbane",
+  "clockDefect": false,
+  "lat": -27.587,
+  "lon": 153.043,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    7,
+    365
+   ],
+   "sunrise": [
+    8,
+    365
+   ],
+   "dhuhr": [
+    5,
+    365
+   ],
+   "asr": [
+    5,
+    365
+   ],
+   "maghrib": [
+    10,
+    365
+   ],
+   "isha": [
+    7,
+    363
+   ]
+  },
+  "rms": {
+   "fajr": 0.37,
+   "sunrise": 0.33,
+   "dhuhr": 0.3,
+   "asr": 0.38,
+   "maghrib": 0.37,
+   "isha": 0.43
+  },
+  "bias": {
+   "fajr": 0.01,
+   "sunrise": 0.06,
+   "dhuhr": 0.08,
+   "asr": 0.08,
+   "maghrib": 0.07,
+   "isha": 0.1
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -99,
+   "isha": 104
+  },
+  "worst": 1.08,
+  "worstAt": "isha@2026-12-04"
+ },
+ {
+  "slug": "rocklea",
+  "id": "11321",
+  "zone": "Australia/Brisbane",
+  "zoneExpected": "Australia/Brisbane",
+  "clockDefect": false,
+  "lat": -27.543,
+  "lon": 153.022,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    7,
+    365
+   ],
+   "sunrise": [
+    10,
+    365
+   ],
+   "dhuhr": [
+    5,
+    365
+   ],
+   "asr": [
+    8,
+    365
+   ],
+   "maghrib": [
+    2,
+    365
+   ],
+   "isha": [
+    7,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.38,
+   "sunrise": 0.33,
+   "dhuhr": 0.31,
+   "asr": 0.38,
+   "maghrib": 0.38,
+   "isha": 0.42
+  },
+  "bias": {
+   "fajr": -0.1,
+   "sunrise": -0.08,
+   "dhuhr": -0.08,
+   "asr": -0.07,
+   "maghrib": -0.11,
+   "isha": -0.07
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -98,
+   "isha": 104
+  },
+  "worst": 1,
+  "worstAt": "isha@2026-03-12"
+ },
+ {
+  "slug": "sutton",
+  "id": "11322",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -35.155,
+  "lon": 149.272,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    9,
+    365
+   ],
+   "sunrise": [
+    2,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    6,
+    364
+   ],
+   "maghrib": [
+    3,
+    363
+   ],
+   "isha": [
+    7,
+    345
+   ]
+  },
+  "rms": {
+   "fajr": 0.39,
+   "sunrise": 0.33,
+   "dhuhr": 0.31,
+   "asr": 0.43,
+   "maghrib": 0.43,
+   "isha": 0.51
+  },
+  "bias": {
+   "fajr": -0.01,
+   "sunrise": -0.07,
+   "dhuhr": -0.08,
+   "asr": -0.1,
+   "maghrib": -0.06,
+   "isha": -0.12
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -79,
+   "isha": 203
+  },
+  "worst": 1.15,
+  "worstAt": "isha@2026-02-02"
+ },
+ {
+  "slug": "berrimah",
+  "id": "11323",
+  "zone": "Australia/Darwin",
+  "zoneExpected": "Australia/Darwin",
+  "clockDefect": false,
+  "lat": -12.442,
+  "lon": 130.939,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    5,
+    365
+   ],
+   "sunrise": [
+    4,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    7,
+    365
+   ],
+   "maghrib": [
+    8,
+    365
+   ],
+   "isha": [
+    5,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.31,
+   "sunrise": 0.3,
+   "dhuhr": 0.29,
+   "asr": 0.32,
+   "maghrib": 0.33,
+   "isha": 0.35
+  },
+  "bias": {
+   "fajr": 0.02,
+   "sunrise": 0.02,
+   "dhuhr": 0.01,
+   "asr": 0,
+   "maghrib": 0.07,
+   "isha": 0.04
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -39,
+   "isha": 44
+  },
+  "worst": 0.77,
+  "worstAt": "isha@2026-03-02"
+ },
+ {
+  "slug": "mondorah",
+  "id": "11324",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -12.435,
+  "lon": 138.252,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    5,
+    365
+   ],
+   "sunrise": [
+    7,
+    365
+   ],
+   "dhuhr": [
+    5,
+    365
+   ],
+   "asr": [
+    11,
+    365
+   ],
+   "maghrib": [
+    9,
+    365
+   ],
+   "isha": [
+    7,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.3,
+   "sunrise": 0.3,
+   "dhuhr": 0.31,
+   "asr": 0.34,
+   "maghrib": 0.3,
+   "isha": 0.34
+  },
+  "bias": {
+   "fajr": -0.05,
+   "sunrise": -0.07,
+   "dhuhr": -0.08,
+   "asr": -0.09,
+   "maghrib": -0.05,
+   "isha": -0.07
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": 22,
+   "isha": 105
+  },
+  "worst": 0.85,
+  "worstAt": "isha@2026-03-08"
+ },
+ {
+  "slug": "noonambah",
+  "id": "11325",
+  "zone": "Australia/Darwin",
+  "zoneExpected": "Australia/Darwin",
+  "clockDefect": false,
+  "lat": -12.586,
+  "lon": 131.043,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    9,
+    365
+   ],
+   "dhuhr": [
+    4,
+    365
+   ],
+   "asr": [
+    5,
+    365
+   ],
+   "maghrib": [
+    6,
+    365
+   ],
+   "isha": [
+    9,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.31,
+   "sunrise": 0.31,
+   "dhuhr": 0.3,
+   "asr": 0.36,
+   "maghrib": 0.31,
+   "isha": 0.34
+  },
+  "bias": {
+   "fajr": 0.1,
+   "sunrise": 0.09,
+   "dhuhr": 0.08,
+   "asr": 0.1,
+   "maghrib": 0.05,
+   "isha": 0.06
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -39,
+   "isha": 45
+  },
+  "worst": 0.78,
+  "worstAt": "isha@2026-11-24"
+ },
+ {
+  "slug": "leeton",
+  "id": "11326",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -34.542,
+  "lon": 143.888,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    4,
+    365
+   ],
+   "dhuhr": [
+    10,
+    365
+   ],
+   "asr": [
+    3,
+    365
+   ],
+   "maghrib": [
+    9,
+    365
+   ],
+   "isha": [
+    3,
+    357
+   ]
+  },
+  "rms": {
+   "fajr": 0.38,
+   "sunrise": 0.33,
+   "dhuhr": 0.28,
+   "asr": 0.4,
+   "maghrib": 0.42,
+   "isha": 0.51
+  },
+  "bias": {
+   "fajr": 0.04,
+   "sunrise": 0.02,
+   "dhuhr": 0.01,
+   "asr": 0.04,
+   "maghrib": 0.05,
+   "isha": 0
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -74,
+   "isha": 199
+  },
+  "worst": 1.12,
+  "worstAt": "isha@2026-02-21"
+ },
+ {
+  "slug": "drysdale",
+  "id": "11327",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -38.125,
+  "lon": 144.543,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    9,
+    360
+   ],
+   "sunrise": [
+    7,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    7,
+    365
+   ],
+   "maghrib": [
+    6,
+    365
+   ],
+   "isha": [
+    7,
+    343
+   ]
+  },
+  "rms": {
+   "fajr": 0.43,
+   "sunrise": 0.34,
+   "dhuhr": 0.29,
+   "asr": 0.45,
+   "maghrib": 0.43,
+   "isha": 0.54
+  },
+  "bias": {
+   "fajr": 0.11,
+   "sunrise": 0.03,
+   "dhuhr": 0.03,
+   "asr": 0.04,
+   "maghrib": 0.03,
+   "isha": -0.04
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -97,
+   "isha": 222
+  },
+  "worst": 1.3,
+  "worstAt": "isha@2026-03-02"
+ },
+ {
+  "slug": "kingston-hobart",
+  "id": "11328",
+  "zone": "Australia/Hobart",
+  "zoneExpected": "Australia/Hobart",
+  "clockDefect": false,
+  "lat": -42.985,
+  "lon": 147.293,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    5,
+    354
+   ],
+   "sunrise": [
+    6,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    4,
+    365
+   ],
+   "maghrib": [
+    6,
+    361
+   ],
+   "isha": [
+    4,
+    312
+   ]
+  },
+  "rms": {
+   "fajr": 0.5,
+   "sunrise": 0.34,
+   "dhuhr": 0.29,
+   "asr": 0.49,
+   "maghrib": 0.49,
+   "isha": 0.68
+  },
+  "bias": {
+   "fajr": 0.04,
+   "sunrise": 0.06,
+   "dhuhr": 0.06,
+   "asr": 0.04,
+   "maghrib": 0.05,
+   "isha": 0.05
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -135,
+   "isha": 257
+  },
+  "worst": 1.47,
+  "worstAt": "isha@2026-11-14"
+ },
+ {
+  "slug": "new-norfolk",
+  "id": "11329",
+  "zone": "Australia/Hobart",
+  "zoneExpected": "Australia/Hobart",
+  "clockDefect": false,
+  "lat": -42.765,
+  "lon": 142.043,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    5,
+    353
+   ],
+   "sunrise": [
+    5,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    6,
+    362
+   ],
+   "maghrib": [
+    5,
+    357
+   ],
+   "isha": [
+    8,
+    312
+   ]
+  },
+  "rms": {
+   "fajr": 0.48,
+   "sunrise": 0.35,
+   "dhuhr": 0.29,
+   "asr": 0.48,
+   "maghrib": 0.49,
+   "isha": 0.67
+  },
+  "bias": {
+   "fajr": 0.04,
+   "sunrise": 0,
+   "dhuhr": 0.02,
+   "asr": 0.04,
+   "maghrib": 0,
+   "isha": -0.02
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -133,
+   "isha": 256
+  },
+  "worst": 1.45,
+  "worstAt": "isha@2026-02-15"
+ },
+ {
+  "slug": "opossum-bay",
+  "id": "11330",
+  "zone": "Australia/Hobart",
+  "zoneExpected": "Australia/Hobart",
+  "clockDefect": false,
+  "lat": -42.976,
+  "lon": 147.387,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    3,
+    354
+   ],
+   "sunrise": [
+    5,
+    365
+   ],
+   "dhuhr": [
+    8,
+    365
+   ],
+   "asr": [
+    6,
+    365
+   ],
+   "maghrib": [
+    4,
+    360
+   ],
+   "isha": [
+    4,
+    317
+   ]
+  },
+  "rms": {
+   "fajr": 0.49,
+   "sunrise": 0.37,
+   "dhuhr": 0.28,
+   "asr": 0.46,
+   "maghrib": 0.51,
+   "isha": 0.65
+  },
+  "bias": {
+   "fajr": 0.11,
+   "sunrise": 0.01,
+   "dhuhr": 0.02,
+   "asr": 0.04,
+   "maghrib": 0.02,
+   "isha": -0.05
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -135,
+   "isha": 258
+  },
+  "worst": 1.42,
+  "worstAt": "isha@2026-03-01"
+ },
+ {
+  "slug": "broadmeadows",
+  "id": "11331",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -37.656,
+  "lon": 144.897,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    4,
+    364
+   ],
+   "sunrise": [
+    4,
+    365
+   ],
+   "dhuhr": [
+    7,
+    365
+   ],
+   "asr": [
+    5,
+    365
+   ],
+   "maghrib": [
+    10,
+    365
+   ],
+   "isha": [
+    1,
+    353
+   ]
+  },
+  "rms": {
+   "fajr": 0.42,
+   "sunrise": 0.34,
+   "dhuhr": 0.29,
+   "asr": 0.43,
+   "maghrib": 0.42,
+   "isha": 0.54
+  },
+  "bias": {
+   "fajr": 0.1,
+   "sunrise": 0.04,
+   "dhuhr": 0.02,
+   "asr": 0.05,
+   "maghrib": 0.05,
+   "isha": -0.01
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -94,
+   "isha": 219
+  },
+  "worst": 1.23,
+  "worstAt": "isha@2026-02-26"
+ },
+ {
+  "slug": "broadmeadows-namaz-vakitleri",
+  "id": "11331",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -37.656,
+  "lon": 144.897,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    4,
+    364
+   ],
+   "sunrise": [
+    4,
+    365
+   ],
+   "dhuhr": [
+    7,
+    365
+   ],
+   "asr": [
+    5,
+    365
+   ],
+   "maghrib": [
+    10,
+    365
+   ],
+   "isha": [
+    1,
+    353
+   ]
+  },
+  "rms": {
+   "fajr": 0.42,
+   "sunrise": 0.34,
+   "dhuhr": 0.29,
+   "asr": 0.43,
+   "maghrib": 0.42,
+   "isha": 0.54
+  },
+  "bias": {
+   "fajr": 0.1,
+   "sunrise": 0.04,
+   "dhuhr": 0.02,
+   "asr": 0.05,
+   "maghrib": 0.05,
+   "isha": -0.01
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -94,
+   "isha": 219
+  },
+  "worst": 1.23,
+  "worstAt": "isha@2026-02-26"
+ },
+ {
+  "slug": "broadmeadows-prayer-times",
+  "id": "11331",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -37.656,
+  "lon": 144.897,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    4,
+    364
+   ],
+   "sunrise": [
+    4,
+    365
+   ],
+   "dhuhr": [
+    7,
+    365
+   ],
+   "asr": [
+    5,
+    365
+   ],
+   "maghrib": [
+    10,
+    365
+   ],
+   "isha": [
+    1,
+    353
+   ]
+  },
+  "rms": {
+   "fajr": 0.42,
+   "sunrise": 0.34,
+   "dhuhr": 0.29,
+   "asr": 0.43,
+   "maghrib": 0.42,
+   "isha": 0.54
+  },
+  "bias": {
+   "fajr": 0.1,
+   "sunrise": 0.04,
+   "dhuhr": 0.02,
+   "asr": 0.05,
+   "maghrib": 0.05,
+   "isha": -0.01
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -94,
+   "isha": 219
+  },
+  "worst": 1.23,
+  "worstAt": "isha@2026-02-26"
+ },
+ {
+  "slug": "craigieburn",
+  "id": "11332",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -37.6,
+  "lon": 144.929,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    5,
+    365
+   ],
+   "sunrise": [
+    7,
+    365
+   ],
+   "dhuhr": [
+    4,
+    365
+   ],
+   "asr": [
+    6,
+    364
+   ],
+   "maghrib": [
+    4,
+    364
+   ],
+   "isha": [
+    4,
+    344
+   ]
+  },
+  "rms": {
+   "fajr": 0.39,
+   "sunrise": 0.33,
+   "dhuhr": 0.29,
+   "asr": 0.43,
+   "maghrib": 0.44,
+   "isha": 0.55
+  },
+  "bias": {
+   "fajr": -0.02,
+   "sunrise": -0.01,
+   "dhuhr": -0.01,
+   "asr": -0.01,
+   "maghrib": -0.03,
+   "isha": -0.02
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -93,
+   "isha": 217
+  },
+  "worst": 1.22,
+  "worstAt": "isha@2026-02-17"
+ },
+ {
+  "slug": "doncaster",
+  "id": "11333",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -37.76,
+  "lon": 145.105,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    5,
+    363
+   ],
+   "sunrise": [
+    6,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    4,
+    365
+   ],
+   "maghrib": [
+    8,
+    365
+   ],
+   "isha": [
+    1,
+    347
+   ]
+  },
+  "rms": {
+   "fajr": 0.41,
+   "sunrise": 0.33,
+   "dhuhr": 0.29,
+   "asr": 0.43,
+   "maghrib": 0.44,
+   "isha": 0.54
+  },
+  "bias": {
+   "fajr": 0.1,
+   "sunrise": 0.01,
+   "dhuhr": 0.04,
+   "asr": 0.03,
+   "maghrib": 0.05,
+   "isha": -0.01
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -94,
+   "isha": 218
+  },
+  "worst": 1.25,
+  "worstAt": "isha@2026-03-08"
+ },
+ {
+  "slug": "essendon",
+  "id": "11334",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -37.728,
+  "lon": 144.897,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    2,
+    361
+   ],
+   "sunrise": [
+    6,
+    365
+   ],
+   "dhuhr": [
+    7,
+    365
+   ],
+   "asr": [
+    1,
+    365
+   ],
+   "maghrib": [
+    5,
+    365
+   ],
+   "isha": [
+    3,
+    346
+   ]
+  },
+  "rms": {
+   "fajr": 0.4,
+   "sunrise": 0.35,
+   "dhuhr": 0.29,
+   "asr": 0.44,
+   "maghrib": 0.42,
+   "isha": 0.54
+  },
+  "bias": {
+   "fajr": 0.1,
+   "sunrise": 0.04,
+   "dhuhr": 0.03,
+   "asr": 0.05,
+   "maghrib": 0.03,
+   "isha": -0.02
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -94,
+   "isha": 219
+  },
+  "worst": 1.23,
+  "worstAt": "isha@2026-03-03"
+ },
+ {
+  "slug": "keilor",
+  "id": "11335",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -37.751,
+  "lon": 144.804,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    7,
+    365
+   ],
+   "sunrise": [
+    5,
+    365
+   ],
+   "dhuhr": [
+    8,
+    365
+   ],
+   "asr": [
+    9,
+    365
+   ],
+   "maghrib": [
+    4,
+    363
+   ],
+   "isha": [
+    5,
+    344
+   ]
+  },
+  "rms": {
+   "fajr": 0.44,
+   "sunrise": 0.34,
+   "dhuhr": 0.3,
+   "asr": 0.42,
+   "maghrib": 0.46,
+   "isha": 0.57
+  },
+  "bias": {
+   "fajr": 0.03,
+   "sunrise": 0.07,
+   "dhuhr": 0.08,
+   "asr": 0.07,
+   "maghrib": 0.09,
+   "isha": 0.12
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -94,
+   "isha": 218
+  },
+  "worst": 1.43,
+  "worstAt": "isha@2026-11-19"
+ },
+ {
+  "slug": "knox",
+  "id": "11336",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -37.866,
+  "lon": 145.293,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    8,
+    364
+   ],
+   "sunrise": [
+    2,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    6,
+    365
+   ],
+   "maghrib": [
+    2,
+    362
+   ],
+   "isha": [
+    4,
+    343
+   ]
+  },
+  "rms": {
+   "fajr": 0.4,
+   "sunrise": 0.33,
+   "dhuhr": 0.29,
+   "asr": 0.43,
+   "maghrib": 0.44,
+   "isha": 0.56
+  },
+  "bias": {
+   "fajr": 0.03,
+   "sunrise": 0,
+   "dhuhr": 0.01,
+   "asr": 0.02,
+   "maghrib": -0.02,
+   "isha": -0.03
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -96,
+   "isha": 219
+  },
+  "worst": 1.3,
+  "worstAt": "isha@2026-02-26"
+ },
+ {
+  "slug": "kurri-kurri",
+  "id": "11337",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -32.788,
+  "lon": 151.45,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    5,
+    365
+   ],
+   "sunrise": [
+    4,
+    365
+   ],
+   "dhuhr": [
+    7,
+    365
+   ],
+   "asr": [
+    4,
+    365
+   ],
+   "maghrib": [
+    5,
+    365
+   ],
+   "isha": [
+    4,
+    362
+   ]
+  },
+  "rms": {
+   "fajr": 0.4,
+   "sunrise": 0.32,
+   "dhuhr": 0.29,
+   "asr": 0.38,
+   "maghrib": 0.4,
+   "isha": 0.46
+  },
+  "bias": {
+   "fajr": 0.1,
+   "sunrise": 0.04,
+   "dhuhr": 0.02,
+   "asr": 0.06,
+   "maghrib": 0.04,
+   "isha": 0
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -65,
+   "isha": 189
+  },
+  "worst": 1.08,
+  "worstAt": "isha@2026-02-26"
+ },
+ {
+  "slug": "raymond-terrace",
+  "id": "11338",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -32.779,
+  "lon": 151.835,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    5,
+    365
+   ],
+   "dhuhr": [
+    4,
+    365
+   ],
+   "asr": [
+    10,
+    365
+   ],
+   "maghrib": [
+    10,
+    365
+   ],
+   "isha": [
+    2,
+    361
+   ]
+  },
+  "rms": {
+   "fajr": 0.37,
+   "sunrise": 0.34,
+   "dhuhr": 0.29,
+   "asr": 0.38,
+   "maghrib": 0.38,
+   "isha": 0.46
+  },
+  "bias": {
+   "fajr": 0.03,
+   "sunrise": 0.02,
+   "dhuhr": 0.04,
+   "asr": 0.02,
+   "maghrib": 0.03,
+   "isha": 0
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -64,
+   "isha": 190
+  },
+  "worst": 1.1,
+  "worstAt": "isha@2026-03-12"
+ },
+ {
+  "slug": "singleton",
+  "id": "11339",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -32.559,
+  "lon": 151.158,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    11,
+    365
+   ],
+   "sunrise": [
+    4,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    13,
+    365
+   ],
+   "maghrib": [
+    9,
+    365
+   ],
+   "isha": [
+    5,
+    359
+   ]
+  },
+  "rms": {
+   "fajr": 0.37,
+   "sunrise": 0.32,
+   "dhuhr": 0.29,
+   "asr": 0.39,
+   "maghrib": 0.39,
+   "isha": 0.46
+  },
+  "bias": {
+   "fajr": 0.05,
+   "sunrise": 0.02,
+   "dhuhr": 0,
+   "asr": 0.03,
+   "maghrib": 0.02,
+   "isha": 0.02
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -64,
+   "isha": 189
+  },
+  "worst": 1.08,
+  "worstAt": "isha@2026-02-28"
+ },
+ {
+  "slug": "bassendean",
+  "id": "11340",
+  "zone": "Australia/Perth",
+  "zoneExpected": "Australia/Perth",
+  "clockDefect": false,
+  "lat": -31.854,
+  "lon": 115.949,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    8,
+    365
+   ],
+   "sunrise": [
+    10,
+    365
+   ],
+   "dhuhr": [
+    5,
+    365
+   ],
+   "asr": [
+    7,
+    363
+   ],
+   "maghrib": [
+    5,
+    365
+   ],
+   "isha": [
+    5,
+    351
+   ]
+  },
+  "rms": {
+   "fajr": 0.36,
+   "sunrise": 0.31,
+   "dhuhr": 0.3,
+   "asr": 0.46,
+   "maghrib": 0.44,
+   "isha": 0.51
+  },
+  "bias": {
+   "fajr": 0.13,
+   "sunrise": 0.03,
+   "dhuhr": 0.02,
+   "asr": 0.03,
+   "maghrib": 0.02,
+   "isha": -0.03
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -120,
+   "isha": 125
+  },
+  "worst": 1.27,
+  "worstAt": "isha@2026-02-20"
+ },
+ {
+  "slug": "bayswater-perth",
+  "id": "11341",
+  "zone": "Australia/Perth",
+  "zoneExpected": "Australia/Perth",
+  "clockDefect": false,
+  "lat": -31.871,
+  "lon": 115.929,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    8,
+    365
+   ],
+   "dhuhr": [
+    3,
+    365
+   ],
+   "asr": [
+    4,
+    361
+   ],
+   "maghrib": [
+    5,
+    361
+   ],
+   "isha": [
+    6,
+    349
+   ]
+  },
+  "rms": {
+   "fajr": 0.32,
+   "sunrise": 0.3,
+   "dhuhr": 0.29,
+   "asr": 0.46,
+   "maghrib": 0.44,
+   "isha": 0.55
+  },
+  "bias": {
+   "fajr": 0.06,
+   "sunrise": -0.03,
+   "dhuhr": -0.01,
+   "asr": -0.02,
+   "maghrib": -0.01,
+   "isha": -0.05
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -120,
+   "isha": 125
+  },
+  "worst": 1.28,
+  "worstAt": "isha@2026-02-24"
+ },
+ {
+  "slug": "cannington",
+  "id": "11342",
+  "zone": "Australia/Perth",
+  "zoneExpected": "Australia/Perth",
+  "clockDefect": false,
+  "lat": -32.023,
+  "lon": 115.939,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    2,
+    365
+   ],
+   "dhuhr": [
+    4,
+    365
+   ],
+   "asr": [
+    3,
+    363
+   ],
+   "maghrib": [
+    4,
+    363
+   ],
+   "isha": [
+    6,
+    349
+   ]
+  },
+  "rms": {
+   "fajr": 0.32,
+   "sunrise": 0.3,
+   "dhuhr": 0.29,
+   "asr": 0.47,
+   "maghrib": 0.46,
+   "isha": 0.51
+  },
+  "bias": {
+   "fajr": 0.02,
+   "sunrise": -0.02,
+   "dhuhr": 0,
+   "asr": 0.02,
+   "maghrib": 0.01,
+   "isha": -0.02
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -121,
+   "isha": 125
+  },
+  "worst": 1.17,
+  "worstAt": "isha@2026-03-08"
+ },
+ {
+  "slug": "gosnells",
+  "id": "11343",
+  "zone": "Australia/Perth",
+  "zoneExpected": "Australia/Perth",
+  "clockDefect": false,
+  "lat": -32.065,
+  "lon": 116.002,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    4,
+    365
+   ],
+   "sunrise": [
+    6,
+    365
+   ],
+   "dhuhr": [
+    2,
+    365
+   ],
+   "asr": [
+    3,
+    362
+   ],
+   "maghrib": [
+    8,
+    363
+   ],
+   "isha": [
+    5,
+    350
+   ]
+  },
+  "rms": {
+   "fajr": 0.31,
+   "sunrise": 0.3,
+   "dhuhr": 0.3,
+   "asr": 0.45,
+   "maghrib": 0.45,
+   "isha": 0.5
+  },
+  "bias": {
+   "fajr": 0,
+   "sunrise": -0.01,
+   "dhuhr": -0.04,
+   "asr": -0.01,
+   "maghrib": -0.03,
+   "isha": -0.06
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -121,
+   "isha": 126
+  },
+  "worst": 1.27,
+  "worstAt": "isha@2026-03-05"
+ },
+ {
+  "slug": "melville",
+  "id": "11344",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -32.021,
+  "lon": 145.793,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    11,
+    365
+   ],
+   "sunrise": [
+    9,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    7,
+    365
+   ],
+   "maghrib": [
+    9,
+    365
+   ],
+   "isha": [
+    3,
+    358
+   ]
+  },
+  "rms": {
+   "fajr": 0.36,
+   "sunrise": 0.33,
+   "dhuhr": 0.29,
+   "asr": 0.4,
+   "maghrib": 0.4,
+   "isha": 0.48
+  },
+  "bias": {
+   "fajr": -0.01,
+   "sunrise": -0.03,
+   "dhuhr": 0,
+   "asr": -0.04,
+   "maghrib": -0.03,
+   "isha": -0.03
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -61,
+   "isha": 186
+  },
+  "worst": 1.12,
+  "worstAt": "isha@2026-03-18"
+ },
+ {
+  "slug": "nedlands",
+  "id": "11345",
+  "zone": "Australia/Perth",
+  "zoneExpected": "Australia/Perth",
+  "clockDefect": false,
+  "lat": -31.966,
+  "lon": 115.793,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    4,
+    365
+   ],
+   "sunrise": [
+    10,
+    365
+   ],
+   "dhuhr": [
+    9,
+    365
+   ],
+   "asr": [
+    4,
+    361
+   ],
+   "maghrib": [
+    8,
+    364
+   ],
+   "isha": [
+    5,
+    357
+   ]
+  },
+  "rms": {
+   "fajr": 0.33,
+   "sunrise": 0.31,
+   "dhuhr": 0.29,
+   "asr": 0.46,
+   "maghrib": 0.44,
+   "isha": 0.52
+  },
+  "bias": {
+   "fajr": 0.05,
+   "sunrise": 0.07,
+   "dhuhr": 0.03,
+   "asr": 0.03,
+   "maghrib": 0.04,
+   "isha": 0.01
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -120,
+   "isha": 126
+  },
+  "worst": 1.18,
+  "worstAt": "isha@2026-02-26"
+ },
+ {
+  "slug": "o-connor",
+  "id": "11346",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -32.021,
+  "lon": 145.793,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    11,
+    365
+   ],
+   "sunrise": [
+    9,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    7,
+    365
+   ],
+   "maghrib": [
+    9,
+    365
+   ],
+   "isha": [
+    2,
+    356
+   ]
+  },
+  "rms": {
+   "fajr": 0.36,
+   "sunrise": 0.33,
+   "dhuhr": 0.29,
+   "asr": 0.4,
+   "maghrib": 0.4,
+   "isha": 0.48
+  },
+  "bias": {
+   "fajr": 0.02,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": -0.02,
+   "maghrib": -0.01,
+   "isha": -0.05
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -61,
+   "isha": 186
+  },
+  "worst": 1.17,
+  "worstAt": "isha@2026-02-20"
+ },
+ {
+  "slug": "south-perth",
+  "id": "11347",
+  "zone": "Australia/Perth",
+  "zoneExpected": "Australia/Perth",
+  "clockDefect": false,
+  "lat": -31.972,
+  "lon": 115.856,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    8,
+    365
+   ],
+   "sunrise": [
+    5,
+    365
+   ],
+   "dhuhr": [
+    8,
+    365
+   ],
+   "asr": [
+    2,
+    360
+   ],
+   "maghrib": [
+    7,
+    364
+   ],
+   "isha": [
+    3,
+    349
+   ]
+  },
+  "rms": {
+   "fajr": 0.32,
+   "sunrise": 0.3,
+   "dhuhr": 0.29,
+   "asr": 0.47,
+   "maghrib": 0.43,
+   "isha": 0.52
+  },
+  "bias": {
+   "fajr": -0.02,
+   "sunrise": -0.01,
+   "dhuhr": 0,
+   "asr": -0.01,
+   "maghrib": -0.01,
+   "isha": -0.02
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -120,
+   "isha": 126
+  },
+  "worst": 1.2,
+  "worstAt": "isha@2026-02-22"
+ },
+ {
+  "slug": "stirling-perth",
+  "id": "11348",
+  "zone": "Australia/Perth",
+  "zoneExpected": "Australia/Perth",
+  "clockDefect": false,
+  "lat": -31.861,
+  "lon": 115.793,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    11,
+    365
+   ],
+   "sunrise": [
+    2,
+    365
+   ],
+   "dhuhr": [
+    9,
+    365
+   ],
+   "asr": [
+    3,
+    362
+   ],
+   "maghrib": [
+    8,
+    364
+   ],
+   "isha": [
+    3,
+    351
+   ]
+  },
+  "rms": {
+   "fajr": 0.32,
+   "sunrise": 0.3,
+   "dhuhr": 0.29,
+   "asr": 0.47,
+   "maghrib": 0.44,
+   "isha": 0.5
+  },
+  "bias": {
+   "fajr": 0,
+   "sunrise": -0.02,
+   "dhuhr": 0.01,
+   "asr": 0.01,
+   "maghrib": -0.01,
+   "isha": -0.04
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -119,
+   "isha": 125
+  },
+  "worst": 1.18,
+  "worstAt": "isha@2026-03-09"
+ },
+ {
+  "slug": "wanneroo",
+  "id": "11349",
+  "zone": "Australia/Perth",
+  "zoneExpected": "Australia/Perth",
+  "clockDefect": false,
+  "lat": -31.715,
+  "lon": 115.793,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    8,
+    365
+   ],
+   "sunrise": [
+    7,
+    365
+   ],
+   "dhuhr": [
+    9,
+    365
+   ],
+   "asr": [
+    11,
+    362
+   ],
+   "maghrib": [
+    9,
+    363
+   ],
+   "isha": [
+    5,
+    353
+   ]
+  },
+  "rms": {
+   "fajr": 0.33,
+   "sunrise": 0.3,
+   "dhuhr": 0.29,
+   "asr": 0.45,
+   "maghrib": 0.43,
+   "isha": 0.5
+  },
+  "bias": {
+   "fajr": 0.04,
+   "sunrise": 0,
+   "dhuhr": 0.02,
+   "asr": 0.02,
+   "maghrib": 0.01,
+   "isha": -0.04
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -119,
+   "isha": 124
+  },
+  "worst": 1.22,
+  "worstAt": "isha@2026-02-17"
+ },
+ {
+  "slug": "welshpoolwa",
+  "id": "11350",
+  "zone": "Australia/Perth",
+  "zoneExpected": "Australia/Perth",
+  "clockDefect": false,
+  "lat": -32.009,
+  "lon": 115.939,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    5,
+    365
+   ],
+   "sunrise": [
+    6,
+    365
+   ],
+   "dhuhr": [
+    4,
+    365
+   ],
+   "asr": [
+    4,
+    363
+   ],
+   "maghrib": [
+    2,
+    363
+   ],
+   "isha": [
+    2,
+    345
+   ]
+  },
+  "rms": {
+   "fajr": 0.33,
+   "sunrise": 0.3,
+   "dhuhr": 0.29,
+   "asr": 0.47,
+   "maghrib": 0.45,
+   "isha": 0.51
+  },
+  "bias": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0.03,
+   "maghrib": 0,
+   "isha": -0.01
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -120,
+   "isha": 125
+  },
+  "worst": 1.18,
+  "worstAt": "isha@2026-03-08"
+ },
+ {
+  "slug": "canterbury",
+  "id": "11351",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -33.915,
+  "lon": 151.106,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    8,
+    365
+   ],
+   "dhuhr": [
+    9,
+    365
+   ],
+   "asr": [
+    10,
+    365
+   ],
+   "maghrib": [
+    2,
+    365
+   ],
+   "isha": [
+    2,
+    361
+   ]
+  },
+  "rms": {
+   "fajr": 0.38,
+   "sunrise": 0.34,
+   "dhuhr": 0.28,
+   "asr": 0.4,
+   "maghrib": 0.42,
+   "isha": 0.48
+  },
+  "bias": {
+   "fajr": 0.02,
+   "sunrise": 0.01,
+   "dhuhr": 0.03,
+   "asr": 0.03,
+   "maghrib": 0.03,
+   "isha": 0.03
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -71,
+   "isha": 195
+  },
+  "worst": 1.07,
+  "worstAt": "isha@2026-02-20"
+ },
+ {
+  "slug": "randwick",
+  "id": "11352",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -33.899,
+  "lon": 151.252,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    14,
+    365
+   ],
+   "sunrise": [
+    1,
+    365
+   ],
+   "dhuhr": [
+    9,
+    365
+   ],
+   "asr": [
+    3,
+    365
+   ],
+   "maghrib": [
+    5,
+    365
+   ],
+   "isha": [
+    6,
+    357
+   ]
+  },
+  "rms": {
+   "fajr": 0.37,
+   "sunrise": 0.32,
+   "dhuhr": 0.3,
+   "asr": 0.39,
+   "maghrib": 0.38,
+   "isha": 0.48
+  },
+  "bias": {
+   "fajr": -0.03,
+   "sunrise": -0.03,
+   "dhuhr": -0.04,
+   "asr": -0.04,
+   "maghrib": -0.03,
+   "isha": -0.06
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -71,
+   "isha": 196
+  },
+  "worst": 1.15,
+  "worstAt": "isha@2026-03-14"
+ },
+ {
+  "slug": "echuca",
+  "id": "11353",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -36.114,
+  "lon": 144.751,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    4,
+    365
+   ],
+   "sunrise": [
+    5,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    5,
+    364
+   ],
+   "maghrib": [
+    5,
+    364
+   ],
+   "isha": [
+    10,
+    347
+   ]
+  },
+  "rms": {
+   "fajr": 0.38,
+   "sunrise": 0.33,
+   "dhuhr": 0.3,
+   "asr": 0.43,
+   "maghrib": 0.44,
+   "isha": 0.53
+  },
+  "bias": {
+   "fajr": -0.02,
+   "sunrise": -0.03,
+   "dhuhr": -0.04,
+   "asr": -0.03,
+   "maghrib": -0.01,
+   "isha": -0.09
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -84,
+   "isha": 209
+  },
+  "worst": 1.27,
+  "worstAt": "isha@2026-02-26"
+ },
+ {
+  "slug": "kyabram",
+  "id": "11354",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -36.325,
+  "lon": 145.043,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    8,
+    365
+   ],
+   "sunrise": [
+    8,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    8,
+    365
+   ],
+   "maghrib": [
+    5,
+    365
+   ],
+   "isha": [
+    5,
+    350
+   ]
+  },
+  "rms": {
+   "fajr": 0.39,
+   "sunrise": 0.32,
+   "dhuhr": 0.29,
+   "asr": 0.43,
+   "maghrib": 0.44,
+   "isha": 0.53
+  },
+  "bias": {
+   "fajr": 0,
+   "sunrise": 0.01,
+   "dhuhr": 0.01,
+   "asr": -0.01,
+   "maghrib": 0,
+   "isha": 0.01
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -85,
+   "isha": 209
+  },
+  "worst": 1.18,
+  "worstAt": "isha@2026-03-02"
+ },
+ {
+  "slug": "mooroopna",
+  "id": "11355",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -36.392,
+  "lon": 145.355,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    5,
+    365
+   ],
+   "sunrise": [
+    6,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    8,
+    362
+   ],
+   "maghrib": [
+    8,
+    362
+   ],
+   "isha": [
+    3,
+    346
+   ]
+  },
+  "rms": {
+   "fajr": 0.4,
+   "sunrise": 0.32,
+   "dhuhr": 0.29,
+   "asr": 0.42,
+   "maghrib": 0.44,
+   "isha": 0.52
+  },
+  "bias": {
+   "fajr": -0.05,
+   "sunrise": -0.04,
+   "dhuhr": -0.02,
+   "asr": -0.06,
+   "maghrib": -0.05,
+   "isha": -0.03
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -86,
+   "isha": 211
+  },
+  "worst": 1.18,
+  "worstAt": "isha@2026-03-14"
+ },
+ {
+  "slug": "mittagong",
+  "id": "11356",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -34.436,
+  "lon": 150.429,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    5,
+    365
+   ],
+   "sunrise": [
+    4,
+    365
+   ],
+   "dhuhr": [
+    2,
+    365
+   ],
+   "asr": [
+    4,
+    365
+   ],
+   "maghrib": [
+    6,
+    365
+   ],
+   "isha": [
+    3,
+    359
+   ]
+  },
+  "rms": {
+   "fajr": 0.4,
+   "sunrise": 0.34,
+   "dhuhr": 0.29,
+   "asr": 0.4,
+   "maghrib": 0.4,
+   "isha": 0.47
+  },
+  "bias": {
+   "fajr": 0.03,
+   "sunrise": -0.01,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0.02,
+   "isha": -0.03
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -74,
+   "isha": 198
+  },
+  "worst": 1.12,
+  "worstAt": "isha@2026-03-16"
+ },
+ {
+  "slug": "moss-vale",
+  "id": "11357",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -34.522,
+  "lon": 150.356,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    3,
+    365
+   ],
+   "sunrise": [
+    7,
+    365
+   ],
+   "dhuhr": [
+    9,
+    365
+   ],
+   "asr": [
+    5,
+    365
+   ],
+   "maghrib": [
+    1,
+    365
+   ],
+   "isha": [
+    7,
+    361
+   ]
+  },
+  "rms": {
+   "fajr": 0.41,
+   "sunrise": 0.34,
+   "dhuhr": 0.28,
+   "asr": 0.41,
+   "maghrib": 0.42,
+   "isha": 0.5
+  },
+  "bias": {
+   "fajr": 0.09,
+   "sunrise": 0.03,
+   "dhuhr": 0.04,
+   "asr": 0.04,
+   "maghrib": 0.04,
+   "isha": 0.01
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -74,
+   "isha": 199
+  },
+  "worst": 1.08,
+  "worstAt": "isha@2026-02-13"
+ },
+ {
+  "slug": "portkembla",
+  "id": "11358",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -34.445,
+  "lon": 150.856,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    8,
+    365
+   ],
+   "sunrise": [
+    7,
+    365
+   ],
+   "dhuhr": [
+    9,
+    365
+   ],
+   "asr": [
+    6,
+    365
+   ],
+   "maghrib": [
+    4,
+    365
+   ],
+   "isha": [
+    1,
+    354
+   ]
+  },
+  "rms": {
+   "fajr": 0.39,
+   "sunrise": 0.35,
+   "dhuhr": 0.28,
+   "asr": 0.4,
+   "maghrib": 0.41,
+   "isha": 0.5
+  },
+  "bias": {
+   "fajr": 0.04,
+   "sunrise": -0.04,
+   "dhuhr": 0.01,
+   "asr": -0.01,
+   "maghrib": -0.01,
+   "isha": -0.06
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -74,
+   "isha": 199
+  },
+  "worst": 1.18,
+  "worstAt": "isha@2026-02-09"
+ },
+ {
+  "slug": "shellharbour",
+  "id": "11359",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -34.568,
+  "lon": 150.856,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    9,
+    365
+   ],
+   "sunrise": [
+    8,
+    365
+   ],
+   "dhuhr": [
+    9,
+    365
+   ],
+   "asr": [
+    6,
+    365
+   ],
+   "maghrib": [
+    3,
+    365
+   ],
+   "isha": [
+    4,
+    358
+   ]
+  },
+  "rms": {
+   "fajr": 0.4,
+   "sunrise": 0.35,
+   "dhuhr": 0.29,
+   "asr": 0.42,
+   "maghrib": 0.43,
+   "isha": 0.51
+  },
+  "bias": {
+   "fajr": -0.04,
+   "sunrise": -0.03,
+   "dhuhr": -0.02,
+   "asr": -0.07,
+   "maghrib": -0.06,
+   "isha": -0.03
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -74,
+   "isha": 199
+  },
+  "worst": 1.13,
+  "worstAt": "isha@2026-03-17"
+ },
+ {
+  "slug": "armidale",
+  "id": "11360",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -30.525,
+  "lon": 151.658,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    8,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    5,
+    365
+   ],
+   "maghrib": [
+    6,
+    365
+   ],
+   "isha": [
+    4,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.35,
+   "sunrise": 0.32,
+   "dhuhr": 0.29,
+   "asr": 0.38,
+   "maghrib": 0.36,
+   "isha": 0.45
+  },
+  "bias": {
+   "fajr": 0.02,
+   "sunrise": 0.02,
+   "dhuhr": 0,
+   "asr": 0.01,
+   "maghrib": 0.03,
+   "isha": 0.03
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -53,
+   "isha": 178
+  },
+  "worst": 1,
+  "worstAt": "isha@2026-03-08"
+ },
+ {
+  "slug": "albany",
+  "id": "11361",
+  "zone": "Australia/Perth",
+  "zoneExpected": "Australia/Perth",
+  "clockDefect": false,
+  "lat": -35.002,
+  "lon": 117.866,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    2,
+    365
+   ],
+   "sunrise": [
+    5,
+    365
+   ],
+   "dhuhr": [
+    7,
+    365
+   ],
+   "asr": [
+    6,
+    361
+   ],
+   "maghrib": [
+    5,
+    365
+   ],
+   "isha": [
+    2,
+    343
+   ]
+  },
+  "rms": {
+   "fajr": 0.33,
+   "sunrise": 0.3,
+   "dhuhr": 0.29,
+   "asr": 0.48,
+   "maghrib": 0.48,
+   "isha": 0.58
+  },
+  "bias": {
+   "fajr": 0.02,
+   "sunrise": 0.03,
+   "dhuhr": 0.02,
+   "asr": 0.06,
+   "maghrib": 0.05,
+   "isha": -0.01
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -137,
+   "isha": 142
+  },
+  "worst": 1.28,
+  "worstAt": "isha@2026-03-10"
+ },
+ {
+  "slug": "albury",
+  "id": "11362",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -36.056,
+  "lon": 146.908,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    8,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    7,
+    365
+   ],
+   "maghrib": [
+    7,
+    365
+   ],
+   "isha": [
+    6,
+    350
+   ]
+  },
+  "rms": {
+   "fajr": 0.38,
+   "sunrise": 0.33,
+   "dhuhr": 0.29,
+   "asr": 0.39,
+   "maghrib": 0.43,
+   "isha": 0.52
+  },
+  "bias": {
+   "fajr": 0.04,
+   "sunrise": 0.01,
+   "dhuhr": -0.01,
+   "asr": 0.05,
+   "maghrib": 0.02,
+   "isha": -0.01
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -84,
+   "isha": 208
+  },
+  "worst": 1.18,
+  "worstAt": "isha@2026-03-02"
+ },
+ {
+  "slug": "melton",
+  "id": "11363",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -37.711,
+  "lon": 144.543,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    6,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    8,
+    365
+   ],
+   "maghrib": [
+    7,
+    364
+   ],
+   "isha": [
+    6,
+    344
+   ]
+  },
+  "rms": {
+   "fajr": 0.41,
+   "sunrise": 0.35,
+   "dhuhr": 0.3,
+   "asr": 0.43,
+   "maghrib": 0.46,
+   "isha": 0.57
+  },
+  "bias": {
+   "fajr": 0.06,
+   "sunrise": 0.07,
+   "dhuhr": 0.1,
+   "asr": 0.1,
+   "maghrib": 0.14,
+   "isha": 0.14
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -94,
+   "isha": 218
+  },
+  "worst": 1.37,
+  "worstAt": "isha@2026-11-11"
+ },
+ {
+  "slug": "rockdale",
+  "id": "11364",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -33.975,
+  "lon": 151.127,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    3,
+    365
+   ],
+   "sunrise": [
+    4,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    3,
+    365
+   ],
+   "maghrib": [
+    8,
+    365
+   ],
+   "isha": [
+    2,
+    358
+   ]
+  },
+  "rms": {
+   "fajr": 0.39,
+   "sunrise": 0.36,
+   "dhuhr": 0.28,
+   "asr": 0.41,
+   "maghrib": 0.42,
+   "isha": 0.5
+  },
+  "bias": {
+   "fajr": -0.03,
+   "sunrise": -0.02,
+   "dhuhr": 0.01,
+   "asr": 0,
+   "maghrib": 0.01,
+   "isha": 0.03
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -71,
+   "isha": 196
+  },
+  "worst": 1.13,
+  "worstAt": "isha@2026-11-28"
+ },
+ {
+  "slug": "fairfield",
+  "id": "11365",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -33.871,
+  "lon": 150.939,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    5,
+    365
+   ],
+   "sunrise": [
+    6,
+    365
+   ],
+   "dhuhr": [
+    3,
+    365
+   ],
+   "asr": [
+    7,
+    365
+   ],
+   "maghrib": [
+    10,
+    365
+   ],
+   "isha": [
+    1,
+    357
+   ]
+  },
+  "rms": {
+   "fajr": 0.39,
+   "sunrise": 0.34,
+   "dhuhr": 0.29,
+   "asr": 0.4,
+   "maghrib": 0.38,
+   "isha": 0.47
+  },
+  "bias": {
+   "fajr": 0,
+   "sunrise": -0.01,
+   "dhuhr": 0,
+   "asr": 0.01,
+   "maghrib": 0.02,
+   "isha": 0
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -70,
+   "isha": 196
+  },
+  "worst": 1.05,
+  "worstAt": "isha@2026-03-12"
+ },
+ {
+  "slug": "ryde",
+  "id": "11366",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -33.755,
+  "lon": 151.106,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    4,
+    364
+   ],
+   "sunrise": [
+    5,
+    365
+   ],
+   "dhuhr": [
+    9,
+    365
+   ],
+   "asr": [
+    5,
+    365
+   ],
+   "maghrib": [
+    5,
+    365
+   ],
+   "isha": [
+    9,
+    351
+   ]
+  },
+  "rms": {
+   "fajr": 0.4,
+   "sunrise": 0.33,
+   "dhuhr": 0.28,
+   "asr": 0.4,
+   "maghrib": 0.42,
+   "isha": 0.47
+  },
+  "bias": {
+   "fajr": 0.09,
+   "sunrise": -0.02,
+   "dhuhr": -0.01,
+   "asr": 0,
+   "maghrib": -0.04,
+   "isha": -0.09
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -70,
+   "isha": 195
+  },
+  "worst": 1.2,
+  "worstAt": "isha@2026-02-13"
+ },
+ {
+  "slug": "ballarat",
+  "id": "11367",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -37.54,
+  "lon": 143.835,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    4,
+    365
+   ],
+   "sunrise": [
+    3,
+    365
+   ],
+   "dhuhr": [
+    3,
+    365
+   ],
+   "asr": [
+    9,
+    365
+   ],
+   "maghrib": [
+    9,
+    365
+   ],
+   "isha": [
+    4,
+    343
+   ]
+  },
+  "rms": {
+   "fajr": 0.43,
+   "sunrise": 0.32,
+   "dhuhr": 0.29,
+   "asr": 0.43,
+   "maghrib": 0.44,
+   "isha": 0.53
+  },
+  "bias": {
+   "fajr": 0.05,
+   "sunrise": 0.01,
+   "dhuhr": 0.02,
+   "asr": 0,
+   "maghrib": -0.02,
+   "isha": -0.04
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -93,
+   "isha": 217
+  },
+  "worst": 1.27,
+  "worstAt": "isha@2026-02-21"
+ },
+ {
+  "slug": "hornsby",
+  "id": "11368",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -33.683,
+  "lon": 151.106,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    3,
+    365
+   ],
+   "dhuhr": [
+    9,
+    365
+   ],
+   "asr": [
+    11,
+    365
+   ],
+   "maghrib": [
+    3,
+    365
+   ],
+   "isha": [
+    5,
+    357
+   ]
+  },
+  "rms": {
+   "fajr": 0.36,
+   "sunrise": 0.32,
+   "dhuhr": 0.28,
+   "asr": 0.38,
+   "maghrib": 0.39,
+   "isha": 0.48
+  },
+  "bias": {
+   "fajr": 0.01,
+   "sunrise": -0.04,
+   "dhuhr": -0.02,
+   "asr": -0.03,
+   "maghrib": -0.05,
+   "isha": -0.06
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -69,
+   "isha": 195
+  },
+  "worst": 1.15,
+  "worstAt": "isha@2026-03-01"
+ },
+ {
+  "slug": "bankstown",
+  "id": "11369",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -33.897,
+  "lon": 151.022,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    7,
+    365
+   ],
+   "sunrise": [
+    14,
+    365
+   ],
+   "dhuhr": [
+    5,
+    365
+   ],
+   "asr": [
+    4,
+    365
+   ],
+   "maghrib": [
+    5,
+    365
+   ],
+   "isha": [
+    4,
+    355
+   ]
+  },
+  "rms": {
+   "fajr": 0.37,
+   "sunrise": 0.31,
+   "dhuhr": 0.31,
+   "asr": 0.4,
+   "maghrib": 0.4,
+   "isha": 0.48
+  },
+  "bias": {
+   "fajr": -0.06,
+   "sunrise": -0.06,
+   "dhuhr": -0.07,
+   "asr": -0.08,
+   "maghrib": -0.07,
+   "isha": -0.09
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -71,
+   "isha": 196
+  },
+  "worst": 1.17,
+  "worstAt": "isha@2026-03-05"
+ },
+ {
+  "slug": "bathurst",
+  "id": "11370",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -33.426,
+  "lon": 134.544,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    4,
+    365
+   ],
+   "sunrise": [
+    9,
+    365
+   ],
+   "dhuhr": [
+    4,
+    365
+   ],
+   "asr": [
+    3,
+    365
+   ],
+   "maghrib": [
+    9,
+    365
+   ],
+   "isha": [
+    6,
+    356
+   ]
+  },
+  "rms": {
+   "fajr": 0.36,
+   "sunrise": 0.34,
+   "dhuhr": 0.3,
+   "asr": 0.44,
+   "maghrib": 0.43,
+   "isha": 0.51
+  },
+  "bias": {
+   "fajr": 0.07,
+   "sunrise": 0.11,
+   "dhuhr": 0.08,
+   "asr": 0.08,
+   "maghrib": 0.09,
+   "isha": 0.11
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -68,
+   "isha": 193
+  },
+  "worst": 1.15,
+  "worstAt": "isha@2026-11-06"
+ },
+ {
+  "slug": "moorabbin",
+  "id": "11371",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -37.898,
+  "lon": 145.043,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    8,
+    365
+   ],
+   "sunrise": [
+    5,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    6,
+    364
+   ],
+   "maghrib": [
+    7,
+    356
+   ],
+   "isha": [
+    1,
+    334
+   ]
+  },
+  "rms": {
+   "fajr": 0.42,
+   "sunrise": 0.35,
+   "dhuhr": 0.3,
+   "asr": 0.41,
+   "maghrib": 0.45,
+   "isha": 0.58
+  },
+  "bias": {
+   "fajr": -0.01,
+   "sunrise": -0.11,
+   "dhuhr": -0.05,
+   "asr": -0.03,
+   "maghrib": -0.12,
+   "isha": -0.12
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -96,
+   "isha": 220
+  },
+  "worst": 1.37,
+  "worstAt": "isha@2026-03-12"
+ },
+ {
+  "slug": "springvale",
+  "id": "11372",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -37.964,
+  "lon": 145.137,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    2,
+    365
+   ],
+   "sunrise": [
+    6,
+    365
+   ],
+   "dhuhr": [
+    9,
+    365
+   ],
+   "asr": [
+    4,
+    365
+   ],
+   "maghrib": [
+    4,
+    364
+   ],
+   "isha": [
+    2,
+    341
+   ]
+  },
+  "rms": {
+   "fajr": 0.4,
+   "sunrise": 0.34,
+   "dhuhr": 0.28,
+   "asr": 0.47,
+   "maghrib": 0.45,
+   "isha": 0.56
+  },
+  "bias": {
+   "fajr": 0,
+   "sunrise": 0.04,
+   "dhuhr": 0,
+   "asr": -0.01,
+   "maghrib": 0.03,
+   "isha": 0.04
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -95,
+   "isha": 220
+  },
+  "worst": 1.17,
+  "worstAt": "isha@2026-02-24"
+ },
+ {
+  "slug": "bendigo",
+  "id": "11373",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -36.709,
+  "lon": 144.283,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    1,
+    364
+   ],
+   "sunrise": [
+    5,
+    365
+   ],
+   "dhuhr": [
+    7,
+    365
+   ],
+   "asr": [
+    9,
+    363
+   ],
+   "maghrib": [
+    4,
+    360
+   ],
+   "isha": [
+    5,
+    340
+   ]
+  },
+  "rms": {
+   "fajr": 0.41,
+   "sunrise": 0.33,
+   "dhuhr": 0.3,
+   "asr": 0.44,
+   "maghrib": 0.43,
+   "isha": 0.53
+  },
+  "bias": {
+   "fajr": 0.04,
+   "sunrise": -0.01,
+   "dhuhr": -0.03,
+   "asr": -0.01,
+   "maghrib": -0.05,
+   "isha": -0.13
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -87,
+   "isha": 213
+  },
+  "worst": 1.37,
+  "worstAt": "isha@2026-02-23"
+ },
+ {
+  "slug": "berwick",
+  "id": "11374",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -38.012,
+  "lon": 145.334,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    2,
+    365
+   ],
+   "dhuhr": [
+    3,
+    365
+   ],
+   "asr": [
+    7,
+    365
+   ],
+   "maghrib": [
+    4,
+    363
+   ],
+   "isha": [
+    4,
+    346
+   ]
+  },
+  "rms": {
+   "fajr": 0.41,
+   "sunrise": 0.36,
+   "dhuhr": 0.29,
+   "asr": 0.45,
+   "maghrib": 0.44,
+   "isha": 0.56
+  },
+  "bias": {
+   "fajr": 0.05,
+   "sunrise": -0.01,
+   "dhuhr": 0.02,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": -0.01
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -96,
+   "isha": 221
+  },
+  "worst": 1.2,
+  "worstAt": "isha@2026-02-23"
+ },
+ {
+  "slug": "glen-waverley",
+  "id": "11375",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -37.876,
+  "lon": 145.147,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    5,
+    365
+   ],
+   "sunrise": [
+    5,
+    365
+   ],
+   "dhuhr": [
+    7,
+    365
+   ],
+   "asr": [
+    7,
+    365
+   ],
+   "maghrib": [
+    6,
+    365
+   ],
+   "isha": [
+    2,
+    341
+   ]
+  },
+  "rms": {
+   "fajr": 0.4,
+   "sunrise": 0.34,
+   "dhuhr": 0.29,
+   "asr": 0.45,
+   "maghrib": 0.45,
+   "isha": 0.56
+  },
+  "bias": {
+   "fajr": 0.04,
+   "sunrise": 0.04,
+   "dhuhr": 0.02,
+   "asr": 0,
+   "maghrib": 0.07,
+   "isha": 0.02
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -95,
+   "isha": 220
+  },
+  "worst": 1.2,
+  "worstAt": "isha@2026-02-22"
+ },
+ {
+  "slug": "blacktown",
+  "id": "11376",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -33.768,
+  "lon": 150.887,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    8,
+    365
+   ],
+   "sunrise": [
+    5,
+    365
+   ],
+   "dhuhr": [
+    7,
+    365
+   ],
+   "asr": [
+    11,
+    365
+   ],
+   "maghrib": [
+    6,
+    365
+   ],
+   "isha": [
+    5,
+    360
+   ]
+  },
+  "rms": {
+   "fajr": 0.39,
+   "sunrise": 0.33,
+   "dhuhr": 0.28,
+   "asr": 0.39,
+   "maghrib": 0.4,
+   "isha": 0.48
+  },
+  "bias": {
+   "fajr": 0.04,
+   "sunrise": 0.04,
+   "dhuhr": 0.02,
+   "asr": 0.05,
+   "maghrib": 0.06,
+   "isha": 0.04
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -70,
+   "isha": 195
+  },
+  "worst": 1.07,
+  "worstAt": "isha@2026-11-11"
+ },
+ {
+  "slug": "marion",
+  "id": "11377",
+  "zone": "Australia/Adelaide",
+  "zoneExpected": "Australia/Adelaide",
+  "clockDefect": false,
+  "lat": -34.979,
+  "lon": 138.543,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    7,
+    365
+   ],
+   "sunrise": [
+    7,
+    365
+   ],
+   "dhuhr": [
+    4,
+    365
+   ],
+   "asr": [
+    4,
+    364
+   ],
+   "maghrib": [
+    6,
+    365
+   ],
+   "isha": [
+    4,
+    359
+   ]
+  },
+  "rms": {
+   "fajr": 0.36,
+   "sunrise": 0.31,
+   "dhuhr": 0.29,
+   "asr": 0.44,
+   "maghrib": 0.43,
+   "isha": 0.51
+  },
+  "bias": {
+   "fajr": 0.06,
+   "sunrise": -0.02,
+   "dhuhr": 0.01,
+   "asr": 0,
+   "maghrib": -0.03,
+   "isha": -0.03
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -77,
+   "isha": 202
+  },
+  "worst": 1.15,
+  "worstAt": "isha@2026-02-22"
+ },
+ {
+  "slug": "salisburysa",
+  "id": "11378",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -34.761,
+  "lon": 146.116,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    4,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    6,
+    365
+   ],
+   "maghrib": [
+    5,
+    365
+   ],
+   "isha": [
+    4,
+    352
+   ]
+  },
+  "rms": {
+   "fajr": 0.37,
+   "sunrise": 0.31,
+   "dhuhr": 0.28,
+   "asr": 0.42,
+   "maghrib": 0.41,
+   "isha": 0.52
+  },
+  "bias": {
+   "fajr": -0.01,
+   "sunrise": 0.03,
+   "dhuhr": 0.02,
+   "asr": 0,
+   "maghrib": 0.02,
+   "isha": 0.02
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -76,
+   "isha": 201
+  },
+  "worst": 1.15,
+  "worstAt": "isha@2026-11-06"
+ },
+ {
+  "slug": "teatree-gully",
+  "id": "11379",
+  "zone": "Australia/Adelaide",
+  "zoneExpected": "Australia/Adelaide",
+  "clockDefect": false,
+  "lat": -34.813,
+  "lon": 138.72,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    7,
+    365
+   ],
+   "sunrise": [
+    5,
+    365
+   ],
+   "dhuhr": [
+    3,
+    365
+   ],
+   "asr": [
+    6,
+    365
+   ],
+   "maghrib": [
+    6,
+    365
+   ],
+   "isha": [
+    2,
+    352
+   ]
+  },
+  "rms": {
+   "fajr": 0.36,
+   "sunrise": 0.33,
+   "dhuhr": 0.3,
+   "asr": 0.43,
+   "maghrib": 0.43,
+   "isha": 0.53
+  },
+  "bias": {
+   "fajr": 0.03,
+   "sunrise": 0.01,
+   "dhuhr": -0.01,
+   "asr": 0,
+   "maghrib": -0.01,
+   "isha": -0.02
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -76,
+   "isha": 201
+  },
+  "worst": 1.2,
+  "worstAt": "isha@2026-02-17"
+ },
+ {
+  "slug": "sandgateq",
+  "id": "11380",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -27.3,
+  "lon": 153.043,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    5,
+    365
+   ],
+   "dhuhr": [
+    5,
+    365
+   ],
+   "asr": [
+    4,
+    365
+   ],
+   "maghrib": [
+    9,
+    365
+   ],
+   "isha": [
+    5,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.33,
+   "sunrise": 0.31,
+   "dhuhr": 0.29,
+   "asr": 0.36,
+   "maghrib": 0.38,
+   "isha": 0.42
+  },
+  "bias": {
+   "fajr": 0.07,
+   "sunrise": 0.04,
+   "dhuhr": 0.03,
+   "asr": 0.03,
+   "maghrib": 0.03,
+   "isha": 0.01
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -38,
+   "isha": 163
+  },
+  "worst": 0.88,
+  "worstAt": "isha@2026-02-23"
+ },
+ {
+  "slug": "chermside",
+  "id": "11381",
+  "zone": "Australia/Brisbane",
+  "zoneExpected": "Australia/Brisbane",
+  "clockDefect": false,
+  "lat": -27.368,
+  "lon": 153.043,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    11,
+    365
+   ],
+   "sunrise": [
+    4,
+    365
+   ],
+   "dhuhr": [
+    5,
+    365
+   ],
+   "asr": [
+    5,
+    365
+   ],
+   "maghrib": [
+    4,
+    365
+   ],
+   "isha": [
+    10,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.34,
+   "sunrise": 0.33,
+   "dhuhr": 0.3,
+   "asr": 0.37,
+   "maghrib": 0.39,
+   "isha": 0.4
+  },
+  "bias": {
+   "fajr": -0.08,
+   "sunrise": -0.09,
+   "dhuhr": -0.06,
+   "asr": -0.08,
+   "maghrib": -0.1,
+   "isha": -0.09
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -98,
+   "isha": 104
+  },
+  "worst": 0.97,
+  "worstAt": "isha@2026-02-25"
+ },
+ {
+  "slug": "cleveland",
+  "id": "11382",
+  "zone": "Australia/Brisbane",
+  "zoneExpected": "Australia/Brisbane",
+  "clockDefect": false,
+  "lat": -27.546,
+  "lon": 153.272,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    5,
+    365
+   ],
+   "sunrise": [
+    11,
+    365
+   ],
+   "dhuhr": [
+    5,
+    365
+   ],
+   "asr": [
+    7,
+    365
+   ],
+   "maghrib": [
+    3,
+    365
+   ],
+   "isha": [
+    7,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.37,
+   "sunrise": 0.33,
+   "dhuhr": 0.3,
+   "asr": 0.37,
+   "maghrib": 0.36,
+   "isha": 0.41
+  },
+  "bias": {
+   "fajr": -0.05,
+   "sunrise": -0.03,
+   "dhuhr": -0.03,
+   "asr": -0.01,
+   "maghrib": -0.04,
+   "isha": -0.03
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -98,
+   "isha": 104
+  },
+  "worst": 1,
+  "worstAt": "isha@2026-03-12"
+ },
+ {
+  "slug": "bowral",
+  "id": "11383",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -34.501,
+  "lon": 150.387,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    5,
+    365
+   ],
+   "sunrise": [
+    7,
+    365
+   ],
+   "dhuhr": [
+    7,
+    365
+   ],
+   "asr": [
+    2,
+    365
+   ],
+   "maghrib": [
+    3,
+    365
+   ],
+   "isha": [
+    4,
+    359
+   ]
+  },
+  "rms": {
+   "fajr": 0.4,
+   "sunrise": 0.34,
+   "dhuhr": 0.28,
+   "asr": 0.39,
+   "maghrib": 0.42,
+   "isha": 0.5
+  },
+  "bias": {
+   "fajr": 0.03,
+   "sunrise": 0.02,
+   "dhuhr": 0.02,
+   "asr": 0.04,
+   "maghrib": 0.05,
+   "isha": 0.03
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -74,
+   "isha": 199
+  },
+  "worst": 1.07,
+  "worstAt": "isha@2026-03-06"
+ },
+ {
+  "slug": "clarence",
+  "id": "11384",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -42.847,
+  "lon": 147.356,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    1,
+    356
+   ],
+   "sunrise": [
+    4,
+    365
+   ],
+   "dhuhr": [
+    8,
+    365
+   ],
+   "asr": [
+    5,
+    364
+   ],
+   "maghrib": [
+    5,
+    355
+   ],
+   "isha": [
+    3,
+    324
+   ]
+  },
+  "rms": {
+   "fajr": 0.48,
+   "sunrise": 0.37,
+   "dhuhr": 0.28,
+   "asr": 0.47,
+   "maghrib": 0.48,
+   "isha": 0.64
+  },
+  "bias": {
+   "fajr": 0.05,
+   "sunrise": 0,
+   "dhuhr": 0.01,
+   "asr": -0.03,
+   "maghrib": -0.04,
+   "isha": -0.07
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -134,
+   "isha": 256
+  },
+  "worst": 1.45,
+  "worstAt": "isha@2026-02-14"
+ },
+ {
+  "slug": "brighton",
+  "id": "11385",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -34.989,
+  "lon": 146.022,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    9,
+    365
+   ],
+   "sunrise": [
+    10,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    7,
+    364
+   ],
+   "maghrib": [
+    7,
+    361
+   ],
+   "isha": [
+    1,
+    351
+   ]
+  },
+  "rms": {
+   "fajr": 0.38,
+   "sunrise": 0.32,
+   "dhuhr": 0.31,
+   "asr": 0.43,
+   "maghrib": 0.42,
+   "isha": 0.49
+  },
+  "bias": {
+   "fajr": -0.02,
+   "sunrise": -0.06,
+   "dhuhr": -0.07,
+   "asr": -0.07,
+   "maghrib": -0.09,
+   "isha": -0.12
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -77,
+   "isha": 202
+  },
+  "worst": 1.28,
+  "worstAt": "isha@2026-03-01"
+ },
+ {
+  "slug": "broken-hill",
+  "id": "11386",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -31.919,
+  "lon": 148.939,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    8,
+    365
+   ],
+   "sunrise": [
+    5,
+    365
+   ],
+   "dhuhr": [
+    4,
+    365
+   ],
+   "asr": [
+    6,
+    365
+   ],
+   "maghrib": [
+    7,
+    365
+   ],
+   "isha": [
+    5,
+    358
+   ]
+  },
+  "rms": {
+   "fajr": 0.36,
+   "sunrise": 0.31,
+   "dhuhr": 0.29,
+   "asr": 0.38,
+   "maghrib": 0.39,
+   "isha": 0.46
+  },
+  "bias": {
+   "fajr": 0.06,
+   "sunrise": -0.01,
+   "dhuhr": -0.01,
+   "asr": -0.01,
+   "maghrib": -0.01,
+   "isha": -0.05
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -60,
+   "isha": 185
+  },
+  "worst": 1.12,
+  "worstAt": "isha@2026-03-05"
+ },
+ {
+  "slug": "broome",
+  "id": "11387",
+  "zone": "Australia/Perth",
+  "zoneExpected": "Australia/Perth",
+  "clockDefect": false,
+  "lat": -17.904,
+  "lon": 122.22,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    15,
+    365
+   ],
+   "sunrise": [
+    4,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    3,
+    365
+   ],
+   "maghrib": [
+    7,
+    365
+   ],
+   "isha": [
+    7,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.31,
+   "sunrise": 0.3,
+   "dhuhr": 0.3,
+   "asr": 0.37,
+   "maghrib": 0.34,
+   "isha": 0.38
+  },
+  "bias": {
+   "fajr": 0.01,
+   "sunrise": -0.01,
+   "dhuhr": -0.02,
+   "asr": -0.01,
+   "maghrib": -0.01,
+   "isha": -0.02
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -59,
+   "isha": 65
+  },
+  "worst": 0.95,
+  "worstAt": "isha@2026-02-25"
+ },
+ {
+  "slug": "bunbury",
+  "id": "11388",
+  "zone": "Australia/Perth",
+  "zoneExpected": "Australia/Perth",
+  "clockDefect": false,
+  "lat": -33.337,
+  "lon": 115.637,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    4,
+    365
+   ],
+   "sunrise": [
+    7,
+    365
+   ],
+   "dhuhr": [
+    9,
+    365
+   ],
+   "asr": [
+    5,
+    361
+   ],
+   "maghrib": [
+    7,
+    363
+   ],
+   "isha": [
+    2,
+    347
+   ]
+  },
+  "rms": {
+   "fajr": 0.32,
+   "sunrise": 0.29,
+   "dhuhr": 0.28,
+   "asr": 0.49,
+   "maghrib": 0.45,
+   "isha": 0.53
+  },
+  "bias": {
+   "fajr": 0.02,
+   "sunrise": -0.02,
+   "dhuhr": -0.02,
+   "asr": 0.02,
+   "maghrib": -0.01,
+   "isha": -0.03
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -128,
+   "isha": 133
+  },
+  "worst": 1.27,
+  "worstAt": "isha@2026-02-27"
+ },
+ {
+  "slug": "burnie",
+  "id": "11389",
+  "zone": "Australia/Hobart",
+  "zoneExpected": "Australia/Hobart",
+  "clockDefect": false,
+  "lat": -41.055,
+  "lon": 145.876,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    4,
+    362
+   ],
+   "sunrise": [
+    6,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    2,
+    363
+   ],
+   "maghrib": [
+    4,
+    364
+   ],
+   "isha": [
+    3,
+    328
+   ]
+  },
+  "rms": {
+   "fajr": 0.44,
+   "sunrise": 0.35,
+   "dhuhr": 0.28,
+   "asr": 0.46,
+   "maghrib": 0.48,
+   "isha": 0.6
+  },
+  "bias": {
+   "fajr": 0.03,
+   "sunrise": 0.03,
+   "dhuhr": 0.02,
+   "asr": 0.03,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -118,
+   "isha": 242
+  },
+  "worst": 1.32,
+  "worstAt": "isha@2026-02-15"
+ },
+ {
+  "slug": "burpengary",
+  "id": "11390",
+  "zone": "Australia/Brisbane",
+  "zoneExpected": "Australia/Brisbane",
+  "clockDefect": false,
+  "lat": -27.118,
+  "lon": 152.939,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    7,
+    365
+   ],
+   "dhuhr": [
+    3,
+    365
+   ],
+   "asr": [
+    2,
+    365
+   ],
+   "maghrib": [
+    1,
+    365
+   ],
+   "isha": [
+    8,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.37,
+   "sunrise": 0.31,
+   "dhuhr": 0.29,
+   "asr": 0.35,
+   "maghrib": 0.35,
+   "isha": 0.41
+  },
+  "bias": {
+   "fajr": 0.08,
+   "sunrise": -0.01,
+   "dhuhr": 0.01,
+   "asr": -0.02,
+   "maghrib": 0.01,
+   "isha": -0.02
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -97,
+   "isha": 102
+  },
+  "worst": 1,
+  "worstAt": "isha@2026-03-05"
+ },
+ {
+  "slug": "hamilton-v",
+  "id": "11391",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -37.739,
+  "lon": 142.022,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    11,
+    365
+   ],
+   "sunrise": [
+    3,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    3,
+    363
+   ],
+   "maghrib": [
+    7,
+    357
+   ],
+   "isha": [
+    3,
+    340
+   ]
+  },
+  "rms": {
+   "fajr": 0.4,
+   "sunrise": 0.33,
+   "dhuhr": 0.3,
+   "asr": 0.43,
+   "maghrib": 0.47,
+   "isha": 0.57
+  },
+  "bias": {
+   "fajr": -0.06,
+   "sunrise": -0.02,
+   "dhuhr": -0.03,
+   "asr": -0.04,
+   "maghrib": -0.02,
+   "isha": -0.02
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -95,
+   "isha": 219
+  },
+  "worst": 1.27,
+  "worstAt": "isha@2026-03-10"
+ },
+ {
+  "slug": "traralgon",
+  "id": "11392",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -38.16,
+  "lon": 146.543,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    4,
+    365
+   ],
+   "sunrise": [
+    4,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    9,
+    362
+   ],
+   "maghrib": [
+    3,
+    361
+   ],
+   "isha": [
+    5,
+    334
+   ]
+  },
+  "rms": {
+   "fajr": 0.41,
+   "sunrise": 0.34,
+   "dhuhr": 0.29,
+   "asr": 0.46,
+   "maghrib": 0.43,
+   "isha": 0.58
+  },
+  "bias": {
+   "fajr": 0.03,
+   "sunrise": -0.04,
+   "dhuhr": -0.04,
+   "asr": -0.03,
+   "maghrib": -0.05,
+   "isha": -0.14
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -97,
+   "isha": 222
+  },
+  "worst": 1.42,
+  "worstAt": "isha@2026-02-16"
+ },
+ {
+  "slug": "caboolture",
+  "id": "11393",
+  "zone": "Australia/Brisbane",
+  "zoneExpected": "Australia/Brisbane",
+  "clockDefect": false,
+  "lat": -27.072,
+  "lon": 152.939,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    4,
+    365
+   ],
+   "sunrise": [
+    2,
+    365
+   ],
+   "dhuhr": [
+    3,
+    365
+   ],
+   "asr": [
+    6,
+    365
+   ],
+   "maghrib": [
+    10,
+    365
+   ],
+   "isha": [
+    6,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.35,
+   "sunrise": 0.31,
+   "dhuhr": 0.29,
+   "asr": 0.35,
+   "maghrib": 0.34,
+   "isha": 0.4
+  },
+  "bias": {
+   "fajr": 0.05,
+   "sunrise": 0.03,
+   "dhuhr": 0.02,
+   "asr": 0.03,
+   "maghrib": 0.04,
+   "isha": 0.01
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -97,
+   "isha": 102
+  },
+  "worst": 0.93,
+  "worstAt": "isha@2026-02-24"
+ },
+ {
+  "slug": "warragul",
+  "id": "11394",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -38.17,
+  "lon": 145.929,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    2,
+    365
+   ],
+   "sunrise": [
+    5,
+    365
+   ],
+   "dhuhr": [
+    3,
+    365
+   ],
+   "asr": [
+    9,
+    365
+   ],
+   "maghrib": [
+    3,
+    364
+   ],
+   "isha": [
+    3,
+    345
+   ]
+  },
+  "rms": {
+   "fajr": 0.41,
+   "sunrise": 0.34,
+   "dhuhr": 0.29,
+   "asr": 0.42,
+   "maghrib": 0.46,
+   "isha": 0.56
+  },
+  "bias": {
+   "fajr": -0.03,
+   "sunrise": -0.01,
+   "dhuhr": -0.01,
+   "asr": -0.02,
+   "maghrib": -0.02,
+   "isha": 0
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -97,
+   "isha": 221
+  },
+  "worst": 1.22,
+  "worstAt": "isha@2026-11-10"
+ },
+ {
+  "slug": "caloundra",
+  "id": "11395",
+  "zone": "Australia/Brisbane",
+  "zoneExpected": "Australia/Brisbane",
+  "clockDefect": false,
+  "lat": -26.767,
+  "lon": 153.127,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    8,
+    365
+   ],
+   "sunrise": [
+    5,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    8,
+    365
+   ],
+   "maghrib": [
+    2,
+    365
+   ],
+   "isha": [
+    6,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.34,
+   "sunrise": 0.31,
+   "dhuhr": 0.28,
+   "asr": 0.35,
+   "maghrib": 0.36,
+   "isha": 0.41
+  },
+  "bias": {
+   "fajr": 0.02,
+   "sunrise": -0.01,
+   "dhuhr": 0.01,
+   "asr": 0.02,
+   "maghrib": 0.02,
+   "isha": -0.01
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -95,
+   "isha": 100
+  },
+  "worst": 1,
+  "worstAt": "isha@2026-02-21"
+ },
+ {
+  "slug": "camden",
+  "id": "11396",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -34.068,
+  "lon": 150.689,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    4,
+    365
+   ],
+   "sunrise": [
+    6,
+    365
+   ],
+   "dhuhr": [
+    3,
+    365
+   ],
+   "asr": [
+    8,
+    365
+   ],
+   "maghrib": [
+    7,
+    365
+   ],
+   "isha": [
+    10,
+    360
+   ]
+  },
+  "rms": {
+   "fajr": 0.35,
+   "sunrise": 0.31,
+   "dhuhr": 0.29,
+   "asr": 0.39,
+   "maghrib": 0.41,
+   "isha": 0.48
+  },
+  "bias": {
+   "fajr": 0.02,
+   "sunrise": -0.01,
+   "dhuhr": 0,
+   "asr": 0.02,
+   "maghrib": -0.01,
+   "isha": -0.03
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -71,
+   "isha": 197
+  },
+  "worst": 1.08,
+  "worstAt": "isha@2026-03-04"
+ },
+ {
+  "slug": "campbelltown",
+  "id": "11397",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -34.069,
+  "lon": 150.793,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    8,
+    365
+   ],
+   "sunrise": [
+    2,
+    365
+   ],
+   "dhuhr": [
+    5,
+    365
+   ],
+   "asr": [
+    5,
+    365
+   ],
+   "maghrib": [
+    8,
+    365
+   ],
+   "isha": [
+    3,
+    359
+   ]
+  },
+  "rms": {
+   "fajr": 0.38,
+   "sunrise": 0.36,
+   "dhuhr": 0.3,
+   "asr": 0.4,
+   "maghrib": 0.39,
+   "isha": 0.49
+  },
+  "bias": {
+   "fajr": 0.06,
+   "sunrise": 0.06,
+   "dhuhr": 0.08,
+   "asr": 0.09,
+   "maghrib": 0.1,
+   "isha": 0.08
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -72,
+   "isha": 196
+  },
+  "worst": 1.05,
+  "worstAt": "isha@2026-11-13"
+ },
+ {
+  "slug": "cranbourne",
+  "id": "11398",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -38.093,
+  "lon": 145.272,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    7,
+    365
+   ],
+   "sunrise": [
+    3,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    7,
+    365
+   ],
+   "maghrib": [
+    6,
+    365
+   ],
+   "isha": [
+    5,
+    342
+   ]
+  },
+  "rms": {
+   "fajr": 0.39,
+   "sunrise": 0.34,
+   "dhuhr": 0.3,
+   "asr": 0.43,
+   "maghrib": 0.44,
+   "isha": 0.55
+  },
+  "bias": {
+   "fajr": 0.04,
+   "sunrise": -0.03,
+   "dhuhr": 0.01,
+   "asr": 0,
+   "maghrib": 0.01,
+   "isha": -0.04
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -97,
+   "isha": 222
+  },
+  "worst": 1.28,
+  "worstAt": "isha@2026-02-19"
+ },
+ {
+  "slug": "carnarvon",
+  "id": "11399",
+  "zone": "Australia/Perth",
+  "zoneExpected": "Australia/Perth",
+  "clockDefect": false,
+  "lat": -24.857,
+  "lon": 113.637,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    4,
+    365
+   ],
+   "sunrise": [
+    4,
+    365
+   ],
+   "dhuhr": [
+    8,
+    365
+   ],
+   "asr": [
+    5,
+    365
+   ],
+   "maghrib": [
+    4,
+    365
+   ],
+   "isha": [
+    6,
+    363
+   ]
+  },
+  "rms": {
+   "fajr": 0.32,
+   "sunrise": 0.29,
+   "dhuhr": 0.28,
+   "asr": 0.4,
+   "maghrib": 0.37,
+   "isha": 0.42
+  },
+  "bias": {
+   "fajr": 0.02,
+   "sunrise": -0.01,
+   "dhuhr": -0.01,
+   "asr": 0,
+   "maghrib": 0.01,
+   "isha": -0.01
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -86,
+   "isha": 92
+  },
+  "worst": 1.08,
+  "worstAt": "isha@2026-03-10"
+ },
+ {
+  "slug": "castlemaine",
+  "id": "11400",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -37.058,
+  "lon": 144.2,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    5,
+    364
+   ],
+   "sunrise": [
+    9,
+    365
+   ],
+   "dhuhr": [
+    7,
+    365
+   ],
+   "asr": [
+    7,
+    365
+   ],
+   "maghrib": [
+    2,
+    365
+   ],
+   "isha": [
+    4,
+    344
+   ]
+  },
+  "rms": {
+   "fajr": 0.41,
+   "sunrise": 0.33,
+   "dhuhr": 0.3,
+   "asr": 0.45,
+   "maghrib": 0.44,
+   "isha": 0.55
+  },
+  "bias": {
+   "fajr": 0.07,
+   "sunrise": 0.04,
+   "dhuhr": 0.03,
+   "asr": 0.04,
+   "maghrib": 0.03,
+   "isha": 0.04
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -90,
+   "isha": 214
+  },
+  "worst": 1.15,
+  "worstAt": "isha@2026-02-23"
+ },
+ {
+  "slug": "cessnock",
+  "id": "11401",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -32.829,
+  "lon": 151.356,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    7,
+    365
+   ],
+   "sunrise": [
+    6,
+    365
+   ],
+   "dhuhr": [
+    10,
+    365
+   ],
+   "asr": [
+    3,
+    365
+   ],
+   "maghrib": [
+    9,
+    365
+   ],
+   "isha": [
+    9,
+    360
+   ]
+  },
+  "rms": {
+   "fajr": 0.37,
+   "sunrise": 0.33,
+   "dhuhr": 0.28,
+   "asr": 0.39,
+   "maghrib": 0.38,
+   "isha": 0.45
+  },
+  "bias": {
+   "fajr": -0.02,
+   "sunrise": -0.02,
+   "dhuhr": -0.01,
+   "asr": -0.03,
+   "maghrib": -0.02,
+   "isha": -0.03
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -65,
+   "isha": 190
+  },
+  "worst": 1.13,
+  "worstAt": "isha@2026-03-02"
+ },
+ {
+  "slug": "north-canberra",
+  "id": "11402",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -35.244,
+  "lon": 149.106,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    7,
+    365
+   ],
+   "dhuhr": [
+    8,
+    365
+   ],
+   "asr": [
+    7,
+    365
+   ],
+   "maghrib": [
+    4,
+    365
+   ],
+   "isha": [
+    6,
+    352
+   ]
+  },
+  "rms": {
+   "fajr": 0.39,
+   "sunrise": 0.34,
+   "dhuhr": 0.28,
+   "asr": 0.39,
+   "maghrib": 0.41,
+   "isha": 0.49
+  },
+  "bias": {
+   "fajr": 0.06,
+   "sunrise": -0.01,
+   "dhuhr": 0.02,
+   "asr": 0.01,
+   "maghrib": 0,
+   "isha": -0.05
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -78,
+   "isha": 203
+  },
+  "worst": 1.2,
+  "worstAt": "isha@2026-03-09"
+ },
+ {
+  "slug": "chelsea",
+  "id": "11403",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -38.074,
+  "lon": 145.105,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    5,
+    365
+   ],
+   "sunrise": [
+    7,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    7,
+    365
+   ],
+   "maghrib": [
+    5,
+    365
+   ],
+   "isha": [
+    4,
+    340
+   ]
+  },
+  "rms": {
+   "fajr": 0.42,
+   "sunrise": 0.34,
+   "dhuhr": 0.28,
+   "asr": 0.46,
+   "maghrib": 0.44,
+   "isha": 0.58
+  },
+  "bias": {
+   "fajr": 0.02,
+   "sunrise": 0.03,
+   "dhuhr": 0.03,
+   "asr": 0.02,
+   "maghrib": 0.03,
+   "isha": 0.07
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -97,
+   "isha": 221
+  },
+  "worst": 1.25,
+  "worstAt": "isha@2026-11-18"
+ },
+ {
+  "slug": "ginninderra",
+  "id": "11404",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -35.204,
+  "lon": 149.106,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    5,
+    365
+   ],
+   "sunrise": [
+    3,
+    365
+   ],
+   "dhuhr": [
+    8,
+    365
+   ],
+   "asr": [
+    7,
+    365
+   ],
+   "maghrib": [
+    7,
+    365
+   ],
+   "isha": [
+    5,
+    354
+   ]
+  },
+  "rms": {
+   "fajr": 0.39,
+   "sunrise": 0.34,
+   "dhuhr": 0.28,
+   "asr": 0.4,
+   "maghrib": 0.41,
+   "isha": 0.5
+  },
+  "bias": {
+   "fajr": 0,
+   "sunrise": -0.04,
+   "dhuhr": 0,
+   "asr": -0.01,
+   "maghrib": -0.02,
+   "isha": -0.07
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -78,
+   "isha": 203
+  },
+  "worst": 1.22,
+  "worstAt": "isha@2026-02-25"
+ },
+ {
+  "slug": "belconnen",
+  "id": "11405",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -35.155,
+  "lon": 149.043,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    4,
+    359
+   ],
+   "sunrise": [
+    13,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    8,
+    365
+   ],
+   "maghrib": [
+    5,
+    362
+   ],
+   "isha": [
+    6,
+    335
+   ]
+  },
+  "rms": {
+   "fajr": 0.42,
+   "sunrise": 0.35,
+   "dhuhr": 0.29,
+   "asr": 0.43,
+   "maghrib": 0.43,
+   "isha": 0.54
+  },
+  "bias": {
+   "fajr": 0.08,
+   "sunrise": -0.05,
+   "dhuhr": -0.03,
+   "asr": -0.05,
+   "maghrib": -0.04,
+   "isha": -0.17
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -78,
+   "isha": 203
+  },
+  "worst": 1.37,
+  "worstAt": "isha@2026-02-11"
+ },
+ {
+  "slug": "woden-valley",
+  "id": "11406",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -35.338,
+  "lon": 149.043,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    7,
+    365
+   ],
+   "sunrise": [
+    9,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    9,
+    365
+   ],
+   "maghrib": [
+    7,
+    365
+   ],
+   "isha": [
+    2,
+    355
+   ]
+  },
+  "rms": {
+   "fajr": 0.4,
+   "sunrise": 0.35,
+   "dhuhr": 0.3,
+   "asr": 0.41,
+   "maghrib": 0.44,
+   "isha": 0.53
+  },
+  "bias": {
+   "fajr": 0.11,
+   "sunrise": 0.08,
+   "dhuhr": 0.1,
+   "asr": 0.12,
+   "maghrib": 0.12,
+   "isha": 0.1
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -79,
+   "isha": 204
+  },
+  "worst": 1.17,
+  "worstAt": "isha@2026-11-20"
+ },
+ {
+  "slug": "weston-creek",
+  "id": "11407",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -35.338,
+  "lon": 149.043,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    7,
+    365
+   ],
+   "sunrise": [
+    9,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    7,
+    365
+   ],
+   "maghrib": [
+    7,
+    365
+   ],
+   "isha": [
+    2,
+    356
+   ]
+  },
+  "rms": {
+   "fajr": 0.4,
+   "sunrise": 0.34,
+   "dhuhr": 0.29,
+   "asr": 0.41,
+   "maghrib": 0.43,
+   "isha": 0.51
+  },
+  "bias": {
+   "fajr": -0.03,
+   "sunrise": -0.05,
+   "dhuhr": -0.02,
+   "asr": -0.04,
+   "maghrib": -0.01,
+   "isha": -0.06
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -80,
+   "isha": 204
+  },
+  "worst": 1.18,
+  "worstAt": "isha@2026-02-24"
+ },
+ {
+  "slug": "coffs-harbour",
+  "id": "11408",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -30.305,
+  "lon": 153.106,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    6,
+    365
+   ],
+   "dhuhr": [
+    10,
+    365
+   ],
+   "asr": [
+    7,
+    365
+   ],
+   "maghrib": [
+    8,
+    365
+   ],
+   "isha": [
+    3,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.37,
+   "sunrise": 0.32,
+   "dhuhr": 0.28,
+   "asr": 0.35,
+   "maghrib": 0.36,
+   "isha": 0.43
+  },
+  "bias": {
+   "fajr": 0.01,
+   "sunrise": 0.02,
+   "dhuhr": 0.03,
+   "asr": -0.01,
+   "maghrib": 0.03,
+   "isha": 0.04
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -52,
+   "isha": 177
+  },
+  "worst": 0.97,
+  "worstAt": "isha@2026-03-11"
+ },
+ {
+  "slug": "tuggeranong",
+  "id": "11409",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -35.4,
+  "lon": 149.075,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    5,
+    365
+   ],
+   "dhuhr": [
+    3,
+    365
+   ],
+   "asr": [
+    5,
+    365
+   ],
+   "maghrib": [
+    7,
+    365
+   ],
+   "isha": [
+    3,
+    360
+   ]
+  },
+  "rms": {
+   "fajr": 0.4,
+   "sunrise": 0.35,
+   "dhuhr": 0.29,
+   "asr": 0.39,
+   "maghrib": 0.44,
+   "isha": 0.49
+  },
+  "bias": {
+   "fajr": 0.02,
+   "sunrise": 0.01,
+   "dhuhr": 0.03,
+   "asr": 0.04,
+   "maghrib": 0.06,
+   "isha": 0.03
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -79,
+   "isha": 204
+  },
+  "worst": 1.15,
+  "worstAt": "isha@2026-02-28"
+ },
+ {
+  "slug": "cooma-nsw",
+  "id": "11410",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -36.216,
+  "lon": 149.116,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    10,
+    365
+   ],
+   "sunrise": [
+    7,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    9,
+    365
+   ],
+   "maghrib": [
+    6,
+    365
+   ],
+   "isha": [
+    5,
+    353
+   ]
+  },
+  "rms": {
+   "fajr": 0.41,
+   "sunrise": 0.33,
+   "dhuhr": 0.28,
+   "asr": 0.4,
+   "maghrib": 0.41,
+   "isha": 0.51
+  },
+  "bias": {
+   "fajr": 0.06,
+   "sunrise": 0.02,
+   "dhuhr": 0.01,
+   "asr": 0.04,
+   "maghrib": 0,
+   "isha": -0.03
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -84,
+   "isha": 209
+  },
+  "worst": 1.2,
+  "worstAt": "isha@2026-03-10"
+ },
+ {
+  "slug": "cootamundra",
+  "id": "11411",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -34.641,
+  "lon": 148.022,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    9,
+    365
+   ],
+   "sunrise": [
+    7,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    6,
+    365
+   ],
+   "maghrib": [
+    4,
+    365
+   ],
+   "isha": [
+    1,
+    356
+   ]
+  },
+  "rms": {
+   "fajr": 0.37,
+   "sunrise": 0.35,
+   "dhuhr": 0.3,
+   "asr": 0.41,
+   "maghrib": 0.42,
+   "isha": 0.49
+  },
+  "bias": {
+   "fajr": -0.02,
+   "sunrise": -0.09,
+   "dhuhr": -0.04,
+   "asr": -0.03,
+   "maghrib": -0.06,
+   "isha": -0.06
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -75,
+   "isha": 200
+  },
+  "worst": 1.13,
+  "worstAt": "isha@2026-02-25"
+ },
+ {
+  "slug": "croydon-q",
+  "id": "11412",
+  "zone": "Australia/Brisbane",
+  "zoneExpected": "Australia/Brisbane",
+  "clockDefect": false,
+  "lat": -18.175,
+  "lon": 142.251,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    5,
+    365
+   ],
+   "sunrise": [
+    4,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    6,
+    365
+   ],
+   "maghrib": [
+    3,
+    365
+   ],
+   "isha": [
+    6,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.3,
+   "sunrise": 0.31,
+   "dhuhr": 0.3,
+   "asr": 0.35,
+   "maghrib": 0.33,
+   "isha": 0.35
+  },
+  "bias": {
+   "fajr": -0.04,
+   "sunrise": -0.06,
+   "dhuhr": -0.06,
+   "asr": -0.05,
+   "maghrib": -0.04,
+   "isha": -0.06
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -59,
+   "isha": 66
+  },
+  "worst": 0.9,
+  "worstAt": "isha@2026-03-19"
+ },
+ {
+  "slug": "dandenong",
+  "id": "11413",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -38.017,
+  "lon": 145.189,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    7,
+    365
+   ],
+   "dhuhr": [
+    5,
+    365
+   ],
+   "asr": [
+    5,
+    365
+   ],
+   "maghrib": [
+    7,
+    365
+   ],
+   "isha": [
+    3,
+    337
+   ]
+  },
+  "rms": {
+   "fajr": 0.42,
+   "sunrise": 0.32,
+   "dhuhr": 0.29,
+   "asr": 0.44,
+   "maghrib": 0.44,
+   "isha": 0.57
+  },
+  "bias": {
+   "fajr": -0.04,
+   "sunrise": 0.02,
+   "dhuhr": 0.01,
+   "asr": 0.03,
+   "maghrib": 0.05,
+   "isha": 0.07
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -96,
+   "isha": 220
+  },
+  "worst": 1.25,
+  "worstAt": "isha@2026-12-05"
+ },
+ {
+  "slug": "deer-park",
+  "id": "11414",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -37.784,
+  "lon": 144.772,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    7,
+    365
+   ],
+   "sunrise": [
+    6,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    5,
+    363
+   ],
+   "maghrib": [
+    7,
+    361
+   ],
+   "isha": [
+    8,
+    346
+   ]
+  },
+  "rms": {
+   "fajr": 0.42,
+   "sunrise": 0.34,
+   "dhuhr": 0.3,
+   "asr": 0.42,
+   "maghrib": 0.45,
+   "isha": 0.56
+  },
+  "bias": {
+   "fajr": -0.07,
+   "sunrise": -0.04,
+   "dhuhr": -0.05,
+   "asr": -0.05,
+   "maghrib": -0.04,
+   "isha": -0.04
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -95,
+   "isha": 219
+  },
+  "worst": 1.27,
+  "worstAt": "isha@2026-03-04"
+ },
+ {
+  "slug": "devonport",
+  "id": "11415",
+  "zone": "Australia/Hobart",
+  "zoneExpected": "Australia/Hobart",
+  "clockDefect": false,
+  "lat": -41.173,
+  "lon": 146.335,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    4,
+    364
+   ],
+   "sunrise": [
+    9,
+    365
+   ],
+   "dhuhr": [
+    3,
+    365
+   ],
+   "asr": [
+    3,
+    365
+   ],
+   "maghrib": [
+    4,
+    360
+   ],
+   "isha": [
+    4,
+    327
+   ]
+  },
+  "rms": {
+   "fajr": 0.45,
+   "sunrise": 0.36,
+   "dhuhr": 0.29,
+   "asr": 0.47,
+   "maghrib": 0.46,
+   "isha": 0.62
+  },
+  "bias": {
+   "fajr": 0.02,
+   "sunrise": 0.02,
+   "dhuhr": 0.03,
+   "asr": -0.01,
+   "maghrib": -0.01,
+   "isha": 0
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -120,
+   "isha": 243
+  },
+  "worst": 1.33,
+  "worstAt": "isha@2026-02-22"
+ },
+ {
+  "slug": "dubbo",
+  "id": "11416",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -32.226,
+  "lon": 148.606,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    6,
+    365
+   ],
+   "dhuhr": [
+    8,
+    365
+   ],
+   "asr": [
+    9,
+    365
+   ],
+   "maghrib": [
+    6,
+    365
+   ],
+   "isha": [
+    7,
+    358
+   ]
+  },
+  "rms": {
+   "fajr": 0.36,
+   "sunrise": 0.32,
+   "dhuhr": 0.28,
+   "asr": 0.39,
+   "maghrib": 0.39,
+   "isha": 0.46
+  },
+  "bias": {
+   "fajr": -0.02,
+   "sunrise": -0.05,
+   "dhuhr": -0.02,
+   "asr": -0.01,
+   "maghrib": -0.04,
+   "isha": -0.08
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -62,
+   "isha": 187
+  },
+  "worst": 1.15,
+  "worstAt": "isha@2026-02-17"
+ },
+ {
+  "slug": "alice-well",
+  "id": "11417",
+  "zone": "Australia/Darwin",
+  "zoneExpected": "Australia/Darwin",
+  "clockDefect": false,
+  "lat": -24.861,
+  "lon": 134.252,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    2,
+    365
+   ],
+   "sunrise": [
+    5,
+    365
+   ],
+   "dhuhr": [
+    4,
+    365
+   ],
+   "asr": [
+    13,
+    365
+   ],
+   "maghrib": [
+    8,
+    365
+   ],
+   "isha": [
+    9,
+    363
+   ]
+  },
+  "rms": {
+   "fajr": 0.31,
+   "sunrise": 0.3,
+   "dhuhr": 0.3,
+   "asr": 0.37,
+   "maghrib": 0.37,
+   "isha": 0.44
+  },
+  "bias": {
+   "fajr": 0,
+   "sunrise": -0.01,
+   "dhuhr": -0.04,
+   "asr": -0.06,
+   "maghrib": -0.04,
+   "isha": -0.08
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -87,
+   "isha": 92
+  },
+  "worst": 1.07,
+  "worstAt": "isha@2026-03-04"
+ },
+ {
+  "slug": "geelong",
+  "id": "11419",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -38.123,
+  "lon": 144.304,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    4,
+    362
+   ],
+   "sunrise": [
+    4,
+    365
+   ],
+   "dhuhr": [
+    8,
+    365
+   ],
+   "asr": [
+    7,
+    365
+   ],
+   "maghrib": [
+    8,
+    365
+   ],
+   "isha": [
+    5,
+    339
+   ]
+  },
+  "rms": {
+   "fajr": 0.43,
+   "sunrise": 0.34,
+   "dhuhr": 0.3,
+   "asr": 0.45,
+   "maghrib": 0.43,
+   "isha": 0.57
+  },
+  "bias": {
+   "fajr": 0.11,
+   "sunrise": 0.06,
+   "dhuhr": 0.07,
+   "asr": 0.06,
+   "maghrib": 0.09,
+   "isha": 0.07
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -97,
+   "isha": 221
+  },
+  "worst": 1.18,
+  "worstAt": "isha@2026-11-19"
+ },
+ {
+  "slug": "hobart",
+  "id": "11420",
+  "zone": "Australia/Hobart",
+  "zoneExpected": "Australia/Hobart",
+  "clockDefect": false,
+  "lat": -42.848,
+  "lon": 147.293,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    5,
+    360
+   ],
+   "sunrise": [
+    5,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    4,
+    361
+   ],
+   "maghrib": [
+    4,
+    358
+   ],
+   "isha": [
+    0,
+    315
+   ]
+  },
+  "rms": {
+   "fajr": 0.48,
+   "sunrise": 0.35,
+   "dhuhr": 0.29,
+   "asr": 0.49,
+   "maghrib": 0.49,
+   "isha": 0.67
+  },
+  "bias": {
+   "fajr": -0.06,
+   "sunrise": -0.06,
+   "dhuhr": -0.02,
+   "asr": -0.03,
+   "maghrib": -0.05,
+   "isha": -0.05
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -134,
+   "isha": 257
+  },
+  "worst": 1.45,
+  "worstAt": "isha@2026-02-28"
+ },
+ {
+  "slug": "melbourne",
+  "id": "11421",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -37.8,
+  "lon": 144.939,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    3,
+    365
+   ],
+   "sunrise": [
+    6,
+    365
+   ],
+   "dhuhr": [
+    5,
+    365
+   ],
+   "asr": [
+    4,
+    365
+   ],
+   "maghrib": [
+    6,
+    365
+   ],
+   "isha": [
+    2,
+    337
+   ]
+  },
+  "rms": {
+   "fajr": 0.4,
+   "sunrise": 0.34,
+   "dhuhr": 0.29,
+   "asr": 0.47,
+   "maghrib": 0.44,
+   "isha": 0.57
+  },
+  "bias": {
+   "fajr": 0.06,
+   "sunrise": 0.05,
+   "dhuhr": 0.05,
+   "asr": 0.06,
+   "maghrib": 0.05,
+   "isha": 0.04
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -95,
+   "isha": 219
+  },
+  "worst": 1.2,
+  "worstAt": "isha@2026-03-06"
+ },
+ {
+  "slug": "wollongong",
+  "id": "11422",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -34.432,
+  "lon": 150.856,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    9,
+    365
+   ],
+   "dhuhr": [
+    9,
+    365
+   ],
+   "asr": [
+    6,
+    365
+   ],
+   "maghrib": [
+    9,
+    365
+   ],
+   "isha": [
+    2,
+    356
+   ]
+  },
+  "rms": {
+   "fajr": 0.38,
+   "sunrise": 0.34,
+   "dhuhr": 0.28,
+   "asr": 0.39,
+   "maghrib": 0.41,
+   "isha": 0.5
+  },
+  "bias": {
+   "fajr": 0,
+   "sunrise": -0.01,
+   "dhuhr": 0.03,
+   "asr": 0.05,
+   "maghrib": 0.02,
+   "isha": 0.01
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -74,
+   "isha": 199
+  },
+  "worst": 1.08,
+  "worstAt": "isha@2026-11-06"
+ },
+ {
+  "slug": "shepparton",
+  "id": "11423",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -36.35,
+  "lon": 145.387,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    4,
+    365
+   ],
+   "sunrise": [
+    8,
+    365
+   ],
+   "dhuhr": [
+    8,
+    365
+   ],
+   "asr": [
+    4,
+    365
+   ],
+   "maghrib": [
+    8,
+    365
+   ],
+   "isha": [
+    2,
+    352
+   ]
+  },
+  "rms": {
+   "fajr": 0.41,
+   "sunrise": 0.32,
+   "dhuhr": 0.28,
+   "asr": 0.39,
+   "maghrib": 0.45,
+   "isha": 0.53
+  },
+  "bias": {
+   "fajr": 0.06,
+   "sunrise": 0.01,
+   "dhuhr": 0.01,
+   "asr": 0.05,
+   "maghrib": 0.02,
+   "isha": -0.02
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -85,
+   "isha": 210
+  },
+  "worst": 1.2,
+  "worstAt": "isha@2026-02-16"
+ },
+ {
+  "slug": "renmark",
+  "id": "11424",
+  "zone": "Australia/Adelaide",
+  "zoneExpected": "Australia/Adelaide",
+  "clockDefect": false,
+  "lat": -34.119,
+  "lon": 140.731,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    4,
+    365
+   ],
+   "sunrise": [
+    4,
+    365
+   ],
+   "dhuhr": [
+    4,
+    365
+   ],
+   "asr": [
+    15,
+    365
+   ],
+   "maghrib": [
+    5,
+    365
+   ],
+   "isha": [
+    2,
+    349
+   ]
+  },
+  "rms": {
+   "fajr": 0.38,
+   "sunrise": 0.33,
+   "dhuhr": 0.3,
+   "asr": 0.43,
+   "maghrib": 0.45,
+   "isha": 0.51
+  },
+  "bias": {
+   "fajr": 0.06,
+   "sunrise": -0.04,
+   "dhuhr": -0.04,
+   "asr": -0.02,
+   "maghrib": -0.04,
+   "isha": -0.1
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -72,
+   "isha": 197
+  },
+  "worst": 1.3,
+  "worstAt": "isha@2026-02-23"
+ },
+ {
+  "slug": "bundaberg",
+  "id": "11425",
+  "zone": "Australia/Brisbane",
+  "zoneExpected": "Australia/Brisbane",
+  "clockDefect": false,
+  "lat": -24.881,
+  "lon": 152.335,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    11,
+    365
+   ],
+   "sunrise": [
+    4,
+    365
+   ],
+   "dhuhr": [
+    4,
+    365
+   ],
+   "asr": [
+    4,
+    365
+   ],
+   "maghrib": [
+    6,
+    365
+   ],
+   "isha": [
+    12,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.33,
+   "sunrise": 0.31,
+   "dhuhr": 0.29,
+   "asr": 0.37,
+   "maghrib": 0.33,
+   "isha": 0.38
+  },
+  "bias": {
+   "fajr": 0,
+   "sunrise": 0.01,
+   "dhuhr": 0.05,
+   "asr": 0.06,
+   "maghrib": 0.05,
+   "isha": 0.08
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -86,
+   "isha": 93
+  },
+  "worst": 0.93,
+  "worstAt": "isha@2026-11-27"
+ },
+ {
+  "slug": "adelaide",
+  "id": "11426",
+  "zone": "Australia/Adelaide",
+  "zoneExpected": "Australia/Adelaide",
+  "clockDefect": false,
+  "lat": -34.94,
+  "lon": 138.585,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    5,
+    365
+   ],
+   "sunrise": [
+    5,
+    365
+   ],
+   "dhuhr": [
+    4,
+    365
+   ],
+   "asr": [
+    6,
+    364
+   ],
+   "maghrib": [
+    8,
+    365
+   ],
+   "isha": [
+    7,
+    346
+   ]
+  },
+  "rms": {
+   "fajr": 0.35,
+   "sunrise": 0.31,
+   "dhuhr": 0.29,
+   "asr": 0.43,
+   "maghrib": 0.44,
+   "isha": 0.55
+  },
+  "bias": {
+   "fajr": -0.02,
+   "sunrise": -0.03,
+   "dhuhr": 0.01,
+   "asr": -0.01,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -77,
+   "isha": 202
+  },
+  "worst": 1.17,
+  "worstAt": "isha@2026-03-12"
+ },
+ {
+  "slug": "perth",
+  "id": "11427",
+  "zone": "Australia/Perth",
+  "zoneExpected": "Australia/Perth",
+  "clockDefect": false,
+  "lat": -31.927,
+  "lon": 115.856,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    4,
+    365
+   ],
+   "sunrise": [
+    4,
+    365
+   ],
+   "dhuhr": [
+    8,
+    365
+   ],
+   "asr": [
+    7,
+    362
+   ],
+   "maghrib": [
+    9,
+    363
+   ],
+   "isha": [
+    3,
+    353
+   ]
+  },
+  "rms": {
+   "fajr": 0.33,
+   "sunrise": 0.3,
+   "dhuhr": 0.29,
+   "asr": 0.47,
+   "maghrib": 0.43,
+   "isha": 0.51
+  },
+  "bias": {
+   "fajr": -0.01,
+   "sunrise": -0.01,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": -0.01,
+   "isha": -0.05
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -120,
+   "isha": 125
+  },
+  "worst": 1.25,
+  "worstAt": "isha@2026-03-06"
+ },
+ {
+  "slug": "brisbane",
+  "id": "11428",
+  "zone": "Australia/Brisbane",
+  "zoneExpected": "Australia/Brisbane",
+  "clockDefect": false,
+  "lat": -27.417,
+  "lon": 153.022,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    3,
+    365
+   ],
+   "sunrise": [
+    4,
+    365
+   ],
+   "dhuhr": [
+    5,
+    365
+   ],
+   "asr": [
+    6,
+    365
+   ],
+   "maghrib": [
+    3,
+    365
+   ],
+   "isha": [
+    4,
+    364
+   ]
+  },
+  "rms": {
+   "fajr": 0.33,
+   "sunrise": 0.32,
+   "dhuhr": 0.3,
+   "asr": 0.37,
+   "maghrib": 0.37,
+   "isha": 0.39
+  },
+  "bias": {
+   "fajr": -0.03,
+   "sunrise": -0.05,
+   "dhuhr": -0.03,
+   "asr": -0.03,
+   "maghrib": -0.05,
+   "isha": -0.06
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -98,
+   "isha": 104
+  },
+  "worst": 1.05,
+  "worstAt": "isha@2026-02-27"
+ },
+ {
+  "slug": "darwin",
+  "id": "11429",
+  "zone": "Australia/Darwin",
+  "zoneExpected": "Australia/Darwin",
+  "clockDefect": false,
+  "lat": -12.385,
+  "lon": 130.804,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    7,
+    365
+   ],
+   "sunrise": [
+    7,
+    365
+   ],
+   "dhuhr": [
+    8,
+    365
+   ],
+   "asr": [
+    5,
+    365
+   ],
+   "maghrib": [
+    12,
+    365
+   ],
+   "isha": [
+    8,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.3,
+   "sunrise": 0.3,
+   "dhuhr": 0.3,
+   "asr": 0.35,
+   "maghrib": 0.31,
+   "isha": 0.33
+  },
+  "bias": {
+   "fajr": 0.08,
+   "sunrise": 0.06,
+   "dhuhr": 0.07,
+   "asr": 0.1,
+   "maghrib": 0.06,
+   "isha": 0.06
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -39,
+   "isha": 45
+  },
+  "worst": 0.75,
+  "worstAt": "asr@2026-01-03"
+ },
+ {
+  "slug": "canberra",
+  "id": "11430",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -35.288,
+  "lon": 149.106,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    363
+   ],
+   "sunrise": [
+    7,
+    365
+   ],
+   "dhuhr": [
+    8,
+    365
+   ],
+   "asr": [
+    5,
+    365
+   ],
+   "maghrib": [
+    8,
+    365
+   ],
+   "isha": [
+    4,
+    353
+   ]
+  },
+  "rms": {
+   "fajr": 0.4,
+   "sunrise": 0.35,
+   "dhuhr": 0.28,
+   "asr": 0.39,
+   "maghrib": 0.42,
+   "isha": 0.5
+  },
+  "bias": {
+   "fajr": 0.09,
+   "sunrise": 0.04,
+   "dhuhr": 0.03,
+   "asr": 0.01,
+   "maghrib": 0.03,
+   "isha": -0.02
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -79,
+   "isha": 204
+  },
+  "worst": 1.17,
+  "worstAt": "isha@2026-03-11"
+ },
+ {
+  "slug": "mildura",
+  "id": "11431",
+  "zone": "Australia/Melbourne",
+  "zoneExpected": "Australia/Melbourne",
+  "clockDefect": false,
+  "lat": -34.175,
+  "lon": 142.147,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    10,
+    365
+   ],
+   "sunrise": [
+    10,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    6,
+    365
+   ],
+   "maghrib": [
+    8,
+    365
+   ],
+   "isha": [
+    2,
+    356
+   ]
+  },
+  "rms": {
+   "fajr": 0.37,
+   "sunrise": 0.3,
+   "dhuhr": 0.29,
+   "asr": 0.42,
+   "maghrib": 0.41,
+   "isha": 0.52
+  },
+  "bias": {
+   "fajr": 0.04,
+   "sunrise": 0.03,
+   "dhuhr": 0,
+   "asr": 0.02,
+   "maghrib": 0.01,
+   "isha": -0.01
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -73,
+   "isha": 197
+  },
+  "worst": 1.15,
+  "worstAt": "isha@2026-03-07"
+ },
+ {
+  "slug": "auburn",
+  "id": "11432",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -33.887,
+  "lon": 151.022,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    10,
+    365
+   ],
+   "sunrise": [
+    13,
+    365
+   ],
+   "dhuhr": [
+    5,
+    365
+   ],
+   "asr": [
+    7,
+    365
+   ],
+   "maghrib": [
+    3,
+    365
+   ],
+   "isha": [
+    6,
+    358
+   ]
+  },
+  "rms": {
+   "fajr": 0.38,
+   "sunrise": 0.32,
+   "dhuhr": 0.3,
+   "asr": 0.39,
+   "maghrib": 0.4,
+   "isha": 0.51
+  },
+  "bias": {
+   "fajr": -0.05,
+   "sunrise": -0.02,
+   "dhuhr": -0.01,
+   "asr": -0.05,
+   "maghrib": -0.03,
+   "isha": 0.02
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -71,
+   "isha": 196
+  },
+  "worst": 1.12,
+  "worstAt": "isha@2026-11-23"
+ },
+ {
+  "slug": "elizabeth",
+  "id": "11433",
+  "zone": "Australia/Adelaide",
+  "zoneExpected": "Australia/Adelaide",
+  "clockDefect": false,
+  "lat": -34.722,
+  "lon": 138.679,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    5,
+    365
+   ],
+   "sunrise": [
+    8,
+    365
+   ],
+   "dhuhr": [
+    4,
+    365
+   ],
+   "asr": [
+    7,
+    364
+   ],
+   "maghrib": [
+    7,
+    365
+   ],
+   "isha": [
+    4,
+    355
+   ]
+  },
+  "rms": {
+   "fajr": 0.36,
+   "sunrise": 0.31,
+   "dhuhr": 0.29,
+   "asr": 0.43,
+   "maghrib": 0.43,
+   "isha": 0.51
+  },
+  "bias": {
+   "fajr": -0.03,
+   "sunrise": -0.03,
+   "dhuhr": -0.02,
+   "asr": 0,
+   "maghrib": -0.02,
+   "isha": 0.01
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -75,
+   "isha": 201
+  },
+  "worst": 1.17,
+  "worstAt": "isha@2026-02-24"
+ },
+ {
+  "slug": "newcastle",
+  "id": "11434",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -32.93,
+  "lon": 151.731,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    4,
+    365
+   ],
+   "sunrise": [
+    8,
+    365
+   ],
+   "dhuhr": [
+    4,
+    365
+   ],
+   "asr": [
+    10,
+    365
+   ],
+   "maghrib": [
+    4,
+    365
+   ],
+   "isha": [
+    4,
+    359
+   ]
+  },
+  "rms": {
+   "fajr": 0.39,
+   "sunrise": 0.34,
+   "dhuhr": 0.3,
+   "asr": 0.37,
+   "maghrib": 0.41,
+   "isha": 0.49
+  },
+  "bias": {
+   "fajr": -0.05,
+   "sunrise": -0.04,
+   "dhuhr": -0.04,
+   "asr": -0.01,
+   "maghrib": -0.03,
+   "isha": 0
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -65,
+   "isha": 191
+  },
+  "worst": 1.07,
+  "worstAt": "isha@2026-03-11"
+ },
+ {
+  "slug": "gold-coast",
+  "id": "11435",
+  "zone": "Australia/Brisbane",
+  "zoneExpected": "Australia/Brisbane",
+  "clockDefect": false,
+  "lat": -28.005,
+  "lon": 153.429,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    10,
+    365
+   ],
+   "sunrise": [
+    6,
+    365
+   ],
+   "dhuhr": [
+    3,
+    365
+   ],
+   "asr": [
+    8,
+    365
+   ],
+   "maghrib": [
+    5,
+    365
+   ],
+   "isha": [
+    5,
+    362
+   ]
+  },
+  "rms": {
+   "fajr": 0.37,
+   "sunrise": 0.32,
+   "dhuhr": 0.29,
+   "asr": 0.37,
+   "maghrib": 0.37,
+   "isha": 0.41
+  },
+  "bias": {
+   "fajr": 0.01,
+   "sunrise": -0.02,
+   "dhuhr": -0.02,
+   "asr": -0.04,
+   "maghrib": -0.03,
+   "isha": -0.06
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -101,
+   "isha": 106
+  },
+  "worst": 1.07,
+  "worstAt": "isha@2026-02-22"
+ },
+ {
+  "slug": "griffith",
+  "id": "11436",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -34.272,
+  "lon": 146.043,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    13,
+    365
+   ],
+   "sunrise": [
+    3,
+    365
+   ],
+   "dhuhr": [
+    6,
+    365
+   ],
+   "asr": [
+    6,
+    365
+   ],
+   "maghrib": [
+    6,
+    365
+   ],
+   "isha": [
+    2,
+    356
+   ]
+  },
+  "rms": {
+   "fajr": 0.38,
+   "sunrise": 0.31,
+   "dhuhr": 0.29,
+   "asr": 0.4,
+   "maghrib": 0.43,
+   "isha": 0.49
+  },
+  "bias": {
+   "fajr": -0.05,
+   "sunrise": -0.01,
+   "dhuhr": -0.02,
+   "asr": -0.03,
+   "maghrib": -0.05,
+   "isha": -0.02
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -73,
+   "isha": 198
+  },
+  "worst": 1.18,
+  "worstAt": "isha@2026-02-23"
+ },
+ {
+  "slug": "kalgoorlie",
+  "id": "11437",
+  "zone": "Australia/Perth",
+  "zoneExpected": "Australia/Perth",
+  "clockDefect": false,
+  "lat": -30.711,
+  "lon": 121.439,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    12,
+    365
+   ],
+   "sunrise": [
+    7,
+    365
+   ],
+   "dhuhr": [
+    7,
+    365
+   ],
+   "asr": [
+    9,
+    365
+   ],
+   "maghrib": [
+    8,
+    365
+   ],
+   "isha": [
+    2,
+    356
+   ]
+  },
+  "rms": {
+   "fajr": 0.35,
+   "sunrise": 0.31,
+   "dhuhr": 0.3,
+   "asr": 0.43,
+   "maghrib": 0.41,
+   "isha": 0.5
+  },
+  "bias": {
+   "fajr": 0.1,
+   "sunrise": 0.06,
+   "dhuhr": 0.04,
+   "asr": 0.05,
+   "maghrib": 0.08,
+   "isha": -0.03
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -114,
+   "isha": 119
+  },
+  "worst": 1.08,
+  "worstAt": "isha@2026-02-22"
+ },
+ {
+  "slug": "sydney",
+  "id": "22182",
+  "zone": "Australia/Sydney",
+  "zoneExpected": "Australia/Sydney",
+  "clockDefect": false,
+  "lat": -33.865,
+  "lon": 151.189,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    6,
+    365
+   ],
+   "sunrise": [
+    3,
+    365
+   ],
+   "dhuhr": [
+    3,
+    365
+   ],
+   "asr": [
+    8,
+    365
+   ],
+   "maghrib": [
+    9,
+    365
+   ],
+   "isha": [
+    5,
+    360
+   ]
+  },
+  "rms": {
+   "fajr": 0.38,
+   "sunrise": 0.34,
+   "dhuhr": 0.29,
+   "asr": 0.4,
+   "maghrib": 0.39,
+   "isha": 0.48
+  },
+  "bias": {
+   "fajr": 0.05,
+   "sunrise": 0.04,
+   "dhuhr": 0.04,
+   "asr": 0.06,
+   "maghrib": 0.04,
+   "isha": 0.04
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -70,
+   "isha": 196
+  },
+  "worst": 1.08,
+  "worstAt": "isha@2026-11-18"
+ },
+ {
+  "slug": "alice-spring",
+  "id": "22185",
+  "zone": "Australia/Darwin",
+  "zoneExpected": "Australia/Darwin",
+  "clockDefect": false,
+  "lat": -23.705,
+  "lon": 133.856,
+  "clockShiftMin": 0,
+  "days": 365,
+  "per": {
+   "fajr": [
+    9,
+    365
+   ],
+   "sunrise": [
+    8,
+    365
+   ],
+   "dhuhr": [
+    8,
+    365
+   ],
+   "asr": [
+    5,
+    365
+   ],
+   "maghrib": [
+    8,
+    365
+   ],
+   "isha": [
+    5,
+    365
+   ]
+  },
+  "rms": {
+   "fajr": 0.31,
+   "sunrise": 0.31,
+   "dhuhr": 0.28,
+   "asr": 0.39,
+   "maghrib": 0.35,
+   "isha": 0.41
+  },
+  "bias": {
+   "fajr": 0.01,
+   "sunrise": 0.02,
+   "dhuhr": 0.03,
+   "asr": 0.03,
+   "maghrib": 0.04,
+   "isha": 0.03
+  },
+  "amplitudeJanMinusJul": {
+   "fajr": -82,
+   "isha": 87
+  },
+  "worst": 0.97,
+  "worstAt": "isha@2026-11-15"
+ }
+]

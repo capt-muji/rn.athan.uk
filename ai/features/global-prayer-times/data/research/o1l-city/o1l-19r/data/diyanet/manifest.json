@@ -1,0 +1,1528 @@
+{
+ "adelaide": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11426",
+  "last": "2026-12-31",
+  "title": "Adelaide Prayer Times | Presidency of Religious Affairs"
+ },
+ "albany": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11361",
+  "last": "2026-12-31",
+  "title": "Albany Prayer Times | Presidency of Religious Affairs"
+ },
+ "albury": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11362",
+  "last": "2026-12-31",
+  "title": "Albury Prayer Times | Presidency of Religious Affairs"
+ },
+ "alice-spring": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "22185",
+  "last": "2026-12-31",
+  "title": "Alice spring Prayer Times | Presidency of Religious Affairs"
+ },
+ "alice-well": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11417",
+  "last": "2026-12-31",
+  "title": "Alice well Prayer Times | Presidency of Religious Affairs"
+ },
+ "armidale": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11360",
+  "last": "2026-12-31",
+  "title": "Armidale Prayer Times | Presidency of Religious Affairs"
+ },
+ "ashgrove": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11318",
+  "last": "2026-12-31",
+  "title": "Ashgrove Prayer Times | Presidency of Religious Affairs"
+ },
+ "auburn": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11432",
+  "last": "2026-12-31",
+  "title": "Auburn Prayer Times | Presidency of Religious Affairs"
+ },
+ "ayr": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11317",
+  "last": "2026-12-31",
+  "title": "Ayr Prayer Times | Presidency of Religious Affairs"
+ },
+ "ballarat": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11367",
+  "last": "2026-12-31",
+  "title": "Ballarat Prayer Times | Presidency of Religious Affairs"
+ },
+ "bankstown": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11369",
+  "last": "2026-12-31",
+  "title": "Bankstown Prayer Times | Presidency of Religious Affairs"
+ },
+ "barrov-creek": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11313",
+  "last": "2026-12-31",
+  "title": "Barrov creek Prayer Times | Presidency of Religious Affairs"
+ },
+ "bassendean": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11340",
+  "last": "2026-12-31",
+  "title": "Bassendean Prayer Times | Presidency of Religious Affairs"
+ },
+ "bathurst": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11370",
+  "last": "2026-12-31",
+  "title": "Bathurst Prayer Times | Presidency of Religious Affairs"
+ },
+ "bayswater-perth": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11341",
+  "last": "2026-12-31",
+  "title": "Bayswater (perth) Prayer Times | Presidency of Religious Affairs"
+ },
+ "belconnen": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11405",
+  "last": "2026-12-31",
+  "title": "Belconnen Prayer Times | Presidency of Religious Affairs"
+ },
+ "bendigo": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11373",
+  "last": "2026-12-31",
+  "title": "Bendigo Prayer Times | Presidency of Religious Affairs"
+ },
+ "berrimah": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11323",
+  "last": "2026-12-31",
+  "title": "Berrimah Prayer Times | Presidency of Religious Affairs"
+ },
+ "berwick": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11374",
+  "last": "2026-12-31",
+  "title": "Berwick Prayer Times | Presidency of Religious Affairs"
+ },
+ "blacktown": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11376",
+  "last": "2026-12-31",
+  "title": "Blacktown Prayer Times | Presidency of Religious Affairs"
+ },
+ "bowen": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11223",
+  "last": "2026-12-31",
+  "title": "Bowen Prayer Times | Presidency of Religious Affairs"
+ },
+ "bowral": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11383",
+  "last": "2026-12-31",
+  "title": "Bowral Prayer Times | Presidency of Religious Affairs"
+ },
+ "brighton": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11385",
+  "last": "2026-12-31",
+  "title": "Brighton Prayer Times | Presidency of Religious Affairs"
+ },
+ "brisbane": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11428",
+  "last": "2026-12-31",
+  "title": "Brisbane Prayer Times | Presidency of Religious Affairs"
+ },
+ "broadmeadows": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11331",
+  "last": "2026-12-31",
+  "title": "Broadmeadows  Prayer Times | Presidency of Religious Affairs"
+ },
+ "broadmeadows-namaz-vakitleri": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11331",
+  "last": "2026-12-31",
+  "title": "Broadmeadows  Prayer Times | Presidency of Religious Affairs"
+ },
+ "broadmeadows-prayer-times": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11331",
+  "last": "2026-12-31",
+  "title": "Broadmeadows  Prayer Times | Presidency of Religious Affairs"
+ },
+ "broken-hill": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11386",
+  "last": "2026-12-31",
+  "title": "Broken hill Prayer Times | Presidency of Religious Affairs"
+ },
+ "broome": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11387",
+  "last": "2026-12-31",
+  "title": "Broome Prayer Times | Presidency of Religious Affairs"
+ },
+ "bunbury": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11388",
+  "last": "2026-12-31",
+  "title": "Bunbury Prayer Times | Presidency of Religious Affairs"
+ },
+ "bundaberg": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11425",
+  "last": "2026-12-31",
+  "title": "Bundaberg Prayer Times | Presidency of Religious Affairs"
+ },
+ "burnie": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11389",
+  "last": "2026-12-31",
+  "title": "Burnie Prayer Times | Presidency of Religious Affairs"
+ },
+ "burnsidesa": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11307",
+  "last": "2026-12-31",
+  "title": "Burnside(sa) Prayer Times | Presidency of Religious Affairs"
+ },
+ "burpengary": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11390",
+  "last": "2026-12-31",
+  "title": "Burpengary Prayer Times | Presidency of Religious Affairs"
+ },
+ "caboolture": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11393",
+  "last": "2026-12-31",
+  "title": "Caboolture Prayer Times | Presidency of Religious Affairs"
+ },
+ "cairns": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11225",
+  "last": "2026-12-31",
+  "title": "Cairns Prayer Times | Presidency of Religious Affairs"
+ },
+ "caloundra": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11395",
+  "last": "2026-12-31",
+  "title": "Caloundra Prayer Times | Presidency of Religious Affairs"
+ },
+ "camden": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11396",
+  "last": "2026-12-31",
+  "title": "Camden Prayer Times | Presidency of Religious Affairs"
+ },
+ "campbelltown": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11397",
+  "last": "2026-12-31",
+  "title": "Campbelltown Prayer Times | Presidency of Religious Affairs"
+ },
+ "canberra": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11430",
+  "last": "2026-12-31",
+  "title": "Canberra Prayer Times | Presidency of Religious Affairs"
+ },
+ "cannington": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11342",
+  "last": "2026-12-31",
+  "title": "Cannington Prayer Times | Presidency of Religious Affairs"
+ },
+ "canterbury": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11351",
+  "last": "2026-12-31",
+  "title": "Canterbury Prayer Times | Presidency of Religious Affairs"
+ },
+ "carnarvon": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11399",
+  "last": "2026-12-31",
+  "title": "Carnarvon Prayer Times | Presidency of Religious Affairs"
+ },
+ "castlemaine": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11400",
+  "last": "2026-12-31",
+  "title": "Castlemaine Prayer Times | Presidency of Religious Affairs"
+ },
+ "cessnock": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11401",
+  "last": "2026-12-31",
+  "title": "Cessnock Prayer Times | Presidency of Religious Affairs"
+ },
+ "chelsea": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11403",
+  "last": "2026-12-31",
+  "title": "Chelsea Prayer Times | Presidency of Religious Affairs"
+ },
+ "chermside": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11381",
+  "last": "2026-12-31",
+  "title": "Chermside Prayer Times | Presidency of Religious Affairs"
+ },
+ "clarence": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11384",
+  "last": "2026-12-31",
+  "title": "Clarence Prayer Times | Presidency of Religious Affairs"
+ },
+ "cleveland": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11382",
+  "last": "2026-12-31",
+  "title": "Cleveland Prayer Times | Presidency of Religious Affairs"
+ },
+ "coffs-harbour": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11408",
+  "last": "2026-12-31",
+  "title": "Coffs harbour Prayer Times | Presidency of Religious Affairs"
+ },
+ "cooma-nsw": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11410",
+  "last": "2026-12-31",
+  "title": "Cooma (nsw) Prayer Times | Presidency of Religious Affairs"
+ },
+ "cootamundra": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11411",
+  "last": "2026-12-31",
+  "title": "Cootamundra Prayer Times | Presidency of Religious Affairs"
+ },
+ "craigieburn": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11332",
+  "last": "2026-12-31",
+  "title": "Craigieburn Prayer Times | Presidency of Religious Affairs"
+ },
+ "cranbourne": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11398",
+  "last": "2026-12-31",
+  "title": "Cranbourne Prayer Times | Presidency of Religious Affairs"
+ },
+ "croydon-q": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11412",
+  "last": "2026-12-31",
+  "title": "Croydon (q) Prayer Times | Presidency of Religious Affairs"
+ },
+ "dandenong": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11413",
+  "last": "2026-12-31",
+  "title": "Dandenong Prayer Times | Presidency of Religious Affairs"
+ },
+ "darwin": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11429",
+  "last": "2026-12-31",
+  "title": "Darwin Prayer Times | Presidency of Religious Affairs"
+ },
+ "deer-park": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11414",
+  "last": "2026-12-31",
+  "title": "Deer park Prayer Times | Presidency of Religious Affairs"
+ },
+ "devonport": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11415",
+  "last": "2026-12-31",
+  "title": "Devonport Prayer Times | Presidency of Religious Affairs"
+ },
+ "doncaster": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11333",
+  "last": "2026-12-31",
+  "title": "Doncaster Prayer Times | Presidency of Religious Affairs"
+ },
+ "drysdale": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11327",
+  "last": "2026-12-31",
+  "title": "Drysdale Prayer Times | Presidency of Religious Affairs"
+ },
+ "dubbo": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11416",
+  "last": "2026-12-31",
+  "title": "Dubbo Prayer Times | Presidency of Religious Affairs"
+ },
+ "echuca": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11353",
+  "last": "2026-12-31",
+  "title": "Echuca Prayer Times | Presidency of Religious Affairs"
+ },
+ "elizabeth": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11433",
+  "last": "2026-12-31",
+  "title": "Elizabeth Prayer Times | Presidency of Religious Affairs"
+ },
+ "emerald-q": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11226",
+  "last": "2026-12-31",
+  "title": "Emerald (q) Prayer Times | Presidency of Religious Affairs"
+ },
+ "enfieldsa": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11308",
+  "last": "2026-12-31",
+  "title": "Enfield(sa) Prayer Times | Presidency of Religious Affairs"
+ },
+ "essendon": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11334",
+  "last": "2026-12-31",
+  "title": "Essendon Prayer Times | Presidency of Religious Affairs"
+ },
+ "fairfield": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11365",
+  "last": "2026-12-31",
+  "title": "Fairfield Prayer Times | Presidency of Religious Affairs"
+ },
+ "finke": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11314",
+  "last": "2026-12-31",
+  "title": "Finke  Prayer Times | Presidency of Religious Affairs"
+ },
+ "frankston": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11227",
+  "last": "2026-12-31",
+  "title": "Frankston Prayer Times | Presidency of Religious Affairs"
+ },
+ "fremantle": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11228",
+  "last": "2026-12-31",
+  "title": "Fremantle Prayer Times | Presidency of Religious Affairs"
+ },
+ "geelong": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11419",
+  "last": "2026-12-31",
+  "title": "Geelong Prayer Times | Presidency of Religious Affairs"
+ },
+ "george-town-t": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11229",
+  "last": "2026-12-31",
+  "title": "George town ( t ) Prayer Times | Presidency of Religious Affairs"
+ },
+ "geraldton": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11230",
+  "last": "2026-12-31",
+  "title": "Geraldton Prayer Times | Presidency of Religious Affairs"
+ },
+ "ginninderra": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11404",
+  "last": "2026-12-31",
+  "title": "Ginninderra Prayer Times | Presidency of Religious Affairs"
+ },
+ "gladstone": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11231",
+  "last": "2026-12-31",
+  "title": "Gladstone Prayer Times | Presidency of Religious Affairs"
+ },
+ "glen-waverley": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11375",
+  "last": "2026-12-31",
+  "title": "Glen waverley Prayer Times | Presidency of Religious Affairs"
+ },
+ "glenorchy": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11232",
+  "last": "2026-12-31",
+  "title": "Glenorchy Prayer Times | Presidency of Religious Affairs"
+ },
+ "gold-coast": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11435",
+  "last": "2026-12-31",
+  "title": "Gold coast Prayer Times | Presidency of Religious Affairs"
+ },
+ "gosford": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11233",
+  "last": "2026-12-31",
+  "title": "Gosford Prayer Times | Presidency of Religious Affairs"
+ },
+ "gosnells": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11343",
+  "last": "2026-12-31",
+  "title": "Gosnells Prayer Times | Presidency of Religious Affairs"
+ },
+ "goulburn": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11234",
+  "last": "2026-12-31",
+  "title": "Goulburn Prayer Times | Presidency of Religious Affairs"
+ },
+ "grafton": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11235",
+  "last": "2026-12-31",
+  "title": "Grafton Prayer Times | Presidency of Religious Affairs"
+ },
+ "griffith": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11436",
+  "last": "2026-12-31",
+  "title": "Griffith Prayer Times | Presidency of Religious Affairs"
+ },
+ "gympie": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11236",
+  "last": "2026-12-31",
+  "title": "Gympie Prayer Times | Presidency of Religious Affairs"
+ },
+ "hamilton-tasmania": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11237",
+  "last": "2026-12-31",
+  "title": "Hamilton (tasmania) Prayer Times | Presidency of Religious Affairs"
+ },
+ "hamilton-v": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11391",
+  "last": "2026-12-31",
+  "title": "Hamilton ( v ) Prayer Times | Presidency of Religious Affairs"
+ },
+ "hatches-creek": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11315",
+  "last": "2026-12-31",
+  "title": "Hatches creek Prayer Times | Presidency of Religious Affairs"
+ },
+ "hobart": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11420",
+  "last": "2026-12-31",
+  "title": "Hobart Prayer Times | Presidency of Religious Affairs"
+ },
+ "hornsby": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11368",
+  "last": "2026-12-31",
+  "title": "Hornsby Prayer Times | Presidency of Religious Affairs"
+ },
+ "horsham": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11238",
+  "last": "2026-12-31",
+  "title": "Horsham Prayer Times | Presidency of Religious Affairs"
+ },
+ "hurstville": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11239",
+  "last": "2026-12-31",
+  "title": "Hurstville Prayer Times | Presidency of Religious Affairs"
+ },
+ "indooroopilly": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11319",
+  "last": "2026-12-31",
+  "title": "Indooroopilly Prayer Times | Presidency of Religious Affairs"
+ },
+ "ingham": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11240",
+  "last": "2026-12-31",
+  "title": "Ingham Prayer Times | Presidency of Religious Affairs"
+ },
+ "inverell": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11241",
+  "last": "2026-12-31",
+  "title": "Inverell Prayer Times | Presidency of Religious Affairs"
+ },
+ "ipswich": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11242",
+  "last": "2026-12-31",
+  "title": "Ipswich Prayer Times | Presidency of Religious Affairs"
+ },
+ "kalgoorlie": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11437",
+  "last": "2026-12-31",
+  "title": "Kalgoorlie Prayer Times | Presidency of Religious Affairs"
+ },
+ "katoomba": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11243",
+  "last": "2026-12-31",
+  "title": "Katoomba Prayer Times | Presidency of Religious Affairs"
+ },
+ "keilor": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11335",
+  "last": "2026-12-31",
+  "title": "Keilor Prayer Times | Presidency of Religious Affairs"
+ },
+ "kempsey": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11244",
+  "last": "2026-12-31",
+  "title": "Kempsey Prayer Times | Presidency of Religious Affairs"
+ },
+ "kingaroy": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11245",
+  "last": "2026-12-31",
+  "title": "Kingaroy Prayer Times | Presidency of Religious Affairs"
+ },
+ "kingston-hobart": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11328",
+  "last": "2026-12-31",
+  "title": "Kingston (hobart) Prayer Times | Presidency of Religious Affairs"
+ },
+ "knox": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11336",
+  "last": "2026-12-31",
+  "title": "Knox Prayer Times | Presidency of Religious Affairs"
+ },
+ "kurri-kurri": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11337",
+  "last": "2026-12-31",
+  "title": "Kurri kurri Prayer Times | Presidency of Religious Affairs"
+ },
+ "kyabram": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11354",
+  "last": "2026-12-31",
+  "title": "Kyabram Prayer Times | Presidency of Religious Affairs"
+ },
+ "launceston": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11246",
+  "last": "2026-12-31",
+  "title": "Launceston Prayer Times | Presidency of Religious Affairs"
+ },
+ "leeton": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11326",
+  "last": "2026-12-31",
+  "title": "Leeton Prayer Times | Presidency of Religious Affairs"
+ },
+ "lidcombe": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11247",
+  "last": "2026-12-31",
+  "title": "Lidcombe Prayer Times | Presidency of Religious Affairs"
+ },
+ "lismore": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11249",
+  "last": "2026-12-31",
+  "title": "Lismore Prayer Times | Presidency of Religious Affairs"
+ },
+ "lithgow": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11248",
+  "last": "2026-12-31",
+  "title": "Lithgow Prayer Times | Presidency of Religious Affairs"
+ },
+ "liverpool": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11250",
+  "last": "2026-12-31",
+  "title": "Liverpool Prayer Times | Presidency of Religious Affairs"
+ },
+ "mackay": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11251",
+  "last": "2026-12-31",
+  "title": "Mackay Prayer Times | Presidency of Religious Affairs"
+ },
+ "maitland": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11252",
+  "last": "2026-12-31",
+  "title": "Maitland Prayer Times | Presidency of Religious Affairs"
+ },
+ "manly": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11255",
+  "last": "2026-12-31",
+  "title": "Manly Prayer Times | Presidency of Religious Affairs"
+ },
+ "marion": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11377",
+  "last": "2026-12-31",
+  "title": "Marion Prayer Times | Presidency of Religious Affairs"
+ },
+ "maryborough-q": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11256",
+  "last": "2026-12-31",
+  "title": "Maryborough (q) Prayer Times | Presidency of Religious Affairs"
+ },
+ "maryborough-v": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11254",
+  "last": "2026-12-31",
+  "title": "Maryborough (v) Prayer Times | Presidency of Religious Affairs"
+ },
+ "melbourne": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11421",
+  "last": "2026-12-31",
+  "title": "Melbourne Prayer Times | Presidency of Religious Affairs"
+ },
+ "melton": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11363",
+  "last": "2026-12-31",
+  "title": "Melton Prayer Times | Presidency of Religious Affairs"
+ },
+ "melville": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11344",
+  "last": "2026-12-31",
+  "title": "Melville Prayer Times | Presidency of Religious Affairs"
+ },
+ "mildura": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11431",
+  "last": "2026-12-31",
+  "title": "Mildura Prayer Times | Presidency of Religious Affairs"
+ },
+ "millecent": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11257",
+  "last": "2026-12-31",
+  "title": "Millecent Prayer Times | Presidency of Religious Affairs"
+ },
+ "mittagong": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11356",
+  "last": "2026-12-31",
+  "title": "Mittagong Prayer Times | Presidency of Religious Affairs"
+ },
+ "moe": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11258",
+  "last": "2026-12-31",
+  "title": "Moe Prayer Times | Presidency of Religious Affairs"
+ },
+ "mona-vale": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11259",
+  "last": "2026-12-31",
+  "title": "Mona vale Prayer Times | Presidency of Religious Affairs"
+ },
+ "mondorah": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11324",
+  "last": "2026-12-31",
+  "title": "Mondorah Prayer Times | Presidency of Religious Affairs"
+ },
+ "moorabbin": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11371",
+  "last": "2026-12-31",
+  "title": "Moorabbin Prayer Times | Presidency of Religious Affairs"
+ },
+ "mooroolbark": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11260",
+  "last": "2026-12-31",
+  "title": "Mooroolbark Prayer Times | Presidency of Religious Affairs"
+ },
+ "mooroopna": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11355",
+  "last": "2026-12-31",
+  "title": "Mooroopna Prayer Times | Presidency of Religious Affairs"
+ },
+ "mornington-q": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11261",
+  "last": "2026-12-31",
+  "title": "Mornington (q) Prayer Times | Presidency of Religious Affairs"
+ },
+ "morwell": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11262",
+  "last": "2026-12-31",
+  "title": "Morwell Prayer Times | Presidency of Religious Affairs"
+ },
+ "mosman": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11253",
+  "last": "2026-12-31",
+  "title": "Mosman Prayer Times | Presidency of Religious Affairs"
+ },
+ "moss-vale": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11357",
+  "last": "2026-12-31",
+  "title": "Moss vale Prayer Times | Presidency of Religious Affairs"
+ },
+ "mount-gambier": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11263",
+  "last": "2026-12-31",
+  "title": "Mount gambier Prayer Times | Presidency of Religious Affairs"
+ },
+ "mount-gravatt": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11320",
+  "last": "2026-12-31",
+  "title": "Mount gravatt Prayer Times | Presidency of Religious Affairs"
+ },
+ "mount-isa": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11264",
+  "last": "2026-12-31",
+  "title": "Mount isa Prayer Times | Presidency of Religious Affairs"
+ },
+ "mundiwindi": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11265",
+  "last": "2026-12-31",
+  "title": "Mundiwindi Prayer Times | Presidency of Religious Affairs"
+ },
+ "murray-bridge": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11266",
+  "last": "2026-12-31",
+  "title": "Murray bridge Prayer Times | Presidency of Religious Affairs"
+ },
+ "murwillumbah": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11267",
+  "last": "2026-12-31",
+  "title": "Murwillumbah Prayer Times | Presidency of Religious Affairs"
+ },
+ "nambour": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11268",
+  "last": "2026-12-31",
+  "title": "Nambour Prayer Times | Presidency of Religious Affairs"
+ },
+ "narrabri": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11269",
+  "last": "2026-12-31",
+  "title": "Narrabri Prayer Times | Presidency of Religious Affairs"
+ },
+ "nedlands": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11345",
+  "last": "2026-12-31",
+  "title": "Nedlands Prayer Times | Presidency of Religious Affairs"
+ },
+ "nelson-bay": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11270",
+  "last": "2026-12-31",
+  "title": "Nelson bay Prayer Times | Presidency of Religious Affairs"
+ },
+ "new-norfolk": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11329",
+  "last": "2026-12-31",
+  "title": "New norfolk Prayer Times | Presidency of Religious Affairs"
+ },
+ "newcastle": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11434",
+  "last": "2026-12-31",
+  "title": "Newcastle Prayer Times | Presidency of Religious Affairs"
+ },
+ "noarlunga": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11309",
+  "last": "2026-12-31",
+  "title": "Noarlunga Prayer Times | Presidency of Religious Affairs"
+ },
+ "noonambah": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11325",
+  "last": "2026-12-31",
+  "title": "Noonambah Prayer Times | Presidency of Religious Affairs"
+ },
+ "north-canberra": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11402",
+  "last": "2026-12-31",
+  "title": "North canberra Prayer Times | Presidency of Religious Affairs"
+ },
+ "nowra": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11271",
+  "last": "2026-12-31",
+  "title": "Nowra Prayer Times | Presidency of Religious Affairs"
+ },
+ "nunawading": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11272",
+  "last": "2026-12-31",
+  "title": "Nunawading Prayer Times | Presidency of Religious Affairs"
+ },
+ "o-connor": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11346",
+  "last": "2026-12-31",
+  "title": "O connor Prayer Times | Presidency of Religious Affairs"
+ },
+ "oodnadatta": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11273",
+  "last": "2026-12-31",
+  "title": "Oodnadatta Prayer Times | Presidency of Religious Affairs"
+ },
+ "opossum-bay": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11330",
+  "last": "2026-12-31",
+  "title": "Opossum bay  Prayer Times | Presidency of Religious Affairs"
+ },
+ "orange": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11274",
+  "last": "2026-12-31",
+  "title": "Orange Prayer Times | Presidency of Religious Affairs"
+ },
+ "parramatta": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11275",
+  "last": "2026-12-31",
+  "title": "Parramatta Prayer Times | Presidency of Religious Affairs"
+ },
+ "payneham": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11310",
+  "last": "2026-12-31",
+  "title": "Payneham Prayer Times | Presidency of Religious Affairs"
+ },
+ "penrith": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11276",
+  "last": "2026-12-31",
+  "title": "Penrith Prayer Times | Presidency of Religious Affairs"
+ },
+ "perth": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11427",
+  "last": "2026-12-31",
+  "title": "Perth Prayer Times | Presidency of Religious Affairs"
+ },
+ "port-adelaide": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11311",
+  "last": "2026-12-31",
+  "title": "Port adelaide Prayer Times | Presidency of Religious Affairs"
+ },
+ "port-hedland": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11277",
+  "last": "2026-12-31",
+  "title": "Port hedland Prayer Times | Presidency of Religious Affairs"
+ },
+ "port-macquarie": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11279",
+  "last": "2026-12-31",
+  "title": "Port macquarie Prayer Times | Presidency of Religious Affairs"
+ },
+ "portkembla": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11358",
+  "last": "2026-12-31",
+  "title": "Portkembla Prayer Times | Presidency of Religious Affairs"
+ },
+ "portland": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11278",
+  "last": "2026-12-31",
+  "title": "Portland Prayer Times | Presidency of Religious Affairs"
+ },
+ "prahran": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11280",
+  "last": "2026-12-31",
+  "title": "Prahran Prayer Times | Presidency of Religious Affairs"
+ },
+ "preston": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11281",
+  "last": "2026-12-31",
+  "title": "Preston Prayer Times | Presidency of Religious Affairs"
+ },
+ "queanbeyan": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11282",
+  "last": "2026-12-31",
+  "title": "Queanbeyan Prayer Times | Presidency of Religious Affairs"
+ },
+ "randwick": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11352",
+  "last": "2026-12-31",
+  "title": "Randwick Prayer Times | Presidency of Religious Affairs"
+ },
+ "raymond-terrace": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11338",
+  "last": "2026-12-31",
+  "title": "Raymond terrace Prayer Times | Presidency of Religious Affairs"
+ },
+ "redcliffe": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11283",
+  "last": "2026-12-31",
+  "title": "Redcliffe Prayer Times | Presidency of Religious Affairs"
+ },
+ "renmark": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11424",
+  "last": "2026-12-31",
+  "title": "Renmark Prayer Times | Presidency of Religious Affairs"
+ },
+ "richmond-q": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11284",
+  "last": "2026-12-31",
+  "title": "Richmond (q) Prayer Times | Presidency of Religious Affairs"
+ },
+ "rockdale": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11364",
+  "last": "2026-12-31",
+  "title": "Rockdale Prayer Times | Presidency of Religious Affairs"
+ },
+ "rockhampton": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11285",
+  "last": "2026-12-31",
+  "title": "Rockhampton Prayer Times | Presidency of Religious Affairs"
+ },
+ "rockingham": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11286",
+  "last": "2026-12-31",
+  "title": "Rockingham Prayer Times | Presidency of Religious Affairs"
+ },
+ "rocklea": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11321",
+  "last": "2026-12-31",
+  "title": "Rocklea Prayer Times | Presidency of Religious Affairs"
+ },
+ "roma": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11287",
+  "last": "2026-12-31",
+  "title": "Roma Prayer Times | Presidency of Religious Affairs"
+ },
+ "ryde": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11366",
+  "last": "2026-12-31",
+  "title": "Ryde Prayer Times | Presidency of Religious Affairs"
+ },
+ "sale": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11288",
+  "last": "2026-12-31",
+  "title": "Sale Prayer Times | Presidency of Religious Affairs"
+ },
+ "salisburysa": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11378",
+  "last": "2026-12-31",
+  "title": "Salisbury(sa) Prayer Times | Presidency of Religious Affairs"
+ },
+ "sandgateq": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11380",
+  "last": "2026-12-31",
+  "title": "Sandgate(q) Prayer Times | Presidency of Religious Affairs"
+ },
+ "santa-teresa": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11316",
+  "last": "2026-12-31",
+  "title": "Santa teresa Prayer Times | Presidency of Religious Affairs"
+ },
+ "shellharbour": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11359",
+  "last": "2026-12-31",
+  "title": "Shellharbour Prayer Times | Presidency of Religious Affairs"
+ },
+ "shepparton": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11423",
+  "last": "2026-12-31",
+  "title": "Shepparton Prayer Times | Presidency of Religious Affairs"
+ },
+ "singleton": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11339",
+  "last": "2026-12-31",
+  "title": "Singleton Prayer Times | Presidency of Religious Affairs"
+ },
+ "south-perth": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11347",
+  "last": "2026-12-31",
+  "title": "South perth Prayer Times | Presidency of Religious Affairs"
+ },
+ "southportq": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11289",
+  "last": "2026-12-31",
+  "title": "Southport(q) Prayer Times | Presidency of Religious Affairs"
+ },
+ "springvale": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11372",
+  "last": "2026-12-31",
+  "title": "Springvale Prayer Times | Presidency of Religious Affairs"
+ },
+ "springwood-q": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11290",
+  "last": "2026-12-31",
+  "title": "Springwood (q) Prayer Times | Presidency of Religious Affairs"
+ },
+ "stirling-perth": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11348",
+  "last": "2026-12-31",
+  "title": "Stirling (perth) Prayer Times | Presidency of Religious Affairs"
+ },
+ "sunbury": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11291",
+  "last": "2026-12-31",
+  "title": "Sunbury Prayer Times | Presidency of Religious Affairs"
+ },
+ "sunshine": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11292",
+  "last": "2026-12-31",
+  "title": "Sunshine Prayer Times | Presidency of Religious Affairs"
+ },
+ "sutherland": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11293",
+  "last": "2026-12-31",
+  "title": "Sutherland Prayer Times | Presidency of Religious Affairs"
+ },
+ "sutton": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11322",
+  "last": "2026-12-31",
+  "title": "Sutton Prayer Times | Presidency of Religious Affairs"
+ },
+ "swan-hill": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11294",
+  "last": "2026-12-31",
+  "title": "Swan hill Prayer Times | Presidency of Religious Affairs"
+ },
+ "sydney": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "22182",
+  "last": "2026-12-31",
+  "title": "Sydney Prayer Times | Presidency of Religious Affairs"
+ },
+ "tamworth": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11295",
+  "last": "2026-12-31",
+  "title": "Tamworth Prayer Times | Presidency of Religious Affairs"
+ },
+ "teatree-gully": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11379",
+  "last": "2026-12-31",
+  "title": "Teatree gully Prayer Times | Presidency of Religious Affairs"
+ },
+ "toowoomba": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11296",
+  "last": "2026-12-31",
+  "title": "Toowoomba Prayer Times | Presidency of Religious Affairs"
+ },
+ "torquay-q": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11297",
+  "last": "2026-12-31",
+  "title": "Torquay (q) Prayer Times | Presidency of Religious Affairs"
+ },
+ "townsville": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11224",
+  "last": "2026-12-31",
+  "title": "Townsville Prayer Times | Presidency of Religious Affairs"
+ },
+ "traralgon": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11392",
+  "last": "2026-12-31",
+  "title": "Traralgon Prayer Times | Presidency of Religious Affairs"
+ },
+ "tuggeranong": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11409",
+  "last": "2026-12-31",
+  "title": "Tuggeranong Prayer Times | Presidency of Religious Affairs"
+ },
+ "ulladulla": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11298",
+  "last": "2026-12-31",
+  "title": "Ulladulla Prayer Times | Presidency of Religious Affairs"
+ },
+ "wagga-wagga": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11299",
+  "last": "2026-12-31",
+  "title": "Wagga wagga Prayer Times | Presidency of Religious Affairs"
+ },
+ "wangaratta": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11300",
+  "last": "2026-12-31",
+  "title": "Wangaratta Prayer Times | Presidency of Religious Affairs"
+ },
+ "wanneroo": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11349",
+  "last": "2026-12-31",
+  "title": "Wanneroo Prayer Times | Presidency of Religious Affairs"
+ },
+ "warragul": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11394",
+  "last": "2026-12-31",
+  "title": "Warragul Prayer Times | Presidency of Religious Affairs"
+ },
+ "warrnambool": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11301",
+  "last": "2026-12-31",
+  "title": "Warrnambool Prayer Times | Presidency of Religious Affairs"
+ },
+ "welshpoolwa": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11350",
+  "last": "2026-12-31",
+  "title": "Welshpool(wa) Prayer Times | Presidency of Religious Affairs"
+ },
+ "weston-creek": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11407",
+  "last": "2026-12-31",
+  "title": "Weston creek Prayer Times | Presidency of Religious Affairs"
+ },
+ "whyalla": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11302",
+  "last": "2026-12-31",
+  "title": "Whyalla Prayer Times | Presidency of Religious Affairs"
+ },
+ "windorah": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11303",
+  "last": "2026-12-31",
+  "title": "Windorah Prayer Times | Presidency of Religious Affairs"
+ },
+ "windsor": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11304",
+  "last": "2026-12-31",
+  "title": "Windsor Prayer Times | Presidency of Religious Affairs"
+ },
+ "woden-valley": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11406",
+  "last": "2026-12-31",
+  "title": "Woden valley Prayer Times | Presidency of Religious Affairs"
+ },
+ "wodonga": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11305",
+  "last": "2026-12-31",
+  "title": "Wodonga Prayer Times | Presidency of Religious Affairs"
+ },
+ "wollongong": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11422",
+  "last": "2026-12-31",
+  "title": "Wollongong Prayer Times | Presidency of Religious Affairs"
+ },
+ "woodville": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11312",
+  "last": "2026-12-31",
+  "title": "Woodville Prayer Times | Presidency of Religious Affairs"
+ },
+ "young": {
+  "days": 365,
+  "first": "2026-01-01",
+  "id": "11306",
+  "last": "2026-12-31",
+  "title": "Young Prayer Times | Presidency of Religious Affairs"
+ }
+}

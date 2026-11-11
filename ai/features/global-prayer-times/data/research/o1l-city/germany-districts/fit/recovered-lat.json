@@ -1,0 +1,9947 @@
+[
+ {
+  "id": "10000",
+  "name": "BISMARCK",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.5,
+  "gazLon": 7.1,
+  "solvedLat": 51.53,
+  "delta": 0.03
+ },
+ {
+  "id": "10008",
+  "name": "GERA",
+  "state": "THURINGEN",
+  "gazLat": 50.9,
+  "gazLon": 12.1,
+  "solvedLat": 50.88,
+  "delta": -0.02
+ },
+ {
+  "id": "10012",
+  "name": "GEVELSBERG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.3,
+  "gazLon": 7.3,
+  "solvedLat": 51.33,
+  "delta": 0.03
+ },
+ {
+  "id": "10016",
+  "name": "GLUCKSTADT",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 53.8,
+  "gazLon": 9.4,
+  "solvedLat": 53.79,
+  "delta": -0.01
+ },
+ {
+  "id": "10020",
+  "name": "GREVEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 52.1,
+  "gazLon": 7.6,
+  "solvedLat": 52.10000000000009,
+  "delta": 0
+ },
+ {
+  "id": "10028",
+  "name": "HOHENLIMBURG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.4,
+  "gazLon": 7.6,
+  "solvedLat": 51.35,
+  "delta": -0.05
+ },
+ {
+  "id": "10032",
+  "name": "HARBURG",
+  "state": "HAMBURG",
+  "gazLat": 53.5,
+  "gazLon": 10,
+  "solvedLat": 53.48,
+  "delta": -0.02
+ },
+ {
+  "id": "10036",
+  "name": "HEESSEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.7,
+  "gazLon": 7.9,
+  "solvedLat": 51.73,
+  "delta": 0.03
+ },
+ {
+  "id": "10040",
+  "name": "HANAU",
+  "state": "HESSEN",
+  "gazLat": 50.1,
+  "gazLon": 8.9,
+  "solvedLat": 50.16,
+  "delta": 0.06
+ },
+ {
+  "id": "10044",
+  "name": "ALSFELD",
+  "state": "HESSEN",
+  "gazLat": 50.8,
+  "gazLon": 9.3,
+  "solvedLat": 50.78,
+  "delta": -0.02
+ },
+ {
+  "id": "10054",
+  "name": "BAD WALDSEE",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.9,
+  "gazLon": 9.8,
+  "solvedLat": 47.94,
+  "delta": 0.04
+ },
+ {
+  "id": "10058",
+  "name": "BEELITZ",
+  "state": "BRANDENBURG",
+  "gazLat": 52.2,
+  "gazLon": 13,
+  "solvedLat": 52.25,
+  "delta": 0.05
+ },
+ {
+  "id": "10062",
+  "name": "BLAUBEUREN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.4,
+  "gazLon": 9.8,
+  "solvedLat": 48.39,
+  "delta": -0.01
+ },
+ {
+  "id": "10066",
+  "name": "BUCHEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49.5,
+  "gazLon": 9.3,
+  "solvedLat": 49.52,
+  "delta": 0.02
+ },
+ {
+  "id": "10070",
+  "name": "BURGHAUSEN",
+  "state": "BAYERN",
+  "gazLat": 48.2,
+  "gazLon": 12.8,
+  "solvedLat": 48.20000000000003,
+  "delta": 0
+ },
+ {
+  "id": "10074",
+  "name": "CELLE",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.6,
+  "gazLon": 10.1,
+  "solvedLat": 52.61,
+  "delta": 0.01
+ },
+ {
+  "id": "10078",
+  "name": "DETTINGEN AN DER ERMS",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.5,
+  "gazLon": 9.3,
+  "solvedLat": 48.53,
+  "delta": 0.03
+ },
+ {
+  "id": "10082",
+  "name": "EBERBACH",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49.5,
+  "gazLon": 9,
+  "solvedLat": 49.49,
+  "delta": -0.01
+ },
+ {
+  "id": "10086",
+  "name": "EICHSTATT",
+  "state": "BAYERN",
+  "gazLat": 48.9,
+  "gazLon": 11.2,
+  "solvedLat": 48.90000000000004,
+  "delta": 0
+ },
+ {
+  "id": "10090",
+  "name": "EUTIN",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 54.1,
+  "gazLon": 10.6,
+  "solvedLat": 54.13,
+  "delta": 0.03
+ },
+ {
+  "id": "10098",
+  "name": "FUSSEN",
+  "state": "BAYERN",
+  "gazLat": 47.6,
+  "gazLon": 10.7,
+  "solvedLat": 47.60000000000002,
+  "delta": 0
+ },
+ {
+  "id": "10102",
+  "name": "GEESTHACHT",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 53.4,
+  "gazLon": 10.4,
+  "solvedLat": 53.44,
+  "delta": 0.04
+ },
+ {
+  "id": "10106",
+  "name": "GIENGEN AN DER BRENZ",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.6,
+  "gazLon": 10.2,
+  "solvedLat": 48.64,
+  "delta": 0.04
+ },
+ {
+  "id": "10110",
+  "name": "GROMITZ",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 54.2,
+  "gazLon": 11,
+  "solvedLat": 54.15,
+  "delta": -0.05
+ },
+ {
+  "id": "10114",
+  "name": "HAIGERLOCH",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.4,
+  "gazLon": 8.8,
+  "solvedLat": 48.37,
+  "delta": -0.03
+ },
+ {
+  "id": "10118",
+  "name": "HEILIGENHAUS",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.3,
+  "gazLon": 7,
+  "solvedLat": 51.33,
+  "delta": 0.03
+ },
+ {
+  "id": "10122",
+  "name": "HEPPENHEIM A.D.BERG.",
+  "state": "HESSEN",
+  "gazLat": 49.6,
+  "gazLon": 8.6,
+  "solvedLat": 49.66,
+  "delta": 0.06
+ },
+ {
+  "id": "10126",
+  "name": "WESTERHOLT",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.6,
+  "gazLon": 7.1,
+  "solvedLat": 51.61,
+  "delta": 0.01
+ },
+ {
+  "id": "10130",
+  "name": "HIRSCHHORN (HESSEN)",
+  "state": "HESSEN",
+  "gazLat": 49.5,
+  "gazLon": 8.9,
+  "solvedLat": 49.45,
+  "delta": -0.05
+ },
+ {
+  "id": "10135",
+  "name": "HOHR -GRENZHAUSEN",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50.4,
+  "gazLon": 7.7,
+  "solvedLat": 50.45,
+  "delta": 0.05
+ },
+ {
+  "id": "10139",
+  "name": "HORN - BAD MEINBERG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.9,
+  "gazLon": 8.9,
+  "solvedLat": 51.87,
+  "delta": -0.03
+ },
+ {
+  "id": "10143",
+  "name": "HUNTEBURG",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.4,
+  "gazLon": 8.3,
+  "solvedLat": 52.43,
+  "delta": 0.03
+ },
+ {
+  "id": "10147",
+  "name": "IDSTEIN",
+  "state": "HESSEN",
+  "gazLat": 50.2,
+  "gazLon": 8.3,
+  "solvedLat": 50.25,
+  "delta": 0.05
+ },
+ {
+  "id": "10151",
+  "name": "JUCHEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.1,
+  "gazLon": 6.5,
+  "solvedLat": 51.09,
+  "delta": -0.01
+ },
+ {
+  "id": "10155",
+  "name": "KAMP -LINTFORT",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.5,
+  "gazLon": 6.5,
+  "solvedLat": 51.52,
+  "delta": 0.02
+ },
+ {
+  "id": "10159",
+  "name": "KELSTERBACH",
+  "state": "HESSEN",
+  "gazLat": 50.1,
+  "gazLon": 8.5,
+  "solvedLat": 50.09,
+  "delta": -0.01
+ },
+ {
+  "id": "10163",
+  "name": "KIRCHHAIN",
+  "state": "HESSEN",
+  "gazLat": 50.8,
+  "gazLon": 9,
+  "solvedLat": 50.82,
+  "delta": 0.02
+ },
+ {
+  "id": "10167",
+  "name": "KORBACH",
+  "state": "HESSEN",
+  "gazLat": 51.3,
+  "gazLon": 8.9,
+  "solvedLat": 51.300000000000075,
+  "delta": 0
+ },
+ {
+  "id": "10171",
+  "name": "LADENBURG",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49.5,
+  "gazLon": 8.6,
+  "solvedLat": 49.49,
+  "delta": -0.01
+ },
+ {
+  "id": "10175",
+  "name": "LANDAU IN DER PFALZ",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 49.2,
+  "gazLon": 8.1,
+  "solvedLat": 49.200000000000045,
+  "delta": 0
+ },
+ {
+  "id": "10179",
+  "name": "LEICHLINGEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.1,
+  "gazLon": 7,
+  "solvedLat": 51.09,
+  "delta": -0.01
+ },
+ {
+  "id": "10183",
+  "name": "LEVERKUSEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51,
+  "gazLon": 7,
+  "solvedLat": 51.03,
+  "delta": 0.03
+ },
+ {
+  "id": "10187",
+  "name": "LINZ AM RHEIN",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50.6,
+  "gazLon": 7.3,
+  "solvedLat": 50.58,
+  "delta": -0.02
+ },
+ {
+  "id": "10191",
+  "name": "LORRACH",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.6,
+  "gazLon": 7.7,
+  "solvedLat": 47.64,
+  "delta": 0.04
+ },
+ {
+  "id": "10195",
+  "name": "LUNEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.6,
+  "gazLon": 7.5,
+  "solvedLat": 51.63,
+  "delta": 0.03
+ },
+ {
+  "id": "10199",
+  "name": "MARL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.7,
+  "gazLon": 7.1,
+  "solvedLat": 51.68,
+  "delta": -0.02
+ },
+ {
+  "id": "10203",
+  "name": "MEINERZHAGEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.1,
+  "gazLon": 7.6,
+  "solvedLat": 51.13,
+  "delta": 0.03
+ },
+ {
+  "id": "10207",
+  "name": "MESCHEDE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.4,
+  "gazLon": 8.3,
+  "solvedLat": 51.36,
+  "delta": -0.04
+ },
+ {
+  "id": "10211",
+  "name": "REPELEN (MOERS)",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.5,
+  "gazLon": 6.6,
+  "solvedLat": 51.48,
+  "delta": -0.02
+ },
+ {
+  "id": "10215",
+  "name": "MUHLHEIM",
+  "state": "HESSEN",
+  "gazLat": 50.1,
+  "gazLon": 8.8,
+  "solvedLat": 50.12,
+  "delta": 0.02
+ },
+ {
+  "id": "10219",
+  "name": "NASSAU",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50.3,
+  "gazLon": 7.8,
+  "solvedLat": 50.33,
+  "delta": 0.03
+ },
+ {
+  "id": "10223",
+  "name": "NEUMUNSTER",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 54.1,
+  "gazLon": 10,
+  "solvedLat": 54.09,
+  "delta": -0.01
+ },
+ {
+  "id": "10227",
+  "name": "NEUSTADT A.D. WEINSTRASSE",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 49.4,
+  "gazLon": 8.1,
+  "solvedLat": 49.36,
+  "delta": -0.04
+ },
+ {
+  "id": "10231",
+  "name": "NIEDERKASSEL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.8,
+  "gazLon": 7,
+  "solvedLat": 50.82,
+  "delta": 0.02
+ },
+ {
+  "id": "10235",
+  "name": "OBERDERDINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49.1,
+  "gazLon": 8.8,
+  "solvedLat": 49.07,
+  "delta": -0.03
+ },
+ {
+  "id": "10239",
+  "name": "OELDE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.8,
+  "gazLon": 8.1,
+  "solvedLat": 51.84,
+  "delta": 0.04
+ },
+ {
+  "id": "10243",
+  "name": "OSTERHOLZ-SCHARMBECK",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 53.2,
+  "gazLon": 8.8,
+  "solvedLat": 53.23,
+  "delta": 0.03
+ },
+ {
+  "id": "10247",
+  "name": "PETERSHAGEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 52.4,
+  "gazLon": 9,
+  "solvedLat": 52.38,
+  "delta": -0.02
+ },
+ {
+  "id": "10251",
+  "name": "PIRMASENS",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 49.2,
+  "gazLon": 7.6,
+  "solvedLat": 49.200000000000045,
+  "delta": 0
+ },
+ {
+  "id": "10255",
+  "name": "RASTATT",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.9,
+  "gazLon": 8.2,
+  "solvedLat": 48.90000000000004,
+  "delta": 0
+ },
+ {
+  "id": "10259",
+  "name": "RENDSBURG",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 54.3,
+  "gazLon": 9.7,
+  "solvedLat": 54.31,
+  "delta": 0.01
+ },
+ {
+  "id": "10263",
+  "name": "RHEINE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 52.3,
+  "gazLon": 7.4,
+  "solvedLat": 52.29,
+  "delta": -0.01
+ },
+ {
+  "id": "10267",
+  "name": "ROCKENHAUSEN",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 49.6,
+  "gazLon": 7.8,
+  "solvedLat": 49.64,
+  "delta": 0.04
+ },
+ {
+  "id": "10271",
+  "name": "ROTHENBACH -A.D.PEGNITZ",
+  "state": "BAYERN",
+  "gazLat": 49.5,
+  "gazLon": 11.2,
+  "solvedLat": 49.49,
+  "delta": -0.01
+ },
+ {
+  "id": "10275",
+  "name": "SCHLESWIG",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 54.5,
+  "gazLon": 9.6,
+  "solvedLat": 54.53,
+  "delta": 0.03
+ },
+ {
+  "id": "10279",
+  "name": "SCHUTTORF",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.3,
+  "gazLon": 7.2,
+  "solvedLat": 52.33,
+  "delta": 0.03
+ },
+ {
+  "id": "10283",
+  "name": "SCHWETZINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49.4,
+  "gazLon": 8.6,
+  "solvedLat": 49.41,
+  "delta": 0.01
+ },
+ {
+  "id": "10287",
+  "name": "SIEGBURG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.8,
+  "gazLon": 7.2,
+  "solvedLat": 50.81,
+  "delta": 0.01
+ },
+ {
+  "id": "10291",
+  "name": "SOLINGEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.2,
+  "gazLon": 7.1,
+  "solvedLat": 51.19,
+  "delta": -0.01
+ },
+ {
+  "id": "10295",
+  "name": "SPROCKHOVEL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.4,
+  "gazLon": 7.2,
+  "solvedLat": 51.37,
+  "delta": -0.03
+ },
+ {
+  "id": "10299",
+  "name": "STADE-BUTZFLETH",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 53.6,
+  "gazLon": 9.5,
+  "solvedLat": 53.66,
+  "delta": 0.06
+ },
+ {
+  "id": "10303",
+  "name": "STEINFURT",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 52.2,
+  "gazLon": 7.3,
+  "solvedLat": 52.14,
+  "delta": -0.06
+ },
+ {
+  "id": "10307",
+  "name": "STERZHAUSEN",
+  "state": "HESSEN",
+  "gazLat": 50.9,
+  "gazLon": 8.7,
+  "solvedLat": 50.88,
+  "delta": -0.02
+ },
+ {
+  "id": "10311",
+  "name": "TELGTE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 52,
+  "gazLon": 7.8,
+  "solvedLat": 52.000000000000085,
+  "delta": 0
+ },
+ {
+  "id": "10315",
+  "name": "UCHTE",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.5,
+  "gazLon": 8.9,
+  "solvedLat": 52.51,
+  "delta": 0.01
+ },
+ {
+  "id": "10323",
+  "name": "VELBERT",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.3,
+  "gazLon": 7,
+  "solvedLat": 51.35,
+  "delta": 0.05
+ },
+ {
+  "id": "10339",
+  "name": "WEDEL",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 53.6,
+  "gazLon": 9.7,
+  "solvedLat": 53.59,
+  "delta": -0.01
+ },
+ {
+  "id": "10343",
+  "name": "WEILERWIST",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.8,
+  "gazLon": 6.8,
+  "solvedLat": 50.78,
+  "delta": -0.02
+ },
+ {
+  "id": "10347",
+  "name": "WERMELSKIRCHEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.2,
+  "gazLon": 7.2,
+  "solvedLat": 51.17,
+  "delta": -0.03
+ },
+ {
+  "id": "10351",
+  "name": "WESTERSTEDE",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 53.3,
+  "gazLon": 7.9,
+  "solvedLat": 53.28,
+  "delta": -0.02
+ },
+ {
+  "id": "10355",
+  "name": "WILDESHAUSEN",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.9,
+  "gazLon": 8.4,
+  "solvedLat": 52.91,
+  "delta": 0.01
+ },
+ {
+  "id": "10359",
+  "name": "WITTEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.4,
+  "gazLon": 7.3,
+  "solvedLat": 51.45,
+  "delta": 0.05
+ },
+ {
+  "id": "10364",
+  "name": "WUNSTORF",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.4,
+  "gazLon": 9.4,
+  "solvedLat": 52.43,
+  "delta": 0.03
+ },
+ {
+  "id": "10368",
+  "name": "ZULPICH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.7,
+  "gazLon": 6.6,
+  "solvedLat": 50.71,
+  "delta": 0.01
+ },
+ {
+  "id": "10372",
+  "name": "HELMSTEDT",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.2,
+  "gazLon": 11,
+  "solvedLat": 52.25,
+  "delta": 0.05
+ },
+ {
+  "id": "10376",
+  "name": "HESSISCH LICHTENAU",
+  "state": "HESSEN",
+  "gazLat": 51.2,
+  "gazLon": 9.7,
+  "solvedLat": 51.200000000000074,
+  "delta": 0
+ },
+ {
+  "id": "10380",
+  "name": "HOLZMINDEN",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 51.8,
+  "gazLon": 9.5,
+  "solvedLat": 51.84,
+  "delta": 0.04
+ },
+ {
+  "id": "10384",
+  "name": "ICHENHAUSEN",
+  "state": "BAYERN",
+  "gazLat": 48.4,
+  "gazLon": 10.3,
+  "solvedLat": 48.37,
+  "delta": -0.03
+ },
+ {
+  "id": "10388",
+  "name": "ISNY",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.7,
+  "gazLon": 10,
+  "solvedLat": 47.72,
+  "delta": 0.02
+ },
+ {
+  "id": "10392",
+  "name": "KAUFBEUREN",
+  "state": "BAYERN",
+  "gazLat": 47.9,
+  "gazLon": 10.6,
+  "solvedLat": 47.90000000000003,
+  "delta": 0
+ },
+ {
+  "id": "10396",
+  "name": "KITZINGEN",
+  "state": "BAYERN",
+  "gazLat": 49.7,
+  "gazLon": 10.2,
+  "solvedLat": 49.76,
+  "delta": 0.06
+ },
+ {
+  "id": "10400",
+  "name": "KONIGSLUTTER",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.3,
+  "gazLon": 10.8,
+  "solvedLat": 52.25,
+  "delta": -0.05
+ },
+ {
+  "id": "10404",
+  "name": "KULMBACH",
+  "state": "BAYERN",
+  "gazLat": 50.1,
+  "gazLon": 11.4,
+  "solvedLat": 50.11,
+  "delta": 0.01
+ },
+ {
+  "id": "10408",
+  "name": "LANGENARGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.6,
+  "gazLon": 9.5,
+  "solvedLat": 47.60000000000002,
+  "delta": 0
+ },
+ {
+  "id": "10412",
+  "name": "LAUCHHAMMER",
+  "state": "BRANDENBURG",
+  "gazLat": 51.5,
+  "gazLon": 13.8,
+  "solvedLat": 51.52,
+  "delta": 0.02
+ },
+ {
+  "id": "10420",
+  "name": "LAUTERBACH",
+  "state": "HESSEN",
+  "gazLat": 50.6,
+  "gazLon": 9.4,
+  "solvedLat": 50.65,
+  "delta": 0.05
+ },
+ {
+  "id": "10424",
+  "name": "LICHTENFELS",
+  "state": "BAYERN",
+  "gazLat": 50.2,
+  "gazLon": 11.1,
+  "solvedLat": 50.16,
+  "delta": -0.04
+ },
+ {
+  "id": "10429",
+  "name": "LONSEE",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.5,
+  "gazLon": 9.9,
+  "solvedLat": 48.54,
+  "delta": 0.04
+ },
+ {
+  "id": "10433",
+  "name": "MAGSTADT",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.7,
+  "gazLon": 9,
+  "solvedLat": 48.75,
+  "delta": 0.05
+ },
+ {
+  "id": "10437",
+  "name": "MARKTHEIDENFELD",
+  "state": "BAYERN",
+  "gazLat": 49.9,
+  "gazLon": 9.6,
+  "solvedLat": 49.87,
+  "delta": -0.03
+ },
+ {
+  "id": "10441",
+  "name": "MELSUNGEN",
+  "state": "HESSEN",
+  "gazLat": 51.1,
+  "gazLon": 9.5,
+  "solvedLat": 51.15,
+  "delta": 0.05
+ },
+ {
+  "id": "10445",
+  "name": "METZINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.5,
+  "gazLon": 9.3,
+  "solvedLat": 48.54,
+  "delta": 0.04
+ },
+ {
+  "id": "10449",
+  "name": "MINDELHEIM",
+  "state": "BAYERN",
+  "gazLat": 48.1,
+  "gazLon": 10.5,
+  "solvedLat": 48.06,
+  "delta": -0.04
+ },
+ {
+  "id": "10453",
+  "name": "MUHLHOFEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.8,
+  "gazLon": 9.3,
+  "solvedLat": 47.77,
+  "delta": -0.03
+ },
+ {
+  "id": "10457",
+  "name": "MURRHARDT",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49,
+  "gazLon": 9.6,
+  "solvedLat": 48.98,
+  "delta": -0.02
+ },
+ {
+  "id": "10461",
+  "name": "NERSINGEN",
+  "state": "BAYERN",
+  "gazLat": 48.4,
+  "gazLon": 10.1,
+  "solvedLat": 48.46,
+  "delta": 0.06
+ },
+ {
+  "id": "10465",
+  "name": "NEUTRAUBLING",
+  "state": "BAYERN",
+  "gazLat": 49,
+  "gazLon": 12.2,
+  "solvedLat": 48.99,
+  "delta": -0.01
+ },
+ {
+  "id": "10469",
+  "name": "OBERNDORF A.N.",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.3,
+  "gazLon": 8.6,
+  "solvedLat": 48.27,
+  "delta": -0.03
+ },
+ {
+  "id": "10473",
+  "name": "ORANIENBURG",
+  "state": "BRANDENBURG",
+  "gazLat": 52.7,
+  "gazLon": 13.2,
+  "solvedLat": 52.77,
+  "delta": 0.07
+ },
+ {
+  "id": "10477",
+  "name": "PFULLENDORF",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.9,
+  "gazLon": 9.3,
+  "solvedLat": 47.94,
+  "delta": 0.04
+ },
+ {
+  "id": "10481",
+  "name": "RAISDORF",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 54.3,
+  "gazLon": 10.2,
+  "solvedLat": 54.31,
+  "delta": 0.01
+ },
+ {
+  "id": "10485",
+  "name": "RODACH",
+  "state": "BAYERN",
+  "gazLat": 50.3,
+  "gazLon": 10.8,
+  "solvedLat": 50.36,
+  "delta": 0.06
+ },
+ {
+  "id": "10489",
+  "name": "SALZGITTER BAD",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.1,
+  "gazLon": 10.4,
+  "solvedLat": 52.06,
+  "delta": -0.04
+ },
+ {
+  "id": "10493",
+  "name": "SCHLUCHTERN",
+  "state": "HESSEN",
+  "gazLat": 50.4,
+  "gazLon": 9.5,
+  "solvedLat": 50.38,
+  "delta": -0.02
+ },
+ {
+  "id": "10497",
+  "name": "SCHWANDORF",
+  "state": "BAYERN",
+  "gazLat": 49.3,
+  "gazLon": 12.1,
+  "solvedLat": 49.36,
+  "delta": 0.06
+ },
+ {
+  "id": "10501",
+  "name": "SELB",
+  "state": "BAYERN",
+  "gazLat": 50.2,
+  "gazLon": 12.1,
+  "solvedLat": 50.20000000000006,
+  "delta": 0
+ },
+ {
+  "id": "10505",
+  "name": "SPAICHINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.1,
+  "gazLon": 8.7,
+  "solvedLat": 48.09,
+  "delta": -0.01
+ },
+ {
+  "id": "10509",
+  "name": "STRAUSBERG",
+  "state": "BRANDENBURG",
+  "gazLat": 52.6,
+  "gazLon": 13.9,
+  "solvedLat": 52.58,
+  "delta": -0.02
+ },
+ {
+  "id": "10517",
+  "name": "VAIHINGEN AN DER ENZ",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.9,
+  "gazLon": 9,
+  "solvedLat": 48.94,
+  "delta": 0.04
+ },
+ {
+  "id": "10521",
+  "name": "WACHTERSBACH",
+  "state": "HESSEN",
+  "gazLat": 50.3,
+  "gazLon": 9.3,
+  "solvedLat": 50.28,
+  "delta": -0.02
+ },
+ {
+  "id": "10525",
+  "name": "WALSRODE",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.9,
+  "gazLon": 9.6,
+  "solvedLat": 52.88,
+  "delta": -0.02
+ },
+ {
+  "id": "10529",
+  "name": "WEIDEN",
+  "state": "BAYERN",
+  "gazLat": 49.7,
+  "gazLon": 12.2,
+  "solvedLat": 49.70000000000005,
+  "delta": 0
+ },
+ {
+  "id": "10534",
+  "name": "WELZHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.9,
+  "gazLon": 9.6,
+  "solvedLat": 48.88,
+  "delta": -0.02
+ },
+ {
+  "id": "10542",
+  "name": "WITZENHAUSEN",
+  "state": "HESSEN",
+  "gazLat": 51.3,
+  "gazLon": 9.9,
+  "solvedLat": 51.33,
+  "delta": 0.03
+ },
+ {
+  "id": "10551",
+  "name": "ROSTOCK",
+  "state": "MECKLENBURG-VORPOMMERN",
+  "gazLat": 54.1,
+  "gazLon": 12.1,
+  "solvedLat": 54.09,
+  "delta": -0.01
+ },
+ {
+  "id": "10556",
+  "name": "GERMERSHEIM",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 49.2,
+  "gazLon": 8.4,
+  "solvedLat": 49.200000000000045,
+  "delta": 0
+ },
+ {
+  "id": "10564",
+  "name": "GREIFSWALD",
+  "state": "MECKLENBURG-VORPOMMERN",
+  "gazLat": 54.1,
+  "gazLon": 13.4,
+  "solvedLat": 54.09,
+  "delta": -0.01
+ },
+ {
+  "id": "10568",
+  "name": "MOGLINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.9,
+  "gazLon": 9.1,
+  "solvedLat": 48.90000000000004,
+  "delta": 0
+ },
+ {
+  "id": "10572",
+  "name": "BOBLINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.7,
+  "gazLon": 9,
+  "solvedLat": 48.71,
+  "delta": 0.01
+ },
+ {
+  "id": "10576",
+  "name": "BAD HERSFELD",
+  "state": "HESSEN",
+  "gazLat": 50.9,
+  "gazLon": 9.7,
+  "solvedLat": 50.90000000000007,
+  "delta": 0
+ },
+ {
+  "id": "10580",
+  "name": "WANGEN IM ALLGAU",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.7,
+  "gazLon": 9.8,
+  "solvedLat": 47.700000000000024,
+  "delta": 0
+ },
+ {
+  "id": "10584",
+  "name": "BAYREUTH",
+  "state": "BAYERN",
+  "gazLat": 50,
+  "gazLon": 11.6,
+  "solvedLat": 49.96,
+  "delta": -0.04
+ },
+ {
+  "id": "10588",
+  "name": "WATENSTEDT",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.1,
+  "gazLon": 10.8,
+  "solvedLat": 52.10000000000009,
+  "delta": 0
+ },
+ {
+  "id": "10592",
+  "name": "GARREL",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 53,
+  "gazLon": 8,
+  "solvedLat": 52.97,
+  "delta": -0.03
+ },
+ {
+  "id": "10596",
+  "name": "SYKE",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.9,
+  "gazLon": 8.8,
+  "solvedLat": 52.92,
+  "delta": 0.02
+ },
+ {
+  "id": "10600",
+  "name": "MITTWEIDA",
+  "state": "SACHSEN ANHALT",
+  "gazLat": 51,
+  "gazLon": 13,
+  "solvedLat": 51.00000000000007,
+  "delta": 0
+ },
+ {
+  "id": "10608",
+  "name": "FORST (COTTBUS)",
+  "state": "BRANDENBURG",
+  "gazLat": 51.7,
+  "gazLon": 14.6,
+  "solvedLat": 51.73,
+  "delta": 0.03
+ },
+ {
+  "id": "10612",
+  "name": "SPREMBERG",
+  "state": "BRANDENBURG",
+  "gazLat": 51.6,
+  "gazLon": 14.4,
+  "solvedLat": 51.55,
+  "delta": -0.05
+ },
+ {
+  "id": "10616",
+  "name": "OLBERNHAU",
+  "state": "SACHSEN",
+  "gazLat": 50.7,
+  "gazLon": 13.3,
+  "solvedLat": 50.65,
+  "delta": -0.05
+ },
+ {
+  "id": "10620",
+  "name": "RIESA",
+  "state": "SACHSEN",
+  "gazLat": 51.3,
+  "gazLon": 13.3,
+  "solvedLat": 51.32,
+  "delta": 0.02
+ },
+ {
+  "id": "10624",
+  "name": "EISENACH",
+  "state": "THURINGEN",
+  "gazLat": 51,
+  "gazLon": 10.3,
+  "solvedLat": 50.98,
+  "delta": -0.02
+ },
+ {
+  "id": "10628",
+  "name": "SAALFELD",
+  "state": "THURINGEN",
+  "gazLat": 50.6,
+  "gazLon": 11.4,
+  "solvedLat": 50.65,
+  "delta": 0.05
+ },
+ {
+  "id": "10632",
+  "name": "GLUCKSBURG",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 54.8,
+  "gazLon": 9.6,
+  "solvedLat": 54.83,
+  "delta": 0.03
+ },
+ {
+  "id": "10636",
+  "name": "TARP",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 54.7,
+  "gazLon": 9.4,
+  "solvedLat": 54.68,
+  "delta": -0.02
+ },
+ {
+  "id": "10640",
+  "name": "BEESKOW",
+  "state": "BRANDENBURG",
+  "gazLat": 52.2,
+  "gazLon": 14.2,
+  "solvedLat": 52.19,
+  "delta": -0.01
+ },
+ {
+  "id": "10644",
+  "name": "BOVENDEN",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 51.6,
+  "gazLon": 9.9,
+  "solvedLat": 51.60000000000008,
+  "delta": 0
+ },
+ {
+  "id": "10648",
+  "name": "LEINEFELDE",
+  "state": "THURINGEN",
+  "gazLat": 51.4,
+  "gazLon": 10.3,
+  "solvedLat": 51.38,
+  "delta": -0.02
+ },
+ {
+  "id": "10652",
+  "name": "BOIZENBURG",
+  "state": "MECKLENBURG-VORPOMMERN",
+  "gazLat": 53.4,
+  "gazLon": 10.7,
+  "solvedLat": 53.400000000000105,
+  "delta": 0
+ },
+ {
+  "id": "10656",
+  "name": "RATZEBURG",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 53.7,
+  "gazLon": 10.8,
+  "solvedLat": 53.70000000000011,
+  "delta": 0
+ },
+ {
+  "id": "10660",
+  "name": "BENNEMUHLEN",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.6,
+  "gazLon": 9.7,
+  "solvedLat": 52.57,
+  "delta": -0.03
+ },
+ {
+  "id": "10668",
+  "name": "BRUNSBUTTEL",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 53.9,
+  "gazLon": 9.1,
+  "solvedLat": 53.91,
+  "delta": 0.01
+ },
+ {
+  "id": "10672",
+  "name": "MELDORF",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 54.1,
+  "gazLon": 9.1,
+  "solvedLat": 54.09,
+  "delta": -0.01
+ },
+ {
+  "id": "10676",
+  "name": "PLON",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 54.2,
+  "gazLon": 10.4,
+  "solvedLat": 54.18,
+  "delta": -0.02
+ },
+ {
+  "id": "10680",
+  "name": "OSCHATZ",
+  "state": "SACHSEN",
+  "gazLat": 51.3,
+  "gazLon": 13.1,
+  "solvedLat": 51.32,
+  "delta": 0.02
+ },
+ {
+  "id": "10684",
+  "name": "GREVESMUHLEN",
+  "state": "MECKLENBURG-VORPOMMERN",
+  "gazLat": 53.9,
+  "gazLon": 11.2,
+  "solvedLat": 53.86,
+  "delta": -0.04
+ },
+ {
+  "id": "10688",
+  "name": "HALBERSTADT",
+  "state": "SACHSEN ANHALT",
+  "gazLat": 51.9,
+  "gazLon": 11.1,
+  "solvedLat": 51.91,
+  "delta": 0.01
+ },
+ {
+  "id": "10692",
+  "name": "CALBE",
+  "state": "SACHSEN ANHALT",
+  "gazLat": 51.9,
+  "gazLon": 11.8,
+  "solvedLat": 51.91,
+  "delta": 0.01
+ },
+ {
+  "id": "10696",
+  "name": "OSCHERSLEBEN",
+  "state": "SACHSEN ANHALT",
+  "gazLat": 52,
+  "gazLon": 11.2,
+  "solvedLat": 52.05,
+  "delta": 0.05
+ },
+ {
+  "id": "10700",
+  "name": "ZERBST",
+  "state": "SACHSEN ANHALT",
+  "gazLat": 52,
+  "gazLon": 12.1,
+  "solvedLat": 51.97,
+  "delta": -0.03
+ },
+ {
+  "id": "10705",
+  "name": "BARDENBERG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.9,
+  "gazLon": 6.1,
+  "solvedLat": 50.86,
+  "delta": -0.04
+ },
+ {
+  "id": "10709",
+  "name": "BAD MEINBERG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.9,
+  "gazLon": 9,
+  "solvedLat": 51.91,
+  "delta": 0.01
+ },
+ {
+  "id": "10713",
+  "name": "GELSDORF",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.6,
+  "gazLon": 7,
+  "solvedLat": 50.61,
+  "delta": 0.01
+ },
+ {
+  "id": "10725",
+  "name": "FRONDENBERG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.5,
+  "gazLon": 7.8,
+  "solvedLat": 51.48,
+  "delta": -0.02
+ },
+ {
+  "id": "10729",
+  "name": "KORSCHENBROICH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.2,
+  "gazLon": 6.5,
+  "solvedLat": 51.200000000000074,
+  "delta": 0
+ },
+ {
+  "id": "10733",
+  "name": "KELKHEIM",
+  "state": "HESSEN",
+  "gazLat": 50.1,
+  "gazLon": 8.5,
+  "solvedLat": 50.12,
+  "delta": 0.02
+ },
+ {
+  "id": "10737",
+  "name": "BELLHEIM",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 49.2,
+  "gazLon": 8.3,
+  "solvedLat": 49.200000000000045,
+  "delta": 0
+ },
+ {
+  "id": "10742",
+  "name": "HERDECKE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.4,
+  "gazLon": 7.4,
+  "solvedLat": 51.42,
+  "delta": 0.02
+ },
+ {
+  "id": "10746",
+  "name": "BAUNATAL",
+  "state": "HESSEN",
+  "gazLat": 51.3,
+  "gazLon": 9.4,
+  "solvedLat": 51.27,
+  "delta": -0.03
+ },
+ {
+  "id": "10750",
+  "name": "ETTRINGEN",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50.4,
+  "gazLon": 7.2,
+  "solvedLat": 50.36,
+  "delta": -0.04
+ },
+ {
+  "id": "10754",
+  "name": "MAYEN",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50.3,
+  "gazLon": 7.2,
+  "solvedLat": 50.33,
+  "delta": 0.03
+ },
+ {
+  "id": "10758",
+  "name": "KURTEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.1,
+  "gazLon": 7.3,
+  "solvedLat": 51.06,
+  "delta": -0.04
+ },
+ {
+  "id": "10762",
+  "name": "OEDT",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.3,
+  "gazLon": 6.4,
+  "solvedLat": 51.32,
+  "delta": 0.02
+ },
+ {
+  "id": "10766",
+  "name": "FLORSHEIM",
+  "state": "HESSEN",
+  "gazLat": 50,
+  "gazLon": 8.4,
+  "solvedLat": 50.02,
+  "delta": 0.02
+ },
+ {
+  "id": "10774",
+  "name": "LUDINGHAUSEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.8,
+  "gazLon": 7.4,
+  "solvedLat": 51.78,
+  "delta": -0.02
+ },
+ {
+  "id": "10778",
+  "name": "QUIERSCHEID",
+  "state": "SAARLAND",
+  "gazLat": 49.3,
+  "gazLon": 7.1,
+  "solvedLat": 49.36,
+  "delta": 0.06
+ },
+ {
+  "id": "10786",
+  "name": "STOCKSTADT AM MAIN",
+  "state": "BAYERN",
+  "gazLat": 50,
+  "gazLon": 9.1,
+  "solvedLat": 49.99,
+  "delta": -0.01
+ },
+ {
+  "id": "10790",
+  "name": "BAD DURRHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48,
+  "gazLon": 8.5,
+  "solvedLat": 48.02,
+  "delta": 0.02
+ },
+ {
+  "id": "10794",
+  "name": "WALDKIRCH (Freiburg)",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.1,
+  "gazLon": 8,
+  "solvedLat": 48.10000000000003,
+  "delta": 0
+ },
+ {
+  "id": "10798",
+  "name": "NAILA",
+  "state": "BAYERN",
+  "gazLat": 50.3,
+  "gazLon": 11.7,
+  "solvedLat": 50.33,
+  "delta": 0.03
+ },
+ {
+  "id": "10802",
+  "name": "FORBACH",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.7,
+  "gazLon": 8.4,
+  "solvedLat": 48.71,
+  "delta": 0.01
+ },
+ {
+  "id": "10806",
+  "name": "IMMENSTAAD",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.7,
+  "gazLon": 9.4,
+  "solvedLat": 47.66,
+  "delta": -0.04
+ },
+ {
+  "id": "10810",
+  "name": "SALEM",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.8,
+  "gazLon": 9.3,
+  "solvedLat": 47.76,
+  "delta": -0.04
+ },
+ {
+  "id": "10815",
+  "name": "PFARRKIRCHEN",
+  "state": "BAYERN",
+  "gazLat": 48.4,
+  "gazLon": 12.9,
+  "solvedLat": 48.42,
+  "delta": 0.02
+ },
+ {
+  "id": "10819",
+  "name": "FURSTENFELDBRUCK",
+  "state": "BAYERN",
+  "gazLat": 48.2,
+  "gazLon": 11.2,
+  "solvedLat": 48.17,
+  "delta": -0.03
+ },
+ {
+  "id": "10823",
+  "name": "OTTOBRUNN",
+  "state": "BAYERN",
+  "gazLat": 48.1,
+  "gazLon": 11.7,
+  "solvedLat": 48.09,
+  "delta": -0.01
+ },
+ {
+  "id": "10831",
+  "name": "RENCHEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.6,
+  "gazLon": 8,
+  "solvedLat": 48.61,
+  "delta": 0.01
+ },
+ {
+  "id": "10840",
+  "name": "ALPIRSBACH",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.3,
+  "gazLon": 8.4,
+  "solvedLat": 48.36,
+  "delta": 0.06
+ },
+ {
+  "id": "10848",
+  "name": "LEINFELDEN-ECHTERDINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.7,
+  "gazLon": 9.1,
+  "solvedLat": 48.73,
+  "delta": 0.03
+ },
+ {
+  "id": "10852",
+  "name": "BIETIGHEIM-BISSINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49,
+  "gazLon": 9.1,
+  "solvedLat": 48.98,
+  "delta": -0.02
+ },
+ {
+  "id": "10856",
+  "name": "OSTFILDERN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.7,
+  "gazLon": 9.3,
+  "solvedLat": 48.73,
+  "delta": 0.03
+ },
+ {
+  "id": "10860",
+  "name": "EBRACH (Wurzburg)",
+  "state": "BAYERN",
+  "gazLat": 49.8,
+  "gazLon": 10.5,
+  "solvedLat": 49.85,
+  "delta": 0.05
+ },
+ {
+  "id": "10864",
+  "name": "TAUBERBISCHOFSHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49.6,
+  "gazLon": 9.7,
+  "solvedLat": 49.62,
+  "delta": 0.02
+ },
+ {
+  "id": "10868",
+  "name": "SINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.8,
+  "gazLon": 8.8,
+  "solvedLat": 47.77,
+  "delta": -0.03
+ },
+ {
+  "id": "10872",
+  "name": "DANNSTADT",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 49.4,
+  "gazLon": 8.3,
+  "solvedLat": 49.45,
+  "delta": 0.05
+ },
+ {
+  "id": "10877",
+  "name": "ALDENHOVEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.9,
+  "gazLon": 6.3,
+  "solvedLat": 50.92,
+  "delta": 0.02
+ },
+ {
+  "id": "10881",
+  "name": "ELSENFELD",
+  "state": "BAYERN",
+  "gazLat": 49.8,
+  "gazLon": 9.2,
+  "solvedLat": 49.85,
+  "delta": 0.05
+ },
+ {
+  "id": "10889",
+  "name": "ALZEY",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 49.8,
+  "gazLon": 8.1,
+  "solvedLat": 49.74,
+  "delta": -0.06
+ },
+ {
+  "id": "10893",
+  "name": "AROLSEN",
+  "state": "HESSEN",
+  "gazLat": 51.4,
+  "gazLon": 9,
+  "solvedLat": 51.40000000000008,
+  "delta": 0
+ },
+ {
+  "id": "10897",
+  "name": "AUGUSTDORF",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.9,
+  "gazLon": 8.7,
+  "solvedLat": 51.91,
+  "delta": 0.01
+ },
+ {
+  "id": "10901",
+  "name": "BAD DURKHEIM",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 49.5,
+  "gazLon": 8.2,
+  "solvedLat": 49.45,
+  "delta": -0.05
+ },
+ {
+  "id": "10905",
+  "name": "BAD HOMBURG",
+  "state": "HESSEN",
+  "gazLat": 50.2,
+  "gazLon": 8.6,
+  "solvedLat": 50.22,
+  "delta": 0.02
+ },
+ {
+  "id": "10909",
+  "name": "BAD SALZUFLEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 52.1,
+  "gazLon": 8.7,
+  "solvedLat": 52.10000000000009,
+  "delta": 0
+ },
+ {
+  "id": "10913",
+  "name": "BADEN-BADEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.8,
+  "gazLon": 8.2,
+  "solvedLat": 48.78,
+  "delta": -0.02
+ },
+ {
+  "id": "10917",
+  "name": "BEERFELDEN",
+  "state": "HESSEN",
+  "gazLat": 49.6,
+  "gazLon": 9,
+  "solvedLat": 49.57,
+  "delta": -0.03
+ },
+ {
+  "id": "10925",
+  "name": "BETZDORF",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50.8,
+  "gazLon": 7.9,
+  "solvedLat": 50.80000000000007,
+  "delta": 0
+ },
+ {
+  "id": "10929",
+  "name": "BINGEN",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50,
+  "gazLon": 7.9,
+  "solvedLat": 49.97,
+  "delta": -0.03
+ },
+ {
+  "id": "10937",
+  "name": "BOHMTE",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.4,
+  "gazLon": 8.3,
+  "solvedLat": 52.39,
+  "delta": -0.01
+ },
+ {
+  "id": "10941",
+  "name": "BORNHEIM",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.8,
+  "gazLon": 7,
+  "solvedLat": 50.78,
+  "delta": -0.02
+ },
+ {
+  "id": "10945",
+  "name": "BRAKEL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.7,
+  "gazLon": 9.2,
+  "solvedLat": 51.73,
+  "delta": 0.03
+ },
+ {
+  "id": "10949",
+  "name": "FINDORF",
+  "state": "BREMEN",
+  "gazLat": 53.1,
+  "gazLon": 8.8,
+  "solvedLat": 53.12,
+  "delta": 0.02
+ },
+ {
+  "id": "10953",
+  "name": "BRUCHSAL",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49.1,
+  "gazLon": 8.6,
+  "solvedLat": 49.16,
+  "delta": 0.06
+ },
+ {
+  "id": "10961",
+  "name": "BUNDE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 52.2,
+  "gazLon": 8.6,
+  "solvedLat": 52.19,
+  "delta": -0.01
+ },
+ {
+  "id": "10969",
+  "name": "DELBRUCK",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.8,
+  "gazLon": 8.6,
+  "solvedLat": 51.76,
+  "delta": -0.04
+ },
+ {
+  "id": "10973",
+  "name": "DIETZENBACH",
+  "state": "HESSEN",
+  "gazLat": 50,
+  "gazLon": 8.8,
+  "solvedLat": 50.02,
+  "delta": 0.02
+ },
+ {
+  "id": "10977",
+  "name": "DORMAGEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.1,
+  "gazLon": 6.8,
+  "solvedLat": 51.11,
+  "delta": 0.01
+ },
+ {
+  "id": "10985",
+  "name": "ECKERNFORDE",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 54.5,
+  "gazLon": 9.8,
+  "solvedLat": 54.47,
+  "delta": -0.03
+ },
+ {
+  "id": "10989",
+  "name": "ELMSHORN",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 53.7,
+  "gazLon": 9.6,
+  "solvedLat": 53.75,
+  "delta": 0.05
+ },
+ {
+  "id": "10993",
+  "name": "EMMENDINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.1,
+  "gazLon": 7.9,
+  "solvedLat": 48.15,
+  "delta": 0.05
+ },
+ {
+  "id": "10997",
+  "name": "ERFTSTADT",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.8,
+  "gazLon": 6.8,
+  "solvedLat": 50.82,
+  "delta": 0.02
+ },
+ {
+  "id": "11001",
+  "name": "ESCHWEILER",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.8,
+  "gazLon": 6.3,
+  "solvedLat": 50.83,
+  "delta": 0.03
+ },
+ {
+  "id": "11005",
+  "name": "BREMEN",
+  "state": "BREMEN",
+  "gazLat": 53.1,
+  "gazLon": 8.8,
+  "solvedLat": 53.08,
+  "delta": -0.02
+ },
+ {
+  "id": "11009",
+  "name": "ESSEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.5,
+  "gazLon": 7,
+  "solvedLat": 51.47,
+  "delta": -0.03
+ },
+ {
+  "id": "11013",
+  "name": "HANNOVER",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.4,
+  "gazLon": 9.7,
+  "solvedLat": 52.39,
+  "delta": -0.01
+ },
+ {
+  "id": "11017",
+  "name": "KOBLENZ",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50.4,
+  "gazLon": 7.6,
+  "solvedLat": 50.41,
+  "delta": 0.01
+ },
+ {
+  "id": "11021",
+  "name": "MANNHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49.5,
+  "gazLon": 8.5,
+  "solvedLat": 49.52,
+  "delta": 0.02
+ },
+ {
+  "id": "11025",
+  "name": "REGENSBURG",
+  "state": "BAYERN",
+  "gazLat": 49,
+  "gazLon": 12.1,
+  "solvedLat": 49.02,
+  "delta": 0.02
+ },
+ {
+  "id": "11029",
+  "name": "WURZBURG",
+  "state": "BAYERN",
+  "gazLat": 49.8,
+  "gazLon": 9.9,
+  "solvedLat": 49.81,
+  "delta": 0.01
+ },
+ {
+  "id": "11033",
+  "name": "HEIDELBERG",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49.4,
+  "gazLon": 8.7,
+  "solvedLat": 49.42,
+  "delta": 0.02
+ },
+ {
+  "id": "11037",
+  "name": "GELSENKIRCHEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.5,
+  "gazLon": 7.1,
+  "solvedLat": 51.52,
+  "delta": 0.02
+ },
+ {
+  "id": "11042",
+  "name": "REUTLINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.5,
+  "gazLon": 9.2,
+  "solvedLat": 48.500000000000036,
+  "delta": 0
+ },
+ {
+  "id": "11046",
+  "name": "FRIEDRICHSHAFEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.7,
+  "gazLon": 9.5,
+  "solvedLat": 47.67,
+  "delta": -0.03
+ },
+ {
+  "id": "11050",
+  "name": "SCHWABISCH HALL",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49.1,
+  "gazLon": 9.7,
+  "solvedLat": 49.13,
+  "delta": 0.03
+ },
+ {
+  "id": "11054",
+  "name": "HILDESHEIM",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.2,
+  "gazLon": 9.9,
+  "solvedLat": 52.17,
+  "delta": -0.03
+ },
+ {
+  "id": "11058",
+  "name": "RONSDORF",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.2,
+  "gazLon": 7.2,
+  "solvedLat": 51.25,
+  "delta": 0.05
+ },
+ {
+  "id": "11064",
+  "name": "PADERBORN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.7,
+  "gazLon": 8.8,
+  "solvedLat": 51.73,
+  "delta": 0.03
+ },
+ {
+  "id": "11068",
+  "name": "SAARLOUIS",
+  "state": "SAARLAND",
+  "gazLat": 49.3,
+  "gazLon": 6.8,
+  "solvedLat": 49.32,
+  "delta": 0.02
+ },
+ {
+  "id": "11073",
+  "name": "PFALZGRAFENWEILER",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.5,
+  "gazLon": 8.6,
+  "solvedLat": 48.53,
+  "delta": 0.03
+ },
+ {
+  "id": "11081",
+  "name": "FURTH",
+  "state": "BAYERN",
+  "gazLat": 49.5,
+  "gazLon": 11,
+  "solvedLat": 49.50000000000005,
+  "delta": 0
+ },
+ {
+  "id": "11085",
+  "name": "HOF",
+  "state": "BAYERN",
+  "gazLat": 50.3,
+  "gazLon": 11.9,
+  "solvedLat": 50.33,
+  "delta": 0.03
+ },
+ {
+  "id": "11094",
+  "name": "LUDWIGSHAFEN",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 49.5,
+  "gazLon": 8.4,
+  "solvedLat": 49.49,
+  "delta": -0.01
+ },
+ {
+  "id": "11098",
+  "name": "RADEVORMWALD",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.2,
+  "gazLon": 7.3,
+  "solvedLat": 51.21,
+  "delta": 0.01
+ },
+ {
+  "id": "11102",
+  "name": "SIEGEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.9,
+  "gazLon": 8,
+  "solvedLat": 50.88,
+  "delta": -0.02
+ },
+ {
+  "id": "11106",
+  "name": "ANSBACH",
+  "state": "BAYERN",
+  "gazLat": 49.3,
+  "gazLon": 10.6,
+  "solvedLat": 49.31,
+  "delta": 0.01
+ },
+ {
+  "id": "11115",
+  "name": "DONAUWORTH",
+  "state": "BAYERN",
+  "gazLat": 48.7,
+  "gazLon": 10.8,
+  "solvedLat": 48.73,
+  "delta": 0.03
+ },
+ {
+  "id": "11119",
+  "name": "PFORZHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.9,
+  "gazLon": 8.7,
+  "solvedLat": 48.90000000000004,
+  "delta": 0
+ },
+ {
+  "id": "11123",
+  "name": "KEHL",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.6,
+  "gazLon": 7.8,
+  "solvedLat": 48.58,
+  "delta": -0.02
+ },
+ {
+  "id": "11127",
+  "name": "HAMM",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.7,
+  "gazLon": 7.8,
+  "solvedLat": 51.69,
+  "delta": -0.01
+ },
+ {
+  "id": "16733",
+  "name": "WERNIGERODE",
+  "state": "SACHSEN ANHALT",
+  "gazLat": 51.8,
+  "gazLon": 10.8,
+  "solvedLat": 51.85,
+  "delta": 0.05
+ },
+ {
+  "id": "16754",
+  "name": "BRAUNSCHWEIG",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.3,
+  "gazLon": 10.5,
+  "solvedLat": 52.28,
+  "delta": -0.02
+ },
+ {
+  "id": "16758",
+  "name": "ESPELKAMP/RAHDEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 52.4,
+  "gazLon": 8.6,
+  "solvedLat": 52.38,
+  "delta": -0.02
+ },
+ {
+  "id": "16762",
+  "name": "WENDLINGEN AM NECKAR",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.8,
+  "gazLon": 9.4,
+  "solvedLat": 48.81,
+  "delta": 0.01
+ },
+ {
+  "id": "17807",
+  "name": "BUDENHEIM",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50,
+  "gazLon": 8.2,
+  "solvedLat": 50.02,
+  "delta": 0.02
+ },
+ {
+  "id": "17925",
+  "name": "WITTERSCHLICK",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.7,
+  "gazLon": 7,
+  "solvedLat": 50.69,
+  "delta": -0.01
+ },
+ {
+  "id": "17932",
+  "name": "WITTEN-HERBEDE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.4,
+  "gazLon": 7.3,
+  "solvedLat": 51.43,
+  "delta": 0.03
+ },
+ {
+  "id": "17936",
+  "name": "PARCHIM",
+  "state": "MECKLENBURG-VORPOMMERN",
+  "gazLat": 53.4,
+  "gazLon": 11.9,
+  "solvedLat": 53.41,
+  "delta": 0.01
+ },
+ {
+  "id": "18947",
+  "name": "BURGBROHL",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50.5,
+  "gazLon": 7.3,
+  "solvedLat": 50.46,
+  "delta": -0.04
+ },
+ {
+  "id": "18951",
+  "name": "HEIDENHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.7,
+  "gazLon": 10.2,
+  "solvedLat": 48.71,
+  "delta": 0.01
+ },
+ {
+  "id": "18959",
+  "name": "NECKARSULM",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49.1,
+  "gazLon": 9.2,
+  "solvedLat": 49.15,
+  "delta": 0.05
+ },
+ {
+  "id": "18966",
+  "name": "MARBACH AM NECKAR",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.9,
+  "gazLon": 9.3,
+  "solvedLat": 48.95,
+  "delta": 0.05
+ },
+ {
+  "id": "20025",
+  "name": "HACHENBURG",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50.7,
+  "gazLon": 7.8,
+  "solvedLat": 50.65,
+  "delta": -0.05
+ },
+ {
+  "id": "20103",
+  "name": "ERDMANNHAUSEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.9,
+  "gazLon": 9.3,
+  "solvedLat": 48.96,
+  "delta": 0.06
+ },
+ {
+  "id": "21150",
+  "name": "FEUCHTWANGEN",
+  "state": "BAYERN",
+  "gazLat": 49.2,
+  "gazLon": 10.3,
+  "solvedLat": 49.200000000000045,
+  "delta": 0
+ },
+ {
+  "id": "21160",
+  "name": "FINNENTROP",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.2,
+  "gazLon": 8,
+  "solvedLat": 51.19,
+  "delta": -0.01
+ },
+ {
+  "id": "21165",
+  "name": "SCHWINDEGG",
+  "state": "BAYERN",
+  "gazLat": 48.3,
+  "gazLon": 12.3,
+  "solvedLat": 48.30000000000003,
+  "delta": 0
+ },
+ {
+  "id": "21169",
+  "name": "AALEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.9,
+  "gazLon": 10.1,
+  "solvedLat": 48.85,
+  "delta": -0.05
+ },
+ {
+  "id": "33306",
+  "name": "WALDBROL",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 50.9,
+  "gazLon": 7.6,
+  "solvedLat": 50.88,
+  "delta": -0.02
+ },
+ {
+  "id": "33347",
+  "name": "ARNSTORF",
+  "state": "BAYERN",
+  "gazLat": 48.6,
+  "gazLon": 12.8,
+  "solvedLat": 48.56,
+  "delta": -0.04
+ },
+ {
+  "id": "33369",
+  "name": "ESTERWEGEN",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 53,
+  "gazLon": 7.6,
+  "solvedLat": 53.01,
+  "delta": 0.01
+ },
+ {
+  "id": "9975",
+  "name": "ESLOHE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.3,
+  "gazLon": 8.2,
+  "solvedLat": 51.27,
+  "delta": -0.03
+ },
+ {
+  "id": "9979",
+  "name": "STEELE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.5,
+  "gazLon": 7.1,
+  "solvedLat": 51.45,
+  "delta": -0.05
+ },
+ {
+  "id": "9983",
+  "name": "FRANKENTHAL",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 49.5,
+  "gazLon": 8.4,
+  "solvedLat": 49.56,
+  "delta": 0.06
+ },
+ {
+  "id": "9991",
+  "name": "FURTHEN (SIEG)",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50.8,
+  "gazLon": 7.7,
+  "solvedLat": 50.78,
+  "delta": -0.02
+ },
+ {
+  "id": "9995",
+  "name": "GARBSEN",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.4,
+  "gazLon": 9.6,
+  "solvedLat": 52.42,
+  "delta": 0.02
+ },
+ {
+  "id": "9999",
+  "name": "GELDERN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.5,
+  "gazLon": 6.3,
+  "solvedLat": 51.52,
+  "delta": 0.02
+ },
+ {
+  "id": "10001",
+  "name": "ERLE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.8,
+  "gazLon": 6.9,
+  "solvedLat": 51.76,
+  "delta": -0.04
+ },
+ {
+  "id": "10005",
+  "name": "GENGENBACH",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.4,
+  "gazLon": 8,
+  "solvedLat": 48.39,
+  "delta": -0.01
+ },
+ {
+  "id": "10009",
+  "name": "GERMERING",
+  "state": "BAYERN",
+  "gazLat": 48.1,
+  "gazLon": 11.4,
+  "solvedLat": 48.17,
+  "delta": 0.07
+ },
+ {
+  "id": "10013",
+  "name": "GILCHING",
+  "state": "BAYERN",
+  "gazLat": 48.1,
+  "gazLon": 11.3,
+  "solvedLat": 48.14,
+  "delta": 0.04
+ },
+ {
+  "id": "10017",
+  "name": "GORLITZ",
+  "state": "SACHSEN",
+  "gazLat": 51.2,
+  "gazLon": 15,
+  "solvedLat": 51.17,
+  "delta": -0.03
+ },
+ {
+  "id": "10021",
+  "name": "GREVENBROICH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.1,
+  "gazLon": 6.6,
+  "solvedLat": 51.11,
+  "delta": 0.01
+ },
+ {
+  "id": "10025",
+  "name": "GUMMERSBACH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51,
+  "gazLon": 7.6,
+  "solvedLat": 51.06,
+  "delta": 0.06
+ },
+ {
+  "id": "10029",
+  "name": "HAIGER",
+  "state": "HESSEN",
+  "gazLat": 50.8,
+  "gazLon": 8.2,
+  "solvedLat": 50.75,
+  "delta": -0.05
+ },
+ {
+  "id": "10033",
+  "name": "KIRCHDORF",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 53.7,
+  "gazLon": 8.9,
+  "solvedLat": 53.70000000000011,
+  "delta": 0
+ },
+ {
+  "id": "10037",
+  "name": "HERRINGEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.7,
+  "gazLon": 7.7,
+  "solvedLat": 51.67,
+  "delta": -0.03
+ },
+ {
+  "id": "10041",
+  "name": "HARSEWINKEL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 52,
+  "gazLon": 8.2,
+  "solvedLat": 52.000000000000085,
+  "delta": 0
+ },
+ {
+  "id": "10045",
+  "name": "ALLENSBACH",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.7,
+  "gazLon": 9.1,
+  "solvedLat": 47.73,
+  "delta": 0.03
+ },
+ {
+  "id": "10050",
+  "name": "BACKNANG",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49,
+  "gazLon": 9.4,
+  "solvedLat": 48.95,
+  "delta": -0.05
+ },
+ {
+  "id": "10055",
+  "name": "BAD WURZACH",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.9,
+  "gazLon": 9.9,
+  "solvedLat": 47.92,
+  "delta": 0.02
+ },
+ {
+  "id": "10059",
+  "name": "BERNAU",
+  "state": "BRANDENBURG",
+  "gazLat": 52.7,
+  "gazLon": 13.6,
+  "solvedLat": 52.68,
+  "delta": -0.02
+ },
+ {
+  "id": "10063",
+  "name": "BOPFINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.9,
+  "gazLon": 10.4,
+  "solvedLat": 48.88,
+  "delta": -0.02
+ },
+ {
+  "id": "10067",
+  "name": "BUCHLOE",
+  "state": "BAYERN",
+  "gazLat": 48,
+  "gazLon": 10.7,
+  "solvedLat": 48.06,
+  "delta": 0.06
+ },
+ {
+  "id": "10071",
+  "name": "BURGKIRCHEN AN DER ALZ",
+  "state": "BAYERN",
+  "gazLat": 48.2,
+  "gazLon": 12.7,
+  "solvedLat": 48.17,
+  "delta": -0.03
+ },
+ {
+  "id": "10075",
+  "name": "COBURG",
+  "state": "BAYERN",
+  "gazLat": 50.3,
+  "gazLon": 11,
+  "solvedLat": 50.28,
+  "delta": -0.02
+ },
+ {
+  "id": "10079",
+  "name": "DIETENHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.2,
+  "gazLon": 10.1,
+  "solvedLat": 48.24,
+  "delta": 0.04
+ },
+ {
+  "id": "10083",
+  "name": "EBERSWALDE",
+  "state": "BRANDENBURG",
+  "gazLat": 52.8,
+  "gazLon": 13.8,
+  "solvedLat": 52.84,
+  "delta": 0.04
+ },
+ {
+  "id": "10087",
+  "name": "ELLWANGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49,
+  "gazLon": 10.1,
+  "solvedLat": 48.98,
+  "delta": -0.02
+ },
+ {
+  "id": "10095",
+  "name": "FREIBERG",
+  "state": "SACHSEN",
+  "gazLat": 50.9,
+  "gazLon": 13.3,
+  "solvedLat": 50.90000000000007,
+  "delta": 0
+ },
+ {
+  "id": "10099",
+  "name": "GAILDORF",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49,
+  "gazLon": 9.8,
+  "solvedLat": 49.02,
+  "delta": 0.02
+ },
+ {
+  "id": "10103",
+  "name": "GEISLINGEN AN DER STEIGE",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.6,
+  "gazLon": 9.8,
+  "solvedLat": 48.64,
+  "delta": 0.04
+ },
+ {
+  "id": "10107",
+  "name": "GLAUCHAU",
+  "state": "SACHSEN",
+  "gazLat": 50.8,
+  "gazLon": 12.5,
+  "solvedLat": 50.83,
+  "delta": 0.03
+ },
+ {
+  "id": "10111",
+  "name": "GUNDELSHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49.3,
+  "gazLon": 9.2,
+  "solvedLat": 49.30000000000005,
+  "delta": 0
+ },
+ {
+  "id": "10115",
+  "name": "BERGEDORF",
+  "state": "HAMBURG",
+  "gazLat": 53.5,
+  "gazLon": 10.2,
+  "solvedLat": 53.51,
+  "delta": 0.01
+ },
+ {
+  "id": "10119",
+  "name": "HEINSBERG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.1,
+  "gazLon": 6.1,
+  "solvedLat": 51.09,
+  "delta": -0.01
+ },
+ {
+  "id": "10123",
+  "name": "HERBORN",
+  "state": "HESSEN",
+  "gazLat": 50.7,
+  "gazLon": 8.3,
+  "solvedLat": 50.69,
+  "delta": -0.01
+ },
+ {
+  "id": "10127",
+  "name": "HERZOGENRATH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.9,
+  "gazLon": 6.1,
+  "solvedLat": 50.88,
+  "delta": -0.02
+ },
+ {
+  "id": "10131",
+  "name": "HOCHHEIM AM MAIN",
+  "state": "HESSEN",
+  "gazLat": 50,
+  "gazLon": 8.4,
+  "solvedLat": 50.02,
+  "delta": 0.02
+ },
+ {
+  "id": "10136",
+  "name": "HOMBRUCH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.4,
+  "gazLon": 7.7,
+  "solvedLat": 51.42,
+  "delta": 0.02
+ },
+ {
+  "id": "10140",
+  "name": "HOXTER",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.8,
+  "gazLon": 9.4,
+  "solvedLat": 51.81,
+  "delta": 0.01
+ },
+ {
+  "id": "10144",
+  "name": "HURTH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.9,
+  "gazLon": 6.9,
+  "solvedLat": 50.90000000000007,
+  "delta": 0
+ },
+ {
+  "id": "10148",
+  "name": "INGELHEIM",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50,
+  "gazLon": 8.1,
+  "solvedLat": 49.99,
+  "delta": -0.01
+ },
+ {
+  "id": "10152",
+  "name": "JUNKERATH",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50.3,
+  "gazLon": 6.6,
+  "solvedLat": 50.36,
+  "delta": 0.06
+ },
+ {
+  "id": "10156",
+  "name": "KARBEN",
+  "state": "HESSEN",
+  "gazLat": 50.2,
+  "gazLon": 8.8,
+  "solvedLat": 50.25,
+  "delta": 0.05
+ },
+ {
+  "id": "10160",
+  "name": "KERPEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.9,
+  "gazLon": 6.7,
+  "solvedLat": 50.88,
+  "delta": -0.02
+ },
+ {
+  "id": "10164",
+  "name": "KIRN",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 49.8,
+  "gazLon": 7.5,
+  "solvedLat": 49.81,
+  "delta": 0.01
+ },
+ {
+  "id": "10172",
+  "name": "LAGE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 52,
+  "gazLon": 8.8,
+  "solvedLat": 52.000000000000085,
+  "delta": 0
+ },
+ {
+  "id": "10176",
+  "name": "LANDSTUHL",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 49.4,
+  "gazLon": 7.6,
+  "solvedLat": 49.42,
+  "delta": 0.02
+ },
+ {
+  "id": "10180",
+  "name": "LEMWERDER",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 53.2,
+  "gazLon": 8.6,
+  "solvedLat": 53.18,
+  "delta": -0.02
+ },
+ {
+  "id": "10184",
+  "name": "LEIMEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49.4,
+  "gazLon": 8.7,
+  "solvedLat": 49.36,
+  "delta": -0.04
+ },
+ {
+  "id": "10188",
+  "name": "LIPPSTADT",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.7,
+  "gazLon": 8.3,
+  "solvedLat": 51.69,
+  "delta": -0.01
+ },
+ {
+  "id": "10196",
+  "name": "BRAMBAUER (LUNEN)",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.6,
+  "gazLon": 7.4,
+  "solvedLat": 51.60000000000008,
+  "delta": 0
+ },
+ {
+  "id": "10200",
+  "name": "HAMM (MARL)",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.7,
+  "gazLon": 7.2,
+  "solvedLat": 51.74,
+  "delta": 0.04
+ },
+ {
+  "id": "10208",
+  "name": "METTMANN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.3,
+  "gazLon": 7,
+  "solvedLat": 51.25,
+  "delta": -0.05
+ },
+ {
+  "id": "10212",
+  "name": "MONHEIM",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.1,
+  "gazLon": 6.9,
+  "solvedLat": 51.09,
+  "delta": -0.01
+ },
+ {
+  "id": "10216",
+  "name": "MUNCHBERG",
+  "state": "BAYERN",
+  "gazLat": 50.2,
+  "gazLon": 11.8,
+  "solvedLat": 50.17,
+  "delta": -0.03
+ },
+ {
+  "id": "10220",
+  "name": "LOBBERICH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.3,
+  "gazLon": 6.3,
+  "solvedLat": 51.32,
+  "delta": 0.02
+ },
+ {
+  "id": "10228",
+  "name": "NEUSTADT IN HESSEN",
+  "state": "HESSEN",
+  "gazLat": 50.9,
+  "gazLon": 9.1,
+  "solvedLat": 50.86,
+  "delta": -0.04
+ },
+ {
+  "id": "10232",
+  "name": "NIENBURG (WESER)",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.6,
+  "gazLon": 9.2,
+  "solvedLat": 52.65,
+  "delta": 0.05
+ },
+ {
+  "id": "10236",
+  "name": "OBERTSHAUSEN",
+  "state": "HESSEN",
+  "gazLat": 50.1,
+  "gazLon": 8.8,
+  "solvedLat": 50.09,
+  "delta": -0.01
+ },
+ {
+  "id": "10240",
+  "name": "OER-ERKENSCHWICK",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.6,
+  "gazLon": 7.2,
+  "solvedLat": 51.63,
+  "delta": 0.03
+ },
+ {
+  "id": "10244",
+  "name": "OTTERSBERG",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 53.1,
+  "gazLon": 9.1,
+  "solvedLat": 53.12,
+  "delta": 0.02
+ },
+ {
+  "id": "10248",
+  "name": "PFUNGSTADT",
+  "state": "HESSEN",
+  "gazLat": 49.8,
+  "gazLon": 8.6,
+  "solvedLat": 49.79,
+  "delta": -0.01
+ },
+ {
+  "id": "10252",
+  "name": "PULHEIM",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51,
+  "gazLon": 6.8,
+  "solvedLat": 51.01,
+  "delta": 0.01
+ },
+ {
+  "id": "10256",
+  "name": "RATINGEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.3,
+  "gazLon": 6.9,
+  "solvedLat": 51.32,
+  "delta": 0.02
+ },
+ {
+  "id": "10260",
+  "name": "RHEDA-WIEDENBRUCK",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.9,
+  "gazLon": 8.3,
+  "solvedLat": 51.85,
+  "delta": -0.05
+ },
+ {
+  "id": "10264",
+  "name": "RHEINFELDEN-KARSAU",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.6,
+  "gazLon": 7.8,
+  "solvedLat": 47.60000000000002,
+  "delta": 0
+ },
+ {
+  "id": "10268",
+  "name": "ROSRATH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.9,
+  "gazLon": 7.2,
+  "solvedLat": 50.92,
+  "delta": 0.02
+ },
+ {
+  "id": "10272",
+  "name": "SALZKOTTEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.7,
+  "gazLon": 8.6,
+  "solvedLat": 51.69,
+  "delta": -0.01
+ },
+ {
+  "id": "10276",
+  "name": "SCHMELZ",
+  "state": "SAARLAND",
+  "gazLat": 49.4,
+  "gazLon": 6.9,
+  "solvedLat": 49.45,
+  "delta": 0.05
+ },
+ {
+  "id": "10280",
+  "name": "SCHWANINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.8,
+  "gazLon": 8.4,
+  "solvedLat": 47.800000000000026,
+  "delta": 0
+ },
+ {
+  "id": "10284",
+  "name": "SELBITZ",
+  "state": "BAYERN",
+  "gazLat": 50.3,
+  "gazLon": 11.8,
+  "solvedLat": 50.33,
+  "delta": 0.03
+ },
+ {
+  "id": "10288",
+  "name": "SIMMERN",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50,
+  "gazLon": 7.5,
+  "solvedLat": 49.99,
+  "delta": -0.01
+ },
+ {
+  "id": "10292",
+  "name": "SOLTAU",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 53,
+  "gazLon": 9.8,
+  "solvedLat": 52.99,
+  "delta": -0.01
+ },
+ {
+  "id": "10296",
+  "name": "ST. AUGUSTIN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.8,
+  "gazLon": 7.2,
+  "solvedLat": 50.78,
+  "delta": -0.02
+ },
+ {
+  "id": "10300",
+  "name": "STADTALLENDORF",
+  "state": "HESSEN",
+  "gazLat": 50.8,
+  "gazLon": 9,
+  "solvedLat": 50.84,
+  "delta": 0.04
+ },
+ {
+  "id": "10304",
+  "name": "STEINHAGEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 52,
+  "gazLon": 8.4,
+  "solvedLat": 52.02,
+  "delta": 0.02
+ },
+ {
+  "id": "10308",
+  "name": "STOLBERG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.8,
+  "gazLon": 6.2,
+  "solvedLat": 50.78,
+  "delta": -0.02
+ },
+ {
+  "id": "10312",
+  "name": "TROISDORF",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.8,
+  "gazLon": 7.2,
+  "solvedLat": 50.82,
+  "delta": 0.02
+ },
+ {
+  "id": "10316",
+  "name": "UETERSEN",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 53.7,
+  "gazLon": 9.7,
+  "solvedLat": 53.68,
+  "delta": -0.02
+ },
+ {
+  "id": "10320",
+  "name": "USINGEN",
+  "state": "HESSEN",
+  "gazLat": 50.3,
+  "gazLon": 8.5,
+  "solvedLat": 50.36,
+  "delta": 0.06
+ },
+ {
+  "id": "10324",
+  "name": "VERDEN",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.9,
+  "gazLon": 9.2,
+  "solvedLat": 52.92,
+  "delta": 0.02
+ },
+ {
+  "id": "10328",
+  "name": "VLOTHO",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 52.2,
+  "gazLon": 8.8,
+  "solvedLat": 52.18,
+  "delta": -0.02
+ },
+ {
+  "id": "10332",
+  "name": "WALDBROL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.9,
+  "gazLon": 7.6,
+  "solvedLat": 50.88,
+  "delta": -0.02
+ },
+ {
+  "id": "10336",
+  "name": "WARENDORF",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 52,
+  "gazLon": 8,
+  "solvedLat": 51.97,
+  "delta": -0.03
+ },
+ {
+  "id": "10340",
+  "name": "WEGBERG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.2,
+  "gazLon": 6.3,
+  "solvedLat": 51.16,
+  "delta": -0.04
+ },
+ {
+  "id": "10344",
+  "name": "WELVER",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.6,
+  "gazLon": 8,
+  "solvedLat": 51.62,
+  "delta": 0.02
+ },
+ {
+  "id": "10348",
+  "name": "WERNE A.D.LIPPE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.7,
+  "gazLon": 7.6,
+  "solvedLat": 51.67,
+  "delta": -0.03
+ },
+ {
+  "id": "10352",
+  "name": "WIEBELSKIRCHEN",
+  "state": "SAARLAND",
+  "gazLat": 49.4,
+  "gazLon": 7.2,
+  "solvedLat": 49.39,
+  "delta": -0.01
+ },
+ {
+  "id": "10356",
+  "name": "WILHELMSHAVEN",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 53.5,
+  "gazLon": 8.1,
+  "solvedLat": 53.54,
+  "delta": 0.04
+ },
+ {
+  "id": "10361",
+  "name": "WITTLICH",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50,
+  "gazLon": 6.9,
+  "solvedLat": 49.99,
+  "delta": -0.01
+ },
+ {
+  "id": "10365",
+  "name": "BARMEN(Wuppertal)",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.3,
+  "gazLon": 7.2,
+  "solvedLat": 51.29,
+  "delta": -0.01
+ },
+ {
+  "id": "10369",
+  "name": "ZWEIBRUCKEN",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 49.3,
+  "gazLon": 7.4,
+  "solvedLat": 49.25,
+  "delta": -0.05
+ },
+ {
+  "id": "10373",
+  "name": "HERSBRUCK",
+  "state": "BAYERN",
+  "gazLat": 49.5,
+  "gazLon": 11.4,
+  "solvedLat": 49.54,
+  "delta": 0.04
+ },
+ {
+  "id": "10377",
+  "name": "HEUBACH",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.8,
+  "gazLon": 9.9,
+  "solvedLat": 48.81,
+  "delta": 0.01
+ },
+ {
+  "id": "10381",
+  "name": "HORGAU",
+  "state": "BAYERN",
+  "gazLat": 48.4,
+  "gazLon": 10.7,
+  "solvedLat": 48.400000000000034,
+  "delta": 0
+ },
+ {
+  "id": "10385",
+  "name": "ILLERTISSEN",
+  "state": "BAYERN",
+  "gazLat": 48.2,
+  "gazLon": 10.1,
+  "solvedLat": 48.24,
+  "delta": 0.04
+ },
+ {
+  "id": "10397",
+  "name": "KOLBERMOOR",
+  "state": "BAYERN",
+  "gazLat": 47.9,
+  "gazLon": 12.1,
+  "solvedLat": 47.84,
+  "delta": -0.06
+ },
+ {
+  "id": "10401",
+  "name": "LAATZEN",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.3,
+  "gazLon": 9.8,
+  "solvedLat": 52.32,
+  "delta": 0.02
+ },
+ {
+  "id": "10405",
+  "name": "LAICHINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.5,
+  "gazLon": 9.7,
+  "solvedLat": 48.500000000000036,
+  "delta": 0
+ },
+ {
+  "id": "10413",
+  "name": "LAUDA",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49.6,
+  "gazLon": 9.7,
+  "solvedLat": 49.57,
+  "delta": -0.03
+ },
+ {
+  "id": "10417",
+  "name": "LAUFACH",
+  "state": "BAYERN",
+  "gazLat": 50,
+  "gazLon": 9.3,
+  "solvedLat": 50.02,
+  "delta": 0.02
+ },
+ {
+  "id": "10421",
+  "name": "LEHRTE",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.4,
+  "gazLon": 10,
+  "solvedLat": 52.38,
+  "delta": -0.02
+ },
+ {
+  "id": "10430",
+  "name": "LORCH",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.8,
+  "gazLon": 9.7,
+  "solvedLat": 48.83,
+  "delta": 0.03
+ },
+ {
+  "id": "10434",
+  "name": "MARKDORF",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.7,
+  "gazLon": 9.4,
+  "solvedLat": 47.73,
+  "delta": 0.03
+ },
+ {
+  "id": "10438",
+  "name": "MARKTOBERDORF",
+  "state": "BAYERN",
+  "gazLat": 47.8,
+  "gazLon": 10.6,
+  "solvedLat": 47.800000000000026,
+  "delta": 0
+ },
+ {
+  "id": "10442",
+  "name": "MEMMINGEN",
+  "state": "BAYERN",
+  "gazLat": 48,
+  "gazLon": 10.2,
+  "solvedLat": 47.99,
+  "delta": -0.01
+ },
+ {
+  "id": "10446",
+  "name": "MICHELSTADT",
+  "state": "HESSEN",
+  "gazLat": 49.7,
+  "gazLon": 9,
+  "solvedLat": 49.69,
+  "delta": -0.01
+ },
+ {
+  "id": "10450",
+  "name": "MOLLN",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 53.6,
+  "gazLon": 10.7,
+  "solvedLat": 53.65,
+  "delta": 0.05
+ },
+ {
+  "id": "10454",
+  "name": "MUNDERKINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.2,
+  "gazLon": 9.6,
+  "solvedLat": 48.25,
+  "delta": 0.05
+ },
+ {
+  "id": "10458",
+  "name": "NAGOLD",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.6,
+  "gazLon": 8.7,
+  "solvedLat": 48.58,
+  "delta": -0.02
+ },
+ {
+  "id": "10462",
+  "name": "NEUFAHRN IN NIEDERBAYERN",
+  "state": "BAYERN",
+  "gazLat": 48.7,
+  "gazLon": 12.2,
+  "solvedLat": 48.73,
+  "delta": 0.03
+ },
+ {
+  "id": "10466",
+  "name": "NORDERSTEDT",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 53.7,
+  "gazLon": 10,
+  "solvedLat": 53.67,
+  "delta": -0.03
+ },
+ {
+  "id": "10470",
+  "name": "OBERASBACH",
+  "state": "BAYERN",
+  "gazLat": 49.4,
+  "gazLon": 11,
+  "solvedLat": 49.45,
+  "delta": 0.05
+ },
+ {
+  "id": "10474",
+  "name": "OSTERODE AM HARZ",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 51.7,
+  "gazLon": 10.3,
+  "solvedLat": 51.75,
+  "delta": 0.05
+ },
+ {
+  "id": "10486",
+  "name": "ROSENHEIM",
+  "state": "BAYERN",
+  "gazLat": 47.9,
+  "gazLon": 12.2,
+  "solvedLat": 47.87,
+  "delta": -0.03
+ },
+ {
+  "id": "10490",
+  "name": "SALZWEDEL",
+  "state": "SACHSEN ANHALT",
+  "gazLat": 52.9,
+  "gazLon": 11.2,
+  "solvedLat": 52.86,
+  "delta": -0.04
+ },
+ {
+  "id": "10494",
+  "name": "SCHONGAU",
+  "state": "BAYERN",
+  "gazLat": 47.8,
+  "gazLon": 10.9,
+  "solvedLat": 47.82,
+  "delta": 0.02
+ },
+ {
+  "id": "10498",
+  "name": "SCHWARZENBACH AM WALD",
+  "state": "BAYERN",
+  "gazLat": 50.3,
+  "gazLon": 11.6,
+  "solvedLat": 50.28,
+  "delta": -0.02
+ },
+ {
+  "id": "10506",
+  "name": "STADTOLDENDORF",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 51.9,
+  "gazLon": 9.6,
+  "solvedLat": 51.89,
+  "delta": -0.01
+ },
+ {
+  "id": "10514",
+  "name": "UELZEN",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 53,
+  "gazLon": 10.6,
+  "solvedLat": 52.98,
+  "delta": -0.02
+ },
+ {
+  "id": "10518",
+  "name": "VILSBIBURG",
+  "state": "BAYERN",
+  "gazLat": 48.5,
+  "gazLon": 12.4,
+  "solvedLat": 48.48,
+  "delta": -0.02
+ },
+ {
+  "id": "10522",
+  "name": "WALDENBUCH",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.6,
+  "gazLon": 9.1,
+  "solvedLat": 48.64,
+  "delta": 0.04
+ },
+ {
+  "id": "10530",
+  "name": "WEILHEIM",
+  "state": "BAYERN",
+  "gazLat": 47.8,
+  "gazLon": 11.1,
+  "solvedLat": 47.86,
+  "delta": 0.06
+ },
+ {
+  "id": "10535",
+  "name": "WERNAU",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.7,
+  "gazLon": 9.4,
+  "solvedLat": 48.69,
+  "delta": -0.01
+ },
+ {
+  "id": "10539",
+  "name": "WINNENDEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.9,
+  "gazLon": 9.4,
+  "solvedLat": 48.88,
+  "delta": -0.02
+ },
+ {
+  "id": "10543",
+  "name": "WOLFSBURG",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.4,
+  "gazLon": 10.8,
+  "solvedLat": 52.43,
+  "delta": 0.03
+ },
+ {
+  "id": "10547",
+  "name": "ZWICKAU",
+  "state": "SACHSEN",
+  "gazLat": 50.7,
+  "gazLon": 12.5,
+  "solvedLat": 50.73,
+  "delta": 0.03
+ },
+ {
+  "id": "10552",
+  "name": "ORTENBURG",
+  "state": "BAYERN",
+  "gazLat": 48.6,
+  "gazLon": 13.2,
+  "solvedLat": 48.59,
+  "delta": -0.01
+ },
+ {
+  "id": "10557",
+  "name": "OFFENBURG",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.5,
+  "gazLon": 7.9,
+  "solvedLat": 48.48,
+  "delta": -0.02
+ },
+ {
+  "id": "10561",
+  "name": "ERLANGEN",
+  "state": "BAYERN",
+  "gazLat": 49.6,
+  "gazLon": 11,
+  "solvedLat": 49.61,
+  "delta": 0.01
+ },
+ {
+  "id": "10565",
+  "name": "HERNE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.5,
+  "gazLon": 7.2,
+  "solvedLat": 51.56,
+  "delta": 0.06
+ },
+ {
+  "id": "10569",
+  "name": "OFFENBACH",
+  "state": "HESSEN",
+  "gazLat": 50.1,
+  "gazLon": 8.8,
+  "solvedLat": 50.11,
+  "delta": 0.01
+ },
+ {
+  "id": "10573",
+  "name": "BAD KREUZNACH",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 49.8,
+  "gazLon": 7.9,
+  "solvedLat": 49.87,
+  "delta": 0.07
+ },
+ {
+  "id": "10577",
+  "name": "NORDHORN",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.4,
+  "gazLon": 7.1,
+  "solvedLat": 52.43,
+  "delta": 0.03
+ },
+ {
+  "id": "10581",
+  "name": "KAISERSLAUTERN",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 49.4,
+  "gazLon": 7.8,
+  "solvedLat": 49.45,
+  "delta": 0.05
+ },
+ {
+  "id": "10585",
+  "name": "SIMBACH AM INN",
+  "state": "BAYERN",
+  "gazLat": 48.3,
+  "gazLon": 13,
+  "solvedLat": 48.29,
+  "delta": -0.01
+ },
+ {
+  "id": "10589",
+  "name": "BASSUM",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.9,
+  "gazLon": 8.7,
+  "solvedLat": 52.86,
+  "delta": -0.04
+ },
+ {
+  "id": "10593",
+  "name": "OYTEN",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 53.1,
+  "gazLon": 9,
+  "solvedLat": 53.06,
+  "delta": -0.04
+ },
+ {
+  "id": "10597",
+  "name": "ZEVEN",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 53.3,
+  "gazLon": 9.3,
+  "solvedLat": 53.300000000000104,
+  "delta": 0
+ },
+ {
+  "id": "10601",
+  "name": "OELSNITZ (CHEMNITZ)",
+  "state": "SACHSEN",
+  "gazLat": 50.7,
+  "gazLon": 12.7,
+  "solvedLat": 50.73,
+  "delta": 0.03
+ },
+ {
+  "id": "10605",
+  "name": "COTTBUS",
+  "state": "BRANDENBURG",
+  "gazLat": 51.8,
+  "gazLon": 14.3,
+  "solvedLat": 51.76,
+  "delta": -0.04
+ },
+ {
+  "id": "10609",
+  "name": "GUBEN",
+  "state": "BRANDENBURG",
+  "gazLat": 52,
+  "gazLon": 14.7,
+  "solvedLat": 51.97,
+  "delta": -0.03
+ },
+ {
+  "id": "10613",
+  "name": "VETSCHAU",
+  "state": "BRANDENBURG",
+  "gazLat": 51.8,
+  "gazLon": 14.1,
+  "solvedLat": 51.81,
+  "delta": 0.01
+ },
+ {
+  "id": "10617",
+  "name": "PIRNA",
+  "state": "SACHSEN",
+  "gazLat": 51,
+  "gazLon": 13.9,
+  "solvedLat": 50.96,
+  "delta": -0.04
+ },
+ {
+  "id": "10621",
+  "name": "APOLDA",
+  "state": "THURINGEN",
+  "gazLat": 51,
+  "gazLon": 11.5,
+  "solvedLat": 51.03,
+  "delta": 0.03
+ },
+ {
+  "id": "10629",
+  "name": "SOMMERDA",
+  "state": "THURINGEN",
+  "gazLat": 51.2,
+  "gazLon": 11.1,
+  "solvedLat": 51.19,
+  "delta": -0.01
+ },
+ {
+  "id": "10633",
+  "name": "KAPPELN",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 54.7,
+  "gazLon": 9.9,
+  "solvedLat": 54.66,
+  "delta": -0.04
+ },
+ {
+  "id": "10637",
+  "name": "WESTERLAND",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 54.9,
+  "gazLon": 8.3,
+  "solvedLat": 54.94,
+  "delta": 0.04
+ },
+ {
+  "id": "10641",
+  "name": "EISENHUTTENSTADT",
+  "state": "BRANDENBURG",
+  "gazLat": 52.2,
+  "gazLon": 14.6,
+  "solvedLat": 52.16,
+  "delta": -0.04
+ },
+ {
+  "id": "10645",
+  "name": "DUDERSTADT",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 51.5,
+  "gazLon": 10.3,
+  "solvedLat": 51.52,
+  "delta": 0.02
+ },
+ {
+  "id": "10653",
+  "name": "BUXTEHUDE",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 53.5,
+  "gazLon": 9.7,
+  "solvedLat": 53.49,
+  "delta": -0.01
+ },
+ {
+  "id": "10657",
+  "name": "REINBEK",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 53.5,
+  "gazLon": 10.3,
+  "solvedLat": 53.51,
+  "delta": 0.01
+ },
+ {
+  "id": "10661",
+  "name": "BRUNSWICK (BRAUNSCHWEIG)",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.3,
+  "gazLon": 10.5,
+  "solvedLat": 52.28,
+  "delta": -0.02
+ },
+ {
+  "id": "10665",
+  "name": "SEHNDE",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.3,
+  "gazLon": 10,
+  "solvedLat": 52.32,
+  "delta": 0.02
+ },
+ {
+  "id": "10669",
+  "name": "HOHENWESTEDT",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 54.1,
+  "gazLon": 9.7,
+  "solvedLat": 54.09,
+  "delta": -0.01
+ },
+ {
+  "id": "10673",
+  "name": "LENSAHN",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 54.2,
+  "gazLon": 10.9,
+  "solvedLat": 54.24,
+  "delta": 0.04
+ },
+ {
+  "id": "10677",
+  "name": "DELITZSCH",
+  "state": "SACHSEN",
+  "gazLat": 51.5,
+  "gazLon": 12.3,
+  "solvedLat": 51.55,
+  "delta": 0.05
+ },
+ {
+  "id": "10681",
+  "name": "PEGAU",
+  "state": "SACHSEN",
+  "gazLat": 51.2,
+  "gazLon": 12.2,
+  "solvedLat": 51.19,
+  "delta": -0.01
+ },
+ {
+  "id": "10685",
+  "name": "STOCKELSDORF",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 53.9,
+  "gazLon": 10.7,
+  "solvedLat": 53.91,
+  "delta": 0.01
+ },
+ {
+  "id": "10689",
+  "name": "BARLEBEN",
+  "state": "SACHSEN ANHALT",
+  "gazLat": 52.2,
+  "gazLon": 11.6,
+  "solvedLat": 52.21,
+  "delta": 0.01
+ },
+ {
+  "id": "10693",
+  "name": "DESSAU",
+  "state": "SACHSEN ANHALT",
+  "gazLat": 51.8,
+  "gazLon": 12.2,
+  "solvedLat": 51.83,
+  "delta": 0.03
+ },
+ {
+  "id": "10701",
+  "name": "BAD ZWISCHENAHN",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 53.2,
+  "gazLon": 8,
+  "solvedLat": 53.2000000000001,
+  "delta": 0
+ },
+ {
+  "id": "10706",
+  "name": "GURZENICH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.8,
+  "gazLon": 6.5,
+  "solvedLat": 50.78,
+  "delta": -0.02
+ },
+ {
+  "id": "10710",
+  "name": "BAD OEYNHAUSEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 52.2,
+  "gazLon": 8.8,
+  "solvedLat": 52.23,
+  "delta": 0.03
+ },
+ {
+  "id": "10714",
+  "name": "GLADBACH (NRW)",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.8,
+  "gazLon": 6.6,
+  "solvedLat": 50.78,
+  "delta": -0.02
+ },
+ {
+  "id": "10718",
+  "name": "BUTTELBORN",
+  "state": "HESSEN",
+  "gazLat": 49.9,
+  "gazLon": 8.5,
+  "solvedLat": 49.92,
+  "delta": 0.02
+ },
+ {
+  "id": "10726",
+  "name": "STRAELEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.5,
+  "gazLon": 6.3,
+  "solvedLat": 51.45,
+  "delta": -0.05
+ },
+ {
+  "id": "10730",
+  "name": "NETTETAL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.3,
+  "gazLon": 6.3,
+  "solvedLat": 51.32,
+  "delta": 0.02
+ },
+ {
+  "id": "10734",
+  "name": "LANGENSELBOLD",
+  "state": "HESSEN",
+  "gazLat": 50.2,
+  "gazLon": 9,
+  "solvedLat": 50.17,
+  "delta": -0.03
+ },
+ {
+  "id": "10738",
+  "name": "MAIKAMMER",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 49.3,
+  "gazLon": 8.1,
+  "solvedLat": 49.32,
+  "delta": 0.02
+ },
+ {
+  "id": "10743",
+  "name": "LETMATHE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.4,
+  "gazLon": 7.6,
+  "solvedLat": 51.37,
+  "delta": -0.03
+ },
+ {
+  "id": "10747",
+  "name": "LOHFELDEN",
+  "state": "HESSEN",
+  "gazLat": 51.3,
+  "gazLon": 9.5,
+  "solvedLat": 51.29,
+  "delta": -0.01
+ },
+ {
+  "id": "10751",
+  "name": "HADAMAR",
+  "state": "HESSEN",
+  "gazLat": 50.5,
+  "gazLon": 8,
+  "solvedLat": 50.45,
+  "delta": -0.05
+ },
+ {
+  "id": "10755",
+  "name": "BEDBURG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51,
+  "gazLon": 6.6,
+  "solvedLat": 51.01,
+  "delta": 0.01
+ },
+ {
+  "id": "10759",
+  "name": "WIEHL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.9,
+  "gazLon": 7.5,
+  "solvedLat": 50.96,
+  "delta": 0.06
+ },
+ {
+  "id": "10763",
+  "name": "TONISVORST",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.3,
+  "gazLon": 6.4,
+  "solvedLat": 51.33,
+  "delta": 0.03
+ },
+ {
+  "id": "10767",
+  "name": "GINSHEIM",
+  "state": "HESSEN",
+  "gazLat": 50,
+  "gazLon": 8.3,
+  "solvedLat": 49.97,
+  "delta": -0.03
+ },
+ {
+  "id": "10771",
+  "name": "SONTRA",
+  "state": "HESSEN",
+  "gazLat": 51.1,
+  "gazLon": 9.9,
+  "solvedLat": 51.07,
+  "delta": -0.03
+ },
+ {
+  "id": "10775",
+  "name": "BLIESKASTEL",
+  "state": "SAARLAND",
+  "gazLat": 49.2,
+  "gazLon": 7.3,
+  "solvedLat": 49.26,
+  "delta": 0.06
+ },
+ {
+  "id": "10787",
+  "name": "URBERACH",
+  "state": "HESSEN",
+  "gazLat": 50,
+  "gazLon": 8.8,
+  "solvedLat": 49.99,
+  "delta": -0.01
+ },
+ {
+  "id": "10791",
+  "name": "BAD KROZINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.9,
+  "gazLon": 7.7,
+  "solvedLat": 47.94,
+  "delta": 0.04
+ },
+ {
+  "id": "10799",
+  "name": "OBERKOTZAU",
+  "state": "BAYERN",
+  "gazLat": 50.3,
+  "gazLon": 11.9,
+  "solvedLat": 50.28,
+  "delta": -0.02
+ },
+ {
+  "id": "10803",
+  "name": "MUHLACKER",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49,
+  "gazLon": 8.8,
+  "solvedLat": 48.95,
+  "delta": -0.05
+ },
+ {
+  "id": "10807",
+  "name": "KRESSBRONN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.6,
+  "gazLon": 9.6,
+  "solvedLat": 47.60000000000002,
+  "delta": 0
+ },
+ {
+  "id": "10811",
+  "name": "STOCKACH (Konstanz)",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.9,
+  "gazLon": 9,
+  "solvedLat": 47.86,
+  "delta": -0.04
+ },
+ {
+  "id": "10816",
+  "name": "SCHRIESHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49.5,
+  "gazLon": 8.7,
+  "solvedLat": 49.50000000000005,
+  "delta": 0
+ },
+ {
+  "id": "10820",
+  "name": "GAUTING",
+  "state": "BAYERN",
+  "gazLat": 48.1,
+  "gazLon": 11.4,
+  "solvedLat": 48.06,
+  "delta": -0.04
+ },
+ {
+  "id": "10824",
+  "name": "STARNBERG",
+  "state": "BAYERN",
+  "gazLat": 48,
+  "gazLon": 11.3,
+  "solvedLat": 48.01,
+  "delta": 0.01
+ },
+ {
+  "id": "10828",
+  "name": "BAIERSBRONN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.5,
+  "gazLon": 8.4,
+  "solvedLat": 48.51,
+  "delta": 0.01
+ },
+ {
+  "id": "10832",
+  "name": "SCHUTTERWALD",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.5,
+  "gazLon": 7.9,
+  "solvedLat": 48.48,
+  "delta": -0.02
+ },
+ {
+  "id": "10836",
+  "name": "PLATTLING",
+  "state": "BAYERN",
+  "gazLat": 48.8,
+  "gazLon": 12.9,
+  "solvedLat": 48.79,
+  "delta": -0.01
+ },
+ {
+  "id": "10841",
+  "name": "GOMARINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.5,
+  "gazLon": 9.1,
+  "solvedLat": 48.48,
+  "delta": -0.02
+ },
+ {
+  "id": "10845",
+  "name": "URACH",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48,
+  "gazLon": 8.2,
+  "solvedLat": 48.02,
+  "delta": 0.02
+ },
+ {
+  "id": "10849",
+  "name": "EHNINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.7,
+  "gazLon": 8.9,
+  "solvedLat": 48.66,
+  "delta": -0.04
+ },
+ {
+  "id": "10853",
+  "name": "DETTINGEN UNTER TECK",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.6,
+  "gazLon": 9.4,
+  "solvedLat": 48.62,
+  "delta": 0.02
+ },
+ {
+  "id": "10857",
+  "name": "PLOCHINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.7,
+  "gazLon": 9.4,
+  "solvedLat": 48.71,
+  "delta": 0.01
+ },
+ {
+  "id": "10865",
+  "name": "WALLDURN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49.6,
+  "gazLon": 9.4,
+  "solvedLat": 49.59,
+  "delta": -0.01
+ },
+ {
+  "id": "10869",
+  "name": "WERDOHL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.3,
+  "gazLon": 7.8,
+  "solvedLat": 51.27,
+  "delta": -0.03
+ },
+ {
+  "id": "10873",
+  "name": "AHAUS",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 52.1,
+  "gazLon": 7,
+  "solvedLat": 52.08,
+  "delta": -0.02
+ },
+ {
+  "id": "10878",
+  "name": "ALFTER",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.7,
+  "gazLon": 7,
+  "solvedLat": 50.74,
+  "delta": 0.04
+ },
+ {
+  "id": "10886",
+  "name": "ALTENA",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.3,
+  "gazLon": 7.7,
+  "solvedLat": 51.300000000000075,
+  "delta": 0
+ },
+ {
+  "id": "10890",
+  "name": "AMBERG",
+  "state": "BAYERN",
+  "gazLat": 49.5,
+  "gazLon": 11.9,
+  "solvedLat": 49.47,
+  "delta": -0.03
+ },
+ {
+  "id": "10894",
+  "name": "ASCHAFFENBURG",
+  "state": "BAYERN",
+  "gazLat": 50,
+  "gazLon": 9.2,
+  "solvedLat": 49.97,
+  "delta": -0.03
+ },
+ {
+  "id": "10902",
+  "name": "BADENDORF",
+  "state": "BAYERN",
+  "gazLat": 48.5,
+  "gazLon": 11.7,
+  "solvedLat": 48.51,
+  "delta": 0.01
+ },
+ {
+  "id": "10906",
+  "name": "BAD LIPPSPRINGE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.8,
+  "gazLon": 8.8,
+  "solvedLat": 51.79,
+  "delta": -0.01
+ },
+ {
+  "id": "10910",
+  "name": "BAD SCHWALBACH",
+  "state": "HESSEN",
+  "gazLat": 50.1,
+  "gazLon": 8.1,
+  "solvedLat": 50.14,
+  "delta": 0.04
+ },
+ {
+  "id": "10914",
+  "name": "BAESWEILER",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.9,
+  "gazLon": 6.2,
+  "solvedLat": 50.92,
+  "delta": 0.02
+ },
+ {
+  "id": "10926",
+  "name": "BEXBACH",
+  "state": "SAARLAND",
+  "gazLat": 49.4,
+  "gazLon": 7.3,
+  "solvedLat": 49.34,
+  "delta": -0.06
+ },
+ {
+  "id": "10930",
+  "name": "BISCHOFSHEIM",
+  "state": "HESSEN",
+  "gazLat": 49.9,
+  "gazLon": 8.4,
+  "solvedLat": 49.95,
+  "delta": 0.05
+ },
+ {
+  "id": "10938",
+  "name": "BONEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.6,
+  "gazLon": 7.8,
+  "solvedLat": 51.61,
+  "delta": 0.01
+ },
+ {
+  "id": "10942",
+  "name": "BOTTROP",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.5,
+  "gazLon": 6.9,
+  "solvedLat": 51.54,
+  "delta": 0.04
+ },
+ {
+  "id": "10946",
+  "name": "BRAMSCHE",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.4,
+  "gazLon": 8,
+  "solvedLat": 52.42,
+  "delta": 0.02
+ },
+ {
+  "id": "10950",
+  "name": "BRETTEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49,
+  "gazLon": 8.7,
+  "solvedLat": 49.05,
+  "delta": 0.05
+ },
+ {
+  "id": "10954",
+  "name": "BRUHL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.8,
+  "gazLon": 6.9,
+  "solvedLat": 50.86,
+  "delta": 0.06
+ },
+ {
+  "id": "10958",
+  "name": "BUDINGEN",
+  "state": "HESSEN",
+  "gazLat": 50.3,
+  "gazLon": 9.1,
+  "solvedLat": 50.30000000000006,
+  "delta": 0
+ },
+ {
+  "id": "10962",
+  "name": "BURSCHEID",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.1,
+  "gazLon": 7.1,
+  "solvedLat": 51.11,
+  "delta": 0.01
+ },
+ {
+  "id": "10966",
+  "name": "COESFELD",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.9,
+  "gazLon": 7.2,
+  "solvedLat": 51.96,
+  "delta": 0.06
+ },
+ {
+  "id": "10970",
+  "name": "DELMENHORST",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 53.1,
+  "gazLon": 8.6,
+  "solvedLat": 53.06,
+  "delta": -0.04
+ },
+ {
+  "id": "10974",
+  "name": "DILLENBURG",
+  "state": "HESSEN",
+  "gazLat": 50.7,
+  "gazLon": 8.3,
+  "solvedLat": 50.76,
+  "delta": 0.06
+ },
+ {
+  "id": "10978",
+  "name": "DORSTEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.7,
+  "gazLon": 7,
+  "solvedLat": 51.67,
+  "delta": -0.03
+ },
+ {
+  "id": "10986",
+  "name": "EHRINGSHAUSEN",
+  "state": "HESSEN",
+  "gazLat": 50.6,
+  "gazLon": 8.4,
+  "solvedLat": 50.61,
+  "delta": 0.01
+ },
+ {
+  "id": "10990",
+  "name": "ELSDORF",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.9,
+  "gazLon": 6.6,
+  "solvedLat": 50.94,
+  "delta": 0.04
+ },
+ {
+  "id": "10994",
+  "name": "EMMERTHAL",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.1,
+  "gazLon": 9.4,
+  "solvedLat": 52.05,
+  "delta": -0.05
+ },
+ {
+  "id": "10998",
+  "name": "ERKELENZ",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.1,
+  "gazLon": 6.3,
+  "solvedLat": 51.11,
+  "delta": 0.01
+ },
+ {
+  "id": "11002",
+  "name": "BERLIN",
+  "state": "BERLIN",
+  "gazLat": 52.5,
+  "gazLon": 13.4,
+  "solvedLat": 52.54,
+  "delta": 0.04
+ },
+ {
+  "id": "11006",
+  "name": "DORTMUND",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.5,
+  "gazLon": 7.5,
+  "solvedLat": 51.52,
+  "delta": 0.02
+ },
+ {
+  "id": "11010",
+  "name": "FRANKFURT",
+  "state": "HESSEN",
+  "gazLat": 50.1,
+  "gazLon": 8.7,
+  "solvedLat": 50.16,
+  "delta": 0.06
+ },
+ {
+  "id": "11014",
+  "name": "KARLSRUHE",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49,
+  "gazLon": 8.4,
+  "solvedLat": 49.00000000000004,
+  "delta": 0
+ },
+ {
+  "id": "11018",
+  "name": "KONSTANZ",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.7,
+  "gazLon": 9.2,
+  "solvedLat": 47.700000000000024,
+  "delta": 0
+ },
+ {
+  "id": "11022",
+  "name": "MUNCHEN",
+  "state": "BAYERN",
+  "gazLat": 48.1,
+  "gazLon": 11.6,
+  "solvedLat": 48.14,
+  "delta": 0.04
+ },
+ {
+  "id": "11026",
+  "name": "SAARBRUCKEN",
+  "state": "SAARLAND",
+  "gazLat": 49.2,
+  "gazLon": 7,
+  "solvedLat": 49.26,
+  "delta": 0.06
+ },
+ {
+  "id": "11030",
+  "name": "FULDA",
+  "state": "HESSEN",
+  "gazLat": 50.6,
+  "gazLon": 9.7,
+  "solvedLat": 50.55,
+  "delta": -0.05
+ },
+ {
+  "id": "11034",
+  "name": "PASSAU",
+  "state": "BAYERN",
+  "gazLat": 48.6,
+  "gazLon": 13.4,
+  "solvedLat": 48.59,
+  "delta": -0.01
+ },
+ {
+  "id": "11038",
+  "name": "MUTLANGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.8,
+  "gazLon": 9.8,
+  "solvedLat": 48.83,
+  "delta": 0.03
+ },
+ {
+  "id": "11043",
+  "name": "TUBINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.5,
+  "gazLon": 9.1,
+  "solvedLat": 48.54,
+  "delta": 0.04
+ },
+ {
+  "id": "11047",
+  "name": "SIGMARINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.1,
+  "gazLon": 9.2,
+  "solvedLat": 48.10000000000003,
+  "delta": 0
+ },
+ {
+  "id": "11051",
+  "name": "HEILBRONN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49.2,
+  "gazLon": 9.2,
+  "solvedLat": 49.16,
+  "delta": -0.04
+ },
+ {
+  "id": "11055",
+  "name": "OSNABRUCK",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.3,
+  "gazLon": 8,
+  "solvedLat": 52.29,
+  "delta": -0.01
+ },
+ {
+  "id": "11059",
+  "name": "WOLFENBUTTEL",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.2,
+  "gazLon": 10.5,
+  "solvedLat": 52.18,
+  "delta": -0.02
+ },
+ {
+  "id": "11065",
+  "name": "DETMOLD",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.9,
+  "gazLon": 8.9,
+  "solvedLat": 51.96,
+  "delta": 0.06
+ },
+ {
+  "id": "11070",
+  "name": "RHEINDAHLEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.2,
+  "gazLon": 6.4,
+  "solvedLat": 51.16,
+  "delta": -0.04
+ },
+ {
+  "id": "11074",
+  "name": "RUSSELSHEIM",
+  "state": "HESSEN",
+  "gazLat": 50,
+  "gazLon": 8.4,
+  "solvedLat": 49.99,
+  "delta": -0.01
+ },
+ {
+  "id": "11078",
+  "name": "SALZGITTER",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.2,
+  "gazLon": 10.3,
+  "solvedLat": 52.17,
+  "delta": -0.03
+ },
+ {
+  "id": "11082",
+  "name": "WALDSHUT-TIENGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.6,
+  "gazLon": 8.2,
+  "solvedLat": 47.64,
+  "delta": 0.04
+ },
+ {
+  "id": "11086",
+  "name": "ALBSTADT",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.2,
+  "gazLon": 9,
+  "solvedLat": 48.22,
+  "delta": 0.02
+ },
+ {
+  "id": "11090",
+  "name": "LEMGO",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 52,
+  "gazLon": 8.9,
+  "solvedLat": 52.05,
+  "delta": 0.05
+ },
+ {
+  "id": "11095",
+  "name": "BOCHOLT",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.8,
+  "gazLon": 6.6,
+  "solvedLat": 51.86,
+  "delta": 0.06
+ },
+ {
+  "id": "11099",
+  "name": "CHEMNITZ",
+  "state": "SACHSEN",
+  "gazLat": 50.8,
+  "gazLon": 12.9,
+  "solvedLat": 50.85,
+  "delta": 0.05
+ },
+ {
+  "id": "11103",
+  "name": "HEMMINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.9,
+  "gazLon": 9,
+  "solvedLat": 48.85,
+  "delta": -0.05
+ },
+ {
+  "id": "11107",
+  "name": "SCHWEINFURT",
+  "state": "BAYERN",
+  "gazLat": 50.1,
+  "gazLon": 10.2,
+  "solvedLat": 50.07,
+  "delta": -0.03
+ },
+ {
+  "id": "11112",
+  "name": "DILLINGEN(SAAR)",
+  "state": "SAARLAND",
+  "gazLat": 49.4,
+  "gazLon": 6.7,
+  "solvedLat": 49.36,
+  "delta": -0.04
+ },
+ {
+  "id": "11116",
+  "name": "BREMERHAVEN",
+  "state": "BREMEN",
+  "gazLat": 53.6,
+  "gazLon": 8.6,
+  "solvedLat": 53.56,
+  "delta": -0.04
+ },
+ {
+  "id": "11120",
+  "name": "BALINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.3,
+  "gazLon": 8.9,
+  "solvedLat": 48.27,
+  "delta": -0.03
+ },
+ {
+  "id": "11124",
+  "name": "WETZLAR",
+  "state": "HESSEN",
+  "gazLat": 50.6,
+  "gazLon": 8.5,
+  "solvedLat": 50.57,
+  "delta": -0.03
+ },
+ {
+  "id": "11128",
+  "name": "MONCHENGLADBACH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.2,
+  "gazLon": 6.4,
+  "solvedLat": 51.200000000000074,
+  "delta": 0
+ },
+ {
+  "id": "16740",
+  "name": "ASBACH(LANZING)",
+  "state": "BAYERN",
+  "gazLat": 48.5,
+  "gazLon": 13,
+  "solvedLat": 48.47,
+  "delta": -0.03
+ },
+ {
+  "id": "16755",
+  "name": "GREFFERN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.8,
+  "gazLon": 8,
+  "solvedLat": 48.75,
+  "delta": -0.05
+ },
+ {
+  "id": "16759",
+  "name": "SCHRAMBERG",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.2,
+  "gazLon": 8.4,
+  "solvedLat": 48.24,
+  "delta": 0.04
+ },
+ {
+  "id": "16764",
+  "name": "WIRGES",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50.5,
+  "gazLon": 7.8,
+  "solvedLat": 50.47,
+  "delta": -0.03
+ },
+ {
+  "id": "17843",
+  "name": "HANNOVERSCH MUNDEN",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 51.4,
+  "gazLon": 9.7,
+  "solvedLat": 51.43,
+  "delta": 0.03
+ },
+ {
+  "id": "17929",
+  "name": "SCHWARZENBACH A.D.SAALE",
+  "state": "BAYERN",
+  "gazLat": 50.2,
+  "gazLon": 11.6,
+  "solvedLat": 50.22,
+  "delta": 0.02
+ },
+ {
+  "id": "17933",
+  "name": "NOTTULN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.9,
+  "gazLon": 7.4,
+  "solvedLat": 51.93,
+  "delta": 0.03
+ },
+ {
+  "id": "17937",
+  "name": "HIRSAU",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.7,
+  "gazLon": 8.7,
+  "solvedLat": 48.75,
+  "delta": 0.05
+ },
+ {
+  "id": "18948",
+  "name": "WORRSTADT",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 49.8,
+  "gazLon": 8.1,
+  "solvedLat": 49.84,
+  "delta": 0.04
+ },
+ {
+  "id": "18954",
+  "name": "TRIBERG",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.1,
+  "gazLon": 8.2,
+  "solvedLat": 48.14,
+  "delta": 0.04
+ },
+ {
+  "id": "18961",
+  "name": "BUHL(BADEN-BADEN)",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.7,
+  "gazLon": 8.1,
+  "solvedLat": 48.73,
+  "delta": 0.03
+ },
+ {
+  "id": "18989",
+  "name": "GARTRINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.7,
+  "gazLon": 8.9,
+  "solvedLat": 48.66,
+  "delta": -0.04
+ },
+ {
+  "id": "20026",
+  "name": "ADENAU",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50.4,
+  "gazLon": 6.9,
+  "solvedLat": 50.39,
+  "delta": -0.01
+ },
+ {
+  "id": "20030",
+  "name": "WENDEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51,
+  "gazLon": 7.9,
+  "solvedLat": 50.98,
+  "delta": -0.02
+ },
+ {
+  "id": "20131",
+  "name": "ALLENDORF/EDER",
+  "state": "HESSEN",
+  "gazLat": 51,
+  "gazLon": 8.7,
+  "solvedLat": 51.03,
+  "delta": 0.03
+ },
+ {
+  "id": "21151",
+  "name": "DIETENHOFEN",
+  "state": "BAYERN",
+  "gazLat": 49.4,
+  "gazLon": 10.7,
+  "solvedLat": 49.40000000000005,
+  "delta": 0
+ },
+ {
+  "id": "21155",
+  "name": "MARKGR\u00d6NINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.9,
+  "gazLon": 9.1,
+  "solvedLat": 48.92,
+  "delta": 0.02
+ },
+ {
+  "id": "21161",
+  "name": "GERETSRIED",
+  "state": "BAYERN",
+  "gazLat": 47.9,
+  "gazLon": 11.5,
+  "solvedLat": 47.88,
+  "delta": -0.02
+ },
+ {
+  "id": "21166",
+  "name": "UNTERNEUKIRCHEN",
+  "state": "BAYERN",
+  "gazLat": 48.2,
+  "gazLon": 12.6,
+  "solvedLat": 48.20000000000003,
+  "delta": 0
+ },
+ {
+  "id": "21174",
+  "name": "AICHACH",
+  "state": "BAYERN",
+  "gazLat": 48.5,
+  "gazLon": 11.1,
+  "solvedLat": 48.49,
+  "delta": -0.01
+ },
+ {
+  "id": "33370",
+  "name": "SATERLAND",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 53.1,
+  "gazLon": 7.7,
+  "solvedLat": 53.06,
+  "delta": -0.04
+ },
+ {
+  "id": "9976",
+  "name": "ESPELKAMP",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 52.4,
+  "gazLon": 8.6,
+  "solvedLat": 52.38,
+  "delta": -0.02
+ },
+ {
+  "id": "9980",
+  "name": "ETTLINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.9,
+  "gazLon": 8.4,
+  "solvedLat": 48.96,
+  "delta": 0.06
+ },
+ {
+  "id": "9984",
+  "name": "FRECHEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.9,
+  "gazLon": 6.8,
+  "solvedLat": 50.92,
+  "delta": 0.02
+ },
+ {
+  "id": "9988",
+  "name": "FRIEDBERG (HESSEN)",
+  "state": "HESSEN",
+  "gazLat": 50.3,
+  "gazLon": 8.8,
+  "solvedLat": 50.33,
+  "delta": 0.03
+ },
+ {
+  "id": "9992",
+  "name": "FURTH ODW. (HESSEN)",
+  "state": "HESSEN",
+  "gazLat": 49.7,
+  "gazLon": 8.8,
+  "solvedLat": 49.68,
+  "delta": -0.02
+ },
+ {
+  "id": "9996",
+  "name": "GARCHING",
+  "state": "BAYERN",
+  "gazLat": 48.2,
+  "gazLon": 11.7,
+  "solvedLat": 48.27,
+  "delta": 0.07
+ },
+ {
+  "id": "10002",
+  "name": "HASSEL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.6,
+  "gazLon": 7,
+  "solvedLat": 51.61,
+  "delta": 0.01
+ },
+ {
+  "id": "10006",
+  "name": "GENTHIN",
+  "state": "SACHSEN ANHALT",
+  "gazLat": 52.4,
+  "gazLon": 12.2,
+  "solvedLat": 52.42,
+  "delta": 0.02
+ },
+ {
+  "id": "10010",
+  "name": "GEROLSTEIN",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50.2,
+  "gazLon": 6.7,
+  "solvedLat": 50.22,
+  "delta": 0.02
+ },
+ {
+  "id": "10014",
+  "name": "GLADBECK",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.6,
+  "gazLon": 7,
+  "solvedLat": 51.58,
+  "delta": -0.02
+ },
+ {
+  "id": "10018",
+  "name": "GRABEN-NEUDORF",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49.2,
+  "gazLon": 8.5,
+  "solvedLat": 49.16,
+  "delta": -0.04
+ },
+ {
+  "id": "10026",
+  "name": "GUTERSLOH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.9,
+  "gazLon": 8.4,
+  "solvedLat": 51.91,
+  "delta": 0.01
+ },
+ {
+  "id": "10030",
+  "name": "HALVER",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.2,
+  "gazLon": 7.5,
+  "solvedLat": 51.21,
+  "delta": 0.01
+ },
+ {
+  "id": "10034",
+  "name": "WILHELMSBURG",
+  "state": "HAMBURG",
+  "gazLat": 53.5,
+  "gazLon": 10,
+  "solvedLat": 53.51,
+  "delta": 0.01
+ },
+ {
+  "id": "10042",
+  "name": "HASLACH",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.6,
+  "gazLon": 8,
+  "solvedLat": 48.58,
+  "delta": -0.02
+ },
+ {
+  "id": "10046",
+  "name": "ALTDORF B. NURNBERG",
+  "state": "BAYERN",
+  "gazLat": 49.4,
+  "gazLon": 11.3,
+  "solvedLat": 49.41,
+  "delta": 0.01
+ },
+ {
+  "id": "10051",
+  "name": "BAD OLDESLOE",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 53.8,
+  "gazLon": 10.4,
+  "solvedLat": 53.80000000000011,
+  "delta": 0
+ },
+ {
+  "id": "10056",
+  "name": "BAD-SCHUSSENRIED",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48,
+  "gazLon": 9.7,
+  "solvedLat": 48.01,
+  "delta": 0.01
+ },
+ {
+  "id": "10064",
+  "name": "BRANDENBURG/HAVEL",
+  "state": "BRANDENBURG",
+  "gazLat": 52.4,
+  "gazLon": 12.5,
+  "solvedLat": 52.42,
+  "delta": 0.02
+ },
+ {
+  "id": "10068",
+  "name": "BURGAU",
+  "state": "BAYERN",
+  "gazLat": 48.4,
+  "gazLon": 10.4,
+  "solvedLat": 48.45,
+  "delta": 0.05
+ },
+ {
+  "id": "10072",
+  "name": "BURGLENGENFELD",
+  "state": "BAYERN",
+  "gazLat": 49.2,
+  "gazLon": 12,
+  "solvedLat": 49.23,
+  "delta": 0.03
+ },
+ {
+  "id": "10076",
+  "name": "CRAILSHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49.1,
+  "gazLon": 10.1,
+  "solvedLat": 49.15,
+  "delta": 0.05
+ },
+ {
+  "id": "10080",
+  "name": "DINGOLFING",
+  "state": "BAYERN",
+  "gazLat": 48.6,
+  "gazLon": 12.5,
+  "solvedLat": 48.64,
+  "delta": 0.04
+ },
+ {
+  "id": "10084",
+  "name": "EBINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.2,
+  "gazLon": 9,
+  "solvedLat": 48.22,
+  "delta": 0.02
+ },
+ {
+  "id": "10088",
+  "name": "EPPINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49.1,
+  "gazLon": 8.9,
+  "solvedLat": 49.14,
+  "delta": 0.04
+ },
+ {
+  "id": "10092",
+  "name": "FELSBERG",
+  "state": "HESSEN",
+  "gazLat": 51.1,
+  "gazLon": 9.4,
+  "solvedLat": 51.13,
+  "delta": 0.03
+ },
+ {
+  "id": "10096",
+  "name": "FREISING",
+  "state": "BAYERN",
+  "gazLat": 48.4,
+  "gazLon": 11.7,
+  "solvedLat": 48.42,
+  "delta": 0.02
+ },
+ {
+  "id": "10100",
+  "name": "GAMMERTINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.3,
+  "gazLon": 9.2,
+  "solvedLat": 48.25,
+  "delta": -0.05
+ },
+ {
+  "id": "10104",
+  "name": "GELNHAUSEN",
+  "state": "HESSEN",
+  "gazLat": 50.2,
+  "gazLon": 9.2,
+  "solvedLat": 50.20000000000006,
+  "delta": 0
+ },
+ {
+  "id": "10108",
+  "name": "GOSLAR",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 51.9,
+  "gazLon": 10.4,
+  "solvedLat": 51.94,
+  "delta": 0.04
+ },
+ {
+  "id": "10112",
+  "name": "GUNZBURG",
+  "state": "BAYERN",
+  "gazLat": 48.5,
+  "gazLon": 10.3,
+  "solvedLat": 48.49,
+  "delta": -0.01
+ },
+ {
+  "id": "10116",
+  "name": "BILLSTEDT",
+  "state": "HAMBURG",
+  "gazLat": 53.6,
+  "gazLon": 10.1,
+  "solvedLat": 53.56,
+  "delta": -0.04
+ },
+ {
+  "id": "10120",
+  "name": "HELMBRECHTS",
+  "state": "BAYERN",
+  "gazLat": 50.2,
+  "gazLon": 11.7,
+  "solvedLat": 50.25,
+  "delta": 0.05
+ },
+ {
+  "id": "10124",
+  "name": "HERFORD",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 52.1,
+  "gazLon": 8.7,
+  "solvedLat": 52.14,
+  "delta": 0.04
+ },
+ {
+  "id": "10128",
+  "name": "HESSISCH OLDENDORF",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.2,
+  "gazLon": 9.2,
+  "solvedLat": 52.19,
+  "delta": -0.01
+ },
+ {
+  "id": "10132",
+  "name": "HOCKENHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49.3,
+  "gazLon": 8.6,
+  "solvedLat": 49.36,
+  "delta": 0.06
+ },
+ {
+  "id": "10137",
+  "name": "HOMBURG-SAAR",
+  "state": "SAARLAND",
+  "gazLat": 49.3,
+  "gazLon": 7.3,
+  "solvedLat": 49.32,
+  "delta": 0.02
+ },
+ {
+  "id": "10141",
+  "name": "HUCKELHOVEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.1,
+  "gazLon": 6.2,
+  "solvedLat": 51.07,
+  "delta": -0.03
+ },
+ {
+  "id": "10145",
+  "name": "HUSUM",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 54.5,
+  "gazLon": 9.1,
+  "solvedLat": 54.49,
+  "delta": -0.01
+ },
+ {
+  "id": "10149",
+  "name": "ISERLOHN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.4,
+  "gazLon": 7.7,
+  "solvedLat": 51.40000000000008,
+  "delta": 0
+ },
+ {
+  "id": "10153",
+  "name": "KALTENKIRCHEN",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 53.8,
+  "gazLon": 10,
+  "solvedLat": 53.86,
+  "delta": 0.06
+ },
+ {
+  "id": "10161",
+  "name": "SINDORF",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.9,
+  "gazLon": 6.7,
+  "solvedLat": 50.90000000000007,
+  "delta": 0
+ },
+ {
+  "id": "10165",
+  "name": "KONIGSWINTER",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.7,
+  "gazLon": 7.2,
+  "solvedLat": 50.72,
+  "delta": 0.02
+ },
+ {
+  "id": "10169",
+  "name": "KREUZTAL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51,
+  "gazLon": 8,
+  "solvedLat": 51.00000000000007,
+  "delta": 0
+ },
+ {
+  "id": "10177",
+  "name": "LANGEN",
+  "state": "HESSEN",
+  "gazLat": 50,
+  "gazLon": 8.7,
+  "solvedLat": 49.99,
+  "delta": -0.01
+ },
+ {
+  "id": "10181",
+  "name": "LENGERICH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 52.2,
+  "gazLon": 7.9,
+  "solvedLat": 52.18,
+  "delta": -0.02
+ },
+ {
+  "id": "10189",
+  "name": "LOHMAR",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.8,
+  "gazLon": 7.2,
+  "solvedLat": 50.84,
+  "delta": 0.04
+ },
+ {
+  "id": "10197",
+  "name": "LUSTADT",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 49.2,
+  "gazLon": 8.3,
+  "solvedLat": 49.26,
+  "delta": 0.06
+ },
+ {
+  "id": "10201",
+  "name": "MARSBERG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.5,
+  "gazLon": 8.9,
+  "solvedLat": 51.47,
+  "delta": -0.03
+ },
+ {
+  "id": "10205",
+  "name": "MENDEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.4,
+  "gazLon": 7.8,
+  "solvedLat": 51.43,
+  "delta": 0.03
+ },
+ {
+  "id": "10209",
+  "name": "MINDEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 52.3,
+  "gazLon": 8.9,
+  "solvedLat": 52.31,
+  "delta": 0.01
+ },
+ {
+  "id": "10213",
+  "name": "MONTABAUR",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50.4,
+  "gazLon": 7.8,
+  "solvedLat": 50.45,
+  "delta": 0.05
+ },
+ {
+  "id": "10217",
+  "name": "MUTTERSTADT",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 49.5,
+  "gazLon": 8.4,
+  "solvedLat": 49.45,
+  "delta": -0.05
+ },
+ {
+  "id": "10221",
+  "name": "NEU-ISENBURG",
+  "state": "HESSEN",
+  "gazLat": 50.1,
+  "gazLon": 8.7,
+  "solvedLat": 50.07,
+  "delta": -0.03
+ },
+ {
+  "id": "10225",
+  "name": "NEUNKIRCHEN",
+  "state": "SAARLAND",
+  "gazLat": 49.4,
+  "gazLon": 7.2,
+  "solvedLat": 49.36,
+  "delta": -0.04
+ },
+ {
+  "id": "10229",
+  "name": "NEUWIED",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50.4,
+  "gazLon": 7.5,
+  "solvedLat": 50.45,
+  "delta": 0.05
+ },
+ {
+  "id": "10233",
+  "name": "NIENHAGEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 52,
+  "gazLon": 8.7,
+  "solvedLat": 52.05,
+  "delta": 0.05
+ },
+ {
+  "id": "10237",
+  "name": "OBERURSEL",
+  "state": "HESSEN",
+  "gazLat": 50.2,
+  "gazLon": 8.6,
+  "solvedLat": 50.20000000000006,
+  "delta": 0
+ },
+ {
+  "id": "10241",
+  "name": "OLCHING",
+  "state": "BAYERN",
+  "gazLat": 48.2,
+  "gazLon": 11.3,
+  "solvedLat": 48.22,
+  "delta": 0.02
+ },
+ {
+  "id": "10245",
+  "name": "OVERATH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51,
+  "gazLon": 7.3,
+  "solvedLat": 50.96,
+  "delta": -0.04
+ },
+ {
+  "id": "10249",
+  "name": "PHILIPPSBURG",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49.2,
+  "gazLon": 8.4,
+  "solvedLat": 49.23,
+  "delta": 0.03
+ },
+ {
+  "id": "10253",
+  "name": "QUICKBORN",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 53.7,
+  "gazLon": 9.9,
+  "solvedLat": 53.74,
+  "delta": 0.04
+ },
+ {
+  "id": "10257",
+  "name": "REHBURG-LOCCUM",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.5,
+  "gazLon": 9.2,
+  "solvedLat": 52.49,
+  "delta": -0.01
+ },
+ {
+  "id": "10261",
+  "name": "RHEINBACH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.6,
+  "gazLon": 7,
+  "solvedLat": 50.65,
+  "delta": 0.05
+ },
+ {
+  "id": "10265",
+  "name": "RIETBERG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.8,
+  "gazLon": 8.4,
+  "solvedLat": 51.78,
+  "delta": -0.02
+ },
+ {
+  "id": "10269",
+  "name": "ROTENBURG",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 53.1,
+  "gazLon": 9.4,
+  "solvedLat": 53.14,
+  "delta": 0.04
+ },
+ {
+  "id": "10273",
+  "name": "SARSTEDT",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.2,
+  "gazLon": 9.8,
+  "solvedLat": 52.23,
+  "delta": 0.03
+ },
+ {
+  "id": "10277",
+  "name": "SCHOPFHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.7,
+  "gazLon": 7.8,
+  "solvedLat": 47.66,
+  "delta": -0.04
+ },
+ {
+  "id": "10281",
+  "name": "SCHWELM",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.3,
+  "gazLon": 7.3,
+  "solvedLat": 51.27,
+  "delta": -0.03
+ },
+ {
+  "id": "10285",
+  "name": "SELTERS",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50.5,
+  "gazLon": 7.8,
+  "solvedLat": 50.55,
+  "delta": 0.05
+ },
+ {
+  "id": "10289",
+  "name": "SINZIG",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50.6,
+  "gazLon": 7.2,
+  "solvedLat": 50.55,
+  "delta": -0.05
+ },
+ {
+  "id": "10293",
+  "name": "SPENGE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 52.1,
+  "gazLon": 8.5,
+  "solvedLat": 52.17,
+  "delta": 0.07
+ },
+ {
+  "id": "10297",
+  "name": "ST.WENDEL",
+  "state": "SAARLAND",
+  "gazLat": 49.5,
+  "gazLon": 7.2,
+  "solvedLat": 49.49,
+  "delta": -0.01
+ },
+ {
+  "id": "10301",
+  "name": "STADTHAGEN",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.3,
+  "gazLon": 9.2,
+  "solvedLat": 52.32,
+  "delta": 0.02
+ },
+ {
+  "id": "10305",
+  "name": "STEINHEIM",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.9,
+  "gazLon": 9.1,
+  "solvedLat": 51.87,
+  "delta": -0.03
+ },
+ {
+  "id": "10309",
+  "name": "SULINGEN",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.7,
+  "gazLon": 8.8,
+  "solvedLat": 52.68,
+  "delta": -0.02
+ },
+ {
+  "id": "10313",
+  "name": "TROSSINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.1,
+  "gazLon": 8.6,
+  "solvedLat": 48.09,
+  "delta": -0.01
+ },
+ {
+  "id": "10317",
+  "name": "ULMEN",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50.2,
+  "gazLon": 7,
+  "solvedLat": 50.25,
+  "delta": 0.05
+ },
+ {
+  "id": "10321",
+  "name": "WAGENFELD",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.6,
+  "gazLon": 8.6,
+  "solvedLat": 52.57,
+  "delta": -0.03
+ },
+ {
+  "id": "10325",
+  "name": "VIERNHEIM",
+  "state": "HESSEN",
+  "gazLat": 49.5,
+  "gazLon": 8.6,
+  "solvedLat": 49.55,
+  "delta": 0.05
+ },
+ {
+  "id": "10329",
+  "name": "VOERDE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.6,
+  "gazLon": 6.7,
+  "solvedLat": 51.61,
+  "delta": 0.01
+ },
+ {
+  "id": "10333",
+  "name": "WALLDORF",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49.3,
+  "gazLon": 8.6,
+  "solvedLat": 49.32,
+  "delta": 0.02
+ },
+ {
+  "id": "10337",
+  "name": "WARSTEIN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.5,
+  "gazLon": 8.4,
+  "solvedLat": 51.46,
+  "delta": -0.04
+ },
+ {
+  "id": "10341",
+  "name": "WEIL AM RHEIN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.6,
+  "gazLon": 7.6,
+  "solvedLat": 47.60000000000002,
+  "delta": 0
+ },
+ {
+  "id": "10345",
+  "name": "WENDELSTEIN",
+  "state": "BAYERN",
+  "gazLat": 49.4,
+  "gazLon": 11.2,
+  "solvedLat": 49.36,
+  "delta": -0.04
+ },
+ {
+  "id": "10349",
+  "name": "WESEL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.7,
+  "gazLon": 6.6,
+  "solvedLat": 51.67,
+  "delta": -0.03
+ },
+ {
+  "id": "10353",
+  "name": "WIEDENBRUCK",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.6,
+  "gazLon": 8.3,
+  "solvedLat": 51.60000000000008,
+  "delta": 0
+ },
+ {
+  "id": "10357",
+  "name": "WILLICH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.3,
+  "gazLon": 6.5,
+  "solvedLat": 51.27,
+  "delta": -0.03
+ },
+ {
+  "id": "10362",
+  "name": "WOLFHAGEN",
+  "state": "HESSEN",
+  "gazLat": 51.3,
+  "gazLon": 9.2,
+  "solvedLat": 51.34,
+  "delta": 0.04
+ },
+ {
+  "id": "10366",
+  "name": "VOHWINKEL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.2,
+  "gazLon": 7.1,
+  "solvedLat": 51.25,
+  "delta": 0.05
+ },
+ {
+  "id": "10374",
+  "name": "HERZBERG AM HARZ",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 51.7,
+  "gazLon": 10.3,
+  "solvedLat": 51.67,
+  "delta": -0.03
+ },
+ {
+  "id": "10378",
+  "name": "HOCHST IM ODENWALD",
+  "state": "HESSEN",
+  "gazLat": 49.8,
+  "gazLon": 9,
+  "solvedLat": 49.84,
+  "delta": 0.04
+ },
+ {
+  "id": "10382",
+  "name": "HOYERSWERDA",
+  "state": "SACHSEN",
+  "gazLat": 51.4,
+  "gazLon": 14.2,
+  "solvedLat": 51.43,
+  "delta": 0.03
+ },
+ {
+  "id": "10386",
+  "name": "IMMENSTADT",
+  "state": "BAYERN",
+  "gazLat": 47.6,
+  "gazLon": 10.2,
+  "solvedLat": 47.60000000000002,
+  "delta": 0
+ },
+ {
+  "id": "10390",
+  "name": "KARLSTADT",
+  "state": "BAYERN",
+  "gazLat": 50,
+  "gazLon": 9.8,
+  "solvedLat": 49.97,
+  "delta": -0.03
+ },
+ {
+  "id": "10398",
+  "name": "KONGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.7,
+  "gazLon": 9.4,
+  "solvedLat": 48.71,
+  "delta": 0.01
+ },
+ {
+  "id": "10402",
+  "name": "KORNWESTHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.9,
+  "gazLon": 9.2,
+  "solvedLat": 48.90000000000004,
+  "delta": 0
+ },
+ {
+  "id": "10406",
+  "name": "LANDSBERG AM LECH",
+  "state": "BAYERN",
+  "gazLat": 48.1,
+  "gazLon": 10.9,
+  "solvedLat": 48.06,
+  "delta": -0.04
+ },
+ {
+  "id": "10410",
+  "name": "LANGENHAGEN",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.4,
+  "gazLon": 9.7,
+  "solvedLat": 52.46,
+  "delta": 0.06
+ },
+ {
+  "id": "10414",
+  "name": "LAUENBURG",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 53.4,
+  "gazLon": 10.6,
+  "solvedLat": 53.400000000000105,
+  "delta": 0
+ },
+ {
+  "id": "10418",
+  "name": "LAUINGEN",
+  "state": "BAYERN",
+  "gazLat": 48.6,
+  "gazLon": 10.4,
+  "solvedLat": 48.59,
+  "delta": -0.01
+ },
+ {
+  "id": "10422",
+  "name": "LEONBERG",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.8,
+  "gazLon": 9,
+  "solvedLat": 48.83,
+  "delta": 0.03
+ },
+ {
+  "id": "10426",
+  "name": "LINDENBERG IM ALLGAU",
+  "state": "BAYERN",
+  "gazLat": 47.6,
+  "gazLon": 9.9,
+  "solvedLat": 47.60000000000002,
+  "delta": 0
+ },
+ {
+  "id": "10431",
+  "name": "LUBBEN",
+  "state": "BRANDENBURG",
+  "gazLat": 51.9,
+  "gazLon": 13.9,
+  "solvedLat": 51.94,
+  "delta": 0.04
+ },
+ {
+  "id": "10435",
+  "name": "MARKT ERLBACH",
+  "state": "BAYERN",
+  "gazLat": 49.5,
+  "gazLon": 10.6,
+  "solvedLat": 49.50000000000005,
+  "delta": 0
+ },
+ {
+  "id": "10439",
+  "name": "MARKTREDWITZ",
+  "state": "BAYERN",
+  "gazLat": 50,
+  "gazLon": 12.1,
+  "solvedLat": 50.00000000000006,
+  "delta": 0
+ },
+ {
+  "id": "10447",
+  "name": "MIESBACH",
+  "state": "BAYERN",
+  "gazLat": 47.8,
+  "gazLon": 11.8,
+  "solvedLat": 47.78,
+  "delta": -0.02
+ },
+ {
+  "id": "10451",
+  "name": "MOOSBURG",
+  "state": "BAYERN",
+  "gazLat": 48.5,
+  "gazLon": 11.9,
+  "solvedLat": 48.48,
+  "delta": -0.02
+ },
+ {
+  "id": "10455",
+  "name": "MUNSINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.4,
+  "gazLon": 9.5,
+  "solvedLat": 48.42,
+  "delta": 0.02
+ },
+ {
+  "id": "10459",
+  "name": "NAUEN",
+  "state": "BRANDENBURG",
+  "gazLat": 52.6,
+  "gazLon": 12.9,
+  "solvedLat": 52.61,
+  "delta": 0.01
+ },
+ {
+  "id": "10467",
+  "name": "NORDLINGEN",
+  "state": "BAYERN",
+  "gazLat": 48.9,
+  "gazLon": 10.5,
+  "solvedLat": 48.87,
+  "delta": -0.03
+ },
+ {
+  "id": "10471",
+  "name": "OBERSTENFELD / WURTT",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49,
+  "gazLon": 9.3,
+  "solvedLat": 49.02,
+  "delta": 0.02
+ },
+ {
+  "id": "10475",
+  "name": "NELLINGEN A.D.FILDER",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.7,
+  "gazLon": 9.3,
+  "solvedLat": 48.73,
+  "delta": 0.03
+ },
+ {
+  "id": "10479",
+  "name": "PREETZ",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 54.2,
+  "gazLon": 10.3,
+  "solvedLat": 54.24,
+  "delta": 0.04
+ },
+ {
+  "id": "10483",
+  "name": "REDWITZ A.D.RODACH",
+  "state": "BAYERN",
+  "gazLat": 50.2,
+  "gazLon": 11.2,
+  "solvedLat": 50.17,
+  "delta": -0.03
+ },
+ {
+  "id": "10491",
+  "name": "SAULGAU",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48,
+  "gazLon": 9.5,
+  "solvedLat": 48.04,
+  "delta": 0.04
+ },
+ {
+  "id": "10495",
+  "name": "SCHORNDORF",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.8,
+  "gazLon": 9.5,
+  "solvedLat": 48.83,
+  "delta": 0.03
+ },
+ {
+  "id": "10499",
+  "name": "SCHWARZENBEK",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 53.5,
+  "gazLon": 10.5,
+  "solvedLat": 53.49,
+  "delta": -0.01
+ },
+ {
+  "id": "10503",
+  "name": "SINSHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49.3,
+  "gazLon": 8.9,
+  "solvedLat": 49.27,
+  "delta": -0.03
+ },
+ {
+  "id": "10507",
+  "name": "STADTPROZELTEN",
+  "state": "BAYERN",
+  "gazLat": 49.8,
+  "gazLon": 9.4,
+  "solvedLat": 49.79,
+  "delta": -0.01
+ },
+ {
+  "id": "10511",
+  "name": "TETTAU",
+  "state": "BAYERN",
+  "gazLat": 50.5,
+  "gazLon": 11.3,
+  "solvedLat": 50.46,
+  "delta": -0.04
+ },
+ {
+  "id": "10515",
+  "name": "UHINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.7,
+  "gazLon": 9.6,
+  "solvedLat": 48.73,
+  "delta": 0.03
+ },
+ {
+  "id": "10519",
+  "name": "VOHRINGEN",
+  "state": "BAYERN",
+  "gazLat": 48.3,
+  "gazLon": 10.1,
+  "solvedLat": 48.27,
+  "delta": -0.03
+ },
+ {
+  "id": "10523",
+  "name": "WALDKRAIBURG",
+  "state": "BAYERN",
+  "gazLat": 48.2,
+  "gazLon": 12.4,
+  "solvedLat": 48.22,
+  "delta": 0.02
+ },
+ {
+  "id": "10527",
+  "name": "WASSERBURG ",
+  "state": "BAYERN",
+  "gazLat": 48.1,
+  "gazLon": 12.2,
+  "solvedLat": 48.09,
+  "delta": -0.01
+ },
+ {
+  "id": "10532",
+  "name": "WEINHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49.6,
+  "gazLon": 8.7,
+  "solvedLat": 49.57,
+  "delta": -0.03
+ },
+ {
+  "id": "10536",
+  "name": "WERTHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49.8,
+  "gazLon": 9.5,
+  "solvedLat": 49.77,
+  "delta": -0.03
+ },
+ {
+  "id": "10540",
+  "name": "WINSEN-LUHE",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 53.4,
+  "gazLon": 10.2,
+  "solvedLat": 53.35,
+  "delta": -0.05
+ },
+ {
+  "id": "10544",
+  "name": "WURZEN",
+  "state": "SACHSEN",
+  "gazLat": 51.4,
+  "gazLon": 12.7,
+  "solvedLat": 51.38,
+  "delta": -0.02
+ },
+ {
+  "id": "10548",
+  "name": "WEMDING",
+  "state": "BAYERN",
+  "gazLat": 48.9,
+  "gazLon": 10.7,
+  "solvedLat": 48.88,
+  "delta": -0.02
+ },
+ {
+  "id": "10554",
+  "name": "BURSTADT",
+  "state": "HESSEN",
+  "gazLat": 49.6,
+  "gazLon": 8.5,
+  "solvedLat": 49.64,
+  "delta": 0.04
+ },
+ {
+  "id": "10558",
+  "name": "SINDELFINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.7,
+  "gazLon": 9,
+  "solvedLat": 48.71,
+  "delta": 0.01
+ },
+ {
+  "id": "10562",
+  "name": "NEUBURG AN DER DONAU",
+  "state": "BAYERN",
+  "gazLat": 48.7,
+  "gazLon": 11.2,
+  "solvedLat": 48.73,
+  "delta": 0.03
+ },
+ {
+  "id": "10566",
+  "name": "PAPENBURG",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 53.1,
+  "gazLon": 7.4,
+  "solvedLat": 53.1000000000001,
+  "delta": 0
+ },
+ {
+  "id": "10570",
+  "name": "WINTERLINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.2,
+  "gazLon": 9.1,
+  "solvedLat": 48.22,
+  "delta": 0.02
+ },
+ {
+  "id": "10574",
+  "name": "LAUBACH (HESSEN)",
+  "state": "HESSEN",
+  "gazLat": 50.6,
+  "gazLon": 9,
+  "solvedLat": 50.55,
+  "delta": -0.05
+ },
+ {
+  "id": "10586",
+  "name": "OEBISFELDE",
+  "state": "SACHSEN ANHALT",
+  "gazLat": 52.4,
+  "gazLon": 11,
+  "solvedLat": 52.43,
+  "delta": 0.03
+ },
+ {
+  "id": "10590",
+  "name": "ELSFETH",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 53.2,
+  "gazLon": 8.5,
+  "solvedLat": 53.25,
+  "delta": 0.05
+ },
+ {
+  "id": "10594",
+  "name": "RASTEDE",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 53.2,
+  "gazLon": 8.2,
+  "solvedLat": 53.27,
+  "delta": 0.07
+ },
+ {
+  "id": "10602",
+  "name": "RONNEBURG",
+  "state": "THURINGEN",
+  "gazLat": 50.9,
+  "gazLon": 12.2,
+  "solvedLat": 50.88,
+  "delta": -0.02
+ },
+ {
+  "id": "10606",
+  "name": "CALAU",
+  "state": "BRANDENBURG",
+  "gazLat": 51.7,
+  "gazLon": 14,
+  "solvedLat": 51.76,
+  "delta": 0.06
+ },
+ {
+  "id": "10618",
+  "name": "RADEBEUL",
+  "state": "SACHSEN",
+  "gazLat": 51.1,
+  "gazLon": 13.6,
+  "solvedLat": 51.13,
+  "delta": 0.03
+ },
+ {
+  "id": "10622",
+  "name": "ARNSTADT",
+  "state": "THURINGEN",
+  "gazLat": 50.8,
+  "gazLon": 11,
+  "solvedLat": 50.86,
+  "delta": 0.06
+ },
+ {
+  "id": "10630",
+  "name": "SUHL",
+  "state": "THURINGEN",
+  "gazLat": 50.6,
+  "gazLon": 10.7,
+  "solvedLat": 50.61,
+  "delta": 0.01
+ },
+ {
+  "id": "10634",
+  "name": "LECK",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 54.8,
+  "gazLon": 9,
+  "solvedLat": 54.78,
+  "delta": -0.02
+ },
+ {
+  "id": "10638",
+  "name": "WYK",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 54.7,
+  "gazLon": 8.6,
+  "solvedLat": 54.700000000000124,
+  "delta": 0
+ },
+ {
+  "id": "10642",
+  "name": "SEELOW",
+  "state": "BRANDENBURG",
+  "gazLat": 52.5,
+  "gazLon": 14.4,
+  "solvedLat": 52.54,
+  "delta": 0.04
+ },
+ {
+  "id": "10646",
+  "name": "HARDEGSEN",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 51.7,
+  "gazLon": 9.8,
+  "solvedLat": 51.67,
+  "delta": -0.03
+ },
+ {
+  "id": "10650",
+  "name": "MORINGEN",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 51.7,
+  "gazLon": 9.9,
+  "solvedLat": 51.71,
+  "delta": 0.01
+ },
+ {
+  "id": "10662",
+  "name": "BUTZFLETH",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 53.6,
+  "gazLon": 9.5,
+  "solvedLat": 53.66,
+  "delta": 0.06
+ },
+ {
+  "id": "10666",
+  "name": "SEELZE",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.4,
+  "gazLon": 9.6,
+  "solvedLat": 52.42,
+  "delta": 0.02
+ },
+ {
+  "id": "10670",
+  "name": "KELLINGHUSEN",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 54,
+  "gazLon": 9.7,
+  "solvedLat": 53.97,
+  "delta": -0.03
+ },
+ {
+  "id": "10674",
+  "name": "LUTJENBURG",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 54.3,
+  "gazLon": 10.6,
+  "solvedLat": 54.30000000000012,
+  "delta": 0
+ },
+ {
+  "id": "10682",
+  "name": "BAD SEGEBERG",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 53.9,
+  "gazLon": 10.3,
+  "solvedLat": 53.94,
+  "delta": 0.04
+ },
+ {
+  "id": "10686",
+  "name": "WAHLSTEDT",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 54,
+  "gazLon": 10.2,
+  "solvedLat": 53.97,
+  "delta": -0.03
+ },
+ {
+  "id": "10690",
+  "name": "BELZIG",
+  "state": "BRANDENBURG",
+  "gazLat": 52.1,
+  "gazLon": 12.6,
+  "solvedLat": 52.14,
+  "delta": 0.04
+ },
+ {
+  "id": "10694",
+  "name": "GOMMERN",
+  "state": "SACHSEN ANHALT",
+  "gazLat": 52.1,
+  "gazLon": 11.8,
+  "solvedLat": 52.10000000000009,
+  "delta": 0
+ },
+ {
+  "id": "10702",
+  "name": "BAD BENTHEIM",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.3,
+  "gazLon": 7.2,
+  "solvedLat": 52.32,
+  "delta": 0.02
+ },
+ {
+  "id": "10707",
+  "name": "JULICH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.9,
+  "gazLon": 6.4,
+  "solvedLat": 50.92,
+  "delta": 0.02
+ },
+ {
+  "id": "10711",
+  "name": "BAD PYRMONT",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52,
+  "gazLon": 9.3,
+  "solvedLat": 52.000000000000085,
+  "delta": 0
+ },
+ {
+  "id": "10715",
+  "name": "HENNEF",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.8,
+  "gazLon": 7.3,
+  "solvedLat": 50.80000000000007,
+  "delta": 0
+ },
+ {
+  "id": "10723",
+  "name": "WEITERSTADT",
+  "state": "HESSEN",
+  "gazLat": 49.9,
+  "gazLon": 8.6,
+  "solvedLat": 49.93,
+  "delta": 0.03
+ },
+ {
+  "id": "10727",
+  "name": "BRUGGEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.2,
+  "gazLon": 6.2,
+  "solvedLat": 51.25,
+  "delta": 0.05
+ },
+ {
+  "id": "10731",
+  "name": "ALZENAU",
+  "state": "BAYERN",
+  "gazLat": 50.1,
+  "gazLon": 9.1,
+  "solvedLat": 50.09,
+  "delta": -0.01
+ },
+ {
+  "id": "10735",
+  "name": "VILLINGEN",
+  "state": "HESSEN",
+  "gazLat": 50.5,
+  "gazLon": 8.9,
+  "solvedLat": 50.500000000000064,
+  "delta": 0
+ },
+ {
+  "id": "10739",
+  "name": "NEUDORF (Germersheim)",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49.2,
+  "gazLon": 8.5,
+  "solvedLat": 49.200000000000045,
+  "delta": 0
+ },
+ {
+  "id": "10744",
+  "name": "WESTHOFEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.4,
+  "gazLon": 7.5,
+  "solvedLat": 51.42,
+  "delta": 0.02
+ },
+ {
+  "id": "10748",
+  "name": "MUNDEN",
+  "state": "HESSEN",
+  "gazLat": 51.2,
+  "gazLon": 8.7,
+  "solvedLat": 51.15,
+  "delta": -0.05
+ },
+ {
+  "id": "10752",
+  "name": "KAISERSESCH",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50.2,
+  "gazLon": 7.1,
+  "solvedLat": 50.25,
+  "delta": 0.05
+ },
+ {
+  "id": "10756",
+  "name": "GEILENKIRCHEN (NRW)",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51,
+  "gazLon": 6.1,
+  "solvedLat": 50.98,
+  "delta": -0.02
+ },
+ {
+  "id": "10760",
+  "name": "KALDENKIRCHEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.3,
+  "gazLon": 6.2,
+  "solvedLat": 51.33,
+  "delta": 0.03
+ },
+ {
+  "id": "10764",
+  "name": "ALSENBORN",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 49.5,
+  "gazLon": 7.9,
+  "solvedLat": 49.50000000000005,
+  "delta": 0
+ },
+ {
+  "id": "10768",
+  "name": "HOFHEIM A. TAUNUS",
+  "state": "HESSEN",
+  "gazLat": 50.1,
+  "gazLon": 8.4,
+  "solvedLat": 50.09,
+  "delta": -0.01
+ },
+ {
+  "id": "10772",
+  "name": "SPRENDLINGEN",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 49.9,
+  "gazLon": 8,
+  "solvedLat": 49.87,
+  "delta": -0.03
+ },
+ {
+  "id": "10776",
+  "name": "LEBACH",
+  "state": "SAARLAND",
+  "gazLat": 49.4,
+  "gazLon": 6.9,
+  "solvedLat": 49.41,
+  "delta": 0.01
+ },
+ {
+  "id": "10780",
+  "name": "DUDENHOFEN",
+  "state": "HESSEN",
+  "gazLat": 50,
+  "gazLon": 8.9,
+  "solvedLat": 50.01,
+  "delta": 0.01
+ },
+ {
+  "id": "10784",
+  "name": "HOSBACH",
+  "state": "BAYERN",
+  "gazLat": 50,
+  "gazLon": 9.2,
+  "solvedLat": 50.02,
+  "delta": 0.02
+ },
+ {
+  "id": "10788",
+  "name": "LANGWEID",
+  "state": "BAYERN",
+  "gazLat": 48.5,
+  "gazLon": 10.9,
+  "solvedLat": 48.49,
+  "delta": -0.01
+ },
+ {
+  "id": "10792",
+  "name": "DONAUESCHINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48,
+  "gazLon": 8.5,
+  "solvedLat": 47.97,
+  "delta": -0.03
+ },
+ {
+  "id": "10800",
+  "name": "OLSNITZ",
+  "state": "BAYERN",
+  "gazLat": 50.3,
+  "gazLon": 11.9,
+  "solvedLat": 50.30000000000006,
+  "delta": 0
+ },
+ {
+  "id": "10804",
+  "name": "OSTRINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49.2,
+  "gazLon": 8.7,
+  "solvedLat": 49.23,
+  "delta": 0.03
+ },
+ {
+  "id": "10808",
+  "name": "MECKENBEUREN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.7,
+  "gazLon": 9.6,
+  "solvedLat": 47.72,
+  "delta": 0.02
+ },
+ {
+  "id": "10812",
+  "name": "TETTNANG",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.7,
+  "gazLon": 9.6,
+  "solvedLat": 47.69,
+  "delta": -0.01
+ },
+ {
+  "id": "10821",
+  "name": "GRUNWALD",
+  "state": "BAYERN",
+  "gazLat": 48.1,
+  "gazLon": 11.5,
+  "solvedLat": 48.07,
+  "delta": -0.03
+ },
+ {
+  "id": "10825",
+  "name": "BAD WINDSHEIM",
+  "state": "BAYERN",
+  "gazLat": 49.5,
+  "gazLon": 10.4,
+  "solvedLat": 49.52,
+  "delta": 0.02
+ },
+ {
+  "id": "10829",
+  "name": "LOSSBURG",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.4,
+  "gazLon": 8.5,
+  "solvedLat": 48.42,
+  "delta": 0.02
+ },
+ {
+  "id": "10833",
+  "name": "WILLSTATT",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.5,
+  "gazLon": 7.9,
+  "solvedLat": 48.53,
+  "delta": 0.03
+ },
+ {
+  "id": "10837",
+  "name": "REGENSTAUF",
+  "state": "BAYERN",
+  "gazLat": 48.1,
+  "gazLon": 12.1,
+  "solvedLat": 49.14,
+  "delta": 1.04
+ },
+ {
+  "id": "10842",
+  "name": "KUSTERDINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.5,
+  "gazLon": 9.1,
+  "solvedLat": 48.51,
+  "delta": 0.01
+ },
+ {
+  "id": "10846",
+  "name": "AIDLINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.7,
+  "gazLon": 8.9,
+  "solvedLat": 48.69,
+  "delta": -0.01
+ },
+ {
+  "id": "10850",
+  "name": "MAICHINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.7,
+  "gazLon": 9,
+  "solvedLat": 48.73,
+  "delta": 0.03
+ },
+ {
+  "id": "10854",
+  "name": "EBERSBACH AN DER FILS",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.7,
+  "gazLon": 9.5,
+  "solvedLat": 48.73,
+  "delta": 0.03
+ },
+ {
+  "id": "10858",
+  "name": "AY",
+  "state": "BAYERN",
+  "gazLat": 48.3,
+  "gazLon": 10,
+  "solvedLat": 48.33,
+  "delta": 0.03
+ },
+ {
+  "id": "10862",
+  "name": "MOMLINGEN",
+  "state": "BAYERN",
+  "gazLat": 49.9,
+  "gazLon": 9.1,
+  "solvedLat": 49.87,
+  "delta": -0.03
+ },
+ {
+  "id": "10866",
+  "name": "LANDAU AN DER ISAR",
+  "state": "BAYERN",
+  "gazLat": 48.7,
+  "gazLon": 12.7,
+  "solvedLat": 48.66,
+  "delta": -0.04
+ },
+ {
+  "id": "10870",
+  "name": "ACHERN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.6,
+  "gazLon": 8.1,
+  "solvedLat": 48.64,
+  "delta": 0.04
+ },
+ {
+  "id": "10874",
+  "name": "ERFURT",
+  "state": "THURINGEN",
+  "gazLat": 51,
+  "gazLon": 11,
+  "solvedLat": 51.00000000000007,
+  "delta": 0
+ },
+ {
+  "id": "10879",
+  "name": "HOFGEISMAR",
+  "state": "HESSEN",
+  "gazLat": 51.5,
+  "gazLon": 9.4,
+  "solvedLat": 51.50000000000008,
+  "delta": 0
+ },
+ {
+  "id": "10883",
+  "name": "ALLERSBERG",
+  "state": "BAYERN",
+  "gazLat": 49.3,
+  "gazLon": 11.2,
+  "solvedLat": 49.28,
+  "delta": -0.02
+ },
+ {
+  "id": "10887",
+  "name": "ALTENERDING",
+  "state": "BAYERN",
+  "gazLat": 48.3,
+  "gazLon": 11.9,
+  "solvedLat": 48.31,
+  "delta": 0.01
+ },
+ {
+  "id": "10891",
+  "name": "ANDERNACH",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50.4,
+  "gazLon": 7.4,
+  "solvedLat": 50.45,
+  "delta": 0.05
+ },
+ {
+  "id": "10895",
+  "name": "ASCHEBERG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.8,
+  "gazLon": 7.6,
+  "solvedLat": 51.81,
+  "delta": 0.01
+ },
+ {
+  "id": "10899",
+  "name": "BAD BRAMSTEDT",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 53.9,
+  "gazLon": 9.9,
+  "solvedLat": 53.91,
+  "delta": 0.01
+ },
+ {
+  "id": "10903",
+  "name": "BAD ESSEN",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.3,
+  "gazLon": 8.3,
+  "solvedLat": 52.33,
+  "delta": 0.03
+ },
+ {
+  "id": "10907",
+  "name": "BAD NAUHEIM",
+  "state": "HESSEN",
+  "gazLat": 50.4,
+  "gazLon": 8.7,
+  "solvedLat": 50.38,
+  "delta": -0.02
+ },
+ {
+  "id": "10911",
+  "name": "BAD VILBEL",
+  "state": "HESSEN",
+  "gazLat": 50.2,
+  "gazLon": 8.7,
+  "solvedLat": 50.20000000000006,
+  "delta": 0
+ },
+ {
+  "id": "10915",
+  "name": "BALVE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.3,
+  "gazLon": 7.9,
+  "solvedLat": 51.33,
+  "delta": 0.03
+ },
+ {
+  "id": "10919",
+  "name": "BENSHEIM",
+  "state": "HESSEN",
+  "gazLat": 49.7,
+  "gazLon": 8.6,
+  "solvedLat": 49.68,
+  "delta": -0.02
+ },
+ {
+  "id": "10923",
+  "name": "BERGNEUSTADT",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51,
+  "gazLon": 7.6,
+  "solvedLat": 51.03,
+  "delta": 0.03
+ },
+ {
+  "id": "10927",
+  "name": "BIEBESHEIM AM RHEIN",
+  "state": "HESSEN",
+  "gazLat": 49.8,
+  "gazLon": 8.5,
+  "solvedLat": 49.81,
+  "delta": 0.01
+ },
+ {
+  "id": "10931",
+  "name": "BLANKENHEIM",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.4,
+  "gazLon": 6.6,
+  "solvedLat": 50.43,
+  "delta": 0.03
+ },
+ {
+  "id": "10935",
+  "name": "WATTENSCHEID",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.5,
+  "gazLon": 7.1,
+  "solvedLat": 51.50000000000008,
+  "delta": 0
+ },
+ {
+  "id": "10939",
+  "name": "BONNDORF",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.8,
+  "gazLon": 8.3,
+  "solvedLat": 47.82,
+  "delta": 0.02
+ },
+ {
+  "id": "10943",
+  "name": "BOTZINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.1,
+  "gazLon": 7.7,
+  "solvedLat": 48.09,
+  "delta": -0.01
+ },
+ {
+  "id": "10947",
+  "name": "BREIDENBACH",
+  "state": "HESSEN",
+  "gazLat": 50.9,
+  "gazLon": 8.5,
+  "solvedLat": 50.90000000000007,
+  "delta": 0
+ },
+ {
+  "id": "10951",
+  "name": "BREUBERG",
+  "state": "HESSEN",
+  "gazLat": 49.8,
+  "gazLon": 9,
+  "solvedLat": 49.85,
+  "delta": 0.05
+ },
+ {
+  "id": "10959",
+  "name": "BUGGINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.9,
+  "gazLon": 7.6,
+  "solvedLat": 47.87,
+  "delta": -0.03
+ },
+ {
+  "id": "10963",
+  "name": "BUTZBACH",
+  "state": "HESSEN",
+  "gazLat": 50.4,
+  "gazLon": 8.7,
+  "solvedLat": 50.46,
+  "delta": 0.06
+ },
+ {
+  "id": "10967",
+  "name": "DACHAU",
+  "state": "BAYERN",
+  "gazLat": 48.3,
+  "gazLon": 11.4,
+  "solvedLat": 48.27,
+  "delta": -0.03
+ },
+ {
+  "id": "10971",
+  "name": "DENZLINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.1,
+  "gazLon": 7.9,
+  "solvedLat": 48.06,
+  "delta": -0.04
+ },
+ {
+  "id": "10975",
+  "name": "DINSLAKEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.6,
+  "gazLon": 6.7,
+  "solvedLat": 51.60000000000008,
+  "delta": 0
+ },
+ {
+  "id": "10987",
+  "name": "EISENBERG",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 49.6,
+  "gazLon": 8.1,
+  "solvedLat": 49.57,
+  "delta": -0.03
+ },
+ {
+  "id": "10991",
+  "name": "EMDEN",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 53.4,
+  "gazLon": 7.2,
+  "solvedLat": 53.36,
+  "delta": -0.04
+ },
+ {
+  "id": "10995",
+  "name": "ENGELSKIRCHEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51,
+  "gazLon": 7.4,
+  "solvedLat": 50.98,
+  "delta": -0.02
+ },
+ {
+  "id": "10999",
+  "name": "ERKRATH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.2,
+  "gazLon": 6.9,
+  "solvedLat": 51.23,
+  "delta": 0.03
+ },
+ {
+  "id": "11003",
+  "name": "BIELEFELD",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 52,
+  "gazLon": 8.5,
+  "solvedLat": 52.03,
+  "delta": 0.03
+ },
+ {
+  "id": "11011",
+  "name": "FREIBURG",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48,
+  "gazLon": 7.8,
+  "solvedLat": 47.98,
+  "delta": -0.02
+ },
+ {
+  "id": "11015",
+  "name": "KASSEL",
+  "state": "HESSEN",
+  "gazLat": 51.3,
+  "gazLon": 9.5,
+  "solvedLat": 51.33,
+  "delta": 0.03
+ },
+ {
+  "id": "11019",
+  "name": "KOLN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.9,
+  "gazLon": 6.9,
+  "solvedLat": 50.94,
+  "delta": 0.04
+ },
+ {
+  "id": "11023",
+  "name": "MUNSTER",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 52,
+  "gazLon": 7.6,
+  "solvedLat": 51.96,
+  "delta": -0.04
+ },
+ {
+  "id": "11027",
+  "name": "STUTTGART",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.8,
+  "gazLon": 9.2,
+  "solvedLat": 48.83,
+  "delta": 0.03
+ },
+ {
+  "id": "11031",
+  "name": "WUPPERTAL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.3,
+  "gazLon": 7.2,
+  "solvedLat": 51.29,
+  "delta": -0.01
+ },
+ {
+  "id": "11035",
+  "name": "DRESDEN",
+  "state": "SACHSEN",
+  "gazLat": 51.1,
+  "gazLon": 13.7,
+  "solvedLat": 51.06,
+  "delta": -0.04
+ },
+ {
+  "id": "11039",
+  "name": "BOBINGEN",
+  "state": "BAYERN",
+  "gazLat": 48.3,
+  "gazLon": 10.8,
+  "solvedLat": 48.27,
+  "delta": -0.03
+ },
+ {
+  "id": "11044",
+  "name": "GOPPINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.7,
+  "gazLon": 9.7,
+  "solvedLat": 48.73,
+  "delta": 0.03
+ },
+ {
+  "id": "11048",
+  "name": "LUDWIGSBURG",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.9,
+  "gazLon": 9.2,
+  "solvedLat": 48.90000000000004,
+  "delta": 0
+ },
+ {
+  "id": "11052",
+  "name": "EMMERICH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.9,
+  "gazLon": 6.3,
+  "solvedLat": 51.86,
+  "delta": -0.04
+ },
+ {
+  "id": "11056",
+  "name": "WIESBADEN",
+  "state": "HESSEN",
+  "gazLat": 50.1,
+  "gazLon": 8.2,
+  "solvedLat": 50.08,
+  "delta": -0.02
+ },
+ {
+  "id": "11062",
+  "name": "MULHEIM AN DER RUHR",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.4,
+  "gazLon": 6.9,
+  "solvedLat": 51.45,
+  "delta": 0.05
+ },
+ {
+  "id": "11066",
+  "name": "KREFELD",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.3,
+  "gazLon": 6.6,
+  "solvedLat": 51.34,
+  "delta": 0.04
+ },
+ {
+  "id": "11071",
+  "name": "KRUMBACH",
+  "state": "BAYERN",
+  "gazLat": 48.3,
+  "gazLon": 10.4,
+  "solvedLat": 48.25,
+  "delta": -0.05
+ },
+ {
+  "id": "11075",
+  "name": "HAMMINKELN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.7,
+  "gazLon": 6.6,
+  "solvedLat": 51.73,
+  "delta": 0.03
+ },
+ {
+  "id": "11079",
+  "name": "DARMSTADT",
+  "state": "HESSEN",
+  "gazLat": 49.9,
+  "gazLon": 8.6,
+  "solvedLat": 49.89,
+  "delta": -0.01
+ },
+ {
+  "id": "11083",
+  "name": "TUTTLINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48,
+  "gazLon": 8.8,
+  "solvedLat": 48.01,
+  "delta": 0.01
+ },
+ {
+  "id": "11087",
+  "name": "PLETTENBERG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.2,
+  "gazLon": 7.9,
+  "solvedLat": 51.25,
+  "delta": 0.05
+ },
+ {
+  "id": "11092",
+  "name": "BAD EMS",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50.3,
+  "gazLon": 7.7,
+  "solvedLat": 50.34,
+  "delta": 0.04
+ },
+ {
+  "id": "11096",
+  "name": "BAUTZEN",
+  "state": "SACHSEN",
+  "gazLat": 51.2,
+  "gazLon": 14.4,
+  "solvedLat": 51.19,
+  "delta": -0.01
+ },
+ {
+  "id": "11100",
+  "name": "LEIPZIG",
+  "state": "SACHSEN",
+  "gazLat": 51.4,
+  "gazLon": 12.4,
+  "solvedLat": 51.40000000000008,
+  "delta": 0
+ },
+ {
+  "id": "11104",
+  "name": "KEMPTEN",
+  "state": "BAYERN",
+  "gazLat": 47.7,
+  "gazLon": 10.3,
+  "solvedLat": 47.73,
+  "delta": 0.03
+ },
+ {
+  "id": "11108",
+  "name": "INGOLSTADT",
+  "state": "BAYERN",
+  "gazLat": 48.8,
+  "gazLon": 11.4,
+  "solvedLat": 48.78,
+  "delta": -0.02
+ },
+ {
+  "id": "11117",
+  "name": "LUBECK",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 53.9,
+  "gazLon": 10.6,
+  "solvedLat": 53.88,
+  "delta": -0.02
+ },
+ {
+  "id": "11125",
+  "name": "TRIER",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 49.8,
+  "gazLon": 6.6,
+  "solvedLat": 49.76,
+  "delta": -0.04
+ },
+ {
+  "id": "11129",
+  "name": "CUXHAVEN",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 53.9,
+  "gazLon": 8.7,
+  "solvedLat": 53.86,
+  "delta": -0.04
+ },
+ {
+  "id": "16756",
+  "name": "WEISENTHURM",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50.4,
+  "gazLon": 7.5,
+  "solvedLat": 50.43,
+  "delta": 0.03
+ },
+ {
+  "id": "16760",
+  "name": "WEIL DER STADT",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.8,
+  "gazLon": 8.9,
+  "solvedLat": 48.75,
+  "delta": -0.05
+ },
+ {
+  "id": "16795",
+  "name": "LUDWIGSLUST",
+  "state": "MECKLENBURG-VORPOMMERN",
+  "gazLat": 53.3,
+  "gazLon": 11.5,
+  "solvedLat": 53.29,
+  "delta": -0.01
+ },
+ {
+  "id": "17915",
+  "name": "SENDEN(NRW)",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.9,
+  "gazLon": 7.5,
+  "solvedLat": 51.86,
+  "delta": -0.04
+ },
+ {
+  "id": "17930",
+  "name": "RETHEM",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.8,
+  "gazLon": 9.4,
+  "solvedLat": 52.8000000000001,
+  "delta": 0
+ },
+ {
+  "id": "17934",
+  "name": "APPELHULSEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.9,
+  "gazLon": 7.4,
+  "solvedLat": 51.91,
+  "delta": 0.01
+ },
+ {
+  "id": "18944",
+  "name": "MECKENHEIM",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.6,
+  "gazLon": 7,
+  "solvedLat": 50.65,
+  "delta": 0.05
+ },
+ {
+  "id": "18955",
+  "name": "RAHDEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 52.4,
+  "gazLon": 8.6,
+  "solvedLat": 52.43,
+  "delta": 0.03
+ },
+ {
+  "id": "18962",
+  "name": "SULZ AM NECKAR",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.4,
+  "gazLon": 8.6,
+  "solvedLat": 48.37,
+  "delta": -0.03
+ },
+ {
+  "id": "19015",
+  "name": "SONTHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49.1,
+  "gazLon": 9.2,
+  "solvedLat": 49.14,
+  "delta": 0.04
+ },
+ {
+  "id": "20027",
+  "name": "VERL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.9,
+  "gazLon": 8.5,
+  "solvedLat": 51.89,
+  "delta": -0.01
+ },
+ {
+  "id": "20031",
+  "name": "AHRENSBURG",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 53.7,
+  "gazLon": 10.2,
+  "solvedLat": 53.67,
+  "delta": -0.03
+ },
+ {
+  "id": "21148",
+  "name": "AKEN ",
+  "state": "SACHSEN ANHALT",
+  "gazLat": 51.9,
+  "gazLon": 12,
+  "solvedLat": 51.87,
+  "delta": -0.03
+ },
+ {
+  "id": "21152",
+  "name": "NEUNBURG VORM WALD",
+  "state": "BAYERN",
+  "gazLat": 49.3,
+  "gazLon": 12.4,
+  "solvedLat": 49.36,
+  "delta": 0.06
+ },
+ {
+  "id": "21156",
+  "name": "SCHWAIKHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.9,
+  "gazLon": 9.4,
+  "solvedLat": 48.90000000000004,
+  "delta": 0
+ },
+ {
+  "id": "21162",
+  "name": "LANGQUAID",
+  "state": "BAYERN",
+  "gazLat": 48.8,
+  "gazLon": 12.1,
+  "solvedLat": 48.83,
+  "delta": 0.03
+ },
+ {
+  "id": "21167",
+  "name": "WOLNZACH",
+  "state": "BAYERN",
+  "gazLat": 48.6,
+  "gazLon": 11.6,
+  "solvedLat": 48.61,
+  "delta": 0.01
+ },
+ {
+  "id": "22183",
+  "name": "BLUMBERG",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.8,
+  "gazLon": 8.5,
+  "solvedLat": 47.84,
+  "delta": 0.04
+ },
+ {
+  "id": "33367",
+  "name": "TREUCHTLINGEN",
+  "state": "BAYERN",
+  "gazLat": 49,
+  "gazLon": 10.9,
+  "solvedLat": 48.96,
+  "delta": -0.04
+ },
+ {
+  "id": "9977",
+  "name": "DELLWIG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.5,
+  "gazLon": 6.9,
+  "solvedLat": 51.50000000000008,
+  "delta": 0
+ },
+ {
+  "id": "9981",
+  "name": "EUSKIRCHEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.7,
+  "gazLon": 6.8,
+  "solvedLat": 50.65,
+  "delta": -0.05
+ },
+ {
+  "id": "9985",
+  "name": "FREUDENSTADT",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.5,
+  "gazLon": 8.4,
+  "solvedLat": 48.49,
+  "delta": -0.01
+ },
+ {
+  "id": "9993",
+  "name": "FURTWANGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.1,
+  "gazLon": 8.2,
+  "solvedLat": 48.09,
+  "delta": -0.01
+ },
+ {
+  "id": "10003",
+  "name": "HORST",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 52,
+  "gazLon": 7.2,
+  "solvedLat": 51.03,
+  "delta": -0.97
+ },
+ {
+  "id": "10007",
+  "name": "GEORGSMARIENHUTTE",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.2,
+  "gazLon": 8,
+  "solvedLat": 52.23,
+  "delta": 0.03
+ },
+ {
+  "id": "10011",
+  "name": "GESEKE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.6,
+  "gazLon": 8.5,
+  "solvedLat": 51.63,
+  "delta": 0.03
+ },
+ {
+  "id": "10015",
+  "name": "GLADENBACH",
+  "state": "HESSEN",
+  "gazLat": 50.8,
+  "gazLon": 8.6,
+  "solvedLat": 50.78,
+  "delta": -0.02
+ },
+ {
+  "id": "10019",
+  "name": "GRASELLENBACH",
+  "state": "HESSEN",
+  "gazLat": 49.6,
+  "gazLon": 8.9,
+  "solvedLat": 49.64,
+  "delta": 0.04
+ },
+ {
+  "id": "10023",
+  "name": "GRUNSTADT",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 49.6,
+  "gazLon": 8.2,
+  "solvedLat": 49.58,
+  "delta": -0.02
+ },
+ {
+  "id": "10027",
+  "name": "HASPE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.4,
+  "gazLon": 7.4,
+  "solvedLat": 51.36,
+  "delta": -0.04
+ },
+ {
+  "id": "10031",
+  "name": "FINKENWERDER",
+  "state": "HAMBURG",
+  "gazLat": 53.5,
+  "gazLon": 9.9,
+  "solvedLat": 53.56,
+  "delta": 0.06
+ },
+ {
+  "id": "10035",
+  "name": "HAMELN",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.1,
+  "gazLon": 9.4,
+  "solvedLat": 52.10000000000009,
+  "delta": 0
+ },
+ {
+  "id": "10039",
+  "name": "PELKUM",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.6,
+  "gazLon": 7.7,
+  "solvedLat": 51.63,
+  "delta": 0.03
+ },
+ {
+  "id": "10043",
+  "name": "HATTINGEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.4,
+  "gazLon": 7.2,
+  "solvedLat": 51.43,
+  "delta": 0.03
+ },
+ {
+  "id": "10053",
+  "name": "BAD URACH",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.5,
+  "gazLon": 9.4,
+  "solvedLat": 48.51,
+  "delta": 0.01
+ },
+ {
+  "id": "10057",
+  "name": "BEBRA",
+  "state": "HESSEN",
+  "gazLat": 51,
+  "gazLon": 9.8,
+  "solvedLat": 50.98,
+  "delta": -0.02
+ },
+ {
+  "id": "10061",
+  "name": "BISSINGEN AN DER ENZ",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.9,
+  "gazLon": 9.1,
+  "solvedLat": 48.96,
+  "delta": 0.06
+ },
+ {
+  "id": "10065",
+  "name": "BRUCKMUHL",
+  "state": "BAYERN",
+  "gazLat": 47.9,
+  "gazLon": 11.9,
+  "solvedLat": 47.89,
+  "delta": -0.01
+ },
+ {
+  "id": "10069",
+  "name": "BURGDORF",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.5,
+  "gazLon": 10,
+  "solvedLat": 52.46,
+  "delta": -0.04
+ },
+ {
+  "id": "10073",
+  "name": "BURLADINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.3,
+  "gazLon": 9.1,
+  "solvedLat": 48.29,
+  "delta": -0.01
+ },
+ {
+  "id": "10077",
+  "name": "DEGGENDORF",
+  "state": "BAYERN",
+  "gazLat": 48.8,
+  "gazLon": 13,
+  "solvedLat": 48.88,
+  "delta": 0.08
+ },
+ {
+  "id": "10081",
+  "name": "DITZINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.8,
+  "gazLon": 9.1,
+  "solvedLat": 48.83,
+  "delta": 0.03
+ },
+ {
+  "id": "10085",
+  "name": "EHINGEN (DONAU)",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.3,
+  "gazLon": 9.7,
+  "solvedLat": 48.30000000000003,
+  "delta": 0
+ },
+ {
+  "id": "10089",
+  "name": "ERLENBACH AM MAIN",
+  "state": "BAYERN",
+  "gazLat": 49.8,
+  "gazLon": 9.2,
+  "solvedLat": 49.81,
+  "delta": 0.01
+ },
+ {
+  "id": "10093",
+  "name": "FILDERSTADT",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.7,
+  "gazLon": 9.2,
+  "solvedLat": 48.67,
+  "delta": -0.03
+ },
+ {
+  "id": "10097",
+  "name": "FURSTENWALDE",
+  "state": "BRANDENBURG",
+  "gazLat": 52.4,
+  "gazLon": 14.1,
+  "solvedLat": 52.38,
+  "delta": -0.02
+ },
+ {
+  "id": "10101",
+  "name": "GIFHORN",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.5,
+  "gazLon": 10.5,
+  "solvedLat": 52.47,
+  "delta": -0.03
+ },
+ {
+  "id": "10105",
+  "name": "GERSTHOFEN",
+  "state": "BAYERN",
+  "gazLat": 48.4,
+  "gazLon": 10.9,
+  "solvedLat": 48.45,
+  "delta": 0.05
+ },
+ {
+  "id": "10109",
+  "name": "GOTTMADINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.7,
+  "gazLon": 8.8,
+  "solvedLat": 47.76,
+  "delta": 0.06
+ },
+ {
+  "id": "10113",
+  "name": "GUNZENHAUSEN",
+  "state": "BAYERN",
+  "gazLat": 49.1,
+  "gazLon": 10.8,
+  "solvedLat": 49.11,
+  "delta": 0.01
+ },
+ {
+  "id": "10117",
+  "name": "HEIDE",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 54.2,
+  "gazLon": 9.1,
+  "solvedLat": 54.21,
+  "delta": 0.01
+ },
+ {
+  "id": "10121",
+  "name": "HEMER",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.4,
+  "gazLon": 7.8,
+  "solvedLat": 51.40000000000008,
+  "delta": 0
+ },
+ {
+  "id": "10125",
+  "name": "HERTEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.6,
+  "gazLon": 7.2,
+  "solvedLat": 51.58,
+  "delta": -0.02
+ },
+ {
+  "id": "10129",
+  "name": "HILDEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.2,
+  "gazLon": 6.9,
+  "solvedLat": 51.19,
+  "delta": -0.01
+ },
+ {
+  "id": "10134",
+  "name": "HOFHEIM",
+  "state": "HESSEN",
+  "gazLat": 49.7,
+  "gazLon": 8.4,
+  "solvedLat": 49.66,
+  "delta": -0.04
+ },
+ {
+  "id": "10142",
+  "name": "HUNGEN",
+  "state": "HESSEN",
+  "gazLat": 50.5,
+  "gazLon": 8.9,
+  "solvedLat": 50.49,
+  "delta": -0.01
+ },
+ {
+  "id": "10146",
+  "name": "IBBENBUREN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 52.3,
+  "gazLon": 7.7,
+  "solvedLat": 52.29,
+  "delta": -0.01
+ },
+ {
+  "id": "10150",
+  "name": "ITZEHOE",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 53.9,
+  "gazLon": 9.5,
+  "solvedLat": 53.94,
+  "delta": 0.04
+ },
+ {
+  "id": "10154",
+  "name": "KAMEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.6,
+  "gazLon": 7.7,
+  "solvedLat": 51.61,
+  "delta": 0.01
+ },
+ {
+  "id": "10158",
+  "name": "KELHEIM",
+  "state": "BAYERN",
+  "gazLat": 48.9,
+  "gazLon": 11.9,
+  "solvedLat": 48.94,
+  "delta": 0.04
+ },
+ {
+  "id": "10162",
+  "name": "KIPFENBERG",
+  "state": "BAYERN",
+  "gazLat": 48.9,
+  "gazLon": 11.4,
+  "solvedLat": 48.98,
+  "delta": 0.08
+ },
+ {
+  "id": "10166",
+  "name": "KONZ",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 49.7,
+  "gazLon": 6.6,
+  "solvedLat": 49.70000000000005,
+  "delta": 0
+ },
+ {
+  "id": "10170",
+  "name": "KRONSHAGEN",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 54.3,
+  "gazLon": 10.1,
+  "solvedLat": 54.34,
+  "delta": 0.04
+ },
+ {
+  "id": "10174",
+  "name": "LAMPERTHEIM",
+  "state": "HESSEN",
+  "gazLat": 49.6,
+  "gazLon": 8.5,
+  "solvedLat": 49.59,
+  "delta": -0.01
+ },
+ {
+  "id": "10178",
+  "name": "LANGENFELD",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.1,
+  "gazLon": 7,
+  "solvedLat": 51.11,
+  "delta": 0.01
+ },
+ {
+  "id": "10182",
+  "name": "LENNESTADT",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.1,
+  "gazLon": 8.1,
+  "solvedLat": 51.15,
+  "delta": 0.05
+ },
+ {
+  "id": "10186",
+  "name": "LINDLAR",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51,
+  "gazLon": 7.4,
+  "solvedLat": 51.03,
+  "delta": 0.03
+ },
+ {
+  "id": "10190",
+  "name": "LOHNE",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.7,
+  "gazLon": 8.2,
+  "solvedLat": 52.68,
+  "delta": -0.02
+ },
+ {
+  "id": "10194",
+  "name": "LUGDE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 52,
+  "gazLon": 9.3,
+  "solvedLat": 51.96,
+  "delta": -0.04
+ },
+ {
+  "id": "10198",
+  "name": "MAINBURG",
+  "state": "BAYERN",
+  "gazLat": 48.7,
+  "gazLon": 11.8,
+  "solvedLat": 48.65,
+  "delta": -0.05
+ },
+ {
+  "id": "10202",
+  "name": "MAXDORF",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 49.5,
+  "gazLon": 8.3,
+  "solvedLat": 49.49,
+  "delta": -0.01
+ },
+ {
+  "id": "10206",
+  "name": "MERZIG",
+  "state": "SAARLAND",
+  "gazLat": 49.4,
+  "gazLon": 6.6,
+  "solvedLat": 49.45,
+  "delta": 0.05
+ },
+ {
+  "id": "10210",
+  "name": "MOERS",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.5,
+  "gazLon": 6.6,
+  "solvedLat": 51.48,
+  "delta": -0.02
+ },
+ {
+  "id": "10214",
+  "name": "MORFELDEN - WALLDORF",
+  "state": "HESSEN",
+  "gazLat": 50,
+  "gazLon": 8.6,
+  "solvedLat": 49.99,
+  "delta": -0.01
+ },
+ {
+  "id": "10218",
+  "name": "NACHRODT",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.3,
+  "gazLon": 7.6,
+  "solvedLat": 51.33,
+  "delta": 0.03
+ },
+ {
+  "id": "10226",
+  "name": "NEUSS - NORF",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.2,
+  "gazLon": 6.7,
+  "solvedLat": 51.17,
+  "delta": -0.03
+ },
+ {
+  "id": "10230",
+  "name": "NIDDA",
+  "state": "HESSEN",
+  "gazLat": 50.4,
+  "gazLon": 9,
+  "solvedLat": 50.42,
+  "delta": 0.02
+ },
+ {
+  "id": "10234",
+  "name": "NORDENHAM",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 53.5,
+  "gazLon": 8.5,
+  "solvedLat": 53.51,
+  "delta": 0.01
+ },
+ {
+  "id": "10238",
+  "name": "ODENTHAL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51,
+  "gazLon": 7.1,
+  "solvedLat": 51.06,
+  "delta": 0.06
+ },
+ {
+  "id": "10242",
+  "name": "OLPE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51,
+  "gazLon": 7.9,
+  "solvedLat": 51.06,
+  "delta": 0.06
+ },
+ {
+  "id": "10246",
+  "name": "PARSBERG",
+  "state": "BAYERN",
+  "gazLat": 49.2,
+  "gazLon": 11.7,
+  "solvedLat": 49.16,
+  "delta": -0.04
+ },
+ {
+  "id": "10250",
+  "name": "PINNEBERG",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 53.7,
+  "gazLon": 9.8,
+  "solvedLat": 53.66,
+  "delta": -0.04
+ },
+ {
+  "id": "10254",
+  "name": "RANSBACH-BAUMBACH",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50.5,
+  "gazLon": 7.7,
+  "solvedLat": 50.49,
+  "delta": -0.01
+ },
+ {
+  "id": "10258",
+  "name": "REMAGEN",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50.6,
+  "gazLon": 7.2,
+  "solvedLat": 50.57,
+  "delta": -0.03
+ },
+ {
+  "id": "10262",
+  "name": "RHEINBERG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.6,
+  "gazLon": 6.6,
+  "solvedLat": 51.56,
+  "delta": -0.04
+ },
+ {
+  "id": "10266",
+  "name": "RINTELN",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.2,
+  "gazLon": 9.1,
+  "solvedLat": 52.21,
+  "delta": 0.01
+ },
+ {
+  "id": "10270",
+  "name": "ROTH",
+  "state": "BAYERN",
+  "gazLat": 49.2,
+  "gazLon": 11.1,
+  "solvedLat": 49.23,
+  "delta": 0.03
+ },
+ {
+  "id": "10274",
+  "name": "SCHIFFERSTADT",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 49.4,
+  "gazLon": 8.4,
+  "solvedLat": 49.39,
+  "delta": -0.01
+ },
+ {
+  "id": "10278",
+  "name": "SCHROBENHAUSEN",
+  "state": "BAYERN",
+  "gazLat": 48.6,
+  "gazLon": 11.3,
+  "solvedLat": 48.59,
+  "delta": -0.01
+ },
+ {
+  "id": "10282",
+  "name": "SCHWERTE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.4,
+  "gazLon": 7.6,
+  "solvedLat": 51.45,
+  "delta": 0.05
+ },
+ {
+  "id": "10286",
+  "name": "SENDENHORST",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.8,
+  "gazLon": 7.8,
+  "solvedLat": 51.85,
+  "delta": 0.05
+ },
+ {
+  "id": "10290",
+  "name": "SOEST",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.6,
+  "gazLon": 8.1,
+  "solvedLat": 51.56,
+  "delta": -0.04
+ },
+ {
+  "id": "10294",
+  "name": "SPEYER",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 49.3,
+  "gazLon": 8.4,
+  "solvedLat": 49.32,
+  "delta": 0.02
+ },
+ {
+  "id": "10298",
+  "name": "ST.INGBERT",
+  "state": "SAARLAND",
+  "gazLat": 49.3,
+  "gazLon": 7.1,
+  "solvedLat": 49.29,
+  "delta": -0.01
+ },
+ {
+  "id": "10302",
+  "name": "STADTLOHN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 52,
+  "gazLon": 6.9,
+  "solvedLat": 52.000000000000085,
+  "delta": 0
+ },
+ {
+  "id": "10306",
+  "name": "STEMWEDE-OPPENWEHE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 52.5,
+  "gazLon": 8.5,
+  "solvedLat": 52.47,
+  "delta": -0.03
+ },
+ {
+  "id": "10310",
+  "name": "SULZBACH",
+  "state": "SAARLAND",
+  "gazLat": 49.3,
+  "gazLon": 7.1,
+  "solvedLat": 49.30000000000005,
+  "delta": 0
+ },
+ {
+  "id": "10314",
+  "name": "UBACH-PALENBERG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.9,
+  "gazLon": 6.1,
+  "solvedLat": 50.94,
+  "delta": 0.04
+ },
+ {
+  "id": "10318",
+  "name": "UNNA",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.5,
+  "gazLon": 7.7,
+  "solvedLat": 51.55,
+  "delta": 0.05
+ },
+ {
+  "id": "10322",
+  "name": "VECHTA",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.7,
+  "gazLon": 8.3,
+  "solvedLat": 52.74,
+  "delta": 0.04
+ },
+ {
+  "id": "10326",
+  "name": "VIERSEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.3,
+  "gazLon": 6.4,
+  "solvedLat": 51.27,
+  "delta": -0.03
+ },
+ {
+  "id": "10330",
+  "name": "VOLKLINGEN",
+  "state": "SAARLAND",
+  "gazLat": 49.3,
+  "gazLon": 6.9,
+  "solvedLat": 49.25,
+  "delta": -0.05
+ },
+ {
+  "id": "10334",
+  "name": "WALTROP",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.6,
+  "gazLon": 7.4,
+  "solvedLat": 51.63,
+  "delta": 0.03
+ },
+ {
+  "id": "10338",
+  "name": "WASSENBERG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.1,
+  "gazLon": 6.1,
+  "solvedLat": 51.11,
+  "delta": 0.01
+ },
+ {
+  "id": "10342",
+  "name": "WEILBURG",
+  "state": "HESSEN",
+  "gazLat": 50.5,
+  "gazLon": 8.3,
+  "solvedLat": 50.49,
+  "delta": -0.01
+ },
+ {
+  "id": "10346",
+  "name": "WERL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.6,
+  "gazLon": 7.9,
+  "solvedLat": 51.57,
+  "delta": -0.03
+ },
+ {
+  "id": "10350",
+  "name": "WESSELING",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.8,
+  "gazLon": 7,
+  "solvedLat": 50.86,
+  "delta": 0.06
+ },
+ {
+  "id": "10354",
+  "name": "WIESLOCH",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49.3,
+  "gazLon": 8.7,
+  "solvedLat": 49.32,
+  "delta": 0.02
+ },
+ {
+  "id": "10358",
+  "name": "WIPPERFURTH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.1,
+  "gazLon": 7.4,
+  "solvedLat": 51.13,
+  "delta": 0.03
+ },
+ {
+  "id": "10363",
+  "name": "WULFRATH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.3,
+  "gazLon": 7.1,
+  "solvedLat": 51.300000000000075,
+  "delta": 0
+ },
+ {
+  "id": "10367",
+  "name": "WURSELEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.9,
+  "gazLon": 6.1,
+  "solvedLat": 50.88,
+  "delta": -0.02
+ },
+ {
+  "id": "10371",
+  "name": "HECHINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.4,
+  "gazLon": 9,
+  "solvedLat": 48.37,
+  "delta": -0.03
+ },
+ {
+  "id": "10375",
+  "name": "HERZOGENAURACH",
+  "state": "BAYERN",
+  "gazLat": 49.6,
+  "gazLon": 10.9,
+  "solvedLat": 49.59,
+  "delta": -0.01
+ },
+ {
+  "id": "10383",
+  "name": "HUFINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.9,
+  "gazLon": 8.5,
+  "solvedLat": 47.94,
+  "delta": 0.04
+ },
+ {
+  "id": "10387",
+  "name": "INNINGEN",
+  "state": "BAYERN",
+  "gazLat": 48.3,
+  "gazLon": 10.9,
+  "solvedLat": 48.29,
+  "delta": -0.01
+ },
+ {
+  "id": "10391",
+  "name": "BETTENHAUSEN",
+  "state": "HESSEN",
+  "gazLat": 51.3,
+  "gazLon": 9.5,
+  "solvedLat": 51.32,
+  "delta": 0.02
+ },
+ {
+  "id": "10395",
+  "name": "KIRCHHEIM  UNTER TECK",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.7,
+  "gazLon": 9.4,
+  "solvedLat": 48.66,
+  "delta": -0.04
+ },
+ {
+  "id": "10399",
+  "name": "KONIGSBRUNN",
+  "state": "BAYERN",
+  "gazLat": 48.3,
+  "gazLon": 10.9,
+  "solvedLat": 48.29,
+  "delta": -0.01
+ },
+ {
+  "id": "10403",
+  "name": "KREMMEN",
+  "state": "BRANDENBURG",
+  "gazLat": 52.8,
+  "gazLon": 13,
+  "solvedLat": 52.77,
+  "delta": -0.03
+ },
+ {
+  "id": "10407",
+  "name": "LANDSHUT",
+  "state": "BAYERN",
+  "gazLat": 48.5,
+  "gazLon": 12.1,
+  "solvedLat": 48.53,
+  "delta": 0.03
+ },
+ {
+  "id": "10411",
+  "name": "LAPPERSDORF",
+  "state": "BAYERN",
+  "gazLat": 49.1,
+  "gazLon": 12.1,
+  "solvedLat": 49.05,
+  "delta": -0.05
+ },
+ {
+  "id": "10415",
+  "name": "LAUENFORDE",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 51.7,
+  "gazLon": 10.4,
+  "solvedLat": 51.67,
+  "delta": -0.03
+ },
+ {
+  "id": "10419",
+  "name": "LAUPHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.2,
+  "gazLon": 9.9,
+  "solvedLat": 48.24,
+  "delta": 0.04
+ },
+ {
+  "id": "10423",
+  "name": "LEUTKIRCH",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.8,
+  "gazLon": 10,
+  "solvedLat": 47.84,
+  "delta": 0.04
+ },
+ {
+  "id": "10427",
+  "name": "LIPBACH",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.7,
+  "gazLon": 9.4,
+  "solvedLat": 47.700000000000024,
+  "delta": 0
+ },
+ {
+  "id": "10432",
+  "name": "LUCKENWALDE",
+  "state": "BRANDENBURG",
+  "gazLat": 52.1,
+  "gazLon": 13.2,
+  "solvedLat": 52.10000000000009,
+  "delta": 0
+ },
+ {
+  "id": "10436",
+  "name": "MARKT SCHWABEN",
+  "state": "BAYERN",
+  "gazLat": 48.2,
+  "gazLon": 11.9,
+  "solvedLat": 48.22,
+  "delta": 0.02
+ },
+ {
+  "id": "10444",
+  "name": "MESSKIRCH",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48,
+  "gazLon": 9.1,
+  "solvedLat": 48.01,
+  "delta": 0.01
+ },
+ {
+  "id": "10448",
+  "name": "MILTENBERG",
+  "state": "BAYERN",
+  "gazLat": 49.7,
+  "gazLon": 9.3,
+  "solvedLat": 49.72,
+  "delta": 0.02
+ },
+ {
+  "id": "10452",
+  "name": "MOSBACH",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49.4,
+  "gazLon": 9.1,
+  "solvedLat": 49.36,
+  "delta": -0.04
+ },
+ {
+  "id": "10456",
+  "name": "MURNAU",
+  "state": "BAYERN",
+  "gazLat": 47.7,
+  "gazLon": 11.2,
+  "solvedLat": 47.700000000000024,
+  "delta": 0
+ },
+ {
+  "id": "10460",
+  "name": "NERESHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.8,
+  "gazLon": 10.3,
+  "solvedLat": 48.78,
+  "delta": -0.02
+ },
+ {
+  "id": "10464",
+  "name": "NEUSTADT B. COBURG",
+  "state": "BAYERN",
+  "gazLat": 50.3,
+  "gazLon": 11.1,
+  "solvedLat": 50.33,
+  "delta": 0.03
+ },
+ {
+  "id": "10468",
+  "name": "NORTHEIM",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 51.7,
+  "gazLon": 10,
+  "solvedLat": 51.73,
+  "delta": 0.03
+ },
+ {
+  "id": "10472",
+  "name": "OHRINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49.2,
+  "gazLon": 9.5,
+  "solvedLat": 49.23,
+  "delta": 0.03
+ },
+ {
+  "id": "10476",
+  "name": "PEINE",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.3,
+  "gazLon": 10.2,
+  "solvedLat": 52.33,
+  "delta": 0.03
+ },
+ {
+  "id": "10480",
+  "name": "RADOLFZELL",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.7,
+  "gazLon": 9,
+  "solvedLat": 47.76,
+  "delta": 0.06
+ },
+ {
+  "id": "10484",
+  "name": "REHAU",
+  "state": "BAYERN",
+  "gazLat": 50.2,
+  "gazLon": 12,
+  "solvedLat": 50.25,
+  "delta": 0.05
+ },
+ {
+  "id": "10488",
+  "name": "SACHSENHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49,
+  "gazLon": 9.1,
+  "solvedLat": 48.98,
+  "delta": -0.02
+ },
+ {
+  "id": "10492",
+  "name": "SCHIRNDING",
+  "state": "BAYERN",
+  "gazLat": 50.1,
+  "gazLon": 12.2,
+  "solvedLat": 50.09,
+  "delta": -0.01
+ },
+ {
+  "id": "10496",
+  "name": "SCHWABACH",
+  "state": "BAYERN",
+  "gazLat": 49.3,
+  "gazLon": 11,
+  "solvedLat": 49.32,
+  "delta": 0.02
+ },
+ {
+  "id": "10500",
+  "name": "SEESEN",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 51.9,
+  "gazLon": 10.2,
+  "solvedLat": 51.89,
+  "delta": -0.01
+ },
+ {
+  "id": "10504",
+  "name": "SONTHEIM AN DER BRENZ",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.6,
+  "gazLon": 10.3,
+  "solvedLat": 48.56,
+  "delta": -0.04
+ },
+ {
+  "id": "10508",
+  "name": "STRAUBING",
+  "state": "BAYERN",
+  "gazLat": 48.9,
+  "gazLon": 12.6,
+  "solvedLat": 48.90000000000004,
+  "delta": 0
+ },
+ {
+  "id": "10512",
+  "name": "TROSTBERG AN DER ALZ",
+  "state": "BAYERN",
+  "gazLat": 48,
+  "gazLon": 12.6,
+  "solvedLat": 48.04,
+  "delta": 0.04
+ },
+ {
+  "id": "10516",
+  "name": "URBACH",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.8,
+  "gazLon": 9.6,
+  "solvedLat": 48.80000000000004,
+  "delta": 0
+ },
+ {
+  "id": "10528",
+  "name": "WEHINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.1,
+  "gazLon": 8.8,
+  "solvedLat": 48.14,
+  "delta": 0.04
+ },
+ {
+  "id": "10537",
+  "name": "WERTINGEN",
+  "state": "BAYERN",
+  "gazLat": 48.6,
+  "gazLon": 10.7,
+  "solvedLat": 48.56,
+  "delta": -0.04
+ },
+ {
+  "id": "10541",
+  "name": "WITTENBERGE",
+  "state": "BRANDENBURG",
+  "gazLat": 53,
+  "gazLon": 11.7,
+  "solvedLat": 53.03,
+  "delta": 0.03
+ },
+ {
+  "id": "10545",
+  "name": "ZEITZ",
+  "state": "SACHSEN ANHALT",
+  "gazLat": 51.1,
+  "gazLon": 12.1,
+  "solvedLat": 51.07,
+  "delta": -0.03
+ },
+ {
+  "id": "10550",
+  "name": "NURTINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.6,
+  "gazLon": 9.3,
+  "solvedLat": 48.64,
+  "delta": 0.04
+ },
+ {
+  "id": "10555",
+  "name": "OLDENBURG",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 53.2,
+  "gazLon": 8.2,
+  "solvedLat": 53.15,
+  "delta": -0.05
+ },
+ {
+  "id": "10559",
+  "name": "NEU ULM",
+  "state": "BAYERN",
+  "gazLat": 48.4,
+  "gazLon": 10,
+  "solvedLat": 48.39,
+  "delta": -0.01
+ },
+ {
+  "id": "10563",
+  "name": "UBERLINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.8,
+  "gazLon": 9.2,
+  "solvedLat": 47.800000000000026,
+  "delta": 0
+ },
+ {
+  "id": "10567",
+  "name": "BAD LAUTERBERG",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 51.7,
+  "gazLon": 10.5,
+  "solvedLat": 51.65,
+  "delta": -0.05
+ },
+ {
+  "id": "10571",
+  "name": "LOLLAR",
+  "state": "HESSEN",
+  "gazLat": 50.7,
+  "gazLon": 8.7,
+  "solvedLat": 50.67,
+  "delta": -0.03
+ },
+ {
+  "id": "10575",
+  "name": "NEUSS",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.2,
+  "gazLon": 6.7,
+  "solvedLat": 51.200000000000074,
+  "delta": 0
+ },
+ {
+  "id": "10579",
+  "name": "SCHOMBERG",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.8,
+  "gazLon": 8.6,
+  "solvedLat": 48.79,
+  "delta": -0.01
+ },
+ {
+  "id": "10583",
+  "name": "RECKLINGHAUSEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.6,
+  "gazLon": 7.2,
+  "solvedLat": 51.61,
+  "delta": 0.01
+ },
+ {
+  "id": "10587",
+  "name": "STEDERDORF (PEINE)",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.4,
+  "gazLon": 10.2,
+  "solvedLat": 52.37,
+  "delta": -0.03
+ },
+ {
+  "id": "10591",
+  "name": "GANDERKESEE",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 53,
+  "gazLon": 8.5,
+  "solvedLat": 53.05,
+  "delta": 0.05
+ },
+ {
+  "id": "10595",
+  "name": "STUHR",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 53,
+  "gazLon": 8.7,
+  "solvedLat": 53.05,
+  "delta": 0.05
+ },
+ {
+  "id": "10599",
+  "name": "HOHENSTEIN ERNSTTHAL",
+  "state": "SACHSEN",
+  "gazLat": 50.8,
+  "gazLon": 12.7,
+  "solvedLat": 50.81,
+  "delta": 0.01
+ },
+ {
+  "id": "10607",
+  "name": "FINSTERWALDE",
+  "state": "BRANDENBURG",
+  "gazLat": 51.6,
+  "gazLon": 13.7,
+  "solvedLat": 51.63,
+  "delta": 0.03
+ },
+ {
+  "id": "10611",
+  "name": "LUBBENAU",
+  "state": "BRANDENBURG",
+  "gazLat": 51.9,
+  "gazLon": 14,
+  "solvedLat": 51.87,
+  "delta": -0.03
+ },
+ {
+  "id": "10615",
+  "name": "DOBELN",
+  "state": "SACHSEN",
+  "gazLat": 51.1,
+  "gazLon": 13.1,
+  "solvedLat": 51.13,
+  "delta": 0.03
+ },
+ {
+  "id": "10619",
+  "name": "RADEBURG",
+  "state": "SACHSEN",
+  "gazLat": 51.2,
+  "gazLon": 13.7,
+  "solvedLat": 51.22,
+  "delta": 0.02
+ },
+ {
+  "id": "10627",
+  "name": "JENA",
+  "state": "THURINGEN",
+  "gazLat": 50.9,
+  "gazLon": 11.6,
+  "solvedLat": 50.94,
+  "delta": 0.04
+ },
+ {
+  "id": "10631",
+  "name": "BREDSTEDT",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 54.6,
+  "gazLon": 9,
+  "solvedLat": 54.62,
+  "delta": 0.02
+ },
+ {
+  "id": "10635",
+  "name": "NIEBULL",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 54.8,
+  "gazLon": 8.8,
+  "solvedLat": 54.79,
+  "delta": -0.01
+ },
+ {
+  "id": "10639",
+  "name": "FRANKFURT  ODER",
+  "state": "BRANDENBURG",
+  "gazLat": 52.3,
+  "gazLon": 14.5,
+  "solvedLat": 52.36,
+  "delta": 0.06
+ },
+ {
+  "id": "10643",
+  "name": "ADELEBSEN",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 51.6,
+  "gazLon": 9.7,
+  "solvedLat": 51.58,
+  "delta": -0.02
+ },
+ {
+  "id": "10651",
+  "name": "ROSDORF",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 51.5,
+  "gazLon": 9.9,
+  "solvedLat": 51.52,
+  "delta": 0.02
+ },
+ {
+  "id": "10655",
+  "name": "SEEVETAL",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 53.4,
+  "gazLon": 10,
+  "solvedLat": 53.39,
+  "delta": -0.01
+ },
+ {
+  "id": "10659",
+  "name": "BARSINGHAUSEN",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.3,
+  "gazLon": 9.5,
+  "solvedLat": 52.31,
+  "delta": 0.01
+ },
+ {
+  "id": "10663",
+  "name": "ISERNHAGEN F.B.",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.5,
+  "gazLon": 9.8,
+  "solvedLat": 52.47,
+  "delta": -0.03
+ },
+ {
+  "id": "10667",
+  "name": "SPRINGE",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.2,
+  "gazLon": 9.6,
+  "solvedLat": 52.23,
+  "delta": 0.03
+ },
+ {
+  "id": "10671",
+  "name": "MARNE",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 54,
+  "gazLon": 9,
+  "solvedLat": 53.97,
+  "delta": -0.03
+ },
+ {
+  "id": "10675",
+  "name": "MALENTE",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 54.2,
+  "gazLon": 10.6,
+  "solvedLat": 54.18,
+  "delta": -0.02
+ },
+ {
+  "id": "10683",
+  "name": "BAD SCHWARTAU",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 53.9,
+  "gazLon": 10.7,
+  "solvedLat": 53.94,
+  "delta": 0.04
+ },
+ {
+  "id": "10695",
+  "name": "HALDENSLEBEN",
+  "state": "SACHSEN ANHALT",
+  "gazLat": 52.3,
+  "gazLon": 11.4,
+  "solvedLat": 52.31,
+  "delta": 0.01
+ },
+ {
+  "id": "10699",
+  "name": "STRASSFURT",
+  "state": "THURINGEN",
+  "gazLat": 51.2,
+  "gazLon": 11,
+  "solvedLat": 51.17,
+  "delta": -0.03
+ },
+ {
+  "id": "10703",
+  "name": "DAMME",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.5,
+  "gazLon": 8.2,
+  "solvedLat": 52.51,
+  "delta": 0.01
+ },
+ {
+  "id": "10708",
+  "name": "KOHLSCHEID",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.8,
+  "gazLon": 6.1,
+  "solvedLat": 50.86,
+  "delta": 0.06
+ },
+ {
+  "id": "10712",
+  "name": "HIDDENHAUSEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 52.2,
+  "gazLon": 8.6,
+  "solvedLat": 52.18,
+  "delta": -0.02
+ },
+ {
+  "id": "10716",
+  "name": "MECHERNICH",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.6,
+  "gazLon": 6.6,
+  "solvedLat": 50.61,
+  "delta": 0.01
+ },
+ {
+  "id": "10724",
+  "name": "ASSELN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.7,
+  "gazLon": 8.9,
+  "solvedLat": 51.65,
+  "delta": -0.05
+ },
+ {
+  "id": "10728",
+  "name": "ENNEPETAL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.3,
+  "gazLon": 7.3,
+  "solvedLat": 51.32,
+  "delta": 0.02
+ },
+ {
+  "id": "10732",
+  "name": "BRUCHK\u00d6BEL",
+  "state": "HESSEN",
+  "gazLat": 50.2,
+  "gazLon": 8.9,
+  "solvedLat": 50.20000000000006,
+  "delta": 0
+ },
+ {
+  "id": "10736",
+  "name": "ANNWEILER",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 49.2,
+  "gazLon": 8,
+  "solvedLat": 49.200000000000045,
+  "delta": 0
+ },
+ {
+  "id": "10741",
+  "name": "RULZHEIM",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 49.2,
+  "gazLon": 8.3,
+  "solvedLat": 49.17,
+  "delta": -0.03
+ },
+ {
+  "id": "10745",
+  "name": "NORDKIRCHEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.7,
+  "gazLon": 7.5,
+  "solvedLat": 51.74,
+  "delta": 0.04
+ },
+ {
+  "id": "10749",
+  "name": "BOPPARD",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50.2,
+  "gazLon": 7.6,
+  "solvedLat": 50.22,
+  "delta": 0.02
+ },
+ {
+  "id": "10753",
+  "name": "LAHNSTEIN",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50.3,
+  "gazLon": 7.6,
+  "solvedLat": 50.30000000000006,
+  "delta": 0
+ },
+ {
+  "id": "10757",
+  "name": "HUTZEMERT",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51,
+  "gazLon": 7.7,
+  "solvedLat": 51.03,
+  "delta": 0.03
+ },
+ {
+  "id": "10761",
+  "name": "KEMPEN (NRW)",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.4,
+  "gazLon": 6.4,
+  "solvedLat": 51.38,
+  "delta": -0.02
+ },
+ {
+  "id": "10765",
+  "name": "ELTVILLE",
+  "state": "HESSEN",
+  "gazLat": 50,
+  "gazLon": 8.1,
+  "solvedLat": 50.02,
+  "delta": 0.02
+ },
+ {
+  "id": "10769",
+  "name": "RAUNHEIM",
+  "state": "HESSEN",
+  "gazLat": 50,
+  "gazLon": 8.5,
+  "solvedLat": 50.02,
+  "delta": 0.02
+ },
+ {
+  "id": "10773",
+  "name": "HALLE (NRW)",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 52.1,
+  "gazLon": 8.4,
+  "solvedLat": 52.08,
+  "delta": -0.02
+ },
+ {
+  "id": "10777",
+  "name": "PUTTLINGEN",
+  "state": "SAARLAND",
+  "gazLat": 49.3,
+  "gazLon": 6.9,
+  "solvedLat": 49.30000000000005,
+  "delta": 0
+ },
+ {
+  "id": "10781",
+  "name": "EPPERTSHAUSEN",
+  "state": "HESSEN",
+  "gazLat": 49.9,
+  "gazLon": 8.8,
+  "solvedLat": 49.97,
+  "delta": 0.07
+ },
+ {
+  "id": "10789",
+  "name": "NEUSES",
+  "state": "BAYERN",
+  "gazLat": 48.4,
+  "gazLon": 10.8,
+  "solvedLat": 48.41,
+  "delta": 0.01
+ },
+ {
+  "id": "10793",
+  "name": "TITISEE-NEUSTADT",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.9,
+  "gazLon": 8.2,
+  "solvedLat": 47.90000000000003,
+  "delta": 0
+ },
+ {
+  "id": "10797",
+  "name": "MARKNEUKIRCHEN",
+  "state": "SACHSEN ANHALT",
+  "gazLat": 50.3,
+  "gazLon": 12.3,
+  "solvedLat": 50.33,
+  "delta": 0.03
+ },
+ {
+  "id": "10801",
+  "name": "PLAUEN",
+  "state": "SACHSEN",
+  "gazLat": 50.5,
+  "gazLon": 12.1,
+  "solvedLat": 50.52,
+  "delta": 0.02
+ },
+ {
+  "id": "10805",
+  "name": "WORTH AM RHEIN",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 49.1,
+  "gazLon": 8.3,
+  "solvedLat": 49.05,
+  "delta": -0.05
+ },
+ {
+  "id": "10809",
+  "name": "MENGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.1,
+  "gazLon": 9.3,
+  "solvedLat": 48.06,
+  "delta": -0.04
+ },
+ {
+  "id": "10814",
+  "name": "ESSENBACH (Landshut)",
+  "state": "BAYERN",
+  "gazLat": 48.6,
+  "gazLon": 12.2,
+  "solvedLat": 48.62,
+  "delta": 0.02
+ },
+ {
+  "id": "10818",
+  "name": "ERDING",
+  "state": "BAYERN",
+  "gazLat": 48.3,
+  "gazLon": 11.9,
+  "solvedLat": 48.31,
+  "delta": 0.01
+ },
+ {
+  "id": "10826",
+  "name": "PEGNITZ",
+  "state": "BAYERN",
+  "gazLat": 49.8,
+  "gazLon": 11.5,
+  "solvedLat": 49.76,
+  "delta": -0.04
+ },
+ {
+  "id": "10834",
+  "name": "ERGOLDSBACH",
+  "state": "BAYERN",
+  "gazLat": 48.7,
+  "gazLon": 12.2,
+  "solvedLat": 48.68,
+  "delta": -0.02
+ },
+ {
+  "id": "10838",
+  "name": "RODING",
+  "state": "BAYERN",
+  "gazLat": 49.2,
+  "gazLon": 12.5,
+  "solvedLat": 49.23,
+  "delta": 0.03
+ },
+ {
+  "id": "10843",
+  "name": "PFULLINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.5,
+  "gazLon": 9.2,
+  "solvedLat": 48.45,
+  "delta": -0.05
+ },
+ {
+  "id": "10847",
+  "name": "ALTHENGSTETT",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.7,
+  "gazLon": 8.8,
+  "solvedLat": 48.73,
+  "delta": 0.03
+ },
+ {
+  "id": "10851",
+  "name": "WILDBERG",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.6,
+  "gazLon": 8.8,
+  "solvedLat": 48.64,
+  "delta": 0.04
+ },
+ {
+  "id": "10855",
+  "name": "EISLINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.7,
+  "gazLon": 9.7,
+  "solvedLat": 48.69,
+  "delta": -0.01
+ },
+ {
+  "id": "10859",
+  "name": "DILLINGEN AN DER DONAU",
+  "state": "BAYERN",
+  "gazLat": 48.6,
+  "gazLon": 10.5,
+  "solvedLat": 48.61,
+  "delta": 0.01
+ },
+ {
+  "id": "10863",
+  "name": "OCHSENFURT",
+  "state": "BAYERN",
+  "gazLat": 49.7,
+  "gazLon": 10.1,
+  "solvedLat": 49.68,
+  "delta": -0.02
+ },
+ {
+  "id": "10867",
+  "name": "LUDENSCHEID",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.2,
+  "gazLon": 7.6,
+  "solvedLat": 51.24,
+  "delta": 0.04
+ },
+ {
+  "id": "10871",
+  "name": "ANKUM",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.5,
+  "gazLon": 7.9,
+  "solvedLat": 52.55,
+  "delta": 0.05
+ },
+ {
+  "id": "10875",
+  "name": "MAGDEBURG",
+  "state": "SACHSEN ANHALT",
+  "gazLat": 52.1,
+  "gazLon": 11.6,
+  "solvedLat": 52.14,
+  "delta": 0.04
+ },
+ {
+  "id": "10880",
+  "name": "OSTSTEINBEK",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 53.5,
+  "gazLon": 10.2,
+  "solvedLat": 53.54,
+  "delta": 0.04
+ },
+ {
+  "id": "10884",
+  "name": "ALSDORF",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.9,
+  "gazLon": 6.2,
+  "solvedLat": 50.88,
+  "delta": -0.02
+ },
+ {
+  "id": "10888",
+  "name": "ALTENKIRCHEN",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50.7,
+  "gazLon": 7.6,
+  "solvedLat": 50.69,
+  "delta": -0.01
+ },
+ {
+  "id": "10892",
+  "name": "ARNSBERG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.4,
+  "gazLon": 8.1,
+  "solvedLat": 51.40000000000008,
+  "delta": 0
+ },
+ {
+  "id": "10896",
+  "name": "ATTENDORN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.1,
+  "gazLon": 7.9,
+  "solvedLat": 51.15,
+  "delta": 0.05
+ },
+ {
+  "id": "10900",
+  "name": "BAD CAMBERG",
+  "state": "HESSEN",
+  "gazLat": 50.3,
+  "gazLon": 8.3,
+  "solvedLat": 50.33,
+  "delta": 0.03
+ },
+ {
+  "id": "10904",
+  "name": "BAD HONNEF AM RHEIN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.7,
+  "gazLon": 7.2,
+  "solvedLat": 50.65,
+  "delta": -0.05
+ },
+ {
+  "id": "10908",
+  "name": "BAD SACKINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.6,
+  "gazLon": 7.9,
+  "solvedLat": 47.58,
+  "delta": -0.02
+ },
+ {
+  "id": "10912",
+  "name": "BAD WILDUNGEN",
+  "state": "HESSEN",
+  "gazLat": 51.1,
+  "gazLon": 9.1,
+  "solvedLat": 51.13,
+  "delta": 0.03
+ },
+ {
+  "id": "10916",
+  "name": "BECKUM",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.8,
+  "gazLon": 8,
+  "solvedLat": 51.76,
+  "delta": -0.04
+ },
+ {
+  "id": "10920",
+  "name": "BERGHEIM",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51,
+  "gazLon": 6.6,
+  "solvedLat": 50.96,
+  "delta": -0.04
+ },
+ {
+  "id": "10924",
+  "name": "BESTWIG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.4,
+  "gazLon": 8.4,
+  "solvedLat": 51.36,
+  "delta": -0.04
+ },
+ {
+  "id": "10928",
+  "name": "BIEDENKOPF",
+  "state": "HESSEN",
+  "gazLat": 50.9,
+  "gazLon": 8.5,
+  "solvedLat": 50.94,
+  "delta": 0.04
+ },
+ {
+  "id": "10932",
+  "name": "BLOMBERG",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 52,
+  "gazLon": 9.1,
+  "solvedLat": 51.95,
+  "delta": -0.05
+ },
+ {
+  "id": "10936",
+  "name": "BOFFZEN",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 51.8,
+  "gazLon": 9.4,
+  "solvedLat": 51.76,
+  "delta": -0.04
+ },
+ {
+  "id": "10940",
+  "name": "BORKEN (HESSEN)",
+  "state": "HESSEN",
+  "gazLat": 51.1,
+  "gazLon": 9.3,
+  "solvedLat": 51.06,
+  "delta": -0.04
+ },
+ {
+  "id": "10944",
+  "name": "BRAKE",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 53.3,
+  "gazLon": 8.5,
+  "solvedLat": 53.32,
+  "delta": 0.02
+ },
+ {
+  "id": "10948",
+  "name": "BLUMENTHAL",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 53.2,
+  "gazLon": 8.6,
+  "solvedLat": 53.18,
+  "delta": -0.02
+ },
+ {
+  "id": "10952",
+  "name": "BRILON",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.4,
+  "gazLon": 8.6,
+  "solvedLat": 51.40000000000008,
+  "delta": 0
+ },
+ {
+  "id": "10956",
+  "name": "BUCKEBURG",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.3,
+  "gazLon": 9,
+  "solvedLat": 52.27,
+  "delta": -0.03
+ },
+ {
+  "id": "10960",
+  "name": "BULLAY",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50.1,
+  "gazLon": 7.1,
+  "solvedLat": 50.05,
+  "delta": -0.05
+ },
+ {
+  "id": "10964",
+  "name": "CASTROP-RAUXEL",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.6,
+  "gazLon": 7.3,
+  "solvedLat": 51.57,
+  "delta": -0.03
+ },
+ {
+  "id": "10968",
+  "name": "DATTELN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.7,
+  "gazLon": 7.4,
+  "solvedLat": 51.67,
+  "delta": -0.03
+ },
+ {
+  "id": "10972",
+  "name": "DIEBURG",
+  "state": "HESSEN",
+  "gazLat": 49.9,
+  "gazLon": 8.8,
+  "solvedLat": 49.93,
+  "delta": 0.03
+ },
+ {
+  "id": "10976",
+  "name": "DISSEN",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.1,
+  "gazLon": 8.2,
+  "solvedLat": 52.12,
+  "delta": 0.02
+ },
+ {
+  "id": "10980",
+  "name": "DRENSTEINFURT",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.8,
+  "gazLon": 7.7,
+  "solvedLat": 51.81,
+  "delta": 0.01
+ },
+ {
+  "id": "10984",
+  "name": "DULMEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.8,
+  "gazLon": 7.3,
+  "solvedLat": 51.85,
+  "delta": 0.05
+ },
+ {
+  "id": "10988",
+  "name": "EITORF",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.8,
+  "gazLon": 7.4,
+  "solvedLat": 50.76,
+  "delta": -0.04
+ },
+ {
+  "id": "10992",
+  "name": "EMMELSHAUSEN",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50.2,
+  "gazLon": 7.6,
+  "solvedLat": 50.16,
+  "delta": -0.04
+ },
+ {
+  "id": "10996",
+  "name": "ERBACH",
+  "state": "HESSEN",
+  "gazLat": 49.7,
+  "gazLon": 9,
+  "solvedLat": 49.68,
+  "delta": -0.02
+ },
+ {
+  "id": "11000",
+  "name": "ESCHBORN",
+  "state": "HESSEN",
+  "gazLat": 50.1,
+  "gazLon": 8.5,
+  "solvedLat": 50.14,
+  "delta": 0.04
+ },
+ {
+  "id": "11004",
+  "name": "BONN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.7,
+  "gazLon": 7.1,
+  "solvedLat": 50.75,
+  "delta": 0.05
+ },
+ {
+  "id": "11008",
+  "name": "DUSSELDORF",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.3,
+  "gazLon": 6.8,
+  "solvedLat": 51.25,
+  "delta": -0.05
+ },
+ {
+  "id": "11012",
+  "name": "HAMBURG",
+  "state": "HAMBURG",
+  "gazLat": 53.6,
+  "gazLon": 10,
+  "solvedLat": 53.56,
+  "delta": -0.04
+ },
+ {
+  "id": "11016",
+  "name": "KIEL",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 54.3,
+  "gazLon": 10.1,
+  "solvedLat": 54.31,
+  "delta": 0.01
+ },
+ {
+  "id": "11020",
+  "name": "MAINZ",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50,
+  "gazLon": 8.3,
+  "solvedLat": 50.02,
+  "delta": 0.02
+ },
+ {
+  "id": "11024",
+  "name": "NURNBERG",
+  "state": "BAYERN",
+  "gazLat": 49.5,
+  "gazLon": 11.1,
+  "solvedLat": 49.45,
+  "delta": -0.05
+ },
+ {
+  "id": "11028",
+  "name": "ULM",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.4,
+  "gazLon": 10,
+  "solvedLat": 48.39,
+  "delta": -0.01
+ },
+ {
+  "id": "11032",
+  "name": "GIESSEN",
+  "state": "HESSEN",
+  "gazLat": 50.6,
+  "gazLon": 8.7,
+  "solvedLat": 50.58,
+  "delta": -0.02
+ },
+ {
+  "id": "11036",
+  "name": "AUGSBURG",
+  "state": "BAYERN",
+  "gazLat": 48.4,
+  "gazLon": 10.9,
+  "solvedLat": 48.37,
+  "delta": -0.03
+ },
+ {
+  "id": "11041",
+  "name": "WAIBLINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.8,
+  "gazLon": 9.3,
+  "solvedLat": 48.83,
+  "delta": 0.03
+ },
+ {
+  "id": "11045",
+  "name": "RAVENSBURG",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.8,
+  "gazLon": 9.6,
+  "solvedLat": 47.800000000000026,
+  "delta": 0
+ },
+ {
+  "id": "11049",
+  "name": "SCHWABISCH GMUND",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.8,
+  "gazLon": 9.8,
+  "solvedLat": 48.83,
+  "delta": 0.03
+ },
+ {
+  "id": "11053",
+  "name": "ROTTWEIL",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.2,
+  "gazLon": 8.6,
+  "solvedLat": 48.20000000000003,
+  "delta": 0
+ },
+ {
+  "id": "11057",
+  "name": "AHLEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.8,
+  "gazLon": 7.9,
+  "solvedLat": 51.79,
+  "delta": -0.01
+ },
+ {
+  "id": "11063",
+  "name": "MULLHEIM",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.8,
+  "gazLon": 7.6,
+  "solvedLat": 47.81,
+  "delta": 0.01
+ },
+ {
+  "id": "11067",
+  "name": "BAMBERG",
+  "state": "BAYERN",
+  "gazLat": 49.9,
+  "gazLon": 10.9,
+  "solvedLat": 49.92,
+  "delta": 0.02
+ },
+ {
+  "id": "11072",
+  "name": "ROTTENBURG",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.5,
+  "gazLon": 8.9,
+  "solvedLat": 48.51,
+  "delta": 0.01
+ },
+ {
+  "id": "11076",
+  "name": "REMSCHEID",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.2,
+  "gazLon": 7.2,
+  "solvedLat": 51.200000000000074,
+  "delta": 0
+ },
+ {
+  "id": "11080",
+  "name": "HERRENBERG",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.6,
+  "gazLon": 8.9,
+  "solvedLat": 48.59,
+  "delta": -0.01
+ },
+ {
+  "id": "11084",
+  "name": "BERGKAMEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.6,
+  "gazLon": 7.6,
+  "solvedLat": 51.63,
+  "delta": 0.03
+ },
+ {
+  "id": "11088",
+  "name": "WORMS",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 49.6,
+  "gazLon": 8.4,
+  "solvedLat": 49.66,
+  "delta": 0.06
+ },
+ {
+  "id": "11093",
+  "name": "MAULBRONN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 49,
+  "gazLon": 8.8,
+  "solvedLat": 49.00000000000004,
+  "delta": 0
+ },
+ {
+  "id": "11097",
+  "name": "WEIMAR",
+  "state": "THURINGEN",
+  "gazLat": 51,
+  "gazLon": 11.3,
+  "solvedLat": 51.00000000000007,
+  "delta": 0
+ },
+ {
+  "id": "11101",
+  "name": "LUNEBURG",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 53.3,
+  "gazLon": 10.4,
+  "solvedLat": 53.28,
+  "delta": -0.02
+ },
+ {
+  "id": "11105",
+  "name": "GOTTINGEN",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 51.5,
+  "gazLon": 9.9,
+  "solvedLat": 51.55,
+  "delta": 0.05
+ },
+ {
+  "id": "11110",
+  "name": "ALLACH",
+  "state": "BAYERN",
+  "gazLat": 48.2,
+  "gazLon": 11.4,
+  "solvedLat": 48.20000000000003,
+  "delta": 0
+ },
+ {
+  "id": "11114",
+  "name": "GRONAU",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 52.2,
+  "gazLon": 7,
+  "solvedLat": 52.25,
+  "delta": 0.05
+ },
+ {
+  "id": "11118",
+  "name": "FLENSBURG",
+  "state": "SCHLESWIG HOLSTEIN",
+  "gazLat": 54.8,
+  "gazLon": 9.4,
+  "solvedLat": 54.800000000000125,
+  "delta": 0
+ },
+ {
+  "id": "11122",
+  "name": "DUREN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.8,
+  "gazLon": 6.5,
+  "solvedLat": 50.81,
+  "delta": 0.01
+ },
+ {
+  "id": "11126",
+  "name": "BOCHUM",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.5,
+  "gazLon": 7.2,
+  "solvedLat": 51.48,
+  "delta": -0.02
+ },
+ {
+  "id": "16705",
+  "name": "OBERHAUSEN ",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.5,
+  "gazLon": 6.8,
+  "solvedLat": 51.52,
+  "delta": 0.02
+ },
+ {
+  "id": "16752",
+  "name": "KIRCHSEEON",
+  "state": "BAYERN",
+  "gazLat": 48.1,
+  "gazLon": 11.9,
+  "solvedLat": 48.07,
+  "delta": -0.03
+ },
+ {
+  "id": "16757",
+  "name": "LEIPHEIM",
+  "state": "BAYERN",
+  "gazLat": 48.5,
+  "gazLon": 10.2,
+  "solvedLat": 48.45,
+  "delta": -0.05
+ },
+ {
+  "id": "16761",
+  "name": "WEINGARTEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 47.8,
+  "gazLon": 9.6,
+  "solvedLat": 47.82,
+  "delta": 0.02
+ },
+ {
+  "id": "17802",
+  "name": "NORDEN",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 53.6,
+  "gazLon": 7.2,
+  "solvedLat": 53.59,
+  "delta": -0.01
+ },
+ {
+  "id": "17924",
+  "name": "BAD NEUENAHR-AHRWEILER",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50.5,
+  "gazLon": 7.1,
+  "solvedLat": 50.57,
+  "delta": 0.07
+ },
+ {
+  "id": "17931",
+  "name": "CLAUSTHAL-ZELLERFELD",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 51.8,
+  "gazLon": 10.3,
+  "solvedLat": 51.83,
+  "delta": 0.03
+ },
+ {
+  "id": "17935",
+  "name": "NEUBECKUM",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.8,
+  "gazLon": 8,
+  "solvedLat": 51.79,
+  "delta": -0.01
+ },
+ {
+  "id": "18946",
+  "name": "KIERSPE",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.1,
+  "gazLon": 7.6,
+  "solvedLat": 51.15,
+  "delta": 0.05
+ },
+ {
+  "id": "18950",
+  "name": "RENNINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.8,
+  "gazLon": 8.9,
+  "solvedLat": 48.78,
+  "delta": -0.02
+ },
+ {
+  "id": "18957",
+  "name": "ACHIM",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 53,
+  "gazLon": 9,
+  "solvedLat": 53.05,
+  "delta": 0.05
+ },
+ {
+  "id": "18963",
+  "name": "DREIEICH",
+  "state": "HESSEN",
+  "gazLat": 50,
+  "gazLon": 8.7,
+  "solvedLat": 50.05,
+  "delta": 0.05
+ },
+ {
+  "id": "20024",
+  "name": "RENNEROD",
+  "state": "RHEINLAND-PFALZ",
+  "gazLat": 50.6,
+  "gazLon": 8.1,
+  "solvedLat": 50.61,
+  "delta": 0.01
+ },
+ {
+  "id": "20028",
+  "name": "SUNDERN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.3,
+  "gazLon": 8,
+  "solvedLat": 51.34,
+  "delta": 0.04
+ },
+ {
+  "id": "20090",
+  "name": "MEPPEN",
+  "state": "NIEDERSACHSEN",
+  "gazLat": 52.7,
+  "gazLon": 7.3,
+  "solvedLat": 52.700000000000095,
+  "delta": 0
+ },
+ {
+  "id": "21149",
+  "name": "EMSDETTEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 52.2,
+  "gazLon": 7.5,
+  "solvedLat": 52.18,
+  "delta": -0.02
+ },
+ {
+  "id": "21153",
+  "name": "BEILNGRIES",
+  "state": "BAYERN",
+  "gazLat": 49,
+  "gazLon": 11.5,
+  "solvedLat": 49.05,
+  "delta": 0.05
+ },
+ {
+  "id": "21157",
+  "name": "M\u00d6SSINGEN",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.4,
+  "gazLon": 9.1,
+  "solvedLat": 48.42,
+  "delta": 0.02
+ },
+ {
+  "id": "21168",
+  "name": "RAIN",
+  "state": "BAYERN",
+  "gazLat": 48.7,
+  "gazLon": 10.9,
+  "solvedLat": 48.70000000000004,
+  "delta": 0
+ },
+ {
+  "id": "33305",
+  "name": "AACHEN",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 50.8,
+  "gazLon": 6.1,
+  "solvedLat": 50.78,
+  "delta": -0.02
+ },
+ {
+  "id": "9978",
+  "name": "KRAY",
+  "state": "NORDRHEIN-WESTFALEN",
+  "gazLat": 51.5,
+  "gazLon": 7.1,
+  "solvedLat": 51.47,
+  "delta": -0.03
+ },
+ {
+  "id": "9982",
+  "name": "FRANKENBERG /EDER",
+  "state": "HESSEN",
+  "gazLat": 51.1,
+  "gazLon": 8.8,
+  "solvedLat": 51.07,
+  "delta": -0.03
+ },
+ {
+  "id": "9986",
+  "name": "FREYSTADT",
+  "state": "BAYERN",
+  "gazLat": 49.2,
+  "gazLon": 11.3,
+  "solvedLat": 49.200000000000045,
+  "delta": 0
+ },
+ {
+  "id": "9994",
+  "name": "GAGGENAU",
+  "state": "BADEN WURTTEMBERG",
+  "gazLat": 48.8,
+  "gazLon": 8.3,
+  "solvedLat": 48.80000000000004,
+  "delta": 0
+ },
+ {
+  "id": "9998",
+  "name": "GEISENFELD",
+  "state": "BAYERN",
+  "gazLat": 48.7,
+  "gazLon": 11.6,
+  "solvedLat": 48.71,
+  "delta": 0.01
+ }
+]

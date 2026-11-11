@@ -1,0 +1,61 @@
+ag St. john's           30d 2026-09-01..2026-09-30 tz America/Antigua (-240) gate 1m | fajr 18 isha 17 Shafi | joint 93/150 of 150 (100.0pc) worst 1 | Muslim World League
+am Yerevan              30d 2026-09-01..2026-09-30 tz Asia/Yerevan (240) gate 1m | fajr 18 isha 17 Shafi | joint 91/150 of 150 (100.0pc) worst 1 | Muslim World League
+bi Gitega               30d 2026-09-01..2026-09-30 tz Africa/Bujumbura (120) gate 1m | fajr 18 isha 17 Shafi | joint 113/150 of 150 (100.0pc) worst 1 | Muslim World League
+bn Bandar seri begawan  30d 2026-09-01..2026-09-30 tz Asia/Brunei (480) gate 1m | fajr 20 isha 18 Shafi | joint 129/150 of 150 (100.0pc) worst 1 | Brunei Accurate Prayer Times
+bo Sucre                30d 2026-09-01..2026-09-30 tz America/La_Paz (-240) gate 2m | fajr 18 isha 17 Shafi | joint 98/149 of 150 (99.3pc) worst 2 | Muslim World League
+br Brasília             30d 2026-09-01..2026-09-30 tz America/Sao_Paulo (-180) gate 2m | fajr 18 isha 17 Shafi | joint 103/149 of 150 (99.3pc) worst 2 | Muslim World League
+bs Nassau               30d 2026-09-01..2026-09-30 tz America/Nassau (-240) gate 1m | fajr 18 isha 17 Shafi | joint 88/150 of 150 (100.0pc) worst 1 | Muslim World League
+bt Thimphu              30d 2026-09-01..2026-09-30 tz Asia/Thimphu (360) gate 1m | fajr 18 isha 17 Shafi | joint 103/150 of 150 (100.0pc) worst 1 | Muslim World League
+bz Belmopan             30d 2026-09-01..2026-09-30 tz America/Belize (-360) gate 1m | fajr 18 isha 17 Shafi | joint 93/150 of 150 (100.0pc) worst 1 | Muslim World League
+cd Kinshasa             30d 2026-09-01..2026-09-30 tz Africa/Kinshasa (60) gate 1m | fajr 18 isha 17 Shafi | joint 111/150 of 150 (100.0pc) worst 1 | Muslim World League
+ch Bern                 30d 2026-09-01..2026-09-30 tz Europe/Zurich (120) gate 9m | fajr 15 isha 16.5 Shafi | joint 26/61 of 150 (40.7pc) worst 9 | Mosque Prayer Times
+co Bogotá               30d 2026-09-01..2026-09-30 tz America/Bogota (-300) gate 1m | fajr 18 isha 17 Shafi | joint 102/150 of 150 (100.0pc) worst 1 | Muslim World League
+dm Roseau               30d 2026-09-01..2026-09-30 tz America/Dominica (-240) gate 2m | fajr 18 isha 17 Shafi | joint 81/138 of 150 (92.0pc) worst 2 | Mosque Prayer Times
+dz Algiers              30d 2026-09-01..2026-09-30 tz Africa/Algiers (60) gate 1m | fajr 17.5 isha 17 Shafi | joint 56/90 of 150 (60.0pc) worst 3 | Mosque Prayer Times
+et Addis ababa          30d 2026-09-01..2026-09-30 tz Africa/Addis_Ababa (180) gate 1m | fajr 18 isha 17 Shafi | joint 99/150 of 150 (100.0pc) worst 1 | Muslim World League
+fj Suva                 30d 2026-09-01..2026-09-30 tz Pacific/Fiji (720) gate 1m | fajr 18 isha 17 Shafi | joint 114/150 of 150 (100.0pc) worst 1 | Muslim World League
+gd St. george's         30d 2026-09-01..2026-09-30 tz America/Grenada (-240) gate 1m | fajr 18 isha 17 Shafi | joint 97/150 of 150 (100.0pc) worst 1 | Muslim World League
+ge Sukhumi              30d 2026-09-01..2026-09-30 tz Asia/Tbilisi (240) gate 1m | fajr 18 isha 17 Shafi | joint 89/150 of 150 (100.0pc) worst 1 | Muslim World League
+gm Banjul               30d 2026-09-01..2026-09-30 tz Africa/Banjul (0) gate 1m | fajr 18 isha 17 Shafi | joint 70/137 of 150 (91.3pc) worst 2 | Mosque Prayer Times
+il Jerusalem            30d 2026-09-01..2026-09-30 tz Asia/Jerusalem (180) gate 2m | fajr 18 isha 18 Shafi | joint 73/105 of 150 (70.0pc) worst 7 | Mosque Prayer Times
+in Delhi                30d 2026-09-01..2026-09-30 tz Asia/Kolkata (330) gate 1m | fajr 18 isha 17 Shafi | joint 104/150 of 150 (100.0pc) worst 1 | Muslim World League
+ir Tehran               30d 2026-09-01..2026-09-30 tz Asia/Tehran (210) gate 2m | fajr 18 isha 17 Shafi | joint 95/149 of 150 (99.3pc) worst 2 | Muslim World League
+ki South tarawa         30d 2026-09-01..2026-09-30 tz Pacific/Tarawa (720) gate 1m | fajr 18 isha 17 Shafi | joint 118/150 of 150 (100.0pc) worst 1 | Muslim World League
+kn Basseterre           30d 2026-09-01..2026-09-30 tz America/St_Kitts (-240) gate 1m | fajr 18 isha 17 Shafi | joint 91/150 of 150 (100.0pc) worst 1 | Muslim World League
+lc Castries             30d 2026-09-01..2026-09-30 tz America/St_Lucia (-240) gate 2m | fajr 14 isha 17.5 Shafi | joint 26/70 of 150 (46.7pc) worst 91 | Mosque Prayer Times
+ly Tripoli              30d 2026-09-01..2026-09-30 tz Africa/Tripoli (120) gate 3m | fajr 18.5 isha 18.5 Shafi | joint 49/90 of 150 (60.0pc) worst 4 | Libya Prayer Times
+mc Monaco               30d 2026-09-01..2026-09-30 tz Europe/Monaco (120) gate 4m | fajr 14 isha 14 Shafi | joint 55/60 of 150 (40.0pc) worst 8 | UMAM - Union des Musulmans des Alpes-Maritimes
+md Tiraspol             30d 2026-09-01..2026-09-30 tz Europe/Chisinau (180) gate 2m | fajr 18 isha 17 Shafi | joint 86/149 of 150 (99.3pc) worst 2 | Muslim World League
+mg Antananarivo         30d 2026-09-01..2026-09-30 tz Indian/Antananarivo (180) gate 1m | fajr 18 isha 17 Shafi | joint 110/150 of 150 (100.0pc) worst 1 | Muslim World League
+mh Majuro               30d 2026-09-01..2026-09-30 tz Pacific/Majuro (720) gate 1m | fajr 18 isha 17 Shafi | joint 116/150 of 150 (100.0pc) worst 1 | Muslim World League
+mm Naypyidaw            30d 2026-09-01..2026-09-30 tz Asia/Yangon (390) gate 1m | fajr 18 isha 17 Shafi | joint 106/150 of 150 (100.0pc) worst 1 | Muslim World League
+mt Valletta             30d 2026-09-01..2026-09-30 tz Europe/Malta (120) gate 1m | fajr 18 isha 17.5 Shafi | joint 60/90 of 150 (60.0pc) worst 3 | Mosque Prayer Times
+mx Mexico city          30d 2026-09-01..2026-09-30 tz America/Mexico_City (-360) gate 2m | fajr 18 isha 17 Shafi | joint 88/149 of 150 (99.3pc) worst 2 | Muslim World League
+ne Niamey               30d 2026-09-01..2026-09-30 tz Africa/Niamey (60) gate 2m | fajr 19.5 isha 16.5 Shafi | joint 54/139 of 150 (92.7pc) worst 2 | Mosque Prayer Times
+np Kathmandu            30d 2026-09-01..2026-09-30 tz Asia/Kathmandu (345) gate 2m | fajr 18 isha 17 Shafi | joint 102/149 of 150 (99.3pc) worst 2 | Muslim World League
+nr Yaren                30d 2026-09-01..2026-09-30 tz Pacific/Nauru (720) gate 2m | fajr 18 isha 17 Shafi | joint 118/149 of 150 (99.3pc) worst 2 | Muslim World League
+pg Port moresby         30d 2026-09-01..2026-09-30 tz Pacific/Port_Moresby (600) gate 1m | fajr 18 isha 17 Shafi | joint 114/150 of 150 (100.0pc) worst 1 | Muslim World League
+ph Manila               30d 2026-09-01..2026-09-30 tz Asia/Manila (480) gate 2m | fajr 18 isha 17 Shafi | joint 109/149 of 150 (99.3pc) worst 2 | Muslim World League
+pw Koror                30d 2026-09-01..2026-09-30 tz Pacific/Palau (540) gate 1m | fajr 18 isha 17 Shafi | joint 115/150 of 150 (100.0pc) worst 1 | Muslim World League
+py Asunción             30d 2026-09-01..2026-09-30 tz America/Asuncion (-180) gate 1m | fajr 18 isha 17 Shafi | joint 96/150 of 150 (100.0pc) worst 1 | Muslim World League
+rw Kigali               30d 2026-09-01..2026-09-30 tz Africa/Kigali (120) gate 1m | fajr 18 isha 17 Shafi | joint 105/150 of 150 (100.0pc) worst 1 | Muslim World League
+sb Honiara              30d 2026-09-01..2026-09-30 tz Pacific/Guadalcanal (660) gate 1m | fajr 18 isha 17 Shafi | joint 118/150 of 150 (100.0pc) worst 1 | Muslim World League
+sc Victoria             30d 2026-09-01..2026-09-30 tz Indian/Mahe (240) gate 1m | fajr 18 isha 17 Shafi | joint 110/150 of 150 (100.0pc) worst 1 | Muslim World League
+sk Bratislava           30d 2026-09-01..2026-09-30 tz Europe/Bratislava (120) gate 2m | fajr 18 isha 17 Shafi | joint 87/149 of 150 (99.3pc) worst 2 | Muslim World League
+ss Juba                 30d 2026-09-01..2026-09-30 tz Africa/Juba (120) gate 1m | fajr 18 isha 17 Shafi | joint 108/150 of 150 (100.0pc) worst 1 | Muslim World League
+st São tomé             30d 2026-09-01..2026-09-30 tz Africa/Sao_Tome (0) gate 1m | fajr 18 isha 17 Shafi | joint 109/150 of 150 (100.0pc) worst 1 | Muslim World League
+tl Dili                 30d 2026-09-01..2026-09-30 tz Asia/Dili (540) gate 1m | fajr 18 isha 17 Shafi | joint 109/150 of 150 (100.0pc) worst 1 | Muslim World League
+tm Ashgabat             30d 2026-09-01..2026-09-30 tz Asia/Ashgabat (300) gate 1m | fajr 18 isha 17 Shafi | joint 103/150 of 150 (100.0pc) worst 1 | Muslim World League
+tt Port of spain        30d 2026-09-01..2026-09-30 tz America/Port_of_Spain (-240) gate 2m | fajr 15 isha 15 Shafi | joint 55/131 of 150 (87.3pc) worst 2 | Mosque Prayer Times
+tv Funafuti             30d 2026-09-01..2026-09-30 tz Pacific/Funafuti (720) gate 1m | fajr 18 isha 17 Shafi | joint 115/150 of 150 (100.0pc) worst 1 | Muslim World League
+va Vatican city         30d 2026-09-01..2026-09-30 tz Europe/Vatican (120) gate 4m | fajr 18 isha 17 Shafi | joint 53/100 of 150 (66.7pc) worst 30 | Mosque Prayer Times
+vc Kingstown            30d 2026-09-01..2026-09-30 tz America/St_Vincent (-240) gate 1m | fajr 18 isha 17 Shafi | joint 100/150 of 150 (100.0pc) worst 1 | Muslim World League
+vu Port vila            30d 2026-09-01..2026-09-30 tz Pacific/Efate (660) gate 2m | fajr 15 isha 15 Shafi | joint 83/142 of 150 (94.7pc) worst 2 | Mosque Prayer Times
+ws Apia                 30d 2026-09-01..2026-09-30 tz Pacific/Apia (780) gate 1m | fajr 18 isha 17 Shafi | joint 100/150 of 150 (100.0pc) worst 1 | Muslim World League
+xk Pristina             30d 2026-09-01..2026-09-30 tz Europe/Belgrade (120) gate 1m | fajr 18 isha 17 Shafi | joint 94/150 of 150 (100.0pc) worst 1 | Muslim World League
+
+59 pages, 42 reproduce within-1 at 99pc+, 4 closed by the solar gate
+  GATE FAIL San josé: solar-gate 61m
+  GATE FAIL Colonia: solar-gate 61m
+  GATE FAIL Georgetown: solar-gate 239m
+  GATE FAIL Kingston: solar-gate 481m

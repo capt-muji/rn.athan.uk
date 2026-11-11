@@ -1,0 +1,34 @@
+{
+ "label": "r364-تونس",
+ "file": "captures/masjidi_region_364.json",
+ "rows": 366,
+ "lat": 32.96,
+ "k": 0,
+ "geoRms": 6.774,
+ "fajr": {
+  "kind": "angle",
+  "n": 366,
+  "angle": 18.01,
+  "darkIqr": 0.1
+ },
+ "isha": {
+  "kind": "angle",
+  "n": 366,
+  "angle": 17.63,
+  "darkIqr": 0.1,
+  "gap": 85
+ },
+ "asr": {
+  "school": "Shafi",
+  "shafiMae": 6.9,
+  "hanafiMae": 62.8
+ },
+ "clock": {
+  "lonImplied": -4.8,
+  "offsetMin": -19,
+  "driftRms": 0.3,
+  "runs": 1,
+  "steps": []
+ },
+ "amplitude": -132
+}

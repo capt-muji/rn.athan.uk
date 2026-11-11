@@ -1,0 +1,4884 @@
+{
+ "tn-inm-sw-348-621.json": {
+  "lat": 35.833,
+  "lon": 10.639,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 348-621 (Sousse, Sousse), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-353-494.json": {
+  "lat": 33.866,
+  "lon": 10.85,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 353-494 (Djerba Houmt Souk, Medenine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-362-635.json": {
+  "lat": 35.168,
+  "lon": 8.836,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 362-635 (Kasserine, Kasserine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-1012-482.json": {
+  "lat": 33.687,
+  "lon": 8.97,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 1012-482 (Kebili, Kébili), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-343-616.json": {
+  "lat": 36.399,
+  "lon": 10.147,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 343-616 (Zaghouan, Zaghouan), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-344-617.json": {
+  "lat": 36.085,
+  "lon": 9.371,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 344-617 (Siliana, Siliana), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-347-620.json": {
+  "lat": 33.893,
+  "lon": 10.103,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 347-620 (Gabes, Gabes), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-350-623.json": {
+  "lat": 36.451,
+  "lon": 10.735,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 350-623 (Nabeul, Nabeul), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-351-624.json": {
+  "lat": 32.933,
+  "lon": 10.45,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 351-624 (Tataouine, Tataouine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-352-625.json": {
+  "lat": 33.924,
+  "lon": 8.131,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 352-625 (Tozeur, Tozeur), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-353-626.json": {
+  "lat": 33.345,
+  "lon": 10.494,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 353-626 (Medenine, Medenine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-354-627.json": {
+  "lat": 36.5,
+  "lon": 8.783,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 354-627 (Jendouba, Jendouba), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-355-628.json": {
+  "lat": 35.036,
+  "lon": 9.485,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 355-628 (Sidi Bouzid, Sidi Bouzid), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-356-629.json": {
+  "lat": 36.726,
+  "lon": 9.192,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 356-629 (Beja, Béja), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-364-637.json": {
+  "lat": 35.775,
+  "lon": 10.831,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 364-637 (Monastir, Monastir), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-1012-483.json": {
+  "lat": 33.776,
+  "lon": 8.86,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 1012-483 (Souk El Ahad, Kébili), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-1012-484.json": {
+  "lat": 33.461,
+  "lon": 9.029,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 1012-484 (Douz, Kébili), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-1012-485.json": {
+  "lat": 33.364,
+  "lon": 8.676,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 1012-485 (El Faouar, Kébili), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-1012-486.json": {
+  "lat": 33.35,
+  "lon": 7.775,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 1012-486 (Matrouha, Kébili), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-1012-487.json": {
+  "lat": 33.325,
+  "lon": 8.014,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 1012-487 (Rjim Maatoug, Kébili), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-342-386.json": {
+  "lat": 36.876,
+  "lon": 10.325,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 342-386 (La Marsa, Tunis), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-342-387.json": {
+  "lat": 36.853,
+  "lon": 10.329,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 342-387 (Carthage, Tunis), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-342-388.json": {
+  "lat": 36.818,
+  "lon": 10.305,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 342-388 (La Goulette, Tunis), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-342-389.json": {
+  "lat": 36.83,
+  "lon": 10.197,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 342-389 (Cite El Khadhra, Tunis), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-342-390.json": {
+  "lat": 36.847,
+  "lon": 10.173,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 342-390 (El Menzah, Tunis), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-342-391.json": {
+  "lat": 36.818,
+  "lon": 10.168,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 342-391 (Omrane, Tunis), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-342-392.json": {
+  "lat": 36.834,
+  "lon": 10.14,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 342-392 (Omrane Superieur, Tunis), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-342-393.json": {
+  "lat": 36.823,
+  "lon": 10.133,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 342-393 (Ettahrir, Tunis), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-342-394.json": {
+  "lat": 36.814,
+  "lon": 10.141,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 342-394 (Bardo, Tunis), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-342-395.json": {
+  "lat": 36.809,
+  "lon": 10.166,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 342-395 (Bab Souika, Tunis), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-342-396.json": {
+  "lat": 36.799,
+  "lon": 10.135,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 342-396 (Ezzouhour, Tunis), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-342-397.json": {
+  "lat": 36.79,
+  "lon": 10.107,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 342-397 (El Hrairia, Tunis), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-342-398.json": {
+  "lat": 36.77,
+  "lon": 10.116,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 342-398 (Sidi Hassine, Tunis), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-342-399.json": {
+  "lat": 36.766,
+  "lon": 10.19,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 342-399 (El Ouardia, Tunis), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-342-400.json": {
+  "lat": 36.76,
+  "lon": 10.191,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 342-400 (El Kabaria, Tunis), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-342-401.json": {
+  "lat": 36.767,
+  "lon": 10.209,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 342-401 (Jebel Jelloud, Tunis), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-342-402.json": {
+  "lat": 36.793,
+  "lon": 10.179,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 342-402 (Sidi El Bechir, Tunis), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-342-403.json": {
+  "lat": 36.798,
+  "lon": 10.172,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 342-403 (La Medina, Tunis), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-342-404.json": {
+  "lat": 36.797,
+  "lon": 10.177,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 342-404 (Bab Bhar, Tunis), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-342-405.json": {
+  "lat": 36.785,
+  "lon": 10.165,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 342-405 (Sijoumi, Tunis), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-342-406.json": {
+  "lat": 36.833,
+  "lon": 10.317,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 342-406 (Le Kram, Tunis), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-342-615.json": {
+  "lat": 36.8,
+  "lon": 10.183,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 342-615 (Tunis, Tunis), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-343-409.json": {
+  "lat": 36.353,
+  "lon": 10.206,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 343-409 (Zeriba, Zaghouan), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-343-410.json": {
+  "lat": 36.517,
+  "lon": 9.957,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 343-410 (Bir Mcherga, Zaghouan), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-343-411.json": {
+  "lat": 36.377,
+  "lon": 9.91,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 343-411 (El Fahs, Zaghouan), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-343-412.json": {
+  "lat": 36.12,
+  "lon": 10.094,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 343-412 (Nadhour, Zaghouan), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-343-413.json": {
+  "lat": 36.227,
+  "lon": 10.17,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 343-413 (Saouaf, Zaghouan), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-344-414.json": {
+  "lat": 35.814,
+  "lon": 9.365,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 344-414 (Kesra, Siliana), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-344-415.json": {
+  "lat": 35.861,
+  "lon": 9.206,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 344-415 (Makther, Siliana), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-344-416.json": {
+  "lat": 35.65,
+  "lon": 9.05,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 344-416 (Rouhia, Siliana), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-344-417.json": {
+  "lat": 36.091,
+  "lon": 9.566,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 344-417 (Bargou, Siliana), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-344-418.json": {
+  "lat": 36.32,
+  "lon": 9.32,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 344-418 (Gaafour, Siliana), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-344-419.json": {
+  "lat": 36.379,
+  "lon": 9.452,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 344-419 (El Aroussa, Siliana), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-344-420.json": {
+  "lat": 36.351,
+  "lon": 9.622,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 344-420 (Bouarada, Siliana), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-344-421.json": {
+  "lat": 36.328,
+  "lon": 9.136,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 344-421 (Le Krib, Siliana), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-344-422.json": {
+  "lat": 36.177,
+  "lon": 9.126,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 344-422 (Sidi Bou Rouis, Siliana), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-345-1084.json": {
+  "lat": 35.465,
+  "lon": 11.041,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 345-1084 (Rejiche, Mahdia), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-345-423.json": {
+  "lat": 35.421,
+  "lon": 10.987,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 345-423 (Ksour Essef, Mahdia), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-345-424.json": {
+  "lat": 35.234,
+  "lon": 11.111,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 345-424 (Chebba, Mahdia), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-345-425.json": {
+  "lat": 35.166,
+  "lon": 11.034,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 345-425 (Malloulech, Mahdia), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-345-426.json": {
+  "lat": 35.376,
+  "lon": 10.937,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 345-426 (Sidi Alouane, Mahdia), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-345-427.json": {
+  "lat": 35.46,
+  "lon": 10.727,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 345-427 (Boumerdes, Mahdia), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-345-428.json": {
+  "lat": 35.341,
+  "lon": 10.549,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 345-428 (Souassi, Mahdia), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-345-429.json": {
+  "lat": 35.285,
+  "lon": 10.386,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 345-429 (Chorbane, Mahdia), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-345-430.json": {
+  "lat": 35.17,
+  "lon": 10.23,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 345-430 (Hbira, Mahdia), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-345-431.json": {
+  "lat": 35.491,
+  "lon": 10.319,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 345-431 (Ouled Chamekh, Mahdia), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-345-618.json": {
+  "lat": 35.508,
+  "lon": 11.075,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 345-618 (Mahdia, Mahdia), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-345-619.json": {
+  "lat": 35.301,
+  "lon": 10.708,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 345-619 (El Jem, Mahdia), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-347-1019.json": {
+  "lat": 33.94,
+  "lon": 10.065,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 347-1019 (Ghannouch, Gabes), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-347-1020.json": {
+  "lat": 33.62,
+  "lon": 10.288,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 347-1020 (Mareth, Gabes), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-347-1021.json": {
+  "lat": 34.23,
+  "lon": 9.597,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 347-1021 (Menzel Habib, Gabes), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-347-1022.json": {
+  "lat": 33.546,
+  "lon": 9.967,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 347-1022 (Matmata, Gabes), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-347-1023.json": {
+  "lat": 33.668,
+  "lon": 10.015,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 347-1023 (Matmata Nouvelle, Gabes), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-347-1024.json": {
+  "lat": 33.884,
+  "lon": 9.972,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 347-1024 (El Hamma, Gabes), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-347-1025.json": {
+  "lat": 33.959,
+  "lon": 10.005,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 347-1025 (Metouia, Gabes), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-348-433.json": {
+  "lat": 36.299,
+  "lon": 10.454,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 348-433 (Bouficha, Sousse), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-348-434.json": {
+  "lat": 36.135,
+  "lon": 10.381,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 348-434 (Enfida, Sousse), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-348-435.json": {
+  "lat": 36.029,
+  "lon": 10.507,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 348-435 (Hergla, Sousse), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-348-436.json": {
+  "lat": 35.955,
+  "lon": 10.47,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 348-436 (Sidi Bouali, Sousse), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-348-437.json": {
+  "lat": 35.871,
+  "lon": 10.569,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 348-437 (Akouda, Sousse), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-348-438.json": {
+  "lat": 35.858,
+  "lon": 10.594,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 348-438 (Hammam Sousse, Sousse), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-348-439.json": {
+  "lat": 35.867,
+  "lon": 10.533,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 348-439 (Kalaa Kebira, Sousse), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-348-440.json": {
+  "lat": 35.733,
+  "lon": 10.583,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 348-440 (Msaken, Sousse), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-348-441.json": {
+  "lat": 35.681,
+  "lon": 10.31,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 348-441 (Sidi Elheni, Sousse), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-348-442.json": {
+  "lat": 35.932,
+  "lon": 10.3,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 348-442 (Koundar, Sousse), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-348-443.json": {
+  "lat": 35.824,
+  "lon": 10.558,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 348-443 (Kalaa Seghira, Sousse), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-349-444.json": {
+  "lat": 36.685,
+  "lon": 10.288,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 349-444 (Mornag, Ben Arous), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-349-445.json": {
+  "lat": 36.68,
+  "lon": 10.156,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 349-445 (Mohamedia, Ben Arous), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-349-446.json": {
+  "lat": 36.7,
+  "lon": 10.169,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 349-446 (Fouchana, Ben Arous), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-349-447.json": {
+  "lat": 36.721,
+  "lon": 10.216,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 349-447 (El Mourouj, Ben Arous), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-349-448.json": {
+  "lat": 36.766,
+  "lon": 10.233,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 349-448 (Megrine, Ben Arous), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-349-449.json": {
+  "lat": 36.767,
+  "lon": 10.283,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 349-449 (Rades, Ben Arous), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-349-450.json": {
+  "lat": 36.743,
+  "lon": 10.308,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 349-450 (Ezzahra, Ben Arous), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-349-451.json": {
+  "lat": 36.733,
+  "lon": 10.333,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 349-451 (Hammam Lif, Ben Arous), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-349-452.json": {
+  "lat": 36.718,
+  "lon": 10.369,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 349-452 (Hammam Chatt, Ben Arous), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-349-453.json": {
+  "lat": 36.709,
+  "lon": 10.29,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 349-453 (Boumhel Bassatine, Ben Arous), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-349-454.json": {
+  "lat": 36.745,
+  "lon": 10.246,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 349-454 (Medina Jedida, Ben Arous), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-349-622.json": {
+  "lat": 36.738,
+  "lon": 10.281,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 349-622 (Ben Arous, Ben Arous), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-350-455.json": {
+  "lat": 36.85,
+  "lon": 11.1,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 350-455 (Kelibia, Nabeul), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-350-456.json": {
+  "lat": 36.784,
+  "lon": 10.986,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 350-456 (Menzel Temime, Nabeul), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-350-457.json": {
+  "lat": 36.725,
+  "lon": 10.855,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 350-457 (El Mida, Nabeul), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-350-458.json": {
+  "lat": 36.685,
+  "lon": 10.585,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 350-458 (Menzel Bouzelfa, Nabeul), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-350-459.json": {
+  "lat": 36.581,
+  "lon": 10.862,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 350-459 (Korba, Nabeul), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-350-460.json": {
+  "lat": 36.467,
+  "lon": 10.782,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 350-460 (Beni Khiar, Nabeul), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-350-461.json": {
+  "lat": 36.401,
+  "lon": 10.615,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 350-461 (Hammamet, Nabeul), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-350-462.json": {
+  "lat": 36.792,
+  "lon": 10.629,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 350-462 (Takelsa, Nabeul), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-350-463.json": {
+  "lat": 36.535,
+  "lon": 10.552,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 350-463 (Bou Argoub, Nabeul), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-350-464.json": {
+  "lat": 36.6,
+  "lon": 10.5,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 350-464 (Grombalia, Nabeul), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-350-465.json": {
+  "lat": 36.699,
+  "lon": 10.489,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 350-465 (Slimane, Nabeul), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-350-466.json": {
+  "lat": 37.055,
+  "lon": 11.013,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 350-466 (El Haouaria, Nabeul), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-350-467.json": {
+  "lat": 36.649,
+  "lon": 10.592,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 350-467 (Beni Khalled, Nabeul), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-350-468.json": {
+  "lat": 36.463,
+  "lon": 10.747,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 350-468 (Dar Chaabane Elfehri, Nabeul), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-350-469.json": {
+  "lat": 36.874,
+  "lon": 11.108,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 350-469 (Hammam Ghezaz, Nabeul), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-351-1524.json": {
+  "lat": 32.869,
+  "lon": 10.818,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 351-1524 (Bni Mhira, Tataouine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-351-470.json": {
+  "lat": 32.01,
+  "lon": 10.702,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 351-470 (Dehiba, Tataouine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-351-471.json": {
+  "lat": 32.316,
+  "lon": 10.4,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 351-471 (Remada, Tataouine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-351-472.json": {
+  "lat": 32.872,
+  "lon": 10.89,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 351-472 (Smar, Tataouine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-351-473.json": {
+  "lat": 33.067,
+  "lon": 10.33,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 351-473 (Ghomrassen, Tataouine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-351-474.json": {
+  "lat": 33.179,
+  "lon": 10.442,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 351-474 (Bir Lahmar, Tataouine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-351-475.json": {
+  "lat": 30.25,
+  "lon": 9.555,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 351-475 (Borj El Khadra, Tataouine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-351-476.json": {
+  "lat": 31.69,
+  "lon": 9.211,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 351-476 (El Borma, Tataouine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-352-477.json": {
+  "lat": 33.877,
+  "lon": 7.884,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 352-477 (Nefta, Tozeur), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-352-478.json": {
+  "lat": 34.016,
+  "lon": 8.273,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 352-478 (Degueche, Tozeur), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-352-479.json": {
+  "lat": 33.738,
+  "lon": 7.603,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 352-479 (Hazoua, Tozeur), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-352-480.json": {
+  "lat": 34.385,
+  "lon": 7.939,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 352-480 (Tameghza, Tozeur), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-352-481.json": {
+  "lat": 33.999,
+  "lon": 8.161,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 352-481 (Hammat Al Jarid, Tozeur), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-353-488.json": {
+  "lat": 33.139,
+  "lon": 11.215,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 353-488 (Ben Guerdene, Medenine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-353-489.json": {
+  "lat": 33.246,
+  "lon": 10.204,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 353-489 (Beni Khedach, Medenine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-353-490.json": {
+  "lat": 33.503,
+  "lon": 11.115,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 353-490 (Zarzis, Medenine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-353-491.json": {
+  "lat": 33.802,
+  "lon": 10.882,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 353-491 (Djerba El May, Medenine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-353-492.json": {
+  "lat": 33.821,
+  "lon": 10.997,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 353-492 (Djerba Midoun, Medenine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-353-493.json": {
+  "lat": 33.725,
+  "lon": 10.749,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 353-493 (Djerba Ajim, Medenine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-353-496.json": {
+  "lat": 33.506,
+  "lon": 10.479,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 353-496 (Sidi Makhlouf, Medenine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-354-497.json": {
+  "lat": 36.952,
+  "lon": 8.758,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 354-497 (Tabarka, Jendouba), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-354-498.json": {
+  "lat": 36.776,
+  "lon": 8.686,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 354-498 (Ain Drahem, Jendouba), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-354-499.json": {
+  "lat": 36.609,
+  "lon": 8.968,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 354-499 (Bou Salem, Jendouba), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-354-500.json": {
+  "lat": 36.467,
+  "lon": 8.552,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 354-500 (Oued Mliz, Jendouba), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-354-501.json": {
+  "lat": 36.448,
+  "lon": 8.436,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 354-501 (Ghardimaou, Jendouba), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-354-502.json": {
+  "lat": 36.657,
+  "lon": 8.693,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 354-502 (Fernana, Jendouba), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-354-503.json": {
+  "lat": 36.706,
+  "lon": 8.944,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 354-503 (Balta Bou Aouane, Jendouba), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-355-1522.json": {
+  "lat": 34.829,
+  "lon": 9.376,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 355-1522 (Hichria, Sidi Bouzid), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-355-504.json": {
+  "lat": 34.859,
+  "lon": 9.787,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 355-504 (Regueb, Sidi Bouzid), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-355-505.json": {
+  "lat": 34.607,
+  "lon": 9.607,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 355-505 (Meknassi, Sidi Bouzid), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-355-506.json": {
+  "lat": 35.274,
+  "lon": 9.425,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 355-506 (Jelma, Sidi Bouzid), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-355-507.json": {
+  "lat": 35.177,
+  "lon": 9.278,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 355-507 (Sabbalet Ouled Asker, Sidi Bouzid), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-355-508.json": {
+  "lat": 34.932,
+  "lon": 9.196,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 355-508 (Bir El Hafey, Sidi Bouzid), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-355-509.json": {
+  "lat": 34.853,
+  "lon": 9.145,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 355-509 (Sidi Ali Ben Aoun, Sidi Bouzid), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-355-510.json": {
+  "lat": 34.572,
+  "lon": 9.425,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 355-510 (Menzel Bouzayane, Sidi Bouzid), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-355-511.json": {
+  "lat": 34.581,
+  "lon": 9.843,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 355-511 (Mezouna, Sidi Bouzid), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-355-512.json": {
+  "lat": 35.082,
+  "lon": 9.872,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 355-512 (Ouled Haffouz, Sidi Bouzid), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-355-513.json": {
+  "lat": 34.944,
+  "lon": 9.565,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 355-513 (Souk Jedid, Sidi Bouzid), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-356-514.json": {
+  "lat": 36.976,
+  "lon": 9.081,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 356-514 (Nefza, Béja), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-356-515.json": {
+  "lat": 36.768,
+  "lon": 9.089,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 356-515 (Amdoun, Béja), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-356-516.json": {
+  "lat": 36.522,
+  "lon": 9.106,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 356-516 (Tibar, Béja), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-356-517.json": {
+  "lat": 36.552,
+  "lon": 9.443,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 356-517 (Testour, Béja), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-356-518.json": {
+  "lat": 36.459,
+  "lon": 9.246,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 356-518 (Teboursouk, Béja), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-356-519.json": {
+  "lat": 36.542,
+  "lon": 9.663,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 356-519 (Goubellat, Béja), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-356-520.json": {
+  "lat": 36.653,
+  "lon": 9.611,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 356-520 (Mejez El Bab, Béja), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-357-521.json": {
+  "lat": 35.933,
+  "lon": 10.022,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 357-521 (Sebikha, Kairouan), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-357-522.json": {
+  "lat": 35.619,
+  "lon": 9.926,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 357-522 (Chebika, Kairouan), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-357-523.json": {
+  "lat": 35.637,
+  "lon": 9.676,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 357-523 (Haffouz, Kairouan), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-357-524.json": {
+  "lat": 35.615,
+  "lon": 9.562,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 357-524 (El Alaa , Kairouan), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-357-525.json": {
+  "lat": 35.849,
+  "lon": 9.592,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 357-525 (Oueslatia, Kairouan), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-357-526.json": {
+  "lat": 35.397,
+  "lon": 9.543,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 357-526 (Hajeb El Ayoun, Kairouan), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-357-527.json": {
+  "lat": 35.356,
+  "lon": 9.829,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 357-527 (Nasrallah, Kairouan), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-357-528.json": {
+  "lat": 35.395,
+  "lon": 10.05,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 357-528 (Bou Hajla, Kairouan), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-357-529.json": {
+  "lat": 35.119,
+  "lon": 10.032,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 357-529 (Chrarda, Kairouan), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-357-630.json": {
+  "lat": 35.677,
+  "lon": 10.097,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 357-630 (Kairouan, Kairouan), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-358-530.json": {
+  "lat": 37.062,
+  "lon": 10.118,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 358-530 (Kalaat El Andalous  , Ariana), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-358-531.json": {
+  "lat": 36.953,
+  "lon": 10.188,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 358-531 (Raoued, Ariana), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-358-532.json": {
+  "lat": 36.868,
+  "lon": 10.265,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 358-532 (Soukra, Ariana), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-358-533.json": {
+  "lat": 36.875,
+  "lon": 10.113,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 358-533 (Mnihla, Ariana), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-358-534.json": {
+  "lat": 36.831,
+  "lon": 10.111,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 358-534 (Attadhamon, Ariana), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-358-535.json": {
+  "lat": 36.908,
+  "lon": 10.042,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 358-535 (Sidi Thabet, Ariana), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-358-631.json": {
+  "lat": 36.891,
+  "lon": 10.182,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 358-631 (Ariana, Ariana), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-359-536.json": {
+  "lat": 35.035,
+  "lon": 10.907,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 359-536 (Jebiniana, Sfax), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-359-537.json": {
+  "lat": 34.526,
+  "lon": 10.49,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 359-537 (Mahres, Sfax), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-359-538.json": {
+  "lat": 34.735,
+  "lon": 10.093,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 359-538 (Bir Ali Ben Khelifa, Sfax), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-359-539.json": {
+  "lat": 34.5,
+  "lon": 10.204,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 359-539 (Ghraiba, Sfax), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-359-540.json": {
+  "lat": 34.742,
+  "lon": 10.527,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 359-540 (Agareb, Sfax), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-359-541.json": {
+  "lat": 35.121,
+  "lon": 10.742,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 359-541 (El Hencha, Sfax), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-359-542.json": {
+  "lat": 34.965,
+  "lon": 10.369,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 359-542 (Menzel Chaker, Sfax), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-359-543.json": {
+  "lat": 34.744,
+  "lon": 11.294,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 359-543 (Kerkennah El Attaya, Sfax), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-359-544.json": {
+  "lat": 34.65,
+  "lon": 11.034,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 359-544 (Kerkennah Mellita, Sfax), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-359-545.json": {
+  "lat": 34.983,
+  "lon": 10.898,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 359-545 (El Amra, Sfax), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-359-546.json": {
+  "lat": 34.298,
+  "lon": 10.075,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 359-546 (Skhira, Sfax), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-359-547.json": {
+  "lat": 34.8,
+  "lon": 10.77,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 359-547 (Sakiet Ezzit, Sfax), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-359-548.json": {
+  "lat": 34.793,
+  "lon": 10.806,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 359-548 (Sakiet Eddaier, Sfax), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-359-549.json": {
+  "lat": 34.686,
+  "lon": 10.706,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 359-549 (Tina, Sfax), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-359-632.json": {
+  "lat": 34.733,
+  "lon": 10.75,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 359-632 (Sfax, Sfax), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-360-550.json": {
+  "lat": 36.85,
+  "lon": 9.935,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 360-550 (Jedaida, Manouba), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-360-551.json": {
+  "lat": 36.804,
+  "lon": 9.844,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 360-551 (El Battan, Manouba), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-360-552.json": {
+  "lat": 36.713,
+  "lon": 9.882,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 360-552 (Borj El Amri, Manouba), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-360-553.json": {
+  "lat": 36.836,
+  "lon": 10.041,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 360-553 (Oued Ellil, Manouba), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-360-554.json": {
+  "lat": 36.828,
+  "lon": 10.089,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 360-554 (Douar Hicher, Manouba), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-360-555.json": {
+  "lat": 36.761,
+  "lon": 10.016,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 360-555 (Mornaguia, Manouba), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-360-556.json": {
+  "lat": 36.833,
+  "lon": 9.833,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 360-556 (Tebourba, Manouba), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-360-633.json": {
+  "lat": 36.824,
+  "lon": 10.069,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 360-633 (Manouba, Manouba), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-361-557.json": {
+  "lat": 37.06,
+  "lon": 9.24,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 361-557 (Sejnane, Bizerte), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-361-558.json": {
+  "lat": 36.926,
+  "lon": 9.387,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 361-558 (Joumine, Bizerte), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-361-559.json": {
+  "lat": 37.04,
+  "lon": 9.665,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 361-559 (Mateur, Bizerte), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-361-560.json": {
+  "lat": 37.075,
+  "lon": 9.537,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 361-560 (Ghezala, Bizerte), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-361-561.json": {
+  "lat": 37.235,
+  "lon": 9.91,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 361-561 (Menzel Jemil, Bizerte), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-361-562.json": {
+  "lat": 37.15,
+  "lon": 9.783,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 361-562 (Menzel Bourguiba, Bizerte), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-361-563.json": {
+  "lat": 37.169,
+  "lon": 10.187,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 361-563 (Ghar El Melh, Bizerte), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-361-564.json": {
+  "lat": 37.215,
+  "lon": 10.12,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 361-564 (Ras Jebel, Bizerte), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-361-565.json": {
+  "lat": 37.16,
+  "lon": 9.764,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 361-565 (Tinja, Bizerte), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-361-566.json": {
+  "lat": 37.167,
+  "lon": 10.033,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 361-566 (El Alia, Bizerte), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-361-567.json": {
+  "lat": 36.978,
+  "lon": 9.957,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 361-567 (Utique, Bizerte), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-361-568.json": {
+  "lat": 37.259,
+  "lon": 9.877,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 361-568 (Zarzouna, Bizerte), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-361-569.json": {
+  "lat": 37.244,
+  "lon": 10.051,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 361-569 (Al Matlin , Bizerte), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-361-570.json": {
+  "lat": 37.127,
+  "lon": 10.057,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 361-570 (Zouaouine, Bizerte), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-361-571.json": {
+  "lat": 37.142,
+  "lon": 10.102,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 361-571 (Aousja, Bizerte), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-361-572.json": {
+  "lat": 37.145,
+  "lon": 9.986,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 361-572 (Al Khitmin, Bizerte), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-361-634.json": {
+  "lat": 37.276,
+  "lon": 9.873,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 361-634 (Bizerte, Bizerte), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-362-573.json": {
+  "lat": 35.572,
+  "lon": 8.67,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 362-573 (Tala, Kasserine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-362-574.json": {
+  "lat": 35.568,
+  "lon": 8.443,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 362-574 (Hidra, Kasserine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-362-575.json": {
+  "lat": 35.23,
+  "lon": 9.129,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 362-575 (Sbitla, Kasserine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-362-576.json": {
+  "lat": 35.545,
+  "lon": 9.072,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 362-576 (Sbiba, Kasserine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-362-577.json": {
+  "lat": 34.943,
+  "lon": 8.555,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 362-577 (Feriana, Kasserine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-362-578.json": {
+  "lat": 35.348,
+  "lon": 8.63,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 362-578 (Foussana, Kasserine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-362-579.json": {
+  "lat": 35.541,
+  "lon": 8.884,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 362-579 (El Ayoun, Kasserine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-362-580.json": {
+  "lat": 34.748,
+  "lon": 8.52,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 362-580 (Majel Bel Abbes, Kasserine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-362-581.json": {
+  "lat": 35.593,
+  "lon": 9.059,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 362-581 (Jedliane, Kasserine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-362-582.json": {
+  "lat": 34.978,
+  "lon": 8.949,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 362-582 (Hassi Ferid, Kasserine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-363-1523.json": {
+  "lat": 36.339,
+  "lon": 8.58,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 363-1523 (Tourief, Le kef), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-363-583.json": {
+  "lat": 35.899,
+  "lon": 8.881,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 363-583 (El Ksour, Le kef), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-363-584.json": {
+  "lat": 36.078,
+  "lon": 9.021,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 363-584 (Le Sers, Le kef), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-363-585.json": {
+  "lat": 35.843,
+  "lon": 8.628,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 363-585 (Jerissa, Le kef), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-363-586.json": {
+  "lat": 35.892,
+  "lon": 8.553,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 363-586 (Tejerouine, Le kef), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-363-587.json": {
+  "lat": 35.666,
+  "lon": 8.584,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 363-587 (Kalâa El Khasba, Le kef), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-363-588.json": {
+  "lat": 35.768,
+  "lon": 8.342,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 363-588 (Kalaat Sinane, Le kef), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-363-589.json": {
+  "lat": 36.298,
+  "lon": 8.768,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 363-589 (Nebeur, Le kef), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-363-590.json": {
+  "lat": 35.944,
+  "lon": 8.828,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 363-590 (Dahmani, Le kef), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-363-591.json": {
+  "lat": 36.224,
+  "lon": 8.355,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 363-591 (Sakiet Sidi Youssef, Le kef), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-363-636.json": {
+  "lat": 36.184,
+  "lon": 8.715,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 363-636 (Le Kef, Le kef), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-364-592.json": {
+  "lat": 35.751,
+  "lon": 10.711,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 364-592 (Sahline, Monastir), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-364-593.json": {
+  "lat": 35.708,
+  "lon": 10.675,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 364-593 (Ouerdanine, Monastir), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-364-594.json": {
+  "lat": 35.64,
+  "lon": 10.965,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 364-594 (Teboulba, Monastir), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-364-595.json": {
+  "lat": 35.628,
+  "lon": 10.759,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 364-595 (Jammel, Monastir), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-364-596.json": {
+  "lat": 35.577,
+  "lon": 10.73,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 364-596 (Zeramdine, Monastir), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-364-597.json": {
+  "lat": 35.569,
+  "lon": 10.81,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 364-597 (Beni Hassan, Monastir), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-364-598.json": {
+  "lat": 35.632,
+  "lon": 10.901,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 364-598 (Moknine, Monastir), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-364-599.json": {
+  "lat": 35.689,
+  "lon": 10.842,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 364-599 (Ksibet Medyouni, Monastir), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-364-600.json": {
+  "lat": 35.666,
+  "lon": 10.888,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 364-600 (Sayada Lamta Bouhjar, Monastir), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-364-601.json": {
+  "lat": 35.617,
+  "lon": 11,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 364-601 (Bekalta, Monastir), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-364-602.json": {
+  "lat": 35.65,
+  "lon": 10.9,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 364-602 (Ksar Helal, Monastir), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-364-603.json": {
+  "lat": 35.694,
+  "lon": 10.79,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 364-603 (Benbla, Monastir), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-365-604.json": {
+  "lat": 34.49,
+  "lon": 8.266,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 365-604 (Moulares, Gafsa), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-365-605.json": {
+  "lat": 34.383,
+  "lon": 8.15,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 365-605 (Redyef, Gafsa), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-365-606.json": {
+  "lat": 34.316,
+  "lon": 8.402,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 365-606 (Metlaoui, Gafsa), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-365-607.json": {
+  "lat": 34.293,
+  "lon": 8.751,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 365-607 (Mdhilla, Gafsa), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-365-608.json": {
+  "lat": 34.402,
+  "lon": 8.804,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 365-608 (El Ksar, Gafsa), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-365-609.json": {
+  "lat": 34.462,
+  "lon": 9.262,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 365-609 (Sened, Gafsa), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-365-610.json": {
+  "lat": 34.733,
+  "lon": 8.784,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 365-610 (Sidi Aich, Gafsa), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-365-611.json": {
+  "lat": 34.337,
+  "lon": 8.953,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 365-611 (El Guettar, Gafsa), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-365-612.json": {
+  "lat": 34.274,
+  "lon": 9.391,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 365-612 (Belkhir, Gafsa), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-sw-365-638.json": {
+  "lat": 34.421,
+  "lon": 8.787,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 365-638 (Gafsa, Gafsa), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-348-621.json": {
+  "lat": 35.833,
+  "lon": 10.639,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 348-621 (Sousse, Sousse), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-353-494.json": {
+  "lat": 33.866,
+  "lon": 10.85,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 353-494 (Djerba Houmt Souk, Medenine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-344-617.json": {
+  "lat": 36.085,
+  "lon": 9.371,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 344-617 (Siliana, Siliana), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-351-624.json": {
+  "lat": 32.933,
+  "lon": 10.45,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 351-624 (Tataouine, Tataouine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-352-625.json": {
+  "lat": 33.924,
+  "lon": 8.131,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 352-625 (Tozeur, Tozeur), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-1012-483.json": {
+  "lat": 33.776,
+  "lon": 8.86,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 1012-483 (Souk El Ahad, Kébili), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-1012-484.json": {
+  "lat": 33.461,
+  "lon": 9.029,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 1012-484 (Douz, Kébili), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-1012-486.json": {
+  "lat": 33.35,
+  "lon": 7.775,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 1012-486 (Matrouha, Kébili), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-342-401.json": {
+  "lat": 36.767,
+  "lon": 10.209,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 342-401 (Jebel Jelloud, Tunis), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-342-404.json": {
+  "lat": 36.797,
+  "lon": 10.177,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 342-404 (Bab Bhar, Tunis), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-342-615.json": {
+  "lat": 36.8,
+  "lon": 10.183,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 342-615 (Tunis, Tunis), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-343-409.json": {
+  "lat": 36.353,
+  "lon": 10.206,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 343-409 (Zeriba, Zaghouan), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-343-410.json": {
+  "lat": 36.517,
+  "lon": 9.957,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 343-410 (Bir Mcherga, Zaghouan), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-343-413.json": {
+  "lat": 36.227,
+  "lon": 10.17,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 343-413 (Saouaf, Zaghouan), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-344-417.json": {
+  "lat": 36.091,
+  "lon": 9.566,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 344-417 (Bargou, Siliana), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-344-421.json": {
+  "lat": 36.328,
+  "lon": 9.136,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 344-421 (Le Krib, Siliana), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-345-427.json": {
+  "lat": 35.46,
+  "lon": 10.727,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 345-427 (Boumerdes, Mahdia), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-345-428.json": {
+  "lat": 35.341,
+  "lon": 10.549,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 345-428 (Souassi, Mahdia), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-345-618.json": {
+  "lat": 35.508,
+  "lon": 11.075,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 345-618 (Mahdia, Mahdia), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-347-1022.json": {
+  "lat": 33.546,
+  "lon": 9.967,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 347-1022 (Matmata, Gabes), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-347-1024.json": {
+  "lat": 33.884,
+  "lon": 9.972,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 347-1024 (El Hamma, Gabes), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-347-1025.json": {
+  "lat": 33.959,
+  "lon": 10.005,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 347-1025 (Metouia, Gabes), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-348-437.json": {
+  "lat": 35.871,
+  "lon": 10.569,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 348-437 (Akouda, Sousse), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-348-443.json": {
+  "lat": 35.824,
+  "lon": 10.558,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 348-443 (Kalaa Seghira, Sousse), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-349-449.json": {
+  "lat": 36.767,
+  "lon": 10.283,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 349-449 (Rades, Ben Arous), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-349-451.json": {
+  "lat": 36.733,
+  "lon": 10.333,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 349-451 (Hammam Lif, Ben Arous), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-349-622.json": {
+  "lat": 36.738,
+  "lon": 10.281,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 349-622 (Ben Arous, Ben Arous), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-350-461.json": {
+  "lat": 36.401,
+  "lon": 10.615,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 350-461 (Hammamet, Nabeul), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-350-462.json": {
+  "lat": 36.792,
+  "lon": 10.629,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 350-462 (Takelsa, Nabeul), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-350-467.json": {
+  "lat": 36.649,
+  "lon": 10.592,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 350-467 (Beni Khalled, Nabeul), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-351-474.json": {
+  "lat": 33.179,
+  "lon": 10.442,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 351-474 (Bir Lahmar, Tataouine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-351-476.json": {
+  "lat": 31.69,
+  "lon": 9.211,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 351-476 (El Borma, Tataouine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-352-477.json": {
+  "lat": 33.877,
+  "lon": 7.884,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 352-477 (Nefta, Tozeur), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-352-478.json": {
+  "lat": 34.016,
+  "lon": 8.273,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 352-478 (Degueche, Tozeur), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-353-490.json": {
+  "lat": 33.503,
+  "lon": 11.115,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 353-490 (Zarzis, Medenine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-354-497.json": {
+  "lat": 36.952,
+  "lon": 8.758,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 354-497 (Tabarka, Jendouba), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-354-498.json": {
+  "lat": 36.776,
+  "lon": 8.686,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 354-498 (Ain Drahem, Jendouba), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-354-501.json": {
+  "lat": 36.448,
+  "lon": 8.436,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 354-501 (Ghardimaou, Jendouba), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-355-508.json": {
+  "lat": 34.932,
+  "lon": 9.196,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 355-508 (Bir El Hafey, Sidi Bouzid), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-355-512.json": {
+  "lat": 35.082,
+  "lon": 9.872,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 355-512 (Ouled Haffouz, Sidi Bouzid), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-355-513.json": {
+  "lat": 34.944,
+  "lon": 9.565,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 355-513 (Souk Jedid, Sidi Bouzid), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-356-514.json": {
+  "lat": 36.976,
+  "lon": 9.081,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 356-514 (Nefza, Béja), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-356-515.json": {
+  "lat": 36.768,
+  "lon": 9.089,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 356-515 (Amdoun, Béja), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-356-516.json": {
+  "lat": 36.522,
+  "lon": 9.106,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 356-516 (Tibar, Béja), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-357-521.json": {
+  "lat": 35.933,
+  "lon": 10.022,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 357-521 (Sebikha, Kairouan), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-357-526.json": {
+  "lat": 35.397,
+  "lon": 9.543,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 357-526 (Hajeb El Ayoun, Kairouan), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-357-528.json": {
+  "lat": 35.395,
+  "lon": 10.05,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 357-528 (Bou Hajla, Kairouan), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-358-532.json": {
+  "lat": 36.868,
+  "lon": 10.265,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 358-532 (Soukra, Ariana), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-358-533.json": {
+  "lat": 36.875,
+  "lon": 10.113,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 358-533 (Mnihla, Ariana), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-358-631.json": {
+  "lat": 36.891,
+  "lon": 10.182,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 358-631 (Ariana, Ariana), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-359-540.json": {
+  "lat": 34.742,
+  "lon": 10.527,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 359-540 (Agareb, Sfax), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-359-544.json": {
+  "lat": 34.65,
+  "lon": 11.034,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 359-544 (Kerkennah Mellita, Sfax), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-359-549.json": {
+  "lat": 34.686,
+  "lon": 10.706,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 359-549 (Tina, Sfax), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-360-552.json": {
+  "lat": 36.713,
+  "lon": 9.882,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 360-552 (Borj El Amri, Manouba), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-360-556.json": {
+  "lat": 36.833,
+  "lon": 9.833,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 360-556 (Tebourba, Manouba), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-360-633.json": {
+  "lat": 36.824,
+  "lon": 10.069,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 360-633 (Manouba, Manouba), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-361-559.json": {
+  "lat": 37.04,
+  "lon": 9.665,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 361-559 (Mateur, Bizerte), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-361-570.json": {
+  "lat": 37.127,
+  "lon": 10.057,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 361-570 (Zouaouine, Bizerte), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-361-572.json": {
+  "lat": 37.145,
+  "lon": 9.986,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 361-572 (Al Khitmin, Bizerte), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-362-573.json": {
+  "lat": 35.572,
+  "lon": 8.67,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 362-573 (Tala, Kasserine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-362-579.json": {
+  "lat": 35.541,
+  "lon": 8.884,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 362-579 (El Ayoun, Kasserine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-362-581.json": {
+  "lat": 35.593,
+  "lon": 9.059,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 362-581 (Jedliane, Kasserine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-363-1523.json": {
+  "lat": 36.339,
+  "lon": 8.58,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 363-1523 (Tourief, Le kef), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-363-590.json": {
+  "lat": 35.944,
+  "lon": 8.828,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 363-590 (Dahmani, Le kef), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-363-636.json": {
+  "lat": 36.184,
+  "lon": 8.715,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 363-636 (Le Kef, Le kef), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-364-596.json": {
+  "lat": 35.577,
+  "lon": 10.73,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 364-596 (Zeramdine, Monastir), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-364-598.json": {
+  "lat": 35.632,
+  "lon": 10.901,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 364-598 (Moknine, Monastir), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-364-601.json": {
+  "lat": 35.617,
+  "lon": 11,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 364-601 (Bekalta, Monastir), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-365-606.json": {
+  "lat": 34.316,
+  "lon": 8.402,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 365-606 (Metlaoui, Gafsa), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-365-610.json": {
+  "lat": 34.733,
+  "lon": 8.784,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 365-610 (Sidi Aich, Gafsa), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-yp-365-612.json": {
+  "lat": 34.274,
+  "lon": 9.391,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 365-612 (Belkhir, Gafsa), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-mon-348-621.json": {
+  "lat": 35.833,
+  "lon": 10.639,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 348-621 (Sousse, Sousse), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-mon-353-494.json": {
+  "lat": 33.866,
+  "lon": 10.85,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 353-494 (Djerba Houmt Souk, Medenine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-mon-347-620.json": {
+  "lat": 33.893,
+  "lon": 10.103,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 347-620 (Gabes, Gabes), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-mon-350-623.json": {
+  "lat": 36.451,
+  "lon": 10.735,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 350-623 (Nabeul, Nabeul), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-mon-353-626.json": {
+  "lat": 33.345,
+  "lon": 10.494,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 353-626 (Medenine, Medenine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-mon-364-637.json": {
+  "lat": 35.775,
+  "lon": 10.831,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 364-637 (Monastir, Monastir), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-back-348-621.json": {
+  "lat": 35.833,
+  "lon": 10.639,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 348-621 (Sousse, Sousse), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-back-353-494.json": {
+  "lat": 33.866,
+  "lon": 10.85,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 353-494 (Djerba Houmt Souk, Medenine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-back-362-635.json": {
+  "lat": 35.168,
+  "lon": 8.836,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 362-635 (Kasserine, Kasserine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "tn-inm-kass-362-635.json": {
+  "lat": 35.168,
+  "lon": 8.836,
+  "pointClass": "PUBLISHED",
+  "tz": "Africa/Tunis",
+  "source": "INM meteo.tn archive row lat/lng for delegation 362-635 (Kasserine, Kasserine), echoed in every day row; captures/tn-horaire-*.ndjson"
+ },
+ "th-cicot-amnatcharoen-2569-leap.json": {
+  "lat": 15.916667,
+  "lon": 104.55,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. เมือง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด อำนาจเจริญ  ( อ. เมือง )     ละติจูด  15 - 55 - 00  น.  ลองจิจูด  104 - 33 - 00   อ.); th-province-coordinates.json"
+ },
+ "th-cicot-amnatcharoen-2569.json": {
+  "lat": 15.916667,
+  "lon": 104.55,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. เมือง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด อำนาจเจริญ  ( อ. เมือง )     ละติจูด  15 - 55 - 00  น.  ลองจิจูด  104 - 33 - 00   อ.); th-province-coordinates.json"
+ },
+ "th-cicot-angthong-2569-leap.json": {
+  "lat": 14.633333,
+  "lon": 100.233333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. สามโก้",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด อ่างทอง  ( อ. สามโก้ )     ละติจูด  14 - 38 - 00  น.  ลองจิจูด  100 - 14 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-angthong-2569.json": {
+  "lat": 14.633333,
+  "lon": 100.233333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. สามโก้",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด อ่างทอง  ( อ. สามโก้ )     ละติจูด  14 - 38 - 00  น.  ลองจิจูด  100 - 14 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-bangkok-2569-leap.json": {
+  "lat": 13.7,
+  "lon": 100.333333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "เขตหนองแขม",
+  "source": "CICOT workbook row 1, printed coordinate (กรุงเทพมหานคร  ( เขตหนองแขม )  ละติจูด 13 - 42 - 00  น.  ลองจิจูด  100 - 20 - 00 อ.); th-province-coordinates.json"
+ },
+ "th-cicot-bangkok-2569.json": {
+  "lat": 13.7,
+  "lon": 100.333333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "เขตหนองแขม",
+  "source": "CICOT workbook row 1, printed coordinate (กรุงเทพมหานคร  ( เขตหนองแขม )  ละติจูด 13 - 42 - 00  น.  ลองจิจูด  100 - 20 - 00 อ.); th-province-coordinates.json"
+ },
+ "th-cicot-buengkan-2569-leap.json": {
+  "lat": 18.35,
+  "lon": 103.316667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ.  ปากคาด",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด  บึงกาฬ   ( อ.  ปากคาด )     ละติจูด  18 - 21 - 00 น.  ลองจิจูด  103 - 19 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-buengkan-2569.json": {
+  "lat": 18.35,
+  "lon": 103.316667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ.  ปากคาด",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด  บึงกาฬ   ( อ.  ปากคาด )     ละติจูด  18 - 21 - 00 น.  ลองจิจูด  103 - 19 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-buriram-2569-leap.json": {
+  "lat": 14.933333,
+  "lon": 102.733333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. ลำปลายมาศ",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด บุรีรัมย์  ( อ. ลำปลายมาศ )     ละติจูด  14 - 56 - 00  น.  ลองจิจูด  102 - 44 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-buriram-2569.json": {
+  "lat": 14.933333,
+  "lon": 102.733333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. ลำปลายมาศ",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด บุรีรัมย์  ( อ. ลำปลายมาศ )     ละติจูด  14 - 56 - 00  น.  ลองจิจูด  102 - 44 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-chachoengsao-2569-leap.json": {
+  "lat": 13.716667,
+  "lon": 100.933333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ.เมือง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ฉะเชิงเทรา  ( อ.เมือง )  ละติจูด  13 - 43 - 00 น.  ลองจิจูด  100 - 56 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-chachoengsao-2569.json": {
+  "lat": 13.716667,
+  "lon": 100.933333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ.เมือง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ฉะเชิงเทรา  ( อ.เมือง )  ละติจูด  13 - 43 - 00 น.  ลองจิจูด  100 - 56 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-chainat-2569-leap.json": {
+  "lat": 15.133333,
+  "lon": 99.816667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ.หันคา",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ชัยนาท   ( อ.หันคา )  ละติจูด  15 - 08 - 00 น.  ลองจิจูด  99 - 49 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-chainat-2569.json": {
+  "lat": 15.133333,
+  "lon": 99.816667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ.หันคา",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ชัยนาท   ( อ.หันคา )  ละติจูด  15 - 08 - 00 น.  ลองจิจูด  99 - 49 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-chaiyaphum-2569-leap.json": {
+  "lat": 16.033333,
+  "lon": 101.483333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ.ภักดีชุมพล",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัดชัยภูมิ  ( อ.ภักดีชุมพล )  ละติจูด 16 - 02 - 00 น.   ลองจิจูด  101 - 29 - 00 อ.); th-province-coordinates.json"
+ },
+ "th-cicot-chaiyaphum-2569.json": {
+  "lat": 16.033333,
+  "lon": 101.483333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ.ภักดีชุมพล",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัดชัยภูมิ  ( อ.ภักดีชุมพล )  ละติจูด 16 - 02 - 00 น.   ลองจิจูด  101 - 29 - 00 อ.); th-province-coordinates.json"
+ },
+ "th-cicot-chanthaburi-2569-leap.json": {
+  "lat": 12.683333,
+  "lon": 101.8,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. นายายอาม",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด จันทบุรี  ( อ. นายายอาม )  ละติจูด  12 - 41 - 00 น.  ลองจิจูด  101 - 48 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-chanthaburi-2569.json": {
+  "lat": 12.683333,
+  "lon": 101.8,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. นายายอาม",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด จันทบุรี  ( อ. นายายอาม )  ละติจูด  12 - 41 - 00 น.  ลองจิจูด  101 - 48 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-chiangmai-2569-leap.json": {
+  "lat": 18.85,
+  "lon": 98.1,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. แม่แจ่ม",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด เชียงใหม่  ( อ. แม่แจ่ม )     ละติจูด  18 - 51 - 00  น.  ลองจิจูด  98 - 06 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-chiangmai-2569.json": {
+  "lat": 18.85,
+  "lon": 98.1,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. แม่แจ่ม",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด เชียงใหม่  ( อ. แม่แจ่ม )     ละติจูด  18 - 51 - 00  น.  ลองจิจูด  98 - 06 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-chiangrai-2569-leap.json": {
+  "lat": 19.733333,
+  "lon": 99.383333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. แม่สรวย",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด เชียงราย    ( อ. แม่สรวย )     ละติจูด  19 - 44 - 00  น.  ลองจิจูด 99 - 23 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-chiangrai-2569.json": {
+  "lat": 19.733333,
+  "lon": 99.383333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. แม่สรวย",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด เชียงราย    ( อ. แม่สรวย )     ละติจูด  19 - 44 - 00  น.  ลองจิจูด 99 - 23 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-chonburi-2569-leap.json": {
+  "lat": 13.15,
+  "lon": 100.816667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ.เกาะสีชัง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ชลบุรี  ( อ.เกาะสีชัง )  ละติจูด  13 - 09 - 00 น.  ลองจิจูด  100 - 49 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-chonburi-2569.json": {
+  "lat": 13.15,
+  "lon": 100.816667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ.เกาะสีชัง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ชลบุรี  ( อ.เกาะสีชัง )  ละติจูด  13 - 09 - 00 น.  ลองจิจูด  100 - 49 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-chumphon-2569-leap.json": {
+  "lat": 10.466667,
+  "lon": 99.1,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. เมือง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ชุมพร  (อ. เมือง )     ละติจูด 10 - 28 -  00  น.  ลองจิจูด  99 - 06 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-chumphon-2569.json": {
+  "lat": 10.466667,
+  "lon": 99.1,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. เมือง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ชุมพร  (อ. เมือง )     ละติจูด 10 - 28 -  00  น.  ลองจิจูด  99 - 06 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-kalasin-2569-leap.json": {
+  "lat": 16.616667,
+  "lon": 103.233333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ.ห้วยเม็ก",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด กาฬสินธุ์  ( อ.ห้วยเม็ก )  ละติจูด  16 - 37 - 00 น.  ลองจิจูด  103 - 14 - 00 อ.); th-province-coordinates.json"
+ },
+ "th-cicot-kalasin-2569.json": {
+  "lat": 16.616667,
+  "lon": 103.233333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ.ห้วยเม็ก",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด กาฬสินธุ์  ( อ.ห้วยเม็ก )  ละติจูด  16 - 37 - 00 น.  ลองจิจูด  103 - 14 - 00 อ.); th-province-coordinates.json"
+ },
+ "th-cicot-kamphaengphet-2569-leap.json": {
+  "lat": 16.366667,
+  "lon": 99.133333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ.คลองลาน",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัดกำแพงเพ็ชร  (อ.คลองลาน )  ละติจูด 16 - 22 - 00  น.   ลองจิจูด 99 - 08 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-kamphaengphet-2569.json": {
+  "lat": 16.366667,
+  "lon": 99.133333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ.คลองลาน",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัดกำแพงเพ็ชร  (อ.คลองลาน )  ละติจูด 16 - 22 - 00  น.   ลองจิจูด 99 - 08 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-kanchanaburi-2569-leap.json": {
+  "lat": 14.95,
+  "lon": 98.366667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. สังขละ",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัดกาญจนบุรี  (อ. สังขละ )  ละติจูด 14 - 57 - 00  น.  ลองจิจูด  98 - 22 - 00 อ.); th-province-coordinates.json"
+ },
+ "th-cicot-kanchanaburi-2569.json": {
+  "lat": 14.95,
+  "lon": 98.366667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. สังขละ",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัดกาญจนบุรี  (อ. สังขละ )  ละติจูด 14 - 57 - 00  น.  ลองจิจูด  98 - 22 - 00 อ.); th-province-coordinates.json"
+ },
+ "th-cicot-khonkaen-2569-leap.json": {
+  "lat": 16.666667,
+  "lon": 101.983333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ.ชุมแพ",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ขอนแก่น  ( อ.ชุมแพ )  ละติจูด  16 - 40 - 00 น.   ลองจิจูด  101 - 59 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-khonkaen-2569.json": {
+  "lat": 16.666667,
+  "lon": 101.983333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ.ชุมแพ",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ขอนแก่น  ( อ.ชุมแพ )  ละติจูด  16 - 40 - 00 น.   ลองจิจูด  101 - 59 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-krabi-2569-leap.json": {
+  "lat": 8.083333,
+  "lon": 98.766667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. เมือง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัดกระบี่  ( อ. เมือง )  ละติจูด 8 - 05 - 00  น.  ลองจิจูด  98 - 46 - 00 อ.); th-province-coordinates.json"
+ },
+ "th-cicot-krabi-2569.json": {
+  "lat": 8.083333,
+  "lon": 98.766667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. เมือง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัดกระบี่  ( อ. เมือง )  ละติจูด 8 - 05 - 00  น.  ลองจิจูด  98 - 46 - 00 อ.); th-province-coordinates.json"
+ },
+ "th-cicot-lampang-2569-leap.json": {
+  "lat": 18.383333,
+  "lon": 99.233333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ.  ห้างฉัตร",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ลำปาง  ( อ.  ห้างฉัตร )    ละติจูด  18 - 23 - 00  น.  ลองจิจูด  99 - 14 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-lampang-2569.json": {
+  "lat": 18.383333,
+  "lon": 99.233333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ.  ห้างฉัตร",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ลำปาง  ( อ.  ห้างฉัตร )    ละติจูด  18 - 23 - 00  น.  ลองจิจูด  99 - 14 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-lamphun-2569-leap.json": {
+  "lat": 18.466667,
+  "lon": 98.833333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. ป่าซาง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ลำพูน  ( อ. ป่าซาง )     ละติจูด  18 - 28 - 00  น.  ลองจิจูด  98 - 50 - 00   อ.); th-province-coordinates.json"
+ },
+ "th-cicot-lamphun-2569.json": {
+  "lat": 18.466667,
+  "lon": 98.833333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. ป่าซาง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ลำพูน  ( อ. ป่าซาง )     ละติจูด  18 - 28 - 00  น.  ลองจิจูด  98 - 50 - 00   อ.); th-province-coordinates.json"
+ },
+ "th-cicot-loei-2569-leap.json": {
+  "lat": 17.266667,
+  "lon": 101.116667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. ด่านซ้าย",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด เลย   ( อ. ด่านซ้าย )     ละติจูด   17 - 16 - 00  น.  ลองจิจูด  101 - 07 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-loei-2569.json": {
+  "lat": 17.266667,
+  "lon": 101.116667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. ด่านซ้าย",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด เลย   ( อ. ด่านซ้าย )     ละติจูด   17 - 16 - 00  น.  ลองจิจูด  101 - 07 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-lopburi-2569-leap.json": {
+  "lat": 15.066667,
+  "lon": 100.483333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. บ้านหมี่",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ลพบุรี   ( อ. บ้านหมี่ )     ละติจูด  15 - 04 - 00  น.  ลองจิจูด  100 - 29 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-lopburi-2569.json": {
+  "lat": 15.066667,
+  "lon": 100.483333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. บ้านหมี่",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ลพบุรี   ( อ. บ้านหมี่ )     ละติจูด  15 - 04 - 00  น.  ลองจิจูด  100 - 29 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-maehongson-2569-leap.json": {
+  "lat": 19.35,
+  "lon": 98.416667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. ปาย",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด แม่ฮ่องสอน  ( อ. ปาย )     ละติจูด  19 - 21 - 00  น.  ลองจิจูด  98 - 25 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-maehongson-2569.json": {
+  "lat": 19.35,
+  "lon": 98.416667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. ปาย",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด แม่ฮ่องสอน  ( อ. ปาย )     ละติจูด  19 - 21 - 00  น.  ลองจิจูด  98 - 25 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-mahasarakham-2569-leap.json": {
+  "lat": 16.216667,
+  "lon": 102.866667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. โกสุมพิสัย",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด มหาสารคาม   ( อ. โกสุมพิสัย )     ละติจูด  16 - 13 - 00  น.  ลองจิจูด   102 - 52 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-mahasarakham-2569.json": {
+  "lat": 16.216667,
+  "lon": 102.866667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. โกสุมพิสัย",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด มหาสารคาม   ( อ. โกสุมพิสัย )     ละติจูด  16 - 13 - 00  น.  ลองจิจูด   102 - 52 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-mukdahan-2569-leap.json": {
+  "lat": 16.783333,
+  "lon": 104.15,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. ดงหลวง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด มุกดาหาร  ( อ. ดงหลวง )     ละติจูด  16 - 47 - 00  น.  ลองจิจูด  104 - 09 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-mukdahan-2569.json": {
+  "lat": 16.783333,
+  "lon": 104.15,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. ดงหลวง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด มุกดาหาร  ( อ. ดงหลวง )     ละติจูด  16 - 47 - 00  น.  ลองจิจูด  104 - 09 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-nakhonnayok-2569-leap.json": {
+  "lat": 14.266667,
+  "lon": 100.966667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. บ้านนา",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด  นครนายก  ( อ. บ้านนา )     ละติจูด  14 - 16 - 00   น.  ลองจิจูด  100 - 58 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-nakhonnayok-2569.json": {
+  "lat": 14.266667,
+  "lon": 100.966667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. บ้านนา",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด  นครนายก  ( อ. บ้านนา )     ละติจูด  14 - 16 - 00   น.  ลองจิจูด  100 - 58 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-nakhonpathom-2569-leap.json": {
+  "lat": 13.9,
+  "lon": 99.933333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. เมือง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด นครปฐม  ( อ. เมือง )     ละติจูด  13 - 54 - 00  น.  ลองจิจูด  99 - 56 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-nakhonpathom-2569.json": {
+  "lat": 13.9,
+  "lon": 99.933333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. เมือง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด นครปฐม  ( อ. เมือง )     ละติจูด  13 - 54 - 00  น.  ลองจิจูด  99 - 56 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-nakhonphanom-2569-leap.json": {
+  "lat": 17.3,
+  "lon": 104.466667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. เมือง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด นครพนม  ( อ. เมือง )    ละติจูด  17 - 18 - 00  น.  ลองจิจูด  104 - 28 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-nakhonphanom-2569.json": {
+  "lat": 17.3,
+  "lon": 104.466667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. เมือง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด นครพนม  ( อ. เมือง )    ละติจูด  17 - 18 - 00  น.  ลองจิจูด  104 - 28 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-nakhonratchasima-2569-leap.json": {
+  "lat": 15.033333,
+  "lon": 101.5,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. สีคิ้ว",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด นครราชสีมา   ( อ. สีคิ้ว )     ละติจูด  15 - 02 - 00  น.  ลองจิจูด  101 - 30 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-nakhonratchasima-2569.json": {
+  "lat": 15.033333,
+  "lon": 101.5,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. สีคิ้ว",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด นครราชสีมา   ( อ. สีคิ้ว )     ละติจูด  15 - 02 - 00  น.  ลองจิจูด  101 - 30 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-nakhonsawan-2569-leap.json": {
+  "lat": 15.8,
+  "lon": 99.383333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. แม่วงก์",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด นครสวรรค์  ( อ. แม่วงก์ )     ละติจูด  15 - 48 - 00  น.  ลองจิจูด  99 - 23 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-nakhonsawan-2569.json": {
+  "lat": 15.8,
+  "lon": 99.383333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. แม่วงก์",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด นครสวรรค์  ( อ. แม่วงก์ )     ละติจูด  15 - 48 - 00  น.  ลองจิจูด  99 - 23 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-nakhonsithammarat-2569-leap.json": {
+  "lat": 8.366667,
+  "lon": 99.266667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. ทุ่งใหญ่",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด นครศรีธรรมราช   ( อ. ทุ่งใหญ่  )     ละติจูด  8 - 22 - 00  น.  ลองจิจูด   99 - 16 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-nakhonsithammarat-2569.json": {
+  "lat": 8.366667,
+  "lon": 99.266667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. ทุ่งใหญ่",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด นครศรีธรรมราช   ( อ. ทุ่งใหญ่  )     ละติจูด  8 - 22 - 00  น.  ลองจิจูด   99 - 16 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-nan-2569-leap.json": {
+  "lat": 18.733333,
+  "lon": 103.75,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. เมือง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด น่าน  ( อ. เมือง )     ละติจูด  18 - 44 - 00  น.  ลองจิจูด  103 - 45 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-nan-2569.json": {
+  "lat": 18.733333,
+  "lon": 103.75,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. เมือง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด น่าน  ( อ. เมือง )     ละติจูด  18 - 44 - 00  น.  ลองจิจูด  103 - 45 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-narathiwat-2569-leap.json": {
+  "lat": 6.216667,
+  "lon": 101.416667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ.ศรีสาคร",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัดนราธิวาส  (อ.ศรีสาคร)     ละติจูด 6 - 13 - 00  น.  ลองจิจูด 101 - 25 - 00 อ.); th-province-coordinates.json"
+ },
+ "th-cicot-narathiwat-2569.json": {
+  "lat": 6.216667,
+  "lon": 101.416667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ.ศรีสาคร",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัดนราธิวาส  (อ.ศรีสาคร)     ละติจูด 6 - 13 - 00  น.  ลองจิจูด 101 - 25 - 00 อ.); th-province-coordinates.json"
+ },
+ "th-cicot-nongbualamphu-2569-leap.json": {
+  "lat": 17.216667,
+  "lon": 102.1,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. นากลาง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด หนองบัวลำภู  ( อ. นากลาง )     ละติจูด  17 - 13 - 00  น.  ลองจิจูด  102 - 06 - 00   อ.); th-province-coordinates.json"
+ },
+ "th-cicot-nongbualamphu-2569.json": {
+  "lat": 17.216667,
+  "lon": 102.1,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. นากลาง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด หนองบัวลำภู  ( อ. นากลาง )     ละติจูด  17 - 13 - 00  น.  ลองจิจูด  102 - 06 - 00   อ.); th-province-coordinates.json"
+ },
+ "th-cicot-nongkhai-2569-leap.json": {
+  "lat": 18.083333,
+  "lon": 102.083333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. สังคม",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด หนองคาย  ( อ. สังคม )     ละติจูด  18 - 05 - 00  น.  ลองจิจูด  102 - 05 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-nongkhai-2569.json": {
+  "lat": 18.083333,
+  "lon": 102.083333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. สังคม",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด หนองคาย  ( อ. สังคม )     ละติจูด  18 - 05 - 00  น.  ลองจิจูด  102 - 05 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-nonthaburi-2569-leap.json": {
+  "lat": 13.916667,
+  "lon": 100.3,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. ไทรน้อย",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด นนทบุรี   ( อ. ไทรน้อย )     ละติจูด  13 - 55 - 00   น.  ลองจิจูด  100 - 18 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-nonthaburi-2569.json": {
+  "lat": 13.916667,
+  "lon": 100.3,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. ไทรน้อย",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด นนทบุรี   ( อ. ไทรน้อย )     ละติจูด  13 - 55 - 00   น.  ลองจิจูด  100 - 18 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-pathumthani-2569-leap.json": {
+  "lat": 14,
+  "lon": 100.383333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. ลาดหลุมแก้ว",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ปทุมธานี   ( อ. ลาดหลุมแก้ว )     ละติจูด  14 - 00 - 00  น.  ลองจิจูด  100 - 23 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-pathumthani-2569.json": {
+  "lat": 14,
+  "lon": 100.383333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. ลาดหลุมแก้ว",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ปทุมธานี   ( อ. ลาดหลุมแก้ว )     ละติจูด  14 - 00 - 00  น.  ลองจิจูด  100 - 23 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-pattani-2569-leap.json": {
+  "lat": 6.666667,
+  "lon": 101.1,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. โคกโพธิ์",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ปัตตานี   ( อ. โคกโพธิ์ )     ละติจูด  6 - 40 - 00  น.  ลองจิจูด  101 - 06 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-pattani-2569.json": {
+  "lat": 6.666667,
+  "lon": 101.1,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. โคกโพธิ์",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ปัตตานี   ( อ. โคกโพธิ์ )     ละติจูด  6 - 40 - 00  น.  ลองจิจูด  101 - 06 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-phangnga-2569-leap.json": {
+  "lat": 8.9,
+  "lon": 98.266667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ.  ตะกั่วป่า",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด  พังงา  ( อ.  ตะกั่วป่า  )     ละติจูด  8 - 54 - 00   น.  ลองจิจูด  98 - 16 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-phangnga-2569.json": {
+  "lat": 8.9,
+  "lon": 98.266667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ.  ตะกั่วป่า",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด  พังงา  ( อ.  ตะกั่วป่า  )     ละติจูด  8 - 54 - 00   น.  ลองจิจูด  98 - 16 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-phatthalung-2569-leap.json": {
+  "lat": 7.566667,
+  "lon": 99.833333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. ศรีนครินทร์",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด  พัทลุง  ( อ. ศรีนครินทร์  )     ละติจูด  7 - 34 - 00  น.  ลองจิจูด  99 - 50 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-phatthalung-2569.json": {
+  "lat": 7.566667,
+  "lon": 99.833333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. ศรีนครินทร์",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด  พัทลุง  ( อ. ศรีนครินทร์  )     ละติจูด  7 - 34 - 00  น.  ลองจิจูด  99 - 50 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-phayao-2569-leap.json": {
+  "lat": 19.183333,
+  "lon": 99.866667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. เมือง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด พะเยา   ( อ. เมือง )     ละติจูด  19 - 11 - 00  น.  ลองจิจูด  99 - 52 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-phayao-2569.json": {
+  "lat": 19.183333,
+  "lon": 99.866667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. เมือง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด พะเยา   ( อ. เมือง )     ละติจูด  19 - 11 - 00  น.  ลองจิจูด  99 - 52 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-phetchabun-2569-leap.json": {
+  "lat": 16.233333,
+  "lon": 100.733333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. ชนแดน",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด เพชรบูรณ์  ( อ. ชนแดน  )     ละติจูด  16 - 14 - 00  น.  ลองจิจูด  100 - 44 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-phetchabun-2569.json": {
+  "lat": 16.233333,
+  "lon": 100.733333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. ชนแดน",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด เพชรบูรณ์  ( อ. ชนแดน  )     ละติจูด  16 - 14 - 00  น.  ลองจิจูด  100 - 44 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-phetchaburi-2569-leap.json": {
+  "lat": 12.883333,
+  "lon": 99.216667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. แก่งกระจาน",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด เพชรบุรี  ( อ. แก่งกระจาน )     ละติจูด  12 - 53 - 00  น.  ลองจิจูด  99 - 13 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-phetchaburi-2569.json": {
+  "lat": 12.883333,
+  "lon": 99.216667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. แก่งกระจาน",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด เพชรบุรี  ( อ. แก่งกระจาน )     ละติจูด  12 - 53 - 00  น.  ลองจิจูด  99 - 13 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-phichit-2569-leap.json": {
+  "lat": 16.3,
+  "lon": 100.066667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. โพธิ์ประทับช้าง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด พิจิตร  ( อ. โพธิ์ประทับช้าง )     ละติจูด  16 - 18 - 00  น.  ลองจิจูด  100 - 04 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-phichit-2569.json": {
+  "lat": 16.3,
+  "lon": 100.066667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. โพธิ์ประทับช้าง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด พิจิตร  ( อ. โพธิ์ประทับช้าง )     ละติจูด  16 - 18 - 00  น.  ลองจิจูด  100 - 04 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-phitsanulok-2569-leap.json": {
+  "lat": 16.816667,
+  "lon": 100.25,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. เมือง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด พิษณุโลก  ( อ. เมือง )     ละติจูด  16 - 49 - 00  น.  ลองจิจูด  100 - 15 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-phitsanulok-2569.json": {
+  "lat": 16.816667,
+  "lon": 100.25,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. เมือง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด พิษณุโลก  ( อ. เมือง )     ละติจูด  16 - 49 - 00  น.  ลองจิจูด  100 - 15 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-phrae-2569-leap.json": {
+  "lat": 18.283333,
+  "lon": 99.95,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. ลอง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด แพร่  ( อ. ลอง )     ละติจูด  18 - 17 - 00  น.  ลองจิจูด  99 - 57 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-phrae-2569.json": {
+  "lat": 18.283333,
+  "lon": 99.95,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. ลอง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด แพร่  ( อ. ลอง )     ละติจูด  18 - 17 - 00  น.  ลองจิจูด  99 - 57 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-phranakhonsiayutthaya-2569-leap.json": {
+  "lat": 14.316667,
+  "lon": 100.283333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. บางซ้าย",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด พระนครศรีอยุธยา  ( อ. บางซ้าย )     ละติจูด  14 - 19 - 00  น.  ลองจิจูด  100 - 17 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-phranakhonsiayutthaya-2569.json": {
+  "lat": 14.316667,
+  "lon": 100.283333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. บางซ้าย",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด พระนครศรีอยุธยา  ( อ. บางซ้าย )     ละติจูด  14 - 19 - 00  น.  ลองจิจูด  100 - 17 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-phuket-2569-leap.json": {
+  "lat": 7.75,
+  "lon": 98.3,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "แหลมพรหมเทพ",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ภูเก็ต   ( แหลมพรหมเทพ  )    ละติจูด  7 - 45 - 00  น.  ลองจิจูด  98 - 18 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-phuket-2569.json": {
+  "lat": 7.75,
+  "lon": 98.3,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "แหลมพรหมเทพ",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ภูเก็ต   ( แหลมพรหมเทพ  )    ละติจูด  7 - 45 - 00  น.  ลองจิจูด  98 - 18 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-prachinburi-2569-leap.json": {
+  "lat": 14.15,
+  "lon": 101.316667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. เมือง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ปราจีนบุรี  ( อ. เมือง )     ละติจูด  14 - 09 - 00  น.  ลองจิจูด  101 - 19 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-prachinburi-2569.json": {
+  "lat": 14.15,
+  "lon": 101.316667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. เมือง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ปราจีนบุรี  ( อ. เมือง )     ละติจูด  14 - 09 - 00  น.  ลองจิจูด  101 - 19 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-prachuapkhirikhan-2569-leap.json": {
+  "lat": 11.75,
+  "lon": 99.65,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. เมือง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ประจวบคีรีขันธ์  ( อ. เมือง  )     ละติจูด  11 - 45 - 00  น.  ลองจิจูด  99 - 39 - 00   อ.); th-province-coordinates.json"
+ },
+ "th-cicot-prachuapkhirikhan-2569.json": {
+  "lat": 11.75,
+  "lon": 99.65,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. เมือง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ประจวบคีรีขันธ์  ( อ. เมือง  )     ละติจูด  11 - 45 - 00  น.  ลองจิจูด  99 - 39 - 00   อ.); th-province-coordinates.json"
+ },
+ "th-cicot-ranong-2569-leap.json": {
+  "lat": 9.833333,
+  "lon": 98.45,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "เกาะช้าง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ระนอง  ( เกาะช้าง )     ละติจูด  9 - 50 - 00  น.  ลองจิจูด  98 - 27 - 00   อ.); th-province-coordinates.json"
+ },
+ "th-cicot-ranong-2569.json": {
+  "lat": 9.833333,
+  "lon": 98.45,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "เกาะช้าง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ระนอง  ( เกาะช้าง )     ละติจูด  9 - 50 - 00  น.  ลองจิจูด  98 - 27 - 00   อ.); th-province-coordinates.json"
+ },
+ "th-cicot-ratchaburi-2569-leap.json": {
+  "lat": 13.5,
+  "lon": 99.216667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. สวนผึ้ง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ราชบุรี  ( อ. สวนผึ้ง )     ละติจูด  13 - 30 - 00  น.  ลองจิจูด  99 - 13 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-ratchaburi-2569.json": {
+  "lat": 13.5,
+  "lon": 99.216667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. สวนผึ้ง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ราชบุรี  ( อ. สวนผึ้ง )     ละติจูด  13 - 30 - 00  น.  ลองจิจูด  99 - 13 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-rayong-2569-leap.json": {
+  "lat": 12.816667,
+  "lon": 101.083333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. นิคมพัฒนา",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ระยอง  ( อ. นิคมพัฒนา )     ละติจูด  12 - 49 - 00  น.  ลองจิจูด  101 - 05 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-rayong-2569.json": {
+  "lat": 12.816667,
+  "lon": 101.083333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. นิคมพัฒนา",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ระยอง  ( อ. นิคมพัฒนา )     ละติจูด  12 - 49 - 00  น.  ลองจิจูด  101 - 05 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-roiet-2569-leap.json": {
+  "lat": 15.916667,
+  "lon": 103.5,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. จตุรพักตร์พิมาน",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ร้อยเอ็ด   ( อ. จตุรพักตร์พิมาน )     ละติจูด  15 - 55 - 00  น.  ลองจิจูด  103 - 30 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-roiet-2569.json": {
+  "lat": 15.916667,
+  "lon": 103.5,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. จตุรพักตร์พิมาน",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ร้อยเอ็ด   ( อ. จตุรพักตร์พิมาน )     ละติจูด  15 - 55 - 00  น.  ลองจิจูด  103 - 30 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-sakaeo-2569-leap.json": {
+  "lat": 13.883333,
+  "lon": 101.933333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. เมือง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด สระแก้ว   ( อ. เมือง )      ละติจูด  13 - 53 - 00  น.  ลองจิจูด   101 - 56 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-sakaeo-2569.json": {
+  "lat": 13.883333,
+  "lon": 101.933333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. เมือง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด สระแก้ว   ( อ. เมือง )      ละติจูด  13 - 53 - 00  น.  ลองจิจูด   101 - 56 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-sakonnakhon-2569-leap.json": {
+  "lat": 17.3,
+  "lon": 103.316667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. สว่างแดนดิน",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด  สกลนคร   ( อ. สว่างแดนดิน )     ละติจูด  17 - 18 - 00  น.  ลองจิจูด  103 - 19 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-sakonnakhon-2569.json": {
+  "lat": 17.3,
+  "lon": 103.316667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. สว่างแดนดิน",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด  สกลนคร   ( อ. สว่างแดนดิน )     ละติจูด  17 - 18 - 00  น.  ลองจิจูด  103 - 19 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-samutprakan-2569-leap.json": {
+  "lat": 13.583333,
+  "lon": 100.45,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. พระสมุทรเจดีย์",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด สมุทรปราการ  ( อ. พระสมุทรเจดีย์  )     ละติจูด  13 - 35 - 00   น.  ลองจิจูด  100 - 27 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-samutprakan-2569.json": {
+  "lat": 13.583333,
+  "lon": 100.45,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. พระสมุทรเจดีย์",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด สมุทรปราการ  ( อ. พระสมุทรเจดีย์  )     ละติจูด  13 - 35 - 00   น.  ลองจิจูด  100 - 27 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-samutsakhon-2569-leap.json": {
+  "lat": 13.566667,
+  "lon": 100.05,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. บ้านแพ้ว",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด สมุทรสาคร  ( อ. บ้านแพ้ว )     ละติจูด  13 - 34 - 00  น.  ลองจิจูด  100 - 03 - 00   อ.); th-province-coordinates.json"
+ },
+ "th-cicot-samutsakhon-2569.json": {
+  "lat": 13.566667,
+  "lon": 100.05,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. บ้านแพ้ว",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด สมุทรสาคร  ( อ. บ้านแพ้ว )     ละติจูด  13 - 34 - 00  น.  ลองจิจูด  100 - 03 - 00   อ.); th-province-coordinates.json"
+ },
+ "th-cicot-samutsongkhram-2569-leap.json": {
+  "lat": 13.366667,
+  "lon": 99.883333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. อัมพวา",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด สมุทรสงคราม  ( อ. อัมพวา )     ละติจูด  13 - 22 - 00  น.  ลองจิจูด  99 - 53 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-samutsongkhram-2569.json": {
+  "lat": 13.366667,
+  "lon": 99.883333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. อัมพวา",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด สมุทรสงคราม  ( อ. อัมพวา )     ละติจูด  13 - 22 - 00  น.  ลองจิจูด  99 - 53 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-saraburi-2569-leap.json": {
+  "lat": 14.633333,
+  "lon": 100.633333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. ดอนพุด",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด  สระบุรี  ( อ. ดอนพุด )     ละติจูด  14 - 38 - 00  น.  ลองจิจูด  100 - 38 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-saraburi-2569.json": {
+  "lat": 14.633333,
+  "lon": 100.633333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. ดอนพุด",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด  สระบุรี  ( อ. ดอนพุด )     ละติจูด  14 - 38 - 00  น.  ลองจิจูด  100 - 38 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-satun-2569-leap.json": {
+  "lat": 6.566667,
+  "lon": 99.633333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "เกาะตะรุเตา",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด สตูล   ( เกาะตะรุเตา )     ละติจูด  6 - 34 - 00  น.  ลองจิจูด  99 - 38 - 00   อ.); th-province-coordinates.json"
+ },
+ "th-cicot-satun-2569.json": {
+  "lat": 6.566667,
+  "lon": 99.633333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "เกาะตะรุเตา",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด สตูล   ( เกาะตะรุเตา )     ละติจูด  6 - 34 - 00  น.  ลองจิจูด  99 - 38 - 00   อ.); th-province-coordinates.json"
+ },
+ "th-cicot-singburi-2569-leap.json": {
+  "lat": 14.916667,
+  "lon": 100.216667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. บางระจัน",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด สิงห์บุรี   ( อ. บางระจัน )     ละติจูด  14 - 55 - 00  น.  ลองจิจูด  100 - 13 - 00   อ.); th-province-coordinates.json"
+ },
+ "th-cicot-singburi-2569.json": {
+  "lat": 14.916667,
+  "lon": 100.216667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. บางระจัน",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด สิงห์บุรี   ( อ. บางระจัน )     ละติจูด  14 - 55 - 00  น.  ลองจิจูด  100 - 13 - 00   อ.); th-province-coordinates.json"
+ },
+ "th-cicot-sisaket-2569-leap.json": {
+  "lat": 14.95,
+  "lon": 104.05,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. ห้วยทับทัน",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด  ศรีสะเกษ  ( อ. ห้วยทับทัน )     ละติจูด  14 - 57 - 00  น.  ลองจิจูด  104 - 03 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-sisaket-2569.json": {
+  "lat": 14.95,
+  "lon": 104.05,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. ห้วยทับทัน",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด  ศรีสะเกษ  ( อ. ห้วยทับทัน )     ละติจูด  14 - 57 - 00  น.  ลองจิจูด  104 - 03 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-songkhla-2569-leap.json": {
+  "lat": 6.733333,
+  "lon": 100.283333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ.  สะเดา",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด สงขลา    ( อ.  สะเดา )     ละติจูด  6 - 44 - 00  น.  ลองจิจูด  100 - 17 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-songkhla-2569.json": {
+  "lat": 6.733333,
+  "lon": 100.283333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ.  สะเดา",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด สงขลา    ( อ.  สะเดา )     ละติจูด  6 - 44 - 00  น.  ลองจิจูด  100 - 17 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-sukhothai-2569-leap.json": {
+  "lat": 16.966667,
+  "lon": 99.483333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. บ้านด่านลานหอย",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด สุโขทัย   ( อ. บ้านด่านลานหอย )     ละติจูด  16 - 58 - 00  น.  ลองจิจูด  99 - 29 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-sukhothai-2569.json": {
+  "lat": 16.966667,
+  "lon": 99.483333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. บ้านด่านลานหอย",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด สุโขทัย   ( อ. บ้านด่านลานหอย )     ละติจูด  16 - 58 - 00  น.  ลองจิจูด  99 - 29 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-suphanburi-2569-leap.json": {
+  "lat": 14.816667,
+  "lon": 99.383333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. ด่านช้าง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด สุพรรณบุรี  ( อ. ด่านช้าง )     ละติจูด  14 - 49 - 00  น.  ลองจิจูด  99 - 23 - 00   อ.); th-province-coordinates.json"
+ },
+ "th-cicot-suphanburi-2569.json": {
+  "lat": 14.816667,
+  "lon": 99.383333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. ด่านช้าง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด สุพรรณบุรี  ( อ. ด่านช้าง )     ละติจูด  14 - 49 - 00  น.  ลองจิจูด  99 - 23 - 00   อ.); th-province-coordinates.json"
+ },
+ "th-cicot-suratthani-2569-leap.json": {
+  "lat": 9.1,
+  "lon": 98.55,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "เขาสก",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด  สุราษฎร์ธานี  ( เขาสก )     ละติจูด  9 - 06 - 00  น.  ลองจิจูด  98 - 33 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-suratthani-2569.json": {
+  "lat": 9.1,
+  "lon": 98.55,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "เขาสก",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด  สุราษฎร์ธานี  ( เขาสก )     ละติจูด  9 - 06 - 00  น.  ลองจิจูด  98 - 33 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-surin-2569-leap.json": {
+  "lat": 14.95,
+  "lon": 103.433333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. เมือง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด สุรินทร์  ( อ. เมือง )     ละติจูด  14 - 57 - 00  น.  ลองจิจูด  103 - 26 - 00   อ.); th-province-coordinates.json"
+ },
+ "th-cicot-surin-2569.json": {
+  "lat": 14.95,
+  "lon": 103.433333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. เมือง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด สุรินทร์  ( อ. เมือง )     ละติจูด  14 - 57 - 00  น.  ลองจิจูด  103 - 26 - 00   อ.); th-province-coordinates.json"
+ },
+ "th-cicot-tak-2569-leap.json": {
+  "lat": 16.683333,
+  "lon": 98.516667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ.  แม่สอด",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ตาก   ( อ.  แม่สอด )     ละติจูด  16 - 41 - 00 น.  ลองจิจูด  98 - 31 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-tak-2569.json": {
+  "lat": 16.683333,
+  "lon": 98.516667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ.  แม่สอด",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ตาก   ( อ.  แม่สอด )     ละติจูด  16 - 41 - 00 น.  ลองจิจูด  98 - 31 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-trang-2569-leap.json": {
+  "lat": 7.5,
+  "lon": 99.283333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "หาดปากเม็ง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ตรัง   ( หาดปากเม็ง )     ละติจูด  7 - 30 - 00  น.  ลองจิจูด  99 - 17 - 00 อ.); th-province-coordinates.json"
+ },
+ "th-cicot-trang-2569.json": {
+  "lat": 7.5,
+  "lon": 99.283333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "หาดปากเม็ง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ตรัง   ( หาดปากเม็ง )     ละติจูด  7 - 30 - 00  น.  ลองจิจูด  99 - 17 - 00 อ.); th-province-coordinates.json"
+ },
+ "th-cicot-trat-2569-leap.json": {
+  "lat": 12.2,
+  "lon": 102.283333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ.  แหลมงอบ",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ตราด   ( อ.  แหลมงอบ  )     ละติจูด  12 - 12 - 00  น.  ลองจิจูด  102 - 17 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-trat-2569.json": {
+  "lat": 12.2,
+  "lon": 102.283333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ.  แหลมงอบ",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ตราด   ( อ.  แหลมงอบ  )     ละติจูด  12 - 12 - 00  น.  ลองจิจูด  102 - 17 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-ubonratchathani-2569-leap.json": {
+  "lat": 15.35,
+  "lon": 104.5,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. เขื่องใน",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด อุบลราชธานี  ( อ. เขื่องใน )     ละติจูด  15 - 21 - 00  น.  ลองจิจูด  104 - 30 - 00   อ.); th-province-coordinates.json"
+ },
+ "th-cicot-ubonratchathani-2569.json": {
+  "lat": 15.35,
+  "lon": 104.5,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. เขื่องใน",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด อุบลราชธานี  ( อ. เขื่องใน )     ละติจูด  15 - 21 - 00  น.  ลองจิจูด  104 - 30 - 00   อ.); th-province-coordinates.json"
+ },
+ "th-cicot-udonthani-2569-leap.json": {
+  "lat": 17.366667,
+  "lon": 102.8,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. เมือง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด อุดรธานี   ( อ. เมือง )     ละติจูด  17 - 22 - 00  น.  ลองจิจูด  102 - 48 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-udonthani-2569.json": {
+  "lat": 17.366667,
+  "lon": 102.8,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. เมือง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด อุดรธานี   ( อ. เมือง )     ละติจูด  17 - 22 - 00  น.  ลองจิจูด  102 - 48 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-uthaithani-2569-leap.json": {
+  "lat": 15.4,
+  "lon": 99.1,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. บ้านไร่",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด อุทัยธานี   ( อ. บ้านไร่ )     ละติจูด  15 - 24 - 00   น.  ลองจิจูด  99 - 06 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-uthaithani-2569.json": {
+  "lat": 15.4,
+  "lon": 99.1,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. บ้านไร่",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด อุทัยธานี   ( อ. บ้านไร่ )     ละติจูด  15 - 24 - 00   น.  ลองจิจูด  99 - 06 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-uttaradit-2569-leap.json": {
+  "lat": 17.733333,
+  "lon": 100.1,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. เมือง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด อุตรดิตถ์  ( อ. เมือง )     ละติจูด  17 - 44 - 00  น.  ลองจิจูด  100 - 06 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-uttaradit-2569.json": {
+  "lat": 17.733333,
+  "lon": 100.1,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. เมือง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด อุตรดิตถ์  ( อ. เมือง )     ละติจูด  17 - 44 - 00  น.  ลองจิจูด  100 - 06 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-yala-2569-leap.json": {
+  "lat": 5.8,
+  "lon": 101.033333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. เบตง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ยะลา   ( อ. เบตง )     ละติจูด  5 - 48 - 00  น.  ลองจิจูด  101 - 02 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-yala-2569.json": {
+  "lat": 5.8,
+  "lon": 101.033333,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. เบตง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด ยะลา   ( อ. เบตง )     ละติจูด  5 - 48 - 00  น.  ลองจิจูด  101 - 02 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-yasothon-2569-leap.json": {
+  "lat": 15.933333,
+  "lon": 104.066667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. เมือง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด  ยโสธร  ( อ. เมือง )     ละติจูด  15 - 56 - 00  น.  ลองจิจูด  104 - 04 - 00  อ.); th-province-coordinates.json"
+ },
+ "th-cicot-yasothon-2569.json": {
+  "lat": 15.933333,
+  "lon": 104.066667,
+  "pointClass": "ANCHOR",
+  "tz": "Asia/Bangkok",
+  "anchorName": "อ. เมือง",
+  "source": "CICOT workbook row 1, printed coordinate (จังหวัด  ยโสธร  ( อ. เมือง )     ละติจูด  15 - 56 - 00  น.  ลองจิจูด  104 - 04 - 00  อ.); th-province-coordinates.json"
+ },
+ "sihat-2026-ambon.json": {
+  "lat": -3.6854,
+  "lon": 128.195,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Jayapura",
+  "elevation": 10,
+  "source": "Kemenag SIHAT city register, KOTA AMBON lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-banda-aceh.json": {
+  "lat": 5.5587,
+  "lon": 95.3277,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Jakarta",
+  "elevation": 8,
+  "source": "Kemenag SIHAT city register, KOTA BANDA ACEH lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-bandar-lampung.json": {
+  "lat": -5.4142,
+  "lon": 105.2621,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Jakarta",
+  "elevation": 98,
+  "source": "Kemenag SIHAT city register, KOTA BANDAR LAMPUNG lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-bandung.json": {
+  "lat": -6.9192,
+  "lon": 107.6366,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Jakarta",
+  "elevation": 720,
+  "source": "Kemenag SIHAT city register, KOTA BANDUNG lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-banjarmasin.json": {
+  "lat": -3.3291,
+  "lon": 114.5918,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Makassar",
+  "elevation": 10,
+  "source": "Kemenag SIHAT city register, KOTA BANJARMASIN lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-bengkulu.json": {
+  "lat": -3.8414,
+  "lon": 102.3082,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Jakarta",
+  "elevation": 17,
+  "source": "Kemenag SIHAT city register, KOTA BENGKULU lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-bulungan.json": {
+  "lat": 2.7975,
+  "lon": 117.032,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Makassar",
+  "elevation": 7,
+  "source": "Kemenag SIHAT city register, KAB. BULUNGAN lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-denpasar.json": {
+  "lat": -8.6684,
+  "lon": 115.2208,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Makassar",
+  "elevation": 25,
+  "source": "Kemenag SIHAT city register, KOTA DENPASAR lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-gorontalo.json": {
+  "lat": 0.5384,
+  "lon": 123.0553,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Makassar",
+  "elevation": 8,
+  "source": "Kemenag SIHAT city register, KOTA GORONTALO lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-jakarta-pusat.json": {
+  "lat": -6.1812,
+  "lon": 106.8351,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Jakarta",
+  "elevation": 6,
+  "source": "Kemenag SIHAT city register, KOTA JAKARTA PUSAT lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-jambi.json": {
+  "lat": -1.6182,
+  "lon": 103.5998,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Jakarta",
+  "elevation": 22,
+  "source": "Kemenag SIHAT city register, KOTA JAMBI lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-jayapura.json": {
+  "lat": -2.6645,
+  "lon": 140.8001,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Jayapura",
+  "elevation": 19,
+  "source": "Kemenag SIHAT city register, KOTA JAYAPURA lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-jayawijaya.json": {
+  "lat": -4.1333,
+  "lon": 138.9333,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Jayapura",
+  "elevation": 1668,
+  "source": "Kemenag SIHAT city register, KAB. JAYAWIJAYA lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-kendari.json": {
+  "lat": -3.9977,
+  "lon": 122.5329,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Makassar",
+  "elevation": 16,
+  "source": "Kemenag SIHAT city register, KOTA KENDARI lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-kupang.json": {
+  "lat": -10.2045,
+  "lon": 123.6045,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Jakarta",
+  "elevation": 14,
+  "source": "Kemenag SIHAT city register, KOTA KUPANG lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-makassar.json": {
+  "lat": -5.1356,
+  "lon": 119.4639,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Makassar",
+  "elevation": 9,
+  "source": "Kemenag SIHAT city register, KOTA MAKASSAR lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-mamuju.json": {
+  "lat": -2.5197,
+  "lon": 119.3446,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Makassar",
+  "elevation": 20,
+  "source": "Kemenag SIHAT city register, KAB. MAMUJU lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-manado.json": {
+  "lat": 1.5249,
+  "lon": 124.8479,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Makassar",
+  "elevation": 24,
+  "source": "Kemenag SIHAT city register, KOTA MANADO lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-manokwari.json": {
+  "lat": -0.9357,
+  "lon": 133.8004,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Jayapura",
+  "elevation": 11,
+  "source": "Kemenag SIHAT city register, KAB. MANOKWARI lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-mataram.json": {
+  "lat": -8.5902,
+  "lon": 116.111,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Jakarta",
+  "elevation": 16,
+  "source": "Kemenag SIHAT city register, KOTA MATARAM lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-medan.json": {
+  "lat": 3.629,
+  "lon": 98.6672,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Jakarta",
+  "elevation": 31,
+  "source": "Kemenag SIHAT city register, KOTA MEDAN lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-merauke.json": {
+  "lat": -8.4833,
+  "lon": 140.3833,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Jayapura",
+  "elevation": 5,
+  "source": "Kemenag SIHAT city register, KAB. MERAUKE lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-nabire.json": {
+  "lat": -3.3667,
+  "lon": 135.4833,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Jayapura",
+  "elevation": 12,
+  "source": "Kemenag SIHAT city register, KAB. NABIRE lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-padang.json": {
+  "lat": -0.8989,
+  "lon": 100.4376,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Jakarta",
+  "elevation": 6,
+  "source": "Kemenag SIHAT city register, KOTA PADANG lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-palangkaraya.json": {
+  "lat": -2.0075,
+  "lon": 113.7675,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Jakarta",
+  "elevation": 16,
+  "source": "Kemenag SIHAT city register, KOTA PALANGKARAYA lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-palembang.json": {
+  "lat": -2.9717,
+  "lon": 104.7413,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Jakarta",
+  "elevation": 19,
+  "source": "Kemenag SIHAT city register, KOTA PALEMBANG lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-palu.json": {
+  "lat": -0.8369,
+  "lon": 119.912,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Makassar",
+  "elevation": 13,
+  "source": "Kemenag SIHAT city register, KOTA PALU lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-pangkal-pinang.json": {
+  "lat": -2.1105,
+  "lon": 106.1132,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Jakarta",
+  "elevation": 7,
+  "source": "Kemenag SIHAT city register, KOTA PANGKAL PINANG lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-pekanbaru.json": {
+  "lat": 0.5513,
+  "lon": 101.4657,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Jakarta",
+  "elevation": 22,
+  "source": "Kemenag SIHAT city register, KOTA PEKANBARU lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-pontianak.json": {
+  "lat": -0.0258,
+  "lon": 109.3317,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Jakarta",
+  "elevation": 3,
+  "source": "Kemenag SIHAT city register, KOTA PONTIANAK lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-samarinda.json": {
+  "lat": -0.5003,
+  "lon": 117.1771,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Makassar",
+  "elevation": 4,
+  "source": "Kemenag SIHAT city register, KOTA SAMARINDA lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-semarang.json": {
+  "lat": -7.0239,
+  "lon": 110.3915,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Jakarta",
+  "elevation": 5,
+  "source": "Kemenag SIHAT city register, KOTA SEMARANG lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-serang.json": {
+  "lat": -6.1233,
+  "lon": 106.1667,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Jakarta",
+  "elevation": 29,
+  "source": "Kemenag SIHAT city register, KOTA SERANG lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-sorong.json": {
+  "lat": -0.8735,
+  "lon": 131.2629,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Jayapura",
+  "elevation": 8,
+  "source": "Kemenag SIHAT city register, KOTA SORONG lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-surabaya.json": {
+  "lat": -7.2743,
+  "lon": 112.7236,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Jakarta",
+  "elevation": 9,
+  "source": "Kemenag SIHAT city register, KOTA SURABAYA lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-tanjung-pinang.json": {
+  "lat": 0.9196,
+  "lon": 104.4871,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Jakarta",
+  "elevation": 9,
+  "source": "Kemenag SIHAT city register, KOTA TANJUNG PINANG lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-ternate.json": {
+  "lat": 0.8385,
+  "lon": 127.1725,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Jayapura",
+  "elevation": 9,
+  "source": "Kemenag SIHAT city register, KOTA TERNATE lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "sihat-2026-yogyakarta.json": {
+  "lat": -7.8033,
+  "lon": 110.3744,
+  "pointClass": "PUBLISHED",
+  "tz": "Asia/Jakarta",
+  "elevation": 116,
+  "source": "Kemenag SIHAT city register, KOTA YOGYAKARTA lat/longitude/timezone; captures/kemenag-cities-all.json"
+ },
+ "eg-esa-00-2026.json": {
+  "lat": 30.09,
+  "lon": 31.29,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (القاهرة); solver scripts/fit82.js"
+ },
+ "eg-esa-01-2026.json": {
+  "lat": 31.22,
+  "lon": 29.97,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (الأسكندرية); solver scripts/fit82.js"
+ },
+ "eg-esa-02-2026.json": {
+  "lat": 30.77,
+  "lon": 30.99,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (طنطا); solver scripts/fit82.js"
+ },
+ "eg-esa-03-2026.json": {
+  "lat": 31.04,
+  "lon": 31.4,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (المنصورة); solver scripts/fit82.js"
+ },
+ "eg-esa-04-2026.json": {
+  "lat": 30.58,
+  "lon": 31.49,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (الزقازيق); solver scripts/fit82.js"
+ },
+ "eg-esa-05-2026.json": {
+  "lat": 27.2,
+  "lon": 31.18,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (أسيوط); solver scripts/fit82.js"
+ },
+ "eg-esa-06-2026.json": {
+  "lat": 26.48,
+  "lon": 31.68,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (سوهاج); solver scripts/fit82.js"
+ },
+ "eg-esa-07-2026.json": {
+  "lat": 29.13,
+  "lon": 31.1,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (بنى سويف); solver scripts/fit82.js"
+ },
+ "eg-esa-08-2026.json": {
+  "lat": 28.15,
+  "lon": 30.77,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (المنيا); solver scripts/fit82.js"
+ },
+ "eg-esa-09-2026.json": {
+  "lat": 26.19,
+  "lon": 32.71,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (قنا); solver scripts/fit82.js"
+ },
+ "eg-esa-10-2026.json": {
+  "lat": 23.9,
+  "lon": 32.92,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (أسوان); solver scripts/fit82.js"
+ },
+ "eg-esa-11-2026.json": {
+  "lat": 31.33,
+  "lon": 27.25,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (مطروح); solver scripts/fit82.js"
+ },
+ "eg-esa-12-2026.json": {
+  "lat": 27.19,
+  "lon": 33.85,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (الغردقة); solver scripts/fit82.js"
+ },
+ "eg-esa-13-2026.json": {
+  "lat": 25.41,
+  "lon": 30.24,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (الخارجة); solver scripts/fit82.js"
+ },
+ "eg-esa-14-2026.json": {
+  "lat": 30.63,
+  "lon": 32.24,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (الإسماعيلية); solver scripts/fit82.js"
+ },
+ "eg-esa-15-2026.json": {
+  "lat": 31.39,
+  "lon": 31.81,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (دمياط); solver scripts/fit82.js"
+ },
+ "eg-esa-16-2026.json": {
+  "lat": 31.57,
+  "lon": 25.18,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (السلوم); solver scripts/fit82.js"
+ },
+ "eg-esa-17-2026.json": {
+  "lat": 29.05,
+  "lon": 34.67,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (نويبع); solver scripts/fit82.js"
+ },
+ "eg-esa-18-2026.json": {
+  "lat": 22.32,
+  "lon": 36.67,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (حلايب); solver scripts/fit82.js"
+ },
+ "eg-esa-19-2026.json": {
+  "lat": 27.93,
+  "lon": 34.31,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (شرم الشيخ); solver scripts/fit82.js"
+ },
+ "eg-esa-20-2026.json": {
+  "lat": 29.27,
+  "lon": 30.83,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (الفيوم); solver scripts/fit82.js"
+ },
+ "eg-esa-21-2026.json": {
+  "lat": 29.89,
+  "lon": 30.93,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (6أكتوبر); solver scripts/fit82.js"
+ },
+ "eg-esa-22-2026.json": {
+  "lat": 31.11,
+  "lon": 30.94,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (كفر الشيخ); solver scripts/fit82.js"
+ },
+ "eg-esa-23-2026.json": {
+  "lat": 31.39,
+  "lon": 31.17,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (الحامول); solver scripts/fit82.js"
+ },
+ "eg-esa-24-2026.json": {
+  "lat": 31.36,
+  "lon": 31.09,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (بلطيم); solver scripts/fit82.js"
+ },
+ "eg-esa-25-2026.json": {
+  "lat": 29.45,
+  "lon": 34.41,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (طابا); solver scripts/fit82.js"
+ },
+ "eg-esa-26-2026.json": {
+  "lat": 29.62,
+  "lon": 32.66,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (راس سدر); solver scripts/fit82.js"
+ },
+ "eg-esa-27-2026.json": {
+  "lat": 28.18,
+  "lon": 33.64,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (الطور); solver scripts/fit82.js"
+ },
+ "eg-esa-28-2026.json": {
+  "lat": 28.49,
+  "lon": 34.5,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (دهب); solver scripts/fit82.js"
+ },
+ "eg-esa-29-2026.json": {
+  "lat": 29.04,
+  "lon": 33.09,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (ابوزنيمة); solver scripts/fit82.js"
+ },
+ "eg-esa-30-2026.json": {
+  "lat": 28.47,
+  "lon": 33.35,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (راس غارب); solver scripts/fit82.js"
+ },
+ "eg-esa-31-2026.json": {
+  "lat": 26.07,
+  "lon": 34.27,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (القصير); solver scripts/fit82.js"
+ },
+ "eg-esa-32-2026.json": {
+  "lat": 23.76,
+  "lon": 35.5,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (برنيس); solver scripts/fit82.js"
+ },
+ "eg-esa-33-2026.json": {
+  "lat": 26.78,
+  "lon": 33.95,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (سفاجة); solver scripts/fit82.js"
+ },
+ "eg-esa-34-2026.json": {
+  "lat": 25.02,
+  "lon": 34.86,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (مرسى علم); solver scripts/fit82.js"
+ },
+ "eg-esa-35-2026.json": {
+  "lat": 23.17,
+  "lon": 35.61,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (شلاتين); solver scripts/fit82.js"
+ },
+ "eg-esa-36-2026.json": {
+  "lat": 31.73,
+  "lon": 25.93,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (سيدى برانى); solver scripts/fit82.js"
+ },
+ "eg-esa-37-2026.json": {
+  "lat": 31.06,
+  "lon": 28.45,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (الضبعة); solver scripts/fit82.js"
+ },
+ "eg-esa-38-2026.json": {
+  "lat": 30.78,
+  "lon": 28.95,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (العلمين); solver scripts/fit82.js"
+ },
+ "eg-esa-39-2026.json": {
+  "lat": 29.19,
+  "lon": 25.53,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (واحة سيوة); solver scripts/fit82.js"
+ },
+ "eg-esa-40-2026.json": {
+  "lat": 25.46,
+  "lon": 28.91,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (موط (الداخلة )); solver scripts/fit82.js"
+ },
+ "eg-esa-41-2026.json": {
+  "lat": 27.14,
+  "lon": 28,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (الفرافرة); solver scripts/fit82.js"
+ },
+ "eg-esa-42-2026.json": {
+  "lat": 28.36,
+  "lon": 28.95,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (البويطى); solver scripts/fit82.js"
+ },
+ "eg-esa-43-2026.json": {
+  "lat": 24.47,
+  "lon": 30.52,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (باريس); solver scripts/fit82.js"
+ },
+ "eg-esa-44-2026.json": {
+  "lat": 31.05,
+  "lon": 30.95,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (المحلة الكبرى); solver scripts/fit82.js"
+ },
+ "eg-esa-45-2026.json": {
+  "lat": 30.89,
+  "lon": 29.4,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (الحمام); solver scripts/fit82.js"
+ },
+ "eg-esa-46-2026.json": {
+  "lat": 26.12,
+  "lon": 32.24,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (نجع حمادى); solver scripts/fit82.js"
+ },
+ "eg-esa-47-2026.json": {
+  "lat": 31.28,
+  "lon": 32.29,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (بورسعيد); solver scripts/fit82.js"
+ },
+ "eg-esa-48-2026.json": {
+  "lat": 29.99,
+  "lon": 32.52,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (السويس); solver scripts/fit82.js"
+ },
+ "eg-esa-49-2026.json": {
+  "lat": 31.19,
+  "lon": 33.78,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (العريش); solver scripts/fit82.js"
+ },
+ "eg-esa-50-2026.json": {
+  "lat": 31.08,
+  "lon": 30.46,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (دمنهور); solver scripts/fit82.js"
+ },
+ "eg-esa-51-2026.json": {
+  "lat": 25.02,
+  "lon": 32.84,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (ادفو); solver scripts/fit82.js"
+ },
+ "eg-esa-52-2026.json": {
+  "lat": 25.23,
+  "lon": 32.54,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (اسنا); solver scripts/fit82.js"
+ },
+ "eg-esa-53-2026.json": {
+  "lat": 25.74,
+  "lon": 32.67,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (الأقصر); solver scripts/fit82.js"
+ },
+ "eg-esa-54-2026.json": {
+  "lat": 30.04,
+  "lon": 31.41,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (القاهرة الجديدة); solver scripts/fit82.js"
+ },
+ "eg-esa-55-2026.json": {
+  "lat": 22.77,
+  "lon": 31.43,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (توشكى); solver scripts/fit82.js"
+ },
+ "eg-esa-56-2026.json": {
+  "lat": 30.86,
+  "lon": 30.53,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (الدلنجات); solver scripts/fit82.js"
+ },
+ "eg-esa-57-2026.json": {
+  "lat": 28.57,
+  "lon": 33.93,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (كاترين); solver scripts/fit82.js"
+ },
+ "eg-esa-58-2026.json": {
+  "lat": 30.41,
+  "lon": 30.52,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (السادات); solver scripts/fit82.js"
+ },
+ "eg-esa-59-2026.json": {
+  "lat": 29.83,
+  "lon": 31.38,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (مدينة 15 مايو); solver scripts/fit82.js"
+ },
+ "eg-esa-60-2026.json": {
+  "lat": 30.64,
+  "lon": 31.92,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (الصالحية الجديدة); solver scripts/fit82.js"
+ },
+ "eg-esa-61-2026.json": {
+  "lat": 30.33,
+  "lon": 31.74,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (العاشر من رمضان); solver scripts/fit82.js"
+ },
+ "eg-esa-62-2026.json": {
+  "lat": 30.01,
+  "lon": 31.85,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (العاصمة الادارية الجديدة); solver scripts/fit82.js"
+ },
+ "eg-esa-63-2026.json": {
+  "lat": 30.2,
+  "lon": 31.59,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (العبور); solver scripts/fit82.js"
+ },
+ "eg-esa-64-2026.json": {
+  "lat": 28.87,
+  "lon": 30.67,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (الفشن الجديدة); solver scripts/fit82.js"
+ },
+ "eg-esa-65-2026.json": {
+  "lat": 31.48,
+  "lon": 31.43,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (المنصورة الجديدة); solver scripts/fit82.js"
+ },
+ "eg-esa-66-2026.json": {
+  "lat": 30.61,
+  "lon": 30.09,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (النوبارية الجديدة); solver scripts/fit82.js"
+ },
+ "eg-esa-67-2026.json": {
+  "lat": 30.19,
+  "lon": 31.75,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (بدر); solver scripts/fit82.js"
+ },
+ "eg-esa-68-2026.json": {
+  "lat": 28.49,
+  "lon": 30.94,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (بنى مزار الجديدة); solver scripts/fit82.js"
+ },
+ "eg-esa-69-2026.json": {
+  "lat": 31.01,
+  "lon": 32.62,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (بورسعيد الجديدة سلام); solver scripts/fit82.js"
+ },
+ "eg-esa-70-2026.json": {
+  "lat": 31.08,
+  "lon": 32.97,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (بئر العبد الجديدة); solver scripts/fit82.js"
+ },
+ "eg-esa-71-2026.json": {
+  "lat": 22.81,
+  "lon": 31.59,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (توشكى الجديدة); solver scripts/fit82.js"
+ },
+ "eg-esa-72-2026.json": {
+  "lat": 30.12,
+  "lon": 31.88,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (حدائق العاصمة); solver scripts/fit82.js"
+ },
+ "eg-esa-73-2026.json": {
+  "lat": 31.42,
+  "lon": 30.38,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (رشيد الجديدة); solver scripts/fit82.js"
+ },
+ "eg-esa-74-2026.json": {
+  "lat": 31.2,
+  "lon": 34.18,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (رفح الجديدة); solver scripts/fit82.js"
+ },
+ "eg-esa-75-2026.json": {
+  "lat": 30.1,
+  "lon": 30.77,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (سفنكس الجديدة); solver scripts/fit82.js"
+ },
+ "eg-esa-76-2026.json": {
+  "lat": 22.8,
+  "lon": 28.71,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (شرق العوينات); solver scripts/fit82.js"
+ },
+ "eg-esa-77-2026.json": {
+  "lat": 30.64,
+  "lon": 29.67,
+  "pointClass": "DERIVED",
+  "tz": "Africa/Cairo",
+  "source": "ESA table's own implied point, o1l-city/egypt-82/data/fit82.json implied (غرب النوبارية); solver scripts/fit82.js"
+ },
+ "ba_banja_luka_2026.json": {
+  "lat": 44.7722,
+  "lon": 17.191,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=1 (Banja Luka); balkan-cities/data/ba_coords.json"
+ },
+ "ba_biha_2026.json": {
+  "lat": 44.8169,
+  "lon": 15.87,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=2 (Bihać); balkan-cities/data/ba_coords.json"
+ },
+ "ba_bijeljina_2026.json": {
+  "lat": 44.7575,
+  "lon": 19.2144,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=3 (Bijeljina); balkan-cities/data/ba_coords.json"
+ },
+ "ba_bile_a_2026.json": {
+  "lat": 42.8758,
+  "lon": 18.4297,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=4 (Bileća); balkan-cities/data/ba_coords.json"
+ },
+ "ba_bosanski_brod_2026.json": {
+  "lat": 45.1333,
+  "lon": 18,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=5 (Bosanski Brod); balkan-cities/data/ba_coords.json"
+ },
+ "ba_br_ko_2026.json": {
+  "lat": 44.8728,
+  "lon": 18.8106,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=14 (Brčko); balkan-cities/data/ba_coords.json"
+ },
+ "ba_bugojno_2026.json": {
+  "lat": 44.0531,
+  "lon": 17.4508,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=16 (Bugojno); balkan-cities/data/ba_coords.json"
+ },
+ "ba_cazin_2026.json": {
+  "lat": 44.9667,
+  "lon": 15.9431,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=19 (Cazin); balkan-cities/data/ba_coords.json"
+ },
+ "ba_ajni_e_2026.json": {
+  "lat": 43.5567,
+  "lon": 19.0722,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=20 (Čajniče); balkan-cities/data/ba_coords.json"
+ },
+ "ba_apljina_2026.json": {
+  "lat": 43.1194,
+  "lon": 17.6853,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=21 (Čapljina); balkan-cities/data/ba_coords.json"
+ },
+ "ba_itluk_2026.json": {
+  "lat": 43.2333,
+  "lon": 17.7,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=24 (Čitluk); balkan-cities/data/ba_coords.json"
+ },
+ "ba_doboj_2026.json": {
+  "lat": 44.7308,
+  "lon": 18.0856,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=26 (Doboj); balkan-cities/data/ba_coords.json"
+ },
+ "ba_fojnica_2026.json": {
+  "lat": 43.9608,
+  "lon": 17.8953,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=30 (Fojnica); balkan-cities/data/ba_coords.json"
+ },
+ "ba_glamo_2026.json": {
+  "lat": 44.0475,
+  "lon": 16.8506,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=32 (Glamoč); balkan-cities/data/ba_coords.json"
+ },
+ "ba_gora_de_2026.json": {
+  "lat": 43.6667,
+  "lon": 18.9764,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=33 (Goražde); balkan-cities/data/ba_coords.json"
+ },
+ "ba_gornji_vakuf_2026.json": {
+  "lat": 43.9392,
+  "lon": 17.5908,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=34 (Gornji Vakuf); balkan-cities/data/ba_coords.json"
+ },
+ "ba_han_pijesak_2026.json": {
+  "lat": 44.0667,
+  "lon": 18.95,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=39 (Han-Pijesak); balkan-cities/data/ba_coords.json"
+ },
+ "ba_hlivno_2026.json": {
+  "lat": 43.8269,
+  "lon": 17.0075,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=40 (Hlivno); balkan-cities/data/ba_coords.json"
+ },
+ "ba_ilija_2026.json": {
+  "lat": 43.9519,
+  "lon": 18.2736,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=41 (Ilijaš); balkan-cities/data/ba_coords.json"
+ },
+ "ba_jajce_2026.json": {
+  "lat": 44.3394,
+  "lon": 17.2697,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=43 (Jajce); balkan-cities/data/ba_coords.json"
+ },
+ "ba_kakanj_2026.json": {
+  "lat": 44.1286,
+  "lon": 18.1144,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=44 (Kakanj); balkan-cities/data/ba_coords.json"
+ },
+ "ba_kalesija_2026.json": {
+  "lat": 44.45,
+  "lon": 18.8667,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=45 (Kalesija); balkan-cities/data/ba_coords.json"
+ },
+ "ba_klju_2026.json": {
+  "lat": 44.5333,
+  "lon": 16.7833,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=49 (Ključ); balkan-cities/data/ba_coords.json"
+ },
+ "ba_konjic_2026.json": {
+  "lat": 43.6514,
+  "lon": 17.96,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=50 (Konjic); balkan-cities/data/ba_coords.json"
+ },
+ "ba_kupres_2026.json": {
+  "lat": 43.9833,
+  "lon": 17.3,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=53 (Kupres); balkan-cities/data/ba_coords.json"
+ },
+ "ba_lopare_2026.json": {
+  "lat": 44.6333,
+  "lon": 18.85,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=55 (Lopare); balkan-cities/data/ba_coords.json"
+ },
+ "ba_ljubinje_2026.json": {
+  "lat": 42.95,
+  "lon": 18.0833,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=57 (Ljubinje); balkan-cities/data/ba_coords.json"
+ },
+ "ba_maglaj_2026.json": {
+  "lat": 44.5497,
+  "lon": 18.0997,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=59 (Maglaj); balkan-cities/data/ba_coords.json"
+ },
+ "ba_mostar_2026.json": {
+  "lat": 43.3438,
+  "lon": 17.8078,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=61 (Mostar); balkan-cities/data/ba_coords.json"
+ },
+ "ba_nevesinje_2026.json": {
+  "lat": 43.2581,
+  "lon": 18.1133,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=64 (Nevesinje); balkan-cities/data/ba_coords.json"
+ },
+ "ba_novi_travnik_2026.json": {
+  "lat": 44.1667,
+  "lon": 17.65,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=65 (Novi Travnik); balkan-cities/data/ba_coords.json"
+ },
+ "ba_od_ak_2026.json": {
+  "lat": 45,
+  "lon": 18.3333,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=66 (Odžak); balkan-cities/data/ba_coords.json"
+ },
+ "ba_ora_je_2026.json": {
+  "lat": 45.0333,
+  "lon": 18.7,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=68 (Orašje); balkan-cities/data/ba_coords.json"
+ },
+ "ba_prijedor_2026.json": {
+  "lat": 44.98,
+  "lon": 16.7133,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=71 (Prijedor); balkan-cities/data/ba_coords.json"
+ },
+ "ba_prozor_2026.json": {
+  "lat": 43.8167,
+  "lon": 17.6,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=73 (Prozor); balkan-cities/data/ba_coords.json"
+ },
+ "ba_sarajevo_2026.json": {
+  "lat": 43.8563,
+  "lon": 18.4131,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=77 (Sarajevo); balkan-cities/data/ba_coords.json"
+ },
+ "ba_skender_vakuf_2026.json": {
+  "lat": 44.4667,
+  "lon": 17.55,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=78 (Skender-Vakuf); balkan-cities/data/ba_coords.json"
+ },
+ "ba_sokolac_2026.json": {
+  "lat": 43.9333,
+  "lon": 18.7833,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=79 (Sokolac); balkan-cities/data/ba_coords.json"
+ },
+ "ba_ekovi_i_2026.json": {
+  "lat": 44.2833,
+  "lon": 18.85,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=84 (Šekovići); balkan-cities/data/ba_coords.json"
+ },
+ "ba_te_anj_2026.json": {
+  "lat": 44.6103,
+  "lon": 17.9833,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=88 (Tešanj); balkan-cities/data/ba_coords.json"
+ },
+ "ba_travnik_2026.json": {
+  "lat": 44.2269,
+  "lon": 17.6656,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=90 (Travnik); balkan-cities/data/ba_coords.json"
+ },
+ "ba_trebinje_2026.json": {
+  "lat": 42.7111,
+  "lon": 18.3436,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=91 (Trebinje); balkan-cities/data/ba_coords.json"
+ },
+ "ba_tuzla_2026.json": {
+  "lat": 44.5384,
+  "lon": 18.6763,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=93 (Tuzla); balkan-cities/data/ba_coords.json"
+ },
+ "ba_vare_2026.json": {
+  "lat": 44.1611,
+  "lon": 18.3289,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=95 (Vareš); balkan-cities/data/ba_coords.json"
+ },
+ "ba_velika_kladu_a_2026.json": {
+  "lat": 45.1833,
+  "lon": 15.8,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=96 (Velika Kladuša); balkan-cities/data/ba_coords.json"
+ },
+ "ba_visoko_2026.json": {
+  "lat": 44,
+  "lon": 18.1833,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=97 (Visoko); balkan-cities/data/ba_coords.json"
+ },
+ "ba_vi_egrad_2026.json": {
+  "lat": 43.7856,
+  "lon": 19.2933,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=98 (Višegrad); balkan-cities/data/ba_coords.json"
+ },
+ "ba_vitez_2026.json": {
+  "lat": 44.15,
+  "lon": 17.7833,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=99 (Vitez); balkan-cities/data/ba_coords.json"
+ },
+ "ba_zenica_2026.json": {
+  "lat": 44.2036,
+  "lon": 17.9078,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=102 (Zenica); balkan-cities/data/ba_coords.json"
+ },
+ "ba_zvornik_2026.json": {
+  "lat": 44.3831,
+  "lon": 19.1019,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=103 (Zvornik); balkan-cities/data/ba_coords.json"
+ },
+ "ba_bijelo_polje_2026.json": {
+  "lat": 43.0386,
+  "lon": 19.7461,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=107 (Bijelo Polje); balkan-cities/data/ba_coords.json"
+ },
+ "ba_gusinje_2026.json": {
+  "lat": 42.563667,
+  "lon": 19.832955,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=108 (Gusinje); balkan-cities/data/ba_coords.json"
+ },
+ "ba_nova_varo_2026.json": {
+  "lat": 43.4597,
+  "lon": 19.8231,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=109 (Nova Varoš); balkan-cities/data/ba_coords.json"
+ },
+ "ba_novi_pazar_2026.json": {
+  "lat": 43.1367,
+  "lon": 20.5122,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=110 (Novi Pazar); balkan-cities/data/ba_coords.json"
+ },
+ "ba_plav_2026.json": {
+  "lat": 42.5967,
+  "lon": 19.9419,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=111 (Plav); balkan-cities/data/ba_coords.json"
+ },
+ "ba_pljevlja_2026.json": {
+  "lat": 43.3572,
+  "lon": 19.3592,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=112 (Pljevlja); balkan-cities/data/ba_coords.json"
+ },
+ "ba_priboj_2026.json": {
+  "lat": 43.5842,
+  "lon": 19.5244,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=113 (Priboj); balkan-cities/data/ba_coords.json"
+ },
+ "ba_prijepolje_2026.json": {
+  "lat": 43.3867,
+  "lon": 19.6461,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=114 (Prijepolje); balkan-cities/data/ba_coords.json"
+ },
+ "ba_ro_aje_2026.json": {
+  "lat": 42.8397,
+  "lon": 20.1667,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=115 (Rožaje); balkan-cities/data/ba_coords.json"
+ },
+ "ba_sjenica_2026.json": {
+  "lat": 43.2722,
+  "lon": 20.0017,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=116 (Sjenica); balkan-cities/data/ba_coords.json"
+ },
+ "ba_tutin_2026.json": {
+  "lat": 42.9917,
+  "lon": 20.3333,
+  "pointClass": "PUBLISHED",
+  "tz": "Europe/Sarajevo",
+  "source": "vaktija.eu location register id=117 (Tutin); balkan-cities/data/ba_coords.json"
+ }
+}

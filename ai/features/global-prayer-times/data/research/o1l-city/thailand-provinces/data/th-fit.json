@@ -1,0 +1,8715 @@
+{
+ "recipe_angles": {
+  "fajr": 19.8,
+  "isha": 18.1,
+  "asr": "Shafi"
+ },
+ "engine": "adhan 4.4.6",
+ "tz": "Asia/Bangkok",
+ "columns": {
+  "fajr": {
+   "p": "fajr",
+   "margin": -0.5,
+   "mode": "ceil",
+   "exact": 44960,
+   "within1": 55552,
+   "worst": 13,
+   "days": 56286
+  },
+  "sunrise": {
+   "p": "sunrise",
+   "margin": 1,
+   "mode": "floor",
+   "exact": 42807,
+   "within1": 55548,
+   "worst": 13,
+   "days": 56286
+  },
+  "dhuhr": {
+   "p": "dhuhr",
+   "margin": 1,
+   "mode": "floor",
+   "exact": 50915,
+   "within1": 55555,
+   "worst": 13,
+   "days": 56286
+  },
+  "asr": {
+   "p": "asr",
+   "margin": 0,
+   "mode": "ceil",
+   "exact": 45913,
+   "within1": 55554,
+   "worst": 13,
+   "days": 56286
+  },
+  "magrib": {
+   "p": "magrib",
+   "margin": 0,
+   "mode": "ceil",
+   "exact": 46967,
+   "within1": 55555,
+   "worst": 13,
+   "days": 56286
+  },
+  "isha": {
+   "p": "isha",
+   "margin": -0.5,
+   "mode": "ceil",
+   "exact": 47578,
+   "within1": 55554,
+   "worst": 13,
+   "days": 56286
+  }
+ },
+ "blocks": {
+  "2569": {
+   "label": "BE 2569 / 2026 normal-year block",
+   "provinces": 77,
+   "values": 168624,
+   "exact": 139851,
+   "within1": 166433,
+   "worst": 13,
+   "provinces_all_within1": 75
+  },
+  "leap": {
+   "label": "leap-year block of the same BE 2569 edition",
+   "provinces": 77,
+   "values": 169092,
+   "exact": 139289,
+   "within1": 166885,
+   "worst": 13,
+   "provinces_all_within1": 73
+  }
+ },
+ "provinces": {
+  "2569": {
+   "Kamphaeng Phet": {
+    "district": "อ.คลองลาน",
+    "lat": 16.366667,
+    "lon": 99.133333,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 293,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 272,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 332,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 307,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 312,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 319,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1835,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -63
+   },
+   "Bangkok": {
+    "district": "เขตหนองแขม",
+    "lat": 13.7,
+    "lon": 100.333333,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 304,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 273,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 342,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 319,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 320,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 318,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1876,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -51
+   },
+   "Chai Nat": {
+    "district": "อ.หันคา",
+    "lat": 15.133333,
+    "lon": 99.816667,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 311,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 273,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 336,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 313,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 311,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 313,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1857,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -57
+   },
+   "Nakhon Nayok": {
+    "district": "อ. บ้านนา",
+    "lat": 14.266667,
+    "lon": 100.966667,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 297,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 262,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 332,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 309,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 315,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 324,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1839,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -53
+   },
+   "Nakhon Pathom": {
+    "district": "อ. เมือง",
+    "lat": 13.9,
+    "lon": 99.933333,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 299,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 270,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 337,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 313,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 319,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 326,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1864,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -52
+   },
+   "Nakhon Sawan": {
+    "district": "อ. แม่วงก์",
+    "lat": 15.8,
+    "lon": 99.383333,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 305,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 272,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 332,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 312,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 312,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 316,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1849,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -60
+   },
+   "Nonthaburi": {
+    "district": "อ. ไทรน้อย",
+    "lat": 13.916667,
+    "lon": 100.3,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 303,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 261,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 323,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 313,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 310,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 316,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1826,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -52
+   },
+   "Pathum Thani": {
+    "district": "อ. ลาดหลุมแก้ว",
+    "lat": 14,
+    "lon": 100.383333,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 306,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 266,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 332,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 319,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 323,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 322,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1868,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -52
+   },
+   "Phra Nakhon Si Ayutthaya": {
+    "district": "อ. บางซ้าย",
+    "lat": 14.316667,
+    "lon": 100.283333,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 302,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 278,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 332,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 323,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 312,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 313,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1860,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -54
+   },
+   "Phichit": {
+    "district": "อ. โพธิ์ประทับช้าง",
+    "lat": 16.3,
+    "lon": 100.066667,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 299,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 267,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 336,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 310,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 320,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 320,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1852,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -62
+   },
+   "Phitsanulok": {
+    "district": "อ. เมือง",
+    "lat": 16.816667,
+    "lon": 100.25,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 302,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 261,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 334,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 309,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 323,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 301,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1830,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -64
+   },
+   "Phetchabun": {
+    "district": "อ. ชนแดน",
+    "lat": 16.233333,
+    "lon": 100.733333,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 299,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 267,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 328,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 315,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 304,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 308,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1821,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -62
+   },
+   "Lopburi": {
+    "district": "อ. บ้านหมี่",
+    "lat": 15.066667,
+    "lon": 100.483333,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 294,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 261,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 329,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 314,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 315,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 310,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1823,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -57
+   },
+   "Samut Prakan": {
+    "district": "อ. พระสมุทรเจดีย์",
+    "lat": 13.583333,
+    "lon": 100.45,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 291,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 259,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 332,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 314,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 320,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 326,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1842,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -51
+   },
+   "Samut Songkhram": {
+    "district": "อ. อัมพวา",
+    "lat": 13.366667,
+    "lon": 99.883333,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 302,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 270,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 332,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 317,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 327,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 326,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1874,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -50
+   },
+   "Samut Sakhon": {
+    "district": "อ. บ้านแพ้ว",
+    "lat": 13.566667,
+    "lon": 100.05,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 304,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 271,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 323,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 319,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 320,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 316,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1853,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -51
+   },
+   "Sing Buri": {
+    "district": "อ. บางระจัน",
+    "lat": 14.916667,
+    "lon": 100.216667,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 303,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 264,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 332,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 317,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 314,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 320,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1850,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -56
+   },
+   "Sukhothai": {
+    "district": "อ. บ้านด่านลานหอย",
+    "lat": 16.966667,
+    "lon": 99.483333,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 292,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 262,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 328,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 312,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 311,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 312,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1817,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -65
+   },
+   "Suphan Buri": {
+    "district": "อ. ด่านช้าง",
+    "lat": 14.816667,
+    "lon": 99.383333,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 298,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 256,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 332,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 312,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 312,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 313,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1823,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -56
+   },
+   "Saraburi": {
+    "district": "อ. ดอนพุด",
+    "lat": 14.633333,
+    "lon": 100.633333,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 303,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 275,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 332,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 303,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 311,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 321,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1845,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -55
+   },
+   "Ang Thong": {
+    "district": "อ. สามโก้",
+    "lat": 14.633333,
+    "lon": 100.233333,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 295,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 261,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 329,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 322,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 318,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 314,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1839,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -55
+   },
+   "Uthai Thani": {
+    "district": "อ. บ้านไร่",
+    "lat": 15.4,
+    "lon": 99.1,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 299,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 261,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 332,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 309,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 314,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 322,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1837,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -58
+   },
+   "Chanthaburi": {
+    "district": "อ. นายายอาม",
+    "lat": 12.683333,
+    "lon": 101.8,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 309,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 249,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 323,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 324,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 314,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 329,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1848,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -48
+   },
+   "Chachoengsao": {
+    "district": "อ.เมือง",
+    "lat": 13.716667,
+    "lon": 100.933333,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 315,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 276,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 337,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 315,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 312,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 318,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1873,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -52
+   },
+   "Chonburi": {
+    "district": "อ.เกาะสีชัง",
+    "lat": 13.15,
+    "lon": 100.816667,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 165,
+      "within1": 364,
+      "worst": 2
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 289,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 209,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 162,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 175,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 210,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1210,
+    "within1": 2189,
+    "worst": 2,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -50
+   },
+   "Trat": {
+    "district": "อ.  แหลมงอบ",
+    "lat": 12.2,
+    "lon": 102.283333,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 302,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 265,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 331,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 322,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 319,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 315,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1854,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -46
+   },
+   "Prachin Buri": {
+    "district": "อ. เมือง",
+    "lat": 14.15,
+    "lon": 101.316667,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 302,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 264,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 336,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 321,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 320,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 315,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1858,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -54
+   },
+   "Rayong": {
+    "district": "อ. นิคมพัฒนา",
+    "lat": 12.816667,
+    "lon": 101.083333,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 312,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 273,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 341,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 324,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 311,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 322,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1883,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -48
+   },
+   "Sa Kaeo": {
+    "district": "อ. เมือง",
+    "lat": 13.883333,
+    "lon": 101.933333,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 294,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 274,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 337,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 309,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 320,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 329,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1863,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -52
+   },
+   "Chiang Rai": {
+    "district": "อ. แม่สรวย",
+    "lat": 19.733333,
+    "lon": 99.383333,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 286,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 253,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 332,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 299,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 316,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 308,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1794,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -76
+   },
+   "Chiang Mai": {
+    "district": "อ. แม่แจ่ม",
+    "lat": 18.85,
+    "lon": 98.1,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 293,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 265,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 332,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 299,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 318,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 311,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1818,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -72
+   },
+   "Nan": {
+    "district": "อ. เมือง",
+    "lat": 18.733333,
+    "lon": 103.75,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 0,
+      "within1": 0,
+      "worst": 13
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 0,
+      "within1": 0,
+      "worst": 13
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 0,
+      "within1": 0,
+      "worst": 13
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 0,
+      "within1": 0,
+      "worst": 13
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 0,
+      "within1": 0,
+      "worst": 13
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 0,
+      "within1": 0,
+      "worst": 13
+     }
+    },
+    "exact": 0,
+    "within1": 0,
+    "worst": 13,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -73
+   },
+   "Phayao": {
+    "district": "อ. เมือง",
+    "lat": 19.183333,
+    "lon": 99.866667,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 287,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 252,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 327,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 303,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 317,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 313,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1799,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -74
+   },
+   "Phrae": {
+    "district": "อ. ลอง",
+    "lat": 18.283333,
+    "lon": 99.95,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 296,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 266,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 332,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 303,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 313,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 308,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1818,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -70
+   },
+   "Mae Hong Son": {
+    "district": "อ. ปาย",
+    "lat": 19.35,
+    "lon": 98.416667,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 290,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 261,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 335,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 307,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 316,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 311,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1820,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -75
+   },
+   "Lampang": {
+    "district": "อ.  ห้างฉัตร",
+    "lat": 18.383333,
+    "lon": 99.233333,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 291,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 267,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 328,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 294,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 319,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 313,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1812,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -71
+   },
+   "Lamphun": {
+    "district": "อ. ป่าซาง",
+    "lat": 18.466667,
+    "lon": 98.833333,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 304,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 253,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 341,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 312,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 313,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 306,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1829,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -71
+   },
+   "Uttaradit": {
+    "district": "อ. เมือง",
+    "lat": 17.733333,
+    "lon": 100.1,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 295,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 263,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 332,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 310,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 317,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 319,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1836,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -68
+   },
+   "Krabi": {
+    "district": "อ. เมือง",
+    "lat": 8.083333,
+    "lon": 98.766667,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 311,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 279,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 338,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 320,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 305,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 323,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1876,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -30
+   },
+   "Chumphon": {
+    "district": "อ. เมือง",
+    "lat": 10.466667,
+    "lon": 99.1,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 310,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 279,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 332,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 324,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 327,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 323,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1895,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -39
+   },
+   "Trang": {
+    "district": "หาดปากเม็ง",
+    "lat": 7.5,
+    "lon": 99.283333,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 318,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 277,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 332,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 323,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 323,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 321,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1894,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -28
+   },
+   "Nakhon Si Thammarat": {
+    "district": "อ. ทุ่งใหญ่",
+    "lat": 8.366667,
+    "lon": 99.266667,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 315,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 285,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 338,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 315,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 322,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 335,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1910,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -31
+   },
+   "Narathiwat": {
+    "district": "อ.ศรีสาคร",
+    "lat": 6.216667,
+    "lon": 101.416667,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 331,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 270,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 335,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 320,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 331,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 327,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1914,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -23
+   },
+   "Pattani": {
+    "district": "อ. โคกโพธิ์",
+    "lat": 6.666667,
+    "lon": 101.1,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 317,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 259,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 331,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 319,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 340,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 332,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1898,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -24
+   },
+   "Phang Nga": {
+    "district": "อ.  ตะกั่วป่า",
+    "lat": 8.9,
+    "lon": 98.266667,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 324,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 270,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 338,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 319,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 308,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 324,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1883,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -33
+   },
+   "Phatthalung": {
+    "district": "อ. ศรีนครินทร์",
+    "lat": 7.566667,
+    "lon": 99.833333,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 308,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 268,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 341,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 314,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 317,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 327,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1875,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -27
+   },
+   "Phuket": {
+    "district": "แหลมพรหมเทพ",
+    "lat": 7.75,
+    "lon": 98.3,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 327,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 260,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 324,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 314,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 323,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 336,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1884,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -29
+   },
+   "Ranong": {
+    "district": "เกาะช้าง",
+    "lat": 9.833333,
+    "lon": 98.45,
+    "days": 364,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 293,
+      "within1": 364,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 269,
+      "within1": 364,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 311,
+      "within1": 364,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 256,
+      "within1": 364,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 281,
+      "within1": 364,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 295,
+      "within1": 364,
+      "worst": 1
+     }
+    },
+    "exact": 1705,
+    "within1": 2184,
+    "worst": 1,
+    "values": 2184,
+    "fajr_jan1": null,
+    "fajr_amplitude": -36
+   },
+   "Satun": {
+    "district": "เกาะตะรุเตา",
+    "lat": 6.566667,
+    "lon": 99.633333,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 323,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 281,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 332,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 329,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 321,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 335,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1921,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -24
+   },
+   "Songkhla": {
+    "district": "อ.  สะเดา",
+    "lat": 6.733333,
+    "lon": 100.283333,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 328,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 279,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 332,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 326,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 314,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 332,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1911,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -24
+   },
+   "Surat Thani": {
+    "district": "เขาสก",
+    "lat": 9.1,
+    "lon": 98.55,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 319,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 273,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 324,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 324,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 333,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 335,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1908,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -34
+   },
+   "Yala": {
+    "district": "อ. เบตง",
+    "lat": 5.8,
+    "lon": 101.033333,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 329,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 282,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 331,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 314,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 320,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 332,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1908,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -21
+   },
+   "Kanchanaburi": {
+    "district": "อ. สังขละ",
+    "lat": 14.95,
+    "lon": 98.366667,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 297,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 273,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 328,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 301,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 311,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 316,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1826,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -57
+   },
+   "Tak": {
+    "district": "อ.  แม่สอด",
+    "lat": 16.683333,
+    "lon": 98.516667,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 303,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 272,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 338,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 315,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 309,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 309,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1846,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -64
+   },
+   "Prachuap Khiri Khan": {
+    "district": "อ. เมือง",
+    "lat": 11.75,
+    "lon": 99.65,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 307,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 286,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 334,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 323,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 322,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 328,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1900,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -44
+   },
+   "Phetchaburi": {
+    "district": "อ. แก่งกระจาน",
+    "lat": 12.883333,
+    "lon": 99.216667,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 304,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 271,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 333,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 324,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 316,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 319,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1867,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -48
+   },
+   "Ratchaburi": {
+    "district": "อ. สวนผึ้ง",
+    "lat": 13.5,
+    "lon": 99.216667,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 301,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 268,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 333,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 317,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 317,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 319,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1855,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -51
+   },
+   "Kalasin": {
+    "district": "อ.ห้วยเม็ก",
+    "lat": 16.616667,
+    "lon": 103.233333,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 296,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 275,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 327,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 314,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 310,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 302,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1824,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -64
+   },
+   "Khon Kaen": {
+    "district": "อ.ชุมแพ",
+    "lat": 16.666667,
+    "lon": 101.983333,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 295,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 257,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 328,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 307,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 314,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 316,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1817,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -64
+   },
+   "Chaiyaphum": {
+    "district": "อ.ภักดีชุมพล",
+    "lat": 16.033333,
+    "lon": 101.483333,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 308,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 263,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 328,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 317,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 307,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 308,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1831,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -61
+   },
+   "Nakhon Phanom": {
+    "district": "อ. เมือง",
+    "lat": 17.3,
+    "lon": 104.466667,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 295,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 268,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 333,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 306,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 310,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 321,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1833,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -66
+   },
+   "Nakhon Ratchasima": {
+    "district": "อ. สีคิ้ว",
+    "lat": 15.033333,
+    "lon": 101.5,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 288,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 270,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 334,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 315,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 313,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 315,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1835,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -57
+   },
+   "Bueng Kan": {
+    "district": "อ.  ปากคาด",
+    "lat": 18.35,
+    "lon": 103.316667,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 291,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 254,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 337,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 314,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 308,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 311,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1815,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -71
+   },
+   "Buriram": {
+    "district": "อ. ลำปลายมาศ",
+    "lat": 14.933333,
+    "lon": 102.733333,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 301,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 279,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 328,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 330,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 305,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 325,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1868,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -56
+   },
+   "Maha Sarakham": {
+    "district": "อ. โกสุมพิสัย",
+    "lat": 16.216667,
+    "lon": 102.866667,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 301,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 269,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 326,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 310,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 317,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 317,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1840,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -62
+   },
+   "Mukdahan": {
+    "district": "อ. ดงหลวง",
+    "lat": 16.783333,
+    "lon": 104.15,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 296,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 259,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 335,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 314,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 322,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 310,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1836,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -64
+   },
+   "Yasothon": {
+    "district": "อ. เมือง",
+    "lat": 15.933333,
+    "lon": 104.066667,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 297,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 257,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 337,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 316,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 322,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 315,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1844,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -60
+   },
+   "Roi Et": {
+    "district": "อ. จตุรพักตร์พิมาน",
+    "lat": 15.916667,
+    "lon": 103.5,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 298,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 270,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 335,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 310,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 314,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 312,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1839,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -61
+   },
+   "Loei": {
+    "district": "อ. ด่านซ้าย",
+    "lat": 17.266667,
+    "lon": 101.116667,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 297,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 266,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 326,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 316,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 315,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 306,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1826,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -66
+   },
+   "Sakon Nakhon": {
+    "district": "อ. สว่างแดนดิน",
+    "lat": 17.3,
+    "lon": 103.316667,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 288,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 259,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 337,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 309,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 300,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 315,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1808,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -66
+   },
+   "Surin": {
+    "district": "อ. เมือง",
+    "lat": 14.95,
+    "lon": 103.433333,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 300,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 264,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 336,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 319,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 312,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 311,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1842,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -56
+   },
+   "Si Sa Ket": {
+    "district": "อ. ห้วยทับทัน",
+    "lat": 14.95,
+    "lon": 104.05,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 307,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 270,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 323,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 313,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 317,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 324,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1854,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -57
+   },
+   "Nong Khai": {
+    "district": "อ. สังคม",
+    "lat": 18.083333,
+    "lon": 102.083333,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 303,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 264,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 341,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 306,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 309,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 310,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1833,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -69
+   },
+   "Nong Bua Lamphu": {
+    "district": "อ. นากลาง",
+    "lat": 17.216667,
+    "lon": 102.1,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 288,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 268,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 331,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 322,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 313,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 296,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1818,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -66
+   },
+   "Udon Thani": {
+    "district": "อ. เมือง",
+    "lat": 17.366667,
+    "lon": 102.8,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 298,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 266,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 323,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 306,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 307,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 308,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1808,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -66
+   },
+   "Ubon Ratchathani": {
+    "district": "อ. เขื่องใน",
+    "lat": 15.35,
+    "lon": 104.5,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 298,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 263,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 333,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 326,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 322,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 326,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1868,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -58
+   },
+   "Amnat Charoen": {
+    "district": "อ. เมือง",
+    "lat": 15.916667,
+    "lon": 104.55,
+    "days": 365,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 303,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 262,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 324,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 315,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 321,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 316,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "exact": 1841,
+    "within1": 2190,
+    "worst": 1,
+    "values": 2190,
+    "fajr_jan1": null,
+    "fajr_amplitude": -60
+   }
+  },
+  "leap": {
+   "Kamphaeng Phet": {
+    "district": "อ.คลองลาน",
+    "lat": 16.366667,
+    "lon": 99.133333,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 280,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 301,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 341,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 294,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 305,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 304,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1825,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -62
+   },
+   "Bangkok": {
+    "district": "เขตหนองแขม",
+    "lat": 13.7,
+    "lon": 100.333333,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 304,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 305,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 339,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 296,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 308,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 318,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1870,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -51
+   },
+   "Chai Nat": {
+    "district": "อ.หันคา",
+    "lat": 15.133333,
+    "lon": 99.816667,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 290,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 301,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 341,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 288,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 300,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 310,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1830,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -57
+   },
+   "Nakhon Nayok": {
+    "district": "อ. บ้านนา",
+    "lat": 14.266667,
+    "lon": 100.966667,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 296,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 295,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 347,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 289,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 310,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 320,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1857,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -53
+   },
+   "Nakhon Pathom": {
+    "district": "อ. เมือง",
+    "lat": 13.9,
+    "lon": 99.933333,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 298,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 299,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 346,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 297,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 307,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 315,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1862,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -52
+   },
+   "Nakhon Sawan": {
+    "district": "อ. แม่วงก์",
+    "lat": 15.8,
+    "lon": 99.383333,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 306,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 300,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 341,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 294,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 296,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 319,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1856,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -60
+   },
+   "Nonthaburi": {
+    "district": "อ. ไทรน้อย",
+    "lat": 13.916667,
+    "lon": 100.3,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 305,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 286,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 341,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 306,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 303,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 311,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1852,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -52
+   },
+   "Pathum Thani": {
+    "district": "อ. ลาดหลุมแก้ว",
+    "lat": 14,
+    "lon": 100.383333,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 290,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 297,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 342,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 289,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 308,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 307,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1833,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -52
+   },
+   "Phra Nakhon Si Ayutthaya": {
+    "district": "อ. บางซ้าย",
+    "lat": 14.316667,
+    "lon": 100.283333,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 292,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 308,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 340,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 302,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 309,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 310,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1861,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -54
+   },
+   "Phichit": {
+    "district": "อ. โพธิ์ประทับช้าง",
+    "lat": 16.3,
+    "lon": 100.066667,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 288,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 304,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 341,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 291,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 301,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 312,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1837,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -62
+   },
+   "Phitsanulok": {
+    "district": "อ. เมือง",
+    "lat": 16.816667,
+    "lon": 100.25,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 294,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 304,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 343,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 291,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 301,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 315,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1848,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -64
+   },
+   "Phetchabun": {
+    "district": "อ. ชนแดน",
+    "lat": 16.233333,
+    "lon": 100.733333,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 283,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 295,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 343,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 298,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 308,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 310,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1837,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -62
+   },
+   "Lopburi": {
+    "district": "อ. บ้านหมี่",
+    "lat": 15.066667,
+    "lon": 100.483333,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 301,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 294,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 343,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 300,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 307,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 307,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1852,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -56
+   },
+   "Samut Prakan": {
+    "district": "อ. พระสมุทรเจดีย์",
+    "lat": 13.583333,
+    "lon": 100.45,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 298,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 292,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 353,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 293,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 318,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 320,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1874,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -51
+   },
+   "Samut Songkhram": {
+    "district": "อ. อัมพวา",
+    "lat": 13.366667,
+    "lon": 99.883333,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 305,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 304,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 341,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 298,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 317,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 316,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1881,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -50
+   },
+   "Samut Sakhon": {
+    "district": "อ. บ้านแพ้ว",
+    "lat": 13.566667,
+    "lon": 100.05,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 305,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 306,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 341,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 291,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 313,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 316,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1872,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -51
+   },
+   "Sing Buri": {
+    "district": "อ. บางระจัน",
+    "lat": 14.916667,
+    "lon": 100.216667,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 296,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 296,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 347,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 299,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 309,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 317,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1864,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -56
+   },
+   "Sukhothai": {
+    "district": "อ. บ้านด่านลานหอย",
+    "lat": 16.966667,
+    "lon": 99.483333,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 282,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 290,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 342,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 291,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 311,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 305,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1821,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -65
+   },
+   "Suphan Buri": {
+    "district": "อ. ด่านช้าง",
+    "lat": 14.816667,
+    "lon": 99.383333,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 298,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 292,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 341,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 276,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 308,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 324,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1839,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -55
+   },
+   "Saraburi": {
+    "district": "อ. ดอนพุด",
+    "lat": 14.633333,
+    "lon": 100.633333,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 289,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 300,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 342,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 297,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 296,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 314,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1838,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -55
+   },
+   "Ang Thong": {
+    "district": "อ. สามโก้",
+    "lat": 14.633333,
+    "lon": 100.233333,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 298,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 300,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 343,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 309,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 313,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 309,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1872,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -54
+   },
+   "Uthai Thani": {
+    "district": "อ. บ้านไร่",
+    "lat": 15.4,
+    "lon": 99.1,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 297,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 296,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 349,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 286,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 316,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 307,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1851,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -58
+   },
+   "Chanthaburi": {
+    "district": "อ. นายายอาม",
+    "lat": 12.683333,
+    "lon": 101.8,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 299,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 280,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 342,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 304,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 319,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 316,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1860,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -47
+   },
+   "Chachoengsao": {
+    "district": "อ.เมือง",
+    "lat": 13.716667,
+    "lon": 100.933333,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 292,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 298,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 345,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 296,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 308,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 304,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1843,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -51
+   },
+   "Chonburi": {
+    "district": "อ.เกาะสีชัง",
+    "lat": 13.15,
+    "lon": 100.816667,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 123,
+      "within1": 364,
+      "worst": 2
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 264,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 189,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 138,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 142,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 174,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1030,
+    "within1": 2194,
+    "worst": 2,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -50
+   },
+   "Trat": {
+    "district": "อ.  แหลมงอบ",
+    "lat": 12.2,
+    "lon": 102.283333,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 306,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 294,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 340,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 308,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 297,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 326,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1871,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -46
+   },
+   "Prachin Buri": {
+    "district": "อ. เมือง",
+    "lat": 14.15,
+    "lon": 101.316667,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 292,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 301,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 341,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 299,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 313,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 323,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1869,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -52
+   },
+   "Rayong": {
+    "district": "อ. นิคมพัฒนา",
+    "lat": 12.816667,
+    "lon": 101.083333,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 295,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 300,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 339,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 300,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 308,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 311,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1853,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -47
+   },
+   "Sa Kaeo": {
+    "district": "อ. เมือง",
+    "lat": 13.883333,
+    "lon": 101.933333,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 301,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 301,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 346,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 301,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 312,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 311,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1872,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -52
+   },
+   "Chiang Rai": {
+    "district": "อ. แม่สรวย",
+    "lat": 19.733333,
+    "lon": 99.383333,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 285,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 285,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 341,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 281,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 299,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 306,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1797,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -76
+   },
+   "Chiang Mai": {
+    "district": "อ. แม่แจ่ม",
+    "lat": 18.85,
+    "lon": 98.1,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 293,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 304,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 349,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 292,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 309,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 301,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1848,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -72
+   },
+   "Nan": {
+    "district": "อ. เมือง",
+    "lat": 18.733333,
+    "lon": 103.75,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 0,
+      "within1": 0,
+      "worst": 13
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 0,
+      "within1": 0,
+      "worst": 13
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 0,
+      "within1": 0,
+      "worst": 13
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 0,
+      "within1": 0,
+      "worst": 13
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 0,
+      "within1": 0,
+      "worst": 13
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 0,
+      "within1": 0,
+      "worst": 13
+     }
+    },
+    "exact": 0,
+    "within1": 0,
+    "worst": 13,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -72
+   },
+   "Phayao": {
+    "district": "อ. เมือง",
+    "lat": 19.183333,
+    "lon": 99.866667,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 285,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 292,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 343,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 299,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 296,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 307,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1822,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -73
+   },
+   "Phrae": {
+    "district": "อ. ลอง",
+    "lat": 18.283333,
+    "lon": 99.95,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 288,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 304,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 353,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 289,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 308,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 307,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1849,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -70
+   },
+   "Mae Hong Son": {
+    "district": "อ. ปาย",
+    "lat": 19.35,
+    "lon": 98.416667,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 282,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 295,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 338,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 289,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 307,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 309,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1820,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -75
+   },
+   "Lampang": {
+    "district": "อ.  ห้างฉัตร",
+    "lat": 18.383333,
+    "lon": 99.233333,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 290,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 294,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 342,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 279,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 303,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 297,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1805,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -70
+   },
+   "Lamphun": {
+    "district": "อ. ป่าซาง",
+    "lat": 18.466667,
+    "lon": 98.833333,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 285,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 294,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 340,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 293,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 305,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 315,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1832,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -71
+   },
+   "Uttaradit": {
+    "district": "อ. เมือง",
+    "lat": 17.733333,
+    "lon": 100.1,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 290,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 308,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 349,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 295,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 311,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 310,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1863,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -67
+   },
+   "Krabi": {
+    "district": "อ. เมือง",
+    "lat": 8.083333,
+    "lon": 98.766667,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 237,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 251,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 278,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 207,
+      "within1": 365,
+      "worst": 2
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 305,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 247,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1525,
+    "within1": 2195,
+    "worst": 2,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -29
+   },
+   "Chumphon": {
+    "district": "อ. เมือง",
+    "lat": 10.466667,
+    "lon": 99.1,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 309,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 302,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 349,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 304,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 320,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 317,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1901,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -39
+   },
+   "Trang": {
+    "district": "หาดปากเม็ง",
+    "lat": 7.5,
+    "lon": 99.283333,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 316,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 293,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 341,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 301,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 314,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 323,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1888,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -27
+   },
+   "Nakhon Si Thammarat": {
+    "district": "อ. ทุ่งใหญ่",
+    "lat": 8.366667,
+    "lon": 99.266667,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 310,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 312,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 346,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 306,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 316,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 330,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1920,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -31
+   },
+   "Narathiwat": {
+    "district": "อ.ศรีสาคร",
+    "lat": 6.216667,
+    "lon": 101.416667,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 314,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 305,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 339,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 303,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 310,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 332,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1903,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -23
+   },
+   "Pattani": {
+    "district": "อ. โคกโพธิ์",
+    "lat": 6.666667,
+    "lon": 101.1,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 318,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 287,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 349,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 301,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 310,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 322,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1887,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -24
+   },
+   "Phang Nga": {
+    "district": "อ.  ตะกั่วป่า",
+    "lat": 8.9,
+    "lon": 98.266667,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 316,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 285,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 346,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 303,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 308,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 308,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1866,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -33
+   },
+   "Phatthalung": {
+    "district": "อ. ศรีนครินทร์",
+    "lat": 7.566667,
+    "lon": 99.833333,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 309,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 299,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 339,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 309,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 315,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 327,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1898,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -27
+   },
+   "Phuket": {
+    "district": "แหลมพรหมเทพ",
+    "lat": 7.75,
+    "lon": 98.3,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 304,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 289,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 340,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 293,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 310,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 332,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1868,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -28
+   },
+   "Ranong": {
+    "district": "เกาะช้าง",
+    "lat": 9.833333,
+    "lon": 98.45,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 308,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 309,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 352,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 294,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 301,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 317,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1881,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -36
+   },
+   "Satun": {
+    "district": "เกาะตะรุเตา",
+    "lat": 6.566667,
+    "lon": 99.633333,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 314,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 297,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 341,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 304,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 300,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 335,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1891,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -23
+   },
+   "Songkhla": {
+    "district": "อ.  สะเดา",
+    "lat": 6.733333,
+    "lon": 100.283333,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 308,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 288,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 340,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 305,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 309,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 325,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1875,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -24
+   },
+   "Surat Thani": {
+    "district": "เขาสก",
+    "lat": 9.1,
+    "lon": 98.55,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 311,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 298,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 340,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 299,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 324,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 316,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1888,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -33
+   },
+   "Yala": {
+    "district": "อ. เบตง",
+    "lat": 5.8,
+    "lon": 101.033333,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 307,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 295,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 340,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 313,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 312,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 333,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1900,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -20
+   },
+   "Kanchanaburi": {
+    "district": "อ. สังขละ",
+    "lat": 14.95,
+    "lon": 98.366667,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 287,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 290,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 343,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 283,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 310,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 309,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1822,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -56
+   },
+   "Tak": {
+    "district": "อ.  แม่สอด",
+    "lat": 16.683333,
+    "lon": 98.516667,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 287,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 298,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 346,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 285,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 304,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 307,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1827,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -63
+   },
+   "Prachuap Khiri Khan": {
+    "district": "อ. เมือง",
+    "lat": 11.75,
+    "lon": 99.65,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 300,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 299,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 346,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 308,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 316,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 321,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1890,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -43
+   },
+   "Phetchaburi": {
+    "district": "อ. แก่งกระจาน",
+    "lat": 12.883333,
+    "lon": 99.216667,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 292,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 295,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 346,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 295,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 319,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 316,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1863,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -48
+   },
+   "Ratchaburi": {
+    "district": "อ. สวนผึ้ง",
+    "lat": 13.5,
+    "lon": 99.216667,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 283,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 304,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 346,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 298,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 309,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 320,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1860,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -50
+   },
+   "Kalasin": {
+    "district": "อ.ห้วยเม็ก",
+    "lat": 16.616667,
+    "lon": 103.233333,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 167,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 232,
+      "within1": 359,
+      "worst": 2
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 277,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 240,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 198,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 181,
+      "within1": 365,
+      "worst": 2
+     }
+    },
+    "exact": 1295,
+    "within1": 2188,
+    "worst": 2,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -63
+   },
+   "Khon Kaen": {
+    "district": "อ.ชุมแพ",
+    "lat": 16.666667,
+    "lon": 101.983333,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 285,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 305,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 346,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 298,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 314,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 306,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1854,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -63
+   },
+   "Chaiyaphum": {
+    "district": "อ.ภักดีชุมพล",
+    "lat": 16.033333,
+    "lon": 101.483333,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 291,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 302,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 346,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 295,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 298,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 312,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1844,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -60
+   },
+   "Nakhon Phanom": {
+    "district": "อ. เมือง",
+    "lat": 17.3,
+    "lon": 104.466667,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 296,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 303,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 346,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 295,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 301,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 319,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1860,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -65
+   },
+   "Nakhon Ratchasima": {
+    "district": "อ. สีคิ้ว",
+    "lat": 15.033333,
+    "lon": 101.5,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 293,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 288,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 342,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 313,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 299,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 309,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1844,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -56
+   },
+   "Bueng Kan": {
+    "district": "อ.  ปากคาด",
+    "lat": 18.35,
+    "lon": 103.316667,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 282,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 296,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 341,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 296,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 303,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 306,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1824,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -70
+   },
+   "Buriram": {
+    "district": "อ. ลำปลายมาศ",
+    "lat": 14.933333,
+    "lon": 102.733333,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 295,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 292,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 346,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 294,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 302,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 313,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1842,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -56
+   },
+   "Maha Sarakham": {
+    "district": "อ. โกสุมพิสัย",
+    "lat": 16.216667,
+    "lon": 102.866667,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 289,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 304,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 344,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 285,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 302,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 317,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1841,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -61
+   },
+   "Mukdahan": {
+    "district": "อ. ดงหลวง",
+    "lat": 16.783333,
+    "lon": 104.15,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 282,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 298,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 345,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 306,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 309,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 315,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1855,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -64
+   },
+   "Yasothon": {
+    "district": "อ. เมือง",
+    "lat": 15.933333,
+    "lon": 104.066667,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 300,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 295,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 341,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 291,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 309,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 311,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1847,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -60
+   },
+   "Roi Et": {
+    "district": "อ. จตุรพักตร์พิมาน",
+    "lat": 15.916667,
+    "lon": 103.5,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 289,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 293,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 343,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 295,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 312,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 317,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1849,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -60
+   },
+   "Loei": {
+    "district": "อ. ด่านซ้าย",
+    "lat": 17.266667,
+    "lon": 101.116667,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 286,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 294,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 343,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 298,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 305,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 309,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1835,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -66
+   },
+   "Sakon Nakhon": {
+    "district": "อ. สว่างแดนดิน",
+    "lat": 17.3,
+    "lon": 103.316667,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 289,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 297,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 341,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 288,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 302,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 311,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1828,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -66
+   },
+   "Surin": {
+    "district": "อ. เมือง",
+    "lat": 14.95,
+    "lon": 103.433333,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 297,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 298,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 346,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 305,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 315,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 317,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1878,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -56
+   },
+   "Si Sa Ket": {
+    "district": "อ. ห้วยทับทัน",
+    "lat": 14.95,
+    "lon": 104.05,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 293,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 307,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 343,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 306,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 315,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 318,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1882,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -56
+   },
+   "Nong Khai": {
+    "district": "อ. สังคม",
+    "lat": 18.083333,
+    "lon": 102.083333,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 284,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 294,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 339,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 299,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 306,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 309,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1831,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -69
+   },
+   "Nong Bua Lamphu": {
+    "district": "อ. นากลาง",
+    "lat": 17.216667,
+    "lon": 102.1,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 277,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 297,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 349,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 298,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 306,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 308,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1835,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -66
+   },
+   "Udon Thani": {
+    "district": "อ. เมือง",
+    "lat": 17.366667,
+    "lon": 102.8,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 286,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 301,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 343,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 282,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 307,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 307,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1826,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -66
+   },
+   "Ubon Ratchathani": {
+    "district": "อ. เขื่องใน",
+    "lat": 15.35,
+    "lon": 104.5,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 290,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 303,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 343,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 295,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 308,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 310,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1849,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -57
+   },
+   "Amnat Charoen": {
+    "district": "อ. เมือง",
+    "lat": 15.916667,
+    "lon": 104.55,
+    "days": 366,
+    "cols": {
+     "fajr": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 303,
+      "within1": 366,
+      "worst": 1
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 297,
+      "within1": 366,
+      "worst": 1
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 343,
+      "within1": 366,
+      "worst": 1
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 298,
+      "within1": 366,
+      "worst": 1
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 302,
+      "within1": 366,
+      "worst": 1
+     },
+     "isha": {
+      "margin": -0.5,
+      "mode": "ceil",
+      "exact": 308,
+      "within1": 366,
+      "worst": 1
+     }
+    },
+    "exact": 1851,
+    "within1": 2196,
+    "worst": 1,
+    "values": 2196,
+    "fajr_jan1": null,
+    "fajr_amplitude": -60
+   }
+  }
+ }
+}

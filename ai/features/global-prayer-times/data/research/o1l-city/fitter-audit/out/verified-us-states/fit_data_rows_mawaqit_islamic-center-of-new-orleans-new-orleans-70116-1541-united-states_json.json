@@ -1,0 +1,186 @@
+{
+ "id": "--rows=data/rows_mawaqit_islamic-center-of-new-orleans-new-orleans-70116-1541-united-states.json",
+ "tz": "America/Chicago",
+ "years": {
+  "2026": {
+   "rows": 365,
+   "parsed": 365,
+   "iqRows": 0,
+   "geo": {
+    "lat": 17.7,
+    "lon": -104.609,
+    "k": 8,
+    "resid": 45.508
+   },
+   "fajrAngle": {
+    "kind": "angle",
+    "n": 365,
+    "angle": 23.12,
+    "winter": 23.71,
+    "summer": 22.12,
+    "darkIqr": 2.98,
+    "iqrGap": 15,
+    "gapMedian": 99,
+    "residRms": null,
+    "darkRms": null
+   },
+   "ishaAngleVsSunset": {
+    "kind": "angle",
+    "n": 365,
+    "angle": 22.14,
+    "winter": 22.36,
+    "summer": 21.03,
+    "darkIqr": 0.91,
+    "iqrGap": 5,
+    "gapMedian": 94,
+    "residRms": null,
+    "darkRms": null
+   },
+   "ishaGapToMaghrib": {
+    "med": 86
+   },
+   "isna": {
+    "days": 365,
+    "exact": 0,
+    "within1": 0,
+    "worst": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    },
+    "worstCol": null,
+    "asrHanafiBetter": null,
+    "fajr": {
+     "exact": 0,
+     "exactPct": 0,
+     "within1Pct": 0,
+     "worst": -123
+    },
+    "sunrise": {
+     "exact": 0,
+     "exactPct": 0,
+     "within1Pct": 0,
+     "worst": -76
+    },
+    "dhuhr": {
+     "exact": 11,
+     "exactPct": 3,
+     "within1Pct": 9,
+     "worst": 21
+    },
+    "asr": {
+     "exact": 0,
+     "exactPct": 0,
+     "within1Pct": 0,
+     "worst": 111
+    },
+    "maghrib": {
+     "exact": 1,
+     "exactPct": 0.3,
+     "within1Pct": 1.6,
+     "worst": 89
+    },
+    "isha": {
+     "exact": 0,
+     "exactPct": 0,
+     "within1Pct": 0,
+     "worst": 125
+    }
+   },
+   "mwl": {
+    "days": 365,
+    "exact": 0,
+    "within1": 0,
+    "worst": {
+     "fajr": 0,
+     "sunrise": 0,
+     "dhuhr": 0,
+     "asr": 0,
+     "maghrib": 0,
+     "isha": 0
+    },
+    "worstCol": null,
+    "asrHanafiBetter": null,
+    "fajr": {
+     "exact": 0,
+     "exactPct": 0,
+     "within1Pct": 0,
+     "worst": -110
+    },
+    "sunrise": {
+     "exact": 0,
+     "exactPct": 0,
+     "within1Pct": 0,
+     "worst": -76
+    },
+    "dhuhr": {
+     "exact": 11,
+     "exactPct": 3,
+     "within1Pct": 9,
+     "worst": 21
+    },
+    "asr": {
+     "exact": 0,
+     "exactPct": 0,
+     "within1Pct": 0,
+     "worst": 111
+    },
+    "maghrib": {
+     "exact": 1,
+     "exactPct": 0.3,
+     "within1Pct": 1.6,
+     "worst": 89
+    },
+    "isha": {
+     "exact": 0,
+     "exactPct": 0,
+     "within1Pct": 0,
+     "worst": 116
+    }
+   },
+   "asr": {
+    "shafiMae": 88.75,
+    "hanafiMae": 27.42,
+    "school": "Hanafi"
+   },
+   "dst": [
+    {
+     "from": "2026-01-01",
+     "to": "2026-01-09",
+     "bucket": -60
+    },
+    {
+     "from": "2026-01-10",
+     "to": "2026-01-28",
+     "bucket": -90
+    },
+    {
+     "from": "2026-01-29",
+     "to": "2026-03-21",
+     "bucket": -60
+    },
+    {
+     "from": "2026-03-22",
+     "to": "2026-03-31",
+     "bucket": -30
+    },
+    {
+     "from": "2026-07-15",
+     "to": "2026-11-10",
+     "bucket": -30
+    },
+    {
+     "from": "2026-11-11",
+     "to": "2026-12-31",
+     "bucket": -60
+    }
+   ],
+   "amplitudeFajrJanJul": 60,
+   "fajrJan": 275,
+   "fajrJul": 335
+  }
+ }
+}

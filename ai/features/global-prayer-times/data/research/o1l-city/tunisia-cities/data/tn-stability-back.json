@@ -1,0 +1,167 @@
+[
+ {
+  "name": "tn-inm-back-348-621.json",
+  "n": 107,
+  "first": "2019-10-25",
+  "last": "2023-12-20",
+  "dipAll": 0.02,
+  "all1All": 95.3,
+  "perYear": [
+   {
+    "year": "2019",
+    "n": 11,
+    "dip": 0.02,
+    "all1Pct": 100,
+    "asrW1": 100,
+    "fajrSigned": 0,
+    "maghribSigned": 0
+   },
+   {
+    "year": "2020",
+    "n": 24,
+    "dip": 0.02,
+    "all1Pct": 87.5,
+    "asrW1": 87.5,
+    "fajrSigned": 0,
+    "maghribSigned": -0.04
+   },
+   {
+    "year": "2021",
+    "n": 24,
+    "dip": 0.02,
+    "all1Pct": 91.7,
+    "asrW1": 91.7,
+    "fajrSigned": 0,
+    "maghribSigned": -0.04
+   },
+   {
+    "year": "2022",
+    "n": 24,
+    "dip": 0.02,
+    "all1Pct": 100,
+    "asrW1": 100,
+    "fajrSigned": 0,
+    "maghribSigned": -0.04
+   },
+   {
+    "year": "2023",
+    "n": 24,
+    "dip": 0.02,
+    "all1Pct": 100,
+    "asrW1": 100,
+    "fajrSigned": 0.04,
+    "maghribSigned": 0.04
+   }
+  ]
+ },
+ {
+  "name": "tn-inm-back-353-494.json",
+  "n": 107,
+  "first": "2019-10-25",
+  "last": "2023-12-20",
+  "dipAll": 0,
+  "all1All": 97.2,
+  "perYear": [
+   {
+    "year": "2019",
+    "n": 11,
+    "dip": 0,
+    "all1Pct": 100,
+    "asrW1": 100,
+    "fajrSigned": -0.18,
+    "maghribSigned": 0.09
+   },
+   {
+    "year": "2020",
+    "n": 24,
+    "dip": 0,
+    "all1Pct": 95.8,
+    "asrW1": 95.8,
+    "fajrSigned": -0.13,
+    "maghribSigned": 0.17
+   },
+   {
+    "year": "2021",
+    "n": 24,
+    "dip": 0,
+    "all1Pct": 100,
+    "asrW1": 100,
+    "fajrSigned": -0.25,
+    "maghribSigned": 0.13
+   },
+   {
+    "year": "2022",
+    "n": 24,
+    "dip": 0,
+    "all1Pct": 95.8,
+    "asrW1": 95.8,
+    "fajrSigned": -0.17,
+    "maghribSigned": 0.17
+   },
+   {
+    "year": "2023",
+    "n": 24,
+    "dip": 0,
+    "all1Pct": 95.8,
+    "asrW1": 95.8,
+    "fajrSigned": -0.33,
+    "maghribSigned": 0.17
+   }
+  ]
+ },
+ {
+  "name": "tn-inm-back-362-635.json",
+  "n": 107,
+  "first": "2019-10-25",
+  "last": "2023-12-20",
+  "dipAll": 0.73,
+  "all1All": 95.3,
+  "perYear": [
+   {
+    "year": "2019",
+    "n": 11,
+    "dip": 0.72,
+    "all1Pct": 100,
+    "asrW1": 100,
+    "fajrSigned": 0,
+    "maghribSigned": 0
+   },
+   {
+    "year": "2020",
+    "n": 24,
+    "dip": 0.73,
+    "all1Pct": 87.5,
+    "asrW1": 87.5,
+    "fajrSigned": 0.08,
+    "maghribSigned": 0
+   },
+   {
+    "year": "2021",
+    "n": 24,
+    "dip": 0.73,
+    "all1Pct": 95.8,
+    "asrW1": 95.8,
+    "fajrSigned": 0.04,
+    "maghribSigned": -0.04
+   },
+   {
+    "year": "2022",
+    "n": 24,
+    "dip": 0.73,
+    "all1Pct": 95.8,
+    "asrW1": 95.8,
+    "fajrSigned": 0,
+    "maghribSigned": -0.04
+   },
+   {
+    "year": "2023",
+    "n": 24,
+    "dip": 0.73,
+    "all1Pct": 100,
+    "asrW1": 100,
+    "fajrSigned": 0,
+    "maghribSigned": -0.04
+   }
+  ]
+ }
+]

@@ -1,0 +1,50 @@
+rows 366, year 2026, Karachi 18/18 Hanafi, adhan 4.4.6 Rounding.None
+fajr     {"kept":366,"dropped":0,"n":366,"mean":-0.6,"median":-0.5,"min":-2,"max":0.9,"within1":355}
+sunrise  {"kept":366,"dropped":0,"n":366,"mean":-1.5,"median":-1.5,"min":-2.5,"max":4.5,"within1":3}
+zuhr     {"kept":332,"dropped":34,"n":332,"mean":0.4,"median":0.4,"min":-1.6,"max":0.9,"within1":331}
+asr      {"kept":366,"dropped":0,"n":366,"mean":1.8,"median":1.8,"min":0.6,"max":2.2,"within1":17}
+maghrib  {"kept":364,"dropped":2,"n":364,"mean":1.6,"median":1.6,"min":-0.4,"max":2.2,"within1":7}
+isha     {"kept":337,"dropped":29,"n":337,"mean":0.6,"median":0.6,"min":-0.3,"max":2.7,"within1":336}
+--- per-quarter medians (robust) ---
+fajr     -0.5 | -0.7 | -0.6 | -0.5
+sunrise  -1.6 | -1.6 | -1.5 | -1.5
+zuhr     0.4 | 0.4 | 0.4 | 0.5
+asr      1.6 | 1.6 | 1.9 | 2.1
+maghrib  1.6 | 1.7 | 1.7 | 1.6
+isha     0.5 | 0.8 | 0.7 | 0.6
+fajr Jan mean 5.76 Jul mean 3.82
+maghrib vs sunset (adhan) {"n":366,"mean":1.9,"median":1.6,"min":-0.4,"max":61.8,"within1":7}
+zuhr matching 13:00/13:15 clock 6 / 366
+
+
+### Karachi (perpetual chart, archive.org) — 366 rows, 2026, Karachi 18/18 Hanafi, adhan 4.4.6 Rounding.None
+fajr     {"kept":363,"dropped":3,"n":363,"median":-2.3,"mean":-1.7,"min":-4.9,"max":2.3,"within1":49}
+sunrise  {"kept":360,"dropped":6,"n":360,"median":-0.9,"mean":-0.9,"min":-2.8,"max":0.9,"within1":201}
+zuhr     {"kept":366,"dropped":0,"n":366,"median":-0.9,"mean":-0.9,"min":-3,"max":0,"within1":225}
+asr      {"kept":366,"dropped":0,"n":366,"median":3.5,"mean":3.8,"min":1.6,"max":7.5,"within1":0}
+maghrib  {"kept":356,"dropped":10,"n":356,"median":-0.5,"mean":-0.5,"min":-2.3,"max":0.9,"within1":268}
+isha     {"kept":366,"dropped":0,"n":366,"median":0.5,"mean":0.2,"min":-3.5,"max":3.8,"within1":139}
+quarter medians  fajr: -1.9 | -2.4 | -2.8 | 0.6; sunrise: -0.4 | -1.9 | -1.3 | -0.1; zuhr: -0.8 | -1.0 | -1.0 | -0.8; asr: 3.4 | 5.5 | 3.5 | 2.8; maghrib: -0.7 | -0.3 | -0.2 | -1.0; isha: 0.4 | 0.3 | 1.5 | -2.0
+seasonal amplitude fajr: Jan 5.88 Jul 4.38 span 90 min
+federal dhuhr clock hits: 0/366
+wrote rows 366
+angle search fajr {"angle":18.4,"rms":1.69,"bias":0.21,"n":363}
+angle search isha {"angle":18,"rms":1.71,"bias":0.19,"n":366}
+
+Rawalpindi perpetual chart, January 2026, 31 rows, Karachi 18/18 Hanafi
+fajr     median -0.6 mean -0.5 min -1.0 max 0.5
+sunrise  median -0.5 mean -0.5 min -1.0 max 1.1
+zuhr     median 0.5 mean 0.5 min -0.1 max 1.1
+asr      median 0.0 mean 0.1 min -0.4 max 0.7
+maghrib  median 3.1 mean 3.1 min 2.5 max 3.7
+isha     median 0.1 mean 0.1 min -0.4 max 0.7
+zawal->zuhr gap min 42 max 44
+
+Faisalabad perpetual chart, January 2026, 31 rows, Karachi 18/18 Hanafi
+fajr     median -0.6 mean -0.5 min -1.0 max 0.4
+sunrise  median -0.5 mean -0.5 min -0.9 max 0.4
+zuhr     median 0.6 mean 0.6 min -0.1 max 1.1
+asr      median 0.2 mean 0.2 min -0.3 max 0.7
+maghrib  median 3.2 mean 3.2 min 2.7 max 3.8
+isha     median 0.2 mean 0.2 min -0.3 max 0.8
+zawal->zuhr gap min 41 max 43

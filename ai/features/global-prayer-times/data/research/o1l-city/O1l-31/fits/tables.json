@@ -1,0 +1,154 @@
+[
+ {
+  "tag": "se-ifis-malmo",
+  "file": "se-ifis-malmo-2026.json",
+  "lat": 55.605,
+  "lng": 13.0038,
+  "fa": 18,
+  "is": 16
+ },
+ {
+  "tag": "se-ifis-linkoping",
+  "file": "se-ifis-linkoping-2026.json",
+  "lat": 58.4108,
+  "lng": 15.6214,
+  "fa": 18,
+  "is": 16
+ },
+ {
+  "tag": "se-ifis-orebro",
+  "file": "se-ifis-orebro-2026.json",
+  "lat": 59.2741,
+  "lng": 15.2066,
+  "fa": 18,
+  "is": 16
+ },
+ {
+  "tag": "se-ifis-vasteras",
+  "file": "se-ifis-vasteras-2026.json",
+  "lat": 59.6099,
+  "lng": 16.5448,
+  "fa": 18,
+  "is": 16
+ },
+ {
+  "tag": "se-ifis-umea",
+  "file": "se-ifis-umea-2026.json",
+  "lat": 63.8258,
+  "lng": 20.263,
+  "fa": 18,
+  "is": 16
+ },
+ {
+  "tag": "se-ifis-lulea",
+  "file": "se-ifis-lulea-2026.json",
+  "lat": 65.5848,
+  "lng": 22.1547,
+  "fa": 18,
+  "is": 16
+ },
+ {
+  "tag": "se-ifis-kiruna",
+  "file": "se-ifis-kiruna-2026.json",
+  "lat": 67.8558,
+  "lng": 20.2253,
+  "fa": 18,
+  "is": 16
+ },
+ {
+  "tag": "dk-adan-aarhus",
+  "file": "dk-adan-aarhus-2026.json",
+  "lat": 56.1629,
+  "lng": 10.2039,
+  "fa": 15,
+  "is": 15
+ },
+ {
+  "tag": "dk-adan-odense",
+  "file": "dk-adan-odense-2026.json",
+  "lat": 55.4038,
+  "lng": 10.4024,
+  "fa": 15,
+  "is": 15
+ },
+ {
+  "tag": "dk-adan-aalborg",
+  "file": "dk-adan-aalborg-2026.json",
+  "lat": 57.0488,
+  "lng": 9.9217,
+  "fa": 15,
+  "is": 15
+ },
+ {
+  "tag": "dk-adan-esbjerg",
+  "file": "dk-adan-esbjerg-2026.json",
+  "lat": 55.4765,
+  "lng": 8.4594,
+  "fa": 15,
+  "is": 15
+ },
+ {
+  "tag": "fi-tampere",
+  "file": "fi-tampere-2026.json",
+  "lat": 61.4978,
+  "lng": 23.761,
+  "fa": 18,
+  "is": 17
+ },
+ {
+  "tag": "fi-turku",
+  "file": "fi-turku-2026.json",
+  "lat": 60.4518,
+  "lng": 22.2666,
+  "fa": 18,
+  "is": 17
+ },
+ {
+  "tag": "fi-jyvaskyla",
+  "file": "fi-jyvaskyla-2026.json",
+  "lat": 62.2415,
+  "lng": 25.7209,
+  "fa": 18,
+  "is": 17
+ },
+ {
+  "tag": "fi-oulu-as-published",
+  "file": "fi-oulu-2026.json",
+  "lat": 65.0121,
+  "lng": 25.4651,
+  "fa": 16,
+  "is": 15
+ },
+ {
+  "tag": "lt-vilnius-diyanet",
+  "file": "lt-vilnius-diyanet.json",
+  "lat": 54.6872,
+  "lng": 25.2797,
+  "fa": 18,
+  "is": 16
+ },
+ {
+  "tag": "lt-kaunas-diyanet",
+  "file": "lt-kaunas-diyanet.json",
+  "lat": 54.8985,
+  "lng": 23.9036,
+  "fa": 18,
+  "is": 16
+ },
+ {
+  "tag": "lt-klaipeda-diyanet",
+  "file": "lt-klaipeda-diyanet.json",
+  "lat": 55.7033,
+  "lng": 21.1443,
+  "fa": 18,
+  "is": 16
+ },
+ {
+  "tag": "fi-oulu-at-turku-coords",
+  "file": "fi-oulu-2026.json",
+  "lat": 60.4518,
+  "lng": 22.2666,
+  "fa": 18,
+  "is": 17
+ }
+]

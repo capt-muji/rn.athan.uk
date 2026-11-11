@@ -1,0 +1,74 @@
+{
+ "place": "data/rs_devridaim_2025_novipazar.json",
+ "lat": 43.1367,
+ "lon": 20.5122,
+ "tz": "Europe/Belgrade",
+ "params": {
+  "fajr": 19.6,
+  "isha": 17.8
+ },
+ "margins": {
+  "fajr": {
+   "m": 8.5,
+   "mode": "round",
+   "exact": 85,
+   "within1": 198,
+   "mae": 1.41,
+   "sd": 1.76,
+   "n": 365
+  },
+  "sunrise": {
+   "m": -5.5,
+   "mode": "floor",
+   "exact": 26,
+   "within1": 69,
+   "mae": 3.38,
+   "sd": 3.84,
+   "n": 365
+  },
+  "dhuhr": {
+   "m": 0.5,
+   "mode": "round",
+   "exact": 251,
+   "within1": 365,
+   "mae": 0.31,
+   "sd": 0.48,
+   "n": 365
+  },
+  "asr": {
+   "m": 0.5,
+   "mode": "round",
+   "exact": 50,
+   "within1": 134,
+   "mae": 2.92,
+   "sd": 3.5,
+   "n": 365
+  },
+  "maghrib": {
+   "m": 5.5,
+   "mode": "round",
+   "exact": 33,
+   "within1": 96,
+   "mae": 3.26,
+   "sd": 3.87,
+   "n": 365
+  },
+  "isha": {
+   "m": -9.5,
+   "mode": "floor",
+   "exact": 71,
+   "within1": 155,
+   "mae": 1.96,
+   "sd": 2.42,
+   "n": 365
+  }
+ },
+ "perYear": [
+  {
+   "year": "2025",
+   "exact": 516,
+   "within1": 1017,
+   "n": 2190
+  }
+ ]
+}

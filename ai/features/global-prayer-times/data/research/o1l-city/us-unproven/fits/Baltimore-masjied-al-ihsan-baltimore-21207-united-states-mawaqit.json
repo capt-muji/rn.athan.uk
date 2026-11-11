@@ -1,0 +1,185 @@
+{
+ "metro": "Baltimore",
+ "surface": "masjied-al-ihsan-baltimore-21207-united-states-mawaqit",
+ "isna_15_15": {
+  "madhab": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "w1": 87.4,
+  "exact": 80.2,
+  "per_column": {
+   "fajr": {
+    "mae": 0.26,
+    "bias": 0,
+    "exact": 94.5,
+    "w1": 100,
+    "worst": 0.6
+   },
+   "sunrise": {
+    "mae": 0.25,
+    "bias": 0.05,
+    "exact": 95.4,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "dhuhr": {
+    "mae": 0.25,
+    "bias": -0.02,
+    "exact": 98.4,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "asr": {
+    "mae": 1.57,
+    "bias": -0.07,
+    "exact": 10.7,
+    "w1": 24.3,
+    "worst": 2.8
+   },
+   "maghrib": {
+    "mae": 0.26,
+    "bias": 0.03,
+    "exact": 97,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "isha": {
+    "mae": 0.27,
+    "bias": 0.02,
+    "exact": 85.2,
+    "w1": 100,
+    "worst": 0.7
+   }
+  }
+ },
+ "rows": 366,
+ "span": [
+  "2026-01-01",
+  "2026-12-31"
+ ],
+ "years": [
+  "2026"
+ ],
+ "coords": [
+  39.334387,
+  -76.6936435
+ ],
+ "tz": "America/New_York",
+ "recipe": {
+  "engine": "adhan 4.4.6",
+  "fajr_angle": 15,
+  "isha": [
+   "angle",
+   15
+  ],
+  "madhab": "shafi",
+  "high_latitude": "TwilightAngle",
+  "rounding": "None",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  }
+ },
+ "per_column": {
+  "fajr": {
+   "mae": 0.26,
+   "bias": 0,
+   "exact": 94.5,
+   "w1": 100,
+   "worst": 0.6
+  },
+  "sunrise": {
+   "mae": 0.25,
+   "bias": 0.05,
+   "exact": 95.4,
+   "w1": 100,
+   "worst": 0.5
+  },
+  "dhuhr": {
+   "mae": 0.25,
+   "bias": -0.02,
+   "exact": 98.4,
+   "w1": 100,
+   "worst": 0.5
+  },
+  "asr": {
+   "mae": 1.57,
+   "bias": -0.07,
+   "exact": 10.7,
+   "w1": 24.3,
+   "worst": 2.8
+  },
+  "maghrib": {
+   "mae": 0.26,
+   "bias": 0.03,
+   "exact": 97,
+   "w1": 100,
+   "worst": 0.5
+  },
+  "isha": {
+   "mae": 0.27,
+   "bias": 0.02,
+   "exact": 85.2,
+   "w1": 100,
+   "worst": 0.7
+  }
+ },
+ "per_year": {
+  "2026": {
+   "fajr": {
+    "mae": 0.26,
+    "bias": 0,
+    "exact": 94.5,
+    "w1": 100,
+    "worst": 0.6
+   },
+   "sunrise": {
+    "mae": 0.25,
+    "bias": 0.05,
+    "exact": 95.4,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "dhuhr": {
+    "mae": 0.25,
+    "bias": -0.02,
+    "exact": 98.4,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "asr": {
+    "mae": 1.57,
+    "bias": -0.07,
+    "exact": 10.7,
+    "w1": 24.3,
+    "worst": 2.8
+   },
+   "maghrib": {
+    "mae": 0.26,
+    "bias": 0.03,
+    "exact": 97,
+    "w1": 100,
+    "worst": 0.5
+   },
+   "isha": {
+    "mae": 0.27,
+    "bias": 0.02,
+    "exact": 85.2,
+    "w1": 100,
+    "worst": 0.7
+   }
+  }
+ },
+ "seasonal_fajr_amplitude_min": 102.1,
+ "fajr_later_in_january": true
+}
