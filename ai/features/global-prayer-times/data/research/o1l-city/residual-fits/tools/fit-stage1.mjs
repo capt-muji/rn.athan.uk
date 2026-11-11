@@ -2,7 +2,7 @@
 // Every input is already in the archive; no network call is made and no clock is read.
 import fs from "node:fs";
 import path from "node:path";
-import { fitOne, fitTwilights, amplitude, hhmm, solveLat, solveDip, rawColumns } from "./fitlib.mjs";
+import { fitOne, amplitude, hhmm, solveLat, solveDip, dhuhrResidual, rawColumns } from "./fitlib.mjs";
 
 const DIR = path.join(path.dirname(new URL(import.meta.url).pathname), "..", "data");
 const load = (n) => JSON.parse(fs.readFileSync(path.join(DIR, n), "utf8"));
@@ -68,15 +68,20 @@ function impliedAngle(rows, opt, col, range) {
   for (let i = 1; i <= 5; i++) {
     const rows = load(`lb-region${i}-2028-inferred.json`);
     // The payload prints standard time year-round: fixed UTC+2, never Asia/Beirut DST.
-    const lon = 35.5;
+    const lon0 = 35.5;
+    const pt0 = solveLat(rows, { lon: lon0, fixedOffset: 120, lat: [32.8, 34.8], step: 0.05, dip: [0, 1.5], dipStep: 0.1 });
+    // The dhuhr column fixes the meridian: a median residual of r minutes is r/4 degrees.
+    const dRes0 = dhuhrResidual(rows, { lon: lon0, lat: pt0.lat, fixedOffset: 120 });
+    const lon = +(lon0 + dRes0 / 4).toFixed(2);
     const pt = solveLat(rows, { lon, fixedOffset: 120, lat: [32.8, 34.8], step: 0.02, dip: [0, 1.5], dipStep: 0.05 });
+    const dRes = dhuhrResidual(rows, { lon, lat: pt.lat, fixedOffset: 120 });
     const clock = { lat: pt.lat, lon, fixedOffset: 120, dip: pt.dip };
     const fa = impliedAngle(rows, clock, "fajr", [14, 22]);
     const ia = impliedAngle(rows, clock, "isha", [14, 22]);
     const opt = { ...clock, fajrAngle: fa.median, ishaAngle: ia.median, hanafi: false };
     const r = fitOne(rows, opt);
     regions[`region${i}`] = {
-      point: { ...pt, lon, scheme: "latitude from the table's own columns; longitude fixed at the country's mid-meridian (degenerate with the dhuhr margin)" },
+      point: { ...pt, lon, dhuhrResidualAtPoint: dRes, scheme: "latitude from the table own columns; longitude from the dhuhr transit" },
       rows: r.rows, implied: { fajr: fa, isha: ia },
       recipe: r.recipe, cols: r.cols, joint: r.joint,
       amplitude: amplitude(opt, 2028),

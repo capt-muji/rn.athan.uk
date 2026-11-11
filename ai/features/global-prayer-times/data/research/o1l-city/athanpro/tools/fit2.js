@@ -76,7 +76,7 @@ function residual(rows, dates, lat, lon, tz, make) {
     const off = tzOffset(date, tz);
     const p = make(); p.rounding = Rounding.None;
     const pt = new PrayerTimes(c, date, p);
-    for (const col of COLS) acc[col].push(signed(localMinutes(pt[col], off), hhmm(rows[day][col])));
+    for (const col of COLS) acc[col].push(signed(hhmm(rows[day][col]), localMinutes(pt[col], off)));
   }
   const out = {};
   for (const col of COLS) out[col] = Math.max(-MAX_ADJ, Math.min(MAX_ADJ, median(acc[col])));

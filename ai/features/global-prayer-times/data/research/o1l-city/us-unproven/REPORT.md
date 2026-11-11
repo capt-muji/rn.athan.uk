@@ -68,10 +68,10 @@ Coordinates: platform pages carry none, so each mosque's own address was geocode
 
 ## 3. Live-page gate (R5)
 
-Each feed was re-fetched for three dates taken from its own capture and compared cell for
-cell: athanplus 11/11 MATCH, masjidbox 7/7 MATCH, mawaqit 7/8 MATCH (New Orleans fails its own
-page, section 5), Raleigh MATCH on three sampled months, Birmingham MATCH on three dates.
-`fits/gates.json`.
+Each feed was re-fetched for dates taken from its own capture and compared cell for cell:
+athanplus 11/11 MATCH, masjidbox 7/7 MATCH, mawaqit 8/8 MATCH, Raleigh MATCH on three sampled
+months, Birmingham MATCH on three dates, Harrisburg's rendered table identical cell for cell,
+Montgomery 51 of 51 rows identical. 30 of 30 surfaces pass. `fits/gates.json`.
 
 ## 4. Fits
 
@@ -150,9 +150,9 @@ Tucson, 126 min Albany, 129 min Rochester, 148 min Portland As-Saber.
 
 - **New Orleans mawaqit serves a two-row placeholder.** The 2026 calendar holds exactly two
   distinct rows, switching on the DST dates, with a constant "day length" of 401 minutes in
-  every month. It is not a solar timetable and cannot be fitted (4.0 pc within-1). The same
-  page's rendered `times` do not appear in its own calendar, so it fails its own live-page
-  gate. Recorded, excluded.
+  every month. It is not a solar timetable and cannot be fitted (4.1 pc within-1). Its live-page
+  gate passes, because the page faithfully renders its own placeholder row: the gate proves
+  the capture is faithful, not that the table is a timetable. Recorded, excluded.
 - **Birmingham's route mis-prints dhuhr on the spring-forward day.** `?date=2024-03-10`
   returns dhuhr `00:58:00.000Z` for a 12:58 local transit. One row of 1096, dropped and
   recorded in the data file.

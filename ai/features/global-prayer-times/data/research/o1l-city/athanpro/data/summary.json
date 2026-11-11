@@ -8,7 +8,7 @@
   "errs": 0,
   "pct100": 1224,
   "pct99": 1251,
-  "pct90": 1599,
+  "pct90": 1253,
   "methods": [
    [
     "Muslim World League",
@@ -154,51 +154,51 @@
   "recipes": [
    [
     "MWL 18/17",
-    1360
+    1439
    ],
    [
     "stated: Diyanet leri Bakanl (Turkey) AI",
-    507
+    497
    ],
    [
     "Karachi 18/18",
-    128
+    107
    ],
    [
     "stated: Moroccan Ministry of Habous and Islamic Affairs",
     104
    ],
    [
-    "Turkey 18/17",
-    76
+    "ISNA 15/15",
+    91
    ],
    [
-    "sweep 15/15",
-    70
+    "UAE 18.2/18.2",
+    78
+   ],
+   [
+    "Turkey 18/17",
+    72
    ],
    [
     "sweep 17.5/18.5",
-    42
+    43
    ],
    [
-    "ISNA 15/15",
-    24
+    "Libya 18.5/18.5",
+    28
    ],
    [
-    "sweep 18/18",
+    "stated: JAKIM - Jabatan Kemajuan Islam (Malaysia) AI",
+    25
+   ],
+   [
+    "JAKIM 20/18",
+    23
+   ],
+   [
+    "stated: Libya Prayer Times",
     21
-   ],
-   [
-    "sweep 17.75/18.5",
-    16
-   ],
-   [
-    "Kuwait 18/17.5",
-    15
-   ],
-   [
-    "sweep 17.75/18.25",
-    14
    ]
   ],
   "capitals": 179,

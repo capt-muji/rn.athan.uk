@@ -20,14 +20,8 @@
  },
  {
   "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/Baltimore-masjied-al-ihsan-baltimore-21207-united-states-mawaqit.json",
-  "status": "MISMATCH",
-  "live": [
-   "05:29",
-   "11:51",
-   "14:35",
-   "16:55",
-   "18:12"
-  ]
+  "status": "MATCH",
+  "date": "2026-11-11"
  },
  {
   "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/Baton Rouge-4KB0kPA5-athanplus.json",
@@ -51,7 +45,7 @@
   "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/Birmingham-bis-adhans.json",
   "status": "MATCH",
   "dates": [
-   "2024-07-01",
+   "2024-07-02",
    "2025-07-02",
    "2026-12-29"
   ]
@@ -118,7 +112,8 @@
  },
  {
   "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/Harrisburg-isgh-alminaret.json",
-  "status": "JS_RENDERED_ONLY"
+  "status": "MATCH",
+  "note": "rendered table re-read live; 4091 cells identical"
  },
  {
   "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/Kansas City-islamic-society-of-greater-kansas-city-masjidbox.json",
@@ -149,7 +144,8 @@
  },
  {
   "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/Montgomery-emis-madinaapps.json",
-  "status": "SINGLE_CAPTURE"
+  "status": "MATCH",
+  "note": "51 of 51 live rows identical"
  },
  {
   "surface": "$HOME/athan-gitree/census/o1l-city/us-unproven/data/New Orleans-islamic-center-of-new-orleans-new-orleans-70116-1541-united-states-mawaqit.json",
