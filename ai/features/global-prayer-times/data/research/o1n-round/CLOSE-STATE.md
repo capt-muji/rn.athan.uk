@@ -16,9 +16,9 @@ the owner alone stops the research, and the continuation prompt names the open w
 
 ## Where the machines stopped
 
-- turktakvim harvest: STOPPED on the order at journal index 98,251 of 112,854
+- turktakvim harvest: STOPPED on the order at journal index 103,047 of 112,854
   (data/journal-harvest.jsonl, 107,712 lines; ~16,542 tables remain). Resume:
-  `cd $HOME/athan-gitree/census/o1n/o1n-3-turktakvim && python3 scripts/harvest2.py --walk 98252`
+  `cd $HOME/athan-gitree/census/o1n/o1n-3-turktakvim && python3 scripts/harvest2.py --walk 103048`
   (one process, one bucket). Then the close-out sequence in o1n-17-turktakvim-close/NOTICE.md.
 - Fazilet tier-A walk: COMPLETED 8,976/8,976 at 20:33:09Z. The consolidation, grade and
   placement are DONE (O1n-18, CONSOLIDATION block above).
