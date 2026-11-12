@@ -1,0 +1,358 @@
+{
+ "source": "smawebsite.com salat-timings image wp-content/uploads/2025/05/mei-2025.jpg",
+ "sheet": "MEI 2025 / DZUL QADA 1446, Tabel Namaaztijden Paramaribo/Nickerie",
+ "publisher": "Surinaamse Moeslim Associatie (SMA), Paramaribo, Ahle Sunnat Wal Djama'at",
+ "captured": "2026-11-12 UTC",
+ "columns": [
+  "sehri",
+  "fadjr",
+  "zonop",
+  "makroeh",
+  "lohr",
+  "ishrar",
+  "zonder",
+  "maghrib",
+  "isha"
+ ],
+ "fills": [
+  {
+   "row": "02",
+   "col": "sehri",
+   "filled": "5:11",
+   "evidence": "binarised re-read at threshold 190/200"
+  },
+  {
+   "row": "18",
+   "col": "fadjr",
+   "filled": "5:11",
+   "evidence": "binarised re-read at threshold 190/200"
+  },
+  {
+   "row": "20",
+   "col": "fadjr",
+   "filled": "5:11",
+   "evidence": "binarised re-read at threshold 190/200"
+  }
+ ],
+ "rows": {
+  "2025-04-29": {
+   "sehri": "5:12",
+   "fadjr": "5:17",
+   "zonop": "6:29",
+   "makroeh": "12:02",
+   "lohr": "12:38",
+   "ishrar": "17:01",
+   "zonder": "18:46",
+   "maghrib": "18:51",
+   "isha": "20:01"
+  },
+  "2025-04-30": {
+   "sehri": "5:11",
+   "fadjr": "5:16",
+   "zonop": "6:29",
+   "makroeh": "12:02",
+   "lohr": "12:38",
+   "ishrar": "17:01",
+   "zonder": "18:46",
+   "maghrib": "18:51",
+   "isha": "20:01"
+  },
+  "2025-05-01": {
+   "sehri": "5:11",
+   "fadjr": "5:16",
+   "zonop": "6:28",
+   "makroeh": "12:00",
+   "lohr": "12:38",
+   "ishrar": "17:01",
+   "zonder": "18:46",
+   "maghrib": "18:51",
+   "isha": "20:01"
+  },
+  "2025-05-02": {
+   "sehri": "5:11",
+   "fadjr": "5:16",
+   "zonop": "6:28",
+   "makroeh": "12:00",
+   "lohr": "12:38",
+   "ishrar": "17:01",
+   "zonder": "18:46",
+   "maghrib": "18:51",
+   "isha": "20:01"
+  },
+  "2025-05-03": {
+   "sehri": "5:10",
+   "fadjr": "5:15",
+   "zonop": "6:28",
+   "makroeh": "12:00",
+   "lohr": "12:38",
+   "ishrar": "17:01",
+   "zonder": "18:46",
+   "maghrib": "18:51",
+   "isha": "20:01"
+  },
+  "2025-05-04": {
+   "sehri": "5:10",
+   "fadjr": "5:15",
+   "zonop": "6:28",
+   "makroeh": "12:00",
+   "lohr": "12:37",
+   "ishrar": "17:01",
+   "zonder": "18:46",
+   "maghrib": "18:51",
+   "isha": "20:01"
+  },
+  "2025-05-05": {
+   "sehri": "5:10",
+   "fadjr": "5:15",
+   "zonop": "6:28",
+   "makroeh": "12:00",
+   "lohr": "12:37",
+   "ishrar": "17:02",
+   "zonder": "18:46",
+   "maghrib": "18:51",
+   "isha": "20:01"
+  },
+  "2025-05-06": {
+   "sehri": "5:09",
+   "fadjr": "5:14",
+   "zonop": "6:27",
+   "makroeh": "12:00",
+   "lohr": "12:37",
+   "ishrar": "17:02",
+   "zonder": "18:46",
+   "maghrib": "18:51",
+   "isha": "20:01"
+  },
+  "2025-05-07": {
+   "sehri": "5:09",
+   "fadjr": "5:14",
+   "zonop": "6:27",
+   "makroeh": "12:00",
+   "lohr": "12:37",
+   "ishrar": "17:02",
+   "zonder": "18:46",
+   "maghrib": "18:51",
+   "isha": "20:01"
+  },
+  "2025-05-08": {
+   "sehri": "5:09",
+   "fadjr": "5:14",
+   "zonop": "6:27",
+   "makroeh": "12:00",
+   "lohr": "12:37",
+   "ishrar": "17:02",
+   "zonder": "18:46",
+   "maghrib": "18:51",
+   "isha": "20:01"
+  },
+  "2025-05-09": {
+   "sehri": "5:08",
+   "fadjr": "5:13",
+   "zonop": "6:27",
+   "makroeh": "12:00",
+   "lohr": "12:37",
+   "ishrar": "17:02",
+   "zonder": "18:47",
+   "maghrib": "18:52",
+   "isha": "20:02"
+  },
+  "2025-05-10": {
+   "sehri": "5:08",
+   "fadjr": "5:13",
+   "zonop": "6:27",
+   "makroeh": "12:00",
+   "lohr": "12:37",
+   "ishrar": "17:02",
+   "zonder": "18:47",
+   "maghrib": "18:52",
+   "isha": "20:02"
+  },
+  "2025-05-11": {
+   "sehri": "5:08",
+   "fadjr": "5:13",
+   "zonop": "6:26",
+   "makroeh": "12:00",
+   "lohr": "12:37",
+   "ishrar": "17:02",
+   "zonder": "18:47",
+   "maghrib": "18:52",
+   "isha": "20:02"
+  },
+  "2025-05-12": {
+   "sehri": "5:08",
+   "fadjr": "5:13",
+   "zonop": "6:26",
+   "makroeh": "12:00",
+   "lohr": "12:37",
+   "ishrar": "17:02",
+   "zonder": "18:47",
+   "maghrib": "18:52",
+   "isha": "20:02"
+  },
+  "2025-05-13": {
+   "sehri": "5:07",
+   "fadjr": "5:12",
+   "zonop": "6:26",
+   "makroeh": "12:00",
+   "lohr": "12:37",
+   "ishrar": "17:03",
+   "zonder": "18:47",
+   "maghrib": "18:52",
+   "isha": "20:02"
+  },
+  "2025-05-14": {
+   "sehri": "5:07",
+   "fadjr": "5:12",
+   "zonop": "6:26",
+   "makroeh": "12:00",
+   "lohr": "12:37",
+   "ishrar": "17:03",
+   "zonder": "18:47",
+   "maghrib": "18:52",
+   "isha": "20:02"
+  },
+  "2025-05-15": {
+   "sehri": "5:07",
+   "fadjr": "5:12",
+   "zonop": "6:26",
+   "makroeh": "12:00",
+   "lohr": "12:37",
+   "ishrar": "17:03",
+   "zonder": "18:47",
+   "maghrib": "18:52",
+   "isha": "20:02"
+  },
+  "2025-05-16": {
+   "sehri": "5:07",
+   "fadjr": "5:12",
+   "zonop": "6:26",
+   "makroeh": "12:00",
+   "lohr": "12:37",
+   "ishrar": "17:03",
+   "zonder": "18:47",
+   "maghrib": "18:52",
+   "isha": "20:02"
+  },
+  "2025-05-17": {
+   "sehri": "5:06",
+   "fadjr": "5:11",
+   "zonop": "6:26",
+   "makroeh": "12:00",
+   "lohr": "12:37",
+   "ishrar": "17:03",
+   "zonder": "18:47",
+   "maghrib": "18:52",
+   "isha": "20:02"
+  },
+  "2025-05-18": {
+   "sehri": "5:06",
+   "fadjr": "5:11",
+   "zonop": "6:26",
+   "makroeh": "12:00",
+   "lohr": "12:37",
+   "ishrar": "17:03",
+   "zonder": "18:47",
+   "maghrib": "18:52",
+   "isha": "20:02"
+  },
+  "2025-05-19": {
+   "sehri": "5:06",
+   "fadjr": "5:11",
+   "zonop": "6:26",
+   "makroeh": "12:00",
+   "lohr": "12:37",
+   "ishrar": "17:03",
+   "zonder": "18:48",
+   "maghrib": "18:53",
+   "isha": "20:03"
+  },
+  "2025-05-20": {
+   "sehri": "5:06",
+   "fadjr": "5:11",
+   "zonop": "6:26",
+   "makroeh": "12:00",
+   "lohr": "12:37",
+   "ishrar": "17:04",
+   "zonder": "18:48",
+   "maghrib": "18:53",
+   "isha": "20:03"
+  },
+  "2025-05-21": {
+   "sehri": "5:06",
+   "fadjr": "5:11",
+   "zonop": "6:26",
+   "makroeh": "12:00",
+   "lohr": "12:37",
+   "ishrar": "17:04",
+   "zonder": "18:48",
+   "maghrib": "18:53",
+   "isha": "20:03"
+  },
+  "2025-05-22": {
+   "sehri": "5:06",
+   "fadjr": "5:11",
+   "zonop": "6:26",
+   "makroeh": "12:00",
+   "lohr": "12:37",
+   "ishrar": "17:04",
+   "zonder": "18:48",
+   "maghrib": "18:53",
+   "isha": "20:03"
+  },
+  "2025-05-23": {
+   "sehri": "5:05",
+   "fadjr": "5:10",
+   "zonop": "6:25",
+   "makroeh": "12:00",
+   "lohr": "12:37",
+   "ishrar": "17:04",
+   "zonder": "18:48",
+   "maghrib": "18:53",
+   "isha": "20:03"
+  },
+  "2025-05-24": {
+   "sehri": "5:05",
+   "fadjr": "5:10",
+   "zonop": "6:25",
+   "makroeh": "12:00",
+   "lohr": "12:37",
+   "ishrar": "17:04",
+   "zonder": "18:49",
+   "maghrib": "18:54",
+   "isha": "20:04"
+  },
+  "2025-05-25": {
+   "sehri": "5:05",
+   "fadjr": "5:10",
+   "zonop": "6:26",
+   "makroeh": "12:00",
+   "lohr": "12:38",
+   "ishrar": "17:05",
+   "zonder": "18:49",
+   "maghrib": "18:54",
+   "isha": "20:04"
+  },
+  "2025-05-26": {
+   "sehri": "5:05",
+   "fadjr": "5:10",
+   "zonop": "6:26",
+   "makroeh": "12:00",
+   "lohr": "12:38",
+   "ishrar": "17:05",
+   "zonder": "18:49",
+   "maghrib": "18:54",
+   "isha": "20:04"
+  },
+  "2025-05-27": {
+   "sehri": "5:05",
+   "fadjr": "5:10",
+   "zonop": "6:26",
+   "makroeh": "12:00",
+   "lohr": "12:38",
+   "ishrar": "17:05",
+   "zonder": "18:49",
+   "maghrib": "18:54",
+   "isha": "20:04"
+  }
+ }
+}

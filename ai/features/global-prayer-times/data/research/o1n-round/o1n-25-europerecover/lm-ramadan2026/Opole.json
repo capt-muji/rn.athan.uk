@@ -1,0 +1,308 @@
+{
+ "rows": [
+  {
+   "date": "2026-02-19",
+   "imsak": "05:30",
+   "fadzr": "05:40",
+   "szuruk": "06:50",
+   "zuhr": "12:02",
+   "asr": "14:40",
+   "magrib": "17:13",
+   "isza": "18:23"
+  },
+  {
+   "date": "2026-02-20",
+   "imsak": "05:28",
+   "fadzr": "05:38",
+   "szuruk": "06:48",
+   "zuhr": "12:02",
+   "asr": "14:42",
+   "magrib": "17:15",
+   "isza": "18:25"
+  },
+  {
+   "date": "2026-02-21",
+   "imsak": "05:27",
+   "fadzr": "05:37",
+   "szuruk": "06:46",
+   "zuhr": "12:02",
+   "asr": "14:43",
+   "magrib": "17:16",
+   "isza": "18:26"
+  },
+  {
+   "date": "2026-02-22",
+   "imsak": "05:25",
+   "fadzr": "05:35",
+   "szuruk": "06:44",
+   "zuhr": "12:02",
+   "asr": "14:44",
+   "magrib": "17:18",
+   "isza": "18:28"
+  },
+  {
+   "date": "2026-02-23",
+   "imsak": "05:23",
+   "fadzr": "05:33",
+   "szuruk": "06:42",
+   "zuhr": "12:02",
+   "asr": "14:48",
+   "magrib": "17:20",
+   "isza": "18:29"
+  },
+  {
+   "date": "2026-02-24",
+   "imsak": "05:21",
+   "fadzr": "05:31",
+   "szuruk": "06:40",
+   "zuhr": "12:01",
+   "asr": "14:47",
+   "magrib": "17:22",
+   "isza": "18:31"
+  },
+  {
+   "date": "2026-02-25",
+   "imsak": "05:19",
+   "fadzr": "05:29",
+   "szuruk": "06:38",
+   "zuhr": "12:01",
+   "asr": "14:48",
+   "magrib": "17:23",
+   "isza": "18:33"
+  },
+  {
+   "date": "2026-02-26",
+   "imsak": "05:17",
+   "fadzr": "05:27",
+   "szuruk": "06:36",
+   "zuhr": "12:01",
+   "asr": "14:49",
+   "magrib": "17:25",
+   "isza": "18:34"
+  },
+  {
+   "date": "2026-02-27",
+   "imsak": "05:15",
+   "fadzr": "05:25",
+   "szuruk": "06:34",
+   "zuhr": "12:01",
+   "asr": "14:51",
+   "magrib": "17:27",
+   "isza": "18:36"
+  },
+  {
+   "date": "2026-02-28",
+   "imsak": "05:13",
+   "fadzr": "05:23",
+   "szuruk": "06:32",
+   "zuhr": "12:01",
+   "asr": "14:52",
+   "magrib": "17:29",
+   "isza": "18:38"
+  },
+  {
+   "date": "2026-03-01",
+   "imsak": "05:11",
+   "fadzr": "05:21",
+   "szuruk": "06:30",
+   "zuhr": "12:01",
+   "asr": "14:53",
+   "magrib": "17:30",
+   "isza": "18:39"
+  },
+  {
+   "date": "2026-03-02",
+   "imsak": "05:09",
+   "fadzr": "05:19",
+   "szuruk": "06:28",
+   "zuhr": "12:00",
+   "asr": "14:54",
+   "magrib": "17:32",
+   "isza": "18:41"
+  },
+  {
+   "date": "2026-03-03",
+   "imsak": "05:07",
+   "fadzr": "05:17",
+   "szuruk": "06:26",
+   "zuhr": "12:00",
+   "asr": "14:56",
+   "magrib": "17:34",
+   "isza": "18:43"
+  },
+  {
+   "date": "2026-03-04",
+   "imsak": "05:05",
+   "fadzr": "05:15",
+   "szuruk": "06:24",
+   "zuhr": "12:00",
+   "asr": "14:57",
+   "magrib": "17:35",
+   "isza": "18:44"
+  },
+  {
+   "date": "2026-03-05",
+   "imsak": "05:03",
+   "fadzr": "05:13",
+   "szuruk": "06:21",
+   "zuhr": null,
+   "asr": "14:58",
+   "magrib": "17:37",
+   "isza": "18:46"
+  },
+  {
+   "date": "2026-03-06",
+   "imsak": "05:00",
+   "fadzr": "05:10",
+   "szuruk": "06:19",
+   "zuhr": "12:00",
+   "asr": "14:59",
+   "magrib": "17:39",
+   "isza": "18:48"
+  },
+  {
+   "date": "2026-03-07",
+   "imsak": "04:58",
+   "fadzr": "05:08",
+   "szuruk": "06:17",
+   "zuhr": "11:59",
+   "asr": null,
+   "magrib": "17:40",
+   "isza": "18:49"
+  },
+  {
+   "date": "2026-03-08",
+   "imsak": "04:56",
+   "fadzr": "05:06",
+   "szuruk": "06:15",
+   "zuhr": "11:59",
+   "asr": "15:01",
+   "magrib": "17:42",
+   "isza": "18:51"
+  },
+  {
+   "date": "2026-03-09",
+   "imsak": "04:54",
+   "fadzr": null,
+   "szuruk": "06:13",
+   "zuhr": "11:59",
+   "asr": "15:03",
+   "magrib": "17:44",
+   "isza": "18:53"
+  },
+  {
+   "date": "2026-03-10",
+   "imsak": "04:52",
+   "fadzr": "05:02",
+   "szuruk": "06:11",
+   "zuhr": "11:59",
+   "asr": "15:04",
+   "magrib": "17:45",
+   "isza": "18:54"
+  },
+  {
+   "date": "2026-03-11",
+   "imsak": "04:50",
+   "fadzr": "05:00",
+   "szuruk": "06:09",
+   "zuhr": "11:58",
+   "asr": "15:05",
+   "magrib": "17:47",
+   "isza": "18:56"
+  },
+  {
+   "date": "2026-03-12",
+   "imsak": "04:47",
+   "fadzr": "04:57",
+   "szuruk": "06:06",
+   "zuhr": "11:58",
+   "asr": "15:06",
+   "magrib": "17:49",
+   "isza": "18:58"
+  },
+  {
+   "date": "2026-03-13",
+   "imsak": "04:45",
+   "fadzr": "04:55",
+   "szuruk": "06:04",
+   "zuhr": "11:58",
+   "asr": "15:07",
+   "magrib": "17:50",
+   "isza": "18:59"
+  },
+  {
+   "date": "2026-03-14",
+   "imsak": "04:43",
+   "fadzr": "04:53",
+   "szuruk": "06:02",
+   "zuhr": "11:57",
+   "asr": "15:08",
+   "magrib": "17:52",
+   "isza": "19:01"
+  },
+  {
+   "date": "2026-03-15",
+   "imsak": "04:41",
+   "fadzr": "04:51",
+   "szuruk": "06:00",
+   "zuhr": "11:57",
+   "asr": "15:09",
+   "magrib": "17:54",
+   "isza": "19:03"
+  },
+  {
+   "date": "2026-03-16",
+   "imsak": "04:38",
+   "fadzr": "04:48",
+   "szuruk": "05:58",
+   "zuhr": "11:57",
+   "asr": "15:10",
+   "magrib": "17:55",
+   "isza": "19:05"
+  },
+  {
+   "date": "2026-03-17",
+   "imsak": "04:36",
+   "fadzr": "04:46",
+   "szuruk": "05:55",
+   "zuhr": "11:57",
+   "asr": "15:11",
+   "magrib": "17:57",
+   "isza": "19:06"
+  },
+  {
+   "date": "2026-03-18",
+   "imsak": "04:34",
+   "fadzr": "04:44",
+   "szuruk": "05:53",
+   "zuhr": "11:56",
+   "asr": "15:12",
+   "magrib": "17:59",
+   "isza": "19:08"
+  },
+  {
+   "date": "2026-03-19",
+   "imsak": "04:31",
+   "fadzr": "04:41",
+   "szuruk": "05:51",
+   "zuhr": "11:56",
+   "asr": "15:13",
+   "magrib": "18:00",
+   "isza": "19:10"
+  }
+ ],
+ "warnings": [
+  "lm-boxes-Opole-2026R-1.txt: box \"125\" x=138 matches no band",
+  "lm-boxes-Opole-2026R-1.txt: \"008\" in data band unparseable",
+  "lm-boxes-Opole-2026R-1.txt: \"1240\" in data band unparseable",
+  "lm-boxes-up-Opole-2026R-1.txt: \"12,03\" in data band unparseable",
+  "lm-boxes-up-Opole-2026R-1.txt: \"008\" in data band unparseable",
+  "lm-boxes-up-Opole-2026R-1.txt: \"1240\" in data band unparseable",
+  "lm-boxes-up-Opole-2026R-1.txt: asr@y272 differs across passes: 888 vs 886"
+ ],
+ "spacing": 19.5,
+ "passes": [
+  "lm-boxes-Opole-2026R-1.txt",
+  "lm-boxes-up-Opole-2026R-1.txt"
+ ]
+}

@@ -1,0 +1,226 @@
+{
+ "engine": "adhan 4.4.6",
+ "rounding": "None",
+ "coordinate": "40.4093,49.8671 (Baku)",
+ "zone": "Asia/Baku",
+ "recipe": {
+  "subh": {
+   "ang": 16
+  },
+  "imsak": {
+   "ang": 16,
+   "margin": -5
+  },
+  "gunesh": {
+   "margin": 0
+  },
+  "zohr": {
+   "margin": 0
+  },
+  "esr": {
+   "madhab": "hanafi",
+   "margin": 0
+  },
+  "gunbatir": {
+   "margin": 0
+  },
+  "maghrib": {
+   "margin": 15
+  },
+  "isha": {
+   "ang": 15,
+   "margin": 0
+  }
+ },
+ "year_2025": {
+  "subh": {
+   "score_n": 358,
+   "median": 0,
+   "exact": 52,
+   "w1": 91.1,
+   "worst": 4,
+   "outliers_excluded": 1,
+   "outlier_dates": [
+    "2025-07-31(-25)"
+   ]
+  },
+  "imsak": {
+   "score_n": 363,
+   "median": 0,
+   "exact": 57.3,
+   "w1": 98.6,
+   "worst": 2,
+   "outliers_excluded": 1,
+   "outlier_dates": [
+    "2025-06-29(-19)"
+   ]
+  },
+  "gunesh": {
+   "score_n": 358,
+   "median": 0,
+   "exact": 55.3,
+   "w1": 94.4,
+   "worst": 4,
+   "outliers_excluded": 2,
+   "outlier_dates": [
+    "2025-08-30(-19)",
+    "2025-12-31(-8)"
+   ]
+  },
+  "zohr": {
+   "score_n": 363,
+   "median": 0,
+   "exact": 84.8,
+   "w1": 100,
+   "worst": 1,
+   "outliers_excluded": 0,
+   "outlier_dates": []
+  },
+  "esr": {
+   "score_n": 363,
+   "median": 0,
+   "exact": 68,
+   "w1": 100,
+   "worst": 1,
+   "outliers_excluded": 0,
+   "outlier_dates": []
+  },
+  "gunbatir": {
+   "score_n": 365,
+   "median": 0,
+   "exact": 55.9,
+   "w1": 100,
+   "worst": 1,
+   "outliers_excluded": 0,
+   "outlier_dates": []
+  },
+  "maghrib": {
+   "score_n": 364,
+   "median": 0,
+   "exact": 24.2,
+   "w1": 78.8,
+   "worst": 2,
+   "outliers_excluded": 0,
+   "outlier_dates": []
+  },
+  "isha": {
+   "score_n": 364,
+   "median": 0,
+   "exact": 48.9,
+   "w1": 97,
+   "worst": 3,
+   "outliers_excluded": 0,
+   "outlier_dates": []
+  },
+  "_amplitude": {
+   "fajr_to_maghrib_jan15": 678,
+   "jul15": 1004
+  }
+ },
+ "year_2026": {
+  "subh": {
+   "score_n": 350,
+   "median": 0,
+   "exact": 36.3,
+   "w1": 69.7,
+   "worst": 4,
+   "outliers_excluded": 10,
+   "outlier_dates": [
+    "2026-03-27(28)",
+    "2026-03-28(-5)",
+    "2026-03-29(30)",
+    "2026-04-30(27)",
+    "2026-06-05(-24)",
+    "2026-08-31(-24)"
+   ]
+  },
+  "imsak": {
+   "score_n": 356,
+   "median": 0,
+   "exact": 37.6,
+   "w1": 88.5,
+   "worst": 4,
+   "outliers_excluded": 5,
+   "outlier_dates": [
+    "2026-03-27(29)",
+    "2026-03-28(-5)",
+    "2026-03-29(-5)",
+    "2026-04-30(32)",
+    "2026-11-30(-20)"
+   ]
+  },
+  "gunesh": {
+   "score_n": 359,
+   "median": 0,
+   "exact": 34.8,
+   "w1": 95.5,
+   "worst": 3,
+   "outliers_excluded": 2,
+   "outlier_dates": [
+    "2026-07-31(-18)",
+    "2026-11-13(-19)"
+   ]
+  },
+  "zohr": {
+   "score_n": 360,
+   "median": 0,
+   "exact": 80,
+   "w1": 100,
+   "worst": 1,
+   "outliers_excluded": 0,
+   "outlier_dates": []
+  },
+  "esr": {
+   "score_n": 358,
+   "median": 0,
+   "exact": 54.7,
+   "w1": 94.4,
+   "worst": 3,
+   "outliers_excluded": 3,
+   "outlier_dates": [
+    "2026-01-31(-22)",
+    "2026-09-11(-6)",
+    "2026-10-30(22)"
+   ]
+  },
+  "gunbatir": {
+   "score_n": 360,
+   "median": 0,
+   "exact": 43.1,
+   "w1": 97.8,
+   "worst": 2,
+   "outliers_excluded": 5,
+   "outlier_dates": [
+    "2026-04-04(11)",
+    "2026-06-26(-14)",
+    "2026-07-15(-9)",
+    "2026-07-31(12)",
+    "2026-09-07(9)"
+   ]
+  },
+  "maghrib": {
+   "score_n": 362,
+   "median": 0,
+   "exact": 24.3,
+   "w1": 67.1,
+   "worst": 4,
+   "outliers_excluded": 0,
+   "outlier_dates": []
+  },
+  "isha": {
+   "score_n": 359,
+   "median": 0,
+   "exact": 33.4,
+   "w1": 88.6,
+   "worst": 4,
+   "outliers_excluded": 1,
+   "outlier_dates": [
+    "2026-08-12(-5)"
+   ]
+  },
+  "_amplitude": {
+   "fajr_to_maghrib_jan15": 678,
+   "jul15": 1005
+  }
+ }
+}

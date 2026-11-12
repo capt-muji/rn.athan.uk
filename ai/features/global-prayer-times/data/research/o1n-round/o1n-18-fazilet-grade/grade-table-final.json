@@ -1,0 +1,4452 @@
+{
+ "generated": "2026-11-11T20:41:39Z",
+ "exclusion": {
+  "ownerOrder": "2026-11-11",
+  "applied": "layer resolved at runtime from the round brief; excluded from every count",
+  "layerCities": 20,
+  "servedLayers": 211,
+  "scopeLayers": 210
+ },
+ "totals": {
+  "citiesServed": 6506,
+  "citiesInScope": 6486,
+  "citiesFitVerified": 248,
+  "fit2yr": 245,
+  "fit1yr": 3,
+  "w1_100": 216,
+  "bases": {
+   "o1n13-walk-including-o1n9-refits": 230,
+   "o1n14-africa": 34,
+   "overlap": 16
+  }
+ },
+ "recompute": {
+  "cities": 228,
+  "cells": 103726,
+  "moved": 12882,
+  "movedPc": 12.42,
+  "frozenCities": 0
+ },
+ "crosscheckDiyanet": {
+  "pairs": 12,
+  "unresolved": []
+ },
+ "countries": [
+  {
+   "countryId": 32,
+   "country": "Kırgızistan",
+   "total": 78,
+   "fit2yr": 5,
+   "fit1yr": 0,
+   "w1_100": 5,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 5,
+    "fit1yr": 0,
+    "w1_100": 5
+   }
+  },
+  {
+   "countryId": 64,
+   "country": "Nijerya",
+   "total": 29,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 4,
+    "fit2yr": 4,
+    "fit1yr": 0,
+    "w1_100": 4
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 4,
+    "fit1yr": 0,
+    "w1_100": 4
+   }
+  },
+  {
+   "countryId": 17,
+   "country": "Kenya",
+   "total": 19,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 3,
+    "fit2yr": 3,
+    "fit1yr": 0,
+    "w1_100": 3
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 3,
+    "fit1yr": 0,
+    "w1_100": 3
+   }
+  },
+  {
+   "countryId": 95,
+   "country": "Kongo Demokratik Cumhuriyeti",
+   "total": 14,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 3,
+    "fit2yr": 3,
+    "fit1yr": 0,
+    "w1_100": 3
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 3,
+    "fit1yr": 0,
+    "w1_100": 3
+   }
+  },
+  {
+   "countryId": 19,
+   "country": "Etiyopya",
+   "total": 13,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 2,
+    "fit2yr": 2,
+    "fit1yr": 0,
+    "w1_100": 2
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 2,
+    "fit1yr": 0,
+    "w1_100": 2
+   }
+  },
+  {
+   "countryId": 24,
+   "country": "Gana",
+   "total": 10,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 2,
+    "fit2yr": 2,
+    "fit1yr": 0,
+    "w1_100": 2
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 2,
+    "fit1yr": 0,
+    "w1_100": 2
+   }
+  },
+  {
+   "countryId": 30,
+   "country": "Japonya",
+   "total": 143,
+   "fit2yr": 3,
+   "fit1yr": 0,
+   "w1_100": 3,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 3,
+    "fit1yr": 0,
+    "w1_100": 3
+   }
+  },
+  {
+   "countryId": 82,
+   "country": "Kamerun",
+   "total": 12,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 2,
+    "fit2yr": 2,
+    "fit1yr": 0,
+    "w1_100": 2
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 2,
+    "fit1yr": 0,
+    "w1_100": 2
+   }
+  },
+  {
+   "countryId": 91,
+   "country": "Mali",
+   "total": 11,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 2,
+    "fit2yr": 2,
+    "fit1yr": 0,
+    "w1_100": 2
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 2,
+    "fit1yr": 0,
+    "w1_100": 2
+   }
+  },
+  {
+   "countryId": 93,
+   "country": "Mozambik",
+   "total": 5,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 2,
+    "fit2yr": 2,
+    "fit1yr": 0,
+    "w1_100": 2
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 2,
+    "fit1yr": 0,
+    "w1_100": 2
+   }
+  },
+  {
+   "countryId": 63,
+   "country": "Moğolistan",
+   "total": 23,
+   "fit2yr": 3,
+   "fit1yr": 0,
+   "w1_100": 0,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [
+    {
+     "cityId": 737,
+     "adi": "Ulaanbaatar",
+     "kind": "seasonal fajr pad +10..+13 min over the 19.5-degree angle (Mongolian layer rule, identical at both cities)"
+    },
+    {
+     "cityId": 888,
+     "adi": "Erdenet",
+     "kind": "Mongolian fajr pad with a wider swing (+14..+17 min) plus the summer night-column band at 49N"
+    },
+    {
+     "cityId": 8343,
+     "adi": "Nalayh (Ulanbator)",
+     "kind": "seasonal fajr pad +10..+13 min over the 19.5-degree angle (Mongolian layer rule, identical at both cities)"
+    }
+   ],
+   "verified": {
+    "fit2yr": 3,
+    "fit1yr": 0,
+    "w1_100": 0
+   }
+  },
+  {
+   "countryId": 65,
+   "country": "Sierra Leone",
+   "total": 14,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 2,
+    "fit2yr": 2,
+    "fit1yr": 0,
+    "w1_100": 2
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 2,
+    "fit1yr": 0,
+    "w1_100": 2
+   }
+  },
+  {
+   "countryId": 66,
+   "country": "Tanzanya",
+   "total": 33,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 2,
+    "fit2yr": 2,
+    "fit1yr": 0,
+    "w1_100": 2
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 2,
+    "fit1yr": 0,
+    "w1_100": 2
+   }
+  },
+  {
+   "countryId": 67,
+   "country": "Uganda",
+   "total": 7,
+   "fit2yr": 2,
+   "fit1yr": 0,
+   "w1_100": 2,
+   "a14": {
+    "cities": 1,
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 3,
+    "fit1yr": 0,
+    "w1_100": 3
+   }
+  },
+  {
+   "countryId": 118,
+   "country": "Zimbabve",
+   "total": 8,
+   "fit2yr": 2,
+   "fit1yr": 0,
+   "w1_100": 2,
+   "a14": {
+    "cities": 1,
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 2,
+    "fit1yr": 0,
+    "w1_100": 2
+   }
+  },
+  {
+   "countryId": 85,
+   "country": "Çad",
+   "total": 17,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 2,
+    "fit2yr": 2,
+    "fit1yr": 0,
+    "w1_100": 2
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 3,
+    "fit1yr": 0,
+    "w1_100": 3
+   }
+  },
+  {
+   "countryId": 3,
+   "country": "Afganistan",
+   "total": 34,
+   "fit2yr": 2,
+   "fit1yr": 0,
+   "w1_100": 2,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 2,
+    "fit1yr": 0,
+    "w1_100": 2
+   }
+  },
+  {
+   "countryId": 120,
+   "country": "Angola",
+   "total": 11,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 1,
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 6,
+   "country": "Azerbaycan",
+   "total": 67,
+   "fit2yr": 2,
+   "fit1yr": 0,
+   "w1_100": 2,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 2,
+    "fit1yr": 0,
+    "w1_100": 2
+   }
+  },
+  {
+   "countryId": 78,
+   "country": "Irak",
+   "total": 14,
+   "fit2yr": 2,
+   "fit1yr": 0,
+   "w1_100": 2,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 2,
+    "fit1yr": 0,
+    "w1_100": 2
+   }
+  },
+  {
+   "countryId": 165,
+   "country": "Komorlar",
+   "total": 4,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 1,
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 129,
+   "country": "Libya",
+   "total": 12,
+   "fit2yr": 2,
+   "fit1yr": 0,
+   "w1_100": 2,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 2,
+    "fit1yr": 0,
+    "w1_100": 2
+   }
+  },
+  {
+   "countryId": 90,
+   "country": "Madagaskar",
+   "total": 12,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 1,
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 183,
+   "country": "Nepal",
+   "total": 9,
+   "fit2yr": 2,
+   "fit1yr": 0,
+   "w1_100": 2,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 2,
+    "fit1yr": 0,
+    "w1_100": 2
+   }
+  },
+  {
+   "countryId": 186,
+   "country": "Orta Afrika Cumhuriyeti",
+   "total": 6,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 1,
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 188,
+   "country": "Panama ",
+   "total": 19,
+   "fit2yr": 2,
+   "fit1yr": 0,
+   "w1_100": 2,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 2,
+    "fit1yr": 0,
+    "w1_100": 2
+   }
+  },
+  {
+   "countryId": 125,
+   "country": "Sri Lanka",
+   "total": 21,
+   "fit2yr": 2,
+   "fit1yr": 0,
+   "w1_100": 2,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [
+    {
+     "cityId": 3073,
+     "adi": "Kolombo",
+     "kind": "dhuhr pad +2 min dated 2027 (median -3 -> -1), every other column frozen"
+    }
+   ],
+   "verified": {
+    "fit2yr": 2,
+    "fit1yr": 0,
+    "w1_100": 2
+   }
+  },
+  {
+   "countryId": 75,
+   "country": "Sudan",
+   "total": 10,
+   "fit2yr": 2,
+   "fit1yr": 0,
+   "w1_100": 2,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 2,
+    "fit1yr": 0,
+    "w1_100": 2
+   }
+  },
+  {
+   "countryId": 69,
+   "country": "Tacikistan",
+   "total": 37,
+   "fit2yr": 2,
+   "fit1yr": 0,
+   "w1_100": 2,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 2,
+    "fit1yr": 0,
+    "w1_100": 2
+   }
+  },
+  {
+   "countryId": 114,
+   "country": "Yemen",
+   "total": 10,
+   "fit2yr": 2,
+   "fit1yr": 0,
+   "w1_100": 2,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 2,
+    "fit1yr": 0,
+    "w1_100": 2
+   }
+  },
+  {
+   "countryId": 96,
+   "country": "Çin",
+   "total": 48,
+   "fit2yr": 2,
+   "fit1yr": 0,
+   "w1_100": 2,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 2,
+    "fit1yr": 0,
+    "w1_100": 2
+   }
+  },
+  {
+   "countryId": 34,
+   "country": "Özbekistan",
+   "total": 48,
+   "fit2yr": 2,
+   "fit1yr": 0,
+   "w1_100": 2,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 2,
+    "fit1yr": 0,
+    "w1_100": 2
+   }
+  },
+  {
+   "countryId": 57,
+   "country": "ABD",
+   "total": 464,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 14,
+   "country": "Almanya",
+   "total": 429,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 0,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [
+    {
+     "cityId": 247,
+     "adi": "Berlin",
+     "kind": "summer night-column rule stands in for the 19.5-degree angle (polar-undefined band); winter clean"
+    }
+   ],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 0
+   }
+  },
+  {
+   "countryId": 134,
+   "country": "Andorra",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 135,
+   "country": "Anguilla ",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 136,
+   "country": "Antigua ve Barbuda",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 132,
+   "country": "Arjantin",
+   "total": 24,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 4,
+   "country": "Arnavutluk",
+   "total": 40,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 137,
+   "country": "Aruba",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 5,
+   "country": "Avustralya",
+   "total": 210,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 2,
+   "country": "Avusturya",
+   "total": 169,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 0,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [
+    {
+     "cityId": 90,
+     "adi": "Graz",
+     "kind": "two-term night-column rule: each half-year 100 pc within-1 at its own angle pair"
+    }
+   ],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 0
+   }
+  },
+  {
+   "countryId": 138,
+   "country": "Bahamalar",
+   "total": 16,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 110,
+   "country": "Bahreyn",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 8,
+   "country": "Bangladeş",
+   "total": 14,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 139,
+   "country": "Barbados",
+   "total": 3,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 128,
+   "country": "Belarus",
+   "total": 35,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 0,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [
+    {
+     "cityId": 3088,
+     "adi": "Minsk",
+     "kind": "summer night-column rule stands in for the 19.5-degree angle (polar-undefined band); winter clean"
+    }
+   ],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 0
+   }
+  },
+  {
+   "countryId": 140,
+   "country": "Belize",
+   "total": 7,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 7,
+   "country": "Belçika",
+   "total": 34,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 0,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [
+    {
+     "cityId": 159,
+     "adi": "Antwerpen",
+     "kind": "summer night-column rule stands in for the 19.5-degree angle (polar-undefined band); winter clean"
+    }
+   ],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 0
+   }
+  },
+  {
+   "countryId": 98,
+   "country": "Benin",
+   "total": 15,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 141,
+   "country": "Bermuda",
+   "total": 3,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 100,
+   "country": "Birleşik Arap Emirlikleri",
+   "total": 7,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 18,
+   "country": "Birleşik Krallık",
+   "total": 163,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 0,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [
+    {
+     "cityId": 373,
+     "adi": "London",
+     "kind": "summer night-column rule stands in for the 19.5-degree angle (polar-undefined band); winter clean"
+    }
+   ],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 0
+   }
+  },
+  {
+   "countryId": 142,
+   "country": "Bolivya",
+   "total": 19,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 10,
+   "country": "Bosna Hersek",
+   "total": 26,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 143,
+   "country": "Botsvana",
+   "total": 7,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 130,
+   "country": "Brezilya",
+   "total": 162,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 71,
+   "country": "Brunei",
+   "total": 2,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 9,
+   "country": "Bulgaristan",
+   "total": 38,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 81,
+   "country": "Burkina Faso",
+   "total": 3,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 83,
+   "country": "Burundi",
+   "total": 9,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 144,
+   "country": "Butan",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 210,
+   "country": "Cayman Adaları",
+   "total": 5,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 72,
+   "country": "Cezayir",
+   "total": 19,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 84,
+   "country": "Cibuti",
+   "total": 6,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 15,
+   "country": "Danimarka",
+   "total": 72,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 0,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [
+    {
+     "cityId": 2917,
+     "adi": "Aabenraa",
+     "kind": "deeper summer departure: even per-half fits below 100 pc (served summer night columns off any angle)"
+    }
+   ],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 0
+   }
+  },
+  {
+   "countryId": 146,
+   "country": "Dominik Cumhuriyeti",
+   "total": 41,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 145,
+   "country": "Dominika",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 102,
+   "country": "Doğu Timor",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 147,
+   "country": "Ekvator",
+   "total": 23,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 148,
+   "country": "Ekvator Ginesi",
+   "total": 2,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 149,
+   "country": "El Salvador",
+   "total": 6,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 43,
+   "country": "Endonezya",
+   "total": 101,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 150,
+   "country": "Eritre",
+   "total": 6,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 151,
+   "country": "Ermenistan",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 122,
+   "country": "Estonya",
+   "total": 10,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 0,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [
+    {
+     "cityId": 3070,
+     "adi": "Tallinn",
+     "kind": "deeper summer departure: even per-half fits below 100 pc (served summer night columns off any angle)"
+    }
+   ],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 0
+   }
+  },
+  {
+   "countryId": 127,
+   "country": "Fas",
+   "total": 14,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 152,
+   "country": "Fiji",
+   "total": 4,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 86,
+   "country": "Fildişi Sahili",
+   "total": 6,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 47,
+   "country": "Filipinler",
+   "total": 9,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 99,
+   "country": "Filistin",
+   "total": 11,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 162,
+   "country": "Filistin (isgal yonetimi katmani)",
+   "total": 7,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 21,
+   "country": "Finlandiya",
+   "total": 26,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 0,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [
+    {
+     "cityId": 427,
+     "adi": "Helsinki",
+     "kind": "summer night-column rule stands in for the 19.5-degree angle (polar-undefined band); winter clean"
+    }
+   ],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 0
+   }
+  },
+  {
+   "countryId": 20,
+   "country": "Fransa",
+   "total": 224,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 0,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [
+    {
+     "cityId": 415,
+     "adi": "Paris",
+     "kind": "summer night-column rule stands in for the 19.5-degree angle (polar-undefined band); winter clean"
+    }
+   ],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 0
+   }
+  },
+  {
+   "countryId": 207,
+   "country": "Fransız Guyanası",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 116,
+   "country": "Gabon",
+   "total": 6,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 117,
+   "country": "Gambiya",
+   "total": 8,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 206,
+   "country": "Gine-Bissau",
+   "total": 4,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 153,
+   "country": "Grenada",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 154,
+   "country": "Grönland",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 0,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [
+    {
+     "cityId": 3184,
+     "adi": "Nuuk ",
+     "kind": "deeper summer departure: even per-half fits below 100 pc (served summer night columns off any angle)"
+    }
+   ],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 0
+   }
+  },
+  {
+   "countryId": 155,
+   "country": "Guadeloupe",
+   "total": 2,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 156,
+   "country": "Guam",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 157,
+   "country": "Guatemala",
+   "total": 22,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 158,
+   "country": "Guyana",
+   "total": 3,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 59,
+   "country": "Güney Afrika",
+   "total": 117,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 46,
+   "country": "Güney Kore",
+   "total": 7,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 109,
+   "country": "Güney Kıbrıs Rum Yönetimi",
+   "total": 3,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 205,
+   "country": "Güney Sudan",
+   "total": 2,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 23,
+   "country": "Gürcistan",
+   "total": 40,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 159,
+   "country": "Haiti",
+   "total": 8,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 0,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [
+    {
+     "cityId": 3189,
+     "adi": "Port-Au-Prince ",
+     "kind": "two-term night-column rule: each half-year 100 pc within-1 at its own angle pair"
+    }
+   ],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 0
+   }
+  },
+  {
+   "countryId": 97,
+   "country": "Hindistan",
+   "total": 276,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 40,
+   "country": "Hollanda",
+   "total": 80,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 0,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [
+    {
+     "cityId": 557,
+     "adi": "Amsterdam",
+     "kind": "summer night-column rule stands in for the 19.5-degree angle (polar-undefined band); winter clean"
+    }
+   ],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 0
+   }
+  },
+  {
+   "countryId": 160,
+   "country": "Hollanda Antilleri",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 161,
+   "country": "Honduras",
+   "total": 22,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 27,
+   "country": "Hong Kong",
+   "total": 2,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 28,
+   "country": "Hırvatistan",
+   "total": 26,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 163,
+   "country": "Jamaika",
+   "total": 4,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 31,
+   "country": "K.K.T.C",
+   "total": 21,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 101,
+   "country": "Kamboçya",
+   "total": 8,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 11,
+   "country": "Kanada",
+   "total": 76,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 0,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [
+    {
+     "cityId": 215,
+     "adi": "Toronto, ON",
+     "kind": "two-term night-column rule: each half-year 100 pc within-1 at its own angle pair"
+    }
+   ],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 0
+   }
+  },
+  {
+   "countryId": 37,
+   "country": "Karadağ",
+   "total": 19,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 112,
+   "country": "Katar",
+   "total": 3,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 60,
+   "country": "Kazakistan",
+   "total": 155,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 0,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [
+    {
+     "cityId": 717,
+     "adi": "Astana",
+     "kind": "summer night-column rule stands in for the 19.5-degree angle (polar-undefined band); winter clean"
+    }
+   ],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 0
+   }
+  },
+  {
+   "countryId": 164,
+   "country": "Kolombiya",
+   "total": 42,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 88,
+   "country": "Kongo Cumhuriyeti",
+   "total": 2,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 44,
+   "country": "Kosova",
+   "total": 20,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 166,
+   "country": "Kosta Rika",
+   "total": 22,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 113,
+   "country": "Kuveyt",
+   "total": 3,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 168,
+   "country": "Kuzey Kore",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 36,
+   "country": "Kuzey Makedonya",
+   "total": 35,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 167,
+   "country": "Küba",
+   "total": 14,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 0,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [
+    {
+     "cityId": 3197,
+     "adi": "Havana",
+     "kind": "deeper summer departure: even per-half fits below 100 pc (served summer night columns off any angle)"
+    }
+   ],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 0
+   }
+  },
+  {
+   "countryId": 104,
+   "country": "Laos",
+   "total": 7,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 169,
+   "country": "Lesotho",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 170,
+   "country": "Letonya",
+   "total": 14,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 0,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [
+    {
+     "cityId": 3200,
+     "adi": "Riga",
+     "kind": "deeper summer departure: even per-half fits below 100 pc (served summer night columns off any angle)"
+    }
+   ],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 0
+   }
+  },
+  {
+   "countryId": 89,
+   "country": "Liberya",
+   "total": 12,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 22,
+   "country": "Lihtenştayn",
+   "total": 3,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 0,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [
+    {
+     "cityId": 432,
+     "adi": "Vaduz",
+     "kind": "summer night-column rule stands in for the 19.5-degree angle (polar-undefined band); winter clean"
+    }
+   ],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 0
+   }
+  },
+  {
+   "countryId": 171,
+   "country": "Litvanya",
+   "total": 16,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 0,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [
+    {
+     "cityId": 3201,
+     "adi": "Vilnius",
+     "kind": "summer night-column rule stands in for the 19.5-degree angle (polar-undefined band); winter clean"
+    }
+   ],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 0
+   }
+  },
+  {
+   "countryId": 73,
+   "country": "Lübnan",
+   "total": 13,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 61,
+   "country": "Lüksemburg",
+   "total": 18,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 0,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [
+    {
+     "cityId": 8281,
+     "adi": "Albertirsa",
+     "kind": "summer night-column rule stands in for the 19.5-degree angle (polar-undefined band); winter clean"
+    }
+   ],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 0
+   }
+  },
+  {
+   "countryId": 26,
+   "country": "Macaristan",
+   "total": 38,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 0,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [
+    {
+     "cityId": 461,
+     "adi": "Budapest",
+     "kind": "summer night-column rule stands in for the 19.5-degree angle (polar-undefined band); winter clean"
+    }
+   ],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 0
+   }
+  },
+  {
+   "countryId": 172,
+   "country": "Macau",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 38,
+   "country": "Malavi",
+   "total": 8,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 173,
+   "country": "Maldivler",
+   "total": 12,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 62,
+   "country": "Malezya",
+   "total": 77,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 174,
+   "country": "Malta",
+   "total": 4,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 175,
+   "country": "Martinik",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 176,
+   "country": "Mauritius",
+   "total": 2,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 177,
+   "country": "Mayotte",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 178,
+   "country": "Meksika",
+   "total": 134,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 179,
+   "country": "Mikronezya",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 35,
+   "country": "Moldova",
+   "total": 5,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 180,
+   "country": "Monako",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 181,
+   "country": "Montserrat",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 103,
+   "country": "Myanmar",
+   "total": 2,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 74,
+   "country": "Mısır",
+   "total": 34,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 182,
+   "country": "Namibya",
+   "total": 6,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 94,
+   "country": "Nijer",
+   "total": 6,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 184,
+   "country": "Nikaragua",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 185,
+   "country": "Niue",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 39,
+   "country": "Norveç",
+   "total": 92,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 0,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [
+    {
+     "cityId": 552,
+     "adi": "Oslo",
+     "kind": "deeper summer departure: even per-half fits below 100 pc (served summer night columns off any angle)"
+    }
+   ],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 0
+   }
+  },
+  {
+   "countryId": 79,
+   "country": "Pakistan",
+   "total": 23,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 187,
+   "country": "Palau",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 105,
+   "country": "Papua Yeni Gine",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 133,
+   "country": "Paraguay",
+   "total": 2,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 189,
+   "country": "Peru",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 190,
+   "country": "Pitcairn",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 42,
+   "country": "Polonya",
+   "total": 21,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 0,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [
+    {
+     "cityId": 4877,
+     "adi": "Białystok",
+     "kind": "summer night-column rule stands in for the 19.5-degree angle (polar-undefined band); winter clean"
+    }
+   ],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 0
+   }
+  },
+  {
+   "countryId": 123,
+   "country": "Portekiz",
+   "total": 13,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 191,
+   "country": "Porto Riko ",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 45,
+   "country": "Romanya",
+   "total": 37,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 49,
+   "country": "Ruanda",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 48,
+   "country": "Rusya",
+   "total": 499,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 0,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [
+    {
+     "cityId": 631,
+     "adi": "Moskova (Москва)",
+     "kind": "summer night-column rule stands in for the 19.5-degree angle (polar-undefined band); winter clean"
+    }
+   ],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 0
+   }
+  },
+  {
+   "countryId": 192,
+   "country": "Réunion",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 193,
+   "country": "Samoa",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 68,
+   "country": "Senegal",
+   "total": 27,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 194,
+   "country": "Seyşeller",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 51,
+   "country": "Singapur",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 52,
+   "country": "Slovakya",
+   "total": 13,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 0,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [
+    {
+     "cityId": 672,
+     "adi": "Bratislava",
+     "kind": "summer night-column rule stands in for the 19.5-degree angle (polar-undefined band); winter clean"
+    }
+   ],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 0
+   }
+  },
+  {
+   "countryId": 53,
+   "country": "Slovenya",
+   "total": 53,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 54,
+   "country": "Somali",
+   "total": 5,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 108,
+   "country": "Surinam",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 195,
+   "country": "Suriye",
+   "total": 22,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 33,
+   "country": "Suudi Arabistan",
+   "total": 16,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 197,
+   "country": "Svaziland",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 55,
+   "country": "Sırbistan",
+   "total": 9,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 106,
+   "country": "Tayland",
+   "total": 11,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 119,
+   "country": "Togo",
+   "total": 2,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 198,
+   "country": "Tonga",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 199,
+   "country": "Trinidad ve Tobago",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 76,
+   "country": "Tunus",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 212,
+   "country": "Turks ve Caicos Adaları",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 211,
+   "country": "Tuvalu",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 1,
+   "country": "Türkiye",
+   "total": 81,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 70,
+   "country": "Türkmenistan",
+   "total": 27,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 56,
+   "country": "Ukrayna",
+   "total": 31,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 0,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [
+    {
+     "cityId": 681,
+     "adi": "Kiev (Київ)",
+     "kind": "summer night-column rule stands in for the 19.5-degree angle (polar-undefined band); winter clean"
+    }
+   ],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 0
+   }
+  },
+  {
+   "countryId": 115,
+   "country": "Umman",
+   "total": 3,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 200,
+   "country": "Uruguay",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 201,
+   "country": "Vanuatu",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 202,
+   "country": "Vatikan",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 131,
+   "country": "Venezuela",
+   "total": 106,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 124,
+   "country": "Vietnam",
+   "total": 2,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 203,
+   "country": "Yeni Kaledonya",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 41,
+   "country": "Yeni Zelanda",
+   "total": 12,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 204,
+   "country": "Yeşil Burun ",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 25,
+   "country": "Yunanistan",
+   "total": 26,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 58,
+   "country": "Zambiya",
+   "total": 12,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 13,
+   "country": "Çek Cumhuriyeti",
+   "total": 42,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 0,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [
+    {
+     "cityId": 6179,
+     "adi": "Benešov",
+     "kind": "summer night-column rule stands in for the 19.5-degree angle (polar-undefined band); winter clean"
+    }
+   ],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 0
+   }
+  },
+  {
+   "countryId": 77,
+   "country": "Ürdün",
+   "total": 17,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 111,
+   "country": "İran",
+   "total": 13,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 209,
+   "country": "İrlanda",
+   "total": 3,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 0,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [
+    {
+     "cityId": 6512,
+     "adi": "Dublin",
+     "kind": "summer night-column rule stands in for the 19.5-degree angle (polar-undefined band); winter clean"
+    }
+   ],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 0
+   }
+  },
+  {
+   "countryId": 16,
+   "country": "İspanya",
+   "total": 63,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 50,
+   "country": "İsveç",
+   "total": 59,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 0,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [
+    {
+     "cityId": 668,
+     "adi": "Stockholm",
+     "kind": "summer night-column rule stands in for the 19.5-degree angle (polar-undefined band); winter clean"
+    }
+   ],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 0
+   }
+  },
+  {
+   "countryId": 12,
+   "country": "İsviçre",
+   "total": 150,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 29,
+   "country": "İtalya",
+   "total": 146,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 121,
+   "country": "İzlanda",
+   "total": 1,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 0,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [
+    {
+     "cityId": 3069,
+     "adi": "Reykjavik",
+     "kind": "deeper summer departure: even per-half fits below 100 pc (served summer night columns off any angle)"
+    }
+   ],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 0
+   }
+  },
+  {
+   "countryId": 126,
+   "country": "Şili",
+   "total": 15,
+   "fit2yr": 1,
+   "fit1yr": 0,
+   "w1_100": 1,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 1,
+    "fit1yr": 0,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 208,
+   "country": "Antarktika",
+   "total": 2,
+   "fit2yr": 0,
+   "fit1yr": 0,
+   "w1_100": 0,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   }
+  },
+  {
+   "countryId": 87,
+   "country": "Gine",
+   "total": 14,
+   "fit2yr": 0,
+   "fit1yr": 1,
+   "w1_100": 0,
+   "a14": {
+    "cities": 2,
+    "fit2yr": 0,
+    "fit1yr": 2,
+    "w1_100": 2
+   },
+   "departures": [
+    {
+     "cityId": 2577,
+     "adi": "GN-Conakry",
+     "kind": "publisher column gap: no fajr (sabah) column served for 2026; 2027 serves it"
+    },
+    {
+     "cityId": 4025,
+     "adi": "GN-Kankan",
+     "kind": "publisher column gap: no fajr (sabah) column served for 2026; 2027 serves it"
+    }
+   ],
+   "verified": {
+    "fit2yr": 0,
+    "fit1yr": 2,
+    "w1_100": 2
+   }
+  },
+  {
+   "countryId": 92,
+   "country": "Moritanya",
+   "total": 17,
+   "fit2yr": 0,
+   "fit1yr": 1,
+   "w1_100": 0,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 0,
+    "fit1yr": 1,
+    "w1_100": 1
+   }
+  },
+  {
+   "countryId": 196,
+   "country": "Svalbard",
+   "total": 1,
+   "fit2yr": 0,
+   "fit1yr": 0,
+   "w1_100": 0,
+   "a14": {
+    "cities": 0,
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   },
+   "departures": [],
+   "verified": {
+    "fit2yr": 0,
+    "fit1yr": 0,
+    "w1_100": 0
+   }
+  }
+ ],
+ "familyGrade": {
+  "grade": "A",
+  "basis": "two distinct recomputed fitted years (2026, 2027) on one recipe per city across the fitted set",
+  "provisional": [
+   2577,
+   2582,
+   4025
+  ]
+ }
+}

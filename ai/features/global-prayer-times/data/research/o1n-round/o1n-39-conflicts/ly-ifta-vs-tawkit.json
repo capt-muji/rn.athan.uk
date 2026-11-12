@@ -1,0 +1,238 @@
+{
+ "pair": "LY-ifta-vs-tawkit (Libya platform-vs-mufti identity)",
+ "measured_utc": "2026-11-12",
+ "side_a": {
+  "name": "Dar al-Ifta Libya api.ifta.ly/api/v1/prayer-time",
+  "held": "2026-11-11 window in o1n-12-mideast/data/ly-daralifta-rows.json",
+  "today_row_2026_11_12": {
+   "fajr": "06:07:00",
+   "sunrise": "07:34:00",
+   "dhuhr": "12:55:00",
+   "asr": "15:46:00",
+   "maghrib": "18:11:00",
+   "isha": "19:34:00"
+  }
+ },
+ "side_b": {
+  "name": "tawkit.net /en/prayer-times/libya/tripoli/timetable/ (November 2026 grid)",
+  "today_row_2026_11_12": {
+   "fajr": "06:07",
+   "sunrise": "07:34",
+   "dhuhr": "12:55",
+   "asr": "15:46",
+   "maghrib": "18:11",
+   "isha": "19:34"
+  }
+ },
+ "overlap_held_vs_fresh_ifta": [
+  {
+   "date": "2026-11-12",
+   "held": {
+    "fajr": "06:07:00",
+    "sunrise": "07:34:00",
+    "dhuhr": "12:55:00",
+    "asr": "15:46:00",
+    "maghrib": "18:11:00",
+    "isha": "19:34:00"
+   },
+   "fresh": {
+    "fajr": "06:07:00",
+    "sunrise": "07:34:00",
+    "dhuhr": "12:55:00",
+    "asr": "15:46:00",
+    "maghrib": "18:11:00",
+    "isha": "19:34:00"
+   },
+   "delta_min": {
+    "fajr": 0.0,
+    "sunrise": 0.0,
+    "dhuhr": 0.0,
+    "asr": 0.0,
+    "maghrib": 0.0,
+    "isha": 0.0
+   }
+  },
+  {
+   "date": "2026-11-13",
+   "held": {
+    "fajr": "06:08:00",
+    "sunrise": "07:35:00",
+    "dhuhr": "12:55:00",
+    "asr": "15:46:00",
+    "maghrib": "18:11:00",
+    "isha": "19:33:00"
+   },
+   "fresh": {
+    "fajr": "06:08:00",
+    "sunrise": "07:35:00",
+    "dhuhr": "12:55:00",
+    "asr": "15:46:00",
+    "maghrib": "18:11:00",
+    "isha": "19:33:00"
+   },
+   "delta_min": {
+    "fajr": 0.0,
+    "sunrise": 0.0,
+    "dhuhr": 0.0,
+    "asr": 0.0,
+    "maghrib": 0.0,
+    "isha": 0.0
+   }
+  },
+  {
+   "date": "2026-11-14",
+   "held": {
+    "fajr": "06:09:00",
+    "sunrise": "07:36:00",
+    "dhuhr": "12:55:00",
+    "asr": "15:45:00",
+    "maghrib": "18:10:00",
+    "isha": "19:33:00"
+   },
+   "fresh": {
+    "fajr": "06:09:00",
+    "sunrise": "07:36:00",
+    "dhuhr": "12:55:00",
+    "asr": "15:45:00",
+    "maghrib": "18:10:00",
+    "isha": "19:33:00"
+   },
+   "delta_min": {
+    "fajr": 0.0,
+    "sunrise": 0.0,
+    "dhuhr": 0.0,
+    "asr": 0.0,
+    "maghrib": 0.0,
+    "isha": 0.0
+   }
+  },
+  {
+   "date": "2026-11-15",
+   "held": {
+    "fajr": "06:10:00",
+    "sunrise": "07:37:00",
+    "dhuhr": "12:55:00",
+    "asr": "15:45:00",
+    "maghrib": "18:09:00",
+    "isha": "19:32:00"
+   },
+   "fresh": {
+    "fajr": "06:10:00",
+    "sunrise": "07:37:00",
+    "dhuhr": "12:55:00",
+    "asr": "15:45:00",
+    "maghrib": "18:09:00",
+    "isha": "19:32:00"
+   },
+   "delta_min": {
+    "fajr": 0.0,
+    "sunrise": 0.0,
+    "dhuhr": 0.0,
+    "asr": 0.0,
+    "maghrib": 0.0,
+    "isha": 0.0
+   }
+  },
+  {
+   "date": "2026-11-16",
+   "held": {
+    "fajr": "06:10:00",
+    "sunrise": "07:38:00",
+    "dhuhr": "12:55:00",
+    "asr": "15:44:00",
+    "maghrib": "18:09:00",
+    "isha": "19:32:00"
+   },
+   "fresh": {
+    "fajr": "06:10:00",
+    "sunrise": "07:38:00",
+    "dhuhr": "12:55:00",
+    "asr": "15:44:00",
+    "maghrib": "18:09:00",
+    "isha": "19:32:00"
+   },
+   "delta_min": {
+    "fajr": 0.0,
+    "sunrise": 0.0,
+    "dhuhr": 0.0,
+    "asr": 0.0,
+    "maghrib": 0.0,
+    "isha": 0.0
+   }
+  },
+  {
+   "date": "2026-11-17",
+   "held": {
+    "fajr": "06:11:00",
+    "sunrise": "07:39:00",
+    "dhuhr": "12:55:00",
+    "asr": "15:44:00",
+    "maghrib": "18:08:00",
+    "isha": "19:32:00"
+   },
+   "fresh": {
+    "fajr": "06:11:00",
+    "sunrise": "07:39:00",
+    "dhuhr": "12:55:00",
+    "asr": "15:44:00",
+    "maghrib": "18:08:00",
+    "isha": "19:32:00"
+   },
+   "delta_min": {
+    "fajr": 0.0,
+    "sunrise": 0.0,
+    "dhuhr": 0.0,
+    "asr": 0.0,
+    "maghrib": 0.0,
+    "isha": 0.0
+   }
+  },
+  {
+   "date": "2026-11-18",
+   "held": {
+    "fajr": "06:12:00",
+    "sunrise": "07:40:00",
+    "dhuhr": "12:56:00",
+    "asr": "15:44:00",
+    "maghrib": "18:08:00",
+    "isha": "19:31:00"
+   },
+   "fresh": {
+    "fajr": "06:12:00",
+    "sunrise": "07:40:00",
+    "dhuhr": "12:56:00",
+    "asr": "15:44:00",
+    "maghrib": "18:08:00",
+    "isha": "19:31:00"
+   },
+   "delta_min": {
+    "fajr": 0.0,
+    "sunrise": 0.0,
+    "dhuhr": 0.0,
+    "asr": 0.0,
+    "maghrib": 0.0,
+    "isha": 0.0
+   }
+  }
+ ],
+ "ifta_still_serves_held": true,
+ "tawkit_vs_ifta_2026_11_12_delta_min": {
+  "fajr": 0.0,
+  "sunrise": 0.0,
+  "dhuhr": 0.0,
+  "asr": 0.0,
+  "maghrib": 0.0,
+  "isha": 0.0
+ },
+ "verdict": {
+  "identity_holds_today": true,
+  "tawkit_2026_11_11_row": [
+   "06:07",
+   "07:33",
+   "12:54",
+   "15:47",
+   "18:12",
+   "19:34"
+  ]
+ }
+}

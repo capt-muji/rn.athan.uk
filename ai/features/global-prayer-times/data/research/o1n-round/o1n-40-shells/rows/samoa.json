@@ -1,0 +1,336 @@
+{
+ "country": "samoa",
+ "generated": "2026-11-12T11:40:59Z",
+ "routes_probed": {
+  "monthly_2026": 36,
+  "monthly_2025_06": 0,
+  "monthly_2027_06": 0
+ },
+ "settlements": {
+  "20871": {
+   "name": "Apia",
+   "city_label": "Apia (Upolu Island / Samoa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "63192": {
+   "name": "Falelima",
+   "city_label": "Falelima (Savai’i Island / Samoa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "63193": {
+   "name": "Falealupo",
+   "city_label": "Falealupo (Savai’i Island / Samoa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "63194": {
+   "name": "Gautavai",
+   "city_label": "Gautavai (Savai’i Island / Samoa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "63195": {
+   "name": "Tuasivi",
+   "city_label": "Tuasivi (Savai’i Island / Samoa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "63196": {
+   "name": "Puapua",
+   "city_label": "Puapua (Savai’i Island / Samoa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "63197": {
+   "name": "Fagamalo",
+   "city_label": "Fagamalo (Savai’i Island / Samoa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "81957": {
+   "name": "Salelologa",
+   "city_label": "Salelologa (Savai’i Island / Samoa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "81958": {
+   "name": "Faleula",
+   "city_label": "Faleula (Upolu Island / Samoa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "81959": {
+   "name": "Faleasiu",
+   "city_label": "Faleasiu (Upolu Island / Samoa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "81960": {
+   "name": "Solosolo",
+   "city_label": "Solosolo (Upolu Island / Samoa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "81961": {
+   "name": "Saanapu-uta",
+   "city_label": "Saanapu-uta (Upolu Island / Samoa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "81962": {
+   "name": "Siumu",
+   "city_label": "Siumu (Upolu Island / Samoa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "81963": {
+   "name": "Tafitoala",
+   "city_label": "Tafitoala (Upolu Island / Samoa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "81964": {
+   "name": "Lotofaga-uta",
+   "city_label": "Lotofaga-uta (Upolu Island / Samoa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "81965": {
+   "name": "Matatufu",
+   "city_label": "Matatufu (Upolu Island / Samoa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "81966": {
+   "name": "Amaile",
+   "city_label": "Amaile (Upolu Island / Samoa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "81967": {
+   "name": "Lalomanu",
+   "city_label": "Lalomanu (Upolu Island / Samoa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "81968": {
+   "name": "Poutasi",
+   "city_label": "Poutasi (Upolu Island / Samoa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "81969": {
+   "name": "Uafato",
+   "city_label": "Uafato (Upolu Island / Samoa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "81970": {
+   "name": "Lufi-lufi",
+   "city_label": "Lufi-lufi (Upolu Island / Samoa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "81971": {
+   "name": "Mulifanua",
+   "city_label": "Mulifanua (Upolu Island / Samoa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "81972": {
+   "name": "Safune",
+   "city_label": "Safune (Savai’i Island / Samoa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "81973": {
+   "name": "Saleaula",
+   "city_label": "Saleaula (Savai’i Island / Samoa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "81974": {
+   "name": "Sapapalii",
+   "city_label": "Sapapalii (Savai’i Island / Samoa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "81975": {
+   "name": "Vailima",
+   "city_label": "Vailima (Upolu Island / Samoa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "81976": {
+   "name": "Vailoa",
+   "city_label": "Vailoa (Savai’i Island / Samoa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "81977": {
+   "name": "Sili",
+   "city_label": "Sili (Savai’i Island / Samoa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "81978": {
+   "name": "Taga",
+   "city_label": "Taga (Savai’i Island / Samoa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "81979": {
+   "name": "Vaisala",
+   "city_label": "Vaisala (Savai’i Island / Samoa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "81980": {
+   "name": "Auala",
+   "city_label": "Auala (Savai’i Island / Samoa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "81981": {
+   "name": "Asau",
+   "city_label": "Asau (Savai’i Island / Samoa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "81982": {
+   "name": "Sasina",
+   "city_label": "Sasina (Savai’i Island / Samoa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "81983": {
+   "name": "Safotu",
+   "city_label": "Safotu (Savai’i Island / Samoa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "81985": {
+   "name": "Safotu",
+   "city_label": "Safotu (Savai’i Island / Samoa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "63191": {
+   "name": "Salailoa",
+   "city_label": "Salailoa (Savai’i Island / Samoa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  }
+ },
+ "rows": {}
+}

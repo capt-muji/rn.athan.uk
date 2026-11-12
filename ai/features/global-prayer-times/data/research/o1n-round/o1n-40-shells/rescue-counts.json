@@ -1,0 +1,40 @@
+{
+ "generated": "2026-11-12T11:40:59Z",
+ "countries": {
+  "norway": {
+   "settlements_probed_monthly": 523,
+   "rows_served_total": 0,
+   "settlements_with_rows": 0
+  },
+  "finland": {
+   "settlements_probed_monthly": 896,
+   "rows_served_total": 0,
+   "settlements_with_rows": 0
+  },
+  "iceland": {
+   "settlements_probed_monthly": 301,
+   "rows_served_total": 0,
+   "settlements_with_rows": 0
+  },
+  "svalbard-and-jan-mayen": {
+   "settlements_probed_monthly": 7,
+   "rows_served_total": 0,
+   "settlements_with_rows": 0
+  },
+  "tonga": {
+   "settlements_probed_monthly": 94,
+   "rows_served_total": 0,
+   "settlements_with_rows": 0
+  },
+  "samoa": {
+   "settlements_probed_monthly": 36,
+   "rows_served_total": 0,
+   "settlements_with_rows": 0
+  },
+  "wallis-and-futuna": {
+   "settlements_probed_monthly": 28,
+   "rows_served_total": 0,
+   "settlements_with_rows": 0
+  }
+ }
+}

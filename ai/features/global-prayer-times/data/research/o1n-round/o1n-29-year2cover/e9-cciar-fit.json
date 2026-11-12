@@ -1,0 +1,120 @@
+{
+ "point": {
+  "lat": -34.8953,
+  "lon": -58.6587
+ },
+ "held-2026-09": {
+  "fajr": {
+   "n": 30,
+   "exact": 0,
+   "within1": 2,
+   "worst": -4
+  },
+  "sunrise": {
+   "n": 30,
+   "exact": 0,
+   "within1": 0,
+   "worst": -4
+  },
+  "dhuhr": {
+   "n": 30,
+   "exact": 15,
+   "within1": 30,
+   "worst": -1
+  },
+  "asr": {
+   "n": 30,
+   "exact": 0,
+   "within1": 4,
+   "worst": -3
+  },
+  "maghrib": {
+   "n": 30,
+   "exact": 17,
+   "within1": 30,
+   "worst": -1
+  },
+  "isha": {
+   "n": 30,
+   "exact": 1,
+   "within1": 21,
+   "worst": -2
+  }
+ },
+ "rabii1447-2025-09": {
+  "fajr": {
+   "n": 29,
+   "exact": 12,
+   "within1": 24,
+   "worst": 3
+  },
+  "sunrise": {
+   "n": 28,
+   "exact": 4,
+   "within1": 12,
+   "worst": 5
+  },
+  "dhuhr": {
+   "n": 26,
+   "exact": 0,
+   "within1": 0,
+   "worst": 6
+  },
+  "asr": {
+   "n": 29,
+   "exact": 0,
+   "within1": 0,
+   "worst": 6
+  },
+  "maghrib": {
+   "n": 27,
+   "exact": 0,
+   "within1": 0,
+   "worst": 10
+  },
+  "isha": {
+   "n": 28,
+   "exact": 0,
+   "within1": 0,
+   "worst": 11
+  }
+ },
+ "rayab1447-2025-12": {
+  "fajr": {
+   "n": 28,
+   "exact": 5,
+   "within1": 18,
+   "worst": 4
+  },
+  "sunrise": {
+   "n": 30,
+   "exact": 0,
+   "within1": 16,
+   "worst": -2
+  },
+  "dhuhr": {
+   "n": 28,
+   "exact": 14,
+   "within1": 28,
+   "worst": -1
+  },
+  "asr": {
+   "n": 28,
+   "exact": 0,
+   "within1": 13,
+   "worst": -722
+  },
+  "maghrib": {
+   "n": 28,
+   "exact": 0,
+   "within1": 3,
+   "worst": -3
+  },
+  "isha": {
+   "n": 29,
+   "exact": 0,
+   "within1": 0,
+   "worst": 1438
+  }
+ }
+}

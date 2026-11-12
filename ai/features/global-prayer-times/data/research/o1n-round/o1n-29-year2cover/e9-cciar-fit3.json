@@ -1,0 +1,150 @@
+{
+ "point": {
+  "lat": -34.555,
+  "lon": -58.39,
+  "angles": {
+   "fajr": 17.7,
+   "isha": 17.9,
+   "asr": "Shafi"
+  },
+  "note": "per-sheet temkin solved from medians; the 2025 sheets are scored on their own set"
+ },
+ "held-2026-09": {
+  "temkin": {
+   "fajr": -3,
+   "sunrise": -1,
+   "dhuhr": 1,
+   "asr": 0,
+   "maghrib": 1,
+   "isha": -4
+  },
+  "fajr": {
+   "n": 30,
+   "exact": 0,
+   "within1": 24,
+   "worst": -1.349999999999909
+  },
+  "sunrise": {
+   "n": 30,
+   "exact": 0,
+   "within1": 25,
+   "worst": -1.633333333333212
+  },
+  "dhuhr": {
+   "n": 30,
+   "exact": 0,
+   "within1": 0,
+   "worst": -720.5166666666664
+  },
+  "asr": {
+   "n": 30,
+   "exact": 1,
+   "within1": 30,
+   "worst": -0.8833333333332121
+  },
+  "maghrib": {
+   "n": 30,
+   "exact": 0,
+   "within1": 27,
+   "worst": 1.300000000000182
+  },
+  "isha": {
+   "n": 30,
+   "exact": 0,
+   "within1": 29,
+   "worst": 1.116666666666788
+  }
+ },
+ "rabii1447-2025-09": {
+  "temkin": {
+   "fajr": -0.03333333333330302,
+   "sunrise": 3.7666666666666515,
+   "dhuhr": 6.449999999999818,
+   "asr": 7.083333333333485,
+   "maghrib": 9.5,
+   "isha": 5.900000000000091
+  },
+  "fajr": {
+   "n": 29,
+   "exact": 1,
+   "within1": 20,
+   "worst": 3.0166666666666515
+  },
+  "sunrise": {
+   "n": 28,
+   "exact": 1,
+   "within1": 4,
+   "worst": 2.3666666666665606
+  },
+  "dhuhr": {
+   "n": 26,
+   "exact": 1,
+   "within1": 26,
+   "worst": 0.7833333333337578
+  },
+  "asr": {
+   "n": 29,
+   "exact": 1,
+   "within1": 26,
+   "worst": -1.283333333333303
+  },
+  "maghrib": {
+   "n": 27,
+   "exact": 2,
+   "within1": 13,
+   "worst": -2.466666666666697
+  },
+  "isha": {
+   "n": 28,
+   "exact": 1,
+   "within1": 11,
+   "worst": 2.533333333333303
+  }
+ },
+ "rayab1447-2025-12": {
+  "temkin": {
+   "fajr": -1.316666666666606,
+   "sunrise": -0.7333333333333485,
+   "dhuhr": 1.066666666666606,
+   "asr": 0.7666666666664241,
+   "maghrib": 0.6166666666667879,
+   "isha": -5.933333333333394
+  },
+  "fajr": {
+   "n": 28,
+   "exact": 1,
+   "within1": 17,
+   "worst": 3.466666666666697
+  },
+  "sunrise": {
+   "n": 30,
+   "exact": 3,
+   "within1": 29,
+   "worst": -1.0166666666666515
+  },
+  "dhuhr": {
+   "n": 28,
+   "exact": 1,
+   "within1": 28,
+   "worst": -0.8833333333332121
+  },
+  "asr": {
+   "n": 28,
+   "exact": 1,
+   "within1": 28,
+   "worst": -0.9833333333331211
+  },
+  "maghrib": {
+   "n": 28,
+   "exact": 1,
+   "within1": 27,
+   "worst": -1.199999999999818
+  },
+  "isha": {
+   "n": 29,
+   "exact": 2,
+   "within1": 29,
+   "worst": 0.650000000000091
+  }
+ }
+}

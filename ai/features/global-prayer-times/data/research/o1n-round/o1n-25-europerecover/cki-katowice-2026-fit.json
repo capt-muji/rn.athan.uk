@@ -1,0 +1,100 @@
+{
+ "engine": "adhan 4.4.6",
+ "point": [
+  50.2587,
+  19.0238
+ ],
+ "zone": "Europe/Warsaw",
+ "year": 2026,
+ "columns": {
+  "sunrise": {
+   "margin": -0.8,
+   "n": 365,
+   "ex": 159,
+   "w1": 281,
+   "worst": 2.9,
+   "mae": 0.87
+  },
+  "dhuhr": {
+   "margin": 0.5,
+   "n": 365,
+   "ex": 313,
+   "w1": 365,
+   "worst": 0.8,
+   "mae": 0.27
+  },
+  "asr_shafi": {
+   "margin": 0.5,
+   "n": 365,
+   "ex": 130,
+   "w1": 290,
+   "worst": 2.6,
+   "mae": 0.87
+  },
+  "maghrib": {
+   "margin": 0.6,
+   "n": 365,
+   "ex": 170,
+   "w1": 241,
+   "worst": 2.5,
+   "mae": 0.96
+  },
+  "asr_hanafi": {
+   "margin": -49.3,
+   "n": 365,
+   "ex": 7,
+   "w1": 20,
+   "worst": 25.4,
+   "mae": 13.19,
+   "rejected": "worst 25+ min; asr is Shafi"
+  },
+  "fajr": {
+   "dark": {
+    "angle": 12,
+    "margin": 0,
+    "window": "2026-01-01..2026-05-14 and 2026-07-27..2026-12-31",
+    "n": 292,
+    "ex": 95,
+    "w1": 261,
+    "worst": 2.9,
+    "mae": 0.8
+   },
+   "bright": {
+    "window": "2026-05-15..2026-07-26 (73 days)",
+    "n": 73,
+    "ex": 0,
+    "w1": 0,
+    "worst": 32.2,
+    "mae": 21.03,
+    "printed_range": "3:12..3:34",
+    "note": "capped pair: printed clamps toward 03:12-03:14 at the solstice where 12 deg would run 02:41-02:44; not reproduced by any fixed angle; recorded measured, owner-ruled"
+   }
+  },
+  "isha": {
+   "dark": {
+    "angle": 12,
+    "margin": 1,
+    "window": "2026-01-01..2026-05-12 and 2026-07-29..2026-12-31",
+    "n": 288,
+    "ex": 93,
+    "w1": 198,
+    "worst": 3.1,
+    "mae": 1.08
+   },
+   "bright": {
+    "window": "2026-05-13..2026-07-28 (77 days)",
+    "n": 77,
+    "ex": 0,
+    "w1": 0,
+    "worst": 34.5,
+    "mae": 22.37,
+    "printed_range": "21:51..22:18",
+    "note": "capped pair: printed clamps toward 22:16-22:18 at the solstice where 12 deg would run 22:49-22:50; not reproduced by any fixed angle; recorded measured, owner-ruled"
+   }
+  }
+ },
+ "convention": {
+  "summary": "dark season one recipe (fajr 12 deg + 0, isha 12 deg + 1, dhuhr transit + 0.5, sunrise - 0.8, asr Shafi + 0.5, maghrib sunset + 0.6); bright season the twilight pair caps over a 73-77 day window with measured printed levels",
+  "between_year": "only the 2026 edition is served (one 12-page PDF in the site file store); the next edition is calendar-gated to 2027"
+ }
+}

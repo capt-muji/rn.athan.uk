@@ -1,0 +1,260 @@
+{
+ "generated": "2026-11-12",
+ "store_tables": 108706,
+ "candidates": 36,
+ "threshold": "< 360 distinct dated rows",
+ "list": [
+  {
+   "city_id": 3722,
+   "city": "Golden Prairie",
+   "country": "canada",
+   "file": "canada/3722-golden-prairie.json",
+   "dated_rows": 348
+  },
+  {
+   "city_id": 3741,
+   "city": "Moose Jaw",
+   "country": "canada",
+   "file": "canada/3741-moose-jaw.json",
+   "dated_rows": 348
+  },
+  {
+   "city_id": 3760,
+   "city": "Swift Current",
+   "country": "canada",
+   "file": "canada/3760-swift-current.json",
+   "dated_rows": 348
+  },
+  {
+   "city_id": 3764,
+   "city": "Verlo",
+   "country": "canada",
+   "file": "canada/3764-verlo.json",
+   "dated_rows": 348
+  },
+  {
+   "city_id": 120621,
+   "city": "Sekisovka",
+   "country": "kazakhstan",
+   "file": "kazakhstan/120621-sekisovka.json",
+   "dated_rows": 348
+  },
+  {
+   "city_id": 8397,
+   "city": "Ogorodnyy",
+   "country": "kazakhstan",
+   "file": "kazakhstan/8397-ogorodnyy.json",
+   "dated_rows": 348
+  },
+  {
+   "city_id": 8545,
+   "city": "Bogatyrevo",
+   "country": "kazakhstan",
+   "file": "kazakhstan/8545-bogatyrevo.json",
+   "dated_rows": 348
+  },
+  {
+   "city_id": 8556,
+   "city": "Lubenka",
+   "country": "kazakhstan",
+   "file": "kazakhstan/8556-lubenka.json",
+   "dated_rows": 348
+  },
+  {
+   "city_id": 8562,
+   "city": "Sergey Aula",
+   "country": "kazakhstan",
+   "file": "kazakhstan/8562-sergey-aula.json",
+   "dated_rows": 348
+  },
+  {
+   "city_id": 8583,
+   "city": "Semipalatinsk (Semey)",
+   "country": "kazakhstan",
+   "file": "kazakhstan/8583-semipalatinsk-semey.json",
+   "dated_rows": 348
+  },
+  {
+   "city_id": 9343,
+   "city": "Hovd (Khovd)",
+   "country": "mongolia",
+   "file": "mongolia/9343-hovd-khovd.json",
+   "dated_rows": 348
+  },
+  {
+   "city_id": 106475,
+   "city": "Sadovoye",
+   "country": "russia",
+   "file": "russia/106475-sadovoye.json",
+   "dated_rows": 348
+  },
+  {
+   "city_id": 11640,
+   "city": "Zakamensk",
+   "country": "russia",
+   "file": "russia/11640-zakamensk.json",
+   "dated_rows": 348
+  },
+  {
+   "city_id": 11710,
+   "city": "Kyakhta",
+   "country": "russia",
+   "file": "russia/11710-kyakhta.json",
+   "dated_rows": 348
+  },
+  {
+   "city_id": 11767,
+   "city": "Borzya",
+   "country": "russia",
+   "file": "russia/11767-borzya.json",
+   "dated_rows": 348
+  },
+  {
+   "city_id": 11779,
+   "city": "Dosatuy",
+   "country": "russia",
+   "file": "russia/11779-dosatuy.json",
+   "dated_rows": 348
+  },
+  {
+   "city_id": 11799,
+   "city": "Krasnyy Chikoy",
+   "country": "russia",
+   "file": "russia/11799-krasnyy-chikoy.json",
+   "dated_rows": 348
+  },
+  {
+   "city_id": 11825,
+   "city": "Priargunsk",
+   "country": "russia",
+   "file": "russia/11825-priargunsk.json",
+   "dated_rows": 348
+  },
+  {
+   "city_id": 13751,
+   "city": "Pogranichnoye",
+   "country": "russia",
+   "file": "russia/13751-pogranichnoye.json",
+   "dated_rows": 348
+  },
+  {
+   "city_id": 14220,
+   "city": "Arzhan-Tarys",
+   "country": "russia",
+   "file": "russia/14220-arzhan-tarys.json",
+   "dated_rows": 348
+  },
+  {
+   "city_id": 14422,
+   "city": "Alekseyevskaya",
+   "country": "russia",
+   "file": "russia/14422-alekseyevskaya.json",
+   "dated_rows": 348
+  },
+  {
+   "city_id": 14432,
+   "city": "Gmelinka",
+   "country": "russia",
+   "file": "russia/14432-gmelinka.json",
+   "dated_rows": 348
+  },
+  {
+   "city_id": 14440,
+   "city": "Kotovo",
+   "country": "russia",
+   "file": "russia/14440-kotovo.json",
+   "dated_rows": 348
+  },
+  {
+   "city_id": 14445,
+   "city": "Nekhayevskiy",
+   "country": "russia",
+   "file": "russia/14445-nekhayevskiy.json",
+   "dated_rows": 348
+  },
+  {
+   "city_id": 14544,
+   "city": "Russkaya-Zhuravka",
+   "country": "russia",
+   "file": "russia/14544-russkaya-zhuravka.json",
+   "dated_rows": 348
+  },
+  {
+   "city_id": 74446,
+   "city": "Konstantinovsk",
+   "country": "russia",
+   "file": "russia/74446-konstantinovsk.json",
+   "dated_rows": 348
+  },
+  {
+   "city_id": 74466,
+   "city": "Letniy Sad",
+   "country": "russia",
+   "file": "russia/74466-letniy-sad.json",
+   "dated_rows": 348
+  },
+  {
+   "city_id": 78616,
+   "city": "\u0130vanovka",
+   "country": "russia",
+   "file": "russia/78616-ivanovka.json",
+   "dated_rows": 348
+  },
+  {
+   "city_id": 78765,
+   "city": "Nikitovka",
+   "country": "russia",
+   "file": "russia/78765-nikitovka.json",
+   "dated_rows": 348
+  },
+  {
+   "city_id": 78801,
+   "city": "Naushki",
+   "country": "russia",
+   "file": "russia/78801-naushki.json",
+   "dated_rows": 348
+  },
+  {
+   "city_id": 78856,
+   "city": "Pervomayskiy",
+   "country": "russia",
+   "file": "russia/78856-pervomayskiy.json",
+   "dated_rows": 348
+  },
+  {
+   "city_id": 80264,
+   "city": "Radishchevo / Novouzenskiy",
+   "country": "russia",
+   "file": "russia/80264-radishchevo-novouzenskiy.json",
+   "dated_rows": 348
+  },
+  {
+   "city_id": 80908,
+   "city": "Mugur-Aksy",
+   "country": "russia",
+   "file": "russia/80908-mugur-aksy.json",
+   "dated_rows": 348
+  },
+  {
+   "city_id": 81126,
+   "city": "Danilovka",
+   "country": "russia",
+   "file": "russia/81126-danilovka.json",
+   "dated_rows": 348
+  },
+  {
+   "city_id": 81168,
+   "city": "Mamonovka",
+   "country": "russia",
+   "file": "russia/81168-mamonovka.json",
+   "dated_rows": 348
+  },
+  {
+   "city_id": 81196,
+   "city": "Podgorenskiy",
+   "country": "russia",
+   "file": "russia/81196-podgorenskiy.json",
+   "dated_rows": 348
+  }
+ ]
+}

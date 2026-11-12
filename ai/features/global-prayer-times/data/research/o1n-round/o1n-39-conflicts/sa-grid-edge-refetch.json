@@ -1,0 +1,56 @@
+{
+ "pair": "SA-grid-refetch (Saudi: -2 edge cells still served? coordinate-only claim)",
+ "measured_utc": "2026-11-12",
+ "endpoint": "umqserv.kacst.gov.sa/api/v1/Prayer/GetPrayerHijriYear yh=1449",
+ "held": "o1m-27-gulf/data/sa-grid-rows.json + o1n-5-flags/data/sa-edge-cells.json",
+ "al_jawf_00": {
+  "dates_compared_hy1449": [
+   "2027-09-03",
+   "2027-09-04",
+   "2027-10-03",
+   "2028-02-27",
+   "2028-03-27",
+   "2028-03-28",
+   "2028-04-22"
+  ],
+  "edge_cells_equal": 42,
+  "edge_cells_diff": 0,
+  "diffs": []
+ },
+ "al_bahah_00": {
+  "edge_cells_equal": 42,
+  "edge_cells_diff": 0,
+  "diffs": []
+ },
+ "jawf_whole_year_equal": 2124,
+ "jawf_whole_year_diff": 0,
+ "hy1450_al_jawf_00": {
+  "edge_dates_compared": [
+   "2028-08-21",
+   "2028-08-22",
+   "2028-09-20",
+   "2028-10-19",
+   "2028-10-20",
+   "2029-03-16",
+   "2029-04-09",
+   "2029-04-14"
+  ],
+  "edge_equal": 48,
+  "edge_diff": 0,
+  "diffs": [],
+  "whole_year_equal": 2124,
+  "whole_year_diff": 0
+ },
+ "coordinate_only_probes": {
+  "params": [
+   "city=Riyadh",
+   "city=Jeddah",
+   "cityId=7",
+   "id=99",
+   "name=Makkah",
+   "(base)"
+  ],
+  "sha256_all_identical": true,
+  "sha256": "3d1743a47f3e194609b72ab95b543a7fe975507fbc02b333fdb89155b5eb14b2"
+ }
+}

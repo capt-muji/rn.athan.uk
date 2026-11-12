@@ -1,0 +1,66 @@
+{
+ "surface": "FML fml.com.fj monthly JPG timetable, January 2024 (Suva base)",
+ "engine": "adhan 4.4.6, Rounding.None, HighLatitudeRule.MiddleOfTheNight",
+ "point": {
+  "lat": -18.1416,
+  "lon": 178.4419,
+  "label": "Suva (FML HQ)",
+  "clock": "UTC+12 constant through the print (Fiji DST ignored)"
+ },
+ "recipe": {
+  "fajr_angle": 17.75,
+  "isha_angle": 18.5,
+  "asr": "Shafi",
+  "sunrise_pad": 0,
+  "dhuhr_pad": 6,
+  "maghrib_pad": 3,
+  "asr_hanafi": "adhan Hanafi as-is"
+ },
+ "scores": {
+  "fajr": {
+   "n": 31,
+   "exact": 20,
+   "w1": 31,
+   "worst": -1
+  },
+  "sunrise": {
+   "n": 30,
+   "exact": 6,
+   "w1": 30,
+   "worst": 1
+  },
+  "dhuhr": {
+   "n": 30,
+   "exact": 19,
+   "w1": 30,
+   "worst": -1,
+   "mean": -0.23
+  },
+  "asr_shafi": {
+   "n": 30,
+   "exact": 20,
+   "w1": 30,
+   "worst": 1
+  },
+  "asr_hanafi": {
+   "n": 31,
+   "exact": 21,
+   "w1": 31,
+   "worst": 1
+  },
+  "maghrib": {
+   "n": 31,
+   "exact": 20,
+   "w1": 31,
+   "worst": 1
+  },
+  "isha": {
+   "n": 31,
+   "exact": 12,
+   "w1": 24,
+   "worst": -2
+  }
+ },
+ "grade": "provisional (one month, one published cycle)",
+ "tier": "authority (Fiji Muslim League national body, fml.com.fj own site)"
+}

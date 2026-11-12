@@ -1,0 +1,1327 @@
+{
+ "engine": "adhan 4.4.6",
+ "zone": "Europe/Paris",
+ "months": {
+  "gms-cal-2023-06": {
+   "year": 2023,
+   "month": 6,
+   "tables": {
+    "main": {
+     "point": [
+      49.1,
+      7.8
+     ],
+     "point_err": 0.68,
+     "columns": {
+      "fajr": {
+       "angle": 13.5,
+       "margin": -18.9,
+       "n": 29,
+       "ex": 22,
+       "w1": 29,
+       "worst": 0.9,
+       "mae": 0.32
+      },
+      "shuruk": {
+       "margin": 324,
+       "n": 29,
+       "ex": 6,
+       "w1": 21,
+       "worst": 5,
+       "mae": 1.31
+      },
+      "dhuhr": {
+       "margin": 2.2,
+       "n": 29,
+       "ex": 26,
+       "w1": 29,
+       "worst": 0.6,
+       "mae": 0.26
+      },
+      "asr": {
+       "margin": 0.9,
+       "n": 29,
+       "ex": 26,
+       "w1": 29,
+       "worst": 0.6,
+       "mae": 0.27
+      },
+      "maghrib": {
+       "margin": 0.7,
+       "n": 29,
+       "ex": 20,
+       "w1": 29,
+       "worst": 0.9,
+       "mae": 0.35
+      },
+      "isha": {
+       "margin": -102.8,
+       "n": 29,
+       "ex": 2,
+       "w1": 3,
+       "worst": 32,
+       "mae": 9.53
+      }
+     },
+     "n_rows": 30
+    }
+   }
+  },
+  "gms-cal-2023-07": {
+   "year": 2023,
+   "month": 7,
+   "tables": {
+    "main": {
+     "point": [
+      49.1,
+      7.6
+     ],
+     "point_err": 1.86,
+     "columns": {
+      "fajr": {
+       "angle": 13,
+       "margin": -27.3,
+       "n": 22,
+       "ex": 19,
+       "w1": 22,
+       "worst": 0.6,
+       "mae": 0.23
+      },
+      "shuruk": {
+       "margin": 338,
+       "n": 22,
+       "ex": 1,
+       "w1": 1,
+       "worst": 19,
+       "mae": 8.09
+      },
+      "dhuhr": {
+       "margin": 1,
+       "n": 22,
+       "ex": 20,
+       "w1": 22,
+       "worst": 0.6,
+       "mae": 0.2
+      },
+      "asr": {
+       "margin": 0.8,
+       "n": 22,
+       "ex": 19,
+       "w1": 22,
+       "worst": 0.9,
+       "mae": 0.31
+      },
+      "maghrib": {
+       "margin": 1.1,
+       "n": 22,
+       "ex": 13,
+       "w1": 22,
+       "worst": 1.1,
+       "mae": 0.43
+      },
+      "isha": {
+       "margin": -67.3,
+       "n": 22,
+       "ex": 1,
+       "w1": 1,
+       "worst": 43.2,
+       "mae": 20.38
+      }
+     },
+     "n_rows": 29
+    }
+   }
+  },
+  "gms-cal-2024-02": {
+   "year": 2024,
+   "month": 2,
+   "tables": {
+    "left": {
+     "point": [
+      48.1,
+      7.7
+     ],
+     "point_err": 5.12,
+     "columns": {
+      "fajr": {
+       "angle": 11,
+       "margin": -41.9,
+       "n": 13,
+       "ex": 13,
+       "w1": 13,
+       "worst": 0.5,
+       "mae": 0.23
+      },
+      "shuruk": {
+       "margin": 462,
+       "n": 13,
+       "ex": 1,
+       "w1": 1,
+       "worst": 11,
+       "mae": 6.15
+      },
+      "dhuhr": {
+       "margin": 4.7,
+       "n": 13,
+       "ex": 12,
+       "w1": 13,
+       "worst": 0.5,
+       "mae": 0.15
+      },
+      "asr": {
+       "margin": 0.8,
+       "n": 13,
+       "ex": 11,
+       "w1": 13,
+       "worst": 0.6,
+       "mae": 0.25
+      },
+      "maghrib": {
+       "margin": 4.5,
+       "n": 13,
+       "ex": 10,
+       "w1": 13,
+       "worst": 0.6,
+       "mae": 0.28
+      },
+      "isha": {
+       "margin": -7.6,
+       "n": 13,
+       "ex": 12,
+       "w1": 13,
+       "worst": 0.5,
+       "mae": 0.27
+      }
+     },
+     "n_rows": 14
+    },
+    "right": {
+     "point": [
+      48.1,
+      7.7
+     ],
+     "point_err": 10.18,
+     "columns": {
+      "fajr": {
+       "angle": 10,
+       "margin": -48,
+       "n": 14,
+       "ex": 10,
+       "w1": 10,
+       "worst": 17,
+       "mae": 4.83
+      },
+      "shuruk": {
+       "margin": 439,
+       "n": 14,
+       "ex": 1,
+       "w1": 2,
+       "worst": 12,
+       "mae": 5.79
+      },
+      "dhuhr": {
+       "margin": 4.8,
+       "n": 14,
+       "ex": 12,
+       "w1": 14,
+       "worst": 1.2,
+       "mae": 0.31
+      },
+      "asr": {
+       "margin": 1.2,
+       "n": 14,
+       "ex": 6,
+       "w1": 10,
+       "worst": 12.5,
+       "mae": 3.71
+      },
+      "maghrib": {
+       "margin": 5.2,
+       "n": 14,
+       "ex": 8,
+       "w1": 10,
+       "worst": 16,
+       "mae": 4.64
+      },
+      "isha": {
+       "margin": -6.9,
+       "n": 14,
+       "ex": 8,
+       "w1": 10,
+       "worst": 14.7,
+       "mae": 4.29
+      }
+     },
+     "n_rows": 14
+    }
+   }
+  },
+  "gms-cal-2024-07": {
+   "year": 2024,
+   "month": 7,
+   "tables": {
+    "main": {
+     "point": [
+      49.1,
+      8.2
+     ],
+     "point_err": 5,
+     "columns": {
+      "fajr": {
+       "angle": 19.5,
+       "margin": 237,
+       "n": 16,
+       "ex": 2,
+       "w1": 8,
+       "worst": 105.9,
+       "mae": 8.05
+      },
+      "shuruk": {
+       "margin": 330,
+       "n": 16,
+       "ex": 1,
+       "w1": 3,
+       "worst": 7,
+       "mae": 3.5
+      },
+      "dhuhr": {
+       "margin": 6.8,
+       "n": 16,
+       "ex": 15,
+       "w1": 16,
+       "worst": 0.5,
+       "mae": 0.22
+      },
+      "asr": {
+       "margin": 5.1,
+       "n": 16,
+       "ex": 14,
+       "w1": 16,
+       "worst": 0.6,
+       "mae": 0.24
+      },
+      "maghrib": {
+       "margin": 7,
+       "n": 16,
+       "ex": 13,
+       "w1": 16,
+       "worst": 0.7,
+       "mae": 0.28
+      },
+      "isha": {
+       "margin": -87.3,
+       "n": 16,
+       "ex": 1,
+       "w1": 2,
+       "worst": 15.2,
+       "mae": 8.1
+      }
+     },
+     "n_rows": 16
+    }
+   }
+  },
+  "gms-cal-2024-11": {
+   "year": 2024,
+   "month": 11,
+   "tables": {
+    "left": {
+     "point": [
+      48.1,
+      7.9
+     ],
+     "point_err": 8.7,
+     "columns": {
+      "fajr": {
+       "angle": 10,
+       "margin": -48.1,
+       "n": 14,
+       "ex": 11,
+       "w1": 12,
+       "worst": 36.7,
+       "mae": 3.04
+      },
+      "shuruk": {
+       "margin": 441,
+       "n": 14,
+       "ex": 1,
+       "w1": 1,
+       "worst": 13,
+       "mae": 6
+      },
+      "dhuhr": {
+       "margin": 5.8,
+       "n": 14,
+       "ex": 11,
+       "w1": 13,
+       "worst": 4.7,
+       "mae": 0.57
+      },
+      "asr": {
+       "margin": 4.8,
+       "n": 14,
+       "ex": 8,
+       "w1": 12,
+       "worst": 23.8,
+       "mae": 2.21
+      },
+      "maghrib": {
+       "margin": 7.2,
+       "n": 14,
+       "ex": 11,
+       "w1": 12,
+       "worst": 31.9,
+       "mae": 2.72
+      },
+      "isha": {
+       "margin": -5,
+       "n": 14,
+       "ex": 10,
+       "w1": 12,
+       "worst": 25.5,
+       "mae": 2.29
+      }
+     },
+     "n_rows": 14
+    },
+    "right": {
+     "point": [
+      48.1,
+      8.2
+     ],
+     "point_err": 5.64,
+     "columns": {
+      "fajr": {
+       "angle": 13.75,
+       "margin": -24.1,
+       "n": 13,
+       "ex": 12,
+       "w1": 12,
+       "worst": 2,
+       "mae": 0.41
+      },
+      "shuruk": {
+       "margin": 461,
+       "n": 13,
+       "ex": 1,
+       "w1": 2,
+       "worst": 9,
+       "mae": 4.85
+      },
+      "dhuhr": {
+       "margin": 6.7,
+       "n": 13,
+       "ex": 13,
+       "w1": 13,
+       "worst": 0.4,
+       "mae": 0.22
+      },
+      "asr": {
+       "margin": 5,
+       "n": 13,
+       "ex": 8,
+       "w1": 12,
+       "worst": 1.5,
+       "mae": 0.45
+      },
+      "maghrib": {
+       "margin": 7.4,
+       "n": 13,
+       "ex": 9,
+       "w1": 12,
+       "worst": 1.6,
+       "mae": 0.4
+      },
+      "isha": {
+       "margin": -4.6,
+       "n": 13,
+       "ex": 10,
+       "w1": 13,
+       "worst": 1,
+       "mae": 0.34
+      }
+     },
+     "n_rows": 13
+    }
+   }
+  },
+  "gms-cal-2026-02": {
+   "year": 2026,
+   "month": 2,
+   "tables": {
+    "left": {
+     "point": [
+      48.1,
+      7.9
+     ],
+     "point_err": 5,
+     "columns": {
+      "fajr": {
+       "angle": 14.75,
+       "margin": -18.4,
+       "n": 14,
+       "ex": 14,
+       "w1": 14,
+       "worst": 0.5,
+       "mae": 0.27
+      },
+      "shuruk": {
+       "margin": 463,
+       "n": 14,
+       "ex": 1,
+       "w1": 2,
+       "worst": 11,
+       "mae": 5.29
+      },
+      "dhuhr": {
+       "margin": 5.5,
+       "n": 14,
+       "ex": 14,
+       "w1": 14,
+       "worst": 0.5,
+       "mae": 0.14
+      },
+      "asr": {
+       "margin": 1.4,
+       "n": 14,
+       "ex": 14,
+       "w1": 14,
+       "worst": 0.5,
+       "mae": 0.25
+      },
+      "maghrib": {
+       "margin": 5.3,
+       "n": 14,
+       "ex": 13,
+       "w1": 14,
+       "worst": 0.5,
+       "mae": 0.25
+      },
+      "isha": {
+       "margin": -6.7,
+       "n": 14,
+       "ex": 13,
+       "w1": 14,
+       "worst": 0.6,
+       "mae": 0.27
+      }
+     },
+     "n_rows": 14
+    },
+    "right": {
+     "point": [
+      48.1,
+      8.2
+     ],
+     "point_err": 99.29,
+     "columns": {
+      "fajr": {
+       "angle": 10,
+       "margin": -46,
+       "n": 3,
+       "ex": 3,
+       "w1": 3,
+       "worst": 0.4,
+       "mae": 0.27
+      },
+      "shuruk": {
+       "margin": 448,
+       "n": 3,
+       "ex": 1,
+       "w1": 2,
+       "worst": 2,
+       "mae": 1
+      },
+      "dhuhr": {
+       "margin": 6.8,
+       "n": 3,
+       "ex": 3,
+       "w1": 3,
+       "worst": 0.1,
+       "mae": 0.04
+      },
+      "asr": {
+       "margin": 3,
+       "n": 3,
+       "ex": 3,
+       "w1": 3,
+       "worst": 0.2,
+       "mae": 0.15
+      },
+      "maghrib": {
+       "margin": 6.7,
+       "n": 3,
+       "ex": 3,
+       "w1": 3,
+       "worst": 0.4,
+       "mae": 0.2
+      },
+      "isha": {
+       "margin": -5.8,
+       "n": 3,
+       "ex": 3,
+       "w1": 3,
+       "worst": 0.5,
+       "mae": 0.18
+      }
+     },
+     "n_rows": 14,
+     "imsak": {
+      "n": 11,
+      "median_minus": 10,
+      "min": 10
+     }
+    }
+   }
+  },
+  "held-gms-2025-11": {
+   "year": 2025,
+   "month": 11,
+   "tables": {
+    "left": {
+     "point": [
+      48.1,
+      7.7
+     ],
+     "point_err": 16.59,
+     "columns": {
+      "fajr": {
+       "angle": 10,
+       "margin": -61,
+       "n": 17,
+       "ex": 14,
+       "w1": 15,
+       "worst": 177.8,
+       "mae": 11.8
+      },
+      "shuruk": {
+       "margin": 439,
+       "n": 17,
+       "ex": 1,
+       "w1": 1,
+       "worst": 12,
+       "mae": 6.06
+      },
+      "dhuhr": {
+       "margin": 4,
+       "n": 17,
+       "ex": 6,
+       "w1": 16,
+       "worst": 1.6,
+       "mae": 0.78
+      },
+      "asr": {
+       "margin": 12.3,
+       "n": 17,
+       "ex": 5,
+       "w1": 7,
+       "worst": 13.8,
+       "mae": 2.57
+      },
+      "maghrib": {
+       "margin": 17.2,
+       "n": 17,
+       "ex": 3,
+       "w1": 8,
+       "worst": 17.5,
+       "mae": 3.13
+      },
+      "isha": {
+       "margin": 3.1,
+       "n": 17,
+       "ex": 4,
+       "w1": 6,
+       "worst": 14.5,
+       "mae": 3.06
+      }
+     },
+     "n_rows": 17
+    },
+    "right": {
+     "point": [
+      49.1,
+      7.2
+     ],
+     "point_err": 16.76,
+     "columns": {
+      "fajr": {
+       "angle": 10,
+       "margin": -27.6,
+       "n": 13,
+       "ex": 3,
+       "w1": 6,
+       "worst": 37.4,
+       "mae": 13.02
+      },
+      "shuruk": {
+       "margin": 462,
+       "n": 13,
+       "ex": 1,
+       "w1": 2,
+       "worst": 9,
+       "mae": 4.62
+      },
+      "dhuhr": {
+       "margin": 5.2,
+       "n": 13,
+       "ex": 2,
+       "w1": 5,
+       "worst": 5.5,
+       "mae": 2.16
+      },
+      "asr": {
+       "margin": -11,
+       "n": 13,
+       "ex": 2,
+       "w1": 4,
+       "worst": 22.2,
+       "mae": 8.58
+      },
+      "maghrib": {
+       "margin": -14.2,
+       "n": 13,
+       "ex": 3,
+       "w1": 3,
+       "worst": 30.1,
+       "mae": 11.3
+      },
+      "isha": {
+       "margin": -24.1,
+       "n": 13,
+       "ex": 1,
+       "w1": 4,
+       "worst": 22.7,
+       "mae": 9.02
+      }
+     },
+     "n_rows": 13
+    }
+   }
+  },
+  "held-gms-2026-02": {
+   "year": 2026,
+   "month": 2,
+   "tables": {
+    "left": {
+     "point": [
+      48.1,
+      7.9
+     ],
+     "point_err": 5,
+     "columns": {
+      "fajr": {
+       "angle": 14.75,
+       "margin": -18.4,
+       "n": 14,
+       "ex": 14,
+       "w1": 14,
+       "worst": 0.5,
+       "mae": 0.27
+      },
+      "shuruk": {
+       "margin": 463,
+       "n": 14,
+       "ex": 1,
+       "w1": 2,
+       "worst": 11,
+       "mae": 5.29
+      },
+      "dhuhr": {
+       "margin": 5.5,
+       "n": 14,
+       "ex": 14,
+       "w1": 14,
+       "worst": 0.5,
+       "mae": 0.14
+      },
+      "asr": {
+       "margin": 1.4,
+       "n": 14,
+       "ex": 14,
+       "w1": 14,
+       "worst": 0.5,
+       "mae": 0.25
+      },
+      "maghrib": {
+       "margin": 5.3,
+       "n": 14,
+       "ex": 13,
+       "w1": 14,
+       "worst": 0.5,
+       "mae": 0.25
+      },
+      "isha": {
+       "margin": -6.7,
+       "n": 14,
+       "ex": 13,
+       "w1": 14,
+       "worst": 0.6,
+       "mae": 0.27
+      }
+     },
+     "n_rows": 14
+    },
+    "right": {
+     "point": [
+      48.1,
+      8.2
+     ],
+     "point_err": 99.29,
+     "columns": {
+      "fajr": {
+       "angle": 10,
+       "margin": -46,
+       "n": 3,
+       "ex": 3,
+       "w1": 3,
+       "worst": 0.4,
+       "mae": 0.27
+      },
+      "shuruk": {
+       "margin": 448,
+       "n": 3,
+       "ex": 1,
+       "w1": 2,
+       "worst": 2,
+       "mae": 1
+      },
+      "dhuhr": {
+       "margin": 6.8,
+       "n": 3,
+       "ex": 3,
+       "w1": 3,
+       "worst": 0.1,
+       "mae": 0.04
+      },
+      "asr": {
+       "margin": 3,
+       "n": 3,
+       "ex": 3,
+       "w1": 3,
+       "worst": 0.2,
+       "mae": 0.15
+      },
+      "maghrib": {
+       "margin": 6.7,
+       "n": 3,
+       "ex": 3,
+       "w1": 3,
+       "worst": 0.4,
+       "mae": 0.2
+      },
+      "isha": {
+       "margin": -5.8,
+       "n": 3,
+       "ex": 3,
+       "w1": 3,
+       "worst": 0.5,
+       "mae": 0.18
+      }
+     },
+     "n_rows": 14,
+     "imsak": {
+      "n": 11,
+      "median_minus": 10,
+      "min": 10
+     }
+    }
+   }
+  },
+  "held-gms-2026-06": {
+   "year": 2026,
+   "month": 6,
+   "tables": {
+    "left": {
+     "point": [
+      49.1,
+      7.9
+     ],
+     "point_err": 3.88,
+     "columns": {
+      "fajr": {
+       "angle": 10,
+       "margin": -8.9,
+       "n": 14,
+       "ex": 5,
+       "w1": 10,
+       "worst": 5.3,
+       "mae": 1.45
+      },
+      "shuruk": {
+       "margin": 321,
+       "n": 14,
+       "ex": 2,
+       "w1": 8,
+       "worst": 3,
+       "mae": 1.43
+      },
+      "dhuhr": {
+       "margin": 5.5,
+       "n": 14,
+       "ex": 11,
+       "w1": 11,
+       "worst": 3.4,
+       "mae": 0.79
+      },
+      "asr": {
+       "margin": 3,
+       "n": 14,
+       "ex": 8,
+       "w1": 11,
+       "worst": 4.7,
+       "mae": 1.12
+      },
+      "maghrib": {
+       "margin": 4.6,
+       "n": 14,
+       "ex": 10,
+       "w1": 11,
+       "worst": 10.5,
+       "mae": 1.92
+      },
+      "isha": {
+       "margin": -101.4,
+       "n": 14,
+       "ex": 1,
+       "w1": 1,
+       "worst": 16.9,
+       "mae": 8.51
+      }
+     },
+     "n_rows": 14
+    },
+    "right": {
+     "point": [
+      49.1,
+      8.2
+     ],
+     "point_err": 4.52,
+     "columns": {
+      "fajr": {
+       "angle": 10.75,
+       "margin": -0.7,
+       "n": 15,
+       "ex": 7,
+       "w1": 15,
+       "worst": 1.5,
+       "mae": 0.58
+      },
+      "shuruk": {
+       "margin": 320,
+       "n": 15,
+       "ex": 4,
+       "w1": 11,
+       "worst": 3,
+       "mae": 1.13
+      },
+      "dhuhr": {
+       "margin": 6.8,
+       "n": 15,
+       "ex": 13,
+       "w1": 14,
+       "worst": 3.2,
+       "mae": 0.47
+      },
+      "asr": {
+       "margin": 4.6,
+       "n": 15,
+       "ex": 12,
+       "w1": 14,
+       "worst": 3.8,
+       "mae": 0.53
+      },
+      "maghrib": {
+       "margin": 6.1,
+       "n": 15,
+       "ex": 14,
+       "w1": 14,
+       "worst": 3.8,
+       "mae": 0.43
+      },
+      "isha": {
+       "margin": -110.8,
+       "n": 15,
+       "ex": 3,
+       "w1": 9,
+       "worst": 7.9,
+       "mae": 2.17
+      }
+     },
+     "n_rows": 15
+    }
+   }
+  },
+  "held-gms-2026-07": {
+   "year": 2026,
+   "month": 7,
+   "tables": {
+    "left": {
+     "point": [
+      49.1,
+      8.2
+     ],
+     "point_err": 8.4,
+     "columns": {
+      "fajr": {
+       "angle": 19.5,
+       "margin": 238,
+       "n": 15,
+       "ex": 2,
+       "w1": 7,
+       "worst": 154.1,
+       "mae": 35.28
+      },
+      "shuruk": {
+       "margin": 329,
+       "n": 15,
+       "ex": 1,
+       "w1": 3,
+       "worst": 6,
+       "mae": 3.07
+      },
+      "dhuhr": {
+       "margin": 6.7,
+       "n": 15,
+       "ex": 11,
+       "w1": 12,
+       "worst": 2.3,
+       "mae": 0.71
+      },
+      "asr": {
+       "margin": 5.2,
+       "n": 15,
+       "ex": 11,
+       "w1": 12,
+       "worst": 3.6,
+       "mae": 0.77
+      },
+      "maghrib": {
+       "margin": 7.1,
+       "n": 15,
+       "ex": 10,
+       "w1": 11,
+       "worst": 13.1,
+       "mae": 2.94
+      },
+      "isha": {
+       "margin": -83,
+       "n": 15,
+       "ex": 1,
+       "w1": 1,
+       "worst": 31.2,
+       "mae": 11.32
+      }
+     },
+     "n_rows": 16
+    },
+    "right": {
+     "point": [
+      49.1,
+      7.2
+     ],
+     "point_err": 6.01,
+     "columns": {
+      "fajr": {
+       "angle": 10,
+       "margin": -33.9,
+       "n": 16,
+       "ex": 1,
+       "w1": 2,
+       "worst": 24.5,
+       "mae": 7.2
+      },
+      "shuruk": {
+       "margin": 346,
+       "n": 16,
+       "ex": 1,
+       "w1": 2,
+       "worst": 9,
+       "mae": 4.69
+      },
+      "dhuhr": {
+       "margin": 2.6,
+       "n": 16,
+       "ex": 9,
+       "w1": 14,
+       "worst": 1.9,
+       "mae": 0.55
+      },
+      "asr": {
+       "margin": 1.7,
+       "n": 16,
+       "ex": 10,
+       "w1": 14,
+       "worst": 4.4,
+       "mae": 0.74
+      },
+      "maghrib": {
+       "margin": 3.8,
+       "n": 16,
+       "ex": 13,
+       "w1": 14,
+       "worst": 14.9,
+       "mae": 1.78
+      },
+      "isha": {
+       "margin": -61.8,
+       "n": 16,
+       "ex": 1,
+       "w1": 1,
+       "worst": 48.5,
+       "mae": 13.26
+      }
+     },
+     "n_rows": 16
+    }
+   }
+  },
+  "held-gms-2026-11": {
+   "year": 2026,
+   "month": 11,
+   "tables": {
+    "left": {
+     "point": [
+      48.1,
+      8
+     ],
+     "point_err": 14.9,
+     "columns": {
+      "fajr": {
+       "angle": 14.5,
+       "margin": -20.4,
+       "n": 15,
+       "ex": 9,
+       "w1": 10,
+       "worst": 26.2,
+       "mae": 8.55
+      },
+      "shuruk": {
+       "margin": 439,
+       "n": 15,
+       "ex": 1,
+       "w1": 2,
+       "worst": 11,
+       "mae": 5.8
+      },
+      "dhuhr": {
+       "margin": 5.7,
+       "n": 15,
+       "ex": 6,
+       "w1": 10,
+       "worst": 4.4,
+       "mae": 1.33
+      },
+      "asr": {
+       "margin": 5.5,
+       "n": 15,
+       "ex": 4,
+       "w1": 10,
+       "worst": 18.3,
+       "mae": 5.63
+      },
+      "maghrib": {
+       "margin": 7.9,
+       "n": 15,
+       "ex": 7,
+       "w1": 10,
+       "worst": 24,
+       "mae": 7.49
+      },
+      "isha": {
+       "margin": -4.4,
+       "n": 15,
+       "ex": 9,
+       "w1": 10,
+       "worst": 20.1,
+       "mae": 5.9
+      }
+     },
+     "n_rows": 16
+    },
+    "right": {
+     "point": [
+      48.1,
+      7.2
+     ],
+     "point_err": 5.89,
+     "columns": {
+      "fajr": {
+       "angle": 11.5,
+       "margin": -42.1,
+       "n": 17,
+       "ex": 15,
+       "w1": 15,
+       "worst": 13.5,
+       "mae": 1.78
+      },
+      "shuruk": {
+       "margin": 460,
+       "n": 17,
+       "ex": 1,
+       "w1": 3,
+       "worst": 11,
+       "mae": 5.06
+      },
+      "dhuhr": {
+       "margin": 2.7,
+       "n": 17,
+       "ex": 14,
+       "w1": 16,
+       "worst": 2.1,
+       "mae": 0.43
+      },
+      "asr": {
+       "margin": 1.2,
+       "n": 17,
+       "ex": 13,
+       "w1": 15,
+       "worst": 8.5,
+       "mae": 1.23
+      },
+      "maghrib": {
+       "margin": 3.7,
+       "n": 17,
+       "ex": 13,
+       "w1": 15,
+       "worst": 11.3,
+       "mae": 1.54
+      },
+      "isha": {
+       "margin": -8.5,
+       "n": 17,
+       "ex": 12,
+       "w1": 15,
+       "worst": 9.2,
+       "mae": 1.37
+      }
+     },
+     "n_rows": 17
+    }
+   }
+  },
+  "held-gms-2026-12": {
+   "year": 2026,
+   "month": 12,
+   "tables": {
+    "left": {
+     "point": [
+      48.1,
+      8.1
+     ],
+     "point_err": 5.48,
+     "columns": {
+      "fajr": {
+       "angle": 10,
+       "margin": -49,
+       "n": 13,
+       "ex": 10,
+       "w1": 12,
+       "worst": 12.3,
+       "mae": 1.16
+      },
+      "shuruk": {
+       "margin": 481,
+       "n": 13,
+       "ex": 1,
+       "w1": 3,
+       "worst": 9,
+       "mae": 4.15
+      },
+      "dhuhr": {
+       "margin": 6.1,
+       "n": 13,
+       "ex": 11,
+       "w1": 12,
+       "worst": 9.2,
+       "mae": 0.9
+      },
+      "asr": {
+       "margin": 3.8,
+       "n": 13,
+       "ex": 8,
+       "w1": 12,
+       "worst": 7.8,
+       "mae": 0.9
+      },
+      "maghrib": {
+       "margin": 6.2,
+       "n": 13,
+       "ex": 10,
+       "w1": 12,
+       "worst": 6.1,
+       "mae": 0.79
+      },
+      "isha": {
+       "margin": -5.7,
+       "n": 13,
+       "ex": 8,
+       "w1": 12,
+       "worst": 7,
+       "mae": 0.89
+      }
+     },
+     "n_rows": 15
+    },
+    "right": {
+     "point": [
+      48.1,
+      7.3
+     ],
+     "point_err": 4.58,
+     "columns": {
+      "fajr": {
+       "angle": 10,
+       "margin": -51.9,
+       "n": 16,
+       "ex": 14,
+       "w1": 15,
+       "worst": 6.9,
+       "mae": 0.66
+      },
+      "shuruk": {
+       "margin": 493,
+       "n": 16,
+       "ex": 3,
+       "w1": 10,
+       "worst": 4,
+       "mae": 1.56
+      },
+      "dhuhr": {
+       "margin": 3.1,
+       "n": 16,
+       "ex": 14,
+       "w1": 15,
+       "worst": 4.3,
+       "mae": 0.49
+      },
+      "asr": {
+       "margin": -0.1,
+       "n": 16,
+       "ex": 10,
+       "w1": 15,
+       "worst": 2.9,
+       "mae": 0.49
+      },
+      "maghrib": {
+       "margin": 2.7,
+       "n": 16,
+       "ex": 14,
+       "w1": 16,
+       "worst": 1.2,
+       "mae": 0.33
+      },
+      "isha": {
+       "margin": -9.3,
+       "n": 16,
+       "ex": 13,
+       "w1": 15,
+       "worst": 1.8,
+       "mae": 0.36
+      }
+     },
+     "n_rows": 16
+    }
+   }
+  }
+ }
+}

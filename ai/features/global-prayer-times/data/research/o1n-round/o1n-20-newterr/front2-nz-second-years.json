@@ -1,0 +1,31 @@
+{
+ "row": "NZ-16-YEAR-SURFACES",
+ "walked": "2027-01-01..2027-12-31 via the masjidbox athany endpoint (7-day windows), 2026-11-11",
+ "surfaces": [
+  {"surface": "mat", "city": "New Plymouth (Muslim Association of Taranaki)", "rows_2027": 365, "moving_cells": 459, "verdict": "genuine second edition: all six columns move"},
+  {"surface": "lincoln-university-musalla", "city": "Christchurch (Lincoln University Musalla)", "rows_2027": 365, "moving_cells": 537, "verdict": "genuine second edition: all six columns move"},
+  {"surface": "aman-islamic-trust", "city": "Auckland (Aman Islamic Trust)", "rows_2027": 365, "moving_cells": 457, "verdict": "genuine second edition: fajr re-set on 365/365 days (05:00 -> 04:45 on 01-01) plus solar moves"},
+  {"surface": "new-zealand-islamic-cultural-trust", "city": "Auckland (NZ Islamic Cultural Trust)", "rows_2027": 358, "moving_cells": 158, "verdict": "genuine second edition on the solar columns (sunrise 78, maghrib 80); one 7-day window (2027-03-05) answered 404 and is missing"},
+  {"surface": "masjid-e-umar-185187", "city": "Auckland (Masjid-E-Umar)", "rows_2027": 365, "moving_cells": 77, "verdict": "partial: sunrise edited on 77 days, the four clock columns stay fixed"},
+  {"surface": "masjid-al-ameen", "city": "Auckland", "rows_2027": 365, "moving_cells": 0, "verdict": "frozen reprint: 2027 served byte-identical to 2026, one computed generation, no lift"},
+  {"surface": "linwood-islamic-center", "city": "Christchurch", "rows_2027": 365, "moving_cells": 0, "verdict": "frozen reprint"},
+  {"surface": "manawatu-muslims-association", "city": "Palmerston North", "rows_2027": 365, "moving_cells": 0, "verdict": "frozen reprint"},
+  {"surface": "ucmusa-musalla", "city": "Christchurch (UC MSA)", "rows_2027": 365, "moving_cells": 0, "verdict": "frozen reprint"},
+  {"surface": "vicmuslims-club", "city": "Wellington", "rows_2027": 365, "moving_cells": 0, "verdict": "frozen reprint"},
+  {"surface": "waikato-muslim-association", "city": "Hamilton", "rows_2027": 365, "moving_cells": 0, "verdict": "frozen reprint"},
+  {"surface": "wellington-islamic-centre-kilbirnie", "city": "Wellington", "rows_2027": 365, "moving_cells": 0, "verdict": "frozen reprint"},
+  {"surface": "masjid-almanar", "city": "Auckland", "rows_2027": 365, "moving_cells": 0, "verdict": "frozen reprint"}
+ ],
+ "mawaqit_nz_archive": {
+  "nelson-islamic-centre": {"snapshots": ["20250211080712", "20260421133239"], "content": "both serve the same 10319-byte age-restricted consent stub (the archive's crawler was behind a Vodafone content filter); no table"},
+  "suhail-patel-auckland-0626": {"snapshots": ["20250710112219"], "content": "same filter stub; no table"},
+  "al-makhtoom-airport-masjid": {"snapshots": 0}
+ },
+ "fianz": {
+  "prior_negative": "the held row recorded 'fianz.com links nothing but the Ramadan calendar, so no year-round FIANZ surface exists'",
+  "superseded": "fianz.com/prayer-times/ now carries FIANZ's own city-prayer-times plugin: 20 cities x 12 selectable months, AJAX cpt_get_view, no year parameter (current year only)",
+  "banked": "data/fianz-2026.json (20 surfaces x 334 dated rows, 2026-02-01..2026-12-31; January unserved)",
+  "fit": "data/fianz-2026.fit.json",
+  "today_gates": "20/20 PASS (the plugin's own today row equals the month table's matching row)"
+ }
+}

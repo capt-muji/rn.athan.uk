@@ -1,0 +1,96 @@
+{
+ "phnompenh": {
+  "days": 66,
+  "medians_mawaqit_minus_fazilet": {
+   "fajr": {
+    "n": 66,
+    "median": -18,
+    "min": -19,
+    "max": -18,
+    "within1pct": 0.0
+   },
+   "sunrise": {
+    "n": 66,
+    "median": 2,
+    "min": 2,
+    "max": 3,
+    "within1pct": 0.0
+   },
+   "dhuhr": {
+    "n": 66,
+    "median": -8,
+    "min": -8,
+    "max": -8,
+    "within1pct": 0.0
+   },
+   "asr": {
+    "n": 66,
+    "median": -7,
+    "min": -7,
+    "max": -6,
+    "within1pct": 0.0
+   },
+   "maghrib": {
+    "n": 66,
+    "median": -4,
+    "min": -5,
+    "max": -4,
+    "within1pct": 0.0
+   },
+   "isha": {
+    "n": 66,
+    "median": 1,
+    "min": 0,
+    "max": 1,
+    "within1pct": 100.0
+   }
+  }
+ },
+ "vientiane": {
+  "days": 66,
+  "medians_mawaqit_minus_fazilet": {
+   "fajr": {
+    "n": 66,
+    "median": -10,
+    "min": -11,
+    "max": -9,
+    "within1pct": 0.0
+   },
+   "sunrise": {
+    "n": 66,
+    "median": 3,
+    "min": 3,
+    "max": 4,
+    "within1pct": 0.0
+   },
+   "dhuhr": {
+    "n": 66,
+    "median": -7,
+    "min": -7,
+    "max": -6,
+    "within1pct": 0.0
+   },
+   "asr": {
+    "n": 66,
+    "median": 69,
+    "min": 41,
+    "max": 74,
+    "within1pct": 0.0
+   },
+   "maghrib": {
+    "n": 66,
+    "median": -1,
+    "min": -1,
+    "max": -1,
+    "within1pct": 100.0
+   },
+   "isha": {
+    "n": 66,
+    "median": 9,
+    "min": 8,
+    "max": 9,
+    "within1pct": 0.0
+   }
+  }
+ }
+}

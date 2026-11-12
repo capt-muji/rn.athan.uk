@@ -1,0 +1,858 @@
+{
+ "country": "tonga",
+ "generated": "2026-11-12T11:40:59Z",
+ "routes_probed": {
+  "monthly_2026": 94,
+  "monthly_2025_06": 0,
+  "monthly_2027_06": 0
+ },
+ "settlements": {
+  "114729": {
+   "name": "Tafahi Adası",
+   "city_label": "Tafahi Adası (Ongo Niua / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "114730": {
+   "name": "Niuatoputapu Adası",
+   "city_label": "Niuatoputapu Adası (Ongo Niua / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "114731": {
+   "name": "Mataiaho Havaalanı",
+   "city_label": "Mataiaho Havaalanı (Ongo Niua / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "114732": {
+   "name": "Fata ulua",
+   "city_label": "Fata ulua (Ongo Niua / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "137941": {
+   "name": "Pelehake",
+   "city_label": "Pelehake (Tongatapu / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "137942": {
+   "name": "Fua’amotu",
+   "city_label": "Fua’amotu (Tongatapu / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "137944": {
+   "name": "Utui",
+   "city_label": "Utui (Vava'u / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "137945": {
+   "name": "Houma",
+   "city_label": "Houma (Vava'u / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "137946": {
+   "name": "Pangai",
+   "city_label": "Pangai (Vava'u / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "60084": {
+   "name": "Nukualofa",
+   "city_label": "Nukualofa (Tongatapu / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "81998": {
+   "name": "Neiafu",
+   "city_label": "Neiafu (Vava'u / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "81999": {
+   "name": "Kolovai",
+   "city_label": "Kolovai (Tongatapu / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82000": {
+   "name": "Nukunuku",
+   "city_label": "Nukunuku (Tongatapu / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82001": {
+   "name": "Mua",
+   "city_label": "Mua (Tongatapu / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82002": {
+   "name": "Foui",
+   "city_label": "Foui (Tongatapu / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82003": {
+   "name": "Fahefa",
+   "city_label": "Fahefa (Tongatapu / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82004": {
+   "name": "Houma",
+   "city_label": "Houma (Tongatapu / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82005": {
+   "name": "Liahona",
+   "city_label": "Liahona (Tongatapu / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82006": {
+   "name": "Pea",
+   "city_label": "Pea (Tongatapu / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82007": {
+   "name": "Haalalo",
+   "city_label": "Haalalo (Tongatapu / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82008": {
+   "name": "Nukuhetulu",
+   "city_label": "Nukuhetulu (Tongatapu / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82009": {
+   "name": "Hoi",
+   "city_label": "Hoi (Tongatapu / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82010": {
+   "name": "Tefisi",
+   "city_label": "Tefisi (Vava'u / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82011": {
+   "name": "Pangai",
+   "city_label": "Pangai (Ha'apai / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82012": {
+   "name": "Taoa",
+   "city_label": "Taoa (Vava'u / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82013": {
+   "name": "Mataika",
+   "city_label": "Mataika (Vava'u / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82014": {
+   "name": "Holonga",
+   "city_label": "Holonga (Tongatapu / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82015": {
+   "name": "Holonga",
+   "city_label": "Holonga (Vava'u / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82016": {
+   "name": "Tuanikivale",
+   "city_label": "Tuanikivale (Vava'u / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82017": {
+   "name": "Taanea",
+   "city_label": "Taanea (Vava'u / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82018": {
+   "name": "Leimatua",
+   "city_label": "Leimatua (Vava'u / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82019": {
+   "name": "Feletoa",
+   "city_label": "Feletoa (Vava'u / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82020": {
+   "name": "Malapo",
+   "city_label": "Malapo (Tongatapu / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82021": {
+   "name": "Vaini",
+   "city_label": "Vaini (Tongatapu / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82022": {
+   "name": "Fatumu",
+   "city_label": "Fatumu (Tongatapu / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82023": {
+   "name": "Alaki",
+   "city_label": "Alaki (Tongatapu / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82024": {
+   "name": "Kolonga",
+   "city_label": "Kolonga (Tongatapu / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82025": {
+   "name": "Lavengatonga",
+   "city_label": "Lavengatonga (Tongatapu / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82026": {
+   "name": "Hamula",
+   "city_label": "Hamula (Tongatapu / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82027": {
+   "name": "Nakolo",
+   "city_label": "Nakolo (Tongatapu / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82028": {
+   "name": "Fuaamotu International Airport",
+   "city_label": "Fuaamotu International Airport (Tongatapu / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82029": {
+   "name": "Longoteme",
+   "city_label": "Longoteme (Tongatapu / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82030": {
+   "name": "Folaha",
+   "city_label": "Folaha (Tongatapu / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82031": {
+   "name": "Puke",
+   "city_label": "Puke (Tongatapu / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82032": {
+   "name": "Utulau",
+   "city_label": "Utulau (Tongatapu / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82033": {
+   "name": "Haateiho",
+   "city_label": "Haateiho (Tongatapu / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82034": {
+   "name": "Makave",
+   "city_label": "Makave (Vava'u / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82035": {
+   "name": "Okoa",
+   "city_label": "Okoa (Vava'u / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82036": {
+   "name": "Mangia",
+   "city_label": "Mangia (Vava'u / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82037": {
+   "name": "Haakio",
+   "city_label": "Haakio (Vava'u / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82038": {
+   "name": "Lupepauu International Airport",
+   "city_label": "Lupepauu International Airport (Vava'u / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82039": {
+   "name": "Tuanuku",
+   "city_label": "Tuanuku (Vava'u / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82040": {
+   "name": "Longomapu",
+   "city_label": "Longomapu (Vava'u / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82041": {
+   "name": "Otea",
+   "city_label": "Otea (Vava'u / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82042": {
+   "name": "Vakatauami",
+   "city_label": "Vakatauami (Vava'u / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82043": {
+   "name": "Kapa",
+   "city_label": "Kapa (Vava'u / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82044": {
+   "name": "Falevai",
+   "city_label": "Falevai (Vava'u / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82045": {
+   "name": "Utungake",
+   "city_label": "Utungake (Vava'u / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82046": {
+   "name": "Talihau",
+   "city_label": "Talihau (Vava'u / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82047": {
+   "name": "Toula Village",
+   "city_label": "Toula Village (Vava'u / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82048": {
+   "name": "Koloa",
+   "city_label": "Koloa (Vava'u / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82049": {
+   "name": "Holeva",
+   "city_label": "Holeva (Vava'u / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82053": {
+   "name": "Ohonua",
+   "city_label": "Ohonua (Eua / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82054": {
+   "name": "Tufurai",
+   "city_label": "Tufurai (Eua / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82057": {
+   "name": "Pangai",
+   "city_label": "Pangai (Eua / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82059": {
+   "name": "Houma",
+   "city_label": "Houma (Eua / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82060": {
+   "name": "Ofolanga Island",
+   "city_label": "Ofolanga Island (Ha'apai / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82061": {
+   "name": "Haano",
+   "city_label": "Haano (Ha'apai / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82062": {
+   "name": "Muitoa",
+   "city_label": "Muitoa (Ha'apai / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82063": {
+   "name": "Pukotala",
+   "city_label": "Pukotala (Ha'apai / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82064": {
+   "name": "Fakakakai",
+   "city_label": "Fakakakai (Ha'apai / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82065": {
+   "name": "Holopeka",
+   "city_label": "Holopeka (Ha'apai / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82066": {
+   "name": "Lifuka İsland Airport",
+   "city_label": "Lifuka İsland Airport (Ha'apai / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82067": {
+   "name": "Koulo",
+   "city_label": "Koulo (Ha'apai / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82068": {
+   "name": "Faleloa",
+   "city_label": "Faleloa (Ha'apai / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82069": {
+   "name": "Fotua",
+   "city_label": "Fotua (Ha'apai / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82070": {
+   "name": "Fangaleounga",
+   "city_label": "Fangaleounga (Ha'apai / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82072": {
+   "name": "Navea",
+   "city_label": "Navea (Ha'apai / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82073": {
+   "name": "Hihifo",
+   "city_label": "Hihifo (Ha'apai / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82074": {
+   "name": "Ongo Niua",
+   "city_label": "Ongo Niua (Ongo Niua / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82075": {
+   "name": "Lolo",
+   "city_label": "Lolo (Ongo Niua / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82076": {
+   "name": "Falehau",
+   "city_label": "Falehau (Ongo Niua / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82077": {
+   "name": "Vaipoa",
+   "city_label": "Vaipoa (Ongo Niua / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82078": {
+   "name": "Hihifo",
+   "city_label": "Hihifo (Ongo Niua / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82079": {
+   "name": "Queen Lavinia",
+   "city_label": "Queen Lavinia (Ongo Niua / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82080": {
+   "name": "Sapa ata",
+   "city_label": "Sapa ata (Ongo Niua / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82081": {
+   "name": "Esia",
+   "city_label": "Esia (Ongo Niua / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82082": {
+   "name": "Mata aho",
+   "city_label": "Mata aho (Ongo Niua / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82083": {
+   "name": "Mu a",
+   "city_label": "Mu a (Ongo Niua / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82084": {
+   "name": "Tongamama",
+   "city_label": "Tongamama (Ongo Niua / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82085": {
+   "name": "Futu",
+   "city_label": "Futu (Ongo Niua / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82086": {
+   "name": "Kolofo Ou",
+   "city_label": "Kolofo Ou (Ongo Niua / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82087": {
+   "name": "Petani",
+   "city_label": "Petani (Ongo Niua / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82058": {
+   "name": "Eua Kaufana Airport",
+   "city_label": "Eua Kaufana Airport (Eua / Tonga)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  }
+ },
+ "rows": {}
+}

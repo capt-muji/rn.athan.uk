@@ -1,0 +1,12 @@
+{
+ "surface": "EC-NEGATIVE",
+ "verdict": "honest negative: no own-site dated table found",
+ "routes": [
+  "islamec.org (Centro Islamico del Ecuador, Mezquita Assalam, Quito): Blogger news site; pages walked (contact-us, our-organization, como-donar); no prayer page; the Ramadan 2026 post is an announcement with no timetable",
+  "Mezquita Khaled Ibn Al-Walid (Quito): Facebook/YouTube only, named lead",
+  "app mirrors (prayer-times.app2mob) recorded by o1n-11 stand: app data, not the mosque's own publication",
+  "islamicfinder/muslimpro/halaltrip: platform calculators only"
+ ],
+ "languages": "Spanish, English",
+ "held_line": "Fazilet Ecuador 23 cities (1 two-year fit) stands as the held layer"
+}

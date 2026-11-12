@@ -1,0 +1,65 @@
+{
+ "pair": "YE-aden-two-authorities (Aden: ministry yemenawqaf.org vs General Authority awqaf.ye)",
+ "measured_utc": "2026-11-12",
+ "side_a": {
+  "name": "yemenawqaf.org Livewire (selectedLocationId=1 Aden, month 11 year 2026)",
+  "row_2026_11_12_24h": {
+   "fajr": "04:50",
+   "sunrise": "05:57",
+   "dhuhr": "11:46",
+   "asr": "15:03",
+   "maghrib": "17:31",
+   "isha": "18:40"
+  },
+  "held": "o1m-6-mideast/data/ye-rows.json Aden"
+ },
+ "side_b": {
+  "name": "awqaf.ye /Home/GetMonthlyPrayerTimes cityId=2 (Aden) month 11 year 2026 (browser-session fetch; curl 403)",
+  "row_2026_11_12": {
+   "fajr": "04:44",
+   "sunrise": "05:57",
+   "dhuhr": "11:54",
+   "asr": "15:03",
+   "maghrib": "17:37",
+   "isha": "18:36"
+  },
+  "held": "o1n-12-mideast/data/ye-awqafye-rows.json ye-awqafye/aden"
+ },
+ "ministry_fresh_minus_held_delta_min": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 0,
+  "asr": 0,
+  "maghrib": 0,
+  "isha": 0
+ },
+ "authority_fresh_minus_held_delta_min": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 0,
+  "asr": 0,
+  "maghrib": 0,
+  "isha": 0
+ },
+ "cross_delta_min_2026_11_12_ministry_minus_authority": {
+  "fajr": 6,
+  "sunrise": 0,
+  "dhuhr": -8,
+  "asr": 0,
+  "maghrib": -6,
+  "isha": 4
+ },
+ "held_cross_delta_min_2026_11_12": {
+  "fajr": 6,
+  "sunrise": 0,
+  "dhuhr": -8,
+  "asr": 0,
+  "maghrib": -6,
+  "isha": 4
+ },
+ "held_quantified_2026_note": "O1n-12 quantified on Aden 2026: fajr +6, sunrise 0, dhuhr -8, asr -1, maghrib -6, isha +4",
+ "verdict": {
+  "ministry_serves_held_line": true,
+  "authority_serves_held_line": true
+ }
+}

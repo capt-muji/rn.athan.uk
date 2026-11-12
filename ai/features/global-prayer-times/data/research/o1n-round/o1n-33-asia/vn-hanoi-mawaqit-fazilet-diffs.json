@@ -1,0 +1,225 @@
+{
+ "surface": "Fazilet districtId=3072 (Ha Noi) vs mawaqit Masjid Al-Noor Hanoi board, 2026 Jan+Jul samples",
+ "summary": {
+  "fajr": {
+   "n": 22,
+   "median": -11,
+   "min": -12,
+   "max": -10,
+   "within1pct": 0.0
+  },
+  "sunrise": {
+   "n": 22,
+   "median": 2,
+   "min": 2,
+   "max": 3,
+   "within1pct": 0.0
+  },
+  "dhuhr": {
+   "n": 22,
+   "median": -7,
+   "min": -7,
+   "max": -7,
+   "within1pct": 0.0
+  },
+  "asr": {
+   "n": 22,
+   "median": -4,
+   "min": -5,
+   "max": -3,
+   "within1pct": 0.0
+  },
+  "maghrib": {
+   "n": 22,
+   "median": -8,
+   "min": -8,
+   "max": -7,
+   "within1pct": 0.0
+  },
+  "isha": {
+   "n": 22,
+   "median": -4,
+   "min": -5,
+   "max": -4,
+   "within1pct": 0.0
+  }
+ },
+ "per_day": {
+  "2026-01-01": {
+   "fajr": -11,
+   "sunrise": 3,
+   "dhuhr": -7,
+   "asr": -5,
+   "maghrib": -7,
+   "isha": -4
+  },
+  "2026-01-04": {
+   "fajr": -11,
+   "sunrise": 3,
+   "dhuhr": -7,
+   "asr": -4,
+   "maghrib": -8,
+   "isha": -4
+  },
+  "2026-01-07": {
+   "fajr": -11,
+   "sunrise": 2,
+   "dhuhr": -7,
+   "asr": -4,
+   "maghrib": -8,
+   "isha": -5
+  },
+  "2026-01-10": {
+   "fajr": -12,
+   "sunrise": 3,
+   "dhuhr": -7,
+   "asr": -5,
+   "maghrib": -8,
+   "isha": -5
+  },
+  "2026-01-13": {
+   "fajr": -11,
+   "sunrise": 2,
+   "dhuhr": -7,
+   "asr": -5,
+   "maghrib": -8,
+   "isha": -4
+  },
+  "2026-01-16": {
+   "fajr": -12,
+   "sunrise": 2,
+   "dhuhr": -7,
+   "asr": -5,
+   "maghrib": -8,
+   "isha": -4
+  },
+  "2026-01-19": {
+   "fajr": -11,
+   "sunrise": 2,
+   "dhuhr": -7,
+   "asr": -4,
+   "maghrib": -8,
+   "isha": -4
+  },
+  "2026-01-22": {
+   "fajr": -11,
+   "sunrise": 2,
+   "dhuhr": -7,
+   "asr": -5,
+   "maghrib": -8,
+   "isha": -5
+  },
+  "2026-01-25": {
+   "fajr": -11,
+   "sunrise": 2,
+   "dhuhr": -7,
+   "asr": -5,
+   "maghrib": -8,
+   "isha": -4
+  },
+  "2026-01-28": {
+   "fajr": -11,
+   "sunrise": 3,
+   "dhuhr": -7,
+   "asr": -4,
+   "maghrib": -8,
+   "isha": -4
+  },
+  "2026-01-31": {
+   "fajr": -11,
+   "sunrise": 2,
+   "dhuhr": -7,
+   "asr": -5,
+   "maghrib": -8,
+   "isha": -4
+  },
+  "2026-07-01": {
+   "fajr": -10,
+   "sunrise": 3,
+   "dhuhr": -7,
+   "asr": -4,
+   "maghrib": -8,
+   "isha": -4
+  },
+  "2026-07-04": {
+   "fajr": -10,
+   "sunrise": 3,
+   "dhuhr": -7,
+   "asr": -4,
+   "maghrib": -8,
+   "isha": -4
+  },
+  "2026-07-07": {
+   "fajr": -11,
+   "sunrise": 3,
+   "dhuhr": -7,
+   "asr": -5,
+   "maghrib": -8,
+   "isha": -5
+  },
+  "2026-07-10": {
+   "fajr": -10,
+   "sunrise": 3,
+   "dhuhr": -7,
+   "asr": -4,
+   "maghrib": -7,
+   "isha": -4
+  },
+  "2026-07-13": {
+   "fajr": -11,
+   "sunrise": 2,
+   "dhuhr": -7,
+   "asr": -4,
+   "maghrib": -7,
+   "isha": -4
+  },
+  "2026-07-16": {
+   "fajr": -10,
+   "sunrise": 2,
+   "dhuhr": -7,
+   "asr": -4,
+   "maghrib": -7,
+   "isha": -5
+  },
+  "2026-07-19": {
+   "fajr": -10,
+   "sunrise": 2,
+   "dhuhr": -7,
+   "asr": -4,
+   "maghrib": -8,
+   "isha": -4
+  },
+  "2026-07-22": {
+   "fajr": -11,
+   "sunrise": 2,
+   "dhuhr": -7,
+   "asr": -4,
+   "maghrib": -7,
+   "isha": -4
+  },
+  "2026-07-25": {
+   "fajr": -10,
+   "sunrise": 3,
+   "dhuhr": -7,
+   "asr": -4,
+   "maghrib": -8,
+   "isha": -5
+  },
+  "2026-07-28": {
+   "fajr": -10,
+   "sunrise": 3,
+   "dhuhr": -7,
+   "asr": -4,
+   "maghrib": -8,
+   "isha": -5
+  },
+  "2026-07-31": {
+   "fajr": -11,
+   "sunrise": 2,
+   "dhuhr": -7,
+   "asr": -3,
+   "maghrib": -7,
+   "isha": -4
+  }
+ }
+}

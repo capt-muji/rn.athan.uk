@@ -1,0 +1,202 @@
+[
+ {
+  "date": "2026-01-15",
+  "diff": {
+   "imsak_sehri": {
+    "jummah": "04:17",
+    "fazilet": "04:11",
+    "diff_min": 6
+   },
+   "fajr": {
+    "jummah": "04:27",
+    "fazilet": "04:31",
+    "diff_min": -4
+   },
+   "sunrise": {
+    "jummah": "05:42",
+    "fazilet": "05:40",
+    "diff_min": 2
+   },
+   "dhuhr": {
+    "jummah": "12:25",
+    "fazilet": "12:26",
+    "diff_min": -1
+   },
+   "asr": {
+    "jummah": "17:00",
+    "fazilet": "15:39",
+    "diff_min": 81
+   },
+   "maghrib": {
+    "jummah": "18:58",
+    "fazilet": "19:02",
+    "diff_min": -4
+   },
+   "isha": {
+    "jummah": "20:15",
+    "fazilet": "20:17",
+    "diff_min": -2
+   }
+  }
+ },
+ {
+  "date": "2026-04-15",
+  "diff": {
+   "imsak_sehri": {
+    "jummah": "05:04",
+    "fazilet": "04:59",
+    "diff_min": 5
+   },
+   "fajr": {
+    "jummah": "05:14",
+    "fazilet": "05:19",
+    "diff_min": -5
+   },
+   "sunrise": {
+    "jummah": "06:21",
+    "fazilet": "06:19",
+    "diff_min": 2
+   },
+   "dhuhr": {
+    "jummah": "12:16",
+    "fazilet": "12:17",
+    "diff_min": -1
+   },
+   "asr": {
+    "jummah": "16:30",
+    "fazilet": "15:35",
+    "diff_min": 55
+   },
+   "maghrib": {
+    "jummah": "18:02",
+    "fazilet": "18:05",
+    "diff_min": -3
+   },
+   "isha": {
+    "jummah": "19:11",
+    "fazilet": "19:13",
+    "diff_min": -2
+   }
+  }
+ },
+ {
+  "date": "2026-07-15",
+  "diff": {
+   "imsak_sehri": {
+    "jummah": "05:25",
+    "fazilet": "05:19",
+    "diff_min": 6
+   },
+   "fajr": {
+    "jummah": "05:35",
+    "fazilet": "05:39",
+    "diff_min": -4
+   },
+   "sunrise": {
+    "jummah": "06:45",
+    "fazilet": "06:43",
+    "diff_min": 2
+   },
+   "dhuhr": {
+    "jummah": "12:22",
+    "fazilet": "12:23",
+    "diff_min": -1
+   },
+   "asr": {
+    "jummah": "16:15",
+    "fazilet": "15:30",
+    "diff_min": 45
+   },
+   "maghrib": {
+    "jummah": "17:49",
+    "fazilet": "17:53",
+    "diff_min": -4
+   },
+   "isha": {
+    "jummah": "19:02",
+    "fazilet": "19:04",
+    "diff_min": -2
+   }
+  }
+ },
+ {
+  "date": "2026-10-15",
+  "diff": {
+   "imsak_sehri": {
+    "jummah": "04:22",
+    "fazilet": "04:16",
+    "diff_min": 6
+   },
+   "fajr": {
+    "jummah": "04:32",
+    "fazilet": "04:36",
+    "diff_min": -4
+   },
+   "sunrise": {
+    "jummah": "05:40",
+    "fazilet": "05:37",
+    "diff_min": 3
+   },
+   "dhuhr": {
+    "jummah": "12:02",
+    "fazilet": "12:03",
+    "diff_min": -1
+   },
+   "asr": {
+    "jummah": "16:30",
+    "fazilet": "15:24",
+    "diff_min": 66
+   },
+   "maghrib": {
+    "jummah": "18:14",
+    "fazilet": "18:18",
+    "diff_min": -4
+   },
+   "isha": {
+    "jummah": "19:25",
+    "fazilet": "19:27",
+    "diff_min": -2
+   }
+  }
+ },
+ {
+  "date": "2026-11-12",
+  "diff": {
+   "imsak_sehri": {
+    "jummah": "04:01",
+    "fazilet": "03:55",
+    "diff_min": 6
+   },
+   "fajr": {
+    "jummah": "04:11",
+    "fazilet": "04:15",
+    "diff_min": -4
+   },
+   "sunrise": {
+    "jummah": "05:23",
+    "fazilet": "05:21",
+    "diff_min": 2
+   },
+   "dhuhr": {
+    "jummah": "12:00",
+    "fazilet": "12:01",
+    "diff_min": -1
+   },
+   "asr": {
+    "jummah": "16:30",
+    "fazilet": "15:15",
+    "diff_min": 75
+   },
+   "maghrib": {
+    "jummah": "18:27",
+    "fazilet": "18:31",
+    "diff_min": -4
+   },
+   "isha": {
+    "jummah": "19:42",
+    "fazilet": "19:44",
+    "diff_min": -2
+   }
+  }
+ }
+]

@@ -1,0 +1,340 @@
+[
+ {
+  "file": "dumrf_namaz_2026-11.jpg",
+  "year": null,
+  "month": null,
+  "nrows": 30,
+  "rows": [
+   {
+    "date": 1,
+    "weekday": "BC",
+    "hday": 21,
+    "fajr": 330,
+    "shuruk": 451,
+    "zukhr": 738,
+    "asr": 860,
+    "maghrib": 1014,
+    "isha": 1114
+   },
+   {
+    "date": 2,
+    "weekday": "tIH",
+    "hday": 22,
+    "fajr": 332,
+    "shuruk": 453,
+    "zukhr": 738,
+    "asr": 859,
+    "maghrib": 1012,
+    "isha": 1112
+   },
+   {
+    "date": 3,
+    "weekday": "BT",
+    "hday": 23,
+    "fajr": 333,
+    "shuruk": 455,
+    "zukhr": 738,
+    "asr": 857,
+    "maghrib": 1010,
+    "isha": 1110
+   },
+   {
+    "date": 4,
+    "weekday": null,
+    "hday": 24,
+    "fajr": 335,
+    "shuruk": 457,
+    "zukhr": 738,
+    "asr": 856,
+    "maghrib": 1008,
+    "isha": 1109
+   },
+   {
+    "date": 5,
+    "weekday": "UT",
+    "hday": 25,
+    "fajr": 337,
+    "shuruk": 459,
+    "zukhr": 738,
+    "asr": 854,
+    "maghrib": 1006,
+    "isha": 1107
+   },
+   {
+    "date": 6,
+    "weekday": null,
+    "hday": 26,
+    "fajr": 339,
+    "shuruk": 461,
+    "zukhr": 738,
+    "asr": 853,
+    "maghrib": 1004,
+    "isha": 1105
+   },
+   {
+    "date": 7,
+    "weekday": null,
+    "hday": 27,
+    "fajr": 340,
+    "shuruk": 463,
+    "zukhr": 738,
+    "asr": 851,
+    "maghrib": 1002,
+    "isha": 1104
+   },
+   {
+    "date": 8,
+    "weekday": "BC",
+    "hday": 28,
+    "fajr": 342,
+    "shuruk": 465,
+    "zukhr": 738,
+    "asr": 850,
+    "maghrib": 1000,
+    "isha": 1102
+   },
+   {
+    "date": 9,
+    "weekday": "llH",
+    "hday": 29,
+    "fajr": 344,
+    "shuruk": 468,
+    "zukhr": 738,
+    "asr": 848,
+    "maghrib": 998,
+    "isha": 1100
+   },
+   {
+    "date": 10,
+    "weekday": "BT",
+    "hday": null,
+    "fajr": 346,
+    "shuruk": 470,
+    "zukhr": 738,
+    "asr": 847,
+    "maghrib": 996,
+    "isha": 1099
+   },
+   {
+    "date": 11,
+    "weekday": "11",
+    "hday": null,
+    "fajr": 347,
+    "shuruk": 472,
+    "zukhr": 739,
+    "asr": 845,
+    "maghrib": 994,
+    "isha": 1097
+   },
+   {
+    "date": 12,
+    "weekday": "UT",
+    "hday": null,
+    "fajr": 349,
+    "shuruk": 474,
+    "zukhr": 739,
+    "asr": 844,
+    "maghrib": 993,
+    "isha": 1096
+   },
+   {
+    "date": 13,
+    "weekday": "13",
+    "hday": null,
+    "fajr": 351,
+    "shuruk": 476,
+    "zukhr": 739,
+    "asr": 843,
+    "maghrib": 991,
+    "isha": 1094
+   },
+   {
+    "date": 14,
+    "weekday": "14",
+    "hday": null,
+    "fajr": 352,
+    "shuruk": 478,
+    "zukhr": 739,
+    "asr": 841,
+    "maghrib": 989,
+    "isha": 1093
+   },
+   {
+    "date": 15,
+    "weekday": "BC",
+    "hday": null,
+    "fajr": 354,
+    "shuruk": 480,
+    "zukhr": 739,
+    "asr": 840,
+    "maghrib": 987,
+    "isha": 1092
+   },
+   {
+    "date": 16,
+    "weekday": "tIH",
+    "hday": null,
+    "fajr": 356,
+    "shuruk": 482,
+    "zukhr": 739,
+    "asr": 839,
+    "maghrib": 986,
+    "isha": 1091
+   },
+   {
+    "date": 17,
+    "weekday": "BT",
+    "hday": null,
+    "fajr": 357,
+    "shuruk": 484,
+    "zukhr": 740,
+    "asr": 838,
+    "maghrib": 984,
+    "isha": 1089
+   },
+   {
+    "date": 18,
+    "weekday": "18",
+    "hday": null,
+    "fajr": 359,
+    "shuruk": 486,
+    "zukhr": 740,
+    "asr": 837,
+    "maghrib": 983,
+    "isha": 1088
+   },
+   {
+    "date": 19,
+    "weekday": "UT",
+    "hday": 10,
+    "fajr": 360,
+    "shuruk": 488,
+    "zukhr": 740,
+    "asr": 835,
+    "maghrib": 981,
+    "isha": 1087
+   },
+   {
+    "date": 20,
+    "weekday": "20",
+    "hday": 11,
+    "fajr": 362,
+    "shuruk": 490,
+    "zukhr": 740,
+    "asr": 834,
+    "maghrib": 980,
+    "isha": 1086
+   },
+   {
+    "date": 21,
+    "weekday": "21",
+    "hday": 12,
+    "fajr": 364,
+    "shuruk": 492,
+    "zukhr": 740,
+    "asr": 833,
+    "maghrib": 978,
+    "isha": 1085
+   },
+   {
+    "date": 22,
+    "weekday": "BC",
+    "hday": 13,
+    "fajr": 365,
+    "shuruk": 494,
+    "zukhr": 741,
+    "asr": 832,
+    "maghrib": 977,
+    "isha": 1084
+   },
+   {
+    "date": 23,
+    "weekday": "tIH",
+    "hday": 14,
+    "fajr": 367,
+    "shuruk": 496,
+    "zukhr": 741,
+    "asr": 831,
+    "maghrib": 975,
+    "isha": 1083
+   },
+   {
+    "date": 24,
+    "weekday": "BT",
+    "hday": 15,
+    "fajr": 368,
+    "shuruk": 498,
+    "zukhr": 741,
+    "asr": 831,
+    "maghrib": 974,
+    "isha": 1082
+   },
+   {
+    "date": 25,
+    "weekday": "25",
+    "hday": 16,
+    "fajr": 370,
+    "shuruk": 499,
+    "zukhr": 742,
+    "asr": 830,
+    "maghrib": 973,
+    "isha": 1081
+   },
+   {
+    "date": 26,
+    "weekday": "UT",
+    "hday": 17,
+    "fajr": 371,
+    "shuruk": 501,
+    "zukhr": 742,
+    "asr": 829,
+    "maghrib": 972,
+    "isha": 1080
+   },
+   {
+    "date": 27,
+    "weekday": "27",
+    "hday": 18,
+    "fajr": 372,
+    "shuruk": 503,
+    "zukhr": 742,
+    "asr": 828,
+    "maghrib": 971,
+    "isha": 1079
+   },
+   {
+    "date": 28,
+    "weekday": "28",
+    "hday": 19,
+    "fajr": 374,
+    "shuruk": 505,
+    "zukhr": 743,
+    "asr": 827,
+    "maghrib": 970,
+    "isha": 1079
+   },
+   {
+    "date": 29,
+    "weekday": "BC",
+    "hday": 20,
+    "fajr": 375,
+    "shuruk": 507,
+    "zukhr": 743,
+    "asr": 827,
+    "maghrib": 969,
+    "isha": 1078
+   },
+   {
+    "date": 30,
+    "weekday": "llH",
+    "hday": 21,
+    "fajr": 376,
+    "shuruk": 508,
+    "zukhr": 743,
+    "asr": 826,
+    "maghrib": 968,
+    "isha": 1077
+   }
+  ]
+ }
+]

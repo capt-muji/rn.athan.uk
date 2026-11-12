@@ -1,0 +1,182 @@
+{
+ "surface": "six mawaqit boards, live year-parameter routes",
+ "capture_utc": "2026-11-12",
+ "boards": {
+  "nono": {
+   "slug": "grande-mosquee-de-nono-nono-1234-guinee",
+   "meta": {
+    "name": "Grande Mosqu\u00e9e de Nono - NONO",
+    "latitude": 10.876038673068,
+    "longitude": -10.495964683475,
+    "timezone": "Africa/Conakry"
+   },
+   "plain_calendar_rows": 366,
+   "plain_times_today": [
+    "05:24",
+    "13:45",
+    "15:47",
+    "18:25",
+    "19:24"
+   ],
+   "year2027_param_served": true,
+   "year2027_calendar_identical": true,
+   "year2027_rows": 366
+  },
+  "lusaka": {
+   "slug": "masjid-barkaatiyah-lusaka-10101-zambia",
+   "meta": {
+    "name": "Masjid Barkaatiyah - LUSAKA",
+    "latitude": -15.437607794639,
+    "longitude": 28.281194636419,
+    "timezone": "Africa/Lusaka"
+   },
+   "plain_calendar_rows": 366,
+   "plain_times_today": [
+    "04:55",
+    "13:00",
+    "16:30",
+    "18:15",
+    "19:25"
+   ],
+   "year2027_param_served": true,
+   "year2027_calendar_identical": true,
+   "year2027_rows": 366
+  },
+  "nampula": {
+   "slug": "masjid-fatimah-rua-monomotapa-3100-nampula-mozambique",
+   "meta": {
+    "name": "Masjid F\u00e1tima - NAMPULA",
+    "latitude": -15.118649297734,
+    "longitude": 39.261987805367,
+    "timezone": "Africa/Maputo"
+   },
+   "plain_calendar_rows": 366,
+   "plain_times_today": [
+    "04:25",
+    "12:15",
+    "15:15",
+    "17:31",
+    "18:43"
+   ],
+   "year2027_param_served": true,
+   "year2027_calendar_identical": true,
+   "year2027_rows": 366
+  },
+  "gbessia": {
+   "slug": "mosquee-gbessia-port2-conakry-224-guinee",
+   "meta": {
+    "name": "Mosqu\u00e9e Gbessia port2 - CONAKRY",
+    "latitude": 9,
+    "longitude": -13,
+    "timezone": "Africa/Conakry"
+   },
+   "plain_calendar_rows": 366,
+   "plain_times_today": [
+    "05:06",
+    "12:52",
+    "16:19",
+    "19:13",
+    "20:35"
+   ],
+   "year2027_param_served": true,
+   "year2027_calendar_identical": true,
+   "year2027_rows": 366
+  },
+  "bissau": {
+   "slug": "mesquita-attadamun-bissau-2210-guinea-bissau",
+   "meta": {
+    "name": "Mesquita Attadamun - BISSAU",
+    "latitude": 11.8611568,
+    "longitude": -15.6133961,
+    "timezone": "Africa/Bissau"
+   },
+   "plain_calendar_rows": 366,
+   "plain_times_today": [
+    "05:35",
+    "13:40",
+    "16:30",
+    "18:45",
+    "19:35"
+   ],
+   "year2027_param_served": true,
+   "year2027_calendar_identical": true,
+   "year2027_rows": 366
+  },
+  "dakar-ucad": {
+   "slug": "grande-mosquee-de-lucad-dakar",
+   "meta": {
+    "name": "Grande Mosqu\u00e9e de l'UCAD - Dakar",
+    "latitude": 14.6629438,
+    "longitude": -17.4374803,
+    "timezone": "Africa/Dakar"
+   },
+   "plain_calendar_rows": 366,
+   "plain_times_today": [
+    "05:56",
+    "14:15",
+    "17:00",
+    "19:31",
+    "21:00"
+   ],
+   "year2027_param_served": true,
+   "year2027_calendar_identical": true,
+   "year2027_rows": 366
+  }
+ },
+ "api_routes": {
+  "api_mawaqit_2_0_mosque_times_year_month": "404 (SPA shell, no auth)",
+  "api_mawaqit_2_0_mosque_calendar_year": "404 (SPA shell, no auth)",
+  "note": "the api.mawaqit.net JSON is the JWT-walled class (recorded O1n-7/O1n-20/24); no anonymous route found"
+ },
+ "ucad_own_site_witness": {
+  "site": "grandemosqueeucad.com (WordPress, the mosque's own site; the board's association field points to fieed.com which is WAF-blocked)",
+  "axis": "today-widget only, no date printed, no timetable page (wp-json pages walked, 14 pages, none a timetable)",
+  "capture_utc": "2026-11-12",
+  "own_row": {
+   "fajr": "05:50",
+   "dhuhr": "14:15",
+   "asr": "17:00",
+   "maghrib": "19:50",
+   "isha": "21:00"
+  },
+  "board_row_today": [
+   "05:56",
+   "14:15",
+   "17:00",
+   "19:31",
+   "21:00"
+  ],
+  "own_minus_board_min": {
+   "fajr": {
+    "own_site": "05:50",
+    "board": "05:56",
+    "own_minus_board_min": -6
+   },
+   "dhuhr": {
+    "own_site": "14:15",
+    "board": "14:15",
+    "own_minus_board_min": 0
+   },
+   "asr": {
+    "own_site": "17:00",
+    "board": "17:00",
+    "own_minus_board_min": 0
+   },
+   "maghrib": {
+    "own_site": "19:50",
+    "board": "19:31",
+    "own_minus_board_min": 19
+   },
+   "isha": {
+    "own_site": "21:00",
+    "board": "21:00",
+    "own_minus_board_min": 0
+   }
+  },
+  "classification": "per the mihrab.ru precedent one undated-axis today-row is not a dated dataset; recorded as a witness diff on the board entry, never banked as rows"
+ },
+ "leads": {
+  "fieed.com": "F\u00e9d\u00e9ration Islamique des El\u00e8ves et Etudiants de Dakar, the board's association field; WAF block page banked (http 444/1210-byte waf page, https connection refused)",
+  "search_routes": "next-year poster searches blocked at every engine this session: DDG challenge (html + lite + fetch-service), Google captcha, Bing poisoned SERP, Mojeek captcha, Ecosia 403"
+ }
+}

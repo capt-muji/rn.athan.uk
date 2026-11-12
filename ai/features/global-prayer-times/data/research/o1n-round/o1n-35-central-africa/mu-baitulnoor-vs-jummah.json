@@ -1,0 +1,24 @@
+{
+ "matched_dates": 365,
+ "unmatched": 1,
+ "fajr": {
+  "median_diff": -6,
+  "within1_pct": 0.0,
+  "max_abs": 8
+ },
+ "shuruq": {
+  "median_diff": 0,
+  "within1_pct": 96.7,
+  "max_abs": 6
+ },
+ "maghrib": {
+  "median_diff": -2,
+  "within1_pct": 30.7,
+  "max_abs": 3
+ },
+ "isha": {
+  "median_diff": 15,
+  "within1_pct": 8.2,
+  "max_abs": 26
+ }
+}

@@ -1,0 +1,47 @@
+{
+ "pair": "KI Tarawa Ahmadiyya Ramadan board vs turktakvim Bairiki (70171)",
+ "days": 30,
+ "note": "sheet cols [sehr,fajr,dhuhr,asr,maghrib,isha]; board fixed dhuhr 13:30 / asr 16:00 / isha 19:45",
+ "held_minus_tt": {
+  "fajr": {
+   "med": 7,
+   "min": 5,
+   "max": 11,
+   "n": 30,
+   "exact": 0,
+   "within1": 0
+  },
+  "dhuhr": {
+   "med": 44,
+   "min": 41,
+   "max": 47,
+   "n": 30,
+   "exact": 0,
+   "within1": 0
+  },
+  "asr": {
+   "med": 2,
+   "min": -7,
+   "max": 14,
+   "n": 30,
+   "exact": 1,
+   "within1": 5
+  },
+  "maghrib": {
+   "med": -6,
+   "min": -7,
+   "max": -6,
+   "n": 30,
+   "exact": 0,
+   "within1": 0
+  },
+  "isha": {
+   "med": -9,
+   "min": -12,
+   "max": -5,
+   "n": 30,
+   "exact": 0,
+   "within1": 0
+  }
+ }
+}

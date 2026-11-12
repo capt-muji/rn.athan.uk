@@ -194,3 +194,157 @@ Turkish on the Diyanet front. Every raw artifact under `captures/`, gzipped in p
 the local Vision binary only, never a model-vision pass, never the vision subagent, no pixels
 read by hand. Wayback one probe at a time, stop on 429. Nothing under /tmp. No subagents
 deployed. The repository was not written.
+
+---
+
+# Continuation, 2026-11-12 (wave o1n-23, resumed)
+
+Fronts of this leg: the fm6oa.org regional-tables lead (handed over from wave O1n-24) and
+Syria's imsakiyya cells. Engine of record adhan 4.4.6, `Rounding.None`; the served
+PrayTimes.js was additionally run for engine attribution where noted. Same discipline as
+above; agent-browser not needed (no JS wall met); nothing outside the workspace.
+
+## 9. fm6oa.org — the Mohammed VI Foundation of African Oulema's prayer service — CAPTURED, and it is a relabelled edition of the ministry's own computed generation
+
+The foundation's prayer-times page (Arabic, French and English editions all captured) embeds
+`fm6oa.org/prieres/code/index.php?ville=N` (163 city options, all Moroccan, Rabat-Salé to
+Laayoune/Dakhla) plus a sidebar widget `horaire_fm6oa_aside.php?ville=N`. Each city page
+serves a TODAY table and a full lunar-month grid (Jumada al-Thani 1448, 11 Nov to 10 Dec 2026,
+day 30 marked "حسب نتيجة المراقبة"). All 163 tables captured (4,890 dated rows,
+`data/fm6oa-rows.json`). The `/prieres/` directory is an open Apache listing: the served
+engine is PrayTimes.js, with `ghana.html` a live client-side PrayTimes widget for Accra
+(timezone 0) and `stdr.html` an empty placeholder ("times will be updated later") pointing at
+Abuja - the Foundation's African-branch surfaces are today-widgets, not dated tables
+(all artifacts under `captures/fm6oa/`).
+
+Two provenance facts settle what this surface is:
+
+- The aside widget's Google Analytics tag `UA-35630430-1` is registered to **habous.net** -
+  the Moroccan ministry's own domain.
+- Name-matched against the ministry's own product, the FM6OA grids are **95.83% byte-identical
+  on the 2026-11-11..30 overlap (18,744 of 19,560 cells, max |diff| 1 min)** across all 163
+  cities (`data/fm6oa-vs-habous-byname.json`). By raw code the overlap looked different
+  (10.7% identical - the code spaces differ); by city NAME every one of the 163 pairs matched.
+
+So the FM6OA service is a **relabelled redistribution of one computed generation** - the
+ministry's - not a new authority layer. Per the frozen rule, a relabelled edition does not
+lift a grade. Tier reasoning: tier follows adoption, and the adopting parties here are (a)
+the Foundation itself, which publishes the service in three languages under its own brand
+(royal-chartered authority-by-publisher), and (b) its African country branches through the
+client-side widgets. The generation behind both is the ministry's, already the record's
+Morocco line. Grade for the Foundation surface: **community-to-authority redistribution of a
+provisional generation** - recorded as a distribution fact, not a new row.
+
+### The ministry's own product was captured for the comparison, and it carries a dated regime change
+
+The ministry's homepage (`habous.gov.ma`, captured) now serves prayer times from monthly
+static files `data/horaires-YYYY-MM.js` plus a `data/hijri.js` month-start registry (month
+starts by announced sighting; Jumada I 1448 = 2026-10-13, 29 days; Jumada II = 2026-11-11,
+duration open). **October and November 2026 files exist; September and earlier are gone
+(404) and December is not yet posted** - a two-month rolling publication. Parsed bank:
+**11,590 rows, 190 cities, 2026-10-01..2026-11-30** (`data/habous-months-rows.json`,
+raw files gzipped).
+
+The ministry's own widget code documents a **clock regime change**: "Heure légale du Maroc =
+GMT depuis le 20/09/2026 (décret 2.26.530)" - Morocco moved to permanent GMT on
+2026-09-20, replacing the permanent UTC+1. This is the same family of finding as the
+Western Sahara clock dispute already in the record; the served tables are GMT-based.
+
+### Fit of the ministry generation (per FIT-RULES, engine attribution included)
+
+Fit used the ministry's own city coordinates (`villes.json` in the served directory, 191
+entries, degrees+minutes with west longitudes unsigned - the sign convention cost one wrong
+pass before being caught). The ministry's tables do NOT reproduce on adhan 4.4.6 at any
+recipe: best adhan recipe (fajr 19.1, isha 17, dhuhr +5) reaches only **0.9% exact,
+mae 2.08, worst ~10 min** over 69,540 cells (`work/fm6oa/adhan-score.json`).
+
+The SERVED PrayTimes.js engine was then run directly (MWL family, asr Standard,
+rise/set angle 0.833 + 0.0347·√elv, GMT). Best recipe **fajr ≈ 19.1°, isha 18°, dhuhr =
+transit + 5 min** scores **51.5% exact, 73.7% within-1, mae 1.219, worst 5-6 min** over all
+69,540 cells of the two months, and the residual is UNIFORM across all 190 cities
+(65-83% within-1 everywhere; no outlier city) - so the gap is the ministry's server-side
+engine version/constants, not coordinates. **Reproduction is NOT at zero margins**, so the
+recipe is recorded as an attribution envelope, not a proof: PrayTimes-v2-family,
+elevation-corrected rise/set, fajr ≈ 19.1°, isha 18°, Standard asr, dhuhr ≈ transit + 5 min
+(`work/fm6oa/percity-fajr191.json`, `praytimes-score.json`).
+
+FIT-RULES deliverable: span held = 61 dated days (Oct+Nov 2026) on 190 cities, one recipe
+across both months (no between-year stability testable - one published cycle; no seasonal
+amplitude from a two-month window; engine stated above). Grade: **provisional** (one
+published cycle, current), same computed generation as the FM6OA capture.
+
+## 10. Syria — the Ramadan 1447 imsakiyya cells are EXTRACTED (174/174), attribution bounded honestly
+
+The banked sheet (1080×1439) was measured on the actual ruling grid: 29 day-rows at 33-35 px
+pitch, 9 columns (one red-print column holding a decorative element on rows 1-2 only, six
+numeric time columns with three distinct print styles - dark-on-light, white-on-teal,
+dark-on-teal - and two date/day columns). Every numeric cell was extracted by per-cell crops
+and the local Vision OCR at the fast level, with per-column masks and multi-read consensus:
+**174/174 cells parsed into times, 29 dated rows banked**
+(`data/sy-imsakiyya-1447-dated-rows.json`, cells with provenance in
+`data/sy-imsakiyya-1447-cells.json`). The date and day-number columns did NOT resolve to text
+and are recorded as unread - the dated axis is attributed, not print-read (below).
+
+Attribution (engine adhan 4.4.6 at Damascus 33.5115, 36.3064, UTC+3, sweep scripts banked):
+
+- F2 = **fajr**, implied fixed angle ≈ 18.85° (8-10/29 days exact, mae ≈ 0.9).
+- F1 = **sunrise** (residual 0 to −3 min across the month).
+- E = **dhuhr − 1 min** (25/29 exact).
+- D = **asr (Shafi'i) in 12-hour clock − ~2.5 min** (mae 0.68).
+- C = **maghrib in 12-hour clock − ~1 min** (mae 0.81). Sanity anchor: Damascus sunset
+  18 Feb = 18:22 local; the print's day-1 cell 06:21 = 18:21.
+- B = an **unlabelled sixth numeric column**: constant 78-79 min after the maghrib column
+  (wobble 78/79), equivalently an isha-like product at ~18.5° − ~6 min. The print carries no
+  readable label for it. **It is not recorded as isha**, and the sheet shows no readable
+  isha column.
+
+The sheet's engine is NOT identified: every column shows a smooth ±3 min month-scale drift
+against adhan, and PrayTimes-v2 (MWL 18/18, with and without the elevation correction for
+Damascus ~690 m) does not close it. The full attribution with residual profiles is
+`data/sy-imsakiyya-1447-attribution.json`.
+
+Date axis: the National Crescent Committee's announcement (reached only as a search snippet;
+the announcement page itself does not resolve from this host) puts **1 Ramadan 1447 on
+Thursday 2026-02-19**, and the rows are dated on that authority; a pure adhan fit prefers
+18 Feb by ~1 min, inside the unproven engine constants, so the day-level anchor is recorded
+as attributed, not proven (both candidates in the data file's `date_axis` note).
+
+## 11. Syria — ministry site and second-surface probes
+
+`mow.gov.sy` is live (homepage captured raw, `captures/sy/mow-home.html.gz`): the site
+carries NO prayer-times page. It promotes the ministry's own app "مسجديك" (Masjidak) on both
+app stores - a named native surface, not probed (outside the public-page walk). Second
+Syrian authority surface: none reached under these terms (Bing returned unrelated results;
+html.duckduckgo and lite.duckduckgo both issued challenges on later probes and the thread
+was stopped; mojeek challenged; suryalana.com does not resolve from this host and TinyFish
+rejected its percent-encoded URL). `hijridate.com` now serves the NEXT Ramadan's (1448)
+Damascus table - a community surface, noted in `captures/sy/provenance-notes.md.gz`, not
+banked as authority.
+
+## Honest negatives added this leg
+
+1. **The FM6OA/ministry reproduction is not at zero margins**: the best recipe on the
+   publisher's own served engine still misses by up to 5-6 min uniformly (mae 1.22); the
+   ministry's server-side engine version and exact constants are not exposed by anything
+   served.
+2. **adhan 4.4.6 does not reproduce the Morocco generation** (best 0.9% exact, mae 2.08) -
+   the elevation-corrected PrayTimes-family signature is real and adhan lacks it.
+3. **The Syrian sheet's engine is not identified** and its exact fajr angle is bounded
+   (~18.85° ± engine noise), not proven.
+4. **The sheet's date and day-number cells did not OCR** - the date axis rests on the
+   committee announcement (snippet-level) plus fit, not on print-read cells.
+5. **The Syrian committee announcement text was never fetched** (page does not resolve;
+   snippet only); its wording is known to the length of the cut.
+6. **The ministry's Masjidak app is a named, unprobed surface** (native app; store pages
+   linked from the ministry homepage).
+7. **December 2026 does not exist yet** in the ministry's monthly files and **September
+   2026 and earlier are gone** - the two-month window is the surface's whole archive today.
+
+## Discipline statement (continuation)
+
+Public pages only; no login, forms, email or challenge solved (three search-engine
+challenges were recorded and the threads stopped). OCR local and free only - the local
+Vision binary, fast level, on per-cell crops; no model-vision pass, no pixels read by hand.
+Timestamps UTC; the sweep and captures are logged. Every raw artifact under `captures/`,
+gzipped in place; derived rows and fits under `data/`. Wayback not needed this leg. No
+subagents deployed. The repository was not written.

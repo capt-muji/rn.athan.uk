@@ -1,0 +1,2725 @@
+{
+ "country": "iceland",
+ "generated": "2026-11-12T11:40:59Z",
+ "routes_probed": {
+  "monthly_2026": 301,
+  "monthly_2025_06": 2,
+  "monthly_2027_06": 2
+ },
+ "settlements": {
+  "6222": {
+   "name": "Hjalli",
+   "city_label": "Hjalli (Arnessysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6223": {
+   "name": "Hreppholar",
+   "city_label": "Hreppholar (Arnessysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6224": {
+   "name": "Hruni",
+   "city_label": "Hruni (Arnessysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6225": {
+   "name": "Hveragerdhi",
+   "city_label": "Hveragerdhi (Arnessysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6226": {
+   "name": "Kotströnd",
+   "city_label": "Kotströnd (Arnessysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6227": {
+   "name": "Mosfell",
+   "city_label": "Mosfell (Arnessysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6228": {
+   "name": "Nes",
+   "city_label": "Nes (Arnessysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6229": {
+   "name": "Olafsvellir",
+   "city_label": "Olafsvellir (Arnessysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6230": {
+   "name": "Saeluhus",
+   "city_label": "Saeluhus (Arnessysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6231": {
+   "name": "Selfoss",
+   "city_label": "Selfoss (Arnessysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6232": {
+   "name": "Skalholt",
+   "city_label": "Skalholt (Arnessysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6233": {
+   "name": "Stokkseyri",
+   "city_label": "Stokkseyri (Arnessysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6234": {
+   "name": "Storinupur",
+   "city_label": "Storinupur (Arnessysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6235": {
+   "name": "Strandarkirkja",
+   "city_label": "Strandarkirkja (Arnessysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6236": {
+   "name": "Torfastadhir",
+   "city_label": "Torfastadhir (Arnessysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6237": {
+   "name": "Tungufell",
+   "city_label": "Tungufell (Arnessysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6238": {
+   "name": "Kinnarstadhir",
+   "city_label": "Kinnarstadhir (Austur Bardhastrandarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6239": {
+   "name": "Kollabudhir",
+   "city_label": "Kollabudhir (Austur Bardhastrandarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6240": {
+   "name": "Kroksfjardharnes",
+   "city_label": "Kroksfjardharnes (Austur Bardhastrandarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6241": {
+   "name": "Reykholar",
+   "city_label": "Reykholar (Austur Bardhastrandarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6242": {
+   "name": "Stadhur",
+   "city_label": "Stadhur (Austur Bardhastrandarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6243": {
+   "name": "Bergsstadhir",
+   "city_label": "Bergsstadhir (Austur Hunavatnssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6244": {
+   "name": "Blönduos",
+   "city_label": "Blönduos (Austur Hunavatnssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6245": {
+   "name": "Gilja",
+   "city_label": "Gilja (Austur Hunavatnssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6246": {
+   "name": "Grimstunga",
+   "city_label": "Grimstunga (Austur Hunavatnssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6247": {
+   "name": "Helgavatn",
+   "city_label": "Helgavatn (Austur Hunavatnssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6248": {
+   "name": "Skagaströnd",
+   "city_label": "Skagaströnd (Austur Hunavatnssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6249": {
+   "name": "Höskuldsstadhir",
+   "city_label": "Höskuldsstadhir (Austur Hunavatnssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6250": {
+   "name": "Hveravellir",
+   "city_label": "Hveravellir (Austur Hunavatnssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6251": {
+   "name": "Kaldrani",
+   "city_label": "Kaldrani (Austur Hunavatnssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6252": {
+   "name": "Kalfshamarsvik",
+   "city_label": "Kalfshamarsvik (Austur Hunavatnssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6253": {
+   "name": "Midhhop",
+   "city_label": "Midhhop (Austur Hunavatnssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6254": {
+   "name": "Reykir",
+   "city_label": "Reykir (Austur Hunavatnssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6255": {
+   "name": "Skali",
+   "city_label": "Skali (Austur Hunavatnssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6256": {
+   "name": "Tindar",
+   "city_label": "Tindar (Austur Hunavatnssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6257": {
+   "name": "Bjarnanes",
+   "city_label": "Bjarnanes (Austur Skaftafellssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6258": {
+   "name": "Borgarhofn",
+   "city_label": "Borgarhofn (Austur Skaftafellssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6259": {
+   "name": "Hoffell",
+   "city_label": "Hoffell (Austur Skaftafellssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6260": {
+   "name": "Höfn",
+   "city_label": "Höfn (Austur Skaftafellssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6261": {
+   "name": "Kalfafellsstadhur",
+   "city_label": "Kalfafellsstadhur (Austur Skaftafellssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6262": {
+   "name": "Knappavellir",
+   "city_label": "Knappavellir (Austur Skaftafellssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6263": {
+   "name": "Kvisker",
+   "city_label": "Kvisker (Austur Skaftafellssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6264": {
+   "name": "Raudhaberg",
+   "city_label": "Raudhaberg (Austur Skaftafellssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6265": {
+   "name": "Reydhara",
+   "city_label": "Reydhara (Austur Skaftafellssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6266": {
+   "name": "Reynivellir",
+   "city_label": "Reynivellir (Austur Skaftafellssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6267": {
+   "name": "Skaftafell",
+   "city_label": "Skaftafell (Austur Skaftafellssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6268": {
+   "name": "Stafafell",
+   "city_label": "Stafafell (Austur Skaftafellssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6269": {
+   "name": "Svinafell",
+   "city_label": "Svinafell (Austur Skaftafellssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6270": {
+   "name": "Gufudalur",
+   "city_label": "Gufudalur (Bardastrandarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6271": {
+   "name": "Akranes",
+   "city_label": "Akranes (Borgarfjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6272": {
+   "name": "Fitjar",
+   "city_label": "Fitjar (Borgarfjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6273": {
+   "name": "Geitaberg",
+   "city_label": "Geitaberg (Borgarfjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6274": {
+   "name": "Grund",
+   "city_label": "Grund (Borgarfjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6275": {
+   "name": "Kalmanstunga",
+   "city_label": "Kalmanstunga (Borgarfjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6276": {
+   "name": "Melar",
+   "city_label": "Melar (Borgarfjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6277": {
+   "name": "Reykholt",
+   "city_label": "Reykholt (Borgarfjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6278": {
+   "name": "Saurbaer",
+   "city_label": "Saurbaer (Borgarfjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6279": {
+   "name": "Asgardhur",
+   "city_label": "Asgardhur (Dalasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6280": {
+   "name": "Dagverdharnes",
+   "city_label": "Dagverdharnes (Dalasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6281": {
+   "name": "Glerarskogar",
+   "city_label": "Glerarskogar (Dalasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6282": {
+   "name": "Hjardharholt",
+   "city_label": "Hjardharholt (Dalasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6283": {
+   "name": "Holt",
+   "city_label": "Holt (Dalasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6284": {
+   "name": "Hvammur",
+   "city_label": "Hvammur (Dalasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6285": {
+   "name": "Hvoll",
+   "city_label": "Hvoll (Dalasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6286": {
+   "name": "Kleifar",
+   "city_label": "Kleifar (Dalasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6287": {
+   "name": "Saudhafell",
+   "city_label": "Saudhafell (Dalasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6288": {
+   "name": "Skardh",
+   "city_label": "Skardh (Dalasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6289": {
+   "name": "Snoksdalur",
+   "city_label": "Snoksdalur (Dalasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6290": {
+   "name": "Stadharfell",
+   "city_label": "Stadharfell (Dalasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6291": {
+   "name": "Akureyri",
+   "city_label": "Akureyri (Eyjafjardarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6292": {
+   "name": "Arskogssandur",
+   "city_label": "Arskogssandur (Eyjafjardarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6293": {
+   "name": "Bakki",
+   "city_label": "Bakki (Eyjafjardarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6294": {
+   "name": "Dalvik",
+   "city_label": "Dalvik (Eyjafjardarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6295": {
+   "name": "Hjalteyri",
+   "city_label": "Hjalteyri (Eyjafjardarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6296": {
+   "name": "Undirfell",
+   "city_label": "Undirfell (Eyjafjardarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6297": {
+   "name": "Urdhir",
+   "city_label": "Urdhir (Eyjafjardarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6298": {
+   "name": "Vidhidalstunga",
+   "city_label": "Vidhidalstunga (Eyjafjardarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6299": {
+   "name": "Vidhimyri",
+   "city_label": "Vidhimyri (Eyjafjardarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6300": {
+   "name": "Mikligardhur",
+   "city_label": "Mikligardhur (Eyjafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6301": {
+   "name": "Munkathvera",
+   "city_label": "Munkathvera (Eyjafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6302": {
+   "name": "Olafsfjördhur",
+   "city_label": "Olafsfjördhur (Eyjafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6303": {
+   "name": "Siglufjördhur",
+   "city_label": "Siglufjördhur (Eyjafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6304": {
+   "name": "Tjarnir",
+   "city_label": "Tjarnir (Eyjafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6305": {
+   "name": "Alftanes",
+   "city_label": "Alftanes (Gullbringusysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6306": {
+   "name": "Bessastadhir",
+   "city_label": "Bessastadhir (Gullbringusysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6307": {
+   "name": "Grindavik",
+   "city_label": "Grindavik (Gullbringusysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6308": {
+   "name": "Hafnarfjördhur",
+   "city_label": "Hafnarfjördhur (Gullbringusysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6309": {
+   "name": "Hafnir",
+   "city_label": "Hafnir (Gullbringusysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6310": {
+   "name": "Hvalsnes",
+   "city_label": "Hvalsnes (Gullbringusysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6311": {
+   "name": "Keflavik İnternational Airport",
+   "city_label": "Keflavik İnternational Airport (Gullbringusysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6312": {
+   "name": "Kopavogur",
+   "city_label": "Kopavogur (Gullbringusysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6313": {
+   "name": "Krisuvik",
+   "city_label": "Krisuvik (Gullbringusysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6314": {
+   "name": "Reykjavik",
+   "city_label": "Reykjavik (Gullbringusysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6315": {
+   "name": "Straumsvik",
+   "city_label": "Straumsvik (Gullbringusysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6316": {
+   "name": "Vogar",
+   "city_label": "Vogar (Gullbringusysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6317": {
+   "name": "Vomulastadhir",
+   "city_label": "Vomulastadhir (Gullbringusysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6318": {
+   "name": "Lagafell",
+   "city_label": "Lagafell (Kjosarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6319": {
+   "name": "Vidhivellir",
+   "city_label": "Vidhivellir (Mulasysla, Sudhur / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6320": {
+   "name": "Aedharvatn",
+   "city_label": "Aedharvatn (Myrasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6321": {
+   "name": "Akrar",
+   "city_label": "Akrar (Myrasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6322": {
+   "name": "Borgarnes",
+   "city_label": "Borgarnes (Myrasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6323": {
+   "name": "Dalsmynni",
+   "city_label": "Dalsmynni (Myrasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6324": {
+   "name": "Ferjukot",
+   "city_label": "Ferjukot (Myrasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6325": {
+   "name": "Fiflholt",
+   "city_label": "Fiflholt (Myrasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6326": {
+   "name": "Fornihvammur",
+   "city_label": "Fornihvammur (Myrasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6327": {
+   "name": "Gilsbakki",
+   "city_label": "Gilsbakki (Myrasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6328": {
+   "name": "Hvammur",
+   "city_label": "Hvammur (Myrasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6329": {
+   "name": "Stadharhraun",
+   "city_label": "Stadharhraun (Myrasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6330": {
+   "name": "Stafholt",
+   "city_label": "Stafholt (Myrasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6331": {
+   "name": "Haelavik",
+   "city_label": "Haelavik (Nordhur Isafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6332": {
+   "name": "Hesteyri",
+   "city_label": "Hesteyri (Nordhur Isafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6333": {
+   "name": "Holl",
+   "city_label": "Holl (Nordhur Isafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6334": {
+   "name": "Höfn",
+   "city_label": "Höfn (Nordhur Isafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6335": {
+   "name": "Hvitanes",
+   "city_label": "Hvitanes (Nordhur Isafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6336": {
+   "name": "Isafjördhur",
+   "city_label": "Isafjördhur (Nordhur Isafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6337": {
+   "name": "Kjaransvik",
+   "city_label": "Kjaransvik (Nordhur Isafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6338": {
+   "name": "Latrar",
+   "city_label": "Latrar (Nordhur Isafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6339": {
+   "name": "Melgraseyri",
+   "city_label": "Melgraseyri (Nordhur Isafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6340": {
+   "name": "Unadhsdalur",
+   "city_label": "Unadhsdalur (Nordhur Isafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6341": {
+   "name": "Bakkafjordhur",
+   "city_label": "Bakkafjordhur (Nordhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6342": {
+   "name": "Bakkagerdhi",
+   "city_label": "Bakkagerdhi (Nordhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6343": {
+   "name": "Brimnes",
+   "city_label": "Brimnes (Nordhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6344": {
+   "name": "Bru",
+   "city_label": "Bru (Nordhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6345": {
+   "name": "Brunahvammur",
+   "city_label": "Brunahvammur (Nordhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6346": {
+   "name": "Bustarfell",
+   "city_label": "Bustarfell (Nordhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6347": {
+   "name": "Eiriksstadhir",
+   "city_label": "Eiriksstadhir (Nordhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6348": {
+   "name": "Fossvellir",
+   "city_label": "Fossvellir (Nordhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6349": {
+   "name": "Gil",
+   "city_label": "Gil (Nordhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6350": {
+   "name": "Haukstadhir",
+   "city_label": "Haukstadhir (Nordhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6351": {
+   "name": "Hof",
+   "city_label": "Hof (Nordhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6352": {
+   "name": "Hofteigur",
+   "city_label": "Hofteigur (Nordhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6353": {
+   "name": "Hrafnabjörg",
+   "city_label": "Hrafnabjörg (Nordhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6354": {
+   "name": "Husavik",
+   "city_label": "Husavik (Nordhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6355": {
+   "name": "Ketilsstadhir",
+   "city_label": "Ketilsstadhir (Nordhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6356": {
+   "name": "Klyppsstadhir",
+   "city_label": "Klyppsstadhir (Nordhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6357": {
+   "name": "Njardhvik",
+   "city_label": "Njardhvik (Nordhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6358": {
+   "name": "Nypur",
+   "city_label": "Nypur (Nordhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6359": {
+   "name": "Ranga",
+   "city_label": "Ranga (Nordhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6360": {
+   "name": "Seydhisfjördhur",
+   "city_label": "Seydhisfjördhur (Nordhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6361": {
+   "name": "Skogar",
+   "city_label": "Skogar (Nordhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6362": {
+   "name": "Sunnudalur",
+   "city_label": "Sunnudalur (Nordhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6363": {
+   "name": "Vindfell",
+   "city_label": "Vindfell (Nordhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6364": {
+   "name": "Vopnafjordhur",
+   "city_label": "Vopnafjordhur (Nordhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6365": {
+   "name": "Asmundarstadhir",
+   "city_label": "Asmundarstadhir (Nordhur Pingeyjarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6366": {
+   "name": "Fjardharhorn",
+   "city_label": "Fjardharhorn (Nordhur Pingeyjarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6367": {
+   "name": "Grimsstadhir",
+   "city_label": "Grimsstadhir (Nordhur Pingeyjarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6368": {
+   "name": "Gunnarstadhir",
+   "city_label": "Gunnarstadhir (Nordhur Pingeyjarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6371": {
+   "name": "Laeknistadhir",
+   "city_label": "Laeknistadhir (Nordhur Pingeyjarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6372": {
+   "name": "Leirhöfn",
+   "city_label": "Leirhöfn (Nordhur Pingeyjarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6373": {
+   "name": "Skalar",
+   "city_label": "Skalar (Nordhur Pingeyjarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6374": {
+   "name": "Skinnastadhur",
+   "city_label": "Skinnastadhur (Nordhur Pingeyjarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6375": {
+   "name": "Skutustadhir",
+   "city_label": "Skutustadhir (Nordhur Pingeyjarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6376": {
+   "name": "Svalbardh",
+   "city_label": "Svalbardh (Nordhur Pingeyjarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6377": {
+   "name": "Vidhirholl",
+   "city_label": "Vidhirholl (Nordhur Pingeyjarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6378": {
+   "name": "Vatnsfjordhur",
+   "city_label": "Vatnsfjordhur (Nordur Isafjardarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6379": {
+   "name": "Brekka",
+   "city_label": "Brekka (Nordur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6380": {
+   "name": "Akurey",
+   "city_label": "Akurey (Rangarvallasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6381": {
+   "name": "Eyvindarholar",
+   "city_label": "Eyvindarholar (Rangarvallasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6382": {
+   "name": "Hagi",
+   "city_label": "Hagi (Rangarvallasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6383": {
+   "name": "Hald",
+   "city_label": "Hald (Rangarvallasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6384": {
+   "name": "Hella",
+   "city_label": "Hella (Rangarvallasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6385": {
+   "name": "Hvolsvöllur",
+   "city_label": "Hvolsvöllur (Rangarvallasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6386": {
+   "name": "Kalfholt",
+   "city_label": "Kalfholt (Rangarvallasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6387": {
+   "name": "Keldur",
+   "city_label": "Keldur (Rangarvallasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6388": {
+   "name": "Landmannahellir",
+   "city_label": "Landmannahellir (Rangarvallasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6389": {
+   "name": "Marteinstunga",
+   "city_label": "Marteinstunga (Rangarvallasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6390": {
+   "name": "Mulakot",
+   "city_label": "Mulakot (Rangarvallasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6391": {
+   "name": "Oddi",
+   "city_label": "Oddi (Rangarvallasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6392": {
+   "name": "Steinar",
+   "city_label": "Steinar (Rangarvallasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6393": {
+   "name": "Storihver",
+   "city_label": "Storihver (Rangarvallasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6394": {
+   "name": "Vestmannaeyjar",
+   "city_label": "Vestmannaeyjar (Rangarvallasysla-Heimaey Isla. / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6395": {
+   "name": "Fagranes",
+   "city_label": "Fagranes (Skagafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6396": {
+   "name": "Fell",
+   "city_label": "Fell (Skagafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6397": {
+   "name": "Flugumyri",
+   "city_label": "Flugumyri (Skagafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6398": {
+   "name": "Haganesvik",
+   "city_label": "Haganesvik (Skagafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6399": {
+   "name": "Holar",
+   "city_label": "Holar (Skagafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6400": {
+   "name": "Höfdhi",
+   "city_label": "Höfdhi (Skagafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6401": {
+   "name": "Hvalnes",
+   "city_label": "Hvalnes (Skagafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6402": {
+   "name": "Keta",
+   "city_label": "Keta (Skagafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6403": {
+   "name": "Kofi",
+   "city_label": "Kofi (Skagafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6404": {
+   "name": "Kolkuos",
+   "city_label": "Kolkuos (Skagafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6405": {
+   "name": "Maelifell",
+   "city_label": "Maelifell (Skagafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6406": {
+   "name": "Miklibaer",
+   "city_label": "Miklibaer (Skagafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6407": {
+   "name": "Reynistadhur",
+   "city_label": "Reynistadhur (Skagafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6408": {
+   "name": "Saudharkrokur",
+   "city_label": "Saudharkrokur (Skagafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6409": {
+   "name": "Silfrastadhir",
+   "city_label": "Silfrastadhir (Skagafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6410": {
+   "name": "Skefilsstadhir",
+   "city_label": "Skefilsstadhir (Skagafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6411": {
+   "name": "Arnarstapi",
+   "city_label": "Arnarstapi (Snaefellsnessysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6412": {
+   "name": "Bakkatunga",
+   "city_label": "Bakkatunga (Snaefellsnessysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6413": {
+   "name": "Grisholl",
+   "city_label": "Grisholl (Snaefellsnessysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6414": {
+   "name": "Grundarfjordhur",
+   "city_label": "Grundarfjordhur (Snaefellsnessysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6415": {
+   "name": "Helgafell",
+   "city_label": "Helgafell (Snaefellsnessysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6416": {
+   "name": "Hellissandur",
+   "city_label": "Hellissandur (Snaefellsnessysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6417": {
+   "name": "Hjardharfell",
+   "city_label": "Hjardharfell (Snaefellsnessysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6418": {
+   "name": "Knorr",
+   "city_label": "Knorr (Snaefellsnessysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6419": {
+   "name": "Kolbeinsstadhir",
+   "city_label": "Kolbeinsstadhir (Snaefellsnessysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6420": {
+   "name": "Narfeyri",
+   "city_label": "Narfeyri (Snaefellsnessysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6421": {
+   "name": "Olafsvik",
+   "city_label": "Olafsvik (Snaefellsnessysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6422": {
+   "name": "Raudhamelur",
+   "city_label": "Raudhamelur (Snaefellsnessysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6423": {
+   "name": "Raudhkollsstadhir",
+   "city_label": "Raudhkollsstadhir (Snaefellsnessysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6424": {
+   "name": "Setberg",
+   "city_label": "Setberg (Snaefellsnessysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6425": {
+   "name": "Stadhastadhur",
+   "city_label": "Stadhastadhur (Snaefellsnessysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6426": {
+   "name": "Stykkisholmur",
+   "city_label": "Stykkisholmur (Snaefellsnessysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6427": {
+   "name": "Arnes",
+   "city_label": "Arnes (Strandasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6428": {
+   "name": "Baer",
+   "city_label": "Baer (Strandasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6429": {
+   "name": "Bordheyri",
+   "city_label": "Bordheyri (Strandasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6430": {
+   "name": "Broddanes",
+   "city_label": "Broddanes (Strandasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6431": {
+   "name": "Burfell",
+   "city_label": "Burfell (Strandasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6432": {
+   "name": "Drangar",
+   "city_label": "Drangar (Strandasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6433": {
+   "name": "Eyjar",
+   "city_label": "Eyjar (Strandasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6434": {
+   "name": "Heggstadhanes",
+   "city_label": "Heggstadhanes (Strandasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6435": {
+   "name": "Holmavik",
+   "city_label": "Holmavik (Strandasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6436": {
+   "name": "Kaldrananes",
+   "city_label": "Kaldrananes (Strandasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6437": {
+   "name": "Kuvikur",
+   "city_label": "Kuvikur (Strandasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6438": {
+   "name": "Melar",
+   "city_label": "Melar (Strandasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6439": {
+   "name": "Ofeigsfjördhur",
+   "city_label": "Ofeigsfjördhur (Strandasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6440": {
+   "name": "Ospakseyri",
+   "city_label": "Ospakseyri (Strandasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6441": {
+   "name": "Prestbakki",
+   "city_label": "Prestbakki (Strandasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6442": {
+   "name": "Reykjarfjördhur",
+   "city_label": "Reykjarfjördhur (Strandasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6443": {
+   "name": "Tröllatunga",
+   "city_label": "Tröllatunga (Strandasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6444": {
+   "name": "Berufjördhur",
+   "city_label": "Berufjördhur (Sudhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6445": {
+   "name": "Berunes",
+   "city_label": "Berunes (Sudhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6446": {
+   "name": "Breidhavik",
+   "city_label": "Breidhavik (Sudhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6447": {
+   "name": "Budhareyri",
+   "city_label": "Budhareyri (Sudhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6448": {
+   "name": "Budhir",
+   "city_label": "Budhir (Sudhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6449": {
+   "name": "Djupivogur",
+   "city_label": "Djupivogur (Sudhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6450": {
+   "name": "Egilsstadhir",
+   "city_label": "Egilsstadhir (Sudhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6451": {
+   "name": "Eskifjördhur",
+   "city_label": "Eskifjördhur (Sudhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6452": {
+   "name": "Fjöll",
+   "city_label": "Fjöll (Sudhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6453": {
+   "name": "Geithellur",
+   "city_label": "Geithellur (Sudhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6454": {
+   "name": "Holmar",
+   "city_label": "Holmar (Sudhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6455": {
+   "name": "Ketilstadhir",
+   "city_label": "Ketilstadhir (Sudhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6456": {
+   "name": "Kolfreyjustadhur",
+   "city_label": "Kolfreyjustadhur (Sudhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6457": {
+   "name": "Krossanes",
+   "city_label": "Krossanes (Sudhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6458": {
+   "name": "Lönd",
+   "city_label": "Lönd (Sudhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6459": {
+   "name": "Melrakkanes",
+   "city_label": "Melrakkanes (Sudhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6460": {
+   "name": "Neskaupstadhur",
+   "city_label": "Neskaupstadhur (Sudhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6461": {
+   "name": "Starmyri",
+   "city_label": "Starmyri (Sudhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6462": {
+   "name": "Stödh",
+   "city_label": "Stödh (Sudhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6463": {
+   "name": "Vallanes",
+   "city_label": "Vallanes (Sudhur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6464": {
+   "name": "Brettingsstadhir",
+   "city_label": "Brettingsstadhir (Sudhur Pingeyjarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6465": {
+   "name": "Einarsstadhir",
+   "city_label": "Einarsstadhir (Sudhur Pingeyjarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6466": {
+   "name": "Husavik",
+   "city_label": "Husavik (Sudhur Pingeyjarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6467": {
+   "name": "Jarlsstadhir",
+   "city_label": "Jarlsstadhir (Sudhur Pingeyjarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6468": {
+   "name": "Kaupangur",
+   "city_label": "Kaupangur (Sudhur Pingeyjarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6469": {
+   "name": "Ljosavatn",
+   "city_label": "Ljosavatn (Sudhur Pingeyjarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6470": {
+   "name": "Mana",
+   "city_label": "Mana (Sudhur Pingeyjarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6471": {
+   "name": "Marteinsflaedha",
+   "city_label": "Marteinsflaedha (Sudhur Pingeyjarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6472": {
+   "name": "Myri",
+   "city_label": "Myri (Sudhur Pingeyjarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6473": {
+   "name": "Reykjahlidh",
+   "city_label": "Reykjahlidh (Sudhur Pingeyjarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6474": {
+   "name": "Storuvellir",
+   "city_label": "Storuvellir (Sudhur Pingeyjarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6475": {
+   "name": "Fjördhur",
+   "city_label": "Fjördhur (Sudur Mulasysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6476": {
+   "name": "Hvallatur",
+   "city_label": "Hvallatur (Vestur Bardhastrandarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6477": {
+   "name": "Hvalsker",
+   "city_label": "Hvalsker (Vestur Bardhastrandarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6478": {
+   "name": "Kollsvik",
+   "city_label": "Kollsvik (Vestur Bardhastrandarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6479": {
+   "name": "Kross",
+   "city_label": "Kross (Vestur Bardhastrandarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6480": {
+   "name": "Krosseyri",
+   "city_label": "Krosseyri (Vestur Bardhastrandarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6481": {
+   "name": "Raudhsdalur",
+   "city_label": "Raudhsdalur (Vestur Bardhastrandarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6482": {
+   "name": "Selardalur",
+   "city_label": "Selardalur (Vestur Bardhastrandarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6483": {
+   "name": "Siglunes",
+   "city_label": "Siglunes (Vestur Bardhastrandarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6484": {
+   "name": "Tunga",
+   "city_label": "Tunga (Vestur Bardhastrandarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6485": {
+   "name": "Vatneyri",
+   "city_label": "Vatneyri (Vestur Bardhastrandarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6486": {
+   "name": "Anastadhir",
+   "city_label": "Anastadhir (Vestur Hunavatnssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6487": {
+   "name": "Bjarg",
+   "city_label": "Bjarg (Vestur Hunavatnssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6488": {
+   "name": "Borg",
+   "city_label": "Borg (Vestur Hunavatnssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6489": {
+   "name": "Breidhabolsstadhur",
+   "city_label": "Breidhabolsstadhur (Vestur Hunavatnssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6490": {
+   "name": "Efri-Nupur",
+   "city_label": "Efri-Nupur (Vestur Hunavatnssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6491": {
+   "name": "Hvammstangi",
+   "city_label": "Hvammstangi (Vestur Hunavatnssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6492": {
+   "name": "Melstadhur",
+   "city_label": "Melstadhur (Vestur Hunavatnssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6493": {
+   "name": "Flateyri",
+   "city_label": "Flateyri (Vestur Isafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6494": {
+   "name": "Furufjördhur",
+   "city_label": "Furufjördhur (Vestur Isafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6495": {
+   "name": "Hrafnseyri",
+   "city_label": "Hrafnseyri (Vestur Isafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6496": {
+   "name": "Hraun",
+   "city_label": "Hraun (Vestur Isafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6497": {
+   "name": "Kirkjubol",
+   "city_label": "Kirkjubol (Vestur Isafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6498": {
+   "name": "Mosdalur",
+   "city_label": "Mosdalur (Vestur Isafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6499": {
+   "name": "Myrar",
+   "city_label": "Myrar (Vestur Isafjardharsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6500": {
+   "name": "Asar",
+   "city_label": "Asar (Vestur Skaftafellssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6501": {
+   "name": "Botnar",
+   "city_label": "Botnar (Vestur Skaftafellssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6502": {
+   "name": "Flaga",
+   "city_label": "Flaga (Vestur Skaftafellssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6503": {
+   "name": "Gröf",
+   "city_label": "Gröf (Vestur Skaftafellssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6504": {
+   "name": "Illugaver",
+   "city_label": "Illugaver (Vestur Skaftafellssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6505": {
+   "name": "Kalfafell",
+   "city_label": "Kalfafell (Vestur Skaftafellssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6506": {
+   "name": "Kirkjubaejarklaustur",
+   "city_label": "Kirkjubaejarklaustur (Vestur Skaftafellssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6507": {
+   "name": "Langholt",
+   "city_label": "Langholt (Vestur Skaftafellssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6508": {
+   "name": "Nupsstadhur",
+   "city_label": "Nupsstadhur (Vestur Skaftafellssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6509": {
+   "name": "Petursey",
+   "city_label": "Petursey (Vestur Skaftafellssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6510": {
+   "name": "Prestbakki",
+   "city_label": "Prestbakki (Vestur Skaftafellssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6511": {
+   "name": "Sandasel",
+   "city_label": "Sandasel (Vestur Skaftafellssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6512": {
+   "name": "Seljaland",
+   "city_label": "Seljaland (Vestur Skaftafellssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6513": {
+   "name": "Skal",
+   "city_label": "Skal (Vestur Skaftafellssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6514": {
+   "name": "Skeidhflötur",
+   "city_label": "Skeidhflötur (Vestur Skaftafellssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6515": {
+   "name": "Solheimar",
+   "city_label": "Solheimar (Vestur Skaftafellssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6516": {
+   "name": "Vik",
+   "city_label": "Vik (Vestur Skaftafellssysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6517": {
+   "name": "Skalmarnesmuli",
+   "city_label": "Skalmarnesmuli (Vustur Bardhastrandarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6518": {
+   "name": "Skapadalur",
+   "city_label": "Skapadalur (Vustur Bardhastrandarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6219": {
+   "name": "Eyrarbakki",
+   "city_label": "Eyrarbakki (Arnessysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2025",
+    "HAZİRAN 2026",
+    "HAZİRAN 2027"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6220": {
+   "name": "Gaulverjabaer",
+   "city_label": "Gaulverjabaer (Arnessysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6221": {
+   "name": "Haukadalur",
+   "city_label": "Haukadalur (Arnessysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6369": {
+   "name": "Heidharhöfn",
+   "city_label": "Heidharhöfn (Nordhur Pingeyjarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "6370": {
+   "name": "Kopasker",
+   "city_label": "Kopasker (Nordhur Pingeyjarsysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2025",
+    "HAZİRAN 2026",
+    "HAZİRAN 2027"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "82368": {
+   "name": "Keflavik",
+   "city_label": "Keflavik (Gullbringusysla / İzlanda)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  }
+ },
+ "rows": {}
+}

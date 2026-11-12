@@ -1,0 +1,238 @@
+{
+ "ministry_1446": {
+  "fajr": [
+   {
+    "fa": 17,
+    "ia": 14,
+    "n": 30,
+    "exact": 15,
+    "w1": 30,
+    "worst": 1,
+    "mean": 0.5
+   },
+   {
+    "fa": 17,
+    "ia": 14.25,
+    "n": 30,
+    "exact": 15,
+    "w1": 30,
+    "worst": 1,
+    "mean": 0.5
+   },
+   {
+    "fa": 17,
+    "ia": 14.5,
+    "n": 30,
+    "exact": 15,
+    "w1": 30,
+    "worst": 1,
+    "mean": 0.5
+   }
+  ],
+  "sunrise_check": {
+   "n": 30,
+   "exact": 0,
+   "w1": 0,
+   "worst": 9,
+   "mean": 8.43
+  },
+  "isha": [
+   {
+    "fa": 14,
+    "ia": 20,
+    "n": 30,
+    "exact": 0,
+    "w1": 0,
+    "worst": 19,
+    "mean": 18.07
+   },
+   {
+    "fa": 14.25,
+    "ia": 20,
+    "n": 30,
+    "exact": 0,
+    "w1": 0,
+    "worst": 19,
+    "mean": 18.07
+   },
+   {
+    "fa": 14.5,
+    "ia": 20,
+    "n": 30,
+    "exact": 0,
+    "w1": 0,
+    "worst": 19,
+    "mean": 18.07
+   }
+  ],
+  "asr_shafi_check": {
+   "n": 30,
+   "exact": 0,
+   "w1": 0,
+   "worst": 9,
+   "mean": 8.3
+  },
+  "maghrib_check": {
+   "n": 30,
+   "exact": 0,
+   "w1": 0,
+   "worst": 8,
+   "mean": 7.87
+  }
+ },
+ "state_1447": {
+  "fajr": [
+   {
+    "fa": 19.25,
+    "ia": 14,
+    "n": 30,
+    "exact": 17,
+    "w1": 30,
+    "worst": 1,
+    "mean": -0.43
+   },
+   {
+    "fa": 19.25,
+    "ia": 14.25,
+    "n": 30,
+    "exact": 17,
+    "w1": 30,
+    "worst": 1,
+    "mean": -0.43
+   },
+   {
+    "fa": 19.25,
+    "ia": 14.5,
+    "n": 30,
+    "exact": 17,
+    "w1": 30,
+    "worst": 1,
+    "mean": -0.43
+   }
+  ],
+  "maghrib": [
+   {
+    "fa": 14,
+    "ia": 14,
+    "n": 30,
+    "exact": 12,
+    "w1": 30,
+    "worst": 1,
+    "mean": 0.6
+   },
+   {
+    "fa": 14,
+    "ia": 14.25,
+    "n": 30,
+    "exact": 12,
+    "w1": 30,
+    "worst": 1,
+    "mean": 0.6
+   },
+   {
+    "fa": 14,
+    "ia": 14.5,
+    "n": 30,
+    "exact": 12,
+    "w1": 30,
+    "worst": 1,
+    "mean": 0.6
+   }
+  ],
+  "sunrise_check": {
+   "n": 30,
+   "exact": 10,
+   "w1": 30,
+   "worst": 1,
+   "mean": 0.67
+  }
+ },
+ "salaty_1448_khartoum": {
+  "fajr": [
+   {
+    "fa": 17,
+    "ia": 14,
+    "n": 30,
+    "exact": 24,
+    "w1": 30,
+    "worst": 1,
+    "mean": -0.13
+   },
+   {
+    "fa": 17,
+    "ia": 14.25,
+    "n": 30,
+    "exact": 24,
+    "w1": 30,
+    "worst": 1,
+    "mean": -0.13
+   },
+   {
+    "fa": 17,
+    "ia": 14.5,
+    "n": 30,
+    "exact": 24,
+    "w1": 30,
+    "worst": 1,
+    "mean": -0.13
+   }
+  ],
+  "isha": [
+   {
+    "fa": 14,
+    "ia": 20,
+    "n": 30,
+    "exact": 0,
+    "w1": 0,
+    "worst": 19,
+    "mean": 17.27
+   },
+   {
+    "fa": 14.25,
+    "ia": 20,
+    "n": 30,
+    "exact": 0,
+    "w1": 0,
+    "worst": 19,
+    "mean": 17.27
+   },
+   {
+    "fa": 14.5,
+    "ia": 20,
+    "n": 30,
+    "exact": 0,
+    "w1": 0,
+    "worst": 19,
+    "mean": 17.27
+   }
+  ],
+  "sunrise_check": {
+   "n": 30,
+   "exact": 0,
+   "w1": 0,
+   "worst": 9,
+   "mean": 8.33
+  },
+  "maghrib_check": {
+   "n": 30,
+   "exact": 0,
+   "w1": 0,
+   "worst": 8,
+   "mean": 7.73
+  },
+  "dhuhr_check": {
+   "n": 30,
+   "exact": 0,
+   "w1": 0,
+   "worst": 9,
+   "mean": 8.1
+  },
+  "asr_shafi_check": {
+   "n": 30,
+   "exact": 0,
+   "w1": 0,
+   "worst": 8,
+   "mean": 7.7
+  }
+ }
+}

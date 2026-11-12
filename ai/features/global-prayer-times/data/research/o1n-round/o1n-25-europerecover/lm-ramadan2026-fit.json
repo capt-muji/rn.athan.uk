@@ -1,0 +1,2161 @@
+{
+ "engine": "adhan 4.4.6",
+ "zone": "Europe/Warsaw",
+ "span": "2026-02-19..2026-03-19 (Ramadan 1447)",
+ "cities": {
+  "Bialystok": {
+   "point": [
+    53.1325,
+    23.1688
+   ],
+   "columns": {
+    "imsak": {
+     "n": 0
+    },
+    "fadzr": {
+     "interval_min": 58,
+     "base": "sunrise",
+     "margin": -18,
+     "n": 29,
+     "ex": 22,
+     "w1": 29,
+     "worst": 0.9,
+     "mae": 0.34
+    },
+    "szuruk": {
+     "margin": -2.8,
+     "n": 29,
+     "ex": 27,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.24
+    },
+    "zuhr": {
+     "margin": 0,
+     "n": 27,
+     "ex": 26,
+     "w1": 27,
+     "worst": 0.5,
+     "mae": 0.23
+    },
+    "asr": {
+     "margin": -1.2,
+     "n": 29,
+     "ex": 28,
+     "w1": 29,
+     "worst": 0.6,
+     "mae": 0.24
+    },
+    "magrib": {
+     "margin": 0.9,
+     "n": 29,
+     "ex": 28,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.24
+    },
+    "isza": {
+     "interval_min": 58,
+     "base": "maghrib",
+     "margin": 16,
+     "n": 29,
+     "ex": 22,
+     "w1": 29,
+     "worst": 1,
+     "mae": 0.36
+    }
+   },
+   "twilight_intervals": {
+    "fadzr": {
+     "equals": "printed szuruk - K_f",
+     "K_f": 73,
+     "n": 29,
+     "ex": 22,
+     "w1": 29,
+     "min": 73,
+     "max": 74,
+     "outliers": []
+    },
+    "isza": {
+     "equals": "printed maghrib + K_i",
+     "K_i": 73,
+     "n": 29,
+     "ex": 22,
+     "w1": 29,
+     "min": 72,
+     "max": 74,
+     "outliers": []
+    }
+   },
+   "angle_equivalent": {
+    "fajr": {
+     "angle": 11.75,
+     "mean_span": 73.2,
+     "span_drift": 1.3
+    },
+    "isha": {
+     "angle": 11.75,
+     "mean_span": 73.5,
+     "span_drift": 1.2
+    }
+   }
+  },
+  "BIELSKO": {
+   "point": [
+    49.8224,
+    19.0584
+   ],
+   "columns": {
+    "imsak": {
+     "n": 0
+    },
+    "fadzr": {
+     "interval_min": 58,
+     "base": "sunrise",
+     "margin": -12.6,
+     "n": 29,
+     "ex": 19,
+     "w1": 29,
+     "worst": 1.2,
+     "mae": 0.4
+    },
+    "szuruk": {
+     "margin": -2.7,
+     "n": 29,
+     "ex": 23,
+     "w1": 29,
+     "worst": 0.6,
+     "mae": 0.31
+    },
+    "zuhr": {
+     "margin": 0.2,
+     "n": 29,
+     "ex": 26,
+     "w1": 28,
+     "worst": 1.9,
+     "mae": 0.33
+    },
+    "asr": {
+     "margin": -1,
+     "n": 29,
+     "ex": 23,
+     "w1": 29,
+     "worst": 0.6,
+     "mae": 0.31
+    },
+    "magrib": {
+     "margin": 0.8,
+     "n": 29,
+     "ex": 29,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.24
+    },
+    "isza": {
+     "interval_min": 58,
+     "base": "maghrib",
+     "margin": 10.8,
+     "n": 29,
+     "ex": 23,
+     "w1": 29,
+     "worst": 1,
+     "mae": 0.31
+    }
+   },
+   "twilight_intervals": {
+    "fadzr": {
+     "equals": "printed szuruk - K_f",
+     "K_f": 68,
+     "n": 29,
+     "ex": 19,
+     "w1": 29,
+     "min": 67,
+     "max": 69,
+     "outliers": []
+    },
+    "isza": {
+     "equals": "printed maghrib + K_i",
+     "K_i": 68,
+     "n": 29,
+     "ex": 23,
+     "w1": 29,
+     "min": 67,
+     "max": 69,
+     "outliers": []
+    }
+   },
+   "angle_equivalent": {
+    "fajr": {
+     "angle": 11.75,
+     "mean_span": 68,
+     "span_drift": 1.1
+    },
+    "isha": {
+     "angle": 11.75,
+     "mean_span": 68.2,
+     "span_drift": 1
+    }
+   }
+  },
+  "Bydgoszcz": {
+   "point": [
+    53.1235,
+    18.0084
+   ],
+   "columns": {
+    "imsak": {
+     "n": 0
+    },
+    "fadzr": {
+     "interval_min": 58,
+     "base": "sunrise",
+     "margin": -18,
+     "n": 29,
+     "ex": 24,
+     "w1": 29,
+     "worst": 0.7,
+     "mae": 0.3
+    },
+    "szuruk": {
+     "margin": -2.9,
+     "n": 28,
+     "ex": 26,
+     "w1": 28,
+     "worst": 0.5,
+     "mae": 0.27
+    },
+    "zuhr": {
+     "margin": 0,
+     "n": 29,
+     "ex": 28,
+     "w1": 28,
+     "worst": 6.2,
+     "mae": 0.46
+    },
+    "asr": {
+     "margin": -1.1,
+     "n": 29,
+     "ex": 28,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.25
+    },
+    "magrib": {
+     "margin": 1,
+     "n": 28,
+     "ex": 26,
+     "w1": 28,
+     "worst": 0.5,
+     "mae": 0.26
+    },
+    "isza": {
+     "interval_min": 58,
+     "base": "maghrib",
+     "margin": 16,
+     "n": 29,
+     "ex": 21,
+     "w1": 29,
+     "worst": 1.2,
+     "mae": 0.38
+    }
+   },
+   "twilight_intervals": {
+    "fadzr": {
+     "equals": "printed szuruk - K_f",
+     "K_f": 73,
+     "n": 28,
+     "ex": 20,
+     "w1": 28,
+     "min": 72,
+     "max": 74,
+     "outliers": []
+    },
+    "isza": {
+     "equals": "printed maghrib + K_i",
+     "K_i": 73,
+     "n": 28,
+     "ex": 21,
+     "w1": 28,
+     "min": 72,
+     "max": 74,
+     "outliers": []
+    }
+   },
+   "angle_equivalent": {
+    "fajr": {
+     "angle": 11.75,
+     "mean_span": 73.2,
+     "span_drift": 1.3
+    },
+    "isha": {
+     "angle": 11.75,
+     "mean_span": 73.4,
+     "span_drift": 1.2
+    }
+   }
+  },
+  "Czestochowa2026R": {
+   "point": [
+    50.7985,
+    19.1241
+   ],
+   "columns": {
+    "imsak": {
+     "n": 0
+    },
+    "fadzr": {
+     "interval_min": 58,
+     "base": "sunrise",
+     "margin": -14.1,
+     "n": 29,
+     "ex": 24,
+     "w1": 29,
+     "worst": 1.2,
+     "mae": 0.31
+    },
+    "szuruk": {
+     "margin": -2.5,
+     "n": 29,
+     "ex": 24,
+     "w1": 29,
+     "worst": 0.6,
+     "mae": 0.26
+    },
+    "zuhr": {
+     "margin": 0,
+     "n": 29,
+     "ex": 29,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.24
+    },
+    "asr": {
+     "margin": -1,
+     "n": 29,
+     "ex": 29,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.22
+    },
+    "magrib": {
+     "margin": 0.9,
+     "n": 29,
+     "ex": 27,
+     "w1": 29,
+     "worst": 0.6,
+     "mae": 0.25
+    },
+    "isza": {
+     "interval_min": 58,
+     "base": "maghrib",
+     "margin": 12.2,
+     "n": 29,
+     "ex": 23,
+     "w1": 29,
+     "worst": 0.9,
+     "mae": 0.31
+    }
+   },
+   "twilight_intervals": {
+    "fadzr": {
+     "equals": "printed szuruk - K_f",
+     "K_f": 69,
+     "n": 29,
+     "ex": 15,
+     "w1": 28,
+     "min": 69,
+     "max": 71,
+     "outliers": []
+    },
+    "isza": {
+     "equals": "printed maghrib + K_i",
+     "K_i": 69,
+     "n": 29,
+     "ex": 17,
+     "w1": 29,
+     "min": 69,
+     "max": 70,
+     "outliers": []
+    }
+   },
+   "angle_equivalent": {
+    "fajr": {
+     "angle": 11.75,
+     "mean_span": 69.5,
+     "span_drift": 1.1
+    },
+    "isha": {
+     "angle": 11.75,
+     "mean_span": 69.7,
+     "span_drift": 1.1
+    }
+   }
+  },
+  "DEBICA": {
+   "point": [
+    50.0511,
+    21.4089
+   ],
+   "columns": {
+    "imsak": {
+     "n": 0
+    },
+    "fadzr": {
+     "interval_min": 58,
+     "base": "sunrise",
+     "margin": -12.9,
+     "n": 28,
+     "ex": 15,
+     "w1": 28,
+     "worst": 1.3,
+     "mae": 0.55
+    },
+    "szuruk": {
+     "margin": -1,
+     "n": 28,
+     "ex": 26,
+     "w1": 28,
+     "worst": 0.6,
+     "mae": 0.19
+    },
+    "zuhr": {
+     "margin": 1.6,
+     "n": 29,
+     "ex": 29,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.26
+    },
+    "asr": {
+     "margin": -3.4,
+     "n": 29,
+     "ex": 8,
+     "w1": 21,
+     "worst": 2,
+     "mae": 0.92
+    },
+    "magrib": {
+     "margin": -0.8,
+     "n": 29,
+     "ex": 27,
+     "w1": 29,
+     "worst": 0.6,
+     "mae": 0.26
+    },
+    "isza": {
+     "interval_min": 58,
+     "base": "maghrib",
+     "margin": 10.1,
+     "n": 29,
+     "ex": 13,
+     "w1": 26,
+     "worst": 2,
+     "mae": 0.69
+    }
+   },
+   "twilight_intervals": {
+    "fadzr": {
+     "equals": "printed szuruk - K_f",
+     "K_f": 70,
+     "n": 27,
+     "ex": 12,
+     "w1": 26,
+     "min": 68,
+     "max": 71,
+     "outliers": []
+    },
+    "isza": {
+     "equals": "printed maghrib + K_i",
+     "K_i": 69,
+     "n": 29,
+     "ex": 16,
+     "w1": 25,
+     "min": 67,
+     "max": 70,
+     "outliers": []
+    }
+   },
+   "angle_equivalent": {
+    "fajr": {
+     "angle": 12,
+     "mean_span": 69.9,
+     "span_drift": 1.1
+    },
+    "isha": {
+     "angle": 11.75,
+     "mean_span": 68.6,
+     "span_drift": 1
+    }
+   }
+  },
+  "GDYNIA": {
+   "point": [
+    54.5189,
+    18.5305
+   ],
+   "columns": {
+    "imsak": {
+     "n": 0
+    },
+    "fadzr": {
+     "interval_min": 58,
+     "base": "sunrise",
+     "margin": -20.6,
+     "n": 29,
+     "ex": 19,
+     "w1": 29,
+     "worst": 0.9,
+     "mae": 0.33
+    },
+    "szuruk": {
+     "margin": -3,
+     "n": 29,
+     "ex": 27,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.26
+    },
+    "zuhr": {
+     "margin": 0.1,
+     "n": 29,
+     "ex": 28,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.26
+    },
+    "asr": {
+     "margin": -1.3,
+     "n": 29,
+     "ex": 29,
+     "w1": 29,
+     "worst": 0.4,
+     "mae": 0.24
+    },
+    "magrib": {
+     "margin": 1,
+     "n": 29,
+     "ex": 26,
+     "w1": 29,
+     "worst": 0.7,
+     "mae": 0.17
+    },
+    "isza": {
+     "interval_min": 58,
+     "base": "maghrib",
+     "margin": 18.4,
+     "n": 29,
+     "ex": 20,
+     "w1": 29,
+     "worst": 0.9,
+     "mae": 0.39
+    }
+   },
+   "twilight_intervals": {
+    "fadzr": {
+     "equals": "printed szuruk - K_f",
+     "K_f": 76,
+     "n": 29,
+     "ex": 18,
+     "w1": 29,
+     "min": 75,
+     "max": 77,
+     "outliers": []
+    },
+    "isza": {
+     "equals": "printed maghrib + K_i",
+     "K_i": 76,
+     "n": 29,
+     "ex": 15,
+     "w1": 29,
+     "min": 75,
+     "max": 76,
+     "outliers": []
+    }
+   },
+   "angle_equivalent": {
+    "fajr": {
+     "angle": 11.75,
+     "mean_span": 75.7,
+     "span_drift": 1.4
+    },
+    "isha": {
+     "angle": 11.75,
+     "mean_span": 76,
+     "span_drift": 1.3
+    }
+   }
+  },
+  "GLIWICE": {
+   "point": [
+    50.2945,
+    18.6714
+   ],
+   "columns": {
+    "imsak": {
+     "n": 0
+    },
+    "fadzr": {
+     "interval_min": 58,
+     "base": "sunrise",
+     "margin": -13.4,
+     "n": 29,
+     "ex": 23,
+     "w1": 29,
+     "worst": 1,
+     "mae": 0.31
+    },
+    "szuruk": {
+     "margin": -2.6,
+     "n": 29,
+     "ex": 25,
+     "w1": 29,
+     "worst": 0.6,
+     "mae": 0.29
+    },
+    "zuhr": {
+     "margin": 0,
+     "n": 29,
+     "ex": 29,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.24
+    },
+    "asr": {
+     "margin": -1.2,
+     "n": 29,
+     "ex": 26,
+     "w1": 29,
+     "worst": 0.6,
+     "mae": 0.24
+    },
+    "magrib": {
+     "margin": 0.8,
+     "n": 28,
+     "ex": 27,
+     "w1": 28,
+     "worst": 0.5,
+     "mae": 0.24
+    },
+    "isza": {
+     "interval_min": 58,
+     "base": "maghrib",
+     "margin": 11.5,
+     "n": 29,
+     "ex": 20,
+     "w1": 29,
+     "worst": 1,
+     "mae": 0.35
+    }
+   },
+   "twilight_intervals": {
+    "fadzr": {
+     "equals": "printed szuruk - K_f",
+     "K_f": 69,
+     "n": 29,
+     "ex": 17,
+     "w1": 29,
+     "min": 68,
+     "max": 70,
+     "outliers": []
+    },
+    "isza": {
+     "equals": "printed maghrib + K_i",
+     "K_i": 69,
+     "n": 28,
+     "ex": 17,
+     "w1": 28,
+     "min": 68,
+     "max": 70,
+     "outliers": []
+    }
+   },
+   "angle_equivalent": {
+    "fajr": {
+     "angle": 11.75,
+     "mean_span": 68.7,
+     "span_drift": 1.1
+    },
+    "isha": {
+     "angle": 11.75,
+     "mean_span": 68.9,
+     "span_drift": 1
+    }
+   }
+  },
+  "Kartuzy": {
+   "point": [
+    54.3342,
+    18.1983
+   ],
+   "columns": {
+    "imsak": {
+     "n": 0
+    },
+    "fadzr": {
+     "interval_min": 58,
+     "base": "sunrise",
+     "margin": -20.3,
+     "n": 28,
+     "ex": 18,
+     "w1": 28,
+     "worst": 1.2,
+     "mae": 0.4
+    },
+    "szuruk": {
+     "margin": -2.9,
+     "n": 29,
+     "ex": 27,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.26
+    },
+    "zuhr": {
+     "margin": 0,
+     "n": 29,
+     "ex": 29,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.24
+    },
+    "asr": {
+     "margin": -1.3,
+     "n": 29,
+     "ex": 26,
+     "w1": 29,
+     "worst": 0.7,
+     "mae": 0.27
+    },
+    "magrib": {
+     "margin": 1.1,
+     "n": 29,
+     "ex": 22,
+     "w1": 29,
+     "worst": 0.8,
+     "mae": 0.35
+    },
+    "isza": {
+     "interval_min": 58,
+     "base": "maghrib",
+     "margin": 18.3,
+     "n": 29,
+     "ex": 19,
+     "w1": 29,
+     "worst": 1.2,
+     "mae": 0.38
+    }
+   },
+   "twilight_intervals": {
+    "fadzr": {
+     "equals": "printed szuruk - K_f",
+     "K_f": 75,
+     "n": 28,
+     "ex": 19,
+     "w1": 27,
+     "min": 75,
+     "max": 77,
+     "outliers": []
+    },
+    "isza": {
+     "equals": "printed maghrib + K_i",
+     "K_i": 75,
+     "n": 29,
+     "ex": 25,
+     "w1": 29,
+     "min": 75,
+     "max": 76,
+     "outliers": []
+    }
+   },
+   "angle_equivalent": {
+    "fajr": {
+     "angle": 11.75,
+     "mean_span": 75.4,
+     "span_drift": 1.3
+    },
+    "isha": {
+     "angle": 11.75,
+     "mean_span": 75.6,
+     "span_drift": 1.3
+    }
+   }
+  },
+  "Katowice": {
+   "point": [
+    50.2584,
+    19.0235
+   ],
+   "columns": {
+    "imsak": {
+     "n": 0
+    },
+    "fadzr": {
+     "interval_min": 58,
+     "base": "sunrise",
+     "margin": -13.2,
+     "n": 29,
+     "ex": 20,
+     "w1": 29,
+     "worst": 0.7,
+     "mae": 0.36
+    },
+    "szuruk": {
+     "margin": -2.8,
+     "n": 29,
+     "ex": 29,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.19
+    },
+    "zuhr": {
+     "margin": 0,
+     "n": 29,
+     "ex": 28,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.26
+    },
+    "asr": {
+     "margin": -1.1,
+     "n": 29,
+     "ex": 28,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.2
+    },
+    "magrib": {
+     "margin": 0.8,
+     "n": 29,
+     "ex": 29,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.24
+    },
+    "isza": {
+     "interval_min": 58,
+     "base": "maghrib",
+     "margin": 11.5,
+     "n": 29,
+     "ex": 23,
+     "w1": 29,
+     "worst": 1.1,
+     "mae": 0.32
+    }
+   },
+   "twilight_intervals": {
+    "fadzr": {
+     "equals": "printed szuruk - K_f",
+     "K_f": 68,
+     "n": 29,
+     "ex": 15,
+     "w1": 29,
+     "min": 68,
+     "max": 69,
+     "outliers": []
+    },
+    "isza": {
+     "equals": "printed maghrib + K_i",
+     "K_i": 69,
+     "n": 29,
+     "ex": 16,
+     "w1": 29,
+     "min": 68,
+     "max": 70,
+     "outliers": []
+    }
+   },
+   "angle_equivalent": {
+    "fajr": {
+     "angle": 11.75,
+     "mean_span": 68.7,
+     "span_drift": 1.1
+    },
+    "isha": {
+     "angle": 11.75,
+     "mean_span": 68.9,
+     "span_drift": 1
+    }
+   }
+  },
+  "Kielce": {
+   "point": [
+    50.8661,
+    20.6286
+   ],
+   "columns": {
+    "imsak": {
+     "n": 0
+    },
+    "fadzr": {
+     "interval_min": 58,
+     "base": "sunrise",
+     "margin": -14.3,
+     "n": 28,
+     "ex": 23,
+     "w1": 28,
+     "worst": 0.7,
+     "mae": 0.27
+    },
+    "szuruk": {
+     "margin": -2.5,
+     "n": 29,
+     "ex": 25,
+     "w1": 29,
+     "worst": 0.6,
+     "mae": 0.23
+    },
+    "zuhr": {
+     "margin": 0,
+     "n": 29,
+     "ex": 29,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.24
+    },
+    "asr": {
+     "margin": -1,
+     "n": 29,
+     "ex": 27,
+     "w1": 29,
+     "worst": 0.6,
+     "mae": 0.23
+    },
+    "magrib": {
+     "margin": 0.8,
+     "n": 29,
+     "ex": 26,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.27
+    },
+    "isza": {
+     "interval_min": 58,
+     "base": "maghrib",
+     "margin": 12.3,
+     "n": 29,
+     "ex": 21,
+     "w1": 29,
+     "worst": 1,
+     "mae": 0.34
+    }
+   },
+   "twilight_intervals": {
+    "fadzr": {
+     "equals": "printed szuruk - K_f",
+     "K_f": 70,
+     "n": 28,
+     "ex": 17,
+     "w1": 28,
+     "min": 69,
+     "max": 70,
+     "outliers": []
+    },
+    "isza": {
+     "equals": "printed maghrib + K_i",
+     "K_i": 70,
+     "n": 29,
+     "ex": 16,
+     "w1": 29,
+     "min": 69,
+     "max": 70,
+     "outliers": []
+    }
+   },
+   "angle_equivalent": {
+    "fajr": {
+     "angle": 11.75,
+     "mean_span": 69.6,
+     "span_drift": 1.1
+    },
+    "isha": {
+     "angle": 11.75,
+     "mean_span": 69.8,
+     "span_drift": 1.1
+    }
+   }
+  },
+  "Krakow": {
+   "point": [
+    50.0647,
+    19.945
+   ],
+   "columns": {
+    "imsak": {
+     "n": 0
+    },
+    "fadzr": {
+     "interval_min": 58,
+     "base": "sunrise",
+     "margin": -12.9,
+     "n": 28,
+     "ex": 22,
+     "w1": 28,
+     "worst": 0.9,
+     "mae": 0.28
+    },
+    "szuruk": {
+     "margin": -2.8,
+     "n": 29,
+     "ex": 27,
+     "w1": 29,
+     "worst": 0.6,
+     "mae": 0.19
+    },
+    "zuhr": {
+     "margin": 0.1,
+     "n": 29,
+     "ex": 29,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.24
+    },
+    "asr": {
+     "margin": -0.8,
+     "n": 29,
+     "ex": 26,
+     "w1": 29,
+     "worst": 0.6,
+     "mae": 0.27
+    },
+    "magrib": {
+     "margin": 0.9,
+     "n": 28,
+     "ex": 25,
+     "w1": 28,
+     "worst": 0.6,
+     "mae": 0.25
+    },
+    "isza": {
+     "interval_min": 58,
+     "base": "maghrib",
+     "margin": 11.2,
+     "n": 28,
+     "ex": 21,
+     "w1": 28,
+     "worst": 0.9,
+     "mae": 0.32
+    }
+   },
+   "twilight_intervals": {
+    "fadzr": {
+     "equals": "printed szuruk - K_f",
+     "K_f": 68,
+     "n": 28,
+     "ex": 22,
+     "w1": 28,
+     "min": 68,
+     "max": 69,
+     "outliers": []
+    },
+    "isza": {
+     "equals": "printed maghrib + K_i",
+     "K_i": 68,
+     "n": 27,
+     "ex": 20,
+     "w1": 27,
+     "min": 68,
+     "max": 69,
+     "outliers": []
+    }
+   },
+   "angle_equivalent": {
+    "fajr": {
+     "angle": 11.75,
+     "mean_span": 68.4,
+     "span_drift": 1.1
+    },
+    "isha": {
+     "angle": 11.75,
+     "mean_span": 68.6,
+     "span_drift": 1
+    }
+   }
+  },
+  "Loddz": {
+   "point": [
+    51.7592,
+    19.4559
+   ],
+   "columns": {
+    "imsak": {
+     "n": 0
+    },
+    "fadzr": {
+     "interval_min": 58,
+     "base": "sunrise",
+     "margin": -15.6,
+     "n": 29,
+     "ex": 25,
+     "w1": 29,
+     "worst": 1.3,
+     "mae": 0.31
+    },
+    "szuruk": {
+     "margin": -2.8,
+     "n": 29,
+     "ex": 28,
+     "w1": 29,
+     "worst": 0.6,
+     "mae": 0.23
+    },
+    "zuhr": {
+     "margin": 0,
+     "n": 29,
+     "ex": 29,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.25
+    },
+    "asr": {
+     "margin": -1.1,
+     "n": 29,
+     "ex": 28,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.27
+    },
+    "magrib": {
+     "margin": 0.8,
+     "n": 29,
+     "ex": 28,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.26
+    },
+    "isza": {
+     "interval_min": 58,
+     "base": "maghrib",
+     "margin": 13.7,
+     "n": 29,
+     "ex": 20,
+     "w1": 29,
+     "worst": 1,
+     "mae": 0.35
+    }
+   },
+   "twilight_intervals": {
+    "fadzr": {
+     "equals": "printed szuruk - K_f",
+     "K_f": 71,
+     "n": 29,
+     "ex": 20,
+     "w1": 29,
+     "min": 70,
+     "max": 72,
+     "outliers": []
+    },
+    "isza": {
+     "equals": "printed maghrib + K_i",
+     "K_i": 71,
+     "n": 29,
+     "ex": 21,
+     "w1": 29,
+     "min": 70,
+     "max": 72,
+     "outliers": []
+    }
+   },
+   "angle_equivalent": {
+    "fajr": {
+     "angle": 11.75,
+     "mean_span": 71,
+     "span_drift": 1.2
+    },
+    "isha": {
+     "angle": 11.75,
+     "mean_span": 71.2,
+     "span_drift": 1.1
+    }
+   }
+  },
+  "Lublin": {
+   "point": [
+    51.2465,
+    22.5684
+   ],
+   "columns": {
+    "imsak": {
+     "n": 0
+    },
+    "fadzr": {
+     "interval_min": 58,
+     "base": "sunrise",
+     "margin": -14.8,
+     "n": 28,
+     "ex": 20,
+     "w1": 28,
+     "worst": 0.6,
+     "mae": 0.34
+    },
+    "szuruk": {
+     "margin": -2.6,
+     "n": 29,
+     "ex": 26,
+     "w1": 29,
+     "worst": 0.6,
+     "mae": 0.27
+    },
+    "zuhr": {
+     "margin": 0,
+     "n": 29,
+     "ex": 29,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.26
+    },
+    "asr": {
+     "margin": -1,
+     "n": 29,
+     "ex": 26,
+     "w1": 29,
+     "worst": 0.6,
+     "mae": 0.27
+    },
+    "magrib": {
+     "margin": 0.8,
+     "n": 29,
+     "ex": 29,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.24
+    },
+    "isza": {
+     "interval_min": 58,
+     "base": "maghrib",
+     "margin": 12.9,
+     "n": 28,
+     "ex": 21,
+     "w1": 28,
+     "worst": 0.9,
+     "mae": 0.32
+    }
+   },
+   "twilight_intervals": {
+    "fadzr": {
+     "equals": "printed szuruk - K_f",
+     "K_f": 70,
+     "n": 28,
+     "ex": 18,
+     "w1": 28,
+     "min": 69,
+     "max": 71,
+     "outliers": []
+    },
+    "isza": {
+     "equals": "printed maghrib + K_i",
+     "K_i": 70,
+     "n": 28,
+     "ex": 21,
+     "w1": 28,
+     "min": 69,
+     "max": 71,
+     "outliers": []
+    }
+   },
+   "angle_equivalent": {
+    "fajr": {
+     "angle": 11.75,
+     "mean_span": 70.1,
+     "span_drift": 1.2
+    },
+    "isha": {
+     "angle": 11.75,
+     "mean_span": 70.3,
+     "span_drift": 1.1
+    }
+   }
+  },
+  "Opole": {
+   "point": [
+    50.6751,
+    17.9213
+   ],
+   "columns": {
+    "imsak": {
+     "n": 0
+    },
+    "fadzr": {
+     "interval_min": 58,
+     "base": "sunrise",
+     "margin": -13.9,
+     "n": 28,
+     "ex": 22,
+     "w1": 28,
+     "worst": 1.1,
+     "mae": 0.3
+    },
+    "szuruk": {
+     "margin": -2.8,
+     "n": 29,
+     "ex": 27,
+     "w1": 29,
+     "worst": 0.6,
+     "mae": 0.21
+    },
+    "zuhr": {
+     "margin": 0,
+     "n": 28,
+     "ex": 28,
+     "w1": 28,
+     "worst": 0.5,
+     "mae": 0.24
+    },
+    "asr": {
+     "margin": -1,
+     "n": 28,
+     "ex": 24,
+     "w1": 27,
+     "worst": 2.2,
+     "mae": 0.29
+    },
+    "magrib": {
+     "margin": 0.8,
+     "n": 29,
+     "ex": 28,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.25
+    },
+    "isza": {
+     "interval_min": 58,
+     "base": "maghrib",
+     "margin": 12,
+     "n": 29,
+     "ex": 22,
+     "w1": 29,
+     "worst": 1.1,
+     "mae": 0.35
+    }
+   },
+   "twilight_intervals": {
+    "fadzr": {
+     "equals": "printed szuruk - K_f",
+     "K_f": 69,
+     "n": 28,
+     "ex": 23,
+     "w1": 28,
+     "min": 68,
+     "max": 70,
+     "outliers": []
+    },
+    "isza": {
+     "equals": "printed maghrib + K_i",
+     "K_i": 69,
+     "n": 29,
+     "ex": 22,
+     "w1": 29,
+     "min": 69,
+     "max": 70,
+     "outliers": []
+    }
+   },
+   "angle_equivalent": {
+    "fajr": {
+     "angle": 11.75,
+     "mean_span": 69.3,
+     "span_drift": 1.1
+    },
+    "isha": {
+     "angle": 11.75,
+     "mean_span": 69.5,
+     "span_drift": 1
+    }
+   }
+  },
+  "Plock": {
+   "point": [
+    52.5468,
+    19.7064
+   ],
+   "columns": {
+    "imsak": {
+     "n": 0
+    },
+    "fadzr": {
+     "interval_min": 58,
+     "base": "sunrise",
+     "margin": -17.1,
+     "n": 28,
+     "ex": 23,
+     "w1": 28,
+     "worst": 0.7,
+     "mae": 0.3
+    },
+    "szuruk": {
+     "margin": -2.7,
+     "n": 29,
+     "ex": 28,
+     "w1": 28,
+     "worst": 4.9,
+     "mae": 0.42
+    },
+    "zuhr": {
+     "margin": 0.1,
+     "n": 28,
+     "ex": 27,
+     "w1": 28,
+     "worst": 0.6,
+     "mae": 0.25
+    },
+    "asr": {
+     "margin": -1.1,
+     "n": 29,
+     "ex": 25,
+     "w1": 29,
+     "worst": 0.6,
+     "mae": 0.28
+    },
+    "magrib": {
+     "margin": 0.9,
+     "n": 29,
+     "ex": 29,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.24
+    },
+    "isza": {
+     "interval_min": 58,
+     "base": "maghrib",
+     "margin": 15,
+     "n": 29,
+     "ex": 21,
+     "w1": 29,
+     "worst": 0.9,
+     "mae": 0.35
+    }
+   },
+   "twilight_intervals": {
+    "fadzr": {
+     "equals": "printed szuruk - K_f",
+     "K_f": 72,
+     "n": 28,
+     "ex": 20,
+     "w1": 27,
+     "min": 72,
+     "max": 77,
+     "outliers": [
+      {
+       "date": "2026-03-15",
+       "K": 77
+      }
+     ]
+    },
+    "isza": {
+     "equals": "printed maghrib + K_i",
+     "K_i": 72,
+     "n": 29,
+     "ex": 20,
+     "w1": 29,
+     "min": 71,
+     "max": 73,
+     "outliers": []
+    }
+   },
+   "angle_equivalent": {
+    "fajr": {
+     "angle": 11.75,
+     "mean_span": 72.2,
+     "span_drift": 1.2
+    },
+    "isha": {
+     "angle": 11.75,
+     "mean_span": 72.5,
+     "span_drift": 1.1
+    }
+   }
+  },
+  "Poznan": {
+   "point": [
+    52.4082,
+    16.9335
+   ],
+   "columns": {
+    "imsak": {
+     "n": 0
+    },
+    "fadzr": {
+     "interval_min": 58,
+     "base": "sunrise",
+     "margin": -16.7,
+     "n": 29,
+     "ex": 22,
+     "w1": 29,
+     "worst": 0.8,
+     "mae": 0.31
+    },
+    "szuruk": {
+     "margin": -2.8,
+     "n": 29,
+     "ex": 27,
+     "w1": 29,
+     "worst": 0.6,
+     "mae": 0.25
+    },
+    "zuhr": {
+     "margin": 0,
+     "n": 29,
+     "ex": 29,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.24
+    },
+    "asr": {
+     "margin": -1.1,
+     "n": 29,
+     "ex": 29,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.23
+    },
+    "magrib": {
+     "margin": 0.8,
+     "n": 29,
+     "ex": 28,
+     "w1": 29,
+     "worst": 0.6,
+     "mae": 0.26
+    },
+    "isza": {
+     "interval_min": 58,
+     "base": "maghrib",
+     "margin": 14.8,
+     "n": 28,
+     "ex": 20,
+     "w1": 28,
+     "worst": 0.9,
+     "mae": 0.36
+    }
+   },
+   "twilight_intervals": {
+    "fadzr": {
+     "equals": "printed szuruk - K_f",
+     "K_f": 72,
+     "n": 29,
+     "ex": 22,
+     "w1": 29,
+     "min": 71,
+     "max": 73,
+     "outliers": []
+    },
+    "isza": {
+     "equals": "printed maghrib + K_i",
+     "K_i": 72,
+     "n": 28,
+     "ex": 21,
+     "w1": 28,
+     "min": 71,
+     "max": 73,
+     "outliers": []
+    }
+   },
+   "angle_equivalent": {
+    "fajr": {
+     "angle": 11.75,
+     "mean_span": 72,
+     "span_drift": 1.2
+    },
+    "isha": {
+     "angle": 11.75,
+     "mean_span": 72.2,
+     "span_drift": 1.1
+    }
+   }
+  },
+  "Rzeszow": {
+   "point": [
+    50.0413,
+    21.999
+   ],
+   "columns": {
+    "imsak": {
+     "n": 0
+    },
+    "fadzr": {
+     "interval_min": 58,
+     "base": "sunrise",
+     "margin": -12.8,
+     "n": 28,
+     "ex": 19,
+     "w1": 28,
+     "worst": 0.9,
+     "mae": 0.35
+    },
+    "szuruk": {
+     "margin": -2.6,
+     "n": 28,
+     "ex": 26,
+     "w1": 27,
+     "worst": 6.1,
+     "mae": 0.4
+    },
+    "zuhr": {
+     "margin": 0.1,
+     "n": 28,
+     "ex": 26,
+     "w1": 28,
+     "worst": 0.6,
+     "mae": 0.25
+    },
+    "asr": {
+     "margin": -1.2,
+     "n": 29,
+     "ex": 26,
+     "w1": 29,
+     "worst": 0.6,
+     "mae": 0.24
+    },
+    "magrib": {
+     "margin": 0.8,
+     "n": 29,
+     "ex": 28,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.24
+    },
+    "isza": {
+     "interval_min": 58,
+     "base": "maghrib",
+     "margin": 11.1,
+     "n": 29,
+     "ex": 21,
+     "w1": 29,
+     "worst": 0.9,
+     "mae": 0.34
+    }
+   },
+   "twilight_intervals": {
+    "fadzr": {
+     "equals": "printed szuruk - K_f",
+     "K_f": 68,
+     "n": 27,
+     "ex": 18,
+     "w1": 26,
+     "min": 68,
+     "max": 74,
+     "outliers": [
+      {
+       "date": "2026-03-02",
+       "K": 74
+      }
+     ]
+    },
+    "isza": {
+     "equals": "printed maghrib + K_i",
+     "K_i": 68,
+     "n": 29,
+     "ex": 21,
+     "w1": 29,
+     "min": 68,
+     "max": 69,
+     "outliers": []
+    }
+   },
+   "angle_equivalent": {
+    "fajr": {
+     "angle": 11.75,
+     "mean_span": 68.4,
+     "span_drift": 1.1
+    },
+    "isha": {
+     "angle": 11.75,
+     "mean_span": 68.5,
+     "span_drift": 1
+    }
+   }
+  },
+  "Szczecin": {
+   "point": [
+    53.4285,
+    14.5528
+   ],
+   "columns": {
+    "imsak": {
+     "n": 0
+    },
+    "fadzr": {
+     "interval_min": 58,
+     "base": "sunrise",
+     "margin": -18.4,
+     "n": 24,
+     "ex": 19,
+     "w1": 24,
+     "worst": 1,
+     "mae": 0.35
+    },
+    "szuruk": {
+     "margin": -2.8,
+     "n": 29,
+     "ex": 29,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.24
+    },
+    "zuhr": {
+     "margin": 0,
+     "n": 29,
+     "ex": 28,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.26
+    },
+    "asr": {
+     "margin": -1.3,
+     "n": 29,
+     "ex": 26,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.25
+    },
+    "magrib": {
+     "margin": 0.9,
+     "n": 29,
+     "ex": 27,
+     "w1": 29,
+     "worst": 0.6,
+     "mae": 0.24
+    },
+    "isza": {
+     "interval_min": 58,
+     "base": "maghrib",
+     "margin": 16.5,
+     "n": 29,
+     "ex": 22,
+     "w1": 29,
+     "worst": 1.4,
+     "mae": 0.35
+    }
+   },
+   "twilight_intervals": {
+    "fadzr": {
+     "equals": "printed szuruk - K_f",
+     "K_f": 74,
+     "n": 24,
+     "ex": 14,
+     "w1": 24,
+     "min": 73,
+     "max": 75,
+     "outliers": []
+    },
+    "isza": {
+     "equals": "printed maghrib + K_i",
+     "K_i": 74,
+     "n": 29,
+     "ex": 17,
+     "w1": 29,
+     "min": 73,
+     "max": 75,
+     "outliers": []
+    }
+   },
+   "angle_equivalent": {
+    "fajr": {
+     "angle": 11.75,
+     "mean_span": 73.7,
+     "span_drift": 1.3
+    },
+    "isha": {
+     "angle": 11.75,
+     "mean_span": 74,
+     "span_drift": 1.2
+    }
+   }
+  },
+  "Wroclawa": {
+   "point": [
+    51.1079,
+    17.0385
+   ],
+   "columns": {
+    "imsak": {
+     "n": 0
+    },
+    "fadzr": {
+     "interval_min": 58,
+     "base": "sunrise",
+     "margin": -14.6,
+     "n": 27,
+     "ex": 17,
+     "w1": 27,
+     "worst": 0.8,
+     "mae": 0.36
+    },
+    "szuruk": {
+     "margin": -2.7,
+     "n": 29,
+     "ex": 28,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.3
+    },
+    "zuhr": {
+     "margin": 0.1,
+     "n": 29,
+     "ex": 28,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.26
+    },
+    "asr": {
+     "margin": -1.1,
+     "n": 29,
+     "ex": 28,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.22
+    },
+    "magrib": {
+     "margin": 0.9,
+     "n": 28,
+     "ex": 27,
+     "w1": 28,
+     "worst": 0.5,
+     "mae": 0.25
+    },
+    "isza": {
+     "interval_min": 58,
+     "base": "maghrib",
+     "margin": 12.8,
+     "n": 29,
+     "ex": 23,
+     "w1": 29,
+     "worst": 0.8,
+     "mae": 0.32
+    }
+   },
+   "twilight_intervals": {
+    "fadzr": {
+     "equals": "printed szuruk - K_f",
+     "K_f": 70,
+     "n": 27,
+     "ex": 18,
+     "w1": 27,
+     "min": 69,
+     "max": 71,
+     "outliers": []
+    },
+    "isza": {
+     "equals": "printed maghrib + K_i",
+     "K_i": 70,
+     "n": 28,
+     "ex": 22,
+     "w1": 28,
+     "min": 69,
+     "max": 71,
+     "outliers": []
+    }
+   },
+   "angle_equivalent": {
+    "fajr": {
+     "angle": 11.75,
+     "mean_span": 69.9,
+     "span_drift": 1.1
+    },
+    "isha": {
+     "angle": 11.75,
+     "mean_span": 70.1,
+     "span_drift": 1.1
+    }
+   }
+  },
+  "Zgorzelec": {
+   "point": [
+    51.1494,
+    15.0084
+   ],
+   "columns": {
+    "imsak": {
+     "n": 0
+    },
+    "fadzr": {
+     "interval_min": 58,
+     "base": "sunrise",
+     "margin": -14.7,
+     "n": 29,
+     "ex": 18,
+     "w1": 29,
+     "worst": 0.8,
+     "mae": 0.39
+    },
+    "szuruk": {
+     "margin": -2.6,
+     "n": 28,
+     "ex": 23,
+     "w1": 28,
+     "worst": 0.7,
+     "mae": 0.26
+    },
+    "zuhr": {
+     "margin": 0,
+     "n": 29,
+     "ex": 29,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.26
+    },
+    "asr": {
+     "margin": -1.1,
+     "n": 29,
+     "ex": 29,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.22
+    },
+    "magrib": {
+     "margin": 0.8,
+     "n": 29,
+     "ex": 28,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.25
+    },
+    "isza": {
+     "interval_min": 58,
+     "base": "maghrib",
+     "margin": 12.8,
+     "n": 29,
+     "ex": 23,
+     "w1": 29,
+     "worst": 0.8,
+     "mae": 0.29
+    }
+   },
+   "twilight_intervals": {
+    "fadzr": {
+     "equals": "printed szuruk - K_f",
+     "K_f": 70,
+     "n": 28,
+     "ex": 18,
+     "w1": 28,
+     "min": 69,
+     "max": 71,
+     "outliers": []
+    },
+    "isza": {
+     "equals": "printed maghrib + K_i",
+     "K_i": 70,
+     "n": 29,
+     "ex": 24,
+     "w1": 29,
+     "min": 69,
+     "max": 71,
+     "outliers": []
+    }
+   },
+   "angle_equivalent": {
+    "fajr": {
+     "angle": 11.75,
+     "mean_span": 70,
+     "span_drift": 1.1
+    },
+    "isha": {
+     "angle": 11.75,
+     "mean_span": 70.2,
+     "span_drift": 1.1
+    }
+   }
+  },
+  "Zielona": {
+   "point": [
+    51.9356,
+    15.5062
+   ],
+   "columns": {
+    "imsak": {
+     "n": 0
+    },
+    "fadzr": {
+     "interval_min": 58,
+     "base": "sunrise",
+     "margin": -15.9,
+     "n": 28,
+     "ex": 20,
+     "w1": 28,
+     "worst": 1.2,
+     "mae": 0.35
+    },
+    "szuruk": {
+     "margin": -2.8,
+     "n": 29,
+     "ex": 27,
+     "w1": 29,
+     "worst": 0.5,
+     "mae": 0.24
+    },
+    "zuhr": {
+     "margin": 0,
+     "n": 28,
+     "ex": 25,
+     "w1": 28,
+     "worst": 0.5,
+     "mae": 0.26
+    },
+    "asr": {
+     "margin": -1.2,
+     "n": 29,
+     "ex": 28,
+     "w1": 29,
+     "worst": 0.6,
+     "mae": 0.23
+    },
+    "magrib": {
+     "margin": 0.8,
+     "n": 29,
+     "ex": 28,
+     "w1": 28,
+     "worst": 5.3,
+     "mae": 0.41
+    },
+    "isza": {
+     "interval_min": 58,
+     "base": "maghrib",
+     "margin": 14,
+     "n": 29,
+     "ex": 19,
+     "w1": 29,
+     "worst": 0.9,
+     "mae": 0.37
+    }
+   },
+   "twilight_intervals": {
+    "fadzr": {
+     "equals": "printed szuruk - K_f",
+     "K_f": 71,
+     "n": 28,
+     "ex": 22,
+     "w1": 28,
+     "min": 71,
+     "max": 72,
+     "outliers": []
+    },
+    "isza": {
+     "equals": "printed maghrib + K_i",
+     "K_i": 71,
+     "n": 29,
+     "ex": 20,
+     "w1": 28,
+     "min": 66,
+     "max": 72,
+     "outliers": [
+      {
+       "date": "2026-03-09",
+       "K": 66
+      }
+     ]
+    }
+   },
+   "angle_equivalent": {
+    "fajr": {
+     "angle": 11.75,
+     "mean_span": 71.2,
+     "span_drift": 1.2
+    },
+    "isha": {
+     "angle": 11.75,
+     "mean_span": 71.4,
+     "span_drift": 1.1
+    }
+   }
+  },
+  "Warszawa": {
+   "point": [
+    52.2297,
+    21.0122
+   ],
+   "columns": {
+    "imsak": {
+     "n": 0
+    },
+    "fadzr": {
+     "interval_min": 58,
+     "base": "sunrise",
+     "margin": -53,
+     "n": 11,
+     "ex": 2,
+     "w1": 2,
+     "worst": 11.6,
+     "mae": 5.46
+    },
+    "szuruk": {
+     "margin": -12,
+     "n": 12,
+     "ex": 2,
+     "w1": 2,
+     "worst": 16.1,
+     "mae": 7.3
+    },
+    "zuhr": {
+     "margin": -1.5,
+     "n": 12,
+     "ex": 3,
+     "w1": 7,
+     "worst": 2.9,
+     "mae": 1.38
+    },
+    "asr": {
+     "margin": 8.5,
+     "n": 13,
+     "ex": 1,
+     "w1": 1,
+     "worst": 5.4,
+     "mae": 2.72
+    },
+    "magrib": {
+     "margin": 11.5,
+     "n": 7,
+     "ex": 2,
+     "w1": 2,
+     "worst": 9.9,
+     "mae": 4.54
+    },
+    "isza": {
+     "interval_min": 58,
+     "base": "maghrib",
+     "margin": 48.7,
+     "n": 12,
+     "ex": 1,
+     "w1": 3,
+     "worst": 8.1,
+     "mae": 3.6
+    }
+   },
+   "twilight_intervals": {
+    "fadzr": {
+     "equals": "printed szuruk - K_f",
+     "K_f": 99,
+     "n": 10,
+     "ex": 5,
+     "w1": 7,
+     "min": 97,
+     "max": 101,
+     "outliers": []
+    },
+    "isza": {
+     "equals": "printed maghrib + K_i",
+     "K_i": 94,
+     "n": 7,
+     "ex": 2,
+     "w1": 2,
+     "min": 90,
+     "max": 96,
+     "outliers": [
+      {
+       "date": "2026-03-04",
+       "K": 90
+      }
+     ]
+    }
+   },
+   "angle_equivalent": {
+    "fajr": {
+     "angle": 16,
+     "mean_span": 99.6,
+     "span_drift": 0.8
+    },
+    "isha": {
+     "angle": 15,
+     "mean_span": 93.3,
+     "span_drift": 0.8
+    }
+   }
+  }
+ }
+}

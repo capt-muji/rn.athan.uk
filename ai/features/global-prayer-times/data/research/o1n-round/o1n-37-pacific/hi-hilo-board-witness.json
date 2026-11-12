@@ -1,0 +1,65 @@
+{
+ "board": {
+  "date": "2026-11-12",
+  "tz": "Pacific/Honolulu (Hilo, UTC-10)",
+  "source": "masjidbox.com/prayer-times/islamic-center-of-hawaii",
+  "address": "688 Kinoole St unit 101, Hilo, HI 96720",
+  "tier": "community",
+  "year_label": null,
+  "board": {
+   "fajr": "05:11",
+   "shuruq": "06:27",
+   "dhuhr": "12:05",
+   "asr": "15:17",
+   "maghrib": "17:42",
+   "isha": "18:53",
+   "jumuah": "12:15"
+  },
+  "captured_utc": "2026-11-12T10:28Z"
+ },
+ "platform_hilo_row_2026-11-12": {
+  "file": "62508-hilo-hawaii-island.json",
+  "row": {
+   "imsak": "05:00",
+   "sabah": "05:12",
+   "sunrise": "06:23",
+   "ishrak": "07:00",
+   "dhuhr": "12:12",
+   "asr": "15:25",
+   "maghrib": "17:47",
+   "isha": "19:01"
+  }
+ },
+ "diffs": {
+  "sabah_vs_fajr": {
+   "board": "05:11",
+   "platform": "05:12",
+   "board_minus_platform": "-1"
+  },
+  "sunrise_vs_shuruq": {
+   "board": "06:27",
+   "platform": "06:23",
+   "board_minus_platform": "+4"
+  },
+  "dhuhr_vs_dhuhr": {
+   "board": "12:05",
+   "platform": "12:12",
+   "board_minus_platform": "-7"
+  },
+  "asr_vs_asr": {
+   "board": "15:17",
+   "platform": "15:25",
+   "board_minus_platform": "-8"
+  },
+  "maghrib_vs_maghrib": {
+   "board": "17:42",
+   "platform": "17:47",
+   "board_minus_platform": "-5"
+  },
+  "isha_vs_isha": {
+   "board": "18:53",
+   "platform": "19:01",
+   "board_minus_platform": "-8"
+  }
+ }
+}

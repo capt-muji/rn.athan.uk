@@ -1,0 +1,23 @@
+{
+ "recipe": "adhan 4.4.6 Other 18/18, Hanafi, MiddleOfTheNight, Rounding.None, tz UTC+5 (+300)",
+ "window": "2026-11-01..2027-10-31",
+ "cities": 453,
+ "y2026": {
+  "n": 165798,
+  "w1pct": 99.75,
+  "mae": 0.299,
+  "worst": 16.8
+ },
+ "y2027": {
+  "n": 826272,
+  "w1pct": 99.75,
+  "mae": 0.285,
+  "worst": 25.48
+ },
+ "all": {
+  "n": 992070,
+  "w1pct": 99.75,
+  "mae": 0.287,
+  "worst": 25.48
+ }
+}

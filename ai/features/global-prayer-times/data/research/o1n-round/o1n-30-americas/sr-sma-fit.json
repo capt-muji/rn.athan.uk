@@ -1,0 +1,151 @@
+{
+ "fadjr": {
+  "ang": 18,
+  "k": 10095.6,
+  "st": {
+   "n": 29,
+   "median": 0,
+   "exact": 96.6,
+   "w1": 100,
+   "worst": 1
+  }
+ },
+ "sehri": {
+  "ang": 18,
+  "k": 10095.6,
+  "st": {
+   "n": 29,
+   "median": -5,
+   "exact": 96.6,
+   "w1": 100,
+   "worst": 1
+  }
+ },
+ "isha_angle": {
+  "ang": 13,
+  "k": 10040.4,
+  "st": {
+   "n": 29,
+   "median": 21,
+   "exact": 41.4,
+   "w1": 100,
+   "worst": 1
+  }
+ },
+ "zonop": {
+  "margin": 1,
+  "exact": 51.7,
+  "w1": 100,
+  "worst": 1,
+  "n": 29
+ },
+ "lohr": {
+  "margin": 0,
+  "exact": 86.2,
+  "w1": 100,
+  "worst": 1,
+  "n": 29
+ },
+ "zonder": {
+  "margin": -2,
+  "exact": 82.8,
+  "w1": 100,
+  "worst": 1,
+  "n": 29
+ },
+ "maghrib": {
+  "margin": 3,
+  "exact": 82.8,
+  "w1": 100,
+  "worst": 1,
+  "n": 29
+ },
+ "isha_interval_from_adhan_maghrib": {
+  "interval": 20,
+  "k": 10081.8,
+  "st": {
+   "n": 29,
+   "median": 53,
+   "exact": 82.8,
+   "w1": 100,
+   "worst": 1
+  }
+ },
+ "ishrar_interval_from_adhan_maghrib": {
+  "interval": -20,
+  "k": 10074.9,
+  "st": {
+   "n": 29,
+   "median": -86,
+   "exact": 75.9,
+   "w1": 100,
+   "worst": 1
+  }
+ },
+ "makroeh_interval_from_adhan_dhuhr": {
+  "interval": -20,
+  "k": 10057.6,
+  "st": {
+   "n": 29,
+   "median": -17,
+   "exact": 58.6,
+   "w1": 100,
+   "worst": 1
+  }
+ },
+ "sehri_minus_fadjr_print": {
+  "interval": -20,
+  "k": null,
+  "st": {
+   "n": 29,
+   "median": null,
+   "exact": 0,
+   "w1": 0,
+   "worst": null
+  }
+ },
+ "isha_minus_zonder_print": {
+  "interval": 20,
+  "k": null,
+  "st": {
+   "n": 29,
+   "median": null,
+   "exact": 0,
+   "w1": 0,
+   "worst": null
+  }
+ },
+ "ishrar_minus_zonder_print": {
+  "interval": -20,
+  "k": null,
+  "st": {
+   "n": 29,
+   "median": null,
+   "exact": 0,
+   "w1": 0,
+   "worst": null
+  }
+ },
+ "makroeh_minus_lohr_print": {
+  "interval": -20,
+  "k": null,
+  "st": {
+   "n": 29,
+   "median": null,
+   "exact": 0,
+   "w1": 0,
+   "worst": null
+  }
+ },
+ "maghrib_minus_zonder_print": {
+  "interval": 20,
+  "k": null,
+  "st": {
+   "n": 29,
+   "median": null,
+   "exact": 0,
+   "w1": 0,
+   "worst": null
+  }
+ }
+}

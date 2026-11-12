@@ -1,0 +1,137 @@
+{
+ "city": "Beijing",
+ "witness_diff_islamichina_vs_turktakvim_2026": {
+  "fajr_vs_sabah": {
+   "n": 365,
+   "eq": 282,
+   "within1": 100,
+   "median": 0,
+   "mae": 0.23,
+   "min": -1,
+   "max": 1
+  },
+  "sunrise": {
+   "n": 365,
+   "eq": 0,
+   "within1": 0,
+   "median": 5,
+   "mae": 5.41,
+   "min": 4,
+   "max": 8
+  },
+  "dhuhr": {
+   "n": 365,
+   "eq": 0,
+   "within1": 0,
+   "median": -9,
+   "mae": 8.87,
+   "min": -10,
+   "max": -8
+  },
+  "asr": {
+   "n": 365,
+   "eq": 0,
+   "within1": 0,
+   "median": -9,
+   "mae": 8.93,
+   "min": -10,
+   "max": -7
+  },
+  "maghrib": {
+   "n": 365,
+   "eq": 0,
+   "within1": 0,
+   "median": -6,
+   "mae": 6.14,
+   "min": -8,
+   "max": -4
+  },
+  "isha": {
+   "n": 365,
+   "eq": 0,
+   "within1": 0,
+   "median": -9,
+   "mae": 8.85,
+   "min": -10,
+   "max": -7
+  }
+ },
+ "fit_MWL_18_18": {
+  "fajr": {
+   "median": 0.6000000000000227,
+   "mae": 0.57
+  },
+  "sunrise": {
+   "median": -0.716666666666697,
+   "mae": 1
+  },
+  "dhuhr": {
+   "median": 0.5499999999999545,
+   "mae": 0.58
+  },
+  "asr": {
+   "median": 0.41666666666674246,
+   "mae": 0.76
+  },
+  "maghrib": {
+   "median": 0.2999999999999545,
+   "mae": 0.99
+  },
+  "isha": {
+   "median": -5.5499999999999545,
+   "mae": 5.59
+  }
+ },
+ "fit_Other_18_17": {
+  "fajr": {
+   "median": 0.6000000000000227,
+   "mae": 0.57
+  },
+  "sunrise": {
+   "median": -0.716666666666697,
+   "mae": 1
+  },
+  "dhuhr": {
+   "median": 0.5499999999999545,
+   "mae": 0.58
+  },
+  "asr": {
+   "median": 0.41666666666674246,
+   "mae": 0.76
+  },
+  "maghrib": {
+   "median": 0.2999999999999545,
+   "mae": 0.99
+  },
+  "isha": {
+   "median": 0.18333333333339397,
+   "mae": 0.96
+  }
+ },
+ "fit_Other_15_15": {
+  "fajr": {
+   "median": -16.083333333333314,
+   "mae": 17.76
+  },
+  "sunrise": {
+   "median": -0.716666666666697,
+   "mae": 1
+  },
+  "dhuhr": {
+   "median": 0.5499999999999545,
+   "mae": 0.58
+  },
+  "asr": {
+   "median": 0.41666666666674246,
+   "mae": 0.76
+  },
+  "maghrib": {
+   "median": 0.2999999999999545,
+   "mae": 0.99
+  },
+  "isha": {
+   "median": 12.049999999999955,
+   "mae": 12.72
+  }
+ }
+}

@@ -1,0 +1,110 @@
+{
+  "started_at": "2026-11-11 18:14:13Z",
+  "verify_only": false,
+  "shape_a": {
+    "source": {
+      "years": {
+        "2026": {
+          "tables": 5658,
+          "rows": 2065170
+        },
+        "2027": {
+          "tables": 338,
+          "rows": 123370
+        }
+      },
+      "tables": 5996,
+      "rows": 2188540,
+      "unreadable": [],
+      "rows_missing_columns": 0,
+      "rows_bad_date": 0
+    },
+    "derived_write": {
+      "files": 5996,
+      "rows": 2188540
+    },
+    "derived": {
+      "files": 5996,
+      "rows": 2188540
+    }
+  },
+  "shape_b": {
+    "source": {
+      "files": {
+        "diyanet_cin_2026.json": {
+          "cities": 222,
+          "rows": 81030,
+          "anomalies": 0
+        },
+        "diyanet_japonya_2026.json": {
+          "cities": 143,
+          "rows": 52195,
+          "anomalies": 0
+        },
+        "diyanet_mogolistan_2026.json": {
+          "cities": 67,
+          "rows": 24455,
+          "anomalies": 0
+        },
+        "diyanet_guney_kore_2026.json": {
+          "cities": 40,
+          "rows": 14600,
+          "anomalies": 0
+        }
+      },
+      "tables": 472,
+      "rows": 172280,
+      "anomalies": 0,
+      "unreadable": []
+    },
+    "derived_write": {
+      "files": {
+        "cin.json": {
+          "source": "diyanet_cin_2026.json",
+          "cities": 222,
+          "rows": 81030
+        },
+        "japonya.json": {
+          "source": "diyanet_japonya_2026.json",
+          "cities": 143,
+          "rows": 52195
+        },
+        "mogolistan.json": {
+          "source": "diyanet_mogolistan_2026.json",
+          "cities": 67,
+          "rows": 24455
+        },
+        "guney_kore.json": {
+          "source": "diyanet_guney_kore_2026.json",
+          "cities": 40,
+          "rows": 14600
+        }
+      },
+      "rows": 172280
+    },
+    "derived": {
+      "files": {
+        "cin.json": {
+          "cities": 222,
+          "rows": 81030
+        },
+        "guney_kore.json": {
+          "cities": 40,
+          "rows": 14600
+        },
+        "japonya.json": {
+          "cities": 143,
+          "rows": 52195
+        },
+        "mogolistan.json": {
+          "cities": 67,
+          "rows": 24455
+        }
+      },
+      "rows": 172280
+    }
+  },
+  "source_verified_at": "2026-11-11 18:14:14Z",
+  "derived_written_at": "2026-11-11 18:14:18Z",
+  "derived_verified_at": "2026-11-11 18:14:20Z"
+}

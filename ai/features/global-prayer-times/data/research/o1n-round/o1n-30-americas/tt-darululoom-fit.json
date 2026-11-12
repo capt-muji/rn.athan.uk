@@ -1,0 +1,112 @@
+{
+ "engine": "adhan 4.4.6",
+ "coords": [
+  10.4766,
+  -61.3833
+ ],
+ "zone": "America/Port_of_Spain",
+ "fajr": {
+  "angle": 19.5,
+  "k": 10084.8,
+  "st": {
+   "n": 365,
+   "median": 7,
+   "exact": 85.8,
+   "w1": 100,
+   "worst": 1
+  },
+  "perYear": {
+   "2026": {
+    "n": 365,
+    "median": 7,
+    "exact": 85.8,
+    "w1": 100,
+    "worst": 1
+   }
+  }
+ },
+ "isha": {
+  "angle": 17.5,
+  "k": 10071.1,
+  "st": {
+   "n": 365,
+   "median": 3,
+   "exact": 72.1,
+   "w1": 100,
+   "worst": 1
+  },
+  "perYear": {
+   "2026": {
+    "n": 365,
+    "median": 3,
+    "exact": 72.1,
+    "w1": 100,
+    "worst": 1
+   }
+  }
+ },
+ "sunrise": {
+  "margin": 1,
+  "n": 365,
+  "exact": 58.1,
+  "w1": 100,
+  "worst": 1,
+  "perYear": {
+   "2026": {
+    "n": 365,
+    "median": 1,
+    "exact": 58.1,
+    "w1": 100,
+    "worst": 1
+   }
+  }
+ },
+ "dhuhr": {
+  "margin": 6,
+  "n": 365,
+  "exact": 53.4,
+  "w1": 100,
+  "worst": 1,
+  "perYear": {
+   "2026": {
+    "n": 365,
+    "median": 6,
+    "exact": 53.4,
+    "w1": 100,
+    "worst": 1
+   }
+  }
+ },
+ "maghrib": {
+  "margin": 4,
+  "n": 365,
+  "exact": 54.8,
+  "w1": 100,
+  "worst": 1,
+  "perYear": {
+   "2026": {
+    "n": 365,
+    "median": 4,
+    "exact": 54.8,
+    "w1": 100,
+    "worst": 1
+   }
+  }
+ },
+ "asr_shafi": {
+  "margin": 65,
+  "n": 365,
+  "exact": 1.9,
+  "w1": 12.6,
+  "worst": 15,
+  "perYear": {
+   "2026": {
+    "n": 365,
+    "median": 65,
+    "exact": 1.9,
+    "w1": 12.6,
+    "worst": 15
+   }
+  }
+ }
+}

@@ -1,0 +1,39 @@
+{
+ "engine": "adhan 4.4.6",
+ "point": [
+  46.2044,
+  6.1432
+ ],
+ "zone": "Europe/Zurich",
+ "span": "2026-06-01..2027-05-31",
+ "columns": {
+  "isha_interval": {
+   "rule": "maghrib column = sunset + interval (not an angle); best fixed interval +23 min: 123/258 within-1 of the interval, print wobble -2..+5 min, seasonal drift (summer ~+21, winter ~+25) recorded measured",
+   "K": 23,
+   "score": {
+    "n": 258,
+    "ex": null,
+    "w1": 123,
+    "worst": 5,
+    "mae": null
+   },
+   "note": "no fixed K reaches worst<=3; the interval varies through the year"
+  },
+  "fajr": {
+   "angle": 17.75,
+   "margin": 0,
+   "score": {
+    "n": 258,
+    "ex": 206,
+    "w1": 258,
+    "worst": 1.1,
+    "mae": 0.32,
+    "note": "one fixed angle across the whole hijri year 1448"
+   }
+  }
+ },
+ "convention": {
+  "summary": "fajr 17.75 deg ~ margin 0 (one angle across the full hijri year); sunrise/dhuhr/sunset margin 0 (100 pc within-1); the sixth column (Maghr.) is a sunset interval, not an angle: sunset + ~22-23 min with +/-3 min print wobble",
+  "span_note": "hijri 1448 across civil Jun 2026 - May 2027: a genuine forward-dated second half-year beside the 2026 first half; DST applied on EU dates (verified at the 2027 switch inside the table: 28 Mar 2027)"
+ }
+}

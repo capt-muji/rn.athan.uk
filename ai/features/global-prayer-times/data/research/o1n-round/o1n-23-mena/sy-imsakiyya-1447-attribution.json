@@ -1,0 +1,44 @@
+{
+ "surface": "Syrian Ministry of Awqaf Ramadan 1447 imsakiyya (printed sheet image, banked via the ministry's Instagram embed route by the predecessor; ministry Facebook post Feb 17, 2026 confirmed live via lite-DDG 2026-11-12)",
+ "geometry": {
+  "page": "1080x1439",
+  "day_rows": 29,
+  "row_pitch_px": "33-35",
+  "columns_per_day": [
+   "A red print (rows 1-2 only, decorative/unread)",
+   "B time (dark)",
+   "C time (white-on-teal)",
+   "D time (dark)",
+   "E time (dark)",
+   "F1 time (dark)",
+   "F2 time (dark-on-teal)",
+   "G date/weekday text (unread)",
+   "H day number (white-on-teal, unread)"
+  ]
+ },
+ "extraction": {
+  "cells": 174,
+  "missing": 0,
+  "method": "per-cell crops on measured ruling grid, local Vision OCR fast level, threshold/mask variants + multi-read consensus; color-aware masks per column",
+  "unread": [
+   "G (date cells)",
+   "H (day-number cells)"
+  ]
+ },
+ "column_attribution": {
+  "F2_fajr": "fajr; best single fixed angle ~18.85 deg (8-10/29 days exact, mae ~0.9 on adhan 4.4.6 at Damascus 33.5115/36.3064, UTC+3)",
+  "F1_sunrise": "sunrise; residual 0 to -3 min across the month on adhan",
+  "E_dhuhr": "dhuhr minus ~1 min (25/29 exact on adhan)",
+  "D_asr_12h": "asr Shafi'i in 12-hour clock minus ~2.5 min (mae 0.68 on adhan)",
+  "C_maghrib_12h": "maghrib in 12-hour clock minus ~0.5-1 min (mae 0.81)",
+  "B_sixth": "UNLABELLED sixth numeric column; behaves as maghrib+78/79 min (wobble 78/79) or isha-equivalent ~18.5 deg minus ~6 min. The print carries no readable label for it; it is NOT recorded as isha. An imsakiyya-style product may carry such a column, but its semantics are not shown by the print."
+ },
+ "no_isha_column_note": "The sheet's labelled prayer set is not extractable (label bar unresolved by OCR). Five of the six numeric columns map to fajr/sunrise/dhuhr/asr/maghrib; the sixth's semantics are open. No column is claimed as isha.",
+ "engine_attribution": "NOT PROVEN. Residual envelope +-3 min with a smooth month-scale drift on every column (sunrise 0..-3, maghrib -1..+2, asr -3..-1, dhuhr ~-1, fajr, sixth). PrayTimes-v2-family at Damascus (MWL 18/18, elv 0 or 690 m) does not close the envelope; adhan 4.4.6 does not reproduce at zero margins. The print's own engine/coordinates are not exposed by the image.",
+ "date_axis": {
+  "primary": "1 Ramadan 1447 = Thu 2026-02-19 (National Crescent Committee announcement, snippet-level source)",
+  "alternative": "2026-02-18 (preferred by ~1 min in pure adhan fit)",
+  "verdict": "day-level anchor attributed, not proven"
+ },
+ "maghrib_check": "Damascus sunset Feb 18 = 18:22 local; print day1 maghrib cell 06:21 (12h) = 18:21 = sunset - 1 min. Consistent."
+}

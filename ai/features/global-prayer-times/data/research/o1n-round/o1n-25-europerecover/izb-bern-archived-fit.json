@@ -1,0 +1,229 @@
+{
+ "engine": "adhan 4.4.6",
+ "point": [
+  46.948,
+  7.4474
+ ],
+ "zone": "Europe/Zurich",
+ "months": {
+  "izb-arch-16-august-2016": {
+   "year": 2016,
+   "months": [
+    8
+   ],
+   "n": 30,
+   "columns": {
+    "fajr": {
+     "model": "angle",
+     "angle": 15,
+     "margin": -0.4,
+     "n": 30,
+     "ex": 28,
+     "w1": 30,
+     "worst": 0.6,
+     "mae": 0.26,
+     "K_print": {
+      "K": -96,
+      "min": -106,
+      "max": -90,
+      "n": 30
+     }
+    },
+    "sunrise": {
+     "margin": -0.6,
+     "n": 30,
+     "ex": 27,
+     "w1": 30,
+     "worst": 0.5,
+     "mae": 0.25
+    },
+    "dhuhr": {
+     "margin": 0.8,
+     "n": 30,
+     "ex": 29,
+     "w1": 30,
+     "worst": 0.5,
+     "mae": 0.25
+    },
+    "asr": {
+     "margin": 1,
+     "n": 30,
+     "ex": 25,
+     "w1": 30,
+     "worst": 0.7,
+     "mae": 0.32
+    },
+    "maghrib": {
+     "margin": 0.9,
+     "n": 30,
+     "ex": 28,
+     "w1": 30,
+     "worst": 0.6,
+     "mae": 0.24
+    },
+    "isha": {
+     "model": "angle",
+     "angle": 15,
+     "margin": 1.7,
+     "n": 30,
+     "ex": 30,
+     "w1": 30,
+     "worst": 0.5,
+     "mae": 0.24,
+     "K_print": {
+      "K": 97,
+      "min": 90,
+      "max": 106,
+      "n": 30
+     }
+    }
+   }
+  },
+  "izb-arch-15-juli-2016": {
+   "year": 2016,
+   "months": [
+    7
+   ],
+   "n": 31,
+   "columns": {
+    "fajr": {
+     "model": "angle",
+     "angle": 15,
+     "margin": -0.1,
+     "n": 31,
+     "ex": 28,
+     "w1": 31,
+     "worst": 0.6,
+     "mae": 0.23,
+     "K_print": {
+      "K": -117,
+      "min": -126,
+      "max": -106,
+      "n": 31
+     }
+    },
+    "sunrise": {
+     "margin": -0.7,
+     "n": 31,
+     "ex": 28,
+     "w1": 31,
+     "worst": 0.6,
+     "mae": 0.27
+    },
+    "dhuhr": {
+     "margin": 0.9,
+     "n": 31,
+     "ex": 28,
+     "w1": 31,
+     "worst": 0.6,
+     "mae": 0.31
+    },
+    "asr": {
+     "margin": 0.3,
+     "n": 31,
+     "ex": 28,
+     "w1": 31,
+     "worst": 0.8,
+     "mae": 0.23
+    },
+    "maghrib": {
+     "margin": 0.7,
+     "n": 31,
+     "ex": 29,
+     "w1": 31,
+     "worst": 0.5,
+     "mae": 0.22
+    },
+    "isha": {
+     "model": "angle",
+     "angle": 14.75,
+     "margin": 3.7,
+     "n": 31,
+     "ex": 28,
+     "w1": 31,
+     "worst": 0.6,
+     "mae": 0.21,
+     "K_print": {
+      "K": 117,
+      "min": 107,
+      "max": 126,
+      "n": 31
+     }
+    }
+   }
+  },
+  "izb-arch-31-august-2018": {
+   "year": 2018,
+   "months": [
+    8
+   ],
+   "n": 10,
+   "columns": {
+    "fajr": {
+     "model": "angle",
+     "angle": 17.5,
+     "margin": -16.1,
+     "n": 10,
+     "ex": 9,
+     "w1": 10,
+     "worst": 0.5,
+     "mae": 0.3,
+     "K_print": {
+      "K": -103,
+      "min": -106,
+      "max": -100,
+      "n": 10
+     }
+    },
+    "sunrise": {
+     "margin": -24.5,
+     "n": 10,
+     "ex": 10,
+     "w1": 10,
+     "worst": 0.5,
+     "mae": 0.24
+    },
+    "dhuhr": {
+     "margin": 4.1,
+     "n": 10,
+     "ex": 6,
+     "w1": 10,
+     "worst": 1,
+     "mae": 0.44
+    },
+    "asr": {
+     "margin": 16.1,
+     "n": 10,
+     "ex": 3,
+     "w1": 8,
+     "worst": 2.1,
+     "mae": 1.02
+    },
+    "maghrib": {
+     "margin": 31.4,
+     "n": 10,
+     "ex": 2,
+     "w1": 8,
+     "worst": 2.7,
+     "mae": 0.96
+    },
+    "isha": {
+     "model": "angle",
+     "angle": 10.75,
+     "margin": 71.3,
+     "n": 10,
+     "ex": 10,
+     "w1": 10,
+     "worst": 0.5,
+     "mae": 0.23,
+     "K_print": {
+      "K": 104,
+      "min": 101,
+      "max": 107,
+      "n": 10
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,21 @@
+{
+ "front": "Trinidad",
+ "surface": "TT-DARULULOOM-365",
+ "publisher": "Darul Uloom Trinidad and Tobago (est. 1984), Cunupia - institute of higher Islamic studies, Deobandi/Hanafi",
+ "url": "darululoomtt.net daily-prayer-time-for-mosques plugin; wp-admin/admin-ajax.php?action=get_monthly_timetable&month=N&display=table",
+ "rows_banked": 365,
+ "span": "2026-01-01..2026-12-31 (current-year only; month axis 1..12; year= ignored)",
+ "recipe": {
+  "engine": "adhan 4.4.6 at Cunupia 10.4766,-61.3833, America/Port_of_Spain (UTC-4 fixed)",
+  "fajr": "19.5 deg + 7 min, 85.8 exact, 100 within-1 worst 1",
+  "isha": "17.5 deg + 3 min, 72.1 exact, 100 within-1 worst 1",
+  "asr": "Hanafi +1 min, 55.1 exact, 97.5 within-1 worst 2",
+  "sunrise": "+1, 100 within-1 worst 1",
+  "dhuhr": "+6, 100 within-1 worst 1",
+  "maghrib": "+4, 100 within-1 worst 1"
+ },
+ "grade": "provisional (one published cycle)",
+ "tier": "community (national institute's own platform; named publisher)",
+ "second_year": "negative by parameter (endpoint year-locked to the served year; year= ignored), negative in Wayback (admin-ajax captures are bare/error bodies only, no monthly-table query archived); the archive holds only homepage widget single-day snapshots",
+ "leads": "ASJA (asja1935 on Facebook, largest T&T organisation) login-walled, named lead"
+}

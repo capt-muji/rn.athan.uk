@@ -1,0 +1,77 @@
+{
+ "country": "svalbard-and-jan-mayen",
+ "generated": "2026-11-12T11:40:59Z",
+ "routes_probed": {
+  "monthly_2026": 7,
+  "monthly_2025_06": 0,
+  "monthly_2027_06": 0
+ },
+ "settlements": {
+  "61860": {
+   "name": "Longyearbyen",
+   "city_label": "Longyearbyen (Spitsbergen / Svalbard, Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026",
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "61861": {
+   "name": "Grumantbyen",
+   "city_label": "Grumantbyen (Grumantbyen / Svalbard, Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "61862": {
+   "name": "Sveagruva",
+   "city_label": "Sveagruva (Sveagruva / Svalbard, Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "61863": {
+   "name": "Ny-Alesund",
+   "city_label": "Ny-Alesund (Ny-Alesund / Svalbard, Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "61864": {
+   "name": "Pyramiden",
+   "city_label": "Pyramiden (Pyramiden / Svalbard, Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "61865": {
+   "name": "Barentsburg",
+   "city_label": "Barentsburg (Barentsburg / Svalbard, Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "61866": {
+   "name": "Smeerenburg",
+   "city_label": "Smeerenburg (Smeerenburg / Svalbard, Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026",
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  }
+ },
+ "rows": {}
+}

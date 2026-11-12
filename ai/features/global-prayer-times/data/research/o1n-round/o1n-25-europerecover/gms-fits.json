@@ -1,0 +1,1660 @@
+{
+ "engine": "adhan 4.4.6",
+ "zone": "Europe/Paris",
+ "note": "columns aligned per-row by DP against model expectations at the city point; point solved per table-month on mapped solar columns",
+ "months": {
+  "gms-cal-2023-06": {
+   "year": 2023,
+   "month": 6,
+   "tables": {
+    "main": {
+     "point": [
+      48.5734,
+      7.7521
+     ],
+     "rows": 30,
+     "columns": {
+      "fajr": {
+       "model": "angle",
+       "angle": 14.5,
+       "margin": -11.9,
+       "n": 30,
+       "ex": 24,
+       "w1": 30,
+       "worst": 0.9,
+       "mae": 0.31,
+       "K_print": {
+        "K": 142,
+        "n": 30,
+        "ex": 9,
+        "w1": 18,
+        "min": null,
+        "max": null
+       }
+      },
+      "sunrise": {
+       "margin": -3.2,
+       "n": 29,
+       "ex": 21,
+       "w1": 29,
+       "worst": 0.9,
+       "mae": 0.3
+      },
+      "dhuhr": {
+       "margin": 2,
+       "n": 30,
+       "ex": 27,
+       "w1": 30,
+       "worst": 0.6,
+       "mae": 0.26
+      },
+      "asr": {
+       "margin": 1.8,
+       "n": 30,
+       "ex": 27,
+       "w1": 30,
+       "worst": 0.6,
+       "mae": 0.27
+      },
+      "maghrib": {
+       "margin": 3.1,
+       "n": 30,
+       "ex": 17,
+       "w1": 30,
+       "worst": 0.8,
+       "mae": 0.4
+      },
+      "isha": {
+       "model": "cap",
+       "printed": {
+        "min": 1384,
+        "max": 1384
+       },
+       "K_print": {
+        "K": 88,
+        "min": 85,
+        "max": 99,
+        "n": 30
+       },
+       "note": "isha clamped (constant print across the month; angular model not applicable)"
+      }
+     }
+    }
+   }
+  },
+  "gms-cal-2023-07": {
+   "year": 2023,
+   "month": 7,
+   "tables": {
+    "main": {
+     "point": [
+      48.5734,
+      7.7521
+     ],
+     "rows": 23,
+     "columns": {
+      "fajr": {
+       "model": "angle",
+       "angle": 13.5,
+       "margin": -25.9,
+       "n": 22,
+       "ex": 21,
+       "w1": 22,
+       "worst": 0.5,
+       "mae": 0.21,
+       "K_print": {
+        "K": 135,
+        "n": 22,
+        "ex": 2,
+        "w1": 4,
+        "min": 121,
+        "max": 141
+       }
+      },
+      "sunrise": {
+       "margin": -4.2,
+       "n": 23,
+       "ex": 19,
+       "w1": 23,
+       "worst": 0.9,
+       "mae": 0.31
+      },
+      "dhuhr": {
+       "margin": 1.6,
+       "n": 23,
+       "ex": 22,
+       "w1": 23,
+       "worst": 0.5,
+       "mae": 0.2
+      },
+      "asr": {
+       "margin": 2.3,
+       "n": 22,
+       "ex": 20,
+       "w1": 22,
+       "worst": 0.8,
+       "mae": 0.25
+      },
+      "maghrib": {
+       "margin": 3.9,
+       "n": 23,
+       "ex": 19,
+       "w1": 23,
+       "worst": 0.6,
+       "mae": 0.25
+      },
+      "isha": {
+       "model": "cap",
+       "printed": {
+        "min": 1384,
+        "max": 1384
+       },
+       "K_print": {
+        "K": 91,
+        "min": 86,
+        "max": 100,
+        "n": 18
+       },
+       "note": "isha clamped (constant print across the month; angular model not applicable)"
+      }
+     }
+    }
+   }
+  },
+  "gms-cal-2024-02": {
+   "year": 2024,
+   "month": 2,
+   "tables": {
+    "left": {
+     "point": [
+      48.5734,
+      7.7521
+     ],
+     "rows": 14,
+     "columns": {
+      "fajr": {
+       "model": "angle",
+       "angle": 17.25,
+       "margin": -4.2,
+       "n": 14,
+       "ex": 14,
+       "w1": 14,
+       "worst": 0.5,
+       "mae": 0.24,
+       "K_print": {
+        "K": 100,
+        "n": 14,
+        "ex": 4,
+        "w1": 12,
+        "min": 98,
+        "max": 102
+       }
+      },
+      "sunrise": {
+       "margin": -6.6,
+       "n": 14,
+       "ex": 13,
+       "w1": 14,
+       "worst": 0.5,
+       "mae": 0.25
+      },
+      "dhuhr": {
+       "margin": 4.9,
+       "n": 14,
+       "ex": 14,
+       "w1": 14,
+       "worst": 0.5,
+       "mae": 0.16
+      },
+      "asr": {
+       "margin": 2.2,
+       "n": 13,
+       "ex": 13,
+       "w1": 13,
+       "worst": 0.5,
+       "mae": 0.24
+      },
+      "maghrib": {
+       "margin": 5.9,
+       "n": 14,
+       "ex": 13,
+       "w1": 14,
+       "worst": 0.5,
+       "mae": 0.24
+      },
+      "isha": {
+       "model": "angle",
+       "angle": 19.75,
+       "margin": -23.8,
+       "n": 14,
+       "ex": 14,
+       "w1": 14,
+       "worst": 0.5,
+       "mae": 0.27,
+       "K_print": {
+        "K": 88,
+        "n": 14,
+        "ex": 3,
+        "w1": 12,
+        "min": 86,
+        "max": 90
+       }
+      }
+     }
+    },
+    "right": {
+     "point": [
+      48.5734,
+      7.7521
+     ],
+     "rows": 10,
+     "columns": {
+      "fajr": {
+       "model": "angle",
+       "angle": 10.25,
+       "margin": -46.4,
+       "n": 10,
+       "ex": 10,
+       "w1": 10,
+       "worst": 0.5,
+       "mae": 0.23,
+       "K_print": {
+        "K": 98,
+        "n": 10,
+        "ex": 4,
+        "w1": 10,
+        "min": 97,
+        "max": 99
+       }
+      },
+      "sunrise": {
+       "margin": -6.6,
+       "n": 10,
+       "ex": 10,
+       "w1": 10,
+       "worst": 0.5,
+       "mae": 0.19
+      },
+      "dhuhr": {
+       "margin": 5.1,
+       "n": 10,
+       "ex": 10,
+       "w1": 10,
+       "worst": 0.3,
+       "mae": 0.16
+      },
+      "asr": {
+       "margin": 2.2,
+       "n": 10,
+       "ex": 9,
+       "w1": 10,
+       "worst": 0.6,
+       "mae": 0.25
+      },
+      "maghrib": {
+       "margin": 6,
+       "n": 10,
+       "ex": 8,
+       "w1": 10,
+       "worst": 0.6,
+       "mae": 0.23
+      },
+      "isha": {
+       "model": "angle",
+       "angle": 10,
+       "margin": 35.5,
+       "n": 10,
+       "ex": 9,
+       "w1": 10,
+       "worst": 0.5,
+       "mae": 0.26,
+       "K_print": {
+        "K": 86,
+        "n": 10,
+        "ex": 6,
+        "w1": 10,
+        "min": 85,
+        "max": 87
+       }
+      }
+     }
+    }
+   }
+  },
+  "gms-cal-2024-07": {
+   "year": 2024,
+   "month": 7,
+   "tables": {
+    "main": {
+     "point": [
+      48.5734,
+      7.7521
+     ],
+     "rows": 13,
+     "columns": {
+      "fajr": {
+       "model": "angle",
+       "angle": 8,
+       "margin": -46.3,
+       "n": 2,
+       "ex": 1,
+       "w1": 2,
+       "worst": 1.3,
+       "mae": 0.66,
+       "K_print": {
+        "K": 97,
+        "n": 2,
+        "ex": 1,
+        "w1": 2,
+        "min": 96,
+        "max": 97
+       }
+      },
+      "sunrise": {
+       "margin": -7.2,
+       "n": 13,
+       "ex": 13,
+       "w1": 13,
+       "worst": 0.5,
+       "mae": 0.17
+      },
+      "dhuhr": {
+       "margin": 4.9,
+       "n": 13,
+       "ex": 12,
+       "w1": 13,
+       "worst": 0.5,
+       "mae": 0.22
+      },
+      "asr": {
+       "margin": 4.3,
+       "n": 13,
+       "ex": 13,
+       "w1": 13,
+       "worst": 0.5,
+       "mae": 0.19
+      },
+      "maghrib": {
+       "margin": 7.5,
+       "n": 13,
+       "ex": 12,
+       "w1": 13,
+       "worst": 0.6,
+       "mae": 0.21
+      },
+      "isha": {
+       "model": "interval",
+       "interval": 55,
+       "margin": 28.8,
+       "n": 13,
+       "ex": 8,
+       "w1": 11,
+       "worst": 2.8,
+       "mae": 0.67,
+       "K_print": {
+        "K": 76,
+        "n": 13,
+        "ex": 9,
+        "w1": 11,
+        "min": 76,
+        "max": 79
+       }
+      }
+     }
+    }
+   }
+  },
+  "gms-cal-2024-11": {
+   "year": 2024,
+   "month": 11,
+   "tables": {
+    "left": {
+     "point": [
+      48.5734,
+      7.7521
+     ],
+     "rows": 13,
+     "columns": {
+      "fajr": {
+       "model": "angle",
+       "angle": 11.5,
+       "margin": -40,
+       "n": 13,
+       "ex": 11,
+       "w1": 12,
+       "worst": 2.6,
+       "mae": 0.46,
+       "K_print": {
+        "K": 101,
+        "n": 13,
+        "ex": 3,
+        "w1": 12,
+        "min": 100,
+        "max": 103
+       }
+      },
+      "sunrise": {
+       "margin": -7.4,
+       "n": 13,
+       "ex": 12,
+       "w1": 12,
+       "worst": 3.3,
+       "mae": 0.48
+      },
+      "dhuhr": {
+       "margin": 5.2,
+       "n": 13,
+       "ex": 11,
+       "w1": 13,
+       "worst": 0.7,
+       "mae": 0.25
+      },
+      "asr": {
+       "margin": 5.5,
+       "n": 13,
+       "ex": 8,
+       "w1": 12,
+       "worst": 2.2,
+       "mae": 0.52
+      },
+      "maghrib": {
+       "margin": 7.9,
+       "n": 13,
+       "ex": 12,
+       "w1": 12,
+       "worst": 3.4,
+       "mae": 0.44
+      },
+      "isha": {
+       "model": "angle",
+       "angle": 10,
+       "margin": 37.8,
+       "n": 13,
+       "ex": 12,
+       "w1": 12,
+       "worst": 2.6,
+       "mae": 0.38,
+       "K_print": {
+        "K": 89,
+        "n": 13,
+        "ex": 6,
+        "w1": 13,
+        "min": 88,
+        "max": 90
+       }
+      }
+     }
+    },
+    "right": {
+     "point": [
+      48.5734,
+      7.7521
+     ],
+     "rows": 13,
+     "columns": {
+      "fajr": {
+       "model": "angle",
+       "angle": 15.75,
+       "margin": -14.1,
+       "n": 13,
+       "ex": 11,
+       "w1": 11,
+       "worst": 2.4,
+       "mae": 0.57,
+       "K_print": {
+        "K": 104,
+        "n": 13,
+        "ex": 4,
+        "w1": 11,
+        "min": 103,
+        "max": 106
+       }
+      },
+      "sunrise": {
+       "margin": -7.2,
+       "n": 13,
+       "ex": 10,
+       "w1": 11,
+       "worst": 2.7,
+       "mae": 0.59
+      },
+      "dhuhr": {
+       "margin": 5,
+       "n": 13,
+       "ex": 12,
+       "w1": 13,
+       "worst": 0.9,
+       "mae": 0.29
+      },
+      "asr": {
+       "margin": 5,
+       "n": 13,
+       "ex": 8,
+       "w1": 12,
+       "worst": 1.6,
+       "mae": 0.41
+      },
+      "maghrib": {
+       "margin": 7.2,
+       "n": 13,
+       "ex": 8,
+       "w1": 12,
+       "worst": 1.6,
+       "mae": 0.49
+      },
+      "isha": {
+       "model": "angle",
+       "angle": 15,
+       "margin": 6.5,
+       "n": 13,
+       "ex": 10,
+       "w1": 13,
+       "worst": 0.9,
+       "mae": 0.37,
+       "K_print": {
+        "K": 92,
+        "n": 13,
+        "ex": 6,
+        "w1": 10,
+        "min": 90,
+        "max": 94
+       }
+      }
+     }
+    }
+   }
+  },
+  "gms-cal-2026-02": {
+   "year": 2026,
+   "month": 2,
+   "tables": {
+    "left": {
+     "point": [
+      48.5734,
+      7.7521
+     ],
+     "rows": 14,
+     "columns": {
+      "fajr": {
+       "model": "angle",
+       "angle": 13.5,
+       "margin": -27.1,
+       "n": 14,
+       "ex": 11,
+       "w1": 12,
+       "worst": 2.5,
+       "mae": 0.56,
+       "K_print": {
+        "K": 100,
+        "n": 14,
+        "ex": 6,
+        "w1": 14,
+        "min": 99,
+        "max": 101
+       }
+      },
+      "sunrise": {
+       "margin": -6.6,
+       "n": 14,
+       "ex": 10,
+       "w1": 12,
+       "worst": 2.6,
+       "mae": 0.58
+      },
+      "dhuhr": {
+       "margin": 4.9,
+       "n": 14,
+       "ex": 14,
+       "w1": 14,
+       "worst": 0.5,
+       "mae": 0.14
+      },
+      "asr": {
+       "margin": 2.3,
+       "n": 14,
+       "ex": 11,
+       "w1": 12,
+       "worst": 2.9,
+       "mae": 0.63
+      },
+      "maghrib": {
+       "margin": 6,
+       "n": 14,
+       "ex": 9,
+       "w1": 12,
+       "worst": 3.6,
+       "mae": 0.7
+      },
+      "isha": {
+       "model": "angle",
+       "angle": 10,
+       "margin": 35.8,
+       "n": 14,
+       "ex": 11,
+       "w1": 12,
+       "worst": 2.5,
+       "mae": 0.61,
+       "K_print": {
+        "K": 88,
+        "n": 14,
+        "ex": 5,
+        "w1": 13,
+        "min": 86,
+        "max": 89
+       }
+      }
+     }
+    },
+    "right": {
+     "point": [
+      48.5734,
+      7.7521
+     ],
+     "rows": 12,
+     "columns": {
+      "fajr": {
+       "model": "angle",
+       "angle": 11.75,
+       "margin": -37.4,
+       "n": 12,
+       "ex": 12,
+       "w1": 12,
+       "worst": 0.5,
+       "mae": 0.27,
+       "K_print": {
+        "K": 98,
+        "n": 12,
+        "ex": 9,
+        "w1": 12,
+        "min": 97,
+        "max": 99
+       }
+      },
+      "sunrise": {
+       "margin": -6.5,
+       "n": 12,
+       "ex": 11,
+       "w1": 12,
+       "worst": 0.5,
+       "mae": 0.23
+      },
+      "dhuhr": {
+       "margin": 5,
+       "n": 12,
+       "ex": 12,
+       "w1": 12,
+       "worst": 0.5,
+       "mae": 0.19
+      },
+      "asr": {
+       "margin": 2.4,
+       "n": 12,
+       "ex": 10,
+       "w1": 12,
+       "worst": 0.5,
+       "mae": 0.24
+      },
+      "maghrib": {
+       "margin": 5.8,
+       "n": 12,
+       "ex": 11,
+       "w1": 12,
+       "worst": 0.5,
+       "mae": 0.25
+      },
+      "isha": {
+       "model": "angle",
+       "angle": 10,
+       "margin": 35.2,
+       "n": 12,
+       "ex": 12,
+       "w1": 12,
+       "worst": 0.5,
+       "mae": 0.24,
+       "K_print": {
+        "K": 86,
+        "n": 12,
+        "ex": 8,
+        "w1": 12,
+        "min": 85,
+        "max": 86
+       }
+      }
+     },
+     "imsak_minus_fajr": {
+      "n": 9,
+      "min": -10,
+      "max": -10
+     }
+    }
+   }
+  },
+  "held-gms-2025-11": {
+   "year": 2025,
+   "month": 11,
+   "tables": {
+    "left": {
+     "point": [
+      48.5734,
+      7.7521
+     ],
+     "rows": 2,
+     "columns": {
+      "fajr": {
+       "model": "angle",
+       "angle": 8,
+       "margin": -54.8,
+       "n": 1,
+       "ex": 1,
+       "w1": 1,
+       "worst": 0,
+       "mae": 0,
+       "K_print": {
+        "K": 101,
+        "n": 1,
+        "ex": 1,
+        "w1": 1,
+        "min": 101,
+        "max": 101
+       }
+      },
+      "sunrise": {
+       "margin": 0.3,
+       "n": 2,
+       "ex": 1,
+       "w1": 1,
+       "worst": 3.3,
+       "mae": 1.64
+      },
+      "dhuhr": {
+       "margin": 5.4,
+       "n": 2,
+       "ex": 2,
+       "w1": 2,
+       "worst": 0,
+       "mae": 0.02
+      },
+      "asr": {
+       "margin": 2.4,
+       "n": 2,
+       "ex": 1,
+       "w1": 1,
+       "worst": 2.3,
+       "mae": 1.17
+      },
+      "maghrib": {
+       "margin": 3.5,
+       "n": 2,
+       "ex": 1,
+       "w1": 1,
+       "worst": 2.4,
+       "mae": 1.19
+      },
+      "isha": {
+       "model": "interval",
+       "interval": 55,
+       "margin": 36.5,
+       "n": 2,
+       "ex": 1,
+       "w1": 2,
+       "worst": 1.4,
+       "mae": 0.69,
+       "K_print": {
+        "K": 89,
+        "n": 2,
+        "ex": 1,
+        "w1": 2,
+        "min": 88,
+        "max": 89
+       }
+      }
+     }
+    },
+    "right": {
+     "point": [
+      48.5734,
+      7.7521
+     ],
+     "rows": 10,
+     "columns": {
+      "fajr": {
+       "model": "angle",
+       "angle": 8,
+       "margin": -36.3,
+       "n": 10,
+       "ex": 4,
+       "w1": 8,
+       "worst": 25.9,
+       "mae": 5.7,
+       "K_print": {
+        "K": 105,
+        "n": 10,
+        "ex": 4,
+        "w1": 10,
+        "min": 104,
+        "max": 106
+       }
+      },
+      "sunrise": {
+       "margin": 22.7,
+       "n": 10,
+       "ex": 3,
+       "w1": 8,
+       "worst": 29,
+       "mae": 6.08
+      },
+      "dhuhr": {
+       "margin": 8.4,
+       "n": 10,
+       "ex": 3,
+       "w1": 8,
+       "worst": 3.4,
+       "mae": 1.12
+      },
+      "asr": {
+       "margin": -11.6,
+       "n": 10,
+       "ex": 2,
+       "w1": 5,
+       "worst": 16,
+       "mae": 4.32
+      },
+      "maghrib": {
+       "margin": -13.9,
+       "n": 10,
+       "ex": 2,
+       "w1": 4,
+       "worst": 20.9,
+       "mae": 5.59
+      },
+      "isha": {
+       "model": "angle",
+       "angle": 18.5,
+       "margin": -32.5,
+       "n": 10,
+       "ex": 3,
+       "w1": 4,
+       "worst": 17.3,
+       "mae": 4.59,
+       "K_print": {
+        "K": 92,
+        "n": 10,
+        "ex": 3,
+        "w1": 9,
+        "min": 91,
+        "max": 94
+       }
+      }
+     }
+    }
+   }
+  },
+  "held-gms-2026-02": {
+   "year": 2026,
+   "month": 2,
+   "tables": {
+    "left": {
+     "point": [
+      48.5734,
+      7.7521
+     ],
+     "rows": 14,
+     "columns": {
+      "fajr": {
+       "model": "angle",
+       "angle": 13.5,
+       "margin": -27.1,
+       "n": 14,
+       "ex": 11,
+       "w1": 12,
+       "worst": 2.5,
+       "mae": 0.56,
+       "K_print": {
+        "K": 100,
+        "n": 14,
+        "ex": 6,
+        "w1": 14,
+        "min": 99,
+        "max": 101
+       }
+      },
+      "sunrise": {
+       "margin": -6.6,
+       "n": 14,
+       "ex": 10,
+       "w1": 12,
+       "worst": 2.6,
+       "mae": 0.58
+      },
+      "dhuhr": {
+       "margin": 4.9,
+       "n": 14,
+       "ex": 14,
+       "w1": 14,
+       "worst": 0.5,
+       "mae": 0.14
+      },
+      "asr": {
+       "margin": 2.3,
+       "n": 14,
+       "ex": 11,
+       "w1": 12,
+       "worst": 2.9,
+       "mae": 0.63
+      },
+      "maghrib": {
+       "margin": 6,
+       "n": 14,
+       "ex": 9,
+       "w1": 12,
+       "worst": 3.6,
+       "mae": 0.7
+      },
+      "isha": {
+       "model": "angle",
+       "angle": 10,
+       "margin": 35.8,
+       "n": 14,
+       "ex": 11,
+       "w1": 12,
+       "worst": 2.5,
+       "mae": 0.61,
+       "K_print": {
+        "K": 88,
+        "n": 14,
+        "ex": 5,
+        "w1": 13,
+        "min": 86,
+        "max": 89
+       }
+      }
+     }
+    },
+    "right": {
+     "point": [
+      48.5734,
+      7.7521
+     ],
+     "rows": 12,
+     "columns": {
+      "fajr": {
+       "model": "angle",
+       "angle": 11.75,
+       "margin": -37.4,
+       "n": 12,
+       "ex": 12,
+       "w1": 12,
+       "worst": 0.5,
+       "mae": 0.27,
+       "K_print": {
+        "K": 98,
+        "n": 12,
+        "ex": 9,
+        "w1": 12,
+        "min": 97,
+        "max": 99
+       }
+      },
+      "sunrise": {
+       "margin": -6.5,
+       "n": 12,
+       "ex": 11,
+       "w1": 12,
+       "worst": 0.5,
+       "mae": 0.23
+      },
+      "dhuhr": {
+       "margin": 5,
+       "n": 12,
+       "ex": 12,
+       "w1": 12,
+       "worst": 0.5,
+       "mae": 0.19
+      },
+      "asr": {
+       "margin": 2.4,
+       "n": 12,
+       "ex": 10,
+       "w1": 12,
+       "worst": 0.5,
+       "mae": 0.24
+      },
+      "maghrib": {
+       "margin": 5.8,
+       "n": 12,
+       "ex": 11,
+       "w1": 12,
+       "worst": 0.5,
+       "mae": 0.25
+      },
+      "isha": {
+       "model": "angle",
+       "angle": 10,
+       "margin": 35.2,
+       "n": 12,
+       "ex": 12,
+       "w1": 12,
+       "worst": 0.5,
+       "mae": 0.24,
+       "K_print": {
+        "K": 86,
+        "n": 12,
+        "ex": 8,
+        "w1": 12,
+        "min": 85,
+        "max": 86
+       }
+      }
+     },
+     "imsak_minus_fajr": {
+      "n": 9,
+      "min": -10,
+      "max": -10
+     }
+    }
+   }
+  },
+  "held-gms-2026-06": {
+   "year": 2026,
+   "month": 6,
+   "tables": {
+    "left": {
+     "point": [
+      48.5734,
+      7.7521
+     ],
+     "rows": 14,
+     "columns": {
+      "fajr": {
+       "n": 0
+      },
+      "sunrise": {
+       "margin": -6.7,
+       "n": 14,
+       "ex": 8,
+       "w1": 12,
+       "worst": 4.5,
+       "mae": 0.86
+      },
+      "dhuhr": {
+       "margin": 4.9,
+       "n": 14,
+       "ex": 11,
+       "w1": 11,
+       "worst": 3.4,
+       "mae": 0.79
+      },
+      "asr": {
+       "margin": 3.4,
+       "n": 14,
+       "ex": 8,
+       "w1": 11,
+       "worst": 4.6,
+       "mae": 1.11
+      },
+      "maghrib": {
+       "margin": 6.4,
+       "n": 14,
+       "ex": 10,
+       "w1": 11,
+       "worst": 10.4,
+       "mae": 1.92
+      },
+      "isha": {
+       "model": "interval",
+       "interval": 55,
+       "margin": 30.5,
+       "n": 14,
+       "ex": 4,
+       "w1": 9,
+       "worst": 6.5,
+       "mae": 2.02,
+       "K_print": {
+        "K": 80,
+        "n": 14,
+        "ex": 4,
+        "w1": 8,
+        "min": 78,
+        "max": 83
+       }
+      }
+     }
+    },
+    "right": {
+     "point": [
+      48.5734,
+      7.7521
+     ],
+     "rows": 15,
+     "columns": {
+      "fajr": {
+       "n": 0
+      },
+      "sunrise": {
+       "margin": -7.2,
+       "n": 15,
+       "ex": 13,
+       "w1": 14,
+       "worst": 2.6,
+       "mae": 0.35
+      },
+      "dhuhr": {
+       "margin": 5,
+       "n": 15,
+       "ex": 13,
+       "w1": 14,
+       "worst": 3.2,
+       "mae": 0.47
+      },
+      "asr": {
+       "margin": 3.9,
+       "n": 15,
+       "ex": 13,
+       "w1": 14,
+       "worst": 3.8,
+       "mae": 0.52
+      },
+      "maghrib": {
+       "margin": 6.9,
+       "n": 15,
+       "ex": 14,
+       "w1": 14,
+       "worst": 3.7,
+       "mae": 0.43
+      },
+      "isha": {
+       "model": "cap",
+       "printed": {
+        "min": 1378,
+        "max": 1381
+       },
+       "K_print": {
+        "K": 78,
+        "min": 76,
+        "max": 79,
+        "n": 15
+       },
+       "note": "isha clamped (constant print across the month; angular model not applicable)"
+      }
+     }
+    }
+   }
+  },
+  "held-gms-2026-07": {
+   "year": 2026,
+   "month": 7,
+   "tables": {
+    "left": {
+     "point": [
+      48.5734,
+      7.7521
+     ],
+     "rows": 13,
+     "columns": {
+      "fajr": {
+       "model": "angle",
+       "angle": 8,
+       "margin": -55.1,
+       "n": 5,
+       "ex": 1,
+       "w1": 2,
+       "worst": 5.3,
+       "mae": 2.7,
+       "K_print": {
+        "K": 90,
+        "n": 5,
+        "ex": 1,
+        "w1": 4,
+        "min": null,
+        "max": null
+       }
+      },
+      "sunrise": {
+       "margin": -7.6,
+       "n": 12,
+       "ex": 6,
+       "w1": 8,
+       "worst": 15.1,
+       "mae": 4.71
+      },
+      "dhuhr": {
+       "margin": 4.6,
+       "n": 13,
+       "ex": 5,
+       "w1": 10,
+       "worst": 1.9,
+       "mae": 0.84
+      },
+      "asr": {
+       "margin": 4.6,
+       "n": 13,
+       "ex": 6,
+       "w1": 9,
+       "worst": 3.7,
+       "mae": 1.06
+      },
+      "maghrib": {
+       "margin": 7.8,
+       "n": 13,
+       "ex": 6,
+       "w1": 8,
+       "worst": 13.8,
+       "mae": 4.33
+      },
+      "isha": {
+       "model": "interval",
+       "interval": 55,
+       "margin": 28.9,
+       "n": 13,
+       "ex": 4,
+       "w1": 8,
+       "worst": 13.8,
+       "mae": 4.53,
+       "K_print": {
+        "K": 76,
+        "n": 13,
+        "ex": 9,
+        "w1": 13,
+        "min": 75,
+        "max": 77
+       }
+      }
+     }
+    },
+    "right": {
+     "point": [
+      48.5734,
+      7.7521
+     ],
+     "rows": 16,
+     "columns": {
+      "fajr": {
+       "model": "interval",
+       "interval": 55,
+       "margin": -52.7,
+       "n": 14,
+       "ex": 2,
+       "w1": 4,
+       "worst": 7.1,
+       "mae": 3.21,
+       "K_print": {
+        "K": 102,
+        "n": 14,
+        "ex": 1,
+        "w1": 2,
+        "min": 97,
+        "max": 108
+       }
+      },
+      "sunrise": {
+       "margin": -7,
+       "n": 16,
+       "ex": 12,
+       "w1": 14,
+       "worst": 16.3,
+       "mae": 2.14
+      },
+      "dhuhr": {
+       "margin": 4.8,
+       "n": 16,
+       "ex": 9,
+       "w1": 14,
+       "worst": 1.9,
+       "mae": 0.55
+      },
+      "asr": {
+       "margin": 4.8,
+       "n": 16,
+       "ex": 11,
+       "w1": 14,
+       "worst": 4.3,
+       "mae": 0.69
+      },
+      "maghrib": {
+       "margin": 8.1,
+       "n": 16,
+       "ex": 14,
+       "w1": 14,
+       "worst": 14.6,
+       "mae": 1.7
+      },
+      "isha": {
+       "model": "interval",
+       "interval": 55,
+       "margin": 35.4,
+       "n": 16,
+       "ex": 1,
+       "w1": 4,
+       "worst": 13.5,
+       "mae": 4.46,
+       "K_print": {
+        "K": 84,
+        "n": 16,
+        "ex": 2,
+        "w1": 4,
+        "min": 78,
+        "max": 90
+       }
+      }
+     }
+    }
+   }
+  },
+  "held-gms-2026-11": {
+   "year": 2026,
+   "month": 11,
+   "tables": {
+    "left": {
+     "point": [
+      48.5734,
+      7.7521
+     ],
+     "rows": 10,
+     "columns": {
+      "fajr": {
+       "model": "angle",
+       "angle": 13.25,
+       "margin": -29.3,
+       "n": 10,
+       "ex": 10,
+       "w1": 10,
+       "worst": 0.5,
+       "mae": 0.22,
+       "K_print": {
+        "K": 101,
+        "n": 10,
+        "ex": 4,
+        "w1": 8,
+        "min": 99,
+        "max": 103
+       }
+      },
+      "sunrise": {
+       "margin": -7.3,
+       "n": 10,
+       "ex": 9,
+       "w1": 10,
+       "worst": 0.5,
+       "mae": 0.27
+      },
+      "dhuhr": {
+       "margin": 5.2,
+       "n": 10,
+       "ex": 8,
+       "w1": 10,
+       "worst": 0.8,
+       "mae": 0.32
+      },
+      "asr": {
+       "margin": 5.5,
+       "n": 10,
+       "ex": 9,
+       "w1": 10,
+       "worst": 0.6,
+       "mae": 0.21
+      },
+      "maghrib": {
+       "margin": 7.9,
+       "n": 10,
+       "ex": 9,
+       "w1": 10,
+       "worst": 0.6,
+       "mae": 0.29
+      },
+      "isha": {
+       "model": "angle",
+       "angle": 13.75,
+       "margin": 14.9,
+       "n": 10,
+       "ex": 10,
+       "w1": 10,
+       "worst": 0.5,
+       "mae": 0.18,
+       "K_print": {
+        "K": 89,
+        "n": 10,
+        "ex": 2,
+        "w1": 8,
+        "min": 87,
+        "max": 91
+       }
+      }
+     }
+    },
+    "right": {
+     "point": [
+      48.5734,
+      7.7521
+     ],
+     "rows": 17,
+     "columns": {
+      "fajr": {
+       "model": "angle",
+       "angle": 13.25,
+       "margin": -29.8,
+       "n": 17,
+       "ex": 15,
+       "w1": 15,
+       "worst": 13.5,
+       "mae": 1.78,
+       "K_print": {
+        "K": 104,
+        "n": 17,
+        "ex": 7,
+        "w1": 14,
+        "min": 103,
+        "max": 106
+       }
+      },
+      "sunrise": {
+       "margin": -7.2,
+       "n": 17,
+       "ex": 14,
+       "w1": 15,
+       "worst": 15.4,
+       "mae": 2.01
+      },
+      "dhuhr": {
+       "margin": 4.9,
+       "n": 17,
+       "ex": 14,
+       "w1": 16,
+       "worst": 2.1,
+       "mae": 0.43
+      },
+      "asr": {
+       "margin": 5.1,
+       "n": 17,
+       "ex": 14,
+       "w1": 15,
+       "worst": 8.7,
+       "mae": 1.24
+      },
+      "maghrib": {
+       "margin": 7.6,
+       "n": 17,
+       "ex": 13,
+       "w1": 15,
+       "worst": 11.6,
+       "mae": 1.52
+      },
+      "isha": {
+       "model": "angle",
+       "angle": 10,
+       "margin": 38.3,
+       "n": 17,
+       "ex": 15,
+       "w1": 15,
+       "worst": 10.4,
+       "mae": 1.4,
+       "K_print": {
+        "K": 92,
+        "n": 17,
+        "ex": 3,
+        "w1": 16,
+        "min": 91,
+        "max": 94
+       }
+      }
+     }
+    }
+   }
+  },
+  "held-gms-2026-12": {
+   "year": 2026,
+   "month": 12,
+   "tables": {
+    "left": {
+     "point": [
+      48.5734,
+      7.7521
+     ],
+     "rows": 17,
+     "columns": {
+      "fajr": {
+       "model": "angle",
+       "angle": 9.5,
+       "margin": -54.8,
+       "n": 14,
+       "ex": 14,
+       "w1": 14,
+       "worst": 0.5,
+       "mae": 0.15,
+       "K_print": {
+        "K": 108,
+        "n": 14,
+        "ex": 7,
+        "w1": 13,
+        "min": 106,
+        "max": 109
+       }
+      },
+      "sunrise": {
+       "margin": -7.2,
+       "n": 16,
+       "ex": 12,
+       "w1": 14,
+       "worst": 17.1,
+       "mae": 2.12
+      },
+      "dhuhr": {
+       "margin": 4.7,
+       "n": 17,
+       "ex": 12,
+       "w1": 14,
+       "worst": 9.2,
+       "mae": 1.8
+      },
+      "asr": {
+       "margin": 4.3,
+       "n": 17,
+       "ex": 10,
+       "w1": 14,
+       "worst": 7.7,
+       "mae": 1.24
+      },
+      "maghrib": {
+       "margin": 6.7,
+       "n": 17,
+       "ex": 11,
+       "w1": 15,
+       "worst": 5.9,
+       "mae": 0.95
+      },
+      "isha": {
+       "model": "cap",
+       "printed": {
+        "min": 1095,
+        "max": 1097
+       },
+       "K_print": {
+        "K": 95,
+        "min": 94,
+        "max": 96,
+        "n": 17
+       },
+       "note": "isha clamped (constant print across the month; angular model not applicable)"
+      }
+     }
+    },
+    "right": {
+     "point": [
+      48.5734,
+      7.7521
+     ],
+     "rows": 16,
+     "columns": {
+      "fajr": {
+       "model": "angle",
+       "angle": 8,
+       "margin": -64.7,
+       "n": 16,
+       "ex": 14,
+       "w1": 15,
+       "worst": 7,
+       "mae": 0.67,
+       "K_print": {
+        "K": 108,
+        "n": 16,
+        "ex": 11,
+        "w1": 16,
+        "min": 108,
+        "max": 109
+       }
+      },
+      "sunrise": {
+       "margin": -7.1,
+       "n": 16,
+       "ex": 14,
+       "w1": 15,
+       "worst": 7.1,
+       "mae": 0.66
+      },
+      "dhuhr": {
+       "margin": 4.9,
+       "n": 16,
+       "ex": 14,
+       "w1": 15,
+       "worst": 4.3,
+       "mae": 0.49
+      },
+      "asr": {
+       "margin": 3.6,
+       "n": 16,
+       "ex": 9,
+       "w1": 15,
+       "worst": 2.8,
+       "mae": 0.49
+      },
+      "maghrib": {
+       "margin": 6.5,
+       "n": 16,
+       "ex": 14,
+       "w1": 16,
+       "worst": 1.1,
+       "mae": 0.33
+      },
+      "isha": {
+       "model": "interval",
+       "interval": 55,
+       "margin": 47.3,
+       "n": 16,
+       "ex": 13,
+       "w1": 16,
+       "worst": 1.4,
+       "mae": 0.35,
+       "K_print": {
+        "K": 96,
+        "n": 16,
+        "ex": 14,
+        "w1": 16,
+        "min": 95,
+        "max": 96
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

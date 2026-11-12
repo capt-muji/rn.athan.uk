@@ -1,0 +1,6134 @@
+[
+ {
+  "city": "aveiro",
+  "tz": "Europe/Lisbon",
+  "n26": 365,
+  "n27": 365,
+  "solved": {
+   "lat": 40.63,
+   "lon": -8.77
+  },
+  "rounding": "nearest",
+  "recipe": {
+   "fajr_deg": 18,
+   "isha_deg": 12,
+   "isha_add": 3,
+   "zuhr_add": 5,
+   "maghrib_add": 3,
+   "asr_factor": 1,
+   "sunrise_shift": -1
+  },
+  "engine": "praytimes-v2 (o1f-london/praytimes.cjs)",
+  "observedAdjustment": {
+   "fajr": 0,
+   "sunrise": 0,
+   "zawal": 0,
+   "zuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "scores": {
+   "y2026": {
+    "fajr": {
+     "n": 365,
+     "ex": 95,
+     "w1": 336,
+     "worst": 2,
+     "mae": 0.82
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 346,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.05
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 359,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 359,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "asr": {
+     "n": 365,
+     "ex": 278,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.24
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 348,
+     "w1": 363,
+     "worst": 2,
+     "mae": 0.05
+    },
+    "isha": {
+     "n": 365,
+     "ex": 292,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.2
+    }
+   },
+   "y2027": {
+    "fajr": {
+     "n": 365,
+     "ex": 89,
+     "w1": 341,
+     "worst": 2,
+     "mae": 0.82
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 345,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.06
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 361,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.01
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 361,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.01
+    },
+    "asr": {
+     "n": 365,
+     "ex": 279,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.24
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 352,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.04
+    },
+    "isha": {
+     "n": 365,
+     "ex": 278,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.24
+    }
+   },
+   "span": {
+    "fajr": {
+     "n": 730,
+     "ex": 184,
+     "w1": 677,
+     "worst": 2,
+     "mae": 0.82
+    },
+    "sunrise": {
+     "n": 730,
+     "ex": 691,
+     "w1": 728,
+     "worst": 2,
+     "mae": 0.06
+    },
+    "zawal": {
+     "n": 730,
+     "ex": 720,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.01
+    },
+    "zuhr": {
+     "n": 730,
+     "ex": 720,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.01
+    },
+    "asr": {
+     "n": 730,
+     "ex": 557,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.24
+    },
+    "maghrib": {
+     "n": 730,
+     "ex": 700,
+     "w1": 728,
+     "worst": 2,
+     "mae": 0.04
+    },
+    "isha": {
+     "n": 730,
+     "ex": 570,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.22
+    }
+   }
+  },
+  "adhanCrossCheck": {
+   "fajr": {
+    "n": 730,
+    "ex": 181,
+    "w1": 663,
+    "worst": 1.9,
+    "mae": 0.86
+   },
+   "sunrise": {
+    "n": 730,
+    "ex": 20,
+    "w1": 721,
+    "worst": 2.4,
+    "mae": 0.99
+   },
+   "zawal": {
+    "n": 730,
+    "ex": 724,
+    "w1": 730,
+    "worst": 0.7,
+    "mae": 0.26
+   },
+   "zuhr": {
+    "n": 730,
+    "ex": 724,
+    "w1": 730,
+    "worst": 0.7,
+    "mae": 0.26
+   },
+   "asr": {
+    "n": 730,
+    "ex": 437,
+    "w1": 727,
+    "worst": 1.8,
+    "mae": 0.44
+   },
+   "maghrib": {
+    "n": 730,
+    "ex": 708,
+    "w1": 728,
+    "worst": 1.5,
+    "mae": 0.25
+   },
+   "isha": {
+    "n": 730,
+    "ex": 622,
+    "w1": 730,
+    "worst": 1.4,
+    "mae": 0.29
+   }
+  },
+  "betweenYear": {
+   "fajr": {
+    "same": 249,
+    "moved": 116,
+    "movedBeyond1": 9,
+    "max": 61
+   },
+   "sunrise": {
+    "same": 254,
+    "moved": 111,
+    "movedBeyond1": 8,
+    "max": 61
+   },
+   "zawal": {
+    "same": 335,
+    "moved": 30,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "zuhr": {
+    "same": 335,
+    "moved": 30,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "asr": {
+    "same": 301,
+    "moved": 64,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "maghrib": {
+    "same": 272,
+    "moved": 93,
+    "movedBeyond1": 7,
+    "max": 61
+   },
+   "isha": {
+    "same": 268,
+    "moved": 97,
+    "movedBeyond1": 8,
+    "max": 61
+   }
+  },
+  "seasonal": {
+   "jan15": {
+    "fajr": 380,
+    "sunrise": 476,
+    "span": 96
+   },
+   "jul15": {
+    "fajr": 258,
+    "sunrise": 376,
+    "span": 118
+   }
+  }
+ },
+ {
+  "city": "beja",
+  "tz": "Europe/Lisbon",
+  "n26": 365,
+  "n27": 365,
+  "solved": {
+   "lat": 38.01,
+   "lon": -7.99
+  },
+  "rounding": "nearest",
+  "recipe": {
+   "fajr_deg": 18,
+   "isha_deg": 12,
+   "isha_add": 3,
+   "zuhr_add": 5,
+   "maghrib_add": 3,
+   "asr_factor": 1,
+   "sunrise_shift": -1
+  },
+  "engine": "praytimes-v2 (o1f-london/praytimes.cjs)",
+  "observedAdjustment": {
+   "fajr": 0,
+   "sunrise": 0,
+   "zawal": 0,
+   "zuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "scores": {
+   "y2026": {
+    "fajr": {
+     "n": 365,
+     "ex": 95,
+     "w1": 356,
+     "worst": 2,
+     "mae": 0.76
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 345,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.06
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 359,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 359,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "asr": {
+     "n": 365,
+     "ex": 299,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.18
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 352,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.04
+    },
+    "isha": {
+     "n": 365,
+     "ex": 297,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.19
+    }
+   },
+   "y2027": {
+    "fajr": {
+     "n": 365,
+     "ex": 98,
+     "w1": 358,
+     "worst": 2,
+     "mae": 0.75
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 343,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.06
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 357,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 357,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "asr": {
+     "n": 365,
+     "ex": 283,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.22
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 350,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.04
+    },
+    "isha": {
+     "n": 365,
+     "ex": 302,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.17
+    }
+   },
+   "span": {
+    "fajr": {
+     "n": 730,
+     "ex": 193,
+     "w1": 714,
+     "worst": 2,
+     "mae": 0.76
+    },
+    "sunrise": {
+     "n": 730,
+     "ex": 688,
+     "w1": 729,
+     "worst": 2,
+     "mae": 0.06
+    },
+    "zawal": {
+     "n": 730,
+     "ex": 716,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "zuhr": {
+     "n": 730,
+     "ex": 716,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "asr": {
+     "n": 730,
+     "ex": 582,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.2
+    },
+    "maghrib": {
+     "n": 730,
+     "ex": 702,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.04
+    },
+    "isha": {
+     "n": 730,
+     "ex": 599,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.18
+    }
+   }
+  },
+  "adhanCrossCheck": {
+   "fajr": {
+    "n": 730,
+    "ex": 188,
+    "w1": 704,
+    "worst": 1.7,
+    "mae": 0.78
+   },
+   "sunrise": {
+    "n": 730,
+    "ex": 27,
+    "w1": 724,
+    "worst": 2.1,
+    "mae": 0.98
+   },
+   "zawal": {
+    "n": 730,
+    "ex": 719,
+    "w1": 730,
+    "worst": 0.9,
+    "mae": 0.26
+   },
+   "zuhr": {
+    "n": 730,
+    "ex": 719,
+    "w1": 730,
+    "worst": 0.9,
+    "mae": 0.26
+   },
+   "asr": {
+    "n": 730,
+    "ex": 483,
+    "w1": 728,
+    "worst": 1.8,
+    "mae": 0.4
+   },
+   "maghrib": {
+    "n": 730,
+    "ex": 711,
+    "w1": 730,
+    "worst": 1.4,
+    "mae": 0.26
+   },
+   "isha": {
+    "n": 730,
+    "ex": 642,
+    "w1": 730,
+    "worst": 1,
+    "mae": 0.27
+   }
+  },
+  "betweenYear": {
+   "fajr": {
+    "same": 267,
+    "moved": 98,
+    "movedBeyond1": 8,
+    "max": 61
+   },
+   "sunrise": {
+    "same": 263,
+    "moved": 102,
+    "movedBeyond1": 8,
+    "max": 61
+   },
+   "zawal": {
+    "same": 329,
+    "moved": 36,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "zuhr": {
+    "same": 329,
+    "moved": 36,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "asr": {
+    "same": 317,
+    "moved": 48,
+    "movedBeyond1": 9,
+    "max": 60
+   },
+   "maghrib": {
+    "same": 288,
+    "moved": 77,
+    "movedBeyond1": 9,
+    "max": 61
+   },
+   "isha": {
+    "same": 275,
+    "moved": 90,
+    "movedBeyond1": 8,
+    "max": 61
+   }
+  },
+  "seasonal": {
+   "jan15": {
+    "fajr": 374,
+    "sunrise": 466,
+    "span": 92
+   },
+   "jul15": {
+    "fajr": 271,
+    "sunrise": 380,
+    "span": 109
+   }
+  }
+ },
+ {
+  "city": "braga",
+  "tz": "Europe/Lisbon",
+  "n26": 365,
+  "n27": 365,
+  "solved": {
+   "lat": 41.54,
+   "lon": -8.55
+  },
+  "rounding": "nearest",
+  "recipe": {
+   "fajr_deg": 18,
+   "isha_deg": 12,
+   "isha_add": 3,
+   "zuhr_add": 5,
+   "maghrib_add": 3,
+   "asr_factor": 1,
+   "sunrise_shift": -1
+  },
+  "engine": "praytimes-v2 (o1f-london/praytimes.cjs)",
+  "observedAdjustment": {
+   "fajr": 0,
+   "sunrise": 0,
+   "zawal": 0,
+   "zuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "scores": {
+   "y2026": {
+    "fajr": {
+     "n": 365,
+     "ex": 88,
+     "w1": 328,
+     "worst": 2,
+     "mae": 0.86
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 343,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.06
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 347,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.05
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 347,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.05
+    },
+    "asr": {
+     "n": 365,
+     "ex": 295,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.19
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 336,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.08
+    },
+    "isha": {
+     "n": 365,
+     "ex": 292,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.2
+    }
+   },
+   "y2027": {
+    "fajr": {
+     "n": 365,
+     "ex": 78,
+     "w1": 334,
+     "worst": 2,
+     "mae": 0.87
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 340,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.07
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 359,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 359,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "asr": {
+     "n": 365,
+     "ex": 271,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.26
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 350,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.04
+    },
+    "isha": {
+     "n": 365,
+     "ex": 277,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.24
+    }
+   },
+   "span": {
+    "fajr": {
+     "n": 730,
+     "ex": 166,
+     "w1": 662,
+     "worst": 2,
+     "mae": 0.87
+    },
+    "sunrise": {
+     "n": 730,
+     "ex": 683,
+     "w1": 729,
+     "worst": 2,
+     "mae": 0.07
+    },
+    "zawal": {
+     "n": 730,
+     "ex": 706,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.03
+    },
+    "zuhr": {
+     "n": 730,
+     "ex": 706,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.03
+    },
+    "asr": {
+     "n": 730,
+     "ex": 566,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.22
+    },
+    "maghrib": {
+     "n": 730,
+     "ex": 686,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.06
+    },
+    "isha": {
+     "n": 730,
+     "ex": 569,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.22
+    }
+   }
+  },
+  "adhanCrossCheck": {
+   "fajr": {
+    "n": 730,
+    "ex": 166,
+    "w1": 650,
+    "worst": 2,
+    "mae": 0.9
+   },
+   "sunrise": {
+    "n": 730,
+    "ex": 10,
+    "w1": 704,
+    "worst": 2.5,
+    "mae": 1.01
+   },
+   "zawal": {
+    "n": 730,
+    "ex": 704,
+    "w1": 730,
+    "worst": 0.6,
+    "mae": 0.25
+   },
+   "zuhr": {
+    "n": 730,
+    "ex": 704,
+    "w1": 730,
+    "worst": 0.6,
+    "mae": 0.25
+   },
+   "asr": {
+    "n": 730,
+    "ex": 447,
+    "w1": 724,
+    "worst": 2.1,
+    "mae": 0.43
+   },
+   "maghrib": {
+    "n": 730,
+    "ex": 696,
+    "w1": 730,
+    "worst": 1.4,
+    "mae": 0.26
+   },
+   "isha": {
+    "n": 730,
+    "ex": 627,
+    "w1": 730,
+    "worst": 1.2,
+    "mae": 0.28
+   }
+  },
+  "betweenYear": {
+   "fajr": {
+    "same": 248,
+    "moved": 117,
+    "movedBeyond1": 11,
+    "max": 61
+   },
+   "sunrise": {
+    "same": 265,
+    "moved": 100,
+    "movedBeyond1": 9,
+    "max": 61
+   },
+   "zawal": {
+    "same": 341,
+    "moved": 24,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "zuhr": {
+    "same": 341,
+    "moved": 24,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "asr": {
+    "same": 308,
+    "moved": 57,
+    "movedBeyond1": 9,
+    "max": 60
+   },
+   "maghrib": {
+    "same": 253,
+    "moved": 112,
+    "movedBeyond1": 7,
+    "max": 61
+   },
+   "isha": {
+    "same": 267,
+    "moved": 98,
+    "movedBeyond1": 8,
+    "max": 61
+   }
+  },
+  "seasonal": {
+   "jan15": {
+    "fajr": 380,
+    "sunrise": 477,
+    "span": 97
+   },
+   "jul15": {
+    "fajr": 251,
+    "sunrise": 372,
+    "span": 121
+   }
+  }
+ },
+ {
+  "city": "braganca",
+  "tz": "Europe/Lisbon",
+  "n26": 365,
+  "n27": 365,
+  "solved": {
+   "lat": 41.82,
+   "lon": -6.88
+  },
+  "rounding": "nearest",
+  "recipe": {
+   "fajr_deg": 18,
+   "isha_deg": 12,
+   "isha_add": 3,
+   "zuhr_add": 5,
+   "maghrib_add": 3,
+   "asr_factor": 1,
+   "sunrise_shift": -1
+  },
+  "engine": "praytimes-v2 (o1f-london/praytimes.cjs)",
+  "observedAdjustment": {
+   "fajr": 0,
+   "sunrise": 0,
+   "zawal": 0,
+   "zuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "scores": {
+   "y2026": {
+    "fajr": {
+     "n": 365,
+     "ex": 80,
+     "w1": 335,
+     "worst": 2,
+     "mae": 0.86
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 344,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.06
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 359,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 359,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "asr": {
+     "n": 365,
+     "ex": 279,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.24
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 347,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.05
+    },
+    "isha": {
+     "n": 365,
+     "ex": 289,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.21
+    }
+   },
+   "y2027": {
+    "fajr": {
+     "n": 365,
+     "ex": 76,
+     "w1": 325,
+     "worst": 2,
+     "mae": 0.9
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 349,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.04
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 362,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.01
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 362,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.01
+    },
+    "asr": {
+     "n": 365,
+     "ex": 263,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.28
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 347,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.05
+    },
+    "isha": {
+     "n": 365,
+     "ex": 280,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.23
+    }
+   },
+   "span": {
+    "fajr": {
+     "n": 730,
+     "ex": 156,
+     "w1": 660,
+     "worst": 2,
+     "mae": 0.88
+    },
+    "sunrise": {
+     "n": 730,
+     "ex": 693,
+     "w1": 729,
+     "worst": 2,
+     "mae": 0.05
+    },
+    "zawal": {
+     "n": 730,
+     "ex": 721,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.01
+    },
+    "zuhr": {
+     "n": 730,
+     "ex": 721,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.01
+    },
+    "asr": {
+     "n": 730,
+     "ex": 542,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.26
+    },
+    "maghrib": {
+     "n": 730,
+     "ex": 694,
+     "w1": 728,
+     "worst": 2,
+     "mae": 0.05
+    },
+    "isha": {
+     "n": 730,
+     "ex": 569,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.22
+    }
+   }
+  },
+  "adhanCrossCheck": {
+   "fajr": {
+    "n": 730,
+    "ex": 154,
+    "w1": 642,
+    "worst": 1.9,
+    "mae": 0.92
+   },
+   "sunrise": {
+    "n": 730,
+    "ex": 19,
+    "w1": 725,
+    "worst": 2.5,
+    "mae": 0.99
+   },
+   "zawal": {
+    "n": 730,
+    "ex": 724,
+    "w1": 730,
+    "worst": 0.8,
+    "mae": 0.24
+   },
+   "zuhr": {
+    "n": 730,
+    "ex": 724,
+    "w1": 730,
+    "worst": 0.8,
+    "mae": 0.24
+   },
+   "asr": {
+    "n": 730,
+    "ex": 447,
+    "w1": 725,
+    "worst": 1.9,
+    "mae": 0.43
+   },
+   "maghrib": {
+    "n": 730,
+    "ex": 704,
+    "w1": 728,
+    "worst": 1.5,
+    "mae": 0.27
+   },
+   "isha": {
+    "n": 730,
+    "ex": 616,
+    "w1": 730,
+    "worst": 1,
+    "mae": 0.28
+   }
+  },
+  "betweenYear": {
+   "fajr": {
+    "same": 257,
+    "moved": 108,
+    "movedBeyond1": 9,
+    "max": 61
+   },
+   "sunrise": {
+    "same": 267,
+    "moved": 98,
+    "movedBeyond1": 10,
+    "max": 61
+   },
+   "zawal": {
+    "same": 333,
+    "moved": 32,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "zuhr": {
+    "same": 333,
+    "moved": 32,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "asr": {
+    "same": 298,
+    "moved": 67,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "maghrib": {
+    "same": 263,
+    "moved": 102,
+    "movedBeyond1": 9,
+    "max": 61
+   },
+   "isha": {
+    "same": 267,
+    "moved": 98,
+    "movedBeyond1": 7,
+    "max": 61
+   }
+  },
+  "seasonal": {
+   "jan15": {
+    "fajr": 374,
+    "sunrise": 472,
+    "span": 98
+   },
+   "jul15": {
+    "fajr": 243,
+    "sunrise": 365,
+    "span": 122
+   }
+  }
+ },
+ {
+  "city": "cbranco",
+  "tz": "Europe/Lisbon",
+  "n26": 365,
+  "n27": 365,
+  "solved": {
+   "lat": 39.81,
+   "lon": -7.62
+  },
+  "rounding": "nearest",
+  "recipe": {
+   "fajr_deg": 18,
+   "isha_deg": 12,
+   "isha_add": 3,
+   "zuhr_add": 5,
+   "maghrib_add": 3,
+   "asr_factor": 1,
+   "sunrise_shift": -1
+  },
+  "engine": "praytimes-v2 (o1f-london/praytimes.cjs)",
+  "observedAdjustment": {
+   "fajr": 0,
+   "sunrise": 0,
+   "zawal": 0,
+   "zuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "scores": {
+   "y2026": {
+    "fajr": {
+     "n": 365,
+     "ex": 105,
+     "w1": 348,
+     "worst": 2,
+     "mae": 0.76
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 340,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.07
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 357,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 357,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "asr": {
+     "n": 365,
+     "ex": 298,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.18
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 349,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.05
+    },
+    "isha": {
+     "n": 365,
+     "ex": 294,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.19
+    }
+   },
+   "y2027": {
+    "fajr": {
+     "n": 365,
+     "ex": 103,
+     "w1": 347,
+     "worst": 2,
+     "mae": 0.77
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 343,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.06
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 363,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.01
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 363,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.01
+    },
+    "asr": {
+     "n": 365,
+     "ex": 293,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.2
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 341,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.07
+    },
+    "isha": {
+     "n": 365,
+     "ex": 280,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.23
+    }
+   },
+   "span": {
+    "fajr": {
+     "n": 730,
+     "ex": 208,
+     "w1": 695,
+     "worst": 2,
+     "mae": 0.76
+    },
+    "sunrise": {
+     "n": 730,
+     "ex": 683,
+     "w1": 729,
+     "worst": 2,
+     "mae": 0.07
+    },
+    "zawal": {
+     "n": 730,
+     "ex": 720,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.01
+    },
+    "zuhr": {
+     "n": 730,
+     "ex": 720,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.01
+    },
+    "asr": {
+     "n": 730,
+     "ex": 591,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.19
+    },
+    "maghrib": {
+     "n": 730,
+     "ex": 690,
+     "w1": 729,
+     "worst": 2,
+     "mae": 0.06
+    },
+    "isha": {
+     "n": 730,
+     "ex": 574,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.21
+    }
+   }
+  },
+  "adhanCrossCheck": {
+   "fajr": {
+    "n": 730,
+    "ex": 200,
+    "w1": 681,
+    "worst": 1.8,
+    "mae": 0.83
+   },
+   "sunrise": {
+    "n": 730,
+    "ex": 27,
+    "w1": 721,
+    "worst": 2.4,
+    "mae": 0.97
+   },
+   "zawal": {
+    "n": 730,
+    "ex": 722,
+    "w1": 730,
+    "worst": 0.9,
+    "mae": 0.24
+   },
+   "zuhr": {
+    "n": 730,
+    "ex": 722,
+    "w1": 730,
+    "worst": 0.9,
+    "mae": 0.24
+   },
+   "asr": {
+    "n": 730,
+    "ex": 450,
+    "w1": 728,
+    "worst": 1.7,
+    "mae": 0.43
+   },
+   "maghrib": {
+    "n": 730,
+    "ex": 706,
+    "w1": 729,
+    "worst": 1.6,
+    "mae": 0.28
+   },
+   "isha": {
+    "n": 730,
+    "ex": 622,
+    "w1": 730,
+    "worst": 1.4,
+    "mae": 0.28
+   }
+  },
+  "betweenYear": {
+   "fajr": {
+    "same": 248,
+    "moved": 117,
+    "movedBeyond1": 8,
+    "max": 61
+   },
+   "sunrise": {
+    "same": 262,
+    "moved": 103,
+    "movedBeyond1": 11,
+    "max": 61
+   },
+   "zawal": {
+    "same": 323,
+    "moved": 42,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "zuhr": {
+    "same": 323,
+    "moved": 42,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "asr": {
+    "same": 319,
+    "moved": 46,
+    "movedBeyond1": 7,
+    "max": 61
+   },
+   "maghrib": {
+    "same": 256,
+    "moved": 109,
+    "movedBeyond1": 7,
+    "max": 61
+   },
+   "isha": {
+    "same": 277,
+    "moved": 88,
+    "movedBeyond1": 9,
+    "max": 61
+   }
+  },
+  "seasonal": {
+   "jan15": {
+    "fajr": 374,
+    "sunrise": 469,
+    "span": 95
+   },
+   "jul15": {
+    "fajr": 259,
+    "sunrise": 374,
+    "span": 115
+   }
+  }
+ },
+ {
+  "city": "coimbra",
+  "tz": "Europe/Lisbon",
+  "n26": 365,
+  "n27": 365,
+  "solved": {
+   "lat": 40.16,
+   "lon": -8.57
+  },
+  "rounding": "nearest",
+  "recipe": {
+   "fajr_deg": 18,
+   "isha_deg": 12,
+   "isha_add": 3,
+   "zuhr_add": 5,
+   "maghrib_add": 3,
+   "asr_factor": 1,
+   "sunrise_shift": -1
+  },
+  "engine": "praytimes-v2 (o1f-london/praytimes.cjs)",
+  "observedAdjustment": {
+   "fajr": 0,
+   "sunrise": 0,
+   "zawal": 0,
+   "zuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "scores": {
+   "y2026": {
+    "fajr": {
+     "n": 365,
+     "ex": 102,
+     "w1": 343,
+     "worst": 2,
+     "mae": 0.78
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 344,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.06
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 355,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.03
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 355,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.03
+    },
+    "asr": {
+     "n": 365,
+     "ex": 299,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.18
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 347,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.05
+    },
+    "isha": {
+     "n": 365,
+     "ex": 285,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.22
+    }
+   },
+   "y2027": {
+    "fajr": {
+     "n": 365,
+     "ex": 80,
+     "w1": 342,
+     "worst": 2,
+     "mae": 0.84
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 342,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.06
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 352,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.04
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 352,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.04
+    },
+    "asr": {
+     "n": 365,
+     "ex": 279,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.24
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 343,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.06
+    },
+    "isha": {
+     "n": 365,
+     "ex": 286,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.22
+    }
+   },
+   "span": {
+    "fajr": {
+     "n": 730,
+     "ex": 182,
+     "w1": 685,
+     "worst": 2,
+     "mae": 0.81
+    },
+    "sunrise": {
+     "n": 730,
+     "ex": 686,
+     "w1": 729,
+     "worst": 2,
+     "mae": 0.06
+    },
+    "zawal": {
+     "n": 730,
+     "ex": 707,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.03
+    },
+    "zuhr": {
+     "n": 730,
+     "ex": 707,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.03
+    },
+    "asr": {
+     "n": 730,
+     "ex": 578,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.21
+    },
+    "maghrib": {
+     "n": 730,
+     "ex": 690,
+     "w1": 728,
+     "worst": 2,
+     "mae": 0.06
+    },
+    "isha": {
+     "n": 730,
+     "ex": 571,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.22
+    }
+   }
+  },
+  "adhanCrossCheck": {
+   "fajr": {
+    "n": 730,
+    "ex": 183,
+    "w1": 674,
+    "worst": 1.9,
+    "mae": 0.83
+   },
+   "sunrise": {
+    "n": 730,
+    "ex": 6,
+    "w1": 707,
+    "worst": 2.2,
+    "mae": 1.03
+   },
+   "zawal": {
+    "n": 730,
+    "ex": 707,
+    "w1": 730,
+    "worst": 0.7,
+    "mae": 0.25
+   },
+   "zuhr": {
+    "n": 730,
+    "ex": 707,
+    "w1": 730,
+    "worst": 0.7,
+    "mae": 0.25
+   },
+   "asr": {
+    "n": 730,
+    "ex": 439,
+    "w1": 728,
+    "worst": 1.6,
+    "mae": 0.43
+   },
+   "maghrib": {
+    "n": 730,
+    "ex": 694,
+    "w1": 730,
+    "worst": 1.5,
+    "mae": 0.27
+   },
+   "isha": {
+    "n": 730,
+    "ex": 614,
+    "w1": 730,
+    "worst": 1.4,
+    "mae": 0.29
+   }
+  },
+  "betweenYear": {
+   "fajr": {
+    "same": 260,
+    "moved": 105,
+    "movedBeyond1": 9,
+    "max": 61
+   },
+   "sunrise": {
+    "same": 258,
+    "moved": 107,
+    "movedBeyond1": 8,
+    "max": 60
+   },
+   "zawal": {
+    "same": 335,
+    "moved": 30,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "zuhr": {
+    "same": 335,
+    "moved": 30,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "asr": {
+    "same": 314,
+    "moved": 51,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "maghrib": {
+    "same": 268,
+    "moved": 97,
+    "movedBeyond1": 9,
+    "max": 61
+   },
+   "isha": {
+    "same": 261,
+    "moved": 104,
+    "movedBeyond1": 8,
+    "max": 61
+   }
+  },
+  "seasonal": {
+   "jan15": {
+    "fajr": 378,
+    "sunrise": 474,
+    "span": 96
+   },
+   "jul15": {
+    "fajr": 261,
+    "sunrise": 377,
+    "span": 116
+   }
+  }
+ },
+ {
+  "city": "evora",
+  "tz": "Europe/Lisbon",
+  "n26": 365,
+  "n27": 365,
+  "solved": {
+   "lat": 38.55,
+   "lon": -8.03
+  },
+  "rounding": "nearest",
+  "recipe": {
+   "fajr_deg": 18,
+   "isha_deg": 12,
+   "isha_add": 3,
+   "zuhr_add": 5,
+   "maghrib_add": 3,
+   "asr_factor": 1,
+   "sunrise_shift": -1
+  },
+  "engine": "praytimes-v2 (o1f-london/praytimes.cjs)",
+  "observedAdjustment": {
+   "fajr": 0,
+   "sunrise": 0,
+   "zawal": 0,
+   "zuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "scores": {
+   "y2026": {
+    "fajr": {
+     "n": 365,
+     "ex": 100,
+     "w1": 353,
+     "worst": 2,
+     "mae": 0.76
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 345,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.06
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 359,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 359,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "asr": {
+     "n": 365,
+     "ex": 275,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.25
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 348,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.05
+    },
+    "isha": {
+     "n": 365,
+     "ex": 286,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.22
+    }
+   },
+   "y2027": {
+    "fajr": {
+     "n": 365,
+     "ex": 114,
+     "w1": 356,
+     "worst": 2,
+     "mae": 0.71
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 346,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.05
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 359,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 359,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "asr": {
+     "n": 365,
+     "ex": 282,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.23
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 356,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.03
+    },
+    "isha": {
+     "n": 365,
+     "ex": 303,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.17
+    }
+   },
+   "span": {
+    "fajr": {
+     "n": 730,
+     "ex": 214,
+     "w1": 709,
+     "worst": 2,
+     "mae": 0.74
+    },
+    "sunrise": {
+     "n": 730,
+     "ex": 691,
+     "w1": 728,
+     "worst": 2,
+     "mae": 0.06
+    },
+    "zawal": {
+     "n": 730,
+     "ex": 718,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "zuhr": {
+     "n": 730,
+     "ex": 718,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "asr": {
+     "n": 730,
+     "ex": 557,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.24
+    },
+    "maghrib": {
+     "n": 730,
+     "ex": 704,
+     "w1": 729,
+     "worst": 2,
+     "mae": 0.04
+    },
+    "isha": {
+     "n": 730,
+     "ex": 589,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.19
+    }
+   }
+  },
+  "adhanCrossCheck": {
+   "fajr": {
+    "n": 730,
+    "ex": 208,
+    "w1": 699,
+    "worst": 1.8,
+    "mae": 0.78
+   },
+   "sunrise": {
+    "n": 730,
+    "ex": 13,
+    "w1": 713,
+    "worst": 2.1,
+    "mae": 1.01
+   },
+   "zawal": {
+    "n": 730,
+    "ex": 718,
+    "w1": 730,
+    "worst": 0.7,
+    "mae": 0.26
+   },
+   "zuhr": {
+    "n": 730,
+    "ex": 718,
+    "w1": 730,
+    "worst": 0.7,
+    "mae": 0.26
+   },
+   "asr": {
+    "n": 730,
+    "ex": 469,
+    "w1": 726,
+    "worst": 1.8,
+    "mae": 0.41
+   },
+   "maghrib": {
+    "n": 730,
+    "ex": 714,
+    "w1": 729,
+    "worst": 1.5,
+    "mae": 0.26
+   },
+   "isha": {
+    "n": 730,
+    "ex": 619,
+    "w1": 730,
+    "worst": 1.2,
+    "mae": 0.29
+   }
+  },
+  "betweenYear": {
+   "fajr": {
+    "same": 249,
+    "moved": 116,
+    "movedBeyond1": 8,
+    "max": 61
+   },
+   "sunrise": {
+    "same": 267,
+    "moved": 98,
+    "movedBeyond1": 8,
+    "max": 61
+   },
+   "zawal": {
+    "same": 333,
+    "moved": 32,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "zuhr": {
+    "same": 333,
+    "moved": 32,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "asr": {
+    "same": 292,
+    "moved": 73,
+    "movedBeyond1": 9,
+    "max": 61
+   },
+   "maghrib": {
+    "same": 277,
+    "moved": 88,
+    "movedBeyond1": 9,
+    "max": 61
+   },
+   "isha": {
+    "same": 260,
+    "moved": 105,
+    "movedBeyond1": 8,
+    "max": 61
+   }
+  },
+  "seasonal": {
+   "jan15": {
+    "fajr": 374,
+    "sunrise": 467,
+    "span": 93
+   },
+   "jul15": {
+    "fajr": 268,
+    "sunrise": 379,
+    "span": 111
+   }
+  }
+ },
+ {
+  "city": "faro",
+  "tz": "Europe/Lisbon",
+  "n26": 365,
+  "n27": 365,
+  "solved": {
+   "lat": 37.03,
+   "lon": -8.07
+  },
+  "rounding": "nearest",
+  "recipe": {
+   "fajr_deg": 18,
+   "isha_deg": 12,
+   "isha_add": 3,
+   "zuhr_add": 5,
+   "maghrib_add": 3,
+   "asr_factor": 1,
+   "sunrise_shift": -1
+  },
+  "engine": "praytimes-v2 (o1f-london/praytimes.cjs)",
+  "observedAdjustment": {
+   "fajr": 0,
+   "sunrise": 0,
+   "zawal": 0,
+   "zuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "scores": {
+   "y2026": {
+    "fajr": {
+     "n": 365,
+     "ex": 110,
+     "w1": 359,
+     "worst": 2,
+     "mae": 0.72
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 344,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.06
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 355,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.03
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 355,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.03
+    },
+    "asr": {
+     "n": 365,
+     "ex": 292,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.2
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 345,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.05
+    },
+    "isha": {
+     "n": 365,
+     "ex": 297,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.19
+    }
+   },
+   "y2027": {
+    "fajr": {
+     "n": 365,
+     "ex": 113,
+     "w1": 363,
+     "worst": 2,
+     "mae": 0.7
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 352,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.04
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 352,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.04
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 352,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.04
+    },
+    "asr": {
+     "n": 365,
+     "ex": 302,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.17
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 348,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.05
+    },
+    "isha": {
+     "n": 365,
+     "ex": 294,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.19
+    }
+   },
+   "span": {
+    "fajr": {
+     "n": 730,
+     "ex": 223,
+     "w1": 722,
+     "worst": 2,
+     "mae": 0.71
+    },
+    "sunrise": {
+     "n": 730,
+     "ex": 696,
+     "w1": 729,
+     "worst": 2,
+     "mae": 0.05
+    },
+    "zawal": {
+     "n": 730,
+     "ex": 707,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.03
+    },
+    "zuhr": {
+     "n": 730,
+     "ex": 707,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.03
+    },
+    "asr": {
+     "n": 730,
+     "ex": 594,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.19
+    },
+    "maghrib": {
+     "n": 730,
+     "ex": 693,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.05
+    },
+    "isha": {
+     "n": 730,
+     "ex": 591,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.19
+    }
+   }
+  },
+  "adhanCrossCheck": {
+   "fajr": {
+    "n": 730,
+    "ex": 217,
+    "w1": 717,
+    "worst": 1.7,
+    "mae": 0.73
+   },
+   "sunrise": {
+    "n": 730,
+    "ex": 5,
+    "w1": 710,
+    "worst": 2.3,
+    "mae": 1.02
+   },
+   "zawal": {
+    "n": 730,
+    "ex": 707,
+    "w1": 730,
+    "worst": 0.7,
+    "mae": 0.25
+   },
+   "zuhr": {
+    "n": 730,
+    "ex": 707,
+    "w1": 730,
+    "worst": 0.7,
+    "mae": 0.25
+   },
+   "asr": {
+    "n": 730,
+    "ex": 449,
+    "w1": 728,
+    "worst": 1.7,
+    "mae": 0.43
+   },
+   "maghrib": {
+    "n": 730,
+    "ex": 698,
+    "w1": 730,
+    "worst": 1.2,
+    "mae": 0.25
+   },
+   "isha": {
+    "n": 730,
+    "ex": 629,
+    "w1": 730,
+    "worst": 0.9,
+    "mae": 0.28
+   }
+  },
+  "betweenYear": {
+   "fajr": {
+    "same": 272,
+    "moved": 93,
+    "movedBeyond1": 7,
+    "max": 61
+   },
+   "sunrise": {
+    "same": 281,
+    "moved": 84,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "zawal": {
+    "same": 335,
+    "moved": 30,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "zuhr": {
+    "same": 335,
+    "moved": 30,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "asr": {
+    "same": 313,
+    "moved": 52,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "maghrib": {
+    "same": 281,
+    "moved": 84,
+    "movedBeyond1": 7,
+    "max": 61
+   },
+   "isha": {
+    "same": 281,
+    "moved": 84,
+    "movedBeyond1": 7,
+    "max": 61
+   }
+  },
+  "seasonal": {
+   "jan15": {
+    "fajr": 373,
+    "sunrise": 464,
+    "span": 91
+   },
+   "jul15": {
+    "fajr": 277,
+    "sunrise": 383,
+    "span": 106
+   }
+  }
+ },
+ {
+  "city": "ffoz",
+  "tz": "Europe/Lisbon",
+  "n26": 365,
+  "n27": 365,
+  "solved": {
+   "lat": 40.15,
+   "lon": -8.99
+  },
+  "rounding": "nearest",
+  "recipe": {
+   "fajr_deg": 18,
+   "isha_deg": 12,
+   "isha_add": 3,
+   "zuhr_add": 5,
+   "maghrib_add": 3,
+   "asr_factor": 1,
+   "sunrise_shift": -1
+  },
+  "engine": "praytimes-v2 (o1f-london/praytimes.cjs)",
+  "observedAdjustment": {
+   "fajr": 0,
+   "sunrise": 0,
+   "zawal": 0,
+   "zuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "scores": {
+   "y2026": {
+    "fajr": {
+     "n": 365,
+     "ex": 91,
+     "w1": 334,
+     "worst": 2,
+     "mae": 0.84
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 346,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.05
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 358,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 358,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "asr": {
+     "n": 365,
+     "ex": 274,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.25
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 350,
+     "w1": 362,
+     "worst": 2,
+     "mae": 0.05
+    },
+    "isha": {
+     "n": 365,
+     "ex": 292,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.2
+    }
+   },
+   "y2027": {
+    "fajr": {
+     "n": 365,
+     "ex": 87,
+     "w1": 347,
+     "worst": 2,
+     "mae": 0.81
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 345,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.06
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 361,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.01
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 361,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.01
+    },
+    "asr": {
+     "n": 365,
+     "ex": 283,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.22
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 349,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.04
+    },
+    "isha": {
+     "n": 365,
+     "ex": 298,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.18
+    }
+   },
+   "span": {
+    "fajr": {
+     "n": 730,
+     "ex": 178,
+     "w1": 681,
+     "worst": 2,
+     "mae": 0.82
+    },
+    "sunrise": {
+     "n": 730,
+     "ex": 691,
+     "w1": 728,
+     "worst": 2,
+     "mae": 0.06
+    },
+    "zawal": {
+     "n": 730,
+     "ex": 719,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "zuhr": {
+     "n": 730,
+     "ex": 719,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "asr": {
+     "n": 730,
+     "ex": 557,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.24
+    },
+    "maghrib": {
+     "n": 730,
+     "ex": 699,
+     "w1": 727,
+     "worst": 2,
+     "mae": 0.05
+    },
+    "isha": {
+     "n": 730,
+     "ex": 590,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.19
+    }
+   }
+  },
+  "adhanCrossCheck": {
+   "fajr": {
+    "n": 730,
+    "ex": 167,
+    "w1": 673,
+    "worst": 1.8,
+    "mae": 0.85
+   },
+   "sunrise": {
+    "n": 730,
+    "ex": 22,
+    "w1": 725,
+    "worst": 2.3,
+    "mae": 0.99
+   },
+   "zawal": {
+    "n": 730,
+    "ex": 723,
+    "w1": 730,
+    "worst": 1,
+    "mae": 0.26
+   },
+   "zuhr": {
+    "n": 730,
+    "ex": 723,
+    "w1": 730,
+    "worst": 1,
+    "mae": 0.26
+   },
+   "asr": {
+    "n": 730,
+    "ex": 463,
+    "w1": 730,
+    "worst": 1.4,
+    "mae": 0.41
+   },
+   "maghrib": {
+    "n": 730,
+    "ex": 715,
+    "w1": 728,
+    "worst": 1.6,
+    "mae": 0.26
+   },
+   "isha": {
+    "n": 730,
+    "ex": 636,
+    "w1": 730,
+    "worst": 1.4,
+    "mae": 0.28
+   }
+  },
+  "betweenYear": {
+   "fajr": {
+    "same": 255,
+    "moved": 110,
+    "movedBeyond1": 8,
+    "max": 61
+   },
+   "sunrise": {
+    "same": 266,
+    "moved": 99,
+    "movedBeyond1": 9,
+    "max": 60
+   },
+   "zawal": {
+    "same": 333,
+    "moved": 32,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "zuhr": {
+    "same": 333,
+    "moved": 32,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "asr": {
+    "same": 296,
+    "moved": 69,
+    "movedBeyond1": 7,
+    "max": 61
+   },
+   "maghrib": {
+    "same": 278,
+    "moved": 87,
+    "movedBeyond1": 7,
+    "max": 61
+   },
+   "isha": {
+    "same": 273,
+    "moved": 92,
+    "movedBeyond1": 9,
+    "max": 61
+   }
+  },
+  "seasonal": {
+   "jan15": {
+    "fajr": 380,
+    "sunrise": 475,
+    "span": 95
+   },
+   "jul15": {
+    "fajr": 262,
+    "sunrise": 378,
+    "span": 116
+   }
+  }
+ },
+ {
+  "city": "funchal",
+  "tz": "Atlantic/Madeira",
+  "n26": 365,
+  "n27": 365,
+  "solved": {
+   "lat": 32.63,
+   "lon": -17.03
+  },
+  "rounding": "nearest",
+  "recipe": {
+   "fajr_deg": 18,
+   "isha_deg": 12,
+   "isha_add": 3,
+   "zuhr_add": 5,
+   "maghrib_add": 3,
+   "asr_factor": 1,
+   "sunrise_shift": -1
+  },
+  "engine": "praytimes-v2 (o1f-london/praytimes.cjs)",
+  "observedAdjustment": {
+   "fajr": 0,
+   "sunrise": 0,
+   "zawal": 0,
+   "zuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "scores": {
+   "y2026": {
+    "fajr": {
+     "n": 365,
+     "ex": 163,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.55
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 351,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.04
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 359,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 359,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "asr": {
+     "n": 365,
+     "ex": 320,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.12
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 355,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.03
+    },
+    "isha": {
+     "n": 365,
+     "ex": 316,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.13
+    }
+   },
+   "y2027": {
+    "fajr": {
+     "n": 365,
+     "ex": 164,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.55
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 353,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.04
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 361,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.01
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 361,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.01
+    },
+    "asr": {
+     "n": 365,
+     "ex": 318,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.13
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 357,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "isha": {
+     "n": 365,
+     "ex": 322,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.12
+    }
+   },
+   "span": {
+    "fajr": {
+     "n": 730,
+     "ex": 327,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.55
+    },
+    "sunrise": {
+     "n": 730,
+     "ex": 704,
+     "w1": 728,
+     "worst": 2,
+     "mae": 0.04
+    },
+    "zawal": {
+     "n": 730,
+     "ex": 720,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.01
+    },
+    "zuhr": {
+     "n": 730,
+     "ex": 720,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.01
+    },
+    "asr": {
+     "n": 730,
+     "ex": 638,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.13
+    },
+    "maghrib": {
+     "n": 730,
+     "ex": 712,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "isha": {
+     "n": 730,
+     "ex": 638,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.13
+    }
+   }
+  },
+  "adhanCrossCheck": {
+   "fajr": {
+    "n": 730,
+    "ex": 324,
+    "w1": 730,
+    "worst": 1.4,
+    "mae": 0.59
+   },
+   "sunrise": {
+    "n": 730,
+    "ex": 10,
+    "w1": 723,
+    "worst": 2.3,
+    "mae": 0.99
+   },
+   "zawal": {
+    "n": 730,
+    "ex": 718,
+    "w1": 730,
+    "worst": 0.7,
+    "mae": 0.26
+   },
+   "zuhr": {
+    "n": 730,
+    "ex": 718,
+    "w1": 730,
+    "worst": 0.7,
+    "mae": 0.26
+   },
+   "asr": {
+    "n": 730,
+    "ex": 445,
+    "w1": 729,
+    "worst": 1.6,
+    "mae": 0.44
+   },
+   "maghrib": {
+    "n": 730,
+    "ex": 716,
+    "w1": 730,
+    "worst": 1.3,
+    "mae": 0.26
+   },
+   "isha": {
+    "n": 730,
+    "ex": 662,
+    "w1": 730,
+    "worst": 0.9,
+    "mae": 0.27
+   }
+  },
+  "betweenYear": {
+   "fajr": {
+    "same": 275,
+    "moved": 90,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "sunrise": {
+    "same": 279,
+    "moved": 86,
+    "movedBeyond1": 9,
+    "max": 60
+   },
+   "zawal": {
+    "same": 336,
+    "moved": 29,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "zuhr": {
+    "same": 336,
+    "moved": 29,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "asr": {
+    "same": 318,
+    "moved": 47,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "maghrib": {
+    "same": 287,
+    "moved": 78,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "isha": {
+    "same": 277,
+    "moved": 88,
+    "movedBeyond1": 7,
+    "max": 61
+   }
+  },
+  "seasonal": {
+   "jan15": {
+    "fajr": 404,
+    "sunrise": 489,
+    "span": 85
+   },
+   "jul15": {
+    "fajr": 333,
+    "sunrise": 430,
+    "span": 97
+   }
+  }
+ },
+ {
+  "city": "guarda",
+  "tz": "Europe/Lisbon",
+  "n26": 365,
+  "n27": 365,
+  "solved": {
+   "lat": 40.56,
+   "lon": -7.36
+  },
+  "rounding": "nearest",
+  "recipe": {
+   "fajr_deg": 18,
+   "isha_deg": 12,
+   "isha_add": 3,
+   "zuhr_add": 5,
+   "maghrib_add": 3,
+   "asr_factor": 1,
+   "sunrise_shift": -1
+  },
+  "engine": "praytimes-v2 (o1f-london/praytimes.cjs)",
+  "observedAdjustment": {
+   "fajr": 0,
+   "sunrise": 0,
+   "zawal": 0,
+   "zuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "scores": {
+   "y2026": {
+    "fajr": {
+     "n": 365,
+     "ex": 85,
+     "w1": 341,
+     "worst": 2,
+     "mae": 0.83
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 346,
+     "w1": 363,
+     "worst": 2,
+     "mae": 0.06
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 354,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.03
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 354,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.03
+    },
+    "asr": {
+     "n": 365,
+     "ex": 299,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.18
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 349,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.04
+    },
+    "isha": {
+     "n": 365,
+     "ex": 282,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.23
+    }
+   },
+   "y2027": {
+    "fajr": {
+     "n": 365,
+     "ex": 94,
+     "w1": 343,
+     "worst": 2,
+     "mae": 0.8
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 353,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.04
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 362,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.01
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 362,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.01
+    },
+    "asr": {
+     "n": 365,
+     "ex": 289,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.21
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 346,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.05
+    },
+    "isha": {
+     "n": 365,
+     "ex": 292,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.2
+    }
+   },
+   "span": {
+    "fajr": {
+     "n": 730,
+     "ex": 179,
+     "w1": 684,
+     "worst": 2,
+     "mae": 0.82
+    },
+    "sunrise": {
+     "n": 730,
+     "ex": 699,
+     "w1": 727,
+     "worst": 2,
+     "mae": 0.05
+    },
+    "zawal": {
+     "n": 730,
+     "ex": 716,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "zuhr": {
+     "n": 730,
+     "ex": 716,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "asr": {
+     "n": 730,
+     "ex": 588,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.19
+    },
+    "maghrib": {
+     "n": 730,
+     "ex": 695,
+     "w1": 729,
+     "worst": 2,
+     "mae": 0.05
+    },
+    "isha": {
+     "n": 730,
+     "ex": 574,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.21
+    }
+   }
+  },
+  "adhanCrossCheck": {
+   "fajr": {
+    "n": 730,
+    "ex": 178,
+    "w1": 661,
+    "worst": 1.8,
+    "mae": 0.88
+   },
+   "sunrise": {
+    "n": 730,
+    "ex": 11,
+    "w1": 716,
+    "worst": 2.5,
+    "mae": 1
+   },
+   "zawal": {
+    "n": 730,
+    "ex": 715,
+    "w1": 730,
+    "worst": 0.8,
+    "mae": 0.25
+   },
+   "zuhr": {
+    "n": 730,
+    "ex": 715,
+    "w1": 730,
+    "worst": 0.8,
+    "mae": 0.25
+   },
+   "asr": {
+    "n": 730,
+    "ex": 427,
+    "w1": 726,
+    "worst": 1.9,
+    "mae": 0.44
+   },
+   "maghrib": {
+    "n": 730,
+    "ex": 700,
+    "w1": 729,
+    "worst": 1.5,
+    "mae": 0.26
+   },
+   "isha": {
+    "n": 730,
+    "ex": 615,
+    "w1": 730,
+    "worst": 1.4,
+    "mae": 0.28
+   }
+  },
+  "betweenYear": {
+   "fajr": {
+    "same": 254,
+    "moved": 111,
+    "movedBeyond1": 9,
+    "max": 60
+   },
+   "sunrise": {
+    "same": 275,
+    "moved": 90,
+    "movedBeyond1": 10,
+    "max": 60
+   },
+   "zawal": {
+    "same": 334,
+    "moved": 31,
+    "movedBeyond1": 7,
+    "max": 61
+   },
+   "zuhr": {
+    "same": 334,
+    "moved": 31,
+    "movedBeyond1": 7,
+    "max": 61
+   },
+   "asr": {
+    "same": 305,
+    "moved": 60,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "maghrib": {
+    "same": 266,
+    "moved": 99,
+    "movedBeyond1": 10,
+    "max": 61
+   },
+   "isha": {
+    "same": 258,
+    "moved": 107,
+    "movedBeyond1": 9,
+    "max": 61
+   }
+  },
+  "seasonal": {
+   "jan15": {
+    "fajr": 374,
+    "sunrise": 470,
+    "span": 96
+   },
+   "jul15": {
+    "fajr": 253,
+    "sunrise": 371,
+    "span": 118
+   }
+  }
+ },
+ {
+  "city": "leiria",
+  "tz": "Europe/Lisbon",
+  "n26": 365,
+  "n27": 365,
+  "solved": {
+   "lat": 39.76,
+   "lon": -8.97
+  },
+  "rounding": "nearest",
+  "recipe": {
+   "fajr_deg": 18,
+   "isha_deg": 12,
+   "isha_add": 3,
+   "zuhr_add": 5,
+   "maghrib_add": 3,
+   "asr_factor": 1,
+   "sunrise_shift": -1
+  },
+  "engine": "praytimes-v2 (o1f-london/praytimes.cjs)",
+  "observedAdjustment": {
+   "fajr": 0,
+   "sunrise": 0,
+   "zawal": 0,
+   "zuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "scores": {
+   "y2026": {
+    "fajr": {
+     "n": 365,
+     "ex": 85,
+     "w1": 350,
+     "worst": 2,
+     "mae": 0.81
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 350,
+     "w1": 363,
+     "worst": 2,
+     "mae": 0.05
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 360,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.01
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 360,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.01
+    },
+    "asr": {
+     "n": 365,
+     "ex": 274,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.25
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 347,
+     "w1": 363,
+     "worst": 2,
+     "mae": 0.05
+    },
+    "isha": {
+     "n": 365,
+     "ex": 292,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.2
+    }
+   },
+   "y2027": {
+    "fajr": {
+     "n": 365,
+     "ex": 83,
+     "w1": 348,
+     "worst": 2,
+     "mae": 0.82
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 344,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.06
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 357,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 357,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "asr": {
+     "n": 365,
+     "ex": 291,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.2
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 353,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.04
+    },
+    "isha": {
+     "n": 365,
+     "ex": 293,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.2
+    }
+   },
+   "span": {
+    "fajr": {
+     "n": 730,
+     "ex": 168,
+     "w1": 698,
+     "worst": 2,
+     "mae": 0.81
+    },
+    "sunrise": {
+     "n": 730,
+     "ex": 694,
+     "w1": 727,
+     "worst": 2,
+     "mae": 0.05
+    },
+    "zawal": {
+     "n": 730,
+     "ex": 717,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "zuhr": {
+     "n": 730,
+     "ex": 717,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "asr": {
+     "n": 730,
+     "ex": 565,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.23
+    },
+    "maghrib": {
+     "n": 730,
+     "ex": 700,
+     "w1": 727,
+     "worst": 2,
+     "mae": 0.05
+    },
+    "isha": {
+     "n": 730,
+     "ex": 585,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.2
+    }
+   }
+  },
+  "adhanCrossCheck": {
+   "fajr": {
+    "n": 730,
+    "ex": 166,
+    "w1": 683,
+    "worst": 1.8,
+    "mae": 0.84
+   },
+   "sunrise": {
+    "n": 730,
+    "ex": 27,
+    "w1": 725,
+    "worst": 2.6,
+    "mae": 0.98
+   },
+   "zawal": {
+    "n": 730,
+    "ex": 719,
+    "w1": 730,
+    "worst": 0.9,
+    "mae": 0.26
+   },
+   "zuhr": {
+    "n": 730,
+    "ex": 719,
+    "w1": 730,
+    "worst": 0.9,
+    "mae": 0.26
+   },
+   "asr": {
+    "n": 730,
+    "ex": 458,
+    "w1": 726,
+    "worst": 1.9,
+    "mae": 0.43
+   },
+   "maghrib": {
+    "n": 730,
+    "ex": 705,
+    "w1": 728,
+    "worst": 1.6,
+    "mae": 0.25
+   },
+   "isha": {
+    "n": 730,
+    "ex": 632,
+    "w1": 730,
+    "worst": 1.2,
+    "mae": 0.27
+   }
+  },
+  "betweenYear": {
+   "fajr": {
+    "same": 261,
+    "moved": 104,
+    "movedBeyond1": 8,
+    "max": 60
+   },
+   "sunrise": {
+    "same": 265,
+    "moved": 100,
+    "movedBeyond1": 8,
+    "max": 60
+   },
+   "zawal": {
+    "same": 335,
+    "moved": 30,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "zuhr": {
+    "same": 335,
+    "moved": 30,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "asr": {
+    "same": 280,
+    "moved": 85,
+    "movedBeyond1": 9,
+    "max": 60
+   },
+   "maghrib": {
+    "same": 280,
+    "moved": 85,
+    "movedBeyond1": 9,
+    "max": 61
+   },
+   "isha": {
+    "same": 265,
+    "moved": 100,
+    "movedBeyond1": 7,
+    "max": 61
+   }
+  },
+  "seasonal": {
+   "jan15": {
+    "fajr": 380,
+    "sunrise": 474,
+    "span": 94
+   },
+   "jul15": {
+    "fajr": 265,
+    "sunrise": 379,
+    "span": 114
+   }
+  }
+ },
+ {
+  "city": "lisboa",
+  "tz": "Europe/Lisbon",
+  "n26": 365,
+  "n27": 365,
+  "solved": {
+   "lat": 38.72,
+   "lon": -9.26
+  },
+  "rounding": "nearest",
+  "recipe": {
+   "fajr_deg": 18,
+   "isha_deg": 12,
+   "isha_add": 3,
+   "zuhr_add": 5,
+   "maghrib_add": 3,
+   "asr_factor": 1,
+   "sunrise_shift": -1
+  },
+  "engine": "praytimes-v2 (o1f-london/praytimes.cjs)",
+  "observedAdjustment": {
+   "fajr": 0,
+   "sunrise": 0,
+   "zawal": 0,
+   "zuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "scores": {
+   "y2026": {
+    "fajr": {
+     "n": 365,
+     "ex": 88,
+     "w1": 354,
+     "worst": 2,
+     "mae": 0.79
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 344,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.06
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 361,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.01
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 361,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.01
+    },
+    "asr": {
+     "n": 365,
+     "ex": 294,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.19
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 352,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.04
+    },
+    "isha": {
+     "n": 365,
+     "ex": 288,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.21
+    }
+   },
+   "y2027": {
+    "fajr": {
+     "n": 365,
+     "ex": 99,
+     "w1": 357,
+     "worst": 2,
+     "mae": 0.75
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 350,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.04
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 364,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 364,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0
+    },
+    "asr": {
+     "n": 365,
+     "ex": 294,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.19
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 351,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.04
+    },
+    "isha": {
+     "n": 365,
+     "ex": 296,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.19
+    }
+   },
+   "span": {
+    "fajr": {
+     "n": 730,
+     "ex": 187,
+     "w1": 711,
+     "worst": 2,
+     "mae": 0.77
+    },
+    "sunrise": {
+     "n": 730,
+     "ex": 694,
+     "w1": 728,
+     "worst": 2,
+     "mae": 0.05
+    },
+    "zawal": {
+     "n": 730,
+     "ex": 725,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.01
+    },
+    "zuhr": {
+     "n": 730,
+     "ex": 725,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.01
+    },
+    "asr": {
+     "n": 730,
+     "ex": 588,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.19
+    },
+    "maghrib": {
+     "n": 730,
+     "ex": 703,
+     "w1": 729,
+     "worst": 2,
+     "mae": 0.04
+    },
+    "isha": {
+     "n": 730,
+     "ex": 584,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.2
+    }
+   }
+  },
+  "adhanCrossCheck": {
+   "fajr": {
+    "n": 730,
+    "ex": 183,
+    "w1": 702,
+    "worst": 1.7,
+    "mae": 0.8
+   },
+   "sunrise": {
+    "n": 730,
+    "ex": 20,
+    "w1": 724,
+    "worst": 2.4,
+    "mae": 0.99
+   },
+   "zawal": {
+    "n": 730,
+    "ex": 727,
+    "w1": 730,
+    "worst": 0.6,
+    "mae": 0.26
+   },
+   "zuhr": {
+    "n": 730,
+    "ex": 727,
+    "w1": 730,
+    "worst": 0.6,
+    "mae": 0.26
+   },
+   "asr": {
+    "n": 730,
+    "ex": 439,
+    "w1": 730,
+    "worst": 1.5,
+    "mae": 0.43
+   },
+   "maghrib": {
+    "n": 730,
+    "ex": 710,
+    "w1": 729,
+    "worst": 1.5,
+    "mae": 0.26
+   },
+   "isha": {
+    "n": 730,
+    "ex": 621,
+    "w1": 730,
+    "worst": 1.2,
+    "mae": 0.28
+   }
+  },
+  "betweenYear": {
+   "fajr": {
+    "same": 259,
+    "moved": 106,
+    "movedBeyond1": 8,
+    "max": 60
+   },
+   "sunrise": {
+    "same": 279,
+    "moved": 86,
+    "movedBeyond1": 11,
+    "max": 61
+   },
+   "zawal": {
+    "same": 337,
+    "moved": 28,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "zuhr": {
+    "same": 337,
+    "moved": 28,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "asr": {
+    "same": 303,
+    "moved": 62,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "maghrib": {
+    "same": 272,
+    "moved": 93,
+    "movedBeyond1": 8,
+    "max": 61
+   },
+   "isha": {
+    "same": 266,
+    "moved": 99,
+    "movedBeyond1": 10,
+    "max": 61
+   }
+  },
+  "seasonal": {
+   "jan15": {
+    "fajr": 380,
+    "sunrise": 473,
+    "span": 93
+   },
+   "jul15": {
+    "fajr": 272,
+    "sunrise": 384,
+    "span": 112
+   }
+  }
+ },
+ {
+  "city": "pdelgada",
+  "tz": "Atlantic/Azores",
+  "n26": 365,
+  "n27": 365,
+  "solved": {
+   "lat": 37.74,
+   "lon": -25.78
+  },
+  "rounding": "nearest",
+  "recipe": {
+   "fajr_deg": 18,
+   "isha_deg": 12,
+   "isha_add": 3,
+   "zuhr_add": 5,
+   "maghrib_add": 3,
+   "asr_factor": 1,
+   "sunrise_shift": -1
+  },
+  "engine": "praytimes-v2 (o1f-london/praytimes.cjs)",
+  "observedAdjustment": {
+   "fajr": 0,
+   "sunrise": 0,
+   "zawal": 0,
+   "zuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "scores": {
+   "y2026": {
+    "fajr": {
+     "n": 365,
+     "ex": 161,
+     "w1": 362,
+     "worst": 2,
+     "mae": 0.57
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 235,
+     "w1": 347,
+     "worst": 2,
+     "mae": 0.41
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 315,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.14
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 315,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.14
+    },
+    "asr": {
+     "n": 365,
+     "ex": 276,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.24
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 229,
+     "w1": 355,
+     "worst": 2,
+     "mae": 0.4
+    },
+    "isha": {
+     "n": 365,
+     "ex": 223,
+     "w1": 363,
+     "worst": 2,
+     "mae": 0.39
+    }
+   },
+   "y2027": {
+    "fajr": {
+     "n": 365,
+     "ex": 158,
+     "w1": 362,
+     "worst": 2,
+     "mae": 0.58
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 220,
+     "w1": 346,
+     "worst": 2,
+     "mae": 0.45
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 320,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.12
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 320,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.12
+    },
+    "asr": {
+     "n": 365,
+     "ex": 282,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.23
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 242,
+     "w1": 363,
+     "worst": 2,
+     "mae": 0.34
+    },
+    "isha": {
+     "n": 365,
+     "ex": 242,
+     "w1": 363,
+     "worst": 2,
+     "mae": 0.34
+    }
+   },
+   "span": {
+    "fajr": {
+     "n": 730,
+     "ex": 319,
+     "w1": 724,
+     "worst": 2,
+     "mae": 0.57
+    },
+    "sunrise": {
+     "n": 730,
+     "ex": 455,
+     "w1": 693,
+     "worst": 2,
+     "mae": 0.43
+    },
+    "zawal": {
+     "n": 730,
+     "ex": 635,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.13
+    },
+    "zuhr": {
+     "n": 730,
+     "ex": 635,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.13
+    },
+    "asr": {
+     "n": 730,
+     "ex": 558,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.24
+    },
+    "maghrib": {
+     "n": 730,
+     "ex": 471,
+     "w1": 718,
+     "worst": 2,
+     "mae": 0.37
+    },
+    "isha": {
+     "n": 730,
+     "ex": 465,
+     "w1": 726,
+     "worst": 2,
+     "mae": 0.37
+    }
+   }
+  },
+  "adhanCrossCheck": {
+   "fajr": {
+    "n": 730,
+    "ex": 308,
+    "w1": 714,
+    "worst": 1.6,
+    "mae": 0.65
+   },
+   "sunrise": {
+    "n": 730,
+    "ex": 124,
+    "w1": 612,
+    "worst": 2.5,
+    "mae": 1.01
+   },
+   "zawal": {
+    "n": 730,
+    "ex": 634,
+    "w1": 730,
+    "worst": 0.9,
+    "mae": 0.29
+   },
+   "zuhr": {
+    "n": 730,
+    "ex": 634,
+    "w1": 730,
+    "worst": 0.9,
+    "mae": 0.29
+   },
+   "asr": {
+    "n": 730,
+    "ex": 275,
+    "w1": 683,
+    "worst": 2.2,
+    "mae": 0.7
+   },
+   "maghrib": {
+    "n": 730,
+    "ex": 478,
+    "w1": 722,
+    "worst": 1.7,
+    "mae": 0.5
+   },
+   "isha": {
+    "n": 730,
+    "ex": 486,
+    "w1": 726,
+    "worst": 1.9,
+    "mae": 0.43
+   }
+  },
+  "betweenYear": {
+   "fajr": {
+    "same": 259,
+    "moved": 106,
+    "movedBeyond1": 11,
+    "max": 61
+   },
+   "sunrise": {
+    "same": 254,
+    "moved": 111,
+    "movedBeyond1": 10,
+    "max": 61
+   },
+   "zawal": {
+    "same": 341,
+    "moved": 24,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "zuhr": {
+    "same": 341,
+    "moved": 24,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "asr": {
+    "same": 299,
+    "moved": 66,
+    "movedBeyond1": 10,
+    "max": 60
+   },
+   "maghrib": {
+    "same": 267,
+    "moved": 98,
+    "movedBeyond1": 10,
+    "max": 61
+   },
+   "isha": {
+    "same": 277,
+    "moved": 88,
+    "movedBeyond1": 12,
+    "max": 61
+   }
+  },
+  "seasonal": {
+   "jan15": {
+    "fajr": 385,
+    "sunrise": 477,
+    "span": 92
+   },
+   "jul15": {
+    "fajr": 284,
+    "sunrise": 392,
+    "span": 108
+   }
+  }
+ },
+ {
+  "city": "portalegre",
+  "tz": "Europe/Lisbon",
+  "n26": 365,
+  "n27": 365,
+  "solved": {
+   "lat": 39.21,
+   "lon": -7.54
+  },
+  "rounding": "nearest",
+  "recipe": {
+   "fajr_deg": 18,
+   "isha_deg": 12,
+   "isha_add": 3,
+   "zuhr_add": 5,
+   "maghrib_add": 3,
+   "asr_factor": 1,
+   "sunrise_shift": -1
+  },
+  "engine": "praytimes-v2 (o1f-london/praytimes.cjs)",
+  "observedAdjustment": {
+   "fajr": 0,
+   "sunrise": 0,
+   "zawal": 0,
+   "zuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "scores": {
+   "y2026": {
+    "fajr": {
+     "n": 365,
+     "ex": 102,
+     "w1": 344,
+     "worst": 2,
+     "mae": 0.78
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 348,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.05
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 353,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.03
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 353,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.03
+    },
+    "asr": {
+     "n": 365,
+     "ex": 292,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.2
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 349,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.04
+    },
+    "isha": {
+     "n": 365,
+     "ex": 292,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.2
+    }
+   },
+   "y2027": {
+    "fajr": {
+     "n": 365,
+     "ex": 103,
+     "w1": 346,
+     "worst": 2,
+     "mae": 0.77
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 338,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.08
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 360,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.01
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 360,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.01
+    },
+    "asr": {
+     "n": 365,
+     "ex": 282,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.23
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 347,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.05
+    },
+    "isha": {
+     "n": 365,
+     "ex": 288,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.21
+    }
+   },
+   "span": {
+    "fajr": {
+     "n": 730,
+     "ex": 205,
+     "w1": 690,
+     "worst": 2,
+     "mae": 0.77
+    },
+    "sunrise": {
+     "n": 730,
+     "ex": 686,
+     "w1": 728,
+     "worst": 2,
+     "mae": 0.06
+    },
+    "zawal": {
+     "n": 730,
+     "ex": 713,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "zuhr": {
+     "n": 730,
+     "ex": 713,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "asr": {
+     "n": 730,
+     "ex": 574,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.21
+    },
+    "maghrib": {
+     "n": 730,
+     "ex": 696,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.05
+    },
+    "isha": {
+     "n": 730,
+     "ex": 580,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.21
+    }
+   }
+  },
+  "adhanCrossCheck": {
+   "fajr": {
+    "n": 730,
+    "ex": 207,
+    "w1": 678,
+    "worst": 1.8,
+    "mae": 0.83
+   },
+   "sunrise": {
+    "n": 730,
+    "ex": 7,
+    "w1": 715,
+    "worst": 2.6,
+    "mae": 1.02
+   },
+   "zawal": {
+    "n": 730,
+    "ex": 711,
+    "w1": 730,
+    "worst": 0.7,
+    "mae": 0.26
+   },
+   "zuhr": {
+    "n": 730,
+    "ex": 711,
+    "w1": 730,
+    "worst": 0.7,
+    "mae": 0.26
+   },
+   "asr": {
+    "n": 730,
+    "ex": 440,
+    "w1": 729,
+    "worst": 1.6,
+    "mae": 0.43
+   },
+   "maghrib": {
+    "n": 730,
+    "ex": 706,
+    "w1": 730,
+    "worst": 1.3,
+    "mae": 0.26
+   },
+   "isha": {
+    "n": 730,
+    "ex": 624,
+    "w1": 730,
+    "worst": 1.2,
+    "mae": 0.28
+   }
+  },
+  "betweenYear": {
+   "fajr": {
+    "same": 253,
+    "moved": 112,
+    "movedBeyond1": 7,
+    "max": 61
+   },
+   "sunrise": {
+    "same": 283,
+    "moved": 82,
+    "movedBeyond1": 9,
+    "max": 60
+   },
+   "zawal": {
+    "same": 330,
+    "moved": 35,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "zuhr": {
+    "same": 330,
+    "moved": 35,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "asr": {
+    "same": 310,
+    "moved": 55,
+    "movedBeyond1": 7,
+    "max": 61
+   },
+   "maghrib": {
+    "same": 278,
+    "moved": 87,
+    "movedBeyond1": 7,
+    "max": 61
+   },
+   "isha": {
+    "same": 270,
+    "moved": 95,
+    "movedBeyond1": 8,
+    "max": 61
+   }
+  },
+  "seasonal": {
+   "jan15": {
+    "fajr": 373,
+    "sunrise": 467,
+    "span": 94
+   },
+   "jul15": {
+    "fajr": 262,
+    "sunrise": 375,
+    "span": 113
+   }
+  }
+ },
+ {
+  "city": "porto",
+  "tz": "Europe/Lisbon",
+  "n26": 365,
+  "n27": 365,
+  "solved": {
+   "lat": 41.14,
+   "lon": -8.73
+  },
+  "rounding": "nearest",
+  "recipe": {
+   "fajr_deg": 18,
+   "isha_deg": 12,
+   "isha_add": 3,
+   "zuhr_add": 5,
+   "maghrib_add": 3,
+   "asr_factor": 1,
+   "sunrise_shift": -1
+  },
+  "engine": "praytimes-v2 (o1f-london/praytimes.cjs)",
+  "observedAdjustment": {
+   "fajr": 0,
+   "sunrise": 0,
+   "zawal": 0,
+   "zuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "scores": {
+   "y2026": {
+    "fajr": {
+     "n": 365,
+     "ex": 78,
+     "w1": 333,
+     "worst": 2,
+     "mae": 0.87
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 344,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.06
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 347,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.05
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 347,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.05
+    },
+    "asr": {
+     "n": 365,
+     "ex": 283,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.22
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 350,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.04
+    },
+    "isha": {
+     "n": 365,
+     "ex": 292,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.2
+    }
+   },
+   "y2027": {
+    "fajr": {
+     "n": 365,
+     "ex": 78,
+     "w1": 340,
+     "worst": 2,
+     "mae": 0.85
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 343,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.06
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 357,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 357,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "asr": {
+     "n": 365,
+     "ex": 280,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.23
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 351,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.04
+    },
+    "isha": {
+     "n": 365,
+     "ex": 283,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.22
+    }
+   },
+   "span": {
+    "fajr": {
+     "n": 730,
+     "ex": 156,
+     "w1": 673,
+     "worst": 2,
+     "mae": 0.86
+    },
+    "sunrise": {
+     "n": 730,
+     "ex": 687,
+     "w1": 728,
+     "worst": 2,
+     "mae": 0.06
+    },
+    "zawal": {
+     "n": 730,
+     "ex": 704,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.04
+    },
+    "zuhr": {
+     "n": 730,
+     "ex": 704,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.04
+    },
+    "asr": {
+     "n": 730,
+     "ex": 563,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.23
+    },
+    "maghrib": {
+     "n": 730,
+     "ex": 701,
+     "w1": 728,
+     "worst": 2,
+     "mae": 0.04
+    },
+    "isha": {
+     "n": 730,
+     "ex": 575,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.21
+    }
+   }
+  },
+  "adhanCrossCheck": {
+   "fajr": {
+    "n": 730,
+    "ex": 152,
+    "w1": 651,
+    "worst": 1.9,
+    "mae": 0.9
+   },
+   "sunrise": {
+    "n": 730,
+    "ex": 23,
+    "w1": 724,
+    "worst": 2.2,
+    "mae": 1.01
+   },
+   "zawal": {
+    "n": 730,
+    "ex": 714,
+    "w1": 730,
+    "worst": 0.9,
+    "mae": 0.26
+   },
+   "zuhr": {
+    "n": 730,
+    "ex": 714,
+    "w1": 730,
+    "worst": 0.9,
+    "mae": 0.26
+   },
+   "asr": {
+    "n": 730,
+    "ex": 457,
+    "w1": 728,
+    "worst": 1.7,
+    "mae": 0.42
+   },
+   "maghrib": {
+    "n": 730,
+    "ex": 710,
+    "w1": 728,
+    "worst": 1.6,
+    "mae": 0.26
+   },
+   "isha": {
+    "n": 730,
+    "ex": 626,
+    "w1": 730,
+    "worst": 1.3,
+    "mae": 0.29
+   }
+  },
+  "betweenYear": {
+   "fajr": {
+    "same": 252,
+    "moved": 113,
+    "movedBeyond1": 9,
+    "max": 61
+   },
+   "sunrise": {
+    "same": 269,
+    "moved": 96,
+    "movedBeyond1": 9,
+    "max": 61
+   },
+   "zawal": {
+    "same": 326,
+    "moved": 39,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "zuhr": {
+    "same": 326,
+    "moved": 39,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "asr": {
+    "same": 301,
+    "moved": 64,
+    "movedBeyond1": 8,
+    "max": 61
+   },
+   "maghrib": {
+    "same": 275,
+    "moved": 90,
+    "movedBeyond1": 9,
+    "max": 61
+   },
+   "isha": {
+    "same": 265,
+    "moved": 100,
+    "movedBeyond1": 9,
+    "max": 61
+   }
+  },
+  "seasonal": {
+   "jan15": {
+    "fajr": 380,
+    "sunrise": 477,
+    "span": 97
+   },
+   "jul15": {
+    "fajr": 255,
+    "sunrise": 374,
+    "span": 119
+   }
+  }
+ },
+ {
+  "city": "santarem",
+  "tz": "Europe/Lisbon",
+  "n26": 365,
+  "n27": 365,
+  "solved": {
+   "lat": 39.23,
+   "lon": -8.82
+  },
+  "rounding": "nearest",
+  "recipe": {
+   "fajr_deg": 18,
+   "isha_deg": 12,
+   "isha_add": 3,
+   "zuhr_add": 5,
+   "maghrib_add": 3,
+   "asr_factor": 1,
+   "sunrise_shift": -1
+  },
+  "engine": "praytimes-v2 (o1f-london/praytimes.cjs)",
+  "observedAdjustment": {
+   "fajr": 0,
+   "sunrise": 0,
+   "zawal": 0,
+   "zuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "scores": {
+   "y2026": {
+    "fajr": {
+     "n": 365,
+     "ex": 97,
+     "w1": 348,
+     "worst": 2,
+     "mae": 0.78
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 348,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.05
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 355,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.03
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 355,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.03
+    },
+    "asr": {
+     "n": 365,
+     "ex": 293,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.2
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 350,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.04
+    },
+    "isha": {
+     "n": 365,
+     "ex": 297,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.19
+    }
+   },
+   "y2027": {
+    "fajr": {
+     "n": 365,
+     "ex": 97,
+     "w1": 353,
+     "worst": 2,
+     "mae": 0.77
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 349,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.04
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 352,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.04
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 352,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.04
+    },
+    "asr": {
+     "n": 365,
+     "ex": 303,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.17
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 346,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.05
+    },
+    "isha": {
+     "n": 365,
+     "ex": 292,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.2
+    }
+   },
+   "span": {
+    "fajr": {
+     "n": 730,
+     "ex": 194,
+     "w1": 701,
+     "worst": 2,
+     "mae": 0.77
+    },
+    "sunrise": {
+     "n": 730,
+     "ex": 697,
+     "w1": 729,
+     "worst": 2,
+     "mae": 0.05
+    },
+    "zawal": {
+     "n": 730,
+     "ex": 707,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.03
+    },
+    "zuhr": {
+     "n": 730,
+     "ex": 707,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.03
+    },
+    "asr": {
+     "n": 730,
+     "ex": 596,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.18
+    },
+    "maghrib": {
+     "n": 730,
+     "ex": 696,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.05
+    },
+    "isha": {
+     "n": 730,
+     "ex": 589,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.19
+    }
+   }
+  },
+  "adhanCrossCheck": {
+   "fajr": {
+    "n": 730,
+    "ex": 192,
+    "w1": 689,
+    "worst": 1.8,
+    "mae": 0.82
+   },
+   "sunrise": {
+    "n": 730,
+    "ex": 4,
+    "w1": 707,
+    "worst": 2,
+    "mae": 1.02
+   },
+   "zawal": {
+    "n": 730,
+    "ex": 707,
+    "w1": 730,
+    "worst": 0.7,
+    "mae": 0.25
+   },
+   "zuhr": {
+    "n": 730,
+    "ex": 707,
+    "w1": 730,
+    "worst": 0.7,
+    "mae": 0.25
+   },
+   "asr": {
+    "n": 730,
+    "ex": 424,
+    "w1": 729,
+    "worst": 1.7,
+    "mae": 0.46
+   },
+   "maghrib": {
+    "n": 730,
+    "ex": 699,
+    "w1": 730,
+    "worst": 1.4,
+    "mae": 0.26
+   },
+   "isha": {
+    "n": 730,
+    "ex": 630,
+    "w1": 730,
+    "worst": 1.3,
+    "mae": 0.28
+   }
+  },
+  "betweenYear": {
+   "fajr": {
+    "same": 250,
+    "moved": 115,
+    "movedBeyond1": 8,
+    "max": 61
+   },
+   "sunrise": {
+    "same": 267,
+    "moved": 98,
+    "movedBeyond1": 8,
+    "max": 61
+   },
+   "zawal": {
+    "same": 335,
+    "moved": 30,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "zuhr": {
+    "same": 335,
+    "moved": 30,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "asr": {
+    "same": 305,
+    "moved": 60,
+    "movedBeyond1": 7,
+    "max": 61
+   },
+   "maghrib": {
+    "same": 274,
+    "moved": 91,
+    "movedBeyond1": 8,
+    "max": 61
+   },
+   "isha": {
+    "same": 277,
+    "moved": 88,
+    "movedBeyond1": 8,
+    "max": 61
+   }
+  },
+  "seasonal": {
+   "jan15": {
+    "fajr": 378,
+    "sunrise": 472,
+    "span": 94
+   },
+   "jul15": {
+    "fajr": 267,
+    "sunrise": 380,
+    "span": 113
+   }
+  }
+ },
+ {
+  "city": "setubal",
+  "tz": "Europe/Lisbon",
+  "n26": 365,
+  "n27": 365,
+  "solved": {
+   "lat": 38.53,
+   "lon": -9.03
+  },
+  "rounding": "nearest",
+  "recipe": {
+   "fajr_deg": 18,
+   "isha_deg": 12,
+   "isha_add": 3,
+   "zuhr_add": 5,
+   "maghrib_add": 3,
+   "asr_factor": 1,
+   "sunrise_shift": -1
+  },
+  "engine": "praytimes-v2 (o1f-london/praytimes.cjs)",
+  "observedAdjustment": {
+   "fajr": 0,
+   "sunrise": 0,
+   "zawal": 0,
+   "zuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "scores": {
+   "y2026": {
+    "fajr": {
+     "n": 365,
+     "ex": 109,
+     "w1": 353,
+     "worst": 2,
+     "mae": 0.73
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 351,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.04
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 359,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 359,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "asr": {
+     "n": 365,
+     "ex": 281,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.23
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 347,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.05
+    },
+    "isha": {
+     "n": 365,
+     "ex": 279,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.24
+    }
+   },
+   "y2027": {
+    "fajr": {
+     "n": 365,
+     "ex": 119,
+     "w1": 353,
+     "worst": 2,
+     "mae": 0.71
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 347,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.05
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 359,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 359,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "asr": {
+     "n": 365,
+     "ex": 289,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.21
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 348,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.05
+    },
+    "isha": {
+     "n": 365,
+     "ex": 300,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.18
+    }
+   },
+   "span": {
+    "fajr": {
+     "n": 730,
+     "ex": 228,
+     "w1": 706,
+     "worst": 2,
+     "mae": 0.72
+    },
+    "sunrise": {
+     "n": 730,
+     "ex": 698,
+     "w1": 728,
+     "worst": 2,
+     "mae": 0.05
+    },
+    "zawal": {
+     "n": 730,
+     "ex": 718,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "zuhr": {
+     "n": 730,
+     "ex": 718,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "asr": {
+     "n": 730,
+     "ex": 570,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.22
+    },
+    "maghrib": {
+     "n": 730,
+     "ex": 695,
+     "w1": 729,
+     "worst": 2,
+     "mae": 0.05
+    },
+    "isha": {
+     "n": 730,
+     "ex": 579,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.21
+    }
+   }
+  },
+  "adhanCrossCheck": {
+   "fajr": {
+    "n": 730,
+    "ex": 218,
+    "w1": 695,
+    "worst": 1.7,
+    "mae": 0.77
+   },
+   "sunrise": {
+    "n": 730,
+    "ex": 8,
+    "w1": 723,
+    "worst": 2,
+    "mae": 1
+   },
+   "zawal": {
+    "n": 730,
+    "ex": 718,
+    "w1": 730,
+    "worst": 0.7,
+    "mae": 0.26
+   },
+   "zuhr": {
+    "n": 730,
+    "ex": 718,
+    "w1": 730,
+    "worst": 0.7,
+    "mae": 0.26
+   },
+   "asr": {
+    "n": 730,
+    "ex": 457,
+    "w1": 726,
+    "worst": 1.9,
+    "mae": 0.42
+   },
+   "maghrib": {
+    "n": 730,
+    "ex": 709,
+    "w1": 729,
+    "worst": 1.6,
+    "mae": 0.26
+   },
+   "isha": {
+    "n": 730,
+    "ex": 618,
+    "w1": 730,
+    "worst": 1.2,
+    "mae": 0.28
+   }
+  },
+  "betweenYear": {
+   "fajr": {
+    "same": 245,
+    "moved": 120,
+    "movedBeyond1": 9,
+    "max": 61
+   },
+   "sunrise": {
+    "same": 274,
+    "moved": 91,
+    "movedBeyond1": 9,
+    "max": 61
+   },
+   "zawal": {
+    "same": 334,
+    "moved": 31,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "zuhr": {
+    "same": 334,
+    "moved": 31,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "asr": {
+    "same": 302,
+    "moved": 63,
+    "movedBeyond1": 9,
+    "max": 61
+   },
+   "maghrib": {
+    "same": 279,
+    "moved": 86,
+    "movedBeyond1": 9,
+    "max": 61
+   },
+   "isha": {
+    "same": 254,
+    "moved": 111,
+    "movedBeyond1": 8,
+    "max": 61
+   }
+  },
+  "seasonal": {
+   "jan15": {
+    "fajr": 378,
+    "sunrise": 471,
+    "span": 93
+   },
+   "jul15": {
+    "fajr": 272,
+    "sunrise": 383,
+    "span": 111
+   }
+  }
+ },
+ {
+  "city": "vcastelo",
+  "tz": "Europe/Lisbon",
+  "n26": 365,
+  "n27": 365,
+  "solved": {
+   "lat": 41.68,
+   "lon": -8.96
+  },
+  "rounding": "nearest",
+  "recipe": {
+   "fajr_deg": 18,
+   "isha_deg": 12,
+   "isha_add": 3,
+   "zuhr_add": 5,
+   "maghrib_add": 3,
+   "asr_factor": 1,
+   "sunrise_shift": -1
+  },
+  "engine": "praytimes-v2 (o1f-london/praytimes.cjs)",
+  "observedAdjustment": {
+   "fajr": 0,
+   "sunrise": 0,
+   "zawal": 0,
+   "zuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "scores": {
+   "y2026": {
+    "fajr": {
+     "n": 365,
+     "ex": 82,
+     "w1": 326,
+     "worst": 2,
+     "mae": 0.88
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 349,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.05
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 356,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 356,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "asr": {
+     "n": 365,
+     "ex": 274,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.25
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 340,
+     "w1": 363,
+     "worst": 2,
+     "mae": 0.07
+    },
+    "isha": {
+     "n": 365,
+     "ex": 290,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.21
+    }
+   },
+   "y2027": {
+    "fajr": {
+     "n": 365,
+     "ex": 86,
+     "w1": 334,
+     "worst": 2,
+     "mae": 0.85
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 341,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.07
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 357,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 357,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "asr": {
+     "n": 365,
+     "ex": 292,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.2
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 347,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.05
+    },
+    "isha": {
+     "n": 365,
+     "ex": 286,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.22
+    }
+   },
+   "span": {
+    "fajr": {
+     "n": 730,
+     "ex": 168,
+     "w1": 660,
+     "worst": 2,
+     "mae": 0.87
+    },
+    "sunrise": {
+     "n": 730,
+     "ex": 690,
+     "w1": 729,
+     "worst": 2,
+     "mae": 0.06
+    },
+    "zawal": {
+     "n": 730,
+     "ex": 713,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "zuhr": {
+     "n": 730,
+     "ex": 713,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "asr": {
+     "n": 730,
+     "ex": 566,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.22
+    },
+    "maghrib": {
+     "n": 730,
+     "ex": 687,
+     "w1": 727,
+     "worst": 2,
+     "mae": 0.06
+    },
+    "isha": {
+     "n": 730,
+     "ex": 576,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.21
+    }
+   }
+  },
+  "adhanCrossCheck": {
+   "fajr": {
+    "n": 730,
+    "ex": 165,
+    "w1": 638,
+    "worst": 1.9,
+    "mae": 0.91
+   },
+   "sunrise": {
+    "n": 730,
+    "ex": 25,
+    "w1": 720,
+    "worst": 2.5,
+    "mae": 0.97
+   },
+   "zawal": {
+    "n": 730,
+    "ex": 715,
+    "w1": 730,
+    "worst": 0.8,
+    "mae": 0.26
+   },
+   "zuhr": {
+    "n": 730,
+    "ex": 715,
+    "w1": 730,
+    "worst": 0.8,
+    "mae": 0.26
+   },
+   "asr": {
+    "n": 730,
+    "ex": 425,
+    "w1": 729,
+    "worst": 1.5,
+    "mae": 0.44
+   },
+   "maghrib": {
+    "n": 730,
+    "ex": 706,
+    "w1": 727,
+    "worst": 1.8,
+    "mae": 0.27
+   },
+   "isha": {
+    "n": 730,
+    "ex": 632,
+    "w1": 730,
+    "worst": 1.4,
+    "mae": 0.29
+   }
+  },
+  "betweenYear": {
+   "fajr": {
+    "same": 237,
+    "moved": 128,
+    "movedBeyond1": 9,
+    "max": 60
+   },
+   "sunrise": {
+    "same": 259,
+    "moved": 106,
+    "movedBeyond1": 11,
+    "max": 60
+   },
+   "zawal": {
+    "same": 336,
+    "moved": 29,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "zuhr": {
+    "same": 336,
+    "moved": 29,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "asr": {
+    "same": 297,
+    "moved": 68,
+    "movedBeyond1": 7,
+    "max": 61
+   },
+   "maghrib": {
+    "same": 258,
+    "moved": 107,
+    "movedBeyond1": 9,
+    "max": 61
+   },
+   "isha": {
+    "same": 256,
+    "moved": 109,
+    "movedBeyond1": 9,
+    "max": 61
+   }
+  },
+  "seasonal": {
+   "jan15": {
+    "fajr": 382,
+    "sunrise": 480,
+    "span": 98
+   },
+   "jul15": {
+    "fajr": 252,
+    "sunrise": 373,
+    "span": 121
+   }
+  }
+ },
+ {
+  "city": "viseu",
+  "tz": "Europe/Lisbon",
+  "n26": 365,
+  "n27": 365,
+  "solved": {
+   "lat": 40.63,
+   "lon": -8.05
+  },
+  "rounding": "nearest",
+  "recipe": {
+   "fajr_deg": 18,
+   "isha_deg": 12,
+   "isha_add": 3,
+   "zuhr_add": 5,
+   "maghrib_add": 3,
+   "asr_factor": 1,
+   "sunrise_shift": -1
+  },
+  "engine": "praytimes-v2 (o1f-london/praytimes.cjs)",
+  "observedAdjustment": {
+   "fajr": 0,
+   "sunrise": 0,
+   "zawal": 0,
+   "zuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "scores": {
+   "y2026": {
+    "fajr": {
+     "n": 365,
+     "ex": 101,
+     "w1": 336,
+     "worst": 2,
+     "mae": 0.8
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 345,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.05
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 349,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.04
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 349,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.04
+    },
+    "asr": {
+     "n": 365,
+     "ex": 283,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.22
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 343,
+     "w1": 363,
+     "worst": 2,
+     "mae": 0.07
+    },
+    "isha": {
+     "n": 365,
+     "ex": 290,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.21
+    }
+   },
+   "y2027": {
+    "fajr": {
+     "n": 365,
+     "ex": 103,
+     "w1": 342,
+     "worst": 2,
+     "mae": 0.78
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 344,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.06
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 356,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 356,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "asr": {
+     "n": 365,
+     "ex": 282,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.23
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 347,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.05
+    },
+    "isha": {
+     "n": 365,
+     "ex": 274,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.25
+    }
+   },
+   "span": {
+    "fajr": {
+     "n": 730,
+     "ex": 204,
+     "w1": 678,
+     "worst": 2,
+     "mae": 0.79
+    },
+    "sunrise": {
+     "n": 730,
+     "ex": 689,
+     "w1": 729,
+     "worst": 2,
+     "mae": 0.06
+    },
+    "zawal": {
+     "n": 730,
+     "ex": 705,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.03
+    },
+    "zuhr": {
+     "n": 730,
+     "ex": 705,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.03
+    },
+    "asr": {
+     "n": 730,
+     "ex": 565,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.23
+    },
+    "maghrib": {
+     "n": 730,
+     "ex": 690,
+     "w1": 728,
+     "worst": 2,
+     "mae": 0.06
+    },
+    "isha": {
+     "n": 730,
+     "ex": 564,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.23
+    }
+   }
+  },
+  "adhanCrossCheck": {
+   "fajr": {
+    "n": 730,
+    "ex": 198,
+    "w1": 670,
+    "worst": 1.9,
+    "mae": 0.85
+   },
+   "sunrise": {
+    "n": 730,
+    "ex": 6,
+    "w1": 713,
+    "worst": 2.5,
+    "mae": 1.01
+   },
+   "zawal": {
+    "n": 730,
+    "ex": 703,
+    "w1": 730,
+    "worst": 0.8,
+    "mae": 0.25
+   },
+   "zuhr": {
+    "n": 730,
+    "ex": 703,
+    "w1": 730,
+    "worst": 0.8,
+    "mae": 0.25
+   },
+   "asr": {
+    "n": 730,
+    "ex": 426,
+    "w1": 728,
+    "worst": 1.7,
+    "mae": 0.44
+   },
+   "maghrib": {
+    "n": 730,
+    "ex": 696,
+    "w1": 728,
+    "worst": 1.6,
+    "mae": 0.26
+   },
+   "isha": {
+    "n": 730,
+    "ex": 608,
+    "w1": 730,
+    "worst": 1.5,
+    "mae": 0.29
+   }
+  },
+  "betweenYear": {
+   "fajr": {
+    "same": 242,
+    "moved": 123,
+    "movedBeyond1": 10,
+    "max": 61
+   },
+   "sunrise": {
+    "same": 254,
+    "moved": 111,
+    "movedBeyond1": 8,
+    "max": 60
+   },
+   "zawal": {
+    "same": 338,
+    "moved": 27,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "zuhr": {
+    "same": 338,
+    "moved": 27,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "asr": {
+    "same": 299,
+    "moved": 66,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "maghrib": {
+    "same": 272,
+    "moved": 93,
+    "movedBeyond1": 7,
+    "max": 61
+   },
+   "isha": {
+    "same": 266,
+    "moved": 99,
+    "movedBeyond1": 8,
+    "max": 61
+   }
+  },
+  "seasonal": {
+   "jan15": {
+    "fajr": 377,
+    "sunrise": 473,
+    "span": 96
+   },
+   "jul15": {
+    "fajr": 255,
+    "sunrise": 373,
+    "span": 118
+   }
+  }
+ },
+ {
+  "city": "vreal",
+  "tz": "Europe/Lisbon",
+  "n26": 365,
+  "n27": 365,
+  "solved": {
+   "lat": 41.26,
+   "lon": -7.83
+  },
+  "rounding": "nearest",
+  "recipe": {
+   "fajr_deg": 18,
+   "isha_deg": 12,
+   "isha_add": 3,
+   "zuhr_add": 5,
+   "maghrib_add": 3,
+   "asr_factor": 1,
+   "sunrise_shift": -1
+  },
+  "engine": "praytimes-v2 (o1f-london/praytimes.cjs)",
+  "observedAdjustment": {
+   "fajr": 0,
+   "sunrise": 0,
+   "zawal": 0,
+   "zuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "scores": {
+   "y2026": {
+    "fajr": {
+     "n": 365,
+     "ex": 104,
+     "w1": 333,
+     "worst": 2,
+     "mae": 0.8
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 319,
+     "w1": 364,
+     "worst": 2,
+     "mae": 0.13
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 356,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 356,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "asr": {
+     "n": 365,
+     "ex": 282,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.23
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 334,
+     "w1": 363,
+     "worst": 2,
+     "mae": 0.09
+    },
+    "isha": {
+     "n": 365,
+     "ex": 286,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.22
+    }
+   },
+   "y2027": {
+    "fajr": {
+     "n": 365,
+     "ex": 84,
+     "w1": 333,
+     "worst": 2,
+     "mae": 0.86
+    },
+    "sunrise": {
+     "n": 365,
+     "ex": 345,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.05
+    },
+    "zawal": {
+     "n": 365,
+     "ex": 359,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "zuhr": {
+     "n": 365,
+     "ex": 359,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "asr": {
+     "n": 365,
+     "ex": 273,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.25
+    },
+    "maghrib": {
+     "n": 365,
+     "ex": 344,
+     "w1": 363,
+     "worst": 2,
+     "mae": 0.06
+    },
+    "isha": {
+     "n": 365,
+     "ex": 282,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.23
+    }
+   },
+   "span": {
+    "fajr": {
+     "n": 730,
+     "ex": 188,
+     "w1": 666,
+     "worst": 2,
+     "mae": 0.83
+    },
+    "sunrise": {
+     "n": 730,
+     "ex": 664,
+     "w1": 729,
+     "worst": 2,
+     "mae": 0.09
+    },
+    "zawal": {
+     "n": 730,
+     "ex": 715,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "zuhr": {
+     "n": 730,
+     "ex": 715,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.02
+    },
+    "asr": {
+     "n": 730,
+     "ex": 555,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.24
+    },
+    "maghrib": {
+     "n": 730,
+     "ex": 678,
+     "w1": 726,
+     "worst": 2,
+     "mae": 0.08
+    },
+    "isha": {
+     "n": 730,
+     "ex": 568,
+     "w1": 730,
+     "worst": 1,
+     "mae": 0.22
+    }
+   }
+  },
+  "adhanCrossCheck": {
+   "fajr": {
+    "n": 730,
+    "ex": 187,
+    "w1": 652,
+    "worst": 2,
+    "mae": 0.88
+   },
+   "sunrise": {
+    "n": 730,
+    "ex": 19,
+    "w1": 703,
+    "worst": 2.5,
+    "mae": 1.02
+   },
+   "zawal": {
+    "n": 730,
+    "ex": 716,
+    "w1": 730,
+    "worst": 0.7,
+    "mae": 0.25
+   },
+   "zuhr": {
+    "n": 730,
+    "ex": 716,
+    "w1": 730,
+    "worst": 0.7,
+    "mae": 0.25
+   },
+   "asr": {
+    "n": 730,
+    "ex": 453,
+    "w1": 728,
+    "worst": 1.8,
+    "mae": 0.43
+   },
+   "maghrib": {
+    "n": 730,
+    "ex": 694,
+    "w1": 726,
+    "worst": 1.7,
+    "mae": 0.27
+   },
+   "isha": {
+    "n": 730,
+    "ex": 620,
+    "w1": 730,
+    "worst": 1.5,
+    "mae": 0.3
+   }
+  },
+  "betweenYear": {
+   "fajr": {
+    "same": 263,
+    "moved": 102,
+    "movedBeyond1": 9,
+    "max": 61
+   },
+   "sunrise": {
+    "same": 235,
+    "moved": 130,
+    "movedBeyond1": 9,
+    "max": 61
+   },
+   "zawal": {
+    "same": 339,
+    "moved": 26,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "zuhr": {
+    "same": 339,
+    "moved": 26,
+    "movedBeyond1": 7,
+    "max": 60
+   },
+   "asr": {
+    "same": 308,
+    "moved": 57,
+    "movedBeyond1": 9,
+    "max": 61
+   },
+   "maghrib": {
+    "same": 269,
+    "moved": 96,
+    "movedBeyond1": 9,
+    "max": 61
+   },
+   "isha": {
+    "same": 262,
+    "moved": 103,
+    "movedBeyond1": 10,
+    "max": 61
+   }
+  },
+  "seasonal": {
+   "jan15": {
+    "fajr": 377,
+    "sunrise": 474,
+    "span": 97
+   },
+   "jul15": {
+    "fajr": 250,
+    "sunrise": 370,
+    "span": 120
+   }
+  }
+ }
+]

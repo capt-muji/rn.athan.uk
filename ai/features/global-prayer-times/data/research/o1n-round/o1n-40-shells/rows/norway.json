@@ -1,0 +1,4723 @@
+{
+ "country": "norway",
+ "generated": "2026-11-12T11:40:59Z",
+ "routes_probed": {
+  "monthly_2026": 523,
+  "monthly_2025_06": 2,
+  "monthly_2027_06": 2
+ },
+ "settlements": {
+  "10132": {
+   "name": "Ål",
+   "city_label": "Ål (Buskerud / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10133": {
+   "name": "Dagali",
+   "city_label": "Dagali (Buskerud / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10135": {
+   "name": "Fla",
+   "city_label": "Fla (Buskerud / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10136": {
+   "name": "Geilo",
+   "city_label": "Geilo (Buskerud / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10137": {
+   "name": "Gol",
+   "city_label": "Gol (Buskerud / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10139": {
+   "name": "Honefoss",
+   "city_label": "Honefoss (Buskerud / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10141": {
+   "name": "Nore",
+   "city_label": "Nore (Buskerud / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10142": {
+   "name": "Sigdal",
+   "city_label": "Sigdal (Buskerud / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10144": {
+   "name": "Ustaoset",
+   "city_label": "Ustaoset (Buskerud / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10145": {
+   "name": "Aiddejavrre",
+   "city_label": "Aiddejavrre (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10146": {
+   "name": "Alta",
+   "city_label": "Alta (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10147": {
+   "name": "Lebesby",
+   "city_label": "Lebesby (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10148": {
+   "name": "Berlevag",
+   "city_label": "Berlevag (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10149": {
+   "name": "Biggeluobbal",
+   "city_label": "Biggeluobbal (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10150": {
+   "name": "Borselv",
+   "city_label": "Borselv (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10151": {
+   "name": "Brynilen",
+   "city_label": "Brynilen (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10152": {
+   "name": "Bugoynes",
+   "city_label": "Bugoynes (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10153": {
+   "name": "Galanito",
+   "city_label": "Galanito (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10154": {
+   "name": "Galten",
+   "city_label": "Galten (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10155": {
+   "name": "Gamvik",
+   "city_label": "Gamvik (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10156": {
+   "name": "Gandvik",
+   "city_label": "Gandvik (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10157": {
+   "name": "Gargia",
+   "city_label": "Gargia (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10158": {
+   "name": "Gulgofjorden",
+   "city_label": "Gulgofjorden (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10159": {
+   "name": "Hammerfest",
+   "city_label": "Hammerfest (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10160": {
+   "name": "Hamningberg",
+   "city_label": "Hamningberg (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10161": {
+   "name": "Havoysund",
+   "city_label": "Havoysund (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10162": {
+   "name": "Honningsvag",
+   "city_label": "Honningsvag (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10163": {
+   "name": "Hopseidet",
+   "city_label": "Hopseidet (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10164": {
+   "name": "Karasjok",
+   "city_label": "Karasjok (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10165": {
+   "name": "Kiberg",
+   "city_label": "Kiberg (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10166": {
+   "name": "Kirkenes",
+   "city_label": "Kirkenes (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10167": {
+   "name": "Kistrand",
+   "city_label": "Kistrand (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10168": {
+   "name": "Kjelvik",
+   "city_label": "Kjelvik (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10169": {
+   "name": "Kjollefjort",
+   "city_label": "Kjollefjort (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10170": {
+   "name": "Kolvik",
+   "city_label": "Kolvik (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10171": {
+   "name": "Komagfjord",
+   "city_label": "Komagfjord (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10172": {
+   "name": "Komagvaer",
+   "city_label": "Komagvaer (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10173": {
+   "name": "Kongsfjord",
+   "city_label": "Kongsfjord (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10174": {
+   "name": "Krampenes",
+   "city_label": "Krampenes (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10175": {
+   "name": "Rypefjord",
+   "city_label": "Rypefjord (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10176": {
+   "name": "Kvitnes",
+   "city_label": "Kvitnes (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10177": {
+   "name": "Laevvajok (Laevajoki)",
+   "city_label": "Laevvajok (Laevajoki) (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10178": {
+   "name": "Lebesby",
+   "city_label": "Lebesby (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10179": {
+   "name": "Leirbotn",
+   "city_label": "Leirbotn (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10180": {
+   "name": "Leirpollen",
+   "city_label": "Leirpollen (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10181": {
+   "name": "Leirpollskogen",
+   "city_label": "Leirpollskogen (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10182": {
+   "name": "Loppa",
+   "city_label": "Loppa (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10183": {
+   "name": "Masi",
+   "city_label": "Masi (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10184": {
+   "name": "Mehamn",
+   "city_label": "Mehamn (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10185": {
+   "name": "Mollisjok",
+   "city_label": "Mollisjok (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10186": {
+   "name": "Neiden",
+   "city_label": "Neiden (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10187": {
+   "name": "Norskholmen",
+   "city_label": "Norskholmen (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10188": {
+   "name": "Polmak",
+   "city_label": "Polmak (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10189": {
+   "name": "Porsa",
+   "city_label": "Porsa (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10190": {
+   "name": "Repvag",
+   "city_label": "Repvag (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10191": {
+   "name": "Revsbotn",
+   "city_label": "Revsbotn (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10192": {
+   "name": "Russenes",
+   "city_label": "Russenes (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10193": {
+   "name": "Rustefjelbma",
+   "city_label": "Rustefjelbma (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10194": {
+   "name": "Skallelv",
+   "city_label": "Skallelv (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10195": {
+   "name": "Skipagurra",
+   "city_label": "Skipagurra (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10196": {
+   "name": "Skoganvarre",
+   "city_label": "Skoganvarre (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10197": {
+   "name": "Skogeroy",
+   "city_label": "Skogeroy (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10198": {
+   "name": "Slotten",
+   "city_label": "Slotten (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10199": {
+   "name": "Store Molvik",
+   "city_label": "Store Molvik (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10200": {
+   "name": "Suolovuobme",
+   "city_label": "Suolovuobme (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10201": {
+   "name": "Svanvik",
+   "city_label": "Svanvik (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10202": {
+   "name": "Syltefjord",
+   "city_label": "Syltefjord (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10203": {
+   "name": "Talvik",
+   "city_label": "Talvik (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10204": {
+   "name": "Hesseng",
+   "city_label": "Hesseng (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10205": {
+   "name": "Valjok",
+   "city_label": "Valjok (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10206": {
+   "name": "Veidnes",
+   "city_label": "Veidnes (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10207": {
+   "name": "Hasvik",
+   "city_label": "Hasvik (Finnmark (Soroya Island) / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10208": {
+   "name": "Alvdal",
+   "city_label": "Alvdal (Hedmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10209": {
+   "name": "Brandval",
+   "city_label": "Brandval (Hedmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10210": {
+   "name": "Brumunddal",
+   "city_label": "Brumunddal (Hedmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10211": {
+   "name": "Drevsjo",
+   "city_label": "Drevsjo (Hedmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10212": {
+   "name": "Elga",
+   "city_label": "Elga (Hedmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10213": {
+   "name": "Elverum",
+   "city_label": "Elverum (Hedmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10214": {
+   "name": "Engerdal",
+   "city_label": "Engerdal (Hedmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10215": {
+   "name": "Espa",
+   "city_label": "Espa (Hedmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10216": {
+   "name": "Finnskog",
+   "city_label": "Finnskog (Hedmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10217": {
+   "name": "Flisa",
+   "city_label": "Flisa (Hedmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10218": {
+   "name": "Folldal",
+   "city_label": "Folldal (Hedmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10219": {
+   "name": "Hamar",
+   "city_label": "Hamar (Hedmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10220": {
+   "name": "Jordet",
+   "city_label": "Jordet (Hedmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10221": {
+   "name": "Kirkenaer",
+   "city_label": "Kirkenaer (Hedmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10222": {
+   "name": "Kongsvinger",
+   "city_label": "Kongsvinger (Hedmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10223": {
+   "name": "Koppang",
+   "city_label": "Koppang (Hedmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10224": {
+   "name": "Kvikne",
+   "city_label": "Kvikne (Hedmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10226": {
+   "name": "Matrand",
+   "city_label": "Matrand (Hedmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10227": {
+   "name": "Os",
+   "city_label": "Os (Hedmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10228": {
+   "name": "Rena",
+   "city_label": "Rena (Hedmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10229": {
+   "name": "Rendal",
+   "city_label": "Rendal (Hedmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10230": {
+   "name": "Sollia",
+   "city_label": "Sollia (Hedmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10231": {
+   "name": "Stor-Elvdal",
+   "city_label": "Stor-Elvdal (Hedmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10232": {
+   "name": "Tolga",
+   "city_label": "Tolga (Hedmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10233": {
+   "name": "Torberget",
+   "city_label": "Torberget (Hedmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10234": {
+   "name": "Trysil",
+   "city_label": "Trysil (Hedmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10235": {
+   "name": "Tynset",
+   "city_label": "Tynset (Hedmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10236": {
+   "name": "Valer",
+   "city_label": "Valer (Hedmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10237": {
+   "name": "Alvik, Indre",
+   "city_label": "Alvik, Indre (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10238": {
+   "name": "Bergen (Bergende)",
+   "city_label": "Bergen (Bergende) (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10239": {
+   "name": "Dale",
+   "city_label": "Dale (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10240": {
+   "name": "Finse",
+   "city_label": "Finse (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10242": {
+   "name": "Matre",
+   "city_label": "Matre (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10243": {
+   "name": "Odda",
+   "city_label": "Odda (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10246": {
+   "name": "Toftoy Island",
+   "city_label": "Toftoy Island (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10248": {
+   "name": "Vinje",
+   "city_label": "Vinje (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10249": {
+   "name": "Voss",
+   "city_label": "Voss (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10250": {
+   "name": "Halsa",
+   "city_label": "Halsa (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10251": {
+   "name": "Koparstad",
+   "city_label": "Koparstad (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10252": {
+   "name": "Kristiansund",
+   "city_label": "Kristiansund (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10253": {
+   "name": "Molde",
+   "city_label": "Molde (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10254": {
+   "name": "Nauste",
+   "city_label": "Nauste (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10255": {
+   "name": "Norddal",
+   "city_label": "Norddal (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10256": {
+   "name": "Sande",
+   "city_label": "Sande (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10257": {
+   "name": "Todal",
+   "city_label": "Todal (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10258": {
+   "name": "Alesund",
+   "city_label": "Alesund (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10259": {
+   "name": "Andalsnes",
+   "city_label": "Andalsnes (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10260": {
+   "name": "Aram",
+   "city_label": "Aram (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10261": {
+   "name": "Aure",
+   "city_label": "Aure (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10262": {
+   "name": "Eide",
+   "city_label": "Eide (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10263": {
+   "name": "Engjan",
+   "city_label": "Engjan (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10264": {
+   "name": "Rindal",
+   "city_label": "Rindal (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10265": {
+   "name": "Rovde",
+   "city_label": "Rovde (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10266": {
+   "name": "Stranda",
+   "city_label": "Stranda (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10267": {
+   "name": "Storvoll",
+   "city_label": "Storvoll (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10268": {
+   "name": "Sunndalsora",
+   "city_label": "Sunndalsora (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10269": {
+   "name": "Sunnylven",
+   "city_label": "Sunnylven (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10270": {
+   "name": "Surnadalsora",
+   "city_label": "Surnadalsora (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10271": {
+   "name": "Tingvoll",
+   "city_label": "Tingvoll (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10272": {
+   "name": "Vanylven",
+   "city_label": "Vanylven (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10273": {
+   "name": "Vatne",
+   "city_label": "Vatne (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10274": {
+   "name": "Verma",
+   "city_label": "Verma (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10275": {
+   "name": "Vestnes",
+   "city_label": "Vestnes (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10276": {
+   "name": "Alstahaug",
+   "city_label": "Alstahaug (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10277": {
+   "name": "Ballangen",
+   "city_label": "Ballangen (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10278": {
+   "name": "Beiarn",
+   "city_label": "Beiarn (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10279": {
+   "name": "Bodo",
+   "city_label": "Bodo (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10280": {
+   "name": "Bostad",
+   "city_label": "Bostad (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10281": {
+   "name": "Drag",
+   "city_label": "Drag (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10282": {
+   "name": "Elsfjord",
+   "city_label": "Elsfjord (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10283": {
+   "name": "Flakstad",
+   "city_label": "Flakstad (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10284": {
+   "name": "Fore",
+   "city_label": "Fore (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10285": {
+   "name": "Glomfjord",
+   "city_label": "Glomfjord (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10286": {
+   "name": "Grane",
+   "city_label": "Grane (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10287": {
+   "name": "Gronoy",
+   "city_label": "Gronoy (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10288": {
+   "name": "Gullsmedvik",
+   "city_label": "Gullsmedvik (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10289": {
+   "name": "Hadsel",
+   "city_label": "Hadsel (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10290": {
+   "name": "Hamaroy",
+   "city_label": "Hamaroy (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10291": {
+   "name": "Hattfjelldal",
+   "city_label": "Hattfjelldal (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10292": {
+   "name": "Hellemobotn",
+   "city_label": "Hellemobotn (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10293": {
+   "name": "Bronnoysund",
+   "city_label": "Bronnoysund (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10294": {
+   "name": "Henningsvaer",
+   "city_label": "Henningsvaer (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10295": {
+   "name": "Hommelsto",
+   "city_label": "Hommelsto (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10296": {
+   "name": "Junkerdal",
+   "city_label": "Junkerdal (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10297": {
+   "name": "Kjerringoy",
+   "city_label": "Kjerringoy (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10298": {
+   "name": "Korgen",
+   "city_label": "Korgen (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10299": {
+   "name": "Korsnes",
+   "city_label": "Korsnes (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10300": {
+   "name": "Kroken",
+   "city_label": "Kroken (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10301": {
+   "name": "Lonsdal",
+   "city_label": "Lonsdal (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10302": {
+   "name": "Luroy",
+   "city_label": "Luroy (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10303": {
+   "name": "Melbu",
+   "city_label": "Melbu (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10304": {
+   "name": "Mo i Rana",
+   "city_label": "Mo i Rana (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10305": {
+   "name": "Morsvik",
+   "city_label": "Morsvik (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10306": {
+   "name": "Mosjoen",
+   "city_label": "Mosjoen (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10307": {
+   "name": "Moskenes",
+   "city_label": "Moskenes (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10308": {
+   "name": "Musken",
+   "city_label": "Musken (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10309": {
+   "name": "Narvik",
+   "city_label": "Narvik (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10310": {
+   "name": "Nesna",
+   "city_label": "Nesna (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10311": {
+   "name": "Nordfold",
+   "city_label": "Nordfold (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10312": {
+   "name": "Rodoy",
+   "city_label": "Rodoy (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10313": {
+   "name": "Rokland",
+   "city_label": "Rokland (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10314": {
+   "name": "Rorstad",
+   "city_label": "Rorstad (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10315": {
+   "name": "Sagfjord",
+   "city_label": "Sagfjord (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10316": {
+   "name": "Saltdal",
+   "city_label": "Saltdal (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10317": {
+   "name": "Sandnessjoen",
+   "city_label": "Sandnessjoen (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10318": {
+   "name": "Skjerstad",
+   "city_label": "Skjerstad (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10319": {
+   "name": "Skjomen",
+   "city_label": "Skjomen (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10320": {
+   "name": "Sorfjorden",
+   "city_label": "Sorfjorden (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10321": {
+   "name": "Sorfold",
+   "city_label": "Sorfold (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10322": {
+   "name": "Sortland",
+   "city_label": "Sortland (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10323": {
+   "name": "Steigen",
+   "city_label": "Steigen (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10324": {
+   "name": "Storforshei",
+   "city_label": "Storforshei (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10325": {
+   "name": "Sulitjelma",
+   "city_label": "Sulitjelma (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10326": {
+   "name": "Svolvaer",
+   "city_label": "Svolvaer (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10327": {
+   "name": "Tosen",
+   "city_label": "Tosen (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10328": {
+   "name": "Umbukta",
+   "city_label": "Umbukta (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10329": {
+   "name": "Vagan",
+   "city_label": "Vagan (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10330": {
+   "name": "Vevelstad",
+   "city_label": "Vevelstad (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10331": {
+   "name": "Andenes",
+   "city_label": "Andenes (Nordland (Andoy Island) / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10332": {
+   "name": "Gjersvika",
+   "city_label": "Gjersvika (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10333": {
+   "name": "Harran",
+   "city_label": "Harran (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10334": {
+   "name": "Kongsmoen",
+   "city_label": "Kongsmoen (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10335": {
+   "name": "Verran",
+   "city_label": "Verran (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10336": {
+   "name": "Levanger",
+   "city_label": "Levanger (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10337": {
+   "name": "Meraker",
+   "city_label": "Meraker (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10338": {
+   "name": "Namdalseid",
+   "city_label": "Namdalseid (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10339": {
+   "name": "Namsos",
+   "city_label": "Namsos (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10340": {
+   "name": "Nordli",
+   "city_label": "Nordli (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10341": {
+   "name": "Skorovatn",
+   "city_label": "Skorovatn (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10342": {
+   "name": "Snasa",
+   "city_label": "Snasa (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10343": {
+   "name": "Flatanger",
+   "city_label": "Flatanger (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10344": {
+   "name": "Sparbu",
+   "city_label": "Sparbu (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10345": {
+   "name": "Steinkjer",
+   "city_label": "Steinkjer (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10346": {
+   "name": "Sul",
+   "city_label": "Sul (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10347": {
+   "name": "Frosta",
+   "city_label": "Frosta (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10348": {
+   "name": "Grong",
+   "city_label": "Grong (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10349": {
+   "name": "Kolvereid",
+   "city_label": "Kolvereid (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10350": {
+   "name": "Malm",
+   "city_label": "Malm (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10351": {
+   "name": "Markabygd",
+   "city_label": "Markabygd (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10352": {
+   "name": "Straumen",
+   "city_label": "Straumen (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10353": {
+   "name": "Verdal",
+   "city_label": "Verdal (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10354": {
+   "name": "Vikna",
+   "city_label": "Vikna (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10355": {
+   "name": "Dombas",
+   "city_label": "Dombas (Oppland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10356": {
+   "name": "Dovre",
+   "city_label": "Dovre (Oppland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10357": {
+   "name": "Etnedal",
+   "city_label": "Etnedal (Oppland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10358": {
+   "name": "Faberg",
+   "city_label": "Faberg (Oppland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10359": {
+   "name": "Fagernes",
+   "city_label": "Fagernes (Oppland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10360": {
+   "name": "Fluberg",
+   "city_label": "Fluberg (Oppland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10361": {
+   "name": "Gjovik",
+   "city_label": "Gjovik (Oppland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10362": {
+   "name": "Hedal",
+   "city_label": "Hedal (Oppland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10363": {
+   "name": "Kringen",
+   "city_label": "Kringen (Oppland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10364": {
+   "name": "Kvam",
+   "city_label": "Kvam (Oppland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10365": {
+   "name": "Lesja",
+   "city_label": "Lesja (Oppland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10366": {
+   "name": "Lesjaskog",
+   "city_label": "Lesjaskog (Oppland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10367": {
+   "name": "Lillehammer",
+   "city_label": "Lillehammer (Oppland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10368": {
+   "name": "Lom",
+   "city_label": "Lom (Oppland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10369": {
+   "name": "Ringebu",
+   "city_label": "Ringebu (Oppland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10370": {
+   "name": "Skreia",
+   "city_label": "Skreia (Oppland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10371": {
+   "name": "Tretten",
+   "city_label": "Tretten (Oppland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10372": {
+   "name": "Venabygd",
+   "city_label": "Venabygd (Oppland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10396": {
+   "name": "Eikefjord",
+   "city_label": "Eikefjord (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10397": {
+   "name": "Ardalstangen",
+   "city_label": "Ardalstangen (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10398": {
+   "name": "Borgund",
+   "city_label": "Borgund (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10399": {
+   "name": "Floro",
+   "city_label": "Floro (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10400": {
+   "name": "Fresvik",
+   "city_label": "Fresvik (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10401": {
+   "name": "Hoyanger",
+   "city_label": "Hoyanger (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10402": {
+   "name": "Husoy",
+   "city_label": "Husoy (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10403": {
+   "name": "Jostedal",
+   "city_label": "Jostedal (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10404": {
+   "name": "Laerdalsoyri",
+   "city_label": "Laerdalsoyri (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10405": {
+   "name": "Leikanger",
+   "city_label": "Leikanger (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10406": {
+   "name": "Maloy",
+   "city_label": "Maloy (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10407": {
+   "name": "Mundal",
+   "city_label": "Mundal (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10408": {
+   "name": "Myrdal",
+   "city_label": "Myrdal (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10409": {
+   "name": "Naeroyfjorden",
+   "city_label": "Naeroyfjorden (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10410": {
+   "name": "Nes",
+   "city_label": "Nes (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10411": {
+   "name": "Nordfjordeid",
+   "city_label": "Nordfjordeid (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10412": {
+   "name": "Solund",
+   "city_label": "Solund (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10413": {
+   "name": "Svelgen",
+   "city_label": "Svelgen (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10415": {
+   "name": "Bessaker",
+   "city_label": "Bessaker (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10416": {
+   "name": "Drivstua",
+   "city_label": "Drivstua (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10417": {
+   "name": "Fla",
+   "city_label": "Fla (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10418": {
+   "name": "Haltdalen",
+   "city_label": "Haltdalen (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10419": {
+   "name": "Harsvik",
+   "city_label": "Harsvik (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10420": {
+   "name": "Killingdal",
+   "city_label": "Killingdal (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10421": {
+   "name": "Lensvik",
+   "city_label": "Lensvik (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10422": {
+   "name": "Meldal",
+   "city_label": "Meldal (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10425": {
+   "name": "Ruglsjøen",
+   "city_label": "Ruglsjøen (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10426": {
+   "name": "Støren",
+   "city_label": "Støren (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10427": {
+   "name": "Svorkmo",
+   "city_label": "Svorkmo (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10428": {
+   "name": "Thamshamn",
+   "city_label": "Thamshamn (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10429": {
+   "name": "Trondheim",
+   "city_label": "Trondheim (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10430": {
+   "name": "Tydal",
+   "city_label": "Tydal (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10431": {
+   "name": "Afjord",
+   "city_label": "Afjord (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10432": {
+   "name": "Berkak",
+   "city_label": "Berkak (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10433": {
+   "name": "Brekken",
+   "city_label": "Brekken (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10434": {
+   "name": "Brekstad",
+   "city_label": "Brekstad (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10435": {
+   "name": "Heimdal",
+   "city_label": "Heimdal (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10436": {
+   "name": "Lokken",
+   "city_label": "Lokken (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10437": {
+   "name": "Oppdal",
+   "city_label": "Oppdal (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10438": {
+   "name": "Orkanger",
+   "city_label": "Orkanger (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10439": {
+   "name": "Osen",
+   "city_label": "Osen (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10440": {
+   "name": "Roros",
+   "city_label": "Roros (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10441": {
+   "name": "Titran",
+   "city_label": "Titran (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10442": {
+   "name": "Sandstad",
+   "city_label": "Sandstad (Sør-Trøndelag (Hitra Island) / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10455": {
+   "name": "Badderen",
+   "city_label": "Badderen (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10456": {
+   "name": "Balsfjord",
+   "city_label": "Balsfjord (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10457": {
+   "name": "Bardu",
+   "city_label": "Bardu (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10458": {
+   "name": "Bilto",
+   "city_label": "Bilto (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10459": {
+   "name": "Birtavarre",
+   "city_label": "Birtavarre (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10460": {
+   "name": "Bonnes",
+   "city_label": "Bonnes (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10461": {
+   "name": "Gratangen",
+   "city_label": "Gratangen (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10462": {
+   "name": "Hamneidet",
+   "city_label": "Hamneidet (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10463": {
+   "name": "Harstad",
+   "city_label": "Harstad (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10464": {
+   "name": "Helgoy",
+   "city_label": "Helgoy (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10465": {
+   "name": "Helligskogen",
+   "city_label": "Helligskogen (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10466": {
+   "name": "Hillesoy",
+   "city_label": "Hillesoy (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10467": {
+   "name": "Karlsoy",
+   "city_label": "Karlsoy (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10468": {
+   "name": "Karvik",
+   "city_label": "Karvik (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10469": {
+   "name": "Kvesmenes",
+   "city_label": "Kvesmenes (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10470": {
+   "name": "Lavangen",
+   "city_label": "Lavangen (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10471": {
+   "name": "Lenvik",
+   "city_label": "Lenvik (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10472": {
+   "name": "Lyngen",
+   "city_label": "Lyngen (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10473": {
+   "name": "Lyngseidet",
+   "city_label": "Lyngseidet (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10474": {
+   "name": "Malangen",
+   "city_label": "Malangen (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10475": {
+   "name": "Silsand",
+   "city_label": "Silsand (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10476": {
+   "name": "Nordreisa",
+   "city_label": "Nordreisa (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10477": {
+   "name": "Sjovegan",
+   "city_label": "Sjovegan (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10478": {
+   "name": "Skanland",
+   "city_label": "Skanland (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10479": {
+   "name": "Skibotn",
+   "city_label": "Skibotn (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10480": {
+   "name": "Torsken",
+   "city_label": "Torsken (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10481": {
+   "name": "Torsvag",
+   "city_label": "Torsvag (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10482": {
+   "name": "Tromso",
+   "city_label": "Tromso (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10483": {
+   "name": "Vinnelys",
+   "city_label": "Vinnelys (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10484": {
+   "name": "Berg",
+   "city_label": "Berg (Troms (Senja Island) / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "126876": {
+   "name": "Finneid",
+   "city_label": "Finneid (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "126877": {
+   "name": "Tverra",
+   "city_label": "Tverra (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "126878": {
+   "name": "Venset",
+   "city_label": "Venset (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "126879": {
+   "name": "Naurstad",
+   "city_label": "Naurstad (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "137370": {
+   "name": "Frosta",
+   "city_label": "Frosta (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "138203": {
+   "name": "Flam",
+   "city_label": "Flam (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "138522": {
+   "name": "Orsta",
+   "city_label": "Orsta (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "138523": {
+   "name": "Vartdal",
+   "city_label": "Vartdal (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "138524": {
+   "name": "Liadal",
+   "city_label": "Liadal (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "138525": {
+   "name": "Hovland",
+   "city_label": "Hovland (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "138526": {
+   "name": "Nordstrand",
+   "city_label": "Nordstrand (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "138527": {
+   "name": "Giske",
+   "city_label": "Giske (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "138528": {
+   "name": "Vigra",
+   "city_label": "Vigra (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "138529": {
+   "name": "Stette",
+   "city_label": "Stette (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "138530": {
+   "name": "Straumen",
+   "city_label": "Straumen (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "138531": {
+   "name": "Skodje",
+   "city_label": "Skodje (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "138532": {
+   "name": "Brandal",
+   "city_label": "Brandal (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "138533": {
+   "name": "Hareid",
+   "city_label": "Hareid (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "138534": {
+   "name": "Ulsteinvik",
+   "city_label": "Ulsteinvik (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "138535": {
+   "name": "Eggesbo",
+   "city_label": "Eggesbo (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "138536": {
+   "name": "Heissa",
+   "city_label": "Heissa (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "138537": {
+   "name": "Fiskarstranda",
+   "city_label": "Fiskarstranda (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "138538": {
+   "name": "Mauseidvagen",
+   "city_label": "Mauseidvagen (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "138539": {
+   "name": "Solavagen",
+   "city_label": "Solavagen (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "138540": {
+   "name": "Magerholm",
+   "city_label": "Magerholm (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "138541": {
+   "name": "Valle",
+   "city_label": "Valle (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "138542": {
+   "name": "Sjoholt",
+   "city_label": "Sjoholt (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "138543": {
+   "name": "Vaksvika",
+   "city_label": "Vaksvika (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "138544": {
+   "name": "Dyrkorn",
+   "city_label": "Dyrkorn (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "138545": {
+   "name": "Stordal",
+   "city_label": "Stordal (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "138557": {
+   "name": "Skivika",
+   "city_label": "Skivika (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "43784": {
+   "name": "Gravdal",
+   "city_label": "Gravdal (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "43785": {
+   "name": "Bolle",
+   "city_label": "Bolle (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "43786": {
+   "name": "Fygle",
+   "city_label": "Fygle (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "43787": {
+   "name": "Leknes",
+   "city_label": "Leknes (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "43788": {
+   "name": "Kabelvag",
+   "city_label": "Kabelvag (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "60031": {
+   "name": "Tysnes",
+   "city_label": "Tysnes (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62707": {
+   "name": "Selbu",
+   "city_label": "Selbu (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62708": {
+   "name": "Malvik",
+   "city_label": "Malvik (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62709": {
+   "name": "Melhus",
+   "city_label": "Melhus (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62710": {
+   "name": "Austevoll",
+   "city_label": "Austevoll (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62711": {
+   "name": "Jondal",
+   "city_label": "Jondal (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62712": {
+   "name": "Vaksdal",
+   "city_label": "Vaksdal (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62713": {
+   "name": "Kvam",
+   "city_label": "Kvam (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62714": {
+   "name": "Granvin",
+   "city_label": "Granvin (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62715": {
+   "name": "Ulvik",
+   "city_label": "Ulvik (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62716": {
+   "name": "Ullensvang",
+   "city_label": "Ullensvang (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62717": {
+   "name": "Eidfjord",
+   "city_label": "Eidfjord (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62718": {
+   "name": "Sund",
+   "city_label": "Sund (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62730": {
+   "name": "Mosvik",
+   "city_label": "Mosvik (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62731": {
+   "name": "Fosnes",
+   "city_label": "Fosnes (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62732": {
+   "name": "Flora",
+   "city_label": "Flora (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62735": {
+   "name": "Rörö",
+   "city_label": "Rörö (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62736": {
+   "name": "Skaun",
+   "city_label": "Skaun (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62752": {
+   "name": "Agdenes",
+   "city_label": "Agdenes (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62753": {
+   "name": "Lundamo",
+   "city_label": "Lundamo (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62754": {
+   "name": "Orkdal",
+   "city_label": "Orkdal (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62755": {
+   "name": "Hitra",
+   "city_label": "Hitra (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62756": {
+   "name": "Froya",
+   "city_label": "Froya (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62763": {
+   "name": "Nordkapp",
+   "city_label": "Nordkapp (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62764": {
+   "name": "Masoy",
+   "city_label": "Masoy (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62765": {
+   "name": "Tanabru",
+   "city_label": "Tanabru (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62766": {
+   "name": "Nesseby",
+   "city_label": "Nesseby (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62767": {
+   "name": "Batsfjord",
+   "city_label": "Batsfjord (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62768": {
+   "name": "Vardo",
+   "city_label": "Vardo (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62769": {
+   "name": "Porsangen",
+   "city_label": "Porsangen (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62770": {
+   "name": "Vadso",
+   "city_label": "Vadso (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62771": {
+   "name": "Sør-Varanger",
+   "city_label": "Sør-Varanger (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62772": {
+   "name": "Kvalsund",
+   "city_label": "Kvalsund (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62774": {
+   "name": "Skjervoy",
+   "city_label": "Skjervoy (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62787": {
+   "name": "Ringsaker",
+   "city_label": "Ringsaker (Hedmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62788": {
+   "name": "Mora",
+   "city_label": "Mora (Hedmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62789": {
+   "name": "Stange",
+   "city_label": "Stange (Hedmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62790": {
+   "name": "Nes",
+   "city_label": "Nes (Buskerud / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62792": {
+   "name": "Algarheim",
+   "city_label": "Algarheim (Akershus / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62793": {
+   "name": "Vormsund",
+   "city_label": "Vormsund (Akershus / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62794": {
+   "name": "Hole",
+   "city_label": "Hole (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62795": {
+   "name": "Hole",
+   "city_label": "Hole (Hedmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62796": {
+   "name": "Kleppen",
+   "city_label": "Kleppen (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62803": {
+   "name": "Os",
+   "city_label": "Os  (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62806": {
+   "name": "Lindas",
+   "city_label": "Lindas (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62807": {
+   "name": "Gran",
+   "city_label": "Gran (Oppland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62815": {
+   "name": "Lunner",
+   "city_label": "Lunner (Oppland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62816": {
+   "name": "Eggemoen",
+   "city_label": "Eggemoen (Buskerud / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62817": {
+   "name": "Jevnaker",
+   "city_label": "Jevnaker (Oppland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62819": {
+   "name": "Røyse",
+   "city_label": "Røyse (Buskerud / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62824": {
+   "name": "Fusa",
+   "city_label": "Fusa (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62825": {
+   "name": "Samnanger",
+   "city_label": "Samnanger (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62832": {
+   "name": "Oygarden",
+   "city_label": "Oygarden (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62833": {
+   "name": "Fjell",
+   "city_label": "Fjell (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62834": {
+   "name": "Holtalen",
+   "city_label": "Holtalen (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62842": {
+   "name": "Sorum",
+   "city_label": "Sorum (Akershus / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62846": {
+   "name": "Nore og Uvdal",
+   "city_label": "Nore og Uvdal (Buskerud / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62848": {
+   "name": "Dokka",
+   "city_label": "Dokka (Oppland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62849": {
+   "name": "Sel",
+   "city_label": "Sel  (Oppland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62850": {
+   "name": "Hol",
+   "city_label": "Hol (Buskerud / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62851": {
+   "name": "Vaga",
+   "city_label": "Vaga (Oppland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62852": {
+   "name": "Aurland",
+   "city_label": "Aurland (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62853": {
+   "name": "Vikoyri",
+   "city_label": "Vikoyri (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62854": {
+   "name": "Sogndal",
+   "city_label": "Sogndal (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62855": {
+   "name": "Ardal",
+   "city_label": "Ardal (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62856": {
+   "name": "Ardal / Sogndal",
+   "city_label": "Ardal / Sogndal (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62857": {
+   "name": "Luster",
+   "city_label": "Luster (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62858": {
+   "name": "Gaupne",
+   "city_label": "Gaupne (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62859": {
+   "name": "Balestrand",
+   "city_label": "Balestrand (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62860": {
+   "name": "Forde",
+   "city_label": "Forde (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62861": {
+   "name": "Gaular",
+   "city_label": "Gaular (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62862": {
+   "name": "Dale",
+   "city_label": "Dale (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62863": {
+   "name": "Bremanger",
+   "city_label": "Bremanger (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62864": {
+   "name": "Vagsoy",
+   "city_label": "Vagsoy (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62865": {
+   "name": "Selje",
+   "city_label": "Selje (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62866": {
+   "name": "Eid",
+   "city_label": "Eid (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62867": {
+   "name": "Leksvik",
+   "city_label": "Leksvik (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62868": {
+   "name": "Rostad",
+   "city_label": "Rostad (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62869": {
+   "name": "Røstad / Levanger",
+   "city_label": "Røstad / Levanger (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62870": {
+   "name": "Sorreisa",
+   "city_label": "Sorreisa (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62871": {
+   "name": "Heggelia",
+   "city_label": "Heggelia (Buskerud / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62872": {
+   "name": "Olsborg",
+   "city_label": "Olsborg (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62873": {
+   "name": "Finnsnes",
+   "city_label": "Finnsnes (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62874": {
+   "name": "Tranoy",
+   "city_label": "Tranoy (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62875": {
+   "name": "Dyroy",
+   "city_label": "Dyroy (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62876": {
+   "name": "Evenes",
+   "city_label": "Evenes (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62892": {
+   "name": "Bjerkvik",
+   "city_label": "Bjerkvik (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65244": {
+   "name": "Bjarkoy",
+   "city_label": "Bjarkoy (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65432": {
+   "name": "Leknes",
+   "city_label": "Leknes (Sogn og Fjordane / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65433": {
+   "name": "Leknes",
+   "city_label": "Leknes (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65434": {
+   "name": "Haug",
+   "city_label": "Haug (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65435": {
+   "name": "Overhalla",
+   "city_label": "Overhalla (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65436": {
+   "name": "Leknes",
+   "city_label": "Leknes (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65437": {
+   "name": "Vestvagoy",
+   "city_label": "Vestvagoy (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65438": {
+   "name": "Myre",
+   "city_label": "Myre (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65439": {
+   "name": "Oksnes",
+   "city_label": "Oksnes (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65440": {
+   "name": "Risoyhamn",
+   "city_label": "Risoyhamn (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65441": {
+   "name": "Tjeldsund",
+   "city_label": "Tjeldsund (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65442": {
+   "name": "Lodingen",
+   "city_label": "Lodingen (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65443": {
+   "name": "Tysfjord",
+   "city_label": "Tysfjord (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65444": {
+   "name": "Fauske",
+   "city_label": "Fauske (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65445": {
+   "name": "Gildeskal",
+   "city_label": "Gildeskal (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65446": {
+   "name": "Vefsn",
+   "city_label": "Vefsn (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65447": {
+   "name": "Leirfjord",
+   "city_label": "Leirfjord (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65448": {
+   "name": "Donna",
+   "city_label": "Donna (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65449": {
+   "name": "Heroy",
+   "city_label": "Heroy (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65450": {
+   "name": "Bronnoy",
+   "city_label": "Bronnoy (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65451": {
+   "name": "Bindal",
+   "city_label": "Bindal (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65452": {
+   "name": "Langenes",
+   "city_label": "Langenes (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65453": {
+   "name": "Ballstad",
+   "city_label": "Ballstad (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65454": {
+   "name": "Sørvågen",
+   "city_label": "Sørvågen (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65455": {
+   "name": "Rana",
+   "city_label": "Rana (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65456": {
+   "name": "Rognan",
+   "city_label": "Rognan (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65457": {
+   "name": "Hemnes",
+   "city_label": "Hemnes (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65458": {
+   "name": "Vaeroy",
+   "city_label": "Vaeroy (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65459": {
+   "name": "Rost",
+   "city_label": "Rost (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65899": {
+   "name": "Bo",
+   "city_label": "Bo (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65900": {
+   "name": "Borkenes",
+   "city_label": "Borkenes (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65901": {
+   "name": "Stokmarknes",
+   "city_label": "Stokmarknes (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65902": {
+   "name": "Reine",
+   "city_label": "Reine (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65903": {
+   "name": "Straume",
+   "city_label": "Straume (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65904": {
+   "name": "Bardufoss",
+   "city_label": "Bardufoss (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65905": {
+   "name": "Setermoen",
+   "city_label": "Setermoen (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65906": {
+   "name": "Moen",
+   "city_label": "Moen (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65907": {
+   "name": "Skjold",
+   "city_label": "Skjold (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65908": {
+   "name": "Tennevoll (Tennevollen)",
+   "city_label": "Tennevoll (Tennevollen) (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65909": {
+   "name": "Skutvik",
+   "city_label": "Skutvik (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66458": {
+   "name": "Bangsund",
+   "city_label": "Bangsund (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66459": {
+   "name": "Malm",
+   "city_label": "Malm (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66481": {
+   "name": "Ranemsletta",
+   "city_label": "Ranemsletta (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66482": {
+   "name": "Lauvsnes",
+   "city_label": "Lauvsnes (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66483": {
+   "name": "Stjordal",
+   "city_label": "Stjordal (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66484": {
+   "name": "Hegra",
+   "city_label": "Hegra (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66485": {
+   "name": "Royrvik",
+   "city_label": "Royrvik (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66486": {
+   "name": "Namsskogan",
+   "city_label": "Namsskogan (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66487": {
+   "name": "Naeroy",
+   "city_label": "Naeroy (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66488": {
+   "name": "Trones",
+   "city_label": "Trones (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "67059": {
+   "name": "Praerien",
+   "city_label": "Praerien (Nord-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68046": {
+   "name": "Straumen",
+   "city_label": "Straumen (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68047": {
+   "name": "Glomfjord",
+   "city_label": "Glomfjord (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68048": {
+   "name": "Basmoen",
+   "city_label": "Basmoen (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68049": {
+   "name": "Hemnesberget",
+   "city_label": "Hemnesberget (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68050": {
+   "name": "Vik",
+   "city_label": "Vik (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68051": {
+   "name": "Gladstad",
+   "city_label": "Gladstad (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68052": {
+   "name": "Trofors",
+   "city_label": "Trofors (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68986": {
+   "name": "Jessheim",
+   "city_label": "Jessheim (Akershus / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68990": {
+   "name": "Osoyro (Osoyri)",
+   "city_label": "Osoyro (Osoyri) (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68991": {
+   "name": "Arnes",
+   "city_label": "Arnes (Akershus / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "70200": {
+   "name": "Hommelvik",
+   "city_label": "Hommelvik (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "70201": {
+   "name": "Borsa",
+   "city_label": "Borsa (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "70202": {
+   "name": "Storen",
+   "city_label": "Storen (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "70203": {
+   "name": "Fillan",
+   "city_label": "Fillan (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "70252": {
+   "name": "Raufoss",
+   "city_label": "Raufoss (Oppland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "70253": {
+   "name": "Moelv",
+   "city_label": "Moelv (Hedmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "70254": {
+   "name": "Vinstra",
+   "city_label": "Vinstra (Oppland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "70255": {
+   "name": "Hundorp",
+   "city_label": "Hundorp (Oppland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "70256": {
+   "name": "Leira",
+   "city_label": "Leira (Oppland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "70257": {
+   "name": "Aurdal",
+   "city_label": "Aurdal (Oppland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "70258": {
+   "name": "Bagn",
+   "city_label": "Bagn (Oppland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "70259": {
+   "name": "Sokna",
+   "city_label": "Sokna (Buskerud / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "70971": {
+   "name": "Husoy",
+   "city_label": "Husoy (Troms / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "70972": {
+   "name": "Sorvaer",
+   "city_label": "Sorvaer (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "70973": {
+   "name": "Finnes",
+   "city_label": "Finnes (Møre og Romsdal / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "70974": {
+   "name": "Finnes",
+   "city_label": "Finnes (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "71034": {
+   "name": "Beisfjord",
+   "city_label": "Beisfjord (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "72223": {
+   "name": "Kamoyvaer",
+   "city_label": "Kamoyvaer (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "76702": {
+   "name": "Hjellestad",
+   "city_label": "Hjellestad (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "76703": {
+   "name": "Ytrebygda",
+   "city_label": "Ytrebygda (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "76704": {
+   "name": "Fana",
+   "city_label": "Fana (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "76707": {
+   "name": "Norheimsund",
+   "city_label": "Norheimsund (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "76708": {
+   "name": "Rå",
+   "city_label": "Rå (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "76709": {
+   "name": "Asane",
+   "city_label": "Asane (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "76710": {
+   "name": "Fyllingsdalen",
+   "city_label": "Fyllingsdalen (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "76711": {
+   "name": "Vossevangen",
+   "city_label": "Vossevangen (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "77698": {
+   "name": "Vage",
+   "city_label": "Vage (Hordaland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10115": {
+   "name": "Tana",
+   "city_label": "Tana (Finnmark / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2025",
+    "HAZİRAN 2026",
+    "HAZİRAN 2027"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10118": {
+   "name": "Eidsvoll",
+   "city_label": "Eidsvoll (Akershus / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10119": {
+   "name": "Klofta",
+   "city_label": "Klofta (Akershus / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10423": {
+   "name": "Nedalshytta",
+   "city_label": "Nedalshytta (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2025",
+    "HAZİRAN 2026",
+    "HAZİRAN 2027"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "10424": {
+   "name": "Rennebu",
+   "city_label": "Rennebu (Sør-Trøndelag / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "138558": {
+   "name": "Morkved",
+   "city_label": "Morkved (Nordland / Norveç)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  }
+ },
+ "rows": {}
+}

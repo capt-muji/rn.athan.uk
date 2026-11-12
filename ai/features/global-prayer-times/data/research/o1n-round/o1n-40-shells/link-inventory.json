@@ -1,0 +1,44 @@
+{
+ "norway": {
+  "html": 60,
+  "siteniz_icin.html": 12,
+  "kitaplar.php": 12,
+  "seslidinle.php": 12
+ },
+ "finland": {
+  "html": 60,
+  "siteniz_icin.html": 12,
+  "kitaplar.php": 12,
+  "seslidinle.php": 12
+ },
+ "iceland": {
+  "html": 60,
+  "siteniz_icin.html": 12,
+  "kitaplar.php": 12,
+  "seslidinle.php": 12
+ },
+ "svalbard-and-jan-mayen": {
+  "html": 35,
+  "siteniz_icin.html": 7,
+  "kitaplar.php": 7,
+  "seslidinle.php": 7
+ },
+ "tonga": {
+  "html": 60,
+  "siteniz_icin.html": 12,
+  "kitaplar.php": 12,
+  "seslidinle.php": 12
+ },
+ "samoa": {
+  "html": 60,
+  "siteniz_icin.html": 12,
+  "kitaplar.php": 12,
+  "seslidinle.php": 12
+ },
+ "wallis-and-futuna": {
+  "html": 60,
+  "siteniz_icin.html": 12,
+  "kitaplar.php": 12,
+  "seslidinle.php": 12
+ }
+}

@@ -1,0 +1,19 @@
+{
+  "entry": "LK-ACJU-13-ZONES",
+  "probed": "2026-11-12",
+  "live_page": "https://www.acju.lk/prayer-times/ (capture captures/lk-acju-prayertimes-20261112.html)",
+  "batch_state": "144 PDFs under uploads/2026/10/ (zones 01,02,04,05,06,07,08,09,10,11,12,13 x months 1-12) plus zone 03 (Mullaitivu/Kilinochchi/Vavuniya) under uploads/2026/11/ x 12 months; 156 files total; no year printed on any sampled sheet",
+  "sample": [
+    {"file": "01.-Colombo-1 (uploads/2026/10)", "rows_parsed": 29, "equal_2026": 29, "diff": 0},
+    {"file": "01.-Colombo-7 (uploads/2026/10)", "rows_parsed": 30, "equal_2026": 30, "diff": 0},
+    {"file": "07.-Kandy-1 (uploads/2026/10)", "rows_parsed": 30, "equal_2026": 30, "diff": 0},
+    {"file": "07.-Kandy-7 (uploads/2026/10)", "rows_parsed": 24, "equal_2026": 24, "diff": 0},
+    {"file": "03.-Mullaitivu..._01_001 (uploads/2026/11)", "rows_parsed": 30, "equal_2026": 30, "diff": 0}
+  ],
+  "sample_total": {"rows": 143, "equal_2026": 143, "diff": 0},
+  "held_comparison": "held 2026 edition rows from $HOME/athan-gitree/census/o1m/o1m-5-asia/data/acju-zone-{01,03,07}-2026.json; columns fajr,sunrise,dhuhr,asr_shafie,asr_hanafi,maghrib,isha",
+  "verdict": "the 2026-10/2026-11 upload batch serves the SAME computed generation as the held 2026 edition (143/143 sampled rows cell-identical); no 2027 edition exists on the live site as of 2026-11-12; the held frozen-reprint verdict stands and strengthens: three served editions (2025, 2026, the 2026-10/11 re-upload) on ONE computed generation",
+  "wayback": "CDX for acju.lk/wp-content/uploads/2027* returned the Internet Archive 'Temporarily Offline' outage page (not a 429); thread stopped per standing orders; route stays an open watch (the O1n-9 probe hit the same outage)",
+  "parser": "scripts/lk-acju-parse.py (OCR token stream: day-token line then 7 AM/PM values)",
+  "engine": "none needed (cell diff only)"
+}

@@ -1,0 +1,66 @@
+== per-column best (median margin suppressed, independent sweeps)
+{
+ "subh": {
+  "type": "angle",
+  "value": 16,
+  "margin": 0,
+  "n": 719,
+  "exact": 43.5,
+  "w1": 79.3,
+  "worst": "31.0"
+ },
+ "gunesh": {
+  "type": "margin",
+  "value": -12,
+  "margin": 0,
+  "n": 721,
+  "exact": 44.8,
+  "w1": 94.5,
+  "worst": "19.0"
+ },
+ "zohr": {
+  "type": "margin",
+  "value": -12,
+  "margin": 0,
+  "n": 723,
+  "exact": 82.4,
+  "w1": 100,
+  "worst": "1.0"
+ },
+ "esr": {
+  "type": "margin",
+  "value": -12,
+  "margin": 52,
+  "n": 724,
+  "exact": 1.7,
+  "w1": 6.1,
+  "worst": "33.0"
+ },
+ "gunbatir": {
+  "type": "margin",
+  "value": -12,
+  "margin": 0,
+  "n": 730,
+  "exact": 49.2,
+  "w1": 98.2,
+  "worst": "14.0"
+ },
+ "maghrib": {
+  "type": "margin",
+  "value": -12,
+  "margin": 15,
+  "n": 726,
+  "exact": 24.2,
+  "w1": 73,
+  "worst": "4.0"
+ },
+ "isha": {
+  "type": "angle",
+  "value": 15,
+  "margin": 0,
+  "n": 724,
+  "exact": 41.2,
+  "w1": 92.7,
+  "worst": "5.0"
+ }
+}

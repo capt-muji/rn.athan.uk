@@ -1,0 +1,842 @@
+[
+ {
+  "ville_id": 20,
+  "name": "Dakar",
+  "lat": 14.6928,
+  "lon": -17.4467,
+  "subh": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "imsak": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "zuhr": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "asr": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "magrib": {
+   "exact": 6,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  },
+  "isha": {
+   "exact": 6,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  }
+ },
+ {
+  "ville_id": 30,
+  "name": "Diourbel",
+  "lat": 14.6576,
+  "lon": -16.2303,
+  "subh": {
+   "exact": 5,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  },
+  "imsak": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "zuhr": {
+   "exact": 6,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  },
+  "asr": {
+   "exact": 3,
+   "within1": 7,
+   "worst": 1,
+   "median": 1
+  },
+  "magrib": {
+   "exact": 6,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  },
+  "isha": {
+   "exact": 6,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  }
+ },
+ {
+  "ville_id": 35,
+  "name": "Fatick",
+  "lat": 14.3396,
+  "lon": -16.4114,
+  "subh": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "imsak": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "zuhr": {
+   "exact": 6,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  },
+  "asr": {
+   "exact": 6,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  },
+  "magrib": {
+   "exact": 6,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  },
+  "isha": {
+   "exact": 6,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  }
+ },
+ {
+  "ville_id": 50,
+  "name": "Kaffrine",
+  "lat": 14.1059,
+  "lon": -15.5488,
+  "subh": {
+   "exact": 6,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  },
+  "imsak": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "zuhr": {
+   "exact": 6,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  },
+  "asr": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "magrib": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "isha": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  }
+ },
+ {
+  "ville_id": 53,
+  "name": "Kaolack",
+  "lat": 14.1512,
+  "lon": -16.0727,
+  "subh": {
+   "exact": 6,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  },
+  "imsak": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "zuhr": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "asr": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "magrib": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "isha": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  }
+ },
+ {
+  "ville_id": 56,
+  "name": "Kédougou",
+  "lat": 12.5556,
+  "lon": -12.1833,
+  "subh": {
+   "exact": 6,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  },
+  "imsak": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "zuhr": {
+   "exact": 6,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  },
+  "asr": {
+   "exact": 1,
+   "within1": 7,
+   "worst": 1,
+   "median": 1
+  },
+  "magrib": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "isha": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  }
+ },
+ {
+  "ville_id": 61,
+  "name": "Kolda",
+  "lat": 12.8833,
+  "lon": -14.95,
+  "subh": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "imsak": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "zuhr": {
+   "exact": 5,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  },
+  "asr": {
+   "exact": 0,
+   "within1": 7,
+   "worst": 1,
+   "median": 1
+  },
+  "magrib": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "isha": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  }
+ },
+ {
+  "ville_id": 68,
+  "name": "Louga",
+  "lat": 15.6144,
+  "lon": -16.2141,
+  "subh": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "imsak": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "zuhr": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "asr": {
+   "exact": 0,
+   "within1": 7,
+   "worst": 1,
+   "median": 1
+  },
+  "magrib": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "isha": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  }
+ },
+ {
+  "ville_id": 76,
+  "name": "Matam",
+  "lat": 15.6559,
+  "lon": -13.2553,
+  "subh": {
+   "exact": 4,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  },
+  "imsak": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "zuhr": {
+   "exact": 6,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  },
+  "asr": {
+   "exact": 0,
+   "within1": 7,
+   "worst": 1,
+   "median": 1
+  },
+  "magrib": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "isha": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  }
+ },
+ {
+  "ville_id": 77,
+  "name": "Mbacké",
+  "lat": 14.7908,
+  "lon": -15.9073,
+  "subh": {
+   "exact": 6,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  },
+  "imsak": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "zuhr": {
+   "exact": 6,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  },
+  "asr": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "magrib": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "isha": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  }
+ },
+ {
+  "ville_id": 82,
+  "name": "Mbour",
+  "lat": 14.4193,
+  "lon": -16.9649,
+  "subh": {
+   "exact": 5,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  },
+  "imsak": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "zuhr": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "asr": {
+   "exact": 0,
+   "within1": 7,
+   "worst": 1,
+   "median": 1
+  },
+  "magrib": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "isha": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  }
+ },
+ {
+  "ville_id": 106,
+  "name": "Nioro",
+  "lat": 13.7561,
+  "lon": -15.7939,
+  "subh": {
+   "exact": 6,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  },
+  "imsak": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "zuhr": {
+   "exact": 6,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  },
+  "asr": {
+   "exact": 6,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  },
+  "magrib": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "isha": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  }
+ },
+ {
+  "ville_id": 122,
+  "name": "Rufisque",
+  "lat": 14.7167,
+  "lon": -17.2667,
+  "subh": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "imsak": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "zuhr": {
+   "exact": 6,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  },
+  "asr": {
+   "exact": 0,
+   "within1": 7,
+   "worst": 1,
+   "median": 1
+  },
+  "magrib": {
+   "exact": 6,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  },
+  "isha": {
+   "exact": 6,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  }
+ },
+ {
+  "ville_id": 124,
+  "name": "Saint-Louis",
+  "lat": 16.0326,
+  "lon": -16.4894,
+  "subh": {
+   "exact": 4,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  },
+  "imsak": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "zuhr": {
+   "exact": 6,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  },
+  "asr": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "magrib": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "isha": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  }
+ },
+ {
+  "ville_id": 130,
+  "name": "Sédhiou",
+  "lat": 12.7058,
+  "lon": -15.5569,
+  "subh": {
+   "exact": 6,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  },
+  "imsak": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "zuhr": {
+   "exact": 6,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  },
+  "asr": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "magrib": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "isha": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  }
+ },
+ {
+  "ville_id": 134,
+  "name": "Tambacounda",
+  "lat": 13.7708,
+  "lon": -13.6673,
+  "subh": {
+   "exact": 6,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  },
+  "imsak": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "zuhr": {
+   "exact": 6,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  },
+  "asr": {
+   "exact": 1,
+   "within1": 7,
+   "worst": 1,
+   "median": 1
+  },
+  "magrib": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "isha": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  }
+ },
+ {
+  "ville_id": 141,
+  "name": "Thiès",
+  "lat": 14.7833,
+  "lon": -16.9333,
+  "subh": {
+   "exact": 6,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  },
+  "imsak": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "zuhr": {
+   "exact": 6,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  },
+  "asr": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "magrib": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "isha": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  }
+ },
+ {
+  "ville_id": 145,
+  "name": "Touba",
+  "lat": 14.85,
+  "lon": -15.88,
+  "subh": {
+   "exact": 6,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  },
+  "imsak": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "zuhr": {
+   "exact": 6,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  },
+  "asr": {
+   "exact": 0,
+   "within1": 7,
+   "worst": 1,
+   "median": 1
+  },
+  "magrib": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "isha": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  }
+ },
+ {
+  "ville_id": 147,
+  "name": "Vélingara",
+  "lat": 13.1581,
+  "lon": -14.75,
+  "subh": {
+   "exact": 0,
+   "within1": 0,
+   "worst": 3,
+   "median": -2
+  },
+  "imsak": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "zuhr": {
+   "exact": 0,
+   "within1": 0,
+   "worst": 3,
+   "median": -3
+  },
+  "asr": {
+   "exact": 0,
+   "within1": 0,
+   "worst": 2,
+   "median": -2
+  },
+  "magrib": {
+   "exact": 0,
+   "within1": 0,
+   "worst": 3,
+   "median": -3
+  },
+  "isha": {
+   "exact": 0,
+   "within1": 0,
+   "worst": 3,
+   "median": -3
+  }
+ },
+ {
+  "ville_id": 152,
+  "name": "Ziguinchor",
+  "lat": 12.5665,
+  "lon": -16.2719,
+  "subh": {
+   "exact": 5,
+   "within1": 7,
+   "worst": 1,
+   "median": 0
+  },
+  "imsak": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "zuhr": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "asr": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "magrib": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  },
+  "isha": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "median": 0
+  }
+ }
+]

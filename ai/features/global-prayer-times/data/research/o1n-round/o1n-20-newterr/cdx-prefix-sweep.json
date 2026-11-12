@@ -1,0 +1,31 @@
+{
+ "dakar-ucad": [
+  {
+   "ts": "20220815032256",
+   "original": "https://mawaqit.net/fr/grande-mosquee-de-lucad-dakar",
+   "status": "200",
+   "digest": "BJAXATQQ3ZO2J5GL2BGZ7R4IK7TWOXSF"
+  }
+ ],
+ "nono": [],
+ "lusaka": [],
+ "nampula": [],
+ "gbessia": [],
+ "bissau": [],
+ "rahmaniya": [],
+ "lapaz": [],
+ "santacruz": [
+  {
+   "ts": "20250906132046",
+   "original": "https://mawaqit.net/en/centro-islamico-de-santa-cruz-45678-santa-cruz-de-la-sierra-bolivia",
+   "status": "200",
+   "digest": "4R4LHO75EHYOWV52GBIPXNDD4WIBERH2"
+  },
+  {
+   "ts": "20250907031705",
+   "original": "https://mawaqit.net/es/centro-islamico-de-santa-cruz-45678-santa-cruz-de-la-sierra-bolivia",
+   "status": "200",
+   "digest": "C4WPOCXD5JAJWHB64ZRLNYSSG7XUI75O"
+  }
+ ]
+}

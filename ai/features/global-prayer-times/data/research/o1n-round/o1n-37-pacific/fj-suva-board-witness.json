@@ -1,0 +1,67 @@
+{
+ "board": {
+  "date": "2026-11-13",
+  "tz": "Pacific/Fiji",
+  "source": "masjidbox.com/prayer-times/masjid-al-haqq",
+  "address": "33 Milverton Rd, Suva, Fiji",
+  "tier": "community",
+  "year_label": null,
+  "board": {
+   "fajr_athan": "04:04",
+   "fajr_iqamah": "04:14",
+   "shuruq": "05:22",
+   "jumuah": "13:10",
+   "jumuah_iqamah": "13:20",
+   "asr": "15:46",
+   "asr_iqamah": "15:56",
+   "maghrib": "18:19",
+   "maghrib_iqamah": "18:24",
+   "isha": "19:32",
+   "isha_iqamah": "19:42"
+  },
+  "captured_utc": "2026-11-12T22:25Z"
+ },
+ "platform_suva_row_2026-11-13": {
+  "imsak": "03:52",
+  "sabah": "04:05",
+  "sunrise": "05:18",
+  "ishrak": "05:55",
+  "dhuhr": "11:58",
+  "asr": "15:08",
+  "maghrib": "18:24",
+  "isha": "19:40"
+ },
+ "diffs": {
+  "sabah_vs_fajr_athan": {
+   "board": "04:04",
+   "platform": "04:05",
+   "board_minus_platform": "-1"
+  },
+  "sunrise_vs_shuruq": {
+   "board": "05:22",
+   "platform": "05:18",
+   "board_minus_platform": "+4"
+  },
+  "dhuhr_vs_jumuah": {
+   "board": "13:10",
+   "platform": "11:58",
+   "board_minus_platform": "+72"
+  },
+  "asr_vs_asr": {
+   "board": "15:46",
+   "platform": "15:08",
+   "board_minus_platform": "+38"
+  },
+  "maghrib_vs_maghrib": {
+   "board": "18:19",
+   "platform": "18:24",
+   "board_minus_platform": "-5"
+  },
+  "isha_vs_isha": {
+   "board": "19:32",
+   "platform": "19:40",
+   "board_minus_platform": "-8"
+  }
+ },
+ "note": "Same-date cell diff, board 2026-11-13 Suva local vs platform table. Board prints no year (year-blind class, NP-RAHMANIYA precedent). Jumuah compared against dhuhr column."
+}

@@ -1,0 +1,55 @@
+{
+ "pair": "KW-ruznama-lines (Kuwait: Al-Ojeiri almanac line vs masjidi table 144; ministry print unextractable)",
+ "measured_utc": "2026-11-12",
+ "side_a": {
+  "name": "alojeiri.com ojeiri-calendar (the ministry-adopted Al-Ojeiri almanac line)",
+  "today_2026_11_12": {
+   "date": "2026-11-12",
+   "fajr": "04:47",
+   "sunrise": "06:09",
+   "dhuhr": "11:32",
+   "asr": "14:34",
+   "maghrib": "16:55",
+   "isha": "18:14"
+  },
+  "held": "o1m-27-gulf/data/kw-kuwait-2026-rows.json",
+  "fresh_vs_held_delta_min": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  }
+ },
+ "side_b": {
+  "name": "tv.masjidi.app table_region_json_144.json (Kuwait national table, 366-row 2028 scaffold)",
+  "scaffold_row_2026_11_12": {
+   "Fajr": "4:47",
+   "Sunrise": "6:09",
+   "Dhuhr": "11:32",
+   "Asr": "14:34",
+   "Maghrib": "16:55",
+   "Isha": "18:14"
+  },
+  "held": "o1m-6-mideast/captures/masjidi/table_region_144.json.gz",
+  "content_identical_to_held": true
+ },
+ "side_unextractable": {
+  "name": "the Ministry of Awqaf's official 2026 ruznama (twelve monthly images, banked o1n-23-mena)",
+  "status": "cell extraction CLOSED by local OCR (banked negative, O1n-23); images stay raw; not cell-measurable today"
+ },
+ "delta_min_2026_11_12_masjidi144_minus_alojeiri": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 0,
+  "asr": 0,
+  "maghrib": 0,
+  "isha": 0
+ },
+ "verdict": {
+  "alojeiri_serves_held_line": true,
+  "masjidi_serves_held_line": true,
+  "lines_distinct_today": false
+ }
+}

@@ -1,0 +1,91 @@
+{
+ "engine": "adhan 4.4.6",
+ "point": [
+  -18.879,
+  47.508
+ ],
+ "tz": "Africa/Nairobi",
+ "scan": {
+  "fajr": {
+   "a": 17,
+   "s": {
+    "exact": 13,
+    "w1": 29,
+    "worst": 88,
+    "mean": -6.24
+   }
+  },
+  "isha": {
+   "a": 20,
+   "s": {
+    "exact": 7,
+    "w1": 26,
+    "worst": 81,
+    "mean": 7.48
+   }
+  }
+ },
+ "solar": {
+  "sunrise": {
+   "exact": 5,
+   "w1": 9,
+   "worst": 79,
+   "mean": 0.52
+  },
+  "dhuhr": {
+   "exact": 7,
+   "w1": 42,
+   "worst": 28,
+   "mean": 0.5
+  },
+  "asr_shafi": {
+   "exact": 7,
+   "w1": 22,
+   "worst": 25,
+   "mean": 0.47
+  },
+  "maghrib": {
+   "exact": 0,
+   "w1": 2,
+   "worst": 73,
+   "mean": 0.52
+  }
+ },
+ "year_diff": {
+  "compared": 365,
+  "moving_cells": 230,
+  "equal_cells": 1960,
+  "percol": {
+   "fajr": {
+    "moved": 46,
+    "same": 0,
+    "maxmove": 1
+   },
+   "sunrise": {
+    "moved": 38,
+    "same": 0,
+    "maxmove": 1
+   },
+   "dhuhr": {
+    "moved": 21,
+    "same": 0,
+    "maxmove": 1
+   },
+   "asr": {
+    "moved": 28,
+    "same": 0,
+    "maxmove": 1
+   },
+   "maghrib": {
+    "moved": 39,
+    "same": 0,
+    "maxmove": 1
+   },
+   "isha": {
+    "moved": 58,
+    "same": 0,
+    "maxmove": 30
+   }
+  }
+ }
+}

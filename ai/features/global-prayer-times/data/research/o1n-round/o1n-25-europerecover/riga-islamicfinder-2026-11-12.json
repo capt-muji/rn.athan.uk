@@ -1,0 +1,21 @@
+{
+ "note": "daily platform widget capture; the mawaqit board route is dead (404, no Wayback snapshots); LIKC now embeds islamicfinder widgets for Riga 456172, Ventspils 454310, Daugavpils 44282926",
+ "rows": [
+  {
+   "date": "2026-11-12",
+   "city": "Riga",
+   "platform": "islamicfinder.org",
+   "method_label": "Shafi (platform label, not provenance)",
+   "times": {
+    "fajr": "06:06",
+    "sunrise": "07:55",
+    "dhuhr": "12:09",
+    "asr": "13:54",
+    "maghrib": "16:20",
+    "isha": "18:10"
+   },
+   "hijri": "2 Jumada al-Akhirah 1448",
+   "source": "https://www.islamicfinder.org/prayer-widget/456172/shafi/5/0/15/15 (linked from likc.lv/prayer-times)"
+  }
+ ]
+}

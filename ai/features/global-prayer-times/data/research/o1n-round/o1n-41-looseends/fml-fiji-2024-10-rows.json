@@ -1,0 +1,281 @@
+{
+ "2024-10-01": {
+  "fajr": null,
+  "sunrise": null,
+  "dhuhr": null,
+  "asr_shafi": null,
+  "asr_hanafi": null,
+  "maghrib": null,
+  "isha": null
+ },
+ "2024-10-02": {
+  "fajr": 276,
+  "sunrise": 349,
+  "dhuhr": null,
+  "asr_shafi": 918,
+  "asr_hanafi": 980,
+  "maghrib": 1087,
+  "isha": 1162
+ },
+ "2024-10-03": {
+  "fajr": 275,
+  "sunrise": 348,
+  "dhuhr": null,
+  "asr_shafi": 918,
+  "asr_hanafi": 980,
+  "maghrib": 1087,
+  "isha": 1042
+ },
+ "2024-10-04": {
+  "fajr": 274,
+  "sunrise": 347,
+  "dhuhr": null,
+  "asr_shafi": 918,
+  "asr_hanafi": 980,
+  "maghrib": null,
+  "isha": 1162
+ },
+ "2024-10-05": {
+  "fajr": 273,
+  "sunrise": 346,
+  "dhuhr": null,
+  "asr_shafi": 917,
+  "asr_hanafi": 980,
+  "maghrib": 1087,
+  "isha": 1042
+ },
+ "2024-10-06": {
+  "fajr": null,
+  "sunrise": null,
+  "dhuhr": null,
+  "asr_shafi": null,
+  "asr_hanafi": null,
+  "maghrib": null,
+  "isha": null
+ },
+ "2024-10-07": {
+  "fajr": 272,
+  "sunrise": 345,
+  "dhuhr": null,
+  "asr_shafi": 916,
+  "asr_hanafi": 979,
+  "maghrib": 1088,
+  "isha": 1043
+ },
+ "2024-10-08": {
+  "fajr": 271,
+  "sunrise": null,
+  "dhuhr": null,
+  "asr_shafi": 916,
+  "asr_hanafi": 979,
+  "maghrib": 1088,
+  "isha": 1163
+ },
+ "2024-10-09": {
+  "fajr": 270,
+  "sunrise": 343,
+  "dhuhr": null,
+  "asr_shafi": 915,
+  "asr_hanafi": 979,
+  "maghrib": 1088,
+  "isha": 1043
+ },
+ "2024-10-10": {
+  "fajr": 269,
+  "sunrise": 342,
+  "dhuhr": null,
+  "asr_shafi": null,
+  "asr_hanafi": 979,
+  "maghrib": null,
+  "isha": 1043
+ },
+ "2024-10-11": {
+  "fajr": 268,
+  "sunrise": 341,
+  "dhuhr": null,
+  "asr_shafi": 914,
+  "asr_hanafi": 979,
+  "maghrib": 1089,
+  "isha": 1044
+ },
+ "2024-10-12": {
+  "fajr": 267,
+  "sunrise": 341,
+  "dhuhr": null,
+  "asr_shafi": 914,
+  "asr_hanafi": 979,
+  "maghrib": 1089,
+  "isha": 1164
+ },
+ "2024-10-13": {
+  "fajr": 266,
+  "sunrise": 340,
+  "dhuhr": null,
+  "asr_shafi": 914,
+  "asr_hanafi": 979,
+  "maghrib": 1089,
+  "isha": 1044
+ },
+ "2024-10-14": {
+  "fajr": 265,
+  "sunrise": 339,
+  "dhuhr": null,
+  "asr_shafi": 913,
+  "asr_hanafi": 979,
+  "maghrib": 1089,
+  "isha": 1164
+ },
+ "2024-10-15": {
+  "fajr": 265,
+  "sunrise": 338,
+  "dhuhr": null,
+  "asr_shafi": 913,
+  "asr_hanafi": 979,
+  "maghrib": 1090,
+  "isha": 1045
+ },
+ "2024-10-16": {
+  "fajr": 264,
+  "sunrise": 338,
+  "dhuhr": null,
+  "asr_shafi": null,
+  "asr_hanafi": 979,
+  "maghrib": null,
+  "isha": 1165
+ },
+ "2024-10-17": {
+  "fajr": 263,
+  "sunrise": 337,
+  "dhuhr": null,
+  "asr_shafi": 912,
+  "asr_hanafi": 979,
+  "maghrib": 1090,
+  "isha": 1045
+ },
+ "2024-10-18": {
+  "fajr": 262,
+  "sunrise": 336,
+  "dhuhr": null,
+  "asr_shafi": 911,
+  "asr_hanafi": 979,
+  "maghrib": 1090,
+  "isha": 1166
+ },
+ "2024-10-19": {
+  "fajr": 261,
+  "sunrise": 335,
+  "dhuhr": null,
+  "asr_shafi": 911,
+  "asr_hanafi": 978,
+  "maghrib": 1091,
+  "isha": 1046
+ },
+ "2024-10-20": {
+  "fajr": 260,
+  "sunrise": 335,
+  "dhuhr": null,
+  "asr_shafi": 910,
+  "asr_hanafi": 978,
+  "maghrib": 1091,
+  "isha": 1166
+ },
+ "2024-10-21": {
+  "fajr": 260,
+  "sunrise": 334,
+  "dhuhr": null,
+  "asr_shafi": 910,
+  "asr_hanafi": 978,
+  "maghrib": 1091,
+  "isha": 1047
+ },
+ "2024-10-22": {
+  "fajr": 259,
+  "sunrise": 333,
+  "dhuhr": null,
+  "asr_shafi": null,
+  "asr_hanafi": null,
+  "maghrib": 1092,
+  "isha": 1167
+ },
+ "2024-10-23": {
+  "fajr": 258,
+  "sunrise": 333,
+  "dhuhr": null,
+  "asr_shafi": 909,
+  "asr_hanafi": 978,
+  "maghrib": 1092,
+  "isha": 1048
+ },
+ "2024-10-24": {
+  "fajr": 257,
+  "sunrise": 332,
+  "dhuhr": null,
+  "asr_shafi": 909,
+  "asr_hanafi": 978,
+  "maghrib": 1092,
+  "isha": 1168
+ },
+ "2024-10-25": {
+  "fajr": 257,
+  "sunrise": null,
+  "dhuhr": null,
+  "asr_shafi": 908,
+  "asr_hanafi": 978,
+  "maghrib": 1093,
+  "isha": 1049
+ },
+ "2024-10-26": {
+  "fajr": 256,
+  "sunrise": 331,
+  "dhuhr": null,
+  "asr_shafi": 908,
+  "asr_hanafi": 978,
+  "maghrib": 1093,
+  "isha": 1169
+ },
+ "2024-10-27": {
+  "fajr": 255,
+  "sunrise": 330,
+  "dhuhr": null,
+  "asr_shafi": 907,
+  "asr_hanafi": 978,
+  "maghrib": 1093,
+  "isha": 1050
+ },
+ "2024-10-28": {
+  "fajr": 254,
+  "sunrise": 330,
+  "dhuhr": null,
+  "asr_shafi": 907,
+  "asr_hanafi": 978,
+  "maghrib": 1094,
+  "isha": 1171
+ },
+ "2024-10-29": {
+  "fajr": 254,
+  "sunrise": 329,
+  "dhuhr": null,
+  "asr_shafi": null,
+  "asr_hanafi": 978,
+  "maghrib": 1094,
+  "isha": 1051
+ },
+ "2024-10-30": {
+  "fajr": 253,
+  "sunrise": 329,
+  "dhuhr": null,
+  "asr_shafi": 906,
+  "asr_hanafi": 978,
+  "maghrib": 1095,
+  "isha": 1172
+ },
+ "2024-10-31": {
+  "fajr": 252,
+  "sunrise": 328,
+  "dhuhr": null,
+  "asr_shafi": 906,
+  "asr_hanafi": 978,
+  "maghrib": 1095,
+  "isha": 1052
+ }
+}

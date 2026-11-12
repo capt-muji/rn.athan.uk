@@ -1,0 +1,4 @@
+asr Hanafi: {"median":1,"n":365,"exact":55.1,"w1":97.5,"worst":2}
+asr Shafi : {"median":65,"n":365,"exact":1.9,"w1":12.6,"worst":15}
+fajr joint grid best: {"ang":19.5,"m":7,"k":36812,"exactPct":85.8,"w1Pct":100,"worst":1}
+isha joint grid best: {"ang":17.5,"m":3,"k":36762,"exactPct":72.1,"w1Pct":100,"worst":1}

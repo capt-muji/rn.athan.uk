@@ -1,0 +1,8080 @@
+{
+ "country": "finland",
+ "generated": "2026-11-12T11:40:59Z",
+ "routes_probed": {
+  "monthly_2026": 896,
+  "monthly_2025_06": 2,
+  "monthly_2027_06": 2
+ },
+ "settlements": {
+  "110141": {
+   "name": "Sjöback",
+   "city_label": "Sjöback (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110142": {
+   "name": "Rabacken",
+   "city_label": "Rabacken (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110143": {
+   "name": "Haggvik",
+   "city_label": "Haggvik (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110144": {
+   "name": "Granskog",
+   "city_label": "Granskog (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110145": {
+   "name": "Kolmanasen",
+   "city_label": "Kolmanasen (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110146": {
+   "name": "Fallbacken",
+   "city_label": "Fallbacken (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110147": {
+   "name": "Södersund",
+   "city_label": "Södersund (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110148": {
+   "name": "Jivikarna",
+   "city_label": "Jivikarna (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110149": {
+   "name": "Perisgrund",
+   "city_label": "Perisgrund (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110150": {
+   "name": "Österandan",
+   "city_label": "Österandan (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110151": {
+   "name": "Bergö",
+   "city_label": "Bergö (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110152": {
+   "name": "Norrsund",
+   "city_label": "Norrsund (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110153": {
+   "name": "Petalax",
+   "city_label": "Petalax (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110154": {
+   "name": "Pörtom",
+   "city_label": "Pörtom (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110155": {
+   "name": "Svarvar",
+   "city_label": "Svarvar (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110156": {
+   "name": "Övermalax",
+   "city_label": "Övermalax (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110157": {
+   "name": "Langaminne",
+   "city_label": "Langaminne (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110158": {
+   "name": "Runsor",
+   "city_label": "Runsor (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110159": {
+   "name": "Kronvik",
+   "city_label": "Kronvik (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110160": {
+   "name": "Sundom",
+   "city_label": "Sundom (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110161": {
+   "name": "Aminne",
+   "city_label": "Aminne (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110162": {
+   "name": "Öjna",
+   "city_label": "Öjna (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110163": {
+   "name": "Tölby",
+   "city_label": "Tölby (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110164": {
+   "name": "Toby",
+   "city_label": "Toby (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110165": {
+   "name": "Kvevlax Koivulahti",
+   "city_label": "Kvevlax Koivulahti (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110166": {
+   "name": "Vikby",
+   "city_label": "Vikby (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110167": {
+   "name": "Alskat",
+   "city_label": "Alskat (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110168": {
+   "name": "Koskö",
+   "city_label": "Koskö (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110169": {
+   "name": "Södra Vallgrund",
+   "city_label": "Södra Vallgrund (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110170": {
+   "name": "Skaliverk",
+   "city_label": "Skaliverk (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110171": {
+   "name": "Norra Vallgrund",
+   "city_label": "Norra Vallgrund (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110172": {
+   "name": "Panike",
+   "city_label": "Panike (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110173": {
+   "name": "Svedjehamn",
+   "city_label": "Svedjehamn (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110174": {
+   "name": "Lappörarna",
+   "city_label": "Lappörarna (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110175": {
+   "name": "Djupskaret",
+   "city_label": "Djupskaret (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110176": {
+   "name": "Grönvik",
+   "city_label": "Grönvik (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110177": {
+   "name": "Jungsund",
+   "city_label": "Jungsund (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110178": {
+   "name": "Köklot",
+   "city_label": "Köklot (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110179": {
+   "name": "Maxmo Maksamaa",
+   "city_label": "Maxmo Maksamaa (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110180": {
+   "name": "Norfjarden",
+   "city_label": "Norfjarden (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110181": {
+   "name": "Vasterhankmo",
+   "city_label": "Vasterhankmo (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110182": {
+   "name": "Petsmo",
+   "city_label": "Petsmo (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110183": {
+   "name": "Iskmo",
+   "city_label": "Iskmo (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110184": {
+   "name": "Höstvesi",
+   "city_label": "Höstvesi (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110185": {
+   "name": "Bockholmsbacken",
+   "city_label": "Bockholmsbacken (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110186": {
+   "name": "Marasbacken",
+   "city_label": "Marasbacken (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110187": {
+   "name": "Helsingby",
+   "city_label": "Helsingby (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110188": {
+   "name": "Nygardsbacken",
+   "city_label": "Nygardsbacken (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110189": {
+   "name": "Lillarkmo",
+   "city_label": "Lillarkmo (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110190": {
+   "name": "Karkmo",
+   "city_label": "Karkmo (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110191": {
+   "name": "Storkarkmo",
+   "city_label": "Storkarkmo (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110192": {
+   "name": "Huddas",
+   "city_label": "Huddas (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110193": {
+   "name": "Sandasbacken",
+   "city_label": "Sandasbacken (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110194": {
+   "name": "Storakersbacken",
+   "city_label": "Storakersbacken (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110195": {
+   "name": "Yxpil",
+   "city_label": "Yxpil (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110196": {
+   "name": "Akernasbacken",
+   "city_label": "Akernasbacken (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110197": {
+   "name": "Stegarsbacken",
+   "city_label": "Stegarsbacken (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110198": {
+   "name": "Kantbacken",
+   "city_label": "Kantbacken (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110199": {
+   "name": "Kullen",
+   "city_label": "Kullen (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110200": {
+   "name": "Pottbacken",
+   "city_label": "Pottbacken (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110201": {
+   "name": "Smedisbacken",
+   "city_label": "Smedisbacken (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110928": {
+   "name": "Bjurback",
+   "city_label": "Bjurback (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110929": {
+   "name": "Frönas",
+   "city_label": "Frönas (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110930": {
+   "name": "Svartnas",
+   "city_label": "Svartnas (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110931": {
+   "name": "Kallmossen",
+   "city_label": "Kallmossen (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110932": {
+   "name": "Söder i Byn",
+   "city_label": "Söder i Byn (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110933": {
+   "name": "Berga",
+   "city_label": "Berga (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110934": {
+   "name": "Övermark",
+   "city_label": "Övermark (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110935": {
+   "name": "Haggnaset",
+   "city_label": "Haggnaset (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110936": {
+   "name": "Naverasen",
+   "city_label": "Naverasen (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110937": {
+   "name": "Valsberg",
+   "city_label": "Valsberg (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110938": {
+   "name": "Backby",
+   "city_label": "Backby (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110939": {
+   "name": "Böle",
+   "city_label": "Böle (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110940": {
+   "name": "Tjöck Tiukka",
+   "city_label": "Tjöck Tiukka (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110941": {
+   "name": "Lalby",
+   "city_label": "Lalby (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110942": {
+   "name": "Lillback",
+   "city_label": "Lillback (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110943": {
+   "name": "Dalbacken",
+   "city_label": "Dalbacken (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110944": {
+   "name": "Perus",
+   "city_label": "Perus (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110945": {
+   "name": "Pjelax",
+   "city_label": "Pjelax (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110946": {
+   "name": "Kaitsor",
+   "city_label": "Kaitsor (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110947": {
+   "name": "Mona",
+   "city_label": "Mona (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110948": {
+   "name": "Traskvik",
+   "city_label": "Traskvik (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110949": {
+   "name": "Tuvanget",
+   "city_label": "Tuvanget (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110950": {
+   "name": "Helenelund",
+   "city_label": "Helenelund (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110951": {
+   "name": "Norrnas",
+   "city_label": "Norrnas (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110952": {
+   "name": "Vastrar Yttermark",
+   "city_label": "Vastrar Yttermark (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110953": {
+   "name": "Solax",
+   "city_label": "Solax (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110954": {
+   "name": "Skatan",
+   "city_label": "Skatan (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110955": {
+   "name": "Kuvaskangas",
+   "city_label": "Kuvaskangas (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110956": {
+   "name": "Riispyy",
+   "city_label": "Riispyy (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110957": {
+   "name": "Kasala",
+   "city_label": "Kasala (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110958": {
+   "name": "Vassa",
+   "city_label": "Vassa (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110959": {
+   "name": "Harvala",
+   "city_label": "Harvala (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110960": {
+   "name": "Peippu",
+   "city_label": "Peippu (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110961": {
+   "name": "Köörtila",
+   "city_label": "Köörtila (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110962": {
+   "name": "Veikkola",
+   "city_label": "Veikkola (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110963": {
+   "name": "Kuneli",
+   "city_label": "Kuneli (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110964": {
+   "name": "Alakyla",
+   "city_label": "Alakyla (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110965": {
+   "name": "Puukoski",
+   "city_label": "Puukoski (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110966": {
+   "name": "Tuorila",
+   "city_label": "Tuorila (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110967": {
+   "name": "Honkajarvi",
+   "city_label": "Honkajarvi (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110968": {
+   "name": "Timmerheidi",
+   "city_label": "Timmerheidi (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110969": {
+   "name": "Fischas Lansikyla",
+   "city_label": "Fischas Lansikyla (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110970": {
+   "name": "Kalvholmen",
+   "city_label": "Kalvholmen (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110971": {
+   "name": "Jarvelanranta",
+   "city_label": "Jarvelanranta (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110972": {
+   "name": "Salmenranta",
+   "city_label": "Salmenranta (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110973": {
+   "name": "Vuotikka",
+   "city_label": "Vuotikka (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110974": {
+   "name": "Koivukyla",
+   "city_label": "Koivukyla (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110975": {
+   "name": "Hailuoto",
+   "city_label": "Hailuoto (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110976": {
+   "name": "Keskikyla",
+   "city_label": "Keskikyla (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110977": {
+   "name": "Ojakyla / Hailuoto",
+   "city_label": "Ojakyla / Hailuoto (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110978": {
+   "name": "Oulu Havalimanı",
+   "city_label": "Oulu Havalimanı (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110979": {
+   "name": "Kotila",
+   "city_label": "Kotila (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110980": {
+   "name": "Ojala",
+   "city_label": "Ojala (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110981": {
+   "name": "Mökkipera",
+   "city_label": "Mökkipera (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110982": {
+   "name": "Kylanpuoli",
+   "city_label": "Kylanpuoli (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110983": {
+   "name": "Karhuoja",
+   "city_label": "Karhuoja (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110984": {
+   "name": "Keskipiiri",
+   "city_label": "Keskipiiri (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110985": {
+   "name": "Selkamaa",
+   "city_label": "Selkamaa (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110986": {
+   "name": "Ala-Temmes",
+   "city_label": "Ala-Temmes (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110987": {
+   "name": "Murto",
+   "city_label": "Murto (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110988": {
+   "name": "Niemenranta",
+   "city_label": "Niemenranta (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110989": {
+   "name": "Heikonen",
+   "city_label": "Heikonen (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110990": {
+   "name": "Lassinkyla",
+   "city_label": "Lassinkyla (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110991": {
+   "name": "Hailuoto Havaalanı",
+   "city_label": "Hailuoto Havaalanı (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110992": {
+   "name": "Tyrnava",
+   "city_label": "Tyrnava (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110993": {
+   "name": "Ruukki",
+   "city_label": "Ruukki (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110994": {
+   "name": "Alpua",
+   "city_label": "Alpua (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110995": {
+   "name": "Luohua",
+   "city_label": "Luohua (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110996": {
+   "name": "Vaski",
+   "city_label": "Vaski (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110997": {
+   "name": "Karinkanta",
+   "city_label": "Karinkanta (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110998": {
+   "name": "Revonlahti",
+   "city_label": "Revonlahti (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "110999": {
+   "name": "Olkijoki",
+   "city_label": "Olkijoki (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111000": {
+   "name": "Lapaluoto",
+   "city_label": "Lapaluoto (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111001": {
+   "name": "Piehinki",
+   "city_label": "Piehinki (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111002": {
+   "name": "Parhalahti",
+   "city_label": "Parhalahti (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111003": {
+   "name": "Arkkukari",
+   "city_label": "Arkkukari (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111004": {
+   "name": "Kopsa",
+   "city_label": "Kopsa (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111005": {
+   "name": "Mantyla",
+   "city_label": "Mantyla (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111006": {
+   "name": "Ellala",
+   "city_label": "Ellala (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111007": {
+   "name": "Yliranta",
+   "city_label": "Yliranta (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111008": {
+   "name": "Raasakka",
+   "city_label": "Raasakka (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111009": {
+   "name": "Jussila",
+   "city_label": "Jussila (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111010": {
+   "name": "Jaali",
+   "city_label": "Jaali (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111011": {
+   "name": "Aholanmaki",
+   "city_label": "Aholanmaki (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111012": {
+   "name": "Ransupera",
+   "city_label": "Ransupera (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111013": {
+   "name": "Tormua",
+   "city_label": "Tormua (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111014": {
+   "name": "Haapovaara",
+   "city_label": "Haapovaara (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111015": {
+   "name": "Pajuvaara",
+   "city_label": "Pajuvaara (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111016": {
+   "name": "Ruhtinansalmi",
+   "city_label": "Ruhtinansalmi (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111017": {
+   "name": "Kovavaara",
+   "city_label": "Kovavaara (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111018": {
+   "name": "Paltaniemi",
+   "city_label": "Paltaniemi (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111019": {
+   "name": "Sutelanpera",
+   "city_label": "Sutelanpera (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111020": {
+   "name": "Parkinniemi",
+   "city_label": "Parkinniemi (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111021": {
+   "name": "Törmapera",
+   "city_label": "Törmapera (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111022": {
+   "name": "Vorna",
+   "city_label": "Vorna (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111023": {
+   "name": "Vayrylansaari",
+   "city_label": "Vayrylansaari (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111024": {
+   "name": "Puikkokoski",
+   "city_label": "Puikkokoski (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111025": {
+   "name": "Jormua",
+   "city_label": "Jormua (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111026": {
+   "name": "Kuluntalahti",
+   "city_label": "Kuluntalahti (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111027": {
+   "name": "Sivola",
+   "city_label": "Sivola (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111028": {
+   "name": "Katerma",
+   "city_label": "Katerma (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111029": {
+   "name": "Saukkoranta",
+   "city_label": "Saukkoranta (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111030": {
+   "name": "Nena",
+   "city_label": "Nena (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111031": {
+   "name": "Tursta",
+   "city_label": "Tursta (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111032": {
+   "name": "Maksniemi",
+   "city_label": "Maksniemi (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111033": {
+   "name": "Hepola",
+   "city_label": "Hepola (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111034": {
+   "name": "Rytikari",
+   "city_label": "Rytikari (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111035": {
+   "name": "Jarppi",
+   "city_label": "Jarppi (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111036": {
+   "name": "Kittilanjarvi",
+   "city_label": "Kittilanjarvi (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111037": {
+   "name": "Kemi Havaalanı",
+   "city_label": "Kemi Havaalanı (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111038": {
+   "name": "Hirmula",
+   "city_label": "Hirmula (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111039": {
+   "name": "Ilmola",
+   "city_label": "Ilmola (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111040": {
+   "name": "Ruohokari",
+   "city_label": "Ruohokari (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111041": {
+   "name": "Könöla",
+   "city_label": "Könöla (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111042": {
+   "name": "Arpela",
+   "city_label": "Arpela (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111043": {
+   "name": "Lautiosaari",
+   "city_label": "Lautiosaari (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111044": {
+   "name": "Pörhöla",
+   "city_label": "Pörhöla (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111045": {
+   "name": "Veitsiluoto",
+   "city_label": "Veitsiluoto (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111046": {
+   "name": "Paavonkari",
+   "city_label": "Paavonkari (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111047": {
+   "name": "Ajos",
+   "city_label": "Ajos (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111048": {
+   "name": "Onkalo",
+   "city_label": "Onkalo (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111049": {
+   "name": "Simonkylä",
+   "city_label": "Simonkylä (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111050": {
+   "name": "Hepolanpera",
+   "city_label": "Hepolanpera (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111051": {
+   "name": "Simoniemi",
+   "city_label": "Simoniemi (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111052": {
+   "name": "Vasakari",
+   "city_label": "Vasakari (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111053": {
+   "name": "Patokoski",
+   "city_label": "Patokoski (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111054": {
+   "name": "Tangonsaari",
+   "city_label": "Tangonsaari (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111055": {
+   "name": "Ojakyla / Pentinkangas",
+   "city_label": "Ojakyla / Pentinkangas (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111056": {
+   "name": "Illinsaari",
+   "city_label": "Illinsaari (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111057": {
+   "name": "Paaso",
+   "city_label": "Paaso (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111058": {
+   "name": "Hiivala",
+   "city_label": "Hiivala (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111059": {
+   "name": "Sorosenpera",
+   "city_label": "Sorosenpera (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111060": {
+   "name": "Putaankyla",
+   "city_label": "Putaankyla (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111061": {
+   "name": "Ongantie",
+   "city_label": "Ongantie (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111062": {
+   "name": "Kurtinhauta",
+   "city_label": "Kurtinhauta (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111063": {
+   "name": "Halkokari",
+   "city_label": "Halkokari (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111064": {
+   "name": "Vahtola",
+   "city_label": "Vahtola (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111065": {
+   "name": "Kuivalanpera",
+   "city_label": "Kuivalanpera (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111066": {
+   "name": "Takkuranta",
+   "city_label": "Takkuranta (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111067": {
+   "name": "Satalahti",
+   "city_label": "Satalahti (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111068": {
+   "name": "Vehkapera",
+   "city_label": "Vehkapera (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111069": {
+   "name": "Haapakangas",
+   "city_label": "Haapakangas (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111070": {
+   "name": "Asemapera",
+   "city_label": "Asemapera (Oulun lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111071": {
+   "name": "Hatalanpera",
+   "city_label": "Hatalanpera (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111072": {
+   "name": "Kiviniemi",
+   "city_label": "Kiviniemi (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111073": {
+   "name": "Ervastinranta",
+   "city_label": "Ervastinranta (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111074": {
+   "name": "Siikasaari",
+   "city_label": "Siikasaari (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111075": {
+   "name": "Niemelantörma",
+   "city_label": "Niemelantörma (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111076": {
+   "name": "Haukiputaan asemakyla",
+   "city_label": "Haukiputaan asemakyla (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111077": {
+   "name": "Sankoniemi",
+   "city_label": "Sankoniemi (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111078": {
+   "name": "Topinpera",
+   "city_label": "Topinpera (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111079": {
+   "name": "Meriniemi",
+   "city_label": "Meriniemi (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111080": {
+   "name": "Piimapera",
+   "city_label": "Piimapera (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111081": {
+   "name": "Ojakyla / Herukkakangas",
+   "city_label": "Ojakyla / Herukkakangas (Oulun lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111082": {
+   "name": "Seelanti",
+   "city_label": "Seelanti (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111083": {
+   "name": "Herukkakangas",
+   "city_label": "Herukkakangas (Oulun lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111084": {
+   "name": "Rajakyla",
+   "city_label": "Rajakyla (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111085": {
+   "name": "Taskila",
+   "city_label": "Taskila (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111086": {
+   "name": "Kaijonharju",
+   "city_label": "Kaijonharju (Oulun lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111087": {
+   "name": "Linnanmaa",
+   "city_label": "Linnanmaa (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111088": {
+   "name": "Isko",
+   "city_label": "Isko (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111089": {
+   "name": "Toppila",
+   "city_label": "Toppila (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111090": {
+   "name": "Sarkkiranta",
+   "city_label": "Sarkkiranta (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111091": {
+   "name": "Santamaki",
+   "city_label": "Santamaki (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111092": {
+   "name": "Pitkakangas",
+   "city_label": "Pitkakangas (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111093": {
+   "name": "Pellonpaa",
+   "city_label": "Pellonpaa (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111094": {
+   "name": "Santaniemi",
+   "city_label": "Santaniemi (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111095": {
+   "name": "Vesikari",
+   "city_label": "Vesikari (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111096": {
+   "name": "JutkokylA",
+   "city_label": "JutkokylA (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111097": {
+   "name": "Haaransilta",
+   "city_label": "Haaransilta (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111098": {
+   "name": "Virkkula",
+   "city_label": "Virkkula (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111099": {
+   "name": "Tuomioja",
+   "city_label": "Tuomioja (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111100": {
+   "name": "Nuorapera",
+   "city_label": "Nuorapera (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111101": {
+   "name": "Pitkasenkyla",
+   "city_label": "Pitkasenkyla (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111102": {
+   "name": "Rannanpera",
+   "city_label": "Rannanpera (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111103": {
+   "name": "Kuvala",
+   "city_label": "Kuvala (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111104": {
+   "name": "Olkijoen Koulu",
+   "city_label": "Olkijoen Koulu (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111105": {
+   "name": "Kotiranta",
+   "city_label": "Kotiranta (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111106": {
+   "name": "Koivula",
+   "city_label": "Koivula (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111107": {
+   "name": "Kauronkyla",
+   "city_label": "Kauronkyla (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111108": {
+   "name": "Juolunka",
+   "city_label": "Juolunka (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111109": {
+   "name": "Rahajarvi",
+   "city_label": "Rahajarvi (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111110": {
+   "name": "Nuolijarvi",
+   "city_label": "Nuolijarvi (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111111": {
+   "name": "Kalliojoki",
+   "city_label": "Kalliojoki (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111112": {
+   "name": "Viiksimo",
+   "city_label": "Viiksimo (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111113": {
+   "name": "Mainuanniemi",
+   "city_label": "Mainuanniemi (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111114": {
+   "name": "Tuliaho",
+   "city_label": "Tuliaho (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111115": {
+   "name": "Putikko",
+   "city_label": "Putikko (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111116": {
+   "name": "Halkola",
+   "city_label": "Halkola (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111117": {
+   "name": "Kamusenpera",
+   "city_label": "Kamusenpera (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111118": {
+   "name": "Rautio",
+   "city_label": "Rautio (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111119": {
+   "name": "Kahtava",
+   "city_label": "Kahtava (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111120": {
+   "name": "Tynka",
+   "city_label": "Tynka (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111121": {
+   "name": "Kaanta",
+   "city_label": "Kaanta (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111122": {
+   "name": "Pentinkangas",
+   "city_label": "Pentinkangas (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111123": {
+   "name": "Pakkilangas",
+   "city_label": "Pakkilangas (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111124": {
+   "name": "Ristijarvi",
+   "city_label": "Ristijarvi (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111125": {
+   "name": "Putkolanniemi",
+   "city_label": "Putkolanniemi (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111126": {
+   "name": "Tuliharju",
+   "city_label": "Tuliharju (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111127": {
+   "name": "Uura",
+   "city_label": "Uura (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111128": {
+   "name": "Nurminiemi",
+   "city_label": "Nurminiemi (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111129": {
+   "name": "Murtovaara",
+   "city_label": "Murtovaara (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111130": {
+   "name": "Hirvaskoski",
+   "city_label": "Hirvaskoski (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111131": {
+   "name": "Puro",
+   "city_label": "Puro (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111132": {
+   "name": "Koskelanpera",
+   "city_label": "Koskelanpera (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111133": {
+   "name": "Huttukyla",
+   "city_label": "Huttukyla (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111134": {
+   "name": "Kollaja",
+   "city_label": "Kollaja (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111135": {
+   "name": "Kipina",
+   "city_label": "Kipina (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111136": {
+   "name": "Taipaleenharju",
+   "city_label": "Taipaleenharju (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111137": {
+   "name": "Leipivaara",
+   "city_label": "Leipivaara (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111138": {
+   "name": "Parkkima",
+   "city_label": "Parkkima (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111139": {
+   "name": "Tulkku",
+   "city_label": "Tulkku (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111140": {
+   "name": "Ruotanen",
+   "city_label": "Ruotanen (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111141": {
+   "name": "Ojakyla",
+   "city_label": "Ojakyla (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111142": {
+   "name": "Someronpera",
+   "city_label": "Someronpera (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111143": {
+   "name": "Kuovila",
+   "city_label": "Kuovila (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111144": {
+   "name": "Ojala",
+   "city_label": "Ojala (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111145": {
+   "name": "Raisalanmaki",
+   "city_label": "Raisalanmaki (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111146": {
+   "name": "Kumisava",
+   "city_label": "Kumisava (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111147": {
+   "name": "Oksava",
+   "city_label": "Oksava (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111148": {
+   "name": "Tinonranta",
+   "city_label": "Tinonranta (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111149": {
+   "name": "Venetpalo",
+   "city_label": "Venetpalo (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111150": {
+   "name": "Vatjusjarvi",
+   "city_label": "Vatjusjarvi (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111151": {
+   "name": "Janisniemi",
+   "city_label": "Janisniemi (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111152": {
+   "name": "Jyrinki",
+   "city_label": "Jyrinki (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111153": {
+   "name": "Vehkapunto",
+   "city_label": "Vehkapunto (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111154": {
+   "name": "Jaalanka",
+   "city_label": "Jaalanka (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111155": {
+   "name": "Pihlajamaki",
+   "city_label": "Pihlajamaki (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111156": {
+   "name": "Pajulampi",
+   "city_label": "Pajulampi (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111157": {
+   "name": "Petaja",
+   "city_label": "Petaja (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111158": {
+   "name": "Pehkola",
+   "city_label": "Pehkola (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111159": {
+   "name": "Tannila",
+   "city_label": "Tannila (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111160": {
+   "name": "Sarajarvi",
+   "city_label": "Sarajarvi (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111161": {
+   "name": "Vuorma",
+   "city_label": "Vuorma (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111162": {
+   "name": "Siltakoski",
+   "city_label": "Siltakoski (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111163": {
+   "name": "Sanginkyla",
+   "city_label": "Sanginkyla (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111164": {
+   "name": "Yli-Utos",
+   "city_label": "Yli-Utos (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111165": {
+   "name": "Teeriranta",
+   "city_label": "Teeriranta (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "111166": {
+   "name": "Vallioniemi",
+   "city_label": "Vallioniemi (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "114991": {
+   "name": "Korvala",
+   "city_label": "Korvala (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "114992": {
+   "name": "Vikajärvi",
+   "city_label": "Vikajärvi (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "114993": {
+   "name": "Rovaniemi Havaalanı",
+   "city_label": "Rovaniemi Havaalanı (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "114994": {
+   "name": "Loue",
+   "city_label": "Loue (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "114995": {
+   "name": "Siivolanpera",
+   "city_label": "Siivolanpera (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "114996": {
+   "name": "Koroiskyla",
+   "city_label": "Koroiskyla (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "114997": {
+   "name": "Sammatti",
+   "city_label": "Sammatti (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "114998": {
+   "name": "Upinniemi",
+   "city_label": "Upinniemi (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "115009": {
+   "name": "Starkom",
+   "city_label": "Starkom (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "115010": {
+   "name": "Broby",
+   "city_label": "Broby (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "115013": {
+   "name": "Skoldargard",
+   "city_label": "Skoldargard (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "115017": {
+   "name": "Svenskby",
+   "city_label": "Svenskby (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "115018": {
+   "name": "Finby",
+   "city_label": "Finby (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "115019": {
+   "name": "Ovanmalm",
+   "city_label": "Ovanmalm (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "115020": {
+   "name": "Persböle",
+   "city_label": "Persböle (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "115021": {
+   "name": "Pohja",
+   "city_label": "Pohja (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "115022": {
+   "name": "Fastarby",
+   "city_label": "Fastarby (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "115037": {
+   "name": "Asenby",
+   "city_label": "Asenby (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "115038": {
+   "name": "Fagernas",
+   "city_label": "Fagernas (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "115039": {
+   "name": "Berg",
+   "city_label": "Berg (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "115042": {
+   "name": "Haga",
+   "city_label": "Haga (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "115043": {
+   "name": "Ström",
+   "city_label": "Ström (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "115044": {
+   "name": "Vintervägen",
+   "city_label": "Vintervägen (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "115045": {
+   "name": "Böle",
+   "city_label": "Böle (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "115046": {
+   "name": "Lillkanskog",
+   "city_label": "Lillkanskog (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "115047": {
+   "name": "Storkanskog",
+   "city_label": "Storkanskog (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "115048": {
+   "name": "Sjötorp",
+   "city_label": "Sjötorp (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "115049": {
+   "name": "Gripans",
+   "city_label": "Gripans (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "115050": {
+   "name": "Svartback",
+   "city_label": "Svartback (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "115051": {
+   "name": "Karlsberg",
+   "city_label": "Karlsberg (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "115052": {
+   "name": "Ramsjö gard",
+   "city_label": "Ramsjö gard (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "115054": {
+   "name": "Hirdal",
+   "city_label": "Hirdal (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "115056": {
+   "name": "Drasa",
+   "city_label": "Drasa (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "115057": {
+   "name": "Antby",
+   "city_label": "Antby (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "115089": {
+   "name": "Angsdal",
+   "city_label": "Angsdal (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "115097": {
+   "name": "Riddarkil",
+   "city_label": "Riddarkil (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "115098": {
+   "name": "Finnpada",
+   "city_label": "Finnpada (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "115099": {
+   "name": "Malm",
+   "city_label": "Malm (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "115100": {
+   "name": "Sandarna",
+   "city_label": "Sandarna (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "115101": {
+   "name": "Degerö",
+   "city_label": "Degerö (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "115102": {
+   "name": "Hila",
+   "city_label": "Hila (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "137492": {
+   "name": "Saimaanharju",
+   "city_label": "Saimaanharju (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "16190": {
+   "name": "Sonkamuotka",
+   "city_label": "Sonkamuotka (Norrbotten / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "43741": {
+   "name": "Espoo (Esbo)",
+   "city_label": "Espoo (Esbo) (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5121": {
+   "name": "Mariehamn (Maarianhamina)",
+   "city_label": "Mariehamn (Maarianhamina) (Åland / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5122": {
+   "name": "Asikkala",
+   "city_label": "Asikkala (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5123": {
+   "name": "Hameenlinna (Tavastehus)",
+   "city_label": "Hameenlinna (Tavastehus) (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5124": {
+   "name": "Hamina",
+   "city_label": "Hamina (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5125": {
+   "name": "Hartola",
+   "city_label": "Hartola (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5126": {
+   "name": "Heinola",
+   "city_label": "Heinola (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5127": {
+   "name": "Hyvinkaa",
+   "city_label": "Hyvinkaa (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5128": {
+   "name": "Imatra",
+   "city_label": "Imatra (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5129": {
+   "name": "Jaala",
+   "city_label": "Jaala (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5130": {
+   "name": "Karhula",
+   "city_label": "Karhula (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5131": {
+   "name": "Larkkulla",
+   "city_label": "Larkkulla (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5132": {
+   "name": "Karkkila",
+   "city_label": "Karkkila (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5133": {
+   "name": "Kauniainen",
+   "city_label": "Kauniainen (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5134": {
+   "name": "Kerava",
+   "city_label": "Kerava (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5135": {
+   "name": "Kotka",
+   "city_label": "Kotka (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5136": {
+   "name": "Kuusankoski",
+   "city_label": "Kuusankoski (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5137": {
+   "name": "Lahti",
+   "city_label": "Lahti (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5138": {
+   "name": "Lammi",
+   "city_label": "Lammi (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5139": {
+   "name": "Lappeenranta",
+   "city_label": "Lappeenranta (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5141": {
+   "name": "Lauritsala",
+   "city_label": "Lauritsala (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5142": {
+   "name": "Lohja",
+   "city_label": "Lohja (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5143": {
+   "name": "Lovisa",
+   "city_label": "Lovisa (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5144": {
+   "name": "Mantsala",
+   "city_label": "Mantsala (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5145": {
+   "name": "Mustio",
+   "city_label": "Mustio (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5146": {
+   "name": "Nummela",
+   "city_label": "Nummela (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5147": {
+   "name": "Sierla",
+   "city_label": "Sierla (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5148": {
+   "name": "Parikkala",
+   "city_label": "Parikkala (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5149": {
+   "name": "Pernaviken",
+   "city_label": "Pernaviken (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5150": {
+   "name": "Pohja",
+   "city_label": "Pohja (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5152": {
+   "name": "Karkola",
+   "city_label": "Karkola (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5153": {
+   "name": "Pukkila",
+   "city_label": "Pukkila (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5154": {
+   "name": "Pyterlahti",
+   "city_label": "Pyterlahti (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5155": {
+   "name": "Rautjarvi",
+   "city_label": "Rautjarvi (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5156": {
+   "name": "Riihimaki",
+   "city_label": "Riihimaki (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5157": {
+   "name": "Savitaipale",
+   "city_label": "Savitaipale (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5158": {
+   "name": "Selanpaa",
+   "city_label": "Selanpaa (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5159": {
+   "name": "Suomijarvi",
+   "city_label": "Suomijarvi (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5160": {
+   "name": "Sysma",
+   "city_label": "Sysma (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5161": {
+   "name": "Taipalsaari",
+   "city_label": "Taipalsaari (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5162": {
+   "name": "Tenala",
+   "city_label": "Tenala (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5163": {
+   "name": "Tolkis (Tolkkinen)",
+   "city_label": "Tolkis (Tolkkinen) (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5164": {
+   "name": "Vaalimaa",
+   "city_label": "Vaalimaa (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5165": {
+   "name": "Vainikkala",
+   "city_label": "Vainikkala (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5166": {
+   "name": "Valkom (Valko)",
+   "city_label": "Valkom (Valko) (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5167": {
+   "name": "Vantaa",
+   "city_label": "Vantaa (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5168": {
+   "name": "Vihti",
+   "city_label": "Vihti (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5169": {
+   "name": "Virolahti",
+   "city_label": "Virolahti (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5170": {
+   "name": "Ylamaa",
+   "city_label": "Ylamaa (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5171": {
+   "name": "Hattula",
+   "city_label": "Hattula (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5172": {
+   "name": "Hauho",
+   "city_label": "Hauho (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5173": {
+   "name": "Kalvola",
+   "city_label": "Kalvola (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5174": {
+   "name": "Eno",
+   "city_label": "Eno (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5175": {
+   "name": "Enonkoski",
+   "city_label": "Enonkoski (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5176": {
+   "name": "Heinavesi",
+   "city_label": "Heinavesi (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5177": {
+   "name": "Iisvesi",
+   "city_label": "Iisvesi (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5178": {
+   "name": "Joensuu (Yoensu)",
+   "city_label": "Joensuu (Yoensu) (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5179": {
+   "name": "Juankoski",
+   "city_label": "Juankoski (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5180": {
+   "name": "Juuka",
+   "city_label": "Juuka (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5181": {
+   "name": "Juva",
+   "city_label": "Juva (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5182": {
+   "name": "Kaavi",
+   "city_label": "Kaavi (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5183": {
+   "name": "Kangasniemi",
+   "city_label": "Kangasniemi (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5184": {
+   "name": "Karttula",
+   "city_label": "Karttula (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5185": {
+   "name": "Keitele",
+   "city_label": "Keitele (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5186": {
+   "name": "Kerimaki",
+   "city_label": "Kerimaki (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5187": {
+   "name": "Kesalahti",
+   "city_label": "Kesalahti (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5188": {
+   "name": "Kitee",
+   "city_label": "Kitee (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5189": {
+   "name": "Kiuruvesi",
+   "city_label": "Kiuruvesi (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5190": {
+   "name": "Koli",
+   "city_label": "Koli (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5191": {
+   "name": "Konnevesi",
+   "city_label": "Konnevesi (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5192": {
+   "name": "Kovero",
+   "city_label": "Kovero (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5193": {
+   "name": "Kuopio",
+   "city_label": "Kuopio (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5194": {
+   "name": "Kuortti",
+   "city_label": "Kuortti (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5195": {
+   "name": "Lapinlahti",
+   "city_label": "Lapinlahti (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5196": {
+   "name": "Leppavirta",
+   "city_label": "Leppavirta (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5197": {
+   "name": "Lieksa",
+   "city_label": "Lieksa (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5198": {
+   "name": "Liperi",
+   "city_label": "Liperi (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5199": {
+   "name": "Maaninka",
+   "city_label": "Maaninka (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5200": {
+   "name": "Maanselka",
+   "city_label": "Maanselka (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5201": {
+   "name": "Mantyharju",
+   "city_label": "Mantyharju (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5202": {
+   "name": "Mikkeli",
+   "city_label": "Mikkeli (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5203": {
+   "name": "Nalantö",
+   "city_label": "Nalantö (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5204": {
+   "name": "Nilsia",
+   "city_label": "Nilsia (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5205": {
+   "name": "Nurmes",
+   "city_label": "Nurmes (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5206": {
+   "name": "Outokumpu",
+   "city_label": "Outokumpu (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5207": {
+   "name": "Pieksamaki",
+   "city_label": "Pieksamaki (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5208": {
+   "name": "Polvijarvi",
+   "city_label": "Polvijarvi (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5209": {
+   "name": "Puumala",
+   "city_label": "Puumala (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5210": {
+   "name": "Pyhaselka",
+   "city_label": "Pyhaselka (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5211": {
+   "name": "Rantasalmi",
+   "city_label": "Rantasalmi (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5212": {
+   "name": "Rautavaara",
+   "city_label": "Rautavaara (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5213": {
+   "name": "Ristiina",
+   "city_label": "Ristiina (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5214": {
+   "name": "Savonlinna",
+   "city_label": "Savonlinna (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5215": {
+   "name": "Savonranta",
+   "city_label": "Savonranta (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5216": {
+   "name": "Siilinjarvi",
+   "city_label": "Siilinjarvi (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5217": {
+   "name": "Sonkajarvi",
+   "city_label": "Sonkajarvi (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5218": {
+   "name": "Sulkava",
+   "city_label": "Sulkava (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5219": {
+   "name": "Rautalampi",
+   "city_label": "Rautalampi (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5220": {
+   "name": "Tervo",
+   "city_label": "Tervo (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5221": {
+   "name": "Tohmajarvi",
+   "city_label": "Tohmajarvi (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5222": {
+   "name": "Uukuniemen",
+   "city_label": "Uukuniemen (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5223": {
+   "name": "Vaaraslahti",
+   "city_label": "Vaaraslahti (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5224": {
+   "name": "Valtimo",
+   "city_label": "Valtimo (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5225": {
+   "name": "Varkaus",
+   "city_label": "Varkaus (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5226": {
+   "name": "Vesanto",
+   "city_label": "Vesanto (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5227": {
+   "name": "Vierema",
+   "city_label": "Vierema (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5228": {
+   "name": "Virtasalmi",
+   "city_label": "Virtasalmi (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5229": {
+   "name": "Ahtari",
+   "city_label": "Ahtari (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5230": {
+   "name": "Alaharma",
+   "city_label": "Alaharma (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5231": {
+   "name": "Alajarvi",
+   "city_label": "Alajarvi (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5232": {
+   "name": "Alastaro",
+   "city_label": "Alastaro (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5233": {
+   "name": "Alavus",
+   "city_label": "Alavus (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5234": {
+   "name": "Aura",
+   "city_label": "Aura (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5235": {
+   "name": "Björköby",
+   "city_label": "Björköby (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5236": {
+   "name": "Somero",
+   "city_label": "Somero (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5237": {
+   "name": "Hankasalmi",
+   "city_label": "Hankasalmi (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5238": {
+   "name": "Humppila",
+   "city_label": "Humppila (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5239": {
+   "name": "İsojoki",
+   "city_label": "İsojoki (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5240": {
+   "name": "İsokyrö",
+   "city_label": "İsokyrö (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5241": {
+   "name": "Jalasjarvi",
+   "city_label": "Jalasjarvi (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5242": {
+   "name": "Jamsa",
+   "city_label": "Jamsa (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5243": {
+   "name": "Jamsankoski",
+   "city_label": "Jamsankoski (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5244": {
+   "name": "Jeppo",
+   "city_label": "Jeppo (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5245": {
+   "name": "Jyvaskyla",
+   "city_label": "Jyvaskyla (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5246": {
+   "name": "Kannonkoski",
+   "city_label": "Kannonkoski (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5247": {
+   "name": "Kannus",
+   "city_label": "Kannus (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5248": {
+   "name": "Karstula",
+   "city_label": "Karstula (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5249": {
+   "name": "Karvia",
+   "city_label": "Karvia (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5250": {
+   "name": "Kauhajoki",
+   "city_label": "Kauhajoki (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5251": {
+   "name": "Kauhava",
+   "city_label": "Kauhava (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5252": {
+   "name": "Kaustinen",
+   "city_label": "Kaustinen (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5253": {
+   "name": "Kihniö",
+   "city_label": "Kihniö (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5254": {
+   "name": "Kiikala",
+   "city_label": "Kiikala (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5255": {
+   "name": "Kiikka",
+   "city_label": "Kiikka (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5256": {
+   "name": "Kimito",
+   "city_label": "Kimito (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5257": {
+   "name": "Kinnula",
+   "city_label": "Kinnula (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5258": {
+   "name": "Kivijarvi",
+   "city_label": "Kivijarvi (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5259": {
+   "name": "Kokkola (Gamlakarleby)",
+   "city_label": "Kokkola (Gamlakarleby) (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5260": {
+   "name": "Konginkangas",
+   "city_label": "Konginkangas (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5261": {
+   "name": "Korpilahti",
+   "city_label": "Korpilahti (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5262": {
+   "name": "Korpo",
+   "city_label": "Korpo (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5263": {
+   "name": "Korsnas",
+   "city_label": "Korsnas (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5264": {
+   "name": "Kortesjarvi",
+   "city_label": "Kortesjarvi (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5265": {
+   "name": "Kuhmalahti",
+   "city_label": "Kuhmalahti (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5266": {
+   "name": "Kuorevesi",
+   "city_label": "Kuorevesi (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5267": {
+   "name": "Kurikka",
+   "city_label": "Kurikka (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5268": {
+   "name": "Kuru",
+   "city_label": "Kuru (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5269": {
+   "name": "Taivassalo",
+   "city_label": "Taivassalo (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5270": {
+   "name": "Kyyjarvi",
+   "city_label": "Kyyjarvi (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5271": {
+   "name": "Längelmäen kirkonkylä",
+   "city_label": "Längelmäen kirkonkylä (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5272": {
+   "name": "Lappajarvi",
+   "city_label": "Lappajarvi (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5273": {
+   "name": "Lappfjard",
+   "city_label": "Lappfjard (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5274": {
+   "name": "Lappi",
+   "city_label": "Lappi (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5275": {
+   "name": "Lapua",
+   "city_label": "Lapua (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5276": {
+   "name": "Larsmo",
+   "city_label": "Larsmo (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5277": {
+   "name": "Laukaa",
+   "city_label": "Laukaa (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5278": {
+   "name": "Lavia",
+   "city_label": "Lavia (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5279": {
+   "name": "Lehtimaki",
+   "city_label": "Lehtimaki (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5280": {
+   "name": "Leivonmaki",
+   "city_label": "Leivonmaki (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5281": {
+   "name": "Lestijarvi",
+   "city_label": "Lestijarvi (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5282": {
+   "name": "Lokalahti",
+   "city_label": "Lokalahti (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5283": {
+   "name": "Luhanka",
+   "city_label": "Luhanka (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5284": {
+   "name": "Mantyluoto",
+   "city_label": "Mantyluoto (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5285": {
+   "name": "Masku",
+   "city_label": "Masku (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5286": {
+   "name": "Merikarvia",
+   "city_label": "Merikarvia (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5287": {
+   "name": "Molpe",
+   "city_label": "Molpe (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5288": {
+   "name": "Möksy",
+   "city_label": "Möksy (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5289": {
+   "name": "Multia",
+   "city_label": "Multia (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5290": {
+   "name": "Muurame",
+   "city_label": "Muurame (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5291": {
+   "name": "Naantali",
+   "city_label": "Naantali (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5292": {
+   "name": "Nakkila",
+   "city_label": "Nakkila (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5293": {
+   "name": "Noormarkku",
+   "city_label": "Noormarkku (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5294": {
+   "name": "Nurmo",
+   "city_label": "Nurmo (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5295": {
+   "name": "Pensala",
+   "city_label": "Pensala (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5296": {
+   "name": "Orivesi",
+   "city_label": "Orivesi (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5297": {
+   "name": "Knösen",
+   "city_label": "Knösen (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5298": {
+   "name": "Padasjoki",
+   "city_label": "Padasjoki (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5299": {
+   "name": "Palkane",
+   "city_label": "Palkane (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5300": {
+   "name": "Pargas",
+   "city_label": "Pargas (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5301": {
+   "name": "Parkano",
+   "city_label": "Parkano (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5302": {
+   "name": "Perho",
+   "city_label": "Perho (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5303": {
+   "name": "Pernio",
+   "city_label": "Pernio (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5304": {
+   "name": "Petajavesi",
+   "city_label": "Petajavesi (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5305": {
+   "name": "Pihlajavesi",
+   "city_label": "Pihlajavesi (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5306": {
+   "name": "Pihtipudas",
+   "city_label": "Pihtipudas (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5307": {
+   "name": "Terälahti",
+   "city_label": "Terälahti (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5308": {
+   "name": "Pomarkku",
+   "city_label": "Pomarkku (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5309": {
+   "name": "Pori",
+   "city_label": "Pori (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5310": {
+   "name": "Pöytya",
+   "city_label": "Pöytya (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5311": {
+   "name": "Pylkönmaki",
+   "city_label": "Pylkönmaki (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5312": {
+   "name": "Raisio",
+   "city_label": "Raisio (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5313": {
+   "name": "Eura",
+   "city_label": "Eura (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5314": {
+   "name": "Renko",
+   "city_label": "Renko (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5315": {
+   "name": "Replot",
+   "city_label": "Replot (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5316": {
+   "name": "Reposaari",
+   "city_label": "Reposaari (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5317": {
+   "name": "Ruovesi",
+   "city_label": "Ruovesi (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5318": {
+   "name": "Saarijarvi",
+   "city_label": "Saarijarvi (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5319": {
+   "name": "Seinajoki",
+   "city_label": "Seinajoki (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5320": {
+   "name": "Sideby",
+   "city_label": "Sideby (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5321": {
+   "name": "Skaftung",
+   "city_label": "Skaftung (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5322": {
+   "name": "Skinnarvik",
+   "city_label": "Skinnarvik (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5323": {
+   "name": "Soini",
+   "city_label": "Soini (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5324": {
+   "name": "Sumiainen",
+   "city_label": "Sumiainen (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5325": {
+   "name": "Tampere",
+   "city_label": "Tampere (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5326": {
+   "name": "Teisko",
+   "city_label": "Teisko (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5327": {
+   "name": "Toholampi",
+   "city_label": "Toholampi (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5328": {
+   "name": "Toivakka",
+   "city_label": "Toivakka (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5329": {
+   "name": "Töjby",
+   "city_label": "Töjby (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5330": {
+   "name": "Töysa",
+   "city_label": "Töysa (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5331": {
+   "name": "Turku (Abo)",
+   "city_label": "Turku (Abo) (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5332": {
+   "name": "Tuulos",
+   "city_label": "Tuulos (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5333": {
+   "name": "Ullava",
+   "city_label": "Ullava (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5334": {
+   "name": "Ulvila",
+   "city_label": "Ulvila (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5335": {
+   "name": "Urjala",
+   "city_label": "Urjala (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5336": {
+   "name": "Uurainen",
+   "city_label": "Uurainen (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5337": {
+   "name": "Uusikaupunki (Nystad)",
+   "city_label": "Uusikaupunki (Nystad) (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5338": {
+   "name": "Vammala",
+   "city_label": "Vammala (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5339": {
+   "name": "Viitasaari",
+   "city_label": "Viitasaari (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5340": {
+   "name": "Vilppula",
+   "city_label": "Vilppula (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5341": {
+   "name": "Vimpeli",
+   "city_label": "Vimpeli (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5342": {
+   "name": "Ylöjarvi",
+   "city_label": "Ylöjarvi (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5343": {
+   "name": "Yxpila",
+   "city_label": "Yxpila (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5344": {
+   "name": "Alakyla",
+   "city_label": "Alakyla (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5345": {
+   "name": "Alaniemi",
+   "city_label": "Alaniemi (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5346": {
+   "name": "Enontekiö",
+   "city_label": "Enontekiö (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5347": {
+   "name": "İnari",
+   "city_label": "İnari (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5348": {
+   "name": "İvalo",
+   "city_label": "İvalo (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5349": {
+   "name": "Jaatila",
+   "city_label": "Jaatila (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5350": {
+   "name": "Jeesiö",
+   "city_label": "Jeesiö (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5351": {
+   "name": "Joutsijarvi",
+   "city_label": "Joutsijarvi (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5352": {
+   "name": "Kairala",
+   "city_label": "Kairala (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5353": {
+   "name": "Kallunki",
+   "city_label": "Kallunki (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5354": {
+   "name": "Karigasniemi",
+   "city_label": "Karigasniemi (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5355": {
+   "name": "Kaukonen",
+   "city_label": "Kaukonen (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5356": {
+   "name": "Kauliranta",
+   "city_label": "Kauliranta (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5357": {
+   "name": "Kelloselka",
+   "city_label": "Kelloselka (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5358": {
+   "name": "Kemi",
+   "city_label": "Kemi (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5359": {
+   "name": "Kemijarvi",
+   "city_label": "Kemijarvi (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5360": {
+   "name": "Kittila",
+   "city_label": "Kittila (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5361": {
+   "name": "Koivu",
+   "city_label": "Koivu (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5362": {
+   "name": "Koivuluoto",
+   "city_label": "Koivuluoto (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5363": {
+   "name": "Kolari",
+   "city_label": "Kolari (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5364": {
+   "name": "Kotala",
+   "city_label": "Kotala (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5365": {
+   "name": "Kuttanen",
+   "city_label": "Kuttanen (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5366": {
+   "name": "Kiistala",
+   "city_label": "Kiistala (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5367": {
+   "name": "Laanila",
+   "city_label": "Laanila (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5368": {
+   "name": "Lohijarvi",
+   "city_label": "Lohijarvi (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5369": {
+   "name": "Lokka",
+   "city_label": "Lokka (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5370": {
+   "name": "Luusua",
+   "city_label": "Luusua (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5371": {
+   "name": "Madetkoski",
+   "city_label": "Madetkoski (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5372": {
+   "name": "Marraskoski",
+   "city_label": "Marraskoski (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5373": {
+   "name": "Martti",
+   "city_label": "Martti (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5374": {
+   "name": "Törma",
+   "city_label": "Törma (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5375": {
+   "name": "Meltaus",
+   "city_label": "Meltaus (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5376": {
+   "name": "Meltosjarvi",
+   "city_label": "Meltosjarvi (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5377": {
+   "name": "Moskuvaara",
+   "city_label": "Moskuvaara (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5378": {
+   "name": "Muonio",
+   "city_label": "Muonio (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5379": {
+   "name": "Mustola",
+   "city_label": "Mustola (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5380": {
+   "name": "Muurola",
+   "city_label": "Muurola (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5381": {
+   "name": "Nakkala",
+   "city_label": "Nakkala (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5382": {
+   "name": "Yli-Nampa",
+   "city_label": "Yli-Nampa (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5383": {
+   "name": "Narkaus",
+   "city_label": "Narkaus (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5384": {
+   "name": "Nuupas",
+   "city_label": "Nuupas (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5385": {
+   "name": "Orajarvi",
+   "city_label": "Orajarvi (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5386": {
+   "name": "Paakkola",
+   "city_label": "Paakkola (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5387": {
+   "name": "Palojarvi",
+   "city_label": "Palojarvi (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5388": {
+   "name": "Pasmajarvi",
+   "city_label": "Pasmajarvi (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5389": {
+   "name": "Pekkala",
+   "city_label": "Pekkala (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5390": {
+   "name": "Pelkosenniemi",
+   "city_label": "Pelkosenniemi (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5391": {
+   "name": "Pello",
+   "city_label": "Pello (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5392": {
+   "name": "Peltovuoma",
+   "city_label": "Peltovuoma (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5393": {
+   "name": "Pera-Posio (Peraposio)",
+   "city_label": "Pera-Posio (Peraposio) (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5394": {
+   "name": "Petkula",
+   "city_label": "Petkula (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5395": {
+   "name": "Peurasuvanto",
+   "city_label": "Peurasuvanto (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5396": {
+   "name": "Pirttikoski",
+   "city_label": "Pirttikoski (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5397": {
+   "name": "Pokka",
+   "city_label": "Pokka (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5398": {
+   "name": "Portimo",
+   "city_label": "Portimo (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5399": {
+   "name": "Raistakka",
+   "city_label": "Raistakka (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5400": {
+   "name": "Ranua",
+   "city_label": "Ranua (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5401": {
+   "name": "Rattosjarvi",
+   "city_label": "Rattosjarvi (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5402": {
+   "name": "Riipi",
+   "city_label": "Riipi (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5403": {
+   "name": "Rovaniemi",
+   "city_label": "Rovaniemi (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5404": {
+   "name": "Saarenkyla",
+   "city_label": "Saarenkyla (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5405": {
+   "name": "Saija",
+   "city_label": "Saija (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5406": {
+   "name": "Salmivaara",
+   "city_label": "Salmivaara (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5407": {
+   "name": "Saunavaara",
+   "city_label": "Saunavaara (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5408": {
+   "name": "Savukoski",
+   "city_label": "Savukoski (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5409": {
+   "name": "Sieppijarvi",
+   "city_label": "Sieppijarvi (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5410": {
+   "name": "Sinetta",
+   "city_label": "Sinetta (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5411": {
+   "name": "Sirkka",
+   "city_label": "Sirkka (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5412": {
+   "name": "Sirniö",
+   "city_label": "Sirniö (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5413": {
+   "name": "Sodankyla",
+   "city_label": "Sodankyla (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5414": {
+   "name": "Tankapirtti",
+   "city_label": "Tankapirtti (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5415": {
+   "name": "Tepasto",
+   "city_label": "Tepasto (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5416": {
+   "name": "Tervola",
+   "city_label": "Tervola (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5417": {
+   "name": "Tornio (Tornea)",
+   "city_label": "Tornio (Tornea) (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5418": {
+   "name": "Törmanen",
+   "city_label": "Törmanen (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5419": {
+   "name": "Turtola",
+   "city_label": "Turtola (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5420": {
+   "name": "Unari",
+   "city_label": "Unari (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5421": {
+   "name": "Vaattojarvi",
+   "city_label": "Vaattojarvi (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5422": {
+   "name": "Viantie",
+   "city_label": "Viantie (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5423": {
+   "name": "Vuostimo",
+   "city_label": "Vuostimo (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5424": {
+   "name": "Vuotso",
+   "city_label": "Vuotso (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5425": {
+   "name": "Ylitornio",
+   "city_label": "Ylitornio (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5426": {
+   "name": "Jappila",
+   "city_label": "Jappila (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5427": {
+   "name": "Anttola",
+   "city_label": "Anttola (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5428": {
+   "name": "Haukivuori",
+   "city_label": "Haukivuori (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5429": {
+   "name": "Hiltula",
+   "city_label": "Hiltula (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5430": {
+   "name": "Suomenniemi",
+   "city_label": "Suomenniemi (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5431": {
+   "name": "Kangaslampi",
+   "city_label": "Kangaslampi (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5432": {
+   "name": "Kantala",
+   "city_label": "Kantala (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5433": {
+   "name": "Ala-Vuokki",
+   "city_label": "Ala-Vuokki (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5434": {
+   "name": "Ammansaari",
+   "city_label": "Ammansaari (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5435": {
+   "name": "Haapajarvi",
+   "city_label": "Haapajarvi (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5436": {
+   "name": "Haapavesi",
+   "city_label": "Haapavesi (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5437": {
+   "name": "Haukipudas",
+   "city_label": "Haukipudas (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5438": {
+   "name": "Hirvasniemi",
+   "city_label": "Hirvasniemi (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5439": {
+   "name": "Hossa",
+   "city_label": "Hossa (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5440": {
+   "name": "Hyrynsalmi",
+   "city_label": "Hyrynsalmi (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5441": {
+   "name": "Joukokyla",
+   "city_label": "Joukokyla (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5442": {
+   "name": "Juntusranta",
+   "city_label": "Juntusranta (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5443": {
+   "name": "Kalajoki",
+   "city_label": "Kalajoki (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5444": {
+   "name": "Kangas",
+   "city_label": "Kangas (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5445": {
+   "name": "Karsamaki",
+   "city_label": "Karsamaki (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5446": {
+   "name": "Kestila",
+   "city_label": "Kestila (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5447": {
+   "name": "Kiiminki",
+   "city_label": "Kiiminki (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5448": {
+   "name": "Kilpua",
+   "city_label": "Kilpua (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5449": {
+   "name": "Kontiomaki",
+   "city_label": "Kontiomaki (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5450": {
+   "name": "Kuhmo",
+   "city_label": "Kuhmo (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5451": {
+   "name": "Pudasjarvi",
+   "city_label": "Pudasjarvi (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5452": {
+   "name": "Salla",
+   "city_label": "Salla (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5453": {
+   "name": "Maikku",
+   "city_label": "Maikku (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5454": {
+   "name": "Lentiira",
+   "city_label": "Lentiira (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5455": {
+   "name": "Liminka",
+   "city_label": "Liminka (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5456": {
+   "name": "Lumijoki",
+   "city_label": "Lumijoki (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5457": {
+   "name": "Mainuanvaara",
+   "city_label": "Mainuanvaara (Oulun lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5458": {
+   "name": "Metsakyla",
+   "city_label": "Metsakyla (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5459": {
+   "name": "Oijusluoma",
+   "city_label": "Oijusluoma (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5460": {
+   "name": "Nivala",
+   "city_label": "Nivala (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5461": {
+   "name": "Oijarvi",
+   "city_label": "Oijarvi (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5462": {
+   "name": "Olhava",
+   "city_label": "Olhava (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5463": {
+   "name": "Oulu",
+   "city_label": "Oulu (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5464": {
+   "name": "Oulunsalo",
+   "city_label": "Oulunsalo (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5465": {
+   "name": "Paavola",
+   "city_label": "Paavola (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5466": {
+   "name": "Paltamo",
+   "city_label": "Paltamo (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5467": {
+   "name": "Pateniemi",
+   "city_label": "Pateniemi (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5468": {
+   "name": "Poussu",
+   "city_label": "Poussu (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5469": {
+   "name": "Keminmaa",
+   "city_label": "Keminmaa (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5470": {
+   "name": "Piippola",
+   "city_label": "Piippola (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5471": {
+   "name": "Puolanka",
+   "city_label": "Puolanka (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5472": {
+   "name": "Pyhajarvi",
+   "city_label": "Pyhajarvi (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5473": {
+   "name": "Pyhajoki",
+   "city_label": "Pyhajoki (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5474": {
+   "name": "Pyhanta",
+   "city_label": "Pyhanta (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5475": {
+   "name": "Raahe",
+   "city_label": "Raahe (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5476": {
+   "name": "Rantsila",
+   "city_label": "Rantsila (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5477": {
+   "name": "Karhulankyla",
+   "city_label": "Karhulankyla (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5478": {
+   "name": "Saloinen",
+   "city_label": "Saloinen (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5479": {
+   "name": "Saraisniemi",
+   "city_label": "Saraisniemi (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5480": {
+   "name": "Pyoria",
+   "city_label": "Pyoria (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5481": {
+   "name": "Sievi",
+   "city_label": "Sievi (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5482": {
+   "name": "Soso",
+   "city_label": "Soso (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5483": {
+   "name": "Suomussalmi",
+   "city_label": "Suomussalmi (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5484": {
+   "name": "Taivalkoski",
+   "city_label": "Taivalkoski (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5485": {
+   "name": "Temmes",
+   "city_label": "Temmes (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5486": {
+   "name": "Toppilansaari",
+   "city_label": "Toppilansaari (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5487": {
+   "name": "Tupos",
+   "city_label": "Tupos (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5488": {
+   "name": "Utajarvi",
+   "city_label": "Utajarvi (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5489": {
+   "name": "Vaala",
+   "city_label": "Vaala (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5490": {
+   "name": "Varjakka",
+   "city_label": "Varjakka (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5491": {
+   "name": "Vihanti",
+   "city_label": "Vihanti (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5492": {
+   "name": "Vuokatti",
+   "city_label": "Vuokatti (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5493": {
+   "name": "Vuolijoki",
+   "city_label": "Vuolijoki (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5494": {
+   "name": "Ylikiiminki",
+   "city_label": "Ylikiiminki (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5495": {
+   "name": "Ylivieska",
+   "city_label": "Ylivieska (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5496": {
+   "name": "Yppari",
+   "city_label": "Yppari (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5497": {
+   "name": "Ailuoto",
+   "city_label": "Ailuoto (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5498": {
+   "name": "Taalintehdas (Dalsbruk)",
+   "city_label": "Taalintehdas (Dalsbruk) (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5499": {
+   "name": "Dragsfjard",
+   "city_label": "Dragsfjard (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5500": {
+   "name": "İniö",
+   "city_label": "İniö (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5501": {
+   "name": "Jamijarvi",
+   "city_label": "Jamijarvi (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5502": {
+   "name": "Pohjansaha",
+   "city_label": "Pohjansaha (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5503": {
+   "name": "Brandö",
+   "city_label": "Brandö (Åland / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5504": {
+   "name": "Askola",
+   "city_label": "Askola (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5506": {
+   "name": "Fagervik",
+   "city_label": "Fagervik (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5508": {
+   "name": "Helsinki",
+   "city_label": "Helsinki (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5509": {
+   "name": "Inkoo",
+   "city_label": "Inkoo (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5510": {
+   "name": "Fladan",
+   "city_label": "Fladan (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5511": {
+   "name": "Tynkkinen",
+   "city_label": "Tynkkinen (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5512": {
+   "name": "Österhankmo",
+   "city_label": "Österhankmo (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5513": {
+   "name": "Harkmeri",
+   "city_label": "Harkmeri (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5514": {
+   "name": "Luoto (Larsmo)",
+   "city_label": "Luoto (Larsmo) (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5515": {
+   "name": "Uusikaarlepyy (Nykarleby)",
+   "city_label": "Uusikaarlepyy (Nykarleby) (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5516": {
+   "name": "Jutas",
+   "city_label": "Jutas (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5517": {
+   "name": "Kaskinen (Kaskö)",
+   "city_label": "Kaskinen (Kaskö) (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5518": {
+   "name": "Kristiinankaupunki (Kristinestad)",
+   "city_label": "Kristiinankaupunki (Kristinestad) (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5519": {
+   "name": "Vaasa (Vasa)",
+   "city_label": "Vaasa (Vasa) (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62143": {
+   "name": "Kajaani",
+   "city_label": "Kajaani (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "63925": {
+   "name": "Simo",
+   "city_label": "Simo (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "63926": {
+   "name": "İi",
+   "city_label": "İi (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "63927": {
+   "name": "Kuivaniemi",
+   "city_label": "Kuivaniemi (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "63928": {
+   "name": "Konttila",
+   "city_label": "Konttila (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "63929": {
+   "name": "Kuusamo",
+   "city_label": "Kuusamo (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "63930": {
+   "name": "Posio",
+   "city_label": "Posio (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "63931": {
+   "name": "Telkkala",
+   "city_label": "Telkkala (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "63932": {
+   "name": "Asmunti",
+   "city_label": "Asmunti (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "63933": {
+   "name": "Kokkokyla",
+   "city_label": "Kokkokyla (Oulun lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "63934": {
+   "name": "Yli-Siurua",
+   "city_label": "Yli-Siurua (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "63935": {
+   "name": "Liekola",
+   "city_label": "Liekola (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "64217": {
+   "name": "Lempaala",
+   "city_label": "Lempaala (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "64218": {
+   "name": "Vesilahti",
+   "city_label": "Vesilahti (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "64219": {
+   "name": "Valkeakoski",
+   "city_label": "Valkeakoski (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "64220": {
+   "name": "Akaa",
+   "city_label": "Akaa (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "64221": {
+   "name": "Kangasala",
+   "city_label": "Kangasala (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "64222": {
+   "name": "Nokia",
+   "city_label": "Nokia (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "64223": {
+   "name": "Pirkkala",
+   "city_label": "Pirkkala (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "64224": {
+   "name": "Kuortane",
+   "city_label": "Kuortane (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "64225": {
+   "name": "Veteli",
+   "city_label": "Veteli  (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "64226": {
+   "name": "Halsua",
+   "city_label": "Halsua (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "64227": {
+   "name": "Himanka",
+   "city_label": "Himanka (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "64228": {
+   "name": "Kruunupyy (Kronoby)",
+   "city_label": "Kruunupyy (Kronoby) (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "64229": {
+   "name": "Pietarsaari (Jakobstad)",
+   "city_label": "Pietarsaari (Jakobstad) (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "64230": {
+   "name": "Pedersören Kunta (Pedersöre)",
+   "city_label": "Pedersören Kunta (Pedersöre) (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "64231": {
+   "name": "Evijarvi",
+   "city_label": "Evijarvi (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "64232": {
+   "name": "Oravainen (Oravais)",
+   "city_label": "Oravainen (Oravais) (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "64233": {
+   "name": "Vöyri",
+   "city_label": "Vöyri (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "64234": {
+   "name": "Mustasaari (Korsholm)",
+   "city_label": "Mustasaari (Korsholm) (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "64235": {
+   "name": "Vahakyrö",
+   "city_label": "Vahakyrö (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "64416": {
+   "name": "Raakkyla",
+   "city_label": "Raakkyla (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "64418": {
+   "name": "Porvoo",
+   "city_label": "Porvoo (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65245": {
+   "name": "Luvia",
+   "city_label": "Luvia (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65246": {
+   "name": "Eurajoki",
+   "city_label": "Eurajoki (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65247": {
+   "name": "Rauma",
+   "city_label": "Rauma (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65248": {
+   "name": "Siikainen",
+   "city_label": "Siikainen (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65249": {
+   "name": "Narpes Narpiö",
+   "city_label": "Narpes Narpiö (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "65250": {
+   "name": "Sakyla",
+   "city_label": "Sakyla (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66816": {
+   "name": "Kontiolahti",
+   "city_label": "Kontiolahti (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66817": {
+   "name": "Tuusniemi",
+   "city_label": "Tuusniemi (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66818": {
+   "name": "Pielavesi",
+   "city_label": "Pielavesi (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66819": {
+   "name": "Ilomantsi",
+   "city_label": "Ilomantsi (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66820": {
+   "name": "Varpaisjarvi",
+   "city_label": "Varpaisjarvi (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66821": {
+   "name": "Joroinen",
+   "city_label": "Joroinen (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66822": {
+   "name": "Iisalmi",
+   "city_label": "Iisalmi (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66823": {
+   "name": "Tutjunniemi",
+   "city_label": "Tutjunniemi (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66824": {
+   "name": "Lehmo",
+   "city_label": "Lehmo (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66827": {
+   "name": "Punkaharju",
+   "city_label": "Punkaharju (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66828": {
+   "name": "Pertunmaa",
+   "city_label": "Pertunmaa (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66829": {
+   "name": "Hirvensalmi",
+   "city_label": "Hirvensalmi (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66830": {
+   "name": "Oravisalo",
+   "city_label": "Oravisalo (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66831": {
+   "name": "Liperinsalo",
+   "city_label": "Liperinsalo (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66832": {
+   "name": "Ounasjoki",
+   "city_label": "Ounasjoki (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66833": {
+   "name": "Saariselka",
+   "city_label": "Saariselka (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66834": {
+   "name": "Palkisoja",
+   "city_label": "Palkisoja (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66835": {
+   "name": "Huuhkaja",
+   "city_label": "Huuhkaja (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66836": {
+   "name": "Keuruu",
+   "city_label": "Keuruu (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66837": {
+   "name": "Jarvenpaa",
+   "city_label": "Jarvenpaa (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66838": {
+   "name": "Tuusula",
+   "city_label": "Tuusula (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66839": {
+   "name": "Nurmijarvi",
+   "city_label": "Nurmijarvi (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66840": {
+   "name": "Sipoo (Sibbo)",
+   "city_label": "Sipoo (Sibbo) (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66841": {
+   "name": "Uusimaa",
+   "city_label": "Uusimaa (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66861": {
+   "name": "Nastola",
+   "city_label": "Nastola (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66862": {
+   "name": "Hollola",
+   "city_label": "Hollola (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66863": {
+   "name": "Hameenkoski",
+   "city_label": "Hameenkoski (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66864": {
+   "name": "Janakkala",
+   "city_label": "Janakkala (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66865": {
+   "name": "Forssa",
+   "city_label": "Forssa (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66866": {
+   "name": "Salo",
+   "city_label": "Salo (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "67080": {
+   "name": "Utsjoki",
+   "city_label": "Utsjoki (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "67081": {
+   "name": "Siikalatva",
+   "city_label": "Siikalatva (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "67082": {
+   "name": "Reisjarvi",
+   "city_label": "Reisjarvi (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "67083": {
+   "name": "Alavieska",
+   "city_label": "Alavieska (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "67084": {
+   "name": "Merijarvi",
+   "city_label": "Merijarvi (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "67085": {
+   "name": "Oulainen",
+   "city_label": "Oulainen (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "67086": {
+   "name": "Siikajoki",
+   "city_label": "Siikajoki (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "67087": {
+   "name": "Kempele",
+   "city_label": "Kempele (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "67088": {
+   "name": "Yli-Ii",
+   "city_label": "Yli-Ii (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "67089": {
+   "name": "Sotkamo",
+   "city_label": "Sotkamo (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "67090": {
+   "name": "Aanekoski",
+   "city_label": "Aanekoski (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "67091": {
+   "name": "Ruokolahti",
+   "city_label": "Ruokolahti (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "67092": {
+   "name": "Ruokolahti",
+   "city_label": "Ruokolahti (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "67093": {
+   "name": "Virrat",
+   "city_label": "Virrat (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "67094": {
+   "name": "Juupajoki",
+   "city_label": "Juupajoki (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "67095": {
+   "name": "Kuhmoinen",
+   "city_label": "Kuhmoinen (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "67096": {
+   "name": "Orimattila",
+   "city_label": "Orimattila (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "67097": {
+   "name": "Siuntio",
+   "city_label": "Siuntio (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "67098": {
+   "name": "Kirkkonummi",
+   "city_label": "Kirkkonummi (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "67099": {
+   "name": "Karjalohja",
+   "city_label": "Karjalohja (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "67100": {
+   "name": "Tammela",
+   "city_label": "Tammela (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "67640": {
+   "name": "Kankaanpaa",
+   "city_label": "Kankaanpaa (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "67641": {
+   "name": "Joutsa",
+   "city_label": "Joutsa (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68213": {
+   "name": "Kemiönsaari (Kimitoön)",
+   "city_label": "Kemiönsaari (Kimitoön) (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68214": {
+   "name": "Sauvo",
+   "city_label": "Sauvo (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68215": {
+   "name": "Kaarina",
+   "city_label": "Kaarina (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68216": {
+   "name": "Paimio",
+   "city_label": "Paimio (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68217": {
+   "name": "Lieto",
+   "city_label": "Lieto (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68218": {
+   "name": "Lansi-Turunmaa (Västaboland)",
+   "city_label": "Lansi-Turunmaa (Västaboland) (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68219": {
+   "name": "Rusko",
+   "city_label": "Rusko (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68220": {
+   "name": "Marttila",
+   "city_label": "Marttila (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68221": {
+   "name": "Tarvasjoki",
+   "city_label": "Tarvasjoki (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68222": {
+   "name": "Loimaa",
+   "city_label": "Loimaa (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68223": {
+   "name": "Koski Tl",
+   "city_label": "Koski Tl (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68224": {
+   "name": "Ypaja",
+   "city_label": "Ypaja (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68225": {
+   "name": "Jokioinen",
+   "city_label": "Jokioinen (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68226": {
+   "name": "Nummi-Pusula",
+   "city_label": "Nummi-Pusula (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68227": {
+   "name": "Mynamaki",
+   "city_label": "Mynamaki (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68228": {
+   "name": "Kustavi",
+   "city_label": "Kustavi (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68229": {
+   "name": "Vehmaa",
+   "city_label": "Vehmaa (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68230": {
+   "name": "Laitila",
+   "city_label": "Laitila (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68231": {
+   "name": "Pyharanta",
+   "city_label": "Pyharanta (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68232": {
+   "name": "Köyliö",
+   "city_label": "Köyliö (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68233": {
+   "name": "Huittinen",
+   "city_label": "Huittinen (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68234": {
+   "name": "Sastamala",
+   "city_label": "Sastamala (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68235": {
+   "name": "Kokemaki",
+   "city_label": "Kokemaki (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68236": {
+   "name": "Harjavalta",
+   "city_label": "Harjavalta (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68237": {
+   "name": "Honkajoki",
+   "city_label": "Honkajoki (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68238": {
+   "name": "Karijoki",
+   "city_label": "Karijoki (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68239": {
+   "name": "Teuva",
+   "city_label": "Teuva (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68240": {
+   "name": "Maahlahti (Malax)",
+   "city_label": "Maahlahti (Malax)  (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68241": {
+   "name": "Laihia",
+   "city_label": "Laihia (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68242": {
+   "name": "İlmajoki",
+   "city_label": "İlmajoki (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "68984": {
+   "name": "Suolahti",
+   "city_label": "Suolahti (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "72910": {
+   "name": "Pattijoki",
+   "city_label": "Pattijoki (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "72911": {
+   "name": "Muhos",
+   "city_label": "Muhos (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "72912": {
+   "name": "Jaalihalli",
+   "city_label": "Jaalihalli (Oulun Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "74332": {
+   "name": "Houtskar",
+   "city_label": "Houtskar (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "74333": {
+   "name": "Rymattyla",
+   "city_label": "Rymattyla (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "74334": {
+   "name": "Parainen",
+   "city_label": "Parainen (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "74335": {
+   "name": "Piikkiö",
+   "city_label": "Piikkiö (Länsi-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "74336": {
+   "name": "Karjaa",
+   "city_label": "Karjaa (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "74337": {
+   "name": "Klaukkala",
+   "city_label": "Klaukkala (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "74338": {
+   "name": "Leppavaara",
+   "city_label": "Leppavaara (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "74339": {
+   "name": "Anjalankoski",
+   "city_label": "Anjalankoski (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "74340": {
+   "name": "Koria",
+   "city_label": "Koria (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "74341": {
+   "name": "Elimäki",
+   "city_label": "Elimäki (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "74342": {
+   "name": "Myllykoski",
+   "city_label": "Myllykoski (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "74343": {
+   "name": "Kouvola",
+   "city_label": "Kouvola (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "74344": {
+   "name": "Kausala",
+   "city_label": "Kausala (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "74345": {
+   "name": "Valkeala",
+   "city_label": "Valkeala (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "74346": {
+   "name": "Hammarland",
+   "city_label": "Hammarland (Åland / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "74347": {
+   "name": "Jomala",
+   "city_label": "Jomala (Åland / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "74348": {
+   "name": "Sund",
+   "city_label": "Sund (Åland / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "74349": {
+   "name": "Saltvik",
+   "city_label": "Saltvik (Åland / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "74350": {
+   "name": "Lumparland",
+   "city_label": "Lumparland (Åland / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "74351": {
+   "name": "Lemland",
+   "city_label": "Lemland (Åland / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "74352": {
+   "name": "Gottby",
+   "city_label": "Gottby (Åland / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "74976": {
+   "name": "Pieksanmaa",
+   "city_label": "Pieksanmaa (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "74977": {
+   "name": "Otava",
+   "city_label": "Otava (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "81863": {
+   "name": "Nuorgam",
+   "city_label": "Nuorgam (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "97165": {
+   "name": "Kaava",
+   "city_label": "Kaava (Lappi / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "137493": {
+   "name": "Lemi",
+   "city_label": "Lemi (Etelä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5118": {
+   "name": "Kumlinge",
+   "city_label": "Kumlinge (Åland / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2025",
+    "HAZİRAN 2026",
+    "HAZİRAN 2027"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5119": {
+   "name": "Sottunga",
+   "city_label": "Sottunga (Åland / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "5120": {
+   "name": "Eckerö",
+   "city_label": "Eckerö (Åland / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66825": {
+   "name": "Paihola",
+   "city_label": "Paihola (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2025",
+    "HAZİRAN 2026",
+    "HAZİRAN 2027"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "66826": {
+   "name": "Rantakyla",
+   "city_label": "Rantakyla (Itä-Suomen Lääni / Finlandiya)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  }
+ },
+ "rows": {}
+}

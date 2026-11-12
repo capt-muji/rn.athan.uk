@@ -1,0 +1,43 @@
+{
+ "engine": "adhan 4.4.6",
+ "point": [
+  -4.6196,
+  55.4513
+ ],
+ "tz": "Indian/Mahe",
+ "rep": {
+  "sunrise": {
+   "exact": 29,
+   "w1": 29,
+   "worst": 0,
+   "mean": 0
+  },
+  "maghrib_begin": {
+   "exact": 0,
+   "w1": 0,
+   "worst": 2,
+   "mean": 2
+  },
+  "fajr_begin": {
+   "a": 17.75,
+   "exact": 24,
+   "w1": 29,
+   "worst": 1,
+   "mean": -0.17
+  },
+  "isha_begin": {
+   "a": 17.25,
+   "exact": 25,
+   "w1": 29,
+   "worst": 1,
+   "mean": -0.14
+  },
+  "asr_begin": {
+   "a": 12,
+   "exact": 0,
+   "w1": 24,
+   "worst": 2,
+   "mean": 1.17
+  }
+ }
+}

@@ -1,0 +1,107 @@
+[
+ {
+  "date": "2026-01-15",
+  "diff": {
+   "fajr": {
+    "salama": "04:01",
+    "fazilet": "04:13",
+    "diff_min": -12
+   },
+   "sunrise": {
+    "salama": "05:25",
+    "fazilet": "05:22",
+    "diff_min": 3
+   },
+   "dhuhr": {
+    "salama": "11:59",
+    "fazilet": "12:06",
+    "diff_min": -7
+   },
+   "asr": {
+    "salama": "15:16",
+    "fazilet": "15:21",
+    "diff_min": -5
+   },
+   "maghrib": {
+    "salama": "18:33",
+    "fazilet": "18:41",
+    "diff_min": -8
+   },
+   "isha": {
+    "salama": "20:03",
+    "fazilet": "19:55",
+    "diff_min": 8
+   }
+  }
+ },
+ {
+  "date": "2026-07-15",
+  "diff": {
+   "fajr": {
+    "salama": "05:04",
+    "fazilet": "05:17",
+    "diff_min": -13
+   },
+   "sunrise": {
+    "salama": "06:23",
+    "fazilet": "06:20",
+    "diff_min": 3
+   },
+   "dhuhr": {
+    "salama": "11:56",
+    "fazilet": "12:03",
+    "diff_min": -7
+   },
+   "asr": {
+    "salama": "15:06",
+    "fazilet": "15:11",
+    "diff_min": -5
+   },
+   "maghrib": {
+    "salama": "17:29",
+    "fazilet": "17:36",
+    "diff_min": -7
+   },
+   "isha": {
+    "salama": "18:59",
+    "fazilet": "18:47",
+    "diff_min": 12
+   }
+  }
+ },
+ {
+  "date": "2026-11-12",
+  "diff": {
+   "fajr": {
+    "salama": "03:44",
+    "fazilet": "03:57",
+    "diff_min": -13
+   },
+   "sunrise": {
+    "salama": "05:05",
+    "fazilet": "05:02",
+    "diff_min": 3
+   },
+   "dhuhr": {
+    "salama": "11:34",
+    "fazilet": "11:41",
+    "diff_min": -7
+   },
+   "asr": {
+    "salama": "14:47",
+    "fazilet": "14:52",
+    "diff_min": -5
+   },
+   "maghrib": {
+    "salama": "18:03",
+    "fazilet": "18:10",
+    "diff_min": -7
+   },
+   "isha": {
+    "salama": "19:33",
+    "fazilet": "19:22",
+    "diff_min": 11
+   }
+  }
+ }
+]

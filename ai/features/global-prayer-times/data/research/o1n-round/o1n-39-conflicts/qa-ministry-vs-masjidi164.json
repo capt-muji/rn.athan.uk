@@ -1,0 +1,48 @@
+{
+ "pair": "QA-ministry-vs-masjidi164 (Qatar: two national lines, never merged)",
+ "measured_utc": "2026-11-12",
+ "side_a": {
+  "name": "meiaservicesext.islam.gov.qa ServicesBrokerGatewayAPI/api/PrayerTimes?date=",
+  "today_2026_11_12": {
+   "Fajr": "04:29",
+   "Sunrise": "05:49",
+   "Dhuhr": "11:18",
+   "Asr": "14:25",
+   "Maghrib": "16:49",
+   "Isha": "18:19"
+  },
+  "held": "o1m-27-gulf/data/qa-ministry-rows-2026.json 2026-11-12 row"
+ },
+ "side_b": {
+  "name": "tv.masjidi.app table_region_json_164.json (Al-Rayyan perpetual month template, 366 rows, 2028 scaffold)",
+  "scaffold_row_2026_11_12": {
+   "Fajr": "4:29",
+   "Sunrise": "5:49",
+   "Dhuhr": "11:19",
+   "Asr": "14:26",
+   "Maghrib": "16:49",
+   "Isha": "18:19"
+  },
+  "held": "o1m-6-mideast/captures/masjidi/table_region_164.json.gz"
+ },
+ "fresh_vs_held_table164": {
+  "row_count": [
+   366,
+   366
+  ],
+  "content_identical": true
+ },
+ "delta_min_2026_11_12_masjidi_minus_ministry": {
+  "Fajr": 0,
+  "Sunrise": 0,
+  "Dhuhr": 1,
+  "Asr": 1,
+  "Maghrib": 0,
+  "Isha": 0
+ },
+ "verdict": {
+  "ministry_serves_held_line": true,
+  "masjidi_serves_held_line": true,
+  "two_lines_still_distinct": true
+ }
+}

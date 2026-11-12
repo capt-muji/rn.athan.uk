@@ -1,0 +1,15 @@
+{
+ "front": "Guyana",
+ "surface": "GY-NEGATIVE",
+ "verdict": "honest negative: no own-site dated table found",
+ "routes": [
+  "ciog.org.gy: DNS/000 dead from this host; TinyFish rejects invalid_url",
+  "cioggy.org: 404 on home and ?page_id=3194 (Ramadan page)",
+  "Guyana Islamic Trust: Facebook-only (posts carry monthly charts, e.g. 'Fajr Zuhr Asr and Isha same time every day for the month'), login-walled, named lead",
+  "Guyana Muslim Scholars Association salaah chart: posted on CIOG's Facebook (post 955803296642117), login-walled, named lead",
+  "masjidbox.com/prayer-times/guyana/georgetown: 200 but a 3.8 KB JS shell, no per-city content (URL pattern is a catch-all, not indexing)",
+  "islamicfinder/muslimpro/hamariweb/time.now/namaz.io: platform calculators only"
+ ],
+ "languages": "English",
+ "held_line": "Georgetown muslimsalat (o1n-7) + Fazilet Guyana 3 cities (1 two-year fit) stand as the held layer"
+}

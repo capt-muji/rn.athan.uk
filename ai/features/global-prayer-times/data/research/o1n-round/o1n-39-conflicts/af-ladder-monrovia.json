@@ -1,0 +1,54 @@
+{
+ "pair": "AF-ladder-monrovia (turktakvim vs athanpro vs Fazilet at Monrovia)",
+ "measured_utc": "2026-11-12",
+ "turktakvim": {
+  "fresh_vs_held_cells": 2920,
+  "fresh_vs_held_diffs": 0,
+  "still_serves_held": true
+ },
+ "athanpro": {
+  "served_month": "September 2026 on 2026-11-12 fetch (SSR and _next/data)",
+  "serves_today_month": false,
+  "served_day12": {
+   "fajr": "05:37",
+   "sunrise": "06:34",
+   "dhuhr": "12:39",
+   "asr": "15:45",
+   "maghrib": "18:44",
+   "isha": "19:42"
+  }
+ },
+ "fazilet_today_2026_11_12": {
+  "fajr": "05:31",
+  "sunrise": "06:30",
+  "dhuhr": "12:34",
+  "asr": "15:54",
+  "maghrib": "18:29",
+  "isha": "19:35"
+ },
+ "ladder_athanpro_minus_turktakvim_2026_09_12_min": {
+  "fajr": 12,
+  "sunrise": 4,
+  "dhuhr": -7,
+  "asr": -6,
+  "maghrib": -6,
+  "isha": -15
+ },
+ "ladder_athanpro_minus_turktakvim_september_median_min": {
+  "fajr": 12.0,
+  "sunrise": 5.0,
+  "dhuhr": -7.0,
+  "asr": -6.0,
+  "maghrib": -5.0,
+  "isha": -15.0
+ },
+ "ladder_fazilet_minus_turktakvim_2026_11_12_min": {
+  "fajr": 11,
+  "sunrise": 3,
+  "dhuhr": 0,
+  "asr": -2,
+  "maghrib": 1,
+  "isha": -3
+ },
+ "held_conflict_note": "TT-PLATFORM-10-COUNTRIES: Monrovia athanpro fajr ~12 min later, isha ~15 min earlier"
+}

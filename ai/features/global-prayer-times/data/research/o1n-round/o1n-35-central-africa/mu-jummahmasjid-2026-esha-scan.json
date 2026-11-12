@@ -1,0 +1,242 @@
+{
+ "isha_angle_12.00": {
+  "exact": 0,
+  "w1": 0,
+  "worst": 29,
+  "mean": 25.59
+ },
+ "isha_angle_12.25": {
+  "exact": 0,
+  "w1": 0,
+  "worst": 28,
+  "mean": 24.47
+ },
+ "isha_angle_12.50": {
+  "exact": 0,
+  "w1": 0,
+  "worst": 26,
+  "mean": 23.34
+ },
+ "isha_angle_12.75": {
+  "exact": 0,
+  "w1": 0,
+  "worst": 25,
+  "mean": 22.21
+ },
+ "isha_angle_13.00": {
+  "exact": 0,
+  "w1": 0,
+  "worst": 24,
+  "mean": 21.06
+ },
+ "isha_angle_13.25": {
+  "exact": 0,
+  "w1": 0,
+  "worst": 23,
+  "mean": 19.94
+ },
+ "isha_angle_13.50": {
+  "exact": 0,
+  "w1": 0,
+  "worst": 21,
+  "mean": 18.83
+ },
+ "isha_angle_13.75": {
+  "exact": 0,
+  "w1": 0,
+  "worst": 20,
+  "mean": 17.69
+ },
+ "isha_angle_14.00": {
+  "exact": 0,
+  "w1": 0,
+  "worst": 19,
+  "mean": 16.56
+ },
+ "isha_angle_14.25": {
+  "exact": 0,
+  "w1": 0,
+  "worst": 18,
+  "mean": 15.46
+ },
+ "isha_angle_14.50": {
+  "exact": 0,
+  "w1": 0,
+  "worst": 16,
+  "mean": 14.31
+ },
+ "isha_angle_14.75": {
+  "exact": 0,
+  "w1": 0,
+  "worst": 15,
+  "mean": 13.19
+ },
+ "isha_angle_15.00": {
+  "exact": 0,
+  "w1": 0,
+  "worst": 14,
+  "mean": 12.02
+ },
+ "isha_angle_15.25": {
+  "exact": 0,
+  "w1": 0,
+  "worst": 13,
+  "mean": 10.9
+ },
+ "isha_angle_15.50": {
+  "exact": 0,
+  "w1": 0,
+  "worst": 11,
+  "mean": 9.78
+ },
+ "isha_angle_15.75": {
+  "exact": 0,
+  "w1": 0,
+  "worst": 10,
+  "mean": 8.66
+ },
+ "isha_angle_16.00": {
+  "exact": 0,
+  "w1": 0,
+  "worst": 9,
+  "mean": 7.53
+ },
+ "isha_angle_16.25": {
+  "exact": 0,
+  "w1": 0,
+  "worst": 8,
+  "mean": 6.38
+ },
+ "isha_angle_16.50": {
+  "exact": 0,
+  "w1": 0,
+  "worst": 6,
+  "mean": 5.26
+ },
+ "isha_angle_16.75": {
+  "exact": 0,
+  "w1": 0,
+  "worst": 5,
+  "mean": 4.13
+ },
+ "isha_angle_17.00": {
+  "exact": 0,
+  "w1": 0,
+  "worst": 4,
+  "mean": 2.98
+ },
+ "isha_angle_17.25": {
+  "exact": 0,
+  "w1": 81,
+  "worst": 3,
+  "mean": 1.83
+ },
+ "isha_angle_17.50": {
+  "exact": 116,
+  "w1": 353,
+  "worst": 2,
+  "mean": 0.72
+ },
+ "isha_angle_17.75": {
+  "exact": 204,
+  "w1": 365,
+  "worst": 1,
+  "mean": -0.42
+ },
+ "isha_angle_18.00": {
+  "exact": 1,
+  "w1": 172,
+  "worst": 2,
+  "mean": -1.53
+ },
+ "isha_angle_18.25": {
+  "exact": 0,
+  "w1": 0,
+  "worst": 4,
+  "mean": -2.68
+ },
+ "isha_angle_18.50": {
+  "exact": 0,
+  "w1": 0,
+  "worst": 5,
+  "mean": -3.83
+ },
+ "isha_angle_18.75": {
+  "exact": 0,
+  "w1": 0,
+  "worst": 6,
+  "mean": -4.96
+ },
+ "isha_angle_19.00": {
+  "exact": 0,
+  "w1": 0,
+  "worst": 7,
+  "mean": -6.1
+ },
+ "isha_angle_19.25": {
+  "exact": 0,
+  "w1": 0,
+  "worst": 9,
+  "mean": -7.24
+ },
+ "isha_angle_19.50": {
+  "exact": 0,
+  "w1": 0,
+  "worst": 10,
+  "mean": -8.39
+ },
+ "isha_angle_19.75": {
+  "exact": 0,
+  "w1": 0,
+  "worst": 11,
+  "mean": -9.54
+ },
+ "isha_angle_20.00": {
+  "exact": 0,
+  "w1": 0,
+  "worst": 13,
+  "mean": -10.67
+ },
+ "maghrib+60": {
+  "exact": 0,
+  "w1": 0,
+  "worst": 23,
+  "mean": 15.65
+ },
+ "maghrib+65": {
+  "exact": 0,
+  "w1": 0,
+  "worst": 18,
+  "mean": 10.65
+ },
+ "maghrib+70": {
+  "exact": 0,
+  "w1": 7,
+  "worst": 13,
+  "mean": 5.65
+ },
+ "maghrib+75": {
+  "exact": 37,
+  "w1": 121,
+  "worst": 8,
+  "mean": 0.65
+ },
+ "maghrib+80": {
+  "exact": 10,
+  "w1": 43,
+  "worst": 9,
+  "mean": -4.35
+ },
+ "maghrib+85": {
+  "exact": 0,
+  "w1": 0,
+  "worst": 14,
+  "mean": -9.35
+ },
+ "maghrib+90": {
+  "exact": 0,
+  "w1": 0,
+  "worst": 19,
+  "mean": -14.35
+ }
+}

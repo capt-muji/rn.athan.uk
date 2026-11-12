@@ -1,0 +1,100 @@
+{
+ "zohr_debut_vs_transit": {
+  "n": 365,
+  "exact": 0,
+  "w1": 0,
+  "worst": 7,
+  "mean": 6.4
+ },
+ "sunrise_mid": {
+  "n": 365,
+  "exact": 0,
+  "w1": 0,
+  "worst": 8,
+  "mean": 7.19
+ },
+ "sunset_mid": {
+  "n": 365,
+  "exact": 0,
+  "w1": 240,
+  "worst": 1.5,
+  "mean": -0.82
+ },
+ "maghrib_vs_sunset+1": {
+  "n": 365,
+  "exact": 0,
+  "w1": 96,
+  "worst": 3,
+  "mean": 1.76
+ },
+ "maghrib_vs_sunset+2": {
+  "n": 365,
+  "exact": 96,
+  "w1": 356,
+  "worst": 2,
+  "mean": 0.76
+ },
+ "maghrib_vs_sunset+3": {
+  "n": 365,
+  "exact": 260,
+  "w1": 365,
+  "worst": 1,
+  "mean": -0.24
+ },
+ "maghrib_vs_sunset+4": {
+  "n": 365,
+  "exact": 9,
+  "w1": 269,
+  "worst": 2,
+  "mean": -1.24
+ },
+ "maghrib_vs_sunset+5": {
+  "n": 365,
+  "exact": 0,
+  "w1": 9,
+  "worst": 3,
+  "mean": -2.24
+ },
+ "sehri_scan_top": [
+  {
+   "fa": 18.5,
+   "n": 365,
+   "exact": 236,
+   "w1": 350,
+   "worst": 2,
+   "mean": -0.28
+  },
+  {
+   "fa": 18.75,
+   "n": 365,
+   "exact": 69,
+   "w1": 320,
+   "worst": 2,
+   "mean": 0.86
+  },
+  {
+   "fa": 19,
+   "n": 365,
+   "exact": 12,
+   "w1": 64,
+   "worst": 4,
+   "mean": 1.99
+  },
+  {
+   "fa": 18.25,
+   "n": 365,
+   "exact": 8,
+   "w1": 225,
+   "worst": 3,
+   "mean": -1.41
+  },
+  {
+   "fa": 18,
+   "n": 365,
+   "exact": 0,
+   "w1": 0,
+   "worst": 4,
+   "mean": -2.54
+  }
+ ]
+}

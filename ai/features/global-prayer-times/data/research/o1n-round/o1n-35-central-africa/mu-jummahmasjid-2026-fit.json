@@ -1,0 +1,79 @@
+{
+ "engine": "adhan 4.4.6",
+ "point": [
+  -20.1609,
+  57.5012
+ ],
+ "tz": "Indian/Mauritius",
+ "best": {
+  "fa": 15.25,
+  "ia": 18.75,
+  "madhab": "Shafi",
+  "fajr": {
+   "exact": 43,
+   "w1": 130,
+   "n": 365,
+   "worst": 10,
+   "mean": 1.01
+  },
+  "esha": {
+   "exact": 13,
+   "w1": 47,
+   "n": 365,
+   "worst": 22,
+   "mean": 9.65
+  },
+  "total": 177
+ },
+ "cols": {
+  "fajr_azaan": {
+   "exact": 43,
+   "w1": 130,
+   "n": 365,
+   "worst": 10,
+   "mean": 1.01
+  },
+  "sunrise_mid": {
+   "exact": 0,
+   "w1": 0,
+   "n": 365,
+   "worst": 8,
+   "mean": 7.19
+  },
+  "zohr_debut": {
+   "exact": 0,
+   "w1": 0,
+   "n": 365,
+   "worst": null,
+   "mean": null
+  },
+  "asr_azaan": {
+   "exact": 0,
+   "w1": 0,
+   "n": 365,
+   "worst": 97,
+   "mean": 69.28
+  },
+  "maghrib": {
+   "exact": 0,
+   "w1": 0,
+   "n": 365,
+   "worst": 4,
+   "mean": 2.76
+  },
+  "esha_azaan": {
+   "exact": 13,
+   "w1": 47,
+   "n": 365,
+   "worst": 22,
+   "mean": 9.65
+  },
+  "sunset_mid": {
+   "exact": 0,
+   "w1": 0,
+   "n": 365,
+   "worst": null,
+   "mean": null
+  }
+ }
+}

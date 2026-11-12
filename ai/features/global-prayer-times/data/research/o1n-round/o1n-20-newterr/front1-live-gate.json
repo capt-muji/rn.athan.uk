@@ -1,0 +1,156 @@
+[
+ {
+  "key": "nono",
+  "held_file": "$HOME/athan-gitree/census/o1m/o1m-4-africa/data/mawaqit-grande-mosquee-de-nono-nono-1234-guinee.json",
+  "held_rows": 365,
+  "live_rows": 366,
+  "common_days": 365,
+  "identical": true,
+  "diffs": {},
+  "diff_counts": {},
+  "held_meta": {
+   "latitude": 10.876038673068,
+   "longitude": -10.495964683475,
+   "timezone": "Africa/Conakry"
+  },
+  "live_meta": {
+   "latitude": 10.876038673068,
+   "longitude": -10.495964683475,
+   "timezone": "Africa/Conakry",
+   "name": "Grande Mosquée de Nono - NONO"
+  },
+  "meta_changed": false
+ },
+ {
+  "key": "lusaka",
+  "held_file": "$HOME/athan-gitree/census/o1m/o1m-4-africa/data/mawaqit-masjid-barkaatiyah-lusaka-10101-zambia.json",
+  "held_rows": 365,
+  "live_rows": 366,
+  "common_days": 365,
+  "identical": true,
+  "diffs": {},
+  "diff_counts": {},
+  "held_meta": {
+   "latitude": -15.437607794639,
+   "longitude": 28.281194636419,
+   "timezone": "Africa/Lusaka"
+  },
+  "live_meta": {
+   "latitude": -15.437607794639,
+   "longitude": 28.281194636419,
+   "timezone": "Africa/Lusaka",
+   "name": "Masjid Barkaatiyah - LUSAKA"
+  },
+  "meta_changed": false
+ },
+ {
+  "key": "nampula",
+  "held_file": "$HOME/athan-gitree/census/o1m/o1m-4-africa/data/mawaqit-masjid-fatimah-rua-monomotapa-3100-nampula-mozambique.json",
+  "held_rows": 365,
+  "live_rows": 366,
+  "common_days": 365,
+  "identical": true,
+  "diffs": {},
+  "diff_counts": {},
+  "held_meta": {
+   "latitude": -15.118649297734,
+   "longitude": 39.261987805367,
+   "timezone": "Africa/Maputo"
+  },
+  "live_meta": {
+   "latitude": -15.118649297734,
+   "longitude": 39.261987805367,
+   "timezone": "Africa/Maputo",
+   "name": "Masjid Fátima - NAMPULA"
+  },
+  "meta_changed": false
+ },
+ {
+  "key": "gbessia",
+  "held_file": "$HOME/athan-gitree/census/o1m/o1m-4-africa/data/mawaqit-mosquee-gbessia-port2-conakry-224-guinee.json",
+  "held_rows": 365,
+  "live_rows": 366,
+  "common_days": 365,
+  "identical": true,
+  "diffs": {},
+  "diff_counts": {},
+  "held_meta": {
+   "latitude": 9,
+   "longitude": -13,
+   "timezone": "Africa/Conakry"
+  },
+  "live_meta": {
+   "latitude": 9,
+   "longitude": -13,
+   "timezone": "Africa/Conakry",
+   "name": "Mosquée Gbessia port2 - CONAKRY"
+  },
+  "meta_changed": false
+ },
+ {
+  "key": "bissau",
+  "held_file": "$HOME/athan-gitree/census/o1m/o1m-4-africa/data/mawaqit-mesquita-attadamun-bissau-gw.json",
+  "held_rows": 365,
+  "live_rows": 366,
+  "common_days": 365,
+  "identical": true,
+  "diffs": {},
+  "diff_counts": {},
+  "held_meta": {
+   "latitude": 11.8611568,
+   "longitude": -15.6133961,
+   "timezone": "Africa/Bissau"
+  },
+  "live_meta": {
+   "latitude": 11.8611568,
+   "longitude": -15.6133961,
+   "timezone": "Africa/Bissau",
+   "name": "Mesquita Attadamun - BISSAU"
+  },
+  "meta_changed": false
+ },
+ {
+  "key": "rahmaniya",
+  "held_file": "$HOME/athan-gitree/census/o1m/o1m-2-capitals/data/np-rahmaniya-mawaqit-2026.json",
+  "held_rows": 365,
+  "live_rows": 366,
+  "common_days": 365,
+  "identical": true,
+  "diffs": {},
+  "diff_counts": {},
+  "held_meta": {
+   "latitude": 27.506,
+   "longitude": 83.449,
+   "timezone": "Asia/Kathmandu"
+  },
+  "live_meta": {
+   "latitude": 27.506,
+   "longitude": 83.449,
+   "timezone": "Asia/Kathmandu",
+   "name": "JAMA MASJID RAHMANIYA"
+  },
+  "meta_changed": false
+ },
+ {
+  "key": "lapaz",
+  "held_file": "$HOME/athan-gitree/census/o1m/o1m-22-southamerica/data/mawaqit/asociacion-comunidad-islamica-bolivia-1335-la-paz-bolivia.json",
+  "held_rows": 365,
+  "live_rows": 366,
+  "common_days": 365,
+  "identical": true,
+  "diffs": {},
+  "diff_counts": {},
+  "held_meta": {
+   "latitude": -16.495950568157,
+   "longitude": -68.124158996416,
+   "timezone": "America/La_Paz"
+  },
+  "live_meta": {
+   "latitude": -16.495950568157,
+   "longitude": -68.124158996416,
+   "timezone": "America/La_Paz",
+   "name": "Asociacion Comunidad Islamica Bolivia"
+  },
+  "meta_changed": false
+ }
+]

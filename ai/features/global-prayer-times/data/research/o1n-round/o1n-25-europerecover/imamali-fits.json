@@ -1,0 +1,3382 @@
+[
+ {
+  "city": "Alghult",
+  "rows": 30,
+  "solved": {
+   "lat": 56.92,
+   "lon": 15.65
+  },
+  "margins": {
+   "sunrise": 0.2,
+   "dhuhr": 0,
+   "maghrib": 0.3
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 23,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.34
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 26,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.24
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 28,
+   "w1": 30,
+   "worst": 0.5,
+   "mae": 0.2
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.22
+  },
+  "isha": {
+   "n": 30,
+   "ex": 21,
+   "w1": 30,
+   "worst": 1.1,
+   "mae": 0.41
+  }
+ },
+ {
+  "city": "Alingsas",
+  "rows": 30,
+  "solved": {
+   "lat": 57.82,
+   "lon": 12.65
+  },
+  "margins": {
+   "sunrise": 0.5,
+   "dhuhr": 0,
+   "maghrib": 0.4
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 17,
+   "w1": 30,
+   "worst": 1.1,
+   "mae": 0.46
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 26,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.32
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 30,
+   "w1": 30,
+   "worst": 0.5,
+   "mae": 0.2
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.24
+  },
+  "isha": {
+   "n": 30,
+   "ex": 18,
+   "w1": 30,
+   "worst": 1.1,
+   "mae": 0.43
+  }
+ },
+ {
+  "city": "Amal",
+  "rows": 30,
+  "solved": {
+   "lat": 58.95,
+   "lon": 12.82
+  },
+  "margins": {
+   "sunrise": 0.4,
+   "dhuhr": 0,
+   "maghrib": 0.4
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 16,
+   "w1": 30,
+   "worst": 1,
+   "mae": 0.48
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.29
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 28,
+   "w1": 30,
+   "worst": 0.5,
+   "mae": 0.28
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 24,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.28
+  },
+  "isha": {
+   "n": 30,
+   "ex": 15,
+   "w1": 30,
+   "worst": 1,
+   "mae": 0.52
+  }
+ },
+ {
+  "city": "Arvika",
+  "rows": 30,
+  "solved": {
+   "lat": 59.56,
+   "lon": 12.66
+  },
+  "margins": {
+   "sunrise": 0.3,
+   "dhuhr": 0,
+   "maghrib": 0.3
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 24,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.28
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.29
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 28,
+   "w1": 30,
+   "worst": 0.5,
+   "mae": 0.2
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 24,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.26
+  },
+  "isha": {
+   "n": 30,
+   "ex": 17,
+   "w1": 30,
+   "worst": 1,
+   "mae": 0.46
+  }
+ },
+ {
+  "city": "Boras",
+  "rows": 30,
+  "solved": {
+   "lat": 57.62,
+   "lon": 13.03
+  },
+  "margins": {
+   "sunrise": 0.4,
+   "dhuhr": 0,
+   "maghrib": 0.3
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 17,
+   "w1": 30,
+   "worst": 1,
+   "mae": 0.42
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 24,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.3
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 28,
+   "w1": 30,
+   "worst": 0.5,
+   "mae": 0.3
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.26
+  },
+  "isha": {
+   "n": 30,
+   "ex": 13,
+   "w1": 30,
+   "worst": 1.1,
+   "mae": 0.58
+  }
+ },
+ {
+  "city": "Enkoping",
+  "rows": 30,
+  "solved": {
+   "lat": 59.53,
+   "lon": 17.16
+  },
+  "margins": {
+   "sunrise": 0.2,
+   "dhuhr": 0,
+   "maghrib": 0.1
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.26
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 21,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.32
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 28,
+   "w1": 30,
+   "worst": 0.5,
+   "mae": 0.2
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 22,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.3
+  },
+  "isha": {
+   "n": 30,
+   "ex": 18,
+   "w1": 30,
+   "worst": 1,
+   "mae": 0.41
+  }
+ },
+ {
+  "city": "Eskilstuna",
+  "rows": 30,
+  "solved": {
+   "lat": 59.27,
+   "lon": 16.64
+  },
+  "margins": {
+   "sunrise": 0.4,
+   "dhuhr": 0,
+   "maghrib": 0.4
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 20,
+   "w1": 30,
+   "worst": 1.2,
+   "mae": 0.35
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 24,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.3
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 26,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.23
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.28
+  },
+  "isha": {
+   "n": 30,
+   "ex": 17,
+   "w1": 30,
+   "worst": 1.3,
+   "mae": 0.55
+  }
+ },
+ {
+  "city": "Falun",
+  "rows": 30,
+  "solved": {
+   "lat": 60.5,
+   "lon": 15.68
+  },
+  "margins": {
+   "sunrise": 0.2,
+   "dhuhr": 0,
+   "maghrib": 0.2
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 23,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.36
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 24,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.29
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 26,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.23
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 21,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.37
+  },
+  "isha": {
+   "n": 30,
+   "ex": 20,
+   "w1": 30,
+   "worst": 1,
+   "mae": 0.35
+  }
+ },
+ {
+  "city": "Filipstad",
+  "rows": 30,
+  "solved": {
+   "lat": 59.63,
+   "lon": 14.23
+  },
+  "margins": {
+   "sunrise": 0.2,
+   "dhuhr": 0,
+   "maghrib": 0.1
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 26,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.3
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.28
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.28
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 23,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.32
+  },
+  "isha": {
+   "n": 30,
+   "ex": 22,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.35
+  }
+ },
+ {
+  "city": "Gavle",
+  "rows": 30,
+  "solved": {
+   "lat": 60.57,
+   "lon": 17.2
+  },
+  "margins": {
+   "sunrise": 0.3,
+   "dhuhr": 0,
+   "maghrib": 0.2
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 23,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.35
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 26,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.26
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.25
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 26,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.24
+  },
+  "isha": {
+   "n": 30,
+   "ex": 24,
+   "w1": 30,
+   "worst": 1,
+   "mae": 0.37
+  }
+ },
+ {
+  "city": "Goteborg",
+  "rows": 30,
+  "solved": {
+   "lat": 57.6,
+   "lon": 12.1
+  },
+  "margins": {
+   "sunrise": 0.4,
+   "dhuhr": 0,
+   "maghrib": 0.4
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 17,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.42
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 22,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.31
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 28,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.25
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 26,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.26
+  },
+  "isha": {
+   "n": 30,
+   "ex": 18,
+   "w1": 30,
+   "worst": 1.2,
+   "mae": 0.46
+  }
+ },
+ {
+  "city": "Halmstad",
+  "rows": 30,
+  "solved": {
+   "lat": 56.56,
+   "lon": 12.91
+  },
+  "margins": {
+   "sunrise": 0.2,
+   "dhuhr": 0,
+   "maghrib": 0.2
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.27
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.23
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.21
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 26,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.28
+  },
+  "isha": {
+   "n": 30,
+   "ex": 26,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.24
+  }
+ },
+ {
+  "city": "Haparanda",
+  "rows": 30,
+  "solved": {
+   "lat": 65.75,
+   "lon": 24.2
+  },
+  "margins": {
+   "sunrise": 0.2,
+   "dhuhr": 0,
+   "maghrib": 0.3
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.29
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 23,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.33
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.25
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 22,
+   "w1": 30,
+   "worst": 1,
+   "mae": 0.38
+  },
+  "isha": {
+   "n": 30,
+   "ex": 17,
+   "w1": 30,
+   "worst": 1.1,
+   "mae": 0.46
+  }
+ },
+ {
+  "city": "Harads",
+  "rows": 30,
+  "solved": {
+   "lat": 65.99,
+   "lon": 21.1
+  },
+  "margins": {
+   "sunrise": 0.7,
+   "dhuhr": 0,
+   "maghrib": 0.5
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 21,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.37
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 23,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.35
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 28,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.25
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 19,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.4
+  },
+  "isha": {
+   "n": 30,
+   "ex": 10,
+   "w1": 30,
+   "worst": 1.4,
+   "mae": 0.71
+  }
+ },
+ {
+  "city": "Harnosand",
+  "rows": 30,
+  "solved": {
+   "lat": 62.54,
+   "lon": 18.07
+  },
+  "margins": {
+   "sunrise": 0.5,
+   "dhuhr": 0,
+   "maghrib": 0.5
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 16,
+   "w1": 30,
+   "worst": 1.1,
+   "mae": 0.5
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 24,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.28
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 26,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.29
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 23,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.33
+  },
+  "isha": {
+   "n": 30,
+   "ex": 14,
+   "w1": 30,
+   "worst": 1.4,
+   "mae": 0.56
+  }
+ },
+ {
+  "city": "Helsingborg",
+  "rows": 30,
+  "solved": {
+   "lat": 55.92,
+   "lon": 12.79
+  },
+  "margins": {
+   "sunrise": 0.3,
+   "dhuhr": 0,
+   "maghrib": 0.4
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 20,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.38
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 29,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.21
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 29,
+   "w1": 30,
+   "worst": 0.5,
+   "mae": 0.3
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 24,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.32
+  },
+  "isha": {
+   "n": 30,
+   "ex": 17,
+   "w1": 30,
+   "worst": 1.1,
+   "mae": 0.52
+  }
+ },
+ {
+  "city": "Hultsfred",
+  "rows": 30,
+  "solved": {
+   "lat": 57.38,
+   "lon": 15.91
+  },
+  "margins": {
+   "sunrise": 0.2,
+   "dhuhr": 0,
+   "maghrib": 0.2
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 23,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.34
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.32
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 28,
+   "w1": 30,
+   "worst": 0.5,
+   "mae": 0.2
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.26
+  },
+  "isha": {
+   "n": 30,
+   "ex": 18,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.38
+  }
+ },
+ {
+  "city": "Jonkoping",
+  "rows": 30,
+  "solved": {
+   "lat": 57.67,
+   "lon": 14.2
+  },
+  "margins": {
+   "sunrise": 0.1,
+   "dhuhr": 0,
+   "maghrib": 0.1
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 26,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.29
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 28,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.21
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.25
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 26,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.26
+  },
+  "isha": {
+   "n": 30,
+   "ex": 19,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.42
+  }
+ },
+ {
+  "city": "Kalmar",
+  "rows": 30,
+  "solved": {
+   "lat": 56.55,
+   "lon": 16.41
+  },
+  "margins": {
+   "sunrise": 0.3,
+   "dhuhr": 0,
+   "maghrib": 0.2
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.28
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 26,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.26
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.21
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 26,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.29
+  },
+  "isha": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.23
+  }
+ },
+ {
+  "city": "Karlskrona",
+  "rows": 30,
+  "solved": {
+   "lat": 56.04,
+   "lon": 15.66
+  },
+  "margins": {
+   "sunrise": 0.1,
+   "dhuhr": 0,
+   "maghrib": 0.2
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 21,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.32
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.23
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 28,
+   "w1": 30,
+   "worst": 0.5,
+   "mae": 0.2
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.32
+  },
+  "isha": {
+   "n": 30,
+   "ex": 19,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.43
+  }
+ },
+ {
+  "city": "Karlstad",
+  "rows": 30,
+  "solved": {
+   "lat": 59.27,
+   "lon": 13.64
+  },
+  "margins": {
+   "sunrise": 0.6,
+   "dhuhr": 0,
+   "maghrib": 0.5
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 20,
+   "w1": 30,
+   "worst": 1.1,
+   "mae": 0.37
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 28,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.24
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 26,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.23
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 24,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.29
+  },
+  "isha": {
+   "n": 30,
+   "ex": 14,
+   "w1": 30,
+   "worst": 1.2,
+   "mae": 0.56
+  }
+ },
+ {
+  "city": "Katrineholm",
+  "rows": 30,
+  "solved": {
+   "lat": 58.9,
+   "lon": 16.32
+  },
+  "margins": {
+   "sunrise": 0.4,
+   "dhuhr": 0,
+   "maghrib": 0.4
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 19,
+   "w1": 30,
+   "worst": 1,
+   "mae": 0.41
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.29
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 28,
+   "w1": 30,
+   "worst": 0.5,
+   "mae": 0.28
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 23,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.33
+  },
+  "isha": {
+   "n": 30,
+   "ex": 14,
+   "w1": 30,
+   "worst": 1.1,
+   "mae": 0.5
+  }
+ },
+ {
+  "city": "Kiruna",
+  "rows": 30,
+  "solved": {
+   "lat": 67.78,
+   "lon": 20.39
+  },
+  "margins": {
+   "sunrise": 0.5,
+   "dhuhr": 0,
+   "maghrib": 0.7
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 11,
+   "w1": 30,
+   "worst": 1.3,
+   "mae": 0.59
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 21,
+   "w1": 30,
+   "worst": 1.1,
+   "mae": 0.38
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 26,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.23
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 20,
+   "w1": 30,
+   "worst": 1.4,
+   "mae": 0.42
+  },
+  "isha": {
+   "n": 30,
+   "ex": 6,
+   "w1": 29,
+   "worst": 1.6,
+   "mae": 0.82
+  }
+ },
+ {
+  "city": "Kristianstad",
+  "rows": 30,
+  "solved": {
+   "lat": 55.92,
+   "lon": 14.2
+  },
+  "margins": {
+   "sunrise": 0,
+   "dhuhr": 0,
+   "maghrib": 0.2
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 23,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.29
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 28,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.23
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.25
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 26,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.26
+  },
+  "isha": {
+   "n": 30,
+   "ex": 20,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.34
+  }
+ },
+ {
+  "city": "Kristinehamn",
+  "rows": 30,
+  "solved": {
+   "lat": 59.2,
+   "lon": 14.17
+  },
+  "margins": {
+   "sunrise": 0.2,
+   "dhuhr": 0,
+   "maghrib": 0.1
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.28
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.25
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 28,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.22
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.25
+  },
+  "isha": {
+   "n": 30,
+   "ex": 23,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.35
+  }
+ },
+ {
+  "city": "Landskrona",
+  "rows": 30,
+  "solved": {
+   "lat": 55.77,
+   "lon": 12.91
+  },
+  "margins": {
+   "sunrise": 0.4,
+   "dhuhr": 0,
+   "maghrib": 0.4
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.29
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.22
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 28,
+   "w1": 30,
+   "worst": 0.5,
+   "mae": 0.2
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.23
+  },
+  "isha": {
+   "n": 30,
+   "ex": 21,
+   "w1": 30,
+   "worst": 1,
+   "mae": 0.4
+  }
+ },
+ {
+  "city": "Laxa",
+  "rows": 30,
+  "solved": {
+   "lat": 58.89,
+   "lon": 14.67
+  },
+  "margins": {
+   "sunrise": 0.2,
+   "dhuhr": 0,
+   "maghrib": 0.2
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.26
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 26,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.29
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.22
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 24,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.27
+  },
+  "isha": {
+   "n": 30,
+   "ex": 23,
+   "w1": 30,
+   "worst": 1,
+   "mae": 0.3
+  }
+ },
+ {
+  "city": "Linkoping",
+  "rows": 30,
+  "solved": {
+   "lat": 58.31,
+   "lon": 15.67
+  },
+  "margins": {
+   "sunrise": 0.2,
+   "dhuhr": 0,
+   "maghrib": 0.2
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 26,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.27
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 24,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.32
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.22
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 24,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.27
+  },
+  "isha": {
+   "n": 30,
+   "ex": 23,
+   "w1": 30,
+   "worst": 1,
+   "mae": 0.34
+  }
+ },
+ {
+  "city": "Ljungby",
+  "rows": 30,
+  "solved": {
+   "lat": 56.72,
+   "lon": 14.03
+  },
+  "margins": {
+   "sunrise": 0.3,
+   "dhuhr": 0,
+   "maghrib": 0.1
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 21,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.38
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 21,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.32
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.5,
+   "mae": 0.3
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 23,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.32
+  },
+  "isha": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 1,
+   "mae": 0.29
+  }
+ },
+ {
+  "city": "Ludvika",
+  "rows": 30,
+  "solved": {
+   "lat": 60.06,
+   "lon": 15.29
+  },
+  "margins": {
+   "sunrise": 0.3,
+   "dhuhr": 0,
+   "maghrib": 0.3
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 22,
+   "w1": 30,
+   "worst": 1,
+   "mae": 0.38
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 24,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.28
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 29,
+   "w1": 30,
+   "worst": 0.5,
+   "mae": 0.3
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 22,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.33
+  },
+  "isha": {
+   "n": 30,
+   "ex": 19,
+   "w1": 30,
+   "worst": 1.2,
+   "mae": 0.46
+  }
+ },
+ {
+  "city": "Lulea",
+  "rows": 30,
+  "solved": {
+   "lat": 65.5,
+   "lon": 22.32
+  },
+  "margins": {
+   "sunrise": 0.4,
+   "dhuhr": 0,
+   "maghrib": 0.5
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 21,
+   "w1": 30,
+   "worst": 1.1,
+   "mae": 0.42
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 24,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.29
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 26,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.29
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 1,
+   "mae": 0.27
+  },
+  "isha": {
+   "n": 30,
+   "ex": 11,
+   "w1": 30,
+   "worst": 1.2,
+   "mae": 0.62
+  }
+ },
+ {
+  "city": "Lund",
+  "rows": 30,
+  "solved": {
+   "lat": 55.61,
+   "lon": 13.28
+  },
+  "margins": {
+   "sunrise": 0.5,
+   "dhuhr": 0,
+   "maghrib": 0.4
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 18,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.4
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 24,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.29
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 28,
+   "w1": 30,
+   "worst": 0.5,
+   "mae": 0.3
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 28,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.24
+  },
+  "isha": {
+   "n": 30,
+   "ex": 21,
+   "w1": 30,
+   "worst": 1,
+   "mae": 0.35
+  }
+ },
+ {
+  "city": "Lycksele",
+  "rows": 30,
+  "solved": {
+   "lat": 64.51,
+   "lon": 18.79
+  },
+  "margins": {
+   "sunrise": 0.4,
+   "dhuhr": 0,
+   "maghrib": 0.4
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 19,
+   "w1": 30,
+   "worst": 1,
+   "mae": 0.42
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.26
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.3
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 23,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.28
+  },
+  "isha": {
+   "n": 30,
+   "ex": 14,
+   "w1": 30,
+   "worst": 1.2,
+   "mae": 0.56
+  }
+ },
+ {
+  "city": "Malmo",
+  "rows": 30,
+  "solved": {
+   "lat": 55.48,
+   "lon": 13.09
+  },
+  "margins": {
+   "sunrise": 0.5,
+   "dhuhr": 0,
+   "maghrib": 0.3
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 15,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.43
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.22
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 28,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.26
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.24
+  },
+  "isha": {
+   "n": 30,
+   "ex": 15,
+   "w1": 30,
+   "worst": 1.2,
+   "mae": 0.51
+  }
+ },
+ {
+  "city": "Mariestad",
+  "rows": 30,
+  "solved": {
+   "lat": 58.59,
+   "lon": 13.91
+  },
+  "margins": {
+   "sunrise": 0.5,
+   "dhuhr": 0,
+   "maghrib": 0.3
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 23,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.35
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.28
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 28,
+   "w1": 30,
+   "worst": 0.5,
+   "mae": 0.2
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 24,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.32
+  },
+  "isha": {
+   "n": 30,
+   "ex": 18,
+   "w1": 30,
+   "worst": 1,
+   "mae": 0.42
+  }
+ },
+ {
+  "city": "Mora",
+  "rows": 30,
+  "solved": {
+   "lat": 60.91,
+   "lon": 14.65
+  },
+  "margins": {
+   "sunrise": 0.3,
+   "dhuhr": 0,
+   "maghrib": 0.4
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 23,
+   "w1": 30,
+   "worst": 1,
+   "mae": 0.31
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 26,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.28
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 30,
+   "w1": 30,
+   "worst": 0.5,
+   "mae": 0.2
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.27
+  },
+  "isha": {
+   "n": 30,
+   "ex": 12,
+   "w1": 30,
+   "worst": 1.2,
+   "mae": 0.6
+  }
+ },
+ {
+  "city": "Norrkoping",
+  "rows": 30,
+  "solved": {
+   "lat": 58.49,
+   "lon": 16.25
+  },
+  "margins": {
+   "sunrise": 0.3,
+   "dhuhr": 0,
+   "maghrib": 0.3
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 19,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.37
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.3
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 24,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.3
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 23,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.27
+  },
+  "isha": {
+   "n": 30,
+   "ex": 14,
+   "w1": 30,
+   "worst": 1.1,
+   "mae": 0.49
+  }
+ },
+ {
+  "city": "Norrtalje",
+  "rows": 30,
+  "solved": {
+   "lat": 59.65,
+   "lon": 18.82
+  },
+  "margins": {
+   "sunrise": 0.4,
+   "dhuhr": 0,
+   "maghrib": 0.4
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 14,
+   "w1": 30,
+   "worst": 1,
+   "mae": 0.47
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.28
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 28,
+   "w1": 30,
+   "worst": 0.5,
+   "mae": 0.28
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 23,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.27
+  },
+  "isha": {
+   "n": 30,
+   "ex": 14,
+   "w1": 30,
+   "worst": 1.1,
+   "mae": 0.47
+  }
+ },
+ {
+  "city": "Nykoping",
+  "rows": 30,
+  "solved": {
+   "lat": 58.65,
+   "lon": 17.14
+  },
+  "margins": {
+   "sunrise": 0.5,
+   "dhuhr": 0,
+   "maghrib": 0.6
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 20,
+   "w1": 30,
+   "worst": 1,
+   "mae": 0.4
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 26,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.29
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 26,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.23
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 23,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.3
+  },
+  "isha": {
+   "n": 30,
+   "ex": 11,
+   "w1": 30,
+   "worst": 1.1,
+   "mae": 0.64
+  }
+ },
+ {
+  "city": "Odeshog",
+  "rows": 30,
+  "solved": {
+   "lat": 58.13,
+   "lon": 14.7
+  },
+  "margins": {
+   "sunrise": 0.1,
+   "dhuhr": 0,
+   "maghrib": 0.2
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 24,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.34
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 28,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.22
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.25
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 23,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.27
+  },
+  "isha": {
+   "n": 30,
+   "ex": 24,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.31
+  }
+ },
+ {
+  "city": "Olofstrom",
+  "rows": 30,
+  "solved": {
+   "lat": 56.18,
+   "lon": 14.65
+  },
+  "margins": {
+   "sunrise": 0.3,
+   "dhuhr": 0,
+   "maghrib": 0.2
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 20,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.42
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 28,
+   "w1": 30,
+   "worst": 0.5,
+   "mae": 0.2
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 29,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.2
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 23,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.3
+  },
+  "isha": {
+   "n": 30,
+   "ex": 14,
+   "w1": 30,
+   "worst": 1.2,
+   "mae": 0.54
+  }
+ },
+ {
+  "city": "Orebro",
+  "rows": 30,
+  "solved": {
+   "lat": 59.16,
+   "lon": 15.32
+  },
+  "margins": {
+   "sunrise": 0.4,
+   "dhuhr": 0,
+   "maghrib": 0.4
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 14,
+   "w1": 30,
+   "worst": 1.1,
+   "mae": 0.47
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.28
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 28,
+   "w1": 30,
+   "worst": 0.5,
+   "mae": 0.28
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 24,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.29
+  },
+  "isha": {
+   "n": 30,
+   "ex": 14,
+   "w1": 30,
+   "worst": 1.2,
+   "mae": 0.48
+  }
+ },
+ {
+  "city": "Ornskoldsvik",
+  "rows": 30,
+  "solved": {
+   "lat": 63.19,
+   "lon": 18.85
+  },
+  "margins": {
+   "sunrise": 0.4,
+   "dhuhr": 0,
+   "maghrib": 0.5
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 19,
+   "w1": 30,
+   "worst": 1,
+   "mae": 0.39
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 1,
+   "mae": 0.3
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 28,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.25
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.29
+  },
+  "isha": {
+   "n": 30,
+   "ex": 11,
+   "w1": 30,
+   "worst": 1.3,
+   "mae": 0.65
+  }
+ },
+ {
+  "city": "Osby",
+  "rows": 30,
+  "solved": {
+   "lat": 56.54,
+   "lon": 14.07
+  },
+  "margins": {
+   "sunrise": 0.4,
+   "dhuhr": 0,
+   "maghrib": 0.4
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 0,
+   "w1": 20,
+   "worst": 1.9,
+   "mae": 1.3
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.29
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 26,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.3
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 26,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.25
+  },
+  "isha": {
+   "n": 30,
+   "ex": 23,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.32
+  }
+ },
+ {
+  "city": "Ostersund",
+  "rows": 30,
+  "solved": {
+   "lat": 63.08,
+   "lon": 14.7
+  },
+  "margins": {
+   "sunrise": 0.4,
+   "dhuhr": 0,
+   "maghrib": 0.2
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 22,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.33
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 21,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.31
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.25
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 23,
+   "w1": 30,
+   "worst": 1,
+   "mae": 0.35
+  },
+  "isha": {
+   "n": 30,
+   "ex": 16,
+   "w1": 30,
+   "worst": 1,
+   "mae": 0.47
+  }
+ },
+ {
+  "city": "Ronneby",
+  "rows": 30,
+  "solved": {
+   "lat": 56.11,
+   "lon": 15.39
+  },
+  "margins": {
+   "sunrise": 0.6,
+   "dhuhr": 0,
+   "maghrib": 0.5
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 18,
+   "w1": 30,
+   "worst": 1,
+   "mae": 0.45
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 24,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.27
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 26,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.23
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.28
+  },
+  "isha": {
+   "n": 30,
+   "ex": 11,
+   "w1": 30,
+   "worst": 1,
+   "mae": 0.59
+  }
+ },
+ {
+  "city": "Sala",
+  "rows": 30,
+  "solved": {
+   "lat": 59.82,
+   "lon": 16.66
+  },
+  "margins": {
+   "sunrise": 0.2,
+   "dhuhr": 0,
+   "maghrib": 0.2
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.28
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.29
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.21
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.27
+  },
+  "isha": {
+   "n": 30,
+   "ex": 20,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.39
+  }
+ },
+ {
+  "city": "Simrishamn",
+  "rows": 30,
+  "solved": {
+   "lat": 55.43,
+   "lon": 14.41
+  },
+  "margins": {
+   "sunrise": 0.1,
+   "dhuhr": 0,
+   "maghrib": 0.2
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.27
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.26
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 28,
+   "w1": 30,
+   "worst": 0.5,
+   "mae": 0.2
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 23,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.28
+  },
+  "isha": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.26
+  }
+ },
+ {
+  "city": "Skara",
+  "rows": 30,
+  "solved": {
+   "lat": 58.27,
+   "lon": 13.53
+  },
+  "margins": {
+   "sunrise": 0.4,
+   "dhuhr": 0,
+   "maghrib": 0.3
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 18,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.43
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.22
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 28,
+   "w1": 30,
+   "worst": 0.5,
+   "mae": 0.3
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.27
+  },
+  "isha": {
+   "n": 30,
+   "ex": 21,
+   "w1": 30,
+   "worst": 1.1,
+   "mae": 0.33
+  }
+ },
+ {
+  "city": "Skelleftea",
+  "rows": 30,
+  "solved": {
+   "lat": 64.67,
+   "lon": 21.09
+  },
+  "margins": {
+   "sunrise": 0.5,
+   "dhuhr": 0,
+   "maghrib": 0.5
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 16,
+   "w1": 30,
+   "worst": 1,
+   "mae": 0.48
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.28
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 28,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.26
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 23,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.35
+  },
+  "isha": {
+   "n": 30,
+   "ex": 7,
+   "w1": 30,
+   "worst": 1.3,
+   "mae": 0.74
+  }
+ },
+ {
+  "city": "Soderhamn",
+  "rows": 30,
+  "solved": {
+   "lat": 61.22,
+   "lon": 17.15
+  },
+  "margins": {
+   "sunrise": 0.3,
+   "dhuhr": 0,
+   "maghrib": 0.4
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 18,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.42
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 26,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.27
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 28,
+   "w1": 30,
+   "worst": 0.5,
+   "mae": 0.2
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.31
+  },
+  "isha": {
+   "n": 30,
+   "ex": 18,
+   "w1": 30,
+   "worst": 1.1,
+   "mae": 0.51
+  }
+ },
+ {
+  "city": "Stockholm",
+  "rows": 30,
+  "solved": {
+   "lat": 59.22,
+   "lon": 18.15
+  },
+  "margins": {
+   "sunrise": 0.4,
+   "dhuhr": 0,
+   "maghrib": 0.2
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 24,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.28
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.29
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 28,
+   "w1": 30,
+   "worst": 0.5,
+   "mae": 0.2
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 24,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.3
+  },
+  "isha": {
+   "n": 30,
+   "ex": 21,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.37
+  }
+ },
+ {
+  "city": "Stromstad",
+  "rows": 30,
+  "solved": {
+   "lat": 58.84,
+   "lon": 11.24
+  },
+  "margins": {
+   "sunrise": 0.2,
+   "dhuhr": 0,
+   "maghrib": 0.2
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 22,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.4
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.25
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.3
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 23,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.28
+  },
+  "isha": {
+   "n": 30,
+   "ex": 20,
+   "w1": 30,
+   "worst": 1,
+   "mae": 0.33
+  }
+ },
+ {
+  "city": "Sundsvall",
+  "rows": 30,
+  "solved": {
+   "lat": 62.3,
+   "lon": 17.4
+  },
+  "margins": {
+   "sunrise": 0.4,
+   "dhuhr": 0,
+   "maghrib": 0.3
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 16,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.39
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 24,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.29
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 28,
+   "w1": 30,
+   "worst": 0.5,
+   "mae": 0.2
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 22,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.32
+  },
+  "isha": {
+   "n": 30,
+   "ex": 21,
+   "w1": 30,
+   "worst": 1.1,
+   "mae": 0.45
+  }
+ },
+ {
+  "city": "Tarnaby",
+  "rows": 30,
+  "solved": {
+   "lat": 65.62,
+   "lon": 15.39
+  },
+  "margins": {
+   "sunrise": 0.5,
+   "dhuhr": 0,
+   "maghrib": 0.4
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 22,
+   "w1": 30,
+   "worst": 1.1,
+   "mae": 0.38
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.33
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.22
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 26,
+   "w1": 30,
+   "worst": 1,
+   "mae": 0.29
+  },
+  "isha": {
+   "n": 30,
+   "ex": 9,
+   "w1": 30,
+   "worst": 1.2,
+   "mae": 0.69
+  }
+ },
+ {
+  "city": "Tranas",
+  "rows": 30,
+  "solved": {
+   "lat": 57.9,
+   "lon": 15.09
+  },
+  "margins": {
+   "sunrise": 0.6,
+   "dhuhr": 0,
+   "maghrib": 0.4
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 20,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.38
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 21,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.36
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 28,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.26
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 24,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.32
+  },
+  "isha": {
+   "n": 30,
+   "ex": 21,
+   "w1": 30,
+   "worst": 1,
+   "mae": 0.36
+  }
+ },
+ {
+  "city": "Trollhattan",
+  "rows": 30,
+  "solved": {
+   "lat": 58.19,
+   "lon": 12.4
+  },
+  "margins": {
+   "sunrise": 0.4,
+   "dhuhr": 0,
+   "maghrib": 0.4
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 20,
+   "w1": 30,
+   "worst": 1,
+   "mae": 0.4
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 28,
+   "w1": 30,
+   "worst": 0.5,
+   "mae": 0.23
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 30,
+   "w1": 30,
+   "worst": 0.5,
+   "mae": 0.2
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 23,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.26
+  },
+  "isha": {
+   "n": 30,
+   "ex": 20,
+   "w1": 30,
+   "worst": 1.1,
+   "mae": 0.4
+  }
+ },
+ {
+  "city": "Uddevalla",
+  "rows": 30,
+  "solved": {
+   "lat": 58.25,
+   "lon": 12.04
+  },
+  "margins": {
+   "sunrise": 0.4,
+   "dhuhr": 0,
+   "maghrib": 0.3
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 20,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.39
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 24,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.26
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 29,
+   "w1": 30,
+   "worst": 0.5,
+   "mae": 0.3
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.27
+  },
+  "isha": {
+   "n": 30,
+   "ex": 21,
+   "w1": 30,
+   "worst": 1,
+   "mae": 0.36
+  }
+ },
+ {
+  "city": "Umea",
+  "rows": 30,
+  "solved": {
+   "lat": 63.74,
+   "lon": 20.39
+  },
+  "margins": {
+   "sunrise": 0.5,
+   "dhuhr": 0,
+   "maghrib": 0.5
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 15,
+   "w1": 30,
+   "worst": 1.1,
+   "mae": 0.49
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 21,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.34
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.22
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 23,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.31
+  },
+  "isha": {
+   "n": 30,
+   "ex": 10,
+   "w1": 30,
+   "worst": 1.3,
+   "mae": 0.68
+  }
+ },
+ {
+  "city": "Uppsala",
+  "rows": 30,
+  "solved": {
+   "lat": 59.78,
+   "lon": 17.7
+  },
+  "margins": {
+   "sunrise": 0.1,
+   "dhuhr": 0,
+   "maghrib": 0.2
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.25
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.25
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.25
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 26,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.31
+  },
+  "isha": {
+   "n": 30,
+   "ex": 17,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.45
+  }
+ },
+ {
+  "city": "Vasteras",
+  "rows": 30,
+  "solved": {
+   "lat": 59.51,
+   "lon": 16.65
+  },
+  "margins": {
+   "sunrise": 0.4,
+   "dhuhr": 0,
+   "maghrib": 0.2
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 22,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.33
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 24,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.32
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 30,
+   "w1": 30,
+   "worst": 0.5,
+   "mae": 0.2
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.3
+  },
+  "isha": {
+   "n": 30,
+   "ex": 21,
+   "w1": 30,
+   "worst": 1.1,
+   "mae": 0.41
+  }
+ },
+ {
+  "city": "Vastervik",
+  "rows": 30,
+  "solved": {
+   "lat": 57.66,
+   "lon": 16.7
+  },
+  "margins": {
+   "sunrise": 0.1,
+   "dhuhr": 0,
+   "maghrib": 0.1
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 23,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.31
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 28,
+   "w1": 30,
+   "worst": 0.5,
+   "mae": 0.21
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.25
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 23,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.28
+  },
+  "isha": {
+   "n": 30,
+   "ex": 18,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.44
+  }
+ },
+ {
+  "city": "Vaxjo",
+  "rows": 30,
+  "solved": {
+   "lat": 56.75,
+   "lon": 14.9
+  },
+  "margins": {
+   "sunrise": 0.3,
+   "dhuhr": 0,
+   "maghrib": 0.3
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 21,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.32
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.23
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 30,
+   "w1": 30,
+   "worst": 0.5,
+   "mae": 0.2
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.26
+  },
+  "isha": {
+   "n": 30,
+   "ex": 18,
+   "w1": 30,
+   "worst": 0.9,
+   "mae": 0.42
+  }
+ },
+ {
+  "city": "Vimmerby",
+  "rows": 30,
+  "solved": {
+   "lat": 57.55,
+   "lon": 15.91
+  },
+  "margins": {
+   "sunrise": 0.3,
+   "dhuhr": 0,
+   "maghrib": 0.2
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.27
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.31
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.21
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.8,
+   "mae": 0.28
+  },
+  "isha": {
+   "n": 30,
+   "ex": 26,
+   "w1": 30,
+   "worst": 1,
+   "mae": 0.29
+  }
+ },
+ {
+  "city": "Visby",
+  "rows": 30,
+  "solved": {
+   "lat": 57.54,
+   "lon": 18.4
+  },
+  "margins": {
+   "sunrise": 0.5,
+   "dhuhr": 0,
+   "maghrib": 0.3
+  },
+  "recipe": {
+   "fajr_deg": 17.75,
+   "isha_deg": 4.5
+  },
+  "fajr": {
+   "n": 30,
+   "ex": 21,
+   "w1": 30,
+   "worst": 1,
+   "mae": 0.38
+  },
+  "sunrise": {
+   "n": 30,
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.27
+  },
+  "dhuhr": {
+   "n": 30,
+   "ex": 30,
+   "w1": 30,
+   "worst": 0.5,
+   "mae": 0.2
+  },
+  "sunset": {
+   "n": 30,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.7,
+   "mae": 0.27
+  },
+  "isha": {
+   "n": 30,
+   "ex": 14,
+   "w1": 30,
+   "worst": 1.1,
+   "mae": 0.52
+  }
+ }
+]

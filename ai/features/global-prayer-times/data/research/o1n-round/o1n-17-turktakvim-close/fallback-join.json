@@ -1,0 +1,114 @@
+{
+ "register": "o1m-37 DECISIONS-ADDENDUM-ROUND3: the three remaining FALLBACK rows",
+ "engine": "adhan 4.4.6 solar core via scripts/engine.mjs; points derived from the tables",
+ "rows": [
+  {
+   "fallback_row": "Cyprus south",
+   "slug": "cyprus",
+   "note": "turktakvim selector entries Kibris + Guney Kibris Rum Yonetimi merged as cyprus; northern-cyprus (K.K.T.C.) is the census's own separate entry",
+   "settlements_true": 32,
+   "tables_banked": 32,
+   "dated_rows": 11680,
+   "span": [
+    [
+     "2026-01-01",
+     "2026-12-31"
+    ]
+   ],
+   "ladder_median_at_solved_point": {
+    "fajr": -4.5,
+    "sunrise": -7,
+    "dhuhr": 10,
+    "asr": 10,
+    "maghrib": 7.5,
+    "isha": 12
+   },
+   "isha_interval": null,
+   "seasonal_fajr_sunrise_drift": {
+    "median": 14,
+    "max": 15
+   },
+   "athanpro_pairs_within_30km": [
+    {
+     "ap_city": "nicosia",
+     "tt_city": "Geçitkale (Bakraçlı-Kopivou)",
+     "dist_km": 4.15,
+     "n_dates": 30,
+     "deltas": {
+      "fajr": 1,
+      "sunrise": -7,
+      "dhuhr": 10,
+      "asr": 10,
+      "maghrib": 8,
+      "isha": 10
+     }
+    }
+   ],
+   "diyanet_pairs": [],
+   "diyanet_presence": false,
+   "verdict": "GAINS a dated platform surface: turktakvim table(s) banked and fitted"
+  },
+  {
+   "fallback_row": "Western Sahara",
+   "slug": "western-sahara",
+   "note": "no selector entry: served as province filter WESDERNSAHARA under Fas (countryID 131); tables banked by o1m-45, re-fitted here with the o1n-3 method",
+   "settlements_true": null,
+   "tables_banked": 4,
+   "dated_rows": 1460,
+   "span": [
+    [
+     "2026-01-01",
+     "2026-12-31"
+    ]
+   ],
+   "ladder_median_at_solved_point": {
+    "fajr": 2,
+    "sunrise": -5,
+    "dhuhr": 8,
+    "asr": 8,
+    "maghrib": 6,
+    "isha": 7.5
+   },
+   "isha_interval": null,
+   "seasonal_fajr_sunrise_drift": {
+    "median": 7,
+    "max": 8
+   },
+   "athanpro_pairs_within_30km": [],
+   "diyanet_pairs": [],
+   "diyanet_presence": false,
+   "verdict": "GAINS a dated platform surface: turktakvim table(s) banked and fitted"
+  },
+  {
+   "fallback_row": "French Polynesia",
+   "slug": "french-polynesia",
+   "note": "selector entry Fransiz Polinezyasi (countryID 66)",
+   "settlements_true": 51,
+   "tables_banked": 51,
+   "dated_rows": 18615,
+   "span": [
+    [
+     "2026-01-01",
+     "2026-12-31"
+    ]
+   ],
+   "ladder_median_at_solved_point": {
+    "fajr": 0,
+    "sunrise": -5,
+    "dhuhr": 7,
+    "asr": 7,
+    "maghrib": 6,
+    "isha": 8
+   },
+   "isha_interval": null,
+   "seasonal_fajr_sunrise_drift": {
+    "median": 4,
+    "max": 6
+   },
+   "athanpro_pairs_within_30km": [],
+   "diyanet_pairs": [],
+   "diyanet_presence": false,
+   "verdict": "GAINS a dated platform surface: turktakvim table(s) banked and fitted"
+  }
+ ]
+}

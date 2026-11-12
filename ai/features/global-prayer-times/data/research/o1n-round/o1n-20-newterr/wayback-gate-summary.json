@@ -1,0 +1,522 @@
+[
+ {
+  "file": "captures/wayback/dakar-ucad-20201204225239.html",
+  "capture_date": "2020-12-04",
+  "calendar_year": 2020,
+  "name": "Grande Mosqu\u00e9e de l'UCAD - Dakar",
+  "lat": 14.6629438,
+  "lon": -17.4374803,
+  "tz": null,
+  "rows": 366,
+  "live": [
+   "06:05",
+   "14:15",
+   "17:00",
+   "19:31",
+   "21:00"
+  ],
+  "capture_row": [
+   "06:05",
+   "14:15",
+   "17:00",
+   "19:31",
+   "21:00"
+  ],
+  "gate": true,
+  "updatedAt": 1607069392
+ },
+ {
+  "file": "captures/wayback/dakar-ucad-20210518102105.html",
+  "capture_date": "2021-05-18",
+  "calendar_year": 2021,
+  "name": "Grande Mosqu\u00e9e de l'UCAD - Dakar",
+  "lat": 14.6629438,
+  "lon": -17.4374803,
+  "tz": null,
+  "rows": 366,
+  "live": [
+   "05:56",
+   "14:15",
+   "17:00",
+   "19:31",
+   "21:00"
+  ],
+  "capture_row": [
+   "05:56",
+   "14:15",
+   "17:00",
+   "19:31",
+   "21:00"
+  ],
+  "gate": true,
+  "updatedAt": 1621139217
+ },
+ {
+  "file": "captures/wayback/dakar-ucad-20210730092910.html",
+  "capture_date": "2021-07-30",
+  "calendar_year": 2021,
+  "name": "Grande Mosqu\u00e9e de l'UCAD - Dakar",
+  "lat": 14.6629438,
+  "lon": -17.4374803,
+  "tz": null,
+  "rows": 366,
+  "live": [
+   "05:56",
+   "14:15",
+   "17:00",
+   "19:40",
+   "21:00"
+  ],
+  "capture_row": [
+   "05:56",
+   "14:15",
+   "17:00",
+   "19:40",
+   "21:00"
+  ],
+  "gate": true,
+  "updatedAt": 1621139217
+ },
+ {
+  "file": "captures/wayback/dakar-ucad-20211130022847.html",
+  "capture_date": "2021-11-30",
+  "calendar_year": 2021,
+  "name": "Grande Mosqu\u00e9e de l'UCAD - Dakar",
+  "lat": 14.6629438,
+  "lon": -17.4374803,
+  "tz": null,
+  "rows": 366,
+  "live": [
+   "06:03",
+   "14:15",
+   "17:00",
+   "19:31",
+   "21:00"
+  ],
+  "capture_row": [
+   "06:03",
+   "14:15",
+   "17:00",
+   "19:31",
+   "21:00"
+  ],
+  "gate": true,
+  "updatedAt": 1633645572
+ },
+ {
+  "file": "captures/wayback/dakar-ucad-20220815032256.html",
+  "capture_date": "2022-08-15",
+  "calendar_year": 2022,
+  "name": "Grande Mosqu\u00e9e de l'UCAD - Dakar",
+  "lat": 14.6629438,
+  "lon": -17.4374803,
+  "tz": null,
+  "rows": 366,
+  "live": [
+   "05:56",
+   "14:15",
+   "17:00",
+   "19:33",
+   "21:00"
+  ],
+  "capture_row": [
+   "05:56",
+   "14:15",
+   "17:00",
+   "19:33",
+   "21:00"
+  ],
+  "gate": true,
+  "updatedAt": null
+ },
+ {
+  "file": "captures/wayback/dakar-ucad-20250418201646.html",
+  "capture_date": "2025-04-18",
+  "calendar_year": 2025,
+  "name": "Grande Mosqu\u00e9e de l'UCAD - Dakar",
+  "lat": 14.6629438,
+  "lon": -17.4374803,
+  "tz": "Africa/Dakar",
+  "rows": 366,
+  "live": [
+   "05:56",
+   "14:15",
+   "17:00",
+   "19:31",
+   "21:00"
+  ],
+  "capture_row": [
+   "05:56",
+   "14:15",
+   "17:00",
+   "19:31",
+   "21:00"
+  ],
+  "gate": true,
+  "updatedAt": null
+ },
+ {
+  "file": "captures/wayback/dakar-ucad-20250420055201.html",
+  "capture_date": "2025-04-20",
+  "calendar_year": 2025,
+  "name": "Grande Mosqu\u00e9e de l'UCAD - Dakar",
+  "lat": 14.6629438,
+  "lon": -17.4374803,
+  "tz": "Africa/Dakar",
+  "rows": 366,
+  "live": [
+   "05:56",
+   "14:15",
+   "17:00",
+   "19:31",
+   "21:00"
+  ],
+  "capture_row": [
+   "05:56",
+   "14:15",
+   "17:00",
+   "19:31",
+   "21:00"
+  ],
+  "gate": true,
+  "updatedAt": null
+ },
+ {
+  "file": "captures/wayback/dakar-ucad-20250420073523.html",
+  "capture_date": "2025-04-20",
+  "calendar_year": 2025,
+  "name": "Grande Mosqu\u00e9e de l'UCAD - Dakar",
+  "lat": 14.6629438,
+  "lon": -17.4374803,
+  "tz": "Africa/Dakar",
+  "rows": 366,
+  "live": [
+   "05:56",
+   "14:15",
+   "17:00",
+   "19:31",
+   "21:00"
+  ],
+  "capture_row": [
+   "05:56",
+   "14:15",
+   "17:00",
+   "19:31",
+   "21:00"
+  ],
+  "gate": true,
+  "updatedAt": null
+ },
+ {
+  "file": "captures/wayback/dakar-ucad-20250420203158.html",
+  "capture_date": "2025-04-20",
+  "calendar_year": 2025,
+  "name": "Grande Mosqu\u00e9e de l'UCAD - Dakar",
+  "lat": 14.6629438,
+  "lon": -17.4374803,
+  "tz": "Africa/Dakar",
+  "rows": 366,
+  "live": [
+   "05:56",
+   "14:15",
+   "17:00",
+   "19:31",
+   "21:00"
+  ],
+  "capture_row": [
+   "05:56",
+   "14:15",
+   "17:00",
+   "19:31",
+   "21:00"
+  ],
+  "gate": true,
+  "updatedAt": null
+ },
+ {
+  "file": "captures/wayback/dakar-ucad-20250423010127.html",
+  "capture_date": "2025-04-23",
+  "calendar_year": 2025,
+  "name": "Grande Mosqu\u00e9e de l'UCAD - Dakar",
+  "lat": 14.6629438,
+  "lon": -17.4374803,
+  "tz": "Africa/Dakar",
+  "rows": 366,
+  "live": [
+   "05:56",
+   "14:15",
+   "17:00",
+   "19:31",
+   "21:00"
+  ],
+  "capture_row": [
+   "05:56",
+   "14:15",
+   "17:00",
+   "19:31",
+   "21:00"
+  ],
+  "gate": true,
+  "updatedAt": null
+ },
+ {
+  "file": "captures/wayback/dakar-ucad-20250423050943.html",
+  "capture_date": "2025-04-23",
+  "calendar_year": 2025,
+  "name": "Grande Mosqu\u00e9e de l'UCAD - Dakar",
+  "lat": 14.6629438,
+  "lon": -17.4374803,
+  "tz": "Africa/Dakar",
+  "rows": 366,
+  "live": [
+   "05:56",
+   "14:15",
+   "17:00",
+   "19:31",
+   "21:00"
+  ],
+  "capture_row": [
+   "05:56",
+   "14:15",
+   "17:00",
+   "19:31",
+   "21:00"
+  ],
+  "gate": true,
+  "updatedAt": null
+ },
+ {
+  "file": "captures/wayback/dakar-ucad-20250423144612.html",
+  "capture_date": "2025-04-23",
+  "calendar_year": 2025,
+  "name": "Grande Mosqu\u00e9e de l'UCAD - Dakar",
+  "lat": 14.6629438,
+  "lon": -17.4374803,
+  "tz": "Africa/Dakar",
+  "rows": 366,
+  "live": [
+   "05:56",
+   "14:15",
+   "17:00",
+   "19:31",
+   "21:00"
+  ],
+  "capture_row": [
+   "05:56",
+   "14:15",
+   "17:00",
+   "19:31",
+   "21:00"
+  ],
+  "gate": true,
+  "updatedAt": null
+ },
+ {
+  "file": "captures/wayback/dakar-ucad-20250424065937.html",
+  "capture_date": "2025-04-24",
+  "calendar_year": 2025,
+  "name": "Grande Mosqu\u00e9e de l'UCAD - Dakar",
+  "lat": 14.6629438,
+  "lon": -17.4374803,
+  "tz": "Africa/Dakar",
+  "rows": 366,
+  "live": [
+   "05:56",
+   "14:15",
+   "17:00",
+   "19:31",
+   "21:00"
+  ],
+  "capture_row": [
+   "05:56",
+   "14:15",
+   "17:00",
+   "19:31",
+   "21:00"
+  ],
+  "gate": true,
+  "updatedAt": null
+ },
+ {
+  "file": "captures/wayback/dakar-ucad-20251119101600.html",
+  "capture_date": "2025-11-19",
+  "calendar_year": 2025,
+  "name": "Grande Mosqu\u00e9e de l'UCAD - Dakar",
+  "lat": 14.6629438,
+  "lon": -17.4374803,
+  "tz": "Africa/Dakar",
+  "rows": 366,
+  "live": [
+   "05:58",
+   "14:15",
+   "17:00",
+   "19:31",
+   "21:00"
+  ],
+  "capture_row": [
+   "05:58",
+   "14:15",
+   "17:00",
+   "19:31",
+   "21:00"
+  ],
+  "gate": true,
+  "updatedAt": null
+ },
+ {
+  "file": "captures/wayback/dakar-ucad-20260309061930.html",
+  "capture_date": "2026-03-09",
+  "calendar_year": 2026,
+  "name": "Grande Mosqu\u00e9e de l'UCAD - Dakar",
+  "lat": 14.6629438,
+  "lon": -17.4374803,
+  "tz": "Africa/Dakar",
+  "rows": 366,
+  "live": [
+   "06:11",
+   "14:15",
+   "17:00",
+   "19:31",
+   "21:00"
+  ],
+  "capture_row": [
+   "06:11",
+   "14:15",
+   "17:00",
+   "19:31",
+   "21:00"
+  ],
+  "gate": true,
+  "updatedAt": null
+ },
+ {
+  "file": "captures/wayback/dakar-ucad-20260313115424.html",
+  "capture_date": "2026-03-13",
+  "calendar_year": 2026,
+  "name": "Grande Mosqu\u00e9e de l'UCAD - Dakar",
+  "lat": 14.6629438,
+  "lon": -17.4374803,
+  "tz": "Africa/Dakar",
+  "rows": 366,
+  "live": [
+   "06:08",
+   "14:15",
+   "17:00",
+   "19:31",
+   "21:00"
+  ],
+  "capture_row": [
+   "06:08",
+   "14:15",
+   "17:00",
+   "19:31",
+   "21:00"
+  ],
+  "gate": true,
+  "updatedAt": null
+ },
+ {
+  "file": "captures/wayback/dakar-ucad-20260516024737.html",
+  "capture_date": "2026-05-16",
+  "calendar_year": 2026,
+  "name": "Grande Mosqu\u00e9e de l'UCAD - Dakar",
+  "lat": 14.6629438,
+  "lon": -17.4374803,
+  "tz": "Africa/Dakar",
+  "rows": 366,
+  "live": [
+   "05:56",
+   "14:15",
+   "17:00",
+   "19:31",
+   "21:00"
+  ],
+  "capture_row": [
+   "05:56",
+   "14:15",
+   "17:00",
+   "19:31",
+   "21:00"
+  ],
+  "gate": true,
+  "updatedAt": null
+ },
+ {
+  "file": "captures/wayback/dakar-ucad-20260520131000.html",
+  "capture_date": "2026-05-20",
+  "calendar_year": 2026,
+  "name": "Grande Mosqu\u00e9e de l'UCAD - Dakar",
+  "lat": 14.6629438,
+  "lon": -17.4374803,
+  "tz": "Africa/Dakar",
+  "rows": 366,
+  "live": [
+   "05:56",
+   "14:15",
+   "17:00",
+   "19:32",
+   "21:00"
+  ],
+  "capture_row": [
+   "05:56",
+   "14:15",
+   "17:00",
+   "19:32",
+   "21:00"
+  ],
+  "gate": true,
+  "updatedAt": null
+ },
+ {
+  "file": "captures/wayback/santacruz-20250906132046.html",
+  "capture_date": "2025-09-06",
+  "calendar_year": 2025,
+  "name": "Centro Isl\u00e1mico de Santa Cruz",
+  "lat": -17.7931928,
+  "lon": -63.1965353,
+  "tz": "America/La_Paz",
+  "rows": 366,
+  "live": [
+   "05:04",
+   "12:16",
+   "15:37",
+   "18:14",
+   "19:15"
+  ],
+  "capture_row": [
+   "05:04",
+   "12:16",
+   "15:37",
+   "18:14",
+   "19:15"
+  ],
+  "gate": true,
+  "updatedAt": null
+ },
+ {
+  "file": "captures/wayback/santacruz-20250907031705.html",
+  "capture_date": "2025-09-07",
+  "calendar_year": 2025,
+  "name": "Centro Isl\u00e1mico de Santa Cruz",
+  "lat": -17.7931928,
+  "lon": -63.1965353,
+  "tz": "America/La_Paz",
+  "rows": 366,
+  "live": [
+   "05:03",
+   "12:16",
+   "15:37",
+   "18:14",
+   "19:15"
+  ],
+  "capture_row": [
+   "05:03",
+   "12:16",
+   "15:37",
+   "18:14",
+   "19:15"
+  ],
+  "gate": true,
+  "updatedAt": null
+ }
+]

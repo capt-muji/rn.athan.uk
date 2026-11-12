@@ -1,0 +1,126 @@
+{
+ "wave": "o1n-37-pacific",
+ "date_utc": "2026-11-12",
+ "entries": {
+  "papua-new-guinea": {
+   "verdict": "negative-with-leads",
+   "routes": [
+    "tinyfish EN search: 'Port Moresby mosque prayer times Papua New Guinea Muslim society'",
+    "'Papua New Guinea Muslim Society Al-Haramain mosque Port Moresby prayer times'"
+   ],
+   "finding": "Hohola Mosque (Islamic Centre, Malas Street, Hohola, Port Moresby) is the country's main mosque; no own-site timetable. Presence is Facebook groups/RISEAP video/YouTube only - login-walled, never fetched. No national Muslim body web surface found. Platform rows (116 settlements / 42,340 dated rows, TT-TREE) stand."
+  },
+  "solomon-islands": {
+   "verdict": "negative",
+   "routes": [
+    "tinyfish EN: 'Honiara Solomon Islands mosque Islamic centre prayer times'"
+   ],
+   "finding": "Aggregators only (muslimpro, islamicfinder, praywatch, matw, gtaf, urdupoint, prayertimes.date). iaiom.com 'Islamic Association' matched is Toronto, Canada (20 Finch Road) - name collision, not Solomon Islands. No local surface. Platform rows (14 settlements) stand."
+  },
+  "vanuatu": {
+   "verdict": "negative-with-leads",
+   "routes": [
+    "tinyfish EN: 'Port Vila Vanuatu mosque Muslim community prayer times'"
+   ],
+   "finding": "Port Vila Grand Mosque (first mosque, per Wikipedia), Mele prayer hall (1992), Vanuatu Muslim Centre - all Facebook-news only (LivingInVanuatuNews, Muslims.NewZealand posts); no own-site timetable. Leads named: the two Facebook pages. Platform rows (5 settlements) stand."
+  },
+  "marshall-islands": {
+   "verdict": "negative",
+   "routes": [
+    "tinyfish EN: 'Majuro Marshall Islands mosque prayer times Islamic center'"
+   ],
+   "finding": "Aggregators only (salaahdaily, firdawsway, bmaspace, prayer-times.com, muslimandquran, muslimpro, time.quranmajeed, gtaf, athanpro, prayerwaqt). No local surface. Platform rows (14 settlements) stand."
+  },
+  "micronesia": {
+   "verdict": "negative-with-lead",
+   "routes": [
+    "tinyfish EN: 'Pohnpei Micronesia mosque prayer times Palikir Kolonia Islamic center'"
+   ],
+   "finding": "Aggregators only. Named lead: Ahmadiyya Muslim Community FSM Facebook page (facebook.com/ahmadiyyamuslimfsm, Kolonia) - login-walled, never fetched. Platform rows (20 settlements) stand."
+  },
+  "palau": {
+   "verdict": "own-site board banked with anomaly",
+   "routes": [
+    "tinyfish EN: 'Palau Korror mosque prayer times Muslim community'"
+   ],
+   "finding": "Palau Central Mosque own site palaucentralmosque.com captured live 2026-11-12T10:30Z (captures/pw-palaucentral.html.gz + board text). Dated 2 Jumada al-Thani 1448 = Thu 12 Nov 2026, label 'Palau'. Board times (Fajr 7:51 AM, Zuhr 2:43 PM, Asr 5:52 PM, Magrib 8:14 PM, Isha 9:44 PM, Jumah 2:00 PM, Sunrise 9:11 AM, Sunset 8:14 PM) do NOT reproduce Koror solar values - whole board sits ~+3h off the platform Koror row (suspected misconfigured location or wrong display timezone on the mosque site, data-offset=9 attr present). Recorded AS PRINTED, community tier, year-blind (Hijri date only), NOT proven as a Koror record. 'ICP alminaret' result is Islamic Center of Pennsylvania (Mechanicsburg PA) - false positive, no data taken."
+  },
+  "nauru": {
+   "verdict": "negative",
+   "routes": [
+    "tinyfish EN: 'Nauru mosque Muslim community prayer times'"
+   ],
+   "finding": "No mosque surface; aggregators only (islamicfinder, muslimpro, muslimandquran). Wikipedia: both Sunni and Shia communities present, no restrictions on construction - but no web surface found. Platform rows (4 settlements) stand."
+  },
+  "tuvalu": {
+   "verdict": "negative-with-lead",
+   "routes": [
+    "tinyfish EN: 'Funafuti Tuvalu mosque Muslim prayer times'"
+   ],
+   "finding": "The Tuvalu Mosque (Ahmadiyya, Vaiaku/Funafuti) is the only mosque. No web timetable. Named lead: Instagram @amj.tuvalu (71 followers, Ahmadiyya Muslim Association Tuvalu). ahmadiyyatmosques.wordpress.com listing captured in snippet only. Platform rows (7 settlements) stand."
+  },
+  "american-samoa": {
+   "verdict": "negative",
+   "routes": [
+    "tinyfish EN: 'Pago Pago American Samoa mosque Muslim community prayer times'"
+   ],
+   "finding": "No mosque web surface; aggregators only (gtaf, muslimpro, athanpro, ihadis, salahtimes, al-hamdoulillah, time.now). Wikipedia 'Islam in American Samoa' documents community activity but no named mosque surface. Platform rows (27 settlements / 9,855 rows) stand - note: the dispatch called American Samoa shell-only, but the held store carries 27 tables; store wins."
+  },
+  "samoa": {
+   "verdict": "negative-with-lead + shell probe",
+   "routes": [
+    "tinyfish EN: 'Apia Samoa mosque Muslim community prayer times'"
+   ],
+   "finding": "Masjid Miriam is the only mosque in Samoa (Facebook posts: WMuslimCC, islamiclandmarks; Samoa Observer story). No web timetable. Named lead: the mosque's Facebook presence via community pages - login-walled, never fetched. Publisher shell probe live 2026-11-12: settlement 63191 (Savai'i province list) serves the byte-identical no-table shell on annual, monthly (aylikvakitler) and default city routes (captures/shell-samoa-*.html.gz); tree carries 36 settlements 0 tables; O1n-32 verdict confirmed."
+  },
+  "tonga": {
+   "verdict": "negative-with-lead + shell probe + CDX empty",
+   "routes": [
+    "tinyfish EN: \"Nuku'alofa Tonga mosque Muslim prayer times Islamic centre\""
+   ],
+   "finding": "Al-Taiyab mosque, Nuku'alofa, named in a Facebook group post only - named lead, login-walled. Aggregators otherwise. Publisher shell probe live: settlement 82058 (Eua) serves the identical no-table shell on annual, monthly and default city routes (captures/shell-tonga-*.html.gz); tree carries 94 settlements 0 tables. Wayback CDX for the settlement annual URL: zero captures (probe 2026-11-12). O1n-32 verdict confirmed."
+  },
+  "wallis-and-futuna": {
+   "verdict": "negative + shell probe + CDX outage",
+   "routes": [
+    "tinyfish FR+EN: 'Wallis et Futuna mosquee musulmans horaires priere Mata-Utu'"
+   ],
+   "finding": "No mosque surface at all; aggregators only (muslimpro FR, athanpro FR, almosaly, islamicfinder FR). Publisher shell probe live: settlement 62323 (Fuduna Island) identical no-table shell on all three routes (captures/shell-wallis-*.html.gz); tree carries 28 settlements 0 tables. Wayback CDX for settlements 63191/62323: Internet Archive Temporarily Offline mid-thread - thread stopped per standing orders, not proven."
+  },
+  "northern-mariana-islands": {
+   "verdict": "negative-with-lead",
+   "routes": [
+    "tinyfish EN: 'Saipan Northern Mariana Islands mosque prayer times Islamic center' and 'Saipan \"Baitus Salam\" mosque Ahmadiyya prayer times'"
+   ],
+   "finding": "Saipan Baitus Salam Jam-e Masjid (Ahmadiyya) is Facebook-only (facebook.com/saipanbsjmosque) - named lead, login-walled, never fetched. Aggregators otherwise. Platform row (1 settlement, Saipan Island, 365 rows) stands."
+  },
+  "french-polynesia": {
+   "verdict": "negative; held FALLBACK line stands",
+   "routes": [
+    "tinyfish FR+EN: 'association musulmane Tahiti Polynesie francaise mosquee horaires priere Papeete'"
+   ],
+   "finding": "The first Tahiti mosque/prayer room (Papeete, inaugurated 2013-10-15) was shut by the municipality a day after opening (France24, RNZ, islamophobiawatch coverage); Tahiti Islamic Centre has no own web timetable; Reddit r/Tahiti 2026 confirms no functioning mosque. Local press leads named: tahiti-infos.com, polynesie-la-1ere. Platform rows (51 settlements / 18,615 rows) stand."
+  },
+  "guam": {
+   "verdict": "negative-with-lead",
+   "routes": [
+    "tinyfish EN: 'Guam mosque Al Noor Mangilao prayer times Islamic center' and '\"Masjid An-Noor\" Guam Mangilao facebook OR website prayer schedule'"
+   ],
+   "finding": "Masjid An-Noor Guam (310 Corten Torres / CRW5+27R, Mangilao; opened 2000, first mosque on Guam) is Facebook-only (facebook.com/p/Masjid-An-Noor-Guam-100064602373210/, 2.6k followers) - named lead, login-walled, never fetched. Zabihah listing carries prayer times but is an aggregator, never provenance. Platform rows (4 settlements) stand."
+  },
+  "hawaii": {
+   "verdict": "community board witness banked; MAH negative",
+   "routes": [
+    "tinyfish EN: 'Manoa Islamic Center Honolulu prayer times Hawaii'"
+   ],
+   "finding": "Muslim Association of Hawaii (hawaiimasjid.com, Manoa, only Oahu mosque): live site walked - no prayer-times page in nav (home/about/announcements/contact); the Google-crawled 'Fajr 5:22 AM' table is a stale older crawl, absent live. Islamic Center of Hawaii (688 Kinoole St unit 101, Hilo) masjidbox board captured live 2026-11-12T10:28Z (captures/mbx-hilo-board-2026-11-12.txt, data/hi-hilo-board-witness.json): fajr -1, shuruq +4, dhuhr -7, asr -8, maghrib -5, isha -8 vs the platform Hilo row - a distinct community generation, year-blind."
+  },
+  "easter-island": {
+   "verdict": "negative",
+   "routes": [
+    "tinyfish EN/ES: 'Easter Island Rapa Nui mosque Muslim prayer times Isla de Pascua'"
+   ],
+   "finding": "No mosque, no Muslim community surface; aggregators only (islamicfinder isla-de-pascua, masjidi.app, namazvakti Hanga Roa monthly, timesprayer). The turktakvim tree carries NO Easter Island settlement (checked store under chile and all dirs for pascua/rapa/easter - none; coverage.json has no easter entry). The census entry holds aggregator rows only."
+  }
+ }
+}

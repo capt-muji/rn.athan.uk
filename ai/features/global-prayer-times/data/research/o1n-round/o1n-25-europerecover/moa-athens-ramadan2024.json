@@ -1,0 +1,608 @@
+{
+ "surface": "mosqueofathens.gov.gr Ramadan 2024 poster (OCR, fast level)",
+ "rows": [
+  {
+   "date": "2024-03-11",
+   "vals": [
+    315,
+    403,
+    756,
+    955,
+    1108,
+    1191
+   ],
+   "cols": [
+    "fajr",
+    "sunrise",
+    "dhuhr",
+    "asr",
+    "maghrib",
+    "isha"
+   ],
+   "complete": true
+  },
+  {
+   "date": "2024-03-12",
+   "vals": [
+    314,
+    401,
+    755,
+    956,
+    1109,
+    1192
+   ],
+   "cols": [
+    "fajr",
+    "sunrise",
+    "dhuhr",
+    "asr",
+    "maghrib",
+    "isha"
+   ],
+   "complete": true
+  },
+  {
+   "date": "2024-03-13",
+   "vals": [
+    312,
+    400,
+    755,
+    956,
+    1110,
+    1193
+   ],
+   "cols": [
+    "fajr",
+    "sunrise",
+    "dhuhr",
+    "asr",
+    "maghrib",
+    "isha"
+   ],
+   "complete": true,
+   "suspect": true
+  },
+  {
+   "date": "2024-03-14",
+   "vals": [
+    311,
+    398,
+    755,
+    957,
+    1111,
+    1194
+   ],
+   "cols": [
+    "fajr",
+    "sunrise",
+    "dhuhr",
+    "asr",
+    "maghrib",
+    "isha"
+   ],
+   "complete": true
+  },
+  {
+   "date": "2024-03-15",
+   "vals": [
+    309,
+    397,
+    755,
+    957,
+    1112,
+    1195
+   ],
+   "cols": [
+    "fajr",
+    "sunrise",
+    "dhuhr",
+    "asr",
+    "maghrib",
+    "isha"
+   ],
+   "complete": true
+  },
+  {
+   "date": "2024-03-16",
+   "vals": [
+    308,
+    395,
+    754,
+    958,
+    1113,
+    1196
+   ],
+   "cols": [
+    "fajr",
+    "sunrise",
+    "dhuhr",
+    "asr",
+    "maghrib",
+    "isha"
+   ],
+   "complete": true
+  },
+  {
+   "date": "2024-03-17",
+   "vals": [
+    306,
+    394,
+    754,
+    958,
+    1114,
+    1197
+   ],
+   "cols": [
+    "fajr",
+    "sunrise",
+    "dhuhr",
+    "asr",
+    "maghrib",
+    "isha"
+   ],
+   "complete": true
+  },
+  {
+   "date": "2024-03-18",
+   "vals": [
+    304,
+    392,
+    754,
+    959,
+    1115,
+    1198
+   ],
+   "cols": [
+    "fajr",
+    "sunrise",
+    "dhuhr",
+    "asr",
+    "maghrib",
+    "isha"
+   ],
+   "complete": true
+  },
+  {
+   "date": "2024-03-19",
+   "vals": [
+    303,
+    391,
+    753,
+    959,
+    1116,
+    1199
+   ],
+   "cols": [
+    "fajr",
+    "sunrise",
+    "dhuhr",
+    "asr",
+    "maghrib",
+    "isha"
+   ],
+   "complete": true
+  },
+  {
+   "date": "2024-03-20",
+   "vals": [
+    301,
+    389,
+    753,
+    959,
+    1117,
+    1200
+   ],
+   "cols": [
+    "fajr",
+    "sunrise",
+    "dhuhr",
+    "asr",
+    "maghrib",
+    "isha"
+   ],
+   "complete": true
+  },
+  {
+   "date": "2024-03-21",
+   "vals": [
+    300,
+    388,
+    753,
+    960,
+    1118,
+    1201
+   ],
+   "cols": [
+    "fajr",
+    "sunrise",
+    "dhuhr",
+    "asr",
+    "maghrib",
+    "isha"
+   ],
+   "complete": true
+  },
+  {
+   "date": "2024-03-22",
+   "vals": [
+    298,
+    386,
+    753,
+    960,
+    1119,
+    1202
+   ],
+   "cols": [
+    "fajr",
+    "sunrise",
+    "dhuhr",
+    "asr",
+    "maghrib",
+    "isha"
+   ],
+   "complete": true
+  },
+  {
+   "date": "2024-03-23",
+   "vals": [
+    296,
+    385,
+    752,
+    961,
+    1120,
+    1203
+   ],
+   "cols": [
+    "fajr",
+    "sunrise",
+    "dhuhr",
+    "asr",
+    "maghrib",
+    "isha"
+   ],
+   "complete": true
+  },
+  {
+   "date": "2024-03-24",
+   "vals": [
+    295,
+    383,
+    752,
+    961,
+    1121,
+    1204
+   ],
+   "cols": [
+    "fajr",
+    "sunrise",
+    "dhuhr",
+    "asr",
+    "maghrib",
+    "isha"
+   ],
+   "complete": true
+  },
+  {
+   "date": "2024-03-25",
+   "vals": [
+    293,
+    382,
+    752,
+    961,
+    1121,
+    1205
+   ],
+   "cols": [
+    "fajr",
+    "sunrise",
+    "dhuhr",
+    "asr",
+    "maghrib",
+    "isha"
+   ],
+   "complete": true
+  },
+  {
+   "date": "2024-03-26",
+   "vals": [
+    291,
+    380,
+    751,
+    962,
+    1122,
+    1206
+   ],
+   "cols": [
+    "fajr",
+    "sunrise",
+    "dhuhr",
+    "asr",
+    "maghrib",
+    "isha"
+   ],
+   "complete": true
+  },
+  {
+   "date": "2024-03-27",
+   "vals": [
+    289,
+    378,
+    751,
+    962,
+    1123,
+    1207
+   ],
+   "cols": [
+    "fajr",
+    "sunrise",
+    "dhuhr",
+    "asr",
+    "maghrib",
+    "isha"
+   ],
+   "complete": true
+  },
+  {
+   "date": "2024-03-28",
+   "vals": [
+    288,
+    377,
+    751,
+    962,
+    1124,
+    1208
+   ],
+   "cols": [
+    "fajr",
+    "sunrise",
+    "dhuhr",
+    "asr",
+    "maghrib",
+    "isha"
+   ],
+   "complete": true
+  },
+  {
+   "date": "2024-03-29",
+   "vals": [
+    286,
+    375,
+    750,
+    963,
+    1125,
+    1210
+   ],
+   "cols": [
+    "fajr",
+    "sunrise",
+    "dhuhr",
+    "asr",
+    "maghrib",
+    "isha"
+   ],
+   "complete": true
+  },
+  {
+   "date": "2024-03-30",
+   "vals": [
+    284,
+    374,
+    750,
+    963,
+    1126,
+    1211
+   ],
+   "cols": [
+    "fajr",
+    "sunrise",
+    "dhuhr",
+    "asr",
+    "maghrib",
+    "isha"
+   ],
+   "complete": true
+  },
+  {
+   "date": "2024-03-31",
+   "vals": [
+    341,
+    431,
+    810,
+    1024,
+    1188,
+    1273
+   ],
+   "cols": [
+    "fajr",
+    "sunrise",
+    "dhuhr",
+    "asr",
+    "maghrib",
+    "isha"
+   ],
+   "complete": true,
+   "suspect": true
+  },
+  {
+   "date": "2024-04-01",
+   "vals": [
+    339,
+    429,
+    809,
+    1024,
+    1189,
+    1274
+   ],
+   "cols": [
+    "fajr",
+    "sunrise",
+    "dhuhr",
+    "asr",
+    "maghrib",
+    "isha"
+   ],
+   "complete": true
+  },
+  {
+   "date": "2024-04-02",
+   "vals": [
+    338,
+    428,
+    809,
+    1024,
+    1190,
+    1275
+   ],
+   "cols": [
+    "fajr",
+    "sunrise",
+    "dhuhr",
+    "asr",
+    "maghrib",
+    "isha"
+   ],
+   "complete": true
+  },
+  {
+   "date": "2024-04-03",
+   "vals": [
+    336,
+    426,
+    809,
+    1025,
+    1191,
+    1276
+   ],
+   "cols": [
+    "fajr",
+    "sunrise",
+    "dhuhr",
+    "asr",
+    "maghrib",
+    "isha"
+   ],
+   "complete": true
+  },
+  {
+   "date": "2024-04-04",
+   "vals": [
+    334,
+    425,
+    808,
+    1025,
+    1192,
+    1277
+   ],
+   "cols": [
+    "fajr",
+    "sunrise",
+    "dhuhr",
+    "asr",
+    "maghrib",
+    "isha"
+   ],
+   "complete": true
+  },
+  {
+   "date": "2024-04-05",
+   "vals": [
+    332,
+    423,
+    808,
+    1025,
+    1193,
+    1278
+   ],
+   "cols": [
+    "fajr",
+    "sunrise",
+    "dhuhr",
+    "asr",
+    "maghrib",
+    "isha"
+   ],
+   "complete": true
+  },
+  {
+   "date": "2024-04-06",
+   "vals": [
+    331,
+    422,
+    808,
+    1025,
+    1194,
+    1279
+   ],
+   "cols": [
+    "fajr",
+    "sunrise",
+    "dhuhr",
+    "asr",
+    "maghrib",
+    "isha"
+   ],
+   "complete": true
+  },
+  {
+   "date": "2024-04-07",
+   "vals": [
+    329,
+    420,
+    808,
+    1026,
+    1194,
+    1281
+   ],
+   "cols": [
+    "fajr",
+    "sunrise",
+    "dhuhr",
+    "asr",
+    "maghrib",
+    "isha"
+   ],
+   "complete": true,
+   "suspect": true
+  },
+  {
+   "date": "2024-04-08",
+   "vals": [
+    327,
+    419,
+    807,
+    1026,
+    1195,
+    1282
+   ],
+   "cols": [
+    "fajr",
+    "sunrise",
+    "dhuhr",
+    "asr",
+    "maghrib",
+    "isha"
+   ],
+   "complete": true
+  },
+  {
+   "date": "2024-04-09",
+   "vals": [
+    326,
+    417,
+    807,
+    1026,
+    1196,
+    1283
+   ],
+   "cols": [
+    "fajr",
+    "sunrise",
+    "dhuhr",
+    "asr",
+    "maghrib",
+    "isha"
+   ],
+   "complete": true
+  }
+ ]
+}

@@ -1,0 +1,12 @@
+{
+ "surface": "islamiskaforbundet.se/bonetider (IFiS)",
+ "fetch": "TinyFish fetch (curl Cloudflare-walled, recorded)",
+ "problem": "served table carries no printed month label in extracted content; rows 1..30 with June-September-like day shape",
+ "status": "open - month identity unresolved",
+ "recheck_2026-11-12": {
+  "route": "TinyFish fetch (https://www.islamiskaforbundet.se/bonetider/), raw HTML also banked (captures/ifis-bonetider-nov12.html.gz)",
+  "month_label": "still none printed on the page (title: 'Islamiska F\u00f6rbundet \u2013 B\u00f6netider', table headers Dat/Fajr/Shuruk/Dhohr/Asr/Magrib/Isha only)",
+  "month_identified": "September (day length at the Stockholm latitude: 14h22m at day 1 falling to 11h50m at day 30; fajr 03:32 rising to 04:31)",
+  "verdict": "stale pinned September table still served 2026-11-12; cannot serve as a dated second witness; not proven as year-2 accrual"
+ }
+}

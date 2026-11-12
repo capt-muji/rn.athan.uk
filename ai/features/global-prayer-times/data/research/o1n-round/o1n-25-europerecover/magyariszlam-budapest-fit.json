@@ -1,0 +1,273 @@
+{
+ "engine": "adhan 4.4.6",
+ "point": [
+  47.4979,
+  19.0402
+ ],
+ "zone": "Europe/Budapest",
+ "recipe": {
+  "fajr": "18 deg + 0",
+  "isha": "17 deg + 0",
+  "sunrise": "-7",
+  "dhuhr": "transit + 4.9",
+  "asr": "Shafi + 4.8",
+  "sunset": "+6.9",
+  "note": "temkin block (sunrise -7 / dhuhr +5 / sunset +7) = the Diyanet convention class"
+ },
+ "span": "2024-02-01..2027-12-31",
+ "columns": {
+  "fajr": {
+   "n": 1034,
+   "ex": 771,
+   "w1": 875,
+   "worst": 41.8,
+   "mae": 4.39,
+   "dark_season": {
+    "n": 516,
+    "ex": 468,
+    "w1": 516,
+    "worst": 0.6,
+    "mae": 0.26
+   },
+   "bright_season": {
+    "n": 518,
+    "ex": 303,
+    "w1": 359,
+    "worst": 41.8,
+    "mae": 8.51
+   }
+  },
+  "sunrise": {
+   "n": 1034,
+   "ex": 973,
+   "w1": 1034,
+   "worst": 0.6,
+   "mae": 0.25
+  },
+  "dhuhr": {
+   "n": 1034,
+   "ex": 994,
+   "w1": 1034,
+   "worst": 0.5,
+   "mae": 0.25
+  },
+  "asr_shafi": {
+   "n": 1034,
+   "ex": 134,
+   "w1": 439,
+   "worst": 4.3,
+   "mae": 1.85
+  },
+  "sunset": {
+   "n": 1034,
+   "ex": 972,
+   "w1": 1034,
+   "worst": 0.6,
+   "mae": 0.25
+  },
+  "isha": {
+   "n": 1034,
+   "ex": 707,
+   "w1": 889,
+   "worst": 28.3,
+   "mae": 2.91,
+   "dark_season": {
+    "n": 516,
+    "ex": 471,
+    "w1": 516,
+    "worst": 0.8,
+    "mae": 0.26
+   },
+   "bright_season": {
+    "n": 518,
+    "ex": 236,
+    "w1": 373,
+    "worst": 28.3,
+    "mae": 5.54
+   }
+  }
+ },
+ "perYear": {
+  "2024": {
+   "fajr": {
+    "n": 90,
+    "ex": 77,
+    "w1": 90,
+    "worst": 0.8,
+    "mae": 0.26
+   },
+   "sunrise": {
+    "n": 90,
+    "ex": 88,
+    "w1": 90,
+    "worst": 0.6,
+    "mae": 0.2
+   },
+   "dhuhr": {
+    "n": 90,
+    "ex": 84,
+    "w1": 90,
+    "worst": 0.5,
+    "mae": 0.25
+   },
+   "asr_shafi": {
+    "n": 90,
+    "ex": 0,
+    "w1": 0,
+    "worst": 4.3,
+    "mae": 3.28
+   },
+   "sunset": {
+    "n": 90,
+    "ex": 84,
+    "w1": 90,
+    "worst": 0.6,
+    "mae": 0.26
+   },
+   "isha": {
+    "n": 90,
+    "ex": 65,
+    "w1": 90,
+    "worst": 0.8,
+    "mae": 0.33
+   }
+  },
+  "2025": {
+   "fajr": {
+    "n": 214,
+    "ex": 151,
+    "w1": 166,
+    "worst": 41.8,
+    "mae": 6.7
+   },
+   "sunrise": {
+    "n": 214,
+    "ex": 204,
+    "w1": 214,
+    "worst": 0.6,
+    "mae": 0.26
+   },
+   "dhuhr": {
+    "n": 214,
+    "ex": 205,
+    "w1": 214,
+    "worst": 0.5,
+    "mae": 0.25
+   },
+   "asr_shafi": {
+    "n": 214,
+    "ex": 46,
+    "w1": 148,
+    "worst": 2.4,
+    "mae": 1.14
+   },
+   "sunset": {
+    "n": 214,
+    "ex": 203,
+    "w1": 214,
+    "worst": 0.6,
+    "mae": 0.24
+   },
+   "isha": {
+    "n": 214,
+    "ex": 141,
+    "w1": 169,
+    "worst": 28.3,
+    "mae": 4.39
+   }
+  },
+  "2026": {
+   "fajr": {
+    "n": 365,
+    "ex": 273,
+    "w1": 310,
+    "worst": 41.7,
+    "mae": 4.22
+   },
+   "sunrise": {
+    "n": 365,
+    "ex": 347,
+    "w1": 365,
+    "worst": 0.6,
+    "mae": 0.24
+   },
+   "dhuhr": {
+    "n": 365,
+    "ex": 355,
+    "w1": 365,
+    "worst": 0.5,
+    "mae": 0.25
+   },
+   "asr_shafi": {
+    "n": 365,
+    "ex": 45,
+    "w1": 146,
+    "worst": 4.3,
+    "mae": 1.89
+   },
+   "sunset": {
+    "n": 365,
+    "ex": 341,
+    "w1": 365,
+    "worst": 0.6,
+    "mae": 0.26
+   },
+   "isha": {
+    "n": 365,
+    "ex": 247,
+    "w1": 315,
+    "worst": 28.3,
+    "mae": 2.8
+   }
+  },
+  "2027": {
+   "fajr": {
+    "n": 365,
+    "ex": 270,
+    "w1": 309,
+    "worst": 41.7,
+    "mae": 4.23
+   },
+   "sunrise": {
+    "n": 365,
+    "ex": 334,
+    "w1": 365,
+    "worst": 0.6,
+    "mae": 0.27
+   },
+   "dhuhr": {
+    "n": 365,
+    "ex": 350,
+    "w1": 365,
+    "worst": 0.5,
+    "mae": 0.25
+   },
+   "asr_shafi": {
+    "n": 365,
+    "ex": 43,
+    "w1": 145,
+    "worst": 4.2,
+    "mae": 1.89
+   },
+   "sunset": {
+    "n": 365,
+    "ex": 344,
+    "w1": 365,
+    "worst": 0.6,
+    "mae": 0.24
+   },
+   "isha": {
+    "n": 365,
+    "ex": 254,
+    "w1": 315,
+    "worst": 28.3,
+    "mae": 2.78
+   }
+  }
+ },
+ "betweenYear": {
+  "moved_cells": 42,
+  "max_move": 61,
+  "note": "beyond-1-minute cell movement 2026 vs 2027 on the same civil dates; expected concentrated at the DST transition weeks (2027 EU dates differ)"
+ }
+}

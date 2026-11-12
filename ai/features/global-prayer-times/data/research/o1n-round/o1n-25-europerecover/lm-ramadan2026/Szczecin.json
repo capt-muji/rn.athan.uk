@@ -1,0 +1,309 @@
+{
+ "rows": [
+  {
+   "date": "2026-02-19",
+   "imsak": "05:45",
+   "fadzr": "05:55",
+   "szuruk": "07:09",
+   "zuhr": "12:16",
+   "asr": "14:47",
+   "magrib": "17:21",
+   "isza": "18:36"
+  },
+  {
+   "date": "2026-02-20",
+   "imsak": "05:43",
+   "fadzr": "05:53",
+   "szuruk": "07:07",
+   "zuhr": "12:15",
+   "asr": "14:48",
+   "magrib": "17:23",
+   "isza": "18:37"
+  },
+  {
+   "date": "2026-02-21",
+   "imsak": "05:41",
+   "fadzr": "05:51",
+   "szuruk": "07:05",
+   "zuhr": "12:15",
+   "asr": "14:50",
+   "magrib": "17:25",
+   "isza": "18:39"
+  },
+  {
+   "date": "2026-02-22",
+   "imsak": "05:38",
+   "fadzr": "05:48",
+   "szuruk": "07:03",
+   "zuhr": "12:15",
+   "asr": "14:51",
+   "magrib": "17:27",
+   "isza": "18:41"
+  },
+  {
+   "date": "2026-02-23",
+   "imsak": "05:36",
+   "fadzr": "05:46",
+   "szuruk": "07:00",
+   "zuhr": "12:15",
+   "asr": "14:52",
+   "magrib": "17:29",
+   "isza": "18:43"
+  },
+  {
+   "date": "2026-02-24",
+   "imsak": "05:34",
+   "fadzr": null,
+   "szuruk": "06:58",
+   "zuhr": "12:15",
+   "asr": "14:54",
+   "magrib": "17:31",
+   "isza": "18:45"
+  },
+  {
+   "date": "2026-02-25",
+   "imsak": "05:32",
+   "fadzr": "05:42",
+   "szuruk": "06:56",
+   "zuhr": "12:15",
+   "asr": "14:55",
+   "magrib": "17:33",
+   "isza": "18:46"
+  },
+  {
+   "date": "2026-02-26",
+   "imsak": "05:30",
+   "fadzr": null,
+   "szuruk": "06:54",
+   "zuhr": "12:15",
+   "asr": "14:57",
+   "magrib": "17:35",
+   "isza": "18:48"
+  },
+  {
+   "date": "2026-02-27",
+   "imsak": "05:28",
+   "fadzr": "05:38",
+   "szuruk": "06:51",
+   "zuhr": "12:14",
+   "asr": "14:58",
+   "magrib": "17:37",
+   "isza": "18:50"
+  },
+  {
+   "date": "2026-02-28",
+   "imsak": "05:26",
+   "fadzr": "05:36",
+   "szuruk": "06:49",
+   "zuhr": "12:14",
+   "asr": "14:59",
+   "magrib": "17:38",
+   "isza": "18:52"
+  },
+  {
+   "date": "2026-03-01",
+   "imsak": "05:23",
+   "fadzr": "05:33",
+   "szuruk": "06:47",
+   "zuhr": "12:14",
+   "asr": "15:01",
+   "magrib": "17:40",
+   "isza": "18:54"
+  },
+  {
+   "date": "2026-03-02",
+   "imsak": "05:21",
+   "fadzr": "05:31",
+   "szuruk": "06:45",
+   "zuhr": "12:14",
+   "asr": "15:02",
+   "magrib": "17:42",
+   "isza": "18:56"
+  },
+  {
+   "date": "2026-03-03",
+   "imsak": "05:19",
+   "fadzr": "05:29",
+   "szuruk": "06:42",
+   "zuhr": "12:14",
+   "asr": "15:04",
+   "magrib": "17:44",
+   "isza": "18:58"
+  },
+  {
+   "date": "2026-03-04",
+   "imsak": "05:17",
+   "fadzr": "05:27",
+   "szuruk": "06:40",
+   "zuhr": "12:13",
+   "asr": "15:05",
+   "magrib": "17:46",
+   "isza": "18:59"
+  },
+  {
+   "date": "2026-03-05",
+   "imsak": "05:14",
+   "fadzr": "05:24",
+   "szuruk": "06:38",
+   "zuhr": "12:13",
+   "asr": "15:06",
+   "magrib": "17:48",
+   "isza": "19:01"
+  },
+  {
+   "date": "2026-03-06",
+   "imsak": "05:12",
+   "fadzr": "05:22",
+   "szuruk": "06:35",
+   "zuhr": "12:13",
+   "asr": "15:08",
+   "magrib": "17:50",
+   "isza": "19:03"
+  },
+  {
+   "date": "2026-03-07",
+   "imsak": "05:10",
+   "fadzr": null,
+   "szuruk": "06:33",
+   "zuhr": "12:13",
+   "asr": "15:09",
+   "magrib": "17:52",
+   "isza": "19:05"
+  },
+  {
+   "date": "2026-03-08",
+   "imsak": "05:07",
+   "fadzr": "05:17",
+   "szuruk": "06:31",
+   "zuhr": "12:13",
+   "asr": "15:10",
+   "magrib": "17:54",
+   "isza": "19:07"
+  },
+  {
+   "date": "2026-03-09",
+   "imsak": "05:05",
+   "fadzr": "05:15",
+   "szuruk": "06:28",
+   "zuhr": "12:12",
+   "asr": "15:11",
+   "magrib": "17:55",
+   "isza": "19:09"
+  },
+  {
+   "date": "2026-03-10",
+   "imsak": "05:02",
+   "fadzr": "05:12",
+   "szuruk": "06:26",
+   "zuhr": "12:12",
+   "asr": "15:13",
+   "magrib": "17:57",
+   "isza": "19:11"
+  },
+  {
+   "date": "2026-03-11",
+   "imsak": null,
+   "fadzr": "05:10",
+   "szuruk": "06:23",
+   "zuhr": "12:12",
+   "asr": "15:14",
+   "magrib": "17:59",
+   "isza": "19:13"
+  },
+  {
+   "date": "2026-03-12",
+   "imsak": "04:57",
+   "fadzr": "05:07",
+   "szuruk": "06:21",
+   "zuhr": "12:12",
+   "asr": "15:15",
+   "magrib": "18:01",
+   "isza": "19:15"
+  },
+  {
+   "date": "2026-03-13",
+   "imsak": "04:55",
+   "fadzr": null,
+   "szuruk": "06:19",
+   "zuhr": "12:11",
+   "asr": "15:16",
+   "magrib": "18:03",
+   "isza": "19:16"
+  },
+  {
+   "date": "2026-03-14",
+   "imsak": "04:53",
+   "fadzr": "05:03",
+   "szuruk": "06:16",
+   "zuhr": "12:11",
+   "asr": "15:18",
+   "magrib": "18:05",
+   "isza": "19:18"
+  },
+  {
+   "date": "2026-03-15",
+   "imsak": "04:50",
+   "fadzr": null,
+   "szuruk": "06:14",
+   "zuhr": "12:11",
+   "asr": "15:19",
+   "magrib": "18:07",
+   "isza": "19:20"
+  },
+  {
+   "date": "2026-03-16",
+   "imsak": "04:48",
+   "fadzr": "04:58",
+   "szuruk": "06:11",
+   "zuhr": "12:10",
+   "asr": "15:20",
+   "magrib": "18:08",
+   "isza": "19:22"
+  },
+  {
+   "date": "2026-03-17",
+   "imsak": "04:45",
+   "fadzr": "04:55",
+   "szuruk": "06:09",
+   "zuhr": "12:10",
+   "asr": "15:21",
+   "magrib": "18:10",
+   "isza": "19:24"
+  },
+  {
+   "date": "2026-03-18",
+   "imsak": "04:43",
+   "fadzr": "04:53",
+   "szuruk": "06:07",
+   "zuhr": "12:10",
+   "asr": "15:22",
+   "magrib": "18:12",
+   "isza": "19:26"
+  },
+  {
+   "date": "2026-03-19",
+   "imsak": null,
+   "fadzr": "04:50",
+   "szuruk": "06:04",
+   "zuhr": "12:10",
+   "asr": "15:23",
+   "magrib": "18:14",
+   "isza": "19:28"
+  }
+ ],
+ "warnings": [
+  "lm-boxes-Szczecin-2026R-1.txt: \"14,03\" in data band unparseable",
+  "lm-boxes-Szczecin-2026R-1.txt: \"008\" in data band unparseable",
+  "lm-boxes-Szczecin-2026R-1.txt: \"1240\" in data band unparseable",
+  "lm-boxes-up-Szczecin-2026R-1.txt: \"08,03\" in data band unparseable",
+  "lm-boxes-up-Szczecin-2026R-1.txt: \"14,03\" in data band unparseable",
+  "lm-boxes-up-Szczecin-2026R-1.txt: \"008\" in data band unparseable",
+  "lm-boxes-up-Szczecin-2026R-1.txt: \"1240\" in data band unparseable",
+  "lm-boxes-up-Szczecin-2026R-1.txt: szuruk@y674 differs across passes: 494 vs 374"
+ ],
+ "spacing": 20.0,
+ "passes": [
+  "lm-boxes-Szczecin-2026R-1.txt",
+  "lm-boxes-up-Szczecin-2026R-1.txt"
+ ]
+}

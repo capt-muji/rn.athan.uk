@@ -1,0 +1,29 @@
+{
+ "pair": "MY-perak-jakim (Perak mufti own 2027 print vs JAKIM e-solat PRK01)",
+ "measured_utc": "2026-11-12",
+ "jakim_2026_11_fresh_vs_held": {
+  "dates": 30,
+  "cells": 210,
+  "diffs": 0
+ },
+ "jakim_2027_get_behavior": "GET year=2027&month=1 on the public takwimsolat route returns January 2026 rows today (year parameter ignored); the held 2027 bank came from the wsa render route",
+ "perak_mufti_host_status": "NOT re-resolved today: muftiperak.gov.my and www variants NOANSWER at 8.8.8.8 and 1.1.1.1; digital.perak.my serves 404 on /images/waktu_solat/2027/Zon%201_2027.pdf (nginx, not the held Apache/2.4.52 stack); Wayback CDX empty for path and domain; Google captcha and Bing junk stopped per discipline. NOT PROVEN that the mufti side still serves.",
+ "held_2027_pair_median_deltas_min": {
+  "imsak": 0.0,
+  "fajr": 0.0,
+  "sunrise": 0.0,
+  "dhuhr": 0.0,
+  "asr": 0.0,
+  "maghrib": 0.0,
+  "isha": 0.0
+ },
+ "held_2027_exact_days_per_column": {
+  "imsak": 364,
+  "fajr": 364,
+  "sunrise": 364,
+  "dhuhr": 364,
+  "asr": 364,
+  "maghrib": 364,
+  "isha": 364
+ }
+}

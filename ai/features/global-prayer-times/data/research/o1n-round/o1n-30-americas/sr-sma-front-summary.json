@@ -1,0 +1,24 @@
+{
+ "front": "Suriname",
+ "surface": "SURINAME-SMA-29",
+ "publisher": "Surinaamse Moeslim Associatie (SMA), Kankantriestraat 32-40, Paramaribo; Ahle Sunnat Wal Djama'at",
+ "url": "smawebsite.com/salat-timings/ (featured image wp-content/uploads/2025/05/mei-2025.jpg)",
+ "sheet": "MEI 2025 / DZUL QADA 1446, 'Tabel Namaaztijden Paramaribo / Nickerie', 29 rows 2025-04-29..2025-05-27, 11 columns",
+ "rows_banked": 29,
+ "cells": 261,
+ "recipe": {
+  "engine": "adhan 4.4.6, Rounding.None-equivalent nearest, America/Paramaribo (fixed UTC-3), point 5.8520,-55.2031 (Paramaribo)",
+  "fadjr": "18.0 deg, margin 0, exact 96.6, within-1 100, worst 1",
+  "sehri": "fadjr minus 5 min (print constant), 96.6 exact, 100 within-1",
+  "zonop": "sunrise +1 median, 100 within-1 worst 1 (rounding class)",
+  "lohr": "dhuhr +0, 86.2 exact, 100 within-1",
+  "makroeh": "dhuhr minus 37 median (print -36/-37 mixed), unresolved exact rule (interval vs altitude both possible)",
+  "ishrar": "maghrib minus 106 median (print zonder minus 104/105 mixed), unresolved exact rule",
+  "zonder": "sunset -2 median, 100 within-1",
+  "maghrib": "sunset +3 median (print zonder +5 constant)",
+  "isha": "sunset +73 (print zonder +75 constant); angle form unseparated (13-18 deg all plausible within the month)"
+ },
+ "sheet_own_notes": "Nw Nickerie +8, Wageningen +6, Nieuw(?)loen -3, Albina -5 (print header notes); djamaat board AZAAN/FARZ fixed clocks recorded never fitted",
+ "verdict": "candidate (one published cycle, one month, single sheet); tier community (national association's own print)",
+ "second_year_routes": "Wayback: zero captures for smawebsite.com (domain query empty); live uploads tree: only mei-2025 survives (19 monthly names probed, all 404); Facebook lead: 'Namaaz tijdtabel voor Paramaribo Jan/Feb 2021' post, page id 100064839722286, login-walled, named lead only"
+}

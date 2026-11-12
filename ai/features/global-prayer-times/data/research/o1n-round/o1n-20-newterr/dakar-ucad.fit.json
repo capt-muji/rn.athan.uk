@@ -1,0 +1,316 @@
+{
+ "surface": "dakar-ucad",
+ "lat": 14.6629438,
+ "lon": -17.4374803,
+ "tz": "Africa/Dakar",
+ "span": {
+  "from": "2020-01-01",
+  "to": "2026-12-31",
+  "days": 1830,
+  "years": [
+   2020,
+   2021,
+   2022,
+   2025,
+   2026
+  ]
+ },
+ "engine": "adhan 4.4.6, Rounding.None, MiddleOfTheNight, Shafi",
+ "fajr_angle_sweep": [
+  {
+   "angle": 16.05,
+   "mae": 9.9973
+  },
+  {
+   "angle": 16.1,
+   "mae": 10.0044
+  },
+  {
+   "angle": 16.15,
+   "mae": 10.0126
+  },
+  {
+   "angle": 16.3,
+   "mae": 10.0175
+  },
+  {
+   "angle": 15.9,
+   "mae": 10.0197
+  }
+ ],
+ "fajr_angle": 16.05,
+ "offsets": {
+  "dhuhr_median": 65,
+  "sunrise_median": 1,
+  "asr_shafi_median": 35,
+  "maghrib_median": 13
+ },
+ "per_year": {
+  "2020": {
+   "days": 366,
+   "scores": {
+    "fajr": {
+     "n": 366,
+     "exact_pct": 3.83,
+     "within1_pct": 10.38,
+     "worst": 27,
+     "mae": 10.003,
+     "histogram": "-8:102 -7:36 27:18 0:14 1:13 2:11"
+    },
+    "sunrise": {
+     "n": 366,
+     "exact_pct": 53.01,
+     "within1_pct": 100,
+     "worst": -1,
+     "mae": 0.47,
+     "histogram": "0:194 -1:172"
+    },
+    "dhuhr": {
+     "n": 366,
+     "exact_pct": 3.55,
+     "within1_pct": 11.2,
+     "worst": 17,
+     "mae": 7.134,
+     "histogram": "4:33 -13:25 -5:23 17:20 -6:20 3:18"
+    },
+    "asr": {
+     "n": 366,
+     "exact_pct": 1.91,
+     "within1_pct": 5.46,
+     "worst": -19,
+     "mae": 8.861,
+     "histogram": "2:30 -13:22 14:21 -19:19 3:18 -12:15"
+    },
+    "maghrib": {
+     "n": 366,
+     "exact_pct": 1.91,
+     "within1_pct": 5.74,
+     "worst": 41,
+     "mae": 15.863,
+     "histogram": "-13:53 -12:45 41:14 40:11 -4:11 -3:10"
+    },
+    "isha": {
+     "n": 366,
+     "distinct_values": [
+      1260
+     ],
+     "note": "a fixed clock column; the board prints one isha for the whole year"
+    }
+   }
+  },
+  "2021": {
+   "days": 366,
+   "scores": {
+    "fajr": {
+     "n": 366,
+     "exact_pct": 3.83,
+     "within1_pct": 10.38,
+     "worst": 27,
+     "mae": 10.008,
+     "histogram": "-8:103 -7:33 27:18 0:14 1:14 26:11"
+    },
+    "sunrise": {
+     "n": 366,
+     "exact_pct": 51.09,
+     "within1_pct": 100,
+     "worst": -1,
+     "mae": 0.489,
+     "histogram": "0:187 -1:179"
+    },
+    "dhuhr": {
+     "n": 366,
+     "exact_pct": 3.83,
+     "within1_pct": 11.48,
+     "worst": 17,
+     "mae": 7.158,
+     "histogram": "4:33 -13:25 -5:23 -6:22 17:20 3:17"
+    },
+    "asr": {
+     "n": 366,
+     "exact_pct": 1.91,
+     "within1_pct": 5.74,
+     "worst": -19,
+     "mae": 8.891,
+     "histogram": "2:30 -13:23 14:20 -19:19 3:18 4:16"
+    },
+    "maghrib": {
+     "n": 366,
+     "exact_pct": 1.64,
+     "within1_pct": 6.01,
+     "worst": 41,
+     "mae": 15.79,
+     "histogram": "-13:50 -12:48 41:14 40:11 -4:11 -2:10"
+    },
+    "isha": {
+     "n": 366,
+     "distinct_values": [
+      1260
+     ],
+     "note": "a fixed clock column; the board prints one isha for the whole year"
+    }
+   }
+  },
+  "2022": {
+   "days": 366,
+   "scores": {
+    "fajr": {
+     "n": 366,
+     "exact_pct": 3.83,
+     "within1_pct": 10.66,
+     "worst": 27,
+     "mae": 9.989,
+     "histogram": "-8:108 -7:32 27:17 0:14 1:14 26:11"
+    },
+    "sunrise": {
+     "n": 366,
+     "exact_pct": 52.19,
+     "within1_pct": 100,
+     "worst": -1,
+     "mae": 0.478,
+     "histogram": "0:191 -1:175"
+    },
+    "dhuhr": {
+     "n": 366,
+     "exact_pct": 4.1,
+     "within1_pct": 11.48,
+     "worst": 17,
+     "mae": 7.161,
+     "histogram": "4:33 -13:25 -6:23 -5:22 17:20 3:18"
+    },
+    "asr": {
+     "n": 366,
+     "exact_pct": 1.91,
+     "within1_pct": 5.46,
+     "worst": -19,
+     "mae": 8.904,
+     "histogram": "2:30 -13:22 14:20 -19:19 3:17 4:17"
+    },
+    "maghrib": {
+     "n": 366,
+     "exact_pct": 1.91,
+     "within1_pct": 6.01,
+     "worst": 41,
+     "mae": 15.803,
+     "histogram": "-13:53 -12:45 41:15 -2:11 40:10 -3:10"
+    },
+    "isha": {
+     "n": 366,
+     "distinct_values": [
+      1260
+     ],
+     "note": "a fixed clock column; the board prints one isha for the whole year"
+    }
+   }
+  },
+  "2025": {
+   "days": 366,
+   "scores": {
+    "fajr": {
+     "n": 366,
+     "exact_pct": 3.83,
+     "within1_pct": 10.38,
+     "worst": 27,
+     "mae": 10,
+     "histogram": "-8:104 -7:33 27:17 0:14 1:14 26:12"
+    },
+    "sunrise": {
+     "n": 366,
+     "exact_pct": 51.64,
+     "within1_pct": 100,
+     "worst": -1,
+     "mae": 0.484,
+     "histogram": "0:189 -1:177"
+    },
+    "dhuhr": {
+     "n": 366,
+     "exact_pct": 3.83,
+     "within1_pct": 11.48,
+     "worst": 17,
+     "mae": 7.158,
+     "histogram": "4:33 -13:25 -5:23 -6:22 17:20 3:17"
+    },
+    "asr": {
+     "n": 366,
+     "exact_pct": 1.64,
+     "within1_pct": 6.01,
+     "worst": -19,
+     "mae": 8.888,
+     "histogram": "2:29 -13:23 14:20 -19:19 3:18 4:16"
+    },
+    "maghrib": {
+     "n": 366,
+     "exact_pct": 1.64,
+     "within1_pct": 6.01,
+     "worst": 41,
+     "mae": 15.803,
+     "histogram": "-13:52 -12:46 41:15 -4:11 40:10 -2:10"
+    },
+    "isha": {
+     "n": 366,
+     "distinct_values": [
+      1260
+     ],
+     "note": "a fixed clock column; the board prints one isha for the whole year"
+    }
+   }
+  },
+  "2026": {
+   "days": 366,
+   "scores": {
+    "fajr": {
+     "n": 366,
+     "exact_pct": 3.83,
+     "within1_pct": 10.66,
+     "worst": 27,
+     "mae": 9.986,
+     "histogram": "-8:105 -7:33 27:17 0:14 1:14 26:11"
+    },
+    "sunrise": {
+     "n": 366,
+     "exact_pct": 51.91,
+     "within1_pct": 100,
+     "worst": -1,
+     "mae": 0.481,
+     "histogram": "0:190 -1:176"
+    },
+    "dhuhr": {
+     "n": 366,
+     "exact_pct": 4.1,
+     "within1_pct": 11.48,
+     "worst": 17,
+     "mae": 7.156,
+     "histogram": "4:33 -13:25 -5:23 -6:22 17:20 3:18"
+    },
+    "asr": {
+     "n": 366,
+     "exact_pct": 1.91,
+     "within1_pct": 5.46,
+     "worst": -19,
+     "mae": 8.893,
+     "histogram": "2:31 -13:22 14:20 -19:19 3:16 4:16"
+    },
+    "maghrib": {
+     "n": 366,
+     "exact_pct": 1.91,
+     "within1_pct": 6.01,
+     "worst": 41,
+     "mae": 15.809,
+     "histogram": "-13:53 -12:45 41:15 -2:11 40:10 -3:10"
+    },
+    "isha": {
+     "n": 366,
+     "distinct_values": [
+      1260
+     ],
+     "note": "a fixed clock column; the board prints one isha for the whole year"
+    }
+   }
+  }
+ },
+ "amplitude": {
+  "fajr_jan_minus_sunrise_range": 4,
+  "fajr_jul_minus_sunrise_range": 9,
+  "fajr_jan_span_min": 7,
+  "fajr_jul_span_min": 0
+ }
+}

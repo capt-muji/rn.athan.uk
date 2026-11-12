@@ -1,0 +1,1604 @@
+{
+ "surfaces": [
+  {
+   "surface": "fianz-01-auckland",
+   "city": "Auckland",
+   "solved_point": {
+    "lat": -36.84,
+    "lon": 174.64,
+    "solve_obj_min": 0.132,
+    "method": "solar grid solve from the table itself, small-margin regulariser (0.3/min) pinning longitude"
+   },
+   "rows": 334,
+   "span": {
+    "from": "2026-02-01",
+    "to": "2026-12-31"
+   },
+   "recipe": {
+    "fajr_angle": 18,
+    "fajr_margin": 0,
+    "isha_angle": 18,
+    "isha_margin": 0,
+    "asr": "Shafi",
+    "asr_margin": 0,
+    "sunrise_margin": 0,
+    "dhuhr_margin": 0,
+    "maghrib_margin": 0
+   },
+   "scores": {
+    "fajr": {
+     "n": 334,
+     "exact": 80.54,
+     "within1": 100,
+     "worst": -1,
+     "mae": 0.195
+    },
+    "sunrise": {
+     "n": 334,
+     "exact": 83.53,
+     "within1": 100,
+     "worst": -1,
+     "mae": 0.165
+    },
+    "dhuhr": {
+     "n": 334,
+     "exact": 90.12,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.099
+    },
+    "asr": {
+     "n": 334,
+     "exact": 86.83,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.132
+    },
+    "maghrib": {
+     "n": 334,
+     "exact": 83.83,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.162
+    },
+    "isha": {
+     "n": 334,
+     "exact": 82.63,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.174
+    }
+   },
+   "asr_alternative": {
+    "label": "Hanafi",
+    "margin": -49,
+    "spread": 9.886
+   },
+   "amplitude": {
+    "fajr_feb_span": 38,
+    "fajr_jul_span": 11
+   },
+   "engine": "adhan 4.4.6, Rounding.None, MiddleOfTheNight"
+  },
+  {
+   "surface": "fianz-20-blenheim",
+   "city": "Blenheim",
+   "solved_point": {
+    "lat": -41.25,
+    "lon": 173.125,
+    "solve_obj_min": 0.104,
+    "method": "solar grid solve from the table itself, small-margin regulariser (0.3/min) pinning longitude"
+   },
+   "rows": 334,
+   "span": {
+    "from": "2026-02-01",
+    "to": "2026-12-31"
+   },
+   "recipe": {
+    "fajr_angle": 16,
+    "fajr_margin": 0,
+    "isha_angle": 15,
+    "isha_margin": 0,
+    "asr": "Shafi",
+    "asr_margin": -5,
+    "sunrise_margin": 0,
+    "dhuhr_margin": 0,
+    "maghrib_margin": 0
+   },
+   "scores": {
+    "fajr": {
+     "n": 334,
+     "exact": 80.54,
+     "within1": 100,
+     "worst": -1,
+     "mae": 0.195
+    },
+    "sunrise": {
+     "n": 334,
+     "exact": 82.93,
+     "within1": 100,
+     "worst": -1,
+     "mae": 0.171
+    },
+    "dhuhr": {
+     "n": 334,
+     "exact": 93.41,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.066
+    },
+    "asr": {
+     "n": 334,
+     "exact": 2.1,
+     "within1": 6.89,
+     "worst": -13,
+     "mae": 6.254
+    },
+    "maghrib": {
+     "n": 334,
+     "exact": 77.54,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.225
+    },
+    "isha": {
+     "n": 334,
+     "exact": 78.44,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.216
+    }
+   },
+   "asr_alternative": {
+    "label": "Hanafi",
+    "margin": -54,
+    "spread": 4.246
+   },
+   "amplitude": {
+    "fajr_feb_span": 44,
+    "fajr_jul_span": 13
+   },
+   "engine": "adhan 4.4.6, Rounding.None, MiddleOfTheNight"
+  },
+  {
+   "surface": "fianz-02-christchurch",
+   "city": "Christchurch",
+   "solved_point": {
+    "lat": -43.595,
+    "lon": 172.455,
+    "solve_obj_min": 0.132,
+    "method": "solar grid solve from the table itself, small-margin regulariser (0.3/min) pinning longitude"
+   },
+   "rows": 334,
+   "span": {
+    "from": "2026-02-01",
+    "to": "2026-12-31"
+   },
+   "recipe": {
+    "fajr_angle": 15.95,
+    "fajr_margin": 0,
+    "isha_angle": 14.95,
+    "isha_margin": 0,
+    "asr": "Shafi",
+    "asr_margin": 0,
+    "sunrise_margin": 0,
+    "dhuhr_margin": 0,
+    "maghrib_margin": 0
+   },
+   "scores": {
+    "fajr": {
+     "n": 334,
+     "exact": 70.96,
+     "within1": 100,
+     "worst": -1,
+     "mae": 0.29
+    },
+    "sunrise": {
+     "n": 334,
+     "exact": 75.45,
+     "within1": 100,
+     "worst": -1,
+     "mae": 0.246
+    },
+    "dhuhr": {
+     "n": 334,
+     "exact": 95.81,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.042
+    },
+    "asr": {
+     "n": 334,
+     "exact": 85.63,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.144
+    },
+    "maghrib": {
+     "n": 334,
+     "exact": 76.05,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.24
+    },
+    "isha": {
+     "n": 334,
+     "exact": 69.16,
+     "within1": 96.71,
+     "worst": -4,
+     "mae": 0.38
+    }
+   },
+   "asr_alternative": {
+    "label": "Hanafi",
+    "margin": -48,
+    "spread": 10.632
+   },
+   "amplitude": {
+    "fajr_feb_span": 50,
+    "fajr_jul_span": 15
+   },
+   "engine": "adhan 4.4.6, Rounding.None, MiddleOfTheNight"
+  },
+  {
+   "surface": "fianz-03-dunedin",
+   "city": "Dunedin",
+   "solved_point": {
+    "lat": -45.93,
+    "lon": 170.425,
+    "solve_obj_min": 0.499,
+    "method": "solar grid solve from the table itself, small-margin regulariser (0.3/min) pinning longitude"
+   },
+   "rows": 334,
+   "span": {
+    "from": "2026-02-01",
+    "to": "2026-12-31"
+   },
+   "recipe": {
+    "fajr_angle": 15.95,
+    "fajr_margin": 0,
+    "isha_angle": 15,
+    "isha_margin": 0,
+    "asr": "Shafi",
+    "asr_margin": 0,
+    "sunrise_margin": -1,
+    "dhuhr_margin": 0,
+    "maghrib_margin": 1
+   },
+   "scores": {
+    "fajr": {
+     "n": 334,
+     "exact": 70.36,
+     "within1": 95.81,
+     "worst": -2,
+     "mae": 0.338
+    },
+    "sunrise": {
+     "n": 334,
+     "exact": 58.68,
+     "within1": 100,
+     "worst": -1,
+     "mae": 0.413
+    },
+    "dhuhr": {
+     "n": 334,
+     "exact": 82.04,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.18
+    },
+    "asr": {
+     "n": 334,
+     "exact": 52.1,
+     "within1": 96.71,
+     "worst": 2,
+     "mae": 0.512
+    },
+    "maghrib": {
+     "n": 334,
+     "exact": 68.26,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.317
+    },
+    "isha": {
+     "n": 334,
+     "exact": 31.44,
+     "within1": 88.62,
+     "worst": 4,
+     "mae": 0.892
+    }
+   },
+   "asr_alternative": {
+    "label": "Hanafi",
+    "margin": -48,
+    "spread": 11.042
+   },
+   "amplitude": {
+    "fajr_feb_span": 55,
+    "fajr_jul_span": 17
+   },
+   "engine": "adhan 4.4.6, Rounding.None, MiddleOfTheNight"
+  },
+  {
+   "surface": "fianz-04-gore",
+   "city": "Gore",
+   "solved_point": {
+    "lat": -46.105,
+    "lon": 168.48,
+    "solve_obj_min": 0.429,
+    "method": "solar grid solve from the table itself, small-margin regulariser (0.3/min) pinning longitude"
+   },
+   "rows": 334,
+   "span": {
+    "from": "2026-02-01",
+    "to": "2026-12-31"
+   },
+   "recipe": {
+    "fajr_angle": 16,
+    "fajr_margin": 0,
+    "isha_angle": 14.95,
+    "isha_margin": 0,
+    "asr": "Shafi",
+    "asr_margin": 0,
+    "sunrise_margin": -1,
+    "dhuhr_margin": 0,
+    "maghrib_margin": 1
+   },
+   "scores": {
+    "fajr": {
+     "n": 334,
+     "exact": 68.56,
+     "within1": 96.41,
+     "worst": -2,
+     "mae": 0.35
+    },
+    "sunrise": {
+     "n": 334,
+     "exact": 57.19,
+     "within1": 100,
+     "worst": -1,
+     "mae": 0.428
+    },
+    "dhuhr": {
+     "n": 334,
+     "exact": 91.32,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.087
+    },
+    "asr": {
+     "n": 334,
+     "exact": 51.8,
+     "within1": 97.6,
+     "worst": 2,
+     "mae": 0.506
+    },
+    "maghrib": {
+     "n": 334,
+     "exact": 69.46,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.305
+    },
+    "isha": {
+     "n": 334,
+     "exact": 32.34,
+     "within1": 89.52,
+     "worst": 4,
+     "mae": 0.91
+    }
+   },
+   "asr_alternative": {
+    "label": "Hanafi",
+    "margin": -47,
+    "spread": 11.039
+   },
+   "amplitude": {
+    "fajr_feb_span": 56,
+    "fajr_jul_span": 17
+   },
+   "engine": "adhan 4.4.6, Rounding.None, MiddleOfTheNight"
+  },
+  {
+   "surface": "fianz-05-hamilton",
+   "city": "Hamilton",
+   "solved_point": {
+    "lat": -37.795,
+    "lon": 175.11,
+    "solve_obj_min": 0.132,
+    "method": "solar grid solve from the table itself, small-margin regulariser (0.3/min) pinning longitude"
+   },
+   "rows": 334,
+   "span": {
+    "from": "2026-02-01",
+    "to": "2026-12-31"
+   },
+   "recipe": {
+    "fajr_angle": 18,
+    "fajr_margin": 0,
+    "isha_angle": 18,
+    "isha_margin": 0,
+    "asr": "Shafi",
+    "asr_margin": 0,
+    "sunrise_margin": 0,
+    "dhuhr_margin": 0,
+    "maghrib_margin": 0
+   },
+   "scores": {
+    "fajr": {
+     "n": 334,
+     "exact": 78.14,
+     "within1": 100,
+     "worst": -1,
+     "mae": 0.219
+    },
+    "sunrise": {
+     "n": 334,
+     "exact": 77.25,
+     "within1": 100,
+     "worst": -1,
+     "mae": 0.228
+    },
+    "dhuhr": {
+     "n": 334,
+     "exact": 93.11,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.069
+    },
+    "asr": {
+     "n": 334,
+     "exact": 86.83,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.132
+    },
+    "maghrib": {
+     "n": 334,
+     "exact": 85.33,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.147
+    },
+    "isha": {
+     "n": 334,
+     "exact": 77.84,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.222
+    }
+   },
+   "asr_alternative": {
+    "label": "Hanafi",
+    "margin": -49,
+    "spread": 10.018
+   },
+   "amplitude": {
+    "fajr_feb_span": 40,
+    "fajr_jul_span": 11
+   },
+   "engine": "adhan 4.4.6, Rounding.None, MiddleOfTheNight"
+  },
+  {
+   "surface": "fianz-06-hawera",
+   "city": "Hawera",
+   "solved_point": {
+    "lat": -39.28,
+    "lon": 174.065,
+    "solve_obj_min": 0.274,
+    "method": "solar grid solve from the table itself, small-margin regulariser (0.3/min) pinning longitude"
+   },
+   "rows": 334,
+   "span": {
+    "from": "2026-02-01",
+    "to": "2026-12-31"
+   },
+   "recipe": {
+    "fajr_angle": 17,
+    "fajr_margin": 0,
+    "isha_angle": 17,
+    "isha_margin": 0,
+    "asr": "Shafi",
+    "asr_margin": 0,
+    "sunrise_margin": -1,
+    "dhuhr_margin": 0,
+    "maghrib_margin": 0
+   },
+   "scores": {
+    "fajr": {
+     "n": 334,
+     "exact": 82.93,
+     "within1": 100,
+     "worst": -1,
+     "mae": 0.171
+    },
+    "sunrise": {
+     "n": 334,
+     "exact": 88.32,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.117
+    },
+    "dhuhr": {
+     "n": 334,
+     "exact": 96.41,
+     "within1": 100,
+     "worst": -1,
+     "mae": 0.036
+    },
+    "asr": {
+     "n": 334,
+     "exact": 54.49,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.455
+    },
+    "maghrib": {
+     "n": 334,
+     "exact": 54.79,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.452
+    },
+    "isha": {
+     "n": 334,
+     "exact": 32.63,
+     "within1": 92.81,
+     "worst": 2,
+     "mae": 0.746
+    }
+   },
+   "asr_alternative": {
+    "label": "Hanafi",
+    "margin": -49,
+    "spread": 9.967
+   },
+   "amplitude": {
+    "fajr_feb_span": 42,
+    "fajr_jul_span": 12
+   },
+   "engine": "adhan 4.4.6, Rounding.None, MiddleOfTheNight"
+  },
+  {
+   "surface": "fianz-07-invercargill",
+   "city": "Invercargill",
+   "solved_point": {
+    "lat": -46.33,
+    "lon": 168.125,
+    "solve_obj_min": 0.478,
+    "method": "solar grid solve from the table itself, small-margin regulariser (0.3/min) pinning longitude"
+   },
+   "rows": 334,
+   "span": {
+    "from": "2026-02-01",
+    "to": "2026-12-31"
+   },
+   "recipe": {
+    "fajr_angle": 16,
+    "fajr_margin": 0,
+    "isha_angle": 14.95,
+    "isha_margin": 0,
+    "asr": "Shafi",
+    "asr_margin": 0,
+    "sunrise_margin": -1,
+    "dhuhr_margin": 0,
+    "maghrib_margin": 1
+   },
+   "scores": {
+    "fajr": {
+     "n": 334,
+     "exact": 67.37,
+     "within1": 94.61,
+     "worst": -2,
+     "mae": 0.38
+    },
+    "sunrise": {
+     "n": 334,
+     "exact": 55.99,
+     "within1": 100,
+     "worst": -1,
+     "mae": 0.44
+    },
+    "dhuhr": {
+     "n": 334,
+     "exact": 93.11,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.069
+    },
+    "asr": {
+     "n": 334,
+     "exact": 50.9,
+     "within1": 96.71,
+     "worst": 2,
+     "mae": 0.524
+    },
+    "maghrib": {
+     "n": 334,
+     "exact": 61.98,
+     "within1": 99.7,
+     "worst": -2,
+     "mae": 0.383
+    },
+    "isha": {
+     "n": 334,
+     "exact": 24.85,
+     "within1": 86.83,
+     "worst": 4,
+     "mae": 0.982
+    }
+   },
+   "asr_alternative": {
+    "label": "Hanafi",
+    "margin": -47,
+    "spread": 11.156
+   },
+   "amplitude": {
+    "fajr_feb_span": 57,
+    "fajr_jul_span": 17
+   },
+   "engine": "adhan 4.4.6, Rounding.None, MiddleOfTheNight"
+  },
+  {
+   "surface": "fianz-08-masterton",
+   "city": "Masterton",
+   "solved_point": {
+    "lat": -40.875,
+    "lon": 175.51,
+    "solve_obj_min": 0.629,
+    "method": "solar grid solve from the table itself, small-margin regulariser (0.3/min) pinning longitude"
+   },
+   "rows": 334,
+   "span": {
+    "from": "2026-02-01",
+    "to": "2026-12-31"
+   },
+   "recipe": {
+    "fajr_angle": 16.95,
+    "fajr_margin": 0,
+    "isha_angle": 16.9,
+    "isha_margin": 0,
+    "asr": "Shafi",
+    "asr_margin": 0,
+    "sunrise_margin": -2,
+    "dhuhr_margin": 0,
+    "maghrib_margin": 2
+   },
+   "scores": {
+    "fajr": {
+     "n": 334,
+     "exact": 47.9,
+     "within1": 91.92,
+     "worst": -2,
+     "mae": 0.602
+    },
+    "sunrise": {
+     "n": 334,
+     "exact": 63.47,
+     "within1": 100,
+     "worst": -1,
+     "mae": 0.365
+    },
+    "dhuhr": {
+     "n": 334,
+     "exact": 92.81,
+     "within1": 100,
+     "worst": -1,
+     "mae": 0.072
+    },
+    "asr": {
+     "n": 334,
+     "exact": 30.84,
+     "within1": 94.91,
+     "worst": 2,
+     "mae": 0.743
+    },
+    "maghrib": {
+     "n": 334,
+     "exact": 58.68,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.413
+    },
+    "isha": {
+     "n": 334,
+     "exact": 21.56,
+     "within1": 69.46,
+     "worst": 3,
+     "mae": 1.237
+    }
+   },
+   "asr_alternative": {
+    "label": "Hanafi",
+    "margin": -49,
+    "spread": 10.147
+   },
+   "amplitude": {
+    "fajr_feb_span": 45,
+    "fajr_jul_span": 13
+   },
+   "engine": "adhan 4.4.6, Rounding.None, MiddleOfTheNight"
+  },
+  {
+   "surface": "fianz-09-napier",
+   "city": "Napier",
+   "solved_point": {
+    "lat": -39.56,
+    "lon": 176.725,
+    "solve_obj_min": 0.111,
+    "method": "solar grid solve from the table itself, small-margin regulariser (0.3/min) pinning longitude"
+   },
+   "rows": 334,
+   "span": {
+    "from": "2026-02-01",
+    "to": "2026-12-31"
+   },
+   "recipe": {
+    "fajr_angle": 16,
+    "fajr_margin": 0,
+    "isha_angle": 14.95,
+    "isha_margin": 0,
+    "asr": "Shafi",
+    "asr_margin": 0,
+    "sunrise_margin": 0,
+    "dhuhr_margin": 0,
+    "maghrib_margin": 0
+   },
+   "scores": {
+    "fajr": {
+     "n": 334,
+     "exact": 77.54,
+     "within1": 100,
+     "worst": -1,
+     "mae": 0.225
+    },
+    "sunrise": {
+     "n": 334,
+     "exact": 76.65,
+     "within1": 100,
+     "worst": -1,
+     "mae": 0.234
+    },
+    "dhuhr": {
+     "n": 334,
+     "exact": 95.81,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.042
+    },
+    "asr": {
+     "n": 334,
+     "exact": 84.43,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.156
+    },
+    "maghrib": {
+     "n": 334,
+     "exact": 76.05,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.24
+    },
+    "isha": {
+     "n": 334,
+     "exact": 73.95,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.26
+    }
+   },
+   "asr_alternative": {
+    "label": "Hanafi",
+    "margin": -49,
+    "spread": 10.171
+   },
+   "amplitude": {
+    "fajr_feb_span": 41,
+    "fajr_jul_span": 12
+   },
+   "engine": "adhan 4.4.6, Rounding.None, MiddleOfTheNight"
+  },
+  {
+   "surface": "fianz-10-nelson",
+   "city": "Nelson",
+   "solved_point": {
+    "lat": -41.25,
+    "lon": 173.125,
+    "solve_obj_min": 0.104,
+    "method": "solar grid solve from the table itself, small-margin regulariser (0.3/min) pinning longitude"
+   },
+   "rows": 334,
+   "span": {
+    "from": "2026-02-01",
+    "to": "2026-12-31"
+   },
+   "recipe": {
+    "fajr_angle": 16,
+    "fajr_margin": 0,
+    "isha_angle": 15,
+    "isha_margin": 0,
+    "asr": "Shafi",
+    "asr_margin": -5,
+    "sunrise_margin": 0,
+    "dhuhr_margin": 0,
+    "maghrib_margin": 0
+   },
+   "scores": {
+    "fajr": {
+     "n": 334,
+     "exact": 80.54,
+     "within1": 100,
+     "worst": -1,
+     "mae": 0.195
+    },
+    "sunrise": {
+     "n": 334,
+     "exact": 82.93,
+     "within1": 100,
+     "worst": -1,
+     "mae": 0.171
+    },
+    "dhuhr": {
+     "n": 334,
+     "exact": 93.41,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.066
+    },
+    "asr": {
+     "n": 334,
+     "exact": 2.1,
+     "within1": 6.89,
+     "worst": -13,
+     "mae": 6.254
+    },
+    "maghrib": {
+     "n": 334,
+     "exact": 77.54,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.225
+    },
+    "isha": {
+     "n": 334,
+     "exact": 78.44,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.216
+    }
+   },
+   "asr_alternative": {
+    "label": "Hanafi",
+    "margin": -54,
+    "spread": 4.246
+   },
+   "amplitude": {
+    "fajr_feb_span": 44,
+    "fajr_jul_span": 13
+   },
+   "engine": "adhan 4.4.6, Rounding.None, MiddleOfTheNight"
+  },
+  {
+   "surface": "fianz-11-new-plymouth",
+   "city": "New Plymouth",
+   "solved_point": {
+    "lat": -39.005,
+    "lon": 173.91,
+    "solve_obj_min": 0.281,
+    "method": "solar grid solve from the table itself, small-margin regulariser (0.3/min) pinning longitude"
+   },
+   "rows": 334,
+   "span": {
+    "from": "2026-02-01",
+    "to": "2026-12-31"
+   },
+   "recipe": {
+    "fajr_angle": 17,
+    "fajr_margin": 0,
+    "isha_angle": 17,
+    "isha_margin": 0,
+    "asr": "Shafi",
+    "asr_margin": 0,
+    "sunrise_margin": -1,
+    "dhuhr_margin": 0,
+    "maghrib_margin": 0
+   },
+   "scores": {
+    "fajr": {
+     "n": 334,
+     "exact": 89.52,
+     "within1": 100,
+     "worst": -1,
+     "mae": 0.105
+    },
+    "sunrise": {
+     "n": 334,
+     "exact": 89.52,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.105
+    },
+    "dhuhr": {
+     "n": 334,
+     "exact": 92.51,
+     "within1": 100,
+     "worst": -1,
+     "mae": 0.075
+    },
+    "asr": {
+     "n": 334,
+     "exact": 55.69,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.443
+    },
+    "maghrib": {
+     "n": 334,
+     "exact": 55.69,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.443
+    },
+    "isha": {
+     "n": 334,
+     "exact": 28.14,
+     "within1": 94.31,
+     "worst": 2,
+     "mae": 0.775
+    }
+   },
+   "asr_alternative": {
+    "label": "Hanafi",
+    "margin": -49,
+    "spread": 10.024
+   },
+   "amplitude": {
+    "fajr_feb_span": 41,
+    "fajr_jul_span": 12
+   },
+   "engine": "adhan 4.4.6, Rounding.None, MiddleOfTheNight"
+  },
+  {
+   "surface": "fianz-12-palmerston-north",
+   "city": "Palmerston North",
+   "solved_point": {
+    "lat": -40.34,
+    "lon": 175.52,
+    "solve_obj_min": 0.104,
+    "method": "solar grid solve from the table itself, small-margin regulariser (0.3/min) pinning longitude"
+   },
+   "rows": 334,
+   "span": {
+    "from": "2026-02-01",
+    "to": "2026-12-31"
+   },
+   "recipe": {
+    "fajr_angle": 17.05,
+    "fajr_margin": 0,
+    "isha_angle": 17,
+    "isha_margin": 0,
+    "asr": "Shafi",
+    "asr_margin": 0,
+    "sunrise_margin": 0,
+    "dhuhr_margin": 0,
+    "maghrib_margin": 0
+   },
+   "scores": {
+    "fajr": {
+     "n": 334,
+     "exact": 73.35,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.266
+    },
+    "sunrise": {
+     "n": 334,
+     "exact": 83.83,
+     "within1": 100,
+     "worst": -1,
+     "mae": 0.162
+    },
+    "dhuhr": {
+     "n": 334,
+     "exact": 95.21,
+     "within1": 100,
+     "worst": -1,
+     "mae": 0.048
+    },
+    "asr": {
+     "n": 334,
+     "exact": 85.33,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.147
+    },
+    "maghrib": {
+     "n": 334,
+     "exact": 76.95,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.231
+    },
+    "isha": {
+     "n": 334,
+     "exact": 78.14,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.219
+    }
+   },
+   "asr_alternative": {
+    "label": "Hanafi",
+    "margin": -49,
+    "spread": 10.168
+   },
+   "amplitude": {
+    "fajr_feb_span": 43,
+    "fajr_jul_span": 13
+   },
+   "engine": "adhan 4.4.6, Rounding.None, MiddleOfTheNight"
+  },
+  {
+   "surface": "fianz-13-queenstown",
+   "city": "Queenstown",
+   "solved_point": {
+    "lat": -45.05,
+    "lon": 168.235,
+    "solve_obj_min": 1.199,
+    "method": "solar grid solve from the table itself, small-margin regulariser (0.3/min) pinning longitude"
+   },
+   "rows": 334,
+   "span": {
+    "from": "2026-02-01",
+    "to": "2026-12-31"
+   },
+   "recipe": {
+    "fajr_angle": 16.05,
+    "fajr_margin": 0,
+    "isha_angle": 14.9,
+    "isha_margin": 0,
+    "asr": "Shafi",
+    "asr_margin": 0,
+    "sunrise_margin": -5,
+    "dhuhr_margin": 0,
+    "maghrib_margin": 4
+   },
+   "scores": {
+    "fajr": {
+     "n": 334,
+     "exact": 70.06,
+     "within1": 97.9,
+     "worst": -2,
+     "mae": 0.32
+    },
+    "sunrise": {
+     "n": 334,
+     "exact": 67.96,
+     "within1": 98.5,
+     "worst": 2,
+     "mae": 0.335
+    },
+    "dhuhr": {
+     "n": 334,
+     "exact": 81.74,
+     "within1": 100,
+     "worst": -1,
+     "mae": 0.183
+    },
+    "asr": {
+     "n": 334,
+     "exact": 52.1,
+     "within1": 99.4,
+     "worst": 2,
+     "mae": 0.485
+    },
+    "maghrib": {
+     "n": 334,
+     "exact": 60.18,
+     "within1": 98.8,
+     "worst": -2,
+     "mae": 0.41
+    },
+    "isha": {
+     "n": 334,
+     "exact": 42.51,
+     "within1": 89.22,
+     "worst": 4,
+     "mae": 0.82
+    }
+   },
+   "asr_alternative": {
+    "label": "Hanafi",
+    "margin": -48,
+    "spread": 10.814
+   },
+   "amplitude": {
+    "fajr_feb_span": 53,
+    "fajr_jul_span": 16
+   },
+   "engine": "adhan 4.4.6, Rounding.None, MiddleOfTheNight"
+  },
+  {
+   "surface": "fianz-14-rotorua",
+   "city": "Rotorua",
+   "solved_point": {
+    "lat": -37.94,
+    "lon": 176.08,
+    "solve_obj_min": 0.829,
+    "method": "solar grid solve from the table itself, small-margin regulariser (0.3/min) pinning longitude"
+   },
+   "rows": 334,
+   "span": {
+    "from": "2026-02-01",
+    "to": "2026-12-31"
+   },
+   "recipe": {
+    "fajr_angle": 16.95,
+    "fajr_margin": 0,
+    "isha_angle": 16.95,
+    "isha_margin": 0,
+    "asr": "Shafi",
+    "asr_margin": 0,
+    "sunrise_margin": -3,
+    "dhuhr_margin": 0,
+    "maghrib_margin": 3
+   },
+   "scores": {
+    "fajr": {
+     "n": 334,
+     "exact": 85.93,
+     "within1": 100,
+     "worst": -1,
+     "mae": 0.141
+    },
+    "sunrise": {
+     "n": 334,
+     "exact": 56.89,
+     "within1": 100,
+     "worst": -1,
+     "mae": 0.431
+    },
+    "dhuhr": {
+     "n": 334,
+     "exact": 85.63,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.144
+    },
+    "asr": {
+     "n": 334,
+     "exact": 58.08,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.419
+    },
+    "maghrib": {
+     "n": 334,
+     "exact": 76.35,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.237
+    },
+    "isha": {
+     "n": 334,
+     "exact": 37.72,
+     "within1": 89.52,
+     "worst": 2,
+     "mae": 0.728
+    }
+   },
+   "asr_alternative": {
+    "label": "Hanafi",
+    "margin": -49,
+    "spread": 10.054
+   },
+   "amplitude": {
+    "fajr_feb_span": 39,
+    "fajr_jul_span": 11
+   },
+   "engine": "adhan 4.4.6, Rounding.None, MiddleOfTheNight"
+  },
+  {
+   "surface": "fianz-15-taihape",
+   "city": "Taihape",
+   "solved_point": {
+    "lat": -39.6,
+    "lon": 175.7,
+    "solve_obj_min": 1.057,
+    "method": "solar grid solve from the table itself, small-margin regulariser (0.3/min) pinning longitude"
+   },
+   "rows": 334,
+   "span": {
+    "from": "2026-02-01",
+    "to": "2026-12-31"
+   },
+   "recipe": {
+    "fajr_angle": 16.95,
+    "fajr_margin": 0,
+    "isha_angle": 16.95,
+    "isha_margin": 0,
+    "asr": "Shafi",
+    "asr_margin": 0,
+    "sunrise_margin": -4,
+    "dhuhr_margin": 0,
+    "maghrib_margin": 4
+   },
+   "scores": {
+    "fajr": {
+     "n": 334,
+     "exact": 47.9,
+     "within1": 96.41,
+     "worst": -2,
+     "mae": 0.557
+    },
+    "sunrise": {
+     "n": 334,
+     "exact": 61.38,
+     "within1": 100,
+     "worst": -1,
+     "mae": 0.386
+    },
+    "dhuhr": {
+     "n": 334,
+     "exact": 89.52,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.105
+    },
+    "asr": {
+     "n": 334,
+     "exact": 36.53,
+     "within1": 96.11,
+     "worst": 2,
+     "mae": 0.674
+    },
+    "maghrib": {
+     "n": 334,
+     "exact": 67.66,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.323
+    },
+    "isha": {
+     "n": 334,
+     "exact": 22.75,
+     "within1": 72.46,
+     "worst": 3,
+     "mae": 1.147
+    }
+   },
+   "asr_alternative": {
+    "label": "Hanafi",
+    "margin": -49,
+    "spread": 10.048
+   },
+   "amplitude": {
+    "fajr_feb_span": 42,
+    "fajr_jul_span": 12
+   },
+   "engine": "adhan 4.4.6, Rounding.None, MiddleOfTheNight"
+  },
+  {
+   "surface": "fianz-16-taupo",
+   "city": "Taupo",
+   "solved_point": {
+    "lat": -38.58,
+    "lon": 175.94,
+    "solve_obj_min": 0.982,
+    "method": "solar grid solve from the table itself, small-margin regulariser (0.3/min) pinning longitude"
+   },
+   "rows": 334,
+   "span": {
+    "from": "2026-02-01",
+    "to": "2026-12-31"
+   },
+   "recipe": {
+    "fajr_angle": 17.05,
+    "fajr_margin": 0,
+    "isha_angle": 16.9,
+    "isha_margin": 0,
+    "asr": "Shafi",
+    "asr_margin": 0,
+    "sunrise_margin": -4,
+    "dhuhr_margin": 0,
+    "maghrib_margin": 3
+   },
+   "scores": {
+    "fajr": {
+     "n": 334,
+     "exact": 47.9,
+     "within1": 100,
+     "worst": -1,
+     "mae": 0.521
+    },
+    "sunrise": {
+     "n": 334,
+     "exact": 47.01,
+     "within1": 96.41,
+     "worst": 2,
+     "mae": 0.566
+    },
+    "dhuhr": {
+     "n": 334,
+     "exact": 91.92,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.081
+    },
+    "asr": {
+     "n": 334,
+     "exact": 40.42,
+     "within1": 99.7,
+     "worst": -2,
+     "mae": 0.599
+    },
+    "maghrib": {
+     "n": 334,
+     "exact": 49.4,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.506
+    },
+    "isha": {
+     "n": 334,
+     "exact": 26.35,
+     "within1": 70.96,
+     "worst": 3,
+     "mae": 1.129
+    }
+   },
+   "asr_alternative": {
+    "label": "Hanafi",
+    "margin": -49,
+    "spread": 9.901
+   },
+   "amplitude": {
+    "fajr_feb_span": 40,
+    "fajr_jul_span": 12
+   },
+   "engine": "adhan 4.4.6, Rounding.None, MiddleOfTheNight"
+  },
+  {
+   "surface": "fianz-17-tauranga",
+   "city": "Tauranga",
+   "solved_point": {
+    "lat": -37.47,
+    "lon": 176.01,
+    "solve_obj_min": 0.287,
+    "method": "solar grid solve from the table itself, small-margin regulariser (0.3/min) pinning longitude"
+   },
+   "rows": 334,
+   "span": {
+    "from": "2026-02-01",
+    "to": "2026-12-31"
+   },
+   "recipe": {
+    "fajr_angle": 17,
+    "fajr_margin": 0,
+    "isha_angle": 16.95,
+    "isha_margin": 0,
+    "asr": "Shafi",
+    "asr_margin": 0,
+    "sunrise_margin": -1,
+    "dhuhr_margin": 0,
+    "maghrib_margin": 0
+   },
+   "scores": {
+    "fajr": {
+     "n": 334,
+     "exact": 82.04,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.18
+    },
+    "sunrise": {
+     "n": 334,
+     "exact": 82.63,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.174
+    },
+    "dhuhr": {
+     "n": 334,
+     "exact": 96.41,
+     "within1": 100,
+     "worst": -1,
+     "mae": 0.036
+    },
+    "asr": {
+     "n": 334,
+     "exact": 55.69,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.443
+    },
+    "maghrib": {
+     "n": 334,
+     "exact": 56.59,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.434
+    },
+    "isha": {
+     "n": 334,
+     "exact": 35.93,
+     "within1": 92.51,
+     "worst": 2,
+     "mae": 0.716
+    }
+   },
+   "asr_alternative": {
+    "label": "Hanafi",
+    "margin": -50,
+    "spread": 10.078
+   },
+   "amplitude": {
+    "fajr_feb_span": 38,
+    "fajr_jul_span": 11
+   },
+   "engine": "adhan 4.4.6, Rounding.None, MiddleOfTheNight"
+  },
+  {
+   "surface": "fianz-18-wellington",
+   "city": "Wellington",
+   "solved_point": {
+    "lat": -41.265,
+    "lon": 174.62,
+    "solve_obj_min": 0.104,
+    "method": "solar grid solve from the table itself, small-margin regulariser (0.3/min) pinning longitude"
+   },
+   "rows": 334,
+   "span": {
+    "from": "2026-02-01",
+    "to": "2026-12-31"
+   },
+   "recipe": {
+    "fajr_angle": 16,
+    "fajr_margin": 0,
+    "isha_angle": 15,
+    "isha_margin": 0,
+    "asr": "Shafi",
+    "asr_margin": 0,
+    "sunrise_margin": 0,
+    "dhuhr_margin": 0,
+    "maghrib_margin": 0
+   },
+   "scores": {
+    "fajr": {
+     "n": 334,
+     "exact": 77.84,
+     "within1": 100,
+     "worst": -1,
+     "mae": 0.222
+    },
+    "sunrise": {
+     "n": 334,
+     "exact": 84.43,
+     "within1": 100,
+     "worst": -1,
+     "mae": 0.156
+    },
+    "dhuhr": {
+     "n": 334,
+     "exact": 93.71,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.063
+    },
+    "asr": {
+     "n": 334,
+     "exact": 85.33,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.147
+    },
+    "maghrib": {
+     "n": 334,
+     "exact": 79.94,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.201
+    },
+    "isha": {
+     "n": 334,
+     "exact": 77.54,
+     "within1": 100,
+     "worst": 1,
+     "mae": 0.225
+    }
+   },
+   "asr_alternative": {
+    "label": "Hanafi",
+    "margin": -49,
+    "spread": 10.275
+   },
+   "amplitude": {
+    "fajr_feb_span": 45,
+    "fajr_jul_span": 13
+   },
+   "engine": "adhan 4.4.6, Rounding.None, MiddleOfTheNight"
+  },
+  {
+   "surface": "fianz-19-whangarei",
+   "city": "Whangarei",
+   "solved_point": {
+    "lat": -35.6,
+    "lon": 174.22,
+    "solve_obj_min": 7.861,
+    "method": "solar grid solve from the table itself, small-margin regulariser (0.3/min) pinning longitude"
+   },
+   "rows": 334,
+   "span": {
+    "from": "2026-02-01",
+    "to": "2026-12-31"
+   },
+   "recipe": {
+    "fajr_angle": 18.95,
+    "fajr_margin": 0,
+    "isha_angle": 18.25,
+    "isha_margin": 0,
+    "asr": "Shafi",
+    "asr_margin": 0,
+    "sunrise_margin": 0,
+    "dhuhr_margin": 0,
+    "maghrib_margin": 0
+   },
+   "scores": {
+    "fajr": {
+     "n": 334,
+     "exact": 57.49,
+     "within1": 87.13,
+     "worst": 97,
+     "mae": 8.138
+    },
+    "sunrise": {
+     "n": 334,
+     "exact": 50.6,
+     "within1": 90.42,
+     "worst": 78,
+     "mae": 5.943
+    },
+    "dhuhr": {
+     "n": 334,
+     "exact": 81.44,
+     "within1": 90.72,
+     "worst": -62,
+     "mae": 4.859
+    },
+    "asr": {
+     "n": 334,
+     "exact": 67.37,
+     "within1": 90.42,
+     "worst": -102,
+     "mae": 9.545
+    },
+    "maghrib": {
+     "n": 334,
+     "exact": 54.49,
+     "within1": 90.72,
+     "worst": -164,
+     "mae": 15.461
+    },
+    "isha": {
+     "n": 334,
+     "exact": 7.49,
+     "within1": 22.16,
+     "worst": -184,
+     "mae": 19.871
+    }
+   },
+   "asr_alternative": {
+    "label": "Hanafi",
+    "margin": -50,
+    "spread": 19
+   },
+   "amplitude": {
+    "fajr_feb_span": 37,
+    "fajr_jul_span": 10
+   },
+   "engine": "adhan 4.4.6, Rounding.None, MiddleOfTheNight"
+  }
+ ]
+}

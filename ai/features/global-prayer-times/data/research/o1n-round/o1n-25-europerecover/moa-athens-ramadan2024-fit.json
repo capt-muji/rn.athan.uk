@@ -1,0 +1,61 @@
+{
+ "rows": 30,
+ "recipe": {
+  "fajr_deg": 19.75,
+  "fajr_margin": 10,
+  "isha_deg": 19.75,
+  "isha_margin": -14.7,
+  "asr_factor": 1,
+  "engine": "adhan 4.4.6"
+ },
+ "scores": {
+  "fajr": {
+   "ex": 18,
+   "w1": 30,
+   "worst": 1.5,
+   "margin": 10
+  },
+  "isha_angle": {
+   "ex": 25,
+   "w1": 30,
+   "worst": 0.9,
+   "margin": -14.7
+  },
+  "isha_as_interval": {
+   "m": 83.1,
+   "ex": 10,
+   "w1": 20,
+   "worst": 4.1,
+   "mae": 1.35,
+   "interval": 83.1
+  },
+  "sunrise": {
+   "m": 0.8,
+   "ex": 16,
+   "w1": 25,
+   "worst": 1.7,
+   "mae": 0.66
+  },
+  "dhuhr": {
+   "m": 0.6,
+   "ex": 27,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.26
+  },
+  "asr": {
+   "m": -0.1,
+   "ex": 26,
+   "w1": 30,
+   "worst": 0.6,
+   "mae": 0.27
+  },
+  "maghrib": {
+   "m": -0.3,
+   "ex": 20,
+   "w1": 30,
+   "worst": 1.2,
+   "mae": 0.47
+  }
+ }
+}

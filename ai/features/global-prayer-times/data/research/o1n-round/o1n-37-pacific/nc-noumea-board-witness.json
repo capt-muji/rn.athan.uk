@@ -1,0 +1,67 @@
+{
+ "board": {
+  "date": "2026-11-12",
+  "tz": "Pacific/Noumea (UTC+11)",
+  "source": "mawaqit.net/en/m/mosquee-de-noumea-noumea-98800-new-caledonia",
+  "name": "Centre Islamique de Noumea",
+  "mawaqit_id": "17035",
+  "tier": "community",
+  "year_label": null,
+  "board": {
+   "imsak": "03:33",
+   "fajr": "03:43 (+10)",
+   "dhuhr": "12:10 (+10)",
+   "asr": "15:10 (+10)",
+   "maghrib": "18:17 (+5)",
+   "isha": "19:45 (+10)",
+   "jumua": "12:00"
+  },
+  "captured_utc": "2026-11-12T10:3xZ"
+ },
+ "platform_row": {
+  "city": "Noumea (9805)",
+  "row": {
+   "imsak": "03:31",
+   "sabah": "03:44",
+   "sunrise": "05:00",
+   "ishrak": "05:38",
+   "dhuhr": "11:46",
+   "asr": "15:07",
+   "maghrib": "18:18",
+   "isha": "19:36"
+  }
+ },
+ "diffs": {
+  "imsak_vs_imsak": {
+   "board": "03:33",
+   "platform_noumea": "03:31",
+   "board_minus_platform": "+2"
+  },
+  "sabah_vs_fajr": {
+   "board": "03:43",
+   "platform_noumea": "03:44",
+   "board_minus_platform": "-1"
+  },
+  "dhuhr_vs_dhuhr": {
+   "board": "12:10",
+   "platform_noumea": "11:46",
+   "board_minus_platform": "+24"
+  },
+  "asr_vs_asr": {
+   "board": "15:10",
+   "platform_noumea": "15:07",
+   "board_minus_platform": "+3"
+  },
+  "maghrib_vs_maghrib": {
+   "board": "18:17",
+   "platform_noumea": "18:18",
+   "board_minus_platform": "-1"
+  },
+  "isha_vs_isha": {
+   "board": "19:45",
+   "platform_noumea": "19:36",
+   "board_minus_platform": "+9"
+  }
+ },
+ "note": "Mawaqit board year-blind. Diff vs the platform Noumea settlement row, same date."
+}

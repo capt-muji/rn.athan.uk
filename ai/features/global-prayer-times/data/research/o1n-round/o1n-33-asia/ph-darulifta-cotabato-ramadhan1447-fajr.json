@@ -1,0 +1,102 @@
+{
+ "source": "Office of the W\u0101l\u012b of Bangsamoro FB post 2026-02-25 -> Google Drive file 1PLEaHnZSjTROxHtIQaD8yvPOOREF5-wo (image, OCR fast level)",
+ "publisher": "Bangsamoro Darul Ifta' (declared source), Office of the W\u0101l\u012b",
+ "edition": "Ramadhan 1447H, Cotabato City, MDN, MDS & SGA, Gregorian 2026-02-19..2026-03-20",
+ "qibla_note_on_sheet": "Qiblah direction 290 W (printed)",
+ "columns_banked": [
+  "fajr"
+ ],
+ "note": "only the fajr column assigned from the OCR text with confidence (contiguous monotone row, 30/30); the other five columns are interleaved in the OCR stream and left unassigned - open item",
+ "rows": {
+  "2026-02-19": {
+   "fajr": "4:49"
+  },
+  "2026-02-20": {
+   "fajr": "4:49"
+  },
+  "2026-02-21": {
+   "fajr": "4:49"
+  },
+  "2026-02-22": {
+   "fajr": "4:49"
+  },
+  "2026-02-23": {
+   "fajr": "4:49"
+  },
+  "2026-02-24": {
+   "fajr": "4:48"
+  },
+  "2026-02-25": {
+   "fajr": "4:48"
+  },
+  "2026-02-26": {
+   "fajr": "4:48"
+  },
+  "2026-02-27": {
+   "fajr": "4:48"
+  },
+  "2026-02-28": {
+   "fajr": "4:47"
+  },
+  "2026-03-01": {
+   "fajr": "4:47"
+  },
+  "2026-03-02": {
+   "fajr": "4:47"
+  },
+  "2026-03-03": {
+   "fajr": "4:46"
+  },
+  "2026-03-04": {
+   "fajr": "4:46"
+  },
+  "2026-03-05": {
+   "fajr": "4:46"
+  },
+  "2026-03-06": {
+   "fajr": "4:45"
+  },
+  "2026-03-07": {
+   "fajr": "4:45"
+  },
+  "2026-03-08": {
+   "fajr": "4:44"
+  },
+  "2026-03-09": {
+   "fajr": "4:44"
+  },
+  "2026-03-10": {
+   "fajr": "4:44"
+  },
+  "2026-03-11": {
+   "fajr": "4:43"
+  },
+  "2026-03-12": {
+   "fajr": "4:43"
+  },
+  "2026-03-13": {
+   "fajr": "4:42"
+  },
+  "2026-03-14": {
+   "fajr": "4:42"
+  },
+  "2026-03-15": {
+   "fajr": "4:41"
+  },
+  "2026-03-16": {
+   "fajr": "4:41"
+  },
+  "2026-03-17": {
+   "fajr": "4:40"
+  },
+  "2026-03-18": {
+   "fajr": "4:40"
+  },
+  "2026-03-19": {
+   "fajr": "4:39"
+  },
+  "2026-03-20": {
+   "fajr": "4:39"
+  }
+ }
+}

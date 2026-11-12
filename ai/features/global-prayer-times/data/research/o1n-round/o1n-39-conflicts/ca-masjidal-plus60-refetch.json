@@ -1,0 +1,72 @@
+{
+ "leduc": {
+  "tenant": "1XAlR4Kb",
+  "nov_rows": 12,
+  "dec_rows": 31,
+  "nov1_12_dev_median": {
+   "fajr": 59,
+   "dhuhr": 60,
+   "isha": 63
+  },
+  "dec_dev_median": {
+   "fajr": 120,
+   "dhuhr": 120,
+   "isha": 122
+  },
+  "today_row": {
+   "dev": {
+    "fajr": 59,
+    "sunrise": 59,
+    "dhuhr": 60,
+    "asr": 63,
+    "maghrib": 64,
+    "isha": 62
+   },
+   "printed": {
+    "fajr": "6:52AM",
+    "zuhr": "1:19PM",
+    "isha": "7:39PM"
+   }
+  },
+  "held_had": {
+   "nov1_10_fajr_dev_median": 59,
+   "dec_fajr_dev_median": 120
+  },
+  "overlap_note": "held gate covered Nov 1-10; this pass extends to Nov 12"
+ },
+ "alfalah-edmonton": {
+  "tenant": "M9L2WrAZ",
+  "nov_rows": 12,
+  "dec_rows": 31,
+  "nov1_12_dev_median": {
+   "fajr": 60,
+   "dhuhr": 61,
+   "isha": 63
+  },
+  "dec_dev_median": {
+   "fajr": 61,
+   "dhuhr": 61,
+   "isha": 62
+  },
+  "today_row": {
+   "dev": {
+    "fajr": 60,
+    "sunrise": 60,
+    "dhuhr": 61,
+    "asr": 65,
+    "maghrib": 65,
+    "isha": 63
+   },
+   "printed": {
+    "fajr": "6:52AM",
+    "zuhr": "1:20PM",
+    "isha": "7:39PM"
+   }
+  },
+  "held_had": {
+   "nov1_10_fajr_dev_median": 60,
+   "dec_fajr_dev_median": 61
+  },
+  "overlap_note": "held gate covered Nov 1-10; this pass extends to Nov 12"
+ }
+}

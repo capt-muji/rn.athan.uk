@@ -1,0 +1,6 @@
+FML monthly prints carry no AM/PM markers; hours 1-11 in asr_shafi/asr_hanafi/maghrib/isha
+normalized to PM (+12h) at parse time, 2026-11-12. fajr/sunrise/dhuhr left as read.
+2024-01-15 dhuhr cell re-set to 12:21: cell crop lost the leading '1'; ':21' read clean
+on both normal and inverted passes; hour forced by the dhuhr column's 12:xx range.
+dhuhr column: 55 cells read as 2:xx (leading '1' lost to cell-crop bounds) re-set to 12:xx;
+every dhuhr print at Suva falls in 12:00-13:00, minutes read clean.

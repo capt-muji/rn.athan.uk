@@ -1,0 +1,20 @@
+{
+ "front": "French Guiana (Guyane)",
+ "surface": "GF-A2CMGF-1439",
+ "publisher": "Association Culturelle et Caritative des Musulmans de Guyane Francaise (A2CMGF), Mosquee Assalam Cayenne",
+ "url": "a2cmgf.fr/horaires-priere?ville={cayenne|kourou|saint-laurent}&mois=N&annee=YYYY",
+ "rows_banked": 1439,
+ "span": "3 cities x months {Jan,Apr,Jul,Oct,Nov} x years 2025+2026+2027, plus Cayenne probes 2024-01 and 2030-07; horizon tested to 2030 (renders), axis parameter-driven",
+ "recipe": {
+  "engine": "adhan 4.4.6, America/Cayenne (UTC-3 fixed)",
+  "cayenne": "fajr 15.25 deg +1, isha 14.75 deg +1, sunrise/dhuhr/maghrib margin 0; exact 93.7-99.4, within-1 100, worst 1 (521 rows)",
+  "kourou": "fajr 15.0 deg, isha 15.0 deg, margins 0; exact 97.6-99.8, within-1 100, worst 1 (459 rows)",
+  "saint-laurent": "fajr 15.0 deg, isha 15.0 deg, margins 0; exact 98.3-99.1, within-1 100, worst 1 (459 rows)",
+  "one_recipe_reading": "the 15/15 zero-margin family country-wide; the Cayenne 15.25/14.75+1 solution is the same family at its rounding edge"
+ },
+ "recompute_proof": "jan2024 vs jan2025: 24 of 31 rows move (+-1); jul2025 vs jul2030: 14 of 31 rows move; jan2025 vs jul2025: 31 of 31 differ - genuine per-year recomputation, parameters frozen; NOT a frozen template",
+ "seasonal_amplitude": "fajr Jan ~05:36-05:41 vs Jul ~05:19-05:20 (about 20 min), near-equator flatness as expected",
+ "grade": "A (three distinct fitted recomputed years on one recipe per city)",
+ "tier": "community (association's own platform)",
+ "also": "masjidbox Cayenne surface (mosquee-de-cayenne) and mawaqit Abou Bakr Cayenne install exist as platform mirrors of the same community layer, recorded never blended"
+}

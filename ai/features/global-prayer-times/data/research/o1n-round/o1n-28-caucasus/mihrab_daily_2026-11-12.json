@@ -1,0 +1,17 @@
+{
+ "surface": "mihrab.ru homepage Joomla module mod_islamic_prayer_time_pro (server-rendered daily)",
+ "publisher": "Moscow Cathedral Mosque (mihrab.ru)",
+ "captured_utc": "2026-11-12T04:12Z",
+ "date_attribution": "module serves its current-day row; page prints no date; capture 07:12 MSK, well inside the day",
+ "city": "Moscow (Moscow Cathedral Mosque, Vysotskogo/Mirovaya 15?)",
+ "coordinates_note": "site-fixed location, not printed on page; Moscow city default assumed for the record only",
+ "row": {
+  "fajr": "05:49",
+  "shuruk": "07:54",
+  "zukhr": "12:19",
+  "asr": "14:04",
+  "maghrib": "16:33",
+  "isha": "18:16"
+ },
+ "status": "site returned 200 after every prior run answered 502; no dated archive on site; daily-only surface"
+}

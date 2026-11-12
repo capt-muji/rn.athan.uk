@@ -1,0 +1,80 @@
+{
+ "source": "prayertimes.muslimthaipost.com app_crud.php getsolatbyprovince id=2 (Bangkok), fetched 2026-11-12",
+ "province": "Bangkok (\u0e01\u0e23\u0e38\u0e07\u0e40\u0e17\u0e1e\u0e21\u0e2b\u0e32\u0e19\u0e04\u0e23)",
+ "tz": "Asia/Bangkok",
+ "window": "7-day rolling, no year axis",
+ "rows": {
+  "2026-11-12": {
+   "imsak": "04:49",
+   "subhi": "04:59",
+   "shuruk": "06:17",
+   "zuhri": "12:05",
+   "asri": "15:21",
+   "maghrib": "17:49",
+   "isha": "19:02"
+  },
+  "2026-11-13": {
+   "imsak": "04:49",
+   "subhi": "04:59",
+   "shuruk": "06:17",
+   "zuhri": "12:05",
+   "asri": "15:21",
+   "maghrib": "17:49",
+   "isha": "19:02"
+  },
+  "2026-11-14": {
+   "imsak": "04:50",
+   "subhi": "05:00",
+   "shuruk": "06:18",
+   "zuhri": "12:05",
+   "asri": "15:21",
+   "maghrib": "17:48",
+   "isha": "19:02"
+  },
+  "2026-11-15": {
+   "imsak": "04:50",
+   "subhi": "05:00",
+   "shuruk": "06:18",
+   "zuhri": "12:05",
+   "asri": "15:21",
+   "maghrib": "17:48",
+   "isha": "19:02"
+  },
+  "2026-11-16": {
+   "imsak": "04:50",
+   "subhi": "05:00",
+   "shuruk": "06:19",
+   "zuhri": "12:05",
+   "asri": "15:21",
+   "maghrib": "17:48",
+   "isha": "19:02"
+  },
+  "2026-11-17": {
+   "imsak": "04:50",
+   "subhi": "05:00",
+   "shuruk": "06:18",
+   "zuhri": "12:06",
+   "asri": "15:22",
+   "maghrib": "17:49",
+   "isha": "19:03"
+  },
+  "2026-11-18": {
+   "imsak": "04:51",
+   "subhi": "05:01",
+   "shuruk": "06:20",
+   "zuhri": "12:06",
+   "asri": "15:21",
+   "maghrib": "17:48",
+   "isha": "19:02"
+  },
+  "2026-11-19": {
+   "imsak": "04:52",
+   "subhi": "05:02",
+   "shuruk": "06:20",
+   "zuhri": "12:06",
+   "asri": "15:21",
+   "maghrib": "17:48",
+   "isha": "19:02"
+  }
+ }
+}

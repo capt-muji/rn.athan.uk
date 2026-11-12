@@ -1,0 +1,87 @@
+{
+ "engine": "adhan 4.4.6",
+ "point": [
+  48.283,
+  16.442
+ ],
+ "zone": "table convention: summer offset +120 from Apr 1 to Oct 31 inclusive (fixed-date DST, not the EU dates), winter +60",
+ "year": 2026,
+ "columns": {
+  "sunrise": {
+   "margin": 0.3,
+   "n": 365,
+   "ex": 297,
+   "w1": 365,
+   "worst": 0.8,
+   "mae": 0.29
+  },
+  "dhuhr": {
+   "margin": 5.4,
+   "n": 365,
+   "ex": 325,
+   "w1": 365,
+   "worst": 0.7,
+   "mae": 0.26
+  },
+  "asr_shafi": {
+   "margin": 4.2,
+   "n": 365,
+   "ex": 72,
+   "w1": 267,
+   "worst": 2.5,
+   "mae": 1.08
+  },
+  "maghrib": {
+   "margin": 3.3,
+   "n": 365,
+   "ex": 299,
+   "w1": 365,
+   "worst": 0.9,
+   "mae": 0.28
+  },
+  "fajr": {
+   "dark": {
+    "angle": 15,
+    "margin": 0,
+    "n": 273,
+    "ex": 84,
+    "w1": 199,
+    "worst": 4.8,
+    "mae": 1.16
+   },
+   "bright": {
+    "window": "May-Jul",
+    "n": 92,
+    "ex": 0,
+    "w1": 0,
+    "worst": 35.3,
+    "mae": 17.46,
+    "printed_range": "3:07..3:54"
+   }
+  },
+  "isha": {
+   "dark": {
+    "angle": 16,
+    "margin": 1,
+    "n": 273,
+    "ex": 35,
+    "w1": 168,
+    "worst": 15.6,
+    "mae": 1.54
+   },
+   "bright": {
+    "window": "May-Jul",
+    "n": 92,
+    "ex": 0,
+    "w1": 0,
+    "worst": 63.6,
+    "mae": 40.94,
+    "printed_range": "21:59..22:33"
+   }
+  }
+ },
+ "convention": {
+  "summary": "dark season one recipe (fajr 15 deg, isha 16 deg, margins ~0/+1; sunrise +0.3, dhuhr transit +5.4, asr Shafi +4.2, maghrib sunset +3.3); bright season the twilight pair runs a shallower-than-angle arc (printed extremes measured); fixed-date DST Apr 1..Oct 31",
+  "publisher_claim": "the calendar is published as valid 2025-2028 unchanged (about 1 min/yr drift) with a one-time leap correction in 2029; a 2025 folder exists on the same Drive"
+ }
+}

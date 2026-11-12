@@ -1,0 +1,326 @@
+{
+ "city": "Lund",
+ "month": "2026-11",
+ "row_count": 30,
+ "anchor_cells": 30,
+ "anchor_pitch_px": 36.36,
+ "columns_px": {
+  "fajr": 201.0,
+  "sunrise": 323.0,
+  "dhuhr": 447.0,
+  "sunset": 704.0
+ },
+ "strip_fills": 35,
+ "strip_disagreements": 0,
+ "printed_city": "Lund",
+ "first_row_values": {
+  "fajr": 309,
+  "sunrise": 432,
+  "dhuhr": 710,
+  "sunset": 988,
+  "isha": 1016
+ },
+ "rows": [
+  {
+   "date": "2026-11-01",
+   "day": 1,
+   "fajr": 309,
+   "sunrise": 432,
+   "dhuhr": 710,
+   "sunset": 988,
+   "isha": 1016,
+   "complete": true
+  },
+  {
+   "date": "2026-11-02",
+   "day": 2,
+   "fajr": 311,
+   "sunrise": 435,
+   "dhuhr": 710,
+   "sunset": 986,
+   "isha": 1014,
+   "complete": true
+  },
+  {
+   "date": "2026-11-03",
+   "day": 3,
+   "fajr": 312,
+   "sunrise": 437,
+   "dhuhr": 710,
+   "sunset": 984,
+   "isha": 1012,
+   "complete": true
+  },
+  {
+   "date": "2026-11-04",
+   "day": 4,
+   "fajr": 314,
+   "sunrise": 439,
+   "dhuhr": 710,
+   "sunset": 982,
+   "isha": 1010,
+   "complete": true
+  },
+  {
+   "date": "2026-11-05",
+   "day": 5,
+   "fajr": 316,
+   "sunrise": 441,
+   "dhuhr": 710,
+   "sunset": 980,
+   "isha": 1009,
+   "complete": true
+  },
+  {
+   "date": "2026-11-06",
+   "day": 6,
+   "fajr": 318,
+   "sunrise": 443,
+   "dhuhr": 710,
+   "sunset": 978,
+   "isha": 1007,
+   "complete": true
+  },
+  {
+   "date": "2026-11-07",
+   "day": 7,
+   "fajr": 320,
+   "sunrise": 445,
+   "dhuhr": 711,
+   "sunset": 976,
+   "isha": 1005,
+   "complete": true
+  },
+  {
+   "date": "2026-11-08",
+   "day": 8,
+   "fajr": 321,
+   "sunrise": 447,
+   "dhuhr": 711,
+   "sunset": 974,
+   "isha": 1003,
+   "complete": true
+  },
+  {
+   "date": "2026-11-09",
+   "day": 9,
+   "fajr": 323,
+   "sunrise": 449,
+   "dhuhr": 711,
+   "sunset": 972,
+   "isha": 1001,
+   "complete": true
+  },
+  {
+   "date": "2026-11-10",
+   "day": 10,
+   "fajr": 325,
+   "sunrise": 451,
+   "dhuhr": 711,
+   "sunset": 970,
+   "isha": 999,
+   "complete": true
+  },
+  {
+   "date": "2026-11-11",
+   "day": 11,
+   "fajr": 326,
+   "sunrise": 453,
+   "dhuhr": 711,
+   "sunset": 968,
+   "isha": 998,
+   "complete": true
+  },
+  {
+   "date": "2026-11-12",
+   "day": 12,
+   "fajr": 328,
+   "sunrise": 455,
+   "dhuhr": 711,
+   "sunset": 966,
+   "isha": 996,
+   "complete": true
+  },
+  {
+   "date": "2026-11-13",
+   "day": 13,
+   "fajr": 330,
+   "sunrise": 458,
+   "dhuhr": 711,
+   "sunset": 965,
+   "isha": 994,
+   "complete": true
+  },
+  {
+   "date": "2026-11-14",
+   "day": 14,
+   "fajr": 332,
+   "sunrise": 460,
+   "dhuhr": 711,
+   "sunset": 963,
+   "isha": 993,
+   "complete": true
+  },
+  {
+   "date": "2026-11-15",
+   "day": 15,
+   "fajr": 333,
+   "sunrise": 462,
+   "dhuhr": 711,
+   "sunset": 961,
+   "isha": 991,
+   "complete": true
+  },
+  {
+   "date": "2026-11-16",
+   "day": 16,
+   "fajr": 335,
+   "sunrise": 464,
+   "dhuhr": 712,
+   "sunset": 960,
+   "isha": 990,
+   "complete": true
+  },
+  {
+   "date": "2026-11-17",
+   "day": 17,
+   "fajr": 336,
+   "sunrise": 466,
+   "dhuhr": 712,
+   "sunset": 958,
+   "isha": 988,
+   "complete": true
+  },
+  {
+   "date": "2026-11-18",
+   "day": 18,
+   "fajr": 338,
+   "sunrise": 468,
+   "dhuhr": 712,
+   "sunset": 956,
+   "isha": 987,
+   "complete": true
+  },
+  {
+   "date": "2026-11-19",
+   "day": 19,
+   "fajr": 340,
+   "sunrise": 470,
+   "dhuhr": 712,
+   "sunset": 955,
+   "isha": 985,
+   "complete": true
+  },
+  {
+   "date": "2026-11-20",
+   "day": 20,
+   "fajr": 341,
+   "sunrise": 472,
+   "dhuhr": 712,
+   "sunset": 953,
+   "isha": 984,
+   "complete": true
+  },
+  {
+   "date": "2026-11-21",
+   "day": 21,
+   "fajr": 343,
+   "sunrise": 474,
+   "dhuhr": 713,
+   "sunset": 952,
+   "isha": 983,
+   "complete": true
+  },
+  {
+   "date": "2026-11-22",
+   "day": 22,
+   "fajr": 344,
+   "sunrise": 476,
+   "dhuhr": 713,
+   "sunset": 950,
+   "isha": 981,
+   "complete": true
+  },
+  {
+   "date": "2026-11-23",
+   "day": 23,
+   "fajr": 346,
+   "sunrise": 477,
+   "dhuhr": 713,
+   "sunset": 949,
+   "isha": 980,
+   "complete": true
+  },
+  {
+   "date": "2026-11-24",
+   "day": 24,
+   "fajr": 347,
+   "sunrise": 479,
+   "dhuhr": 714,
+   "sunset": 948,
+   "isha": 979,
+   "complete": true
+  },
+  {
+   "date": "2026-11-25",
+   "day": 25,
+   "fajr": 349,
+   "sunrise": 481,
+   "dhuhr": 714,
+   "sunset": 947,
+   "isha": 978,
+   "complete": true
+  },
+  {
+   "date": "2026-11-26",
+   "day": 26,
+   "fajr": 350,
+   "sunrise": 483,
+   "dhuhr": 714,
+   "sunset": 945,
+   "isha": 977,
+   "complete": true
+  },
+  {
+   "date": "2026-11-27",
+   "day": 27,
+   "fajr": 352,
+   "sunrise": 485,
+   "dhuhr": 715,
+   "sunset": 944,
+   "isha": 976,
+   "complete": true
+  },
+  {
+   "date": "2026-11-28",
+   "day": 28,
+   "fajr": 353,
+   "sunrise": 487,
+   "dhuhr": 715,
+   "sunset": 943,
+   "isha": 975,
+   "complete": true
+  },
+  {
+   "date": "2026-11-29",
+   "day": 29,
+   "fajr": 354,
+   "sunrise": 488,
+   "dhuhr": 715,
+   "sunset": 942,
+   "isha": 974,
+   "complete": true
+  },
+  {
+   "date": "2026-11-30",
+   "day": 30,
+   "fajr": 356,
+   "sunrise": 490,
+   "dhuhr": 716,
+   "sunset": 941,
+   "isha": 973,
+   "complete": true
+  }
+ ],
+ "incomplete_days": []
+}

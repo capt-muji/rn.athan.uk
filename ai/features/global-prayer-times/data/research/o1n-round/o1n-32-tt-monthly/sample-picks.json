@@ -1,0 +1,202 @@
+[
+ {
+  "country": "falkland-islands",
+  "cityID": "5095",
+  "name": "Darwin"
+ },
+ {
+  "country": "falkland-islands",
+  "cityID": "5096",
+  "name": "Port Albemarle"
+ },
+ {
+  "country": "kiribati",
+  "cityID": "8645",
+  "name": "Bonriki"
+ },
+ {
+  "country": "kiribati",
+  "cityID": "8646",
+  "name": "Tapiwa"
+ },
+ {
+  "country": "philippines",
+  "cityID": "10987",
+  "name": "Tagbilaran"
+ },
+ {
+  "country": "philippines",
+  "cityID": "10988",
+  "name": "Talibon"
+ },
+ {
+  "country": "united-states",
+  "cityID": "6169",
+  "name": "Honuapo Bay/ Hawaii Island"
+ },
+ {
+  "country": "united-states",
+  "cityID": "6170",
+  "name": "Mahukona Harbor / Hawaii Island"
+ },
+ {
+  "country": "turkiye",
+  "cityID": "16702",
+  "name": "Adana"
+ },
+ {
+  "country": "turkiye",
+  "cityID": "16703",
+  "name": "Adapazarı (Sakarya)"
+ },
+ {
+  "country": "indonesia",
+  "cityID": "7026",
+  "name": "Buleleng"
+ },
+ {
+  "country": "indonesia",
+  "cityID": "7027",
+  "name": "Denpasar"
+ },
+ {
+  "country": "norway",
+  "cityID": "10115",
+  "name": "Tana"
+ },
+ {
+  "country": "norway",
+  "cityID": "10116",
+  "name": "Drobak"
+ },
+ {
+  "country": "finland",
+  "cityID": "5118",
+  "name": "Kumlinge"
+ },
+ {
+  "country": "finland",
+  "cityID": "5119",
+  "name": "Sottunga"
+ },
+ {
+  "country": "svalbard-and-jan-mayen",
+  "cityID": "61860",
+  "name": "Longyearbyen"
+ },
+ {
+  "country": "svalbard-and-jan-mayen",
+  "cityID": "61861",
+  "name": "Grumantbyen"
+ },
+ {
+  "country": "iceland",
+  "cityID": "6219",
+  "name": "Eyrarbakki"
+ },
+ {
+  "country": "iceland",
+  "cityID": "6220",
+  "name": "Gaulverjabaer"
+ },
+ {
+  "country": "tonga",
+  "cityID": "60084",
+  "name": "Nukualofa"
+ },
+ {
+  "country": "tonga",
+  "cityID": "81998",
+  "name": "Neiafu"
+ },
+ {
+  "country": "samoa",
+  "cityID": "20871",
+  "name": "Apia"
+ },
+ {
+  "country": "samoa",
+  "cityID": "63191",
+  "name": "Salailoa"
+ },
+ {
+  "country": "wallis-and-futuna",
+  "cityID": "62312",
+  "name": "Mata-Utu"
+ },
+ {
+  "country": "wallis-and-futuna",
+  "cityID": "62313",
+  "name": "Alele"
+ },
+ {
+  "country": "afghanistan",
+  "cityID": "1",
+  "name": "Vod Ab (Budop)"
+ },
+ {
+  "country": "afghanistan",
+  "cityID": "2",
+  "name": "Qala Panja (Qaleh-ye Panjeh)"
+ },
+ {
+  "country": "bahrain",
+  "cityID": "1449",
+  "name": "Manama (Al Manamah)"
+ },
+ {
+  "country": "bahrain",
+  "cityID": "1450",
+  "name": "Sitrah"
+ },
+ {
+  "country": "brazil",
+  "cityID": "493",
+  "name": "Barracao"
+ },
+ {
+  "country": "brazil",
+  "cityID": "1768",
+  "name": "Amapa"
+ },
+ {
+  "country": "australia",
+  "cityID": "659",
+  "name": "Canberra"
+ },
+ {
+  "country": "australia",
+  "cityID": "660",
+  "name": "Port Refuge"
+ },
+ {
+  "country": "japan",
+  "cityID": "8086",
+  "name": "Abashiri"
+ },
+ {
+  "country": "japan",
+  "cityID": "8087",
+  "name": "Akkeshi"
+ },
+ {
+  "country": "botswana",
+  "cityID": "1726",
+  "name": "Bobonong"
+ },
+ {
+  "country": "botswana",
+  "cityID": "1727",
+  "name": "Foley"
+ },
+ {
+  "country": "india",
+  "cityID": "6519",
+  "name": "Mayabunder"
+ },
+ {
+  "country": "india",
+  "cityID": "6520",
+  "name": "Port Blair"
+ }
+]

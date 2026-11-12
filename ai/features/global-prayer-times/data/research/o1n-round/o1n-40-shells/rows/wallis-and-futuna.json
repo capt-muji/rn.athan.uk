@@ -1,0 +1,264 @@
+{
+ "country": "wallis-and-futuna",
+ "generated": "2026-11-12T11:40:59Z",
+ "routes_probed": {
+  "monthly_2026": 28,
+  "monthly_2025_06": 0,
+  "monthly_2027_06": 0
+ },
+ "settlements": {
+  "62312": {
+   "name": "Mata-Utu",
+   "city_label": "Mata-Utu (Vallis Adası / Vallis ve Futuna, Fransa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62313": {
+   "name": "Alele",
+   "city_label": "Alele (Vallis Adası / Vallis ve Futuna, Fransa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62314": {
+   "name": "Fineveke",
+   "city_label": "Fineveke (Vallis Adası / Vallis ve Futuna, Fransa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62315": {
+   "name": "Haafusia",
+   "city_label": "Haafusia (Vallis Adası / Vallis ve Futuna, Fransa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62316": {
+   "name": "Ahoa",
+   "city_label": "Ahoa (Vallis Adası / Vallis ve Futuna, Fransa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62317": {
+   "name": "Halalo",
+   "city_label": "Halalo (Vallis Adası / Vallis ve Futuna, Fransa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62318": {
+   "name": "Falaleu",
+   "city_label": "Falaleu (Vallis Adası / Vallis ve Futuna, Fransa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62319": {
+   "name": "Halamaitai",
+   "city_label": "Halamaitai (Vallis Adası / Vallis ve Futuna, Fransa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62320": {
+   "name": "Kolopopo",
+   "city_label": "Kolopopo (Vallis Adası / Vallis ve Futuna, Fransa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62321": {
+   "name": "Liku",
+   "city_label": "Liku (Vallis Adası / Vallis ve Futuna, Fransa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62322": {
+   "name": "Akaka",
+   "city_label": "Akaka (Vallis Adası / Vallis ve Futuna, Fransa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62324": {
+   "name": "Ono",
+   "city_label": "Ono (Futuna Adası / Vallis ve Futuna, Fransa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62325": {
+   "name": "Vele",
+   "city_label": "Vele (Futuna Adası / Vallis ve Futuna, Fransa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62326": {
+   "name": "Mua",
+   "city_label": "Mua (Alofi Adası / Vallis ve Futuna, Fransa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62327": {
+   "name": "Fakauita",
+   "city_label": "Fakauita (Vallis Adası / Vallis ve Futuna, Fransa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62328": {
+   "name": "Vaimatau",
+   "city_label": "Vaimatau (Vallis Adası / Vallis ve Futuna, Fransa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62329": {
+   "name": "Utufua",
+   "city_label": "Utufua (Vallis Adası / Vallis ve Futuna, Fransa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62330": {
+   "name": "Tufuone",
+   "city_label": "Tufuone (Vallis Adası / Vallis ve Futuna, Fransa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62331": {
+   "name": "Haatofo",
+   "city_label": "Haatofo (Vallis Adası / Vallis ve Futuna, Fransa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62332": {
+   "name": "Mua",
+   "city_label": "Mua (Vallis Adası / Vallis ve Futuna, Fransa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62333": {
+   "name": "Gahi",
+   "city_label": "Gahi (Vallis Adası / Vallis ve Futuna, Fransa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62334": {
+   "name": "Tepa",
+   "city_label": "Tepa (Vallis Adası / Vallis ve Futuna, Fransa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62335": {
+   "name": "Lano",
+   "city_label": "Lano (Vallis Adası / Vallis ve Futuna, Fransa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62336": {
+   "name": "Gamua",
+   "city_label": "Gamua (Vallis Adası / Vallis ve Futuna, Fransa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62337": {
+   "name": "Poi",
+   "city_label": "Poi (Futuna Adası / Vallis ve Futuna, Fransa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62338": {
+   "name": "Kolia",
+   "city_label": "Kolia (Futuna Adası / Vallis ve Futuna, Fransa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62339": {
+   "name": "Vaitupu",
+   "city_label": "Vaitupu (Vallis Adası / Vallis ve Futuna, Fransa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  },
+  "62323": {
+   "name": "Sigave",
+   "city_label": "Sigave (Futuna Adası / Vallis ve Futuna, Fransa)",
+   "monthly_months": [
+    "HAZİRAN 2026"
+   ],
+   "rows_served": 0,
+   "rows": {}
+  }
+ },
+ "rows": {}
+}

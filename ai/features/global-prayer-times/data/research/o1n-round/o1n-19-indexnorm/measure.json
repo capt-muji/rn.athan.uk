@@ -1,0 +1,912 @@
+{
+  "measured_at": "2026-11-11 18:20:25Z",
+  "old": {
+    "db": "$HOME/athan-gitree/census/census-index-o1m.db",
+    "bytes": 2710315008,
+    "built_at": "2026-11-11 13:33:34Z",
+    "totals": {
+      "surfaces": 29567,
+      "rows": 15108920,
+      "files": 32110,
+      "unparseable": 0
+    }
+  },
+  "new": {
+    "db": "$HOME/athan-gitree/census/census-index-o1n.db",
+    "bytes": 5930078208,
+    "built_at": "2026-11-11 18:19:28Z",
+    "totals": {
+      "surfaces": 79068,
+      "rows": 33172679,
+      "files": 81786,
+      "unparseable": 0,
+      "no_rows": 2718,
+      "gz": 2
+    },
+    "first_date": "2000-01-01",
+    "last_date": "2100-12-31"
+  },
+  "stores": {
+    "o1m-29-kaznational": {
+      "before": {
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "surfaces": 5996,
+        "rows": 2188540
+      }
+    },
+    "o1m-11-eastasia": {
+      "before": {
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "surfaces": 4,
+        "rows": 172280
+      }
+    }
+  },
+  "rise": {
+    "gross": 18063759,
+    "attributable_to_normalized_stores": 2360820,
+    "other_tree_movement": 15702939
+  },
+  "per_op": {
+    "ab-harvest": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "adhan-4.4.6-src": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "adhan-build": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "c1-wafrica": {
+      "before": {
+        "files": 53,
+        "surfaces": 22,
+        "rows": 8030
+      },
+      "after": {
+        "files": 53,
+        "surfaces": 22,
+        "rows": 8030
+      }
+    },
+    "c10-caucasus": {
+      "before": {
+        "files": 28,
+        "surfaces": 28,
+        "rows": 7113
+      },
+      "after": {
+        "files": 28,
+        "surfaces": 28,
+        "rows": 7113
+      }
+    },
+    "c10-verify": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "c11-indopak": {
+      "before": {
+        "files": 10,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 10,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "c12-gulf": {
+      "before": {
+        "files": 6,
+        "surfaces": 3,
+        "rows": 23
+      },
+      "after": {
+        "files": 6,
+        "surfaces": 3,
+        "rows": 23
+      }
+    },
+    "c13-corrob": {
+      "before": {
+        "files": 6,
+        "surfaces": 1,
+        "rows": 30
+      },
+      "after": {
+        "files": 6,
+        "surfaces": 1,
+        "rows": 30
+      }
+    },
+    "c14-bd-lk-mv": {
+      "before": {
+        "files": 6,
+        "surfaces": 6,
+        "rows": 128
+      },
+      "after": {
+        "files": 6,
+        "surfaces": 6,
+        "rows": 128
+      }
+    },
+    "c15-jamiat": {
+      "before": {
+        "files": 494,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 494,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "c16-fits": {
+      "before": {
+        "files": 13,
+        "surfaces": 4,
+        "rows": 1460
+      },
+      "after": {
+        "files": 13,
+        "surfaces": 4,
+        "rows": 1460
+      }
+    },
+    "c17-chile": {
+      "before": {
+        "files": 27,
+        "surfaces": 18,
+        "rows": 540
+      },
+      "after": {
+        "files": 27,
+        "surfaces": 18,
+        "rows": 540
+      }
+    },
+    "c18-yeartables": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "c19-year2": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "c2-eafrica": {
+      "before": {
+        "files": 9,
+        "surfaces": 2,
+        "rows": 2
+      },
+      "after": {
+        "files": 9,
+        "surfaces": 2,
+        "rows": 2
+      }
+    },
+    "c20-wafrica2": {
+      "before": {
+        "files": 24,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 24,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "c21-balkans": {
+      "before": {
+        "files": 22,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 22,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "c22-pacific": {
+      "before": {
+        "files": 10,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 10,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "c23-russia": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "c24-uk-ie": {
+      "before": {
+        "files": 28,
+        "surfaces": 19,
+        "rows": 2279
+      },
+      "after": {
+        "files": 28,
+        "surfaces": 19,
+        "rows": 2279
+      }
+    },
+    "c25-sasia": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "c26-wafrica-ocr": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "c27-policy": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "c28-balkans": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "c29-browserjobs": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "c3-weurope": {
+      "before": {
+        "files": 18,
+        "surfaces": 6,
+        "rows": 181
+      },
+      "after": {
+        "files": 18,
+        "surfaces": 6,
+        "rows": 181
+      }
+    },
+    "c30-afghan": {
+      "before": {
+        "files": 8,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 8,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "c31-year2": {
+      "before": {
+        "files": 50,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 50,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "c32-platforms": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "c33-policy21": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "c34-niger": {
+      "before": {
+        "files": 1,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 1,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "c35-loose": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "c36-dpt": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "c37-kosovo": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "c38-uk2": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "c39-moscow": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "c4-na": {
+      "before": {
+        "files": 15,
+        "surfaces": 12,
+        "rows": 135
+      },
+      "after": {
+        "files": 15,
+        "surfaces": 12,
+        "rows": 135
+      }
+    },
+    "c40-wayback": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "c41-worldtable": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "c42-masjidal": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "c43-adversarial": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "c44-policy22": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "c47-practicemap": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "c49-policy23": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "c5-safrica": {
+      "before": {
+        "files": 23,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 23,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "c6-neurope": {
+      "before": {
+        "files": 15,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 15,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "c7-latam": {
+      "before": {
+        "files": 8,
+        "surfaces": 7,
+        "rows": 95
+      },
+      "after": {
+        "files": 8,
+        "surfaces": 7,
+        "rows": 95
+      }
+    },
+    "c8-easia": {
+      "before": {
+        "files": 12,
+        "surfaces": 11,
+        "rows": 330
+      },
+      "after": {
+        "files": 12,
+        "surfaces": 11,
+        "rows": 330
+      }
+    },
+    "c9-oceania": {
+      "before": {
+        "files": 11,
+        "surfaces": 7,
+        "rows": 181
+      },
+      "after": {
+        "files": 11,
+        "surfaces": 7,
+        "rows": 181
+      }
+    },
+    "har": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "m4f-fazilet": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "masjidal2": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "moonsighting2": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "n1f-jo-qa": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "n2f-topup": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "o1f-london": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "o1g-decade": {
+      "before": {
+        "files": 1,
+        "surfaces": 1,
+        "rows": 365
+      },
+      "after": {
+        "files": 1,
+        "surfaces": 1,
+        "rows": 365
+      }
+    },
+    "o1h-global": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "o1i-package": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "o1j-review": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "o1k-wide": {
+      "before": {
+        "files": 523,
+        "surfaces": 457,
+        "rows": 167119
+      },
+      "after": {
+        "files": 523,
+        "surfaces": 457,
+        "rows": 167119
+      }
+    },
+    "o1l-city": {
+      "before": {
+        "files": 7619,
+        "surfaces": 6665,
+        "rows": 1485519
+      },
+      "after": {
+        "files": 7619,
+        "surfaces": 6665,
+        "rows": 1485519
+      }
+    },
+    "o1m": {
+      "before": {
+        "files": 23070,
+        "surfaces": 22298,
+        "rows": 13435390
+      },
+      "after": {
+        "files": 29371,
+        "surfaces": 28597,
+        "rows": 15905070
+      }
+    },
+    "o1n": {
+      "before": null,
+      "after": {
+        "files": 43375,
+        "surfaces": 43202,
+        "rows": 15594079
+      }
+    },
+    "p1-policy": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "p2-mk-sy": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "p3-hijri": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "p4-runbook": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "p5-fallback": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    },
+    "s1-saudi": {
+      "before": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      },
+      "after": {
+        "files": 0,
+        "surfaces": 0,
+        "rows": 0
+      }
+    }
+  },
+  "old_db_preserved": {
+    "bytes_unchanged": true,
+    "mtime": "2026-11-11T13:34:17.170Z",
+    "quick_check": "ok"
+  },
+  "new_db_quick_check": "ok"
+}

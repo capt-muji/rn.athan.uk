@@ -1,0 +1,1534 @@
+{
+ "cil-ugd-1fdabb": {
+  "file": "captures/cil-ugd-1fdabb.pdf",
+  "days_parsed": 28,
+  "rows": [
+   {
+    "day": 2,
+    "azan": [
+     335,
+     423,
+     741,
+     746,
+     913,
+     1060,
+     1137
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     390,
+     840,
+     960,
+     1060,
+     1155
+    ]
+   },
+   {
+    "day": 3,
+    "azan": [
+     337,
+     425,
+     741,
+     746,
+     912,
+     1058,
+     1135
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     390,
+     840,
+     960,
+     1058,
+     1155
+    ]
+   },
+   {
+    "day": 4,
+    "azan": [
+     337,
+     426,
+     741,
+     746,
+     911,
+     1057,
+     1134
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     390,
+     840,
+     960,
+     1057,
+     1155
+    ]
+   },
+   {
+    "day": 5,
+    "azan": [
+     338,
+     427,
+     741,
+     746,
+     910,
+     1056,
+     1133
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     390,
+     840,
+     960,
+     1056,
+     1155
+    ]
+   },
+   {
+    "day": 6,
+    "azan": [
+     339,
+     428,
+     741,
+     746,
+     909,
+     1055,
+     1132
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": null
+   },
+   {
+    "day": 7,
+    "azan": [
+     340,
+     429,
+     741,
+     746,
+     908,
+     1054,
+     1131
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     390,
+     840,
+     960,
+     1054,
+     1155
+    ]
+   },
+   {
+    "day": 8,
+    "azan": [
+     341,
+     430,
+     741,
+     746,
+     908,
+     1053,
+     1130
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     390,
+     840,
+     960,
+     1053,
+     1155
+    ]
+   },
+   {
+    "day": 9,
+    "azan": [
+     342,
+     432,
+     741,
+     746,
+     907,
+     1052,
+     1129
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     390,
+     840,
+     960,
+     1052,
+     1155
+    ]
+   },
+   {
+    "day": 10,
+    "azan": [
+     343,
+     433,
+     741,
+     746,
+     906,
+     1051,
+     1128
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     390,
+     840,
+     960,
+     1051,
+     1155
+    ]
+   },
+   {
+    "day": 12,
+    "azan": [
+     345,
+     435,
+     741,
+     746,
+     905,
+     1049,
+     1126
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     390,
+     840,
+     960,
+     1049,
+     1155
+    ]
+   },
+   {
+    "day": 13,
+    "azan": [
+     346,
+     436,
+     741,
+     746,
+     904,
+     1048,
+     1125
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": null
+   },
+   {
+    "day": 14,
+    "azan": [
+     347,
+     437,
+     741,
+     746,
+     903,
+     1047,
+     1124
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     405,
+     840,
+     945,
+     1047,
+     1140
+    ]
+   },
+   {
+    "day": 15,
+    "azan": [
+     348,
+     438,
+     742,
+     747,
+     903,
+     1047,
+     1124
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     405,
+     840,
+     945,
+     1047,
+     1140
+    ]
+   },
+   {
+    "day": 16,
+    "azan": [
+     349,
+     439,
+     742,
+     747,
+     902,
+     1046,
+     1123
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     405,
+     840,
+     945,
+     1046,
+     1140
+    ]
+   },
+   {
+    "day": 17,
+    "azan": [
+     350,
+     440,
+     742,
+     747,
+     902,
+     1045,
+     1122
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     405,
+     840,
+     945,
+     1045,
+     1140
+    ]
+   },
+   {
+    "day": 18,
+    "azan": [
+     351,
+     442,
+     742,
+     747,
+     901,
+     1045,
+     1122
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     405,
+     840,
+     945,
+     1045,
+     1140
+    ]
+   },
+   {
+    "day": 19,
+    "azan": [
+     352,
+     443,
+     742,
+     747,
+     901,
+     1044,
+     1121
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     405,
+     840,
+     945,
+     1044,
+     1140
+    ]
+   },
+   {
+    "day": 20,
+    "azan": [
+     352,
+     444,
+     743,
+     748,
+     900,
+     1043,
+     1120
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": null
+   },
+   {
+    "day": 21,
+    "azan": [
+     353,
+     445,
+     743,
+     748,
+     900,
+     1043,
+     1120
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     405,
+     840,
+     945,
+     1043,
+     1140
+    ]
+   },
+   {
+    "day": 22,
+    "azan": [
+     354,
+     446,
+     743,
+     748,
+     899,
+     1042,
+     1119
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     405,
+     840,
+     945,
+     1042,
+     1140
+    ]
+   },
+   {
+    "day": 23,
+    "azan": [
+     355,
+     447,
+     743,
+     748,
+     899,
+     1042,
+     1119
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     405,
+     840,
+     945,
+     1042,
+     1140
+    ]
+   },
+   {
+    "day": 24,
+    "azan": [
+     356,
+     448,
+     744,
+     749,
+     899,
+     1041,
+     1118
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     405,
+     840,
+     945,
+     1041,
+     1140
+    ]
+   },
+   {
+    "day": 25,
+    "azan": [
+     357,
+     449,
+     744,
+     749,
+     898,
+     1041,
+     1118
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     405,
+     840,
+     945,
+     1041,
+     1140
+    ]
+   },
+   {
+    "day": 26,
+    "azan": [
+     358,
+     450,
+     744,
+     749,
+     898,
+     1040,
+     1117
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     405,
+     840,
+     945,
+     1040,
+     1140
+    ]
+   },
+   {
+    "day": 27,
+    "azan": [
+     359,
+     451,
+     745,
+     750,
+     898,
+     1040,
+     1117
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": null
+   },
+   {
+    "day": 28,
+    "azan": [
+     360,
+     452,
+     745,
+     750,
+     898,
+     1040,
+     1117
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     420,
+     840,
+     945,
+     1040,
+     1140
+    ]
+   },
+   {
+    "day": 29,
+    "azan": [
+     360,
+     453,
+     745,
+     750,
+     897,
+     1039,
+     1116
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     420,
+     840,
+     945,
+     1039,
+     1140
+    ]
+   },
+   {
+    "day": 30,
+    "azan": [
+     361,
+     454,
+     746,
+     751,
+     897,
+     1039,
+     1116
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     420,
+     840,
+     945,
+     1039,
+     1140
+    ]
+   }
+  ]
+ },
+ "cil-ugd-99b369": {
+  "file": "captures/cil-ugd-99b369.pdf",
+  "days_parsed": 28,
+  "rows": [
+   {
+    "day": 1,
+    "azan": [
+     371,
+     462,
+     771,
+     776,
+     937,
+     1082,
+     1159
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     420,
+     840,
+     990,
+     1082,
+     1185
+    ]
+   },
+   {
+    "day": 2,
+    "azan": [
+     370,
+     461,
+     771,
+     776,
+     938,
+     1083,
+     1160
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     420,
+     840,
+     990,
+     1083,
+     1185
+    ]
+   },
+   {
+    "day": 3,
+    "azan": [
+     370,
+     460,
+     771,
+     776,
+     939,
+     1084,
+     1161
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     420,
+     840,
+     990,
+     1084,
+     1185
+    ]
+   },
+   {
+    "day": 4,
+    "azan": [
+     369,
+     459,
+     771,
+     776,
+     940,
+     1085,
+     1162
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     420,
+     840,
+     990,
+     1085,
+     1185
+    ]
+   },
+   {
+    "day": 5,
+    "azan": [
+     368,
+     458,
+     771,
+     776,
+     941,
+     1087,
+     1164
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     420,
+     840,
+     990,
+     1087,
+     1185
+    ]
+   },
+   {
+    "day": 6,
+    "azan": [
+     367,
+     457,
+     771,
+     776,
+     942,
+     1088,
+     1165
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     420,
+     840,
+     990,
+     1088,
+     1185
+    ]
+   },
+   {
+    "day": 7,
+    "azan": [
+     366,
+     456,
+     771,
+     776,
+     943,
+     1089,
+     1166
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": null
+   },
+   {
+    "day": 8,
+    "azan": [
+     365,
+     455,
+     771,
+     776,
+     944,
+     1090,
+     1167
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     405,
+     840,
+     1005,
+     1090,
+     1185
+    ]
+   },
+   {
+    "day": 9,
+    "azan": [
+     364,
+     454,
+     771,
+     776,
+     945,
+     1091,
+     1168
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     405,
+     840,
+     1005,
+     1091,
+     1185
+    ]
+   },
+   {
+    "day": 10,
+    "azan": [
+     363,
+     453,
+     771,
+     776,
+     946,
+     1092,
+     1169
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     405,
+     840,
+     1005,
+     1092,
+     1185
+    ]
+   },
+   {
+    "day": 11,
+    "azan": [
+     362,
+     452,
+     771,
+     776,
+     947,
+     1093,
+     1170
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     405,
+     840,
+     1005,
+     1093,
+     1185
+    ]
+   },
+   {
+    "day": 12,
+    "azan": [
+     361,
+     450,
+     771,
+     776,
+     947,
+     1095,
+     1172
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     405,
+     840,
+     1005,
+     1095,
+     1185
+    ]
+   },
+   {
+    "day": 13,
+    "azan": [
+     360,
+     449,
+     771,
+     776,
+     948,
+     1096,
+     1173
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     405,
+     840,
+     1005,
+     1096,
+     1185
+    ]
+   },
+   {
+    "day": 14,
+    "azan": [
+     359,
+     448,
+     771,
+     776,
+     949,
+     1097,
+     1174
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": null
+   },
+   {
+    "day": 15,
+    "azan": [
+     358,
+     447,
+     771,
+     776,
+     950,
+     1098,
+     1175
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     405,
+     840,
+     1005,
+     1098,
+     1200
+    ]
+   },
+   {
+    "day": 16,
+    "azan": [
+     357,
+     446,
+     771,
+     776,
+     951,
+     1099,
+     1176
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     405,
+     840,
+     1005,
+     1099,
+     1200
+    ]
+   },
+   {
+    "day": 17,
+    "azan": [
+     356,
+     444,
+     771,
+     776,
+     952,
+     1100,
+     1177
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     405,
+     840,
+     1005,
+     1100,
+     1200
+    ]
+   },
+   {
+    "day": 18,
+    "azan": [
+     354,
+     443,
+     771,
+     776,
+     952,
+     1101,
+     1178
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     405,
+     840,
+     1005,
+     1101,
+     1200
+    ]
+   },
+   {
+    "day": 19,
+    "azan": [
+     353,
+     442,
+     771,
+     776,
+     953,
+     1102,
+     1179
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     405,
+     840,
+     1005,
+     1102,
+     1200
+    ]
+   },
+   {
+    "day": 20,
+    "azan": [
+     352,
+     441,
+     771,
+     776,
+     954,
+     1103,
+     1180
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     405,
+     840,
+     1005,
+     1103,
+     1200
+    ]
+   },
+   {
+    "day": 21,
+    "azan": [
+     351,
+     439,
+     771,
+     776,
+     955,
+     1105,
+     1182
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": null
+   },
+   {
+    "day": 22,
+    "azan": [
+     351,
+     439,
+     771,
+     776,
+     955,
+     1105,
+     1182
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     390,
+     840,
+     1020,
+     1105,
+     1200
+    ]
+   },
+   {
+    "day": 23,
+    "azan": [
+     348,
+     436,
+     770,
+     775,
+     956,
+     1107,
+     1184
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     390,
+     840,
+     1020,
+     1107,
+     1200
+    ]
+   },
+   {
+    "day": 24,
+    "azan": [
+     347,
+     435,
+     770,
+     775,
+     957,
+     1108,
+     1185
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     390,
+     840,
+     1020,
+     1108,
+     1200
+    ]
+   },
+   {
+    "day": 25,
+    "azan": [
+     345,
+     434,
+     770,
+     775,
+     958,
+     1109,
+     1186
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     390,
+     840,
+     1020,
+     1109,
+     1200
+    ]
+   },
+   {
+    "day": 26,
+    "azan": [
+     344,
+     432,
+     770,
+     775,
+     958,
+     1110,
+     1187
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     390,
+     840,
+     1020,
+     1110,
+     1200
+    ]
+   },
+   {
+    "day": 27,
+    "azan": [
+     343,
+     431,
+     770,
+     775,
+     959,
+     1111,
+     1188
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": [
+     390,
+     840,
+     1020,
+     1111,
+     1200
+    ]
+   },
+   {
+    "day": 28,
+    "azan": [
+     341,
+     430,
+     769,
+     774,
+     960,
+     1112,
+     1189
+    ],
+    "cols": [
+     "fajr",
+     "sunrise",
+     "zawal",
+     "zuhr",
+     "asr",
+     "maghrib",
+     "isha"
+    ],
+    "jamaat": null
+   }
+  ]
+ }
+}

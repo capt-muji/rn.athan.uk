@@ -1,0 +1,2630 @@
+{
+ "note": "api.aladhan.com/v1/calendarByCity Budapest method 13: the magyariszlam.hu imaidok calendar computes every month from this API (captured in the page resource list). Months pre-dating the site horizon and the recorded 2024-05 gap. Platform-labelled (aladhan computes; the community site wraps it).",
+ "months": [
+  "2023-10",
+  "2023-11",
+  "2023-12",
+  "2024-01",
+  "2024-05"
+ ],
+ "rows": [
+  {
+   "date": "2023-10-01",
+   "timings": {
+    "Fajr": "04:59 (CEST)",
+    "Sunrise": "06:35 (CEST)",
+    "Dhuhr": "12:39 (CEST)",
+    "Asr": "15:51 (CEST)",
+    "Sunset": "18:31 (CEST)",
+    "Maghrib": "18:31 (CEST)",
+    "Isha": "20:01 (CEST)",
+    "Imsak": "04:49 (CEST)",
+    "Midnight": "00:33 (CEST)",
+    "Firstthird": "22:30 (CEST)",
+    "Lastthird": "02:36 (CEST)"
+   },
+   "hijri": "16-03-1445"
+  },
+  {
+   "date": "2023-10-02",
+   "timings": {
+    "Fajr": "05:01 (CEST)",
+    "Sunrise": "06:36 (CEST)",
+    "Dhuhr": "12:38 (CEST)",
+    "Asr": "15:50 (CEST)",
+    "Sunset": "18:29 (CEST)",
+    "Maghrib": "18:29 (CEST)",
+    "Isha": "19:58 (CEST)",
+    "Imsak": "04:51 (CEST)",
+    "Midnight": "00:33 (CEST)",
+    "Firstthird": "22:29 (CEST)",
+    "Lastthird": "02:36 (CEST)"
+   },
+   "hijri": "17-03-1445"
+  },
+  {
+   "date": "2023-10-03",
+   "timings": {
+    "Fajr": "05:02 (CEST)",
+    "Sunrise": "06:38 (CEST)",
+    "Dhuhr": "12:38 (CEST)",
+    "Asr": "15:48 (CEST)",
+    "Sunset": "18:27 (CEST)",
+    "Maghrib": "18:27 (CEST)",
+    "Isha": "19:56 (CEST)",
+    "Imsak": "04:52 (CEST)",
+    "Midnight": "00:32 (CEST)",
+    "Firstthird": "22:28 (CEST)",
+    "Lastthird": "02:37 (CEST)"
+   },
+   "hijri": "18-03-1445"
+  },
+  {
+   "date": "2023-10-04",
+   "timings": {
+    "Fajr": "05:04 (CEST)",
+    "Sunrise": "06:39 (CEST)",
+    "Dhuhr": "12:38 (CEST)",
+    "Asr": "15:47 (CEST)",
+    "Sunset": "18:25 (CEST)",
+    "Maghrib": "18:25 (CEST)",
+    "Isha": "19:54 (CEST)",
+    "Imsak": "04:54 (CEST)",
+    "Midnight": "00:32 (CEST)",
+    "Firstthird": "22:27 (CEST)",
+    "Lastthird": "02:37 (CEST)"
+   },
+   "hijri": "19-03-1445"
+  },
+  {
+   "date": "2023-10-05",
+   "timings": {
+    "Fajr": "05:05 (CEST)",
+    "Sunrise": "06:41 (CEST)",
+    "Dhuhr": "12:37 (CEST)",
+    "Asr": "15:45 (CEST)",
+    "Sunset": "18:23 (CEST)",
+    "Maghrib": "18:23 (CEST)",
+    "Isha": "19:52 (CEST)",
+    "Imsak": "04:55 (CEST)",
+    "Midnight": "00:32 (CEST)",
+    "Firstthird": "22:27 (CEST)",
+    "Lastthird": "02:37 (CEST)"
+   },
+   "hijri": "20-03-1445"
+  },
+  {
+   "date": "2023-10-06",
+   "timings": {
+    "Fajr": "05:07 (CEST)",
+    "Sunrise": "06:42 (CEST)",
+    "Dhuhr": "12:37 (CEST)",
+    "Asr": "15:44 (CEST)",
+    "Sunset": "18:21 (CEST)",
+    "Maghrib": "18:21 (CEST)",
+    "Isha": "19:50 (CEST)",
+    "Imsak": "04:57 (CEST)",
+    "Midnight": "00:32 (CEST)",
+    "Firstthird": "22:26 (CEST)",
+    "Lastthird": "02:37 (CEST)"
+   },
+   "hijri": "21-03-1445"
+  },
+  {
+   "date": "2023-10-07",
+   "timings": {
+    "Fajr": "05:08 (CEST)",
+    "Sunrise": "06:43 (CEST)",
+    "Dhuhr": "12:37 (CEST)",
+    "Asr": "15:42 (CEST)",
+    "Sunset": "18:19 (CEST)",
+    "Maghrib": "18:19 (CEST)",
+    "Isha": "19:48 (CEST)",
+    "Imsak": "04:58 (CEST)",
+    "Midnight": "00:31 (CEST)",
+    "Firstthird": "22:25 (CEST)",
+    "Lastthird": "02:38 (CEST)"
+   },
+   "hijri": "22-03-1445"
+  },
+  {
+   "date": "2023-10-08",
+   "timings": {
+    "Fajr": "05:10 (CEST)",
+    "Sunrise": "06:45 (CEST)",
+    "Dhuhr": "12:36 (CEST)",
+    "Asr": "15:41 (CEST)",
+    "Sunset": "18:17 (CEST)",
+    "Maghrib": "18:17 (CEST)",
+    "Isha": "19:46 (CEST)",
+    "Imsak": "05:00 (CEST)",
+    "Midnight": "00:31 (CEST)",
+    "Firstthird": "22:24 (CEST)",
+    "Lastthird": "02:38 (CEST)"
+   },
+   "hijri": "23-03-1445"
+  },
+  {
+   "date": "2023-10-09",
+   "timings": {
+    "Fajr": "05:11 (CEST)",
+    "Sunrise": "06:46 (CEST)",
+    "Dhuhr": "12:36 (CEST)",
+    "Asr": "15:39 (CEST)",
+    "Sunset": "18:15 (CEST)",
+    "Maghrib": "18:15 (CEST)",
+    "Isha": "19:44 (CEST)",
+    "Imsak": "05:01 (CEST)",
+    "Midnight": "00:31 (CEST)",
+    "Firstthird": "22:23 (CEST)",
+    "Lastthird": "02:38 (CEST)"
+   },
+   "hijri": "24-03-1445"
+  },
+  {
+   "date": "2023-10-10",
+   "timings": {
+    "Fajr": "05:12 (CEST)",
+    "Sunrise": "06:48 (CEST)",
+    "Dhuhr": "12:36 (CEST)",
+    "Asr": "15:38 (CEST)",
+    "Sunset": "18:13 (CEST)",
+    "Maghrib": "18:13 (CEST)",
+    "Isha": "19:42 (CEST)",
+    "Imsak": "05:02 (CEST)",
+    "Midnight": "00:30 (CEST)",
+    "Firstthird": "22:22 (CEST)",
+    "Lastthird": "02:39 (CEST)"
+   },
+   "hijri": "25-03-1445"
+  },
+  {
+   "date": "2023-10-11",
+   "timings": {
+    "Fajr": "05:14 (CEST)",
+    "Sunrise": "06:49 (CEST)",
+    "Dhuhr": "12:36 (CEST)",
+    "Asr": "15:36 (CEST)",
+    "Sunset": "18:11 (CEST)",
+    "Maghrib": "18:11 (CEST)",
+    "Isha": "19:40 (CEST)",
+    "Imsak": "05:04 (CEST)",
+    "Midnight": "00:30 (CEST)",
+    "Firstthird": "22:22 (CEST)",
+    "Lastthird": "02:39 (CEST)"
+   },
+   "hijri": "26-03-1445"
+  },
+  {
+   "date": "2023-10-12",
+   "timings": {
+    "Fajr": "05:15 (CEST)",
+    "Sunrise": "06:50 (CEST)",
+    "Dhuhr": "12:35 (CEST)",
+    "Asr": "15:35 (CEST)",
+    "Sunset": "18:09 (CEST)",
+    "Maghrib": "18:09 (CEST)",
+    "Isha": "19:38 (CEST)",
+    "Imsak": "05:05 (CEST)",
+    "Midnight": "00:30 (CEST)",
+    "Firstthird": "22:21 (CEST)",
+    "Lastthird": "02:39 (CEST)"
+   },
+   "hijri": "27-03-1445"
+  },
+  {
+   "date": "2023-10-13",
+   "timings": {
+    "Fajr": "05:17 (CEST)",
+    "Sunrise": "06:52 (CEST)",
+    "Dhuhr": "12:35 (CEST)",
+    "Asr": "15:33 (CEST)",
+    "Sunset": "18:07 (CEST)",
+    "Maghrib": "18:07 (CEST)",
+    "Isha": "19:37 (CEST)",
+    "Imsak": "05:07 (CEST)",
+    "Midnight": "00:30 (CEST)",
+    "Firstthird": "22:20 (CEST)",
+    "Lastthird": "02:39 (CEST)"
+   },
+   "hijri": "28-03-1445"
+  },
+  {
+   "date": "2023-10-14",
+   "timings": {
+    "Fajr": "05:18 (CEST)",
+    "Sunrise": "06:53 (CEST)",
+    "Dhuhr": "12:35 (CEST)",
+    "Asr": "15:32 (CEST)",
+    "Sunset": "18:06 (CEST)",
+    "Maghrib": "18:06 (CEST)",
+    "Isha": "19:35 (CEST)",
+    "Imsak": "05:08 (CEST)",
+    "Midnight": "00:29 (CEST)",
+    "Firstthird": "22:19 (CEST)",
+    "Lastthird": "02:40 (CEST)"
+   },
+   "hijri": "29-03-1445"
+  },
+  {
+   "date": "2023-10-15",
+   "timings": {
+    "Fajr": "05:20 (CEST)",
+    "Sunrise": "06:55 (CEST)",
+    "Dhuhr": "12:35 (CEST)",
+    "Asr": "15:31 (CEST)",
+    "Sunset": "18:04 (CEST)",
+    "Maghrib": "18:04 (CEST)",
+    "Isha": "19:33 (CEST)",
+    "Imsak": "05:10 (CEST)",
+    "Midnight": "00:29 (CEST)",
+    "Firstthird": "22:18 (CEST)",
+    "Lastthird": "02:40 (CEST)"
+   },
+   "hijri": "30-03-1445"
+  },
+  {
+   "date": "2023-10-16",
+   "timings": {
+    "Fajr": "05:21 (CEST)",
+    "Sunrise": "06:56 (CEST)",
+    "Dhuhr": "12:34 (CEST)",
+    "Asr": "15:29 (CEST)",
+    "Sunset": "18:02 (CEST)",
+    "Maghrib": "18:02 (CEST)",
+    "Isha": "19:31 (CEST)",
+    "Imsak": "05:11 (CEST)",
+    "Midnight": "00:29 (CEST)",
+    "Firstthird": "22:18 (CEST)",
+    "Lastthird": "02:40 (CEST)"
+   },
+   "hijri": "01-04-1445"
+  },
+  {
+   "date": "2023-10-17",
+   "timings": {
+    "Fajr": "05:22 (CEST)",
+    "Sunrise": "06:58 (CEST)",
+    "Dhuhr": "12:34 (CEST)",
+    "Asr": "15:28 (CEST)",
+    "Sunset": "18:00 (CEST)",
+    "Maghrib": "18:00 (CEST)",
+    "Isha": "19:29 (CEST)",
+    "Imsak": "05:12 (CEST)",
+    "Midnight": "00:29 (CEST)",
+    "Firstthird": "22:17 (CEST)",
+    "Lastthird": "02:41 (CEST)"
+   },
+   "hijri": "02-04-1445"
+  },
+  {
+   "date": "2023-10-18",
+   "timings": {
+    "Fajr": "05:24 (CEST)",
+    "Sunrise": "06:59 (CEST)",
+    "Dhuhr": "12:34 (CEST)",
+    "Asr": "15:26 (CEST)",
+    "Sunset": "17:58 (CEST)",
+    "Maghrib": "17:58 (CEST)",
+    "Isha": "19:27 (CEST)",
+    "Imsak": "05:14 (CEST)",
+    "Midnight": "00:29 (CEST)",
+    "Firstthird": "22:16 (CEST)",
+    "Lastthird": "02:41 (CEST)"
+   },
+   "hijri": "03-04-1445"
+  },
+  {
+   "date": "2023-10-19",
+   "timings": {
+    "Fajr": "05:25 (CEST)",
+    "Sunrise": "07:01 (CEST)",
+    "Dhuhr": "12:34 (CEST)",
+    "Asr": "15:25 (CEST)",
+    "Sunset": "17:56 (CEST)",
+    "Maghrib": "17:56 (CEST)",
+    "Isha": "19:26 (CEST)",
+    "Imsak": "05:15 (CEST)",
+    "Midnight": "00:28 (CEST)",
+    "Firstthird": "22:15 (CEST)",
+    "Lastthird": "02:41 (CEST)"
+   },
+   "hijri": "04-04-1445"
+  },
+  {
+   "date": "2023-10-20",
+   "timings": {
+    "Fajr": "05:26 (CEST)",
+    "Sunrise": "07:02 (CEST)",
+    "Dhuhr": "12:34 (CEST)",
+    "Asr": "15:23 (CEST)",
+    "Sunset": "17:54 (CEST)",
+    "Maghrib": "17:54 (CEST)",
+    "Isha": "19:24 (CEST)",
+    "Imsak": "05:16 (CEST)",
+    "Midnight": "00:28 (CEST)",
+    "Firstthird": "22:15 (CEST)",
+    "Lastthird": "02:42 (CEST)"
+   },
+   "hijri": "05-04-1445"
+  },
+  {
+   "date": "2023-10-21",
+   "timings": {
+    "Fajr": "05:28 (CEST)",
+    "Sunrise": "07:03 (CEST)",
+    "Dhuhr": "12:33 (CEST)",
+    "Asr": "15:22 (CEST)",
+    "Sunset": "17:53 (CEST)",
+    "Maghrib": "17:53 (CEST)",
+    "Isha": "19:22 (CEST)",
+    "Imsak": "05:18 (CEST)",
+    "Midnight": "00:28 (CEST)",
+    "Firstthird": "22:14 (CEST)",
+    "Lastthird": "02:42 (CEST)"
+   },
+   "hijri": "06-04-1445"
+  },
+  {
+   "date": "2023-10-22",
+   "timings": {
+    "Fajr": "05:29 (CEST)",
+    "Sunrise": "07:05 (CEST)",
+    "Dhuhr": "12:33 (CEST)",
+    "Asr": "15:21 (CEST)",
+    "Sunset": "17:51 (CEST)",
+    "Maghrib": "17:51 (CEST)",
+    "Isha": "19:21 (CEST)",
+    "Imsak": "05:19 (CEST)",
+    "Midnight": "00:28 (CEST)",
+    "Firstthird": "22:13 (CEST)",
+    "Lastthird": "02:43 (CEST)"
+   },
+   "hijri": "07-04-1445"
+  },
+  {
+   "date": "2023-10-23",
+   "timings": {
+    "Fajr": "05:31 (CEST)",
+    "Sunrise": "07:06 (CEST)",
+    "Dhuhr": "12:33 (CEST)",
+    "Asr": "15:19 (CEST)",
+    "Sunset": "17:49 (CEST)",
+    "Maghrib": "17:49 (CEST)",
+    "Isha": "19:19 (CEST)",
+    "Imsak": "05:21 (CEST)",
+    "Midnight": "00:28 (CEST)",
+    "Firstthird": "22:13 (CEST)",
+    "Lastthird": "02:43 (CEST)"
+   },
+   "hijri": "08-04-1445"
+  },
+  {
+   "date": "2023-10-24",
+   "timings": {
+    "Fajr": "05:32 (CEST)",
+    "Sunrise": "07:08 (CEST)",
+    "Dhuhr": "12:33 (CEST)",
+    "Asr": "15:18 (CEST)",
+    "Sunset": "17:47 (CEST)",
+    "Maghrib": "17:47 (CEST)",
+    "Isha": "19:17 (CEST)",
+    "Imsak": "05:22 (CEST)",
+    "Midnight": "00:28 (CEST)",
+    "Firstthird": "22:12 (CEST)",
+    "Lastthird": "02:43 (CEST)"
+   },
+   "hijri": "09-04-1445"
+  },
+  {
+   "date": "2023-10-25",
+   "timings": {
+    "Fajr": "05:33 (CEST)",
+    "Sunrise": "07:09 (CEST)",
+    "Dhuhr": "12:33 (CEST)",
+    "Asr": "15:16 (CEST)",
+    "Sunset": "17:46 (CEST)",
+    "Maghrib": "17:46 (CEST)",
+    "Isha": "19:16 (CEST)",
+    "Imsak": "05:23 (CEST)",
+    "Midnight": "00:27 (CEST)",
+    "Firstthird": "22:11 (CEST)",
+    "Lastthird": "02:44 (CEST)"
+   },
+   "hijri": "10-04-1445"
+  },
+  {
+   "date": "2023-10-26",
+   "timings": {
+    "Fajr": "05:35 (CEST)",
+    "Sunrise": "07:11 (CEST)",
+    "Dhuhr": "12:33 (CEST)",
+    "Asr": "15:15 (CEST)",
+    "Sunset": "17:44 (CEST)",
+    "Maghrib": "17:44 (CEST)",
+    "Isha": "19:14 (CEST)",
+    "Imsak": "05:25 (CEST)",
+    "Midnight": "00:27 (CEST)",
+    "Firstthird": "22:11 (CEST)",
+    "Lastthird": "02:44 (CEST)"
+   },
+   "hijri": "11-04-1445"
+  },
+  {
+   "date": "2023-10-27",
+   "timings": {
+    "Fajr": "05:36 (CEST)",
+    "Sunrise": "07:12 (CEST)",
+    "Dhuhr": "12:33 (CEST)",
+    "Asr": "15:14 (CEST)",
+    "Sunset": "17:42 (CEST)",
+    "Maghrib": "17:42 (CEST)",
+    "Isha": "19:13 (CEST)",
+    "Imsak": "05:26 (CEST)",
+    "Midnight": "00:27 (CEST)",
+    "Firstthird": "22:10 (CEST)",
+    "Lastthird": "02:45 (CEST)"
+   },
+   "hijri": "12-04-1445"
+  },
+  {
+   "date": "2023-10-28",
+   "timings": {
+    "Fajr": "05:37 (CEST)",
+    "Sunrise": "07:14 (CEST)",
+    "Dhuhr": "12:33 (CEST)",
+    "Asr": "15:12 (CEST)",
+    "Sunset": "17:41 (CEST)",
+    "Maghrib": "17:41 (CEST)",
+    "Isha": "19:11 (CEST)",
+    "Imsak": "05:27 (CEST)",
+    "Midnight": "00:27 (CEST)",
+    "Firstthird": "22:09 (CEST)",
+    "Lastthird": "02:45 (CEST)"
+   },
+   "hijri": "13-04-1445"
+  },
+  {
+   "date": "2023-10-29",
+   "timings": {
+    "Fajr": "04:39 (CET)",
+    "Sunrise": "06:15 (CET)",
+    "Dhuhr": "11:33 (CET)",
+    "Asr": "14:11 (CET)",
+    "Sunset": "16:39 (CET)",
+    "Maghrib": "16:39 (CET)",
+    "Isha": "18:10 (CET)",
+    "Imsak": "04:29 (CET)",
+    "Midnight": "23:27 (CET)",
+    "Firstthird": "21:09 (CET)",
+    "Lastthird": "01:46 (CET)"
+   },
+   "hijri": "14-04-1445"
+  },
+  {
+   "date": "2023-10-30",
+   "timings": {
+    "Fajr": "04:40 (CET)",
+    "Sunrise": "06:17 (CET)",
+    "Dhuhr": "11:32 (CET)",
+    "Asr": "14:10 (CET)",
+    "Sunset": "16:37 (CET)",
+    "Maghrib": "16:37 (CET)",
+    "Isha": "18:08 (CET)",
+    "Imsak": "04:30 (CET)",
+    "Midnight": "23:27 (CET)",
+    "Firstthird": "21:08 (CET)",
+    "Lastthird": "01:46 (CET)"
+   },
+   "hijri": "15-04-1445"
+  },
+  {
+   "date": "2023-10-31",
+   "timings": {
+    "Fajr": "04:41 (CET)",
+    "Sunrise": "06:18 (CET)",
+    "Dhuhr": "11:32 (CET)",
+    "Asr": "14:09 (CET)",
+    "Sunset": "16:36 (CET)",
+    "Maghrib": "16:36 (CET)",
+    "Isha": "18:07 (CET)",
+    "Imsak": "04:31 (CET)",
+    "Midnight": "23:27 (CET)",
+    "Firstthird": "21:08 (CET)",
+    "Lastthird": "01:46 (CET)"
+   },
+   "hijri": "16-04-1445"
+  },
+  {
+   "date": "2023-11-01",
+   "timings": {
+    "Fajr": "04:43 (CET)",
+    "Sunrise": "06:20 (CET)",
+    "Dhuhr": "11:32 (CET)",
+    "Asr": "14:07 (CET)",
+    "Sunset": "16:34 (CET)",
+    "Maghrib": "16:34 (CET)",
+    "Isha": "18:05 (CET)",
+    "Imsak": "04:33 (CET)",
+    "Midnight": "23:27 (CET)",
+    "Firstthird": "21:07 (CET)",
+    "Lastthird": "01:47 (CET)"
+   },
+   "hijri": "17-04-1445"
+  },
+  {
+   "date": "2023-11-02",
+   "timings": {
+    "Fajr": "04:44 (CET)",
+    "Sunrise": "06:21 (CET)",
+    "Dhuhr": "11:32 (CET)",
+    "Asr": "14:06 (CET)",
+    "Sunset": "16:33 (CET)",
+    "Maghrib": "16:33 (CET)",
+    "Isha": "18:04 (CET)",
+    "Imsak": "04:34 (CET)",
+    "Midnight": "23:27 (CET)",
+    "Firstthird": "21:06 (CET)",
+    "Lastthird": "01:47 (CET)"
+   },
+   "hijri": "18-04-1445"
+  },
+  {
+   "date": "2023-11-03",
+   "timings": {
+    "Fajr": "04:45 (CET)",
+    "Sunrise": "06:23 (CET)",
+    "Dhuhr": "11:32 (CET)",
+    "Asr": "14:05 (CET)",
+    "Sunset": "16:31 (CET)",
+    "Maghrib": "16:31 (CET)",
+    "Isha": "18:03 (CET)",
+    "Imsak": "04:35 (CET)",
+    "Midnight": "23:27 (CET)",
+    "Firstthird": "21:06 (CET)",
+    "Lastthird": "01:48 (CET)"
+   },
+   "hijri": "19-04-1445"
+  },
+  {
+   "date": "2023-11-04",
+   "timings": {
+    "Fajr": "04:47 (CET)",
+    "Sunrise": "06:24 (CET)",
+    "Dhuhr": "11:32 (CET)",
+    "Asr": "14:04 (CET)",
+    "Sunset": "16:30 (CET)",
+    "Maghrib": "16:30 (CET)",
+    "Isha": "18:01 (CET)",
+    "Imsak": "04:37 (CET)",
+    "Midnight": "23:27 (CET)",
+    "Firstthird": "21:05 (CET)",
+    "Lastthird": "01:48 (CET)"
+   },
+   "hijri": "20-04-1445"
+  },
+  {
+   "date": "2023-11-05",
+   "timings": {
+    "Fajr": "04:48 (CET)",
+    "Sunrise": "06:26 (CET)",
+    "Dhuhr": "11:32 (CET)",
+    "Asr": "14:03 (CET)",
+    "Sunset": "16:28 (CET)",
+    "Maghrib": "16:28 (CET)",
+    "Isha": "18:00 (CET)",
+    "Imsak": "04:38 (CET)",
+    "Midnight": "23:27 (CET)",
+    "Firstthird": "21:05 (CET)",
+    "Lastthird": "01:49 (CET)"
+   },
+   "hijri": "21-04-1445"
+  },
+  {
+   "date": "2023-11-06",
+   "timings": {
+    "Fajr": "04:49 (CET)",
+    "Sunrise": "06:27 (CET)",
+    "Dhuhr": "11:32 (CET)",
+    "Asr": "14:01 (CET)",
+    "Sunset": "16:27 (CET)",
+    "Maghrib": "16:27 (CET)",
+    "Isha": "17:59 (CET)",
+    "Imsak": "04:39 (CET)",
+    "Midnight": "23:27 (CET)",
+    "Firstthird": "21:05 (CET)",
+    "Lastthird": "01:49 (CET)"
+   },
+   "hijri": "22-04-1445"
+  },
+  {
+   "date": "2023-11-07",
+   "timings": {
+    "Fajr": "04:51 (CET)",
+    "Sunrise": "06:29 (CET)",
+    "Dhuhr": "11:32 (CET)",
+    "Asr": "14:00 (CET)",
+    "Sunset": "16:25 (CET)",
+    "Maghrib": "16:25 (CET)",
+    "Isha": "17:58 (CET)",
+    "Imsak": "04:41 (CET)",
+    "Midnight": "23:27 (CET)",
+    "Firstthird": "21:04 (CET)",
+    "Lastthird": "01:50 (CET)"
+   },
+   "hijri": "23-04-1445"
+  },
+  {
+   "date": "2023-11-08",
+   "timings": {
+    "Fajr": "04:52 (CET)",
+    "Sunrise": "06:30 (CET)",
+    "Dhuhr": "11:32 (CET)",
+    "Asr": "13:59 (CET)",
+    "Sunset": "16:24 (CET)",
+    "Maghrib": "16:24 (CET)",
+    "Isha": "17:56 (CET)",
+    "Imsak": "04:42 (CET)",
+    "Midnight": "23:27 (CET)",
+    "Firstthird": "21:04 (CET)",
+    "Lastthird": "01:51 (CET)"
+   },
+   "hijri": "24-04-1445"
+  },
+  {
+   "date": "2023-11-09",
+   "timings": {
+    "Fajr": "04:53 (CET)",
+    "Sunrise": "06:32 (CET)",
+    "Dhuhr": "11:33 (CET)",
+    "Asr": "13:58 (CET)",
+    "Sunset": "16:23 (CET)",
+    "Maghrib": "16:23 (CET)",
+    "Isha": "17:55 (CET)",
+    "Imsak": "04:43 (CET)",
+    "Midnight": "23:27 (CET)",
+    "Firstthird": "21:03 (CET)",
+    "Lastthird": "01:51 (CET)"
+   },
+   "hijri": "25-04-1445"
+  },
+  {
+   "date": "2023-11-10",
+   "timings": {
+    "Fajr": "04:55 (CET)",
+    "Sunrise": "06:33 (CET)",
+    "Dhuhr": "11:33 (CET)",
+    "Asr": "13:57 (CET)",
+    "Sunset": "16:21 (CET)",
+    "Maghrib": "16:21 (CET)",
+    "Isha": "17:54 (CET)",
+    "Imsak": "04:45 (CET)",
+    "Midnight": "23:27 (CET)",
+    "Firstthird": "21:03 (CET)",
+    "Lastthird": "01:52 (CET)"
+   },
+   "hijri": "26-04-1445"
+  },
+  {
+   "date": "2023-11-11",
+   "timings": {
+    "Fajr": "04:56 (CET)",
+    "Sunrise": "06:35 (CET)",
+    "Dhuhr": "11:33 (CET)",
+    "Asr": "13:56 (CET)",
+    "Sunset": "16:20 (CET)",
+    "Maghrib": "16:20 (CET)",
+    "Isha": "17:53 (CET)",
+    "Imsak": "04:46 (CET)",
+    "Midnight": "23:27 (CET)",
+    "Firstthird": "21:03 (CET)",
+    "Lastthird": "01:52 (CET)"
+   },
+   "hijri": "27-04-1445"
+  },
+  {
+   "date": "2023-11-12",
+   "timings": {
+    "Fajr": "04:57 (CET)",
+    "Sunrise": "06:36 (CET)",
+    "Dhuhr": "11:33 (CET)",
+    "Asr": "13:55 (CET)",
+    "Sunset": "16:19 (CET)",
+    "Maghrib": "16:19 (CET)",
+    "Isha": "17:52 (CET)",
+    "Imsak": "04:47 (CET)",
+    "Midnight": "23:28 (CET)",
+    "Firstthird": "21:02 (CET)",
+    "Lastthird": "01:53 (CET)"
+   },
+   "hijri": "28-04-1445"
+  },
+  {
+   "date": "2023-11-13",
+   "timings": {
+    "Fajr": "04:58 (CET)",
+    "Sunrise": "06:38 (CET)",
+    "Dhuhr": "11:33 (CET)",
+    "Asr": "13:54 (CET)",
+    "Sunset": "16:17 (CET)",
+    "Maghrib": "16:17 (CET)",
+    "Isha": "17:51 (CET)",
+    "Imsak": "04:48 (CET)",
+    "Midnight": "23:28 (CET)",
+    "Firstthird": "21:02 (CET)",
+    "Lastthird": "01:53 (CET)"
+   },
+   "hijri": "29-04-1445"
+  },
+  {
+   "date": "2023-11-14",
+   "timings": {
+    "Fajr": "05:00 (CET)",
+    "Sunrise": "06:39 (CET)",
+    "Dhuhr": "11:33 (CET)",
+    "Asr": "13:53 (CET)",
+    "Sunset": "16:16 (CET)",
+    "Maghrib": "16:16 (CET)",
+    "Isha": "17:50 (CET)",
+    "Imsak": "04:50 (CET)",
+    "Midnight": "23:28 (CET)",
+    "Firstthird": "21:02 (CET)",
+    "Lastthird": "01:54 (CET)"
+   },
+   "hijri": "30-04-1445"
+  },
+  {
+   "date": "2023-11-15",
+   "timings": {
+    "Fajr": "05:01 (CET)",
+    "Sunrise": "06:41 (CET)",
+    "Dhuhr": "11:33 (CET)",
+    "Asr": "13:52 (CET)",
+    "Sunset": "16:15 (CET)",
+    "Maghrib": "16:15 (CET)",
+    "Isha": "17:49 (CET)",
+    "Imsak": "04:51 (CET)",
+    "Midnight": "23:28 (CET)",
+    "Firstthird": "21:01 (CET)",
+    "Lastthird": "01:55 (CET)"
+   },
+   "hijri": "01-05-1445"
+  },
+  {
+   "date": "2023-11-16",
+   "timings": {
+    "Fajr": "05:02 (CET)",
+    "Sunrise": "06:42 (CET)",
+    "Dhuhr": "11:33 (CET)",
+    "Asr": "13:51 (CET)",
+    "Sunset": "16:14 (CET)",
+    "Maghrib": "16:14 (CET)",
+    "Isha": "17:48 (CET)",
+    "Imsak": "04:52 (CET)",
+    "Midnight": "23:28 (CET)",
+    "Firstthird": "21:01 (CET)",
+    "Lastthird": "01:55 (CET)"
+   },
+   "hijri": "02-05-1445"
+  },
+  {
+   "date": "2023-11-17",
+   "timings": {
+    "Fajr": "05:03 (CET)",
+    "Sunrise": "06:44 (CET)",
+    "Dhuhr": "11:34 (CET)",
+    "Asr": "13:50 (CET)",
+    "Sunset": "16:13 (CET)",
+    "Maghrib": "16:13 (CET)",
+    "Isha": "17:47 (CET)",
+    "Imsak": "04:53 (CET)",
+    "Midnight": "23:28 (CET)",
+    "Firstthird": "21:01 (CET)",
+    "Lastthird": "01:56 (CET)"
+   },
+   "hijri": "03-05-1445"
+  },
+  {
+   "date": "2023-11-18",
+   "timings": {
+    "Fajr": "05:05 (CET)",
+    "Sunrise": "06:45 (CET)",
+    "Dhuhr": "11:34 (CET)",
+    "Asr": "13:50 (CET)",
+    "Sunset": "16:12 (CET)",
+    "Maghrib": "16:12 (CET)",
+    "Isha": "17:47 (CET)",
+    "Imsak": "04:55 (CET)",
+    "Midnight": "23:29 (CET)",
+    "Firstthird": "21:01 (CET)",
+    "Lastthird": "01:56 (CET)"
+   },
+   "hijri": "04-05-1445"
+  },
+  {
+   "date": "2023-11-19",
+   "timings": {
+    "Fajr": "05:06 (CET)",
+    "Sunrise": "06:47 (CET)",
+    "Dhuhr": "11:34 (CET)",
+    "Asr": "13:49 (CET)",
+    "Sunset": "16:11 (CET)",
+    "Maghrib": "16:11 (CET)",
+    "Isha": "17:46 (CET)",
+    "Imsak": "04:56 (CET)",
+    "Midnight": "23:29 (CET)",
+    "Firstthird": "21:00 (CET)",
+    "Lastthird": "01:57 (CET)"
+   },
+   "hijri": "05-05-1445"
+  },
+  {
+   "date": "2023-11-20",
+   "timings": {
+    "Fajr": "05:07 (CET)",
+    "Sunrise": "06:48 (CET)",
+    "Dhuhr": "11:34 (CET)",
+    "Asr": "13:48 (CET)",
+    "Sunset": "16:10 (CET)",
+    "Maghrib": "16:10 (CET)",
+    "Isha": "17:45 (CET)",
+    "Imsak": "04:57 (CET)",
+    "Midnight": "23:29 (CET)",
+    "Firstthird": "21:00 (CET)",
+    "Lastthird": "01:58 (CET)"
+   },
+   "hijri": "06-05-1445"
+  },
+  {
+   "date": "2023-11-21",
+   "timings": {
+    "Fajr": "05:08 (CET)",
+    "Sunrise": "06:50 (CET)",
+    "Dhuhr": "11:35 (CET)",
+    "Asr": "13:47 (CET)",
+    "Sunset": "16:09 (CET)",
+    "Maghrib": "16:09 (CET)",
+    "Isha": "17:44 (CET)",
+    "Imsak": "04:58 (CET)",
+    "Midnight": "23:29 (CET)",
+    "Firstthird": "21:00 (CET)",
+    "Lastthird": "01:58 (CET)"
+   },
+   "hijri": "07-05-1445"
+  },
+  {
+   "date": "2023-11-22",
+   "timings": {
+    "Fajr": "05:09 (CET)",
+    "Sunrise": "06:51 (CET)",
+    "Dhuhr": "11:35 (CET)",
+    "Asr": "13:47 (CET)",
+    "Sunset": "16:08 (CET)",
+    "Maghrib": "16:08 (CET)",
+    "Isha": "17:44 (CET)",
+    "Imsak": "04:59 (CET)",
+    "Midnight": "23:30 (CET)",
+    "Firstthird": "21:00 (CET)",
+    "Lastthird": "01:59 (CET)"
+   },
+   "hijri": "08-05-1445"
+  },
+  {
+   "date": "2023-11-23",
+   "timings": {
+    "Fajr": "05:11 (CET)",
+    "Sunrise": "06:52 (CET)",
+    "Dhuhr": "11:35 (CET)",
+    "Asr": "13:46 (CET)",
+    "Sunset": "16:07 (CET)",
+    "Maghrib": "16:07 (CET)",
+    "Isha": "17:43 (CET)",
+    "Imsak": "05:01 (CET)",
+    "Midnight": "23:30 (CET)",
+    "Firstthird": "21:00 (CET)",
+    "Lastthird": "02:00 (CET)"
+   },
+   "hijri": "09-05-1445"
+  },
+  {
+   "date": "2023-11-24",
+   "timings": {
+    "Fajr": "05:12 (CET)",
+    "Sunrise": "06:54 (CET)",
+    "Dhuhr": "11:35 (CET)",
+    "Asr": "13:45 (CET)",
+    "Sunset": "16:06 (CET)",
+    "Maghrib": "16:06 (CET)",
+    "Isha": "17:42 (CET)",
+    "Imsak": "05:02 (CET)",
+    "Midnight": "23:30 (CET)",
+    "Firstthird": "21:00 (CET)",
+    "Lastthird": "02:00 (CET)"
+   },
+   "hijri": "10-05-1445"
+  },
+  {
+   "date": "2023-11-25",
+   "timings": {
+    "Fajr": "05:13 (CET)",
+    "Sunrise": "06:55 (CET)",
+    "Dhuhr": "11:36 (CET)",
+    "Asr": "13:45 (CET)",
+    "Sunset": "16:06 (CET)",
+    "Maghrib": "16:06 (CET)",
+    "Isha": "17:42 (CET)",
+    "Imsak": "05:03 (CET)",
+    "Midnight": "23:30 (CET)",
+    "Firstthird": "21:00 (CET)",
+    "Lastthird": "02:01 (CET)"
+   },
+   "hijri": "11-05-1445"
+  },
+  {
+   "date": "2023-11-26",
+   "timings": {
+    "Fajr": "05:14 (CET)",
+    "Sunrise": "06:57 (CET)",
+    "Dhuhr": "11:36 (CET)",
+    "Asr": "13:44 (CET)",
+    "Sunset": "16:05 (CET)",
+    "Maghrib": "16:05 (CET)",
+    "Isha": "17:41 (CET)",
+    "Imsak": "05:04 (CET)",
+    "Midnight": "23:31 (CET)",
+    "Firstthird": "21:00 (CET)",
+    "Lastthird": "02:02 (CET)"
+   },
+   "hijri": "12-05-1445"
+  },
+  {
+   "date": "2023-11-27",
+   "timings": {
+    "Fajr": "05:15 (CET)",
+    "Sunrise": "06:58 (CET)",
+    "Dhuhr": "11:36 (CET)",
+    "Asr": "13:44 (CET)",
+    "Sunset": "16:04 (CET)",
+    "Maghrib": "16:04 (CET)",
+    "Isha": "17:41 (CET)",
+    "Imsak": "05:05 (CET)",
+    "Midnight": "23:31 (CET)",
+    "Firstthird": "21:00 (CET)",
+    "Lastthird": "02:02 (CET)"
+   },
+   "hijri": "13-05-1445"
+  },
+  {
+   "date": "2023-11-28",
+   "timings": {
+    "Fajr": "05:16 (CET)",
+    "Sunrise": "06:59 (CET)",
+    "Dhuhr": "11:37 (CET)",
+    "Asr": "13:43 (CET)",
+    "Sunset": "16:04 (CET)",
+    "Maghrib": "16:04 (CET)",
+    "Isha": "17:40 (CET)",
+    "Imsak": "05:06 (CET)",
+    "Midnight": "23:31 (CET)",
+    "Firstthird": "21:00 (CET)",
+    "Lastthird": "02:03 (CET)"
+   },
+   "hijri": "14-05-1445"
+  },
+  {
+   "date": "2023-11-29",
+   "timings": {
+    "Fajr": "05:17 (CET)",
+    "Sunrise": "07:00 (CET)",
+    "Dhuhr": "11:37 (CET)",
+    "Asr": "13:43 (CET)",
+    "Sunset": "16:03 (CET)",
+    "Maghrib": "16:03 (CET)",
+    "Isha": "17:40 (CET)",
+    "Imsak": "05:07 (CET)",
+    "Midnight": "23:32 (CET)",
+    "Firstthird": "21:00 (CET)",
+    "Lastthird": "02:04 (CET)"
+   },
+   "hijri": "15-05-1445"
+  },
+  {
+   "date": "2023-11-30",
+   "timings": {
+    "Fajr": "05:18 (CET)",
+    "Sunrise": "07:02 (CET)",
+    "Dhuhr": "11:37 (CET)",
+    "Asr": "13:42 (CET)",
+    "Sunset": "16:02 (CET)",
+    "Maghrib": "16:02 (CET)",
+    "Isha": "17:40 (CET)",
+    "Imsak": "05:08 (CET)",
+    "Midnight": "23:32 (CET)",
+    "Firstthird": "21:00 (CET)",
+    "Lastthird": "02:04 (CET)"
+   },
+   "hijri": "16-05-1445"
+  },
+  {
+   "date": "2023-12-01",
+   "timings": {
+    "Fajr": "05:19 (CET)",
+    "Sunrise": "07:03 (CET)",
+    "Dhuhr": "11:38 (CET)",
+    "Asr": "13:42 (CET)",
+    "Sunset": "16:02 (CET)",
+    "Maghrib": "16:02 (CET)",
+    "Isha": "17:39 (CET)",
+    "Imsak": "05:09 (CET)",
+    "Midnight": "23:32 (CET)",
+    "Firstthird": "21:00 (CET)",
+    "Lastthird": "02:05 (CET)"
+   },
+   "hijri": "17-05-1445"
+  },
+  {
+   "date": "2023-12-02",
+   "timings": {
+    "Fajr": "05:20 (CET)",
+    "Sunrise": "07:04 (CET)",
+    "Dhuhr": "11:38 (CET)",
+    "Asr": "13:41 (CET)",
+    "Sunset": "16:02 (CET)",
+    "Maghrib": "16:02 (CET)",
+    "Isha": "17:39 (CET)",
+    "Imsak": "05:10 (CET)",
+    "Midnight": "23:33 (CET)",
+    "Firstthird": "21:00 (CET)",
+    "Lastthird": "02:06 (CET)"
+   },
+   "hijri": "18-05-1445"
+  },
+  {
+   "date": "2023-12-03",
+   "timings": {
+    "Fajr": "05:22 (CET)",
+    "Sunrise": "07:05 (CET)",
+    "Dhuhr": "11:38 (CET)",
+    "Asr": "13:41 (CET)",
+    "Sunset": "16:01 (CET)",
+    "Maghrib": "16:01 (CET)",
+    "Isha": "17:39 (CET)",
+    "Imsak": "05:12 (CET)",
+    "Midnight": "23:33 (CET)",
+    "Firstthird": "21:00 (CET)",
+    "Lastthird": "02:06 (CET)"
+   },
+   "hijri": "19-05-1445"
+  },
+  {
+   "date": "2023-12-04",
+   "timings": {
+    "Fajr": "05:23 (CET)",
+    "Sunrise": "07:07 (CET)",
+    "Dhuhr": "11:39 (CET)",
+    "Asr": "13:41 (CET)",
+    "Sunset": "16:01 (CET)",
+    "Maghrib": "16:01 (CET)",
+    "Isha": "17:39 (CET)",
+    "Imsak": "05:13 (CET)",
+    "Midnight": "23:34 (CET)",
+    "Firstthird": "21:00 (CET)",
+    "Lastthird": "02:07 (CET)"
+   },
+   "hijri": "20-05-1445"
+  },
+  {
+   "date": "2023-12-05",
+   "timings": {
+    "Fajr": "05:23 (CET)",
+    "Sunrise": "07:08 (CET)",
+    "Dhuhr": "11:39 (CET)",
+    "Asr": "13:41 (CET)",
+    "Sunset": "16:00 (CET)",
+    "Maghrib": "16:00 (CET)",
+    "Isha": "17:39 (CET)",
+    "Imsak": "05:13 (CET)",
+    "Midnight": "23:34 (CET)",
+    "Firstthird": "21:01 (CET)",
+    "Lastthird": "02:08 (CET)"
+   },
+   "hijri": "21-05-1445"
+  },
+  {
+   "date": "2023-12-06",
+   "timings": {
+    "Fajr": "05:24 (CET)",
+    "Sunrise": "07:09 (CET)",
+    "Dhuhr": "11:40 (CET)",
+    "Asr": "13:40 (CET)",
+    "Sunset": "16:00 (CET)",
+    "Maghrib": "16:00 (CET)",
+    "Isha": "17:38 (CET)",
+    "Imsak": "05:14 (CET)",
+    "Midnight": "23:34 (CET)",
+    "Firstthird": "21:01 (CET)",
+    "Lastthird": "02:08 (CET)"
+   },
+   "hijri": "22-05-1445"
+  },
+  {
+   "date": "2023-12-07",
+   "timings": {
+    "Fajr": "05:25 (CET)",
+    "Sunrise": "07:10 (CET)",
+    "Dhuhr": "11:40 (CET)",
+    "Asr": "13:40 (CET)",
+    "Sunset": "16:00 (CET)",
+    "Maghrib": "16:00 (CET)",
+    "Isha": "17:38 (CET)",
+    "Imsak": "05:15 (CET)",
+    "Midnight": "23:35 (CET)",
+    "Firstthird": "21:01 (CET)",
+    "Lastthird": "02:09 (CET)"
+   },
+   "hijri": "23-05-1445"
+  },
+  {
+   "date": "2023-12-08",
+   "timings": {
+    "Fajr": "05:26 (CET)",
+    "Sunrise": "07:11 (CET)",
+    "Dhuhr": "11:41 (CET)",
+    "Asr": "13:40 (CET)",
+    "Sunset": "16:00 (CET)",
+    "Maghrib": "16:00 (CET)",
+    "Isha": "17:38 (CET)",
+    "Imsak": "05:16 (CET)",
+    "Midnight": "23:35 (CET)",
+    "Firstthird": "21:01 (CET)",
+    "Lastthird": "02:10 (CET)"
+   },
+   "hijri": "24-05-1445"
+  },
+  {
+   "date": "2023-12-09",
+   "timings": {
+    "Fajr": "05:27 (CET)",
+    "Sunrise": "07:12 (CET)",
+    "Dhuhr": "11:41 (CET)",
+    "Asr": "13:40 (CET)",
+    "Sunset": "16:00 (CET)",
+    "Maghrib": "16:00 (CET)",
+    "Isha": "17:38 (CET)",
+    "Imsak": "05:17 (CET)",
+    "Midnight": "23:36 (CET)",
+    "Firstthird": "21:01 (CET)",
+    "Lastthird": "02:10 (CET)"
+   },
+   "hijri": "25-05-1445"
+  },
+  {
+   "date": "2023-12-10",
+   "timings": {
+    "Fajr": "05:28 (CET)",
+    "Sunrise": "07:13 (CET)",
+    "Dhuhr": "11:41 (CET)",
+    "Asr": "13:40 (CET)",
+    "Sunset": "16:00 (CET)",
+    "Maghrib": "16:00 (CET)",
+    "Isha": "17:38 (CET)",
+    "Imsak": "05:18 (CET)",
+    "Midnight": "23:36 (CET)",
+    "Firstthird": "21:02 (CET)",
+    "Lastthird": "02:11 (CET)"
+   },
+   "hijri": "26-05-1445"
+  },
+  {
+   "date": "2023-12-11",
+   "timings": {
+    "Fajr": "05:29 (CET)",
+    "Sunrise": "07:14 (CET)",
+    "Dhuhr": "11:42 (CET)",
+    "Asr": "13:40 (CET)",
+    "Sunset": "16:00 (CET)",
+    "Maghrib": "16:00 (CET)",
+    "Isha": "17:39 (CET)",
+    "Imsak": "05:19 (CET)",
+    "Midnight": "23:37 (CET)",
+    "Firstthird": "21:02 (CET)",
+    "Lastthird": "02:11 (CET)"
+   },
+   "hijri": "27-05-1445"
+  },
+  {
+   "date": "2023-12-12",
+   "timings": {
+    "Fajr": "05:30 (CET)",
+    "Sunrise": "07:15 (CET)",
+    "Dhuhr": "11:42 (CET)",
+    "Asr": "13:40 (CET)",
+    "Sunset": "16:00 (CET)",
+    "Maghrib": "16:00 (CET)",
+    "Isha": "17:39 (CET)",
+    "Imsak": "05:20 (CET)",
+    "Midnight": "23:37 (CET)",
+    "Firstthird": "21:02 (CET)",
+    "Lastthird": "02:12 (CET)"
+   },
+   "hijri": "28-05-1445"
+  },
+  {
+   "date": "2023-12-13",
+   "timings": {
+    "Fajr": "05:30 (CET)",
+    "Sunrise": "07:16 (CET)",
+    "Dhuhr": "11:43 (CET)",
+    "Asr": "13:40 (CET)",
+    "Sunset": "16:00 (CET)",
+    "Maghrib": "16:00 (CET)",
+    "Isha": "17:39 (CET)",
+    "Imsak": "05:20 (CET)",
+    "Midnight": "23:38 (CET)",
+    "Firstthird": "21:03 (CET)",
+    "Lastthird": "02:13 (CET)"
+   },
+   "hijri": "29-05-1445"
+  },
+  {
+   "date": "2023-12-14",
+   "timings": {
+    "Fajr": "05:31 (CET)",
+    "Sunrise": "07:17 (CET)",
+    "Dhuhr": "11:43 (CET)",
+    "Asr": "13:40 (CET)",
+    "Sunset": "16:00 (CET)",
+    "Maghrib": "16:00 (CET)",
+    "Isha": "17:39 (CET)",
+    "Imsak": "05:21 (CET)",
+    "Midnight": "23:38 (CET)",
+    "Firstthird": "21:03 (CET)",
+    "Lastthird": "02:13 (CET)"
+   },
+   "hijri": "01-06-1445"
+  },
+  {
+   "date": "2023-12-15",
+   "timings": {
+    "Fajr": "05:32 (CET)",
+    "Sunrise": "07:17 (CET)",
+    "Dhuhr": "11:44 (CET)",
+    "Asr": "13:40 (CET)",
+    "Sunset": "16:00 (CET)",
+    "Maghrib": "16:00 (CET)",
+    "Isha": "17:39 (CET)",
+    "Imsak": "05:22 (CET)",
+    "Midnight": "23:39 (CET)",
+    "Firstthird": "21:03 (CET)",
+    "Lastthird": "02:14 (CET)"
+   },
+   "hijri": "02-06-1445"
+  },
+  {
+   "date": "2023-12-16",
+   "timings": {
+    "Fajr": "05:33 (CET)",
+    "Sunrise": "07:18 (CET)",
+    "Dhuhr": "11:44 (CET)",
+    "Asr": "13:40 (CET)",
+    "Sunset": "16:00 (CET)",
+    "Maghrib": "16:00 (CET)",
+    "Isha": "17:40 (CET)",
+    "Imsak": "05:23 (CET)",
+    "Midnight": "23:39 (CET)",
+    "Firstthird": "21:04 (CET)",
+    "Lastthird": "02:15 (CET)"
+   },
+   "hijri": "03-06-1445"
+  },
+  {
+   "date": "2023-12-17",
+   "timings": {
+    "Fajr": "05:33 (CET)",
+    "Sunrise": "07:19 (CET)",
+    "Dhuhr": "11:45 (CET)",
+    "Asr": "13:41 (CET)",
+    "Sunset": "16:00 (CET)",
+    "Maghrib": "16:00 (CET)",
+    "Isha": "17:40 (CET)",
+    "Imsak": "05:23 (CET)",
+    "Midnight": "23:40 (CET)",
+    "Firstthird": "21:04 (CET)",
+    "Lastthird": "02:15 (CET)"
+   },
+   "hijri": "04-06-1445"
+  },
+  {
+   "date": "2023-12-18",
+   "timings": {
+    "Fajr": "05:34 (CET)",
+    "Sunrise": "07:20 (CET)",
+    "Dhuhr": "11:45 (CET)",
+    "Asr": "13:41 (CET)",
+    "Sunset": "16:01 (CET)",
+    "Maghrib": "16:01 (CET)",
+    "Isha": "17:40 (CET)",
+    "Imsak": "05:24 (CET)",
+    "Midnight": "23:40 (CET)",
+    "Firstthird": "21:05 (CET)",
+    "Lastthird": "02:16 (CET)"
+   },
+   "hijri": "05-06-1445"
+  },
+  {
+   "date": "2023-12-19",
+   "timings": {
+    "Fajr": "05:35 (CET)",
+    "Sunrise": "07:20 (CET)",
+    "Dhuhr": "11:46 (CET)",
+    "Asr": "13:41 (CET)",
+    "Sunset": "16:01 (CET)",
+    "Maghrib": "16:01 (CET)",
+    "Isha": "17:41 (CET)",
+    "Imsak": "05:25 (CET)",
+    "Midnight": "23:41 (CET)",
+    "Firstthird": "21:05 (CET)",
+    "Lastthird": "02:16 (CET)"
+   },
+   "hijri": "06-06-1445"
+  },
+  {
+   "date": "2023-12-20",
+   "timings": {
+    "Fajr": "05:35 (CET)",
+    "Sunrise": "07:21 (CET)",
+    "Dhuhr": "11:46 (CET)",
+    "Asr": "13:41 (CET)",
+    "Sunset": "16:01 (CET)",
+    "Maghrib": "16:01 (CET)",
+    "Isha": "17:41 (CET)",
+    "Imsak": "05:25 (CET)",
+    "Midnight": "23:41 (CET)",
+    "Firstthird": "21:06 (CET)",
+    "Lastthird": "02:17 (CET)"
+   },
+   "hijri": "07-06-1445"
+  },
+  {
+   "date": "2023-12-21",
+   "timings": {
+    "Fajr": "05:36 (CET)",
+    "Sunrise": "07:21 (CET)",
+    "Dhuhr": "11:47 (CET)",
+    "Asr": "13:42 (CET)",
+    "Sunset": "16:02 (CET)",
+    "Maghrib": "16:02 (CET)",
+    "Isha": "17:41 (CET)",
+    "Imsak": "05:26 (CET)",
+    "Midnight": "23:42 (CET)",
+    "Firstthird": "21:06 (CET)",
+    "Lastthird": "02:17 (CET)"
+   },
+   "hijri": "08-06-1445"
+  },
+  {
+   "date": "2023-12-22",
+   "timings": {
+    "Fajr": "05:36 (CET)",
+    "Sunrise": "07:22 (CET)",
+    "Dhuhr": "11:47 (CET)",
+    "Asr": "13:42 (CET)",
+    "Sunset": "16:02 (CET)",
+    "Maghrib": "16:02 (CET)",
+    "Isha": "17:42 (CET)",
+    "Imsak": "05:26 (CET)",
+    "Midnight": "23:42 (CET)",
+    "Firstthird": "21:07 (CET)",
+    "Lastthird": "02:18 (CET)"
+   },
+   "hijri": "09-06-1445"
+  },
+  {
+   "date": "2023-12-23",
+   "timings": {
+    "Fajr": "05:37 (CET)",
+    "Sunrise": "07:22 (CET)",
+    "Dhuhr": "11:48 (CET)",
+    "Asr": "13:43 (CET)",
+    "Sunset": "16:03 (CET)",
+    "Maghrib": "16:03 (CET)",
+    "Isha": "17:43 (CET)",
+    "Imsak": "05:27 (CET)",
+    "Midnight": "23:43 (CET)",
+    "Firstthird": "21:07 (CET)",
+    "Lastthird": "02:18 (CET)"
+   },
+   "hijri": "10-06-1445"
+  },
+  {
+   "date": "2023-12-24",
+   "timings": {
+    "Fajr": "05:37 (CET)",
+    "Sunrise": "07:23 (CET)",
+    "Dhuhr": "11:48 (CET)",
+    "Asr": "13:43 (CET)",
+    "Sunset": "16:04 (CET)",
+    "Maghrib": "16:04 (CET)",
+    "Isha": "17:43 (CET)",
+    "Imsak": "05:27 (CET)",
+    "Midnight": "23:43 (CET)",
+    "Firstthird": "21:08 (CET)",
+    "Lastthird": "02:19 (CET)"
+   },
+   "hijri": "11-06-1445"
+  },
+  {
+   "date": "2023-12-25",
+   "timings": {
+    "Fajr": "05:38 (CET)",
+    "Sunrise": "07:23 (CET)",
+    "Dhuhr": "11:49 (CET)",
+    "Asr": "13:44 (CET)",
+    "Sunset": "16:04 (CET)",
+    "Maghrib": "16:04 (CET)",
+    "Isha": "17:44 (CET)",
+    "Imsak": "05:28 (CET)",
+    "Midnight": "23:44 (CET)",
+    "Firstthird": "21:08 (CET)",
+    "Lastthird": "02:19 (CET)"
+   },
+   "hijri": "12-06-1445"
+  },
+  {
+   "date": "2023-12-26",
+   "timings": {
+    "Fajr": "05:38 (CET)",
+    "Sunrise": "07:24 (CET)",
+    "Dhuhr": "11:49 (CET)",
+    "Asr": "13:44 (CET)",
+    "Sunset": "16:05 (CET)",
+    "Maghrib": "16:05 (CET)",
+    "Isha": "17:44 (CET)",
+    "Imsak": "05:28 (CET)",
+    "Midnight": "23:44 (CET)",
+    "Firstthird": "21:09 (CET)",
+    "Lastthird": "02:20 (CET)"
+   },
+   "hijri": "13-06-1445"
+  },
+  {
+   "date": "2023-12-27",
+   "timings": {
+    "Fajr": "05:38 (CET)",
+    "Sunrise": "07:24 (CET)",
+    "Dhuhr": "11:50 (CET)",
+    "Asr": "13:45 (CET)",
+    "Sunset": "16:06 (CET)",
+    "Maghrib": "16:06 (CET)",
+    "Isha": "17:45 (CET)",
+    "Imsak": "05:28 (CET)",
+    "Midnight": "23:45 (CET)",
+    "Firstthird": "21:09 (CET)",
+    "Lastthird": "02:20 (CET)"
+   },
+   "hijri": "14-06-1445"
+  },
+  {
+   "date": "2023-12-28",
+   "timings": {
+    "Fajr": "05:39 (CET)",
+    "Sunrise": "07:24 (CET)",
+    "Dhuhr": "11:50 (CET)",
+    "Asr": "13:45 (CET)",
+    "Sunset": "16:06 (CET)",
+    "Maghrib": "16:06 (CET)",
+    "Isha": "17:46 (CET)",
+    "Imsak": "05:29 (CET)",
+    "Midnight": "23:45 (CET)",
+    "Firstthird": "21:10 (CET)",
+    "Lastthird": "02:21 (CET)"
+   },
+   "hijri": "15-06-1445"
+  },
+  {
+   "date": "2023-12-29",
+   "timings": {
+    "Fajr": "05:39 (CET)",
+    "Sunrise": "07:24 (CET)",
+    "Dhuhr": "11:51 (CET)",
+    "Asr": "13:46 (CET)",
+    "Sunset": "16:07 (CET)",
+    "Maghrib": "16:07 (CET)",
+    "Isha": "17:46 (CET)",
+    "Imsak": "05:29 (CET)",
+    "Midnight": "23:46 (CET)",
+    "Firstthird": "21:11 (CET)",
+    "Lastthird": "02:21 (CET)"
+   },
+   "hijri": "16-06-1445"
+  },
+  {
+   "date": "2023-12-30",
+   "timings": {
+    "Fajr": "05:39 (CET)",
+    "Sunrise": "07:24 (CET)",
+    "Dhuhr": "11:51 (CET)",
+    "Asr": "13:47 (CET)",
+    "Sunset": "16:08 (CET)",
+    "Maghrib": "16:08 (CET)",
+    "Isha": "17:47 (CET)",
+    "Imsak": "05:29 (CET)",
+    "Midnight": "23:46 (CET)",
+    "Firstthird": "21:11 (CET)",
+    "Lastthird": "02:21 (CET)"
+   },
+   "hijri": "17-06-1445"
+  },
+  {
+   "date": "2023-12-31",
+   "timings": {
+    "Fajr": "05:39 (CET)",
+    "Sunrise": "07:25 (CET)",
+    "Dhuhr": "11:52 (CET)",
+    "Asr": "13:47 (CET)",
+    "Sunset": "16:09 (CET)",
+    "Maghrib": "16:09 (CET)",
+    "Isha": "17:48 (CET)",
+    "Imsak": "05:29 (CET)",
+    "Midnight": "23:47 (CET)",
+    "Firstthird": "21:12 (CET)",
+    "Lastthird": "02:22 (CET)"
+   },
+   "hijri": "18-06-1445"
+  },
+  {
+   "date": "2024-01-01",
+   "timings": {
+    "Fajr": "05:39 (CET)",
+    "Sunrise": "07:25 (CET)",
+    "Dhuhr": "11:52 (CET)",
+    "Asr": "13:48 (CET)",
+    "Sunset": "16:10 (CET)",
+    "Maghrib": "16:10 (CET)",
+    "Isha": "17:49 (CET)",
+    "Imsak": "05:29 (CET)",
+    "Midnight": "23:47 (CET)",
+    "Firstthird": "21:12 (CET)",
+    "Lastthird": "02:22 (CET)"
+   },
+   "hijri": "19-06-1445"
+  },
+  {
+   "date": "2024-01-02",
+   "timings": {
+    "Fajr": "05:40 (CET)",
+    "Sunrise": "07:25 (CET)",
+    "Dhuhr": "11:53 (CET)",
+    "Asr": "13:49 (CET)",
+    "Sunset": "16:11 (CET)",
+    "Maghrib": "16:11 (CET)",
+    "Isha": "17:50 (CET)",
+    "Imsak": "05:30 (CET)",
+    "Midnight": "23:48 (CET)",
+    "Firstthird": "21:13 (CET)",
+    "Lastthird": "02:22 (CET)"
+   },
+   "hijri": "20-06-1445"
+  },
+  {
+   "date": "2024-01-03",
+   "timings": {
+    "Fajr": "05:40 (CET)",
+    "Sunrise": "07:25 (CET)",
+    "Dhuhr": "11:53 (CET)",
+    "Asr": "13:50 (CET)",
+    "Sunset": "16:12 (CET)",
+    "Maghrib": "16:12 (CET)",
+    "Isha": "17:50 (CET)",
+    "Imsak": "05:30 (CET)",
+    "Midnight": "23:48 (CET)",
+    "Firstthird": "21:14 (CET)",
+    "Lastthird": "02:23 (CET)"
+   },
+   "hijri": "21-06-1445"
+  },
+  {
+   "date": "2024-01-04",
+   "timings": {
+    "Fajr": "05:40 (CET)",
+    "Sunrise": "07:24 (CET)",
+    "Dhuhr": "11:53 (CET)",
+    "Asr": "13:51 (CET)",
+    "Sunset": "16:13 (CET)",
+    "Maghrib": "16:13 (CET)",
+    "Isha": "17:51 (CET)",
+    "Imsak": "05:30 (CET)",
+    "Midnight": "23:49 (CET)",
+    "Firstthird": "21:14 (CET)",
+    "Lastthird": "02:23 (CET)"
+   },
+   "hijri": "22-06-1445"
+  },
+  {
+   "date": "2024-01-05",
+   "timings": {
+    "Fajr": "05:40 (CET)",
+    "Sunrise": "07:24 (CET)",
+    "Dhuhr": "11:54 (CET)",
+    "Asr": "13:52 (CET)",
+    "Sunset": "16:14 (CET)",
+    "Maghrib": "16:14 (CET)",
+    "Isha": "17:52 (CET)",
+    "Imsak": "05:30 (CET)",
+    "Midnight": "23:49 (CET)",
+    "Firstthird": "21:15 (CET)",
+    "Lastthird": "02:23 (CET)"
+   },
+   "hijri": "23-06-1445"
+  },
+  {
+   "date": "2024-01-06",
+   "timings": {
+    "Fajr": "05:40 (CET)",
+    "Sunrise": "07:24 (CET)",
+    "Dhuhr": "11:54 (CET)",
+    "Asr": "13:52 (CET)",
+    "Sunset": "16:15 (CET)",
+    "Maghrib": "16:15 (CET)",
+    "Isha": "17:53 (CET)",
+    "Imsak": "05:30 (CET)",
+    "Midnight": "23:50 (CET)",
+    "Firstthird": "21:16 (CET)",
+    "Lastthird": "02:23 (CET)"
+   },
+   "hijri": "24-06-1445"
+  },
+  {
+   "date": "2024-01-07",
+   "timings": {
+    "Fajr": "05:40 (CET)",
+    "Sunrise": "07:24 (CET)",
+    "Dhuhr": "11:55 (CET)",
+    "Asr": "13:53 (CET)",
+    "Sunset": "16:16 (CET)",
+    "Maghrib": "16:16 (CET)",
+    "Isha": "17:54 (CET)",
+    "Imsak": "05:30 (CET)",
+    "Midnight": "23:50 (CET)",
+    "Firstthird": "21:16 (CET)",
+    "Lastthird": "02:24 (CET)"
+   },
+   "hijri": "25-06-1445"
+  },
+  {
+   "date": "2024-01-08",
+   "timings": {
+    "Fajr": "05:39 (CET)",
+    "Sunrise": "07:24 (CET)",
+    "Dhuhr": "11:55 (CET)",
+    "Asr": "13:54 (CET)",
+    "Sunset": "16:17 (CET)",
+    "Maghrib": "16:17 (CET)",
+    "Isha": "17:55 (CET)",
+    "Imsak": "05:29 (CET)",
+    "Midnight": "23:50 (CET)",
+    "Firstthird": "21:17 (CET)",
+    "Lastthird": "02:24 (CET)"
+   },
+   "hijri": "26-06-1445"
+  },
+  {
+   "date": "2024-01-09",
+   "timings": {
+    "Fajr": "05:39 (CET)",
+    "Sunrise": "07:23 (CET)",
+    "Dhuhr": "11:56 (CET)",
+    "Asr": "13:55 (CET)",
+    "Sunset": "16:18 (CET)",
+    "Maghrib": "16:18 (CET)",
+    "Isha": "17:56 (CET)",
+    "Imsak": "05:29 (CET)",
+    "Midnight": "23:51 (CET)",
+    "Firstthird": "21:18 (CET)",
+    "Lastthird": "02:24 (CET)"
+   },
+   "hijri": "27-06-1445"
+  },
+  {
+   "date": "2024-01-10",
+   "timings": {
+    "Fajr": "05:39 (CET)",
+    "Sunrise": "07:23 (CET)",
+    "Dhuhr": "11:56 (CET)",
+    "Asr": "13:56 (CET)",
+    "Sunset": "16:20 (CET)",
+    "Maghrib": "16:20 (CET)",
+    "Isha": "17:57 (CET)",
+    "Imsak": "05:29 (CET)",
+    "Midnight": "23:51 (CET)",
+    "Firstthird": "21:18 (CET)",
+    "Lastthird": "02:24 (CET)"
+   },
+   "hijri": "28-06-1445"
+  },
+  {
+   "date": "2024-01-11",
+   "timings": {
+    "Fajr": "05:39 (CET)",
+    "Sunrise": "07:22 (CET)",
+    "Dhuhr": "11:56 (CET)",
+    "Asr": "13:57 (CET)",
+    "Sunset": "16:21 (CET)",
+    "Maghrib": "16:21 (CET)",
+    "Isha": "17:58 (CET)",
+    "Imsak": "05:29 (CET)",
+    "Midnight": "23:52 (CET)",
+    "Firstthird": "21:19 (CET)",
+    "Lastthird": "02:24 (CET)"
+   },
+   "hijri": "29-06-1445"
+  },
+  {
+   "date": "2024-01-12",
+   "timings": {
+    "Fajr": "05:39 (CET)",
+    "Sunrise": "07:22 (CET)",
+    "Dhuhr": "11:57 (CET)",
+    "Asr": "13:58 (CET)",
+    "Sunset": "16:22 (CET)",
+    "Maghrib": "16:22 (CET)",
+    "Isha": "17:59 (CET)",
+    "Imsak": "05:29 (CET)",
+    "Midnight": "23:52 (CET)",
+    "Firstthird": "21:20 (CET)",
+    "Lastthird": "02:24 (CET)"
+   },
+   "hijri": "30-06-1445"
+  },
+  {
+   "date": "2024-01-13",
+   "timings": {
+    "Fajr": "05:38 (CET)",
+    "Sunrise": "07:22 (CET)",
+    "Dhuhr": "11:57 (CET)",
+    "Asr": "13:59 (CET)",
+    "Sunset": "16:23 (CET)",
+    "Maghrib": "16:23 (CET)",
+    "Isha": "18:01 (CET)",
+    "Imsak": "05:28 (CET)",
+    "Midnight": "23:52 (CET)",
+    "Firstthird": "21:20 (CET)",
+    "Lastthird": "02:24 (CET)"
+   },
+   "hijri": "01-07-1445"
+  },
+  {
+   "date": "2024-01-14",
+   "timings": {
+    "Fajr": "05:38 (CET)",
+    "Sunrise": "07:21 (CET)",
+    "Dhuhr": "11:58 (CET)",
+    "Asr": "14:01 (CET)",
+    "Sunset": "16:25 (CET)",
+    "Maghrib": "16:25 (CET)",
+    "Isha": "18:02 (CET)",
+    "Imsak": "05:28 (CET)",
+    "Midnight": "23:53 (CET)",
+    "Firstthird": "21:21 (CET)",
+    "Lastthird": "02:25 (CET)"
+   },
+   "hijri": "02-07-1445"
+  },
+  {
+   "date": "2024-01-15",
+   "timings": {
+    "Fajr": "05:38 (CET)",
+    "Sunrise": "07:20 (CET)",
+    "Dhuhr": "11:58 (CET)",
+    "Asr": "14:02 (CET)",
+    "Sunset": "16:26 (CET)",
+    "Maghrib": "16:26 (CET)",
+    "Isha": "18:03 (CET)",
+    "Imsak": "05:28 (CET)",
+    "Midnight": "23:53 (CET)",
+    "Firstthird": "21:22 (CET)",
+    "Lastthird": "02:25 (CET)"
+   },
+   "hijri": "03-07-1445"
+  },
+  {
+   "date": "2024-01-16",
+   "timings": {
+    "Fajr": "05:37 (CET)",
+    "Sunrise": "07:20 (CET)",
+    "Dhuhr": "11:58 (CET)",
+    "Asr": "14:03 (CET)",
+    "Sunset": "16:27 (CET)",
+    "Maghrib": "16:27 (CET)",
+    "Isha": "18:04 (CET)",
+    "Imsak": "05:27 (CET)",
+    "Midnight": "23:54 (CET)",
+    "Firstthird": "21:23 (CET)",
+    "Lastthird": "02:25 (CET)"
+   },
+   "hijri": "04-07-1445"
+  },
+  {
+   "date": "2024-01-17",
+   "timings": {
+    "Fajr": "05:37 (CET)",
+    "Sunrise": "07:19 (CET)",
+    "Dhuhr": "11:59 (CET)",
+    "Asr": "14:04 (CET)",
+    "Sunset": "16:29 (CET)",
+    "Maghrib": "16:29 (CET)",
+    "Isha": "18:05 (CET)",
+    "Imsak": "05:27 (CET)",
+    "Midnight": "23:54 (CET)",
+    "Firstthird": "21:23 (CET)",
+    "Lastthird": "02:25 (CET)"
+   },
+   "hijri": "05-07-1445"
+  },
+  {
+   "date": "2024-01-18",
+   "timings": {
+    "Fajr": "05:36 (CET)",
+    "Sunrise": "07:18 (CET)",
+    "Dhuhr": "11:59 (CET)",
+    "Asr": "14:05 (CET)",
+    "Sunset": "16:30 (CET)",
+    "Maghrib": "16:30 (CET)",
+    "Isha": "18:06 (CET)",
+    "Imsak": "05:26 (CET)",
+    "Midnight": "23:54 (CET)",
+    "Firstthird": "21:24 (CET)",
+    "Lastthird": "02:25 (CET)"
+   },
+   "hijri": "06-07-1445"
+  },
+  {
+   "date": "2024-01-19",
+   "timings": {
+    "Fajr": "05:36 (CET)",
+    "Sunrise": "07:18 (CET)",
+    "Dhuhr": "11:59 (CET)",
+    "Asr": "14:06 (CET)",
+    "Sunset": "16:32 (CET)",
+    "Maghrib": "16:32 (CET)",
+    "Isha": "18:07 (CET)",
+    "Imsak": "05:26 (CET)",
+    "Midnight": "23:55 (CET)",
+    "Firstthird": "21:25 (CET)",
+    "Lastthird": "02:25 (CET)"
+   },
+   "hijri": "07-07-1445"
+  },
+  {
+   "date": "2024-01-20",
+   "timings": {
+    "Fajr": "05:35 (CET)",
+    "Sunrise": "07:17 (CET)",
+    "Dhuhr": "12:00 (CET)",
+    "Asr": "14:07 (CET)",
+    "Sunset": "16:33 (CET)",
+    "Maghrib": "16:33 (CET)",
+    "Isha": "18:09 (CET)",
+    "Imsak": "05:25 (CET)",
+    "Midnight": "23:55 (CET)",
+    "Firstthird": "21:25 (CET)",
+    "Lastthird": "02:25 (CET)"
+   },
+   "hijri": "08-07-1445"
+  },
+  {
+   "date": "2024-01-21",
+   "timings": {
+    "Fajr": "05:34 (CET)",
+    "Sunrise": "07:16 (CET)",
+    "Dhuhr": "12:00 (CET)",
+    "Asr": "14:09 (CET)",
+    "Sunset": "16:35 (CET)",
+    "Maghrib": "16:35 (CET)",
+    "Isha": "18:10 (CET)",
+    "Imsak": "05:24 (CET)",
+    "Midnight": "23:55 (CET)",
+    "Firstthird": "21:26 (CET)",
+    "Lastthird": "02:24 (CET)"
+   },
+   "hijri": "09-07-1445"
+  },
+  {
+   "date": "2024-01-22",
+   "timings": {
+    "Fajr": "05:34 (CET)",
+    "Sunrise": "07:15 (CET)",
+    "Dhuhr": "12:00 (CET)",
+    "Asr": "14:10 (CET)",
+    "Sunset": "16:36 (CET)",
+    "Maghrib": "16:36 (CET)",
+    "Isha": "18:11 (CET)",
+    "Imsak": "05:24 (CET)",
+    "Midnight": "23:55 (CET)",
+    "Firstthird": "21:27 (CET)",
+    "Lastthird": "02:24 (CET)"
+   },
+   "hijri": "10-07-1445"
+  },
+  {
+   "date": "2024-01-23",
+   "timings": {
+    "Fajr": "05:33 (CET)",
+    "Sunrise": "07:14 (CET)",
+    "Dhuhr": "12:00 (CET)",
+    "Asr": "14:11 (CET)",
+    "Sunset": "16:38 (CET)",
+    "Maghrib": "16:38 (CET)",
+    "Isha": "18:12 (CET)",
+    "Imsak": "05:23 (CET)",
+    "Midnight": "23:56 (CET)",
+    "Firstthird": "21:27 (CET)",
+    "Lastthird": "02:24 (CET)"
+   },
+   "hijri": "11-07-1445"
+  },
+  {
+   "date": "2024-01-24",
+   "timings": {
+    "Fajr": "05:32 (CET)",
+    "Sunrise": "07:13 (CET)",
+    "Dhuhr": "12:01 (CET)",
+    "Asr": "14:12 (CET)",
+    "Sunset": "16:39 (CET)",
+    "Maghrib": "16:39 (CET)",
+    "Isha": "18:14 (CET)",
+    "Imsak": "05:22 (CET)",
+    "Midnight": "23:56 (CET)",
+    "Firstthird": "21:28 (CET)",
+    "Lastthird": "02:24 (CET)"
+   },
+   "hijri": "12-07-1445"
+  },
+  {
+   "date": "2024-01-25",
+   "timings": {
+    "Fajr": "05:32 (CET)",
+    "Sunrise": "07:12 (CET)",
+    "Dhuhr": "12:01 (CET)",
+    "Asr": "14:13 (CET)",
+    "Sunset": "16:41 (CET)",
+    "Maghrib": "16:41 (CET)",
+    "Isha": "18:15 (CET)",
+    "Imsak": "05:22 (CET)",
+    "Midnight": "23:56 (CET)",
+    "Firstthird": "21:29 (CET)",
+    "Lastthird": "02:24 (CET)"
+   },
+   "hijri": "13-07-1445"
+  },
+  {
+   "date": "2024-01-26",
+   "timings": {
+    "Fajr": "05:31 (CET)",
+    "Sunrise": "07:11 (CET)",
+    "Dhuhr": "12:01 (CET)",
+    "Asr": "14:15 (CET)",
+    "Sunset": "16:42 (CET)",
+    "Maghrib": "16:42 (CET)",
+    "Isha": "18:16 (CET)",
+    "Imsak": "05:21 (CET)",
+    "Midnight": "23:57 (CET)",
+    "Firstthird": "21:29 (CET)",
+    "Lastthird": "02:24 (CET)"
+   },
+   "hijri": "14-07-1445"
+  },
+  {
+   "date": "2024-01-27",
+   "timings": {
+    "Fajr": "05:30 (CET)",
+    "Sunrise": "07:10 (CET)",
+    "Dhuhr": "12:01 (CET)",
+    "Asr": "14:16 (CET)",
+    "Sunset": "16:44 (CET)",
+    "Maghrib": "16:44 (CET)",
+    "Isha": "18:18 (CET)",
+    "Imsak": "05:20 (CET)",
+    "Midnight": "23:57 (CET)",
+    "Firstthird": "21:30 (CET)",
+    "Lastthird": "02:23 (CET)"
+   },
+   "hijri": "15-07-1445"
+  },
+  {
+   "date": "2024-01-28",
+   "timings": {
+    "Fajr": "05:29 (CET)",
+    "Sunrise": "07:09 (CET)",
+    "Dhuhr": "12:02 (CET)",
+    "Asr": "14:17 (CET)",
+    "Sunset": "16:45 (CET)",
+    "Maghrib": "16:45 (CET)",
+    "Isha": "18:19 (CET)",
+    "Imsak": "05:19 (CET)",
+    "Midnight": "23:57 (CET)",
+    "Firstthird": "21:31 (CET)",
+    "Lastthird": "02:23 (CET)"
+   },
+   "hijri": "16-07-1445"
+  },
+  {
+   "date": "2024-01-29",
+   "timings": {
+    "Fajr": "05:28 (CET)",
+    "Sunrise": "07:08 (CET)",
+    "Dhuhr": "12:02 (CET)",
+    "Asr": "14:18 (CET)",
+    "Sunset": "16:47 (CET)",
+    "Maghrib": "16:47 (CET)",
+    "Isha": "18:20 (CET)",
+    "Imsak": "05:18 (CET)",
+    "Midnight": "23:57 (CET)",
+    "Firstthird": "21:31 (CET)",
+    "Lastthird": "02:23 (CET)"
+   },
+   "hijri": "17-07-1445"
+  },
+  {
+   "date": "2024-01-30",
+   "timings": {
+    "Fajr": "05:27 (CET)",
+    "Sunrise": "07:06 (CET)",
+    "Dhuhr": "12:02 (CET)",
+    "Asr": "14:20 (CET)",
+    "Sunset": "16:48 (CET)",
+    "Maghrib": "16:48 (CET)",
+    "Isha": "18:21 (CET)",
+    "Imsak": "05:17 (CET)",
+    "Midnight": "23:57 (CET)",
+    "Firstthird": "21:32 (CET)",
+    "Lastthird": "02:23 (CET)"
+   },
+   "hijri": "18-07-1445"
+  },
+  {
+   "date": "2024-01-31",
+   "timings": {
+    "Fajr": "05:26 (CET)",
+    "Sunrise": "07:05 (CET)",
+    "Dhuhr": "12:02 (CET)",
+    "Asr": "14:21 (CET)",
+    "Sunset": "16:50 (CET)",
+    "Maghrib": "16:50 (CET)",
+    "Isha": "18:23 (CET)",
+    "Imsak": "05:16 (CET)",
+    "Midnight": "23:57 (CET)",
+    "Firstthird": "21:33 (CET)",
+    "Lastthird": "02:22 (CET)"
+   },
+   "hijri": "19-07-1445"
+  },
+  {
+   "date": "2024-05-01",
+   "timings": {
+    "Fajr": "03:19 (CEST)",
+    "Sunrise": "05:19 (CEST)",
+    "Dhuhr": "12:46 (CEST)",
+    "Asr": "16:43 (CEST)",
+    "Sunset": "20:03 (CEST)",
+    "Maghrib": "20:03 (CEST)",
+    "Isha": "21:55 (CEST)",
+    "Imsak": "03:09 (CEST)",
+    "Midnight": "00:41 (CEST)",
+    "Firstthird": "23:06 (CEST)",
+    "Lastthird": "02:16 (CEST)"
+   },
+   "hijri": "22-10-1445"
+  },
+  {
+   "date": "2024-05-02",
+   "timings": {
+    "Fajr": "03:17 (CEST)",
+    "Sunrise": "05:18 (CEST)",
+    "Dhuhr": "12:46 (CEST)",
+    "Asr": "16:43 (CEST)",
+    "Sunset": "20:04 (CEST)",
+    "Maghrib": "20:04 (CEST)",
+    "Isha": "21:57 (CEST)",
+    "Imsak": "03:07 (CEST)",
+    "Midnight": "00:41 (CEST)",
+    "Firstthird": "23:07 (CEST)",
+    "Lastthird": "02:16 (CEST)"
+   },
+   "hijri": "23-10-1445"
+  },
+  {
+   "date": "2024-05-03",
+   "timings": {
+    "Fajr": "03:14 (CEST)",
+    "Sunrise": "05:16 (CEST)",
+    "Dhuhr": "12:46 (CEST)",
+    "Asr": "16:44 (CEST)",
+    "Sunset": "20:06 (CEST)",
+    "Maghrib": "20:06 (CEST)",
+    "Isha": "21:59 (CEST)",
+    "Imsak": "03:04 (CEST)",
+    "Midnight": "00:41 (CEST)",
+    "Firstthird": "23:07 (CEST)",
+    "Lastthird": "02:15 (CEST)"
+   },
+   "hijri": "24-10-1445"
+  },
+  {
+   "date": "2024-05-04",
+   "timings": {
+    "Fajr": "03:11 (CEST)",
+    "Sunrise": "05:15 (CEST)",
+    "Dhuhr": "12:46 (CEST)",
+    "Asr": "16:44 (CEST)",
+    "Sunset": "20:07 (CEST)",
+    "Maghrib": "20:07 (CEST)",
+    "Isha": "22:01 (CEST)",
+    "Imsak": "03:01 (CEST)",
+    "Midnight": "00:41 (CEST)",
+    "Firstthird": "23:07 (CEST)",
+    "Lastthird": "02:14 (CEST)"
+   },
+   "hijri": "25-10-1445"
+  },
+  {
+   "date": "2024-05-05",
+   "timings": {
+    "Fajr": "03:09 (CEST)",
+    "Sunrise": "05:13 (CEST)",
+    "Dhuhr": "12:45 (CEST)",
+    "Asr": "16:45 (CEST)",
+    "Sunset": "20:08 (CEST)",
+    "Maghrib": "20:08 (CEST)",
+    "Isha": "22:04 (CEST)",
+    "Imsak": "02:59 (CEST)",
+    "Midnight": "00:41 (CEST)",
+    "Firstthird": "23:08 (CEST)",
+    "Lastthird": "02:14 (CEST)"
+   },
+   "hijri": "26-10-1445"
+  },
+  {
+   "date": "2024-05-06",
+   "timings": {
+    "Fajr": "03:06 (CEST)",
+    "Sunrise": "05:12 (CEST)",
+    "Dhuhr": "12:45 (CEST)",
+    "Asr": "16:45 (CEST)",
+    "Sunset": "20:10 (CEST)",
+    "Maghrib": "20:10 (CEST)",
+    "Isha": "22:06 (CEST)",
+    "Imsak": "02:56 (CEST)",
+    "Midnight": "00:41 (CEST)",
+    "Firstthird": "23:08 (CEST)",
+    "Lastthird": "02:13 (CEST)"
+   },
+   "hijri": "27-10-1445"
+  },
+  {
+   "date": "2024-05-07",
+   "timings": {
+    "Fajr": "03:04 (CEST)",
+    "Sunrise": "05:10 (CEST)",
+    "Dhuhr": "12:45 (CEST)",
+    "Asr": "16:46 (CEST)",
+    "Sunset": "20:11 (CEST)",
+    "Maghrib": "20:11 (CEST)",
+    "Isha": "22:08 (CEST)",
+    "Imsak": "02:54 (CEST)",
+    "Midnight": "00:41 (CEST)",
+    "Firstthird": "23:09 (CEST)",
+    "Lastthird": "02:13 (CEST)"
+   },
+   "hijri": "28-10-1445"
+  },
+  {
+   "date": "2024-05-08",
+   "timings": {
+    "Fajr": "03:01 (CEST)",
+    "Sunrise": "05:09 (CEST)",
+    "Dhuhr": "12:45 (CEST)",
+    "Asr": "16:46 (CEST)",
+    "Sunset": "20:13 (CEST)",
+    "Maghrib": "20:13 (CEST)",
+    "Isha": "22:11 (CEST)",
+    "Imsak": "02:51 (CEST)",
+    "Midnight": "00:41 (CEST)",
+    "Firstthird": "23:09 (CEST)",
+    "Lastthird": "02:12 (CEST)"
+   },
+   "hijri": "29-10-1445"
+  },
+  {
+   "date": "2024-05-09",
+   "timings": {
+    "Fajr": "02:59 (CEST)",
+    "Sunrise": "05:07 (CEST)",
+    "Dhuhr": "12:45 (CEST)",
+    "Asr": "16:47 (CEST)",
+    "Sunset": "20:14 (CEST)",
+    "Maghrib": "20:14 (CEST)",
+    "Isha": "22:13 (CEST)",
+    "Imsak": "02:49 (CEST)",
+    "Midnight": "00:41 (CEST)",
+    "Firstthird": "23:09 (CEST)",
+    "Lastthird": "02:12 (CEST)"
+   },
+   "hijri": "01-11-1445"
+  },
+  {
+   "date": "2024-05-10",
+   "timings": {
+    "Fajr": "02:56 (CEST)",
+    "Sunrise": "05:06 (CEST)",
+    "Dhuhr": "12:45 (CEST)",
+    "Asr": "16:47 (CEST)",
+    "Sunset": "20:15 (CEST)",
+    "Maghrib": "20:15 (CEST)",
+    "Isha": "22:15 (CEST)",
+    "Imsak": "02:46 (CEST)",
+    "Midnight": "00:41 (CEST)",
+    "Firstthird": "23:10 (CEST)",
+    "Lastthird": "02:11 (CEST)"
+   },
+   "hijri": "02-11-1445"
+  },
+  {
+   "date": "2024-05-11",
+   "timings": {
+    "Fajr": "02:54 (CEST)",
+    "Sunrise": "05:05 (CEST)",
+    "Dhuhr": "12:45 (CEST)",
+    "Asr": "16:48 (CEST)",
+    "Sunset": "20:16 (CEST)",
+    "Maghrib": "20:16 (CEST)",
+    "Isha": "22:18 (CEST)",
+    "Imsak": "02:44 (CEST)",
+    "Midnight": "00:40 (CEST)",
+    "Firstthird": "23:10 (CEST)",
+    "Lastthird": "02:11 (CEST)"
+   },
+   "hijri": "03-11-1445"
+  },
+  {
+   "date": "2024-05-12",
+   "timings": {
+    "Fajr": "02:51 (CEST)",
+    "Sunrise": "05:03 (CEST)",
+    "Dhuhr": "12:45 (CEST)",
+    "Asr": "16:48 (CEST)",
+    "Sunset": "20:18 (CEST)",
+    "Maghrib": "20:18 (CEST)",
+    "Isha": "22:20 (CEST)",
+    "Imsak": "02:41 (CEST)",
+    "Midnight": "00:40 (CEST)",
+    "Firstthird": "23:11 (CEST)",
+    "Lastthird": "02:10 (CEST)"
+   },
+   "hijri": "04-11-1445"
+  },
+  {
+   "date": "2024-05-13",
+   "timings": {
+    "Fajr": "02:48 (CEST)",
+    "Sunrise": "05:02 (CEST)",
+    "Dhuhr": "12:45 (CEST)",
+    "Asr": "16:49 (CEST)",
+    "Sunset": "20:19 (CEST)",
+    "Maghrib": "20:19 (CEST)",
+    "Isha": "22:22 (CEST)",
+    "Imsak": "02:38 (CEST)",
+    "Midnight": "00:40 (CEST)",
+    "Firstthird": "23:11 (CEST)",
+    "Lastthird": "02:10 (CEST)"
+   },
+   "hijri": "05-11-1445"
+  },
+  {
+   "date": "2024-05-14",
+   "timings": {
+    "Fajr": "02:46 (CEST)",
+    "Sunrise": "05:01 (CEST)",
+    "Dhuhr": "12:45 (CEST)",
+    "Asr": "16:49 (CEST)",
+    "Sunset": "20:20 (CEST)",
+    "Maghrib": "20:20 (CEST)",
+    "Isha": "22:25 (CEST)",
+    "Imsak": "02:36 (CEST)",
+    "Midnight": "00:40 (CEST)",
+    "Firstthird": "23:11 (CEST)",
+    "Lastthird": "02:09 (CEST)"
+   },
+   "hijri": "06-11-1445"
+  },
+  {
+   "date": "2024-05-15",
+   "timings": {
+    "Fajr": "02:43 (CEST)",
+    "Sunrise": "04:59 (CEST)",
+    "Dhuhr": "12:45 (CEST)",
+    "Asr": "16:50 (CEST)",
+    "Sunset": "20:22 (CEST)",
+    "Maghrib": "20:22 (CEST)",
+    "Isha": "22:27 (CEST)",
+    "Imsak": "02:33 (CEST)",
+    "Midnight": "00:40 (CEST)",
+    "Firstthird": "23:12 (CEST)",
+    "Lastthird": "02:09 (CEST)"
+   },
+   "hijri": "07-11-1445"
+  },
+  {
+   "date": "2024-05-16",
+   "timings": {
+    "Fajr": "02:41 (CEST)",
+    "Sunrise": "04:58 (CEST)",
+    "Dhuhr": "12:45 (CEST)",
+    "Asr": "16:50 (CEST)",
+    "Sunset": "20:23 (CEST)",
+    "Maghrib": "20:23 (CEST)",
+    "Isha": "22:29 (CEST)",
+    "Imsak": "02:31 (CEST)",
+    "Midnight": "00:40 (CEST)",
+    "Firstthird": "23:12 (CEST)",
+    "Lastthird": "02:09 (CEST)"
+   },
+   "hijri": "08-11-1445"
+  },
+  {
+   "date": "2024-05-17",
+   "timings": {
+    "Fajr": "02:38 (CEST)",
+    "Sunrise": "04:57 (CEST)",
+    "Dhuhr": "12:45 (CEST)",
+    "Asr": "16:51 (CEST)",
+    "Sunset": "20:24 (CEST)",
+    "Maghrib": "20:24 (CEST)",
+    "Isha": "22:32 (CEST)",
+    "Imsak": "02:28 (CEST)",
+    "Midnight": "00:41 (CEST)",
+    "Firstthird": "23:13 (CEST)",
+    "Lastthird": "02:08 (CEST)"
+   },
+   "hijri": "09-11-1445"
+  },
+  {
+   "date": "2024-05-18",
+   "timings": {
+    "Fajr": "02:36 (CEST)",
+    "Sunrise": "04:56 (CEST)",
+    "Dhuhr": "12:45 (CEST)",
+    "Asr": "16:51 (CEST)",
+    "Sunset": "20:25 (CEST)",
+    "Maghrib": "20:25 (CEST)",
+    "Isha": "22:34 (CEST)",
+    "Imsak": "02:26 (CEST)",
+    "Midnight": "00:41 (CEST)",
+    "Firstthird": "23:13 (CEST)",
+    "Lastthird": "02:08 (CEST)"
+   },
+   "hijri": "10-11-1445"
+  },
+  {
+   "date": "2024-05-19",
+   "timings": {
+    "Fajr": "02:33 (CEST)",
+    "Sunrise": "04:55 (CEST)",
+    "Dhuhr": "12:45 (CEST)",
+    "Asr": "16:52 (CEST)",
+    "Sunset": "20:27 (CEST)",
+    "Maghrib": "20:27 (CEST)",
+    "Isha": "22:36 (CEST)",
+    "Imsak": "02:23 (CEST)",
+    "Midnight": "00:41 (CEST)",
+    "Firstthird": "23:14 (CEST)",
+    "Lastthird": "02:08 (CEST)"
+   },
+   "hijri": "11-11-1445"
+  },
+  {
+   "date": "2024-05-20",
+   "timings": {
+    "Fajr": "02:31 (CEST)",
+    "Sunrise": "04:54 (CEST)",
+    "Dhuhr": "12:45 (CEST)",
+    "Asr": "16:52 (CEST)",
+    "Sunset": "20:28 (CEST)",
+    "Maghrib": "20:28 (CEST)",
+    "Isha": "22:39 (CEST)",
+    "Imsak": "02:21 (CEST)",
+    "Midnight": "00:41 (CEST)",
+    "Firstthird": "23:14 (CEST)",
+    "Lastthird": "02:07 (CEST)"
+   },
+   "hijri": "12-11-1445"
+  },
+  {
+   "date": "2024-05-21",
+   "timings": {
+    "Fajr": "02:29 (CEST)",
+    "Sunrise": "04:53 (CEST)",
+    "Dhuhr": "12:45 (CEST)",
+    "Asr": "16:53 (CEST)",
+    "Sunset": "20:29 (CEST)",
+    "Maghrib": "20:29 (CEST)",
+    "Isha": "22:41 (CEST)",
+    "Imsak": "02:19 (CEST)",
+    "Midnight": "00:41 (CEST)",
+    "Firstthird": "23:14 (CEST)",
+    "Lastthird": "02:07 (CEST)"
+   },
+   "hijri": "13-11-1445"
+  },
+  {
+   "date": "2024-05-22",
+   "timings": {
+    "Fajr": "02:26 (CEST)",
+    "Sunrise": "04:51 (CEST)",
+    "Dhuhr": "12:46 (CEST)",
+    "Asr": "16:53 (CEST)",
+    "Sunset": "20:30 (CEST)",
+    "Maghrib": "20:30 (CEST)",
+    "Isha": "22:43 (CEST)",
+    "Imsak": "02:16 (CEST)",
+    "Midnight": "00:41 (CEST)",
+    "Firstthird": "23:15 (CEST)",
+    "Lastthird": "02:07 (CEST)"
+   },
+   "hijri": "14-11-1445"
+  },
+  {
+   "date": "2024-05-23",
+   "timings": {
+    "Fajr": "02:24 (CEST)",
+    "Sunrise": "04:51 (CEST)",
+    "Dhuhr": "12:46 (CEST)",
+    "Asr": "16:54 (CEST)",
+    "Sunset": "20:31 (CEST)",
+    "Maghrib": "20:31 (CEST)",
+    "Isha": "22:46 (CEST)",
+    "Imsak": "02:14 (CEST)",
+    "Midnight": "00:41 (CEST)",
+    "Firstthird": "23:15 (CEST)",
+    "Lastthird": "02:06 (CEST)"
+   },
+   "hijri": "15-11-1445"
+  },
+  {
+   "date": "2024-05-24",
+   "timings": {
+    "Fajr": "02:23 (CEST)",
+    "Sunrise": "04:50 (CEST)",
+    "Dhuhr": "12:46 (CEST)",
+    "Asr": "16:54 (CEST)",
+    "Sunset": "20:32 (CEST)",
+    "Maghrib": "20:32 (CEST)",
+    "Isha": "22:48 (CEST)",
+    "Imsak": "02:13 (CEST)",
+    "Midnight": "00:41 (CEST)",
+    "Firstthird": "23:16 (CEST)",
+    "Lastthird": "02:06 (CEST)"
+   },
+   "hijri": "16-11-1445"
+  },
+  {
+   "date": "2024-05-25",
+   "timings": {
+    "Fajr": "02:23 (CEST)",
+    "Sunrise": "04:49 (CEST)",
+    "Dhuhr": "12:46 (CEST)",
+    "Asr": "16:55 (CEST)",
+    "Sunset": "20:33 (CEST)",
+    "Maghrib": "20:33 (CEST)",
+    "Isha": "22:50 (CEST)",
+    "Imsak": "02:13 (CEST)",
+    "Midnight": "00:41 (CEST)",
+    "Firstthird": "23:16 (CEST)",
+    "Lastthird": "02:06 (CEST)"
+   },
+   "hijri": "17-11-1445"
+  },
+  {
+   "date": "2024-05-26",
+   "timings": {
+    "Fajr": "02:23 (CEST)",
+    "Sunrise": "04:48 (CEST)",
+    "Dhuhr": "12:46 (CEST)",
+    "Asr": "16:55 (CEST)",
+    "Sunset": "20:34 (CEST)",
+    "Maghrib": "20:34 (CEST)",
+    "Isha": "22:51 (CEST)",
+    "Imsak": "02:13 (CEST)",
+    "Midnight": "00:41 (CEST)",
+    "Firstthird": "23:17 (CEST)",
+    "Lastthird": "02:06 (CEST)"
+   },
+   "hijri": "18-11-1445"
+  },
+  {
+   "date": "2024-05-27",
+   "timings": {
+    "Fajr": "02:22 (CEST)",
+    "Sunrise": "04:47 (CEST)",
+    "Dhuhr": "12:46 (CEST)",
+    "Asr": "16:55 (CEST)",
+    "Sunset": "20:36 (CEST)",
+    "Maghrib": "20:36 (CEST)",
+    "Isha": "22:52 (CEST)",
+    "Imsak": "02:12 (CEST)",
+    "Midnight": "00:41 (CEST)",
+    "Firstthird": "23:17 (CEST)",
+    "Lastthird": "02:05 (CEST)"
+   },
+   "hijri": "19-11-1445"
+  },
+  {
+   "date": "2024-05-28",
+   "timings": {
+    "Fajr": "02:22 (CEST)",
+    "Sunrise": "04:46 (CEST)",
+    "Dhuhr": "12:46 (CEST)",
+    "Asr": "16:56 (CEST)",
+    "Sunset": "20:37 (CEST)",
+    "Maghrib": "20:37 (CEST)",
+    "Isha": "22:52 (CEST)",
+    "Imsak": "02:12 (CEST)",
+    "Midnight": "00:41 (CEST)",
+    "Firstthird": "23:17 (CEST)",
+    "Lastthird": "02:05 (CEST)"
+   },
+   "hijri": "20-11-1445"
+  },
+  {
+   "date": "2024-05-29",
+   "timings": {
+    "Fajr": "02:22 (CEST)",
+    "Sunrise": "04:45 (CEST)",
+    "Dhuhr": "12:46 (CEST)",
+    "Asr": "16:56 (CEST)",
+    "Sunset": "20:38 (CEST)",
+    "Maghrib": "20:38 (CEST)",
+    "Isha": "22:53 (CEST)",
+    "Imsak": "02:12 (CEST)",
+    "Midnight": "00:41 (CEST)",
+    "Firstthird": "23:18 (CEST)",
+    "Lastthird": "02:05 (CEST)"
+   },
+   "hijri": "21-11-1445"
+  },
+  {
+   "date": "2024-05-30",
+   "timings": {
+    "Fajr": "02:22 (CEST)",
+    "Sunrise": "04:45 (CEST)",
+    "Dhuhr": "12:46 (CEST)",
+    "Asr": "16:57 (CEST)",
+    "Sunset": "20:39 (CEST)",
+    "Maghrib": "20:39 (CEST)",
+    "Isha": "22:53 (CEST)",
+    "Imsak": "02:12 (CEST)",
+    "Midnight": "00:42 (CEST)",
+    "Firstthird": "23:18 (CEST)",
+    "Lastthird": "02:05 (CEST)"
+   },
+   "hijri": "22-11-1445"
+  },
+  {
+   "date": "2024-05-31",
+   "timings": {
+    "Fajr": "02:21 (CEST)",
+    "Sunrise": "04:44 (CEST)",
+    "Dhuhr": "12:47 (CEST)",
+    "Asr": "16:57 (CEST)",
+    "Sunset": "20:39 (CEST)",
+    "Maghrib": "20:39 (CEST)",
+    "Isha": "22:54 (CEST)",
+    "Imsak": "02:11 (CEST)",
+    "Midnight": "00:42 (CEST)",
+    "Firstthird": "23:19 (CEST)",
+    "Lastthird": "02:05 (CEST)"
+   },
+   "hijri": "23-11-1445"
+  }
+ ]
+}

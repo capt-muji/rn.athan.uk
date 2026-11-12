@@ -1,0 +1,344 @@
+{
+ "Bissau (GW)": {
+  "ttCity": "Bissau",
+  "ttId": 6144,
+  "heldLat": 11.8611568,
+  "heldTz": "Africa/Bissau",
+  "days": 365,
+  "stat": {
+   "fajr": {
+    "n": 365,
+    "median": -7,
+    "min": -21,
+    "max": 15,
+    "exact": 4,
+    "within1": 15
+   },
+   "sunrise": {
+    "n": 365,
+    "median": 4,
+    "min": 4,
+    "max": 5,
+    "exact": 0,
+    "within1": 0
+   },
+   "dhuhr": {
+    "n": 365,
+    "median": 30,
+    "min": 16,
+    "max": 47,
+    "exact": 0,
+    "within1": 0
+   },
+   "asr": {
+    "n": 365,
+    "median": 4,
+    "min": -14,
+    "max": 17,
+    "exact": 8,
+    "within1": 23
+   },
+   "maghrib": {
+    "n": 365,
+    "median": -8,
+    "min": -9,
+    "max": 5,
+    "exact": 4,
+    "within1": 15
+   },
+   "isha": {
+    "n": 365,
+    "median": -33,
+    "min": -39,
+    "max": -16,
+    "exact": 0,
+    "within1": 0
+   }
+  }
+ },
+ "Boke (GN)": {
+  "ttCity": "Boke",
+  "ttId": 6130,
+  "heldLat": 11.908989,
+  "heldTz": "Africa/Conakry",
+  "days": 365,
+  "stat": {
+   "fajr": {
+    "n": 365,
+    "median": 2,
+    "min": 1,
+    "max": 5,
+    "exact": 0,
+    "within1": 101
+   },
+   "sunrise": {
+    "n": 365,
+    "median": -5,
+    "min": -8,
+    "max": -3,
+    "exact": 0,
+    "within1": 0
+   },
+   "dhuhr": {
+    "n": 365,
+    "median": -17,
+    "min": -17,
+    "max": -16,
+    "exact": 0,
+    "within1": 0
+   },
+   "asr": {
+    "n": 365,
+    "median": -17,
+    "min": -19,
+    "max": -14,
+    "exact": 0,
+    "within1": 0
+   },
+   "maghrib": {
+    "n": 365,
+    "median": -15,
+    "min": -17,
+    "max": -13,
+    "exact": 0,
+    "within1": 0
+   },
+   "isha": {
+    "n": 365,
+    "median": -25,
+    "min": -27,
+    "max": -23,
+    "exact": 0,
+    "within1": 0
+   }
+  }
+ },
+ "Harare Msasa (ZW)": {
+  "ttCity": "Msasa Park",
+  "ttId": 123122,
+  "heldLat": -17.847019721835,
+  "heldTz": "Africa/Harare",
+  "days": 365,
+  "stat": {
+   "fajr": {
+    "n": 365,
+    "median": 13,
+    "min": 12,
+    "max": 15,
+    "exact": 0,
+    "within1": 0
+   },
+   "sunrise": {
+    "n": 365,
+    "median": 5,
+    "min": 4,
+    "max": 5,
+    "exact": 0,
+    "within1": 0
+   },
+   "dhuhr": {
+    "n": 365,
+    "median": -7,
+    "min": -8,
+    "max": -7,
+    "exact": 0,
+    "within1": 0
+   },
+   "asr": {
+    "n": 365,
+    "median": -7,
+    "min": -9,
+    "max": -6,
+    "exact": 0,
+    "within1": 0
+   },
+   "maghrib": {
+    "n": 365,
+    "median": -6,
+    "min": -6,
+    "max": -5,
+    "exact": 0,
+    "within1": 0
+   },
+   "isha": {
+    "n": 365,
+    "median": -16,
+    "min": -18,
+    "max": -15,
+    "exact": 0,
+    "within1": 0
+   }
+  }
+ },
+ "Harare Havaalani (ZW)": {
+  "ttCity": "Harare Havaalanı",
+  "ttId": 123113,
+  "heldLat": -17.847019721835,
+  "heldTz": "Africa/Harare",
+  "days": 365,
+  "stat": {
+   "fajr": {
+    "n": 365,
+    "median": 13,
+    "min": 12,
+    "max": 15,
+    "exact": 0,
+    "within1": 0
+   },
+   "sunrise": {
+    "n": 365,
+    "median": 5,
+    "min": 4,
+    "max": 5,
+    "exact": 0,
+    "within1": 0
+   },
+   "dhuhr": {
+    "n": 365,
+    "median": -7,
+    "min": -8,
+    "max": -7,
+    "exact": 0,
+    "within1": 0
+   },
+   "asr": {
+    "n": 365,
+    "median": -7,
+    "min": -9,
+    "max": -6,
+    "exact": 0,
+    "within1": 0
+   },
+   "maghrib": {
+    "n": 365,
+    "median": -6,
+    "min": -6,
+    "max": -5,
+    "exact": 0,
+    "within1": 0
+   },
+   "isha": {
+    "n": 365,
+    "median": -16,
+    "min": -18,
+    "max": -15,
+    "exact": 0,
+    "within1": 0
+   }
+  }
+ },
+ "Bamako (ML)": {
+  "ttCity": "Bamako",
+  "ttId": 8994,
+  "heldLat": 12.60915,
+  "heldTz": null,
+  "days": 61,
+  "stat": {
+   "fajr": {
+    "n": 61,
+    "median": 0,
+    "min": -1,
+    "max": 0,
+    "exact": 56,
+    "within1": 61
+   },
+   "sunrise": {
+    "n": 61,
+    "median": 5,
+    "min": 4,
+    "max": 5,
+    "exact": 0,
+    "within1": 0
+   },
+   "dhuhr": {
+    "n": 61,
+    "median": -7,
+    "min": -7,
+    "max": -6,
+    "exact": 0,
+    "within1": 0
+   },
+   "asr": {
+    "n": 61,
+    "median": -7,
+    "min": -7,
+    "max": -6,
+    "exact": 0,
+    "within1": 0
+   },
+   "maghrib": {
+    "n": 61,
+    "median": -5,
+    "min": -6,
+    "max": -4,
+    "exact": 0,
+    "within1": 0
+   },
+   "isha": {
+    "n": 61,
+    "median": -7,
+    "min": -7,
+    "max": -6,
+    "exact": 0,
+    "within1": 0
+   }
+  }
+ },
+ "Kampala (UG)": {
+  "ttCity": "Kampala",
+  "ttId": 20532,
+  "heldLat": -0.32,
+  "heldTz": "Africa/Kampala",
+  "days": 365,
+  "stat": {
+   "fajr": {
+    "n": 365,
+    "median": 0,
+    "min": -1,
+    "max": 0,
+    "exact": 197,
+    "within1": 365
+   },
+   "sunrise": {
+    "n": 365,
+    "median": 4,
+    "min": 4,
+    "max": 5,
+    "exact": 0,
+    "within1": 0
+   },
+   "dhuhr": {
+    "n": 365,
+    "median": -2,
+    "min": -3,
+    "max": -1,
+    "exact": 0,
+    "within1": 35
+   },
+   "asr": {
+    "n": 365,
+    "median": -7,
+    "min": -8,
+    "max": -6,
+    "exact": 0,
+    "within1": 0
+   },
+   "maghrib": {
+    "n": 365,
+    "median": -2,
+    "min": -3,
+    "max": -2,
+    "exact": 0,
+    "within1": 0
+   },
+   "isha": {
+    "n": 365,
+    "median": -3,
+    "min": -3,
+    "max": -2,
+    "exact": 0,
+    "within1": 0
+   }
+  }
+ }
+}

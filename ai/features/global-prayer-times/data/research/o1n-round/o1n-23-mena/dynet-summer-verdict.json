@@ -1,0 +1,20 @@
+{
+ "flag": "F-DIYANET-SUMMER",
+ "resolution": "The 'unknown isha family' was a column mislabel: the o1n-5 sweep computed isha-interval as tree_row[6]-tree_row[5] = AKSAM-İKİNDİ (asr-to-maghrib span), so its 131->235 min Berlin-band series was never an isha column and no twilight family could fit it. The flag's own isha fingerprint (Lodz 22:27 mid-June) sits in the Diyanet's own live product namazvakitleri.diyanet.gov.tr, city 15843, YATSI column: prints 22:25 on 15 June 2026 and 22:27 on 19-23 June 2026.",
+ "true_yatsi_rule": "15.0 deg depression in the main season (implied angle 14.6-15.3 outside late April-early September; 185/365 days at 15.0+/-0.1 Lodz, 200/365 Berlin), with a summer high-latitude clamp from ~24 April to ~3-11 September that pulls yatsi earlier (implied angle floor 8.4 deg Lodz, interval floor 75-77 min at solstice; plateau in absolute clock time per city).",
+ "falsified_claims": [
+  "per-latitude-band shared twilight columns: the true yatsi column is per-city (Berlin 22:57 vs Lodz 22:27 at the 2026 solstice); the band sharing observed by o1n-5 was an artifact of the aksam-ikindi pair",
+  "imsak=18deg at the band latitude held, but only for the winter half; the summer imsak clamps similarly (Lodz plateau 02:51, 12-22 June)"
+ ],
+ "artifacts": [
+  "data/dynet-berlin-2026-year.json",
+  "data/dynet-lodz-2026-year.json",
+  "scripts/dynet_yatsi_fit.cjs",
+  "scripts/dynet_yatsi_angle.cjs"
+ ],
+ "sources": [
+  "https://namazvakitleri.diyanet.gov.tr/tr-TR/11002/berlin-namaz-vakitleri",
+  "https://namazvakitleri.diyanet.gov.tr/tr-TR/15843/lodz-namaz-vakitleri"
+ ],
+ "captured": "2026-11-11"
+}
