@@ -1,0 +1,15 @@
+{
+ "locations": 359,
+ "verdicts": {
+  "STABLE": 0,
+  "MOVED": 299,
+  "POLAR": 60
+ },
+ "angle_stable": 232,
+ "angle_stable_moved_only_in_summer_gap": 172,
+ "angle_and_margin_stable": 227,
+ "asr_class_changed_years": 65,
+ "fajr_angle_median": 16.05,
+ "isha_angle_median": 14.96,
+ "fajr_angle_day_within1_median": 99.6
+}

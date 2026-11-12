@@ -6,7 +6,7 @@ any body, nothing outside this workspace written, the repository untouched. Engi
 `$HOME/athan-gitree/census/adhan-build/node_modules/adhan`, `Rounding.None`; dates from literal
 capture strings, no clock read into data; UTC timestamps; every image and PDF read by the local
 macOS Vision binary (`$HOME/athan-gitree/census/tools/ocr`), never a model-vision pass. Inputs were
-read-only: the banked o1m workspaces under `~/athan-gitree/census/o1m/` and the citable layer at
+read-only: the banked o1m workspaces under `$HOME/athan-gitree/census/o1m/` and the citable layer at
 `ai/features/global-prayer-times/data/research/o1m-round/`.
 
 ## Counts

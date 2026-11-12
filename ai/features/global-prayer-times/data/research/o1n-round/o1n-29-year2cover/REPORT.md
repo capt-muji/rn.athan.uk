@@ -223,4 +223,4 @@ Afghanistan year-2 move.
 - Inherited workspace state was read before writing (o1m-5, o1m-16, o1m-19, o1m-22,
   o1m-4-africa, o1n-3, o1n-17, o1n-4, CONSOLIDATION.md); nothing redone that existed;
   nothing deleted.
-- The repository at ~/repos/rn.athan.uk was never touched.
+- The repository at $HOME/repos/rn.athan.uk was never touched.

@@ -6,7 +6,7 @@ Workspace: `$HOME/athan-gitree/census/o1n/o1n-1-wtdiff/`. Inputs, all read-only:
 data/row-counts.py, the scripts copied here and worked on as copies), the register
 `research/o1m-round/CORRECTIONS-ROUND3.md`, and the record `census/world-table-v3.json`
 plus `census/policy-layer.v2.5.json`. No fetches, so no captures and nothing to gzip.
-Nothing under `/tmp`. The repository at `~/repos/rn.athan.uk` was only read, never written.
+Nothing under `/tmp`. The repository at `$HOME/repos/rn.athan.uk` was only read, never written.
 
 ## 1. The base, verified
 

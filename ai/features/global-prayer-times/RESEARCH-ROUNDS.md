@@ -26,6 +26,17 @@ from banked records and nothing ever re-searches a field a record already carrie
 sweep's coordinates, the own-site hunts' websites and the fits' recipes are the record's
 three halves; the cross-reference worklist joins them.
 
+Owner order 2026-11-12 (session five, THE DATABASE PIVOT): the programme's target
+architecture becomes ONE central database of every mosque in the world - every mosque
+with its own timetable or its adopted authority's, every authority a first-class entity,
+every timetable row carrying its provenance (source, capture, recipe), scaled to hundreds
+of millions of rows and concurrent multi-agent access. Wave dispatches suspend while the
+schema and infrastructure are designed and stood up (Postgres-class database plus an
+S3-compatible artifact store are the working candidates; the owner decides the host).
+Everything banked to date carries over as ingestion sources; the census files, reports,
+fits and registers are the seed corpus. Versioning is a requirement: every change
+revertable, every batch auditable.
+
 Owner order 2026-11-11: every instruction in this file is standing. A fresh session started with
 `/athan-next` runs the next round from this file alone; the owner repeats nothing. Each round
 copies this file into its operation workspace as `BRIEF.md` (with `FIT-RULES.md` carried from the

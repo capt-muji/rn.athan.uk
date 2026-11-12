@@ -3,7 +3,7 @@
 Wave o1n-18, round o1n, 2026-11-11. Mission: finish the Fazilet family (faziletcalendar.com,
 publisher Fazilet Nesriyat) — the tier-A anchor walk, the family's grade over the whole
 6,506-city list, and the family's index placement. Workspace `captures/`, `data/`, `scripts/`;
-the inherited bank lives in `~/athan-gitree/census/o1n/o1n-13-fazilet/` (the walk's own
+the inherited bank lives in `$HOME/athan-gitree/census/o1n/o1n-13-fazilet/` (the walk's own
 workspace). Engine: adhan 4.4.6 at `census/adhan-build/node_modules/adhan`, UTC timestamps
 throughout. No subagents deployed. Nothing written to the repository.
 
