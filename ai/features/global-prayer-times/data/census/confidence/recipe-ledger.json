@@ -247,13 +247,13 @@
      "grade": "provisional",
      "tier": "platform",
      "span": {
-      "from": "2026-11-01",
-      "to": "2026-11-30",
-      "years": 1,
-      "days": 30,
-      "note": null
+      "from": "2026-01-01",
+      "to": "2027-12-31",
+      "years": 2,
+      "days": 395,
+      "note": "the held 30 rows of 2026 plus the full 365-day 2027 window harvested by O1n-33r on the held 18/18 recipe; 100 pc within-1 both calendar years"
      },
-     "span_verdict": "untestable-single-year",
+     "span_verdict": "yes",
      "publisher": "tawkit.net (PrayTimes 2.3 at GeoNames points)"
     }
    ],
@@ -262,7 +262,7 @@
    "tables_banked": 1321,
    "dated_rows": 482165,
    "years_held": 1,
-   "span_verdict": "single published cycle (the tree's 2026)",
+   "span_verdict": "{'from': '2026-01-01', 'to': '2027-12-31', 'years': 2, 'days': 395, 'note': 'the held 30 rows of 2026 plus the full 365-day 2027 window harvested by O1n-33r on the held 18/18 recipe; 100 pc within-1 both calendar years'}",
    "grade": "candidate",
    "tier": "authority",
    "recipe_exact": "ministry permanent table IMAGE-ONLY: serves Council of Ahl al-Sunnah imams of Kabul (valid 12km, HANAFI asr ~46 min past Shafi); SEPARATE Ramadan table footnoted to the Shia council (Ja'fari fit) - TWO AUTHORITY FITS FOR DIFFERENT CONGREGATIONS, never witnesses",
@@ -784,6 +784,16 @@
       "ourSelfDrift25y": 0.06581531443589483
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 16,
+    "tied_at_print_quantum": 24,
+    "nearest_method_counts_distinguishable": {
+     "Qatar": 14,
+     "Dubai": 2
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "albania": {
@@ -1316,6 +1326,13 @@
       "ourSelfDrift25y": 0.06217939193447819
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 0,
+    "tied_at_print_quantum": 40,
+    "nearest_method_counts_distinguishable": {},
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "argentina": {
@@ -1863,6 +1880,16 @@
       "ourSelfDrift25y": 0.11778634069560212
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 23,
+    "tied_at_print_quantum": 17,
+    "nearest_method_counts_distinguishable": {
+     "Qatar": 20,
+     "Dubai": 3
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "armenia": {
@@ -2395,6 +2422,13 @@
       "ourSelfDrift25y": 0.06385808817731231
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 0,
+    "tied_at_print_quantum": 40,
+    "nearest_method_counts_distinguishable": {},
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "aruba": {
@@ -2942,6 +2976,15 @@
       "ourSelfDrift25y": 0.08669937414560991
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 26,
+    "distinguishable": 26,
+    "tied_at_print_quantum": 0,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 26
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "australia": {
@@ -3503,11 +3546,36 @@
       "ourSelfDrift25y": 0.10713738294725772
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 35,
+    "tied_at_print_quantum": 5,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 7,
+     "Qatar": 28
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "austria": {
    "country": "austria",
-   "index_surfaces": [],
+   "index_surfaces": [
+    {
+     "id": "AT-IZW-VIENNA-2026",
+     "grade": "provisional",
+     "tier": "authority",
+     "span": {
+      "from": "2025-01-01",
+      "to": "2026-12-31",
+      "years": 2,
+      "days": 730,
+      "note": "2026 banked 365 rows; the 2025 folder harvested whole"
+     },
+     "span_verdict": "no",
+     "publisher": "Islamische Zentrum Wien"
+    }
+   ],
    "coverage_pct": 100.0,
    "settlements": 152,
    "tables_banked": 152,
@@ -4035,6 +4103,15 @@
       "ourSelfDrift25y": 0.055310356062818755
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 2,
+    "tied_at_print_quantum": 38,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 2
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "azerbaijan": {
@@ -4610,6 +4687,13 @@
       "ourSelfDrift25y": 0.06418482164326633
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 0,
+    "tied_at_print_quantum": 40,
+    "nearest_method_counts_distinguishable": {},
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "bahamas": {
@@ -5157,6 +5241,15 @@
       "ourSelfDrift25y": 0.07719935278055345
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 27,
+    "distinguishable": 27,
+    "tied_at_print_quantum": 0,
+    "nearest_method_counts_distinguishable": {
+     "Qatar": 27
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "bahrain": {
@@ -5718,11 +5811,35 @@
       "ourSelfDrift25y": 0.07623961132730983
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 8,
+    "distinguishable": 8,
+    "tied_at_print_quantum": 0,
+    "nearest_method_counts_distinguishable": {
+     "Qatar": 8
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "bangladesh": {
    "country": "bangladesh",
-   "index_surfaces": [],
+   "index_surfaces": [
+    {
+     "id": "BD-ISLAMICFOUNDATION-64",
+     "grade": "candidate",
+     "tier": "authority",
+     "span": {
+      "from": "2026-02-20",
+      "to": "2026-03-21",
+      "years": 1,
+      "days": 1920,
+      "note": "1,920 dated rows over 64 districts; the frame fixed by value, Ramadan 1 = 2026-02-20"
+     },
+     "span_verdict": "untestable-short-sample",
+     "publisher": "Islamic Foundation Bangladesh"
+    }
+   ],
    "coverage_pct": 100.0,
    "settlements": 187,
    "tables_banked": 187,
@@ -6250,6 +6367,15 @@
       "ourSelfDrift25y": 0.07858891256319112
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 40,
+    "tied_at_print_quantum": 0,
+    "nearest_method_counts_distinguishable": {
+     "Qatar": 40
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "belarus": {
@@ -6768,6 +6894,15 @@
       "ourSelfDrift25y": 0.04832640961149082
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 8,
+    "tied_at_print_quantum": 32,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 8
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "belgium": {
@@ -7286,6 +7421,15 @@
       "ourSelfDrift25y": 0.05056197085150416
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 2,
+    "tied_at_print_quantum": 38,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 2
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "bolivia": {
@@ -7847,6 +7991,16 @@
       "ourSelfDrift25y": 0.10470176769740647
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 35,
+    "tied_at_print_quantum": 5,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 20,
+     "Qatar": 15
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "bosnia-and-herzegovina": {
@@ -8379,6 +8533,13 @@
       "ourSelfDrift25y": 0.059565916844348976
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 0,
+    "tied_at_print_quantum": 40,
+    "nearest_method_counts_distinguishable": {},
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "botswana": {
@@ -8911,6 +9072,15 @@
       "ourSelfDrift25y": 0.10890155804463575
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 38,
+    "tied_at_print_quantum": 2,
+    "nearest_method_counts_distinguishable": {
+     "Qatar": 38
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "brazil": {
@@ -9443,6 +9613,16 @@
       "ourSelfDrift25y": 0.11794532186377182
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 35,
+    "tied_at_print_quantum": 5,
+    "nearest_method_counts_distinguishable": {
+     "Qatar": 17,
+     "Dubai": 18
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "brunei": {
@@ -9975,6 +10155,15 @@
       "ourSelfDrift25y": 0.09198217241510065
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 28,
+    "tied_at_print_quantum": 12,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 28
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "bulgaria": {
@@ -10507,6 +10696,13 @@
       "ourSelfDrift25y": 0.06140316622440878
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 0,
+    "tied_at_print_quantum": 40,
+    "nearest_method_counts_distinguishable": {},
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "cambodia": {
@@ -11054,6 +11250,15 @@
       "ourSelfDrift25y": 0.08674979226179858
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 13,
+    "distinguishable": 13,
+    "tied_at_print_quantum": 0,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 13
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "canada": {
@@ -11587,6 +11792,15 @@
       "ourSelfDrift25y": 0.05397339779347021
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 9,
+    "tied_at_print_quantum": 31,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 9
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "chile": {
@@ -12134,6 +12348,17 @@
       "ourSelfDrift25y": 0.11097957640276945
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 29,
+    "tied_at_print_quantum": 11,
+    "nearest_method_counts_distinguishable": {
+     "Qatar": 24,
+     "NorthAmerica": 4,
+     "Dubai": 1
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "china": {
@@ -12681,6 +12906,16 @@
       "ourSelfDrift25y": 0.05248372922733324
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 24,
+    "tied_at_print_quantum": 16,
+    "nearest_method_counts_distinguishable": {
+     "Qatar": 23,
+     "Dubai": 1
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "colombia": {
@@ -13213,6 +13448,15 @@
       "ourSelfDrift25y": 0.09268816175244865
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 28,
+    "tied_at_print_quantum": 12,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 28
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "croatia": {
@@ -13745,6 +13989,13 @@
       "ourSelfDrift25y": 0.057623285142199165
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 0,
+    "tied_at_print_quantum": 40,
+    "nearest_method_counts_distinguishable": {},
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "cyprus": {
@@ -14292,6 +14543,15 @@
       "ourSelfDrift25y": 0.06845417506747253
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 32,
+    "distinguishable": 2,
+    "tied_at_print_quantum": 30,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 2
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "czechia": {
@@ -14825,6 +15085,15 @@
       "ourSelfDrift25y": 0.05201537579159776
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 8,
+    "tied_at_print_quantum": 32,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 8
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "denmark": {
@@ -15343,6 +15612,15 @@
       "ourSelfDrift25y": 0.04395463420314627
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 11,
+    "tied_at_print_quantum": 29,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 11
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "estonia": {
@@ -15861,6 +16139,13 @@
       "ourSelfDrift25y": 0.035942427635745844
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 35,
+    "distinguishable": 0,
+    "tied_at_print_quantum": 35,
+    "nearest_method_counts_distinguishable": {},
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "fiji": {
@@ -15893,6 +16178,20 @@
      },
      "span_verdict": "yes",
      "publisher": "Masjid al-Haqq, 33 Milverton Rd"
+    },
+    {
+     "id": "FJ-FML-2024-MONTHLY",
+     "grade": "provisional",
+     "tier": "authority",
+     "span": {
+      "from": "2024-01-01",
+      "to": "2024-10-31",
+      "years": 1,
+      "days": 152,
+      "note": "31 dated rows (January 2024, 7 columns) fitted by O1n-37; the four thin-glyph months parsed by O1n-41 add 121 dated rows (2024-02 29, 2024-03 31, 2024-04 30, 2024-10 31) with cells and per-cell quality reports banked; fit scope is January"
+     },
+     "span_verdict": "frozen-reprint",
+     "publisher": "Fiji Muslim League (fml.com.fj)"
     }
    ],
    "coverage_pct": 91.1,
@@ -16422,6 +16721,16 @@
       "ourSelfDrift25y": 0.10759174650092973
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 29,
+    "tied_at_print_quantum": 11,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 18,
+     "Qatar": 11
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "finland": {
@@ -16940,6 +17249,15 @@
       "ourSelfDrift25y": 0.03334648476811708
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 1,
+    "tied_at_print_quantum": 39,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 1
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "france": {
@@ -17529,6 +17847,571 @@
       "ourSelfDrift25y": 0.057083692518972384
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 4,
+    "tied_at_print_quantum": 36,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 4
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
+   }
+  },
+  "french-guiana": {
+   "country": "french-guiana",
+   "index_surfaces": [
+    {
+     "id": "GF-A2CMGF-CAYENNE-5Y",
+     "grade": "A",
+     "tier": "community",
+     "span": {
+      "from": "2024-01-01",
+      "to": "2030-12-31",
+      "years": 5,
+      "days": 1439,
+      "note": "1,439 dated rows; recompute proven by value diffs (jan24 vs jan25: 24/31 rows move; jul25 vs jul30: 14/31)"
+     },
+     "span_verdict": "yes",
+     "publisher": "Association2CMGF (the association's own surface)"
+    }
+   ],
+   "coverage_pct": 100.0,
+   "settlements": 22,
+   "tables_banked": 22,
+   "dated_rows": 8030,
+   "years_held": 1,
+   "span_verdict": "{'from': '2024-01-01', 'to': '2030-12-31', 'years': 5, 'days': 1439, 'note': '1,439 dated rows; recompute proven by value diffs (jan24 vs jan25: 24/31 rows move; jul25 vs jul30: 14/31)'}",
+   "grade": "A",
+   "tier": "community",
+   "recipe_exact": "printed ladder on adhan 4.4.6 at solved points: fajr +4.5, sunrise -5, dhuhr +7, asr +7, maghrib +6, isha +2",
+   "surface": "a2cmgf.fr's ville/mois/annee axis: 3 cities x 2025+2026+2027 plus 2024/2030 probes; five distinct fitted years at Cayenne",
+   "evidence": null,
+   "method_scores": {
+    "MuslimWorldLeague": {
+     "n": 480,
+     "medianAbs": 6.94582074249729,
+     "twilightMed": 7.101127516021734,
+     "twilightN": 96,
+     "exactPct": 0,
+     "within1Pct": 0,
+     "colMed": {
+      "sunrise": {
+       "median": 4.674526116019933,
+       "bias": -4.607884399383193
+      },
+      "dhuhr": {
+       "median": 6.897407031467992,
+       "bias": 6.898039022162209
+      },
+      "asr": {
+       "median": 6.855429325483328,
+       "bias": 6.889987121451043
+      },
+      "maghrib": {
+       "median": 9.031431459312444,
+       "bias": 9.00252288139499
+      },
+      "isha": {
+       "median": 7.101127516021734,
+       "bias": 7.07766324956097
+      }
+     }
+    },
+    "Egyptian": {
+     "n": 480,
+     "medianAbs": 6.611489904402333,
+     "twilightMed": 4.990672326900494,
+     "twilightN": 96,
+     "exactPct": 0,
+     "within1Pct": 0,
+     "colMed": {
+      "sunrise": {
+       "median": 4.674526116019933,
+       "bias": -4.607884399383193
+      },
+      "dhuhr": {
+       "median": 6.897407031467992,
+       "bias": 6.898039022162209
+      },
+      "asr": {
+       "median": 6.855429325483328,
+       "bias": 6.889987121451043
+      },
+      "maghrib": {
+       "median": 9.031431459312444,
+       "bias": 9.00252288139499
+      },
+      "isha": {
+       "median": 4.990672326900494,
+       "bias": 4.984710768678885
+      }
+     }
+    },
+    "Karachi": {
+     "n": 480,
+     "medianAbs": 6.611489904402333,
+     "twilightMed": 2.9672324027987997,
+     "twilightN": 96,
+     "exactPct": 0,
+     "within1Pct": 0,
+     "colMed": {
+      "sunrise": {
+       "median": 4.674526116019933,
+       "bias": -4.607884399383193
+      },
+      "dhuhr": {
+       "median": 6.897407031467992,
+       "bias": 6.898039022162209
+      },
+      "asr": {
+       "median": 6.855429325483328,
+       "bias": 6.889987121451043
+      },
+      "maghrib": {
+       "median": 9.031431459312444,
+       "bias": 9.00252288139499
+      },
+      "isha": {
+       "median": 2.9672324027987997,
+       "bias": 2.8910827718388674
+      }
+     }
+    },
+    "UmmAlQura": {
+     "n": 480,
+     "medianAbs": 7.1582203118850884,
+     "twilightMed": 12.727980061396465,
+     "twilightN": 96,
+     "exactPct": 0,
+     "within1Pct": 0,
+     "colMed": {
+      "sunrise": {
+       "median": 4.674526116019933,
+       "bias": -4.607884399383193
+      },
+      "dhuhr": {
+       "median": 6.897407031467992,
+       "bias": 6.898039022162209
+      },
+      "asr": {
+       "median": 6.855429325483328,
+       "bias": 6.889987121451043
+      },
+      "maghrib": {
+       "median": 9.031431459312444,
+       "bias": 9.00252288139499
+      },
+      "isha": {
+       "median": 12.727980061396465,
+       "bias": -12.02872711860501
+      }
+     }
+    },
+    "Dubai": {
+     "n": 480,
+     "medianAbs": 6.611489904402333,
+     "twilightMed": 2.1069759081715347,
+     "twilightN": 96,
+     "exactPct": 0,
+     "within1Pct": 0.4166666666666667,
+     "colMed": {
+      "sunrise": {
+       "median": 4.674526116019933,
+       "bias": -4.607884399383193
+      },
+      "dhuhr": {
+       "median": 6.897407031467992,
+       "bias": 6.898039022162209
+      },
+      "asr": {
+       "median": 6.855429325483328,
+       "bias": 6.889987121451043
+      },
+      "maghrib": {
+       "median": 9.031431459312444,
+       "bias": 9.00252288139499
+      },
+      "isha": {
+       "median": 2.1069759081715347,
+       "bias": 2.0534373304454
+      }
+     }
+    },
+    "MoonsightingCommittee": {
+     "n": 480,
+     "medianAbs": 6.611489904402333,
+     "twilightMed": 2.9672324027987997,
+     "twilightN": 96,
+     "exactPct": 0,
+     "within1Pct": 0,
+     "colMed": {
+      "sunrise": {
+       "median": 4.674526116019933,
+       "bias": -4.607884399383193
+      },
+      "dhuhr": {
+       "median": 6.897407031467992,
+       "bias": 6.898039022162209
+      },
+      "asr": {
+       "median": 6.855429325483328,
+       "bias": 6.889987121451043
+      },
+      "maghrib": {
+       "median": 9.031431459312444,
+       "bias": 9.00252288139499
+      },
+      "isha": {
+       "median": 2.9672324027987997,
+       "bias": 2.8910827718388674
+      }
+     }
+    },
+    "NorthAmerica": {
+     "n": 480,
+     "medianAbs": 7.1582203118850884,
+     "twilightMed": 15.310677405264869,
+     "twilightN": 96,
+     "exactPct": 0,
+     "within1Pct": 0,
+     "colMed": {
+      "sunrise": {
+       "median": 4.674526116019933,
+       "bias": -4.607884399383193
+      },
+      "dhuhr": {
+       "median": 6.897407031467992,
+       "bias": 6.898039022162209
+      },
+      "asr": {
+       "median": 6.855429325483328,
+       "bias": 6.889987121451043
+      },
+      "maghrib": {
+       "median": 9.031431459312444,
+       "bias": 9.00252288139499
+      },
+      "isha": {
+       "median": 15.310677405264869,
+       "bias": 15.443155883056997
+      }
+     }
+    },
+    "Kuwait": {
+     "n": 480,
+     "medianAbs": 6.611489904402333,
+     "twilightMed": 4.990672326900494,
+     "twilightN": 96,
+     "exactPct": 0,
+     "within1Pct": 0,
+     "colMed": {
+      "sunrise": {
+       "median": 4.674526116019933,
+       "bias": -4.607884399383193
+      },
+      "dhuhr": {
+       "median": 6.897407031467992,
+       "bias": 6.898039022162209
+      },
+      "asr": {
+       "median": 6.855429325483328,
+       "bias": 6.889987121451043
+      },
+      "maghrib": {
+       "median": 9.031431459312444,
+       "bias": 9.00252288139499
+      },
+      "isha": {
+       "median": 4.990672326900494,
+       "bias": 4.984710768678885
+      }
+     }
+    },
+    "Qatar": {
+     "n": 480,
+     "medianAbs": 7.1582203118850884,
+     "twilightMed": 12.727980061396465,
+     "twilightN": 96,
+     "exactPct": 0,
+     "within1Pct": 0,
+     "colMed": {
+      "sunrise": {
+       "median": 4.674526116019933,
+       "bias": -4.607884399383193
+      },
+      "dhuhr": {
+       "median": 6.897407031467992,
+       "bias": 6.898039022162209
+      },
+      "asr": {
+       "median": 6.855429325483328,
+       "bias": 6.889987121451043
+      },
+      "maghrib": {
+       "median": 9.031431459312444,
+       "bias": 9.00252288139499
+      },
+      "isha": {
+       "median": 12.727980061396465,
+       "bias": -12.02872711860501
+      }
+     }
+    },
+    "Singapore": {
+     "n": 480,
+     "medianAbs": 6.611489904402333,
+     "twilightMed": 2.9672324027987997,
+     "twilightN": 96,
+     "exactPct": 0,
+     "within1Pct": 0,
+     "colMed": {
+      "sunrise": {
+       "median": 4.674526116019933,
+       "bias": -4.607884399383193
+      },
+      "dhuhr": {
+       "median": 6.897407031467992,
+       "bias": 6.898039022162209
+      },
+      "asr": {
+       "median": 6.855429325483328,
+       "bias": 6.889987121451043
+      },
+      "maghrib": {
+       "median": 9.031431459312444,
+       "bias": 9.00252288139499
+      },
+      "isha": {
+       "median": 2.9672324027987997,
+       "bias": 2.8910827718388674
+      }
+     }
+    },
+    "Tehran": {
+     "n": 480,
+     "medianAbs": 7.1582203118850884,
+     "twilightMed": 19.446914218832717,
+     "twilightN": 96,
+     "exactPct": 0,
+     "within1Pct": 0,
+     "colMed": {
+      "sunrise": {
+       "median": 4.674526116019933,
+       "bias": -4.607884399383193
+      },
+      "dhuhr": {
+       "median": 6.897407031467992,
+       "bias": 6.898039022162209
+      },
+      "asr": {
+       "median": 6.855429325483328,
+       "bias": 6.889987121451043
+      },
+      "maghrib": {
+       "median": 9.590189794912476,
+       "bias": -9.729315993682627
+      },
+      "isha": {
+       "median": 19.446914218832717,
+       "bias": 19.622404295696697
+      }
+     }
+    },
+    "Turkey": {
+     "n": 480,
+     "medianAbs": 6.94582074249729,
+     "twilightMed": 7.101127516021734,
+     "twilightN": 96,
+     "exactPct": 0,
+     "within1Pct": 0,
+     "colMed": {
+      "sunrise": {
+       "median": 4.674526116019933,
+       "bias": -4.607884399383193
+      },
+      "dhuhr": {
+       "median": 6.897407031467992,
+       "bias": 6.898039022162209
+      },
+      "asr": {
+       "median": 6.855429325483328,
+       "bias": 6.889987121451043
+      },
+      "maghrib": {
+       "median": 9.031431459312444,
+       "bias": 9.00252288139499
+      },
+      "isha": {
+       "median": 7.101127516021734,
+       "bias": 7.07766324956097
+      }
+     }
+    }
+   },
+   "best_method": "Dubai",
+   "best_method_score": {
+    "n": 480,
+    "medianAbs": 6.611489904402333,
+    "twilightMed": 2.1069759081715347,
+    "twilightN": 96,
+    "exactPct": 0,
+    "within1Pct": 0.4166666666666667,
+    "colMed": {
+     "sunrise": {
+      "median": 4.674526116019933,
+      "bias": -4.607884399383193
+     },
+     "dhuhr": {
+      "median": 6.897407031467992,
+      "bias": 6.898039022162209
+     },
+     "asr": {
+      "median": 6.855429325483328,
+      "bias": 6.889987121451043
+     },
+     "maghrib": {
+      "median": 9.031431459312444,
+      "bias": 9.00252288139499
+     },
+     "isha": {
+      "median": 2.1069759081715347,
+      "bias": 2.0534373304454
+     }
+    }
+   },
+   "our_score": {
+    "n": 480,
+    "medianAbs": 0.28068393610004705,
+    "twilightMed": 0.29690887003675925,
+    "exactPct": 0,
+    "within1Pct": 95.41666666666667,
+    "colMed": {
+     "sunrise": {
+      "median": 0.27931810443311633,
+      "bias": 0.06211560061682301
+     },
+     "dhuhr": {
+      "median": 0.22700637601940343,
+      "bias": 0.008039022162222409
+     },
+     "asr": {
+      "median": 0.41934163113114664,
+      "bias": 0.05808929811615826
+     },
+     "maghrib": {
+      "median": 0.2862478567187736,
+      "bias": -0.05546261207352643
+     },
+     "isha": {
+      "median": 0.29690887003675925,
+      "bias": -0.06736577441403331
+     }
+    }
+   },
+   "rep_point": {
+    "lat": 2.83,
+    "lon": -52.35,
+    "tz": "America/Cayenne",
+    "zoneMad": 0.03
+   },
+   "drift25": {
+    "bestMethod": "Dubai",
+    "solsticeDivergence": {
+     "06-21|fajr": {
+      "divergence2026": 0.5676108051093252,
+      "divergence2051": 0.5683352644216484,
+      "drift": 0.0007244593123232335,
+      "methodSelfDrift25y": 0.05315920640919103,
+      "ourSelfDrift25y": 0.05388366572151426
+     },
+     "06-21|sunrise": {
+      "divergence2026": -4.670000000000016,
+      "divergence2051": -4.670000000000016,
+      "drift": 0,
+      "methodSelfDrift25y": 0.04831822993082824,
+      "ourSelfDrift25y": 0.04831822993082824
+     },
+     "06-21|dhuhr": {
+      "divergence2026": 6.889999999999986,
+      "divergence2051": 6.889999999999986,
+      "drift": 0,
+      "methodSelfDrift25y": 0.04630176656655749,
+      "ourSelfDrift25y": 0.04630176656655749
+     },
+     "06-21|asr": {
+      "divergence2026": 6.831897823334884,
+      "divergence2051": 6.831897823334884,
+      "drift": 0,
+      "methodSelfDrift25y": 0.04086540458865784,
+      "ourSelfDrift25y": 0.04086540458865784
+     },
+     "06-21|maghrib": {
+      "divergence2026": 9.229552316226318,
+      "divergence2051": 9.22934225244694,
+      "drift": -0.00021006377937737852,
+      "methodSelfDrift25y": 0.044532829870149726,
+      "ourSelfDrift25y": 0.04432276609077235
+     },
+     "06-21|isha": {
+      "divergence2026": 2.364352323895446,
+      "divergence2051": 2.3640712644835276,
+      "drift": -0.0002810594119182497,
+      "methodSelfDrift25y": 0.03961114989397174,
+      "ourSelfDrift25y": 0.03933009048205349
+     },
+     "12-21|fajr": {
+      "divergence2026": 0.7451461097703032,
+      "divergence2051": 0.745799872224552,
+      "drift": 0.0006537624542488629,
+      "methodSelfDrift25y": 0.08664140374321505,
+      "ourSelfDrift25y": 0.08598764128896619
+     },
+     "12-21|sunrise": {
+      "divergence2026": -4.670000000000016,
+      "divergence2051": -4.670000000000016,
+      "drift": 0,
+      "methodSelfDrift25y": 0.09133172655060662,
+      "ourSelfDrift25y": 0.09133172655060662
+     },
+     "12-21|dhuhr": {
+      "divergence2026": 6.889999999999986,
+      "divergence2051": 6.889999999999986,
+      "drift": 0,
+      "methodSelfDrift25y": 0.0898500132288973,
+      "ourSelfDrift25y": 0.0898500132288973
+     },
+     "12-21|asr": {
+      "divergence2026": 6.831897823334884,
+      "divergence2051": 6.831897823334884,
+      "drift": 0,
+      "methodSelfDrift25y": 0.09205254487187631,
+      "ourSelfDrift25y": 0.09205254487187631
+     },
+     "12-21|maghrib": {
+      "divergence2026": 9.229060089823406,
+      "divergence2051": 9.22884514964312,
+      "drift": -0.000214940180285339,
+      "methodSelfDrift25y": 0.08820628572721034,
+      "ourSelfDrift25y": 0.08842122590749568
+     },
+     "12-21|isha": {
+      "divergence2026": 2.2974450310264274,
+      "divergence2051": 2.2971890294222703,
+      "drift": -0.0002560016041570634,
+      "methodSelfDrift25y": 0.09297449405403313,
+      "ourSelfDrift25y": 0.0932304956581902
+     }
+    }
+   },
+   "city_method_register": {
+    "settlements_stamped": 22,
+    "distinguishable": 18,
+    "tied_at_print_quantum": 4,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 18
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "french-polynesia": {
@@ -18061,6 +18944,16 @@
       "ourSelfDrift25y": 0.10749563819899777
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 28,
+    "tied_at_print_quantum": 12,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 15,
+     "Qatar": 13
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "georgia": {
@@ -18622,6 +19515,13 @@
       "ourSelfDrift25y": 0.061568009960410564
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 0,
+    "tied_at_print_quantum": 40,
+    "nearest_method_counts_distinguishable": {},
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "greece": {
@@ -19169,6 +20069,13 @@
       "ourSelfDrift25y": 0.06756989593714025
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 0,
+    "tied_at_print_quantum": 40,
+    "nearest_method_counts_distinguishable": {},
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "greenland": {
@@ -19702,6 +20609,13 @@
       "ourSelfDrift25y": 0.03416548430959665
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 1,
+    "distinguishable": 0,
+    "tied_at_print_quantum": 1,
+    "nearest_method_counts_distinguishable": {},
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "guatemala": {
@@ -20234,6 +21148,16 @@
       "ourSelfDrift25y": 0.08526422334125527
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 37,
+    "distinguishable": 36,
+    "tied_at_print_quantum": 1,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 35,
+     "Qatar": 1
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "guyana": {
@@ -20766,6 +21690,15 @@
       "ourSelfDrift25y": 0.08949889264840749
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 8,
+    "distinguishable": 7,
+    "tied_at_print_quantum": 1,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 7
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "honduras": {
@@ -21298,17 +22231,41 @@
       "ourSelfDrift25y": 0.08435193412469744
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 35,
+    "distinguishable": 35,
+    "tied_at_print_quantum": 0,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 35
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "hungary": {
    "country": "hungary",
-   "index_surfaces": [],
+   "index_surfaces": [
+    {
+     "id": "HU-MIC-BUDAPEST-4Y",
+     "grade": "A",
+     "tier": "authority",
+     "span": {
+      "from": "2024-01-01",
+      "to": "2027-12-31",
+      "years": 4,
+      "days": 1034,
+      "note": "1,034 rows spanning 2024+2025+2026+forward 2027, zero incomplete"
+     },
+     "span_verdict": "yes",
+     "publisher": "Magyar Iszlám Közösség"
+    }
+   ],
    "coverage_pct": 100.0,
    "settlements": 226,
    "tables_banked": 226,
    "dated_rows": 82490,
    "years_held": 1,
-   "span_verdict": "single published cycle (the tree's 2026)",
+   "span_verdict": "{'from': '2024-01-01', 'to': '2027-12-31', 'years': 4, 'days': 1034, 'note': '1,034 rows spanning 2024+2025+2026+forward 2027, zero incomplete'}",
    "grade": "candidate",
    "tier": "community",
    "recipe_exact": "18/17.3 (84/90 exact); asr Shafi; maghrib +2-3 deliberate safety",
@@ -21830,6 +22787,15 @@
       "ourSelfDrift25y": 0.05717356208424462
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 1,
+    "tied_at_print_quantum": 39,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 1
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "iceland": {
@@ -21894,7 +22860,8 @@
    "best_method_score": null,
    "our_score": null,
    "rep_point": null,
-   "drift25": null
+   "drift25": null,
+   "city_method_register": null
   },
   "india": {
    "country": "india",
@@ -22497,6 +23464,16 @@
       "ourSelfDrift25y": 0.08491260014307045
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 39,
+    "tied_at_print_quantum": 1,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 6,
+     "Qatar": 33
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "indonesia": {
@@ -23072,6 +24049,15 @@
       "ourSelfDrift25y": 0.09704592774187404
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 23,
+    "tied_at_print_quantum": 17,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 23
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "iran": {
@@ -23633,6 +24619,16 @@
       "ourSelfDrift25y": 0.06888856237856089
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 27,
+    "tied_at_print_quantum": 13,
+    "nearest_method_counts_distinguishable": {
+     "Qatar": 26,
+     "Dubai": 1
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "iraq": {
@@ -24194,6 +25190,16 @@
       "ourSelfDrift25y": 0.06726738189399839
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 17,
+    "tied_at_print_quantum": 23,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 1,
+     "Qatar": 16
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "ireland": {
@@ -24712,6 +25718,15 @@
       "ourSelfDrift25y": 0.04685371071400368
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 3,
+    "tied_at_print_quantum": 37,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 3
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "italy": {
@@ -25259,6 +26274,15 @@
       "ourSelfDrift25y": 0.05994732090039179
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 1,
+    "tied_at_print_quantum": 39,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 1
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "japan": {
@@ -25820,6 +26844,15 @@
       "ourSelfDrift25y": 0.06778007323282509
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 8,
+    "tied_at_print_quantum": 32,
+    "nearest_method_counts_distinguishable": {
+     "Qatar": 8
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "jordan": {
@@ -26381,6 +27414,15 @@
       "ourSelfDrift25y": 0.0720657619845042
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 40,
+    "tied_at_print_quantum": 0,
+    "nearest_method_counts_distinguishable": {
+     "Qatar": 40
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "kazakhstan": {
@@ -26956,6 +27998,15 @@
       "ourSelfDrift25y": 0.05835549160474329
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 2,
+    "tied_at_print_quantum": 38,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 2
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "kiribati": {
@@ -27503,6 +28554,15 @@
       "ourSelfDrift25y": 0.09369384776164225
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 15,
+    "distinguishable": 13,
+    "tied_at_print_quantum": 2,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 13
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "kosovo": {
@@ -28035,6 +29095,13 @@
       "ourSelfDrift25y": 0.061497676748786034
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 23,
+    "distinguishable": 0,
+    "tied_at_print_quantum": 23,
+    "nearest_method_counts_distinguishable": {},
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "kuwait": {
@@ -28582,6 +29649,15 @@
       "ourSelfDrift25y": 0.07368402147403685
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 4,
+    "distinguishable": 4,
+    "tied_at_print_quantum": 0,
+    "nearest_method_counts_distinguishable": {
+     "Qatar": 4
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "kyrgyzstan": {
@@ -29143,6 +30219,13 @@
       "ourSelfDrift25y": 0.06107693589865448
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 0,
+    "tied_at_print_quantum": 40,
+    "nearest_method_counts_distinguishable": {},
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "laos": {
@@ -29690,6 +30773,16 @@
       "ourSelfDrift25y": 0.08526277186547304
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 13,
+    "distinguishable": 13,
+    "tied_at_print_quantum": 0,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 5,
+     "Qatar": 8
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "latvia": {
@@ -30208,6 +31301,15 @@
       "ourSelfDrift25y": 0.03879808247029359
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 14,
+    "tied_at_print_quantum": 26,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 14
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "lebanon": {
@@ -30769,6 +31871,15 @@
       "ourSelfDrift25y": 0.06992708426832905
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 39,
+    "tied_at_print_quantum": 1,
+    "nearest_method_counts_distinguishable": {
+     "Qatar": 39
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "lesotho": {
@@ -31301,6 +32412,15 @@
       "ourSelfDrift25y": 0.12253652892013633
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 5,
+    "distinguishable": 5,
+    "tied_at_print_quantum": 0,
+    "nearest_method_counts_distinguishable": {
+     "Qatar": 5
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "lithuania": {
@@ -31819,6 +32939,15 @@
       "ourSelfDrift25y": 0.04228802139277832
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 21,
+    "distinguishable": 4,
+    "tied_at_print_quantum": 17,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 4
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "luxembourg": {
@@ -32337,6 +33466,13 @@
       "ourSelfDrift25y": 0.052794953647207876
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 3,
+    "distinguishable": 0,
+    "tied_at_print_quantum": 3,
+    "nearest_method_counts_distinguishable": {},
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "malaysia": {
@@ -32344,17 +33480,17 @@
    "index_surfaces": [
     {
      "id": "MY-JAKIM-59-ZONES-2027",
-     "grade": "provisional",
+     "grade": "A",
      "tier": "authority",
      "span": {
-      "from": "2027-01-01",
-      "to": "2027-12-31",
-      "years": 1,
-      "days": 21535,
-      "note": null
+      "from": "2025-01-01",
+      "to": "2028-12-31",
+      "years": 4,
+      "days": 86140,
+      "note": "59 zones x 4 distinct fitted years; 2025, 2026 and 2028 harvested from JAKIM's own e-solat API (2,124 bodies, 0 failures) plus the held 2027; 86,140 zone-days"
      },
-     "span_verdict": "untestable-single-year",
-     "publisher": "JAKIM via waktusolat.ai, gated against Jawi/Putrajaya, Perak mufti and Penang mufti"
+     "span_verdict": "yes",
+     "publisher": "JAKIM (e-solat API), mirror-gated as before"
     },
     {
      "id": "MY-PERAK-7-ZONES-2027",
@@ -32926,11 +34062,35 @@
       "ourSelfDrift25y": 0.09045036318275379
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 38,
+    "tied_at_print_quantum": 2,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 38
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "maldives": {
    "country": "maldives",
-   "index_surfaces": [],
+   "index_surfaces": [
+    {
+     "id": "MV-RAMADAN-1447-2026",
+     "grade": "candidate",
+     "tier": "authority",
+     "span": {
+      "from": "2026-02-19",
+      "to": "2026-03-19",
+      "years": 1,
+      "days": 30,
+      "note": "fitted on the held 2015 recipe at true 2026 dates"
+     },
+     "span_verdict": "untestable-short-sample",
+     "publisher": "Ministry of Islamic Affairs (via the Ooredoo distribution)"
+    }
+   ],
    "coverage_pct": 100.0,
    "settlements": 14,
    "tables_banked": 14,
@@ -33458,6 +34618,15 @@
       "ourSelfDrift25y": 0.09039205716862853
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 14,
+    "distinguishable": 14,
+    "tied_at_print_quantum": 0,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 14
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "mexico": {
@@ -33990,6 +35159,16 @@
       "ourSelfDrift25y": 0.07849426933626091
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 40,
+    "tied_at_print_quantum": 0,
+    "nearest_method_counts_distinguishable": {
+     "Qatar": 37,
+     "Dubai": 3
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "mongolia": {
@@ -34537,6 +35716,15 @@
       "ourSelfDrift25y": 0.05667068401135111
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 5,
+    "tied_at_print_quantum": 35,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 5
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "montenegro": {
@@ -35069,6 +36257,13 @@
       "ourSelfDrift25y": 0.061678579417275614
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 0,
+    "tied_at_print_quantum": 40,
+    "nearest_method_counts_distinguishable": {},
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "myanmar": {
@@ -35601,6 +36796,16 @@
       "ourSelfDrift25y": 0.08485004757631032
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 40,
+    "tied_at_print_quantum": 0,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 6,
+     "Qatar": 34
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "namibia": {
@@ -36133,6 +37338,16 @@
       "ourSelfDrift25y": 0.10887440299256923
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 36,
+    "tied_at_print_quantum": 4,
+    "nearest_method_counts_distinguishable": {
+     "Qatar": 34,
+     "Dubai": 2
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "nepal": {
@@ -36708,6 +37923,15 @@
       "ourSelfDrift25y": 0.07462858281041918
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 40,
+    "tied_at_print_quantum": 0,
+    "nearest_method_counts_distinguishable": {
+     "Qatar": 40
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "netherlands": {
@@ -37226,6 +38450,15 @@
       "ourSelfDrift25y": 0.04810535566730323
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 5,
+    "tied_at_print_quantum": 35,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 5
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "new-caledonia": {
@@ -37773,6 +39006,15 @@
       "ourSelfDrift25y": 0.1126474664520174
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 6,
+    "distinguishable": 6,
+    "tied_at_print_quantum": 0,
+    "nearest_method_counts_distinguishable": {
+     "Qatar": 6
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "new-zealand": {
@@ -38334,6 +39576,15 @@
       "ourSelfDrift25y": 0.17181050784961371
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 4,
+    "tied_at_print_quantum": 36,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 4
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "nicaragua": {
@@ -38881,6 +40132,15 @@
       "ourSelfDrift25y": 0.0865824542338487
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 18,
+    "distinguishable": 18,
+    "tied_at_print_quantum": 0,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 18
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "north-korea": {
@@ -39428,6 +40688,13 @@
       "ourSelfDrift25y": 0.0615736979925714
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 0,
+    "tied_at_print_quantum": 40,
+    "nearest_method_counts_distinguishable": {},
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "north-macedonia": {
@@ -39960,6 +41227,13 @@
       "ourSelfDrift25y": 0.06198662530505317
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 0,
+    "tied_at_print_quantum": 40,
+    "nearest_method_counts_distinguishable": {},
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "norway": {
@@ -40507,6 +41781,15 @@
       "ourSelfDrift25y": 0.03406875710879831
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 6,
+    "tied_at_print_quantum": 34,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 6
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "oman": {
@@ -41054,6 +42337,16 @@
       "ourSelfDrift25y": 0.07755626070002108
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 40,
+    "tied_at_print_quantum": 0,
+    "nearest_method_counts_distinguishable": {
+     "Qatar": 38,
+     "Dubai": 2
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "pakistan": {
@@ -41064,13 +42357,13 @@
      "grade": "provisional",
      "tier": "platform",
      "span": {
-      "from": "2026-11-01",
-      "to": "2027-10-31",
-      "years": 1,
-      "days": 365,
-      "note": null
+      "from": "2026-01-01",
+      "to": "2027-12-31",
+      "years": 2,
+      "days": 730,
+      "note": "99.75 pc within-1 on 2026 AND 2027, parameters frozen - one published generation measured across two calendar years"
      },
-     "span_verdict": "untestable-single-year",
+     "span_verdict": "yes",
      "publisher": "tawkit.net (PrayTimes 2.3 at GeoNames points)"
     },
     {
@@ -41629,6 +42922,16 @@
       "ourSelfDrift25y": 0.076885766200121
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 31,
+    "tied_at_print_quantum": 9,
+    "nearest_method_counts_distinguishable": {
+     "Qatar": 30,
+     "Dubai": 1
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "palestine": {
@@ -42176,6 +43479,15 @@
       "ourSelfDrift25y": 0.07133058204726694
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 31,
+    "distinguishable": 31,
+    "tied_at_print_quantum": 0,
+    "nearest_method_counts_distinguishable": {
+     "Qatar": 31
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "panama": {
@@ -42723,6 +44035,15 @@
       "ourSelfDrift25y": 0.08867115023485894
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 23,
+    "distinguishable": 22,
+    "tied_at_print_quantum": 1,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 22
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "papua-new-guinea": {
@@ -43255,6 +44576,15 @@
       "ourSelfDrift25y": 0.09574604782301321
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 24,
+    "tied_at_print_quantum": 16,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 24
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "peru": {
@@ -43787,11 +45117,35 @@
       "ourSelfDrift25y": 0.09640518836840783
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 23,
+    "tied_at_print_quantum": 17,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 23
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "philippines": {
    "country": "philippines",
-   "index_surfaces": [],
+   "index_surfaces": [
+    {
+     "id": "PH-BANGSAMORO-COTABATO-30",
+     "grade": "candidate",
+     "tier": "authority",
+     "span": {
+      "from": "2026-02-19",
+      "to": "2026-03-19",
+      "years": 1,
+      "days": 30,
+      "note": "30 dated rows; the per-municipality minute register captured"
+     },
+     "span_verdict": "untestable-short-sample",
+     "publisher": "Bangsamoro Darul-Ifta"
+    }
+   ],
    "coverage_pct": 100.0,
    "settlements": 1052,
    "tables_banked": 1052,
@@ -44319,6 +45673,15 @@
       "ourSelfDrift25y": 0.08834999922510178
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 37,
+    "tied_at_print_quantum": 3,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 37
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "poland": {
@@ -44337,6 +45700,34 @@
      },
      "span_verdict": "untestable-short-sample",
      "publisher": "Mufti of Poland"
+    },
+    {
+     "id": "PL-CKI-KATOWICE-365",
+     "grade": "provisional",
+     "tier": "authority",
+     "span": {
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "years": 1,
+      "days": 365,
+      "note": "365 dated rows; 26 OCR-missed cells recovered from strip re-reads, each patch source recorded"
+     },
+     "span_verdict": "untestable-single-year",
+     "publisher": "Centrum Kultury Islamskiej Katowice"
+    },
+    {
+     "id": "PL-MZR-LEAGUE-609",
+     "grade": "provisional",
+     "tier": "authority",
+     "span": {
+      "from": "2026-02-19",
+      "to": "2026-03-19",
+      "years": 1,
+      "days": 609,
+      "note": "609 dated rows (21 cities x 29 days) from 22 posters"
+     },
+     "span_verdict": "untestable-short-sample",
+     "publisher": "Muzułmański Związek Religijny (the League)"
     }
    ],
    "coverage_pct": 100.0,
@@ -44852,6 +46243,15 @@
       "ourSelfDrift25y": 0.051817632407619385
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 3,
+    "tied_at_print_quantum": 37,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 3
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "portugal": {
@@ -45413,6 +46813,15 @@
       "ourSelfDrift25y": 0.06375027089961804
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 3,
+    "tied_at_print_quantum": 37,
+    "nearest_method_counts_distinguishable": {
+     "Qatar": 3
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "qatar": {
@@ -45974,6 +47383,15 @@
       "ourSelfDrift25y": 0.07706625193668515
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 20,
+    "distinguishable": 20,
+    "tied_at_print_quantum": 0,
+    "nearest_method_counts_distinguishable": {
+     "Qatar": 20
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "romania": {
@@ -46549,6 +47967,13 @@
       "ourSelfDrift25y": 0.0577458717166337
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 0,
+    "tied_at_print_quantum": 40,
+    "nearest_method_counts_distinguishable": {},
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "russia": {
@@ -47194,6 +48619,15 @@
       "ourSelfDrift25y": 0.048461016152032244
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 3,
+    "tied_at_print_quantum": 37,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 3
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "samoa": {
@@ -47230,7 +48664,8 @@
    "best_method_score": null,
    "our_score": null,
    "rep_point": null,
-   "drift25": null
+   "drift25": null,
+   "city_method_register": null
   },
   "saudi-arabia": {
    "country": "saudi-arabia",
@@ -47777,6 +49212,16 @@
       "ourSelfDrift25y": 0.07726175728384987
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 40,
+    "tied_at_print_quantum": 0,
+    "nearest_method_counts_distinguishable": {
+     "Qatar": 39,
+     "Dubai": 1
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "serbia": {
@@ -48309,6 +49754,13 @@
       "ourSelfDrift25y": 0.05969628525099324
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 0,
+    "tied_at_print_quantum": 40,
+    "nearest_method_counts_distinguishable": {},
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "singapore": {
@@ -48856,6 +50308,15 @@
       "ourSelfDrift25y": 0.09448521498916307
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 3,
+    "distinguishable": 2,
+    "tied_at_print_quantum": 1,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 2
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "slovakia": {
@@ -49374,6 +50835,15 @@
       "ourSelfDrift25y": 0.053812802869288134
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 25,
+    "distinguishable": 3,
+    "tied_at_print_quantum": 22,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 3
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "slovenia": {
@@ -49906,6 +51376,15 @@
       "ourSelfDrift25y": 0.057794143371665996
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 1,
+    "tied_at_print_quantum": 39,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 1
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "solomon-islands": {
@@ -50438,6 +51917,15 @@
       "ourSelfDrift25y": 0.10107955766352461
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 14,
+    "distinguishable": 7,
+    "tied_at_print_quantum": 7,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 7
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "south-korea": {
@@ -50456,6 +51944,20 @@
      },
      "span_verdict": "untestable-single-year",
      "publisher": "namazvakitleri.diyanet.gov.tr"
+    },
+    {
+     "id": "KR-KMF-ANNUAL-365",
+     "grade": "provisional",
+     "tier": "authority",
+     "span": {
+      "from": "2026-02-01",
+      "to": "2027-01-31",
+      "years": 1,
+      "days": 365,
+      "note": "one print fault recorded"
+     },
+     "span_verdict": "untestable-single-year",
+     "publisher": "Korea Muslim Federation"
     }
    ],
    "coverage_pct": 100.0,
@@ -50985,6 +52487,15 @@
       "ourSelfDrift25y": 0.06836611924791214
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 3,
+    "tied_at_print_quantum": 37,
+    "nearest_method_counts_distinguishable": {
+     "Qatar": 3
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "spain": {
@@ -51546,6 +53057,13 @@
       "ourSelfDrift25y": 0.0655043080937503
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 0,
+    "tied_at_print_quantum": 40,
+    "nearest_method_counts_distinguishable": {},
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "sri-lanka": {
@@ -52093,6 +53611,15 @@
       "ourSelfDrift25y": 0.08991472908337528
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 33,
+    "tied_at_print_quantum": 7,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 33
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "suriname": {
@@ -52111,6 +53638,20 @@
      },
      "span_verdict": "untestable-single-year",
      "publisher": "namazvakti (Diyanet-derived)"
+    },
+    {
+     "id": "SR-SMA-PARAMARIBO-29",
+     "grade": "candidate",
+     "tier": "community",
+     "span": {
+      "from": "2025-04-29",
+      "to": "2025-05-27",
+      "years": 1,
+      "days": 29,
+      "note": "29 dated rows; year-2 dead - zero domain captures, 19 live month-files 404"
+     },
+     "span_verdict": "untestable-short-sample",
+     "publisher": "Suriname Muslim Association (SMA)"
     }
    ],
    "coverage_pct": 100.0,
@@ -52640,6 +54181,15 @@
       "ourSelfDrift25y": 0.09195129071304109
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 7,
+    "distinguishable": 5,
+    "tied_at_print_quantum": 2,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 5
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "sweden": {
@@ -53201,11 +54751,49 @@
       "ourSelfDrift25y": 0.03846361338673887
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 9,
+    "tied_at_print_quantum": 31,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 9
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "switzerland": {
    "country": "switzerland",
-   "index_surfaces": [],
+   "index_surfaces": [
+    {
+     "id": "CH-GENEVA-12IMAM-258",
+     "grade": "provisional",
+     "tier": "community",
+     "span": {
+      "from": "2026-06-01",
+      "to": "2027-05-31",
+      "years": 1,
+      "days": 258,
+      "note": "258 rows, zero incomplete"
+     },
+     "span_verdict": "untestable-single-year",
+     "publisher": "Centre islamique des Douze Imams de Genève"
+    },
+    {
+     "id": "CH-BERN-IZB",
+     "grade": "provisional",
+     "tier": "community",
+     "span": {
+      "from": "2016-07-01",
+      "to": "2026-11-30",
+      "years": 2,
+      "days": 91,
+      "note": "61 rows of 2016 (Jul+Aug, zero temkin, 61/61 within-1) against 30 rows of Nov 2026 (30/30 within-1); a 2018 partial was excluded with artifacts"
+     },
+     "span_verdict": "no",
+     "publisher": "Islamzentrum Bern"
+    }
+   ],
    "coverage_pct": 100.0,
    "settlements": 795,
    "tables_banked": 795,
@@ -53733,6 +55321,15 @@
       "ourSelfDrift25y": 0.05713339160229225
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 1,
+    "tied_at_print_quantum": 39,
+    "nearest_method_counts_distinguishable": {
+     "Kuwait": 1
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "syria": {
@@ -53751,6 +55348,20 @@
      },
      "span_verdict": "untestable-single-year",
      "publisher": "tawkit.net (PrayTimes 2.3 at GeoNames points)"
+    },
+    {
+     "id": "SY-IMSAKIYYA-29",
+     "grade": "measured",
+     "tier": "authority",
+     "span": {
+      "from": "2026-02-19",
+      "to": "2026-03-19",
+      "years": 1,
+      "days": 29,
+      "note": "174/174 cells extracted with per-cell provenance (color-aware per-column masks, local Vision OCR only, multi-read consensus)"
+     },
+     "span_verdict": "untestable-short-sample",
+     "publisher": "the Syrian ministry (its own public post)"
     }
    ],
    "coverage_pct": 100.0,
@@ -54280,6 +55891,16 @@
       "ourSelfDrift25y": 0.06739464225802294
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 4,
+    "tied_at_print_quantum": 36,
+    "nearest_method_counts_distinguishable": {
+     "Qatar": 3,
+     "Dubai": 1
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "tajikistan": {
@@ -54827,6 +56448,13 @@
       "ourSelfDrift25y": 0.06600176117035517
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 0,
+    "tied_at_print_quantum": 40,
+    "nearest_method_counts_distinguishable": {},
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "thailand": {
@@ -55359,6 +56987,16 @@
       "ourSelfDrift25y": 0.0906070629594069
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 40,
+    "tied_at_print_quantum": 0,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 30,
+     "Qatar": 10
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "tonga": {
@@ -55395,7 +57033,8 @@
    "best_method_score": null,
    "our_score": null,
    "rep_point": null,
-   "drift25": null
+   "drift25": null,
+   "city_method_register": null
   },
   "trinidad-and-tobago": {
    "country": "trinidad-and-tobago",
@@ -55441,6 +57080,20 @@
      },
      "span_verdict": "untestable-single-year",
      "publisher": "Chaguanas mosque (mawaqit tenant)"
+    },
+    {
+     "id": "TT-DARULULOOM-365",
+     "grade": "provisional",
+     "tier": "community",
+     "span": {
+      "from": "2026-01-01",
+      "to": "2026-12-31",
+      "years": 1,
+      "days": 365,
+      "note": "year-2 dead by mechanism: the endpoint is year-locked, year= ignored"
+     },
+     "span_verdict": "untestable-single-year",
+     "publisher": "Darul Uloom Trinidad and Tobago"
     }
    ],
    "coverage_pct": 100.0,
@@ -55970,6 +57623,15 @@
       "ourSelfDrift25y": 0.08865544697800942
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 39,
+    "tied_at_print_quantum": 1,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 39
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "turkmenistan": {
@@ -56517,6 +58179,13 @@
       "ourSelfDrift25y": 0.06404282097128089
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 0,
+    "tied_at_print_quantum": 40,
+    "nearest_method_counts_distinguishable": {},
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "ukraine": {
@@ -57035,6 +58704,15 @@
       "ourSelfDrift25y": 0.053777846008870256
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 3,
+    "tied_at_print_quantum": 37,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 3
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "united-arab-emirates": {
@@ -57567,6 +59245,15 @@
       "ourSelfDrift25y": 0.07751803645396649
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 37,
+    "distinguishable": 37,
+    "tied_at_print_quantum": 0,
+    "nearest_method_counts_distinguishable": {
+     "Qatar": 37
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "united-kingdom": {
@@ -58170,6 +59857,15 @@
       "ourSelfDrift25y": 0.04447614795071786
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 3,
+    "tied_at_print_quantum": 37,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 3
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "united-states": {
@@ -58787,6 +60483,15 @@
       "ourSelfDrift25y": 0.07436352930426438
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 8,
+    "tied_at_print_quantum": 32,
+    "nearest_method_counts_distinguishable": {
+     "Qatar": 8
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "uzbekistan": {
@@ -59334,6 +61039,13 @@
       "ourSelfDrift25y": 0.06324469172068348
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 0,
+    "tied_at_print_quantum": 40,
+    "nearest_method_counts_distinguishable": {},
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "vanuatu": {
@@ -59866,6 +61578,16 @@
       "ourSelfDrift25y": 0.11145172281476334
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 5,
+    "distinguishable": 5,
+    "tied_at_print_quantum": 0,
+    "nearest_method_counts_distinguishable": {
+     "Qatar": 4,
+     "Dubai": 1
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "venezuela": {
@@ -60413,6 +62135,15 @@
       "ourSelfDrift25y": 0.08815769007378549
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 36,
+    "tied_at_print_quantum": 4,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 36
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "vietnam": {
@@ -60960,6 +62691,16 @@
       "ourSelfDrift25y": 0.08731180186259735
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 39,
+    "tied_at_print_quantum": 1,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 26,
+     "Qatar": 13
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   },
   "yemen": {
@@ -61521,6 +63262,15 @@
       "ourSelfDrift25y": 0.08476638298770922
      }
     }
+   },
+   "city_method_register": {
+    "settlements_stamped": 40,
+    "distinguishable": 40,
+    "tied_at_print_quantum": 0,
+    "nearest_method_counts_distinguishable": {
+     "Dubai": 40
+    },
+    "resolution": "the per-city method resolution order (owner, 2026-11-12): authority match, else the city's own practice, else the line with the most banked data, never an average; in the tree layer the banked line is the only line in these cities, so the most-data branch stands"
    }
   }
  }

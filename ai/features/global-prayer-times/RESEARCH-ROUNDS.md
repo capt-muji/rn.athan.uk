@@ -11,6 +11,10 @@ territory, 50 percent re-covering) and keeps cycling, over and over. The fleet n
 the cap; the cap itself never stops anything - crossing it is reported to the owner, and the work
 continues.
 
+Owner order 2026-11-12 (session four): the dated-records soft target stands at 200 million
+records alongside the 100 GB archive cap. Both are soft and neither stops anything; the tree
+holds 39.67 million dated rows and the round's own growth measure reports progress toward both.
+
 Owner order 2026-11-11: every instruction in this file is standing. A fresh session started with
 `/athan-next` runs the next round from this file alone; the owner repeats nothing. Each round
 copies this file into its operation workspace as `BRIEF.md` (with `FIT-RULES.md` carried from the

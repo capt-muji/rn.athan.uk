@@ -1,18 +1,18 @@
 # RECIPE LEDGER - per-country derived recipes, method comparison, drift
 
-Generated 2026-11-12. Engine of record: adhan 4.4.6 SolarTime core. 115 countries.
+Generated 2026-11-12. Engine of record: adhan 4.4.6 SolarTime core. 116 countries.
 
 ## Summary
 
-Grades: {"A": 11, "F": 2, "FALLBACK": 19, "candidate": 46, "community": 5, "provisional": 32}
-Countries with a full 12-method comparison: 112
-Drift to 2051 solstices: max |divergence change| across all measured countries and columns = 0.13401058816339173 min over 1302 measurements
+Grades: {"A": 12, "F": 2, "FALLBACK": 19, "candidate": 46, "community": 5, "provisional": 32}
+Countries with a full 12-method comparison: 113
+Drift to 2051 solstices: max |divergence change| across all measured countries and columns = 0.13401058816339173 min over 1314 measurements
 
 ## Per country
 
 ### afghanistan
 - Coverage: 100.0% (1321/1321 settlements with tables, 482,165 dated rows)
-- Grade: candidate | Tier: authority | Years held: 1 | Span: single published cycle (the tree's 2026)
+- Grade: candidate | Tier: authority | Years held: 1 | Span: {'from': '2026-01-01', 'to': '2027-12-31', 'years': 2, 'days': 395, 'note': 'the held 30 rows of 2026 plus the full 365-day 2027 window harvested by O1n-33r on the held 18/18 recipe; 100 pc within-1 both calendar years'}
 - Source: ministry image tables
 - Recipe (exact): ministry permanent table IMAGE-ONLY: serves Council of Ahl al-Sunnah imams of Kabul (valid 12km, HANAFI asr ~46 min past Shafi); SEPARATE Ramadan table footnoted to the Shia council (Ja'fari fit) - TWO AUTHORITY FITS FOR DIFFERENT CONGREGATIONS, never witnesses
 - Evidence: 30-day transcribed window (double-crop, within 2 min/column); NO second witness anywhere (Kabul Municipality block = aladhan ISNA widget 11 min off, not a source)
@@ -359,6 +359,16 @@ Drift to 2051 solstices: max |divergence change| across all measured countries a
 - All methods: Egyptian 10.54; Karachi 10.54; MoonsightingCommittee 10.54; Kuwait 10.54; Singapore 10.54; Dubai 10.58; MuslimWorldLeague 10.68; Turkey 10.68; UmmAlQura 11.14; NorthAmerica 11.14; Qatar 11.14; Tehran 11.14
 - Drift 2026->2051 (ours vs Dubai): max divergence change 0.04 min across solstice columns
 
+### french-guiana
+- Coverage: 100.0% (22/22 settlements with tables, 8,030 dated rows)
+- Grade: A | Tier: community | Years held: 1 | Span: {'from': '2024-01-01', 'to': '2030-12-31', 'years': 5, 'days': 1439, 'note': '1,439 dated rows; recompute proven by value diffs (jan24 vs jan25: 24/31 rows move; jul25 vs jul30: 14/31)'}
+- Source: a2cmgf.fr's ville/mois/annee axis: 3 cities x 2025+2026+2027 plus 2024/2030 probes; five distinct fitted years at Cayenne
+- Recipe (exact): printed ladder on adhan 4.4.6 at solved points: fajr +4.5, sunrise -5, dhuhr +7, asr +7, maghrib +6, isha +2
+- Our recipe on the banked rows: median |delta| 0.28 min, exact 0.0%, within-1 95.4% (n 480)
+- Best named method: Dubai - median |delta| 6.61 min, exact 0.00%, within-1 0.42%
+- All methods: Egyptian 6.61; Karachi 6.61; Dubai 6.61; MoonsightingCommittee 6.61; Kuwait 6.61; Singapore 6.61; MuslimWorldLeague 6.95; Turkey 6.95; UmmAlQura 7.16; NorthAmerica 7.16; Qatar 7.16; Tehran 7.16
+- Drift 2026->2051 (ours vs Dubai): max divergence change 0.00 min across solstice columns
+
 ### french-polynesia
 - Coverage: 100.0% (51/51 settlements with tables, 18,615 dated rows)
 - Grade: FALLBACK | Tier: fallback | Years held: 1 | Span: single published cycle (the tree's 2026)
@@ -437,7 +447,7 @@ Drift to 2051 solstices: max |divergence change| across all measured countries a
 
 ### hungary
 - Coverage: 100.0% (226/226 settlements with tables, 82,490 dated rows)
-- Grade: candidate | Tier: community | Years held: 1 | Span: single published cycle (the tree's 2026)
+- Grade: candidate | Tier: community | Years held: 1 | Span: {'from': '2024-01-01', 'to': '2027-12-31', 'years': 4, 'days': 1034, 'note': '1,034 rows spanning 2024+2025+2026+forward 2027, zero incomplete'}
 - Source: MME gazetteer 3160 settlements w/ coords
 - Recipe (exact): 18/17.3 (84/90 exact); asr Shafi; maghrib +2-3 deliberate safety
 - Evidence: 9 towns x 5 days
