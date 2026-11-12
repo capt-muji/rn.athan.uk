@@ -1,0 +1,59 @@
+{
+ "files": 21540,
+ "rows": 542353,
+ "locations": 359,
+ "span": [
+  "2022-01-01",
+  "2026-12-31"
+ ],
+ "columns": {
+  "location": 542353,
+  "date": 542353,
+  "district_code": 542353,
+  "kommune": 542353,
+  "hijri_date": 542353,
+  "istiwa_noon": 542353,
+  "duhr": 542353,
+  "asr": 542353,
+  "shadow_1x": 542353,
+  "shadow_2x": 542353,
+  "wusta_noon_sunset": 542353,
+  "asr_endtime": 542353,
+  "ghrub_sunset": 542353,
+  "maghrib": 542353,
+  "isha": 542353,
+  "shafaqal_ahmar_end_redlight": 542353,
+  "shafaqal_abyadh_end_whitelight": 542353,
+  "muntasafallayl_midnight": 542353,
+  "fajr_sadiq": 542353,
+  "fajr": 542353,
+  "fajr_endtime": 542353,
+  "shuruq_sunrise": 542353,
+  "laylat_falakia_one3rd": 542353,
+  "laylat_falakia_two3rd": 542353,
+  "laylatal_shariea_one3rd": 542353,
+  "laylatal_shariea_two3rd": 542353,
+  "prayer_after_sunrise": 542353,
+  "altitude_noon": 542353,
+  "altitude_midnight": 542353,
+  "asr_1x_shadow": 542353,
+  "asr_2x_shadow": 542353,
+  "asr_wusta_noon_sunset": 542353,
+  "sun_shadow_noon": 542353,
+  "sun_shadow_wusta": 542353,
+  "elevation_noon": 542353,
+  "elevation_asrwusta": 542353,
+  "elevation_shadow_1x": 542353,
+  "elevation_shadow_2x": 542353,
+  "elevation_midnight": 542353
+ },
+ "bad_files": [
+  [
+   "325-2024-11.json.gz",
+   "Expecting value: line 1 column 1 (char 0)"
+  ]
+ ],
+ "bad_count": 1,
+ "generated": "2026-11-12",
+ "source": "salah.no monthly tables, wave O1n-45's walk (21,540 fetches, journal-salah.jsonl)"
+}
