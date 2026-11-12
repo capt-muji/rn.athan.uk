@@ -37,11 +37,15 @@ prior round) and extends it with that round's own territory list.
   record's honest negatives are always "not found under these terms", never "does not exist".
 - Owner order 2026-11-12 (method resolution inside one city): when two or more published lines exist in
   one city and their nearest standard methods differ, resolution follows adoption — (1) a line that matches
-  the national authority's methodology wins; (2) if nothing matches the authority, the city's own local
-  practice wins as a group; (3) if the local lines split with no authority match, never average: serve the
-  line derived from the surface with the most banked data (most data = the most accurate, drift-resistant
-  recipe). The census records every line separately regardless; this order governs which line a city's
-  recipe represents.
+  the national authority's methodology wins, UNLESS more than half of that city's own mosques (a strict
+  majority, 51 percent and up) follow one single different methodology — then the majority line wins,
+  because there must be a reason the mosques left the authority's line (owner order 2026-11-12, session
+  four, given with the Scotland three-mosque example); (2) if nothing matches the authority and no mosque
+  majority exists, the city's own local practice wins as a group; (3) if the local lines split with no
+  authority match and no majority, never average: serve the line derived from the surface with the most
+  banked data (most data = the most accurate, drift-resistant recipe). This order applies RETROACTIVELY:
+  every already-resolved city is re-resolved under it (owner order, same breath). The census records every
+  line separately regardless; this order governs which line a city's recipe represents.
 - Owner order 2026-11-11 (round o1n): Taiwan is out of scope until the owner says otherwise.
   No wave targets it, bulk publisher walks skip its pages, and already-banked rows stay in the
   archive untouched.
@@ -65,12 +69,14 @@ prior round) and extends it with that round's own territory list.
   reconcile the board at the round's close. The 10 research agents (5+5) are the exception mode
   and are separate from any board lanes running alongside.
 
-## Fleet (the /athan-next exception; owner order 2026-11-11, amended the same day)
+## Fleet (the /athan-next exception; owner order 2026-11-11, amended 2026-11-12)
 
-- Exactly 3 subagents at all times, ALL on `cpa-glm/GLM: GLM-5.3-Flash` (owner order,
-  2026-11-11, the day's standing amendment). The DeepSeek, opencode-free and opencode-go legs,
-  and every free-tier model, are stood down for good: the GLM flash model is the only worker.
-  The fleet runs CONTINUOUSLY: a replacement dispatches the moment a slot frees. The
+- Exactly 2 subagents at all times, ALL on `cpa-glm/GLM: GLM-5.3-Flash` (owner order,
+  2026-11-12, session four: "scale back down to two running agents instead of three -
+  we're about to hit the quota"; amends the three-agent rule). The fleet runs
+  CONTINUOUSLY at two: a replacement dispatches the moment a slot frees, two maximum,
+  two continuously. The DeepSeek, opencode-free and opencode-go legs, and every
+  free-tier model, are stood down for good: the GLM flash model is the only worker. The
   plans-queue no-subagent rule does not apply to research rounds.
 - NO GRANDCHILDREN (owner order 2026-11-11, reaffirmed at every fleet change since): the round's
   coordinator is the only agent that dispatches. A wave never deploys a subagent of its own;
