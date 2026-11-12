@@ -15,6 +15,17 @@ Owner order 2026-11-12 (session four): the dated-records soft target stands at 2
 records alongside the 100 GB archive cap. Both are soft and neither stops anything; the tree
 holds 39.67 million dated rows and the round's own growth measure reports progress toward both.
 
+Owner order 2026-11-12 (session five, THE MOSQUE DATABASE - the round's end goal): build
+toward a full-fledged, publishable mosque-level database (SQLite-class) where every mosque
+record carries the mosque's name, its latitude and longitude, its website link, the
+prayer-times recipe generated from its own published data, and links to every downloaded
+artifact (tables, PDFs, images, captures). Scope: every mosque, every country, worldwide -
+mostly for this programme's own use, built so anyone's application can use it. Every wave
+banks its per-mosque output in this shape from now on, so the future database assembles
+from banked records and nothing ever re-searches a field a record already carries. The OSM
+sweep's coordinates, the own-site hunts' websites and the fits' recipes are the record's
+three halves; the cross-reference worklist joins them.
+
 Owner order 2026-11-11: every instruction in this file is standing. A fresh session started with
 `/athan-next` runs the next round from this file alone; the owner repeats nothing. Each round
 copies this file into its operation workspace as `BRIEF.md` (with `FIT-RULES.md` carried from the
