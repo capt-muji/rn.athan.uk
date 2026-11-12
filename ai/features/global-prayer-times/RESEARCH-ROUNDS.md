@@ -35,17 +35,26 @@ prior round) and extends it with that round's own territory list.
   again: different phrasings, different terms, transliterations and place-name variants, more
   languages, alternative search engines and site-direct navigation where search fails. The
   record's honest negatives are always "not found under these terms", never "does not exist".
-- Owner order 2026-11-12 (method resolution inside one city): when two or more published lines exist in
-  one city and their nearest standard methods differ, resolution follows adoption — (1) a line that matches
-  the national authority's methodology wins, UNLESS more than half of that city's own mosques (a strict
-  majority, 51 percent and up) follow one single different methodology — then the majority line wins,
-  because there must be a reason the mosques left the authority's line (owner order 2026-11-12, session
-  four, given with the Scotland three-mosque example); (2) if nothing matches the authority and no mosque
-  majority exists, the city's own local practice wins as a group; (3) if the local lines split with no
-  authority match and no majority, never average: serve the line derived from the surface with the most
-  banked data (most data = the most accurate, drift-resistant recipe). This order applies RETROACTIVELY:
-  every already-resolved city is re-resolved under it (owner order, same breath). The census records every
-  line separately regardless; this order governs which line a city's recipe represents.
+- Owner order 2026-11-12 (THE CITY-LINE RESOLUTION LADDER, given with the Scotland
+  three-mosque example and the edge-case walk-through; applies RETROACTIVELY to every
+  resolved city - O1n-55 re-resolves everything banked under it). When two or more published
+  lines exist in one city, resolution follows, in order:
+  1. A line matching the national authority's methodology wins, UNLESS a strict majority of
+     that city's own mosques (more than 50 percent) follow one single different methodology -
+     then the majority line wins, because there must be a reason the mosques left the
+     authority's line, even if we never learn it.
+  2. No authority and no mosque majority: the city's own local practice wins as a group.
+  3. All lines mosque-private: the line with the most banked data wins (most data = the most
+     accurate, drift-resistant recipe).
+  4. Tied on data: the line nearest to the USER (the device location - never the city centre;
+     the user at the edge follows the mosque next to them, not the one across town).
+  5. Tied on distance: the line with the most published years wins.
+  6. Tied on everything measurable: alphabetical by name, fixed and stable, the app shows the
+     list and follows the first.
+  7. The user can always switch to any other line of that city; the override is remembered per
+     USER, never per city.
+  8. NEVER average two lines. The census records every line separately regardless; this ladder
+     governs only which line a city's recipe represents by default.
 - Owner order 2026-11-11 (round o1n): Taiwan is out of scope until the owner says otherwise.
   No wave targets it, bulk publisher walks skip its pages, and already-banked rows stay in the
   archive untouched.
@@ -123,6 +132,13 @@ prior round) and extends it with that round's own territory list.
 
 1. CITY-LEVEL COVERAGE: one surface per city minimum, every discoverable source per city,
    capitals first, then every city. Authority, then community, then platform-passing-the-suite.
+   Owner order 2026-11-12, session four (the Al-Furqan/Green Lane lesson): platforms are a
+   discovery aid, never the register. Every country carries a MAJOR-MOSQUE REGISTER built from
+   public national bodies and directories (the UK: the Muslim Council of Britain-class
+   directories), and every register mosque gets an own-site hunt - banked dated rows, or a
+   dated negative naming the routes. A city table from a platform-city print does not close a
+   register mosque. Retroactive: every covered country's register is built and hunted before
+   the round closes.
 2. YEAR-2 ACCRUAL: every provisional object's cheapest second year (dated archives,
    year-parameter endpoints, Wayback). FIT-RULES.md binding: fit ALL years held, harvest the
    future where served, per-year scores, between-year stability, seasonal amplitude; never blend
