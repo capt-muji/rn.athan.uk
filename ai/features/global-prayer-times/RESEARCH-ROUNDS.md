@@ -34,9 +34,10 @@ prior round) and extends it with that round's own territory list.
 - THE 100 GB CAP IS SOFT. When the raw archive crosses it, the parent SAYS SO in the next report
   to the owner and keeps going. Crossing the cap changes nothing; only the owner's word stops
   anything.
-- Duration: the owner names it per round; o1n runs CONTINUOUSLY to 2026-11-16 by owner order
-  2026-11-11 (a one-week run: never stop, never conclude, redeploy every freed slot until the
-  owner stops the round personally); default one session of continuous operation.
+- Duration: the owner names it per round; o1n runs CONTINUOUSLY to 2026-11-17 by owner order
+  2026-11-12 (amending the 2026-11-11 order: never stop, never conclude, hold the fleet at
+  three GLM-5.3-Flash workers at all times, redeploy every freed slot until the owner stops
+  the round personally); default one session of continuous operation.
 - The board (owner order 2026-11-11: use it MINIMALLY, like a git history — record exactly
   where things are, nothing more): one Research ticket per round (labels: number, Research,
   research, prayer-times), moved In progress at start with Lane set, updated with one short
