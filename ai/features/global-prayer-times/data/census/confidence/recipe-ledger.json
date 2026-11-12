@@ -91,6 +91,7 @@
  },
  "scoring": "best method = fewest twilight minutes off (median |delta| on fajr+isha, the columns where named methods differ), all-column median as tiebreak; ours = the fitted recipe evaluated by the same engine on the same dates; all figures also carry the all-column median absolute delta",
  "drift_note": "divergence(ours, best method) measured at the June and December solstices of 2026 and 2051; drift = divergence2051 - divergence2026 in minutes. High-latitude countries carry fewer solstice cells where a column's event does not exist (polar night or midnight sun).",
+ "fallback_open_question": "DEFERRED (owner, 2026-11-12): which single standard method serves as the global fallback for places with no authority, no mosque and no data at all is not decided. The Dubai-angles ranking is informational (nearest convention to what the world's publishers print), not a choice. Every country currently in the ledger has a derived recipe from real published data; the fallback only matters for places that have nothing.",
  "families": [
   {
    "id": "TT-AFRICA-8565",
