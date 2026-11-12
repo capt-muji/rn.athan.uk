@@ -31,6 +31,13 @@ prior round) and extends it with that round's own territory list.
   again: different phrasings, different terms, transliterations and place-name variants, more
   languages, alternative search engines and site-direct navigation where search fails. The
   record's honest negatives are always "not found under these terms", never "does not exist".
+- Owner order 2026-11-12 (method resolution inside one city): when two or more published lines exist in
+  one city and their nearest standard methods differ, resolution follows adoption — (1) a line that matches
+  the national authority's methodology wins; (2) if nothing matches the authority, the city's own local
+  practice wins as a group; (3) if the local lines split with no authority match, never average: serve the
+  line derived from the surface with the most banked data (most data = the most accurate, drift-resistant
+  recipe). The census records every line separately regardless; this order governs which line a city's
+  recipe represents.
 - Owner order 2026-11-11 (round o1n): Taiwan is out of scope until the owner says otherwise.
   No wave targets it, bulk publisher walks skip its pages, and already-banked rows stay in the
   archive untouched.
