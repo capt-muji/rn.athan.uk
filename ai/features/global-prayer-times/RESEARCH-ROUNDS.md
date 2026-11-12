@@ -4,6 +4,13 @@ THE REAL GOAL (owner, 2026-11-11): cover every single province, every single cit
 region and every single area of every single country. Nothing less. That is why the 100 GB cap is
 soft and may not be enough.
 
+Owner order 2026-11-12 (the goal cycle): the 100 GB soft cap is the standing driver of the fleet.
+When the round's named task list is exhausted while the archive still sits below the cap, the
+coordinator deploys three fresh GLM-5.3-Flash waves on the next coverage gaps (50 percent new
+territory, 50 percent re-covering) and keeps cycling, over and over. The fleet never idles below
+the cap; the cap itself never stops anything - crossing it is reported to the owner, and the work
+continues.
+
 Owner order 2026-11-11: every instruction in this file is standing. A fresh session started with
 `/athan-next` runs the next round from this file alone; the owner repeats nothing. Each round
 copies this file into its operation workspace as `BRIEF.md` (with `FIT-RULES.md` carried from the
