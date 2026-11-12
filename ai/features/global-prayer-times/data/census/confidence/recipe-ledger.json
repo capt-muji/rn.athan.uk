@@ -90,7 +90,7 @@
   }
  },
  "scoring": "median absolute delta (minutes), exact %, within-1 % against the banked published rows at each country's representative solved point; ours = the fitted recipe evaluated by the same engine on the same dates",
- "drift_note": "divergence(ours, best method) measured at the June and December solstices of 2026 and 2051; drift = divergence2051 - divergence2026 in minutes",
+ "drift_note": "divergence(ours, best method) measured at the June and December solstices of 2026 and 2051; drift = divergence2051 - divergence2026 in minutes. High-latitude countries carry fewer solstice cells where a column's event does not exist (polar night or midnight sun).",
  "families": [
   {
    "id": "TT-AFRICA-8565",
