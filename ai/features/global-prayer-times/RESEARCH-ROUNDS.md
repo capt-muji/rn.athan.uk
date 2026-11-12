@@ -139,6 +139,19 @@ prior round) and extends it with that round's own territory list.
    dated negative naming the routes. A city table from a platform-city print does not close a
    register mosque. Retroactive: every covered country's register is built and hunted before
    the round closes.
+   Owner order 2026-11-12, session four (THE DISCOVERY DOCTRINE, permanent for every session):
+   the primary discovery route is the mosque's OWN WEBSITE. Every wave's search phase runs,
+   in order: (a) TinyFish wide search per city and per mosque - multiple phrasings, local
+   languages, "prayer timetable", "namaz timing", "salah times", site-scoped where a domain is
+   known; (b) agent-browser navigation of every candidate own site - menus, media and
+   downloads pages, PDFs, image timetables, embedded widgets; agent-browser is first-class for
+   JS-hidden and PDF tables; (c) mosque DATABASES: public directories (national councils,
+   mosquefinder-class sites), OpenStreetMap's amenity coverage (an overpass query enumerates
+   every mosque with coordinates per country - the database of mosques), and GitHub-hosted
+   mosque datasets (search "mosques dataset", "mosque database json/csv" per country); then
+   (d) platforms (mawaqit, masjidbox, IslamicFinder, athanpro) as one signal among many, never
+   the register. Every uncovered mosque found by (a)-(c) becomes a named front. Walking a
+   platform tree alone is incomplete research and never closes a city.
 2. YEAR-2 ACCRUAL: every provisional object's cheapest second year (dated archives,
    year-parameter endpoints, Wayback). FIT-RULES.md binding: fit ALL years held, harvest the
    future where served, per-year scores, between-year stability, seasonal amplitude; never blend
