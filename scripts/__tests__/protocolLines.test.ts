@@ -2,7 +2,7 @@
  * Pins the workflow sentences that only exist as text, so a future edit cannot
  * silently delete a guard nobody would notice.
  */
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const ROOT = join(__dirname, '..', '..');
@@ -10,35 +10,36 @@ const ROOT = join(__dirname, '..', '..');
 const read = (relative: string): string => readFileSync(join(ROOT, relative), 'utf8');
 
 describe('board protocol lines', () => {
-  it('the shared skill fixes the board as the queue and the column by state type', () => {
-    const skill = read('.agents/skills/board-workflow/SKILL.md');
-    expect(skill).toContain('A ticket is its number, written `#42`.');
-    expect(skill).toContain('A subtask is a plan step. It never gets a lane of its own.');
+  it('the board is Multica and the official CLI skill is the driver', () => {
+    const agents = read('AGENTS.md');
+    expect(agents).toContain("the owner's self-hosted Multica");
+    expect(agents).toContain('`multica` CLI');
+    expect(agents).toContain('.agents/skills/multica-cli/SKILL.md');
   });
 
-  it('a lane never ends its turn with a ticket mid-flight', () => {
-    expect(read('.opencode/agents/athan-lane.md')).toContain(
-      'Never leave a ticket in a started column at the end of your turn.'
-    );
+  it('the companion fixes the columns, the key scar and the workspaces', () => {
+    const board = read('.agents/skills/multica-cli/BOARD-ATHAN.md');
+    expect(board).toContain('| 3 | Planning | `planning_2` | `planning` |');
+    expect(board).toContain('The `planning_2` key is a scar, not a mistake');
+    expect(board).toContain('Research tickets never go');
   });
 
-  it('an executor never pushes and never rewrites the plan', () => {
-    const executor = read('.opencode/agents/athan-executor.md');
-    expect(executor).toContain('- Never push.');
-    expect(executor).toContain('- Never change the plan.');
+  it('the official skill file ships verbatim with its side-effect guards', () => {
+    const skill = read('.agents/skills/multica-cli/SKILL.md');
+    expect(skill).toContain('backlog | todo | in_progress | in_review | done | blocked | cancelled');
+    expect(skill).toContain('Suppressing Agent Runs with `--no-start`');
   });
 
-  it('a reviewer posts one comment per ticket and keeps it actionable', () => {
-    expect(read('.opencode/agents/athan-reviewer.md')).toContain('One comment per ticket, not one per finding.');
+  it('the retired itsaplan machinery is gone', () => {
+    expect(existsSync(join(ROOT, '.agents/skills/board-workflow'))).toBe(false);
+    expect(existsSync(join(ROOT, '.agents/skills/athan-lead'))).toBe(false);
+    expect(existsSync(join(ROOT, '.opencode/agents'))).toBe(false);
+    expect(read('opencode.json')).not.toContain('itsaplan');
   });
 
-  it('a griller reports no finding without a fix', () => {
-    expect(read('.opencode/agents/athan-plan-griller.md')).toContain(
-      'Every finding is one line, and every finding names the fix.'
-    );
-  });
-
-  it('the lead closes a run with the snapshot', () => {
-    expect(read('.agents/skills/athan-lead/SKILL.md')).toContain('board/snapshot.sh');
+  it('athan-next runs every phase itself and stops at DONE', () => {
+    const skill = read('.agents/skills/athan-next/SKILL.md');
+    expect(skill).toContain('**You do every phase yourself, in this session.**');
+    expect(skill).toContain('The row becomes DONE, the branch pushes');
   });
 });

@@ -1,18 +1,25 @@
 ---
 name: athan-next
 description: Carry one queued session in ai/plans/README.md from planning through execution to audit, all three phases yourself in this one session, and stop when that session is DONE and pushed. Trigger on "what is the next step", "next session", "continue the queue", or any request to plan, execute or audit a session listed in ai/plans/README.md.
-version: 4.1.0
+version: 5.0.0
 ---
 
 # athan-next
 
 The owner resumes with /go and walks away. This skill carries ONE queued session from planning through execution to audit and stops when that session is DONE and pushed, or the moment it needs the owner.
 
-**You do every phase yourself, in this session.** Subagents are banned, with two exceptions. The audit's **cold review**, because a reviewer that never saw the session catches what its author cannot: `athan-auditor` says when and how. And `vision`, because seeing images is a capability, not a preference. If you can see images, read them yourself. If you cannot, call the `vision` subagent with the file path and one exact question, and rely on its report. Never guess what an image shows, and never claim to have checked one you did not.
+**You do every phase yourself, in this session.** There are no phase skills and no
+worker agents: the contracts below are the whole process. Subagents are banned, with
+two exceptions. The audit's **cold review**: reread your own diff as a stranger who
+never saw the session, and attack it. And `vision`, because seeing images is a
+capability, not a preference. If you can see images, read them yourself. If you
+cannot, call the `vision` subagent with the file path and one exact question, and rely
+on its report. Never guess what an image shows, and never claim to have checked one
+you did not.
 
 Sight is also a way to REACH a screen: when the automation tools cannot see a control, an OEM dialog outside the app's hierarchy, a surface `uiautomator dump` will not serve, screenshot the phone, read the one control's coordinates, tap it, and screenshot again to confirm the tap landed.
 
-Tool routing, comment rules, writing style and the hard rules live in `ai/AGENTS.md`. Reach for them there, never re-derive them here.
+Tool routing, comment rules, writing style and the hard rules live in `ai/AGENTS.md`. Reach for them there, never re-derive them here. Board reads and writes go through the `multica-cli` skill with `BOARD-ATHAN.md` for this board's columns and keys.
 
 ## 1. Read the state
 
@@ -48,19 +55,32 @@ A READY row whose "Needs first" rows are not all DONE is still the row in flight
 
 ## 3. Run the phase yourself
 
-Call the Skill tool for the phase, then do what it says, end to end:
+**Plan.** Read the row's links (the work, the frontier it touches, the tickets it
+cites). Write `PLAN.md` in the plan folder: the goal in one paragraph, the steps in
+order, each step's acceptance criteria, the risks with their falsifiers. Then grill
+it as a hostile stranger who must build it without being able to ask a question:
+every gap you find, fix in the plan. The row becomes READY only when a stranger
+could execute the plan without guessing.
 
-| Phase | Skill |
-| --- | --- |
-| Plan | `athan-planner`, planning the row section 2 chose |
-| Execute | `athan-executor`, executing that row's plan |
-| Audit | `athan-auditor`, auditing that row's plan |
+**Execute.** Work the steps in order, one at a time, each to its acceptance criteria
+before the next begins. `yarn validate` before anything is called done; full unit
+coverage of every line a change touches, red before green; the version bump rides
+every commit. Record what ran and what moved in `LOG.md` as you go. The row goes
+IN PROGRESS when execution starts and EXECUTED when the last step's criteria hold.
 
-Carry straight on into the next phase when the row moves: plan it, execute it, audit it, all here. Write the phase's record in the plan folder (`PLAN.md`, `LOG.md`, `AUDIT.md`) exactly as the skill says, because that is where the owner reads the detail.
+**Audit.** Read the complete diff cold: against the plan (did it build what was
+ordered), against the repository (does it fit the surrounding code), and against a
+stranger's eyes (would this be understood in a year). Run `yarn validate` yourself.
+Fix what you find and re-audit the fix. The row becomes DONE, the branch pushes,
+and the audit's verdict and findings are recorded in `AUDIT.md`.
+
+If the row maps to a Multica ticket, move it as you go: Planning while planning,
+In Progress while executing, In Review for the audit, Done when it lands. Use
+`--no-start` for every move; work is already running here.
+
+Carry straight on into the next phase when the row moves: plan it, execute it, audit it, all here.
 
 **An owner decision is asked with the `question` tool, and you wait for the answer.** Never guess a decision the owner owns. Give every option both a `label` and a `description`, or the call fails validation.
-
-**Loop on your own work until it is right.** A skill that says a reviewer checks a commit means YOU review that commit: read the diff back with fresh eyes, attack it from a different angle, and fix what you find before merging. The audit phase is the gate, and it is also yours, with its one cold review as the only eyes that never saw the work being written.
 
 ## 4. Judge each phase from the repository, never from memory
 
@@ -73,7 +93,7 @@ Re-read section 1 after every phase. The table and git are the truth.
 | The row is unchanged and nothing was committed, twice running | Stop. The phase cannot finish as specified |
 | A row went BLOCKED or OWNER-LED, or the owner must hold a device | Stop and report it |
 
-**If your context runs low,** write the "Resume from" note the phase's skill specifies, commit and merge what is finished, and ask the owner for the /handoff document. The next session resumes from it.
+**If your context runs low,** write the "Resume from" note in `LOG.md`, commit and merge what is finished, and ask the owner for the /handoff document. The next session resumes from it.
 
 ## 5. Stop, and hand back
 
@@ -98,4 +118,4 @@ Above those four lines, at most three sentences: what the session delivered, and
 
 ## 7. Running one phase only
 
-If the owner names a phase ("just plan it", "audit only"), call that one phase's skill yourself, run it end to end, then stop at section 6.
+If the owner names a phase ("just plan it", "audit only"), run that one phase end to end by section 3's contract, then stop at section 6.

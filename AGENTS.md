@@ -7,12 +7,10 @@ and session hygiene. This file carries only what is specific to Athan.uk.
 
 1. This file.
 2. `opencode.json` (repo root): which MCP servers are wired and enabled.
-3. `.agents/skills/`: the Expo and EAS skills, this repo's workflow skills
-   (`board-workflow`, `athan-planner`, `athan-lead`), and for React Native code work
-   `react-native-best-practices` with the performance rules in `react-native-skills`. The
-   delivery workers (`athan-lane`, `athan-executor`, `athan-reviewer`, `athan-plan-griller`)
-   are agent files under `.opencode/agents/`, dispatched by the lead or a lane, never loaded
-   into the main session. Load the matching skill instead of working from memory.
+3. `.agents/skills/`: `multica-cli` (the official Multica CLI skill; `BOARD-ATHAN.md`
+   beside it holds this board's columns, keys and discipline), `athan-next` (the
+   session-queue driver), `language-wave`, `writing-for-agents`. Load the matching
+   skill instead of working from memory.
 
 ## Tool routing
 
@@ -30,18 +28,19 @@ Reach for these without being asked.
 | "Are alarms armed?" | `yarn check:device` |
 | Animation smoothness, 30fps floor | `e2e/scripts/frame-audit.sh` |
 | Perf regression vs baseline | `e2e/scripts/baseline-compare.sh e2e/flows/<flow>.yaml` |
-| Read or move a ticket on the board | `itsaplan` MCP (see Workflow) |
+| Read or move a ticket on the board | `multica` CLI (see Workflow) |
 | OCR an image or PDF (posters, charts, scans) | `$HOME/athan-gitree/census/tools/ocr` (macOS Vision; `ocr <file> [page-limit]`) |
 
 Scripts measure. The `vision` subagent interprets.
 
 ## Workflow
 
-The board is the tickets: a local It's a Plan instance reached through the `itsaplan` MCP,
-whose personal key comes from `ITSAPLAN_API_KEY` in the shell and whose deployment lives in
-`board/`. Read `.agents/skills/board-workflow/SKILL.md` before touching it: it holds the
-columns, the picking rule and the ticket anatomy. Entry to a run is `/athan-next`. The run
-closes with `board/snapshot.sh` in the run's last commit.
+The board is the tickets: the owner's self-hosted Multica (API on the home server, `SERVER_LAN_IP:3011`)
+(browser front `https://kan.chabu.me`), driven through the `multica` CLI, which is
+installed, configured and logged in (PAT in `MULTICA_PAT`). Read
+`.agents/skills/multica-cli/SKILL.md` and its companion `BOARD-ATHAN.md` before touching
+the board: they hold the eleven columns, their keys and the discipline. Entry to a run is
+`/athan-next`. `board/` at the repo root is the frozen itsaplan archive, history only.
 
 ## Product
 
