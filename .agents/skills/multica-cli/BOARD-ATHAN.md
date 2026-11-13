@@ -30,6 +30,8 @@ true about OUR board, not about the CLI.
 | 10 | Done | `done` | `done` | Completed. |
 | 11 | Cancelled | `cancelled` | `cancelled` | Decided not to do. |
 
+The board's render order is the Default workflow's step list (GET /api/issue-workflows),
+not the status catalog's array order; the table above is that render order.
 The `planning_2` key is a scar, not a mistake: ATHAN archived a stray `planning`
 once and Multica never frees a key. Pass keys, never display names.
 

@@ -209,9 +209,9 @@ describe('where the shapes apply', () => {
   });
 
   it('still applies them to this project’s own skills', () => {
-    expect(rulesFor(`cd ${HOME_PATH}`, '.agents/skills/athan-lead/SKILL.md')).toEqual(['home-path']);
-    expect(rulesFor(`cd ${HOME_PATH}`, '.agents/skills/athan-planner/SKILL.md')).toEqual(['home-path']);
-    expect(rulesFor(`cd ${HOME_PATH}`, '.opencode/agents/athan-executor.md')).toEqual(['home-path']);
+    expect(rulesFor(`cd ${HOME_PATH}`, '.agents/skills/athan-next/SKILL.md')).toEqual(['home-path']);
+    expect(rulesFor(`cd ${HOME_PATH}`, '.agents/skills/multica-cli/SKILL.md')).toEqual([]);
+    expect(rulesFor(`cd ${HOME_PATH}`, '.agents/skills/multica-cli/BOARD-ATHAN.md')).toEqual(['home-path']);
   });
 });
 

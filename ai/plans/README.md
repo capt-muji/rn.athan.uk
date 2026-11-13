@@ -110,7 +110,7 @@ A planning session may turn one of these into a plan only after the owner approv
 
 ## Files here
 
-- Briefs: the session skills `athan-planner`, `athan-executor` and `athan-auditor` in `.agents/skills/`, orchestrated by `athan-next` and started with `/athan-next`. `SDK58-PROGRAMME.md` holds the row 18 and D4 briefs.
+- Briefs: the `athan-next` skill in `.agents/skills/` (self-contained plan/execute/audit phases), with the `multica-cli` skill beside it for the board; started with `/athan-next`. `SDK58-PROGRAMME.md` holds the row 18 and D4 briefs.
 - `TEMPLATE.md` fixes the shape of every plan. A plan folder is scaffolding: it is created at PLANNING and deleted at DONE, in the merge that lands the work.
 - Surviving session folders: `27-silent-mode-bypass/FINDINGS.md` (cited by `shared/help.ts`), `39-localisation/` (rows 38 and 39) and `54-patches-and-copy/FINDINGS.md` (row 54). Beside this folder, `ai/prompts/` holds the two moonsighting prompts. Every other session's record lives in git history.
 

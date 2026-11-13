@@ -87,3 +87,6 @@ four edits, then `docker compose --env-file env pull && docker compose --env-fil
 snapshot, a Time Machine copy, or a copy to another machine is what makes it recoverable. A
 backup that has never been restored is not a backup, so the drill in the ticket is part of the
 setup, not an extra.
+
+The archive is never started. Should the history ever be needed locally, `restore.sh`
+rebuilds the old instance from `snapshot/board.sql`; nothing else depends on it.

@@ -126,8 +126,8 @@ Upstream, Blocked, Done and Cancelled. Agents drive it through the `multica` CLI
 
 `board/` at the repo root is the frozen itsaplan archive: the retired local stack and
 `board/snapshot/board.sql`, the committed history of the 500 migrated tickets. It is never
-started; `board/restore.sh` can rebuild the old instance from the snapshot if the history
-is ever needed locally.
+started; `board/README.md` records how to rebuild the old instance from the snapshot
+should the history ever be needed locally.
 
 ## Development
 
@@ -172,7 +172,7 @@ and the e2e scripts fall back to the placeholder.
 the owner's names, the home-path username and tool-session scratchpad paths. Three gates read it,
 all deterministic: `.husky/pre-commit` refuses a staged line or a commit identity that carries a
 term; `yarn validate` includes a suite test that scans every tracked file, and the pre-push hook
-runs `yarn validate`; `board/snapshot.sh` refuses to write a dump that carries one. `AGENTS.md`
+runs `yarn validate`. `AGENTS.md`
 holds the placeholder vocabulary the shapes use for device and location identifiers.
 
 ## Testing

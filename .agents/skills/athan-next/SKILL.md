@@ -19,7 +19,7 @@ you did not.
 
 Sight is also a way to REACH a screen: when the automation tools cannot see a control, an OEM dialog outside the app's hierarchy, a surface `uiautomator dump` will not serve, screenshot the phone, read the one control's coordinates, tap it, and screenshot again to confirm the tap landed.
 
-Tool routing, comment rules, writing style and the hard rules live in `ai/AGENTS.md`. Reach for them there, never re-derive them here. Board reads and writes go through the `multica-cli` skill with `BOARD-ATHAN.md` for this board's columns and keys.
+Tool routing, comment rules, writing style and the hard rules live in the root `AGENTS.md`. Reach for them there, never re-derive them here. Board reads and writes go through the `multica-cli` skill with `BOARD-ATHAN.md` for this board's columns and keys.
 
 ## 1. Read the state
 

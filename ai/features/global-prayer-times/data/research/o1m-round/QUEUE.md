@@ -14,7 +14,7 @@
 | O1m-R5 | o1m-r5-watches | GLM-5.3-Flash | Dated watches + December accrual + cheapest year-2 | RETURNED |
 
 Close-time tasks: version bump + repo RESEARCH-ROUNDS.md target update + rsync citable layer +
-privacy scrub + yarn validate + push uat + board/snapshot.sh (owner orders: 50 GB / 50M min,
+privacy scrub + yarn validate + push uat (owner orders: 50 GB / 50M min,
 1B aspiration).
 | O1m-R6 | o1m-r6-americas | DeepSeek 1017 | Americas completion: 4 unproven US metros + Canada Masjidal past years + LatAm depth | RETURNED |
 | O1m-6r | o1m-6-mideast | DeepSeek 1017 | Middle East city depth (continuation) | RETURNED |

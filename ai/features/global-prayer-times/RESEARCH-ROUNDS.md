@@ -94,8 +94,8 @@ prior round) and extends it with that round's own territory list.
 - The board (owner order 2026-11-11: use it MINIMALLY, like a git history — record exactly
   where things are, nothing more): one Research ticket per round (labels: number, Research,
   research, prayer-times), moved In progress at start with Lane set, updated with one short
-  comment per major return, closed Done at the round's commit with a closing comment;
-  `board/snapshot.sh` rides the close commit. Board mechanics never stall research: if a board
+  comment per major return, closed Done at the round's commit with a closing comment.
+  Board mechanics never stall research: if a board
   write fails or is slow, note it in the round's CONSOLIDATION.md and continue researching;
   reconcile the board at the round's close. The 10 research agents (5+5) are the exception mode
   and are separate from any board lanes running alongside.
@@ -194,5 +194,5 @@ prior round) and extends it with that round's own territory list.
   decisions addenda, round summary; then rsync the citable layer to
   `ai/features/global-prayer-times/data/research/<tag>/`, version bump (package.json, app.json,
   shared/whatsNew.ts, fetch origin first), privacy scrub ($HOME placeholders, no locale words),
-  `yarn validate` green, push uat, board ticket Done, `board/snapshot.sh` in the close commit.
+  `yarn validate` green, push uat, board ticket Done.
 - The repo is never touched mid-round; the application is never touched at all.
