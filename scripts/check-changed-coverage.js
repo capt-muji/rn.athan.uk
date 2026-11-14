@@ -40,10 +40,6 @@ const UNMEASURED = [
   { path: 'assets/', reason: 'static asset registries (require maps and SVG path strings), no logic' },
   { path: 'mocks/', reason: 'fabricated API data for dev builds' },
   { path: 'e2e/', reason: 'device test harness, run against the app on hardware' },
-  {
-    path: 'ai/features/global-prayer-times/data/',
-    reason: 'executed research artefacts, run once under Node against published timetables, never by the app',
-  },
   { path: 'scripts/', reason: 'repository tooling, including this gate' },
   {
     path: 'ai/plans/',
@@ -69,7 +65,7 @@ const fail = (lines) => {
 // -z keeps every path byte for byte: without it git quotes a path holding a non-ASCII character, and no pattern matches
 const gitPaths = (...args) => {
   try {
-    const output = execFileSync('git', args, { cwd: ROOT, encoding: 'utf8' });
+    const output = execFileSync('git', args, { cwd: ROOT, encoding: 'utf8', maxBuffer: 512 * 1024 * 1024 });
     return output
       .split('\0')
       .map((entry) => entry.replace(/^\n+/, ''))

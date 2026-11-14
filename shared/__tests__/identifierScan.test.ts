@@ -205,7 +205,7 @@ describe('the private list', () => {
 describe('where the shapes apply', () => {
   it('leaves third-party documentation and published research data alone', () => {
     expect(rulesFor(`cd ${HOME_PATH}`, '.agents/skills/expo-router/references/setup.md')).toEqual([]);
-    expect(rulesFor(LONDON, 'ai/features/global-prayer-times/data/cities.csv')).toEqual([]);
+    expect(rulesFor(LONDON, 'ai/features/moonsighting/data/london/lpt-2026.json')).toEqual([]);
   });
 
   it('still applies them to this project’s own skills', () => {
@@ -238,13 +238,12 @@ describe('a file added by a commit', () => {
     }
   );
 
-  it.each([
-    'assets/icons/png/star.png',
-    'ai/features/global-prayer-times/data/countries/sheet.pdf',
-    'ai/plans/x/LOG.md',
-  ])('passes %s', (file) => {
-    expect(scanAddedFile(file)).toEqual([]);
-  });
+  it.each(['assets/icons/png/star.png', 'ai/features/moonsighting/notes/figure.pdf', 'ai/plans/x/LOG.md'])(
+    'passes %s',
+    (file) => {
+      expect(scanAddedFile(file)).toEqual([]);
+    }
+  );
 });
 
 describe('the lines a diff adds', () => {

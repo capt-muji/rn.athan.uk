@@ -40,7 +40,7 @@ The board is the tickets: the owner's self-hosted Multica (API on the home serve
 installed, configured and logged in (PAT in `MULTICA_PAT`). Read
 `.agents/skills/multica-cli/SKILL.md` and its companion `BOARD-ATHAN.md` before touching
 the board: they hold the eleven columns, their keys and the discipline. Entry to a run is
-`/athan-next`. `board/` at the repo root is the frozen itsaplan archive, history only.
+`/athan-next`. The self-hosted Multica is the board of record.
 
 ## Product
 
