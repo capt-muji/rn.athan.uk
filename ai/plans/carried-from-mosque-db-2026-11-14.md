@@ -8,7 +8,7 @@ mosque-db side deleted its originals, so this repo is now their only home.
 ## What was carried
 
 - `scripts/build/` (8 files: `build-mock.zsh`, `build-mock-variant.zsh`,
-  `build-mock-ramadan.zsh`, `build-prod.zsh`, `t491-ios-build.zsh`,
+  `build-mock-ramadan.zsh`, `build-prod.zsh`, `build-ios.zsh`,
   `devcheck.py`, `lupt-download.mjs`, `BUILD.md`): the live app build tools,
   carried because their natural home is this repo.
 - `ai/plans/never-pushed-branches/` (2 patch files: `design-info-icon-candidates/0001-docs-design-ten-info-chip-glyph-candidates-owner-to-.patch`,

@@ -5,11 +5,11 @@ versionCode 1000000, signed with the Android Debug certificate
 (SHA-256 `fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c`).
 
 ```zsh
-zsh ~/athan-device-sweep/session3/bin/build-mock.zsh <commit-or-branch> <mocks-file> <out.apk>
+zsh ~/repos/rn.athan.uk/scripts/build/build-mock.zsh <commit-or-branch> <mocks-file> <out.apk>
 # e.g.
-zsh ~/athan-device-sweep/session3/bin/build-mock.zsh 466b568 \
-  ~/athan-device-sweep/session3/mocks-dashes.ts \
-  ~/athan-device-sweep/session3/build/athan-uat2-466b568-mock-dashes.apk
+zsh ~/repos/rn.athan.uk/scripts/build/build-mock.zsh 466b568 \
+  ~/repos/rn.athan.uk/mocks/minutes.ts \
+  ~/athan-build/mock-466b568.apk
 ```
 
 It exits non-zero with `BUILD-MOCK FAILED: <reason>` on any failed step. On success it prints
@@ -18,8 +18,10 @@ mock sha256), and writes the same report to `<out.apk>.build.txt`. Logs go to `<
 
 ## What makes it a mock build
 
-- `api/client.ts` serves `MOCK_DATA_SIMPLE` from `mocks/simple.ts` whenever `EXPO_PUBLIC_ENV` is neither
-  `prod` nor `preview`, and `stores/database.ts` then opens `athan-storage-dev`. The owner's
+- `stores/timetable.ts` lazily serves `mockMinutesSnapshot` from `mocks/minutes.ts` behind its
+  build-class gate whenever `EXPO_PUBLIC_ENV` is neither
+  `prod` nor `preview`, and `stores/database.ts` then opens
+  `athan-storage-dev`. The owner's
   `athan-storage` is never read or written by such a build.
 - The script sets `EXPO_PUBLIC_ENV=local` and the placeholder `EXPO_PUBLIC_API_KEY=key` in its own
   environment, first unsetting every `EXPO_PUBLIC_*` it inherited plus `EXPO_ANDROID_SUFFIX` and
@@ -35,11 +37,11 @@ mock sha256), and writes the same report to `<out.apk>.build.txt`. Logs go to `<
 1. **Resolve the ref** with `git -C $HOME/repos/rn.athan.uk rev-parse --verify <ref>^{commit}`.
    Local refs only; nothing is fetched. A branch name resolves to wherever it points now, so re-running on
    a feature branch picks up its new commits. Pass `origin/<branch>` only after fetching it yourself.
-2. **Worktree** `~/athan-device-sweep/worktrees/mock-build`, outside the repo and outside `/tmp`.
+2. **Worktree** `~/athan-build/worktrees/mock-build`, outside the repo and outside `/tmp`.
    - First run: `git worktree add --detach <wt> <sha>`.
    - Later runs:
      1. Confirm it belongs to this repo.
-     2. Restore its `mocks/simple.ts`.
+     2. Restore its `mocks/minutes.ts`.
      3. Refuse if any other tracked file is modified.
      4. `git -C <wt> checkout --detach <sha>`.
 
@@ -66,12 +68,12 @@ mock sha256), and writes the same report to `<out.apk>.build.txt`. Logs go to `<
      If a commit's `app.json` predates versionCode 1000000, the script patches the generated
      `build.gradle` to 1000000 and says so. Otherwise the 3T refuses the APK with
      `INSTALL_FAILED_VERSION_DOWNGRADE`, as happened with the main checkout's stale `android/` (versionCode 1).
-5. **The mock**: `cp <mocks-file> <wt>/mocks/simple.ts`, compared byte for byte. The file must export
-   `MOCK_DATA_SIMPLE` and `addMinutes`.
+5. **The mock**: `cp <mocks-file> <wt>/mocks/minutes.ts`, compared byte for byte. The file must export
+   `mockMinutesSnapshot`.
 6. **Fresh outputs**:
    - Delete the previous `app-release.apk` and every `index.android.bundle*` under `android/app/build`, so
      Gradle cannot report the JS bundle up to date.
-   - Point `TMPDIR` at `~/athan-device-sweep/worktrees/.tmp-mock-build`, emptied each run. Expo's Metro
+   - Point `TMPDIR` at `~/athan-build/worktrees/.tmp-mock-build`, emptied each run. Expo's Metro
      keeps its transform cache in `os.tmpdir()/metro-cache`, so no transform cached by a prod build on
      this Mac (with `prod` and the real key inlined) can be reused.
 7. **Build**:
@@ -84,12 +86,12 @@ mock sha256), and writes the same report to `<out.apk>.build.txt`. Logs go to `<
      other devices.
    - Release is signed with `signingConfigs.debug` (the template's `android/app/debug.keystore`), the
      same certificate as the owner's installed build, so `adb install -r` keeps the app's data.
-8. **Restore** the worktree's `mocks/simple.ts`, copy the APK to `<out.apk>`, then **verify the artefact**:
+8. **Restore** the worktree's `mocks/minutes.ts`, copy the APK to `<out.apk>`, then **verify the artefact**:
    - `aapt dump badging` (build-tools 37.0.0): package `${ATHAN_BUNDLE_ID}`, versionCode `1000000`,
      versionName equal to the commit's `app.json` version.
    - `apksigner verify --print-certs`: SHA-256 equals the owner's debug certificate.
    - `assets/index.android.bundle` is Hermes bytecode (magic `c61fbc03c103191f`) and contains every
-     `'YYYY-MM-DD'` literal of the mock file. The mock is imported unconditionally, so this proves the
+     `'YYYY-MM-DD'` literal of the mock file. The mock rides every local build, so this proves the
      bundle is fresh and carries this mock. It does not prove the env.
    - The real API key from `~/.config/athan/.api_key`, never printed, does not occur in the bundle.
 9. **The env is proven on the device**, not statically:

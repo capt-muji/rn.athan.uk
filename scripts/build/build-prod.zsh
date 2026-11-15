@@ -13,7 +13,7 @@ emulate -L zsh
 setopt pipe_fail no_unset
 
 REPO=$HOME/repos/rn.athan.uk
-SWEEP=$HOME/athan-gitree
+SWEEP=$HOME/athan-build
 WT=${PROD_WT:-$SWEEP/worktrees/prod-build}
 ARCHS=${PROD_ARCHS:-arm64-v8a}
 SDK=${ANDROID_HOME:-$HOME/Library/Android/sdk}

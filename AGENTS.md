@@ -29,7 +29,7 @@ Reach for these without being asked.
 | Animation smoothness, 30fps floor | `e2e/scripts/frame-audit.sh` |
 | Perf regression vs baseline | `e2e/scripts/baseline-compare.sh e2e/flows/<flow>.yaml` |
 | Read or move a ticket on the board | `multica` CLI (see Workflow) |
-| OCR an image or PDF (posters, charts, scans) | `$HOME/athan-gitree/census/tools/ocr` (macOS Vision; `ocr <file> [page-limit]`) |
+| OCR an image or PDF (posters, charts, scans) | `$HOME/repos/prayer-times/tools/ocr/ocr` (macOS Vision; `ocr <file> [page-limit]`) |
 
 Scripts measure. The `vision` subagent interprets.
 
@@ -156,8 +156,9 @@ cadence 5-minute background checks, owner order 2026-10-31 later the same day).
 
 - `yarn validate` before calling anything done. `yarn format` for fixes. `yarn test:tz` for
   date work.
-- Device builds go through `$HOME/athan-gitree/bin/build-prod.zsh` and
-  `$HOME/athan-gitree/bin/build-mock.zsh`, never two of the SAME toolchain at once (two
+- Device builds go through `scripts/build/build-prod.zsh`,
+  `scripts/build/build-mock.zsh` and `scripts/build/build-ios.zsh`, never two of the
+  SAME toolchain at once (two
   Gradle runs collide on the shared node_modules build dirs; Gradle and Xcode do not).
   Every build compiles BOTH platforms - iOS and Android - and launches both compilers in
   PARALLEL, never queued one after the other: the codebase is shared, so every build must
@@ -189,7 +190,7 @@ cadence 5-minute background checks, owner order 2026-10-31 later the same day).
 ## Worktrees
 
 Verify a leftover branch is merged before deleting it. The build worktrees under
-`$HOME/athan-gitree/worktrees/` are Gradle caches, detached and branchless. They stay.
+`$HOME/athan-build/worktrees/` are build caches, detached and branchless. They stay.
 
 <!-- CODEGRAPH_START -->
 ## CodeGraph

@@ -12,7 +12,7 @@
 # so `adb install -r` goes on over the owner's local production build. Recipe: ../BUILD.md.
 #
 # Never touches the main checkout's working tree, index or branches: it builds in its own
-# detached worktree (default ~/athan-device-sweep/worktrees/mock-build), never fetches, never
+# detached worktree (default ~/athan-build/worktrees/mock-build), never fetches, never
 # calls EAS. Re-running with a branch name moves the worktree to wherever that branch points now.
 #
 # Env overrides: MOCK_WT (worktree path), MOCK_ARCHS (default arm64-v8a, the 3T's ABI).
@@ -21,7 +21,7 @@ emulate -L zsh
 setopt pipe_fail no_unset
 
 REPO=$HOME/repos/rn.athan.uk
-SWEEP=$HOME/athan-gitree
+SWEEP=$HOME/athan-build
 WT=${MOCK_WT:-$SWEEP/worktrees/mock-build}
 ARCHS=${MOCK_ARCHS:-arm64-v8a}
 SDK=${ANDROID_HOME:-$HOME/Library/Android/sdk}

@@ -139,7 +139,7 @@ time and never committed, because a clone has to be able to deploy this as its o
 | `EXPO_EAS_PROJECT_ID` | `extra.eas.projectId` | none |
 | `EXPO_PUBLIC_ANDROID_PACKAGE` / `EXPO_PUBLIC_IOS_BUNDLE_ID` | the ids the app reads at runtime | the same placeholders |
 
-`$HOME/athan-gitree/bin/build-prod.zsh` and `build-mock.zsh` export the live values before
+`scripts/build/build-prod.zsh` and `build-mock.zsh` export the live values before
 `npx expo prebuild`, so a device build writes the published ids into the git-ignored native trees
 and badges the package it always has. A local iOS build does the same by exporting them in the
 shell that runs `npx expo prebuild -p ios`. Maestro flows take `APP_ID` (`-e APP_ID=<package>`),
