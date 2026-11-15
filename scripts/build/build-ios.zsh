@@ -8,7 +8,7 @@
 # (local) or prod data.
 #
 # IOS_DEST overrides the xcodebuild destination (default generic/platform=iOS; pass e.g.
-# 'platform=iOS Simulator,UDID=<udid>' for a simulator build, which skips signing).
+# 'platform=iOS Simulator,id=<udid>' for a simulator build, which skips signing).
 # IOS_SUFFIX (e.g. fleettest) gives the build its own bundle id, app group and display
 # name so it installs beside the owner's app: the suffix is exported inside this prebuild
 # and build, never passed to them. IOS_WT overrides the worktree path.
