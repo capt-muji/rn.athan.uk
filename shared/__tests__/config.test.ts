@@ -191,6 +191,7 @@ describe('app.config android resolution', () => {
   it('keeps every locale value on the iOS resolution', () => {
     const resolved = resolveAndroidRoute('1', [], 'ios') as unknown as {
       locales?: Record<string, Record<string, unknown>>;
+      ios?: { infoPlist?: { CFBundleLocalizations?: string[] } };
     };
     const locales = resolved.locales ?? {};
     expect(Object.keys(locales)).toHaveLength(74);
@@ -201,5 +202,17 @@ describe('app.config android resolution', () => {
     // The rename is android-only: the iOS enumeration keeps the catalog's kas.
     expect(locales.kas).toBeDefined();
     expect(locales.ks).toBeUndefined();
+    // Apple's scanner (90176) rejects mfa/skr lproj names though both are valid
+    // BCP-47 and iOS offers neither as a system language, so the dirs never
+    // serve at runtime: the two ride their Apple-recognized parent tags.
+    expect(locales.mfa).toBeUndefined();
+    expect(locales.skr).toBeUndefined();
+    expect(locales['ms-TH']).toBeDefined();
+    expect(locales.lah).toBeDefined();
+    const locs = resolved.ios?.infoPlist?.CFBundleLocalizations ?? [];
+    expect(locs).not.toContain('mfa');
+    expect(locs).not.toContain('skr');
+    expect(locs).toContain('ms-TH');
+    expect(locs).toContain('lah');
   });
 });
