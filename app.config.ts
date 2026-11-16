@@ -151,7 +151,9 @@ const stripIosLocaleValues = (expoConfig: ExpoConfig): ExpoConfig => {
   if (!expoConfig.locales) return expoConfig;
   const stripped: ExpoConfig['locales'] = {};
   for (const [locale, strings] of Object.entries(expoConfig.locales)) {
-    stripped[locale] =
+    // Play rejects the ISO 639-3 kas on bundles; Android's Kashmiri code is ks.
+    const androidLocale = locale === 'kas' ? 'ks' : locale;
+    stripped[androidLocale] =
       strings && typeof strings === 'object' && 'android' in strings
         ? { android: (strings as { android: unknown }).android }
         : {};
