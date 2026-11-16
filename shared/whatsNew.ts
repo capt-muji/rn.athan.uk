@@ -134,7 +134,7 @@ const resolveItem = (item: StampedWhatsNewArchiveItem): WhatsNewItem => ({
 // =============================================================================
 
 export const WHATS_NEW: WhatsNewArchiveRelease | null = {
-  version: '2.4.41',
+  version: '2.53.21',
   items: [
     {
       titleKey: 'whatsNew.title.language',
@@ -199,28 +199,28 @@ export const WHATS_NEW: WhatsNewArchiveRelease | null = {
       bodyKey: 'whatsNew.body.lockLayouts',
       // iOS only: the layouts live in the widget extension, which Android never builds
       platform: 'ios',
-      version: '2.4.41',
+      version: '2.50.0',
     },
     {
       titleKey: 'whatsNew.title.moreLanguages',
       bodyKey: 'whatsNew.body.moreLanguages',
-      version: '2.4.41',
+      version: '2.50.0',
     },
     {
       titleKey: 'whatsNew.title.checkUpdates',
       bodyKey: 'whatsNew.body.checkUpdates',
-      version: '2.4.41',
+      version: '2.50.0',
     },
     {
       // The title reuses the toggle's own name so the modal teaches the settings label
       titleKey: 'whatsNew.title.format24',
       bodyKey: 'whatsNew.body.format24',
-      version: '2.4.41',
+      version: '2.50.0',
     },
     {
       titleKey: 'whatsNew.title.fasting',
       bodyKey: 'whatsNew.body.fasting',
-      version: '2.4.41',
+      version: '2.50.0',
     },
   ],
 };

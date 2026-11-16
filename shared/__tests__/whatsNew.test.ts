@@ -90,7 +90,7 @@ describe("the retired 2.43 language-wave row (T-541, the owner's read)", () => {
   });
 });
 
-/** The five per-feature key pairs the fold group presents, in the owner's order */
+/** The five per-feature key pairs the 2.50 group presents, in the owner's order */
 const FEATURE_KEYS = [
   'whatsNew.title.lockLayouts',
   'whatsNew.body.lockLayouts',
@@ -104,11 +104,11 @@ const FEATURE_KEYS = [
   'whatsNew.body.fasting',
 ] as const;
 
-describe('the fold roll-up (T-639: one version group, every feature keeps its own title and description)', () => {
+describe('the 2.50 roll-up (T-639: one version group, every feature keeps its own title and description)', () => {
   const items = WHATS_NEW?.items ?? [];
   const post20 = items.filter((entry) => compareVersions(entry.version ?? '0', '2.0.37') > 0);
 
-  it("archives exactly five post-2.0 items, every one stamped 2.4.41 in the owner's order", () => {
+  it("archives exactly five post-2.0 items, every one stamped 2.50.0 in the owner's order", () => {
     expect(post20.map((entry) => entry.titleKey)).toEqual([
       'whatsNew.title.lockLayouts',
       'whatsNew.title.moreLanguages',
@@ -117,7 +117,7 @@ describe('the fold roll-up (T-639: one version group, every feature keeps its ow
       'whatsNew.title.fasting',
     ]);
     for (const entry of post20) {
-      expect(entry.version).toBe('2.4.41');
+      expect(entry.version).toBe('2.50.0');
       expect(entry.flags).toBeUndefined();
     }
     // The layouts live in the iOS widget extension, so their row alone carries the platform fact
@@ -128,10 +128,10 @@ describe('the fold roll-up (T-639: one version group, every feature keeps its ow
     }
   });
 
-  it('renders the five as one v2.4 group, above the untouched v2.0 group', () => {
+  it('renders the five as one v2.50 group, above the untouched v2.0 group', () => {
     const groups = groupWhatsNewItems(currentVisibleWhatsNew()?.items ?? []);
 
-    expect(groups[0]?.key).toBe('v2.4');
+    expect(groups[0]?.key).toBe('v2.50');
     expect(groups[0]?.items.map((entry) => entry.title)).toEqual([
       t('whatsNew.title.lockLayouts'),
       t('whatsNew.title.moreLanguages'),
@@ -170,11 +170,11 @@ describe('the fold roll-up (T-639: one version group, every feature keeps its ow
     }
   });
 
-  it('pops for the production reader upgrading from 2.0.37 to the fold release', () => {
-    expect(shouldShowWhatsNew('2.4.41', '2.0.37', currentVisibleWhatsNew())).toBe(true);
+  it('pops for the production reader upgrading from 2.0.37 to the 2.50 release', () => {
+    expect(shouldShowWhatsNew('2.50.0', '2.0.37', currentVisibleWhatsNew())).toBe(true);
   });
 
-  it('pops for the same reader on the build this tree serves, not only the fold store build', () => {
+  it('pops for the same reader on the build this tree serves, not only the 2.50 store build', () => {
     expect(shouldShowWhatsNew(INSTALLED_VERSION, '2.0.37', currentVisibleWhatsNew())).toBe(true);
   });
 });
