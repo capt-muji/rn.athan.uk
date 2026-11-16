@@ -182,6 +182,10 @@ describe('app.config android resolution', () => {
       expect(strings.android).toBeDefined();
       void locale;
     }
+    // Play rejects the ISO 639-3 kas on bundles: the android enumeration carries
+    // Kashmiri under ks, the code Android's own per-app picker knows.
+    expect(locales.ks).toBeDefined();
+    expect(locales.kas).toBeUndefined();
   });
 
   it('keeps every locale value on the iOS resolution', () => {
@@ -194,5 +198,8 @@ describe('app.config android resolution', () => {
     expect(one.NSLocationWhenInUseUsageDescription).toBeDefined();
     expect(one.ios).toBeDefined();
     expect(one.android).toBeDefined();
+    // The rename is android-only: the iOS enumeration keeps the catalog's kas.
+    expect(locales.kas).toBeDefined();
+    expect(locales.ks).toBeUndefined();
   });
 });
