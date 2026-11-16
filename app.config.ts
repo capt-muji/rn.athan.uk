@@ -134,8 +134,8 @@ const resolveConfig = ({ platform }: { platform?: string }): ExpoConfig => {
     if (androidWidgetsEnabled) return stripIosLocaleValues(enableAndroidWidgets(config));
     return stripIosLocaleValues(withAndroidLocaleConfig(stripWidgetsPlugin(config)));
   }
-  if (!iosWidgetsEnabled) return stripWidgetsPlugin(config);
-  return config;
+  if (!iosWidgetsEnabled) return withIosStoreLocales(stripWidgetsPlugin(config));
+  return withIosStoreLocales(config);
 };
 
 /**
@@ -147,6 +147,32 @@ const resolveConfig = ({ platform }: { platform?: string }): ExpoConfig => {
  * (expo-constants' ConstantsService parses the whole asset and the app touches
  * only expoConfig.version, stores/version.ts).
  */
+/**
+ * Apple's store scanner (warning 90176) rejects the mfa and skr lproj names
+ * even though both are valid BCP-47; iOS offers neither as a system language,
+ * so those dirs match nothing at runtime. The two ride their Apple-recognized
+ * parents instead - Malay (Thailand) for Pattani Malay, the ISO 639-2 Lahnda
+ * macrolanguage for Saraiki - while the in-app catalogs keep their own keys.
+ */
+const IOS_STORE_LOCALE_ALIASES: Record<string, string> = { mfa: 'ms-TH', skr: 'lah' };
+
+const withIosStoreLocales = (expoConfig: ExpoConfig): ExpoConfig => {
+  if (expoConfig.locales) {
+    const aliased: ExpoConfig['locales'] = {};
+    for (const [locale, strings] of Object.entries(expoConfig.locales)) {
+      aliased[IOS_STORE_LOCALE_ALIASES[locale] ?? locale] = strings;
+    }
+    expoConfig.locales = aliased;
+  }
+  const infoPlist = expoConfig.ios?.infoPlist as { CFBundleLocalizations?: unknown } | undefined;
+  if (Array.isArray(infoPlist?.CFBundleLocalizations)) {
+    infoPlist.CFBundleLocalizations = (infoPlist.CFBundleLocalizations as string[]).map(
+      (locale) => IOS_STORE_LOCALE_ALIASES[locale] ?? locale
+    );
+  }
+  return expoConfig;
+};
+
 const stripIosLocaleValues = (expoConfig: ExpoConfig): ExpoConfig => {
   if (!expoConfig.locales) return expoConfig;
   const stripped: ExpoConfig['locales'] = {};
