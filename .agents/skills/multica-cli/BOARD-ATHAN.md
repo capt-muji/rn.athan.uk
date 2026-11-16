@@ -48,7 +48,7 @@ once and Multica never frees a key. Pass keys, never display names.
 ## Numbers and labels
 
 - The identifier (`ATHA-42`) is the day-to-day handle.
-- The old itsaplan number rides TWO places, both deliberate: the `Ticket number`
+- The old board's ticket number rides TWO places, both deliberate: the `Ticket number`
   property (hash icon) and the `#N` label (deep blue). When the owner says
   "ticket 687", they mean that number.
 - Labels are per-workspace and case-insensitively unique. The palette lives in
@@ -60,6 +60,4 @@ once and Multica never frees a key. Pass keys, never display names.
 - A comment answers another comment in its thread (`--parent`).
 - Comments report what was done and what is left; no file paths or code in
   comments beyond what the owner needs to decide.
-- The board itself lives on the server; nothing about it is committed to this
-  repository. `board/` at the repo root is the frozen itsaplan archive (history
-  only, never started).
+- The board itself lives on the server; nothing about it is committed to this repository.
