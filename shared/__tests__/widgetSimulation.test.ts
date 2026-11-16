@@ -31,30 +31,32 @@
  */
 
 jest.mock('@/stores/database', () => ({
-  getPrayerByDateString: jest.fn(),
   getItem: () => null,
   getRawItem: () => undefined,
 }));
+
+jest.mock('@/stores/timetable', () => ({ getTimetableDay: jest.fn() }));
 
 import { createHash } from 'node:crypto';
 import { addDays } from 'date-fns';
 import type { WidgetTimelineEntry } from 'expo-widgets';
 
-import { MOCK_DATA_FULL } from '@/mocks/full';
+import { FULL_MINUTES } from '@/mocks/full';
 import { EXTRA_PRAYER_IDS, type PrayerId, STANDARD_PRAYER_IDS } from '@/shared/constants';
 import { prayerLabel } from '@/shared/i18n';
 import { setActiveLocale } from '@/shared/i18n/locale';
-import { createPrayerSequence, transformApiData } from '@/shared/prayer';
+import { createPrayerSequence } from '@/shared/prayer';
 import {
   addDaysToDateString,
   createPrayerDatetime,
   formatDateLocalized,
   formatDateShort,
+  formatDisplayTime,
   getPreviousDateString,
 } from '@/shared/time';
+import { type DayMinutes, minutesToRecord } from '@/shared/timetableDecode';
 import {
-  type ISingleApiResponseTransformed,
-  type IValidatedApiResponse,
+  type DayRecord,
   type Prayer,
   type PrayerSequence,
   type ReadablePrayer,
@@ -63,7 +65,7 @@ import {
 } from '@/shared/types';
 import { buildPrayerWidgetTimeline, MIN_ENTRY_SPACING_MS } from '@/shared/widgetTimeline';
 import type { PrayerWidgetProps, PrayerWidgetSettings } from '@/shared/widgetTypes';
-import * as Database from '@/stores/database';
+import * as Timetable from '@/stores/timetable';
 
 // =============================================================================
 // FIXTURE: 16 days across the DST fall-back (clocks change 2026-10-25)
@@ -75,6 +77,7 @@ const SPAN_DAYS = 16;
 
 const SETTINGS: PrayerWidgetSettings = {
   hijriDate: false,
+  use24Hour: false,
 };
 
 /** Realistic October London times */
@@ -260,7 +263,7 @@ describe('virtual week model test', () => {
       const expectedRows = dayPrayers.map((prayer) => ({
         id: prayer.id,
         name: prayerLabel(prayer.id),
-        time: prayer.time,
+        time: formatDisplayTime(prayer.time, SETTINGS.use24Hour),
       }));
       const expectedActiveIndex = dayPrayers.findIndex((prayer) => prayer.datetime.getTime() === nextMs);
 
@@ -309,7 +312,10 @@ describe('virtual week model test', () => {
 
     const rolled = activeEntryAt(entries, afterIsha)?.props;
     const rolledDay = prayers.filter((prayer) => prayer.belongsToDate === '2026-10-19');
-    expect(rolled?.prayers?.map((row) => row.time)).toEqual(rolledDay.map((prayer) => prayer.time));
+    // The row times render in the settings' format, so the model converts too
+    expect(rolled?.prayers?.map((row) => row.time)).toEqual(
+      rolledDay.map((prayer) => formatDisplayTime(prayer.time, SETTINGS.use24Hour))
+    );
   });
 
   it('shows the next day before midnight once Isha has passed', () => {
@@ -389,9 +395,9 @@ describe('virtual week model test', () => {
 // =============================================================================
 
 /**
- * Winter extras clock times (see transformApiData): Midnight 23:52 sits the
+ * Winter extras clock times (see minutesToRecord): Midnight 23:52 sits the
  * PREVIOUS calendar evening while belonging to the raw day (the creation
- * rule for night prayers with hours >= 12); Last Third 02:15, Suhoor 05:55,
+ * rule for night prayers with hours >= 12); Last Third 02:15, Sahur 05:55,
  * Duha 08:10 land on the raw day; Istijaba 16:00 exists only on Fridays
  * (2026-10-23 and 2026-10-30 inside the span).
  */
@@ -548,7 +554,7 @@ describe('extras virtual week model test', () => {
       const expectedRows = dayPrayers.map((prayer) => ({
         id: prayer.id,
         name: prayerLabel(prayer.id),
-        time: prayer.time,
+        time: formatDisplayTime(prayer.time, SETTINGS.use24Hour),
       }));
       const expectedActiveIndex = dayPrayers.findIndex((prayer) => prayer.datetime.getTime() === nextMs);
 
@@ -631,40 +637,28 @@ describe('extras virtual week model test', () => {
 
 const isReadableRow = (prayer: Prayer): prayer is ReadablePrayer => prayer.datetime !== null;
 
-/** Real 2024 times as a download stores them, with the named times unreadable and the named days not stored */
-const storedDays = (
-  unreadable: Record<string, RequiredTimeName[]>,
-  notStored: string[]
-): ISingleApiResponseTransformed[] => {
-  const times: IValidatedApiResponse['times'] = {};
+/** Real 2024 times as the reader serves them, with the named times unreadable and the named days not stored */
+const storedDays = (unreadable: Record<string, RequiredTimeName[]>, notStored: string[]): DayRecord[] => {
+  const minutes: Record<string, DayMinutes> = {};
 
-  for (const [date, day] of Object.entries(MOCK_DATA_FULL.times)) {
+  for (const [date, day] of Object.entries(FULL_MINUTES)) {
     if (notStored.includes(date)) continue;
-
-    const record: Record<RequiredTimeName, string | null> = {
-      fajr: day.fajr,
-      sunrise: day.sunrise,
-      dhuhr: day.dhuhr,
-      asr: day.asr,
-      magrib: day.magrib,
-      isha: day.isha,
-    };
-    for (const name of unreadable[date] ?? []) record[name] = null;
-    times[date] = record;
+    minutes[date] = { ...day };
+    for (const name of unreadable[date] ?? []) minutes[date][name] = null;
   }
 
-  return transformApiData({ city: MOCK_DATA_FULL.city, times });
+  return Object.entries(minutes).map(([date, day]) => minutesToRecord(date, day));
 };
 
 /** A sequence built as stores/widget.ts builds one, with `records` as the only stored days */
 const buildStoredSequence = (
   type: ScheduleType,
-  records: ISingleApiResponseTransformed[],
+  records: DayRecord[],
   firstDate: string,
   dayCount: number
 ): PrayerSequence => {
   const stored = new Map(records.map((record) => [record.date, record]));
-  (Database.getPrayerByDateString as jest.Mock).mockImplementation((date: string) => stored.get(date) ?? null);
+  (Timetable.getTimetableDay as jest.Mock).mockImplementation((date: string) => stored.get(date) ?? null);
 
   return createPrayerSequence(type, createPrayerDatetime(firstDate, '12:00'), dayCount);
 };
@@ -680,23 +674,25 @@ describe('fully readable real sequences', () => {
    * Last re-golded when the countdown moved to a SwiftUI timer interval and the five-minute stepped
    * entries were deleted (session 16a) — the fix for the archive-budget blackout. Re-golded again
    * when props v7 added the precomposed localized footer to every entry (job 39 step 7). Re-golded
-   * again when props v8 stamped rtl on every entry (job 68).
+   * again when props v8 stamped rtl on every entry (job 68). Re-golded when the 12-hour display
+   * default landed (T-594): the fixtures read use24Hour: false, and the use24Hour: true stream was
+   * proven byte-identical to the previous pins before re-golding.
    */
   const REAL_YEAR_TIMELINES: [string, string][] = [
-    ['2024-01-10', '16f1f114c14e096ebb67034d0310abbbd16c20e9554f60415c48298df87ec366'],
-    ['2024-02-20', '3e9d3a76f561f4d1d43afb7050d83947a36dea12b747f3cc25c60f36e4ae3249'],
+    ['2024-01-10', 'f4ea4e4fbee2726770e0d93ebed4a82c487841046802e1da61f2cc319d123e54'],
+    ['2024-02-20', '29e4959858f87c433877bfc613f8cddf5c76b1bfc2cafcfc342f78ca694161c5'],
     // Across the spring clock change (31 March)
-    ['2024-03-24', 'faf2f0b64fe3da023b203c79fe9bd26c0a2ba5aaa7391a9b14913502fc3d23ac'],
-    ['2024-04-15', 'b37855e3893fffcbd3af3c2398e8ea8c975d0973d23628ec7d972ebfdb38fbb8'],
-    ['2024-05-06', '28d0ef5e392a1b54c30d238ec30f22752e5af8e239f77ebe331764bc9eb9e247'],
-    ['2024-06-14', '736b4cfc9f211cbf81f12eedc6595260e5614dd887f13ef1e6121267de285152'],
-    ['2024-07-01', '50f7d8f8b28fc03febf296d95fe1c3beec7f14c3894a76e995fdc5b8f50e7b3c'],
-    ['2024-08-12', '05d088b2c8046f9ea4d34025ecd3fe31dbb19d1c672226c4066f00cf26bd5815'],
-    ['2024-09-02', '4708cc5c8f380a6f9ea3e0a7b2db3be19e6d3e4724bebd4fffdfb535c386d37e'],
+    ['2024-03-24', 'a4dec9f5dba14d4a6418ecee196bd5066b77693d9acbb97f75e16444ff0d6905'],
+    ['2024-04-15', '86423f72e259d1b4be4d4b5a373c1f19c682e23aa5e86ef6172c416ace0a4221'],
+    ['2024-05-06', '66ccdb34589a573c58c601c01b77bde7e1243898fe1256698376c8c126302941'],
+    ['2024-06-14', '726eafb9043ebea9ecd2b3d8e83e0fc98f435181f37c849d9a7a8af43ae58ce8'],
+    ['2024-07-01', 'd814a37915db898b0241f4a6f4ba086d8bcb66e91353d4a10e2ee2cd5fe19078'],
+    ['2024-08-12', 'c9748e0003f7da6d7e05930607a63ed86cb7e6ca8854768b739693a7666b7298'],
+    ['2024-09-02', 'dccac2ba68b28e218d45bcedb1ef9236c7dc1410a4a4e1ee04b03e557ea6d182'],
     // Across the autumn clock change (27 October)
-    ['2024-10-20', '459957764c2fdcf7bf2c5734b8533d9e417b8ff2392a7aff94ec0ce6acb89491'],
-    ['2024-11-11', '60a099cdd8d81531db560f18a330f3915bdffc6da14f4f900c13c7352c3008f8'],
-    ['2024-12-15', '89d587c064ebb3feb84ba9cd9aa401bd876aa1ba67b675cf1bd4ba5aef8855f9'],
+    ['2024-10-20', '09a5035c2a7c9386e260fcef8d556a1c18fdcb280c4d9a5c46670eba3a2e641e'],
+    ['2024-11-11', '512543963a8ed62c08c5eee8ca72e44ae856fbb190a590de9a447da45828673a'],
+    ['2024-12-15', 'b1117da18d8f2a77e93d471ef2a2646bc82e8221a05fe425174423b80d6fb67c'],
   ];
 
   /** Midnight, noon, and two minutes before and exactly on every row of the push day's list */
@@ -750,7 +746,7 @@ const REAL_FAULTS: Record<string, RequiredTimeName[]> = {
   '2024-10-23': ['isha'],
   // A Friday's Magrib, which takes its Istijaba and the next night's Midnight and Last Third with it
   '2024-10-25': ['magrib'],
-  // A Fajr, which takes its Suhoor and the night leading into its day with it
+  // A Fajr, which takes its Sahur and the night leading into its day with it
   '2024-10-31': ['fajr'],
   // The span ends on unreadable rows on both lists: Isha, and Duha by way of Sunrise
   '2024-11-03': ['sunrise', 'isha'],
@@ -797,7 +793,7 @@ const SPOT_CHECKS: Record<
     // Friday's Istijaba is unreadable, so after Duha the list is Saturday's, whose night rows went with Magrib
     {
       at: ['2024-10-25', '12:00'],
-      nextName: 'Suhoor',
+      nextName: 'Sahur',
       listDay: '2024-10-26',
       activeIndex: 2,
       dashed: ['Midnight', 'Last Third'],
@@ -807,7 +803,7 @@ const SPOT_CHECKS: Record<
       nextName: 'Duha',
       listDay: '2024-10-31',
       activeIndex: 3,
-      dashed: ['Midnight', 'Last Third', 'Suhoor'],
+      dashed: ['Midnight', 'Last Third', 'Sahur'],
     },
   ],
 };
@@ -878,7 +874,11 @@ const rulesFor = (type: ScheduleType, prayers: Prayer[]) => {
       displayDate,
       boundaryMs: held ? Math.min(next.datetime.getTime(), endOfListDay(displayDate)) : next.datetime.getTime(),
       previousMs,
-      rows: dayRows.map((prayer) => ({ id: prayer.id, name: prayerLabel(prayer.id), time: prayer.time ?? '--:--' })),
+      rows: dayRows.map((prayer) => ({
+        id: prayer.id,
+        name: prayerLabel(prayer.id),
+        time: formatDisplayTime(prayer.time ?? '--:--', SETTINGS.use24Hour),
+      })),
       activeIndex: dayRows.indexOf(next),
     };
   };
@@ -897,10 +897,10 @@ const mismatchAt = (
 
   if (
     props.nextName !== prayerLabel(expected.next.id) ||
-    props.nextTime !== expected.next.time ||
+    props.nextTime !== formatDisplayTime(expected.next.time, SETTINGS.use24Hour) ||
     props.nextEpochMs !== expected.next.datetime.getTime()
   ) {
-    return `Next mismatch at ${at}: entry says ${props.nextName} ${props.nextTime}, expected ${prayerLabel(expected.next.id)} ${expected.next.time}`;
+    return `Next mismatch at ${at}: entry says ${props.nextName} ${props.nextTime}, expected ${prayerLabel(expected.next.id)} ${formatDisplayTime(expected.next.time, SETTINGS.use24Hour)}`;
   }
   if (props.prevEpochMs !== (expected.previousMs ?? entry.date.getTime())) {
     return `Previous mismatch at ${at}: entry says ${props.prevEpochMs}, expected ${expected.previousMs}`;
@@ -1075,7 +1075,7 @@ describe.each([
     expect(last.props).toMatchObject({
       stale: true,
       nextName: prayerLabel(lastReadable.id),
-      nextTime: lastReadable.time,
+      nextTime: formatDisplayTime(lastReadable.time, SETTINGS.use24Hour),
       nextEpochMs: lastReadable.datetime.getTime(),
       dateLabel: formatDateLocalized('2024-11-03'),
     });

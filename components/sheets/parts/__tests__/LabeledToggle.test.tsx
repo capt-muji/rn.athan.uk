@@ -4,6 +4,8 @@
 
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
+import { StyleSheet } from 'react-native';
+import type { TestInstance } from 'test-renderer';
 
 import { perfMark } from '@/shared/perf';
 
@@ -27,14 +29,15 @@ describe('the Show seconds row in the settings sheet, switched off', () => {
     expect(screen.getByRole('switch', { name: 'Show seconds' })).toBeOnTheScreen();
   });
 
-  it('toggles once, with no haptic, when the label is pressed', async () => {
+  it('toggles once, with one medium haptic, when the label is pressed', async () => {
     const onToggle = jest.fn();
     await render(<LabeledToggle label='Show seconds' value={false} onToggle={onToggle} />);
 
     await fireEvent.press(screen.getByText('Show seconds'));
 
     expect(onToggle).toHaveBeenCalledTimes(1);
-    expect(Haptics.impactAsync).not.toHaveBeenCalled();
+    expect(Haptics.impactAsync).toHaveBeenCalledTimes(1);
+    expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Medium);
   });
 
   it('toggles once, with one medium haptic, when the switch itself is pressed', async () => {
@@ -58,5 +61,34 @@ describe('the Show seconds row in the settings sheet, switched off', () => {
     await fireEvent.press(find());
 
     expect(jest.mocked(perfMark).mock.calls).toEqual([['toggle_tap', { label: 'Show seconds' }]]);
+  });
+});
+
+// The owner's general row rule (T-540, order 2026-10-31): a label that runs long ellipsizes at
+// one line and never displaces the control at its edge - the XS in Spanish pushed the control
+// out of the card. The worst real input is the longest string any shipped catalog carries for
+// a settings row (Tamil, the update-check-failed row); the artificial one runs past every catalog
+const ROW_LABEL_ONE_LINE = (label: TestInstance) => {
+  expect(label.props.numberOfLines).toBe(1);
+  expect(StyleSheet.flatten(label.props.style).flexShrink).toBe(1);
+  // The control the label must not displace: the switch still renders beside it
+  expect(screen.getByRole('switch')).toBeOnTheScreen();
+};
+
+describe('a settings toggle row whose label runs long', () => {
+  it('ellipsizes at one line with the longest string any shipped catalog carries', async () => {
+    const longest = 'சரிபார்ப்பு தோல்வியடைந்தது. மீண்டும் முயற்சிக்கவும்';
+
+    await render(<LabeledToggle label={longest} value={false} onToggle={jest.fn()} />);
+
+    ROW_LABEL_ONE_LINE(screen.getByText(longest));
+  });
+
+  it('ellipsizes at one line with a string longer than any shipped catalog', async () => {
+    const artificial = 'A row label long enough to outgrow the narrowest card any shipped language fills';
+
+    await render(<LabeledToggle label={artificial} value={false} onToggle={jest.fn()} />);
+
+    ROW_LABEL_ONE_LINE(screen.getByText(artificial));
   });
 });

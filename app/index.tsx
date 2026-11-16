@@ -1,13 +1,13 @@
 import * as SplashScreen from 'expo-splash-screen';
 import { useAtomValue } from 'jotai';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
 
 import Navigation from '@/app/Navigation';
 import { ModalHelp, ModalUpdate, ModalWhatsNew } from '@/components/modals';
 import { Overlay } from '@/components/overlay';
 import { ErrorScreen } from '@/components/ui';
-import { runBackgroundTaskDebugSequence } from '@/device/backgroundTaskDebug';
+import IdleLadder from '@/components/warmup/IdleLadder';
 import { initializeListeners } from '@/device/listeners';
 import { hideSwitchCover } from '@/device/switchCover';
 import { checkForUpdates, openStore } from '@/device/updates';
@@ -21,7 +21,7 @@ import { isRevealReady, isWaitingForData } from '@/shared/launchGate';
 import logger from '@/shared/logger';
 import { initializeNotifications } from '@/shared/notifications';
 import { perfMark, perfMeasure } from '@/shared/perf';
-import { isRamadan } from '@/shared/time';
+import { decorationsVisible, isRamadan } from '@/shared/time';
 import { currentVisibleWhatsNew, shouldShowWhatsNew } from '@/shared/whatsNew';
 import { consumeRelaunchHandoff, languageCommitBusyAtom, reconcileLanguageSurfaces } from '@/stores/language';
 import { refreshNotifications, registerBackgroundTask, reopenRefreshGateOnColdLaunch } from '@/stores/notifications';
@@ -30,7 +30,7 @@ import { syncLoadable } from '@/stores/sync';
 import {
   decorationsEnabledAtom,
   decorationsLoadedAtom,
-  masjidIconLoadedAtom,
+  masjidLoadedAtom,
   popupHelpEnabledAtom,
   popupUpdateEnabledAtom,
   popupWhatsNewEnabledAtom,
@@ -62,6 +62,12 @@ export const __resetLaunchInitForTests = (): void => {
   launchInitRan = false;
 };
 
+// The backstop for a first frame that never comes (a tree that never lays
+// out): the reveal always lands, at worst 2s late — the chrome defer's own
+// degenerate bound (hooks/useChromeDeferred.ts), which exceeds the slowest
+// phone's whole mount burst.
+const CONTENT_DRAWN_BACKSTOP_MS = 2000;
+
 export default function Index() {
   if (!firstRenderMarked) {
     firstRenderMarked = true;
@@ -80,10 +86,6 @@ export default function Index() {
   const updateAvailable = useAtomValue(popupUpdateEnabledAtom);
   const whatsNewVisible = useAtomValue(popupWhatsNewEnabledAtom);
   const helpVisible = useAtomValue(popupHelpEnabledAtom);
-  // Splash gate: the Masjid icon's PNG arrives async (Fresco) after the first
-  // content commit — hold the splash until its bitmap exists so the first
-  // revealed frame is complete (no icon pop-in)
-  const masjidIconLoaded = useAtomValue(masjidIconLoadedAtom);
   // Same race on the ~12 Ramadan decoration sprites: wait only when the
   // decorations are expected this session (mirrors RamadanDecorations'
   // visibility condition, computed synchronously so the gate knows at the
@@ -91,13 +93,27 @@ export default function Index() {
   const decorationsEnabled = useAtomValue(decorationsEnabledAtom);
   // The error screen never mounts the decorations, so waiting for their sprites there would hold the splash over the
   // one screen whose Refresh can recover the app
-  const decorationsExpected = isRamadan() && decorationsEnabled && state !== 'hasError';
+  const decorationsExpected = decorationsVisible(isRamadan(), decorationsEnabled) && state !== 'hasError';
   const decorationsLoaded = useAtomValue(decorationsLoadedAtom);
+  // The icon gate (T-541): the bitmap decodes behind the first drawn frame, so the reveal
+  // waits for it - except on the error screen, whose own Refresh must not sit under a splash
+  const masjidLoaded = useAtomValue(masjidLoadedAtom);
   const installedVersion = getInstalledVersion();
   const visibleWhatsNew = currentVisibleWhatsNew();
   // Overlay + modals mount past the first content frame (launch chrome defer)
   const chromeDeferred = useChromeDeferred();
   const contentCommittedRef = useRef(false);
+  // The reveal's drawn-frame latch: onLayout rides the native layout pass,
+  // so the content root's first layout event IS its first drawn frame — past
+  // Fabric's mount burst, which on a launch-busy phone (the 3T) trails the
+  // commit by 1-2s under load, the gap where the window background (the
+  // splash purple) showed through when the reveal rode the commit instead
+  const [contentDrawn, setContentDrawn] = useState(false);
+
+  useEffect(() => {
+    const backstop = setTimeout(() => setContentDrawn(true), CONTENT_DRAWN_BACKSTOP_MS);
+    return () => clearTimeout(backstop);
+  }, []);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: mount-only initialization — checkInitialPermissions is a per-render function, intentionally captured once; re-adding it would re-register listeners on every render
   useEffect(() => {
@@ -142,11 +158,17 @@ export default function Index() {
         .then(() => reconcileLanguageSurfaces())
         .catch((error) => logger.error('Failed to initialize notifications:', error));
 
-      // Debug instrumentation for the notification-refresh background task (ledger #8 (git history))
-      runBackgroundTaskDebugSequence();
+      // Debug instrumentation for the notification-refresh background task (ledger #8 (git history)).
+      // The gate mirrors the module's own enable predicate exactly; the env
+      // constants metro inlines keep the module out of store bundles entirely.
+      if (__DEV__ || (process.env.EXPO_PUBLIC_BG_DEBUG === '1' && process.env.EXPO_PUBLIC_ENV !== 'prod')) {
+        const { runBackgroundTaskDebugSequence } =
+          require('@/device/backgroundTaskDebug') as typeof import('@/device/backgroundTaskDebug');
+        runBackgroundTaskDebugSequence();
+      }
 
       // Check for updates in background
-      checkForUpdates().then((hasUpdate) => setPopupUpdateEnabled(hasUpdate));
+      checkForUpdates().then((result) => setPopupUpdateEnabled(result.modal));
     }, 1500);
 
     // Show the What's New modal only when the archive stamps an item newer
@@ -164,11 +186,11 @@ export default function Index() {
     return () => clearTimeout(initHandle);
   }, []);
 
-  // A reschedule that runs before the first fetch lands bails on an empty cache and
+  // A reschedule that runs before the artifact stages bails on an empty cache and
   // deliberately leaves the gate unstamped so it can run again — but nothing re-ran it
   // inside the session, and the next attempt was a background-and-foreground away. The
-  // upgrade launch is where that bites: bootstrap refuses to hydrate, sync() has real
-  // fetch work to do, and the post-paint refresh fires ~1.5s in, so the app could sit
+  // first launch is where that bites: bootstrap refuses to hydrate until the stage
+  // completes, and the post-paint refresh fires ~1.5s in, so the app could sit
   // foregrounded showing armed alerts with no alarms armed at all. Retrying once when
   // data lands closes it, and the gate makes it a no-op whenever the first attempt
   // already succeeded.
@@ -182,13 +204,16 @@ export default function Index() {
   // either the synchronous cache bootstrap already hydrated the sequences
   // (first commit paints content) or the async sync atom left its loading
   // state. The perf mark keeps its content-only semantics; only the reveal
-  // waits for the Masjid icon and, in Ramadan mode, the decoration sprites.
+  // waits, and only in Ramadan mode, for the decoration sprites.
   //
   // Two paths (ledger #24 (git history)): cold launches (no cache at mount — fresh
-  // install, upgrade wipe, year gap) hide the splash as soon as the spinner
-  // frame commits instead of holding through the entire network fetch;
-  // warm launches keep the reveal-ready gate so the first revealed frame is
-  // complete (the 1.22.5 no-icon-pop-in fix). The snapshot is taken during
+  // install or upgrade) hide the splash as soon as the spinner
+  // frame commits instead of holding through the artifact's first stage;
+  // warm launches lift on the content's first DRAWN frame, not the commit —
+  // the app straight from cache (owner order 2026-10-30), Fabric's mount
+  // burst landing behind the splash instead of the window background showing
+  // through, and the Masjid icon's bitmap decoding behind the revealed frame.
+  // The snapshot is taken during
   // the first render only — sync completing later can never re-latch the gate.
   const waitingForData = isWaitingForData(sequenceReady, state);
   const coldLaunchRef = useRef(waitingForData);
@@ -196,7 +221,7 @@ export default function Index() {
   useEffect(() => {
     if (coldLaunchRef.current) {
       // Cold launch: the spinner branch owns the first committed frame —
-      // reveal it immediately; content swaps in when the fetch completes
+      // reveal it immediately; content swaps in when the stage completes
       SplashScreen.hideAsync();
     }
 
@@ -215,14 +240,16 @@ export default function Index() {
     const revealReady = isRevealReady({
       coldLaunch: coldLaunchRef.current,
       contentExists,
-      masjidIconLoaded,
+      contentDrawn,
       decorationsExpected,
       decorationsLoaded,
+      iconExpected: state !== 'hasError',
+      iconLoaded: masjidLoaded,
     });
     if (revealReady) {
       SplashScreen.hideAsync();
     }
-  }, [sequenceReady, state, masjidIconLoaded, decorationsExpected, decorationsLoaded, languageBusy]);
+  }, [sequenceReady, state, contentDrawn, decorationsExpected, decorationsLoaded, masjidLoaded, languageBusy]);
 
   const handleCloseUpdate = () => {
     setPopupUpdateEnabled(false);
@@ -241,8 +268,8 @@ export default function Index() {
     setPopupHelpEnabled(false);
   };
 
-  // Loading state only covers genuinely cache-less launches (fresh install,
-  // upgrade wipe, year gap) — warm-cache launches render content immediately
+  // Loading state only covers genuinely cache-less launches (fresh install
+  // or upgrade) — warm-cache launches render content immediately
   if (waitingForData) {
     return (
       <View
@@ -253,26 +280,36 @@ export default function Index() {
       </View>
     );
   }
-  if (state === 'hasError') return <ErrorScreen />;
 
+  // The content tree's root carries the reveal's drawn-frame latch (see
+  // contentDrawn): its onLayout fires at the tree's first native layout,
+  // which on Fabric is the first drawn frame
   return (
-    <>
-      {chromeDeferred && visibleWhatsNew ? (
-        <ModalWhatsNew visible={whatsNewVisible} items={visibleWhatsNew.items} onClose={handleCloseWhatsNew} />
-      ) : null}
-      {chromeDeferred && <ModalHelp visible={helpVisible} onClose={handleCloseHelp} />}
-      {/* iOS only in effect: Android never resolves an update here, because Play's own overlay owns that flow */}
-      {/* Gated so the nag never stacks on the What's New or Help modal */}
-      {chromeDeferred && (
-        <ModalUpdate
-          visible={updateAvailable && !whatsNewVisible && !helpVisible}
-          onClose={handleCloseUpdate}
-          onUpdate={handleUpdate}
-        />
+    <View style={styles.contentRoot} onLayout={() => setContentDrawn(true)} testID={'launch-content'}>
+      {state === 'hasError' ? (
+        <ErrorScreen />
+      ) : (
+        <>
+          {chromeDeferred && visibleWhatsNew ? (
+            <ModalWhatsNew visible={whatsNewVisible} items={visibleWhatsNew.items} onClose={handleCloseWhatsNew} />
+          ) : null}
+          {chromeDeferred && <ModalHelp visible={helpVisible} onClose={handleCloseHelp} />}
+          {/* iOS only in effect: Android never resolves an update here, because Play's own overlay owns that flow */}
+          {/* Gated so the nag never stacks on the What's New or Help modal */}
+          {chromeDeferred && (
+            <ModalUpdate
+              visible={updateAvailable && !whatsNewVisible && !helpVisible}
+              onClose={handleCloseUpdate}
+              onUpdate={handleUpdate}
+            />
+          )}
+          <Navigation />
+          {chromeDeferred && <Overlay />}
+          {/* The idle ladder warms behind the init burst; its stages mount here */}
+          {chromeDeferred && <IdleLadder />}
+        </>
       )}
-      <Navigation />
-      {chromeDeferred && <Overlay />}
-    </>
+    </View>
   );
 }
 
@@ -281,5 +318,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  contentRoot: {
+    flex: 1,
   },
 });

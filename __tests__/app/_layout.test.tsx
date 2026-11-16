@@ -87,21 +87,10 @@ describe('the root layout as it loads', () => {
     expect(sync.triggerSyncLoadable).toHaveBeenCalledTimes(1);
   });
 
-  it('makes sound previews audible with the ring switch on silent', () => {
+  it("configures nothing audio while it loads: the audio session exists only from the sound sheet's first open", () => {
     const { audio } = loadLayout();
 
-    expect(audio.setAudioModeAsync).toHaveBeenCalledWith({ playsInSilentMode: true });
-  });
-
-  it('logs, rather than throws, when the audio mode cannot be set', async () => {
-    const error = new Error('Audio session unavailable');
-    const modules = loadLayout(({ audio }) => {
-      jest.mocked(audio.setAudioModeAsync).mockImplementationOnce(() => Promise.reject(error));
-    });
-
-    await new Promise(setImmediate);
-
-    expect(modules.logger.warn).toHaveBeenCalledWith('AUDIO: Failed to set audio mode', { error });
+    expect(audio.setAudioModeAsync).not.toHaveBeenCalled();
   });
 
   it('defines the background task, so a launch the system starts in the background can find it', () => {
@@ -148,8 +137,9 @@ describe('the root layout on screen', () => {
 
     expect(screen.getByText('Set your preferences')).toBeOnTheScreen();
     expect(screen.getByText('Select Athan')).toBeOnTheScreen();
-    // The alert sheet has no prayer until a bell opens it, so its subtitle is all it shows beside the Athan sheet's
-    expect(screen.getAllByText('Close to save')).toHaveLength(2);
+    // The alert sheet has no prayer until a bell opens it, and the language sheet's subtitle is the
+    // same close-to-save line, so the three subtitles are all they show beside the Athan sheet's
+    expect(screen.getAllByText('Close to save')).toHaveLength(3);
   });
 
   it('shows the error screen in place of a route that threw', async () => {

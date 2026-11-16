@@ -32,7 +32,7 @@ const PINNED_LITERALS: ReadonlyArray<[keyof typeof en, string]> = [
   ['prayer.isha', 'Isha'],
   ['prayer.midnight', 'Midnight'],
   ['prayer.last third', 'Last Third'],
-  ['prayer.suhoor', 'Suhoor'],
+  ['prayer.suhoor', 'Sahur'],
   ['prayer.duha', 'Duha'],
   ['prayer.istijaba', 'Istijaba'],
 
@@ -40,8 +40,8 @@ const PINNED_LITERALS: ReadonlyArray<[keyof typeof en, string]> = [
   ['settings.showSeconds', 'Show seconds'],
   ['settings.showTimePassed', 'Show time passed'],
   ['settings.showDecorations', 'Show decorations'],
-  ['settings.countdownBar', 'Countdown Bar'],
-  ['settings.showCountdownBar', 'Show countdown bar'],
+  ['settings.countdownBar', 'Progress Bar'],
+  ['settings.showCountdownBar', 'Show progress'],
   ['settings.other', 'Other'],
   ['settings.whatsNew', "What's new"],
   ['settings.help', 'Help'],
@@ -121,9 +121,11 @@ const PINNED_LITERALS: ReadonlyArray<[keyof typeof en, string]> = [
   ['reminder.unitMinutes', 'min'],
 
   ['sound.title', 'Select Athan'],
-  ['sound.notificationSound', 'Notification sound'],
+  // Owner order 2026-10-31: the list's heading became the tap-to-select instruction
+  ['sound.notificationSound', 'Tap to select notification sound'],
+  ['language.tapToSelect', 'Tap to select language'],
 
-  ['colorPicker.label', 'Countdown bar color'],
+  ['colorPicker.label', 'Progress color'],
   ['colorPicker.resetLabel', 'Reset to the default colour'],
   ['colorPicker.reset', 'Reset'],
   ['colorPicker.cancel', 'Cancel'],
@@ -169,9 +171,9 @@ const PINNED_LITERALS: ReadonlyArray<[keyof typeof en, string]> = [
 
   ['extras.explanation.midnight', 'Halfway between Magrib and Fajr'],
   ['extras.explanation.last third', 'Start of the last third of the night'],
-  ['extras.explanation.suhoor', '20 mins before Fajr'],
-  ['extras.explanation.duha', '20 mins after Sunrise'],
-  ['extras.explanation.istijaba', '1 hour before Magrib (Fridays only)'],
+  ['extras.explanation.suhoor', '20 minutes before Fajr'],
+  ['extras.explanation.duha', '20 minutes after Sunrise'],
+  ['extras.explanation.istijaba', '1 hour before Magrib (Fridays only) (the hour of acceptance)'],
 
   ['duration.now', 'now'],
   ['channel.extras', 'Extra Times'],
@@ -214,13 +216,15 @@ describe('PRAYER_LABELS', () => {
     expect(new Set(Object.values(PRAYER_LABELS)).size).toBe(PRAYER_IDS.length);
   });
 
-  it('joins every catalog prayer label to the frozen vocabulary', () => {
+  it('joins every catalog prayer label to the frozen vocabulary, Suhoor alone diverging', () => {
+    // Owner order 2026-11-07: English copy speaks Sahur, while the storage
+    // vocabulary keeps the spelling every stored index key was written against
     PRAYER_IDS.forEach((id, index) => {
       const title =
         index < STANDARD_PRAYER_TITLES.length
           ? STANDARD_PRAYER_TITLES[index]
           : EXTRA_PRAYER_TITLES[index - STANDARD_PRAYER_TITLES.length];
-      expect(prayerLabel(id)).toBe(title);
+      expect(prayerLabel(id)).toBe(id === 'suhoor' ? 'Sahur' : title);
     });
   });
 });

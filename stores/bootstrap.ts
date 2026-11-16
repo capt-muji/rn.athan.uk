@@ -15,10 +15,10 @@
  *
  * Not hydrated (spinner path preserved):
  * - none of the three days the sequences are built from is cached (fresh
- *   install, wiped cache, year gap). One of them is enough: a day missing
+ *   install, wiped cache, first stage not yet complete). One of them is enough: a day missing
  *   among them shows as dashes (R7)
  * - a pending upgrade that will WIPE the cache — a version bump AND a moved
- *   cache shape marker. handleAppUpgrade inside sync() owns that wipe+refetch,
+ *   cache shape marker. handleAppUpgrade inside sync() owns that wipe+restage,
  *   and rows read under the old shape are exactly the wrong prayer times, so
  *   the spinner covers it. An ordinary version bump keeps the cache (#34) and
  *   therefore hydrates: refusing to would hand every store update a cold
@@ -32,8 +32,8 @@ import { perfMark } from '@/shared/perf';
 import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import { startCountdowns } from '@/stores/countdown';
-import * as Database from '@/stores/database';
 import { setSequence } from '@/stores/schedule';
+import * as Timetable from '@/stores/timetable';
 import { cacheSchemaChanged, wasAppUpgraded } from '@/stores/version';
 
 /** Today and the two days after it, the span `setSequence` builds */
@@ -44,7 +44,7 @@ const hydrateFromCache = (): boolean => {
   const today = TimeUtils.formatDateShort(now);
   // Waiting for today alone kept the spinner over stored days, and offline it never went
   const anyDayStored = SEQUENCE_DAYS.some((offset) =>
-    Database.getPrayerByDateString(TimeUtils.addDaysToDateString(today, offset))
+    Timetable.getTimetableDay(TimeUtils.addDaysToDateString(today, offset))
   );
   if (!anyDayStored) return false;
 

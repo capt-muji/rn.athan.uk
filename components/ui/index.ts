@@ -1,5 +1,6 @@
 export { default as BackgroundGradients } from './BackgroundGradients';
 export { default as ErrorScreen } from './Error';
+export { FastingDot, FastingRingCluster } from './FastingDots';
 export { default as Glow } from './Glow';
 export { default as IconView } from './Icon';
 export { default as InfoBadge } from './InfoBadge';

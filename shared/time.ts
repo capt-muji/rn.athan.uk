@@ -18,9 +18,9 @@ import { sentenceComma } from '@/shared/i18n/locale';
 
 const MINUTE_MS = 60 * 1000;
 const HOUR_MS = 60 * MINUTE_MS;
-const MINUTES_IN_DAY = 24 * 60;
 
-const pad2 = (value: number): string => String(value).padStart(2, '0');
+/** Two digits, the data clock's own format: data paths never localise digits */
+export const pad2 = (value: number): string => String(value).padStart(2, '0');
 
 const prayerClockFormatter = new Intl.DateTimeFormat('en-US', {
   timeZone: PRAYER_TIMEZONE,
@@ -95,7 +95,7 @@ const prayerTimezoneOffset = (instant: number): number => {
 
 /**
  * Reads the prayer timezone's calendar and clock at an instant. Exported for
- * data paths (the mock API and the day-grouping rules) that need the clock's
+ * data paths (the dev window and the day-grouping rules) that need the clock's
  * own numbers, never the localised display formatters
  * @param instant An exact instant
  * @returns Year, month (1-12), day, hour (0-23), minute and second there
@@ -134,7 +134,7 @@ export const createInstant = (date?: Date | number | string): Date => (date ? ne
 
 /**
  * Creates a full Date object from date and time strings
- * Used to combine API data (separate date/time) into Prayer.datetime
+ * Used to combine payload data (separate date/time) into Prayer.datetime
  *
  * IMPORTANT: Prayer times are clock readings in the prayer timezone (London).
  * The reading is shifted by whichever offset really applies at that instant —
@@ -178,6 +178,34 @@ export const formatPrayerTime = (date: Date): string => {
   const clock = readPrayerClock(date);
   const composed = `${pad2(clock.hour)}:${pad2(clock.minute)}`;
   return composed;
+};
+
+const WALL_TIME = /^(\d{2}):(\d{2})$/;
+
+/**
+ * The string a wall-clock time renders as: unchanged in 24-hour, hour-12 in 12-hour.
+ * The display-side twin of formatPrayerTime - every stored, computed and scheduled value
+ * stays 24-hour HH:MM, and only the strings drawn on screen pass through here (owner
+ * order 2026-11-03).
+ *
+ * 12-hour keeps two-digit hours and carries no AM/PM marker, so midnight and noon both
+ * render 12 and a format switch never shifts the screen's widths (Row 72). A string that
+ * is not HH:MM - the unread sentinel, the empty loading string - passes through as it is.
+ *
+ * @param time Wall-clock string in 24-hour HH:mm form
+ * @param use24Hour Whether the 24-hour format is chosen in settings
+ * @returns The string to draw
+ *
+ * @example
+ * formatDisplayTime('23:11', false) // "11:11"
+ * formatDisplayTime('00:30', false) // "12:30"
+ */
+export const formatDisplayTime = (time: string, use24Hour: boolean): string => {
+  if (use24Hour) return time;
+  const match = WALL_TIME.exec(time);
+  if (!match) return time;
+  const hour = Number(match[1]);
+  return `${pad2(hour % 12 === 0 ? 12 : hour % 12)}:${match[2]}`;
 };
 
 /**
@@ -367,17 +395,6 @@ export const formatDateShort = (date: Date): string => {
 // =============================================================================
 
 /**
- * Checks if a date is yesterday or in the future (prayer timezone)
- * Used for filtering API response data
- * @param date Date string in YYYY-MM-DD format
- * @returns boolean indicating if date is yesterday or future
- */
-export const isDateYesterdayOrFuture = (date: string): boolean => {
-  const today = getTodayDateString();
-  return date >= getPreviousDateString(today);
-};
-
-/**
  * Checks if a day is a Friday
  * @param date Optional date string (YYYY-MM-DD) or instant; defaults to today (prayer timezone)
  * @returns boolean indicating if the date is Friday
@@ -389,12 +406,6 @@ export const isFriday = (date?: string | Date): boolean => {
 
   return new Date(`${day}T12:00:00Z`).getUTCDay() === 5;
 };
-
-/**
- * Checks if the current month is December in the prayer timezone
- * @returns boolean indicating if current month is December
- */
-export const isDecember = (): boolean => getTodayDateString().slice(5, 7) === '12';
 
 /**
  * Checks if the current date falls within Ramadan or the last days of Sha'ban
@@ -445,18 +456,11 @@ export const isDecorationSeason = (): boolean => {
 };
 
 /**
- * Checks if an instant falls on January 1st in the prayer timezone
- * (needed for CountdownBar yesterday's data)
- * @param date Date object
- * @returns boolean indicating if the date is January 1st
+ * Whether the decorations render anywhere: the seasonal gate and the master toggle. The
+ * off-season override is gone per the owner's follow-up order 2026-11-01, so the answer is
+ * exactly the gate that always stood before it.
  */
-export const isJanuaryFirst = (date: Date): boolean => formatDateShort(date).endsWith('-01-01');
-
-/**
- * Returns the current year in the prayer timezone
- * @returns Current year number
- */
-export const getCurrentYear = (): number => Number(getTodayDateString().slice(0, 4));
+export const decorationsVisible = (season: boolean, enabled: boolean): boolean => season && enabled;
 
 // =============================================================================
 // NIGHT TIME CALCULATIONS (Islamic)
@@ -506,28 +510,6 @@ export const getNightTimes = (previousDate: string, magribTime: string, date: st
     midnight: floorToMinute(start + length / 2),
     lastThird: floorToMinute(start + (length * 2) / 3 + TIME_ADJUSTMENTS.lastThird * MINUTE_MS),
   };
-};
-
-/**
- * Adjusts a time string by adding or subtracting minutes
- *
- * Used for calculating derived prayer times (e.g., Suhoor = Fajr - 20min).
- * Pure clock arithmetic that wraps past midnight (e.g., 00:10 - 20min = 23:50) —
- * independent of the date, the device's timezone and when it runs.
- *
- * @param time Time string in HH:mm format (e.g., "06:15")
- * @param minutesDiff Minutes to add (positive) or subtract (negative)
- * @returns Adjusted time string in HH:mm format
- *
- * @example
- * adjustTime("06:15", -20) // "05:55" (Suhoor = 20min before Fajr)
- * adjustTime("07:00", 20)  // "07:20" (Duha = 20min after Sunrise)
- * adjustTime("00:10", -20) // "23:50" (crosses midnight boundary)
- */
-export const adjustTime = (time: string, minutesDiff: number): string => {
-  const [hours, minutes] = time.split(':').map(Number);
-  const total = (((hours * 60 + minutes + minutesDiff) % MINUTES_IN_DAY) + MINUTES_IN_DAY) % MINUTES_IN_DAY;
-  return `${pad2(Math.floor(total / 60))}:${pad2(total % 60)}`;
 };
 
 // =============================================================================

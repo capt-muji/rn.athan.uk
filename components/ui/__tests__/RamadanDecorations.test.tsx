@@ -94,6 +94,20 @@ describe("the Ramadan decorations at the edges of the 2027 season, 15 Sha'ban to
   });
 });
 
+// The seasonal gate is sole again (owner order 2026-11-01, the follow-up read): outside the
+// season nothing draws, whatever the master toggle says - the answer the pure gate always gave
+describe('the Ramadan decorations outside the season, Friday 11 September 2026', () => {
+  it('draws nothing and arms no animation outside the season', async () => {
+    setClock('2026-09-11', '14:00');
+    const { armed } = watchAnimations();
+
+    await render(<RamadanDecorations />);
+
+    expect(screen.toJSON()).toBeNull();
+    expect(armed).not.toHaveBeenCalled();
+  });
+});
+
 describe('the Ramadan decorations on Monday 15 February 2027 at 20:00, 8 Ramadan', () => {
   it.each([
     // the platform, whose window height decides how far the hangings reach, then Math.random, which steers the clouds

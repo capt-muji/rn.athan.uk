@@ -5,6 +5,7 @@
 import { act, render, screen } from '@testing-library/react-native';
 
 import { onPlatform, showLondonDay } from '@/__tests__/harness';
+import * as activePill from '@/components/prayer/activePill';
 import { ScheduleType } from '@/shared/types';
 import { openOverlay } from '@/stores/overlay';
 
@@ -31,6 +32,21 @@ describe('the pill on Friday 11 September 2026 at 14:00', () => {
     await act(() => openOverlay(ScheduleType.Standard, FAJR));
 
     expect(screen.root).not.toBeVisible();
+  });
+
+  // The wave-one trim (step 25): the pill reaches the overlay only through its schedule-gated
+  // primitives, so an overlay open on ONE page costs the OTHER page's pill host no render at
+  // all - measured as this render's call of the opacity rule
+  it('renders no pill of the cold page when the overlay opens on the other page', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    const opacityRule = jest.spyOn(activePill, 'getActivePillOpacity');
+    await render(<ActiveBackground type={ScheduleType.Extra} />);
+    opacityRule.mockClear();
+
+    await act(() => openOverlay(ScheduleType.Standard, FAJR));
+
+    expect(opacityRule).not.toHaveBeenCalled();
+    expect(screen.root).toBeVisible();
   });
 });
 

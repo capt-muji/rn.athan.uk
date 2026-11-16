@@ -11,10 +11,10 @@
 import { london } from '@/hooks/__tests__/londonDays';
 import { NOTIFICATION_REQUEST_BUDGET, type PrayerId, SCHEDULE_CANDIDATE_DAYS } from '@/shared/constants';
 import { buildSchedulePlan, collectCandidateRows, schedulePlanKey } from '@/shared/notifications';
-import { transformApiData } from '@/shared/prayer';
+import { minutesToRecord, toDayMinutes } from '@/shared/timetableDecode';
 import type { RequiredTimeName } from '@/shared/types';
 import { ScheduleType } from '@/shared/types';
-import * as Database from '@/stores/database';
+import * as Timetable from '@/stores/timetable';
 
 /** Fajr just after midnight, so Midnight and Last Third fire the evening before their list day */
 const WRAPPED = { fajr: '00:10', sunrise: '01:30', dhuhr: '06:00', asr: '09:00', magrib: '20:00', isha: '21:00' };
@@ -25,8 +25,8 @@ const saveWrappedDays = (count: number) => {
   for (let i = 0; i < count; i++) {
     payload[new Date(start + i * 86400000).toISOString().slice(0, 10)] = WRAPPED;
   }
-  Database.saveAllPrayers(
-    Object.entries(payload).flatMap(([date, t]) => transformApiData({ city: 'london', times: { [date]: t } }))
+  Timetable.__installTimetableDays(
+    Object.entries(payload).flatMap(([date, t]) => [minutesToRecord(date, toDayMinutes(t))])
   );
 };
 

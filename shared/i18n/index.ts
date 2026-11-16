@@ -26,17 +26,15 @@ export type ParamsOf<K extends TranslationKey> = K extends 'notification.now'
           ? { name: string }
           : K extends 'countdown.progressA11y'
             ? { percent: number }
-            : K extends 'whatsNew.platformNote'
-              ? { platform: string }
-              : K extends 'prayerAlert.notification'
-                ? { name: string; state: string }
-                : K extends 'time.now'
-                  ? { name: string }
-                  : K extends 'time.ago'
-                    ? { name: string; duration: string }
-                    : K extends 'language.changing'
-                      ? { language: string }
-                      : undefined;
+            : K extends 'prayerAlert.notification'
+              ? { name: string; state: string }
+              : K extends 'time.now'
+                ? { name: string }
+                : K extends 'time.ago'
+                  ? { name: string; duration: string }
+                  : K extends 'language.changing'
+                    ? { language: string }
+                    : undefined;
 
 const TOKEN = /\{(\w+)\}/g;
 

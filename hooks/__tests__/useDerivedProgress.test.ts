@@ -12,6 +12,7 @@ import { ANIMATION } from '@/shared/constants';
 import { useDerivedFill, useDerivedOpacity, useDerivedProgress, useDerivedTranslateY } from '../useAnimation';
 import { mountHook } from './hookHarness';
 import type { Animation } from './reanimatedFake';
+import { jsThreadCalls } from './reanimatedFake';
 
 // Babel hoists jest.mock above imports: factories may only close over `mock`-prefixed bindings
 const mockAtomValues = new Map<string, unknown>();
@@ -128,6 +129,64 @@ describe('useDerivedProgress', () => {
 
     const animation = timing(1, { duration: ANIMATION.duration });
     expect(view.result.value).toEqual(isHeldBack ? delayed(delay as number, animation) : animation);
+  });
+
+  it('carries no completion callback when nobody asked to know the settle', () => {
+    const view = mountProgress(0);
+    view.rerender({ target: 1 });
+
+    expect((view.result.value as unknown as Extract<Animation, { kind: 'timing' }>).callback).toBeUndefined();
+  });
+});
+
+// =============================================================================
+// THE SETTLE CALLBACK (the overlay family's batched display flip)
+// =============================================================================
+
+describe('the settle callback', () => {
+  const settleCalls = () => jsThreadCalls.filter((call) => typeof call.fn === 'function');
+
+  beforeEach(() => {
+    jsThreadCalls.length = 0;
+  });
+
+  it('fires from the animation completion on the UI thread, only when it finished', () => {
+    const onSettled = jest.fn();
+    const options = { onSettled };
+    const view = mountProgress(0, options);
+    onSettled.mockClear(); // the first-evaluation snap is the next test's subject
+    jsThreadCalls.length = 0;
+    view.rerender({ target: 1, options });
+
+    const animation = view.result.value as unknown as Extract<Animation, { kind: 'timing' }>;
+    expect(typeof animation.callback).toBe('function');
+
+    animation.callback?.(false); // superseded mid-flight: no settle for the abandoned run
+    expect(onSettled).not.toHaveBeenCalled();
+    expect(settleCalls()).toHaveLength(0);
+
+    animation.callback?.(true);
+    expect(onSettled).toHaveBeenCalledTimes(1);
+    expect(settleCalls()).toHaveLength(1);
+  });
+
+  it('fires immediately on a snap: a value already at its target is settled by definition', () => {
+    const onSettled = jest.fn();
+    mountProgress(1, { onSettled });
+
+    expect(onSettled).toHaveBeenCalledTimes(1);
+    expect(settleCalls()).toHaveLength(1);
+  });
+
+  it('fires on the resume snap too, so a fade killed by a resync can never strand the hold', () => {
+    const onSettled = jest.fn();
+    const view = mountProgress(0, { onSettled });
+    onSettled.mockClear(); // the first-evaluation snap is covered above
+
+    mockAtomValues.set('resyncAtom', 1);
+    view.rerender({ target: 0 });
+
+    expect(onSettled).toHaveBeenCalledTimes(1);
   });
 });
 

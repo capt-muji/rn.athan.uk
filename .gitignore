@@ -45,3 +45,7 @@ idb-test-bundles/
 
 # Claude Code session state (worktrees, scratch reviews, task output)
 .claude/
+
+# The fifty LUPT workbooks and their per-file fetch metadata (scripts/lupt/download.mjs).
+# Re-downloadable, etag-pinned in scripts/lupt/etag-manifest.json; the repo is public and the
+# permission covers what ships, so only the generated artifact is committed.

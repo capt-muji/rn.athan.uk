@@ -3,7 +3,7 @@
  *
  * With FEATURE_FLAGS.iosWidgets false the store must be inert on iOS: pushes
  * resolve without evaluating the widget bridge (no updateTimeline calls on
- * any of the twelve kinds). The enabled case in the same suite proves the
+ * any of the sixteen kinds). The enabled case in the same suite proves the
  * difference is the flag, not the fixture.
  *
  * Uses the repo's mock-prefix + require-after-reset pattern (see the retired ai/AGENTS.md, git history)
@@ -14,10 +14,11 @@
 
 import { addDays } from 'date-fns';
 
-import type { ISingleApiResponseTransformed } from '@/shared/types';
+import type { DayRecord } from '@/shared/types';
 
 interface WidgetStack {
   Database: typeof import('@/stores/database');
+  Timetable: typeof import('@/stores/timetable');
   time: typeof import('@/shared/time');
   homeMocks: typeof import('@/widgets/PrayerWidget');
   lockMocks: typeof import('@/widgets/LockPrayerWidget');
@@ -31,6 +32,7 @@ const loadFreshStack = (): WidgetStack => {
   const RN = require('react-native');
   RN.Platform.OS = 'ios';
   stack.Database = require('@/stores/database');
+  stack.Timetable = require('@/stores/timetable');
   stack.time = require('@/shared/time');
   stack.homeMocks = require('@/widgets/PrayerWidget');
   stack.lockMocks = require('@/widgets/LockPrayerWidget');
@@ -39,7 +41,7 @@ const loadFreshStack = (): WidgetStack => {
   return stack;
 };
 
-const makeDayData = (date: string): ISingleApiResponseTransformed => ({
+const makeDayData = (date: string): DayRecord => ({
   date,
   fajr: '03:30',
   sunrise: '05:20',
@@ -53,12 +55,12 @@ const makeDayData = (date: string): ISingleApiResponseTransformed => ({
 });
 
 const seedPrayerCache = (stack: WidgetStack, days: number) => {
-  const data: ISingleApiResponseTransformed[] = [];
+  const data: DayRecord[] = [];
   for (let offset = -1; offset < days; offset++) {
     const day = addDays(stack.time.createInstant(), offset);
     data.push(makeDayData(stack.time.formatDateShort(day)));
   }
-  stack.Database.saveAllPrayers(data);
+  stack.Timetable.__installTimetableDays(data);
 };
 
 const allKinds = (stack: WidgetStack) => [...Object.values(stack.homeMocks), ...Object.values(stack.lockMocks)];

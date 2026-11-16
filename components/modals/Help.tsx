@@ -16,6 +16,7 @@ import { ANIMATION, COLORS, RADIUS, SIZE, SPACING, TEXT } from '@/shared/constan
 import { getHelpActionLabels, getHelpTopics, type HelpTopic, splitPlatformLine } from '@/shared/help';
 import { t } from '@/shared/i18n';
 import { chevronFor, currentLocaleId, directionGlyph } from '@/shared/i18n/locale';
+import { deferPastNextPaint } from '@/shared/nextPaint';
 import { typographyFor } from '@/shared/typography';
 
 import { revealTarget, scrollReveal } from './helpReveal';
@@ -170,11 +171,17 @@ export default function ModalHelp({ visible, onClose }: Props) {
    * A row that grows past the ScrollView's window opens invisibly (the 3T's list overflows the
    * viewport even closed), so the list scrolls the least distance that brings the open answer's
    * bottom inside the window it sits in. Answers that already fit never move the list.
+   *
+   * The scroll waits out the grow's own first frame: the row's layout commits as the
+   * LinearTransition starts, and a scroll dispatched in that same frame competes with the
+   * grow's start. One paint later the grow owns its frames alone.
    */
   const handleRowLayout = (question: string, layout: { y: number; height: number }) => {
     if (openQuestion !== question) return;
     const target = revealTarget(layout, listHeightRef.current, listOffsetRef.current);
-    if (target !== null) scrollReveal(listRef.current, target);
+    if (target === null) return;
+
+    void deferPastNextPaint().then(() => scrollReveal(listRef.current, target));
   };
 
   return (

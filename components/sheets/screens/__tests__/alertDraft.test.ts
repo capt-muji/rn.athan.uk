@@ -4,9 +4,9 @@
  */
 
 import { DEFAULT_REMINDER_INTERVAL, REMINDER_INTERVALS } from '@/shared/constants';
-import { AlertType } from '@/shared/types';
+import { type AlertMenuState, AlertType } from '@/shared/types';
 
-import { initialReminderInterval, initialReminderType, selectionNeedsPermission, toggledReminder } from '../alertDraft';
+import { initialDraft, initialReminderInterval, initialReminderType, selectionNeedsPermission } from '../alertDraft';
 
 const TYPE_BY_NAME = {
   Off: AlertType.Off,
@@ -61,30 +61,30 @@ describe('selectionNeedsPermission', () => {
   });
 });
 
-describe('toggledReminder', () => {
-  it.each([
-    [false, 'Silent'],
-    [false, 'Sound'],
-    [true, 'Silent'],
-    [true, 'Sound'],
-  ] as const)('is locked while the athan is Off (reminder on: %s, sound: %s)', (isReminderOn, reminderType) => {
-    expect(
-      toggledReminder({ canEnableReminder: false, isReminderOn, reminderType: TYPE_BY_NAME[reminderType] })
-    ).toBeNull();
+describe('initialDraft', () => {
+  const baseline = (athan: AlertType, alerts: [AlertType, AlertType]): AlertMenuState => ({
+    atTimeAlert: athan,
+    reminders: [
+      { alert: alerts[0], interval: 10 },
+      { alert: alerts[1], interval: 15 },
+    ],
   });
 
-  it.each(['Silent', 'Sound'] as const)('switches an on reminder off whatever its sound (%s)', (reminderType) => {
-    expect(
-      toggledReminder({ canEnableReminder: true, isReminderOn: true, reminderType: TYPE_BY_NAME[reminderType] })
-    ).toBe(AlertType.Off);
+  it('drafts the stored athan and each stored reminder while the athan is on', () => {
+    const draft = initialDraft(baseline(AlertType.Silent, [AlertType.Sound, AlertType.Off]));
+
+    expect(draft.atTimeAlert).toBe(AlertType.Silent);
+    expect(draft.reminders.map((reminder) => reminder.alert)).toEqual([AlertType.Sound, AlertType.Off]);
+    expect(draft.sounds).toEqual({ 0: AlertType.Sound, 1: AlertType.Silent });
+    expect(draft.preservedAlerts).toEqual([AlertType.Sound, AlertType.Off]);
   });
 
-  it.each(['Silent', 'Sound'] as const)(
-    'switches an off reminder on with the sound last chosen (%s)',
-    (reminderType) => {
-      expect(
-        toggledReminder({ canEnableReminder: true, isReminderOn: false, reminderType: TYPE_BY_NAME[reminderType] })
-      ).toBe(TYPE_BY_NAME[reminderType]);
-    }
-  );
+  it('drafts every reminder Off with a Silent pill while the athan is Off, keeping the stored choices', () => {
+    const draft = initialDraft(baseline(AlertType.Off, [AlertType.Sound, AlertType.Silent]));
+
+    expect(draft.atTimeAlert).toBe(AlertType.Off);
+    expect(draft.reminders.map((reminder) => reminder.alert)).toEqual([AlertType.Off, AlertType.Off]);
+    expect(draft.sounds).toEqual({ 0: AlertType.Silent, 1: AlertType.Silent });
+    expect(draft.preservedAlerts).toEqual([AlertType.Sound, AlertType.Silent]);
+  });
 });

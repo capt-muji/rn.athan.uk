@@ -1,6 +1,7 @@
 import * as Haptics from 'expo-haptics';
 import { memo, useEffect, useRef, useState } from 'react';
-import { type LayoutChangeEvent, Pressable, StyleSheet, Text, View } from 'react-native';
+import { type LayoutChangeEvent, StyleSheet, Text, View } from 'react-native';
+import { Pressable } from 'react-native-gesture-handler';
 import Animated, { interpolateColor, useAnimatedStyle } from 'react-native-reanimated';
 
 import { IconView } from '@/components/ui';
@@ -151,7 +152,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     borderRadius: RADIUS.md,
-    paddingVertical: SPACING.sm,
+    // The language rows' own 48 carries these rows too (owner order 2026-10-31); the vertical
+    // padding is a hair, so the tall play column never stretches the row past it
+    minHeight: 48,
+    paddingVertical: SPACING.xxs,
     paddingStart: SPACING.md,
   },
   text: {

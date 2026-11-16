@@ -1,91 +1,222 @@
-import { useCallback, useState } from 'react';
+import * as Haptics from 'expo-haptics';
+import { useAtomValue } from 'jotai';
+import { memo, useCallback, useEffect, useRef, useState } from 'react';
 import { type LayoutChangeEvent, Pressable, StyleSheet, Text, View } from 'react-native';
-import Animated, { useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
+import Animated, { interpolateColor, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 import { IconView } from '@/components/ui';
-import { COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
+import { useDerivedProgress } from '@/hooks/useAnimation';
+import { useCachedGeometry } from '@/hooks/useCachedGeometry';
+import { ANIMATION, COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { t } from '@/shared/i18n';
-import { currentLocaleId } from '@/shared/i18n/locale';
+import { currentLocaleId, type LocaleId, localeVersionAtom } from '@/shared/i18n/locale';
 import { LANGUAGE_NAMES } from '@/shared/languageNames';
 import { Icon } from '@/shared/types';
 import { typographyFor } from '@/shared/typography';
 import { commitLanguagePreference, revealLanguageLoader } from '@/stores/language';
-import { hideLanguageSheet, setLanguageSheetModal } from '@/stores/ui';
+import { setLanguageSheetModal } from '@/stores/ui';
 
 import { Sheet } from '../parts';
-import { pickLanguage } from './languageSheet';
+import { commitStagedOnClose, seatLocaleFor, stageLanguage } from './languageSheet';
 
 const ITEM_GAP = SPACING.xs;
+
+// The row texts' line box, pinned at the Latin face's own metrics (Math.round(14 * 1.172)):
+// the default box where a record carries none of its own, its face's metrics serving wider
+// boxes than the pin (the CJK subsets' 1.448em) with headroom (T-538)
+const OPTION_LINE_HEIGHT = 16;
 
 // The string guard reads attribute-held literals as copy; these are code values, so they travel as constants
 const SHEET_ICON_COLOR = 'rgba(165, 180, 252, 0.8)';
 const SHEET_PERF_NAME = 'sheet_language';
+const CARD_BACKGROUND = 'rgba(99, 102, 241, 0.06)';
+const CARD_BORDER = 'rgba(99, 102, 241, 0.15)';
+
+/** Every shipped language in the picker's own codepoint order, each row numbered by its whole-list place */
+const ROWS: readonly { id: LocaleId; name: string; position: number }[] = LANGUAGE_NAMES.map((entry, index) => ({
+  id: entry.id,
+  name: entry.name,
+  position: index + 1,
+}));
+
+interface LanguageItemProps {
+  index: number;
+  position: number;
+  name: string;
+  /** Whether the purple seat holds this row: the row a close would save */
+  isSeated: boolean;
+  /** Whether this row is the locale in force */
+  isSelected: boolean;
+  closeToSave: string;
+  onStage: (index: number) => void;
+  onLayout?: (e: LayoutChangeEvent) => void;
+}
 
 /**
- * The language sheet, on the athan sheet's own pattern: the card, its hint and
- * the purple highlight behind the row in force. A pick commits immediately
- * and closes (D47's no-cancel); the loader covers the wait.
+ * Presentational language row. Memoized with primitive props only, so a seat move re-renders just the
+ * two rows that trade it, never the whole picker
+ */
+function LanguageItemImpl({
+  index,
+  position,
+  name,
+  isSeated,
+  isSelected,
+  closeToSave,
+  onStage,
+  onLayout,
+}: LanguageItemProps) {
+  // The number's two inks crossfade on the seat's own slide duration: dim at rest, white on the seat.
+  // The progress snaps on first evaluation, so a row that mounts already seated paints its settled ink
+  const seatedProgress = useDerivedProgress(isSeated ? 1 : 0, { duration: ANIMATION.duration });
+  const numberStyle = useAnimatedStyle(() => ({
+    color: interpolateColor(seatedProgress.value, [0, 1], [COLORS.text.sheetDim, COLORS.text.primary]),
+  }));
+
+  const handlePress = useCallback(() => onStage(index), [onStage, index]);
+
+  const rowText = ROW_TEXT_STYLES[index];
+
+  return (
+    <Pressable
+      style={styles.option}
+      onPress={handlePress}
+      onLayout={onLayout}
+      accessibilityRole={'radio'}
+      // Which language is in force is the seat's state and which one a close would save is the seated
+      // row's, so a screen reader hears the same two states the sheet draws
+      accessibilityState={{ selected: isSelected, checked: isSeated }}
+      accessibilityLabel={isSeated ? `${name}, ${closeToSave}` : name}>
+      {/* The index owns its slot, so a second digit never moves the name off the card's centre */}
+      <View style={styles.optionIndexSlot} pointerEvents={'none'}>
+        <Animated.Text style={[styles.optionIndex, rowText.index, numberStyle]}>{`${position}.`}</Animated.Text>
+      </View>
+      <Text style={[styles.optionLabel, rowText.label]}>{name}</Text>
+    </Pressable>
+  );
+}
+
+const LanguageItem = memo(LanguageItemImpl);
+
+/**
+ * The language sheet as a plain numbered list (T-519): every shipped row in one freely scrolling
+ * list, the purple seat on the locale in force when it opens, and a tap staging its row as the
+ * candidate the close carries. The sheet's close is the one commit boundary (D47's no-cancel), and
+ * the loader covers the wait.
  */
 export default function BottomSheetLanguage() {
   const active = currentLocaleId();
-  const [itemHeight, setItemHeight] = useState(0);
-  const translateY = useSharedValue(0);
+  // The sheet re-renders on the close's own commit, so the seat converges onto the locale it saved
+  // while the sheet is already closed and reopens settled
+  useAtomValue(localeVersionAtom);
+  const [staged, setStaged] = useState<LocaleId | null>(null);
+  // Seeded from the MMKV cache at mount so the seat's geometry is known before the first row
+  // lays out; the first live layout corrects a stale seed, and the cache is written back only
+  // after the sheet settles open
+  const [rowHeight, measureRowHeight] = useCachedGeometry(`language_row_height_${active}`, 'replace');
+  // The row's height is taken once: a later layout cannot move the seat's pitch
+  const heightTakenRef = useRef(false);
 
-  const selectedIndex = Math.max(
-    LANGUAGE_NAMES.findIndex((entry) => entry.id === active),
-    0
-  );
+  // The staged row is read synchronously at the close, before any state write re-derives the rows
+  const stagedRef = useRef<LocaleId | null>(null);
+  const hasInitialized = useRef(false);
+  const seatTranslateY = useSharedValue(0);
+
+  // The staged row is drawn as well as held: the reader hears what a close will save
+  const holdStaged = useCallback((next: LocaleId | null) => {
+    stagedRef.current = next;
+    setStaged(next);
+  }, []);
 
   const handleItemLayout = useCallback(
     (e: LayoutChangeEvent) => {
       const height = e.nativeEvent.layout.height;
-      setItemHeight((current) => current || height);
-      // Seated on the same tick as the reveal, so the first frame is the settled one
-      translateY.value = selectedIndex * (height + ITEM_GAP);
+      if (heightTakenRef.current || height <= 0) return;
+      heightTakenRef.current = true;
+      measureRowHeight(height);
     },
-    [selectedIndex, translateY]
+    [measureRowHeight]
   );
 
-  const indicatorStyle = useAnimatedStyle(
-    () => ({
-      transform: [{ translateY: translateY.value }],
-      height: itemHeight,
-      opacity: itemHeight > 0 ? 1 : 0,
-    }),
-    [itemHeight]
+  // The sound sheet's own tap impact: the seat's move onto the row is the pick's whole answer
+  const tapImpact = useCallback(() => {
+    void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+  }, []);
+
+  const stageRow = useCallback(
+    (index: number) => {
+      holdStaged(stageLanguage(ROWS[index].id, tapImpact));
+    },
+    [holdStaged, tapImpact]
   );
+
+  const handleDismiss = useCallback(() => {
+    // Read and clear the staged row before any state write, so no reset may race the close's commit
+    const candidate = stagedRef.current;
+    holdStaged(null);
+    commitStagedOnClose(candidate, active, revealLanguageLoader, commitLanguagePreference);
+  }, [active, holdStaged]);
+
+  const seatLocale = seatLocaleFor(staged, active);
+  const seatIndex = ROWS.findIndex((row) => row.id === seatLocale);
+
+  // The seat slides on the sound sheet's own selection timing: it is set, not animated, on the row it
+  // opens on, and every later move rides the sound sheet's duration
+  useEffect(() => {
+    if (rowHeight === 0) return;
+
+    const targetY = seatIndex * (rowHeight + ITEM_GAP);
+
+    if (!hasInitialized.current) {
+      seatTranslateY.value = targetY;
+      hasInitialized.current = true;
+    } else {
+      seatTranslateY.value = withTiming(targetY, { duration: ANIMATION.duration });
+    }
+  }, [seatIndex, rowHeight, seatTranslateY]);
+
+  const seatStyle = useAnimatedStyle(
+    () => ({
+      transform: [{ translateY: seatTranslateY.value }],
+      height: rowHeight,
+      opacity: rowHeight > 0 ? 1 : 0,
+    }),
+    [rowHeight]
+  );
+
+  // The close point is written on the sheet and in the seated row's own label, so a reader is told
+  // what a close will do to the row under the finger
+  const closeToSave = t('sheet.closeToSave');
 
   return (
     <Sheet
       setRef={setLanguageSheetModal}
       title={t('settings.language')}
-      // No subheading: the title centres against the icon alone
-      subtitle={null}
+      subtitle={closeToSave}
       icon={<IconView type={Icon.GLOBE} size={16} color={SHEET_ICON_COLOR} />}
-      snapPoints={['60%']}
+      snapPoints={['85%']}
       perfName={SHEET_PERF_NAME}
-      stackBehavior={'push'}>
+      stackBehavior={'push'}
+      suppressCloseHaptic
+      onDismiss={handleDismiss}>
       <View style={styles.card}>
-        <Text style={styles.cardHint}>{t('language.chooseHint')}</Text>
-
+        <Text style={styles.cardHint}>{t('language.tapToSelect')}</Text>
         <View testID={'language-list'} style={styles.listContainer}>
-          <Animated.View style={[styles.indicator, indicatorStyle]} />
+          {/* The purple seat, absolutely placed behind the rows it slides between */}
+          <Animated.View testID={'language-seat'} style={[styles.seat, seatStyle]} />
 
-          {LANGUAGE_NAMES.map((entry, index) => (
-            <Pressable
-              key={entry.id}
-              style={styles.option}
-              onPress={() =>
-                pickLanguage(entry.id, active, commitLanguagePreference, hideLanguageSheet, revealLanguageLoader)
-              }
+          {ROWS.map((row, index) => (
+            <LanguageItem
+              key={row.id}
+              index={index}
+              position={row.position}
+              name={row.name}
+              isSeated={row.id === seatLocale}
+              isSelected={row.id === active}
+              closeToSave={closeToSave}
+              onStage={stageRow}
               onLayout={index === 0 ? handleItemLayout : undefined}
-              accessibilityRole={'radio'}
-              // Which language is in force is carried by the highlight and this state,
-              // so a screen reader can tell the rows apart
-              accessibilityState={{ selected: entry.id === active }}
-              accessibilityLabel={entry.name}>
-              <Text style={styles.optionLabel}>{entry.name}</Text>
-            </Pressable>
+            />
           ))}
         </View>
       </View>
@@ -95,14 +226,42 @@ export default function BottomSheetLanguage() {
 
 const ty = typographyFor(currentLocaleId());
 
+const ROW_TEXT_SIZE = ty.size(TEXT.sizeDetail);
+
+// A row's label rides its OWN record's face and line box, never the active record's: no
+// bundled face carries another script's endonym, and Android stacks a fallback run's line
+// spacing on top of any pinned lineHeight (TextLayoutManager setUseLineSpacingFromFallbacks,
+// RN 0.86), so a row whose glyphs fall back cannot be equalized by any pin - the 3T read of
+// 2.43.1 that reopened T-538. The row's own face carries its endonym by census, the
+// LanguageRowFaces gate proves it, and every record's box (16-24) sits inside the row's 24px
+// content budget, so every row measures the 48px minimum under every active face
+const ROW_FACE_OVERRIDES: Partial<Record<LocaleId, string>> = {
+  // The one measured exception: Roboto lacks uz's ʻ U+02BB in both weights (fontTools), so
+  // the uz endonym rides the bundle's Latin-ext cover, the AFRICAN record's own family
+  uz: 'NotoSans-Regular',
+};
+
+const ROW_TEXT_STYLES = LANGUAGE_NAMES.map((entry) => {
+  const record = typographyFor(entry.id);
+  const lineHeight =
+    record.rowLineHeight?.(ROW_TEXT_SIZE) ?? record.scriptLineHeight?.(ROW_TEXT_SIZE) ?? OPTION_LINE_HEIGHT;
+  return StyleSheet.create({
+    label: { fontFamily: ROW_FACE_OVERRIDES[entry.id] ?? record.familyRegular, lineHeight },
+    // The index's Latin digits stay on the active face and ride the row's box: they sit in
+    // the row's absolute centered slot, so a device-side fallback cannot move the row's height
+    index: { lineHeight },
+  });
+});
+
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: 'rgba(99, 102, 241, 0.06)',
+    backgroundColor: CARD_BACKGROUND,
     borderRadius: RADIUS.xl,
     borderWidth: 0.5,
-    borderColor: 'rgba(99, 102, 241, 0.15)',
+    borderColor: CARD_BORDER,
     padding: SPACING.lg,
   },
+  // The sound sheet's own hint voice, mirrored above this list (owner order 2026-10-31)
   cardHint: {
     fontSize: ty.size(TEXT.sizeDetail),
     fontFamily: ty.familyRegular,
@@ -112,7 +271,7 @@ const styles = StyleSheet.create({
     marginTop: SPACING.md,
     gap: ITEM_GAP,
   },
-  indicator: {
+  seat: {
     position: 'absolute',
     top: 0,
     start: 0,
@@ -123,17 +282,33 @@ const styles = StyleSheet.create({
     borderColor: COLORS.interactive.activeBorder,
   },
   option: {
-    flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     borderRadius: RADIUS.md,
     // The athan rows carry their height in their controls; these rows carry it here, so the touch room matches
     minHeight: 48,
     paddingVertical: SPACING.md,
-    paddingStart: SPACING.md,
+    paddingHorizontal: SPACING.xxl,
   },
+  optionIndexSlot: {
+    position: 'absolute',
+    // The owner's order: the index sits at the card's left edge in both directions
+    left: SPACING.md,
+    top: 0,
+    bottom: 0,
+    justifyContent: 'center',
+  },
+  optionIndex: {
+    // Dim at rest: the seat's tween lifts this ink to white on the row that holds it
+    color: COLORS.text.sheetDim,
+    fontFamily: ty.familyRegular,
+    fontSize: ty.size(TEXT.sizeDetail),
+    // Latin digits in a Latin run: an RTL paragraph would otherwise put the period before them
+    writingDirection: 'ltr',
+  },
+  // The name stays white in every state; only the number carries the seat's two inks
   optionLabel: {
     color: COLORS.text.primary,
-    fontFamily: ty.familyRegular,
     fontSize: ty.size(TEXT.sizeDetail),
   },
 });

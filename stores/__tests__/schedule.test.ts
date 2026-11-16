@@ -40,6 +40,7 @@ const mockFirstStillDueListDay = jest.fn((_type: ScheduleType, now: Date) =>
 );
 
 jest.mock('@/shared/prayer', () => ({
+  ...jest.requireActual('@/shared/prayer'),
   createPrayerSequence: (...args: unknown[]) => mockCreatePrayerSequence(...args),
   createPrayersForDate: (type: ScheduleType, date: string) => mockCreatePrayersForDate(type, date),
   firstStillDueListDay: (type: ScheduleType, now: Date) => mockFirstStillDueListDay(type, now),
@@ -50,15 +51,20 @@ const mockGetPrayerByDateString = jest.fn();
 
 jest.mock('@/stores/database', () => ({
   ...jest.requireActual('@/stores/database'),
-  getPrayerByDateString: (date: string) => mockGetPrayerByDateString(date),
   getItem: () => null,
+}));
+
+jest.mock('@/stores/timetable', () => ({
+  ...jest.requireActual('@/stores/timetable'),
+  getTimetableDay: (date: string) => mockGetPrayerByDateString(date),
 }));
 
 import { calculatePrayerAgo } from '@/hooks/usePrayerAgo';
 import { isRowPassed } from '@/shared/sequence';
+import { minutesToRecord, toDayMinutes } from '@/shared/timetableDecode';
 import {
   type CountdownStore,
-  type ISingleApiResponseTransformed,
+  type DayRecord,
   type Prayer,
   type ReadablePrayer,
   type RequiredTimeName,
@@ -895,7 +901,7 @@ describe('edge cases', () => {
 const STANDARD = ScheduleType.Standard;
 const EXTRA = ScheduleType.Extra;
 
-/** Real London times from londonprayertimes.com for 2026: Fajr, sunrise, dhuhr, asr, magrib, isha */
+/** Real London times from the captured 2026 payload: Fajr, sunrise, dhuhr, asr, magrib, isha */
 const LONDON_2026: Record<string, string[]> = {
   '2026-01-01': ['06:26', '08:03', '12:09', '13:46', '16:05', '17:42'],
   '2026-01-02': ['06:26', '08:03', '12:10', '13:47', '16:06', '17:43'],
@@ -928,7 +934,7 @@ const STANDARD_DASHED = '[fajr], [sunrise], [dhuhr], [asr], [magrib], [isha]';
 const EXTRAS_ROWS = 'midnight, last third, suhoor, duha';
 const EXTRAS_DASHED = '[midnight], [last third], [suhoor], [duha]';
 
-const storedDays = new Map<string, ISingleApiResponseTransformed>();
+const storedDays = new Map<string, DayRecord>();
 
 const actualPrayer = () => jest.requireActual<typeof import('@/shared/prayer')>('@/shared/prayer');
 
@@ -948,7 +954,7 @@ const storeDays = (dates: string[], unreadable: Record<string, RequiredTimeName[
       ])
     ) as Record<RequiredTimeName, string | null>;
 
-    storedDays.set(date, actualPrayer().transformApiData({ city: 'london', times: { [date]: times } })[0]);
+    storedDays.set(date, minutesToRecord(date, toDayMinutes(times)));
   }
 };
 
@@ -1043,6 +1049,15 @@ const isPassedNow = (type: ScheduleType, english: string, listDay: string): bool
 describe('on the real builder', () => {
   beforeEach(() => {
     jest.useFakeTimers();
+    // No pager is mounted in here, so the page atom rests on Standard: an
+    // Extras case that seeds it would otherwise refuse a later Standard open
+    const { pagerPageAtom } = require('@/stores/atoms/pager');
+    getDefaultStore().set(pagerPageAtom, 0);
+    // No component settles a fade in here, and a hold stamped by the previous
+    // test could land age-zero on this test's own boundary tick once the clock
+    // jumps: each store-level test starts hold-free, as the settled app is
+    const { endOverlayFadeHold } = require('@/stores/atoms/overlay');
+    endOverlayFadeHold();
 
     const { createPrayerSequence, createPrayersForDate, firstStillDueListDay } = actualPrayer();
     mockCreateLondonDate.mockImplementation(() => new Date());
@@ -1643,9 +1658,11 @@ describe('on the real builder', () => {
 
       expect(standardWrites.writes).toEqual(['2026-10-18T23:00:00.000Z']);
       expect(extraWrites.writes).toEqual(['2026-10-18T23:00:00.000Z']);
-      // --:-- until the 00:00 tick moves the list on, and the real countdown from that same tick
-      expect(standardCountdown.values.map(({ timeLeft }) => timeLeft)).toEqual([null, 21300, 21299, 21298]);
-      expect(extraCountdown.values.map(({ timeLeft }) => timeLeft)).toEqual([null, 20100, 20099, 20098]);
+      // The countdown was already --:-- before the flip, so the flip tick's unchanged waiting write is
+      // deduped (nothing changes on screen, nothing commits); the first countdown second of the new
+      // day is the first write
+      expect(standardCountdown.values.map(({ timeLeft }) => timeLeft)).toEqual([21300, 21299, 21298]);
+      expect(extraCountdown.values.map(({ timeLeft }) => timeLeft)).toEqual([20100, 20099, 20098]);
 
       expect(observe(STANDARD)).toEqual({
         next: row('fajr', '2026-10-19', '2026-10-19T04:55:00.000Z'),
@@ -2158,6 +2175,8 @@ describe('on the real builder', () => {
   it('R11: Istijaba tapped on a Friday with no readable time opens itself, since next Friday is not in the sequence', () => {
     storeDays(OCT_16_TO_20, { '2026-10-16': 'all' });
     launchAt('2026-10-16T12:00:00.000Z');
+    const { pagerPageAtom } = require('@/stores/atoms/pager');
+    getDefaultStore().set(pagerPageAtom, 1);
 
     openOverlay(EXTRA, 4);
 
@@ -2168,6 +2187,8 @@ describe('on the real builder', () => {
   it('counts down to the next prayer when the overlay holds an index past the end of the list', () => {
     storeDays(OCT_16_TO_20);
     launchAt('2026-10-17T12:00:00.000Z');
+    const { pagerPageAtom } = require('@/stores/atoms/pager');
+    getDefaultStore().set(pagerPageAtom, 1);
 
     openOverlay(EXTRA, 5);
 

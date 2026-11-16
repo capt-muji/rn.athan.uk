@@ -118,7 +118,10 @@ export default function ColorPickerSettings() {
         accessibilityRole={'button'}
         accessibilityState={{ disabled: isDisabled }}
         accessibilityLabel={t('colorPicker.label')}>
-        <Text style={[styles.label, isDisabled && styles.labelDisabled]}>{t('colorPicker.label')}</Text>
+        {/* One line, yielding: a long label ellipsizes and never pushes the chip, reset or chevron out of the card (T-540) */}
+        <Text style={[styles.label, isDisabled && styles.labelDisabled]} numberOfLines={1}>
+          {t('colorPicker.label')}
+        </Text>
         <View style={styles.rightContainer}>
           <Pressable
             onPress={handleReset}
@@ -206,6 +209,8 @@ const styles = StyleSheet.create({
 
   // --- Label Styles ---
   label: {
+    // Yields to the right side's controls: a long label shrinks and ellipsizes at one line
+    flexShrink: 1,
     color: COLORS.text.primary,
     fontFamily: ty.familyRegular,
     fontSize: ty.size(TEXT.sizeDetail),

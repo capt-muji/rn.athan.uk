@@ -2,8 +2,10 @@
  * Overlay state management
  *
  * `isOn` changes only on the owner's tap, app close, and the 2 second schedule
- * boundary. `openOverlay` and `closeOverlay` are the only writers.
- *
+ * boundary. `openOverlay` and `closeOverlay` are the only tap-path writers;
+ * the boundary close in stores/countdown.ts writes the atoms directly to keep
+ * that module free of a cycle. Every isOn write drops the fade-hold flag in
+ * the same batch, and `markOverlayFadeSettled` raises it once the fade ends.
  */
 
 import { getDefaultStore } from 'jotai/vanilla';
@@ -11,7 +13,14 @@ import { getDefaultStore } from 'jotai/vanilla';
 import { OVERLAY } from '@/shared/constants';
 import { perfMark } from '@/shared/perf';
 import type { ScheduleType } from '@/shared/types';
-import { overlayAtom as overlayAtomImport } from '@/stores/atoms/overlay';
+import {
+  beginOverlayFadeHold,
+  currentFadeGeneration,
+  endOverlayFadeHold,
+  overlayAtom as overlayAtomImport,
+  overlayFadeSettledAtom,
+} from '@/stores/atoms/overlay';
+import { pagerPageAtom, pageSchedule } from '@/stores/atoms/pager';
 import { armOverlayBoundary, clearOverlayBoundary, writeDisplayCountdown } from '@/stores/countdown';
 import { getNextBoundary } from '@/stores/schedule';
 
@@ -42,9 +51,19 @@ const openOverlay = (type: ScheduleType, index: number) => {
   const overlay = store.get(overlayAtom);
   if (overlay.isOn) return;
   if (!canOpenOverlay(type)) return;
+  // A press whose page the pager no longer shows is a stale touch's echo - the
+  // owner's tap-then-swipe interleave, where the open lands after the swipe
+  // settled and the self-heal (which only closes an OPEN overlay) cannot see
+  // it - refused like a boundary-adjacent open
+  if (pageSchedule(store.get(pagerPageAtom)) !== type) return;
 
   perfMark('overlay_open_start', { scheduleType: type });
   armOverlayBoundary(type);
+  // Same batch as the flip itself: every subtree the overlay holds displayable
+  // re-renders once, holds through the incoming fade, and retires any settle
+  // still in flight from the fade this write replaces
+  beginOverlayFadeHold();
+  store.set(overlayFadeSettledAtom, false);
   store.set(overlayAtom, { isOn: true, selectedPrayerIndex: index, scheduleType: type });
 
   // Flip the hero display on the toggle instant, not the next wall-second tick
@@ -57,23 +76,43 @@ const closeOverlay = () => {
 
   perfMark('overlay_close_start', { scheduleType: overlay.scheduleType });
   clearOverlayBoundary();
+  beginOverlayFadeHold();
+  store.set(overlayFadeSettledAtom, false);
   store.set(overlayAtom, { ...overlay, isOn: false });
   writeDisplayCountdown(overlay.scheduleType);
 };
 
 /**
- * No production caller opens through this: both pass `false`, or call
- * `closeOverlay` directly. Opening implicitly would reuse whatever
- * `selectedPrayerIndex` the atom still holds, which after a day rollover or a
- * schedule change is a stale row. Open with `openOverlay(type, index)` and an
- * index chosen at the call site.
+ * Raises the fade-hold flag when the overlay family's fade has truly settled.
+ * Called from the animation's completion (useDerivedProgress's onSettled)
+ * carrying the generation of the fade it belongs to — captured by the render
+ * that started it — so the one batched display flip lands after the fade
+ * ended, never inside it, and never for a fade a newer writer has replaced:
+ * the open fade's completion can be posted to the JS thread while the close
+ * tap's handler already ran, and letting that stale settle through would cut
+ * the layer dead at close-start. Deferred one Promise microtask because the
+ * completion can fire from a render-phase animation mapper (a store write
+ * there would land mid-render), and on the real queueMicrotask, which jest's
+ * fake timers stub and never flush.
+ */
+const markOverlayFadeSettled = (settledGeneration: number) => {
+  void Promise.resolve().then(() => {
+    if (settledGeneration !== currentFadeGeneration()) return;
+    perfMark('overlay_fade_settled');
+    store.set(overlayFadeSettledAtom, true);
+    endOverlayFadeHold();
+  });
+};
+
+/**
+ * Production callers all pass `false` (or call `closeOverlay` directly):
+ * opening implicitly would reuse whatever `selectedPrayerIndex` the atom
+ * still holds, stale after a day rollover or a schedule change. Open with
+ * `openOverlay(type, index)` and an index chosen at the call site.
  */
 const toggleOverlay = (force?: boolean) => {
-  const overlay = store.get(overlayAtom);
-  const newState = force !== undefined ? force : !overlay.isOn;
-
-  if (newState) openOverlay(overlay.scheduleType, overlay.selectedPrayerIndex);
+  if (force) openOverlay(store.get(overlayAtom).scheduleType, store.get(overlayAtom).selectedPrayerIndex);
   else closeOverlay();
 };
 
-export { closeOverlay, openOverlay, toggleOverlay };
+export { closeOverlay, markOverlayFadeSettled, openOverlay, toggleOverlay };

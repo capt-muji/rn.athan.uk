@@ -10,8 +10,9 @@
 import * as Notifications from 'expo-notifications';
 import { getDefaultStore } from 'jotai';
 
-import { AlertType, type ISingleApiResponseTransformed } from '@/shared/types';
+import { AlertType, type DayRecord } from '@/shared/types';
 import * as Database from '@/stores/database';
+import { __installTimetableDays } from '@/stores/timetable';
 
 jest.mock('@/shared/logger', () => ({
   __esModule: true,
@@ -23,7 +24,10 @@ jest.mock('@/shared/logger', () => ({
 
 jest.mock('@/stores/widget', () => ({ refreshPrayerWidgets: jest.fn(async () => undefined) }));
 
-jest.mock('@/stores/sync', () => ({ sync: jest.fn(async () => undefined), getArmedDayChanges: jest.fn(() => 0) }));
+jest.mock('@/stores/sync', () => ({
+  ...jest.requireActual('@/stores/sync'),
+  sync: jest.fn(async () => undefined),
+}));
 
 import {
   commitSoundSelection,
@@ -68,9 +72,15 @@ beforeEach(() => {
   jest.setSystemTime(NOW);
   jest.clearAllMocks();
   Database.database.clearAll();
+  __installTimetableDays([]);
+  /** The days the reader serves, accumulated by the seeding helper and reset with the store */
+  const seededWindow = new Map<string, DayRecord>();
+
+  seededWindow.clear();
+  __installTimetableDays([]);
 
   for (const date of WINDOW) {
-    const day: ISingleApiResponseTransformed = {
+    const day: DayRecord = {
       date,
       fajr: '12:00',
       sunrise: '12:00',
@@ -82,7 +92,8 @@ beforeEach(() => {
       duha: '12:00',
       istijaba: '12:00',
     };
-    Database.database.set(`prayer_${date}`, JSON.stringify(day));
+    seededWindow.set(date, day);
+    __installTimetableDays([...seededWindow.values()]);
   }
 
   for (const atom of standardPrayerAlertAtoms) store.set(atom, AlertType.Off);

@@ -5,6 +5,7 @@
 import { act, fireEvent, render, screen, within } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
 import * as Notifications from 'expo-notifications';
+import { getDefaultStore } from 'jotai';
 import { Alert } from 'react-native';
 
 import { onPlatform, showLondonDay } from '@/__tests__/harness';
@@ -13,6 +14,8 @@ import { t } from '@/shared/i18n';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { AlertType, type ReminderInterval, ScheduleType } from '@/shared/types';
 import {
+  fastingModeAtom,
+  fastingWhiteDaysAtom,
   getPrayerAlertType,
   getReminderAlertType,
   getReminderInterval,
@@ -35,12 +38,12 @@ jest.mock('@/components/sheets/parts', () => {
   const { createElement } = require('react');
   const { Pressable, Text, View } = require('react-native');
 
-  const Toggle = (props: { value: boolean; disabled?: boolean; onToggle: () => void }) =>
+  const Toggle = (props: { value: boolean; disabled?: boolean; onToggle: (next: boolean) => void }) =>
     mockLockedPressesGetThrough
       ? createElement(Pressable, {
           accessibilityRole: 'switch',
           accessibilityState: { checked: props.value, disabled: props.disabled === true },
-          onPress: props.onToggle,
+          onPress: () => props.onToggle(!props.value),
         })
       : createElement(parts.Toggle, props);
 
@@ -91,8 +94,17 @@ const secondReminderSwitch = () => screen.getAllByRole('switch')[1];
 // A reminder's own card: its title text up through the view that draws and dims the whole card
 const reminderCard = (n: 1 | 2) => screen.getByText(`Reminder ${n}`).parent!.parent!.parent!;
 
-/** Closes the sheet as the bottom sheet library reports it, once the close has finished */
-const closeSheet = () => fireEvent(screen.getByText('Close to save'), 'dismiss');
+/**
+ * Closes the sheet as the bottom sheet library reports it: the sheet was presented (an animation
+ * to open, then the settle), then the close animation runs and settles at closed - the unified
+ * close signal
+ */
+const closeSheet = async () => {
+  await fireEvent(screen.getByText('Close to save'), 'animate', -1, 0);
+  await fireEvent(screen.getByText('Close to save'), 'change', 0);
+  await fireEvent(screen.getByText('Close to save'), 'animate', 0, -1);
+  await fireEvent(screen.getByText('Close to save'), 'change', -1);
+};
 
 /** Lets work that waits on notification permission and scheduling run to its end */
 const settle = () => act(() => jest.runAllTimersAsync());
@@ -546,6 +558,34 @@ describe('the alert sheet\u2019s second reminder, Friday 11 September 2026 at 14
 });
 
 describe("the alert sheet's preserved reminders, Friday 11 September 2026 at 14:00", () => {
+  it('re-derives its draft from the stores on every open of the same prayer, warm tree and all', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    openSheetFor(FAJR);
+    await render(<AlertSheet />);
+
+    // The committed draft leaves the store holding Sound
+    await fireEvent.press(athanOption('Sound'));
+    await closeSheet();
+    await settle();
+
+    // Whatever changed the store after that commit - a rolled-back schedule, another
+    // surface - the next open of the SAME prayer must draft what the store now holds
+    await act(() => setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent));
+    await act(() => setReminderAlertType(ScheduleType.Standard, FAJR, 0, AlertType.Off));
+    (Notifications.scheduleNotificationAsync as jest.Mock).mockClear();
+    await act(() => openSheetFor(FAJR));
+
+    expect(athanOption('Silent')).toBeSelected();
+    expect(reminderSwitch()).not.toBeChecked();
+
+    // And the commit baseline is the fresh store, so closing unchanged writes nothing
+    await closeSheet();
+    await settle();
+
+    expect(Notifications.scheduleNotificationAsync).not.toHaveBeenCalled();
+    expect(getPrayerAlertType(ScheduleType.Standard, FAJR)).toBe(AlertType.Silent);
+  });
+
   it('restores each reminder to its pre-off choice when the athan comes back on in the same session', async () => {
     showLondonDay('2026-09-11', '14:00');
     setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
@@ -579,9 +619,9 @@ describe("the alert sheet's preserved reminders, Friday 11 September 2026 at 14:
     await closeSheet();
     await settle();
 
-    // A fresh open: the body remounts from the store, exactly as the modal's own unmount and
-    // present do, through the key change the suite's prayer move already uses
-    await act(() => openSheetFor(DHUHR));
+    // A fresh open of the same prayer: the warm body re-derives its draft from the
+    // stores when the open session advances, which is what the remount through a key
+    // change used to give
     await act(() => openSheetFor(FAJR));
 
     // The mounted slide-off keeps today's pixels: switch off, pill on Silent, whatever the store holds
@@ -663,13 +703,16 @@ describe("the alert sheet's preserved reminders, Friday 11 September 2026 at 14:
 });
 
 describe("the alert sheet's disabled dim levels, Friday 11 September 2026 at 14:00", () => {
-  it("paints a locked reminder card's title and hint in the locked solids while the athan is Off", async () => {
+  it("paints a locked reminder card's title in the subheading's own shade while the athan is Off", async () => {
     showLondonDay('2026-09-11', '14:00');
     openSheetFor(FAJR);
     await render(<AlertSheet />);
 
+    // Owner order 2026-10-31, the 2.43.1 read: the locked title reads exactly as dark as the
+    // "notification before prayer time" line BESIDE it - the hint's own locked solid, not the
+    // brighter sheet-hint token the first pass took
     for (const n of [1, 2] as const) {
-      expect(screen.getByText(`Reminder ${n}`)).toHaveStyle({ color: '#253252' });
+      expect(screen.getByText(`Reminder ${n}`)).toHaveStyle({ color: '#122246' });
       expect(within(reminderCard(n)).getByText(t('alert.reminderHint'))).toHaveStyle({ color: '#122246' });
     }
   });
@@ -684,7 +727,7 @@ describe("the alert sheet's disabled dim levels, Friday 11 September 2026 at 14:
     // Reminder 1 off locks the second card, whose own reminder is also off: the locked-off
     // solid, deeper than the off solid the first card's block carries
     expect(within(reminderCard(2)).getByText(t('reminder.before'))).toHaveStyle({ color: '#0e1b3e' });
-    expect(screen.getByText('Reminder 2')).toHaveStyle({ color: '#253252' });
+    expect(screen.getByText('Reminder 2')).toHaveStyle({ color: '#122246' });
   });
 
   it('paints a locked card whose own reminder is on in the locked-on solids', async () => {
@@ -697,12 +740,13 @@ describe("the alert sheet's disabled dim levels, Friday 11 September 2026 at 14:
     // Reminder 1 off locks the second card; reminder 2 itself stays on, so its options sit
     // between the two dims: the locked-on solid, brighter than the locked-off one
     expect(within(reminderCard(2)).getByText(t('reminder.before'))).toHaveStyle({ color: '#1c2c4f' });
-    expect(screen.getByText('Reminder 2')).toHaveStyle({ color: '#253252' });
+    // The title's dim keys on the lock alone: the circle and this line read the hint's shade
+    expect(screen.getByText('Reminder 2')).toHaveStyle({ color: '#122246' });
   });
 });
 
 describe("the alert sheet's reminder header rows, Friday 11 September 2026 at 14:00", () => {
-  it('toggles a reminder from a press on its title, with no haptic of the row', async () => {
+  it('toggles a reminder from a press on its title, with the haptic the switch itself gives', async () => {
     showLondonDay('2026-09-11', '14:00');
     setPrayerAlertType(ScheduleType.Standard, FAJR, AlertType.Silent);
     openSheetFor(FAJR);
@@ -711,7 +755,8 @@ describe("the alert sheet's reminder header rows, Friday 11 September 2026 at 14
     await fireEvent.press(screen.getByText('Reminder 1'));
 
     expect(reminderSwitch()).toBeChecked();
-    expect(Haptics.impactAsync).not.toHaveBeenCalled();
+    expect(Haptics.impactAsync).toHaveBeenCalledTimes(1);
+    expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Medium);
   });
 
   it('refuses a header press while the athan is Off', async () => {
@@ -787,5 +832,103 @@ describe('the alert sheet under Arabic, Friday 11 September 2026 at 14:00', () =
     expect(screen.getAllByRole('radio', { name: 'إيقاف' }).length).toBeGreaterThan(0);
     expect(screen.getAllByRole('radio', { name: 'صامت' }).length).toBeGreaterThan(0);
     expect(screen.getAllByRole('radio', { name: 'صوت' }).length).toBeGreaterThan(0);
+  });
+});
+
+describe('the alert sheet for the Suhoor row, Friday 11 September 2026 at 14:00', () => {
+  beforeEach(() => {
+    setActiveLocale('en');
+  });
+
+  const SUHOOR = EXTRA_PRAYER_IDS.indexOf('suhoor');
+
+  const openSuhoorSheet = () =>
+    showAlertSheet({ type: ScheduleType.Extra, index: SUHOOR, prayerId: 'suhoor', isUnavailable: false });
+
+  it('carries the fasting card beside the athan', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    openSuhoorSheet();
+    await render(<AlertSheet />);
+
+    expect(screen.getByText(t('fasting.card.title'))).toBeOnTheScreen();
+    expect(screen.getByRole('switch', { name: t('fasting.mode.muhammad') })).toBeOnTheScreen();
+  });
+
+  it('lands a fasting mode change on its own at close', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    // The card locks beside an Off athan, so the draft flow runs beside an armed one
+    setPrayerAlertType(ScheduleType.Extra, SUHOOR, AlertType.Silent);
+    getDefaultStore().set(fastingModeAtom, 'everyDay');
+    openSuhoorSheet();
+
+    await render(<AlertSheet />);
+    await fireEvent.press(screen.getByRole('switch', { name: t('fasting.mode.muhammad') }));
+    await settle();
+
+    await closeSheet();
+    await settle();
+
+    expect(getDefaultStore().get(fastingModeAtom)).toBe('muhammad');
+  });
+
+  it('composes two rapid fasting taps onto the live draft, dropping neither', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setPrayerAlertType(ScheduleType.Extra, SUHOOR, AlertType.Silent);
+    getDefaultStore().set(fastingModeAtom, 'everyDay');
+    openSuhoorSheet();
+
+    await render(<AlertSheet />);
+    await fireEvent.press(screen.getByRole('switch', { name: t('fasting.mode.muhammad') }));
+    await fireEvent.press(screen.getByRole('switch', { name: t('fasting.mode.whiteDays') }));
+
+    await closeSheet();
+    await settle();
+
+    expect(getDefaultStore().get(fastingModeAtom)).toBe('muhammad');
+    expect(getDefaultStore().get(fastingWhiteDaysAtom)).toBe(true);
+  });
+
+  it('carries the fasting selection unchanged through an athan change', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setPrayerAlertType(ScheduleType.Extra, SUHOOR, AlertType.Sound);
+    getDefaultStore().set(fastingModeAtom, 'whiteDays');
+    openSuhoorSheet();
+
+    await render(<AlertSheet />);
+    await fireEvent.press(athanOption('Silent'));
+    await settle();
+
+    await closeSheet();
+    await settle();
+
+    expect(getPrayerAlertType(ScheduleType.Extra, SUHOOR)).toBe(AlertType.Silent);
+    expect(getDefaultStore().get(fastingModeAtom)).toBe('whiteDays');
+  });
+
+  it('locks the fasting card beside an Off athan, and close keeps the stored selection', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setPrayerAlertType(ScheduleType.Extra, SUHOOR, AlertType.Off);
+    getDefaultStore().set(fastingModeAtom, 'muhammad');
+    getDefaultStore().set(fastingWhiteDaysAtom, false);
+    openSuhoorSheet();
+
+    await render(<AlertSheet />);
+    await settle();
+
+    // The locked card keeps its rows but hides its note and its strip
+    expect(screen.getByText(t('fasting.card.title'))).toBeOnTheScreen();
+    expect(screen.queryByText(t('fasting.description.muhammad'))).toBeNull();
+    expect(screen.queryByText('10')).toBeNull();
+
+    // Neither the switch nor the row it names lands anything
+    await fireEvent.press(screen.getByRole('switch', { name: t('fasting.mode.everyDay') }));
+    await fireEvent.press(screen.getAllByLabelText(t('fasting.mode.dawood'))[0]);
+    await settle();
+
+    await closeSheet();
+    await settle();
+
+    expect(getDefaultStore().get(fastingModeAtom)).toBe('muhammad');
+    expect(getDefaultStore().get(fastingWhiteDaysAtom)).toBe(false);
   });
 });

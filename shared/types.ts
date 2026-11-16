@@ -1,122 +1,44 @@
 import type { COUNTDOWN_WAITING_NAME, PrayerId } from '@/shared/constants';
 
 /**
- * Raw API response structure for a single day's prayer times
- *
- * This represents the unprocessed data received from the prayer times API.
- * Contains both individual prayer times and congregation (jamat) times.
- * Note: Only the 6 main prayer times (fajr, sunrise, dhuhr, asr, magrib, isha)
- * are used by the app. Jamat times and asr_2 are fetched but not displayed.
- *
- * All times are in HH:mm format (24-hour, e.g., "06:12", "18:45")
+ * The six provider times every list row is built from
  */
-export interface IApiSingleTime {
-  /** Calendar date in YYYY-MM-DD format (e.g., "2026-01-20") */
-  date: string;
-  /** Fajr prayer time in HH:mm format */
-  fajr: string;
-  /** Fajr congregation time (not used in app) */
-  fajr_jamat: string;
-  /** Sunrise time in HH:mm format */
-  sunrise: string;
-  /** Dhuhr prayer time in HH:mm format */
-  dhuhr: string;
-  /** Dhuhr congregation time (not used in app) */
-  dhuhr_jamat: string;
-  /** Asr prayer time in HH:mm format (Hanafi calculation) */
-  asr: string;
-  /** Alternative Asr time (Shafi calculation, not used in app) */
-  asr_2: string;
-  /** Asr congregation time (not used in app) */
-  asr_jamat: string;
-  /** Magrib prayer time in HH:mm format */
-  magrib: string;
-  /** Magrib congregation time (not used in app) */
-  magrib_jamat: string;
-  /** Isha prayer time in HH:mm format */
-  isha: string;
-  /** Isha congregation time (not used in app) */
-  isha_jamat: string;
-}
-
-/**
- * Dictionary mapping dates to prayer times
- * Used internally during API data processing
- */
-export interface IApiTimes {
-  /** Key: date string (YYYY-MM-DD), Value: prayer times for that date */
-  [date: string]: IApiSingleTime;
-}
-
-/**
- * Top-level API response structure
- *
- * The API returns prayer times for an entire year, grouped by city.
- * Each city contains a dictionary of dates mapped to prayer times.
- *
- * Example structure:
- * {
- *   "city": "London",
- *   "times": {
- *     "2026-01-20": { fajr: "06:12", sunrise: "08:05", ... },
- *     "2026-01-21": { fajr: "06:11", sunrise: "08:04", ... },
- *     ...
- *   }
- * }
- */
-export interface IApiResponse {
-  /** City name (e.g., "London") */
-  city: string;
-  /** Dictionary of dates to prayer times */
-  times: Record<string, IApiSingleTime>;
-}
-
-/** The six provider times every list row is built from */
 export type RequiredTimeName = 'fajr' | 'sunrise' | 'dhuhr' | 'asr' | 'magrib' | 'isha';
 
 /**
- * A payload after api/client.ts has checked it: each of the six times is a readable HH:mm, or null
- * where the provider's value was not
+ * One day of the timetable as the app reads it: the six published times plus
+ * the three derived extras, each null where the time it comes from is.
+ *
+ * Produced by shared/timetableDecode.ts minutesToRecord - the only producer -
+ * from six minutes past midnight: the baked artifact decodes them from its
+ * bytes, a dev build from the launch-relative mock window.
+ *
+ * Derived from the day's own times: suhoor 20 minutes before Fajr, duha 20
+ * minutes after Sunrise, istijaba 60 minutes before Magrib (shown on Fridays
+ * only - a list-building question, never a storage one). Midnight and Last
+ * Third are not stored: they belong to the night leading into the day (the
+ * previous day's Magrib to this day's Fajr), so shared/prayer.ts works them
+ * out from two records when the lists are built (getNightTimesForDay).
+ *
+ * Asr is the timetable's single published Asr - the standard shadow
+ * calculation; the publisher's later Hanafi column is never baked
+ * (scripts/lupt/generate.mjs).
+ *
+ * A time is null rather than a placeholder string because a placeholder
+ * type-checks everywhere and reaches arithmetic; `--:--` is how absence is
+ * drawn, never what is stored.
  */
-export interface IValidatedApiResponse {
-  city: string;
-  times: Record<string, Record<RequiredTimeName, string | null>>;
-}
-
-/**
- * Transformed and enriched prayer times for a single day
- *
- * This is the processed version of IApiSingleTime with derived extra prayers added.
- * Transformation happens in shared/prayer.ts:transformApiData()
- *
- * Derived prayers calculated from the day's own API times:
- * - suhoor: 20 minutes before Fajr (pre-dawn meal)
- * - duha: 20 minutes after Sunrise (forenoon prayer)
- * - istijaba: 60 minutes before Magrib on Fridays only (supplication time)
- *
- * Midnight and Last Third are not stored: they belong to the night leading into
- * the day (the previous day's Magrib to this day's Fajr), so shared/prayer.ts
- * works them out from two records when the lists are built (getNightTimesForDay)
- *
- * Stored in MMKV with key format: prayer_YYYY-MM-DD
- * Cache lifetime: Until next app upgrade (see stores/version.ts)
- *
- * A time is null when the provider's value was not a readable HH:mm (api/client.ts), and a derived
- * time is null when the time it comes from is. Null rather than a placeholder string, because a
- * placeholder type-checks everywhere and reaches arithmetic; `--:--` is how absence is drawn, never
- * what is stored. Records written before times could be null are all strings, which this still reads.
- */
-export interface ISingleApiResponseTransformed {
+export interface DayRecord {
   /** Calendar date in YYYY-MM-DD format */
   date: string;
-  /** 6 main prayers from API (HH:mm format) */
+  /** The six published times (HH:mm format) */
   fajr: string | null;
   sunrise: string | null;
   dhuhr: string | null;
   asr: string | null;
   magrib: string | null;
   isha: string | null;
-  /** 3 derived extra prayers (HH:mm format) */
+  /** The three derived times (HH:mm format) */
   suhoor: string | null;
   duha: string | null;
   istijaba: string | null;
@@ -151,6 +73,15 @@ export enum ScheduleType {
   Standard = 'standard',
   /** Extra schedule: 4-5 voluntary/blessed times */
   Extra = 'extra',
+}
+
+/** The Sahur row's scheduling modes, in picker order */
+export type FastingMode = 'everyDay' | 'muhammad' | 'dawood' | 'whiteDays';
+
+/** The fasting selection the Sahur row's sheet commits beside its alerts */
+export interface FastingSelection {
+  mode: FastingMode;
+  whiteDaysAddOn: boolean;
 }
 
 export interface PageCoordinates {
@@ -239,6 +170,8 @@ export interface AlertMenuState {
   atTimeAlert: AlertType;
   /** Both reminders, indexed by slot */
   reminders: PerReminderSlot<ReminderSetting>;
+  /** Present only on the Sahur row: the fasting selection riding the same commit */
+  fasting?: FastingSelection;
 }
 
 export enum Icon {
@@ -250,11 +183,11 @@ export enum Icon {
   QUESTION = 'QUESTION',
   MUSIC_NOTE = 'MUSIC_NOTE',
   COMPASS = 'COMPASS',
-  CLOSE = 'CLOSE',
-  WIDGET = 'WIDGET',
   APPLE = 'APPLE',
   ANDROID = 'ANDROID',
   GLOBE = 'GLOBE',
+  DOWNLOAD = 'DOWNLOAD',
+  REFRESH = 'REFRESH',
 }
 
 // =============================================================================

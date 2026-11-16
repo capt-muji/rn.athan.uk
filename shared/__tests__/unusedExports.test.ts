@@ -18,12 +18,23 @@ const REACHED_WITHOUT_AN_IMPORT: Record<string, string> = {
   MAX_WHATS_NEW_ARCHIVE: 'A limit on the copy in shared/whatsNew.ts, enforced only at test time',
   MAX_WHATS_NEW_TITLE_LENGTH: 'A limit on the copy in shared/whatsNew.ts, enforced only at test time',
   MAX_WHATS_NEW_BODY_LENGTH: 'A limit on the copy in shared/whatsNew.ts, enforced only at test time',
-  StoredPrayerId:
-    'The stored-record vocabulary R15 names; the prayer.ts narrowing is structural now, so no production site names the type',
   PRAYER_LABELS:
     'Reached at runtime through the loader namespace require whose marks measure the catalog (step 15); a static import would evaluate the catalog before the marks',
+  RequiredTimeName:
+    'The six published column names, the vocabulary the suites build HH:mm day rows with; production reads them as DayRecord fields',
+  toDayMinutes:
+    'The HH:mm seam the dev window (mocks/minutes.ts) and the suites build day minutes through; production decodes its minutes straight from the artifact bytes',
   __resetLaunchInitForTests:
     'The index suite renders a fresh launch per test from one module instance, so only its tests import the reset',
+  __resetWarmupForTests:
+    'The idle ladder runs once per process; the warmup suite resets the latch between cases, so only its tests import the reset',
+  __resetTimetableForTest:
+    'The staging suite replays launches from one module instance, so only its tests import the reset',
+  __rescheduleAllForTests:
+    'The scheduling suites drive the reschedule pass directly; production reaches the same code through refreshNotifications',
+  __installTimetableDays:
+    'The test harness installs days through the reader seam in place of stored rows, so only tests import it',
+  __resetHijriMemoForTests: 'The suites replay the same dates with a mocked engine, which the memo would outlive',
 };
 
 const ROOT = join(__dirname, '..', '..');

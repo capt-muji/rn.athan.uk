@@ -1,0 +1,182 @@
+From f2346ec45a54064e911555e725501b36dd90931b Mon Sep 17 00:00:00 2001
+Date: Sat, 26 Sep 2026 07:49:03 +0100
+Subject: [PATCH] docs(widgets): the Android timerInterval equivalent,
+ investigated and costed
+
+The owner asked whether Android has something like iOS's Text(timerInterval:),
+accepting a format change if it keeps the widget correct. It does: a
+Chronometer with setChronometerCountDown, redrawn by the launcher's own
+process with zero app wakeups and immune to every alarm policy.
+
+It is not built, for three verified reasons. expo-widgets' converter handles
+14 view types and has no case for Chronometer, TextClock or
+AndroidRemoteViews, falling through to "View not found". A partial update
+cannot reach into a Glance tree because Glance owns the view ids. So it would
+mean replacing the generated providers and rebuilding all eight cards in
+RemoteViews XML, abandoning the shared layout pipeline.
+
+And the gain is narrow: a Chronometer does not tick while the screen is off
+either, it re-syncs when it becomes visible, so its only real advantage over
+the shipped TIME_TICK fix is the sub-minute window that fix already closes.
+Measured on the Find X8: 38% exact before, 9 of 9 exact after.
+
+A WidgetCountdownOverlay was written against the partial-update assumption and
+deleted once dumpsys showed there is no view id of ours to target.
+---
+ .../CHRONOMETER-OPTION.md                     | 87 +++++++++++++++++++
+ .../25-android-widget-drift/MEASURED-DRIFT.md | 45 ++++++++++
+ 2 files changed, 132 insertions(+)
+ create mode 100644 ai/plans/25-android-widget-drift/CHRONOMETER-OPTION.md
+
+diff --git a/ai/plans/25-android-widget-drift/CHRONOMETER-OPTION.md b/ai/plans/25-android-widget-drift/CHRONOMETER-OPTION.md
+new file mode 100644
+index 00000000..373990ad
+--- /dev/null
++++ b/ai/plans/25-android-widget-drift/CHRONOMETER-OPTION.md
+@@ -0,0 +1,87 @@
++# The Android equivalent of iOS's `timerInterval`: what it is, and what it would cost
++
++Branch: `experiment/25-chronometer-ticking`. Nothing here ships. This file answers the owner's
++question, asked 2026-09-26: *"on the iPhone we are using a timer interval, which is the only way to
++keep the app up to date. Perhaps on Android we have something similar or different, which might change
++the layout of the timer, which is okay."*
++
++The answer is yes, there is an equivalent, and it is worth knowing exactly what it buys and what it
++costs, because the cost turned out to be much higher than the iOS change was.
++
++## The mechanism
++
++| | iOS | Android |
++| --- | --- | --- |
++| API | `Text(timerInterval:)` | `Chronometer` + `RemoteViews.setChronometerCountDown(id, true)` |
++| Who redraws it | iOS, in its own process | the LAUNCHER, in its process (`postDelayed`, `Chronometer.mTicker`) |
++| App wakeups needed | none | none |
++| Can it be deferred by doze, standby or an OEM policy | no | no |
++| Text it can render | `6:02:00` | `6:02:00`, or `MM:SS` under an hour |
++| Text it cannot render | `6h 2m` | `6h 2m` |
++
++So the parallel is exact, including the format loss. `Chronometer` substitutes only `%s` for the whole
++timer string; there is no pattern language for unit suffixes. `TextClock` is the other self-ticking
++`@RemoteView`, but it renders the CURRENT time through a `SimpleDateFormat` pattern, not a countdown,
++so it cannot express "time until Dhuhr" at all.
++
++Verified against the resolved artifacts rather than from memory:
++
++- `EmittableAndroidRemoteViews` and 14 translator references exist in the peek fork
++  (`glance-appwidget-1.2.0-peek-0.3.0.aar`), so Glance itself CAN host raw RemoteViews.
++- `RemoteViews.setChronometer` (API 1) and `setChronometerCountDown` (API 24) are both available at
++  this module's `minSdk` 24.
++
++## Why it is not a small change here, unlike on iOS
++
++On iOS the switch was a layout edit: one `Text` swapped for another inside a SwiftUI tree we already
++control. On Android three separate walls stand in the way, each verified:
++
++1. **expo-widgets cannot emit it.** `ExpoWidgetEmittableTree.kt` converts exactly 14 view types
++   (`BoxView`, `ColumnView`, `RowView`, `TextView`, `ImageView`, `SpacerView`, the progress and
++   control views, and five Button flavours). There is no case for `Chronometer`, `TextClock` or
++   `AndroidRemoteViews`, and an unknown element name falls through to
++   `else -> listOf(createErrorText("View not found"))`. So it cannot be reached from the JSX layout at
++   all, at any cost, without patching the library, which the owner has ruled out.
++
++2. **A partial update cannot target it.** The obvious cheap route is to let Glance draw the card and
++   then overlay a Chronometer with `partiallyUpdateAppWidget`. That needs a stable view id inside the
++   composed tree, and Glance assigns its own ids at composition time. `dumpsys appwidget` shows only
++   `views=android.widget.RemoteViews@d09174c` with nothing we own. An overlay was written against this
++   assumption and then deleted, because it cannot work.
++
++3. **So it means abandoning Glance for the affected kinds.** The generated providers are trivial
++   (`class PrayerWidgetProvider : ExpoWidgetsAppWidgetProvider("PrayerWidget")`), so they COULD be
++   replaced with hand-written `AppWidgetProvider`s that build the whole card in RemoteViews XML. That
++   means re-implementing, in XML and Kotlin, per theme and per size: the card background, the hero
++   trio, the day list with its active pill, the moon drawables, the footer, and the proportional
++   column sizing from session 15d. Eight kinds. The entire Android widget layout pipeline would stop
++   being shared with iOS.
++
++## What it would actually buy, measured
++
++This is the part that decided it. The Chronometer's advantage over the shipped fix is narrower than it
++first appears, because **a Chronometer does not tick while the screen is off either**. It re-syncs from
++its `elapsedRealtime` base when it becomes visible. Its real gain is therefore only the sub-minute
++staleness window, and the shipped `TIME_TICK` fix already closes that:
++
++| | 1.28.21, before | 1.28.23, after the TIME_TICK fix |
++| --- | --- | --- |
++| Exact readings | 38% | **100%** (9 of 9) |
++| Worst drift | +2 min | **+0** |
++| Label flips after the edge by | 13 to 40 s | ~1 to 4 s |
++
++The one case the Chronometer would still cover and `TIME_TICK` cannot is **the app process being dead
++outright**, where no receiver is registered to redraw anything. Against that, the Chronometer is
++genuinely better, and if long-idle sampling ever shows that case dominating real use, this is the
++answer and this file is the starting point.
++
++## Recommendation
++
++**Do not build it.** Ship the `TIME_TICK` registration fix, which costs nothing, keeps `6h 2m`, and
++measures exact. Keep this document as the designed fallback.
++
++If the owner wants it anyway, the smallest honest version is worth considering: apply it to the two
++SMALL kinds only, whose cards are a name, a countdown and a time, and leave the mediums on Glance. That
++bounds the rewrite to something like a day's work instead of a week's, and it would read `5:12:00`
++where the medium beside it reads `5h 12m`, which is a visible inconsistency the owner should see on
++device before choosing.
+diff --git a/ai/plans/25-android-widget-drift/MEASURED-DRIFT.md b/ai/plans/25-android-widget-drift/MEASURED-DRIFT.md
+index e390f468..18175537 100644
+--- a/ai/plans/25-android-widget-drift/MEASURED-DRIFT.md
++++ b/ai/plans/25-android-widget-drift/MEASURED-DRIFT.md
+@@ -111,6 +111,51 @@ Crucially, late firing ALONE does not produce a wrong number, because the label
+ render at :17 past the edge still yields the same `ceil` value as a render at :00.5. Lateness only
+ matters when it pushes the render past the NEXT edge, or when it combines with the deferral above.
+ 
++## The mechanism, isolated to the second
++
++A live experiment on 2026-09-26 with the screen kept ON, watching one minute pass, separates the two
++failure modes and shows which one is actually producing the owner's drift.
++
++| Device clock | Widget showed | True (ceil) | Drift | What had happened |
++| --- | --- | --- | --- | --- |
++| 07:25:10 | `5h 34m` | `5h 32m` | **+2** | the 07:25 edge had passed; that minute's render had NOT run yet |
++| 07:25:19.314 | | | | the alarm finally fires, 19.3s late, and the widget redraws |
++| 07:25:36 | `5h 32m` | `5h 32m` | **+0** | correct again |
++
++So the widget is not frozen and the data is not stale. **The error is a staleness WINDOW that opens at
++every minute edge and closes when the late alarm finally fires.** Inside that window the widget is
++showing the previous minute's value, which reads as "+1 minute". If a fire lands so late that it
++crosses the following edge, two edges collapse into one render and the window reads "+2".
++
++Measured lateness of our alarm across seven fires: 16.7, 21.6, 27.9, 23.2, 13.0, 34.4, 19.3 seconds.
++
++- Average: **22.3 s**, worst: **34.4 s**.
++- So roughly **37% of the time**, a glance at the widget shows a number one minute too high.
++- That matches the sampled table exactly: mostly 0 or +1, occasionally +2.
++
++### Delivery is NOT the blocker while the screen is on
++
++An earlier reading of `widget is not ready` / `host.callbacks: null` suggested the launcher could never
++be updated. Re-measured properly, it is screen-state dependent:
++
++| Screen | Deferred (`widget is not ready`) | Delivered (`updateViews:`) |
++| --- | --- | --- |
++| OFF, 105 s window | 13 | **0** |
++| ON, same app | 0 | **15** |
++
++Both matter, and they matter in different ways:
++
++1. **Screen ON:** delivery works. The only error is the late-fire staleness window above. This is the
++   case the user actually sees, because a user looking at their home screen has the screen on.
++2. **Screen OFF:** nothing can be delivered at all, because the launcher has torn down its host
++   callbacks. **No app-side mechanism can fix this, and none needs to: nobody is looking.** What matters
++   is that the value is correct by the time the user looks, and the launcher re-inflates all three
++   widgets on wake (`AppWidgetHostView: inflateAsync(rvToApply), appWidgetId: 53/56/57`).
++
++This is why `ACTION_TIME_TICK` is the right lever and the alarm is not. The system broadcasts TIME_TICK
++at the edge with `windowLength 0`, so a redraw driven by it lands at `:00` instead of `:22`, which
++closes the staleness window. It only fires while the screen is on, which is precisely when it is needed.
++
+ ## What is already ruled out, with the evidence
+ 
+ | Theory | Verdict | Evidence |
+-- 
+2.54.0 (Apple Git-157)
+

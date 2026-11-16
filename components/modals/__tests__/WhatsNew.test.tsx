@@ -1,5 +1,5 @@
 /**
- * The What's New modal: its version-group sections, each item and its platform note, Close,
+ * The What's New modal: its version-group sections, each item, Close,
  * and Android's back press
  */
 
@@ -126,29 +126,20 @@ describe("the What's New modal after an update", () => {
     expect(itemRows()).toHaveLength(2);
   });
 
-  it('lists every item by title and body, with no platform note on an item available everywhere', async () => {
-    await render(<ModalWhatsNew visible={true} items={[TABLETS, SOUNDS]} onClose={jest.fn()} />);
+  it('lists every item by title and body, the platform never naming itself in the text', async () => {
+    const exclusive: WhatsNewItem = {
+      title: 'Widgets',
+      body: 'Add prayer times to your Home Screen',
+      platform: 'ios',
+      version: '1.27.140',
+    };
+    await render(<ModalWhatsNew visible={true} items={[TABLETS, SOUNDS, exclusive]} onClose={jest.fn()} />);
 
     expect(screen.getByText('Tablet support')).toBeOnTheScreen();
     expect(screen.getByText('Athan now supported on tablets')).toBeOnTheScreen();
-    expect(screen.getByText('Athan sounds')).toBeOnTheScreen();
     expect(screen.getByText('New Athan sounds added')).toBeOnTheScreen();
-  });
-
-  // Columns: the platform an item is exclusive to, and the name its note gives that platform
-  it.each([
-    ['ios', 'iOS'],
-    ['android', 'Android'],
-  ] as const)('notes an item exclusive to %s as %s only', async (platform, platformName) => {
-    const item: WhatsNewItem = {
-      title: 'Widgets',
-      body: 'Add prayer times to your Home Screen',
-      platform,
-      version: '1.27.140',
-    };
-    await render(<ModalWhatsNew visible={true} items={[item]} onClose={jest.fn()} />);
-
-    expect(screen.getByText(`Add prayer times to your Home Screen (${platformName} only)`)).toBeOnTheScreen();
+    expect(screen.getByText('Add prayer times to your Home Screen')).toBeOnTheScreen();
+    expect(screen.queryByText('Add prayer times to your Home Screen (iOS only)')).not.toBeOnTheScreen();
   });
 
   // The badges pin what is drawn rather than what a screen reader reaches, so hidden elements are included

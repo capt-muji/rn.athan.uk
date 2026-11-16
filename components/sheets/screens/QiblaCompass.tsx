@@ -147,6 +147,7 @@ const Dial = memo(({ size, bearing, palette }: { size: number; bearing: number; 
               x={at.x}
               y={at.y}
               fill={palette.ink}
+              fillOpacity={0.5}
               fontSize={size}
               fontFamily={ty.familyDigits}
               textAnchor={'middle'}
@@ -158,6 +159,7 @@ const Dial = memo(({ size, bearing, palette }: { size: number; bearing: number; 
               x={degreeX}
               y={at.y - size * FACE.degreeLift}
               fill={palette.ink}
+              fillOpacity={0.5}
               fontSize={size * FACE.degree}
               fontFamily={ty.familyDigits}
               textAnchor={'start'}
@@ -183,8 +185,7 @@ const Needle = memo(({ size, palette }: { size: number; palette: Palette }) => {
 
   return (
     <Svg width={size} height={size} viewBox={`${-radius} ${-radius} ${size} ${size}`}>
-      <Path d={qiblaLinePath(radius)} fill={palette.accent} />
-      {/* An open outline, so the line runs through it unbroken */}
+      {/* The jewel first: the arrow rides above the star, never under its strokes (owner order 2026-10-27) */}
       <Path
         d={rubElHizbPath(radius * FACE.jewel, -22.5)}
         fill={'none'}
@@ -197,6 +198,7 @@ const Needle = memo(({ size, palette }: { size: number; palette: Palette }) => {
         stroke={structure(palette, 0.5)}
         strokeWidth={unit * 0.9}
       />
+      <Path d={qiblaLinePath(radius)} fill={palette.accent} />
       <Circle r={radius * FACE.hub} fill={palette.accent} />
     </Svg>
   );

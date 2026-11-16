@@ -5,9 +5,9 @@ Read `e2e/README.md` in full before measuring anything. The traps that cost real
 - **Metro is env-blind.** Any `EXPO_PUBLIC_*` change needs the Metro cache AND the generated
   Android bundle deleted, or the stale transform ships. `assets/app.config` regenerating
   proves nothing: a build can report the new version while running old JavaScript.
-- **Local builds serve the mock API** and write mock times into the dev MMKV cache: alarm
-  and prayer-time checks are void until a production build refetches. Asr a minute or two
-  after launch is the mock, not a bug.
+- **Local builds serve the launch-relative mock window** in memory: alarm and prayer-time
+  checks are void until a production build, which serves the baked timetable. Asr a minute
+  or two after launch is the mock, not a bug.
 - **A passing Jest count can hide skipped tests.** Confirm a specific test ran with
   `-t "<phrase>"` and read the `N passed, M skipped` line.
 - **Android 9 AX dumps are stale.** Live text via Maestro `hierarchy` or pixels, never

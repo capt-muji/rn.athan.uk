@@ -1,18 +1,81 @@
 #!/bin/zsh
-# frame-audit: FPS + visual-quality audit for one animation on the OnePlus 3T.
+# frame-audit: dual FPS audit for one animation on the OnePlus 3T.
 #
 # Scripts MEASURE, vision INTERPRETS: this harness records the animation,
-# extracts per-frame timestamps (compositor truth — screenrecord writes a
-# frame only on real display changes), builds a labeled contact sheet, and
-# emits a ready-to-use vision prompt. Delegate the prompt to an image-capable
+# extracts per-frame timestamps, builds a labeled contact sheet, and emits a
+# ready-to-use vision prompt. Delegate the prompt to an image-capable
 # subagent (the campaign used a GLM 5.3 Flash vision subagent, read-only).
 #
-# Usage: frame-audit.sh <label> <tap-x> <tap-y> [seconds] [device-serial]
-#   frame-audit.sh overlay-open 540 974 3
+# The default run is DUAL: one tap, two reads in one evidence dir. The
+# screenrecord video is the ENCODER's word about the compositor (a frame is
+# written only on real display changes, through the SD820's encoder), so a
+# video dead zone alone proves nothing. The second read is SurfaceFlinger's
+# own present timestamps for the app's layer: a dead zone in BOTH reads is
+# compositor truth, one in video alone is encoder loss.
 #
-# Fallbacks (video capture is thermally fragile on the SD820):
-#   FRAME_AUDIT=sf    -> SurfaceFlinger --latency compositor cadence instead
-#                        of video (no pixels; gaps <=33ms = 30fps floor pass)
+# Usage: frame-audit.sh <label> <tap-x> <tap-y> [seconds] [device-serial]
+#   frame-audit.sh overlay-open 540 1012 3
+#   PRE_TAP="540 1012" frame-audit.sh overlay-close 540 1100 3
+#     PRE_TAP drives one transition first and waits out its entrance, so the
+#     recorded tap is a real second interaction (overlay-close: open, settle,
+#     then record the closing tap). PRE_TAP_WAIT (seconds) is that settle
+#     wait, default 1 — the stock 3s captures re-opens when the mock's seeded
+#     boundary is near, so the default is mock-safe (README Gotchas).
+#   PRE_TAP2="540 1100" / PRE_SWIPE2="x1 y1 x2 y2 duration_ms"
+#     One further pre-interaction of the same shape as PRE_TAP/PRE_SWIPE,
+#     driven after it, waited the same PRE_TAP_WAIT, so the recorded
+#     interaction is the family's second run of that interaction inside one
+#     process — a force-stop between runs makes every run a first run, and
+#     the standing verdicts are second-run (_2026_10_31; overlay-open: open,
+#     close, then record the open).
+#   SWIPE="x1 y1 x2 y2 duration_ms"
+#     Records a swipe instead of a tap (the schedule pager's cadence). A
+#     swipe runs for its whole duration, so the SF stamp anchors on the
+#     swipe START (the uptime read lands before the input, same shell in the
+#     sf branch) — stamping after would open the entrance window ~duration
+#     late and miss it. <tap-x> <tap-y> are unused in swipe mode (the
+#     prompt builds from SWIPE itself); dual+SWIPE pays one adb round trip
+#     between the stamp and the input, so idle presents may open the window
+#     and first-draw reads early - pairing stays duration-based.
+#   PRE_SWIPE="x1 y1 x2 y2 duration_ms"
+#     Drives one swipe before the recorded interaction and waits out its
+#     settle (PRE_TAP_WAIT). The extras->std audit needs it: a relaunch
+#     lands on the standard page, so the recorded rightward swipe would
+#     otherwise overscroll the first page — the edge glow, not a page turn.
+#   SF_OFFSET=<seconds>
+#     Overrides the per-capture clock anchor when it read LOW (an anchor tap
+#     that closes a sheet presents late). Offsets cannot decrease, so the
+#     highest coherent reading across a session is the true one.
+#
+# Modes (FRAME_AUDIT):
+#   dual (default)  -> video + SF read of the same tap, gap lists side by
+#                      side and the separation verdict. Its cadence PASS line
+#                      is NOT a floor verdict (and matches the sf floor's
+#                      33ms band) — the recorder-free sf read's printed
+#                      present-gap list is the verdict of record (D16)
+#   video           -> video only (the pre-dual behaviour)
+#   sf              -> SurfaceFlinger --latency cadence instead of video
+#                      (no pixels) — D16's recorder-free FLOOR WITNESS, and
+#                      still the only read while video capture is wedged.
+#                      The input is stamped and anchored on the SF clock, the
+#                      layer resolved from --list, and the entrance window
+#                      read against the STAMP, not the touch: `input tap`
+#                      runs 410-450ms on the 3T with the touch injected
+#                      mid-command, so a stamp read after the command trails
+#                      the touch ~150-250ms, and the recorded method of
+#                      record (android-3t.json _2026_10_31) bounds a tap
+#                      window [stamp-300ms, stamp+ENTRANCE_MS] (swipes stamp
+#                      before the action and keep the -50ms margin); this
+#                      script filters [stamp-50ms, stamp+ENTRANCE_MS]
+#                      (default 1000, which beside the lag still covers
+#                      every audited interaction's tap-to-settled) and
+#                      prints the bounds it used, so gap magnitudes are
+#                      exact and positions carry the stated skew. THE
+#                      PRINTED PRESENT-GAP LIST inside that window IS THE
+#                      VERDICT OF RECORD, read against the 33ms floor: every
+#                      gap over 33ms in it is a floor failure, gaps over
+#                      100ms included — never "freeze or idle". The PASS
+#                      line only summarizes the list.
 # Known wedge: if screenrecord emits ~1 frame despite display changes, the
 # virtual-display pipeline is wedged — a device REBOOT restores it (s6). The
 # SF fallback still works in that state.
@@ -23,8 +86,45 @@ LABEL=${1:?label}
 TAPX=${2:?tap-x}
 TAPY=${3:?tap-y}
 SECONDS_LIMIT=${4:-3}
+PRE_TAP_WAIT=${PRE_TAP_WAIT:-1}
 SERIAL=${5:-$(adb devices | awk 'NR>1 && $2=="device"{print $1; exit}')}
 PKG=${APP_ID:-com.example.athan}
+MODE=${FRAME_AUDIT:-dual}
+if [[ $MODE != dual && $MODE != video && $MODE != sf ]]; then
+  echo "FRAME_AUDIT must be dual, video or sf (got '$MODE')"
+  exit 1
+fi
+SWIPE=${SWIPE:-}
+PRE_SWIPE=${PRE_SWIPE:-}
+PRE_SWIPE2=${PRE_SWIPE2:-}
+PRE_TAP2=${PRE_TAP2:-}
+check_tap_shape() {
+  local parts
+  parts=(${=1})
+  local numeric=${#${(M)parts:#<->}}
+  (( ${#parts} == 2 )) && (( numeric == 2 ))
+}
+check_swipe_shape() {
+  local parts
+  parts=(${=1})
+  local numeric=${#${(M)parts:#<->}}
+  # Hoisted out of (( )): the <-> glob dies inside it (< and > parse as math).
+  # Duration is required: adb input swipe applies its own near-instant default without it,
+  # and the prompt below asserts the number it was given
+  (( ${#parts} == 5 )) && (( numeric == 5 ))
+}
+for v in "${PRE_TAP:-}" "$PRE_TAP2"; do
+  if [[ -n $v ]] && ! check_tap_shape "$v"; then
+    echo "PRE_TAP/PRE_TAP2 must be 'x y' (got '$v')"
+    exit 1
+  fi
+done
+for v in "$SWIPE" "$PRE_SWIPE" "$PRE_SWIPE2"; do
+  if [[ -n $v ]] && ! check_swipe_shape "$v"; then
+    echo "SWIPE/PRE_SWIPE/PRE_SWIPE2 must be 'x1 y1 x2 y2 duration_ms' (got '$v')"
+    exit 1
+  fi
+done
 ROOT=${0:h:h}
 OUT="$ROOT/evidence/$LABEL-$(date +%H%M%S)"
 mkdir -p "$OUT"
@@ -33,42 +133,165 @@ adb -s "$SERIAL" shell am force-stop $PKG
 adb -s "$SERIAL" shell am start -W -n $PKG/.MainActivity >/dev/null
 echo "settling 12s (JS warmup + widget pushes land ~2.5s in)"; sleep 12
 
-if [[ ${FRAME_AUDIT:-video} == sf ]]; then
-  adb -s "$SERIAL" shell "input tap $TAPX $TAPY"
-  sleep 1
-  adb -s "$SERIAL" shell "dumpsys SurfaceFlinger --latency '$PKG/$PKG.MainActivity#0'" \
+if [[ -n ${PRE_TAP:-} ]]; then
+  adb -s "$SERIAL" shell input tap ${=PRE_TAP}
+  echo "pre-tap at $PRE_TAP, waiting out the entrance (${PRE_TAP_WAIT}s)"
+  sleep "$PRE_TAP_WAIT"
+fi
+if [[ -n ${PRE_TAP2:-} ]]; then
+  adb -s "$SERIAL" shell input tap ${=PRE_TAP2}
+  echo "second pre-tap at $PRE_TAP2, waiting out the entrance (${PRE_TAP_WAIT}s)"
+  sleep "$PRE_TAP_WAIT"
+fi
+if [[ -n $PRE_SWIPE ]]; then
+  adb -s "$SERIAL" shell "input swipe ${=PRE_SWIPE}"
+  echo "pre-swipe ${=PRE_SWIPE}, waiting out the settle (${PRE_TAP_WAIT}s)"
+  sleep "$PRE_TAP_WAIT"
+fi
+if [[ -n $PRE_SWIPE2 ]]; then
+  adb -s "$SERIAL" shell "input swipe ${=PRE_SWIPE2}"
+  echo "second pre-swipe ${=PRE_SWIPE2}, waiting out the settle (${PRE_TAP_WAIT}s)"
+  sleep "$PRE_TAP_WAIT"
+fi
+
+# SurfaceFlinger's layer names rotate per process relaunch, so the layer is
+# resolved from --list, never from a fixed name: the plain
+# PKG/PKG.MainActivity#0 and the hash-prefixed variant are both live shapes,
+# and sibling packages must not match.
+resolve_sf_layer() {
+  local pkg_re=${PKG//./\\.}
+  adb -s "$SERIAL" shell dumpsys SurfaceFlinger --list | tr -d '\r' \
+    | grep -E "(^|/)$pkg_re/$pkg_re\.MainActivity#0$" | tail -1
+}
+
+# Per-capture suspend offset (boottime - monotonic): every phone that has
+# ever suspended carries one (this 3T: ~8047s) and every doze between
+# captures grows it. Clear the ring, tap the prayer row (any transition presents),
+# read uptime in the SAME shell, then dump: offset = uptime - first present
+# after the clear (+-50ms vsync and read lag). An anchor tap that CLOSES a
+# sheet presents late and reads the offset LOW (275-296ms on glass);
+# offsets cannot decrease, so across captures the highest coherent reading
+# is the true one — SF_OFFSET (seconds) overrides a polluted read without a
+# re-capture, recorded in anchor_note.txt.
+measure_sf_anchor() {
+  if [[ -n ${SF_OFFSET:-} ]]; then
+    echo "SF_OFFSET override: ${SF_OFFSET} (per-capture anchor not measured)" > "$OUT/anchor_note.txt"
+    echo "$SF_OFFSET" > "$OUT/anchor_offset.txt"
+    echo "anchor offset: ${SF_OFFSET}s (SF_OFFSET override)"
+  else
+    adb -s "$SERIAL" shell "dumpsys SurfaceFlinger --latency-clear '$LAYER'"
+    adb -s "$SERIAL" shell "input tap 540 1012; cat /proc/uptime" > "$OUT/anchor_uptime.txt"
+    sleep 1.2
+    adb -s "$SERIAL" shell "dumpsys SurfaceFlinger --latency '$LAYER'" \
+      > "$OUT/anchor_latency.txt" 2>&1
+    AUP=$(head -1 "$OUT/anchor_uptime.txt" | awk '{print $1}')
+    AFP=$(awk 'NF==3 && $3+0>0 && $3+0<4611686018427387904 {print $3; exit}' \
+      "$OUT/anchor_latency.txt")
+    if [[ -n "$AFP" && "$AFP" != "0" ]]; then
+      python3 -c "print(f'{$AUP - $AFP/1e9:.3f}')" > "$OUT/anchor_offset.txt"
+      echo "anchor offset: $(cat "$OUT/anchor_offset.txt")s (highest coherent reading wins across captures)"
+    else
+      echo "anchor FAILED: no present after the ring clear (anchor tap hit nothing that transitions?) — set SF_OFFSET from the session's highest coherent reading, or re-run"
+    fi
+  fi
+}
+
+if [[ $MODE == sf ]]; then
+  # Interaction and uptime read in ONE shell: the input's CLOCK_BOOTTIME
+  # stamp must ride the same read discipline as the anchor's, or the offset
+  # arithmetic pulls the entrance window off the input. A swipe runs for its
+  # whole duration, so the stamp is read BEFORE it starts; a tap's stamp
+  # lands AFTER the command, and `input tap` runs 410-450ms with the touch
+  # injected mid-command, so the stamp trails the touch ~150-250ms (README
+  # Gotchas).
+  if [[ -n $SWIPE ]]; then
+    adb -s "$SERIAL" shell "cat /proc/uptime; input swipe ${=SWIPE}" > "$OUT/tap_uptime.txt"
+  else
+    adb -s "$SERIAL" shell "input tap $TAPX $TAPY; cat /proc/uptime" > "$OUT/tap_uptime.txt"
+  fi
+  # The dump lands after the entrance AND the universal late burst (~1.7-2.2s
+  # after the tap, step 10's Defect C): the ring's last ~127 presents hold
+  # entrance + burst + idle ticks at the 3T's cadence, while a dump before
+  # the animation reads an idle layer and prints NO DATA.
+  sleep 3
+  LAYER=$(resolve_sf_layer)
+  if [[ -z "$LAYER" ]]; then
+    echo "no SF layer for $PKG in SurfaceFlinger --list (names rotate per relaunch)"
+    echo "evidence: $OUT (no compositor read; this is not a pass)"
+    exit 1
+  fi
+  adb -s "$SERIAL" shell "dumpsys SurfaceFlinger --latency '$LAYER'" \
     > "$OUT/latency.txt" 2>&1
+  measure_sf_anchor
   # `|| verdict=$?` so `set -e` does not abort on a FAIL before it can be reported; the
   # status is re-raised deliberately below. Never name this `status`: zsh reserves it as a
   # read-only alias for `$?`, and assigning it kills the script before it measures anything.
   verdict=0
-  python3 - "$OUT/latency.txt" << 'EOF' || verdict=$?
-import sys
-lines = [l.split() for l in open(sys.argv[1]) if len(l.split()) == 3]
-pts = sorted(int(f[1]) for f in lines if int(f[1]) != 0)
-# Every quantity below is MILLISECONDS. The thresholds were once written in
-# seconds, which discarded every real frame gap before the verdict and left
-# all() over an empty list, so this branch could only ever print PASS.
-ms = [(t - pts[0]) / 1e6 for t in pts]
-tail = [m for m in ms if m > ms[-1] - 2500]
-gaps = [tail[i] - tail[i-1] for i in range(1, len(tail))]
-anim = [g for g in gaps if 0 < g <= 100]
-long = [g for g in gaps if g > 100]
-print(f"frames(last-2.5s)={len(tail)} anim-cadence-gaps(ms):", [f"{g:.0f}" for g in anim])
-# A gap over 100ms is either a real freeze or a stretch where nothing was drawn,
-# and SF latency alone cannot tell those apart. It is excluded from the cadence
-# verdict and printed, never silently dropped.
-print("gaps>100ms (freeze or idle, needs frames to tell):", [f"{g:.0f}" for g in long] or "NONE")
-if not anim:
-    print("30fps FLOOR: NO DATA — no cadence gaps in the window, this is not a pass")
+  python3 - "$OUT" << 'SFEOF' || verdict=$?
+import os, sys
+
+out = sys.argv[1]
+
+# Third column = actual present timestamp (ns, CLOCK_MONOTONIC); the trailing
+# sentinel row (INT64_MAX) and never-presented rows (0) fall to the bounds.
+rows = [l.split() for l in open(f"{out}/latency.txt")]
+presents = sorted(set(int(r[2]) for r in rows if len(r) == 3 and 0 < int(r[2]) < 2**62))
+
+# The tap was stamped on CLOCK_BOOTTIME (/proc/uptime, suspend included);
+# presents ride CLOCK_MONOTONIC. The per-capture anchor offset bridges the
+# two clocks; without it the entrance window cannot be placed on the timeline.
+try:
+    tap_boot = float(open(f"{out}/tap_uptime.txt").read().split()[0])
+    offset = float(open(f"{out}/anchor_offset.txt").read().split()[0])
+except (OSError, IndexError, ValueError):
+    print("SF 30fps FLOOR: NO DATA — no clock anchor (tap_uptime.txt or"
+          " anchor_offset.txt; a failed per-capture anchor needs SF_OFFSET"
+          " or a re-run); this is not a pass")
     sys.exit(1)
-passed = all(g <= 34 for g in anim)
-print("30fps FLOOR (cadence only):", "PASS" if passed else "FAIL")
-# Exit status, not just text: every caller reads $?, and a measurement tool that
-# prints FAIL while returning success is the same defect finding 28 was about —
-# a confident pass having measured nothing — one layer further out.
+
+# The entrance window rides the STAMP beside the input, not the touch:
+# `input tap` takes 410-450ms on the 3T with the touch injected
+# mid-command, so a stamp read after the command trails the touch
+# ~150-250ms and the recorded method of record opens a tap window to
+# [stamp-300ms, stamp+WINDOW] (android-3t.json _2026_10_31); this filter
+# holds [stamp-50ms, stamp+ENTRANCE_MS] and prints the bounds it used. The
+# 1000ms default still covers every audited interaction's tap-to-settled
+# beside the lag (marks bands: ~160ms overlay, ~660ms sheets).
+ENTRANCE_MS = float(os.environ.get("ENTRANCE_MS", "1000"))
+tap_mono = tap_boot - offset
+rel = [(t / 1e9 - tap_mono) * 1000 for t in presents]
+win = [m for m in rel if -50 <= m <= ENTRANCE_MS]
+late = [m for m in rel if m > ENTRANCE_MS]
+
+if len(win) < 2:
+    print(f"SF 30fps FLOOR: NO DATA — {len(win)} presents inside the entrance"
+          " window (dump before the animation? ring rolled past the"
+          " entrance? nothing transitioned?); this is not a pass")
+    sys.exit(1)
+
+# THE VERDICT OF RECORD is the printed gap list below, read against the 33ms
+# floor inside the stated window — never the PASS summary alone. A gap over
+# 100ms between two presents INSIDE the window is a floor failure, not an
+# unclassifiable freeze: idle leaves through the window's far edge, and the
+# gap that crosses it ends outside and never prints as a failure.
+gaps = [(win[i] - win[i - 1], win[i - 1]) for i in range(1, len(win))]
+print(f"entrance window [stamp-50ms, stamp+{ENTRANCE_MS:.0f}ms] (the stamp trails"
+      f" the touch ~150-250ms on taps; the method of record opens taps to"
+      f" -300ms): {len(win)} presents, stamp -> first present {win[0]:.0f}ms")
+print("present gaps inside the window:", [f"{g:.1f}ms@{a:+.0f}" for g, a in gaps])
+failures = [(g, a) for g, a in gaps if g > 33]
+print("FLOOR FAILURES (gaps over 33ms inside the window):",
+      [f"{g:.0f}ms@+{a:.0f}" for g, a in failures] or "NONE")
+if late:
+    print("late presents beyond the window (info, not floor):",
+          [f"+{m:.0f}ms" for m in late])
+passed = not failures
+print("30fps FLOOR:", "PASS" if passed else "FAIL",
+      "(summary — the printed list above is the verdict of record)")
+# Exit status, not just text: a measurement tool that prints FAIL while
+# returning success is a confident pass having measured nothing.
 sys.exit(0 if passed else 1)
-EOF
+SFEOF
   echo "evidence: $OUT"
   exit $verdict
 fi
@@ -77,9 +300,42 @@ adb -s "$SERIAL" shell "rm -f /sdcard/frame_audit.mp4"
 adb -s "$SERIAL" shell screenrecord --time-limit "$SECONDS_LIMIT" --bit-rate 16000000 /sdcard/frame_audit.mp4 &
 REC=$!
 sleep 0.5
-adb -s "$SERIAL" shell "input tap $TAPX $TAPY"
+if [[ -n $SWIPE ]]; then
+  # A swipe runs ~duration ms, so the SF anchor must stamp the swipe's START:
+  # the uptime read precedes the input (the two adb calls are sequential).
+  if [[ $MODE == dual ]]; then
+    adb -s "$SERIAL" shell cat /proc/uptime > "$OUT/tap_uptime.txt"
+  fi
+  adb -s "$SERIAL" shell "input swipe ${=SWIPE}"
+else
+  adb -s "$SERIAL" shell "input tap $TAPX $TAPY"
+  if [[ $MODE == dual ]]; then
+    # Tap anchor on CLOCK_BOOTTIME (/proc/uptime includes suspend), read
+    # after the tap command - whose 410-450ms run injects the touch
+    # mid-command, so the stamp trails the touch ~150-250ms (README
+    # Gotchas). SF presents ride CLOCK_MONOTONIC, so this read
+    # alone cannot open the SF window: the per-capture anchor measured below
+    # supplies the suspend offset, and the pairing subtracts it.
+    adb -s "$SERIAL" shell cat /proc/uptime > "$OUT/tap_uptime.txt"
+  fi
+fi
 wait $REC 2>/dev/null || true
 adb -s "$SERIAL" pull /sdcard/frame_audit.mp4 "$OUT/rec.mp4" >/dev/null
+if [[ $MODE == dual ]]; then
+  # The dump lands AFTER the recorded animation (tap, animation, then dump):
+  # an idle layer presents nothing, so the ring's last ~127 presents still
+  # cover the entrance the video recorded, while a dump before the tap reads
+  # an idle layer and prints NO DATA.
+  LAYER=$(resolve_sf_layer)
+  if [[ -z "$LAYER" ]]; then
+    echo "no SF layer for $PKG in SurfaceFlinger --list (names rotate per relaunch)"
+    echo "evidence: $OUT (video evidence kept; separation FAILED — no compositor read)"
+    exit 1
+  fi
+  adb -s "$SERIAL" shell "dumpsys SurfaceFlinger --latency '$LAYER'" \
+    > "$OUT/latency.txt" 2>&1
+  measure_sf_anchor
+fi
 
 ffprobe -select_streams v -show_entries frame=pts_time -of csv=p=0 "$OUT/rec.mp4" 2>/dev/null > "$OUT/pts.txt"
 ffmpeg -y -loglevel error -i "$OUT/rec.mp4" -fps_mode passthrough "$OUT/f_%03d.png" 2>/dev/null || true
@@ -108,11 +364,20 @@ if len(files) >= 2:
     print(f"contact sheet: {out}/contact_sheet.png")
 EOF
 
+if [[ -n $SWIPE ]]; then
+  sp=(${=SWIPE})
+  INTERACTION="a swipe from (${sp[1]},${sp[2]}) to (${sp[3]},${sp[4]}) over ${sp[5]}ms"
+else
+  INTERACTION="a tap at ($TAPX,$TAPY)"
+fi
+[[ -n $PRE_SWIPE || -n $PRE_SWIPE2 ]] && INTERACTION+=" (a preparatory swipe pre-advanced the pager before the recorded interaction)"
 cat > "$OUT/vision-prompt.md" << EOF
 # Vision audit: $LABEL
 Read $(ls "$OUT"/contact_sheet.png 2>/dev/null || echo '(no sheet — read frames directly)') with your Read tool.
 It is a labeled contact sheet of sequential frames from a prayer-times app
-recording (dark navy UI). The interaction was a tap at ($TAPX,$TAPY).
+recording (dark navy UI). The interaction was $INTERACTION${PRE_TAP:+,
+which followed a prior tap at ($PRE_TAP) whose transition is already settled}${PRE_TAP2:+,
+itself preceded by a second pre-tap at ($PRE_TAP2), also settled}.
 For each frame report its state and mid-animation progress; then answer:
 (1) Which frames form the animation? (2) Does the animated element progress
 monotonically through intermediate sizes/opacities/positions, or snap between
@@ -120,4 +385,121 @@ settled states? (3) Any ghosting, squash, or misplaced elements?
 Report only what is actually visible; structure as Answer / Details /
 Uncertainties.
 EOF
+
+if [[ $MODE == video ]]; then
+  echo "evidence: $OUT (delegate $OUT/vision-prompt.md to a vision subagent)"
+  exit 0
+fi
+
+# Separation: pair the encoder's and the compositor's word about one tap.
+# Same `verdict` capture as the SF branch — never name it `status`: zsh
+# reserves that as a read-only alias for `$?`, and assigning it kills the
+# script before it reports.
+verdict=0
+python3 - "$OUT" << 'EOF' || verdict=$?
+import sys
+
+out = sys.argv[1]
+
+# Video read (the encoder's word): pts are seconds from recording start, and
+# the tap sits at 0.5s by construction (sleep 0.5 before input tap).
+pts = [float(l.strip().rstrip(',')) for l in open(f"{out}/pts.txt") if l.strip()]
+tap = [p for p in pts if p >= 0.45]
+
+# SF read (the compositor's word): the third latency column is the actual
+# present timestamp, nanoseconds on CLOCK_MONOTONIC. /proc/uptime rides
+# CLOCK_BOOTTIME (suspend included), so the tap's monotonic time is the
+# boottime read minus the per-capture suspend offset. The trailing sentinel
+# row (INT64_MAX) and never-presented rows (0) fall to the bounds.
+try:
+    tap_boot = float(open(f"{out}/tap_uptime.txt").read().split()[0])
+    offset = float(open(f"{out}/anchor_offset.txt").read().split()[0])
+except (OSError, IndexError, ValueError):
+    print("SEPARATION: NO DATA — no clock anchor (tap_uptime.txt or"
+          " anchor_offset.txt; a failed per-capture anchor needs SF_OFFSET"
+          " or a re-run); this is not a pass")
+    sys.exit(1)
+rows = [l.split() for l in open(f"{out}/latency.txt")]
+presents = sorted(set(int(r[2]) for r in rows if len(r) == 3 and 0 < int(r[2]) < 2**62))
+tap_mono = tap_boot - offset
+
+# Every quantity below is MILLISECONDS, video tap-relative (0 = the tap). The
+# SF window opens 50ms before its STAMP, which the tap command's own read
+# trails: `input tap` runs 410-450ms with the touch injected mid-command, so
+# the stamp sits ~150-250ms after the touch and the window's left edge may
+# cut an entrance's first presents (README Gotchas; the recorded method opens
+# taps to -300ms).
+vms = [(p - 0.5) * 1000 for p in tap]
+sms = [(t / 1e9 - tap_mono) * 1000 for t in presents if t / 1e9 >= tap_mono - 0.05]
+
+def dead_zones(times):
+    # A dead zone is a gap past the 34ms floor that dense frames still follow
+    # (next gap <=68ms, two frames at the 30fps floor): a stall inside a
+    # running animation. Idle gaps — a settled screen — are followed by more
+    # idle and never count, so the ring's idle tail cannot fake a verdict.
+    zones = []
+    for i in range(1, len(times)):
+        gap = times[i] - times[i - 1]
+        if gap > 34 and i + 1 < len(times) and times[i + 1] - times[i] <= 68:
+            zones.append((gap, times[i - 1]))
+    return zones
+
+gaps = [sms[i] - sms[i - 1] for i in range(1, len(sms))]
+anim = [g for g in gaps if 0 < g <= 100]
+long = [g for g in gaps if g > 100]
+vdead = dead_zones(vms)
+sdead = dead_zones(sms)
+
+fmt = lambda zones: [f"{g:.0f}ms@+{a:.0f}" for g, a in zones] or "NONE"
+print("SF window:", len(sms), "presents of", len(presents), "in ring")
+print("video dead zones (encoder):", fmt(vdead))
+print("SF dead zones (compositor):", fmt(sdead))
+if vms and sms:
+    print(f"first draw: video {vms[0]:.0f}ms after tap, SF {sms[0]:.0f}ms after tap (+-50ms anchor)")
+
+if len(tap) < 2:
+    print("SEPARATION: NO DATA — the video read is empty (capture wedge? REBOOT;"
+          " FRAME_AUDIT=sf still works); this is not a pass")
+    sys.exit(1)
+if not anim:
+    print("SF 30fps FLOOR: NO DATA — no cadence gaps in the window, this is not a pass")
+    sys.exit(1)
+passed = all(g <= 33 for g in anim)
+print("SF 30fps FLOOR (cadence):", "PASS" if passed else "FAIL")
+print("SF gaps>100ms (freeze or idle, needs frames to tell):", [f"{g:.0f}" for g in long] or "NONE")
+
+# Pairing: both instruments measure the same presents, so a compositor dead
+# zone matches its video twin closely; tolerance absorbs encoder timing.
+used = [False] * len(sdead)
+corroborated = 0
+for g, _ in vdead:
+    best = None
+    for j, (sg, _) in enumerate(sdead):
+        if used[j]:
+            continue
+        d = abs(sg - g)
+        if d <= max(40, 0.25 * max(g, sg)) and (best is None or d < best[0]):
+            best = (d, j)
+    if best is not None:
+        used[best[1]] = True
+        corroborated += 1
+enc_only = len(vdead) - corroborated
+
+if not vdead and not sdead:
+    verdict = "CLEAN — no dead zone on either read"
+elif corroborated and enc_only == 0:
+    verdict = f"COMPOSITOR TRUTH — all {len(vdead)} video dead zones have SF twins"
+elif corroborated:
+    verdict = f"MIXED — {corroborated} corroborated (compositor), {enc_only} encoder-only"
+elif vdead:
+    verdict = f"ENCODER LOSS — all {len(vdead)} video dead zones absent from SF"
+else:
+    verdict = "SF-ONLY dead zones — present stalls the video never showed; read with the contact sheet"
+print("SEPARATION:", verdict)
+
+# Exit status, not just text: corroborated dead zones and a failed cadence
+# floor are real jank; encoder loss and clean reads are the floor holding.
+sys.exit(1 if (not passed or corroborated) else 0)
+EOF
 echo "evidence: $OUT (delegate $OUT/vision-prompt.md to a vision subagent)"
+exit $verdict

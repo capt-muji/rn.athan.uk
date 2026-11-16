@@ -2,6 +2,8 @@
  * The qibla sheet: what it draws, when it arms the sensors, and the one tap the user feels per crossing
  */
 
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { act, fireEvent, render, screen, within } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
 import type React from 'react';
@@ -94,6 +96,16 @@ const qiblaDevice = jest.requireMock('@/device/qibla');
 const qiblaHeading = jest.requireMock('@/modules/qiblaheading');
 
 /**
+ * Closes the sheet as the library reports it: the close animation starts, then the settle at
+ * closed - the unified close signal. A dismiss is never fired: the warm sheet's tree stays
+ * mounted, and only the close matters here.
+ */
+const closeSheet = async () => {
+  await fireEvent(screen.getByText('Qibla'), 'animate', 0, -1);
+  await fireEvent(screen.getByText('Qibla'), 'change', -1);
+};
+
+/**
  * The sheet arms its sensors on present, which the library reports as a change to index 0.
  *
  * Timers are faked BEFORE the open, because every wait on this screen is counted from the open: a start taken off
@@ -102,6 +114,7 @@ const qiblaHeading = jest.requireMock('@/modules/qiblaheading');
 const openSheet = async () => {
   jest.useFakeTimers();
   await render(<QiblaSheet />);
+  await fireEvent(screen.getByText('Qibla'), 'animate', -1, 0);
   await fireEvent(screen.getByText('Qibla'), 'change', 0);
   await act(async () => {});
 };
@@ -277,7 +290,7 @@ describe('the accuracy watch the gate decides on', () => {
   it('stops the accuracy watch when the sheet closes', async () => {
     await openSheet();
 
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
 
     expect(mockStopAccuracy).toHaveBeenCalledTimes(1);
   });
@@ -561,7 +574,7 @@ describe('the place the bearing was computed from', () => {
     await openSheet();
     await reportHeadings(95);
 
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
     await act(async () => {
       mockState.releasePlace?.();
     });
@@ -780,7 +793,7 @@ describe('closing the sheet', () => {
   it('stops the heading watch, so the magnetometer is disarmed', async () => {
     await openSheet();
 
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
 
     expect(mockUnwatch).toHaveBeenCalled();
   });
@@ -790,7 +803,7 @@ describe('closing the sheet', () => {
     await render(<QiblaSheet />);
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
 
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
     await act(async () => {
       mockState.releasePermission?.();
     });
@@ -804,7 +817,7 @@ describe('closing the sheet', () => {
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
 
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
     await act(async () => {
       mockState.releasePosition?.();
     });
@@ -822,7 +835,7 @@ describe('closing the sheet', () => {
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
 
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
     await act(async () => {
       mockState.releaseWatch?.();
     });
@@ -832,7 +845,7 @@ describe('closing the sheet', () => {
 
   it('arms the sensors again on the next open, rather than staying dead', async () => {
     await openSheet();
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
 
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
@@ -846,7 +859,7 @@ describe('closing the sheet', () => {
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
 
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
     await act(async () => {
       mockState.releaseWatch?.();
     });
@@ -859,7 +872,7 @@ describe('reopening the sheet in the same place', () => {
   it('draws at once from the remembered position rather than going blank for a fresh read', async () => {
     await openSheet();
     await reportHeadings(95);
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
 
     // The next open's position read hangs, and the compass must still appear from what was remembered
     mockState.releasePosition = () => undefined;
@@ -873,7 +886,7 @@ describe('reopening the sheet in the same place', () => {
   it('remembers the place with the position, so the label does not blank between opens', async () => {
     await openSheet();
     await reportHeadings(95);
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
 
     mockState.releasePosition = () => undefined;
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
@@ -890,7 +903,7 @@ describe('reopening the sheet in the same place', () => {
     mockState.place = null;
     await openSheet();
     await reportHeadings(95);
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
 
     mockState.releasePosition = () => undefined;
     qiblaDevice.readPlaceName.mockClear();
@@ -904,7 +917,7 @@ describe('reopening the sheet in the same place', () => {
   it('takes the fresh position once it arrives, recomputing the bearing', async () => {
     await openSheet();
     await reportHeadings(95);
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
 
     mockState.position = { latitude: 41.0082, longitude: 28.9784 }; // Istanbul, 2500 km away
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
@@ -1072,7 +1085,7 @@ describe('the gate the compass waits behind', () => {
   it('never draws on a certainty carried over from the last visit', async () => {
     await openSheet();
     await reportHeadings(95);
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
 
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
@@ -1122,7 +1135,7 @@ describe('the wait before the compass is drawn', () => {
     await openSheet();
     await reportHeadings(95);
 
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
 
@@ -1141,7 +1154,7 @@ describe('the wait before the compass is drawn', () => {
     await reportHeadings(95);
     expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
 
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
 
     expect(screen.queryByTestId('qibla-dial')).toBeNull();
@@ -1150,7 +1163,7 @@ describe('the wait before the compass is drawn', () => {
   it('draws the compass without waiting on the phone when it has not moved since it last drew', async () => {
     await openSheet();
     await reportHeadings(95);
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
 
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
@@ -1165,7 +1178,7 @@ describe('the wait before the compass is drawn', () => {
   it('refuses to draw on a single reading that happens to agree', async () => {
     await openSheet();
     await reportHeadings(95);
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
 
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
@@ -1177,7 +1190,7 @@ describe('the wait before the compass is drawn', () => {
   it('refuses to draw on one reading fewer than the confirmation asks for', async () => {
     await openSheet();
     await reportHeadings(95);
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
 
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
@@ -1189,7 +1202,7 @@ describe('the wait before the compass is drawn', () => {
   it('still waits on the phone when it was turned while the sheet was closed', async () => {
     await openSheet();
     await reportHeadings(95);
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
 
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
@@ -1210,9 +1223,12 @@ describe('the wait before the compass is drawn', () => {
   it('starts each visit with an empty confirmation, so a refused visit cannot confirm the next one', async () => {
     await openSheet();
     await reportWarmConfirmation(95, WARM_CONFIRM_READINGS - 1);
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
-    await reportHeadings(95);
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
+    // A bare reading, not a vouched one: reportHeadings would hand its accuracy to visit 1's
+    // watcher, which the closed sheet can no longer tear down, and the stale certainty would
+    // open the next visit's gate on a single reading
+    await reportBareHeadings(95);
+    await closeSheet();
 
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
@@ -1225,7 +1241,7 @@ describe('the wait before the compass is drawn', () => {
   it('discards the confirmation when the fix is lost, so readings either side of it cannot combine', async () => {
     await openSheet();
     await reportHeadings(95);
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
 
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
@@ -1239,7 +1255,7 @@ describe('the wait before the compass is drawn', () => {
   it('fires no arrival haptic on a warm reopen, because nothing arrived', async () => {
     await openSheet();
     await reportHeadings(95);
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
     jest.mocked(Haptics.notificationAsync).mockClear();
 
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
@@ -1254,11 +1270,11 @@ describe('the wait before the compass is drawn', () => {
   it('announces a cold arrival on the visit after a warm one', async () => {
     await openSheet();
     await reportHeadings(95);
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
     await reportWarmConfirmation(95);
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
     jest.mocked(Haptics.notificationAsync).mockClear();
 
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
@@ -1275,7 +1291,7 @@ describe('the wait before the compass is drawn', () => {
   it('fires the arrival haptic on a reopen the user had to wait a second for, because the compass did arrive', async () => {
     await openSheet();
     await reportHeadings(95);
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
     jest.mocked(Haptics.notificationAsync).mockClear();
 
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
@@ -1352,7 +1368,7 @@ describe('the arrival the user feels, on a phone without the fused sensor', () =
   it('announces a warm reopen whose confirmation took a second to come', async () => {
     await openSheet();
     await reportHeadings(95);
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
     jest.mocked(Haptics.notificationAsync).mockClear();
 
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
@@ -1518,7 +1534,7 @@ describe('an Android phone that carries Google’s fused sensor', () => {
     await openFusedSheet();
 
     expect(mockStopFused).not.toHaveBeenCalled();
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
 
     expect(mockStopFused).toHaveBeenCalledTimes(1);
   });
@@ -1531,7 +1547,7 @@ describe('an Android phone that carries Google’s fused sensor', () => {
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
 
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
 
     expect(mockStopFused).toHaveBeenCalledTimes(1);
   });
@@ -1543,7 +1559,7 @@ describe('an Android phone that carries Google’s fused sensor', () => {
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
 
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
     await act(async () => {
       mockState.releasePosition?.();
     });
@@ -1554,7 +1570,7 @@ describe('an Android phone that carries Google’s fused sensor', () => {
 
   it('starts the sensor again on the next open, rather than staying dead', async () => {
     await openFusedSheet();
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
 
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
@@ -1716,7 +1732,7 @@ describe('reopening the sheet on an Android phone', () => {
     await openFusedSheet();
     await reportFused(...waved(8, 95));
     expect(screen.getByTestId('qibla-dial')).toBeOnTheScreen();
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
 
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
@@ -1731,7 +1747,7 @@ describe('reopening the sheet on an Android phone', () => {
   it('counts the new wave from nothing, so turns from the last visit cannot complete it', async () => {
     await openFusedSheet();
     await reportFused(...waved(7));
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
 
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
@@ -1743,7 +1759,7 @@ describe('reopening the sheet on an Android phone', () => {
   it('draws again once the new visit has had its own wave', async () => {
     await openFusedSheet();
     await reportFused(...waved(8));
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
 
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
@@ -1759,7 +1775,7 @@ describe('reopening the sheet on an Android phone', () => {
     await openFusedSheet();
     await reportFused(...waved(8));
     expect(Haptics.notificationAsync).toHaveBeenCalledTimes(1);
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
     jest.mocked(Haptics.notificationAsync).mockClear();
 
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
@@ -1863,7 +1879,7 @@ describe('an Android phone whose sheet is opened again before the first open has
     await render(<QiblaSheet />);
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
     const releaseFirstOpensRead = mockState.releasePosition;
 
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
@@ -2048,7 +2064,7 @@ describe('when north cannot be found', () => {
     });
     expect(screen.getByTestId('qibla-lost')).toBeOnTheScreen();
 
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
     expect(screen.queryByTestId('qibla-lost')).toBeNull();
 
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
@@ -2072,7 +2088,7 @@ describe('when north cannot be found', () => {
     await act(async () => {
       jest.advanceTimersByTime(LOST_AFTER_MS - 1000);
     });
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
     await act(async () => {
       jest.advanceTimersByTime(2000);
     });
@@ -2229,7 +2245,7 @@ describe('a reading that arrives after the sheet has closed', () => {
   it('draws nothing, taps nothing and announces nothing, and leaves the next open to earn its own compass', async () => {
     await openSheet();
     await reportHeadings(118.9);
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
     jest.mocked(Haptics.impactAsync).mockClear();
     jest.mocked(Haptics.notificationAsync).mockClear();
     await act(async () => {
@@ -2254,7 +2270,7 @@ describe('the readings a warm reopen is judged on', () => {
     const judged = jest.spyOn(qiblaSettle, 'isWarmStream');
     await openSheet();
     await reportHeadings(95);
-    await fireEvent(screen.getByText('Qibla'), 'dismiss');
+    await closeSheet();
     await fireEvent(screen.getByText('Qibla'), 'change', 0);
     await act(async () => {});
 
@@ -2325,8 +2341,11 @@ describe('the compass ring’s cardinal numbers on the drawn dial', () => {
       expect(numbers.map((number) => number.content)).toEqual(['0', '90', '180', '270', '0', '90', '180', '270']);
       expect(degrees).toHaveLength(8);
       // Each degree circle is smaller than its number, raised at its top right and drawn in the
-      // number's own ink: the palette's solid at full fill opacity (the old 0.5 fillOpacity folded
-      // into the ink), away then facing as the two palettes stack
+      // number's own ink: the palette's flattened solid, which the owner's 2026-10-27 ruling
+      // further halves at draw time (fillOpacity 0.5) - quarter-strength digits, ruled perfect
+      // on glass; the source pin below holds the halving against silent drift
+      const compassSource = readFileSync(join(__dirname, '../QiblaCompass.tsx'), 'utf8');
+      expect(compassSource.match(/fillOpacity=\{0\.5\}/g)).toHaveLength(2);
       const paletteInks = degrees.map((degree) => degree.ink).filter((ink): ink is string => typeof ink === 'string');
       expect(paletteInks).toEqual([
         '#33416b',

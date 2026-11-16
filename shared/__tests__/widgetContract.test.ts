@@ -156,14 +156,14 @@ describe('widget function closure', () => {
     });
   }
 
-  it('walks the closure of all three lock layouts', () => {
-    // The lock module holds three layouts; a walk that only reaches the first
-    // leaves the other two unguarded (they drift free silently). Layouts gain
+  it('walks the closure of all four lock layouts', () => {
+    // The lock module holds four layouts; a walk that only reaches the first
+    // leaves the other three unguarded (they drift free silently). Layouts gain
     // no import here: `strings` and `id` arrive as props, and a body importing
     // from @/shared/i18n still fails the walk as a module-scope reference.
     const ast = parseFile(WIDGET_FILES[1].path);
     const layouts = findWidgetFunctions(ast);
-    expect(layouts).toHaveLength(3);
+    expect(layouts).toHaveLength(4);
 
     const runtimeGlobals = collectExpoUiRuntimeGlobals(ast);
     layouts.forEach((layout, index) => {
@@ -421,9 +421,9 @@ describe('widget directive', () => {
         },
       });
 
-      // The home module holds one layout; the lock module holds three (its
+      // The home module holds one layout; the lock module holds four (its
       // layouts differ only in composition and share nothing by reference)
-      expect(count).toBe(name === 'PrayerLockWidget' ? 3 : 1);
+      expect(count).toBe(name === 'PrayerLockWidget' ? 4 : 1);
     });
   }
 });
@@ -469,7 +469,7 @@ describe('widget props v8 footers', () => {
   it('stamps v8 and a footer on every iOS entry, byte-identical to the v6 parse under en', () => {
     expect(WIDGET_PROPS_VERSION).toBe(8);
 
-    const entries = buildPrayerWidgetTimeline(PUSH_AT, sequence, { hijriDate: false }, 'light');
+    const entries = buildPrayerWidgetTimeline(PUSH_AT, sequence, { hijriDate: false, use24Hour: false }, 'light');
     for (const entry of entries) {
       expect(typeof entry.props.footer).toBe('string');
       expect(entry.props.footer).toBe(legacyFooterParse(entry.props.dateLabel));
@@ -484,7 +484,7 @@ describe('widget props v8 footers', () => {
   it('stamps v4 and a footer on every Android snapshot day, same composition', () => {
     expect(ANDROID_SNAPSHOT_VERSION).toBe(4);
 
-    const snapshot = buildPrayerWidgetSnapshot(sequence, { hijriDate: false });
+    const snapshot = buildPrayerWidgetSnapshot(sequence, { hijriDate: false, use24Hour: false });
     expect(snapshot).not.toBeNull();
     if (!snapshot) return;
     expect(snapshot.days.map((day) => day.footer)).toEqual([
@@ -497,7 +497,7 @@ describe('widget props v8 footers', () => {
   });
 
   it('bakes no `now` into the Android strings contract', () => {
-    const snapshot = buildPrayerWidgetSnapshot(sequence, { hijriDate: false });
+    const snapshot = buildPrayerWidgetSnapshot(sequence, { hijriDate: false, use24Hour: false });
     expect(snapshot).not.toBeNull();
     if (!snapshot) return;
     // The word never renders on any widget (owner, on glass), so the rider
@@ -507,12 +507,12 @@ describe('widget props v8 footers', () => {
   });
 
   it('composes the Hijri footer from the month prefix and day under the preference', () => {
-    const entries = buildPrayerWidgetTimeline(PUSH_AT, sequence, { hijriDate: true }, 'light');
+    const entries = buildPrayerWidgetTimeline(PUSH_AT, sequence, { hijriDate: true, use24Hour: false }, 'light');
     for (const entry of entries) {
       expect(entry.props.footer).toBe(legacyFooterParse(entry.props.dateLabel));
     }
 
-    const snapshot = buildPrayerWidgetSnapshot(sequence, { hijriDate: true });
+    const snapshot = buildPrayerWidgetSnapshot(sequence, { hijriDate: true, use24Hour: false });
     expect(snapshot).not.toBeNull();
     if (!snapshot) return;
     for (const day of snapshot.days) {
@@ -735,9 +735,10 @@ describe('the statics table resolves every neutral and stale site', () => {
     const lock = loadWith('../../widgets/LockPrayerWidget', 'ios');
 
     for (const [name, layout] of [
-      ['countdown pair', lock.PrayerLockWidget],
-      ['centred', lock.PrayerLockWidget2],
-      ['stacked', lock.PrayerLockWidget3],
+      ['countdown below the name', lock.PrayerLockWidget],
+      ['time below the name', lock.PrayerLockWidget2],
+      ['countdown pair', lock.PrayerLockWidget3],
+      ['centred', lock.PrayerLockWidget4],
     ] as const) {
       const inline = textsOf(renderTree(layout(null, { colorScheme: 'light', widgetFamily: 'accessoryInline' })));
       expect(`${name} inline: ${inline.join('/')}`).toBe(`${name} inline: ${AR.inline}`);

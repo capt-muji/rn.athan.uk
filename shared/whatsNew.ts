@@ -134,12 +134,19 @@ const resolveItem = (item: StampedWhatsNewArchiveItem): WhatsNewItem => ({
 // =============================================================================
 
 export const WHATS_NEW: WhatsNewArchiveRelease | null = {
-  version: '2.4.40',
+  version: '2.4.41',
   items: [
     {
       titleKey: 'whatsNew.title.language',
       bodyKey: 'whatsNew.body.language',
       version: '2.0.37',
+    },
+    {
+      // The screen's own debut: the modal first shipped at 1.13.0 (git df08bfb1,
+      // 2026-08-30), named from history per the T-297 restamp ruling
+      titleKey: 'whatsNew.title.whatsNew',
+      bodyKey: 'whatsNew.body.whatsNew',
+      version: '1.13.0',
     },
     {
       titleKey: 'whatsNew.title.tabletSupport',
@@ -176,6 +183,44 @@ export const WHATS_NEW: WhatsNewArchiveRelease | null = {
       titleKey: 'whatsNew.title.qiblaCompass',
       bodyKey: 'whatsNew.body.qiblaCompass',
       version: '1.29.258',
+    },
+    {
+      // T-639, the corrected shape (owner order 2026-11-07): every feature
+      // shipped since production 2.0 arrives at once for a production reader,
+      // so all five ride ONE 2.50 group - but each keeps its own title and its
+      // own description as separate rows, in the owner's order (lock screen
+      // layouts, more languages, check for updates, 24 hour format, fasting
+      // days). The shared 2.50.0 stamp is the owner's, the one sanctioned
+      // exception to the T-297 true-version restamp: the stamp names the
+      // release the whole set ships in, not each feature's true history
+      // (2.41.2, 2.42.3, 2.45.2, 2.48.3) - the group names real releases
+      // everywhere else
+      titleKey: 'whatsNew.title.lockLayouts',
+      bodyKey: 'whatsNew.body.lockLayouts',
+      // iOS only: the layouts live in the widget extension, which Android never builds
+      platform: 'ios',
+      version: '2.4.41',
+    },
+    {
+      titleKey: 'whatsNew.title.moreLanguages',
+      bodyKey: 'whatsNew.body.moreLanguages',
+      version: '2.4.41',
+    },
+    {
+      titleKey: 'whatsNew.title.checkUpdates',
+      bodyKey: 'whatsNew.body.checkUpdates',
+      version: '2.4.41',
+    },
+    {
+      // The title reuses the toggle's own name so the modal teaches the settings label
+      titleKey: 'whatsNew.title.format24',
+      bodyKey: 'whatsNew.body.format24',
+      version: '2.4.41',
+    },
+    {
+      titleKey: 'whatsNew.title.fasting',
+      bodyKey: 'whatsNew.body.fasting',
+      version: '2.4.41',
     },
   ],
 };

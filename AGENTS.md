@@ -7,12 +7,10 @@ and session hygiene. This file carries only what is specific to Athan.uk.
 
 1. This file.
 2. `opencode.json` (repo root): which MCP servers are wired and enabled.
-3. `.agents/skills/`: the Expo and EAS skills, this repo's workflow skills
-   (`board-workflow`, `athan-planner`, `athan-lead`), and for React Native code work
-   `react-native-best-practices` with the performance rules in `react-native-skills`. The
-   delivery workers (`athan-lane`, `athan-executor`, `athan-reviewer`, `athan-plan-griller`)
-   are agent files under `.opencode/agents/`, dispatched by the lead or a lane, never loaded
-   into the main session. Load the matching skill instead of working from memory.
+3. `.agents/skills/`: `multica-cli` (the official Multica CLI skill; `BOARD-ATHAN.md`
+   beside it holds this board's columns, keys and discipline), `athan-next` (the
+   session-queue driver), `language-wave`, `writing-for-agents`. Load the matching
+   skill instead of working from memory.
 
 ## Tool routing
 
@@ -30,28 +28,30 @@ Reach for these without being asked.
 | "Are alarms armed?" | `yarn check:device` |
 | Animation smoothness, 30fps floor | `e2e/scripts/frame-audit.sh` |
 | Perf regression vs baseline | `e2e/scripts/baseline-compare.sh e2e/flows/<flow>.yaml` |
-| Read or move a ticket on the board | `itsaplan` MCP (see Workflow) |
+| Read or move a ticket on the board | `multica` CLI (see Workflow) |
+| OCR an image or PDF (posters, charts, scans) | `$HOME/repos/prayer-times/tools/ocr/ocr` (macOS Vision; `ocr <file> [page-limit]`) |
 
 Scripts measure. The `vision` subagent interprets.
 
 ## Workflow
 
-The board is the tickets: a local It's a Plan instance reached through the `itsaplan` MCP,
-whose personal key comes from `ITSAPLAN_API_KEY` in the shell and whose deployment lives in
-`board/`. Read `.agents/skills/board-workflow/SKILL.md` before touching it: it holds the
-columns, the picking rule and the ticket anatomy. Entry to a run is `/athan-next`. The run
-closes with `board/snapshot.sh` in the run's last commit.
+The board is the tickets: the owner's self-hosted Multica (API on the home server, `SERVER_LAN_IP:3011`)
+(browser front `https://kan.chabu.me`), driven through the `multica` CLI, which is
+installed, configured and logged in (PAT in `MULTICA_PAT`). Read
+`.agents/skills/multica-cli/SKILL.md` and its companion `BOARD-ATHAN.md` before touching
+the board: they hold the eleven columns, their keys and the discipline. Entry to a run is
+`/athan-next`. The self-hosted Multica is the board of record.
 
 ## Product
 
 Athan.uk: Muslim prayer times for London with a real-time countdown, offline support,
 customisable athan notifications, home-screen and lock-screen widgets, and a qibla finder.
-London-only, no accounts, no cloud sync. Invariants: the API is the source of truth for
-prayer times, the app works fully offline after first sync, and notifications fire on time
-while backgrounded.
+London-only, no accounts, no cloud sync. Invariants: the baked London Unified Prayer Timetable artifact
+(2026-2076, stores/timetable.ts) is the source of truth for prayer times, the app works fully
+offline from install, and notifications fire on time while backgrounded.
 
 **Alarm times read what the build carries.** A production build (local or store) serves the
-real API's times. A mock build serves the mock data, whose prayers sit either side of launch.
+baked artifact's times. A mock build serves the mock data, whose prayers sit either side of launch.
 The owner installs both kinds on the phones, so read an alarm reading against the build that
 produced it. Everything else in `check:device` is build-agnostic.
 
@@ -71,14 +71,37 @@ produced it. Everything else in `check:device` is build-agnostic.
   comment, ticket, plan or log.
 - A session that finds a file breaking these rules fixes it and tells the owner.
 
+## Supervision
+
+Every parent owns its children; no agent waits on a reply. The law binds every agent at
+every depth - the lead, each lane, each executor, reviewer, griller, any agent deployed:
+whoever deploys a child owns the whole subtree beneath it, and every dispatch prompt
+carries this block so the duty travels. While any descendant runs, the parent checks the
+session DB (`~/.local/share/opencode/opencode.db`, `MAX(time_created)` per `session_id`
+in `session_message`) every 5 minutes, in the background - a `sleep 300` shell that
+reads the subtree and reports, never a blocking wait in the parent's own turn - across
+the WHOLE subtree, its children, their children, to the leaves, matched by the work's
+name (`LIKE '%<ticket or step>%'`). Idle is legal only while some descendant is
+progressing: liveness is judged at the deepest active node of a chain. A chain whose
+every node is quiet past its work's explanation (a build ~15 min, a capture ~5 min) is
+walked to its deepest dead node and respawned from its ticket that same minute.
+Completion notifications are courtesy, never the mechanism (owner order 2026-10-31;
+cadence 5-minute background checks, owner order 2026-10-31 later the same day).
+
 ## Hard rules
 
+- OCR is local and free: every image and PDF is read with the macOS Vision binary above,
+  never with a model-vision pass, because model OCR spends quota and misses coverage. The
+  binary ships the Vision fast level: the accurate level hangs in plain CLI processes on this
+  host. A capture whose text has not been extracted is an open item, never a finished one.
 - Posture is aggressive: fix and report. Update the README when a change adds a user-facing
   feature.
 - The iPhone Duo is banned from all work: no Duo-specific change, measurement, pose or build
   unless the owner files a ticket naming it (owner order 2026-10-21).
-- EAS is read-only: never build on it, never push to it. Reading `EXPO_PUBLIC_ENV` and
-  `EXPO_PUBLIC_API_KEY` is the whole permitted use. Builds happen locally.
+- EAS builds only under an explicit owner order for a production release (owner order
+  2026-11-16: production builds and store submits run on EAS from main). Development builds
+  stay local. Ad-hoc EAS use stays read-only: reading `EXPO_PUBLIC_ENV` is the permitted use,
+  never build or push on your own initiative.
 - Never recreate `releases.json` or any hand-edited release file. Store versions come from
   iTunes Lookup (iOS) and the in-app updates API (Android).
 - Code is the documentation: MD files go stale and history lives in git. Only an artefact
@@ -104,6 +127,9 @@ produced it. Everything else in `check:device` is build-agnostic.
   removing failing tests, no CI changes, no shell-script workarounds for blocked commands.
 - Upstream posts carry strict anonymity and the PR shape What, Why, How, Testing, with
   intent labels (`suggestion:`, `question:`, `nitpick:`) in review.
+- The /handoff document is owner-invoked only: agents never call `handoff_write` and never
+  produce a handoff document; context percentage is never a trigger for one. Ask the owner
+  to run /handoff.
 - Ask first: installing dependencies, deleting non-empty files, MMKV schema keys,
   notification scheduling logic, `app.json` and `eas.json`.
 - Before measuring anything, read `e2e/README.md`: its Gotchas section documents Metro's
@@ -132,8 +158,9 @@ produced it. Everything else in `check:device` is build-agnostic.
 
 - `yarn validate` before calling anything done. `yarn format` for fixes. `yarn test:tz` for
   date work.
-- Device builds go through `$HOME/athan-gitree/bin/build-prod.zsh` and
-  `$HOME/athan-gitree/bin/build-mock.zsh`, never two of the SAME toolchain at once (two
+- Device builds go through `scripts/build/build-prod.zsh`,
+  `scripts/build/build-mock.zsh` and `scripts/build/build-ios.zsh`, never two of the
+  SAME toolchain at once (two
   Gradle runs collide on the shared node_modules build dirs; Gradle and Xcode do not).
   Every build compiles BOTH platforms - iOS and Android - and launches both compilers in
   PARALLEL, never queued one after the other: the codebase is shared, so every build must
@@ -165,7 +192,7 @@ produced it. Everything else in `check:device` is build-agnostic.
 ## Worktrees
 
 Verify a leftover branch is merged before deleting it. The build worktrees under
-`$HOME/athan-gitree/worktrees/` are Gradle caches, detached and branchless. They stay.
+`$HOME/athan-build/worktrees/` are build caches, detached and branchless. They stay.
 
 <!-- CODEGRAPH_START -->
 ## CodeGraph

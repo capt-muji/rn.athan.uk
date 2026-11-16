@@ -3,7 +3,6 @@ import * as Notifications from 'expo-notifications';
 import { Linking, Platform } from 'react-native';
 
 import type { PrayerId } from '@/shared/constants';
-import { prayerLabel } from '@/shared/i18n';
 import logger from '@/shared/logger';
 import * as NotificationUtils from '@/shared/notifications';
 import { AlertType, type ReadablePrayer, type ReminderInterval, type ScheduleType } from '@/shared/types';
@@ -133,7 +132,6 @@ export const addOneScheduledNotificationForPrayer = async (
       id,
       date,
       time,
-      englishName: prayerLabel(prayerId),
       alertType,
     };
     logger.info('NOTIFICATION SYSTEM: Scheduled:', { ...notification, identifier });
@@ -257,7 +255,6 @@ export const addOneScheduledReminderForPrayer = async (
       id,
       date,
       time,
-      englishName: prayerLabel(prayerId),
       alertType,
     };
     logger.info('REMINDER SYSTEM: Scheduled:', { ...notification, identifier });

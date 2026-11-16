@@ -21,6 +21,11 @@ const mockStoreGet = jest.fn();
 const mockStoreSet = jest.fn();
 
 const mockOverlayAtomSymbol = Symbol('overlayAtom');
+const mockFadeSettledAtomSymbol = Symbol('overlayFadeSettledAtom');
+const mockPagerAtomSymbol = Symbol('pagerPageAtom');
+
+/** The pager's page, as the store mock answers it: 0 Standard, 1 Extras */
+let mockPagerPage = 0;
 
 jest.mock('jotai/vanilla', () => ({
   // atom stays real: shared/i18n/locale builds the remount version atom from it
@@ -46,11 +51,21 @@ jest.mock('@/stores/countdown', () => ({
 }));
 
 jest.mock('@/stores/atoms/overlay', () => ({
+  // The generation functions stay real: the guard tests run the true counter
+  ...jest.requireActual('@/stores/atoms/overlay'),
   overlayAtom: mockOverlayAtomSymbol,
+  overlayFadeSettledAtom: mockFadeSettledAtomSymbol,
+}));
+
+jest.mock('@/stores/atoms/pager', () => ({
+  // pageSchedule stays real: the guard maps the position through the true mapping
+  ...jest.requireActual('@/stores/atoms/pager'),
+  pagerPageAtom: mockPagerAtomSymbol,
 }));
 
 // Require (not import) after mocks - babel hoists ESM imports above the mock declarations
-const { closeOverlay, openOverlay, toggleOverlay } = require('../overlay');
+const { closeOverlay, markOverlayFadeSettled, openOverlay, toggleOverlay } = require('../overlay');
+const { currentFadeGeneration } = require('@/stores/atoms/overlay');
 
 // =============================================================================
 // TEST SETUP
@@ -66,9 +81,11 @@ beforeEach(() => {
   jest.setSystemTime(new Date('2026-01-20T10:00:00.000Z'));
 
   mockOverlayState = { isOn: false, selectedPrayerIndex: 0, scheduleType: ScheduleType.Standard };
+  mockPagerPage = 0;
 
   mockStoreGet.mockImplementation((atom: symbol) => {
     if (atom === mockOverlayAtomSymbol) return { ...mockOverlayState };
+    if (atom === mockPagerAtomSymbol) return mockPagerPage;
     return {};
   });
 });
@@ -136,6 +153,21 @@ describe('openOverlay', () => {
 
     expect(mockStoreSet).not.toHaveBeenCalled();
   });
+
+  // A press whose page the pager no longer shows is a stale touch's echo, the
+  // owner's tap-then-swipe interleave: the open lands after the swipe settled,
+  // so the self-heal (which only closes an OPEN overlay) cannot see it and the
+  // open itself must be refused, exactly like a boundary-adjacent open
+  it('refuses a Standard open when the pager shows the Extras page', () => {
+    mockPagerPage = 1;
+    setNextPrayerIn(60_000);
+
+    openOverlay(ScheduleType.Standard, 3);
+
+    expect(mockStoreSet).not.toHaveBeenCalledWith(mockOverlayAtomSymbol, expect.objectContaining({ isOn: true }));
+    expect(mockArmOverlayBoundary).not.toHaveBeenCalled();
+    expect(mockWriteDisplayCountdown).not.toHaveBeenCalled();
+  });
 });
 
 // =============================================================================
@@ -162,19 +194,95 @@ describe('closeOverlay', () => {
 });
 
 // =============================================================================
+// THE FADE-HOLD FLAG (one batched display flip for the whole overlay family)
+// =============================================================================
+
+describe('the fade-hold flag', () => {
+  it('drops in the same store batch that opens, so every held subtree re-renders once', () => {
+    setNextPrayerIn(60_000);
+
+    openOverlay(ScheduleType.Standard, 3);
+
+    expect(mockStoreSet).toHaveBeenCalledWith(mockFadeSettledAtomSymbol, false);
+  });
+
+  it('drops in the same store batch that closes', () => {
+    mockOverlayState = { isOn: true, selectedPrayerIndex: 3, scheduleType: ScheduleType.Standard };
+
+    closeOverlay();
+
+    expect(mockStoreSet).toHaveBeenCalledWith(mockFadeSettledAtomSymbol, false);
+  });
+
+  it('the already-open no-op leaves it untouched', () => {
+    mockOverlayState.isOn = true;
+    setNextPrayerIn(60_000);
+
+    openOverlay(ScheduleType.Standard, 3);
+
+    expect(mockStoreSet).not.toHaveBeenCalledWith(mockFadeSettledAtomSymbol, false);
+  });
+
+  it('the already-closed no-op leaves it untouched', () => {
+    closeOverlay();
+
+    expect(mockStoreSet).not.toHaveBeenCalledWith(mockFadeSettledAtomSymbol, false);
+  });
+
+  it('markOverlayFadeSettled raises it a microtask later, never mid-render', async () => {
+    markOverlayFadeSettled(currentFadeGeneration());
+
+    // The settle can fire from a render-phase animation mapper (Reanimated's
+    // jest mock completes withTiming synchronously), so the write must not
+    // land in that render
+    expect(mockStoreSet).not.toHaveBeenCalledWith(mockFadeSettledAtomSymbol, true);
+
+    await Promise.resolve();
+
+    expect(mockStoreSet).toHaveBeenCalledWith(mockFadeSettledAtomSymbol, true);
+  });
+});
+
+// =============================================================================
+// THE STALE-SETTLE GUARD
+// =============================================================================
+
+describe('the stale-settle guard', () => {
+  it('ignores a settle from a superseded fade, so it cannot raise the hold over the fade that replaced it', async () => {
+    setNextPrayerIn(60_000);
+    openOverlay(ScheduleType.Standard, 3);
+    const openFadeGeneration = currentFadeGeneration();
+    // The mock store does not follow writes, so the close reads an open state
+    mockOverlayState = { isOn: true, selectedPrayerIndex: 3, scheduleType: ScheduleType.Standard };
+
+    // The close tap's handler runs while the open fade's finished settle is
+    // already posted to the JS thread: the writer stamps a fresh generation,
+    // and the stale settle lands only after it
+    closeOverlay();
+    markOverlayFadeSettled(openFadeGeneration);
+
+    await Promise.resolve();
+
+    expect(mockStoreSet).not.toHaveBeenCalledWith(mockFadeSettledAtomSymbol, true);
+  });
+
+  it('raises the hold for a settle that carries the live fade generation', async () => {
+    mockOverlayState = { isOn: true, selectedPrayerIndex: 3, scheduleType: ScheduleType.Standard };
+    closeOverlay();
+    markOverlayFadeSettled(currentFadeGeneration());
+
+    await Promise.resolve();
+
+    expect(mockStoreSet).toHaveBeenCalledWith(mockFadeSettledAtomSymbol, true);
+  });
+});
+
+// =============================================================================
 // toggleOverlay
 // =============================================================================
 
 describe('toggleOverlay', () => {
-  it('opens the current selection when closed', () => {
-    setNextPrayerIn(60_000);
-
-    toggleOverlay();
-
-    expect(mockStoreSet).toHaveBeenCalledWith(mockOverlayAtomSymbol, expect.objectContaining({ isOn: true }));
-  });
-
-  it('closes when open', () => {
+  it('closes when called bare', () => {
     mockOverlayState.isOn = true;
 
     toggleOverlay();

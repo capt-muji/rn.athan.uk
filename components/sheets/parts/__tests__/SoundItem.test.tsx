@@ -5,6 +5,7 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
 import type { ComponentProps } from 'react';
+import { StyleSheet } from 'react-native';
 import * as Reanimated from 'react-native-reanimated';
 
 import { setActiveLocale } from '@/shared/i18n/locale';
@@ -125,13 +126,36 @@ describe('the Athan 3 row, not playing', () => {
   });
 
   // fireEvent would find the handler on the row's own props even if the view never received it, so the view the
-  // phone lays out is checked for it instead
-  it('hands the layout handler of the sheet that measures it to the view the phone lays out', async () => {
+  // phone lays out is checked for it instead. RNGH's host wraps the sheet's handler in its own measurer, so the
+  // contract checked is the event's DELIVERY: a layout fired on the host view reaches the sheet's handler
+  it('delivers the layout event of the view the phone lays out to the sheet that measures it', async () => {
     const onLayout = jest.fn();
 
     await render(athan3({ onLayout }));
 
-    expect(screen.getByText('Athan 3').parent).toHaveProp('onLayout', onLayout);
+    const host = screen.getByText('Athan 3').parent!;
+    expect(host).toHaveProp('onLayout', expect.any(Function));
+    fireEvent(host, 'layout', { nativeEvent: { layout: { x: 0, y: 0, width: 100, height: 44 } } });
+    expect(onLayout).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe("the row's height", () => {
+  // Owner order 2026-10-31: the rows ride the language sheet's own 48, and the tall control
+  // column no longer stretches them past it
+  it("carries the language rows' own 48, with the play column's press room kept whole", async () => {
+    await render(athan3());
+
+    const row = StyleSheet.flatten(screen.getByText('Athan 3').parent?.props.style) as {
+      minHeight?: number;
+      paddingVertical?: number;
+    };
+    expect(row.minHeight).toBe(48);
+
+    // The play glyph is 18 inside its own padding, and the row's vertical padding is a hair:
+    // the column plus the row's padding never outgrows the 48 the row draws
+    const playPadding = StyleSheet.flatten(playButton().props.style).padding as number;
+    expect(18 + 2 * playPadding + 2 * (row.paddingVertical ?? 0)).toBeLessThanOrEqual(48);
   });
 });
 

@@ -16,6 +16,17 @@
 // Nothing here may exist unless react-native-mmkv 4.3.2 has it: a mocked
 // method the device does not have passes every test and then throws in the
 // user's hand, on an alarm clock.
+// Instances with the same id are one store on device; the mock shares them the
+// same way within a module registry (across registries a fresh jest environment
+// means a fresh device, which is what the per-file isolation models)
+const instances: Record<string, ReturnType<typeof createStorage> | undefined> = {};
+
+const openInstance = (config?: { id?: string }): ReturnType<typeof createStorage> => {
+  const id = config?.id ?? 'default';
+  if (instances[id] === undefined) instances[id] = createStorage();
+  return instances[id]!;
+};
+
 const createStorage = () => {
   const storage: Record<string, string | number | boolean | ArrayBuffer> = {};
 
@@ -55,5 +66,5 @@ const createStorage = () => {
   };
 };
 
-export const createMMKV = createStorage;
-export const MMKV = createStorage;
+export const createMMKV = openInstance;
+export const MMKV = openInstance;

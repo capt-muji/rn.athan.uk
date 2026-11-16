@@ -14,30 +14,32 @@
 
 import { formatInTimeZone } from 'date-fns-tz';
 
-import { createPrayerSequence, getPrayerForDate, transformApiData } from '@/shared/prayer';
-import { type ISingleApiResponseTransformed, type Prayer, ScheduleType } from '@/shared/types';
-import * as Database from '@/stores/database';
+import { createPrayerSequence, getPrayerForDate } from '@/shared/prayer';
+import { minutesToRecord, toDayMinutes } from '@/shared/timetableDecode';
+import { type DayRecord, type Prayer, ScheduleType } from '@/shared/types';
+import * as Timetable from '@/stores/timetable';
 
 jest.mock('@/stores/database', () => ({
-  getPrayerByDateString: jest.fn(),
   getItem: () => null,
   getRawItem: () => undefined,
 }));
 
-const stored = new Map<string, ISingleApiResponseTransformed>();
+jest.mock('@/stores/timetable', () => ({ getTimetableDay: jest.fn() }));
 
-const useRecords = (records: ISingleApiResponseTransformed[]) => {
+const stored = new Map<string, DayRecord>();
+
+const useRecords = (records: DayRecord[]) => {
   stored.clear();
   for (const record of records) stored.set(record.date, record);
 };
 
 beforeEach(() => {
-  (Database.getPrayerByDateString as jest.Mock).mockImplementation((date: string) => stored.get(date) ?? null);
+  (Timetable.getTimetableDay as jest.Mock).mockImplementation((date: string) => stored.get(date) ?? null);
 });
 
-/** A stored day from API times, with Suhoor, Duha and Istijaba derived exactly as the app does */
+/** A day as the reader serves it, with Suhoor, Duha and Istijaba derived exactly as the app does */
 const day = (date: string, fajr: string, sunrise: string, dhuhr: string, asr: string, magrib: string, isha: string) =>
-  transformApiData({ city: 'london', times: { [date]: { fajr, sunrise, dhuhr, asr, magrib, isha } } })[0];
+  minutesToRecord(date, toDayMinutes({ fajr, sunrise, dhuhr, asr, magrib, isha }));
 
 /** Several days' lists as one sequence, exactly as the app builds it */
 const sequenceFor = (type: ScheduleType, firstDate: string, dayCount: number): Prayer[] =>
@@ -46,7 +48,7 @@ const sequenceFor = (type: ScheduleType, firstDate: string, dayCount: number): P
 /** A row as the screen and the alarms see it: its list day, name, instant and clock reading */
 const shown = (row: Prayer) => [row.belongsToDate, row.id, row.datetime?.toISOString() ?? null, row.time];
 
-// Real London times from londonprayertimes.com for 2026
+// Real London times from the captured 2026 payload
 const OCTOBER = [
   day('2026-10-16', '05:51', '07:23', '12:51', '15:31', '18:08', '19:31'),
   day('2026-10-17', '05:52', '07:25', '12:51', '15:30', '18:06', '19:29'),

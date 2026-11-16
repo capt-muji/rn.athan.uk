@@ -313,3 +313,29 @@ describe('app config android widget resolution', () => {
     expect(flagOn.ios?.bundleIdentifier).toBe('com.example.athan');
   });
 });
+
+describe('the dev-client launch contract (local device builds)', () => {
+  const originalLaunchUrl = process.env.EXPO_DEV_LAUNCH_URL;
+  const devClientEntry = (config: import('expo/config').ExpoConfig) =>
+    (config.plugins ?? []).find((plugin: unknown) => Array.isArray(plugin) && plugin[0] === 'expo-dev-client');
+
+  afterEach(() => {
+    if (originalLaunchUrl === undefined) delete process.env.EXPO_DEV_LAUNCH_URL;
+    else process.env.EXPO_DEV_LAUNCH_URL = originalLaunchUrl;
+  });
+
+  it('adds no dev-client plugin when no launch URL is exported', () => {
+    delete process.env.EXPO_DEV_LAUNCH_URL;
+    const config = loadAppConfigFresh();
+    expect(pluginNames(config)).not.toContain('expo-dev-client');
+  });
+
+  it('launches straight into the exported server, falling back to the launcher', () => {
+    process.env.EXPO_DEV_LAUNCH_URL = 'http://192.0.2.10:8081';
+    const config = loadAppConfigFresh();
+    expect(devClientEntry(config)).toEqual([
+      'expo-dev-client',
+      { launchMode: 'most-recent', defaultLaunchURL: 'http://192.0.2.10:8081' },
+    ]);
+  });
+});
