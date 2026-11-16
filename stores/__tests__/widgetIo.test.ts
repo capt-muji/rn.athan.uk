@@ -21,9 +21,10 @@ import { addDays, format } from 'date-fns';
 import { getDefaultStore } from 'jotai';
 
 import { createInstant, formatDateShort } from '@/shared/time';
-import type { ISingleApiResponseTransformed } from '@/shared/types';
-import * as Database from '@/stores/database';
-import { hijriDateEnabledAtom } from '@/stores/ui';
+import type { DayRecord } from '@/shared/types';
+import * as Timetable from '@/stores/timetable';
+import { __installTimetableDays } from '@/stores/timetable';
+import { hijriDateEnabledAtom, show24HourFormatAtom } from '@/stores/ui';
 import { readWidgetSettings, refreshPrayerWidgets } from '@/stores/widget';
 import { ExtrasLockWidget, ExtrasLockWidget2, PrayerLockWidget, PrayerLockWidget2 } from '@/widgets/LockPrayerWidget';
 import {
@@ -37,7 +38,7 @@ import {
   PrayerWidgetMedium,
 } from '@/widgets/PrayerWidget';
 
-const makeDayData = (date: string): ISingleApiResponseTransformed => ({
+const makeDayData = (date: string): DayRecord => ({
   date,
   fajr: '03:30',
   sunrise: '05:20',
@@ -52,12 +53,12 @@ const makeDayData = (date: string): ISingleApiResponseTransformed => ({
 
 const seedPrayerCache = (days: number) => {
   const now = createInstant();
-  const data: ISingleApiResponseTransformed[] = [];
+  const data: DayRecord[] = [];
   for (let offset = -1; offset < days; offset++) {
     const day = addDays(now, offset);
     data.push(makeDayData(formatDateShort(day)));
   }
-  Database.saveAllPrayers(data);
+  Timetable.__installTimetableDays(data);
 };
 
 const widgetPush = () => (PrayerWidget.updateTimeline as jest.Mock).mock.calls;
@@ -144,7 +145,7 @@ describe('label-flip re-push scheduler', () => {
   const seedUpcomingMagrib = (minutes: number) => {
     const now = createInstant();
     const dates = [-1, 0, 1].map((offset) => formatDateShort(addDays(now, offset)));
-    Database.saveAllPrayers(
+    Timetable.__installTimetableDays(
       dates.map((date) => ({
         ...makeDayData(date),
         fajr: minutesAhead(-10),
@@ -173,7 +174,7 @@ describe('label-flip re-push scheduler', () => {
   });
 
   // Every push costs a WidgetKit reload per kind, and a reload re-renders the
-  // whole timeline. A timer that re-pushed twelve kinds a minute exhausted the
+  // whole timeline. A timer that re-pushed sixteen kinds a minute exhausted the
   // extension's CPU budget and iOS killed it mid-render, which WidgetKit shows
   // as "Please adopt containerBackground API" (ledger G.1 (git history)). These pin the
   // absence of that chain: pushes are driven by data, never by a clock.
@@ -207,8 +208,8 @@ describe('label-flip re-push scheduler', () => {
     expect(widgetPush()).toHaveLength(2);
   });
 
-  it('builds nothing on an empty cache and pushes once the next refresh finds data', async () => {
-    Database.clearPrefix('prayer_');
+  it('builds nothing on an empty timetable and pushes once the next refresh finds data', async () => {
+    __installTimetableDays([]);
 
     await refreshPrayerWidgets();
     expect(widgetPush()).toHaveLength(0);
@@ -230,9 +231,12 @@ describe('readWidgetSettings', () => {
   it('snapshots the widget-visible preferences', () => {
     const store = getDefaultStore();
     store.set(hijriDateEnabledAtom, true);
+    store.set(show24HourFormatAtom, true);
 
     expect(readWidgetSettings()).toEqual({
       hijriDate: true,
+      use24Hour: true,
     });
+    store.set(show24HourFormatAtom, false);
   });
 });

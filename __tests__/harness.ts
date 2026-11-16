@@ -11,6 +11,7 @@ import { Platform } from 'react-native';
 
 import { type Breakage, london, saveLondonDays } from '@/hooks/__tests__/londonDays';
 import { ScheduleType } from '@/shared/types';
+import { pagerPageAtom } from '@/stores/atoms/pager';
 import { setSequence } from '@/stores/schedule';
 import { countdownBarShownAtom, showTimePassedAtom } from '@/stores/ui';
 
@@ -66,9 +67,32 @@ export const seedCountdownBarOn = (): void => {
 };
 
 /**
+ * The page the pager is showing, for a suite that opens an overlay with no pager mounted: the
+ * overlay gate reads the atom, so a suite seeds the page its overlay's schedule lives on and rests
+ * it on Standard between tests
+ *
+ * @param position The pager position the overlay's schedule lives on, 0 Standard or 1 Extras
+ */
+export const seedPagerPage = (position: number): void => {
+  getDefaultStore().set(pagerPageAtom, position);
+};
+
+/**
  * Time passed rides the same law: the default is off, a suite that reads the ago line as part of
  * the page seeds it on, and off-behaviour stays in the test that sets the atom itself
  */
 export const seedTimePassedOn = (): void => {
   getDefaultStore().set(showTimePassedAtom, true);
+};
+
+/**
+ * Whether a query result sits inside any scroll view: the one way to see that a node cannot scroll away
+ *
+ * @param node A React Native Testing Library query result
+ */
+export const insideScroll = (node: { parent: { type: string; parent: unknown } | null }): boolean => {
+  for (let parent = node.parent; parent !== null; parent = parent.parent as typeof parent) {
+    if (parent.type === 'RCTScrollView') return true;
+  }
+  return false;
 };

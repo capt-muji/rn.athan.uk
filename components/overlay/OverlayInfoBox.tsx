@@ -1,7 +1,6 @@
 import { useAtomValue } from 'jotai';
-import { useEffect, useState } from 'react';
 import { StyleSheet, type ViewProps } from 'react-native';
-import Reanimated from 'react-native-reanimated';
+import Reanimated, { useAnimatedStyle } from 'react-native-reanimated';
 
 import { getOverlayExplanation, getOverlayRow } from '@/components/overlay/overlayContent';
 // Direct path, not the barrel: going through components/prayer would cycle back here via List
@@ -34,23 +33,18 @@ export default function OverlayInfoBox({ type }: Props) {
   const overlay = useAtomValue(overlayAtom);
   const isOnThisList = overlay.isOn && overlay.scheduleType === type;
 
-  const [visible, setVisible] = useState(isOnThisList);
-
-  // The reveal drives the card face's fade and the inks' rise from the card's own surface
-  // (PrayerExplanation), so the layer itself never fades and no text sits in a translucent
-  // subtree while the box appears
+  // The reveal drives the card face's fade and the words' opacity ramp (PrayerExplanation),
+  // so the layer itself never fades and no text sits in a translucent subtree while the box
+  // appears - the words' own opacity is T-294's one scoped exception, named where it lands
   const reveal = useDerivedProgress(isOnThisList ? 1 : 0, { duration: ANIMATION.duration });
 
-  // Hold the card displayable through the close fade-out, then hide it
-  useEffect(() => {
-    if (isOnThisList) {
-      setVisible(true);
-      return;
-    }
-
-    const hideTimer = setTimeout(() => setVisible(false), ANIMATION.duration);
-    return () => clearTimeout(hideTimer);
-  }, [isOnThisList]);
+  // The exit cut, evaluated where the reveal animates: display drops to none in the frame the
+  // reveal rests at 0, and the words' opacity ramp reaches 0 on that same reveal, so the cut
+  // drops a card whose every element is already invisible. A JS-side flip (the old
+  // fade-settled gate) lands a commit later and those frames are the ghost.
+  const placerStyle = useAnimatedStyle(() => ({
+    display: reveal.value > 0 || isOnThisList ? 'flex' : 'none',
+  }));
 
   const selectedPrayer = usePrayer(type, overlay.selectedPrayerIndex, true);
   const { prayers, displayDate } = usePrayerSequence(type);
@@ -76,10 +70,7 @@ export default function OverlayInfoBox({ type }: Props) {
   if (!prayerName || !explanation) return null;
 
   return (
-    <Reanimated.View
-      testID={'overlay-infobox'}
-      style={[styles.placer, { display: visible ? 'flex' : 'none' }]}
-      pointerEvents={'none'}>
+    <Reanimated.View testID={'overlay-infobox'} style={[styles.placer, placerStyle]} pointerEvents={'none'}>
       <PrayerExplanation
         prayerName={prayerName}
         explanation={explanation}

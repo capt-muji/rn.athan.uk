@@ -20,10 +20,11 @@ import { type Prayer, ScheduleType } from '@/shared/types';
 import { getOverlayExplanation, getOverlayRow } from '../overlayContent';
 
 jest.mock('@/stores/database', () => ({
-  getPrayerByDateString: jest.fn(),
   getItem: () => null,
   getRawItem: () => undefined,
 }));
+
+jest.mock('@/stores/timetable', () => ({ getTimetableDay: jest.fn() }));
 
 type ListOrder = [string, (rows: Prayer[]) => Prayer[]];
 
@@ -47,9 +48,9 @@ const drawnIds = (rows: Prayer[]): PrayerId[] => EXTRA_PRAYER_IDS.filter((id) =>
 const EXPLAINED: [PrayerId, string, string][] = [
   ['midnight', 'Midnight', 'Halfway between Magrib and Fajr'],
   ['last third', 'Last Third', 'Start of the last third of the night'],
-  ['suhoor', 'Suhoor', '20 mins before Fajr'],
-  ['duha', 'Duha', '20 mins after Sunrise'],
-  ['istijaba', 'Istijaba', '1 hour before Magrib (Fridays only)'],
+  ['suhoor', 'Sahur', '20 minutes before Fajr'],
+  ['duha', 'Duha', '20 minutes after Sunrise'],
+  ['istijaba', 'Istijaba', '1 hour before Magrib (Fridays only) (the hour of acceptance)'],
 ];
 
 // [scenario, first sequence day, breakage, now (London date, time), list day on screen]

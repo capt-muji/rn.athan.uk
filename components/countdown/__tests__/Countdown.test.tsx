@@ -189,9 +189,10 @@ describe('the lettered countdown on the Standard schedule', () => {
     // The label's static entry carries the home ink: the tween's entry commits after this
     // frame, so the rest face reads from the style array's static element
     const nameStyle = flattenStyle((name.props.style as unknown[])[0]);
-    expect(nameStyle.color).toBe('#6c79c2');
-    expect(nameStyle.textShadowColor).toBe('rgba(0, 0, 0, 0.3)');
-    expect(nameStyle.textShadowRadius).toBe(6);
+    expect(nameStyle.color).toBe(COLORS.text.labelHome);
+    // The owner struck the label's text shadow at landing (T-374 round 10): the flat
+    // ink reads cleaner on the design's own ground
+    expect(nameStyle.textShadowColor).toBeUndefined();
     // The second entry is the ink tween itself: dropped from the array, the home ink never flips
     expect(name.props.style).toHaveLength(2);
   });
@@ -207,8 +208,20 @@ describe('the lettered countdown on the Standard schedule', () => {
     // the tuned pair and nothing else: the ink flips with the overlay and back
     const labelTween = () =>
       interpolateColor.mock.calls
-        .filter((call) => (call[2] as unknown as readonly string[]).join() === ['#6c79c2', '#585c8c'].join())
+        .filter(
+          (call) =>
+            (call[2] as unknown as readonly string[]).join() ===
+            [COLORS.text.labelHome, COLORS.text.labelOverlay].join()
+        )
         .map((call) => call[0]);
+
+    // The owner's second read (2026-11-02): the midpoint ink sat one percent too purple, so
+    // the hue moves to the grey's own bluish side while the saturation step carries the whole
+    // hint - the grey plus its one visible chroma step, leaning blue, the luminance held at
+    // that grey's own. No textShadow rides either label; the timer's three shadow
+    // styles are the only ones and stay.
+    expect(COLORS.text.labelOverlay).toBe('#565b95');
+    expect(COLORS.text.labelHome).not.toBe(COLORS.text.labelOverlay);
 
     expect(labelTween().at(-1)).toBe(0);
 
@@ -304,5 +317,77 @@ describe('the countdown before any list is on screen', () => {
     await render(<Countdown type={ScheduleType.Standard} />);
 
     expect(screen.toJSON()).toBeNull();
+  });
+});
+
+// Owner order 2026-11-02, second read: the midpoint ink still read one percent too purple;
+// the pull-back rests the hue at the grey's own bluish side - the grey plus one visible
+// saturation step of hint leaning blue, the luminance held at that grey's own so the contrast
+// stays where the ink began. Audited cold from the tokens, the same WCAG luminance the info
+// card suite uses
+describe("the overlay label's tint, audited cold from the tokens", () => {
+  /** Relative luminance of a #rrggbb solid, the repo's own WCAG formula */
+  const luminanceOf = (hex: string): number => {
+    const channel = (value: number) => {
+      const s = value / 255;
+      return s <= 0.03928 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4;
+    };
+    const n = Number.parseInt(hex.slice(1), 16);
+    return 0.2126 * channel((n >> 16) & 255) + 0.7152 * channel((n >> 8) & 255) + 0.0722 * channel(n & 255);
+  };
+
+  const hslOf = (hex: string): { h: number; s: number } => {
+    const n = Number.parseInt(hex.slice(1), 16);
+    const [r, g, b] = [(n >> 16) & 255, (n >> 8) & 255, n & 255].map((v) => v / 255);
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    const delta = max - min;
+    const h = max === b ? 60 * (4 + (r - g) / delta) : max === g ? 60 * (2 + (b - r) / delta) : 60 * ((g - b) / delta);
+    const l = (max + min) / 2;
+    return { h: (h + 360) % 360, s: delta / (1 - Math.abs(2 * l - 1)) };
+  };
+
+  const contrastOf = (ink: string, solid: string): number => {
+    const [y1, y2] = [luminanceOf(ink), luminanceOf(solid)].sort((a, b) => b - a);
+    return (y1 + 0.05) / (y2 + 0.05);
+  };
+
+  /** The grey the labels first shipped with: the pull-back's anchor */
+  const SHIPPED_LABEL_OVERLAY = '#585c8c';
+  /** The grey's own hue, its bluish side - the second read moved the ink here off the blue-purple midpoint */
+  const HINT_HUE = hslOf(SHIPPED_LABEL_OVERLAY).h;
+  /** The grey's muted saturation lifted one visible step, still far under the home label's 0.46 */
+  const HINT_SATURATION = 0.27;
+
+  it('keeps the glow token untouched, the one source of the purple end', () => {
+    expect(COLORS.gradient.overlay.glow).toBe('#2514a0');
+  });
+
+  it("rests at the grey's own bluish hue with a step more chroma, holding the grey's luminance", () => {
+    const ink = hslOf(COLORS.text.labelOverlay);
+
+    expect(Math.abs(ink.h - HINT_HUE)).toBeLessThanOrEqual(0.5);
+    expect(Math.abs(ink.s - HINT_SATURATION)).toBeLessThanOrEqual(0.005);
+    expect(ink.s).toBeGreaterThan(hslOf(SHIPPED_LABEL_OVERLAY).s);
+    // The 8-bit grid's nearest equal-luminance point sits about half a percent off, so the
+    // band is one percent: the luminance the grey shipped with, not a tighter pretence
+    expect(
+      Math.abs(luminanceOf(COLORS.text.labelOverlay) - luminanceOf(SHIPPED_LABEL_OVERLAY)) /
+        luminanceOf(SHIPPED_LABEL_OVERLAY)
+    ).toBeLessThanOrEqual(0.01);
+  });
+
+  it("holds the shipped grey's contrast against the veil's own solids, clearing AA large text", () => {
+    // The veil's tokens are platform-shared and its gradient opaque when settled, so these two
+    // identities carry the number for the iPhone and the Android alike: the gradient's start
+    // solid is the band both labels sit in, the veil token the flattened band the overlay
+    // family already carries. Both read from the tokens, so a veil change re-audits here
+    for (const solid of [COLORS.gradient.overlay.start, COLORS.gradient.overlay.veil]) {
+      const tinted = contrastOf(COLORS.text.labelOverlay, solid);
+      const shipped = contrastOf(SHIPPED_LABEL_OVERLAY, solid);
+
+      expect(Math.abs(tinted - shipped) / shipped).toBeLessThanOrEqual(0.01);
+      expect(tinted).toBeGreaterThanOrEqual(3);
+    }
   });
 });

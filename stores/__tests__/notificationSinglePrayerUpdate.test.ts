@@ -4,7 +4,7 @@
  * The sheet saves the at-time alert, the reminder alert and the interval, then calls this. A reminder is armed only
  * while both the at-time alert and the reminder are on, counting back the saved interval from the prayer's own
  * instant on every day still to come. With either off, every reminder that prayer had is cancelled, since a reminder
- * with no athan behind it is one the user did not ask for. Times go through the app's own transform, and every
+ * with no athan behind it is one the user did not ask for. Times go through the record's own producer, and every
  * expected instant is worked out by hand from London's clock: BST is UTC+1 in late August.
  */
 
@@ -13,11 +13,12 @@ import * as Notifications from 'expo-notifications';
 import { prayerNotificationIdentifier, reminderNotificationIdentifier } from '@/device/notifications';
 import type { PrayerId } from '@/shared/constants';
 import { EXTRA_PRAYER_IDS, STANDARD_PRAYER_IDS } from '@/shared/constants';
-import { prayerLabel } from '@/shared/i18n';
-import { transformApiData } from '@/shared/prayer';
+import { minutesToRecord, toDayMinutes } from '@/shared/timetableDecode';
+import type { DayRecord } from '@/shared/types';
 import { AlertType, type ReminderInterval, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 import { commitPrayerAlertChange, setReminderInterval } from '@/stores/notifications';
+import { __installTimetableDays } from '@/stores/timetable';
 
 jest.mock('@/shared/logger', () => ({
   __esModule: true,
@@ -29,7 +30,10 @@ jest.mock('@/shared/logger', () => ({
 
 jest.mock('@/stores/widget', () => ({ refreshPrayerWidgets: jest.fn(async () => undefined) }));
 
-jest.mock('@/stores/sync', () => ({ sync: jest.fn(async () => undefined), getArmedDayChanges: jest.fn(() => 0) }));
+jest.mock('@/stores/sync', () => ({
+  ...jest.requireActual('@/stores/sync'),
+  sync: jest.fn(async () => undefined),
+}));
 
 // =============================================================================
 // FIXTURES
@@ -109,7 +113,6 @@ const seedReminder = (type: ScheduleType, id: PrayerId, index: number, date: str
     id: identifier,
     date,
     time: '12:00',
-    englishName: prayerLabel(id),
     alertType: AlertType.Silent,
   });
   osState.add(identifier);
@@ -122,13 +125,17 @@ beforeEach(() => {
   jest.clearAllMocks();
   osState.clear();
   Database.database.clearAll();
+  __installTimetableDays([]);
+  /** The days the reader serves, accumulated by the seeding helper and reset with the store */
+  const seededWindow = new Map<string, DayRecord>();
+
+  seededWindow.clear();
+  __installTimetableDays([]);
 
   for (const [date, [fajr, sunrise, dhuhr, asr, magrib, isha]] of Object.entries(DAYS)) {
-    const [stored] = transformApiData({
-      city: 'london',
-      times: { [date]: { fajr, sunrise, dhuhr, asr, magrib, isha } },
-    });
-    Database.database.set(`prayer_${date}`, JSON.stringify(stored));
+    const stored = minutesToRecord(date, toDayMinutes({ fajr, sunrise, dhuhr, asr, magrib, isha }));
+    seededWindow.set(date, stored);
+    __installTimetableDays([...seededWindow.values()]);
   }
 
   scheduleMock.mockImplementation(async (request) => {

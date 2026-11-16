@@ -20,12 +20,22 @@ import { addDays } from 'date-fns';
 import { getDefaultStore } from 'jotai';
 
 import { createInstant, formatDateLocalized, formatDateShort, formatHijriDateLocalized } from '@/shared/time';
-import type { ISingleApiResponseTransformed } from '@/shared/types';
+import type { DayRecord } from '@/shared/types';
 import { WIDGET_PROPS_VERSION } from '@/shared/widgetTypes';
-import * as Database from '@/stores/database';
-import { hijriDateEnabledAtom, popupUpdateEnabledAtom } from '@/stores/ui';
+import * as Timetable from '@/stores/timetable';
+import { __installTimetableDays } from '@/stores/timetable';
+import { hijriDateEnabledAtom, popupUpdateEnabledAtom, show24HourFormatAtom } from '@/stores/ui';
 import { initWidgetSettingsSync, refreshPrayerWidgets } from '@/stores/widget';
-import { ExtrasLockWidget, PrayerLockWidget } from '@/widgets/LockPrayerWidget';
+import {
+  ExtrasLockWidget,
+  ExtrasLockWidget2,
+  ExtrasLockWidget3,
+  ExtrasLockWidget4,
+  PrayerLockWidget,
+  PrayerLockWidget2,
+  PrayerLockWidget3,
+  PrayerLockWidget4,
+} from '@/widgets/LockPrayerWidget';
 import {
   ExtrasWidget,
   ExtrasWidgetDark,
@@ -50,7 +60,7 @@ import {
  * contract (belongsToDate) from the most likely way it regresses (the
  * calendar date of nextEpochMs).
  */
-const makeDayData = (date: string): ISingleApiResponseTransformed => ({
+const makeDayData = (date: string): DayRecord => ({
   date,
   fajr: '03:30',
   sunrise: '05:20',
@@ -82,7 +92,7 @@ const seedPrayerCache = () => {
   const yesterday = addDays(now, -1);
   const tomorrow = addDays(now, 1);
 
-  Database.saveAllPrayers([
+  Timetable.__installTimetableDays([
     makeDayData(formatDateShort(yesterday)),
     makeDayData(formatDateShort(now)),
     makeDayData(formatDateShort(tomorrow)),
@@ -93,6 +103,17 @@ const widgetPush = () => (PrayerWidget.updateTimeline as jest.Mock).mock.calls;
 const lockPush = () => (PrayerLockWidget.updateTimeline as jest.Mock).mock.calls;
 const extrasPush = () => (ExtrasWidget.updateTimeline as jest.Mock).mock.calls;
 const extrasLockPush = () => (ExtrasLockWidget.updateTimeline as jest.Mock).mock.calls;
+const lockKindPushes = () =>
+  [
+    PrayerLockWidget,
+    PrayerLockWidget2,
+    PrayerLockWidget3,
+    PrayerLockWidget4,
+    ExtrasLockWidget,
+    ExtrasLockWidget2,
+    ExtrasLockWidget3,
+    ExtrasLockWidget4,
+  ].map((kind) => (kind.updateTimeline as jest.Mock).mock.calls.length);
 const darkPush = () => (PrayerWidgetDark.updateTimeline as jest.Mock).mock.calls;
 const extrasDarkPush = () => (ExtrasWidgetDark.updateTimeline as jest.Mock).mock.calls;
 const mediumPush = () => (PrayerWidgetMedium.updateTimeline as jest.Mock).mock.calls;
@@ -103,6 +124,12 @@ const extrasDarkMediumPush = () => (ExtrasWidgetDarkMedium.updateTimeline as jes
 const resetWidgetMocks = () => {
   (PrayerWidget.updateTimeline as jest.Mock).mockClear();
   (PrayerLockWidget.updateTimeline as jest.Mock).mockClear();
+  for (const kind of [PrayerLockWidget2, PrayerLockWidget3, PrayerLockWidget4]) {
+    (kind.updateTimeline as jest.Mock).mockClear();
+  }
+  for (const kind of [ExtrasLockWidget2, ExtrasLockWidget3, ExtrasLockWidget4]) {
+    (kind.updateTimeline as jest.Mock).mockClear();
+  }
   (ExtrasWidget.updateTimeline as jest.Mock).mockClear();
   (ExtrasLockWidget.updateTimeline as jest.Mock).mockClear();
   (PrayerWidgetDark.updateTimeline as jest.Mock).mockClear();
@@ -154,6 +181,20 @@ describe('initWidgetSettingsSync', () => {
     // parity itself is covered by the widgetTimeline suites)
     const first = widgetPush()[0][0][0];
     expect(first.props.dateLabel).toBe(formatHijriDateLocalized(NIGHT_BELONGS_TO));
+  });
+
+  it('re-pushes the timeline when the 24-hour setting changes, carrying the format', async () => {
+    const store = getDefaultStore();
+    store.set(show24HourFormatAtom, true);
+
+    await jest.advanceTimersByTimeAsync(1000);
+
+    expect(widgetPush()).toHaveLength(1);
+    expect(lockPush()).toHaveLength(1);
+    // The pushed time renders 24-hour for the countdown target, Isha at 01:05 on the 22nd
+    const first = widgetPush()[0][0][0];
+    expect(first.props.nextTime).toBe('01:05');
+    store.set(show24HourFormatAtom, false);
   });
 
   it('collapses a burst of setting changes into a single push', async () => {
@@ -292,7 +333,7 @@ describe('push cadence', () => {
     jest.useRealTimers();
   });
 
-  it('pushes each of the twelve kinds once per refresh and never again on a timer', async () => {
+  it('pushes each of the sixteen kinds once per refresh and never again on a timer', async () => {
     await refreshPrayerWidgets();
 
     expect(widgetPush()).toHaveLength(1);
@@ -306,8 +347,11 @@ describe('push cadence', () => {
     expect(extrasMediumPush()).toHaveLength(1);
     expect(extrasDarkMediumPush()).toHaveLength(1);
 
+    // Every lock layout's kind carries the same push: eight of the sixteen.
+    expect(lockKindPushes()).toEqual([1, 1, 1, 1, 1, 1, 1, 1]);
+
     // A per-minute chain used to fire here, costing a WidgetKit reload on all
-    // twelve kinds; each reload re-renders that kind's whole timeline, which
+    // sixteen kinds; each reload re-renders that kind's whole timeline, which
     // exhausted the extension's CPU budget (ledger G.1 (git history))
     await jest.advanceTimersByTimeAsync(5 * 60 * 1000);
 
@@ -368,8 +412,8 @@ describe('refreshPrayerWidgets integration', () => {
     expect(darkEntries).not.toEqual(homeEntries);
   });
 
-  it('skips the push entirely when the prayer cache is empty', async () => {
-    Database.clearPrefix('prayer_');
+  it('skips the push entirely when the timetable serves no days', async () => {
+    __installTimetableDays([]);
 
     await refreshPrayerWidgets();
 

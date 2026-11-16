@@ -34,7 +34,7 @@ jest.mock('jotai', () => ({
   useAtomValue: (...args: Parameters<typeof mockReadAtom>) => mockReadAtom(...args),
 }));
 
-// Effects do not run: they hold only the hide timer after a close, and neither places the card
+// Effects do not run: none remain in the component, and none place the card
 jest.mock('react', () => ({
   ...jest.requireActual<typeof import('react')>('react'),
   useState: <T>(initial: T) => [initial, () => undefined],
@@ -42,13 +42,27 @@ jest.mock('react', () => ({
 }));
 
 jest.mock('react-native', () => ({ StyleSheet: { create: <T>(styles: T) => styles } }));
-jest.mock('react-native-reanimated', () => ({ __esModule: true, default: { View: 'Animated.View' } }));
-jest.mock('@/hooks/useAnimation', () => ({ useDerivedProgress: () => ({ value: 1 }), useDerivedOpacity: () => ({}) }));
+
+// Worklets run as plain functions here, so an animated style is its updater's plain object
+jest.mock('react-native-reanimated', () => ({
+  __esModule: true,
+  default: { View: 'Animated.View' },
+  useAnimatedStyle: (updater: () => unknown) => updater(),
+}));
+
+// Target-aware: the derived value reads its target, and a test can place the reveal mid-fade
+// by overriding it, which is the only handle a render-time harness has on an animation
+const mockReveal = { at: undefined as number | undefined };
+jest.mock('@/hooks/useAnimation', () => ({
+  useDerivedProgress: (target: number) => ({ value: mockReveal.at ?? target }),
+  useDerivedOpacity: () => ({}),
+}));
 jest.mock('@/stores/database', () => ({
-  getPrayerByDateString: jest.fn(),
   getItem: () => null,
   getRawItem: () => undefined,
 }));
+
+jest.mock('@/stores/timetable', () => ({ getTimetableDay: jest.fn() }));
 
 jest.mock('@/shared/time', () => ({
   ...jest.requireActual<typeof import('@/shared/time')>('@/shared/time'),
@@ -57,6 +71,7 @@ jest.mock('@/shared/time', () => ({
 
 jest.mock('@/stores/atoms/overlay', () => ({
   overlayAtom: 'overlayAtom',
+  overlayFadeSettledAtom: 'overlayFadeSettledAtom',
 }));
 
 // The store write needs the real primitive atom, while the component read goes through the string
@@ -124,7 +139,7 @@ describe('the Extras card on a list whose selected index is not its drawn row (r
       4,
       'bottom',
       { top: rowTop(4) + TIP_OVERLAP, transform: [{ translateY: '-100%' }] },
-      '1 hour before Magrib (Fridays only)',
+      '1 hour before Magrib (Fridays only) (the hour of acceptance)',
     ],
     [
       4,
@@ -177,7 +192,7 @@ describe('the Extras card on a four-row list, where only the last row may flip a
   it.each<[number, string, boolean]>([
     [0, 'Midnight', false],
     [1, 'Last Third', false],
-    [2, 'Suhoor', false],
+    [2, 'Sahur', false],
     [3, 'Duha', true],
   ])('index %i (%s) hangs above the row: %s', (index, english, above) => {
     openOnSaturday(index);
@@ -210,7 +225,7 @@ describe('the Extras card on a four-row list, where only the last row may flip a
 describe('the Extras card on a five-row Friday list, where the flip follows the extra row', () => {
   // [drawn row, the prayer, whether its card hangs above the row]
   it.each<[number, string, boolean]>([
-    [2, 'Suhoor', false],
+    [2, 'Sahur', false],
     [3, 'Duha', false],
     [4, 'Istijaba', true],
   ])('row %i (%s) hangs above: %s', (row, english, above) => {
@@ -222,5 +237,45 @@ describe('the Extras card on a five-row Friday list, where the flip follows the 
 
     expect(card.props).toMatchObject({ prayerName: english, arrowPosition: above ? 'bottom' : 'top' });
     expect(style.top).toBe(above ? rowTop(row) + TIP_OVERLAP : rowTop(row) + STYLES.prayer.height - TIP_OVERLAP);
+  });
+});
+
+// The holder's display is a cut on the reveal itself, evaluated where the reveal animates:
+// flex while the reveal is above 0 or the overlay is on this list, none only once the reveal
+// rests at 0. The card's last drawn frame is then the last frame of its own fade - the words
+// leave with the face by display, never through an opacity (T-294)
+describe('the holder display, cut on the reveal itself', () => {
+  afterEach(() => {
+    mockReveal.at = undefined;
+  });
+
+  const holderDisplay = (open: boolean, revealAt: number | undefined, settled: boolean): unknown => {
+    openOnReversedFriday(0);
+    mockReveal.at = revealAt;
+    mockAtomValues.set('overlayFadeSettledAtom', settled);
+    if (!open) {
+      mockAtomValues.set('overlayAtom', { isOn: false, selectedPrayerIndex: 0, scheduleType: ScheduleType.Extra });
+      mockStore.current = createStore();
+      mockStore.current.set(realOverlayAtom, { isOn: false, selectedPrayerIndex: 0, scheduleType: ScheduleType.Extra });
+    }
+
+    const tree = OverlayInfoBox({ type: ScheduleType.Extra });
+    if (!tree) throw new Error('the holder must render while the Extra list carries data');
+    const styles = tree.props.style as unknown as { display?: string }[];
+    return styles.find((entry) => entry.display !== undefined)?.display;
+  };
+
+  it('reads flex while the overlay is on this list, whatever the reveal', () => {
+    expect(holderDisplay(true, 0, false)).toBe('flex');
+  });
+
+  it('reads none once the overlay is off and the reveal rests at 0, the fade still unsettled', () => {
+    // The ghost window: the reveal has landed, the settle flag has not spoken. Only the cut
+    // itself can drop the card on the frame the reveal reaches 0
+    expect(holderDisplay(false, 0, false)).toBe('none');
+  });
+
+  it('reads flex while the reveal is still travelling, even with the fade settled', () => {
+    expect(holderDisplay(false, 0.5, true)).toBe('flex');
   });
 });

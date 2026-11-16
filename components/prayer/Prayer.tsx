@@ -1,11 +1,12 @@
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
-import { useEffect, useMemo, useState } from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
-import Animated from 'react-native-reanimated';
+import { useMemo } from 'react';
+import { StyleSheet, View } from 'react-native';
+import { Pressable } from 'react-native-gesture-handler';
+import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 
 import { getRowPressAction } from '@/components/prayer/rowPress';
-import { useDerivedVeiledColor } from '@/hooks/useAnimation';
+import { useDerivedProgress, useDerivedVeiledColor } from '@/hooks/useAnimation';
 import { usePrayer } from '@/hooks/usePrayer';
 import { usePrevious } from '@/hooks/usePrevious';
 import { isCascadeRow, useSchedule } from '@/hooks/useSchedule';
@@ -13,12 +14,13 @@ import { ANIMATION, COLORS, STYLES, TEXT } from '@/shared/constants';
 import { prayerLabel } from '@/shared/i18n';
 import { currentLocaleId } from '@/shared/i18n/locale';
 import { getCascadeDelay } from '@/shared/prayer';
-import type { ScheduleType } from '@/shared/types';
+import { ScheduleType } from '@/shared/types';
 import { typographyFor } from '@/shared/typography';
 import { getOverlayHiddenAtom, getOverlaySelectedAtom } from '@/stores/atoms/overlay';
 import { closeOverlay, openOverlay } from '@/stores/overlay';
 
 import Alert from './Alert';
+import FastingBellCluster from './FastingBellCluster';
 import Time from './Time';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
@@ -56,7 +58,8 @@ export default function Prayer({ type, index }: Props) {
   // The overlay's veil wraps this tween: a hidden row's ink sinks toward the veil solid, so the
   // row fades without any of its text ever rendering through an opacity
   const colorPos = isSelectedForOverlay ? 1 : Prayer.ui.initialColorPos;
-  const colorStyle = useDerivedVeiledColor(isHiddenByOverlay ? 1 : 0, colorPos, {
+  const veilTarget = isHiddenByOverlay ? 1 : 0;
+  const colorStyle = useDerivedVeiledColor(veilTarget, colorPos, {
     fromColor: COLORS.text.muted,
     toColor: COLORS.text.primary,
     veilColor: COLORS.gradient.overlay.veil,
@@ -65,23 +68,24 @@ export default function Prayer({ type, index }: Props) {
     delay: isCascadeRoll ? getCascadeDelay(index, type) : 0,
   });
 
-  // Hold the row drawn through its fade, then drop it: the resting frame under an open overlay
-  // shows the backdrop exactly, as the old veil opacity 0 did, while the ink tween runs first
-  const [hiddenSettled, setHiddenSettled] = useState(false);
-  useEffect(() => {
-    if (!isHiddenByOverlay) {
-      setHiddenSettled(false);
-      return;
-    }
-
-    const hideTimer = setTimeout(() => setHiddenSettled(true), ANIMATION.duration);
-    return () => clearTimeout(hideTimer);
-  }, [isHiddenByOverlay]);
+  // The row's own cut, the badge's pattern (T-490): display drops to none in the worklet
+  // evaluation that carries the veil progress to 1 - the frame the row's ink finished
+  // sinking into the veil - and flips flex the moment the veil lifts on close. The row
+  // reads no settle flag: the fade's completion used to re-render all six rows to drop
+  // five of them, a JS commit plus a deletion-heavy diff inside the entrance window
+  // (digest 5111's wave 4, step 25's subject), and the worklet lands the same cut on
+  // content already invisible with no commit at all
+  const veilProgress = useDerivedProgress(veilTarget, { duration: ANIMATION.duration });
+  const contentCutStyle = useAnimatedStyle(() => ({ display: veilProgress.value >= 1 ? 'none' : 'flex' }));
 
   // A row whose occurrence left the sequence (refresh mid-selection) reports the
   // loading frame: empty time, the sentinel id. It draws no name, exactly as the
   // empty pre-union name did, so no frame ever borrows another prayer's label
   const shownName = Prayer.time === '' ? '' : prayerLabel(Prayer.id);
+
+  // The Suhoor row alone carries the fasting indicator: its bell tells the whole
+  // selection at a glance, every other row's bell its own alerts only
+  const isSuhoorExtrasRow = type === ScheduleType.Extra && Prayer.id === 'suhoor';
 
   const computedNameStyle = {
     width: Prayer.ui.maxEnglishWidth + STYLES.prayer.padding.start,
@@ -106,11 +110,14 @@ export default function Prayer({ type, index }: Props) {
       onPress={handlePress}
       accessibilityElementsHidden={isHiddenByOverlay}
       importantForAccessibility={isHiddenByOverlay ? 'no-hide-descendants' : 'auto'}>
-      <View style={[styles.content, { display: hiddenSettled ? 'none' : 'flex' }]}>
+      <Animated.View style={[styles.content, contentCutStyle]}>
         <Animated.Text style={[styles.text, styles.name, computedNameStyle, colorStyle]}>{shownName}</Animated.Text>
         <Time index={index} type={type} />
-        <Alert index={index} type={type} />
-      </View>
+        <View style={styles.alertSlot}>
+          <Alert index={index} type={type} />
+          {isSuhoorExtrasRow && <FastingBellCluster hidden={isHiddenByOverlay} />}
+        </View>
+      </Animated.View>
     </AnimatedPressable>
   );
 }
@@ -135,5 +142,8 @@ const styles = StyleSheet.create({
   },
   name: {
     paddingStart: STYLES.prayer.padding.start,
+  },
+  alertSlot: {
+    position: 'relative',
   },
 });

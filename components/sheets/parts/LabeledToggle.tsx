@@ -1,5 +1,8 @@
+import * as Haptics from 'expo-haptics';
+import { forwardRef, useRef } from 'react';
 import { Pressable, StyleSheet, Text } from 'react-native';
 
+import type { ToggleHandle } from '@/components/sheets/parts/Toggle';
 import { COLORS, HIT_SLOP, SPACING, TEXT } from '@/shared/constants';
 import { currentLocaleId } from '@/shared/i18n/locale';
 import { perfMark } from '@/shared/perf';
@@ -10,31 +13,50 @@ import Toggle from './Toggle';
 interface LabeledToggleProps {
   label: string;
   value: boolean;
-  onToggle: () => void;
+  onToggle: (next: boolean) => void;
 }
 
 /**
  * Labeled toggle - composes Toggle primitive with a text label.
  *
  * @example
- * <LabeledToggle label="Enable feature" value={enabled} onToggle={() => setEnabled(!enabled)} />
+ * <LabeledToggle label="Enable feature" value={enabled} onToggle={(next) => setEnabled(next)} />
  */
-export default function LabeledToggle({ label, value, onToggle }: LabeledToggleProps) {
-  const handleToggle = () => {
+const LabeledToggle = forwardRef<unknown, LabeledToggleProps>(({ label, value, onToggle }, _ref) => {
+  // The one place both presses meet: the row's label routes through the switch's
+  // own press, so the thumb flips, the haptic lands and the write settles
+  // identically whichever was touched - the feedback rides the switch's own
+  // press path, once either way
+  const toggleRef = useRef<ToggleHandle>(null);
+
+  const handleLabelPress = () => toggleRef.current?.press();
+
+  const handleSwitchPress = () => {
     perfMark('toggle_tap', { label });
-    onToggle();
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
   };
 
   return (
     // The label names the row's own switch, which carries the role and the checked state. The
     // row stays unnamed on purpose: naming it too would have a screen reader offer two controls
     // for one setting, and the switch is the one that reports its state
-    <Pressable style={styles.container} onPress={handleToggle} hitSlop={HIT_SLOP.md} accessibilityLabel={label}>
-      <Text style={styles.label}>{label}</Text>
-      <Toggle value={value} onToggle={handleToggle} accessibilityLabel={label} />
+    <Pressable style={styles.container} onPress={handleLabelPress} hitSlop={HIT_SLOP.md} accessibilityLabel={label}>
+      {/* One line, yielding: a long label ellipsizes and never pushes the switch out of the card (T-540) */}
+      <Text style={styles.label} numberOfLines={1}>
+        {label}
+      </Text>
+      <Toggle
+        ref={toggleRef}
+        value={value}
+        onToggle={onToggle}
+        onPress={handleSwitchPress}
+        accessibilityLabel={label}
+      />
     </Pressable>
   );
-}
+});
+
+export default LabeledToggle;
 
 const ty = typographyFor(currentLocaleId());
 
@@ -46,6 +68,8 @@ const styles = StyleSheet.create({
     paddingVertical: SPACING.smd,
   },
   label: {
+    // Yields to the trailing controls: a long label shrinks and ellipsizes, the chip never leaves the card
+    flexShrink: 1,
     color: COLORS.text.primary,
     fontFamily: ty.familyRegular,
     fontSize: ty.size(TEXT.sizeDetail),

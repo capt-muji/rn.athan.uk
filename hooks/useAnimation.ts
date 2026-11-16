@@ -84,6 +84,13 @@ interface DerivedTimingOptions {
   easing?: WithTimingConfig['easing'];
   /** Use Reanimated's default timing, matching a bare `withTiming` call */
   defaultTiming?: boolean;
+  /**
+   * Fires when the transition reaches its target — from the animation's own
+   * completion, so it is phase-locked to what the screen actually did, or
+   * immediately on a snap (first evaluation, resume): a snapped value is at
+   * its target by definition. Never fires for a superseded animation.
+   */
+  onSettled?: () => void;
 }
 
 /**
@@ -101,6 +108,7 @@ export const useDerivedProgress = (target: number, options?: DerivedTimingOption
   const delay = latched.current.options?.delay ?? 0;
   const easing = latched.current.options?.easing;
   const useDefaultTiming = latched.current.options?.defaultTiming ?? false;
+  const onSettled = latched.current.options?.onSettled;
 
   const isFirstEvaluation = useSharedValue(true);
   const lastResync = useSharedValue(resync);
@@ -109,13 +117,20 @@ export const useDerivedProgress = (target: number, options?: DerivedTimingOption
     if (isFirstEvaluation.value || lastResync.value !== resync) {
       isFirstEvaluation.value = false;
       lastResync.value = resync;
+      if (onSettled) runOnJS(onSettled)();
       return target;
     }
 
     // Omit an undefined easing: an explicit `easing: undefined` overrides
-    // Reanimated's default and makes withTiming call undefined(t)
+    // Reanimated's default and makes withTiming call undefined(t). The
+    // completion callback rides only when someone asked to know: the hook is
+    // the app's hottest, and no other consumer's animation carries it
     const config = useDefaultTiming ? undefined : easing !== undefined ? { duration, easing } : { duration };
-    const animation = withTiming(target, config);
+    const animation = onSettled
+      ? withTiming(target, config, (finished) => {
+          if (finished) runOnJS(onSettled)();
+        })
+      : withTiming(target, config);
     return delay > 0 ? withDelay(delay, animation) : animation;
   });
 };
@@ -164,7 +179,13 @@ export const useDerivedVeiledColor = (
   }));
 };
 
-/** The veil composition on a background, for a pill that hides with its own ink (the ago badge) */
+/**
+ * The pill twin of the veiled ink: the ago badge's background rides its own state tween inside
+ * the same veil interpolation, so whatever veil end the caller hands it lands on the pill's own
+ * clock - the badge thins its translucent wash into the veil (alpha to zero) while its ink
+ * falls to the veil solid, and the ink never reads dark on a still-bright pill mid-fade
+ * (T-490). A background, not ink: the T-294 opacity ban exempts it by design.
+ */
 export const useDerivedVeiledBackgroundColor = (
   veilTarget: number,
   backgroundTarget: number,

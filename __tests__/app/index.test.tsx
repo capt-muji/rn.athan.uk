@@ -10,7 +10,6 @@ import * as SplashScreen from 'expo-splash-screen';
 import { getDefaultStore } from 'jotai';
 
 import { london, onPlatform, saveLondonDays, showLondonDay } from '@/__tests__/harness';
-import { fetchYear } from '@/api/client';
 import { runBackgroundTaskDebugSequence } from '@/device/backgroundTaskDebug';
 import { initializeListeners } from '@/device/listeners';
 import { hideSwitchCover } from '@/device/switchCover';
@@ -21,14 +20,21 @@ import { BACKGROUND_TASK_NAME } from '@/shared/constants';
 import { FEATURE_FLAGS } from '@/shared/flags';
 import logger from '@/shared/logger';
 import { initializeNotifications } from '@/shared/notifications';
-import { AlertType, type ISingleApiResponseTransformed, ScheduleType } from '@/shared/types';
+import { AlertType, ScheduleType } from '@/shared/types';
 import type * as WhatsNew from '@/shared/whatsNew';
 import * as Database from '@/stores/database';
 import { languageCommitBusyAtom, reconcileLanguageSurfaces } from '@/stores/language';
 import { refreshNotifications, setPrayerAlertType } from '@/stores/notifications';
 import { openOverlay } from '@/stores/overlay';
 import { setSequence } from '@/stores/schedule';
-import { decorationsEnabledAtom, markDecorationsLoaded, markMasjidIconLoaded, setPopupHelpEnabled } from '@/stores/ui';
+import { ensureTimetableReady, getTimetableDay } from '@/stores/timetable';
+import {
+  decorationsEnabledAtom,
+  markDecorationsLoaded,
+  markMasjidLoaded,
+  masjidLoadedAtom,
+  setPopupHelpEnabled,
+} from '@/stores/ui';
 import {
   CACHE_SCHEMA_VERSION,
   getInstalledVersion,
@@ -39,16 +45,21 @@ import {
 
 import Index, { __resetLaunchInitForTests } from '../../app/index';
 
-// Sync downloads the year over the network, so each test decides what the download answers. Unless told, it is still
-// on its way
-jest.mock('@/api/client', () => ({
-  fetchDay: jest.fn(() => new Promise(() => {})),
-  fetchYear: jest.fn(() => new Promise(() => {})),
-}));
+// The launch's one wait is the timetable becoming ready, so each test decides what the reader answers. Unless
+// told otherwise, the timetable is ready and serves whatever days are installed into it
+const actualTimetable = () => jest.requireActual<typeof import('@/stores/timetable')>('@/stores/timetable');
+jest.mock('@/stores/timetable', () => {
+  const actual = jest.requireActual<typeof import('@/stores/timetable')>('@/stores/timetable');
+  return {
+    ...actual,
+    getTimetableDay: jest.fn((date: string) => actual.getTimetableDay(date)),
+    ensureTimetableReady: jest.fn(() => Promise.resolve()),
+  };
+});
 
 // The update check asks the store over the network and Update opens the store, so both are observed instead of run
 jest.mock('@/device/updates', () => ({
-  checkForUpdates: jest.fn(() => Promise.resolve(false)),
+  checkForUpdates: jest.fn(() => Promise.resolve({ modal: false, upToDate: false, failed: false })),
   openStore: jest.fn(() => Promise.resolve()),
 }));
 
@@ -122,27 +133,44 @@ const UPDATE_PROMPT_TITLE = /^Update Available/;
 /** A frame and the macrotask after it, which is when the prompts and the overlay mount */
 const FIRST_FRAME_MS = 50;
 
+/** How long after mount the reveal gives up on a first frame that never comes */
+const DRAWN_BACKSTOP_MS = 2000;
+
+/** Fires the content root's layout event, which on device is the content's first drawn frame */
+const drawFirstContentFrame = () =>
+  fireEvent(screen.getByTestId('launch-content'), 'layout', {
+    nativeEvent: { layout: { x: 0, y: 0, width: 320, height: 692 } },
+  });
+
 /** How long after mount the notification set-up, the diagnostics and the update check wait */
 const SETTLING_WINDOW_MS = 1500;
 
 /** 11 September 2026 at 14:00 with no day stored, as after an upgrade wipe or across a year gap */
-const showEmptyLaunch = () => jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-
-/** The London days as a download brings them, taken out of storage again so the launch starts without them */
-const takeDownloadOfStoredDays = (): ISingleApiResponseTransformed[] => {
-  saveLondonDays();
-  const days = Database.getAllWithPrefix('prayer_');
-  Database.clearPrefix('prayer_');
-  return days;
+const showEmptyLaunch = () => {
+  jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+  jest.mocked(getTimetableDay).mockImplementation(() => null);
 };
 
-/** Holds the next download on its way until the returned function fails it, so a test decides when sync finishes */
-const holdDownload = (): (() => void) => {
+/** Puts the reader's passthrough back, so a case that emptied or held the launch leaves nothing behind */
+const serveInstalledDays = () => {
+  const actual = actualTimetable();
+  jest
+    .mocked(getTimetableDay)
+    .mockReset()
+    .mockImplementation((date: string) => actual.getTimetableDay(date));
+  jest
+    .mocked(ensureTimetableReady)
+    .mockReset()
+    .mockImplementation(() => Promise.resolve());
+};
+
+/** Holds the launch's wait for the timetable until the returned function fails it, so a test decides when sync ends */
+const holdStage = (): (() => void) => {
   let fail = () => {};
-  jest.mocked(fetchYear).mockImplementationOnce(
+  jest.mocked(ensureTimetableReady).mockImplementationOnce(
     () =>
       new Promise((_, reject) => {
-        fail = () => reject(new Error('Offline'));
+        fail = () => reject(new Error('The artifact will not stage'));
       })
   );
   return () => fail();
@@ -181,7 +209,13 @@ beforeEach(() => {
   setStoredVersion(getInstalledVersion());
   Database.setItem('cache_schema_version', CACHE_SCHEMA_VERSION);
   __resetLaunchInitForTests();
+  getDefaultStore().set(masjidLoadedAtom, false);
+  // A test that emptied the launch left the reader answering null; every test starts at the passthrough
+  serveInstalledDays();
 });
+
+/** The icon's decode mark, as the real Image's onLoadEnd fires it (T-541) */
+const decodeMasjidIcon = () => act(() => markMasjidLoaded());
 
 afterEach(() => {
   resetMockExpoConfig();
@@ -342,68 +376,101 @@ describe('the launch splash, Friday 11 September 2026 at 14:00', () => {
     expect(SplashScreen.hideAsync).toHaveBeenCalled();
   });
 
-  it('shows neither lists nor the error screen while a launch with no stored days waits for its download', async () => {
+  it('shows neither lists nor the error screen while a launch with no readable days waits for the timetable', async () => {
+    const failStage = holdStage();
     showEmptyLaunch();
 
     await render(<Index />);
 
     expect(screen.queryByText('London, UK')).not.toBeOnTheScreen();
     expect(screen.queryByText('Something went wrong.')).not.toBeOnTheScreen();
+
+    // Consume the held stage inside the test, so no later test inherits it
+    await act(() => failStage());
   });
 
-  it('shows the lists once the download on a launch with no stored days has landed', async () => {
+  it('shows the lists once the timetable on a launch with no readable days is serving them', async () => {
     showEmptyLaunch();
-    jest.mocked(fetchYear).mockResolvedValueOnce(takeDownloadOfStoredDays());
+    serveInstalledDays();
+    saveLondonDays();
 
     await render(<Index />);
 
     expect(await screen.findByRole('button', { name: 'Isha notification: off' })).toBeOnTheScreen();
   });
 
-  it('shows the error screen when a launch with no stored days cannot download them', async () => {
+  it('shows the error screen when a launch with no readable days cannot stage the artifact', async () => {
     showEmptyLaunch();
-    jest.mocked(fetchYear).mockRejectedValueOnce(new Error('Offline'));
+    jest.mocked(ensureTimetableReady).mockRejectedValueOnce(new Error('The artifact will not stage'));
 
     await render(<Index />);
 
     expect(await screen.findByText('Something went wrong.')).toBeOnTheScreen();
   });
 
-  it('holds the splash over stored lists until the Masjid icon has loaded', async () => {
+  it("holds the splash past the content commit, the first drawn frame and the Masjid icon's decode, and lifts with the icon in the first revealed frame", async () => {
     showLondonDay('2026-09-11', '14:00');
+    getDefaultStore().set(masjidLoadedAtom, false);
     await render(<Index />);
 
-    await act(() => jest.advanceTimersByTime(FIRST_FRAME_MS));
-
+    // The commit is not the frame: Fabric's native mount burst trails it on a launch-busy phone
+    // (the 3T, 1-2s under load), and until the first frame draws the window background - the
+    // splash purple - shows through where content should be
     expect(SplashScreen.hideAsync).not.toHaveBeenCalled();
+
+    await drawFirstContentFrame();
+
+    // The frame has drawn but the icon's bitmap is still decoding: the owner's 2.43.1 read
+    // measured a ~300ms gap and a snap here (T-541), so the reveal now waits for the decode
+    expect(SplashScreen.hideAsync).not.toHaveBeenCalled();
+
+    await act(() => markMasjidLoaded());
+
+    expect(SplashScreen.hideAsync).toHaveBeenCalledTimes(1);
   });
 
-  it('lifts the splash over stored lists once the Masjid icon has loaded', async () => {
+  it('lifts the splash anyway once the backstop passes with no first frame, so a tree that never lays out cannot strand the splash', async () => {
     showLondonDay('2026-09-11', '14:00');
+    await decodeMasjidIcon();
     await render(<Index />);
 
-    await act(() => markMasjidIconLoaded());
+    await act(() => jest.advanceTimersByTime(DRAWN_BACKSTOP_MS - 1));
+    expect(SplashScreen.hideAsync).not.toHaveBeenCalled();
+
+    await act(() => jest.advanceTimersByTime(1));
+
+    expect(SplashScreen.hideAsync).toHaveBeenCalledTimes(1);
+  });
+
+  it('keeps the reveal at one once the first frame has drawn and the backstop passes later', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await decodeMasjidIcon();
+    await render(<Index />);
+
+    await drawFirstContentFrame();
+    await act(() => jest.advanceTimersByTime(DRAWN_BACKSTOP_MS));
 
     expect(SplashScreen.hideAsync).toHaveBeenCalledTimes(1);
   });
 });
 
 describe('the launch splash in Ramadan, Monday 15 February 2027 at 14:00', () => {
-  it('holds the splash until the decorations have loaded', async () => {
+  it('holds the splash until the decorations have loaded, past the first drawn frame', async () => {
     showRamadanLists();
-    markMasjidIconLoaded();
     await render(<Index />);
 
+    await drawFirstContentFrame();
     await act(() => jest.advanceTimersByTime(FIRST_FRAME_MS));
 
     expect(SplashScreen.hideAsync).not.toHaveBeenCalled();
   });
 
-  it('lifts the splash once the decorations have loaded', async () => {
+  it('lifts the splash once the decorations have loaded onto a drawn frame', async () => {
     showRamadanLists();
-    markMasjidIconLoaded();
+    await decodeMasjidIcon();
     await render(<Index />);
 
+    await drawFirstContentFrame();
     await act(() => markDecorationsLoaded());
 
     expect(SplashScreen.hideAsync).toHaveBeenCalledTimes(1);
@@ -411,40 +478,30 @@ describe('the launch splash in Ramadan, Monday 15 February 2027 at 14:00', () =>
 
   it('lifts the splash without waiting for decorations that are turned off', async () => {
     showRamadanLists();
-    markMasjidIconLoaded();
     // The Settings toggle writes this preference through its atom, and the store has no setter for it
     getDefaultStore().set(decorationsEnabledAtom, false);
+    await decodeMasjidIcon();
 
     await render(<Index />);
+
+    await drawFirstContentFrame();
 
     expect(SplashScreen.hideAsync).toHaveBeenCalledTimes(1);
   });
 
   // No day of 2027 is stored, so the failed download leaves nothing usable and sync fails
-  it('lifts the splash onto the error screen, without waiting for decorations that screen never draws', async () => {
+  it('lifts the splash onto the error screen on its first drawn frame, without waiting for decorations that screen never draws', async () => {
     showRamadanLists();
-    markMasjidIconLoaded();
-    jest.mocked(fetchYear).mockRejectedValueOnce(new Error('Offline'));
+    jest.mocked(ensureTimetableReady).mockRejectedValueOnce(new Error('The artifact will not stage'));
 
     await render(<Index />);
 
     expect(await screen.findByText('Something went wrong.')).toBeOnTheScreen();
+    expect(SplashScreen.hideAsync).not.toHaveBeenCalled();
+
+    await drawFirstContentFrame();
+
     expect(SplashScreen.hideAsync).toHaveBeenCalledTimes(1);
-  });
-
-  it('holds the splash over the error screen until its Masjid icon has loaded, then lifts it', async () => {
-    showRamadanLists();
-    jest.mocked(fetchYear).mockRejectedValueOnce(new Error('Offline'));
-    await render(<Index />);
-    await screen.findByText('Something went wrong.');
-    const beforeIcon = jest.mocked(SplashScreen.hideAsync).mock.calls.length;
-
-    await act(() => markMasjidIconLoaded());
-
-    expect({ beforeIcon, afterIcon: jest.mocked(SplashScreen.hideAsync).mock.calls.length }).toEqual({
-      beforeIcon: 0,
-      afterIcon: 1,
-    });
   });
 });
 
@@ -468,22 +525,26 @@ describe('alerts and the settling window, Friday 11 September 2026 at 14:00', ()
     expect(Notifications.getPermissionsAsync).toHaveBeenCalledTimes(1);
   });
 
-  it('does not arm saved alerts while the download is still on its way', async () => {
+  it('does not arm saved alerts while the timetable is still becoming ready', async () => {
+    const failStage = holdStage();
     showLondonDay('2026-09-11', '14:00');
     setPrayerAlertType(ScheduleType.Standard, ASR, AlertType.Sound);
 
     await render(<Index />);
 
     expect(Notifications.scheduleNotificationAsync).not.toHaveBeenCalled();
+
+    // Consume the held stage inside the test, so no later test inherits it
+    await act(() => failStage());
   });
 
   it('arms saved alerts once sync has finished', async () => {
     showLondonDay('2026-09-11', '14:00');
     setPrayerAlertType(ScheduleType.Standard, ASR, AlertType.Sound);
-    const failDownload = holdDownload();
+    const failStage = holdStage();
     await render(<Index />);
 
-    await act(() => failDownload());
+    await act(() => failStage());
 
     await waitFor(() =>
       expect(Notifications.scheduleNotificationAsync).toHaveBeenCalledWith(
@@ -496,10 +557,10 @@ describe('alerts and the settling window, Friday 11 September 2026 at 14:00', ()
     showLondonDay('2026-09-11', '14:00');
     const error = new Error('Notification service unavailable');
     jest.mocked(Notifications.getAllScheduledNotificationsAsync).mockRejectedValueOnce(error);
-    const failDownload = holdDownload();
+    const failStage = holdStage();
     await render(<Index />);
 
-    await act(() => failDownload());
+    await act(() => failStage());
 
     await waitFor(() =>
       expect(logger.error).toHaveBeenCalledWith('Failed to refresh notifications after sync:', error)
@@ -523,6 +584,36 @@ describe('alerts and the settling window, Friday 11 September 2026 at 14:00', ()
     await act(() => jest.advanceTimersByTime(SETTLING_WINDOW_MS));
 
     expect(runBackgroundTaskDebugSequence).toHaveBeenCalledTimes(1);
+  });
+
+  it('runs the diagnostics on a release build only through the EXPO_PUBLIC_BG_DEBUG gate', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    relaunchRelease();
+    jest.replaceProperty(globalThis as typeof globalThis & { __DEV__: boolean }, '__DEV__', false);
+    const previousDebug = process.env.EXPO_PUBLIC_BG_DEBUG;
+    process.env.EXPO_PUBLIC_BG_DEBUG = '1';
+    try {
+      await render(<Index />);
+
+      await act(() => jest.advanceTimersByTime(SETTLING_WINDOW_MS));
+
+      expect(runBackgroundTaskDebugSequence).toHaveBeenCalledTimes(1);
+    } finally {
+      if (previousDebug === undefined) delete process.env.EXPO_PUBLIC_BG_DEBUG;
+      else process.env.EXPO_PUBLIC_BG_DEBUG = previousDebug;
+    }
+  });
+
+  it('skips the diagnostics on a release build without the EXPO_PUBLIC_BG_DEBUG gate', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    relaunchRelease();
+    jest.replaceProperty(globalThis as typeof globalThis & { __DEV__: boolean }, '__DEV__', false);
+    delete process.env.EXPO_PUBLIC_BG_DEBUG;
+    await render(<Index />);
+
+    await act(() => jest.advanceTimersByTime(SETTLING_WINDOW_MS));
+
+    expect(runBackgroundTaskDebugSequence).not.toHaveBeenCalled();
   });
 
   it('registers the background refresh once 1.5 seconds have passed', async () => {
@@ -644,7 +735,7 @@ describe('the overlay layer, Friday 11 September 2026 at 14:00', () => {
 describe('the update prompt, Friday 11 September 2026 at 14:00', () => {
   it('offers the update once 1.5 seconds have passed and the store has a newer version', async () => {
     showLondonDay('2026-09-11', '14:00');
-    jest.mocked(checkForUpdates).mockResolvedValueOnce(true);
+    jest.mocked(checkForUpdates).mockResolvedValueOnce({ modal: true, upToDate: false, failed: false });
     await render(<Index />);
 
     await act(() => jest.advanceTimersByTime(SETTLING_WINDOW_MS));
@@ -664,7 +755,7 @@ describe('the update prompt, Friday 11 September 2026 at 14:00', () => {
 
   it('closes the update prompt when Later is pressed', async () => {
     showLondonDay('2026-09-11', '14:00');
-    jest.mocked(checkForUpdates).mockResolvedValueOnce(true);
+    jest.mocked(checkForUpdates).mockResolvedValueOnce({ modal: true, upToDate: false, failed: false });
     await render(<Index />);
     await act(() => jest.advanceTimersByTime(SETTLING_WINDOW_MS));
 
@@ -676,7 +767,7 @@ describe('the update prompt, Friday 11 September 2026 at 14:00', () => {
 
   it('opens the store and closes the prompt when Update is pressed', async () => {
     showLondonDay('2026-09-11', '14:00');
-    jest.mocked(checkForUpdates).mockResolvedValueOnce(true);
+    jest.mocked(checkForUpdates).mockResolvedValueOnce({ modal: true, upToDate: false, failed: false });
     await render(<Index />);
     await act(() => jest.advanceTimersByTime(SETTLING_WINDOW_MS));
 
@@ -689,7 +780,7 @@ describe('the update prompt, Friday 11 September 2026 at 14:00', () => {
   it('holds the update prompt back while Help is showing', async () => {
     showLondonDay('2026-09-11', '14:00');
     relaunchRelease();
-    jest.mocked(checkForUpdates).mockResolvedValueOnce(true);
+    jest.mocked(checkForUpdates).mockResolvedValueOnce({ modal: true, upToDate: false, failed: false });
     await render(<Index />);
     await act(() => jest.advanceTimersByTime(SETTLING_WINDOW_MS));
     await act(() => setPopupHelpEnabled(true));
@@ -701,7 +792,7 @@ describe('the update prompt, Friday 11 September 2026 at 14:00', () => {
   it("holds the update prompt back while What's New is showing", async () => {
     showLondonDay('2026-09-11', '14:00');
     installUpdate();
-    jest.mocked(checkForUpdates).mockResolvedValueOnce(true);
+    jest.mocked(checkForUpdates).mockResolvedValueOnce({ modal: true, upToDate: false, failed: false });
     await render(<Index />);
 
     await act(() => jest.advanceTimersByTime(SETTLING_WINDOW_MS));
@@ -724,7 +815,7 @@ describe('the update prompt, Friday 11 September 2026 at 14:00', () => {
   it("offers the update once What's New is closed", async () => {
     showLondonDay('2026-09-11', '14:00');
     installUpdate();
-    jest.mocked(checkForUpdates).mockResolvedValueOnce(true);
+    jest.mocked(checkForUpdates).mockResolvedValueOnce({ modal: true, upToDate: false, failed: false });
     await render(<Index />);
     await act(() => jest.advanceTimersByTime(SETTLING_WINDOW_MS));
 

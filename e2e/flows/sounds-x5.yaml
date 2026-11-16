@@ -1,8 +1,12 @@
-appId: ${APP_ID}
+appId: com.example.athan
 name: sounds-x5
 tags:
   - baseline
 ---
+# appId is the literal dev package id: maestro 2.10.0 does not substitute
+# ${APP_ID} from the environment (probed 2026-11-04: an exported var, even
+# MAESTRO_-prefixed, reaches no appId field), so a committed flow carrying it
+# launches no app and can drive the wrong package through the dock.
 # Sound sheet suite (OnePlus 3T pixels): open settings, then the "Change athan" row
 # (row 540,1138) — which closes settings and opens the sound sheet in the same
 # tick, so only ONE sheet is open from here on. Select row 2 then re-select

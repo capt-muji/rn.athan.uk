@@ -15,7 +15,7 @@ import Animated, {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { useWindowDimensions } from '@/hooks/useWindowDimensions';
-import { isRamadan } from '@/shared/time';
+import { decorationsVisible, isRamadan } from '@/shared/time';
 import { decorationsEnabledAtom, markDecorationsLoaded } from '@/stores/ui';
 
 const AnimatedImage = Animated.createAnimatedComponent(Image);
@@ -39,7 +39,7 @@ const SPRITES = {
   cloudTop2: require('@/assets/icons/png/decorations/cloud-top-2.png'),
 } as const;
 
-// --- Colors (tuned for #031a4c → #5b1eaa background) — wires render as Views ---
+// --- Colors (tuned on the pre-redesign gradient; the wires read on the new navy ground unchanged) — wires render as Views ---
 const THREAD_COLOR = '#C9A87C';
 const GLOW_PULSE_DURATION = 3000;
 
@@ -258,7 +258,7 @@ export default function RamadanDecorations() {
   // a year while this component renders nothing (measured 93% main-thread CPU
   // idle on the 3T). Visibility re-evaluates on every render; the effect
   // re-arms when it flips true.
-  const visible = isRamadan() && decorationsEnabled;
+  const visible = decorationsVisible(isRamadan(), decorationsEnabled);
 
   // Android height includes nav bar — scale down vertical positions
   const vScale = Platform.OS === 'android' ? 0.6 : 1;
@@ -394,8 +394,8 @@ export default function RamadanDecorations() {
   ]);
 
   // Splash-gate accounting: every Image the visible tree renders reports via
-  // onLoadEnd, and the splash reveals once all land (the mosque-icon Fresco
-  // race generalized to sprites — see masjidIconLoadedAtom). The expected
+  // onLoadEnd, and the splash reveals once all land (a Fresco async-decode
+  // race, on every sprite at once). The expected
   // total derives from the same configs that render the tree, so adding a
   // hanging or cloud keeps it correct. onLoadEnd fires on failure too, so a
   // lost bitmap can never wedge the splash. Hooks live above the visibility

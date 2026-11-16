@@ -30,8 +30,8 @@ const store = getDefaultStore();
 /**
  * Most list days a sequence grows to while it has no readable row still to come
  *
- * Two weeks outlasts any realistic gap in the provider's data, and bounds the work when storage holds
- * nothing readable at all.
+ * Two weeks bounds the work when storage holds nothing readable at all, and outlasts
+ * any unreadable run a wiped or torn store can serve.
  */
 const MAX_SEQUENCE_DAYS = 14;
 
@@ -56,7 +56,7 @@ export const getSequenceAtom = (type: ScheduleType) => {
  * Looked for in the sequence first. When next is a list's first row and the sequence does not hold the list
  * before, that list is built from storage with the same builder as the sequence, so a post-midnight Isha
  * comes back at its own instant rather than 24 hours early (gap map L3). When that list's last row has no
- * time, as on a 1 January whose 31 December is not stored or after a day with no readable time, there is
+ * time, as on a day with no readable time or past the artifact's last day, there is
  * nothing to measure from and the bar cannot be worked out (R13, R14).
  *
  * @param type Schedule type (Standard or Extra)
@@ -98,8 +98,8 @@ const findPreviousPrayer = (
 /**
  * Adds list days after the last one until a readable row is still to come, up to MAX_SEQUENCE_DAYS
  *
- * A run of days with no readable time (a week missing from storage) would otherwise leave nothing to count
- * down to, and the countdown would disappear until the list reached the far side of the gap.
+ * A run of days with no readable time (an empty store, or a date past the artifact's last day) would otherwise
+ * leave nothing to count down to, and the countdown would disappear until the list reached a readable day.
  *
  * @param type Schedule type (Standard or Extra)
  * @param prayers A sequence in list order

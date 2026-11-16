@@ -3,6 +3,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { type LayoutChangeEvent, Pressable, StyleSheet, View } from 'react-native';
 import Animated, {
   interpolateColor,
+  runOnJS,
   useAnimatedStyle,
   useDerivedValue,
   useSharedValue,
@@ -11,6 +12,7 @@ import Animated, {
 
 import { CONTROL_WASH, type DimState, dimDisables, SEGMENT_LABEL, SEGMENT_PILL } from '@/components/sheets/parts/dim';
 import { IconView } from '@/components/ui';
+import { useSettledWrite } from '@/hooks/useSettledWrite';
 import { ANIMATION, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { currentLocaleId, localeDirection } from '@/shared/i18n/locale';
 import type { AlertType, Icon } from '@/shared/types';
@@ -32,6 +34,14 @@ export interface SegmentedControlProps {
   onSelect: (value: AlertType) => void;
   /** Which wrapper dim the control renders under; labels, pill and wash come from its tables */
   dim?: DimState;
+  /**
+   * The selection's write rides the pill's settle instead of the press: the
+   * pill flips optimistically and onSelect latches to the animation's
+   * completion, generation-stamped. For controls whose handler must run at the
+   * press itself - one that gates on a permission the press starts - the
+   * default keeps the write on the press.
+   */
+  commitOnSettle?: boolean;
 }
 
 // =============================================================================
@@ -114,13 +124,25 @@ function AnimatedSegmentOption({ option, isSelected, onPress, inks }: AnimatedSe
  *   onSelect={setAlert}
  * />
  */
-export default function SegmentedControl({ options, selected, onSelect, dim = 'rest' }: SegmentedControlProps) {
+export default function SegmentedControl({
+  options,
+  selected,
+  onSelect,
+  dim = 'rest',
+  commitOnSettle = false,
+}: SegmentedControlProps) {
   const disabled = dimDisables(dim);
   const inks = SEGMENT_LABEL[dim];
   const pill = SEGMENT_PILL[dim];
   const [containerWidth, setContainerWidth] = useState(0);
   const padding = 3;
-  const selectedIndex = useMemo(() => options.findIndex((o) => o.value === selected), [options, selected]);
+  // The optimistic selection while a settle-committed press's write is deferred
+  const { pending, press, settle, generation } = useSettledWrite(onSelect);
+  const effectiveSelected = pending ?? selected;
+  const selectedIndex = useMemo(
+    () => options.findIndex((o) => o.value === effectiveSelected),
+    [options, effectiveSelected]
+  );
   // RTL mirrors the pill's slot: the layout swap owns the inset keys, so the index mirrors
   // here. The locale's own direction, not the bridge snapshot: a starved crossing (row 78)
   // renders Arabic while I18nManager still reports the launch direction, and the pill's
@@ -144,7 +166,10 @@ export default function SegmentedControl({ options, selected, onSelect, dim = 'r
       isFirstEvaluation.value = false;
       return target;
     }
-    return withTiming(target, { duration: ANIMATION.duration });
+    if (!commitOnSettle) return withTiming(target, { duration: ANIMATION.duration });
+    return withTiming(target, { duration: ANIMATION.duration }, (finished) => {
+      if (finished) runOnJS(settle)(generation, effectiveSelected);
+    });
   });
 
   const indicatorStyle = useAnimatedStyle(() => ({
@@ -175,12 +200,13 @@ export default function SegmentedControl({ options, selected, onSelect, dim = 'r
         <AnimatedSegmentOption
           key={option.value}
           option={option}
-          isSelected={selected === option.value}
+          isSelected={effectiveSelected === option.value}
           inks={inks}
           onPress={() => {
             if (!disabled) {
               Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-              onSelect(option.value);
+              if (commitOnSettle) press(option.value);
+              else onSelect(option.value);
             }
           }}
         />

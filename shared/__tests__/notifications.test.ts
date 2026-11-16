@@ -13,9 +13,10 @@ import type { PrayerId } from '@/shared/constants';
 import { prayerLabel, t } from '@/shared/i18n';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import logger from '@/shared/logger';
-import { firstStillDueListDayForPrayer, transformApiData } from '@/shared/prayer';
+import { firstStillDueListDayForPrayer } from '@/shared/prayer';
+import { minutesToRecord, toDayMinutes } from '@/shared/timetableDecode';
 import type { RequiredTimeName } from '@/shared/types';
-import * as Database from '@/stores/database';
+import * as Timetable from '@/stores/timetable';
 
 import { PRAYER_TIMEZONE } from '../constants';
 import {
@@ -275,7 +276,9 @@ describe('collectCandidateRows inside the duplicated hour (2026 fall-back, the r
 
   beforeEach(() => {
     jest.useFakeTimers({ now: NOW });
-    Database.saveAllPrayers(transformApiData({ city: 'london', times: FALL_BACK_DAYS }));
+    Timetable.__installTimetableDays(
+      Object.entries(FALL_BACK_DAYS).map(([date, t]) => minutesToRecord(date, toDayMinutes(t)))
+    );
   });
 
   afterEach(() => {
@@ -950,7 +953,6 @@ describe('findStaleScheduledNotificationIds', () => {
     id,
     date: '2026-08-29',
     time: '06:00',
-    englishName: 'Fajr',
     alertType: AlertType.Silent,
   });
 

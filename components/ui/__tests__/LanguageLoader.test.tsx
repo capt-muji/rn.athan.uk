@@ -4,6 +4,8 @@
 
 import { render, screen } from '@testing-library/react-native';
 import { getDefaultStore } from 'jotai';
+import { act } from 'react';
+import * as Reanimated from 'react-native-reanimated';
 
 import { COLORS, SIZE, SPACING } from '@/shared/constants';
 import { setActiveLocale } from '@/shared/i18n/locale';
@@ -91,5 +93,80 @@ describe('the language-switch loader', () => {
     const root = screen.root as unknown as { children: unknown[] };
     const lineBoxStyle = flattenStyle((root.children[1] as { props: { style: unknown } }).props.style);
     expect(lineBoxStyle.marginTop).toBe(SIZE.activityIndicator / 2 + SPACING.xxxl);
+  });
+});
+
+describe('the loader’s choreography at the commit boundary', () => {
+  const showPick = (locale: 'ar' | 'hi' = 'ar') => {
+    store.set(languageCommitBusyAtom, true);
+    store.set(pendingLanguageAtom, locale);
+    setActiveLocale(locale);
+  };
+
+  it('fades the changing line in over the owner’s 200ms once it is available', async () => {
+    const timing = jest.spyOn(Reanimated, 'withTiming');
+    showPick();
+
+    await render(<LanguageLoader />);
+
+    expect(timing).toHaveBeenCalledWith(1, { duration: 200 });
+    // The ink stays the solid white: the fade is one opacity value on the line's wrapper, never an
+    // alpha on the text itself
+    const line = flattenStyle(screen.getByText('جارٍ ضبط اللغة العربية').props.style);
+    expect(line.color).toBe('#fff');
+    expect(line.opacity).toBeUndefined();
+  });
+
+  it('starts the line transparent, so it fades rather than snapping in', async () => {
+    showPick();
+
+    await render(<LanguageLoader />);
+
+    const wrapper = screen.getByText('جارٍ ضبط اللغة العربية').parent;
+
+    expect(flattenStyle(wrapper?.props.style).opacity).toBe(0);
+  });
+
+  it('fades nothing while no pick is converging', async () => {
+    const timing = jest.spyOn(Reanimated, 'withTiming');
+
+    await render(<LanguageLoader />);
+
+    expect(timing).not.toHaveBeenCalled();
+  });
+
+  it('stands down with no line when a pick has no target yet', async () => {
+    const timing = jest.spyOn(Reanimated, 'withTiming');
+    store.set(languageCommitBusyAtom, true);
+
+    await render(<LanguageLoader />);
+
+    expect(screen.toJSON()).toBeNull();
+    expect(timing).not.toHaveBeenCalled();
+  });
+
+  it('fades the line again for the next pick', async () => {
+    const timing = jest.spyOn(Reanimated, 'withTiming');
+    showPick('ar');
+    await render(<LanguageLoader />);
+    expect(timing).toHaveBeenCalledTimes(1);
+
+    await act(async () => {
+      store.set(pendingLanguageAtom, 'hi');
+    });
+
+    expect(timing).toHaveBeenCalledTimes(2);
+  });
+
+  it('lifts the cover, the spinner and the line in one act when the commit settles', async () => {
+    showPick();
+    await render(<LanguageLoader />);
+    expect(screen.toJSON()).not.toBeNull();
+
+    await act(async () => {
+      store.set(languageCommitBusyAtom, false);
+    });
+
+    expect(screen.toJSON()).toBeNull();
   });
 });

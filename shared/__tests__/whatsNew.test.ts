@@ -72,6 +72,113 @@ const archiveItem = (overrides: Partial<WhatsNewArchiveItem> = {}): WhatsNewArch
 // shouldShowWhatsNew TESTS
 // =============================================================================
 
+describe("the retired 2.43 language-wave row (T-541, the owner's read)", () => {
+  it('archives no item under the languageWave keys', () => {
+    for (const item of WHATS_NEW?.items ?? []) {
+      expect(item.titleKey).not.toBe('whatsNew.title.languageWave');
+      expect(item.bodyKey).not.toBe('whatsNew.body.languageWave');
+    }
+  });
+
+  it('ships the languageWave keys in no catalog', () => {
+    for (const locale of LOCALE_IDS) {
+      const catalog = readFileSync(join(__dirname, '..', 'i18n', `${locale}.ts`), 'utf8');
+      expect(catalog).not.toContain('languageWave');
+    }
+    const sources = readFileSync(join(__dirname, '..', 'i18n', 'en.ts'), 'utf8');
+    expect(sources).not.toContain('languageWave');
+  });
+});
+
+/** The five per-feature key pairs the fold group presents, in the owner's order */
+const FEATURE_KEYS = [
+  'whatsNew.title.lockLayouts',
+  'whatsNew.body.lockLayouts',
+  'whatsNew.title.moreLanguages',
+  'whatsNew.body.moreLanguages',
+  'whatsNew.title.checkUpdates',
+  'whatsNew.body.checkUpdates',
+  'whatsNew.title.format24',
+  'whatsNew.body.format24',
+  'whatsNew.title.fasting',
+  'whatsNew.body.fasting',
+] as const;
+
+describe('the fold roll-up (T-639: one version group, every feature keeps its own title and description)', () => {
+  const items = WHATS_NEW?.items ?? [];
+  const post20 = items.filter((entry) => compareVersions(entry.version ?? '0', '2.0.37') > 0);
+
+  it("archives exactly five post-2.0 items, every one stamped 2.4.41 in the owner's order", () => {
+    expect(post20.map((entry) => entry.titleKey)).toEqual([
+      'whatsNew.title.lockLayouts',
+      'whatsNew.title.moreLanguages',
+      'whatsNew.title.checkUpdates',
+      'whatsNew.title.format24',
+      'whatsNew.title.fasting',
+    ]);
+    for (const entry of post20) {
+      expect(entry.version).toBe('2.4.41');
+      expect(entry.flags).toBeUndefined();
+    }
+    // The layouts live in the iOS widget extension, so their row alone carries the platform fact
+    expect(post20[0]?.bodyKey).toBe('whatsNew.body.lockLayouts');
+    expect(post20[0]?.platform).toBe('ios');
+    for (const entry of post20.slice(1)) {
+      expect(entry.platform).toBeUndefined();
+    }
+  });
+
+  it('renders the five as one v2.4 group, above the untouched v2.0 group', () => {
+    const groups = groupWhatsNewItems(currentVisibleWhatsNew()?.items ?? []);
+
+    expect(groups[0]?.key).toBe('v2.4');
+    expect(groups[0]?.items.map((entry) => entry.title)).toEqual([
+      t('whatsNew.title.lockLayouts'),
+      t('whatsNew.title.moreLanguages'),
+      t('whatsNew.title.checkUpdates'),
+      t('whatsNew.title.format24'),
+      t('whatsNew.title.fasting'),
+    ]);
+    expect(groups[1]?.key).toBe('v2.0');
+  });
+
+  it('keeps the 2.0.37 language entry first, its keys and stamp unchanged', () => {
+    expect(items[0]).toEqual({
+      titleKey: 'whatsNew.title.language',
+      bodyKey: 'whatsNew.body.language',
+      version: '2.0.37',
+    });
+  });
+
+  it('ships the ten per-feature keys in every catalog', () => {
+    for (const locale of LOCALE_IDS) {
+      const catalog = readFileSync(join(__dirname, '..', 'i18n', `${locale}.ts`), 'utf8');
+      for (const key of FEATURE_KEYS) {
+        expect(catalog).toContain(key);
+      }
+    }
+  });
+
+  it('archives and ships no since20 merged pair', () => {
+    for (const entry of items) {
+      expect(entry.titleKey).not.toBe('whatsNew.title.since20');
+      expect(entry.bodyKey).not.toBe('whatsNew.body.since20');
+    }
+    for (const locale of LOCALE_IDS) {
+      const catalog = readFileSync(join(__dirname, '..', 'i18n', `${locale}.ts`), 'utf8');
+      expect(catalog).not.toContain('since20');
+    }
+  });
+
+  it('pops for the production reader upgrading from 2.0.37 to the fold release', () => {
+    expect(shouldShowWhatsNew('2.4.41', '2.0.37', currentVisibleWhatsNew())).toBe(true);
+  });
+
+  it('pops for the same reader on the build this tree serves, not only the fold store build', () => {
+    expect(shouldShowWhatsNew(INSTALLED_VERSION, '2.0.37', currentVisibleWhatsNew())).toBe(true);
+  });
+});
+
 describe('shouldShowWhatsNew', () => {
   // The gate is content-driven (owner order 2026-10-21, design B): the archive's newest
   // stamped item is the bar, and the modal opens only when that bar clears the stored
@@ -443,6 +550,31 @@ describe('the archive', () => {
     expect((currentVisibleWhatsNew()?.items ?? []).map((entry) => entry.title)).toEqual(
       newestFirst.map((entry) => t(entry.titleKey))
     );
+  });
+
+  // The changelog advertises the screen that presents it: the archive's own debut.
+  // The modal first shipped at 1.13.0 (git df08bfb1, 2026-08-30, "1.13.0 -
+  // feat(whats-new)"), and the T-297 restamp ruling names each stamp from git history.
+  it("archives the What's New screen itself, stamped at its 1.13.0 debut", () => {
+    const debut = WHATS_NEW?.items.find((entry) => entry.titleKey === 'whatsNew.title.whatsNew');
+
+    expect(debut?.bodyKey).toBe('whatsNew.body.whatsNew');
+    expect(debut?.version).toBe('1.13.0');
+    expect((currentVisibleWhatsNew()?.items ?? []).map((entry) => entry.title)).toContain(t('whatsNew.title.whatsNew'));
+  });
+
+  // The debut stamps below every later feature stamp, so the archive learning about
+  // itself never raises the gate's newest-stamp bar: a reader who has seen the newest
+  // feature gets no pop from this item
+  it('stays silent for a reader who has seen the newest feature, debut included', () => {
+    const stamps = (WHATS_NEW?.items ?? [])
+      .filter((entry) => entry.titleKey !== 'whatsNew.title.whatsNew')
+      .map((entry) => entry.version)
+      .filter((version): version is string => version !== null)
+      .sort(compareVersions);
+    const newestWithoutDebut = stamps[stamps.length - 1];
+
+    expect(shouldShowWhatsNew(INSTALLED_VERSION, newestWithoutDebut, currentVisibleWhatsNew())).toBe(false);
   });
 
   it('announces the language feature with its catalog copy', () => {

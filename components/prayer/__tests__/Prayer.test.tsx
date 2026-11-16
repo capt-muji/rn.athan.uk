@@ -8,10 +8,10 @@ import { getDefaultStore } from 'jotai';
 import { StyleSheet } from 'react-native';
 import * as Reanimated from 'react-native-reanimated';
 
-import { showLondonDay } from '@/__tests__/harness';
-import { ANIMATION, COLORS } from '@/shared/constants';
+import { seedPagerPage, showLondonDay } from '@/__tests__/harness';
+import { COLORS } from '@/shared/constants';
 import { ScheduleType } from '@/shared/types';
-import { overlayAtom } from '@/stores/atoms/overlay';
+import { overlayAtom, overlayFadeSettledAtom } from '@/stores/atoms/overlay';
 import { closeOverlay, openOverlay } from '@/stores/overlay';
 
 import Prayer from '../Prayer';
@@ -20,6 +20,12 @@ const FAJR = 0;
 const SUNRISE = 1;
 const DUHA = 3;
 const ISTIJABA = 4;
+
+// No pager is mounted here, so the page atom rests on Standard between tests and every
+// Extras case seeds the page its overlay's schedule lives on
+beforeEach(() => {
+  seedPagerPage(0);
+});
 
 describe('the Sunrise row before Fajr on Friday 11 September 2026 at 03:00', () => {
   it('names the prayer once, in one language', async () => {
@@ -57,6 +63,7 @@ describe("the row's own content box", () => {
 describe('the Duha row on Friday 11 September 2026 at 12:00', () => {
   it('opens the overlay on its own list and index when tapped', async () => {
     showLondonDay('2026-09-11', '12:00');
+    seedPagerPage(1);
     await render(<Prayer type={ScheduleType.Extra} index={DUHA} />);
 
     await fireEvent.press(screen.getByText('Duha'));
@@ -70,6 +77,7 @@ describe('the Duha row on Friday 11 September 2026 at 12:00', () => {
 
   it('closes the overlay when tapped while the overlay shows it', async () => {
     showLondonDay('2026-09-11', '12:00');
+    seedPagerPage(1);
     await render(<Prayer type={ScheduleType.Extra} index={DUHA} />);
     await act(() => openOverlay(ScheduleType.Extra, DUHA));
 
@@ -91,8 +99,15 @@ describe('the Fajr row on Friday 11 September 2026 at 14:00', () => {
 });
 
 describe('the Fajr and Sunrise rows on Friday 11 September 2026 at 14:00, once the overlay is opened on Fajr', () => {
-  it('keeps Sunrise drawn through its fade and drops it once the fade has run, leaving Fajr on show', async () => {
+  // The row's cut rides the veil's own progress in the worklet (step 25, the badge's pattern):
+  // the drop lands the frame the veil rests at 1, and the settle flag's later rise re-renders
+  // no row at all - that write was digest 5111's wave 4, a JS commit plus a deletion-heavy
+  // diff inside the entrance window, and the row no longer holds a reader for it
+  it('drops the hidden row inside the veil worklet while the settle flag is still down', async () => {
     showLondonDay('2026-09-11', '14:00');
+    await act(() => openOverlay(ScheduleType.Standard, FAJR));
+    await act(() => getDefaultStore().set(overlayFadeSettledAtom, false));
+
     await render(
       <>
         <Prayer type={ScheduleType.Standard} index={FAJR} />
@@ -100,17 +115,32 @@ describe('the Fajr and Sunrise rows on Friday 11 September 2026 at 14:00, once t
       </>
     );
 
-    await act(() => openOverlay(ScheduleType.Standard, FAJR));
-
-    // The fade carries the ink, so the words stay drawn while it runs
     const sunrise = () => screen.getByText('Sunrise', { includeHiddenElements: true });
-    const drawn = () => (StyleSheet.flatten(sunrise().parent!.props.style) as { display?: string }).display;
-    expect(drawn()).toBe('flex');
+    const wrapperStyle = () => sunrise().parent!.props.style as { display?: string }[];
+    const displayEntries = () => wrapperStyle().filter((entry) => entry.display !== undefined);
+    // The worklet cut is the only display owner: it says none with the flag down, and no
+    // JS-settled gate entry exists behind it to flip on the flag's rise
+    expect(displayEntries().map((entry) => entry.display)).toEqual(['none']);
     expect(screen.getByText('Fajr')).toBeVisible();
+  });
 
-    await act(() => jest.advanceTimersByTime(ANIMATION.duration));
+  it('re-renders no row when the settle flag rises, the wave-four commit de-staged', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await act(() => openOverlay(ScheduleType.Standard, FAJR));
+    await act(() => getDefaultStore().set(overlayFadeSettledAtom, false));
 
-    expect(drawn()).toBe('none');
+    await render(
+      <>
+        <Prayer type={ScheduleType.Standard} index={FAJR} />
+        <Prayer type={ScheduleType.Standard} index={SUNRISE} />
+      </>
+    );
+    const sunrise = () => screen.getByText('Sunrise', { includeHiddenElements: true });
+    const before = JSON.stringify(sunrise().parent!.props.style);
+
+    await act(() => getDefaultStore().set(overlayFadeSettledAtom, true));
+
+    expect(JSON.stringify(sunrise().parent!.props.style)).toBe(before);
     expect(screen.getByText('Fajr')).toBeVisible();
   });
 
@@ -123,8 +153,11 @@ describe('the Fajr and Sunrise rows on Friday 11 September 2026 at 14:00, once t
       </>
     );
     await act(() => openOverlay(ScheduleType.Standard, FAJR));
-    await act(() => jest.advanceTimersByTime(ANIMATION.duration));
+    await act(() => getDefaultStore().set(overlayFadeSettledAtom, true));
 
+    // The close's own write flips the veil target back to 0, and the row's
+    // display returns with the veil lift in the worklet — the jest mock lands
+    // the tween instantly, so the resting frame reads flex
     await act(() => closeOverlay());
 
     const sunrise = screen.getByText('Sunrise');
@@ -177,6 +210,7 @@ describe('the Fajr and Sunrise rows on Friday 11 September 2026 at 14:00, once t
 describe('the Istijaba row on Friday 11 September 2026 at 20:00, with Saturday not stored', () => {
   it('leaves the overlay closed when tapped, since no later Istijaba is held for it to show', async () => {
     showLondonDay('2026-09-11', '20:00', { '2026-09-12': 'not stored' });
+    seedPagerPage(1);
     await render(<Prayer type={ScheduleType.Extra} index={ISTIJABA} />);
 
     await fireEvent.press(screen.getByText('Istijaba'));

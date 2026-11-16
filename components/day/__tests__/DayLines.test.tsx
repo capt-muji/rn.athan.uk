@@ -7,7 +7,7 @@ import { act, render, screen } from '@testing-library/react-native';
 import * as Reanimated from 'react-native-reanimated';
 
 import { showLondonDay } from '@/__tests__/harness';
-import { SPACING } from '@/shared/constants';
+import { COLORS, SPACING } from '@/shared/constants';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { ScheduleType } from '@/shared/types';
 import { openOverlay } from '@/stores/overlay';
@@ -100,7 +100,7 @@ describe("the location label's ink", () => {
 
     // The static entry carries the home ink; the tween's entry commits after this frame
     const [locationStatic] = screen.getByText('London, UK').props.style as unknown[];
-    expect(flattenStyle(locationStatic).color).toBe('#6c79c2');
+    expect(flattenStyle(locationStatic).color).toBe(COLORS.text.labelHome);
     // The second entry is the ink tween itself: dropped from the array, the home ink never flips
     expect(screen.getByText('London, UK').props.style).toHaveLength(2);
   });
@@ -112,7 +112,11 @@ describe("the location label's ink", () => {
 
     const locationTween = () =>
       interpolateColor.mock.calls
-        .filter((call) => (call[2] as unknown as readonly string[]).join() === ['#6c79c2', '#585c8c'].join())
+        .filter(
+          (call) =>
+            (call[2] as unknown as readonly string[]).join() ===
+            [COLORS.text.labelHome, COLORS.text.labelOverlay].join()
+        )
         .map((call) => call[0]);
 
     expect(locationTween().at(-1)).toBe(0);
@@ -120,5 +124,12 @@ describe("the location label's ink", () => {
     await act(() => openOverlay(ScheduleType.Standard, 4));
 
     expect(locationTween().at(-1)).toBe(1);
+  });
+
+  it("rests its overlay face on the pulled-back tint, one token with the countdown's prayer name", () => {
+    // Owner order 2026-11-02: the location row and the prayer name share the overlay label
+    // token; the bluish-grey derivation is audited cold in the Countdown suite and pinned
+    // here for this text
+    expect(COLORS.text.labelOverlay).toBe('#565b95');
   });
 });

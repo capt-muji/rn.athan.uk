@@ -1,41 +1,29 @@
-import { formatInTimeZone } from 'date-fns-tz';
-
 import { PRAYER_TIMEZONE, TIME_ADJUSTMENTS } from '../constants';
 import { setActiveLocale } from '../i18n/locale';
 import {
   addDaysToDateString,
-  adjustTime,
   createInstant,
   createPrayerDatetime,
+  decorationsVisible,
   footerFor,
   formatDateLocalized,
   formatDateShort,
+  formatDisplayTime,
   formatHijriDateLocalized,
   formatPrayerTime,
   formatTime,
   formatTimeAgo,
-  getCurrentYear,
   getDayAnchor,
   getNightTimes,
   getPreviousDateString,
   getSecondsRemaining,
   getTodayDateString,
   getWallSecondDelay,
-  isDateYesterdayOrFuture,
-  isDecember,
   isDecorationSeason,
   isFriday,
-  isJanuaryFirst,
   isRamadan,
   splitSingleColon,
 } from '../time';
-
-/**
- * Today's date in the prayer timezone, from date-fns-tz rather than the app's own helper,
- * so this stays an independent oracle. Keyed off PRAYER_TIMEZONE so that moving the app off
- * London fails the app's code rather than this fixture.
- */
-const prayerZoneDate = (offsetMs = 0) => formatInTimeZone(Date.now() + offsetMs, PRAYER_TIMEZONE, 'yyyy-MM-dd');
 
 // =============================================================================
 // FORMATTING TESTS
@@ -372,59 +360,6 @@ describe('isFriday', () => {
   });
 });
 
-describe('isJanuaryFirst', () => {
-  it('correctly identifies January 1st', () => {
-    expect(isJanuaryFirst(new Date('2026-01-01'))).toBe(true);
-    expect(isJanuaryFirst(new Date('2026-01-01T23:59:59Z'))).toBe(true);
-  });
-
-  it('correctly identifies non-January 1st', () => {
-    expect(isJanuaryFirst(new Date('2026-01-02'))).toBe(false);
-    expect(isJanuaryFirst(new Date('2025-12-31'))).toBe(false);
-    expect(isJanuaryFirst(new Date('2026-02-01'))).toBe(false);
-  });
-});
-
-describe('isDecember', () => {
-  beforeEach(() => {
-    jest.useFakeTimers();
-  });
-
-  afterEach(() => {
-    jest.useRealTimers();
-  });
-
-  it('returns true in December', () => {
-    jest.setSystemTime(new Date('2026-12-15T12:00:00Z'));
-    expect(isDecember()).toBe(true);
-  });
-
-  it('returns true on December 1st', () => {
-    jest.setSystemTime(new Date('2026-12-01T00:00:00Z'));
-    expect(isDecember()).toBe(true);
-  });
-
-  it('returns true on December 31st', () => {
-    jest.setSystemTime(new Date('2026-12-31T23:59:59Z'));
-    expect(isDecember()).toBe(true);
-  });
-
-  it('returns false in January', () => {
-    jest.setSystemTime(new Date('2026-01-15T12:00:00Z'));
-    expect(isDecember()).toBe(false);
-  });
-
-  it('returns false in November', () => {
-    jest.setSystemTime(new Date('2026-11-30T12:00:00Z'));
-    expect(isDecember()).toBe(false);
-  });
-
-  it('returns false in June', () => {
-    jest.setSystemTime(new Date('2026-06-15T12:00:00Z'));
-    expect(isDecember()).toBe(false);
-  });
-});
-
 describe('isRamadan', () => {
   beforeEach(() => {
     jest.useFakeTimers();
@@ -479,6 +414,19 @@ describe('isRamadan', () => {
       process.env.EXPO_PUBLIC_ENV = 'prod';
       expect(isRamadan()).toBe(false);
     });
+  });
+});
+
+describe('decorationsVisible', () => {
+  // The seasonal gate and the master toggle (owner order 2026-11-01, the follow-up read): the
+  // off-season override is gone, so the answer is exactly the gate that stood pre-2.43.4
+  it.each([
+    ['in season with decorations on', true, true, true],
+    ['in season with decorations off', true, false, false],
+    ['outside the season with decorations on', false, true, false],
+    ['outside the season with decorations off', false, false, false],
+  ])('shows the decorations %s', (_situation, season, enabled, expected) => {
+    expect(decorationsVisible(season, enabled)).toBe(expected);
   });
 });
 
@@ -634,6 +582,30 @@ describe('createPrayerDatetime', () => {
   });
 });
 
+describe('formatDisplayTime', () => {
+  it('returns the 24-hour string unchanged while the preference is on', () => {
+    expect(formatDisplayTime('23:58', true)).toBe('23:58');
+    expect(formatDisplayTime('00:15', true)).toBe('00:15');
+  });
+
+  // The owner's ruling (2026-11-03): no marker, midnight and noon both render 12, hours stay
+  // two digits so a format switch never shifts the screen's widths (Row 72)
+  it('converts to 12-hour with two-digit hours: midnight and noon both 12, no marker', () => {
+    expect(formatDisplayTime('00:30', false)).toBe('12:30');
+    expect(formatDisplayTime('12:00', false)).toBe('12:00');
+    expect(formatDisplayTime('01:05', false)).toBe('01:05');
+    expect(formatDisplayTime('09:59', false)).toBe('09:59');
+    expect(formatDisplayTime('13:05', false)).toBe('01:05');
+    expect(formatDisplayTime('23:11', false)).toBe('11:11');
+  });
+
+  it('passes a string that is not HH:MM through untouched (the unread sentinel, the empty loading string)', () => {
+    expect(formatDisplayTime('--:--', false)).toBe('--:--');
+    expect(formatDisplayTime('', false)).toBe('');
+    expect(formatDisplayTime('6:5', false)).toBe('6:5');
+  });
+});
+
 describe('formatPrayerTime', () => {
   it('reads an instant on the London wall clock (GMT in winter, BST in summer)', () => {
     expect(formatPrayerTime(new Date('2026-01-18T06:12:00Z'))).toBe('06:12');
@@ -769,12 +741,6 @@ describe('calendar helpers (prayer timezone, ISSUES #30)', () => {
     expect(isFriday(new Date('2026-06-11T23:30:00Z'))).toBe(true);
     expect(isFriday('2026-06-12')).toBe(true);
   });
-
-  it('wraps clock arithmetic past midnight in both directions', () => {
-    expect(adjustTime('00:10', -20)).toBe('23:50');
-    expect(adjustTime('23:50', 20)).toBe('00:10');
-    expect(adjustTime('12:00', -24 * 60)).toBe('12:00');
-  });
 });
 
 // =============================================================================
@@ -814,55 +780,6 @@ describe('footerFor', () => {
     // The Hijri branch fails and the Gregorian fallback rejects the date too,
     // matching how the label formatters behave on unparseable input
     expect(() => footerFor('', true)).toThrow();
-  });
-});
-
-describe('isDateYesterdayOrFuture', () => {
-  it('returns true for yesterday', () => {
-    const dateStr = prayerZoneDate(-86400000);
-    expect(isDateYesterdayOrFuture(dateStr)).toBe(true);
-  });
-
-  it('returns true for today', () => {
-    expect(isDateYesterdayOrFuture(prayerZoneDate())).toBe(true);
-  });
-
-  it('returns true for tomorrow', () => {
-    const dateStr = prayerZoneDate(86400000);
-    expect(isDateYesterdayOrFuture(dateStr)).toBe(true);
-  });
-
-  it('returns false for two days ago', () => {
-    const dateStr = prayerZoneDate(-2 * 86400000);
-    expect(isDateYesterdayOrFuture(dateStr)).toBe(false);
-  });
-});
-
-describe('getCurrentYear', () => {
-  it('returns current year as number', () => {
-    const year = getCurrentYear();
-    expect(typeof year).toBe('number');
-    expect(year).toBeGreaterThanOrEqual(2024);
-    expect(year).toBeLessThanOrEqual(2100);
-  });
-});
-
-describe('adjustTime', () => {
-  it('adds minutes correctly', () => {
-    expect(adjustTime('06:00', 20)).toBe('06:20');
-  });
-
-  it('subtracts minutes correctly', () => {
-    expect(adjustTime('06:40', -40)).toBe('06:00');
-  });
-
-  it('handles zero adjustment', () => {
-    expect(adjustTime('12:30', 0)).toBe('12:30');
-  });
-
-  it('handles large adjustments', () => {
-    expect(adjustTime('12:00', 120)).toBe('14:00'); // +2 hours
-    expect(adjustTime('12:00', -180)).toBe('09:00'); // -3 hours
   });
 });
 

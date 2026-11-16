@@ -10,13 +10,13 @@ jest.mock('@/stores/widget', () => ({
 }));
 
 jest.mock('@/stores/sync', () => ({
+  ...jest.requireActual('@/stores/sync'),
   sync: jest.fn(async () => undefined),
-  getArmedDayChanges: jest.fn(() => 0),
 }));
 
 import type { ReminderInterval } from '@/shared/types';
 import { ScheduleType } from '@/shared/types';
-import { rescheduleAllNotifications } from '@/stores/notifications';
+import { __rescheduleAllForTests } from '@/stores/notifications';
 
 import { enable, londonDays, resetAlarms, storeDays, triggers } from './alarmHarness';
 
@@ -40,7 +40,7 @@ describe('the 25 October 2026 clock change', () => {
     enable(ScheduleType.Extra, 'midnight');
     enable(ScheduleType.Extra, 'last third');
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
 
     expect(triggers()).toEqual({
       'athan_extra_last third_2026-10-25': '2026-10-25T01:00:00.000Z',
@@ -69,7 +69,7 @@ describe('the 25 October 2026 clock change', () => {
       jest.setSystemTime(new Date('2026-10-24T21:00:00.000Z'));
       enable(ScheduleType.Extra, 'last third', interval);
 
-      await rescheduleAllNotifications();
+      await __rescheduleAllForTests();
 
       expect(triggers()).toEqual({
         'athan_extra_last third_2026-10-25': '2026-10-25T01:00:00.000Z',
@@ -115,7 +115,7 @@ describe('the 25 October 2026 clock change', () => {
       jest.setSystemTime(new Date(now));
       enable(ScheduleType.Extra, 'last third', interval);
 
-      await rescheduleAllNotifications();
+      await __rescheduleAllForTests();
 
       const minus = (instant: string) => new Date(Date.parse(instant) - interval * 60_000).toISOString();
       expect(triggers()).toEqual({
@@ -138,7 +138,7 @@ describe('the 29 March 2026 clock change', () => {
     enable(ScheduleType.Extra, 'midnight');
     enable(ScheduleType.Extra, 'last third');
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
 
     expect(triggers()).toEqual({
       'athan_extra_last third_2026-03-29': '2026-03-29T00:54:00.000Z',

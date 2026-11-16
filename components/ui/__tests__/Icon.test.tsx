@@ -30,10 +30,14 @@ describe('an icon driven by an animation', () => {
   it('builds the animated icon for its type and draws it with the style its animation drives', async () => {
     const build = jest.spyOn(Animated, 'createAnimatedComponent');
 
-    await render(<Icon type={IconType.PLAY} size={22} animatedStyle={{ opacity: 0.5 }} />);
+    await render(
+      <Icon type={IconType.PLAY} size={22} color='rgba(165, 180, 252, 0.8)' animatedStyle={{ opacity: 0.5 }} />
+    );
 
     expect(build).toHaveBeenCalledWith(ICONS[IconType.PLAY]);
     expect(screen.root).toHaveStyle({ opacity: 0.5 });
+    // The animated branch carries the caller's colour too, or an animated icon draws uninked
+    expect(screen.root).toHaveStyle({ color: 'rgba(165, 180, 252, 0.8)' });
     build.mockRestore();
   });
 

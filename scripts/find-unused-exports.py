@@ -22,7 +22,7 @@ import io
 import os
 import re
 
-SRC_DIRS = ["app", "components", "shared", "stores", "hooks", "device", "assets", "modules", "api", "widgets"]
+SRC_DIRS = ["app", "components", "shared", "stores", "hooks", "device", "assets", "modules", "widgets"]
 EXCL = ("__tests__", "__mocks__", "node_modules", ".claude", "android", "ios")
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 

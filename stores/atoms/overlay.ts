@@ -25,6 +25,87 @@ export const overlayAtom = atom<OverlayStore>({
 });
 
 /**
+ * Whether the overlay family's most recent fade has truly settled.
+ *
+ * One flag for every subtree the overlay holds displayable through a fade —
+ * the input layer, the hidden rows, the ago badge. The writers of `isOn` drop
+ * it in the same store batch as their flip, so every held subtree re-renders
+ * once with the state change itself; the layer's own fade raises it again from
+ * the ANIMATION's completion (never a wall timer: a timer phase-locked to the
+ * JS call fires before a commit-stalled fade has finished and cuts it
+ * mid-travel — the 3T's close-path snap, step 10's Defect B). Display rules
+ * read it as:
+ *
+ *   layer:                   isOn || !settled  ? 'flex' : 'none'
+ *   ago badge:               hidden && settled ? 'none' : 'flex'
+ *
+ * The explanation box left the flag's readers (T-490): its placer now cuts
+ * display on its own reveal inside the worklet, same-frame with the face.
+ * The rows followed (step 25): their content's cut rides the veil's own
+ * progress in the worklet, the badge's pattern, so the fade's completion
+ * re-renders no row at all. The flag still feeds overlayFadeInFlight, the
+ * per-second write hold, for every writer that asks.
+ *
+ * True at rest: nothing is in flight.
+ */
+export const overlayFadeSettledAtom = atom(true);
+
+/**
+ * The overlay family's fade generation. Every isOn writer stamps the next
+ * number beside its fade-hold drop, and a settle only counts while it carries
+ * the generation of the fade still in flight: without that, the open fade's
+ * completion — posted to the JS thread while the close tap's handler already
+ * ran — would raise the hold over the whole close fade and cut the layer to
+ * display:none at close-start, the hold-then-snap the shared flag exists to
+ * kill.
+ */
+let fadeGeneration = 0;
+
+/** Stamped by every isOn writer, in the same store batch as its fade-hold drop */
+const nextFadeGeneration = (): number => {
+  fadeGeneration += 1;
+  return fadeGeneration;
+};
+
+/** The generation of the fade in flight, read by the render that starts it */
+export const currentFadeGeneration = (): number => fadeGeneration;
+
+/**
+ * The grace within which a fade hold still gates per-second writes. The fade
+ * itself runs ~200ms and its settle clears the hold; a hold older than the
+ * grace is a settle that never came, and the display's correctness outranks
+ * the gate.
+ */
+const FADE_HOLD_GRACE_MS = 600;
+
+let fadeHeldSinceMs: number | null = null;
+
+/**
+ * Begins the fade hold: stamped by every isOn writer beside its
+ * fade-hold drop, so per-second writes can stand down for the fade's window.
+ */
+export const beginOverlayFadeHold = (): number => {
+  fadeHeldSinceMs = Date.now();
+  return nextFadeGeneration();
+};
+
+/** Ends the fade hold: called from the fade's own settle, never a wall timer */
+export const endOverlayFadeHold = () => {
+  fadeHeldSinceMs = null;
+};
+
+/** Whether the overlay family's fade window is in flight, for writers that must not land inside it */
+export const overlayFadeInFlight = (): boolean => {
+  if (fadeHeldSinceMs === null) return false;
+
+  const heldFor = Date.now() - fadeHeldSinceMs;
+  // A stamp from the future (a clock that moved back) is not a hold
+  if (heldFor < 0 || heldFor > FADE_HOLD_GRACE_MS) return false;
+
+  return true;
+};
+
+/**
  * Derived boolean: whether the overlay is open
  *
  * Primitive-valued so overlay toggles re-render only components that care

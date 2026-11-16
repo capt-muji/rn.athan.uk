@@ -1,14 +1,14 @@
 /**
- * The mosque icon: which art it draws in and out of the Ramadan season, and the splash gate its bitmap lifts
+ * The mosque icon: which art it draws in and out of the Ramadan season, and the size its caller passes
  */
 
-import { fireEvent, render, screen } from '@testing-library/react-native';
+import { render, screen } from '@testing-library/react-native';
 import { getDefaultStore } from 'jotai';
 import { StyleSheet } from 'react-native';
 
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { createPrayerDatetime } from '@/shared/time';
-import { decorationsEnabledAtom, masjidIconLoadedAtom } from '@/stores/ui';
+import { decorationsEnabledAtom } from '@/stores/ui';
 
 import Masjid from '../Masjid';
 
@@ -32,25 +32,6 @@ describe('the mosque icon', () => {
     await render(<Masjid />);
 
     expect(drawnImage()).toHaveProp('source', [{ testUri: expect.stringMatching(file) }]);
-  });
-
-  // The launch screen reads this atom to decide when to hide the splash; there is no getter for it
-  it('keeps the splash held while its bitmap is still loading', async () => {
-    await render(<Masjid />);
-
-    expect(store.get(masjidIconLoadedAtom)).toBe(false);
-  });
-
-  // Columns: how the load goes, and the events the platform sends for it, in order
-  it.each([
-    ['succeeds', ['load', 'loadEnd']],
-    ['fails', ['error', 'loadEnd']],
-  ])('lifts the splash gate when its bitmap load %s', async (_outcome, events) => {
-    await render(<Masjid />);
-
-    for (const event of events) await fireEvent(drawnImage(), event);
-
-    expect(store.get(masjidIconLoadedAtom)).toBe(true);
   });
 
   // The size is the caller's, as the error screen passes it, not a design value restated

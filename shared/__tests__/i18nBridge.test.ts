@@ -12,16 +12,161 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 import { type ParamsOf, t } from '@/shared/i18n';
+import { am } from '@/shared/i18n/am';
 import { ar } from '@/shared/i18n/ar';
+import { az } from '@/shared/i18n/az';
+import { bal } from '@/shared/i18n/bal';
+import { bcl } from '@/shared/i18n/bcl';
+import { bm } from '@/shared/i18n/bm';
+import { bn } from '@/shared/i18n/bn';
+import { bs } from '@/shared/i18n/bs';
+import { bug } from '@/shared/i18n/bug';
+import { ceb } from '@/shared/i18n/ceb';
+import { ckb } from '@/shared/i18n/ckb';
+import { de } from '@/shared/i18n/de';
 import type { TranslationKey } from '@/shared/i18n/en';
 import { type Catalog, en } from '@/shared/i18n/en';
+import { es } from '@/shared/i18n/es';
+import { fa } from '@/shared/i18n/fa';
+import { ff } from '@/shared/i18n/ff';
+import { fr } from '@/shared/i18n/fr';
+import { gu } from '@/shared/i18n/gu';
+import { ha } from '@/shared/i18n/ha';
 import { hi } from '@/shared/i18n/hi';
+import { hil } from '@/shared/i18n/hil';
+import { id } from '@/shared/i18n/id';
+import { ilo } from '@/shared/i18n/ilo';
+import { it as itCatalog } from '@/shared/i18n/it';
+import { ja } from '@/shared/i18n/ja';
+import { jv } from '@/shared/i18n/jv';
+import { kas } from '@/shared/i18n/kas';
+import { kk } from '@/shared/i18n/kk';
+import { kn } from '@/shared/i18n/kn';
+import { ko } from '@/shared/i18n/ko';
+import { kr } from '@/shared/i18n/kr';
+import { ku } from '@/shared/i18n/ku';
+import { ky } from '@/shared/i18n/ky';
 import { setActiveLocale } from '@/shared/i18n/locale';
+import { mad } from '@/shared/i18n/mad';
+import { mdh } from '@/shared/i18n/mdh';
+import { mfa } from '@/shared/i18n/mfa';
+import { min } from '@/shared/i18n/min';
+import { ml } from '@/shared/i18n/ml';
+import { mr } from '@/shared/i18n/mr';
+import { mrw } from '@/shared/i18n/mrw';
 import { ms } from '@/shared/i18n/ms';
+import { my } from '@/shared/i18n/my';
+import { nl } from '@/shared/i18n/nl';
+import { om } from '@/shared/i18n/om';
+import { paArab } from '@/shared/i18n/pa-Arab';
+import { pl } from '@/shared/i18n/pl';
+import { ps } from '@/shared/i18n/ps';
+import { pt } from '@/shared/i18n/pt';
+import { qu } from '@/shared/i18n/qu';
+import { ro } from '@/shared/i18n/ro';
+import { ru } from '@/shared/i18n/ru';
+import { sd } from '@/shared/i18n/sd';
+import { skr } from '@/shared/i18n/skr';
 import { so } from '@/shared/i18n/so';
+import { sq } from '@/shared/i18n/sq';
+import { su } from '@/shared/i18n/su';
+import { sw } from '@/shared/i18n/sw';
+import { ta } from '@/shared/i18n/ta';
+import { te } from '@/shared/i18n/te';
+import { tg } from '@/shared/i18n/tg';
 import { th } from '@/shared/i18n/th';
+import { ti } from '@/shared/i18n/ti';
+import { tk } from '@/shared/i18n/tk';
+import { tl } from '@/shared/i18n/tl';
+import { tr } from '@/shared/i18n/tr';
+import { tt } from '@/shared/i18n/tt';
+import { ug } from '@/shared/i18n/ug';
+import { uk } from '@/shared/i18n/uk';
+import { ur } from '@/shared/i18n/ur';
+import { uz } from '@/shared/i18n/uz';
+import { vi } from '@/shared/i18n/vi';
+import { war } from '@/shared/i18n/war';
+import { wo } from '@/shared/i18n/wo';
+import { yo } from '@/shared/i18n/yo';
+import { zhHans } from '@/shared/i18n/zh-Hans';
 
-const CATALOGS: Record<string, Catalog> = { en, ar, ms, so, hi, th };
+const CATALOGS: Record<string, Catalog> = {
+  en,
+  ar,
+  ms,
+  so,
+  hi,
+  th,
+  id,
+  tr,
+  fr,
+  uz,
+  sw,
+  ha,
+  pt,
+  ur,
+  fa,
+  bn,
+  ru,
+  az,
+  de,
+  sq,
+  bs,
+  ps,
+  ta,
+  ml,
+  'zh-Hans': zhHans,
+  es,
+  nl,
+  kk,
+  ky,
+  tg,
+  tk,
+  wo,
+  mr,
+  om,
+  bm,
+  tl,
+  ff,
+  te,
+  gu,
+  kn,
+  am,
+  'pa-Arab': paArab,
+  sd,
+  ug,
+  ckb,
+  ku,
+  yo,
+  jv,
+  su,
+  my,
+  tt,
+  uk,
+  qu,
+  min,
+  mad,
+  bug,
+  ja,
+  ko,
+  it: itCatalog,
+  pl,
+  ro,
+  ceb,
+  ilo,
+  vi,
+  skr,
+  bal,
+  kas,
+  mdh,
+  kr,
+  hil,
+  bcl,
+  war,
+  mrw,
+  mfa,
+  ti,
+};
 
 const DIST = path.join(__dirname, '../i18n/dist');
 const TOKEN = /\{(\w+)\}/g;
@@ -95,6 +240,21 @@ describe('the catalog as its own transfer format', () => {
     expect(Object.keys(exportTo(en)).sort()).toEqual([...(Object.keys(en) as TranslationKey[])].sort());
   });
 
+  it('carries every catalog at en parity, flat strings only', () => {
+    const enKeys = Object.keys(exportTo(en)).sort();
+    expect(Object.keys(CATALOGS)).toHaveLength(75);
+    for (const [id, cat] of Object.entries(CATALOGS)) {
+      const exported = exportTo(cat);
+      expect([id, Object.keys(exported).sort()]).toEqual([id, enKeys]);
+      for (const value of Object.values(exported)) {
+        expect(typeof value).toBe('string');
+        expect(value).not.toContain('{{');
+        expect(value).not.toMatch(/_(one|other)\b/);
+        expect(value).not.toContain('$t(');
+      }
+    }
+  });
+
   it('covers every {token} in a value with the key typed params', () => {
     const tokensByKey = new Map<string, string[]>();
     for (const [key, value] of Object.entries(exportTo(en))) {
@@ -120,7 +280,6 @@ describe('the catalog as its own transfer format', () => {
       'stepper.value',
       'time.ago',
       'time.now',
-      'whatsNew.platformNote',
     ]);
     expect(tokensByKey.get('notification.now')).toEqual(['name']);
     expect(tokensByKey.get('notification.reminder')).toEqual(['name', 'n']);
@@ -138,20 +297,17 @@ describe('the catalog as its own transfer format', () => {
     expect(tokensByKey.get('stepper.increase')).toEqual(['value', 'unit']);
     expect(tokensByKey.get('time.now')).toEqual(['name']);
     expect(tokensByKey.get('time.ago')).toEqual(['name', 'duration']);
-    expect(tokensByKey.get('whatsNew.platformNote')).toEqual(['platform']);
 
     // ParamsOf matches the same map (compile-time pins: a wrong shape fails tsc here)
     const nowParams: ParamsOf<'notification.now'> = { name: 'Fajr' };
     const reminderParams: ParamsOf<'notification.reminder'> = { name: 'Fajr', n: 15 };
     const channelReminderParams: ParamsOf<'channel.reminder'> = { name: 'Fajr', n: 15 };
     const stepperParams: ParamsOf<'stepper.decrease'> = { value: 10, unit: 'min' };
-    const platformParams: ParamsOf<'whatsNew.platformNote'> = { platform: 'iOS' };
     const agoParams: ParamsOf<'time.ago'> = { name: 'Fajr', duration: '2h 30m' };
     expect(nowParams.name).toBe('Fajr');
     expect(reminderParams.n).toBe(15);
     expect(channelReminderParams.n).toBe(15);
     expect(stepperParams.value).toBe(10);
-    expect(platformParams.platform).toBe('iOS');
     expect(agoParams.duration).toBe('2h 30m');
     // @ts-expect-error a key with no tokens takes no params
     const none: ParamsOf<'settings.title'> = { name: 'x' };

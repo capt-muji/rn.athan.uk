@@ -64,14 +64,14 @@ const within = (value, [low, high]) => value >= low && value <= high;
 
 /** Third-party documentation and published research data, whose example values are not this project's */
 const SHAPES_NOT_APPLIED = [
-  /^\.agents\/skills\/(?!athan-(lead|planner)\/)/,
-  /^ai\/features\/global-prayer-times\/data\//,
+  /^\.agents\/skills\/(?!athan-next\/|multica-cli\/BOARD-ATHAN)/,
+  /^ai\/features\/global-prayer-times\/data\/london-migration\//,
   /^ai\/features\/moonsighting\//,
   /^yarn\.lock$/,
 ];
 
 /** Where an image, a recording or a document may live. Anywhere else it is most likely a capture of a device */
-const MEDIA_ALLOWED = [/^assets\//, /^ai\/features\/global-prayer-times\/data\//, /^ai\/features\/moonsighting\//];
+const MEDIA_ALLOWED = [/^assets\//, /^ai\/features\/moonsighting\//];
 const MEDIA = /\.(png|jpe?g|gif|webp|heic|mp4|mov|m4v|pdf)$/i;
 
 const DEVICE_TOOL = /udid|--device|devicectl|simctl|simulator|-destination|agent-device/i;

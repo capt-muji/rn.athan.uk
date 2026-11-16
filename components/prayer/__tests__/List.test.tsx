@@ -7,8 +7,9 @@ import { getDefaultStore } from 'jotai';
 import { View } from 'react-native';
 
 import { seedCountdownBarOn, showLondonDay } from '@/__tests__/harness';
-import { EXTRA_PRAYER_TITLES, STANDARD_PRAYER_TITLES } from '@/shared/constants';
+import { PRAYER_LABELS } from '@/shared/i18n';
 import { ScheduleType } from '@/shared/types';
+import { closeAnimationEpoch, openAnimationEpoch } from '@/stores/animationEpoch';
 import { countdownBarShownAtom, getMeasurementsList } from '@/stores/ui';
 
 import List from '../List';
@@ -37,7 +38,7 @@ const layOutList = async () => {
   await fireEvent(list, 'layout', { nativeEvent: { layout: { x: 0, y: 0, width: 366, height: 342 } } });
 };
 
-const PRAYER_NAME = new RegExp(`^(${[...STANDARD_PRAYER_TITLES, ...EXTRA_PRAYER_TITLES].join('|')})$`);
+const PRAYER_NAME = new RegExp(`^(${Object.values(PRAYER_LABELS).join('|')})$`);
 
 /** The English prayer names on screen, top to bottom */
 const namesOnScreen = () => screen.getAllByText(PRAYER_NAME).map((name) => name.children.join(''));
@@ -57,7 +58,7 @@ describe('the lists on Friday 11 September 2026 at 14:00', () => {
     [
       "Extras list, with Friday's Istijaba",
       ScheduleType.Extra,
-      ['Midnight', 'Last Third', 'Suhoor', 'Duha', 'Istijaba'],
+      ['Midnight', 'Last Third', 'Sahur', 'Duha', 'Istijaba'],
     ],
   ])("draws the day's %s", async (_list, type, names) => {
     showLondonDay('2026-09-11', '14:00');
@@ -74,7 +75,7 @@ describe('the Extras list on Saturday 12 September 2026 at 03:00', () => {
 
     await render(<List type={ScheduleType.Extra} />);
 
-    expect(namesOnScreen()).toEqual(['Midnight', 'Last Third', 'Suhoor', 'Duha']);
+    expect(namesOnScreen()).toEqual(['Midnight', 'Last Third', 'Sahur', 'Duha']);
   });
 });
 
@@ -119,6 +120,28 @@ describe('the Standard list on Friday 11 September 2026 at 14:00', () => {
     // Settings writes this preference through the atom itself: the store has no setter for it
     await act(() => getDefaultStore().set(countdownBarShownAtom, false));
     await act(() => jest.runOnlyPendingTimers());
+
+    expect(getMeasurementsList()).toEqual({ pageX: 12, pageY: 180, width: 366, height: 342 });
+  });
+
+  it('holds the re-measure back while the toggle that moved the list is still settling', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    reportPlace(12, 240, 366, 342);
+    reportPlace(12, 180, 366, 342);
+    await render(<List type={ScheduleType.Standard} />);
+    await layOutList();
+
+    // The idle callback is not an animation gate: an idle JS thread wakes inside the
+    // thumb's slide, and the re-measure must re-arm rather than write
+    const epochSlot = openAnimationEpoch();
+    await act(() => getDefaultStore().set(countdownBarShownAtom, false));
+    await act(() => jest.advanceTimersByTime(300));
+
+    expect(measureInWindow).toHaveBeenCalledTimes(1);
+
+    // The settle: the re-measure lands
+    closeAnimationEpoch(epochSlot);
+    await act(() => jest.advanceTimersByTime(300));
 
     expect(getMeasurementsList()).toEqual({ pageX: 12, pageY: 180, width: 366, height: 342 });
   });

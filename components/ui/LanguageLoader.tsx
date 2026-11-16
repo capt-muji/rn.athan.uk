@@ -1,5 +1,7 @@
 import { useAtomValue } from 'jotai';
+import { useEffect } from 'react';
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
+import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 import { COLORS, OVERLAY, SIZE, SPACING, TEXT } from '@/shared/constants';
 import { languageChangingLine, tIn } from '@/shared/i18n';
@@ -10,6 +12,9 @@ import { languageCommitBusyAtom, pendingLanguageAtom } from '@/stores/language';
 /** The line's cap: a longer sentence breaks onto two centred lines rather than one screen-wide line */
 const LINE_MAX_WIDTH = 260;
 
+/** The line's entrance, the owner's number: the one first frame this surface does not settle */
+const LINE_FADE_MS = 200;
+
 /**
  * The full-screen face a language pick runs behind: the launch face's purple, spinner
  * and line, with the line naming the language being set.
@@ -17,6 +22,10 @@ const LINE_MAX_WIDTH = 260;
  * Mounted by the root after the sheet layer. The pick's own sheet is closing from the
  * same tick, so the loader covers the screens while the surfaces converge and the app
  * relaunches where the pick crosses the layout direction.
+ *
+ * The cover and the spinner mount settled; the line's wrapper fades in once its words exist,
+ * because the target's own name arrives with the pick. The whole face then lifts in one act:
+ * the container returns null, one unmount, no stagger.
  */
 export default function LanguageLoader() {
   const busy = useAtomValue(languageCommitBusyAtom);
@@ -27,6 +36,16 @@ export default function LanguageLoader() {
   // already the target's family and box, never the old locale's.
   const line = pending === null ? '' : languageChangingLine(pending);
   const ty = typographyFor(pending ?? currentLocaleId());
+  const lineOpacity = useSharedValue(0);
+
+  useEffect(() => {
+    // The line becomes available the moment the pick names its target: from there it fades in
+    lineOpacity.value = 0;
+    if (!busy || line === '') return;
+    lineOpacity.value = withTiming(1, { duration: LINE_FADE_MS });
+  }, [busy, line, lineOpacity]);
+
+  const lineFade = useAnimatedStyle(() => ({ opacity: lineOpacity.value }), [lineOpacity]);
 
   if (!busy || pending === null) return null;
 
@@ -39,7 +58,10 @@ export default function LanguageLoader() {
         <ActivityIndicator size={SIZE.activityIndicator} color={COLORS.navigation.activityIndicator} />
       </View>
       <View style={styles.lineBox}>
-        <Text style={[styles.line, { fontSize: ty.size(TEXT.size), fontFamily: ty.familyRegular }]}>{line}</Text>
+        {/* The fade rides the line's own wrapper: text ink is solid, never alpha (the standing order) */}
+        <Animated.View style={lineFade}>
+          <Text style={[styles.line, { fontSize: ty.size(TEXT.size), fontFamily: ty.familyRegular }]}>{line}</Text>
+        </Animated.View>
       </View>
     </View>
   );

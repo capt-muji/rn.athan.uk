@@ -5,29 +5,31 @@
  * belongs to is decided by the list day, never by the calendar day its instant falls on.
  */
 
-import { createPrayerSequence, getPrayerForDate, transformApiData } from '@/shared/prayer';
-import { type ISingleApiResponseTransformed, ScheduleType } from '@/shared/types';
-import * as Database from '@/stores/database';
+import { createPrayerSequence, getPrayerForDate } from '@/shared/prayer';
+import { minutesToRecord, toDayMinutes } from '@/shared/timetableDecode';
+import { type DayRecord, ScheduleType } from '@/shared/types';
+import * as Timetable from '@/stores/timetable';
 
 jest.mock('@/stores/database', () => ({
-  getPrayerByDateString: jest.fn(),
   getItem: () => null,
   getRawItem: () => undefined,
 }));
 
+jest.mock('@/stores/timetable', () => ({ getTimetableDay: jest.fn() }));
+
 const DAYS = ['2026-06-25', '2026-06-26', '2026-06-27', '2026-06-28'];
 
-/** The same high-latitude times on every day, with Istijaba derived by the app's own transform */
+/** The same high-latitude times on every day, with Istijaba derived by the record's own producer */
 const storeDays = (magrib: string, isha: string) => {
-  const stored = new Map<string, ISingleApiResponseTransformed>();
+  const stored = new Map<string, DayRecord>();
   for (const date of DAYS) {
-    const [record] = transformApiData({
-      city: 'london',
-      times: { [date]: { fajr: '01:32', sunrise: '02:58', dhuhr: '13:31', asr: '17:31', magrib, isha } },
-    });
+    const record = minutesToRecord(
+      date,
+      toDayMinutes({ fajr: '01:32', sunrise: '02:58', dhuhr: '13:31', asr: '17:31', magrib, isha })
+    );
     stored.set(date, record);
   }
-  (Database.getPrayerByDateString as jest.Mock).mockImplementation((date: string) => stored.get(date) ?? null);
+  (Timetable.getTimetableDay as jest.Mock).mockImplementation((date: string) => stored.get(date) ?? null);
 };
 
 describe("Istijaba on Friday's list when Magrib falls after 00:00", () => {

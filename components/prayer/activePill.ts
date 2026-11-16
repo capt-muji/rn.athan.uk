@@ -10,7 +10,7 @@
 import type { PrayerWithStatus } from '@/hooks/usePrayerSequence';
 import { getPillOpacity, getPillRow } from '@/hooks/useSchedule';
 import { canonicalDisplayOrder } from '@/shared/prayer';
-import type { OverlayStore, ScheduleType } from '@/shared/types';
+import type { ScheduleType } from '@/shared/types';
 
 /** The rows of the list day on screen, and the next prayer's index among them (-1 when none is next) */
 const findNextOnList = (prayers: PrayerWithStatus[], displayDate: string | null) => {
@@ -41,22 +41,24 @@ export const getActivePillRow = (
 /**
  * The opacity the active pill fades to
  *
+ * Takes the schedule-gated primitives Day already reads (the overlay's whole-object store never reaches the
+ * pill), so the cold page's pill host hears nothing when the other page's overlay toggles.
+ *
  * @param prayers The whole sequence with statuses (usePrayerSequence)
  * @param displayDate The list day on screen
- * @param type The page's schedule
- * @param overlay The overlay's state
+ * @param overlayActiveForType Whether the open overlay highlights a prayer on this page
+ * @param overlaySelectedIndexForType The overlay's selected row while active on this page, 0 otherwise
  */
 export const getActivePillOpacity = (
   prayers: PrayerWithStatus[],
   displayDate: string | null,
-  type: ScheduleType,
-  overlay: OverlayStore
+  overlayActiveForType: boolean,
+  overlaySelectedIndexForType: number
 ): number => {
   const { nextPrayerIndex } = findNextOnList(prayers, displayDate);
 
   // The pill fades out while the overlay is open on this page unless its row is the selected one, which keeps it
-  const isHiddenByOverlay =
-    overlay.isOn && overlay.scheduleType === type && overlay.selectedPrayerIndex !== nextPrayerIndex;
+  const isHiddenByOverlay = overlayActiveForType && overlaySelectedIndexForType !== nextPrayerIndex;
 
   return getPillOpacity(nextPrayerIndex, isHiddenByOverlay);
 };

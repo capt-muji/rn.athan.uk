@@ -1,0 +1,1455 @@
+/**
+ * The T-575 verification generator: renders each locale's catalog as a round-trip
+ * comparison the owner reads at a glance. Owner order six (2026-11-02) removed
+ * MyMemory entirely - not the second site, not a fallback, not a fetch - so the
+ * engine chain is Google's gtx endpoint alone and the generator never requests
+ * MyMemory again; any MyMemory renderings in existing artifacts are historical and
+ * a resume pass drops them (a resumed slot is adopted only when its engine still
+ * owns that slot). The two-slot row model stands: slot one is Google's round-trip,
+ * slot two sits empty - engine "pending" - until phase two adds the second site.
+ *
+ *   node scripts/i18n-verify.js --locales ar,so [--out DIR] [--resume]
+ *                               [--keys k1,k2] [--pace ms] --waves | --all | --fill ar,so
+ *
+ * --keys scopes every locale's rows (and the English reference page) to the named
+ * keys only - the targeted wave mode (owner order 2026-11-07): a wave verifies the
+ * keys it touched, never the whole catalog.
+ *
+ * The verdict color reads at a glance; rows the engine refuses carry the judge
+ * LLM's rendering in one cell marked engine:llm, never a site's rendering. Pages
+ * carry the language name beside the code everywhere (the full 74 + English,
+ * parsed out of shared/languageNames.ts), modern CSS, and Google's spot-check
+ * link. English generates as the reference page: keys and English strings, no
+ * engines.
+ *
+ * --resume reuses a slot's rendering only while the stored row's catalog text
+ * matches the live catalog, refetches every missing slot, and recomputes verdicts.
+ * --fill merges <locale>.llm-fill.json into unrendered rows (an optional doubt
+ * note rides the row as amber), refuses duplicates and unknown keys, skips entries
+ * the engine has since superseded, and lists still-unfilled rows as gaps; the
+ * generator itself never invents a rendering. The process exits non-zero listing
+ * any shortfall from the English key count and any engine slot still missing
+ * without a judge fill.
+ *
+ * CommonJS (the check-*.js precedent) so jest's unit transform loads it directly.
+ * Catalogs parse with @babel/parser: the exported object literal whose declarator
+ * is not PRAYER_LABELS, the name-independent rule the loader itself uses.
+ */
+const { mkdirSync, readFileSync, writeFileSync } = require('node:fs');
+const { join } = require('node:path');
+const { homedir } = require('node:os');
+const { parse } = require('@babel/parser');
+
+/** The pilot wave the owner reads personally (the owner's protocol, T-575) */
+const PILOT_WAVE = ['ar', 'so', 'id', 'ms', 'min', 'mad', 'bug', 'ceb', 'ilo'];
+
+/** The engine chain: Google's gtx alone (owner order six, 2026-11-02: MyMemory is out) */
+const SITE_ENGINES = ['gtx'];
+
+/** The two-slot row model: slot one Google's, slot two pending phase two's second site */
+const ROW_SLOTS = ['gtx', 'pending'];
+
+/** Engine language codes where they differ from the repo's locale ids */
+const LOCALE_ALIASES = { 'zh-Hans': 'zh-CN', jv: 'jw' };
+
+/** The eleven prayer.* keys, the owner's first priority */
+const PRAYER_KEYS = [
+  'prayer.fajr',
+  'prayer.sunrise',
+  'prayer.dhuhr',
+  'prayer.asr',
+  'prayer.magrib',
+  'prayer.isha',
+  'prayer.midnight',
+  'prayer.last third',
+  'prayer.suhoor',
+  'prayer.duha',
+  'prayer.istijaba',
+];
+
+/** The five extras.explanation.* keys, the owner's second priority */
+const EXPLANATION_KEYS = [
+  'extras.explanation.midnight',
+  'extras.explanation.last third',
+  'extras.explanation.suhoor',
+  'extras.explanation.duha',
+  'extras.explanation.istijaba',
+];
+
+/** Section 3's rank table: the owner's category order over key prefixes */
+const SECTION3_RANKS = [
+  'settings',
+  'settingsButton',
+  'language',
+  'sheet',
+  'modal',
+  'dialog',
+  'alert',
+  'prayerAlert',
+  'overlay',
+  'colorPicker',
+  'stepper',
+  'sound',
+  'soundItem',
+  'volume',
+  'help',
+  'calendar',
+  'qibla',
+  'widget',
+];
+
+/** Parses shared/i18n/locale.ts: the exported RTL_IDS set, the one source of direction truth */
+const parseRtlIds = (source, file) => {
+  const ast = parse(source, { sourceType: 'module', plugins: ['typescript'] });
+  for (const node of ast.program.body) {
+    const declaration = node.type === 'VariableDeclaration' ? node : node.declaration;
+    if (node.type !== 'VariableDeclaration' && node.type !== 'ExportNamedDeclaration') continue;
+    if (declaration?.type !== 'VariableDeclaration') continue;
+    for (const declarator of declaration.declarations) {
+      if (declarator.id.type !== 'Identifier' || declarator.id.name !== 'RTL_IDS') continue;
+      const call = declarator.init;
+      if (call?.type !== 'NewExpression' || call.callee?.type !== 'Identifier' || call.callee.name !== 'Set') break;
+      const ids = call.arguments[0]?.elements ?? [];
+      return new Set(
+        ids.map((element) => {
+          if (element?.type !== 'StringLiteral') {
+            throw new Error(`i18n verify: ${file} holds a non-literal RTL id`);
+          }
+          return element.value;
+        })
+      );
+    }
+  }
+  throw new Error(`i18n verify: could not find the RTL_IDS set in ${file}`);
+};
+
+const loadRtlIds = (deps = {}) =>
+  parseRtlIds(
+    deps.readLocaleSource
+      ? deps.readLocaleSource()
+      : readFileSync(join(__dirname, '..', 'shared', 'i18n', 'locale.ts'), 'utf8'),
+    'locale.ts'
+  );
+
+const dirFor = (locale, rtl) => (rtl.has(locale) ? 'rtl' : 'ltr');
+
+const sectionOf = (key) => {
+  if (key.startsWith('prayer.')) return 1;
+  if (key.startsWith('extras.explanation.')) return 2;
+  return 3;
+};
+
+/**
+ * Orders the catalog's keys into the owner's reading order: the eleven prayer
+ * names, the five extras explanations, then the remaining keys by the section-3
+ * prefix rank table with unranked prefixes following in catalog order.
+ */
+const orderedKeys = (en) => {
+  const catalogOrder = Object.keys(en);
+  const inCatalog = new Set(catalogOrder);
+  const rest = catalogOrder.filter((key) => sectionOf(key) === 3);
+  const catalogRank = new Map(catalogOrder.map((key, i) => [key, i]));
+  rest.sort((a, b) => {
+    const rankA = SECTION3_RANKS.indexOf(a.split('.')[0]);
+    const rankB = SECTION3_RANKS.indexOf(b.split('.')[0]);
+    if (rankA >= 0 && rankB >= 0) return rankA - rankB;
+    if (rankA >= 0) return -1;
+    if (rankB >= 0) return 1;
+    return catalogRank.get(a) - catalogRank.get(b);
+  });
+  return [...PRAYER_KEYS.filter((k) => inCatalog.has(k)), ...EXPLANATION_KEYS.filter((k) => inCatalog.has(k)), ...rest];
+};
+
+const escapeHtml = (value) =>
+  String(value)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&apos;');
+
+/** Parses a catalog module's source: the exported object literal that is not PRAYER_LABELS */
+const parseCatalogSource = (source, file) => {
+  const ast = parse(source, { sourceType: 'module', plugins: ['typescript'] });
+  for (const node of ast.program.body) {
+    if (node.type !== 'ExportNamedDeclaration' || node.declaration?.type !== 'VariableDeclaration') continue;
+    for (const declarator of node.declaration.declarations) {
+      if (declarator.id.type !== 'Identifier' || declarator.id.name === 'PRAYER_LABELS') continue;
+      let literal = declarator.init;
+      while (literal && (literal.type === 'TSSatisfiesExpression' || literal.type === 'TSAsExpression')) {
+        literal = literal.expression;
+      }
+      if (literal?.type !== 'ObjectExpression') continue;
+      const catalog = {};
+      for (const property of literal.properties) {
+        if (
+          property.type !== 'ObjectProperty' ||
+          property.key.type !== 'StringLiteral' ||
+          property.value.type !== 'StringLiteral'
+        ) {
+          throw new Error(`i18n verify: ${file} holds a non-literal member`);
+        }
+        catalog[property.key.value] = property.value.value;
+      }
+      return catalog;
+    }
+  }
+  throw new Error(`i18n verify: could not find the catalog object literal in ${file}`);
+};
+
+/** Parses shared/languageNames.ts: the exported LANGUAGE_NAMES array of {id, name, english} */
+const parseLanguageNames = (source, file) => {
+  const ast = parse(source, { sourceType: 'module', plugins: ['typescript'] });
+  for (const node of ast.program.body) {
+    if (node.type !== 'ExportNamedDeclaration' || node.declaration?.type !== 'VariableDeclaration') continue;
+    for (const declarator of node.declaration.declarations) {
+      if (declarator.id.type !== 'Identifier' || declarator.id.name !== 'LANGUAGE_NAMES') continue;
+      if (declarator.init?.type !== 'ArrayExpression') break;
+      const names = declarator.init.elements.map((element) => {
+        const fields = {};
+        for (const property of element?.properties ?? []) {
+          if (
+            property.type !== 'ObjectProperty' ||
+            property.key.type !== 'Identifier' ||
+            property.value.type !== 'StringLiteral'
+          ) {
+            throw new Error(`i18n verify: ${file} holds a non-literal language name`);
+          }
+          fields[property.key.name] = property.value.value;
+        }
+        if (!fields.id || !fields.name || !fields.english) {
+          throw new Error(`i18n verify: ${file} holds an incomplete language name`);
+        }
+        return fields;
+      });
+      return names;
+    }
+  }
+  throw new Error(`i18n verify: could not find the LANGUAGE_NAMES array in ${file}`);
+};
+
+const loadLanguageNames = (deps = {}) =>
+  parseLanguageNames(
+    deps.readNamesSource
+      ? deps.readNamesSource()
+      : readFileSync(join(__dirname, '..', 'shared', 'languageNames.ts'), 'utf8'),
+    'languageNames.ts'
+  );
+
+/** The owner's label format: the code beside the name, parenthetical glosses stripped (min - Minangkabau) */
+const displayName = (english) => english.replace(/ \([^)]*\)$/, '');
+
+const languageLabel = (id, names) => {
+  const entry = names.find((candidate) => candidate.id === id);
+  return entry ? `${id} - ${displayName(entry.english)}` : id;
+};
+
+// --------------------------------------------------------------------------------------
+// The meaning heuristic (the lead's tuning, owner order two): stopword-filtered token
+// overlap over the shorter set at 0.5, plus a cognate rule (equal 4-char prefixes or
+// edit distance <= 2 on tokens >= 5 chars) and a small synonym map for the UI vocabulary.
+// --------------------------------------------------------------------------------------
+
+/** English function words plus the transliteration articles round-trips carry */
+const STOPWORDS = new Set([
+  'the',
+  'a',
+  'an',
+  'of',
+  'to',
+  'in',
+  'at',
+  'for',
+  'and',
+  'or',
+  'is',
+  'are',
+  'was',
+  'were',
+  'be',
+  'been',
+  'being',
+  'am',
+  'do',
+  'does',
+  'did',
+  'have',
+  'has',
+  'had',
+  'will',
+  'would',
+  'can',
+  'could',
+  'should',
+  'may',
+  'might',
+  'must',
+  'as',
+  'by',
+  'from',
+  'with',
+  'into',
+  'per',
+  'than',
+  'then',
+  'this',
+  'that',
+  'these',
+  'those',
+  'it',
+  'its',
+  'their',
+  'his',
+  'her',
+  'our',
+  'your',
+  'you',
+  'we',
+  'they',
+  'he',
+  'she',
+  'them',
+  'us',
+  'i',
+  'me',
+  'my',
+  'what',
+  'which',
+  'who',
+  'whom',
+  'when',
+  'where',
+  'not',
+  'no',
+  'nor',
+  'so',
+  'too',
+  'very',
+  'just',
+  'also',
+  's',
+  't',
+  'n',
+  'al',
+  'el',
+  'dont',
+  'doesnt',
+  'cant',
+  'wont',
+  'isnt',
+  'arent',
+  'up',
+  'youre',
+]);
+
+/** Synonym groups for this app's UI vocabulary; members match each other pairwise */
+const SYNONYM_GROUPS = [
+  // sabah and aksham are the Bosnian traditional names, each its own morning/evening sense
+  ['fajr', 'dawn', 'morning', 'sabah', 'subah'],
+  // zahr is the Arabic midday word; lunch is its own meal sense (the isha/dinner precedent)
+  ['dhuhr', 'noon', 'midday', 'zuhr', 'zohr', 'lunch', 'zohar', 'zuhar', 'zuhur', 'juhar', 'luhr', 'zahor', 'zuhri'],
+  // Sunrise is whole-sense only (owner order eleven): a fragment like 'rise' or 'sun'
+  // never verifies it; the Shuruk family carries for the languages that transliterate
+  ['sunrise', 'sunup', 'shuruq', 'shuruk', 'syuruq', 'shurouq'],
+  // Bhanu is the sun's own Sanskritic name (Bhanuvara is Sunday); the weekday row
+  // names the sun itself, while sunrise above stays whole-sense only (order eleven)
+  ['sun', 'bhanu'],
+  ['asr', 'afternoon', 'ashar', 'asher', 'era', 'asar', 'azar', 'asur', 'asser'],
+  // Morocco is al-Maghrib in Arabic, but the owner's order ten rules the country's name
+  // never verifies the prayer: the word's plain evening sense is the only engine reading
+  // beyond the name itself that carries
+  ['magrib', 'maghrib', 'sunset', 'evening', 'aksham'],
+  // al-isha is the Arabic word for the evening meal; the prayer name derives from it.
+  // Isak is the engine's romanization of Malay Isyak - it names the prayer itself (the Ashar/Asher class)
+  // tuta, Quechua's night word, names the night prayer the way nightfall does
+  ['isha', 'nightfall', 'dinner', 'supper', 'isak', 'esha', 'night'],
+  ['suhoor', 'sahur', 'suhur', 'sehri', 'sahri', 'sahar', 'sahari'],
+  ['duha', 'forenoon', 'midmorning', 'morn', 'morning', 'chasht', 'chast', 'juha', 'dooha', 'luha', 'zuha', 'zuho'],
+  ['istijaba', 'istijabah', 'response', 'answer'],
+  // Owner order twelve: athan is transliterated in every language; Azaan is the Somali
+  // spelling of the same word (as Isak is of Isyak)
+  ['athan', 'adhan', 'azan', 'azaan', 'call', 'asan', 'azon', 'azone'],
+  ['prayer', 'salah', 'salat', 'supplication', 'worship', 'dasal', 'namaz'],
+  ['moment', 'second', 'seconds', 'instant'],
+  // เสร็จ, Thai's done, renders as its plain verb; Tamam renders as Ok; Jeex na as over
+  ['done', 'finish', 'finished', 'ok', 'over'],
+  // Довідка, Ukrainian's help, renders as its reference-desk sense; Ndimbal, Wolof's
+  // help, renders as the favour it asks for
+  ['help', 'reference', 'favour'],
+  // обривається завчасно cuts off early; the engine's premature is the same earliness
+  ['early', 'prematurely'],
+  // amul, Wolof's not-have, renders plainly as without
+  ['unavailable', 'without'],
+  [
+    'notification',
+    'alert',
+    'notice',
+    'reminder',
+    'memory',
+    'warning',
+    'note',
+    'information',
+    'message',
+    'messages',
+    'announcement',
+  ],
+  ['sound', 'audio', 'tone', 'voice', 'noise'],
+  ['silent', 'silence', 'mute', 'muted', 'dumb', 'quiet'],
+  // tampilan, the Malay family's display word, renders as layout - its own appearance sense.
+  // Azerbaijani ekran is the display word and renders as screen, its own sense
+  [
+    'show',
+    'display',
+    'view',
+    'visible',
+    'appearance',
+    'layout',
+    'screen',
+    'reveal',
+    'indicate',
+    'showing',
+    'indication',
+  ],
+  ['on', 'enable', 'enabled', 'activate', 'activated'],
+  // mati is Indonesian's standard device-off word; the engine renders its literal sense.
+  // Minangkabau shares the word, and die is that literal sense's own verb.
+  // Cebuano gipatay (killed) is the same device-off class
+  [
+    'off',
+    'disable',
+    'disabled',
+    'deactivate',
+    'deactivated',
+    'dead',
+    'die',
+    'killed',
+    'gone',
+    'closed',
+    'close',
+    'passive',
+    // German aus renders as out of - its own off sense
+    'out',
+  ],
+  ['turn', 'switch'],
+  ['open', 'launch'],
+  ['stop', 'halt', 'cease', 'cancel', 'close', 'shut', 'delete', 'cover'],
+  ['allow', 'permit'],
+  ['phone', 'device', 'mobile'],
+  ['check', 'verify', 'checking', 'confirming'],
+  ['update', 'updates', 'upgrade', 'refresh', 'improve', 'renew'],
+  ['select', 'choose', 'pick'],
+  ['find', 'locate', 'search', 'finder'],
+  ['direction', 'heading', 'bearing'],
+  ['calendar', 'schedule', 'schedules', 'timetable'],
+  ['why', 'reason'],
+  ['disturb', 'bother', 'interrupt'],
+  ['focus', 'concentrate'],
+  ['name', 'title'],
+  // harshe, the tongue word, is Hausa's language word
+  ['language', 'tongue'],
+  ['help', 'assist', 'assistance', 'guide', 'guidance', 'aid'],
+  ['last', 'final', 'end', 'ending'],
+  ['add', 'added'],
+  ['minute', 'minutes', 'min', 'mins'],
+  ['hour', 'hours', 'hrs'],
+  // can't loses its apostrophe in normalisation, so the member is the bare form
+  ['na', 'unavailable', 'none', 'cant', 'nothing'],
+  ['extra', 'overtime', 'additional'],
+  ['preferences', 'selections', 'choices', 'options'],
+  ['save', 'store'],
+  ['reset', 'restore', 'return', 'reverts', 'returned'],
+  // Safar month shares its spelling with the Arabic word for zero and for travel:
+  // an engine naming either reads the word itself
+  ['safar', 'zero', 'travel', 'journey', 'trip', 'tour'],
+  // Muharram is the Arabic word for the sacred month - the engine names the word's own sense
+  ['muharram', 'sacred', 'forbidden'],
+  ['wrong', 'error', 'mistake', 'problem'],
+  // agpabaro, the Philippine family's refresh word, renders as renew and renewal
+  ['refresh', 'reload', 'load', 'renew', 'renewal'],
+  ['setting', 'settings', 'arrangement', 'arrangements', 'adjustments', 'parameters'],
+  ['hold', 'keep', 'retain'],
+  ['turn', 'move', 'rotate'],
+  ['done', 'completed', 'complete', 'finished', 'ready', 'full', 'completion'],
+  ['default', 'original', 'initial'],
+  // later~then~afterwards: the postponing adverb's own senses, the update button's word
+  ['later', 'then', 'afterwards', 'future'],
+  // Bambara ɲɛfɛ renders as ahead - before's own directional sense
+  ['before', 'ahead'],
+  // Owner order twelve: Qibla is transliterated in every language; the local spellings
+  // name the same Arabic word the way even English does
+  // Kevlar is the engine's romanization of Burmese ကိဗ်လာ (qibla) - it names the thing (the Isak class)
+  ['qibla', 'kibla', 'kiblat', 'kible', 'qible', 'qiblah', 'kıble', 'kevlar'],
+];
+
+/** Phrase-level pairs the token matcher cannot see, compared on stopword-filtered text */
+const PHRASE_SYNONYMS = [
+  [
+    'up to date',
+    'latest version',
+    'most recent version',
+    'no new updates',
+    'no new update',
+    'no update',
+    'the version is the latest',
+    'you are already on the latest version',
+  ],
+  // every member is the dismay exclamation in its own register, Alamak's class
+  ['oh no', 'excuse me', 'unfortunately', 'sorry', 'ouch', 'damn', 'wow', 'hey', 'alas', 'ah', 'oops', 'eh', 'ha'],
+  // old alone carries the stale sense on an out-of-date row; the up-to-date group never crosses
+  ['out of date', 'outdated', 'not updated', 'no updates', 'expired', 'old', 'obsolete', 'past', 'not fresh'],
+  ['rabiʻ ii', 'spring of the other'],
+  // xwarina seherê, the Kurdish dawn meal, renders as its plain description
+  // sahaari, Pashto's dawn meal, renders as breakfast - the same meal sense
+  ['suhoor', 'morning meal', 'breakfast', 'fasting meal'],
+  // worked out and calculated name the same derivation on the qibla row
+  ['worked out', 'calculated', 'computed'],
+  // the hijri month's established local spellings name the month itself (the engine renders Zulhijjah)
+  [
+    'dhuʻl hijjah',
+    'zulhijjah',
+    'zilhijja',
+    'zulhajjah',
+    'zilhaj',
+    'zulhijah',
+    'dulhija',
+    'zilhice',
+    'dhul hajj',
+    'zul hajj',
+    'dil hajj',
+    'dul hijxhe',
+    'zulhaj',
+    'zilhijje',
+    'zulkhiza',
+  ],
+  // whole-sense event phrases: the rising of the sun IS sunrise, the night's middle IS midnight
+  // baha aduu, Oromo's sunrise, names the sun's emergence as its east - the whole event
+  ['sunrise', 'rising of the sun', 'sun is rising', 'east of the sun'],
+  // inti chinkay, Quechua's maghrib, names the sun's going - the whole event
+  ['magrib', 'the sun goes down', 'sun goes down'],
+  // bez zvuka, Russian's silent, states the absence plainly
+  ['silent', 'no sound', 'without sound'],
+  ['midnight', 'middle of the night'],
+  // Віджети обох екранів - the two screens are the home and the lock
+  ['home & lock widgets', 'widgets for both screens'],
+  // 提前, Chinese's before, renders as its own adverb
+  ['before', 'in advance'],
+  // Jumodul-avval and Jumodul-oxir, Uzbek's Jumada pair (avval first, oxir last)
+  ['jumada i', 'jumodul avval', 'jumodul first'],
+  ['jumada ii', 'jumodul oxir', 'jumodul end'],
+  // the failure phrase: a problem occurred is something went wrong in its own words
+  ['something went wrong', 'a problem occurred', 'another problem occurred'],
+  // and Qiʻdah's own local spellings (the engine renders Zulkida)
+  [
+    'dhuʻl qiʻdah',
+    'zulkida',
+    'zulqida',
+    'zul qaeda',
+    'zilkad',
+    'dhil al qaida',
+    'dhul kida',
+    'jill kadah',
+    'zulqaida',
+    'in zulkag',
+    'zul kida',
+    'dulcada',
+    'zilqada',
+    'zulkaada',
+    'dulkhaad',
+    'zhul kada',
+    'zul-kada',
+    'zúl-kádá',
+    'zulqaid',
+    'zul qaida',
+    'zul qudda',
+    'dhul qada',
+    'dhul qad',
+    'julgita',
+    'zul qida',
+    'zulqada',
+    'zylkada',
+    'dhulqidah',
+    'zulqidah',
+    'zulqadi',
+  ],
+];
+
+const SYNONYM_INDEX = new Map();
+for (const group of SYNONYM_GROUPS) {
+  for (const word of group) {
+    if (!SYNONYM_INDEX.has(word)) SYNONYM_INDEX.set(word, new Set());
+    for (const other of group) {
+      if (other !== word) SYNONYM_INDEX.get(word).add(other);
+    }
+  }
+}
+
+const levenshtein = (a, b) => {
+  const previous = new Array(b.length + 1);
+  const current = new Array(b.length + 1);
+  for (let j = 0; j <= b.length; j++) previous[j] = j;
+  for (let i = 1; i <= a.length; i++) {
+    current[0] = i;
+    for (let j = 1; j <= b.length; j++) {
+      const substitution = previous[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1);
+      current[j] = Math.min(previous[j] + 1, current[j - 1] + 1, substitution);
+    }
+    for (let j = 0; j <= b.length; j++) previous[j] = current[j];
+  }
+  return previous[b.length];
+};
+
+/** The singular lookup, so plurals reach their group (reminders and alerts both land in the notification group) */
+const singularOf = (word) =>
+  SYNONYM_INDEX.has(word) || !word.endsWith('s') || word.length < 4 ? word : word.slice(0, -1);
+
+const synonymMatch = (a, b) => {
+  const left = singularOf(a);
+  const right = singularOf(b);
+  return SYNONYM_INDEX.get(left)?.has(right) === true;
+};
+
+/** Two tokens of at least 5 characters whose prefixes or spellings are near enough */
+const cognateMatch = (a, b) => {
+  if (a.length < 5 || b.length < 5) return false;
+  return a.slice(0, 4) === b.slice(0, 4) || levenshtein(a, b) <= 2;
+};
+
+/** A non-stopword token that prefixes a longer one: app/application, or a short pair like Mon/M and Jun/June.
+ * Owner order eleven: sun never abbreviates sunrise - it names the star and the day,
+ * so that one prefix pair is a fragment and fails */
+const NO_PREFIX_PAIRS = new Set(['sun>sunrise']);
+const prefixMatch = (shorter, longer) => {
+  if (shorter.length >= longer.length || STOPWORDS.has(shorter)) return false;
+  if (!longer.startsWith(shorter)) return false;
+  if (NO_PREFIX_PAIRS.has(`${shorter}>${longer}`)) return false;
+  return shorter.length >= 3 || longer.length <= 4;
+};
+
+const tokenMatch = (a, b) => {
+  if (a === b || cognateMatch(a, b) || prefixMatch(a, b) || prefixMatch(b, a)) return true;
+  return synonymMatch(a, b);
+};
+
+const normalizeTokens = (text) =>
+  String(text)
+    .toLowerCase()
+    .replace(/['’]/g, '')
+    .replace(/\bn\/a\b/g, 'na')
+    .replace(/[\p{P}\p{S}]+/gu, ' ')
+    .split(/\s+/)
+    .filter(Boolean);
+
+const filterStopwords = (tokens) => tokens.filter((token) => !STOPWORDS.has(token));
+
+const PHRASE_INDEX = new Map();
+for (const group of PHRASE_SYNONYMS) {
+  for (const phrase of group) {
+    PHRASE_INDEX.set(filterStopwords(normalizeTokens(phrase)).join(' '), group);
+  }
+}
+
+/** The phrase group a token run lands in, tolerating one stray edge word */
+const phraseGroupOf = (tokens) => {
+  const direct = PHRASE_INDEX.get(tokens.join(' '));
+  if (direct !== undefined) return direct;
+  const withoutFirst = PHRASE_INDEX.get(tokens.slice(1).join(' '));
+  if (withoutFirst !== undefined) return withoutFirst;
+  return PHRASE_INDEX.get(tokens.slice(0, -1).join(' '));
+};
+
+/**
+ * The verdict's meaning test: does the round-trip carry the English string's meaning?
+ * Stopword-filtered token overlap over the shorter set at threshold 0.5, with cognate
+ * and synonym matches counting toward the intersection. Sides emptied by stopword
+ * filtering fall back to their raw tokens.
+ */
+const carriesMeaning = (en, roundtrip) => {
+  const rawA = [...new Set(normalizeTokens(en))];
+  const rawB = [...new Set(normalizeTokens(roundtrip))];
+  if (rawA.length === 0 || rawB.length === 0) return false;
+  let tokensA = filterStopwords(rawA);
+  let tokensB = filterStopwords(rawB);
+  if (tokensA.length === 0 || tokensB.length === 0) {
+    tokensA = rawA;
+    tokensB = rawB;
+  }
+  const phraseA = phraseGroupOf(tokensA);
+  const phraseB = phraseGroupOf(tokensB);
+  if (phraseA !== undefined && phraseA === phraseB) return true;
+  const [shorter, longer] = tokensA.length <= tokensB.length ? [tokensA, tokensB] : [tokensB, tokensA];
+  const matched = shorter.filter((token) => longer.some((other) => tokenMatch(token, other))).length;
+  return matched / shorter.length >= 0.5;
+};
+
+/**
+ * The row verdict (owner order eight): phase ONE is Google alone - green when gtx's
+ * round-trip carries the meaning, red when it does not, amber where gtx did not
+ * render (a judge fill or a doubt is always amber: no independent machine vouched
+ * for the row). Phase TWO is the both-engines semantics - green when both slots
+ * rendered and both carry the meaning, red when both rendered and neither carries
+ * it, amber on a missing slot or divergence. Phase two's second site is not chosen
+ * yet; its slot stays pending.
+ */
+const verdictOf = (en, sites, llm = null, doubt = null, phase = 'one') => {
+  if (doubt) return 'amber';
+  if (llm) return 'amber';
+  if (phase === 'two') {
+    const present = sites.filter((site) => site.roundtrip !== null && site.roundtrip !== '');
+    if (present.length < sites.length) return 'amber';
+    const carried = present.filter((site) => carriesMeaning(en, site.roundtrip));
+    if (carried.length === present.length) return 'green';
+    if (carried.length === 0) return 'red';
+    return 'amber';
+  }
+  const google = sites[0];
+  if (google === undefined || google.roundtrip === null || google.roundtrip === '') return 'amber';
+  return carriesMeaning(en, google.roundtrip) ? 'green' : 'red';
+};
+
+// --------------------------------------------------------------------------------------
+// The engines
+// --------------------------------------------------------------------------------------
+
+const engineLocale = (locale) => LOCALE_ALIASES[locale] ?? locale;
+
+const gtxUrl = (locale, text) =>
+  `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${engineLocale(locale)}&tl=en&dt=t&q=${encodeURIComponent(text)}`;
+
+const extractGtx = (body) => {
+  try {
+    const data = JSON.parse(body);
+    if (!Array.isArray(data) || !Array.isArray(data[0])) return null;
+    const text = data[0]
+      .map((segment) => (Array.isArray(segment) && typeof segment[0] === 'string' ? segment[0] : ''))
+      .join('');
+    return text.length > 0 ? text : null;
+  } catch {
+    return null;
+  }
+};
+
+const ENGINES = {
+  gtx: { url: gtxUrl, extract: extractGtx },
+};
+
+// --------------------------------------------------------------------------------------
+// The batch engines (owner order 2026-11-08, ticket #659): one POST per locale chunk
+// carries newline-joined values, and the response's segments fold back onto the input
+// lines by their source echo. One target language per request stays the endpoint's
+// floor; the request count collapses along the key axis instead.
+// --------------------------------------------------------------------------------------
+
+const GTX_ENDPOINT = 'https://translate.googleapis.com/translate_a/single';
+
+/** Chunk caps: lines per POST and bytes of joined source text, both far under anything
+ * the endpoint has been observed refusing; 223 keys land in two chunks */
+const MAX_BATCH_LINES = 200;
+const MAX_BATCH_BYTES = 32768;
+
+const gtxBatchRequest = (locale, text) => ({
+  url: GTX_ENDPOINT,
+  body: `client=gtx&sl=${engineLocale(locale)}&tl=en&dt=t&q=${encodeURIComponent(text)}`,
+});
+
+/** Aligns a batch response onto the input lines by POSITION with the source echo as a
+ * whitespace-normalized guard: the live endpoint serves one segment per input line, each
+ * non-final echo carrying the newline separator and edge spaces moved or trimmed, so an
+ * exact fold can never match (auditor-verified 2026-11-08). A line whose positional
+ * segment fails the guard, or has no segment, reads null - a safe miss the resume and
+ * judge paths already know how to carry. */
+const extractGtxBatch = (body, inputLines) => {
+  let data;
+  try {
+    data = JSON.parse(body);
+  } catch {
+    return inputLines.map(() => null);
+  }
+  if (!Array.isArray(data) || !Array.isArray(data[0])) return inputLines.map(() => null);
+  const segments = data[0].filter((segment) => Array.isArray(segment) && typeof segment[1] === 'string');
+
+  const norm = (value) => value.replace(/\s+/g, ' ').trim();
+  return inputLines.map((line, index) => {
+    const segment = segments[index];
+    if (segment === undefined || norm(segment[1]) !== norm(line)) return null;
+    return typeof segment[0] === 'string' && segment[0].length > 0 ? segment[0] : null;
+  });
+};
+
+/** One batched engine call with the same retry and pace rhythm as the single call: the
+ * aligned translations, or nulls when the budget is spent. Values carrying embedded
+ * newlines ship with those newlines flattened to spaces: the join separator must remain
+ * the only line break, or the fold's alignment shifts (volume.note and friends).
+ * Redirects never ride: a 3xx here is the sorry page (2026-11-08, T-664's parity run),
+ * and following it dressed a block up as a failing 200 while three retries per chunk
+ * hammered a flagged IP - so a redirect aborts the whole run for the caller to report. */
+const fetchBatchWithRetry = async (engineName, locale, texts, deps, attempts = 3) => {
+  if (engineName !== 'gtx' || texts.length === 0) return texts.map(() => null);
+  const sentLines = texts.map((text) => text.replace(/\n+/g, ' '));
+  const request = gtxBatchRequest(locale, sentLines.join('\n'));
+  for (let attempt = 0; attempt < attempts; attempt++) {
+    if (deps.pace) await deps.sleep(deps.pace);
+    try {
+      // The endpoint 400s the chunk without the form Content-Type (auditor-verified
+      // 2026-11-08): undici's text/plain default never reaches the translator
+      const response = await deps.fetch(request.url, {
+        method: 'POST',
+        body: request.body,
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        redirect: 'manual',
+      });
+      if (response.status >= 300 && response.status < 400) throw SORRY_REDIRECT;
+      if (!response.ok) throw new Error(`http ${response.status}`);
+      const extracted = extractGtxBatch(await response.text(), sentLines);
+      // A shapeless 200 is a spent attempt, not a verdict: the single path retried
+      // empty extracts, and a mangled body must not burn a whole chunk
+      if (extracted.every((value) => value === null)) throw new Error('no aligned segments');
+      return extracted;
+    } catch (error) {
+      if (error === SORRY_REDIRECT) throw SORRY_REDIRECT;
+      if (attempt === attempts - 1) return texts.map(() => null);
+      await deps.sleep(400 * 2 ** attempt);
+    }
+  }
+  return texts.map(() => null);
+};
+
+/** Splits the keys into chunks under both caps, in row order. The byte cap measures the
+ * percent-encoded wire form: non-Latin scripts inflate up to ninefold under escaping */
+const chunkKeys = (keys, catalog) => {
+  const chunks = [];
+  let current = [];
+  let bytes = 0;
+  for (const key of keys) {
+    const size = encodeURIComponent(catalog[key]).length + 1;
+    if (current.length > 0 && (current.length >= MAX_BATCH_LINES || bytes + size > MAX_BATCH_BYTES)) {
+      chunks.push(current);
+      current = [];
+      bytes = 0;
+    }
+    current.push(key);
+    bytes += size;
+  }
+  if (current.length > 0) chunks.push(current);
+  return chunks;
+};
+
+/** The Google human page - the owner's spot-check link */
+const spotCheckUrl = (locale, text) =>
+  `https://translate.google.com/?sl=${engineLocale(locale)}&tl=en&text=${encodeURIComponent(text)}&op=translate`;
+
+/** The sorry page's signature (T-664's parity run): thrown, never swallowed, so the run
+ * stops instead of hammering a flagged IP through retry cycles */
+const SORRY_REDIRECT = Symbol('sorry-redirect');
+
+/** One engine call with retry and backoff: the extracted text, or null when the budget is spent.
+ * Under a pace, every attempt - retries included - waits its gap first (owner order: a
+ * closed quota must never be hammered with quick retries; one request per gap). A 3xx
+ * with redirects off is the sorry page: it aborts the caller's whole run. */
+const fetchWithRetry = async (engineName, locale, text, deps, attempts = 3) => {
+  const engine = ENGINES[engineName];
+  for (let attempt = 0; attempt < attempts; attempt++) {
+    if (deps.pace) await deps.sleep(deps.pace);
+    try {
+      const response = await deps.fetch(engine.url(locale, text), { redirect: 'manual' });
+      if (response.status >= 300 && response.status < 400) throw SORRY_REDIRECT;
+      if (!response.ok) throw new Error(`http ${response.status}`);
+      const extracted = engine.extract(await response.text());
+      if (extracted === null) throw new Error('empty body');
+      return extracted;
+    } catch (error) {
+      if (error === SORRY_REDIRECT) throw SORRY_REDIRECT;
+      if (attempt === attempts - 1) return null;
+      await deps.sleep(400 * 2 ** attempt);
+    }
+  }
+  return null;
+};
+
+/**
+ * One probe per engine: the engines that answer. A locale's dead engines are not
+ * hammered per row - their slots read miss until a later resume pass revives them.
+ */
+const preFlight = async (engineNames, locale, probeText, deps) => {
+  const live = [];
+  for (const engineName of engineNames) {
+    const out = await fetchWithRetry(engineName, locale, probeText, deps, 1);
+    if (out !== null) live.push(engineName);
+  }
+  return live;
+};
+
+/**
+ * A slot accepts its engine's round-trip when it is non-empty and either translates
+ * (differs from the catalog string) or the row is a loanword whose catalog string
+ * equals its English source - an unchanged echo there is the correct rendering.
+ */
+const slotAccepts = (catalogValue, englishValue, roundtrip) => {
+  if (roundtrip === null || roundtrip === '') return false;
+  if (catalogValue === englishValue) return true;
+  return roundtrip !== catalogValue;
+};
+
+const buildRow = (locale, key, en, catalog) => ({
+  key,
+  en: en[key],
+  catalog: catalog[key],
+  sites: ROW_SLOTS.map((engineName) => ({ engine: engineName, roundtrip: null })),
+  url: spotCheckUrl(locale, catalog[key]),
+  verdict: 'amber',
+});
+
+/**
+ * A resumed row's text for one slot, migrating the old single-round-trip shape.
+ * A slot adopts prior text only when the prior row's engine still owns the slot -
+ * historical MyMemory data never seeds the pending phase-two slot.
+ */
+const slotTextOf = (prior, slotIndex) => {
+  if (!prior) return null;
+  const engineName = ROW_SLOTS[slotIndex];
+  if (Array.isArray(prior.sites)) {
+    const site = prior.sites[slotIndex];
+    return site?.engine === engineName ? (site.roundtrip ?? null) : null;
+  }
+  return prior.engine === engineName && prior.roundtrip ? prior.roundtrip : null;
+};
+
+const resumedLlmOf = (prior) => {
+  if (!prior) return null;
+  if (prior.llm) return prior.llm;
+  if (prior.engine === 'llm' && prior.roundtrip) return { roundtrip: prior.roundtrip };
+  return null;
+};
+
+/** One locale's artifacts: both engines' round-trips, the verdicts, and the gaps */
+const runLocale = async (locale, opts) => {
+  const { en, catalog, outDir, fetch, sleep, now, resumeRows } = opts;
+  const deps = { fetch, sleep, pace: opts.pace };
+  // Rows come from the English key set; a locale missing a key yields fewer rows,
+  // and the shortfall fails the run against the English count. A targeted run
+  // (--keys, owner order 2026-11-07) scopes the rows to the named keys only: a
+  // wave verifies what it touched, never the whole catalog.
+  const keys = orderedKeys(en)
+    .filter((key) => catalog[key] !== undefined)
+    .filter((key) => opts.onlyKeys === undefined || opts.onlyKeys.includes(key));
+  const probeText = catalog[PRAYER_KEYS[0]] ?? en[PRAYER_KEYS[0]];
+  const live = opts.liveEngines ?? (await preFlight(SITE_ENGINES, locale, probeText, deps));
+
+  // Rows build from the English key set with their resumed slots adopted; the engine
+  // requests live in the chunk loop below, so a plain map carries no pacing concern
+  const rows = keys.map((key) => {
+    const prior = resumeRows?.get(key);
+    const priorFresh = prior && prior.catalog === catalog[key] ? prior : null;
+    const row = buildRow(locale, key, en, catalog);
+    for (let slotIndex = 0; slotIndex < ROW_SLOTS.length; slotIndex++) {
+      const resumedText = slotTextOf(priorFresh, slotIndex);
+      if (resumedText !== null && resumedText !== '') {
+        row.sites[slotIndex].roundtrip = resumedText;
+      }
+    }
+    return row;
+  });
+
+  // The batch pass (ticket #659): every row whose engine slot still needs a render rides
+  // one newline POST per chunk of at most MAX_BATCH_LINES keys; the per-row request is
+  // gone, and a full catalog costs two chunk requests beside the probe
+  const rowByKey = new Map(rows.map((row) => [row.key, row]));
+  const needy = rows.filter((row) => row.sites[0].roundtrip === null && live.includes(ROW_SLOTS[0]));
+  for (const chunk of chunkKeys(
+    needy.map((row) => row.key),
+    catalog
+  )) {
+    const roundtrips = await fetchBatchWithRetry(
+      'gtx',
+      locale,
+      chunk.map((key) => catalog[key]),
+      deps
+    );
+    chunk.forEach((key, index) => {
+      const row = rowByKey.get(key);
+      if (row && slotAccepts(catalog[key], en[key], roundtrips[index])) {
+        row.sites[0].roundtrip = roundtrips[index];
+      }
+    });
+  }
+
+  for (const row of rows) {
+    const prior = resumeRows?.get(row.key);
+    const priorFresh = prior && prior.catalog === catalog[row.key] ? prior : null;
+    const bothMiss = row.sites.every((site) => site.roundtrip === null);
+    if (bothMiss) {
+      const resumedLlm = resumedLlmOf(priorFresh);
+      if (resumedLlm) row.llm = resumedLlm;
+    }
+    row.verdict = verdictOf(row.en, row.sites, row.llm ?? null, row.llm?.doubt ?? null, opts.phase ?? 'one');
+    // A standing judge ruling survives the resume while the engine does not carry the row
+    // itself: red keeps the ruling's green, an engine miss keeps the note on its amber for
+    // the fill path; an engine rendering that now carries the meaning stands on its own
+    if (priorFresh?.ruling && row.verdict !== 'green') {
+      row.ruling = priorFresh.ruling;
+      if (row.verdict === 'red') row.verdict = 'green';
+    }
+  }
+
+  const counts = { green: 0, red: 0, amber: 0 };
+  const engineMix = { gtx: 0, miss: 0, pending: 0 };
+  const misses = [];
+  for (const row of rows) {
+    counts[row.verdict] += 1;
+    for (const site of row.sites) {
+      if (site.roundtrip !== null) engineMix[site.engine] += 1;
+      // The pending phase-two slot is structural, not a failure
+      else if (site.engine === 'pending') engineMix.pending += 1;
+      else engineMix.miss += 1;
+    }
+    if (row.llm) engineMix.llm = (engineMix.llm ?? 0) + 1;
+    const missing = row.sites
+      .filter((site) => site.roundtrip === null && site.engine !== 'pending')
+      .map((site) => site.engine);
+    if (missing.length > 0 && !row.llm) misses.push({ locale, key: row.key, missing });
+  }
+
+  const label = opts.label ?? locale;
+  const phase = opts.phase ?? 'one';
+  mkdirSync(outDir, { recursive: true });
+  const jsonPath = join(outDir, `${locale}.json`);
+  writeFileSync(
+    jsonPath,
+    `${JSON.stringify(buildLocaleJson(locale, label, rows, now().toISOString(), phase), null, 2)}\n`
+  );
+
+  return { locale, count: rows.length, rows, counts, engineMix, misses, files: [jsonPath] };
+};
+
+/** The English reference page's rows: the key and the English string, nothing else */
+const referenceRowsOf = (en, onlyKeys) =>
+  orderedKeys(en)
+    .filter((key) => onlyKeys === undefined || onlyKeys.includes(key))
+    .map((key) => ({ key, en: en[key] }));
+
+// --------------------------------------------------------------------------------------
+// The pages (owner order two: modern, simple, human-friendly, colored)
+// --------------------------------------------------------------------------------------
+
+// The judge fill and the command line flow
+// --------------------------------------------------------------------------------------
+
+const buildLocaleJson = (locale, label, rows, generatedAt, phase = 'one') => ({
+  locale,
+  languageName: label,
+  phase,
+  generatedAt,
+  rowCount: rows.length,
+  counts: rows.reduce(
+    (counts, row) => {
+      counts[row.verdict] += 1;
+      return counts;
+    },
+    { green: 0, red: 0, amber: 0 }
+  ),
+  judgeRuled: rows.filter((row) => row.ruling !== undefined).length,
+  rows: rows.map((row) => ({ ...row })),
+});
+
+const usageError = (message) =>
+  new Error(
+    `i18n verify: ${message}; usage: node scripts/i18n-verify.js --locales ar,so [--out DIR] [--resume] [--keys k1,k2] [--phase one|two] [--pace ms] | --waves | --all | --fill ar,so [--out DIR]`
+  );
+
+const defaultOutDir = (deps) => join(deps.home ?? (deps.homedir ?? homedir)(), 'athan-i18n-verify');
+
+/**
+ * The judge fill: the LLM pass renders round-trips for rows both engines refused and
+ * writes <locale>.llm-fill.json; this merge carries them into llm-marked rows (never a
+ * site's rendering), keeps an optional doubt note as amber, and refreshes the
+ * artifacts. The generator itself never invents a round-trip.
+ */
+const fillLocales = async (locales, { outDir, log, now, names }) => {
+  const written = [];
+  const fillErrors = [];
+  const remainingGaps = [];
+
+  for (const locale of locales) {
+    const artifact = JSON.parse(readFileSync(join(outDir, `${locale}.json`), 'utf8'));
+    const fills = JSON.parse(readFileSync(join(outDir, `${locale}.llm-fill.json`), 'utf8'));
+    const rows = artifact.rows;
+    const rowByKey = new Map(rows.map((row) => [row.key, row]));
+    const fillByKey = new Map();
+    for (const fill of fills) {
+      if (fillByKey.has(fill.key)) fillErrors.push(`${locale}/${fill.key} is filled twice`);
+      if (!rowByKey.has(fill.key)) fillErrors.push(`${locale}/${fill.key} is not a row in the artifact`);
+      fillByKey.set(fill.key, fill);
+    }
+    if (fillErrors.some((message) => message.startsWith(`${locale}/`))) {
+      log(
+        `${locale}: fill refused, artifacts untouched (${fillErrors.filter((m) => m.startsWith(`${locale}/`)).length} errors)`
+      );
+      continue;
+    }
+
+    let filled = 0;
+    let superseded = 0;
+    let doubted = 0;
+    const phase = artifact.phase ?? 'one';
+    for (const row of rows) {
+      const bothMiss = (row.sites ?? []).every((site) => site.roundtrip === null);
+      const engineRendered = (row.sites ?? []).some((site) => site.roundtrip !== null);
+      if (engineRendered && row.llm !== undefined) {
+        // The engine recovered this row after an earlier judge fill - its rendering supersedes
+        delete row.llm;
+        row.verdict = verdictOf(row.en, row.sites ?? [], undefined, null, phase);
+      }
+      const fill = fillByKey.get(row.key);
+      if (fill !== undefined && !bothMiss) {
+        // The engine rendered this row - its rendering supersedes any fill
+        superseded += 1;
+        continue;
+      }
+      if (fill === undefined) {
+        if (bothMiss && row.llm === undefined) remainingGaps.push({ locale, key: row.key });
+        continue;
+      }
+      filled += 1;
+      if (fill.doubt) doubted += 1;
+      row.llm = { roundtrip: fill.roundtrip, ...(fill.doubt ? { doubt: fill.doubt } : {}) };
+      row.verdict = verdictOf(row.en, row.sites ?? [], row.llm, row.llm.doubt ?? null, phase);
+    }
+    const label = artifact.languageName ?? languageLabel(locale, names);
+    writeFileSync(
+      join(outDir, `${locale}.json`),
+      `${JSON.stringify(buildLocaleJson(locale, label, rows, now().toISOString(), phase), null, 2)}\n`
+    );
+    written.push(join(outDir, `${locale}.json`));
+    log(`${locale}: filled ${filled} rows as engine:llm (${doubted} doubted, ${superseded} superseded by an engine)`);
+  }
+
+  if (remainingGaps.length > 0) {
+    const head = remainingGaps
+      .slice(0, 40)
+      .map((gap) => `${gap.locale}/${gap.key}`)
+      .join(', ');
+    log(
+      `engine slot gaps still dark without a judge fill: ${remainingGaps.length} rows - ${head}${remainingGaps.length > 40 ? ' ...' : ''}`
+    );
+  }
+
+  return {
+    ok: fillErrors.length === 0 && remainingGaps.length === 0,
+    locales,
+    written,
+    shortfalls: [],
+    misses: remainingGaps,
+    remainingGaps,
+    fillErrors,
+  };
+};
+
+/**
+ * The judge ruling: phase one's fluent judge reads a red row whose catalog string is
+ * verified correct despite the engine's rendering (the country sense of المغرب, a
+ * homograph the engine misread) and rules the row green with a mandatory note. The
+ * ruling is always visible - chip, note and count - and never applies to a row the
+ * engine did not read red: those are the fill's business.
+ */
+const ruleLocales = async (locales, { outDir, log, now, names }) => {
+  const written = [];
+  const rulingErrors = [];
+
+  for (const locale of locales) {
+    const artifact = JSON.parse(readFileSync(join(outDir, `${locale}.json`), 'utf8'));
+    const rulings = JSON.parse(readFileSync(join(outDir, `${locale}.judge-rulings.json`), 'utf8'));
+    const rows = artifact.rows;
+    const rowByKey = new Map(rows.map((row) => [row.key, row]));
+    const rulingByKey = new Map();
+    for (const ruling of rulings) {
+      if (rulingByKey.has(ruling.key)) rulingErrors.push(`${locale}/${ruling.key} is ruled twice`);
+      if (!rowByKey.has(ruling.key)) rulingErrors.push(`${locale}/${ruling.key} is not a row in the artifact`);
+      if (typeof ruling.note !== 'string' || ruling.note.trim() === '') {
+        rulingErrors.push(`${locale}/${ruling.key} carries no note`);
+      }
+      if (
+        rowByKey.has(ruling.key) &&
+        rowByKey.get(ruling.key).verdict !== 'red' &&
+        rowByKey.get(ruling.key).ruling !== ruling.note
+      ) {
+        rulingErrors.push(`${locale}/${ruling.key} is not a red row`);
+      }
+      rulingByKey.set(ruling.key, ruling);
+    }
+    if (rulingErrors.some((message) => message.startsWith(`${locale}/`))) {
+      log(
+        `${locale}: ruling refused, artifacts untouched (${rulingErrors.filter((m) => m.startsWith(`${locale}/`)).length} errors)`
+      );
+      continue;
+    }
+
+    let applied = 0;
+    for (const row of rows) {
+      const ruling = rulingByKey.get(row.key);
+      if (ruling === undefined) continue;
+      row.ruling = ruling.note;
+      row.verdict = 'green';
+      applied += 1;
+    }
+    if (applied === 0 && rulingByKey.size > 0) {
+      log(`${locale}: ruling refused, no red row matched`);
+      continue;
+    }
+    const label = artifact.languageName ?? languageLabel(locale, names);
+    const phase = artifact.phase ?? 'one';
+    writeFileSync(
+      join(outDir, `${locale}.json`),
+      `${JSON.stringify(buildLocaleJson(locale, label, rows, now().toISOString(), phase), null, 2)}\n`
+    );
+    written.push(join(outDir, `${locale}.json`));
+    log(`${locale}: ${applied} ruling${applied === 1 ? '' : 's'} applied`);
+  }
+
+  return {
+    ok: rulingErrors.length === 0,
+    locales,
+    written,
+    shortfalls: [],
+    misses: [],
+    rulingErrors,
+  };
+};
+
+/** The command line flow. Every effect (network, clock, stdout, files) rides on deps */
+const run = async (argv, deps = {}) => {
+  const flag = (name) => {
+    const i = argv.indexOf(name);
+    // a value that is itself a flag means the flag was written without one: never swallow
+    // the next flag as a directory name or a locale list
+    if (i >= 0 && argv[i + 1] !== undefined && !String(argv[i + 1]).startsWith('--')) return argv[i + 1];
+    return undefined;
+  };
+  const outFlag = flag('--out');
+  const localesFlag = flag('--locales');
+  const fillFlag = flag('--fill');
+  const ruleFlag = flag('--rule');
+  const phaseFlag = flag('--phase');
+  const paceFlag = flag('--pace');
+  const keysFlag = flag('--keys');
+  const waves = argv.includes('--waves');
+  const all = argv.includes('--all');
+  const resume = argv.includes('--resume');
+  if (!waves && !all && localesFlag === undefined && fillFlag === undefined && ruleFlag === undefined) {
+    throw usageError('no locales named');
+  }
+  if (phaseFlag !== undefined && phaseFlag !== 'one' && phaseFlag !== 'two') {
+    throw usageError(`--phase must be one or two, got ${phaseFlag}`);
+  }
+  const pace = paceFlag === undefined ? 0 : Number(paceFlag);
+  if (!Number.isInteger(pace) || pace < 0) {
+    throw usageError(`--pace must be a whole number of milliseconds, got ${paceFlag}`);
+  }
+  const phase = phaseFlag ?? 'one';
+  const names = loadLanguageNames(deps);
+  const rtl = loadRtlIds(deps);
+  const allLocales = ['en', ...names.map((entry) => entry.id).filter((id) => id !== 'en')];
+  const locales =
+    fillFlag || ruleFlag
+      ? (fillFlag ?? ruleFlag)
+          .split(',')
+          .map((loc) => loc.trim())
+          .filter(Boolean)
+      : all
+        ? allLocales
+        : waves
+          ? [...PILOT_WAVE]
+          : localesFlag
+              .split(',')
+              .map((loc) => loc.trim())
+              .filter(Boolean);
+
+  if (locales.length === 0) {
+    throw usageError('no locales named');
+  }
+  const unknown = locales.filter((locale) => !allLocales.includes(locale));
+  if (unknown.length > 0) {
+    throw usageError(`unknown locale ${unknown.join(', ')} (not in shared/languageNames.ts)`);
+  }
+  const onlyKeys =
+    keysFlag === undefined
+      ? undefined
+      : keysFlag
+          .split(',')
+          .map((key) => key.trim())
+          .filter(Boolean);
+  if (onlyKeys !== undefined && onlyKeys.length === 0) {
+    throw usageError(`--keys must name at least one key, got ${keysFlag}`);
+  }
+
+  if (fillFlag !== undefined && keysFlag !== undefined) {
+    throw usageError('--keys combines only with a verify run, not --fill');
+  }
+  if (ruleFlag !== undefined && keysFlag !== undefined) {
+    throw usageError('--keys combines only with a verify run, not --rule');
+  }
+  const log = deps.log ?? ((line) => process.stdout.write(`${line}\n`));
+  const outDir = outFlag ?? defaultOutDir(deps);
+
+  if (fillFlag !== undefined) {
+    return fillLocales(locales, { outDir, log, now: deps.now ?? (() => new Date()), names, rtl });
+  }
+  if (ruleFlag !== undefined) {
+    return ruleLocales(locales, { outDir, log, now: deps.now ?? (() => new Date()), names, rtl });
+  }
+
+  const readCatalogFile =
+    deps.readCatalogFile ??
+    (async (locale) => {
+      const file = join(__dirname, '..', 'shared', 'i18n', `${locale}.ts`);
+      return parseCatalogSource(readFileSync(file, 'utf8'), `${locale}.ts`);
+    });
+
+  const en = await readCatalogFile('en');
+  if (onlyKeys !== undefined) {
+    const unknownKeys = onlyKeys.filter((key) => en[key] === undefined);
+    if (unknownKeys.length > 0) {
+      throw usageError(`unknown --keys entry ${unknownKeys.join(', ')} (not in shared/i18n/en.ts)`);
+    }
+  }
+  const expectedCount = onlyKeys !== undefined ? onlyKeys.length : Object.keys(en).length;
+  const written = [];
+  const shortfalls = [];
+  const misses = [];
+
+  if (locales.includes('en')) {
+    const label = languageLabel('en', names);
+    const rows = referenceRowsOf(en, onlyKeys);
+    mkdirSync(outDir, { recursive: true });
+    const jsonPath = join(outDir, 'en.json');
+    writeFileSync(
+      jsonPath,
+      `${JSON.stringify({ locale: 'en', languageName: label, reference: true, generatedAt: (deps.now ?? (() => new Date()))().toISOString(), rowCount: rows.length, rows }, null, 2)}\n`
+    );
+    written.push(jsonPath);
+    log(`en: ${rows.length} rows (the reference page)`);
+  }
+
+  let sorryBlocked = false;
+  for (const locale of locales.filter((candidate) => candidate !== 'en')) {
+    if (sorryBlocked) {
+      log(`${locale}: skipped, the endpoint's sorry page is up (circuit broken)`);
+      continue;
+    }
+    const catalog = await readCatalogFile(locale);
+    let resumeRows;
+    if (resume) {
+      const priorPath = join(outDir, `${locale}.json`);
+      try {
+        const prior = JSON.parse(readFileSync(priorPath, 'utf8'));
+        if (prior.rows) resumeRows = new Map(prior.rows.map((row) => [row.key, row]));
+      } catch {
+        resumeRows = undefined;
+      }
+    }
+    let result;
+    try {
+      result = await runLocale(locale, {
+        en,
+        catalog,
+        outDir,
+        fetch: deps.fetch ?? globalThis.fetch,
+        sleep: deps.sleep ?? ((ms) => new Promise((resolve) => setTimeout(resolve, ms))),
+        now: deps.now ?? (() => new Date()),
+        resumeRows,
+        label: languageLabel(locale, names),
+        phase,
+        rtl,
+        ...(onlyKeys !== undefined ? { onlyKeys } : {}),
+        ...(pace > 0 ? { pace } : {}),
+      });
+    } catch (error) {
+      if (error === SORRY_REDIRECT) {
+        // The block is IP-level: every later locale would hammer it. Stop the whole run
+        // here, name it, and leave the completed locales' artifacts for a --resume pass
+        sorryBlocked = true;
+        log(
+          `${locale}: the endpoint answered its sorry-page redirect; the run stops here - clear the IP (browser captcha on the same network) and resume`
+        );
+        misses.push({ locale, key: '(engine)', missing: ['sorry-page'] });
+        continue;
+      }
+      throw error;
+    }
+    written.push(...result.files);
+    const mix = Object.entries(result.engineMix)
+      .map(([engine, count]) => `${engine}: ${count}`)
+      .join(', ');
+    log(
+      `${locale}: ${result.count} rows (${result.counts.green} green, ${result.counts.red} red, ${result.counts.amber} amber; ${mix})`
+    );
+    if (result.count < expectedCount) shortfalls.push({ locale, count: result.count });
+    misses.push(...result.misses);
+  }
+
+  if (shortfalls.length > 0) {
+    log(`row shortfalls: ${shortfalls.map((s) => `${s.locale} at ${s.count} of ${expectedCount}`).join('; ')}`);
+  }
+  if (misses.length > 0) {
+    const head = misses
+      .slice(0, 40)
+      .map((m) => `${m.locale}/${m.key} (${m.missing.join('+')})`)
+      .join(', ');
+    log(
+      `engine slot gaps awaiting a resume pass or the judge fill: ${misses.length} rows - ${head}${misses.length > 40 ? ' ...' : ''}`
+    );
+  }
+
+  return {
+    ok: shortfalls.length === 0 && misses.length === 0,
+    locales,
+    written,
+    shortfalls,
+    misses,
+    fillErrors: [],
+  };
+};
+
+if (require.main === module) {
+  run(process.argv.slice(2)).then(
+    (report) => {
+      if (!report.ok) process.exitCode = 1;
+    },
+    (err) => {
+      process.stderr.write(`${err.message}\n`);
+      process.exitCode = 1;
+    }
+  );
+}
+
+module.exports = {
+  PILOT_WAVE,
+  SITE_ENGINES,
+  SECTION3_RANKS,
+  parseCatalogSource,
+  parseLanguageNames,
+  loadLanguageNames,
+  parseRtlIds,
+  loadRtlIds,
+  displayName,
+  languageLabel,
+  orderedKeys,
+  escapeHtml,
+  dirFor,
+  spotCheckUrl,
+  gtxUrl,
+  extractGtx,
+  extractGtxBatch,
+  fetchBatchWithRetry,
+  chunkKeys,
+  fetchWithRetry,
+  preFlight,
+  levenshtein,
+  carriesMeaning,
+  verdictOf,
+  slotAccepts,
+  runLocale,
+  buildLocaleJson,
+  fillLocales,
+  ruleLocales,
+  defaultOutDir,
+  run,
+};

@@ -1,0 +1,868 @@
+rows 1829 exact 967 (53%)
+hijri 260/708
+monthShort 454/708
+weekdayShort 253/413
+
+variances:
+so/calendar.hijri.11 | ours=Dul al-qacdah | cldr=Dul al-qacda
+ceb/calendar.hijri.3 | ours=Rabi al-awwal | cldr=Rabiʻ I
+ceb/calendar.hijri.4 | ours=Rabi as-sani | cldr=Rabiʻ II
+ceb/calendar.hijri.5 | ours=Jumada al-ula | cldr=Jumada I
+ceb/calendar.hijri.6 | ours=Jumada as-sania | cldr=Jumada II
+ceb/calendar.hijri.8 | ours=Shaban | cldr=Shaʻban
+ceb/calendar.hijri.11 | ours=Dul-kaada | cldr=Dhuʻl-Qiʻdah
+ceb/calendar.hijri.12 | ours=Dul-hijja | cldr=Dhuʻl-Hijjah
+ceb/calendar.monthShort.8 | ours=Ags | cldr=Ago
+ceb/calendar.weekdayShort.5 | ours=Bya | cldr=Biy
+am/calendar.hijri.1 | ours=መሐረም | cldr=ሙሀረም
+am/calendar.hijri.2 | ours=ሰፈር | cldr=ሳፈር
+am/calendar.hijri.4 | ours=ረቢዑል ሳኒ | cldr=ረቢዑል አኺር
+am/calendar.hijri.5 | ours=ጁማዳ አወል | cldr=ጀማደል አወል
+am/calendar.hijri.6 | ours=ጁማዳ ሳኒ | cldr=ጀማደል አኺር
+am/calendar.hijri.8 | ours=ሻዕባን | cldr=ሻእባን
+am/calendar.hijri.11 | ours=ዙልቂዳ | cldr=ዙልቂዳህ
+am/calendar.hijri.12 | ours=ዙልሒጃ | cldr=ዙልሂጃህ
+am/calendar.weekdayShort.7 | ours=እሁድ | cldr=እሑድ
+az/calendar.hijri.4 | ours=Rəbiülahir | cldr=Rəbiülaxır
+az/calendar.hijri.6 | ours=Cəmadiyəlahir | cldr=Cəmadiyəlaxır
+az/calendar.monthShort.1 | ours=Yan | cldr=yan
+az/calendar.monthShort.2 | ours=Fev | cldr=fev
+az/calendar.monthShort.3 | ours=Mar | cldr=mar
+az/calendar.monthShort.4 | ours=Apr | cldr=apr
+az/calendar.monthShort.5 | ours=May | cldr=may
+az/calendar.monthShort.6 | ours=İyn | cldr=iyn
+az/calendar.monthShort.7 | ours=İyl | cldr=iyl
+az/calendar.monthShort.8 | ours=Avq | cldr=avq
+az/calendar.monthShort.9 | ours=Sen | cldr=sen
+az/calendar.monthShort.10 | ours=Okt | cldr=okt
+az/calendar.monthShort.11 | ours=Noy | cldr=noy
+az/calendar.monthShort.12 | ours=Dek | cldr=dek
+az/calendar.weekdayShort.7 | ours=Baz | cldr=B.
+az/calendar.weekdayShort.1 | ours=B.e | cldr=B.e.
+az/calendar.weekdayShort.2 | ours=Ç.a | cldr=Ç.a.
+az/calendar.weekdayShort.3 | ours=Çər | cldr=Ç.
+az/calendar.weekdayShort.4 | ours=C.a | cldr=C.a.
+az/calendar.weekdayShort.5 | ours=Cüm | cldr=C.
+az/calendar.weekdayShort.6 | ours=Şən | cldr=Ş.
+bm/calendar.hijri.3 | ours=Rabi I | cldr=Rabiʻ I
+bm/calendar.hijri.4 | ours=Rabi II | cldr=Rabiʻ II
+bm/calendar.hijri.8 | ours=Shaban | cldr=Shaʻban
+bm/calendar.hijri.9 | ours=Ramazan | cldr=Ramadan
+bm/calendar.hijri.11 | ours=Zulqida | cldr=Dhuʻl-Qiʻdah
+bm/calendar.hijri.12 | ours=Zulhijja | cldr=Dhuʻl-Hijjah
+bm/calendar.monthShort.1 | ours=Zan | cldr=zan
+bm/calendar.monthShort.2 | ours=Feb | cldr=feb
+bm/calendar.monthShort.3 | ours=Mar | cldr=mar
+bm/calendar.monthShort.4 | ours=Awi | cldr=awi
+bm/calendar.monthShort.5 | ours=Mɛ | cldr=mɛ
+bm/calendar.monthShort.6 | ours=Zuw | cldr=zuw
+bm/calendar.monthShort.7 | ours=Zul | cldr=zul
+bm/calendar.monthShort.8 | ours=Uti | cldr=uti
+bm/calendar.monthShort.9 | ours=Sɛt | cldr=sɛt
+bm/calendar.monthShort.10 | ours=Ɔku | cldr=ɔku
+bm/calendar.monthShort.11 | ours=Now | cldr=now
+bm/calendar.monthShort.12 | ours=Des | cldr=des
+bm/calendar.weekdayShort.7 | ours=Kar | cldr=kar
+bm/calendar.weekdayShort.1 | ours=Ntɛ | cldr=ntɛ
+bm/calendar.weekdayShort.2 | ours=Tar | cldr=tar
+bm/calendar.weekdayShort.3 | ours=Ara | cldr=ara
+bm/calendar.weekdayShort.4 | ours=Ala | cldr=ala
+bm/calendar.weekdayShort.5 | ours=Jum | cldr=jum
+bm/calendar.weekdayShort.6 | ours=Sib | cldr=sib
+bn/calendar.hijri.1 | ours=মুহাররম | cldr=মুহররম
+bn/calendar.hijri.5 | ours=জুমাদাল উলা | cldr=জমাদিউল আউয়াল
+bn/calendar.hijri.6 | ours=জুমাদাস সানি | cldr=জমাদিউস সানি
+bn/calendar.hijri.8 | ours=শাবান | cldr=শা‘বান
+bn/calendar.hijri.11 | ours=জিলকদ | cldr=জ্বিলকদ
+bn/calendar.hijri.12 | ours=জিলহজ | cldr=জ্বিলহজ্জ
+bn/calendar.monthShort.7 | ours=জুলা | cldr=জুল
+bn/calendar.monthShort.9 | ours=সেপ্ট | cldr=সেপ
+bn/calendar.weekdayShort.4 | ours=বৃহঃ | cldr=বৃহস্পতি
+bs/calendar.hijri.1 | ours=Muharrem | cldr=muharem
+bs/calendar.hijri.2 | ours=Safer | cldr=safer
+bs/calendar.hijri.3 | ours=Rebiu-l-evvel | cldr=rabiʻ i
+bs/calendar.hijri.4 | ours=Rebiu-l-ahir | cldr=rabiʻ ii
+bs/calendar.hijri.5 | ours=Džumade-l-ula | cldr=džumade i
+bs/calendar.hijri.6 | ours=Džumade-l-uhra | cldr=džumade ii
+bs/calendar.hijri.7 | ours=Redžeb | cldr=redžeb
+bs/calendar.hijri.8 | ours=Ša'ban | cldr=Shaʻban
+bs/calendar.hijri.9 | ours=Ramazan | cldr=ramazan
+bs/calendar.hijri.10 | ours=Ševal | cldr=ševal
+bs/calendar.hijri.11 | ours=Zu-l-kade | cldr=zul-kade
+bs/calendar.hijri.12 | ours=Zu-l-hidždže | cldr=zul-hidže
+bs/calendar.monthShort.1 | ours=Jan | cldr=jan
+bs/calendar.monthShort.2 | ours=Feb | cldr=feb
+bs/calendar.monthShort.3 | ours=Mar | cldr=mar
+bs/calendar.monthShort.4 | ours=Apr | cldr=apr
+bs/calendar.monthShort.5 | ours=Maj | cldr=maj
+bs/calendar.monthShort.6 | ours=Jun | cldr=jun
+bs/calendar.monthShort.7 | ours=Jul | cldr=jul
+bs/calendar.monthShort.8 | ours=Aug | cldr=aug
+bs/calendar.monthShort.9 | ours=Sep | cldr=sep
+bs/calendar.monthShort.10 | ours=Okt | cldr=okt
+bs/calendar.monthShort.11 | ours=Nov | cldr=nov
+bs/calendar.monthShort.12 | ours=Dec | cldr=dec
+bs/calendar.weekdayShort.7 | ours=Ned | cldr=ned
+bs/calendar.weekdayShort.1 | ours=Pon | cldr=pon
+bs/calendar.weekdayShort.2 | ours=Uto | cldr=uto
+bs/calendar.weekdayShort.3 | ours=Sri | cldr=sri
+bs/calendar.weekdayShort.4 | ours=Čet | cldr=čet
+bs/calendar.weekdayShort.5 | ours=Pet | cldr=pet
+bs/calendar.weekdayShort.6 | ours=Sub | cldr=sub
+ckb/calendar.hijri.1 | ours=موحەڕەم | cldr=موحەرەم
+ckb/calendar.hijri.3 | ours=ڕەبیعی یەکەم | cldr=رەبیعی یەکەم
+ckb/calendar.hijri.5 | ours=جومادەی یەکەم | cldr=جەمادی یەکەم
+ckb/calendar.hijri.6 | ours=جومادەی دووەم | cldr=جەمادی دووەم
+ckb/calendar.hijri.10 | ours=شەووال | cldr=شەوال
+ckb/calendar.hijri.12 | ours=زولحیججە | cldr=زولحجە
+ckb/calendar.monthShort.12 | ours=کانوونی یەکەم | cldr=کانونی یەکەم
+ckb/calendar.weekdayShort.5 | ours=هەینی | cldr=ھەینی
+de/calendar.hijri.3 | ours=Rabi al-awwal | cldr=Rabiʻ I
+de/calendar.hijri.4 | ours=Rabi ath-thani | cldr=Rabiʻ II
+de/calendar.hijri.5 | ours=Dschumada al-ula | cldr=Dschumada I
+de/calendar.hijri.6 | ours=Dschumada ath-thania | cldr=Dschumada II
+de/calendar.hijri.8 | ours=Schaban | cldr=Shaʻban
+de/calendar.hijri.10 | ours=Schawwal | cldr=Shawwal
+de/calendar.hijri.11 | ours=Dhu-l-Qada | cldr=Dhu l-qaʿda
+de/calendar.hijri.12 | ours=Dhu-l-Hiddscha | cldr=Dhu l-Hiddscha
+de/calendar.monthShort.1 | ours=Jan | cldr=Jan.
+de/calendar.monthShort.2 | ours=Feb | cldr=Feb.
+de/calendar.monthShort.3 | ours=Mär | cldr=März
+de/calendar.monthShort.4 | ours=Apr | cldr=Apr.
+de/calendar.monthShort.6 | ours=Jun | cldr=Juni
+de/calendar.monthShort.7 | ours=Jul | cldr=Juli
+de/calendar.monthShort.8 | ours=Aug | cldr=Aug.
+de/calendar.monthShort.9 | ours=Sep | cldr=Sept.
+de/calendar.monthShort.10 | ours=Okt | cldr=Okt.
+de/calendar.monthShort.11 | ours=Nov | cldr=Nov.
+de/calendar.monthShort.12 | ours=Dez | cldr=Dez.
+de/calendar.weekdayShort.7 | ours=So | cldr=So.
+de/calendar.weekdayShort.1 | ours=Mo | cldr=Mo.
+de/calendar.weekdayShort.2 | ours=Di | cldr=Di.
+de/calendar.weekdayShort.3 | ours=Mi | cldr=Mi.
+de/calendar.weekdayShort.4 | ours=Do | cldr=Do.
+de/calendar.weekdayShort.5 | ours=Fr | cldr=Fr.
+de/calendar.weekdayShort.6 | ours=Sa | cldr=Sa.
+es/calendar.hijri.1 | ours=Muharram | cldr=muharram
+es/calendar.hijri.2 | ours=Safar | cldr=safar
+es/calendar.hijri.3 | ours=Rabi al-awwal | cldr=rabiʻ I
+es/calendar.hijri.4 | ours=Rabi al-thani | cldr=rabiʻ II
+es/calendar.hijri.5 | ours=Yumada al-ula | cldr=jumada I
+es/calendar.hijri.6 | ours=Yumada al-thani | cldr=jumada II
+es/calendar.hijri.7 | ours=Rayab | cldr=rajab
+es/calendar.hijri.8 | ours=Shaban | cldr=shaʻban
+es/calendar.hijri.9 | ours=Ramadán | cldr=ramadán
+es/calendar.hijri.10 | ours=Shawwal | cldr=shawwal
+es/calendar.hijri.11 | ours=Du l-qada | cldr=dhuʻl-qiʻdah
+es/calendar.hijri.12 | ours=Du l-hiyya | cldr=dhuʻl-hijjah
+fa/calendar.hijri.11 | ours=ذی‌القعده | cldr=ذیقعده
+fa/calendar.hijri.12 | ours=ذی‌الحجه | cldr=ذیحجه
+fa/calendar.weekdayShort.4 | ours=پنج‌شنبه | cldr=پنجشنبه
+ff/calendar.hijri.3 | ours=Rabii I | cldr=Rabiʻ I
+ff/calendar.hijri.4 | ours=Rabii II | cldr=Rabiʻ II
+ff/calendar.hijri.5 | ours=Jumaada I | cldr=Jumada I
+ff/calendar.hijri.6 | ours=Jumaada II | cldr=Jumada II
+ff/calendar.hijri.8 | ours=Shabaan | cldr=Shaʻban
+ff/calendar.hijri.9 | ours=Ramadaan | cldr=Ramadan
+ff/calendar.hijri.10 | ours=Shawwaal | cldr=Shawwal
+ff/calendar.hijri.11 | ours=Zulqida | cldr=Dhuʻl-Qiʻdah
+ff/calendar.hijri.12 | ours=Zulhijja | cldr=Dhuʻl-Hijjah
+ff/calendar.monthShort.1 | ours=Sii | cldr=sii
+ff/calendar.monthShort.2 | ours=Col | cldr=col
+ff/calendar.monthShort.3 | ours=Mbo | cldr=mbo
+ff/calendar.monthShort.4 | ours=See | cldr=see
+ff/calendar.monthShort.5 | ours=Duu | cldr=duu
+ff/calendar.monthShort.6 | ours=Kor | cldr=kor
+ff/calendar.monthShort.7 | ours=Mor | cldr=mor
+ff/calendar.monthShort.8 | ours=Juk | cldr=juk
+ff/calendar.monthShort.9 | ours=Sil | cldr=slt
+ff/calendar.monthShort.10 | ours=Yar | cldr=yar
+ff/calendar.monthShort.11 | ours=Jol | cldr=jol
+ff/calendar.monthShort.12 | ours=Bow | cldr=bow
+ff/calendar.weekdayShort.7 | ours=Dew | cldr=dew
+ff/calendar.weekdayShort.1 | ours=Aaɓ | cldr=aaɓ
+ff/calendar.weekdayShort.2 | ours=Maw | cldr=maw
+ff/calendar.weekdayShort.3 | ours=Ciɗ | cldr=nje
+ff/calendar.weekdayShort.4 | ours=Naa | cldr=naa
+ff/calendar.weekdayShort.5 | ours=Mag | cldr=mwd
+ff/calendar.weekdayShort.6 | ours=Hoɗ | cldr=hbi
+fr/calendar.hijri.1 | ours=Mouharram | cldr=mouharram
+fr/calendar.hijri.2 | ours=Safar | cldr=safar
+fr/calendar.hijri.3 | ours=Rabi al-awwal | cldr=rabia al awal
+fr/calendar.hijri.4 | ours=Rabi al-thani | cldr=rabia ath-thani
+fr/calendar.hijri.5 | ours=Joumada al-oula | cldr=joumada al oula
+fr/calendar.hijri.6 | ours=Joumada al-thania | cldr=joumada ath-thania
+fr/calendar.hijri.7 | ours=Rajab | cldr=rajab
+fr/calendar.hijri.8 | ours=Chaabane | cldr=chaabane
+fr/calendar.hijri.9 | ours=Ramadan | cldr=ramadan
+fr/calendar.hijri.10 | ours=Chaoual | cldr=chawwal
+fr/calendar.hijri.11 | ours=Dhou al-qi'da | cldr=dhou al qi`da
+fr/calendar.hijri.12 | ours=Dhou al-hijja | cldr=dhou al-hijja
+fr/calendar.monthShort.1 | ours=Jan | cldr=janv.
+fr/calendar.monthShort.2 | ours=Fév | cldr=févr.
+fr/calendar.monthShort.3 | ours=Mar | cldr=mars
+fr/calendar.monthShort.4 | ours=Avr | cldr=avr.
+fr/calendar.monthShort.5 | ours=Mai | cldr=mai
+fr/calendar.monthShort.6 | ours=Juin | cldr=juin
+fr/calendar.monthShort.7 | ours=Juil | cldr=juil.
+fr/calendar.monthShort.8 | ours=Aoû | cldr=août
+fr/calendar.monthShort.9 | ours=Sep | cldr=sept.
+fr/calendar.monthShort.10 | ours=Oct | cldr=oct.
+fr/calendar.monthShort.11 | ours=Nov | cldr=nov.
+fr/calendar.monthShort.12 | ours=Déc | cldr=déc.
+fr/calendar.weekdayShort.7 | ours=Dim | cldr=dim.
+fr/calendar.weekdayShort.1 | ours=Lun | cldr=lun.
+fr/calendar.weekdayShort.2 | ours=Mar | cldr=mar.
+fr/calendar.weekdayShort.3 | ours=Mer | cldr=mer.
+fr/calendar.weekdayShort.4 | ours=Jeu | cldr=jeu.
+fr/calendar.weekdayShort.5 | ours=Ven | cldr=ven.
+fr/calendar.weekdayShort.6 | ours=Sam | cldr=sam.
+gu/calendar.hijri.3 | ours=રબી I | cldr=રાબીʻ I
+gu/calendar.hijri.4 | ours=રબી II | cldr=રાબીʻ II
+gu/calendar.hijri.8 | ours=શાબાન | cldr=શાʻબાન
+gu/calendar.hijri.9 | ours=રમઝાન | cldr=રમદાન
+gu/calendar.hijri.10 | ours=શવ્વાલ | cldr=શાવ્વલ
+gu/calendar.hijri.11 | ours=ઝુલ-કિદા | cldr=ધુʻલ-ક્વીʻડાહ
+gu/calendar.hijri.12 | ours=ઝુલ-હિજ્જા | cldr=ધુʻલ-હિજ્જાહ
+gu/calendar.monthShort.4 | ours=એપ્રિ | cldr=એપ્રિલ
+gu/calendar.monthShort.8 | ours=ઑગ | cldr=ઑગસ્ટ
+ha/calendar.hijri.3 | ours=Rabi'ul-awwal | cldr=Rabiʻ I
+ha/calendar.hijri.4 | ours=Rabi'ul-akhir | cldr=Rabiʻ II
+ha/calendar.hijri.5 | ours=Jumada'ul-awwal | cldr=Jumada I
+ha/calendar.hijri.6 | ours=Jumada'ul-akhir | cldr=Jumada II
+ha/calendar.hijri.8 | ours=Sha'aban | cldr=Shaʼaban
+ha/calendar.hijri.11 | ours=Zul-Qi'da | cldr=Dhuʻl-Qiʻdah
+ha/calendar.hijri.12 | ours=Zul-Hijja | cldr=Dhuʻl-Hijjah
+ha/calendar.monthShort.4 | ours=Afr | cldr=Afi
+it/calendar.hijri.3 | ours=Rabi al-awwal | cldr=Rabiʻ I
+it/calendar.hijri.4 | ours=Rabi as-sani | cldr=Rabiʻ II
+it/calendar.hijri.5 | ours=Jumada al-ula | cldr=Jumada I
+it/calendar.hijri.6 | ours=Jumada as-sania | cldr=Jumada II
+it/calendar.hijri.8 | ours=Sha'ban | cldr=Shaʻban
+it/calendar.hijri.11 | ours=Du-l-qa'da | cldr=Dhuʻl-Qiʻdah
+it/calendar.hijri.12 | ours=Du-l-hijja | cldr=Dhuʻl-Hijjah
+ja/calendar.hijri.2 | ours=サファル | cldr=サフアル
+ja/calendar.hijri.3 | ours=ラビーウルアウワル | cldr=ラビー・ウル・アウワル
+ja/calendar.hijri.4 | ours=ラビーウッサーニー | cldr=ラビー・ウッ・サーニー
+ja/calendar.hijri.5 | ours=ジュマーダルウーラー | cldr=ジュマーダル・アウワル
+ja/calendar.hijri.11 | ours=ズルカイダ | cldr=ズル・カイダ
+ja/calendar.hijri.12 | ours=ズルヒッジャ | cldr=ズル・ヒッジャ
+jv/calendar.hijri.1 | ours=Muharram | cldr=Sura
+jv/calendar.hijri.2 | ours=Safar | cldr=Sapar
+jv/calendar.hijri.3 | ours=Rabiul Awal | cldr=Mulud
+jv/calendar.hijri.4 | ours=Rabiul Akhir | cldr=Bakda Mulud
+jv/calendar.hijri.5 | ours=Jumadil Awal | cldr=Jumadilawal
+jv/calendar.hijri.6 | ours=Jumadil Akhir | cldr=Jumadilakir
+jv/calendar.hijri.7 | ours=Rajab | cldr=Rejeb
+jv/calendar.hijri.8 | ours=Syaban | cldr=Ruwah
+jv/calendar.hijri.9 | ours=Ramadhan | cldr=Pasa
+jv/calendar.hijri.10 | ours=Syawal | cldr=Sawal
+jv/calendar.hijri.11 | ours=Dzulkaidah | cldr=Selo
+jv/calendar.hijri.12 | ours=Dzulhijjah | cldr=Besar
+jv/calendar.monthShort.8 | ours=Agu | cldr=Agt
+jv/calendar.weekdayShort.3 | ours=Reb | cldr=Rab
+jv/calendar.weekdayShort.4 | ours=Kem | cldr=Kam
+jv/calendar.weekdayShort.6 | ours=Sep | cldr=Sab
+kk/calendar.hijri.3 | ours=Раби әл-әууәл | cldr=Рабиғул әууәл
+kk/calendar.hijri.4 | ours=Раби әл-сони | cldr=Рабиғул ахир
+kk/calendar.hijri.5 | ours=Жұмада әл-ұла | cldr=Жұмадәл аууәл
+kk/calendar.hijri.6 | ours=Жұмада әл-сония | cldr=Жұмадәл ахир
+kk/calendar.hijri.7 | ours=Ражаб | cldr=Ережеп
+kk/calendar.hijri.10 | ours=Шәууәл | cldr=Шәууал
+kk/calendar.hijri.11 | ours=Зулқағда | cldr=Зұлқағда
+kk/calendar.hijri.12 | ours=Зулхижжа | cldr=Зұлхижжа
+kk/calendar.monthShort.1 | ours=қаң | cldr=қаң.
+kk/calendar.monthShort.2 | ours=ақп | cldr=ақп.
+kk/calendar.monthShort.3 | ours=нау | cldr=нау.
+kk/calendar.monthShort.4 | ours=сәу | cldr=сәу.
+kk/calendar.monthShort.5 | ours=мам | cldr=мам.
+kk/calendar.monthShort.6 | ours=мау | cldr=мау.
+kk/calendar.monthShort.7 | ours=шіл | cldr=шіл.
+kk/calendar.monthShort.8 | ours=там | cldr=там.
+kk/calendar.monthShort.9 | ours=қыр | cldr=қыр.
+kk/calendar.monthShort.10 | ours=қаз | cldr=қаз.
+kk/calendar.monthShort.11 | ours=қар | cldr=қар.
+kk/calendar.monthShort.12 | ours=жел | cldr=жел.
+kn/calendar.hijri.1 | ours=ಮುಹರ್ರಂ | cldr=ಮುಹರಮ್
+kn/calendar.hijri.2 | ours=ಸಫರ್ | cldr=ಸಫಾರ್
+kn/calendar.hijri.3 | ours=ರಬೀ I | cldr=ರಬಿ‘ I
+kn/calendar.hijri.4 | ours=ರಬೀ II | cldr=ರಬಿ‘ II
+kn/calendar.hijri.8 | ours=ಶಾಬಾನ್ | cldr=ಶ’ಬಾನ್
+kn/calendar.hijri.9 | ours=ರಮಜಾನ್ | cldr=ರಮದಾನ್
+kn/calendar.hijri.11 | ours=ಜುಲ್-ಕಿದಾ | cldr=ಧು‘ಲ್-ಕಿ‘ಡಾಹ್
+kn/calendar.hijri.12 | ours=ಜುಲ್-ಹಿಜ್ಜಾ | cldr=ಧು‘ಲ್-ಹಿಜಾಹ್
+ko/calendar.hijri.4 | ours=라비 알 타니 | cldr=라비 알 쎄니
+ko/calendar.hijri.5 | ours=주마다 알 우라 | cldr=주마다 알 아왈
+ko/calendar.hijri.6 | ours=주마다 알 타니아 | cldr=주마다 알 쎄니
+ko/calendar.hijri.7 | ours=라자브 | cldr=라잡
+ko/calendar.hijri.8 | ours=샤반 | cldr=쉐아반
+ko/calendar.hijri.10 | ours=샤왈 | cldr=쉐왈
+ko/calendar.hijri.11 | ours=둘카다 | cldr=듀 알 까다
+ko/calendar.hijri.12 | ours=둘히자 | cldr=듀 알 히자
+ku/calendar.hijri.1 | ours=Muherem | cldr=muherem
+ku/calendar.hijri.2 | ours=Sefer | cldr=sefer
+ku/calendar.hijri.3 | ours=Rebîûlewel | cldr=rebîʿulewel
+ku/calendar.hijri.4 | ours=Rebîûlahir | cldr=rebîʿulaxer
+ku/calendar.hijri.5 | ours=Cemazîûlewel | cldr=cemazîyelewel
+ku/calendar.hijri.6 | ours=Cemazîûlahir | cldr=cemazîyelaxer
+ku/calendar.hijri.7 | ours=Receb | cldr=receb
+ku/calendar.hijri.8 | ours=Şeban | cldr=şeʿban
+ku/calendar.hijri.9 | ours=Remezan | cldr=remezan
+ku/calendar.hijri.10 | ours=Şewal | cldr=şewal
+ku/calendar.hijri.11 | ours=Zîlqede | cldr=zîlqeʿde
+ku/calendar.hijri.12 | ours=Zîlhice | cldr=zilhece
+ku/calendar.monthShort.1 | ours=Çile | cldr=rbn
+ku/calendar.monthShort.2 | ours=Sibat | cldr=sbt
+ku/calendar.monthShort.3 | ours=Adar | cldr=adr
+ku/calendar.monthShort.4 | ours=Nîsan | cldr=nsn
+ku/calendar.monthShort.5 | ours=Gulan | cldr=gln
+ku/calendar.monthShort.6 | ours=Hezîran | cldr=hzr
+ku/calendar.monthShort.7 | ours=Tîrmeh | cldr=trm
+ku/calendar.monthShort.8 | ours=Tebax | cldr=tbx
+ku/calendar.monthShort.9 | ours=Îlon | cldr=îln
+ku/calendar.monthShort.10 | ours=Cotmeh | cldr=cot
+ku/calendar.monthShort.11 | ours=Mijdar | cldr=mjd
+ku/calendar.monthShort.12 | ours=Kanûn | cldr=brf
+ku/calendar.weekdayShort.7 | ours=Yekşem | cldr=yşm
+ku/calendar.weekdayShort.1 | ours=Duşem | cldr=dşm
+ku/calendar.weekdayShort.2 | ours=Sêşem | cldr=sşm
+ku/calendar.weekdayShort.3 | ours=Çarşem | cldr=çşm
+ku/calendar.weekdayShort.4 | ours=Pêncşem | cldr=pşm
+ku/calendar.weekdayShort.5 | ours=În | cldr=înî
+ku/calendar.weekdayShort.6 | ours=Şemî | cldr=şem
+ky/calendar.hijri.1 | ours=Мухаррам | cldr=Muharram
+ky/calendar.hijri.2 | ours=Сафар | cldr=Safar
+ky/calendar.hijri.3 | ours=Раби ал-аввал | cldr=Rabiʻ I
+ky/calendar.hijri.4 | ours=Раби ал-сони | cldr=Rabiʻ II
+ky/calendar.hijri.5 | ours=Жумада ал-ула | cldr=Jumada I
+ky/calendar.hijri.6 | ours=Жумада ал-сония | cldr=Jumada II
+ky/calendar.hijri.7 | ours=Ражаб | cldr=Rajab
+ky/calendar.hijri.8 | ours=Шаабан | cldr=Shaʻban
+ky/calendar.hijri.9 | ours=Рамазан | cldr=Ramadan
+ky/calendar.hijri.10 | ours=Шаввал | cldr=Shawwal
+ky/calendar.hijri.11 | ours=Зулкаада | cldr=Dhuʻl-Qiʻdah
+ky/calendar.hijri.12 | ours=Зулхижжа | cldr=Dhuʻl-Hijjah
+ky/calendar.monthShort.1 | ours=янв | cldr=янв.
+ky/calendar.monthShort.2 | ours=фев | cldr=фев.
+ky/calendar.monthShort.3 | ours=мар | cldr=мар.
+ky/calendar.monthShort.4 | ours=апр | cldr=апр.
+ky/calendar.monthShort.6 | ours=июн | cldr=июн.
+ky/calendar.monthShort.7 | ours=июл | cldr=июл.
+ky/calendar.monthShort.8 | ours=авг | cldr=авг.
+ky/calendar.monthShort.9 | ours=сен | cldr=сен.
+ky/calendar.monthShort.10 | ours=окт | cldr=окт.
+ky/calendar.monthShort.11 | ours=ноя | cldr=ноя.
+ky/calendar.monthShort.12 | ours=дек | cldr=дек.
+ky/calendar.weekdayShort.7 | ours=жек | cldr=жек.
+ky/calendar.weekdayShort.1 | ours=дүй | cldr=дүй.
+ky/calendar.weekdayShort.2 | ours=шей | cldr=шейш.
+ky/calendar.weekdayShort.3 | ours=шар | cldr=шарш.
+ky/calendar.weekdayShort.4 | ours=бей | cldr=бейш.
+ky/calendar.weekdayShort.5 | ours=жум | cldr=жума
+ky/calendar.weekdayShort.6 | ours=ише | cldr=ишм.
+ml/calendar.hijri.3 | ours=റബീഉൽ അവ്വൽ | cldr=റബീഹുൽ അവ്വൽ
+ml/calendar.hijri.4 | ours=റബീഉൽ ആഖിർ | cldr=റബീഹുൽ ആഖിർ
+ml/calendar.hijri.5 | ours=ജമാദുൽ ഊലാ | cldr=ജമാദുൽ അവ്വൽ
+ml/calendar.hijri.8 | ours=ശഅ്ബാൻ | cldr=ശഹബാൻ
+ml/calendar.hijri.9 | ours=റമദാൻ | cldr=റമളാൻ
+ml/calendar.hijri.11 | ours=ദുൽഖഅ്ദ് | cldr=ദുൽ ഖഹദ്
+ml/calendar.hijri.12 | ours=ദുൽഹജ്ജ് | cldr=ദുൽ ഹിജ്ജ
+mr/calendar.hijri.1 | ours=मुहर्रम | cldr=मोहरम
+mr/calendar.hijri.3 | ours=रबी अल-अव्वल | cldr=राबी I
+mr/calendar.hijri.4 | ours=रबी अल-सानी | cldr=राबी II
+mr/calendar.hijri.5 | ours=जुमादा अल-उला | cldr=जुमादा I
+mr/calendar.hijri.6 | ours=जुमादा अल-सानिया | cldr=जुमादा II
+mr/calendar.hijri.7 | ours=रजब | cldr=रझाब
+mr/calendar.hijri.11 | ours=झुल-कादा | cldr=धुल-कीदाह
+mr/calendar.hijri.12 | ours=झुल-हिज्जा | cldr=धुल-हिजाह
+my/calendar.hijri.1 | ours=မူဟာရ်ရမ် | cldr=Muharram
+my/calendar.hijri.2 | ours=ဆဖာရ် | cldr=Safar
+my/calendar.hijri.3 | ours=ရဗီအုလ်အောင်ဝါလ် | cldr=Rabiʻ I
+my/calendar.hijri.4 | ours=ရဗီအုလ်အာခိရ် | cldr=Rabiʻ II
+my/calendar.hijri.5 | ours=ဂျုမာဒလုအူလာ | cldr=Jumada I
+my/calendar.hijri.6 | ours=ဂျုမာဒလုအာခိရ် | cldr=Jumada II
+my/calendar.hijri.7 | ours=ရာဂျပ် | cldr=Rajab
+my/calendar.hijri.8 | ours=ရှာဗာန် | cldr=Shaʻban
+my/calendar.hijri.9 | ours=ရမ်ဇာန် | cldr=Ramadan
+my/calendar.hijri.10 | ours=ရှာဝါလ် | cldr=Shawwal
+my/calendar.hijri.11 | ours=ဇူလ်ကာအိဒ် | cldr=Dhuʻl-Qiʻdah
+my/calendar.hijri.12 | ours=ဇူလ်ဟာဂျ် | cldr=Dhuʻl-Hijjah
+my/calendar.monthShort.4 | ours=ပြီ | cldr=ဧ
+my/calendar.monthShort.8 | ours=သြဂု | cldr=ဩ
+my/calendar.weekdayShort.7 | ours=နွေ | cldr=တနင်္ဂနွေ
+my/calendar.weekdayShort.1 | ours=လာ | cldr=တနင်္လာ
+my/calendar.weekdayShort.2 | ours=ဂါ | cldr=အင်္ဂါ
+my/calendar.weekdayShort.3 | ours=ဟူး | cldr=ဗုဒ္ဓဟူး
+my/calendar.weekdayShort.4 | ours=ကြာ | cldr=ကြာသပတေး
+my/calendar.weekdayShort.5 | ours=သော | cldr=သောကြာ
+nl/calendar.hijri.1 | ours=Muharram | cldr=Moeharram
+nl/calendar.hijri.3 | ours=Rabi al-awwal | cldr=Rabiʻa al awal
+nl/calendar.hijri.4 | ours=Rabi ath-thani | cldr=Rabiʻa al thani
+nl/calendar.hijri.5 | ours=Joemada al-oela | cldr=Joemadʻal awal
+nl/calendar.hijri.6 | ours=Joemada ath-thania | cldr=Joemadʻal thani
+nl/calendar.hijri.8 | ours=Sjaaban | cldr=Sjaʻaban
+nl/calendar.hijri.10 | ours=Sjawwal | cldr=Sjawal
+nl/calendar.hijri.11 | ours=Dhoe al-qida | cldr=Doe al kaʻaba
+nl/calendar.hijri.12 | ours=Dhoe al-hidja | cldr=Doe al hizja
+om/calendar.hijri.3 | ours=Rabii I | cldr=Rabiʻ I
+om/calendar.hijri.4 | ours=Rabii II | cldr=Rabiʻ II
+om/calendar.hijri.5 | ours=Jumaada I | cldr=Jumada I
+om/calendar.hijri.6 | ours=Jumaada II | cldr=Jumada II
+om/calendar.hijri.8 | ours=Sha’abaan | cldr=Shaʻban
+om/calendar.hijri.9 | ours=Ramadaan | cldr=Ramadan
+om/calendar.hijri.10 | ours=Shawwaal | cldr=Shawwal
+om/calendar.hijri.11 | ours=Zulqida | cldr=Dhuʻl-Qiʻdah
+om/calendar.hijri.12 | ours=Zulhijja | cldr=Dhuʻl-Hijjah
+om/calendar.monthShort.3 | ours=Bit | cldr=Bitootessa
+om/calendar.monthShort.9 | ours=Fuu | cldr=Ful
+om/calendar.monthShort.11 | ours=Sad | cldr=Sadaasa
+om/calendar.weekdayShort.1 | ours=Wii | cldr=Wix
+om/calendar.weekdayShort.2 | ours=Qib | cldr=Kib
+pa-Arab/calendar.hijri.1 | ours=محرم | cldr=Muharram
+pa-Arab/calendar.hijri.2 | ours=صفر | cldr=Safar
+pa-Arab/calendar.hijri.3 | ours=ربیع الاول | cldr=Rabiʻ I
+pa-Arab/calendar.hijri.4 | ours=ربیع الثانی | cldr=Rabiʻ II
+pa-Arab/calendar.hijri.5 | ours=جمادی الاول | cldr=Jumada I
+pa-Arab/calendar.hijri.6 | ours=جمادی الثانی | cldr=Jumada II
+pa-Arab/calendar.hijri.7 | ours=رجب | cldr=Rajab
+pa-Arab/calendar.hijri.8 | ours=شعبان | cldr=Shaʻban
+pa-Arab/calendar.hijri.9 | ours=رمضان | cldr=Ramadan
+pa-Arab/calendar.hijri.10 | ours=شوال | cldr=Shawwal
+pa-Arab/calendar.hijri.11 | ours=ذوالقعدہ | cldr=Dhuʻl-Qiʻdah
+pa-Arab/calendar.hijri.12 | ours=ذوالحجہ | cldr=Dhuʻl-Hijjah
+pa-Arab/calendar.monthShort.5 | ours=مئی | cldr=مئ
+pa-Arab/calendar.weekdayShort.6 | ours=چھنچھر | cldr=ہفتہ
+pl/calendar.hijri.3 | ours=Rabi al-awwal | cldr=Rabiʻ I
+pl/calendar.hijri.4 | ours=Rabi as-sani | cldr=Rabiʻ II
+pl/calendar.hijri.5 | ours=Dżumada al-ula | cldr=Dżumada I
+pl/calendar.hijri.6 | ours=Dżumada as-sania | cldr=Dżumada II
+pl/calendar.hijri.8 | ours=Sza'ban | cldr=Szaban
+pl/calendar.hijri.11 | ours=Zu-l-ka'da | cldr=Zu al-kada
+pl/calendar.hijri.12 | ours=Zu-l-hidżdża | cldr=Zu al-hidżdża
+pl/calendar.weekdayShort.7 | ours=niedz | cldr=niedz.
+pl/calendar.weekdayShort.1 | ours=pon | cldr=pon.
+pl/calendar.weekdayShort.2 | ours=wt | cldr=wt.
+pl/calendar.weekdayShort.3 | ours=śr | cldr=śr.
+pl/calendar.weekdayShort.4 | ours=czw | cldr=czw.
+pl/calendar.weekdayShort.5 | ours=pt | cldr=pt.
+pl/calendar.weekdayShort.6 | ours=sob | cldr=sob.
+ps/calendar.hijri.3 | ours=ربیع الاول | cldr=ربیع اول
+ps/calendar.hijri.4 | ours=ربیع الثانی | cldr=ربيع II
+ps/calendar.hijri.5 | ours=جمادی الاول | cldr=جمادي اول
+ps/calendar.hijri.6 | ours=جمادی الثانی | cldr=جماعه II
+ps/calendar.hijri.11 | ours=ذوالقعدې | cldr=ذي القعده
+ps/calendar.hijri.12 | ours=ذیالحجه | cldr=ذي الحج
+ps/calendar.monthShort.5 | ours=مې | cldr=مۍ
+ps/calendar.monthShort.9 | ours=سپتمبر | cldr=سېپتمبر
+ps/calendar.monthShort.12 | ours=ډیسمبر | cldr=دسمبر
+ps/calendar.weekdayShort.2 | ours=درېشنبه | cldr=سه شنبه
+ps/calendar.weekdayShort.3 | ours=څلورشنبه | cldr=چهارشنبه
+ps/calendar.weekdayShort.4 | ours=پنجشنبه | cldr=پنج شنبه
+pt/calendar.hijri.3 | ours=Rabi al-Awwal | cldr=Rabiʻ I
+pt/calendar.hijri.4 | ours=Rabi al-Thani | cldr=Rabiʻ II
+pt/calendar.hijri.5 | ours=Jumada al-Awwal | cldr=Jumada I
+pt/calendar.hijri.6 | ours=Jumada al-Thani | cldr=Jumada II
+pt/calendar.hijri.8 | ours=Sha'ban | cldr=Shaʻban
+pt/calendar.hijri.11 | ours=Dhu al-Qi'da | cldr=Dhuʻl-Qiʻdah
+pt/calendar.hijri.12 | ours=Dhu al-Hijja | cldr=Dhuʻl-Hijjah
+pt/calendar.monthShort.1 | ours=Jan | cldr=jan.
+pt/calendar.monthShort.2 | ours=Fev | cldr=fev.
+pt/calendar.monthShort.3 | ours=Mar | cldr=mar.
+pt/calendar.monthShort.4 | ours=Abr | cldr=abr.
+pt/calendar.monthShort.5 | ours=Mai | cldr=mai.
+pt/calendar.monthShort.6 | ours=Jun | cldr=jun.
+pt/calendar.monthShort.7 | ours=Jul | cldr=jul.
+pt/calendar.monthShort.8 | ours=Ago | cldr=ago.
+pt/calendar.monthShort.9 | ours=Set | cldr=set.
+pt/calendar.monthShort.10 | ours=Out | cldr=out.
+pt/calendar.monthShort.11 | ours=Nov | cldr=nov.
+pt/calendar.monthShort.12 | ours=Dez | cldr=dez.
+pt/calendar.weekdayShort.7 | ours=Dom | cldr=dom.
+pt/calendar.weekdayShort.1 | ours=Seg | cldr=seg.
+pt/calendar.weekdayShort.2 | ours=Ter | cldr=ter.
+pt/calendar.weekdayShort.3 | ours=Qua | cldr=qua.
+pt/calendar.weekdayShort.4 | ours=Qui | cldr=qui.
+pt/calendar.weekdayShort.5 | ours=Sex | cldr=sex.
+pt/calendar.weekdayShort.6 | ours=Sáb | cldr=sáb.
+qu/calendar.hijri.3 | ours=Rabi al-awwal | cldr=Rabiʻ I
+qu/calendar.hijri.4 | ours=Rabi as-sani | cldr=Rabiʻ II
+qu/calendar.hijri.5 | ours=Yumada al-ula | cldr=Jumada I
+qu/calendar.hijri.6 | ours=Yumada as-sania | cldr=Jumada II
+qu/calendar.hijri.7 | ours=Rayab | cldr=Rajab
+qu/calendar.hijri.8 | ours=Sha’ban | cldr=Shaʻban
+qu/calendar.hijri.11 | ours=Dhul-qa’da | cldr=Dhuʻl-Qiʻdah
+qu/calendar.hijri.12 | ours=Dhul-hijja | cldr=Dhuʻl-Hijjah
+qu/calendar.weekdayShort.7 | ours=Tum | cldr=Dom
+qu/calendar.weekdayShort.1 | ours=Lul | cldr=Lun
+qu/calendar.weekdayShort.3 | ours=Miy | cldr=Mié
+qu/calendar.weekdayShort.4 | ours=Juy | cldr=Jue
+qu/calendar.weekdayShort.5 | ours=Biy | cldr=Vie
+ro/calendar.hijri.3 | ours=Rabi al-awwal | cldr=Rabiʻ I
+ro/calendar.hijri.4 | ours=Rabi as-sani | cldr=Rabiʻ II
+ro/calendar.hijri.5 | ours=Jumada al-ula | cldr=Jumada I
+ro/calendar.hijri.6 | ours=Jumada as-sania | cldr=Jumada II
+ro/calendar.hijri.8 | ours=Șaaban | cldr=Shaʻban
+ro/calendar.hijri.10 | ours=Șawwal | cldr=Shawwal
+ro/calendar.hijri.11 | ours=Du-l-qa'da | cldr=Dhuʻl-Qiʻdah
+ro/calendar.hijri.12 | ours=Du-l-hijja | cldr=Dhuʻl-Hijjah
+ro/calendar.monthShort.1 | ours=ian | cldr=ian.
+ro/calendar.monthShort.2 | ours=feb | cldr=feb.
+ro/calendar.monthShort.3 | ours=mar | cldr=mar.
+ro/calendar.monthShort.4 | ours=apr | cldr=apr.
+ro/calendar.monthShort.6 | ours=iun | cldr=iun.
+ro/calendar.monthShort.7 | ours=iul | cldr=iul.
+ro/calendar.monthShort.8 | ours=aug | cldr=aug.
+ro/calendar.monthShort.9 | ours=sep | cldr=sept.
+ro/calendar.monthShort.10 | ours=oct | cldr=oct.
+ro/calendar.monthShort.11 | ours=noi | cldr=nov.
+ro/calendar.monthShort.12 | ours=dec | cldr=dec.
+ro/calendar.weekdayShort.7 | ours=dum | cldr=dum.
+ro/calendar.weekdayShort.1 | ours=lun | cldr=lun.
+ro/calendar.weekdayShort.2 | ours=mar | cldr=mar.
+ro/calendar.weekdayShort.3 | ours=mie | cldr=mie.
+ro/calendar.weekdayShort.5 | ours=vin | cldr=vin.
+ro/calendar.weekdayShort.6 | ours=sâm | cldr=sâm.
+ru/calendar.hijri.1 | ours=Мухаррам | cldr=мухаррам
+ru/calendar.hijri.2 | ours=Сафар | cldr=сафар
+ru/calendar.hijri.3 | ours=Раби аль-авваль | cldr=раби-уль-авваль
+ru/calendar.hijri.4 | ours=Раби ас-сани | cldr=раби-уль-ахир
+ru/calendar.hijri.5 | ours=Джумада аль-уля | cldr=джумад-уль-авваль
+ru/calendar.hijri.6 | ours=Джумада ас-сания | cldr=джумад-уль-ахир
+ru/calendar.hijri.7 | ours=Раджаб | cldr=раджаб
+ru/calendar.hijri.8 | ours=Шаабан | cldr=шаабан
+ru/calendar.hijri.9 | ours=Рамадан | cldr=рамадан
+ru/calendar.hijri.10 | ours=Шавваль | cldr=шавваль
+ru/calendar.hijri.11 | ours=Зуль-када | cldr=зуль-каада
+ru/calendar.hijri.12 | ours=Зуль-хиджа | cldr=зуль-хиджжа
+ru/calendar.monthShort.1 | ours=янв | cldr=янв.
+ru/calendar.monthShort.2 | ours=фев | cldr=февр.
+ru/calendar.monthShort.3 | ours=мар | cldr=мар.
+ru/calendar.monthShort.4 | ours=апр | cldr=апр.
+ru/calendar.monthShort.5 | ours=май | cldr=мая
+ru/calendar.monthShort.6 | ours=июн | cldr=июн.
+ru/calendar.monthShort.7 | ours=июл | cldr=июл.
+ru/calendar.monthShort.8 | ours=авг | cldr=авг.
+ru/calendar.monthShort.9 | ours=сен | cldr=сент.
+ru/calendar.monthShort.10 | ours=окт | cldr=окт.
+ru/calendar.monthShort.11 | ours=ноя | cldr=нояб.
+ru/calendar.monthShort.12 | ours=дек | cldr=дек.
+sd/calendar.hijri.4 | ours=ربيع الثاني | cldr=ربیع الاخر
+sd/calendar.hijri.5 | ours=جمادي الاول | cldr=جمادی الاول
+sd/calendar.hijri.6 | ours=جمادي الثاني | cldr=جمادي الاخر
+sd/calendar.hijri.12 | ours=ذوالحج | cldr=ذوالحجہ
+sd/calendar.weekdayShort.5 | ours=جمع | cldr=جمعو
+sq/calendar.hijri.1 | ours=Muharrem | cldr=muharrem
+sq/calendar.hijri.2 | ours=Safer | cldr=sefer
+sq/calendar.hijri.3 | ours=Rebiulevvel | cldr=rebiul-evel
+sq/calendar.hijri.4 | ours=Rebiulahir | cldr=rebiu-theni
+sq/calendar.hijri.5 | ours=Xhemadiushevvel | cldr=xhumadel-ula
+sq/calendar.hijri.6 | ours=Xhemadiusania | cldr=xhumade-theni
+sq/calendar.hijri.7 | ours=Rexheb | cldr=rexheb
+sq/calendar.hijri.8 | ours=Shaaban | cldr=shaban
+sq/calendar.hijri.9 | ours=Ramazan | cldr=ramazan
+sq/calendar.hijri.10 | ours=Sheval | cldr=sheval
+sq/calendar.hijri.11 | ours=Dul-kade | cldr=dhul-kade
+sq/calendar.hijri.12 | ours=Dul-hixhxhe | cldr=dhul-hixhe
+sq/calendar.monthShort.1 | ours=Jan | cldr=jan
+sq/calendar.monthShort.2 | ours=Shk | cldr=shk
+sq/calendar.monthShort.3 | ours=Mar | cldr=mar
+sq/calendar.monthShort.4 | ours=Pri | cldr=pri
+sq/calendar.monthShort.5 | ours=Maj | cldr=maj
+sq/calendar.monthShort.6 | ours=Qer | cldr=qer
+sq/calendar.monthShort.7 | ours=Kor | cldr=korr
+sq/calendar.monthShort.8 | ours=Gsh | cldr=gush
+sq/calendar.monthShort.9 | ours=Sht | cldr=sht
+sq/calendar.monthShort.10 | ours=Okt | cldr=tet
+sq/calendar.monthShort.11 | ours=Nën | cldr=nën
+sq/calendar.monthShort.12 | ours=Dhj | cldr=dhj
+sq/calendar.weekdayShort.7 | ours=Die | cldr=die
+sq/calendar.weekdayShort.1 | ours=Hën | cldr=hën
+sq/calendar.weekdayShort.2 | ours=Mar | cldr=mar
+sq/calendar.weekdayShort.3 | ours=Mër | cldr=mër
+sq/calendar.weekdayShort.4 | ours=Enj | cldr=enj
+sq/calendar.weekdayShort.5 | ours=Pre | cldr=pre
+sq/calendar.weekdayShort.6 | ours=Sht | cldr=sht
+su/calendar.hijri.3 | ours=Rabiul Awal | cldr=Rabiʻ I
+su/calendar.hijri.4 | ours=Rabiul Akhir | cldr=Rabiʻ II
+su/calendar.hijri.5 | ours=Jumadil Awal | cldr=Jumada I
+su/calendar.hijri.6 | ours=Jumadil Akhir | cldr=Jumada II
+su/calendar.hijri.8 | ours=Syaban | cldr=Shaʻban
+su/calendar.hijri.9 | ours=Ramadhan | cldr=Ramadan
+su/calendar.hijri.10 | ours=Syawal | cldr=Shawwal
+su/calendar.hijri.11 | ours=Dzulkaidah | cldr=Dhuʻl-Qiʻdah
+su/calendar.hijri.12 | ours=Dzulhijjah | cldr=Dhuʻl-Hijjah
+su/calendar.monthShort.8 | ours=Agu | cldr=Ags
+su/calendar.monthShort.11 | ours=Nov | cldr=Nop
+su/calendar.weekdayShort.7 | ours=Ming | cldr=Mng
+su/calendar.weekdayShort.2 | ours=Sel | cldr=Sal
+sw/calendar.hijri.3 | ours=Rabiulawal | cldr=Rabiʻ I
+sw/calendar.hijri.4 | ours=Rabiulathani | cldr=Rabiʻ II
+sw/calendar.hijri.5 | ours=Jamadilawal | cldr=Jumada I
+sw/calendar.hijri.6 | ours=Jamadilathani | cldr=Jumada II
+sw/calendar.hijri.8 | ours=Shaabani | cldr=Shaʻban
+sw/calendar.hijri.9 | ours=Ramadhani | cldr=Ramadan
+sw/calendar.hijri.11 | ours=Dhulqaada | cldr=Dhuʻl-Qiʻdah
+sw/calendar.hijri.12 | ours=Dhulhijja | cldr=Dhuʻl-Hijjah
+sw/calendar.weekdayShort.7 | ours=Jpi | cldr=Jumapili
+sw/calendar.weekdayShort.1 | ours=Jtt | cldr=Jumatatu
+sw/calendar.weekdayShort.2 | ours=Jnn | cldr=Jumanne
+sw/calendar.weekdayShort.3 | ours=Jtn | cldr=Jumatano
+sw/calendar.weekdayShort.4 | ours=Alh | cldr=Alhamisi
+sw/calendar.weekdayShort.5 | ours=Iju | cldr=Ijumaa
+sw/calendar.weekdayShort.6 | ours=Jms | cldr=Jumamosi
+ta/calendar.hijri.2 | ours=ஸபர் | cldr=சஃபர்
+ta/calendar.hijri.3 | ours=ரபிஉல் அவ்வல் | cldr=ரபி 1
+ta/calendar.hijri.4 | ours=ரபிஉஸ் ஸானி | cldr=ரபி 2
+ta/calendar.hijri.5 | ours=ஜமாதுல் ஊலா | cldr=ஜுமதா 1
+ta/calendar.hijri.6 | ours=ஜமாதுஸ் ஸானி | cldr=ஜுமதா 2
+ta/calendar.hijri.8 | ours=ஷபான் | cldr=ஷஃபான்
+ta/calendar.hijri.9 | ours=ரமளான் | cldr=ரமலான்
+ta/calendar.hijri.11 | ours=ஜுல்கிதா | cldr=துல் கஃதா
+ta/calendar.hijri.12 | ours=ஜுல்ஹஜ் | cldr=துல் ஹிஜ்ஜா
+ta/calendar.monthShort.1 | ours=ஜன | cldr=ஜன.
+ta/calendar.monthShort.2 | ours=பிப் | cldr=பிப்.
+ta/calendar.monthShort.3 | ours=மார்ச் | cldr=மார்.
+ta/calendar.monthShort.4 | ours=ஏப் | cldr=ஏப்.
+ta/calendar.monthShort.8 | ours=ஆக | cldr=ஆக.
+ta/calendar.monthShort.9 | ours=செப் | cldr=செப்.
+ta/calendar.monthShort.10 | ours=அக் | cldr=அக்.
+ta/calendar.monthShort.11 | ours=நவ | cldr=நவ.
+ta/calendar.monthShort.12 | ours=டிச | cldr=டிச.
+ta/calendar.weekdayShort.7 | ours=ஞாயி | cldr=ஞாயி.
+ta/calendar.weekdayShort.1 | ours=திங் | cldr=திங்.
+ta/calendar.weekdayShort.2 | ours=செவ் | cldr=செவ்.
+ta/calendar.weekdayShort.3 | ours=புத | cldr=புத.
+ta/calendar.weekdayShort.4 | ours=வியா | cldr=வியா.
+ta/calendar.weekdayShort.5 | ours=வெள் | cldr=வெள்.
+te/calendar.hijri.1 | ours=ముహర్రం | cldr=Muharram
+te/calendar.hijri.2 | ours=సఫర్ | cldr=Safar
+te/calendar.hijri.3 | ours=రబీ I | cldr=Rabiʻ I
+te/calendar.hijri.4 | ours=రబీ II | cldr=Rabiʻ II
+te/calendar.hijri.5 | ours=జుమాదా I | cldr=Jumada I
+te/calendar.hijri.6 | ours=జుమాదా II | cldr=Jumada II
+te/calendar.hijri.7 | ours=రజబ్ | cldr=Rajab
+te/calendar.hijri.8 | ours=షాబాన్ | cldr=Shaʻban
+te/calendar.hijri.9 | ours=రమజాన్ | cldr=Ramadan
+te/calendar.hijri.10 | ours=షవ్వాల్ | cldr=Shawwal
+te/calendar.hijri.11 | ours=జుల్-ఖిదా | cldr=Dhuʻl-Qiʻdah
+te/calendar.hijri.12 | ours=జుల్-హిజ్జా | cldr=Dhuʻl-Hijjah
+te/calendar.monthShort.7 | ours=జూలై | cldr=జులై
+tg/calendar.hijri.3 | ours=Рабиъ-ул-аввал | cldr=Рабеъ I
+tg/calendar.hijri.4 | ours=Рабиъ-ус-сонӣ | cldr=Рабеъ II
+tg/calendar.hijri.5 | ours=Ҷумодул-улӯ | cldr=ҷимоди-ул-уло
+tg/calendar.hijri.6 | ours=Ҷумодус-сонӣ | cldr=ҷимоди-ул-сони
+tg/calendar.hijri.7 | ours=Раҷаб | cldr=раҷаб
+tg/calendar.hijri.8 | ours=Шаъбон | cldr=Шабан
+tg/calendar.hijri.9 | ours=Рамазон | cldr=Рамадан
+tg/calendar.hijri.10 | ours=Шаввол | cldr=Шаввал
+tg/calendar.hijri.11 | ours=Зулқаъда | cldr=Дхут-Қидаҳ
+tg/calendar.hijri.12 | ours=Зулҳиҷҷа | cldr=Дхут-Ҳиҷҷаҳ
+tg/calendar.monthShort.1 | ours=янв | cldr=Янв
+tg/calendar.monthShort.2 | ours=фев | cldr=Фев
+tg/calendar.monthShort.3 | ours=мар | cldr=Мар
+tg/calendar.monthShort.4 | ours=апр | cldr=Апр
+tg/calendar.monthShort.5 | ours=май | cldr=Май
+tg/calendar.monthShort.6 | ours=июн | cldr=Июн
+tg/calendar.monthShort.7 | ours=июл | cldr=Июл
+tg/calendar.monthShort.8 | ours=авг | cldr=Авг
+tg/calendar.monthShort.9 | ours=сен | cldr=Сен
+tg/calendar.monthShort.10 | ours=окт | cldr=Окт
+tg/calendar.monthShort.11 | ours=ноя | cldr=Ноя
+tg/calendar.monthShort.12 | ours=дек | cldr=Дек
+tg/calendar.weekdayShort.7 | ours=як | cldr=Яшб
+tg/calendar.weekdayShort.1 | ours=дш | cldr=Дшб
+tg/calendar.weekdayShort.2 | ours=сш | cldr=Сшб
+tg/calendar.weekdayShort.3 | ours=чш | cldr=Чшб
+tg/calendar.weekdayShort.4 | ours=пш | cldr=Пшб
+tg/calendar.weekdayShort.5 | ours=ҷм | cldr=Ҷмъ
+tg/calendar.weekdayShort.6 | ours=шн | cldr=Шнб
+ti/calendar.hijri.1 | ours=ሙሓረም | cldr=Muharram
+ti/calendar.hijri.2 | ours=ሰፈር | cldr=Safar
+ti/calendar.hijri.3 | ours=ረቢዓል ኣውል | cldr=Rabiʻ I
+ti/calendar.hijri.4 | ours=ረቢዓስ ሳኒ | cldr=Rabiʻ II
+ti/calendar.hijri.5 | ours=ጁማዳል ኣውል | cldr=Jumada I
+ti/calendar.hijri.6 | ours=ጁማዳስ ሳኒ | cldr=Jumada II
+ti/calendar.hijri.7 | ours=ረጅብ | cldr=Rajab
+ti/calendar.hijri.8 | ours=ሻዕባን | cldr=Shaʻban
+ti/calendar.hijri.9 | ours=ራማዳን | cldr=Ramadan
+ti/calendar.hijri.10 | ours=ሻውላል | cldr=Shawwal
+ti/calendar.hijri.11 | ours=ዙልቂዕዳ | cldr=Dhuʻl-Qiʻdah
+ti/calendar.hijri.12 | ours=ዙልሒጃ | cldr=Dhuʻl-Hijjah
+ti/calendar.monthShort.9 | ours=መስከ | cldr=መስ
+tk/calendar.hijri.1 | ours=Muharrem | cldr=Aşyr
+tk/calendar.hijri.2 | ours=Safar | cldr=Sapar
+tk/calendar.hijri.3 | ours=Rebiýel-ewwel | cldr=Dört tirkeşik 1
+tk/calendar.hijri.4 | ours=Rebiýel-ahyr | cldr=Dört tirkeşik 2
+tk/calendar.hijri.5 | ours=Jemadiel-ewwel | cldr=Dört tirkeşik 3
+tk/calendar.hijri.6 | ours=Jemadiel-ahyr | cldr=Dört tirkeşik 4
+tk/calendar.hijri.8 | ours=Şaban | cldr=Meret
+tk/calendar.hijri.9 | ours=Ramazan | cldr=Oraza
+tk/calendar.hijri.10 | ours=Şewwal | cldr=Baýram
+tk/calendar.hijri.11 | ours=Zylkada | cldr=Boş aý
+tk/calendar.hijri.12 | ours=Zylhijje | cldr=Gurban
+tk/calendar.weekdayShort.7 | ours=ýe | cldr=ýek
+tk/calendar.weekdayShort.1 | ours=du | cldr=duş
+tk/calendar.weekdayShort.2 | ours=si | cldr=siş
+tk/calendar.weekdayShort.3 | ours=çr | cldr=çar
+tk/calendar.weekdayShort.4 | ours=pe | cldr=pen
+tk/calendar.weekdayShort.5 | ours=an | cldr=ann
+tk/calendar.weekdayShort.6 | ours=şe | cldr=şen
+tt/calendar.hijri.1 | ours=Мөхәррәм | cldr=Muharram
+tt/calendar.hijri.2 | ours=Сәфәр | cldr=Safar
+tt/calendar.hijri.3 | ours=Рабигыль-әүвәл | cldr=Rabiʻ I
+tt/calendar.hijri.4 | ours=Рабигыль-ахыр | cldr=Rabiʻ II
+tt/calendar.hijri.5 | ours=Җөмадиел-әүвәл | cldr=Jumada I
+tt/calendar.hijri.6 | ours=Җөмадиел-ахыр | cldr=Jumada II
+tt/calendar.hijri.7 | ours=Рәҗәп | cldr=Rajab
+tt/calendar.hijri.8 | ours=Шәғбан | cldr=Shaʻban
+tt/calendar.hijri.9 | ours=Рамазан | cldr=Ramadan
+tt/calendar.hijri.10 | ours=Шәүвәл | cldr=Shawwal
+tt/calendar.hijri.11 | ours=Зөлкағыйдә | cldr=Dhuʻl-Qiʻdah
+tt/calendar.hijri.12 | ours=Зөлхизә | cldr=Dhuʻl-Hijjah
+tt/calendar.monthShort.1 | ours=гыйн | cldr=гыйн.
+tt/calendar.monthShort.2 | ours=фев | cldr=фев.
+tt/calendar.monthShort.3 | ours=мар | cldr=мар.
+tt/calendar.monthShort.4 | ours=апр | cldr=апр.
+tt/calendar.monthShort.6 | ours=июн | cldr=июнь
+tt/calendar.monthShort.7 | ours=июл | cldr=июль
+tt/calendar.monthShort.8 | ours=авг | cldr=авг.
+tt/calendar.monthShort.9 | ours=сен | cldr=сент.
+tt/calendar.monthShort.10 | ours=окт | cldr=окт.
+tt/calendar.monthShort.11 | ours=ноя | cldr=нояб.
+tt/calendar.monthShort.12 | ours=дек | cldr=дек.
+tt/calendar.weekdayShort.7 | ours=якш | cldr=якш.
+tt/calendar.weekdayShort.1 | ours=дүш | cldr=дүш.
+tt/calendar.weekdayShort.2 | ours=сиш | cldr=сиш.
+tt/calendar.weekdayShort.3 | ours=чәр | cldr=чәр.
+tt/calendar.weekdayShort.4 | ours=пән | cldr=пәнҗ.
+tt/calendar.weekdayShort.5 | ours=җом | cldr=җом.
+tt/calendar.weekdayShort.6 | ours=шим | cldr=шим.
+ug/calendar.hijri.5 | ours=جەمادىيۇلئەۋۋەل | cldr=جەمادىيەلئەۋۋەل
+ug/calendar.hijri.6 | ours=جەمادىيۇلئاخىر | cldr=جەمادىيەلئاخىر
+ug/calendar.hijri.9 | ours=رامزان | cldr=رامىزان
+ug/calendar.hijri.11 | ours=زۇلقەدى | cldr=زۇلقەئدە
+ug/calendar.hijri.12 | ours=زۇلھىججە | cldr=زۇلھەججە
+ug/calendar.weekdayShort.7 | ours=يەكشەنبە | cldr=يە
+ug/calendar.weekdayShort.1 | ours=دۈشەنبە | cldr=دۈ
+ug/calendar.weekdayShort.2 | ours=سەيشەنبە | cldr=سە
+ug/calendar.weekdayShort.3 | ours=چارشەنبە | cldr=چا
+ug/calendar.weekdayShort.4 | ours=پەيشەنبە | cldr=پە
+ug/calendar.weekdayShort.5 | ours=جۈمە | cldr=جۈ
+ug/calendar.weekdayShort.6 | ours=شەنبە | cldr=شە
+uk/calendar.hijri.1 | ours=Мухаррам | cldr=мухаррам
+uk/calendar.hijri.2 | ours=Сафар | cldr=сафар
+uk/calendar.hijri.3 | ours=Рабі аль-авваль | cldr=рабі I
+uk/calendar.hijri.4 | ours=Рабі ас-сані | cldr=рабі II
+uk/calendar.hijri.5 | ours=Джумада аль-уля | cldr=джумада I
+uk/calendar.hijri.6 | ours=Джумада ас-санія | cldr=джумада II
+uk/calendar.hijri.7 | ours=Раджаб | cldr=раджаб
+uk/calendar.hijri.8 | ours=Шаабан | cldr=шаабан
+uk/calendar.hijri.9 | ours=Рамадан | cldr=рамадан
+uk/calendar.hijri.10 | ours=Шавваль | cldr=даввал
+uk/calendar.hijri.11 | ours=Зуль-када | cldr=зу-ль-каада
+uk/calendar.hijri.12 | ours=Зуль-хіджа | cldr=зу-ль-хіджа
+uk/calendar.monthShort.1 | ours=січ | cldr=січ.
+uk/calendar.monthShort.2 | ours=лют | cldr=лют.
+uk/calendar.monthShort.3 | ours=бер | cldr=бер.
+uk/calendar.monthShort.4 | ours=кві | cldr=квіт.
+uk/calendar.monthShort.5 | ours=тра | cldr=трав.
+uk/calendar.monthShort.6 | ours=чер | cldr=черв.
+uk/calendar.monthShort.7 | ours=лип | cldr=лип.
+uk/calendar.monthShort.8 | ours=сер | cldr=серп.
+uk/calendar.monthShort.9 | ours=вер | cldr=вер.
+uk/calendar.monthShort.10 | ours=жов | cldr=жовт.
+uk/calendar.monthShort.11 | ours=лис | cldr=лист.
+uk/calendar.monthShort.12 | ours=гру | cldr=груд.
+ur/calendar.hijri.3 | ours=ربیع الاول | cldr=ر بیع الاول
+ur/calendar.hijri.4 | ours=ربیع الثانی | cldr=ر بیع الثانی
+ur/calendar.hijri.11 | ours=ذوالقعدہ | cldr=ذوالقعدۃ
+ur/calendar.hijri.12 | ours=ذوالحجہ | cldr=ذوالحجۃ
+uz/calendar.hijri.3 | ours=Rabi'ul-avval | cldr=Rabiʼul avval
+uz/calendar.hijri.4 | ours=Rabi'ul-oxir | cldr=Rabiʼus soniy
+uz/calendar.hijri.5 | ours=Jumodul-avval | cldr=Jumodul avval
+uz/calendar.hijri.6 | ours=Jumodul-oxir | cldr=Jumodus soniy
+uz/calendar.hijri.8 | ours=Sha'bon | cldr=Sha’bon
+uz/calendar.hijri.11 | ours=Zulqa'da | cldr=Zulqaʼda
+uz/calendar.monthShort.1 | ours=Yan | cldr=yan
+uz/calendar.monthShort.2 | ours=Fev | cldr=fev
+uz/calendar.monthShort.3 | ours=Mar | cldr=mar
+uz/calendar.monthShort.4 | ours=Apr | cldr=apr
+uz/calendar.monthShort.5 | ours=May | cldr=may
+uz/calendar.monthShort.6 | ours=Iyn | cldr=iyn
+uz/calendar.monthShort.7 | ours=Iyl | cldr=iyl
+uz/calendar.monthShort.8 | ours=Avg | cldr=avg
+uz/calendar.monthShort.9 | ours=Sen | cldr=sen
+uz/calendar.monthShort.10 | ours=Okt | cldr=okt
+uz/calendar.monthShort.11 | ours=Noy | cldr=noy
+uz/calendar.monthShort.12 | ours=Dek | cldr=dek
+vi/calendar.hijri.3 | ours=Rabi al-awwal | cldr=Rabiʻ I
+vi/calendar.hijri.4 | ours=Rabi as-sani | cldr=Rabiʻ II
+vi/calendar.hijri.5 | ours=Jumada al-ula | cldr=Jumada I
+vi/calendar.hijri.6 | ours=Jumada as-sania | cldr=Jumada II
+vi/calendar.hijri.8 | ours=Sha'ban | cldr=Shaʻban
+vi/calendar.hijri.11 | ours=Dul-ka'da | cldr=Dhuʻl-Qiʻdah
+vi/calendar.hijri.12 | ours=Dul-hijja | cldr=Dhuʻl-Hijjah
+vi/calendar.monthShort.1 | ours=Th1 | cldr=thg 1
+vi/calendar.monthShort.2 | ours=Th2 | cldr=thg 2
+vi/calendar.monthShort.3 | ours=Th3 | cldr=thg 3
+vi/calendar.monthShort.4 | ours=Th4 | cldr=thg 4
+vi/calendar.monthShort.5 | ours=Th5 | cldr=thg 5
+vi/calendar.monthShort.6 | ours=Th6 | cldr=thg 6
+vi/calendar.monthShort.7 | ours=Th7 | cldr=thg 7
+vi/calendar.monthShort.8 | ours=Th8 | cldr=thg 8
+vi/calendar.monthShort.9 | ours=Th9 | cldr=thg 9
+vi/calendar.monthShort.10 | ours=Th10 | cldr=thg 10
+vi/calendar.monthShort.11 | ours=Th11 | cldr=thg 11
+vi/calendar.monthShort.12 | ours=Th12 | cldr=thg 12
+vi/calendar.weekdayShort.1 | ours=T2 | cldr=Thứ 2
+vi/calendar.weekdayShort.2 | ours=T3 | cldr=Thứ 3
+vi/calendar.weekdayShort.3 | ours=T4 | cldr=Thứ 4
+vi/calendar.weekdayShort.4 | ours=T5 | cldr=Thứ 5
+vi/calendar.weekdayShort.5 | ours=T6 | cldr=Thứ 6
+vi/calendar.weekdayShort.6 | ours=T7 | cldr=Thứ 7
+wo/calendar.hijri.3 | ours=Rabii al-awwal | cldr=Rabiʻ I
+wo/calendar.hijri.4 | ours=Rabii al-aaxir | cldr=Rabiʻ II
+wo/calendar.hijri.5 | ours=Jumaada al-awwal | cldr=Jumada I
+wo/calendar.hijri.6 | ours=Jumaada al-aaxir | cldr=Jumada II
+wo/calendar.hijri.8 | ours=Shaaban | cldr=Shaʻban
+wo/calendar.hijri.9 | ours=Ramadaan | cldr=Ramadan
+wo/calendar.hijri.11 | ours=Dul-qaada | cldr=Dhuʻl-Qiʻdah
+wo/calendar.hijri.12 | ours=Dul-hijja | cldr=Dhuʻl-Hijjah
+wo/calendar.weekdayShort.3 | ours=Àll | cldr=Àla
+wo/calendar.weekdayShort.6 | ours=Gaa | cldr=Ase
+yo/calendar.hijri.1 | ours=Mùhárámù | cldr=Muharram
+yo/calendar.hijri.2 | ours=Sáfárù | cldr=Safar
+yo/calendar.hijri.3 | ours=Rábíù àkọ́kọ́ | cldr=Rabiʻ I
+yo/calendar.hijri.4 | ours=Rábíù ìkejì | cldr=Rabiʻ II
+yo/calendar.hijri.5 | ours=Jùmádà àkọ́kọ́ | cldr=Jumada I
+yo/calendar.hijri.6 | ours=Jùmádà ìkejì | cldr=Jumada II
+yo/calendar.hijri.7 | ours=Rájábù | cldr=Rajab
+yo/calendar.hijri.8 | ours=Ṣábánù | cldr=Shaʻban
+yo/calendar.hijri.9 | ours=Rámádánì | cldr=Ramadan
+yo/calendar.hijri.10 | ours=Ṣáwálì | cldr=Shawwal
+yo/calendar.hijri.11 | ours=Zúl-kádà | cldr=Dhuʻl-Qiʻdah
+yo/calendar.hijri.12 | ours=Zúl-híjjà | cldr=Dhuʻl-Hijjah
+yo/calendar.monthShort.1 | ours=Ṣẹ́rẹ́ | cldr=Oṣù Ṣẹ́rẹ́
+yo/calendar.monthShort.2 | ours=Èrèlè | cldr=Oṣù Èrèlè
+yo/calendar.monthShort.3 | ours=Ẹrẹ̀nà | cldr=Oṣù Ẹrẹ̀nà
+yo/calendar.monthShort.4 | ours=Ìgbé | cldr=Oṣù Ìgbé
+yo/calendar.monthShort.5 | ours=Ẹ̀bibi | cldr=Oṣù Ẹ̀bibi
+yo/calendar.monthShort.6 | ours=Òkúdu | cldr=Oṣù Òkúdu
+yo/calendar.monthShort.7 | ours=Agẹmọ | cldr=Oṣù Agẹmọ
+yo/calendar.monthShort.8 | ours=Ògún | cldr=Oṣù Ògún
+yo/calendar.monthShort.9 | ours=Owewe | cldr=Oṣù Owewe
+yo/calendar.monthShort.10 | ours=Ọ̀wàrà | cldr=Oṣù Ọ̀wàrà
+yo/calendar.monthShort.11 | ours=Bélú | cldr=Oṣù Bélú
+yo/calendar.monthShort.12 | ours=Ọ̀pẹ̀ | cldr=Oṣù Ọ̀pẹ̀
+zh-Hans/calendar.hijri.1 | ours=穆哈兰姆 | cldr=一月
+zh-Hans/calendar.hijri.2 | ours=色法尔 | cldr=二月
+zh-Hans/calendar.hijri.3 | ours=赖比尔·敖外鲁 | cldr=三月
+zh-Hans/calendar.hijri.4 | ours=赖比尔·阿希勒 | cldr=四月
+zh-Hans/calendar.hijri.5 | ours=主马达·敖外鲁 | cldr=五月
+zh-Hans/calendar.hijri.6 | ours=主马达·阿希勒 | cldr=六月
+zh-Hans/calendar.hijri.7 | ours=莱哲卜 | cldr=七月
+zh-Hans/calendar.hijri.8 | ours=舍尔邦 | cldr=八月
+zh-Hans/calendar.hijri.9 | ours=莱麦丹 | cldr=九月
+zh-Hans/calendar.hijri.10 | ours=闪瓦鲁 | cldr=十月
+zh-Hans/calendar.hijri.11 | ours=祖勒·盖尔德 | cldr=十一月
+zh-Hans/calendar.hijri.12 | ours=祖勒·罕哲 | cldr=十二月

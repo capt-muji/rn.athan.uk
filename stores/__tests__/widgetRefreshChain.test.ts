@@ -23,11 +23,11 @@ import { addDays } from 'date-fns';
 
 import { armWidgetRefreshChain as mockArm } from '@/modules/widgetrefresh';
 import { createInstant, formatDateShort } from '@/shared/time';
-import type { ISingleApiResponseTransformed } from '@/shared/types';
-import * as Database from '@/stores/database';
+import type { DayRecord } from '@/shared/types';
+import * as Timetable from '@/stores/timetable';
 import { refreshPrayerWidgets } from '@/stores/widget';
 
-const makeDayData = (date: string): ISingleApiResponseTransformed => ({
+const makeDayData = (date: string): DayRecord => ({
   date,
   fajr: '03:30',
   sunrise: '05:20',
@@ -42,11 +42,11 @@ const makeDayData = (date: string): ISingleApiResponseTransformed => ({
 
 const seedPrayerCache = () => {
   const now = createInstant();
-  const data: ISingleApiResponseTransformed[] = [];
+  const data: DayRecord[] = [];
   for (const offset of [-1, 0, 1, 2]) {
     data.push(makeDayData(formatDateShort(addDays(now, offset))));
   }
-  Database.saveAllPrayers(data);
+  Timetable.__installTimetableDays(data);
 };
 
 describe('the native refresh chain arm call', () => {

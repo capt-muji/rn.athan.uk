@@ -3,13 +3,16 @@
  * it, and Android's back button
  */
 
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { BottomSheetScrollView, BottomSheetView } from '@gorhom/bottom-sheet';
 import { act, fireEvent, render, screen } from '@testing-library/react-native';
 import * as Haptics from 'expo-haptics';
 import type { ComponentProps } from 'react';
 import { BackHandler, DeviceEventEmitter, StyleSheet, Text } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { onPlatform } from '@/__tests__/harness';
+import { insideScroll, onPlatform } from '@/__tests__/harness';
 import { perfMark, perfMeasure } from '@/shared/perf';
 
 import Sheet from '../Sheet';
@@ -80,6 +83,16 @@ describe('a sheet as it mounts', () => {
     });
   });
 
+  it('keeps its tree mounted on close, so every open after the first animates a mounted sheet', async () => {
+    const setRef = jest.fn();
+
+    await render(settingsSheet({ setRef }));
+
+    // The warm-sheet contract: the library never unmounts the tree on a close, and the app never
+    // calls dismiss() (a dismiss unmounts whatever the flag says)
+    expect(setRef.mock.calls[0][0].props.enableDismissOnClose).toBe(false);
+  });
+
   it('asks the library for the snap points and the stacking it is given', async () => {
     const setRef = jest.fn();
 
@@ -147,25 +160,89 @@ describe('a sheet as it mounts', () => {
 });
 
 describe('a sheet as the library opens and closes it', () => {
-  it('gives one light haptic when a dismiss completes', async () => {
-    await render(settingsSheet());
+  /** The library's signals for one full open: an animation towards the first snap, then the settle */
+  const libraryOpens = async () => {
+    await libraryReports('animate', -1, 0);
+    await libraryReports('change', 0);
+  };
 
-    await libraryReports('dismiss');
+  it('gives one light haptic when the sheet closes, on the change to closed', async () => {
+    await render(settingsSheet());
+    await libraryOpens();
+
+    await libraryReports('change', -1);
 
     expect(Haptics.impactAsync).toHaveBeenCalledTimes(1);
     expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Light);
   });
 
-  it('gives no haptic as it starts to close or settles closed, before the dismiss completes', async () => {
-    await render(settingsSheet({ onDismiss: jest.fn() }));
+  it('gives no haptic as the close starts to move, before the sheet has settled closed', async () => {
+    await render(settingsSheet());
+    await libraryOpens();
 
     await libraryReports('animate', 0, -1);
-    await libraryReports('change', -1);
 
     expect(Haptics.impactAsync).not.toHaveBeenCalled();
   });
 
-  it('marks the close haptic dispatch and settle on dismiss', async () => {
+  it('fires the close once when the change to closed and a dismiss land together, as a mid-animation dismiss does', async () => {
+    const onDismiss = jest.fn();
+    await render(settingsSheet({ onDismiss }));
+    await libraryOpens();
+
+    await libraryReports('change', -1);
+    await libraryReports('dismiss');
+
+    expect(onDismiss).toHaveBeenCalledTimes(1);
+    expect(Haptics.impactAsync).toHaveBeenCalledTimes(1);
+  });
+
+  it('fires nothing on a dismiss that reaches a sheet nothing opened', async () => {
+    const onDismiss = jest.fn();
+    await render(settingsSheet({ onDismiss }));
+
+    await libraryReports('change', -1);
+    await libraryReports('dismiss');
+
+    expect(onDismiss).not.toHaveBeenCalled();
+    expect(Haptics.impactAsync).not.toHaveBeenCalled();
+  });
+
+  it('still owes the close when the sheet is closed before it ever settled open, so a swipe-down mid-entrance commits', async () => {
+    const onDismiss = jest.fn();
+    await render(settingsSheet({ onDismiss }));
+
+    // The entrance begins (an animation towards open) but never settles; the sheet is swiped shut
+    await libraryReports('animate', -1, 0);
+    await libraryReports('change', -1);
+
+    expect(onDismiss).toHaveBeenCalledTimes(1);
+  });
+
+  it('mounts its content once and never again across open and close cycles', async () => {
+    let mounts = 0;
+    const Probe = () => {
+      mounts += 1;
+      return <Text>probe</Text>;
+    };
+    await render(
+      <Sheet setRef={jest.fn()} title={TITLE} subtitle='Set your preferences' icon={<Text>icon</Text>}>
+        <Probe />
+      </Sheet>
+    );
+
+    await libraryOpens();
+    await libraryReports('change', -1);
+    await libraryOpens();
+    await libraryReports('change', -1);
+    // A dismiss that still reaches the warm tree must not add a mount either
+    await libraryReports('dismiss');
+
+    expect(screen.getByText('probe')).toBeOnTheScreen();
+    expect(mounts).toBe(1);
+  });
+
+  it('marks the close haptic dispatch and settle on the close', async () => {
     const calls: string[] = [];
     jest.mocked(perfMark).mockImplementation((name) => calls.push(name));
     jest
@@ -173,12 +250,13 @@ describe('a sheet as the library opens and closes it', () => {
       .mockImplementation(() => new Promise<void>((resolve) => queueMicrotask(() => resolve())));
     const onDismiss = jest.fn(() => calls.push('onDismiss'));
     await render(settingsSheet({ onDismiss }));
+    await libraryOpens();
 
-    const dismissed = libraryReports('dismiss');
+    const closed = libraryReports('change', -1);
 
     expect(calls).toEqual(['sheet_close_haptic', 'onDismiss']);
 
-    await dismissed;
+    await closed;
     await act(async () => {});
 
     expect(calls).toEqual(['sheet_close_haptic', 'onDismiss', 'sheet_close_haptic_settled']);
@@ -187,22 +265,33 @@ describe('a sheet as the library opens and closes it', () => {
     jest.mocked(Haptics.impactAsync).mockImplementation(() => Promise.resolve());
   });
 
-  it('tells the screen when a dismiss completes', async () => {
+  it('holds the close impact for a sheet that gives its own', async () => {
+    await render(settingsSheet({ suppressCloseHaptic: true }));
+    await libraryOpens();
+
+    await libraryReports('change', -1);
+
+    expect(Haptics.impactAsync).not.toHaveBeenCalled();
+  });
+
+  it('tells the screen when the sheet closes', async () => {
     const onDismiss = jest.fn();
     await render(settingsSheet({ onDismiss }));
+    await libraryOpens();
 
-    await libraryReports('dismiss');
+    await libraryReports('change', -1);
 
     expect(onDismiss).toHaveBeenCalledTimes(1);
   });
 
-  it('tells the screen as it starts to move', async () => {
+  it('tells the screen as it starts to move, naming the index it moves to', async () => {
     const onAnimate = jest.fn();
     await render(settingsSheet({ onAnimate }));
 
     await libraryReports('animate', 0, -1);
 
     expect(onAnimate).toHaveBeenCalledTimes(1);
+    expect(onAnimate).toHaveBeenCalledWith(-1);
   });
 
   it('runs its first-open work once, the first time it settles open', async () => {
@@ -292,12 +381,15 @@ describe("Android's back button and a sheet", () => {
     const setRef = jest.fn();
     const exitApp = jest.spyOn(BackHandler, 'exitApp');
     await render(settingsSheet({ setRef }));
+    const close = jest.spyOn(setRef.mock.calls[0][0], 'close');
     const dismiss = jest.spyOn(setRef.mock.calls[0][0], 'dismiss');
     await libraryReports('change', 0);
 
     await pressBack();
 
-    expect(dismiss).toHaveBeenCalledTimes(1);
+    expect(close).toHaveBeenCalledTimes(1);
+    // A dismiss unmounts the warm tree whatever enableDismissOnClose says, so back must never use it
+    expect(dismiss).not.toHaveBeenCalled();
     expect(exitApp).not.toHaveBeenCalled();
   });
 
@@ -305,25 +397,88 @@ describe("Android's back button and a sheet", () => {
     const setRef = jest.fn();
     const exitApp = jest.spyOn(BackHandler, 'exitApp');
     await render(settingsSheet({ setRef }));
-    const dismiss = jest.spyOn(setRef.mock.calls[0][0], 'dismiss');
+    const close = jest.spyOn(setRef.mock.calls[0][0], 'close');
 
     await pressBack();
 
     expect(exitApp).toHaveBeenCalledTimes(1);
-    expect(dismiss).not.toHaveBeenCalled();
+    expect(close).not.toHaveBeenCalled();
   });
 
   it('leaves the press to the app again once the sheet has closed', async () => {
     const setRef = jest.fn();
     const exitApp = jest.spyOn(BackHandler, 'exitApp');
     await render(settingsSheet({ setRef }));
-    const dismiss = jest.spyOn(setRef.mock.calls[0][0], 'dismiss');
+    const close = jest.spyOn(setRef.mock.calls[0][0], 'close');
     await libraryReports('change', 0);
     await libraryReports('change', -1);
 
     await pressBack();
 
     expect(exitApp).toHaveBeenCalledTimes(1);
-    expect(dismiss).not.toHaveBeenCalled();
+    expect(close).not.toHaveBeenCalled();
+  });
+});
+
+describe('the content the sheet hands the library', () => {
+  /**
+   * Every component type in the element tree the sheet hands the library. The published mock draws a
+   * content view as its children alone, so the tree on screen cannot show which one the sheet chose;
+   * what the library receives is the contract
+   */
+  const typesIn = (node: unknown, found: unknown[] = []): unknown[] => {
+    if (Array.isArray(node)) {
+      for (const child of node) typesIn(child, found);
+      return found;
+    }
+    if (node === null || typeof node !== 'object') return found;
+    const element = node as { type?: unknown; props?: { children?: unknown } };
+    if (element.type !== undefined) found.push(element.type);
+    if (element.props) typesIn(element.props.children, found);
+    return found;
+  };
+
+  const handedToLibrary = (setRef: jest.Mock): unknown[] => typesIn(setRef.mock.calls[0][0].props.children);
+
+  it('keeps every sheet on its one scroll view, header and all', async () => {
+    await render(settingsSheet());
+
+    expect(insideScroll(screen.getByText(TITLE))).toBe(true);
+    expect(insideScroll(screen.getByText('Show seconds'))).toBe(true);
+    expect(scrollViews()).toHaveLength(1);
+  });
+
+  it('keeps its scrolling content view on a sheet that scrolls', async () => {
+    const setRef = jest.fn();
+    await render(settingsSheet({ setRef }));
+
+    expect(handedToLibrary(setRef)).toContain(BottomSheetScrollView);
+  });
+
+  it('keeps its fixed content view on a sheet that does not scroll', async () => {
+    const setRef = jest.fn();
+    await render(settingsSheet({ setRef, scrollable: false }));
+
+    expect(handedToLibrary(setRef)).toContain(BottomSheetView);
+  });
+
+  it('hands the library no keyboard behaviour of its own, on any sheet', async () => {
+    const setRef = jest.fn();
+    await render(settingsSheet({ setRef }));
+
+    // The keys themselves: a forwarded undefined still writes the prop, and the library reads the key
+    expect(setRef.mock.calls[0][0].props).not.toHaveProperty('keyboardBehavior');
+    expect(setRef.mock.calls[0][0].props).not.toHaveProperty('keyboardBlurBehavior');
+  });
+
+  it('carries none of the machinery the language sheet’s rebuild orphaned', () => {
+    const source = readFileSync(join(__dirname, '..', 'Sheet.tsx'), 'utf8');
+
+    expect(source).not.toContain('hostsScrollable');
+    expect(source).not.toContain('hostedContent');
+    expect(source).not.toContain('keyboardBehavior');
+    expect(source).not.toContain('keyboardBlurBehavior');
+    // The prop’s own shapes, so the scroll-indicator comment’s “pinned 5.2.14” does not match
+    expect(source).not.toMatch(/pinned\s*[?=,}]/);
   });
 });

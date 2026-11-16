@@ -41,6 +41,7 @@ jest.mock('jotai', () => ({
 
 jest.mock('react', () => ({
   ...jest.requireActual<typeof import('react')>('react'),
+  useMemo: (create: () => unknown) => create(),
   useRef: (initial: unknown) => {
     const refs = mockHooks.refs.get(mockHooks.page) ?? [];
     mockHooks.refs.set(mockHooks.page, refs);
@@ -67,10 +68,11 @@ jest.mock('react-native-reanimated', () => ({
   Easing: { elastic: () => () => 0 },
 }));
 jest.mock('@/stores/database', () => ({
-  getPrayerByDateString: jest.fn(),
   getItem: () => null,
   getRawItem: () => undefined,
 }));
+
+jest.mock('@/stores/timetable', () => ({ getTimetableDay: jest.fn() }));
 
 jest.mock('@/shared/time', () => ({
   ...jest.requireActual<typeof import('@/shared/time')>('@/shared/time'),

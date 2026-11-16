@@ -3,6 +3,7 @@
  * components/overlay/catcherGeometry.ts).
  */
 
+import { currentLocaleId } from '@/shared/i18n/locale';
 import { formatDateLocalized, formatHijriDateLocalized } from '@/shared/time';
 
 /**
@@ -26,10 +27,24 @@ export const getShownDateSource = (
  * one falls back to the Gregorian one from inside its own catch and throws again, uncaught. With no date it
  * prints nothing.
  *
+ * Formatted once per (locale, calendar, date) and served from the cache after: both formatters compose from the
+ * active locale's catalog, and the Hijri one pays an Intl DateTimeFormat construction per call - expensive on
+ * the floor device, and paid at every overlay open for a date string that only changes when the day or the
+ * selection does. The cache holds one short string per locale, calendar and day shown: a few entries a day,
+ * never worth a bound.
+ *
  * @param dateSource The list day (getShownDateSource)
  * @param hijriEnabled Whether the Hijri date is chosen in settings
  */
+const formattedDates = new Map<string, string>();
+
 export const formatShownDate = (dateSource: string | null, hijriEnabled: boolean): string => {
   if (!dateSource) return '';
-  return hijriEnabled ? formatHijriDateLocalized(dateSource) : formatDateLocalized(dateSource);
+  const key = `${currentLocaleId()}|${hijriEnabled ? 'hijri' : 'gregorian'}|${dateSource}`;
+  const cached = formattedDates.get(key);
+  if (cached !== undefined) return cached;
+
+  const formatted = hijriEnabled ? formatHijriDateLocalized(dateSource) : formatDateLocalized(dateSource);
+  formattedDates.set(key, formatted);
+  return formatted;
 };

@@ -11,8 +11,3 @@ const logger = {
 };
 
 export default logger;
-
-// Re-export config functions as mocks
-export const isProd = jest.fn().mockReturnValue(false);
-export const isPreview = jest.fn().mockReturnValue(false);
-export const isTest = jest.fn().mockReturnValue(true);

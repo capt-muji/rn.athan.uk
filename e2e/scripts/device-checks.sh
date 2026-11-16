@@ -11,12 +11,11 @@
 # the moments the app should be firing at. When given, every future alarm must
 # match one, or sit one of the reminder intervals ahead of one. Which prayers are
 # armed is a user preference, so an expected time with no alarm is not a failure.
-# Generate it from the timetable the app is using (see e2e/README.md). No API key
-# is read, passed or stored by this script.
+# Generate it from the timetable the app is using (see e2e/README.md).
 #
-# Alarm TIMES are only meaningful on a PRODUCTION build: local/dev builds run the
-# mock API, whose prayers sit a few minutes either side of launch and have
-# usually already fired. Everything else here is build-agnostic.
+# Alarm TIMES are only meaningful on a PRODUCTION build: local/dev builds serve
+# the launch-relative mock window, whose prayers sit a few minutes either side
+# of launch and have usually already fired. Everything else here is build-agnostic.
 #
 # Exit status: 0 all checks passed, 1 at least one FAIL.
 

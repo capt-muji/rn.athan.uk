@@ -12,7 +12,9 @@ import { SPACING } from '@/shared/constants';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { perfMark, perfMeasure } from '@/shared/perf';
 import { ScheduleType } from '@/shared/types';
+import { animationEpochOpen } from '@/stores/animationEpoch';
 import { overlayIsOnAtom } from '@/stores/atoms/overlay';
+import { pagerPageAtom } from '@/stores/atoms/pager';
 import { openOverlay } from '@/stores/overlay';
 
 import Navigation from '../../app/Navigation';
@@ -42,7 +44,14 @@ const FIRST_FRAME_MS = 50;
 const standardPage = () => screen.getByText('London, UK');
 
 describe('the prayer pages, Friday 11 September 2026 at 14:00', () => {
-  // The locale cases mutate module state; every later assertion reads en
+  // The page atom is module state: a pager case that settles on Extras would otherwise bleed into a
+  // later case's pre-render open, so every test starts on the Standard page. The locale cases mutate
+  // module state too; every later assertion reads en. The epoch is module state as well, so every
+  // pager case below rests the slide it starts
+  beforeEach(() => {
+    getDefaultStore().set(pagerPageAtom, 0);
+  });
+
   afterEach(() => {
     setActiveLocale('en');
   });
@@ -65,6 +74,9 @@ describe('the prayer pages, Friday 11 September 2026 at 14:00', () => {
     await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState } });
 
     expect(perfMark).toHaveBeenCalledWith('pager_swipe_start');
+
+    // The slide a case starts, it rests: a slot left open is module state the next case reads
+    await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState: 'idle' } });
   });
 
   it('marks no swipe start when the pager comes to rest', async () => {
@@ -76,6 +88,49 @@ describe('the prayer pages, Friday 11 September 2026 at 14:00', () => {
     expect(perfMark).not.toHaveBeenCalledWith('pager_swipe_start');
   });
 
+  // The slide is an animation window: the epoch it opens stands the per-second writes down so
+  // nothing writes mid-slide, exactly as a sheet entrance does
+  it.each(['dragging', 'settling'])('opens the animation epoch while the pager reports %s', async (pageScrollState) => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<Navigation />);
+
+    await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState } });
+
+    expect(animationEpochOpen()).toBe(true);
+
+    // The slide a case starts, it rests: a slot left open is module state the next case reads
+    await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState: 'idle' } });
+  });
+
+  it('closes the animation epoch when the pager rests', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<Navigation />);
+
+    await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState: 'dragging' } });
+    await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState: 'idle' } });
+
+    expect(animationEpochOpen()).toBe(false);
+  });
+
+  // Only the pager's rest closes the window: a state a future library version
+  // adds is neither a slide's start nor its rest, so it must leave the window
+  // and any gated write alone
+  it('treats an unknown pager state as neither slide nor rest', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    openOverlay(ScheduleType.Standard, MAGRIB);
+    await render(<Navigation />);
+
+    await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState: 'dragging' } });
+    await fireEvent(standardPage(), 'pageSelected', { nativeEvent: { position: 1 } });
+    await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState: 'decelerating' } });
+
+    expect(animationEpochOpen()).toBe(true);
+    expect(getDefaultStore().get(overlayIsOnAtom)).toBe(true);
+
+    // The slide a case starts, it rests: a slot left open is module state the next case reads
+    await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState: 'idle' } });
+  });
+
   it('measures a swipe against the page it settled on', async () => {
     showLondonDay('2026-09-11', '14:00');
     await render(<Navigation />);
@@ -85,24 +140,80 @@ describe('the prayer pages, Friday 11 September 2026 at 14:00', () => {
     expect(perfMeasure).toHaveBeenCalledWith('pager_page', 'pager_swipe_start', { position: 1 });
   });
 
-  it('closes an overlay open on the Standard list when a swipe settles on the Extras page', async () => {
+  // The page atom's snap write is the dots' own animation trigger, so it stays at the snap - not gated
+  // with the store write, which would blank the flip until the slide rested
+  it('flips the dots the moment the snap names the page', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<Navigation />);
+
+    await fireEvent(standardPage(), 'pageSelected', { nativeEvent: { position: 1 } });
+
+    expect(screen.getByTestId('schedule-dot-0', { includeHiddenElements: true })).toHaveStyle({ opacity: 0.25 });
+    expect(screen.getByTestId('schedule-dot-1', { includeHiddenElements: true })).toHaveStyle({ opacity: 1 });
+  });
+
+  // The self-heal close is a whole-overlay store batch, so it rides the slide's rest: the snap
+  // still owes the settle tail, and no store write may land inside it
+  it("closes an overlay open on the Standard list when a swipe settles on the Extras page, at the slide's rest", async () => {
     showLondonDay('2026-09-11', '14:00');
     openOverlay(ScheduleType.Standard, MAGRIB);
     await render(<Navigation />);
+
+    await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState: 'settling' } });
+    await fireEvent(standardPage(), 'pageSelected', { nativeEvent: { position: 1 } });
+    expect(getDefaultStore().get(overlayIsOnAtom)).toBe(true);
+
+    await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState: 'idle' } });
+    expect(getDefaultStore().get(overlayIsOnAtom)).toBe(false);
+  });
+
+  // Owner order 2026-11-02: the pager cannot be swiped while the overlay is open, so a
+  // slide resting under one began before the open landed - the tap-then-swipe interleave.
+  // The slide's rest closes the overlay wherever it settles, the same page included
+  it('closes an overlay open on the Standard list when a slide rests back on the Standard page', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    openOverlay(ScheduleType.Standard, MAGRIB);
+    await render(<Navigation />);
+
+    await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState: 'settling' } });
+    await fireEvent(standardPage(), 'pageSelected', { nativeEvent: { position: 0 } });
+    expect(getDefaultStore().get(overlayIsOnAtom)).toBe(true);
+
+    await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState: 'idle' } });
+    expect(getDefaultStore().get(overlayIsOnAtom)).toBe(false);
+  });
+
+  // A fast fling can report its rest BEFORE its trailing selected: the press's open then
+  // lands on a pagerPageAtom the swipe has not rewritten yet, and the selected that follows
+  // has no later rest to ride - so the selected itself closes the overlay it lands under
+  it("closes an overlay that opened between the pager's rest and its trailing selected", async () => {
+    showLondonDay('2026-09-11', '14:00');
+    await render(<Navigation />);
+
+    await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState: 'settling' } });
+    await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState: 'idle' } });
+    openOverlay(ScheduleType.Standard, MAGRIB);
+    expect(getDefaultStore().get(overlayIsOnAtom)).toBe(true);
 
     await fireEvent(standardPage(), 'pageSelected', { nativeEvent: { position: 1 } });
 
     expect(getDefaultStore().get(overlayIsOnAtom)).toBe(false);
   });
 
-  it('keeps an overlay open on the Standard list when a swipe settles back on the Standard page', async () => {
+  // The owner's tap-then-swipe interleave: the press's open lands in JS after the pager's selected and
+  // idle events, so the self-heal (which only closes an OPEN overlay) never sees it and the pressed
+  // row's overlay stays on the page the swipe settled on. The open itself must be refused
+  it('leaves the overlay closed when a Standard row is pressed once the swipe settled on Extras', async () => {
     showLondonDay('2026-09-11', '14:00');
-    openOverlay(ScheduleType.Standard, MAGRIB);
     await render(<Navigation />);
 
-    await fireEvent(standardPage(), 'pageSelected', { nativeEvent: { position: 0 } });
+    await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState: 'settling' } });
+    await fireEvent(standardPage(), 'pageSelected', { nativeEvent: { position: 1 } });
+    await fireEvent(standardPage(), 'pageScrollStateChanged', { nativeEvent: { pageScrollState: 'idle' } });
 
-    expect(getDefaultStore().get(overlayIsOnAtom)).toBe(true);
+    await fireEvent.press(screen.getByText('Isha'));
+
+    expect(getDefaultStore().get(overlayIsOnAtom)).toBe(false);
   });
 
   it('passes layoutDirection rtl to the pager under an RTL locale', async () => {

@@ -9,6 +9,8 @@ import { useWindowDimensions } from '@/hooks/useWindowDimensions';
 import { SCREEN } from '@/shared/constants';
 import { canonicalDisplayOrder } from '@/shared/prayer';
 import { ScheduleType } from '@/shared/types';
+import { animationEpochOpen } from '@/stores/animationEpoch';
+import { overlayFadeInFlight } from '@/stores/atoms/overlay';
 import { countdownBarShownAtom, getMeasurementsList, setMeasurementsList } from '@/stores/ui';
 
 import ActiveBackground from './ActiveBackground';
@@ -65,12 +67,23 @@ export default function List({ type }: Props) {
     if (!isStandard) return;
 
     // Wait for layout to settle after countdown bar is added/removed; RN 0.88 removed
-    // InteractionManager.runAfterInteractions, and the idle callback is its replacement
-    const handle = requestIdleCallback(() => {
-      measureList();
-    });
+    // InteractionManager.runAfterInteractions, and the idle callback is its replacement.
+    // An idle JS thread is not an idle animation, though: the toggle's write settles
+    // when its thumb does, and only then may the re-measure write, so an idle
+    // callback that wakes inside that window re-arms instead of measuring
+    let idle = -1;
+    const measureWhenSettled = () => {
+      idle = requestIdleCallback(() => {
+        if (animationEpochOpen() || overlayFadeInFlight()) {
+          measureWhenSettled();
+          return;
+        }
+        measureList();
+      });
+    };
+    measureWhenSettled();
 
-    return () => cancelIdleCallback(handle);
+    return () => cancelIdleCallback(idle);
   }, [countdownBarShown, isStandard, windowWidth, windowHeight]);
 
   // Show nothing if sequence not ready

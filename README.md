@@ -10,16 +10,21 @@ Web: [athan.uk](https://athan.uk) | iOS: [ios.athan.uk](https://ios.athan.uk) | 
 
 ## Features
 
-- Six daily prayers plus five extra times (Midnight, Last Third, Suhoor, Duha, Friday Istijaba) with a live countdown to the next prayer.
+- Six daily prayers plus five extra times (Midnight, Last Third, Sahur, Duha, Friday Istijaba) with a live countdown to the next prayer.
 - The schedule rolls over after the last prayer of the day instead of midnight. Tomorrow sits one swipe away.
-- Fully offline after the first sync. The whole year is cached in MMKV, and an unreadable time shows `--:--`, never a guess.
+- Fifty-eight languages - English, Arabic, Bahasa Melayu, Somali, Hindi, Thai, Bahasa Indonesia, Turkish, French, Uzbek, Swahili, Hausa, Portuguese, Urdu, Persian, Bengali, Russian, Azerbaijani, German, Albanian, Bosnian, Pashto, Tamil, Malayalam, Simplified Chinese, Traditional Chinese, Spanish, Dutch, Kazakh, Kyrgyz, Tajik, Turkmen, Wolof, Marathi, Oromo, Bambara, Tagalog, Fulfulde, Telugu, Gujarati, Kannada, Amharic, Shahmukhi Punjabi, Sindhi, Uyghur, Sorani Kurdish, Kurmanji Kurdish, Yoruba, Javanese, Sundanese, Burmese, Tatar, Chechen, Ukrainian, Quechua, Minangkabau, Madurese and Bugis - with right-to-left layout for Arabic, Urdu, Persian, Pashto, Shahmukhi Punjabi, Sindhi, Uyghur and Sorani Kurdish.
+- Fifty-eight languages - English, Arabic, Bahasa Melayu, Somali, Hindi, Thai, Bahasa Indonesia, Turkish, French, Uzbek, Swahili, Hausa, Portuguese, Urdu, Persian, Bengali, Russian, Azerbaijani, German, Albanian, Bosnian, Pashto, Tamil, Malayalam, Simplified Chinese, Traditional Chinese, Spanish, Dutch, Kazakh, Kyrgyz, Tajik, Turkmen, Wolof, Marathi, Oromo, Bambara, Tagalog, Fulfulde, Telugu, Gujarati, Kannada, Amharic, Shahmukhi Punjabi, Sindhi, Uyghur, Sorani Kurdish, Kurmanji Kurdish, Yoruba, Javanese, Sundanese, Japanese, Korean, Italian, Polish, Romanian, Cebuano, Ilocano and Vietnamese - with right-to-left layout for Arabic, Urdu, Persian, Pashto, Shahmukhi Punjabi, Sindhi, Uyghur and Sorani Kurdish.
+- Fifty-nine languages - English, Arabic, Bahasa Melayu, Somali, Hindi, Thai, Bahasa Indonesia, Turkish, French, Uzbek, Swahili, Hausa, Portuguese, Urdu, Persian, Bengali, Russian, Azerbaijani, German, Albanian, Bosnian, Pashto, Tamil, Malayalam, Simplified Chinese, Traditional Chinese, Spanish, Dutch, Kazakh, Kyrgyz, Tajik, Turkmen, Wolof, Marathi, Oromo, Bambara, Tagalog, Fulfulde, Telugu, Gujarati, Kannada, Amharic, Shahmukhi Punjabi, Sindhi, Uyghur, Sorani Kurdish, Kurmanji Kurdish, Yoruba, Javanese, Sundanese, Saraiki, Balochi, Kashmiri, Dhivehi, Afar, Maguindanao, Kanuri, Mandinka and Zarma - with right-to-left layout for Arabic, Urdu, Persian, Pashto, Shahmukhi Punjabi, Sindhi, Uyghur, Sorani Kurdish, Saraiki, Balochi, Kashmiri and Dhivehi.
+- Seventy-five languages, the language wave's refresh: Hiligaynon, Central Bikol, Waray, Maranao, Pattani Malay and Tigrinya added; Traditional Chinese, Dhivehi, Chechen, Afar, Mandinka and Zarma retired - with right-to-left layout for Arabic, Urdu, Persian, Pashto, Shahmukhi Punjabi, Sindhi, Uyghur, Sorani Kurdish, Saraiki, Balochi and Kashmiri.
+- Fully offline from first launch: the whole 2026-2076 timetable is baked into the app at build time, and an unreadable time shows `--:--`, never a guess.
 - Notifications: selectable athan audio (32 public recordings, each credited in the picker), two reminder slots per prayer, a 64-request scheduling budget and deterministic IDs so alarms never double-fire.
+- Fasting days: the Sahur alert can follow a regimen instead of firing every day - Mondays and Thursdays, alternate days (the fast of Dawood), or the white days (the 13, 14, 15 of each Hijri month), with every day of Ramadan armed regardless and a ten-day strip marking each armed day.
 - Home screen and Lock Screen widgets on iOS and Android: Light and Dark variants, self-refreshing, minute-ceil countdown labels. Widgets need a development or production build (iOS 16.4+), not Expo Go.
 - Qibla compass on a flat world map: a north-locked dial that taps when you line up with Makkah, drawing only headings the phone has vouched for.
-- Settings: large overlay font, Hijri date, Arabic prayer names, seconds, seasonal decorations, countdown bar, color picker.
+- Settings: large overlay font, Hijri date, Arabic prayer names, seconds, 12/24-hour display, seasonal decorations, countdown bar, color picker, check for updates.
 - Folding iPhone (Duo) support: held tall on the open inner display the app renders top-down across both panels with no letterbox, and there is no wide mode - the wide hold keeps the system's centered portrait frame.
 
-Prayer times come from [London Prayer Times](https://www.londonprayertimes.com/). Reminder audio is recorded in-house. The Audacity projects for every athan and reminder sound are on the [releases page](https://github.com/capt-muji/rn.athan.uk/releases).
+Prayer times come from the London Unified Prayer Timetable (londonsalahtimes.com), baked into the app at build time. Reminder audio is recorded in-house. The Audacity projects for every athan and reminder sound are on the [releases page](https://github.com/capt-muji/rn.athan.uk/releases).
 
 ## Known limitations
 
@@ -79,61 +84,29 @@ Every selectable athan sound comes from a public recording:
 - Expo Router, Jotai, MMKV, Reanimated 4
 - date-fns and date-fns-tz, with every date in the London timezone
 - Biome for lint and format, Jest at 100% coverage, Pino for logging
-- Native modules in `modules/`: qibla heading (Google Fused Orientation on Android, Core Location on iOS), TLS 1.3 for Android 9 and below, Android widget self-refresh
+- Native modules in `modules/`: qibla heading (Google Fused Orientation on Android, Core Location on iOS), the Android switch-cover overlay, Android widget self-refresh
 
-## Repository layout
-
-```
-app/         Expo Router entry points and navigation
-components/  UI components (prayer, countdown, overlay, sheets, modals)
-hooks/       useQibla, useCountdown, useSchedule
-stores/      Jotai atoms (schedule, notifications, countdown, sync, widgets)
-shared/      utilities: constants, prayer, time, notifications, qibla, whatsNew
-widgets/     iOS widget layouts and the Android Glance layout
-modules/     native Expo modules: qiblaheading, tls13, widgetrefresh
-device/      platform code: notifications, listeners, updates, tasks
-api/         prayer times client; mocks/ holds dev and test data
-e2e/         Maestro flows, device atlas, frame audit, baseline compare
-board/       the local ticket board: the stack, its data and its snapshot
-```
-
-`patches/` holds patch-package patches. `ai/` holds the agent guide. `android/` and `ios/` are generated by `npx expo prebuild` and stay git-ignored.
 
 ## How work happens here
 
-This repository runs its own work on a local board: a self-hosted It's a Plan instance in
-[`board/`](board/README.md). A ticket is an issue on that board, and its column is its state. The
-board holds the plan, the steps, the relations and the history.
+This repository runs its own work on a Multica board: the owner's self-hosted instance on the home server
+(`SERVER_LAN_IP:3011`, browser front `https://kan.chabu.me`), driven by agents through
+the `multica` CLI. A ticket is an issue on that board, and its column is its state.
 
 | Command | What it does |
 | --- | --- |
-| `/athan-next` | The lead reads the board, picks the runnable ticket, and routes it: plan, execute, audit, Done |
+| `/athan-next` | Reads the queue in `ai/plans/README.md`, carries one session through plan, execute and audit, hands-off |
 
-The workers are agent files in `.opencode/agents/` (`athan-lane`, `athan-executor`, `athan-reviewer`, `athan-plan-griller`) running as subagents with enforced permissions: the executor cannot push, the reviewers cannot edit. Every phase writes its state to the board as it lands, so any session can be closed and resumed by running the command again in a fresh one. The workflow is self-contained: cloning this repository brings the commands, the skills, the workers and the board's compose file with it.
+The workflow is self-contained: cloning this repository brings the command, the skills
+(`multica-cli` with this board's columns in `BOARD-ATHAN.md`, and `athan-next`) and the
+session queue. Board access needs the owner's `multica` CLI login (PAT in `MULTICA_PAT`).
 
 ## The board
 
-```bash
-cd board && docker compose --env-file env up -d
-```
+The live board is Multica, on the owner's home server; nothing about it is committed here.
+The columns are Backlog, Todo, Planning, Ready, In Progress, In Review, Awaiting Owner,
+Upstream, Blocked, Done and Cancelled. Agents drive it through the `multica` CLI.
 
-The board is at `http://localhost:3001` and the API at `http://localhost:3000`. Six containers
-run, two are one-shot setup steps, and two are listed but never start because nothing here uses
-webhooks, notifications or Telegram. `board/README.md` documents all of it.
-
-`board/data/` holds the live database and attachments and is ignored by git. `board/snapshot/board.sql`
-is the committed copy, and it is what makes the board recoverable:
-
-```bash
-board/snapshot.sh     # write snapshot/board.sql at the end of a run
-board/restore.sh      # rebuild the board from it, on any machine
-```
-
-Reading the board: a ticket is one unit of work, a step is a plan step. The columns are
-Backlog, Deferred, Planning, Ready, In progress, Blocked, Audit, Awaiting Owner, Upstream and
-Done.
-The `Tickets` view shows the ticket number, its priority, its labels, its lane and how long it has
-sat where it is. Nothing is edited through the board by hand: agents write it through MCP.
 
 ## Development
 
@@ -166,7 +139,7 @@ time and never committed, because a clone has to be able to deploy this as its o
 | `EXPO_EAS_PROJECT_ID` | `extra.eas.projectId` | none |
 | `EXPO_PUBLIC_ANDROID_PACKAGE` / `EXPO_PUBLIC_IOS_BUNDLE_ID` | the ids the app reads at runtime | the same placeholders |
 
-`$HOME/athan-gitree/bin/build-prod.zsh` and `build-mock.zsh` export the live values before
+`scripts/build/build-prod.zsh` and `build-mock.zsh` export the live values before
 `npx expo prebuild`, so a device build writes the published ids into the git-ignored native trees
 and badges the package it always has. A local iOS build does the same by exporting them in the
 shell that runs `npx expo prebuild -p ios`. Maestro flows take `APP_ID` (`-e APP_ID=<package>`),
@@ -178,7 +151,7 @@ and the e2e scripts fall back to the placeholder.
 the owner's names, the home-path username and tool-session scratchpad paths. Three gates read it,
 all deterministic: `.husky/pre-commit` refuses a staged line or a commit identity that carries a
 term; `yarn validate` includes a suite test that scans every tracked file, and the pre-push hook
-runs `yarn validate`; `board/snapshot.sh` refuses to write a dump that carries one. `AGENTS.md`
+runs `yarn validate`. `AGENTS.md`
 holds the placeholder vocabulary the shapes use for device and location identifiers.
 
 ## Testing
@@ -204,4 +177,3 @@ A contract test (`shared/__tests__/whatsNew.test.ts`) guards the shape. `EXPO_PU
 ## Further reading
 
 - [AGENTS.md](AGENTS.md): the full development protocol.
-- [board/README.md](board/README.md): the board, its containers, and how to restore it.

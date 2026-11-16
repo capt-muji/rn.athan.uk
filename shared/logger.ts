@@ -14,14 +14,6 @@ const pinoLogger = pino({
   // Debug emits in dev/local builds only (logging disabled in prod/preview);
   // the countdown TICK instrumentation logs at debug level
   level: 'debug',
-  transport: {
-    target: 'pino-pretty',
-    options: {
-      colorize: true,
-      ignore: 'pid,hostname',
-      translateTime: 'HH:MM:ss',
-    },
-  },
 });
 
 type LogLevel = 'info' | 'warn' | 'debug' | 'error';
@@ -65,6 +57,3 @@ const logger = {
 };
 
 export default logger;
-
-// Re-exported from config for convenience
-export { isPreview, isProd, isTest };

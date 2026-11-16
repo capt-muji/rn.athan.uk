@@ -13,18 +13,30 @@ everywhere.
   to English). Tap points are OnePlus 3T coordinates (1080×1920).
 - `scripts/baseline-compare.sh`: run a flow while streaming `ReactNativeJS`
   perf marks. Medians diffed against `baselines/android-3t.json`.
-- `scripts/frame-audit.sh`: FPS + visual-quality audit of one animation.
-  Records per-frame pts (compositor truth), then a contact sheet, then a vision
-  prompt for an image-capable subagent. `FRAME_AUDIT=sf` falls back to
-  SurfaceFlinger compositor cadence when video capture is wedged.
+- `scripts/frame-audit.sh`: dual FPS audit of one animation. One tap, two
+  reads in one evidence dir: the screenrecord video (the ENCODER's word —
+  per-frame pts, contact sheet, vision prompt) and SurfaceFlinger's present
+  timestamps for the app's layer (the COMPOSITOR's word, layer resolved from
+  `dumpsys SurfaceFlinger --list`). The gap lists print side by side with a
+  separation verdict: a dead zone in both is compositor truth, in video
+  alone encoder loss. `PRE_TAP` opens the overlay first so a close audit
+  records a real closing tap (`PRE_TAP_WAIT`, default 1s, mock-safe).
+  `FRAME_AUDIT=video` keeps the video-only path; `FRAME_AUDIT=sf` is the
+  recorder-free floor witness (D16): the tap is stamped and anchored on the
+  SF clock, the layer resolved from `--list`, and the entrance window
+  bounded [tap-50ms, tap+ENTRANCE_MS] (default 1000). The PRINTED
+  PRESENT-GAP LIST inside that window is the verdict of record, read
+  against the 33ms floor — gaps over 100ms inside the window are floor
+  failures, never "freeze or idle"; the PASS line only summarizes the list.
+  It is also the only read while video capture is wedged.
 - `scripts/device-checks.sh` (`yarn check:device`): on-demand audit of what the
   phone has: build identity, permissions, notification channels and
   every alarm the app has armed (`scripts/device_checks.py` parses
   `dumpsys alarm`). FAILS on nothing armed, a missing channel, or a trigger that
   is not a prayer time. Pass a JSON list of `"YYYY-MM-DD HH:MM"` trigger times
-  as the third argument to check the times themselves. No API key is read,
-  passed or stored. Alarm TIMES only mean anything on a production build. Local
-  builds run the mock API, whose prayers sit either side of launch.
+  as the third argument to check the times themselves. Alarm TIMES only mean
+  anything on a production build. Local
+  builds serve the launch-relative mock window, whose prayers sit either side of launch.
 - `baselines/`: measured medians + animation-floor verdicts per device.
 - `device-atlas-<model>.md`: the tap-point atlas for one device
   (`device-atlas-oneplus3t.md` is the 3T's). **Read it before screenshotting a
@@ -52,13 +64,22 @@ adb -s 3T_SERIAL logcat -s ReactNativeJS -v threadtime   # PERF_MEASURE lines mu
 
 ## Run
 
+Devices are independent: when a protocol needs both phones, run one executor per
+phone SIMULTANEOUSLY - never let one idle while the other waits on an alarm
+(owner order 2026-10-30). Only the build slot serialises (one Gradle, one
+Xcode); driving, protocols and installs parallelise freely across devices, and
+each phone's evidence lands in its own directory.
+
 ```sh
 export PATH="$HOME/.maestro/bin:$PATH"
 yarn check:device                                        # what the phone has armed
 yarn check:device 3T_SERIAL "$APP_ID" expected-times.json   # check the times too
 e2e/scripts/baseline-compare.sh e2e/flows/overlay-x10.yaml
-e2e/scripts/frame-audit.sh overlay-open 540 974 3        # settle 12s, tap, audit
-FRAME_AUDIT=sf e2e/scripts/frame-audit.sh sheet-open 540 1730 3   # cadence-only
+e2e/scripts/frame-audit.sh overlay-open 540 1012 3                      # dual: video + SF
+PRE_TAP="540 1012" e2e/scripts/frame-audit.sh overlay-close 540 1100 3  # open, settle, record close
+FRAME_AUDIT=video e2e/scripts/frame-audit.sh overlay-open 540 1012 3    # video only
+FRAME_AUDIT=sf e2e/scripts/frame-audit.sh sheet-open 539 1833 3         # cadence-only
+SWIPE="864 403 216 403 250" e2e/scripts/frame-audit.sh pager-swipe 864 403 3  # a swipe, not a tap
 ```
 
 ## The AVD lane: smoke only, never a witness
@@ -123,23 +144,19 @@ verification, never infer visuals from pixels alone.
   nothing about the bundle). The gradle `UP-TO-DATE` skip on env-only changes is NOT
   re-measured at this pin set: `find android/app/build -name index.android.bundle -delete`
   before `assembleRelease` remains the safe route when the env changed.
-- **Dev-env confound**: local builds run the mock API (`api/client.ts` returns
-  `MOCK_DATA_SIMPLE` whenever the env is neither `prod` nor `preview`, so every
-  launch does a full mock refresh (~175ms Android). Baseline and iterations
-  share it. Never compare absolute startup numbers to production. It also
-  **writes mock times into the device's MMKV cache**, so any device check about
-  prayer times, notifications or armed alarm times is void until that build
-  refetches. Since the store is namespaced by the same predicate that serves
-  the mock (`stores/database.ts`, AUDIT #25), the fabricated rows stay in
-  `athan-storage-dev` and a prod or preview build installed over the top never
-  reads them, but they persist for the next local build, so a stale mock day
-  is still a live confound within dev. The mock seeds by the download's London clock (row 113,
-  any hour, any day, `mocks/simple.ts`): the evening window (06:00-23:52:59) puts Asr just
-  passed, Maghrib on the next minute boundary and Isha the minute after, so the day rolls to
-  tomorrow's real schedule within a couple of minutes; the pre-dawn window (00:00-05:59)
-  composes a realistic day with Fajr one minute out and Sunrise eleven; the spent late evening
-  (23:53-23:59) serves the day's real static shape with all six passed. A prayer a minute or
-  two off the wall clock is the mock, not a bug. Logging is disabled
+- **Dev-env confound**: local builds serve the launch-relative mock window
+  (`stores/timetable.ts` reads `mocks/minutes.ts` whenever the env is neither
+  `prod` nor `preview`, reseeded at every launch and resume, so every launch
+  recomputes it in memory). Baseline and iterations share it. Never compare
+  absolute startup numbers to production. The old mock-refetch's dev-MMKV day
+  rows are gone (the reader never writes days), and the one-time legacy
+  cleanup removes any that earlier builds left, so a stale mock day is no
+  longer a live confound within dev. The mock seeds by the reading's London clock (row 113,
+  any hour, any day, `mocks/minutes.ts`): every window outside the spent late evening puts
+  Asr one hour out and Dhuhr one hour spent, with Maghrib one minute after Asr and Isha one minute after Maghrib,
+  so the day rolls to tomorrow's real schedule within a couple of minutes; the spent late
+  evening (22:58-23:59) serves the day's real static shape with all six passed. A prayer a
+  minute or two off the wall clock is the mock, not a bug. Logging is disabled
   in prod and preview (`shared/logger.ts`), so the only build that gives both
   real data and logs is none of them. On a real-data device run, the alarm
   dump is the evidence and an empty logcat proves nothing either way.
@@ -161,7 +178,7 @@ verification, never infer visuals from pixels alone.
   five identical snapshots on the 3T**: measure idle with
   `scripts/idle-cpu.sh` (per-thread `/proc` deltas over 60s).
 - **Idle must be measured past the mock's compressed window**: the evening seed puts the next
-  prayers one and two minutes out, and every return to the app downloads again, so sample
+  prayers one and two minutes out, and every return to the app reseeds the window, so sample
   ≥5.5 min after a cold launch without leaving the app (idle-cpu.sh does). The night windows
   are safe since row 113: the pre-dawn branch never writes a small-hours Standard row (the
   midnight-crossing rules are what dashed the old night mock), and the evening branch's
@@ -199,7 +216,54 @@ verification, never infer visuals from pixels alone.
   measurements. Check `top` for them before measuring.
 - **SF `--latency` layer names rotate** per process relaunch: dump both
   `$APP_ID/$APP_ID.MainActivity#0` and the
-  hash-prefixed variant from `dumpsys SurfaceFlinger --list`.
+  hash-prefixed variant from `dumpsys SurfaceFlinger --list`. The dual
+  frame-audit resolves the layer from `--list` itself for this reason.
+- **The dual read pairs two clocks through a measured offset**: the video's
+  tap sits at 0.5s of recording by construction, but SF present timestamps
+  ride CLOCK_MONOTONIC while `/proc/uptime` rides CLOCK_BOOTTIME (suspend
+  included) — a phone that has ever suspended carries the difference as a
+  growing offset (this 3T: ~8047s), so the script measures it per capture
+  (ring clear, anchor tap on the prayer row, uptime read in the same shell,
+  then dump; offset = uptime - first present, +-50ms vsync and read lag) and
+  subtracts it from the tap's boottime read. Dozes between captures grow the
+  offset, and an anchor tap that CLOSES a sheet presents 275-296ms late and
+  reads it LOW: offsets cannot decrease, so across a session the highest
+  coherent reading is the true one, and `SF_OFFSET=<seconds>` overrides a
+  polluted read without a re-capture. The SF dump must land AFTER the
+  recorded animation — tap, animation, then dump: the ring holds only ~127
+  presents and an idle layer presents nothing, so the ring still covers the
+  entrance, while a dump before the tap reads an idle layer and prints
+  NO DATA.
+- **`input tap` injection lag**: on the 3T `adb shell input tap` runs
+  410-450ms with the touch injected mid-command (bracket-measured,
+  2026-10-31), so an uptime stamp read after the command trails the touch
+  by ~150-250ms. A window anchored on the stamp must open its left edge to
+  -300ms to cover an entrance's first presents — the recorded method of
+  record (`android-3t.json` `_2026_10_31`); frame-audit's sf branch prints
+  the [stamp-50ms] bounds it filters beside that skew. Swipes stamp BEFORE
+  the action and keep the -50ms margin.
+- **The pre-tap settle wait is mock-tuned**: `PRE_TAP` opens the overlay
+  before a close audit records the closing tap, and `PRE_TAP_WAIT` (default
+  1s) is the entrance's settle time. The stock 3s wait is unusable on mock:
+  when the seeded boundary is near, the overlay auto-closes inside the wait
+  and the recorded "closing" tap captures a re-open — an open mislabelled as
+  a close. The 1s default shrinks the exposure window; evening seeds read as
+  boundary-adjacent, and a capture whose sheet shows two animations is a
+  re-run, not data (the vision read catches it).
+- **A pager swipe audit needs PRE_SWIPE**: every capture force-stops and
+  relaunches onto the standard page, so a recorded extras->std swipe with no
+  pre-swipe measures the first page's overscroll glow — a clean 15-30ms
+  cadence that is NOT a page turn (the vision read catches it: no
+  translation anywhere, a decaying edge glow). `PRE_SWIPE` pre-advances the
+  pager first; the dots are not tappable.
+- **A production build (ENV=prod) carries no marks and no logs**:
+  `shared/perf.ts` gates PERF on `EXPO_PUBLIC_ENV !== 'prod'` and the pino
+  logger is off, so `baseline-compare.sh` cannot run against one and an
+  empty logcat proves nothing — the recorder-free SF read is the only
+  witness. `check:device`'s alarm gate then fails by the phone's own
+  toggles when alerts are off (every bell struck through on the schedule
+  face): read the schedule face for the real times and leave the toggles
+  alone.
 - **iOS**: Maestro does not support physical devices. WDA (appium fork) +
   `pymobiledevice3 syslog live` (tag `Athan{React}`). Fast 140ms flicks
   dismiss scrollable sheets. Per campaign directive, iOS is verified by

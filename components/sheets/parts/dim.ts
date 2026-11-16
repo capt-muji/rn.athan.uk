@@ -22,7 +22,11 @@ export const dimDisables = (dim: DimState): boolean => dim === 'off' || dim === 
 export const REMINDER_CARD = {
   background: { rest: 'rgba(99, 102, 241, 0.06)', locked: '#0c193b' },
   border: { rest: 'rgba(99, 102, 241, 0.15)', locked: '#0d193d' },
-  title: { rest: '#d8eaf8', locked: '#253252' },
+  // The locked row carries one ink (owner order 2026-10-31, the 2.43.1 read): the title,
+  // the circle and the "notification before prayer time" line all read the hint's own
+  // locked solid, as dark as the card behind them - the brighter sheet-hint token the
+  // first pass took left the dimmed row reading half-lit
+  title: { rest: '#d8eaf8', locked: '#122246' },
   hint: { rest: COLORS.text.sheetSubtitle, locked: '#122246' },
   optionLabel: { rest: '#92b8e4', off: '#203059', lockedOn: '#1c2c4f', lockedOff: '#0e1b3e' },
   rule: { rest: '#162251', off: '#111d46', lockedOn: '#0c193d', lockedOff: '#0c193c' },
@@ -57,4 +61,15 @@ export const CONTROL_WASH: Record<DimState, string> = {
   off: '#121e48',
   lockedOn: '#0d1a3e',
   lockedOff: '#0c193c',
+};
+
+/** The reminder switch's own dim (owner order 2026-11-01, the follow-up read): the thumb keeps
+ * the hint's locked solid and the track takes the segment pill's own locked pairs, so the thumb
+ * reads as a circle on it - the track it shared one ink with read as a single oval */
+export const REMINDER_SWITCH = {
+  thumbDisabled: '#122246',
+  track: {
+    off: { background: '#0c193c', border: '#0c193c' },
+    on: { background: '#141849', border: '#171a4d' },
+  },
 };

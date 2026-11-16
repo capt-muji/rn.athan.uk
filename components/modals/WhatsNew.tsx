@@ -8,6 +8,7 @@ import { currentLocaleId } from '@/shared/i18n/locale';
 import { Icon } from '@/shared/types';
 import { typographyFor } from '@/shared/typography';
 import { getPlatformBadges, groupWhatsNewItems, type WhatsNewItem } from '@/shared/whatsNew';
+import { getInstalledVersion } from '@/stores/version';
 
 import Modal from './Modal';
 
@@ -16,7 +17,7 @@ const BADGE_GLYPH: Record<string, Icon> = {
   Android: Icon.ANDROID,
 };
 
-/** De-emphasized faint blue - platform notes, badges and separator dots. Solid: the old rgba(42,68,130,.32) flattened over the white card */
+/** De-emphasized faint blue - badges and separator dots. Solid: the old rgba(42,68,130,.32) flattened over the white card */
 const FAINT_BLUE = '#bbc3d7';
 
 /** The pill's tonal wash - the group key's own colour as a fill */
@@ -34,9 +35,16 @@ type Props = {
 export default function ModalWhatsNew({ visible, items, onClose }: Props) {
   const { height } = useWindowDimensions();
   const groups = groupWhatsNewItems(items);
+  const installedVersion = getInstalledVersion();
 
   return (
     <Modal visible={visible} title={t('whatsNew.heading')} onRequestClose={onClose}>
+      {installedVersion !== '' && (
+        <Text style={styles.version}>
+          {'v'}
+          {installedVersion}
+        </Text>
+      )}
       <ScrollView
         style={[styles.list, { maxHeight: height * LIST_HEIGHT_SHARE }]}
         contentContainerStyle={styles.listContent}
@@ -50,14 +58,7 @@ export default function ModalWhatsNew({ visible, items, onClose }: Props) {
               <View key={item.title} style={styles.item}>
                 <View style={styles.itemText}>
                   <Text style={styles.title}>{item.title}</Text>
-                  <Text style={styles.body}>
-                    {item.body}
-                    {item.platform && (
-                      <Text style={styles.bodyPlatform}>
-                        {t('whatsNew.platformNote', { platform: item.platform === 'ios' ? 'iOS' : 'Android' })}
-                      </Text>
-                    )}
-                  </Text>
+                  <Text style={styles.body}>{item.body}</Text>
                 </View>
                 {/* Platform availability glyphs at the row's trailing edge, level
                     with the title: the badge is the information */}
@@ -97,6 +98,18 @@ export default function ModalWhatsNew({ visible, items, onClose }: Props) {
 const ty = typographyFor(currentLocaleId());
 
 const styles = StyleSheet.create({
+  /** The version line's own faint: FAINT_BLUE one step toward white, so the
+   * number reads as barely there (owner order 2026-10-26) */
+  version: {
+    fontSize: ty.size(TEXT.sizeDetail),
+    fontFamily: ty.familyRegular,
+    textAlign: 'center',
+    color: '#ccd4e3',
+    lineHeight: ty.lineHeight(TEXT.lineHeight.default),
+    letterSpacing: ty.letterSpacing(TEXT.letterSpacing.default),
+    marginBottom: SPACING.xl,
+    marginTop: -SPACING.sm,
+  },
   list: {
     width: '100%',
     marginBottom: 36,
@@ -166,9 +179,6 @@ const styles = StyleSheet.create({
     lineHeight: ty.lineHeight(TEXT.lineHeight.default),
     letterSpacing: ty.letterSpacing(TEXT.letterSpacing.default),
     marginTop: 2,
-  },
-  bodyPlatform: {
-    color: FAINT_BLUE,
   },
   button: {
     width: SIZE.modal.buttonWidth,

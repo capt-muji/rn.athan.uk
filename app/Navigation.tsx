@@ -1,6 +1,6 @@
 import { useAtomValue } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
-import { memo, useState } from 'react';
+import { memo, useRef } from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
 import PagerView from 'react-native-pager-view';
 import Animated from 'react-native-reanimated';
@@ -15,7 +15,9 @@ import { ANIMATION, COLORS, SIZE, SPACING } from '@/shared/constants';
 import { currentLocaleId, localeDirection } from '@/shared/i18n/locale';
 import { perfMark, perfMeasure } from '@/shared/perf';
 import { ScheduleType } from '@/shared/types';
+import { type AnimationEpochSlot, closeAnimationEpoch, openAnimationEpoch } from '@/stores/animationEpoch';
 import { overlayAtom, overlayIsOnAtom } from '@/stores/atoms/overlay';
+import { pagerPageAtom, pageSchedule } from '@/stores/atoms/pager';
 import { toggleOverlay } from '@/stores/overlay';
 
 // Navigation re-renders on overlay toggles (scrollEnabled gate) — memoized so
@@ -27,7 +29,7 @@ export default function Navigation() {
   const { bottom } = useSafeAreaInsets();
   // Derived from state, not an effect: a suspend-dropped write cannot strand
 
-  const [currentPage, setCurrentPage] = useState(0);
+  const currentPage = useAtomValue(pagerPageAtom);
   const dot0OpacityStyle = useDerivedOpacity(currentPage === 0 ? 1 : 0.25, { duration: ANIMATION.duration });
   const dot1OpacityStyle = useDerivedOpacity(currentPage === 1 ? 1 : 0.25, { duration: ANIMATION.duration });
   const overlayIsOn = useAtomValue(overlayIsOnAtom);
@@ -40,10 +42,29 @@ export default function Navigation() {
 
   const direction = localeDirection(currentLocaleId());
 
+  // The pager's own rest, tracked so a selected trailing it (a fast fling's event
+  // order) knows no later rest will carry its write
+  const pagerAtRestRef = useRef(true);
+  const pagerEpochSlotRef = useRef<AnimationEpochSlot | null>(null);
+
   const handlePageScrollState = (e: { nativeEvent: { pageScrollState: string } }) => {
     const state = e.nativeEvent.pageScrollState;
     if (state === 'dragging' || state === 'settling') {
+      pagerAtRestRef.current = false;
+      // The slide is an animation window: per-second writes stand down for it,
+      // and the pager's own rest re-admits them. A later slide state beside a
+      // live one replaces the slot, keeping the window unbroken
+      closeAnimationEpoch(pagerEpochSlotRef.current);
+      pagerEpochSlotRef.current = openAnimationEpoch();
       perfMark('pager_swipe_start');
+    } else if (state === 'idle') {
+      pagerAtRestRef.current = true;
+      closeAnimationEpoch(pagerEpochSlotRef.current);
+      pagerEpochSlotRef.current = null;
+      // The pager cannot be swiped while the overlay is open, so a slide resting
+      // under one began before the open landed - the tap-then-swipe interleave.
+      // Wherever it settles, the rest closes the overlay (owner order 2026-11-02)
+      toggleOverlay(false);
     }
   };
 
@@ -55,13 +76,18 @@ export default function Navigation() {
     // back to false. If the pager lands on the other schedule under an open
     // overlay, close the overlay instead of rendering it over the wrong page
     const overlay = getDefaultStore().get(overlayAtom);
-    const settledSchedule = position === 0 ? ScheduleType.Standard : ScheduleType.Extra;
-    if (overlay.isOn && settledSchedule !== overlay.scheduleType) {
+    const settledSchedule = pageSchedule(position);
+    if (overlay.isOn && settledSchedule !== overlay.scheduleType && pagerAtRestRef.current) {
+      // A selected trailing the pager's rest (a fast fling's event order) has no
+      // later rest to ride, so the close lands here; before the rest, the rest's
+      // own close above carries it, keeping the batch out of the settle tail
       toggleOverlay(false);
     }
 
     perfMeasure('pager_page', 'pager_swipe_start', { position });
-    setCurrentPage(position);
+    // The dots' animation trigger, kept at the snap - not gated with the
+    // self-heal's store write, which would blank the flip until the slide rested
+    getDefaultStore().set(pagerPageAtom, position);
   };
 
   return (
