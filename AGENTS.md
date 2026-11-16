@@ -98,8 +98,10 @@ cadence 5-minute background checks, owner order 2026-10-31 later the same day).
   feature.
 - The iPhone Duo is banned from all work: no Duo-specific change, measurement, pose or build
   unless the owner files a ticket naming it (owner order 2026-10-21).
-- EAS is read-only: never build on it, never push to it. Reading `EXPO_PUBLIC_ENV` is the whole
-  permitted use. Builds happen locally.
+- EAS builds only under an explicit owner order for a production release (owner order
+  2026-11-16: production builds and store submits run on EAS from main). Development builds
+  stay local. Ad-hoc EAS use stays read-only: reading `EXPO_PUBLIC_ENV` is the permitted use,
+  never build or push on your own initiative.
 - Never recreate `releases.json` or any hand-edited release file. Store versions come from
   iTunes Lookup (iOS) and the in-app updates API (Android).
 - Code is the documentation: MD files go stale and history lives in git. Only an artefact
