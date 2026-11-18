@@ -61,6 +61,7 @@ const SWIFT_UI = {
   AccessoryWidgetBackground: marker('AccessoryWidgetBackground'),
   HStack: marker('HStack'),
   Image: marker('Image'),
+  RoundedRectangle: marker('RoundedRectangle'),
   Text: marker('Text'),
   VStack: marker('VStack'),
   ZStack: marker('ZStack'),
@@ -315,6 +316,12 @@ describe('lock widget renderer', () => {
       expect(rectMarkers).toContain('AccessoryWidgetBackground');
       expect(rectMarkers[0]).toBe('ZStack');
       expect(rectMarkers[1]).toBe('AccessoryWidgetBackground');
+      // the system material renders bright on glass, so a translucent dark
+      // fill dims it (owner order 2026-11-18: darken the background)
+      expect(rectMarkers[2]).toBe('RoundedRectangle');
+      const dim = findFirst(renderPath(LIVE_PROPS, 'accessoryRectangular'), 'RoundedRectangle');
+      expect(dim?.props.cornerRadius).toBe(10);
+      expect(dim?.props.modifiers).toContainEqual({ modifier: 'foregroundStyle', value: 'rgba(0, 0, 0, 0.5)' });
       // the whole component clips rounded, so the material's corners round
       // with it (owner order 2026-11-18: rounded edges, full coverage)
       const stack = findFirst(renderPath(LIVE_PROPS, 'accessoryRectangular'), 'ZStack');

@@ -1,4 +1,4 @@
-import { AccessoryWidgetBackground, HStack, Image, Text, VStack, ZStack } from '@expo/ui/swift-ui';
+import { AccessoryWidgetBackground, HStack, Image, RoundedRectangle, Text, VStack, ZStack } from '@expo/ui/swift-ui';
 import {
   clipShape,
   containerBackground,
@@ -47,6 +47,8 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
 
   const WHITE = '#ffffff';
   const WHITE_MUTED = 'rgba(255, 255, 255, 0.6)';
+  // The system accessory material reads bright on glass; this dims it.
+  const DIM = 'rgba(0, 0, 0, 0.5)';
 
   // The neutral, stale and catch cards follow the device locale the widget
   // process itself reads (D44): absent props carry no app language. The
@@ -1150,6 +1152,7 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
             AccessoryWidgetBackground material layered here; it renders
             empty on the inline family by design. */}
         <AccessoryWidgetBackground />
+        <RoundedRectangle cornerRadius={10} modifiers={[foregroundStyle(DIM)]} />
         <VStack spacing={1} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
           <Text modifiers={[font({ size: 12, weight: 'semibold' }), foregroundStyle(WHITE), lineLimit(1)]}>
             {staticRow.rectTitle}
@@ -1196,6 +1199,7 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
               AccessoryWidgetBackground material layered here; it renders
               empty on the inline family by design. */}
           <AccessoryWidgetBackground />
+          <RoundedRectangle cornerRadius={10} modifiers={[foregroundStyle(DIM)]} />
           <VStack spacing={1} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
             <Image systemName='moon.stars.fill' size={18} color={WHITE} />
             <Text modifiers={[font({ size: 18, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
@@ -1246,6 +1250,7 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
             AccessoryWidgetBackground material layered here; it renders
             empty on the inline family by design. */}
         <AccessoryWidgetBackground />
+        <RoundedRectangle cornerRadius={10} modifiers={[foregroundStyle(DIM)]} />
         <VStack modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
           {/* A centred row, never two halves: a half-anchored row reads as
             left-aligned whenever the name is long enough to fill its share,
@@ -1293,6 +1298,8 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
 
   const WHITE = '#ffffff';
   const WHITE_MUTED = 'rgba(255, 255, 255, 0.6)';
+  // The system accessory material reads bright on glass; this dims it.
+  const DIM = 'rgba(0, 0, 0, 0.5)';
 
   // The neutral, stale and catch cards follow the device locale the widget
   // process itself reads (D44): absent props carry no app language. The
@@ -2396,6 +2403,7 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
             AccessoryWidgetBackground material layered here; it renders
             empty on the inline family by design. */}
         <AccessoryWidgetBackground />
+        <RoundedRectangle cornerRadius={10} modifiers={[foregroundStyle(DIM)]} />
         <VStack spacing={1} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
           <Text modifiers={[font({ size: 12, weight: 'semibold' }), foregroundStyle(WHITE), lineLimit(1)]}>
             {staticRow.rectTitle}
@@ -2442,6 +2450,7 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
               AccessoryWidgetBackground material layered here; it renders
               empty on the inline family by design. */}
           <AccessoryWidgetBackground />
+          <RoundedRectangle cornerRadius={10} modifiers={[foregroundStyle(DIM)]} />
           <VStack spacing={1} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
             <Image systemName='moon.stars.fill' size={18} color={WHITE} />
             <Text modifiers={[font({ size: 18, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
@@ -2492,6 +2501,7 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
             AccessoryWidgetBackground material layered here; it renders
             empty on the inline family by design. */}
         <AccessoryWidgetBackground />
+        <RoundedRectangle cornerRadius={10} modifiers={[foregroundStyle(DIM)]} />
         <VStack modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
           {/* A centred row for the same reason as Layouts 3 and 4: a timer
             Text reports a worst-case width as its intrinsic size, so the
@@ -2550,6 +2560,8 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
 
   const WHITE = '#ffffff';
   const WHITE_MUTED = 'rgba(255, 255, 255, 0.6)';
+  // The system accessory material reads bright on glass; this dims it.
+  const DIM = 'rgba(0, 0, 0, 0.5)';
 
   // The neutral, stale and catch cards follow the device locale the widget
   // process itself reads (D44): absent props carry no app language. The
@@ -3653,6 +3665,7 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
             AccessoryWidgetBackground material layered here; it renders
             empty on the inline family by design. */}
         <AccessoryWidgetBackground />
+        <RoundedRectangle cornerRadius={10} modifiers={[foregroundStyle(DIM)]} />
         <VStack spacing={1} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
           <Text modifiers={[font({ size: 12, weight: 'semibold' }), foregroundStyle(WHITE), lineLimit(1)]}>
             {staticRow.rectTitle}
@@ -3699,6 +3712,7 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
               AccessoryWidgetBackground material layered here; it renders
               empty on the inline family by design. */}
           <AccessoryWidgetBackground />
+          <RoundedRectangle cornerRadius={10} modifiers={[foregroundStyle(DIM)]} />
           <VStack spacing={1} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
             <Image systemName='moon.stars.fill' size={18} color={WHITE} />
             <Text modifiers={[font({ size: 18, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
@@ -3743,6 +3757,7 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
             AccessoryWidgetBackground material layered here; it renders
             empty on the inline family by design. */}
         <AccessoryWidgetBackground />
+        <RoundedRectangle cornerRadius={10} modifiers={[foregroundStyle(DIM)]} />
         <VStack modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
           {/* A centred row for the same reason as Layout 3: a long Extra times name
             filled its half from the slot's left edge and read as left-aligned,
@@ -3787,6 +3802,8 @@ const AthanLockWidgetTimeBelowName = (props: PrayerWidgetProps, environment: Wid
   // Only the absolute time recedes; the system tints both in vibrant mode.
   const WHITE = '#ffffff';
   const WHITE_MUTED = 'rgba(255, 255, 255, 0.6)';
+  // The system accessory material reads bright on glass; this dims it.
+  const DIM = 'rgba(0, 0, 0, 0.5)';
 
   // The neutral, stale and catch cards follow the device locale the widget
   // process itself reads (D44): absent props carry no app language. The
@@ -4893,6 +4910,7 @@ const AthanLockWidgetTimeBelowName = (props: PrayerWidgetProps, environment: Wid
             AccessoryWidgetBackground material layered here; it renders
             empty on the inline family by design. */}
         <AccessoryWidgetBackground />
+        <RoundedRectangle cornerRadius={10} modifiers={[foregroundStyle(DIM)]} />
         <VStack spacing={1} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
           <Text modifiers={[font({ size: 12, weight: 'semibold' }), foregroundStyle(WHITE), lineLimit(1)]}>
             {staticRow.rectTitle}
@@ -4946,6 +4964,7 @@ const AthanLockWidgetTimeBelowName = (props: PrayerWidgetProps, environment: Wid
               AccessoryWidgetBackground material layered here; it renders
               empty on the inline family by design. */}
           <AccessoryWidgetBackground />
+          <RoundedRectangle cornerRadius={10} modifiers={[foregroundStyle(DIM)]} />
           <VStack spacing={1} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
             <Image systemName='moon.stars.fill' size={18} color={WHITE} />
             <Text modifiers={[font({ size: 18, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
@@ -4991,6 +5010,7 @@ const AthanLockWidgetTimeBelowName = (props: PrayerWidgetProps, environment: Wid
             AccessoryWidgetBackground material layered here; it renders
             empty on the inline family by design. */}
         <AccessoryWidgetBackground />
+        <RoundedRectangle cornerRadius={10} modifiers={[foregroundStyle(DIM)]} />
         <VStack spacing={1} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
           <Text
             modifiers={[
@@ -5030,6 +5050,8 @@ const AthanLockWidgetCountdownBelowName = (props: PrayerWidgetProps, environment
   // Only the countdown recedes; the system tints both in vibrant mode.
   const WHITE = '#ffffff';
   const WHITE_MUTED = 'rgba(255, 255, 255, 0.6)';
+  // The system accessory material reads bright on glass; this dims it.
+  const DIM = 'rgba(0, 0, 0, 0.5)';
 
   // The neutral, stale and catch cards follow the device locale the widget
   // process itself reads (D44): absent props carry no app language. The
@@ -6136,6 +6158,7 @@ const AthanLockWidgetCountdownBelowName = (props: PrayerWidgetProps, environment
             AccessoryWidgetBackground material layered here; it renders
             empty on the inline family by design. */}
         <AccessoryWidgetBackground />
+        <RoundedRectangle cornerRadius={10} modifiers={[foregroundStyle(DIM)]} />
         <VStack spacing={1} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
           <Text modifiers={[font({ size: 12, weight: 'semibold' }), foregroundStyle(WHITE), lineLimit(1)]}>
             {staticRow.rectTitle}
@@ -6189,6 +6212,7 @@ const AthanLockWidgetCountdownBelowName = (props: PrayerWidgetProps, environment
               AccessoryWidgetBackground material layered here; it renders
               empty on the inline family by design. */}
           <AccessoryWidgetBackground />
+          <RoundedRectangle cornerRadius={10} modifiers={[foregroundStyle(DIM)]} />
           <VStack spacing={1} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
             <Image systemName='moon.stars.fill' size={18} color={WHITE} />
             <Text modifiers={[font({ size: 18, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
@@ -6246,6 +6270,7 @@ const AthanLockWidgetCountdownBelowName = (props: PrayerWidgetProps, environment
             AccessoryWidgetBackground material layered here; it renders
             empty on the inline family by design. */}
         <AccessoryWidgetBackground />
+        <RoundedRectangle cornerRadius={10} modifiers={[foregroundStyle(DIM)]} />
         <VStack spacing={1} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
           <Text
             modifiers={[
