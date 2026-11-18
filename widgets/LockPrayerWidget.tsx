@@ -1,5 +1,6 @@
 import { AccessoryWidgetBackground, HStack, Image, Text, VStack, ZStack } from '@expo/ui/swift-ui';
 import {
+  clipShape,
   containerBackground,
   containerRelativeFrame,
   font,
@@ -20,7 +21,7 @@ import type { PrayerWidgetProps } from '@/shared/widgetTypes';
  * Accessories render in vibrant monochrome, so the system tints whatever
  * these set. The live faces read 19pt on layouts 3-4 and 18pt on layouts 1-2 and 5,
  * each with a floor holding the worst case at or above the old 14pt nominal;
- * every name is bold, and the SECOND reading on a line is the muted one.
+ * every name is bold, and the SECOND reading on a line is the muted one (Layout 5's time excepted: solid white beside the name, owner order 2026-11-18).
  * Five compositions per schedule, in gallery order: Layout 1 (name above
  * the ticking countdown), Layout 2 (name above the absolute time), Layout 3
  * (name + ticking countdown on one line), Layout 4 (name + absolute time on
@@ -1142,6 +1143,7 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
           containerRelativeFrame({ axes: 'horizontal' }),
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
           containerBackground('rgba(0, 0, 0, 0)', 'widget'),
+          clipShape('roundedRectangle', 10),
         ]}>
         {/* iOS strips containerBackground on Lock Screen accessories
             (vibrant mode), so the whole-component backing is Apple's
@@ -1187,6 +1189,7 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
             containerRelativeFrame({ axes: 'horizontal' }),
             frame({ maxWidth: Infinity, maxHeight: Infinity }),
             containerBackground('rgba(0, 0, 0, 0)', 'widget'),
+            clipShape('roundedRectangle', 10),
           ]}>
           {/* iOS strips containerBackground on Lock Screen accessories
               (vibrant mode), so the whole-component backing is Apple's
@@ -1236,6 +1239,7 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
           containerRelativeFrame({ axes: 'horizontal' }),
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
           containerBackground('rgba(0, 0, 0, 0)', 'widget'),
+          clipShape('roundedRectangle', 10),
         ]}>
         {/* iOS strips containerBackground on Lock Screen accessories
             (vibrant mode), so the whole-component backing is Apple's
@@ -2385,6 +2389,7 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
           containerRelativeFrame({ axes: 'horizontal' }),
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
           containerBackground('rgba(0, 0, 0, 0)', 'widget'),
+          clipShape('roundedRectangle', 10),
         ]}>
         {/* iOS strips containerBackground on Lock Screen accessories
             (vibrant mode), so the whole-component backing is Apple's
@@ -2430,6 +2435,7 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
             containerRelativeFrame({ axes: 'horizontal' }),
             frame({ maxWidth: Infinity, maxHeight: Infinity }),
             containerBackground('rgba(0, 0, 0, 0)', 'widget'),
+            clipShape('roundedRectangle', 10),
           ]}>
           {/* iOS strips containerBackground on Lock Screen accessories
               (vibrant mode), so the whole-component backing is Apple's
@@ -2479,6 +2485,7 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
           containerRelativeFrame({ axes: 'horizontal' }),
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
           containerBackground('rgba(0, 0, 0, 0)', 'widget'),
+          clipShape('roundedRectangle', 10),
         ]}>
         {/* iOS strips containerBackground on Lock Screen accessories
             (vibrant mode), so the whole-component backing is Apple's
@@ -2505,7 +2512,7 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
               modifiers={[
                 font({ size: 18, weight: 'bold' }),
                 monospacedDigit(),
-                foregroundStyle(WHITE_MUTED),
+                foregroundStyle(WHITE),
                 lineLimit(1),
                 minimumScaleFactor(0.88),
               ]}>
@@ -3639,6 +3646,7 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
           containerRelativeFrame({ axes: 'horizontal' }),
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
           containerBackground('rgba(0, 0, 0, 0)', 'widget'),
+          clipShape('roundedRectangle', 10),
         ]}>
         {/* iOS strips containerBackground on Lock Screen accessories
             (vibrant mode), so the whole-component backing is Apple's
@@ -3684,6 +3692,7 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
             containerRelativeFrame({ axes: 'horizontal' }),
             frame({ maxWidth: Infinity, maxHeight: Infinity }),
             containerBackground('rgba(0, 0, 0, 0)', 'widget'),
+            clipShape('roundedRectangle', 10),
           ]}>
           {/* iOS strips containerBackground on Lock Screen accessories
               (vibrant mode), so the whole-component backing is Apple's
@@ -3727,6 +3736,7 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
           containerRelativeFrame({ axes: 'horizontal' }),
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
           containerBackground('rgba(0, 0, 0, 0)', 'widget'),
+          clipShape('roundedRectangle', 10),
         ]}>
         {/* iOS strips containerBackground on Lock Screen accessories
             (vibrant mode), so the whole-component backing is Apple's
@@ -4876,6 +4886,7 @@ const AthanLockWidgetTimeBelowName = (props: PrayerWidgetProps, environment: Wid
           containerRelativeFrame({ axes: 'horizontal' }),
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
           containerBackground('rgba(0, 0, 0, 0)', 'widget'),
+          clipShape('roundedRectangle', 10),
         ]}>
         {/* iOS strips containerBackground on Lock Screen accessories
             (vibrant mode), so the whole-component backing is Apple's
@@ -4928,6 +4939,7 @@ const AthanLockWidgetTimeBelowName = (props: PrayerWidgetProps, environment: Wid
             containerRelativeFrame({ axes: 'horizontal' }),
             frame({ maxWidth: Infinity, maxHeight: Infinity }),
             containerBackground('rgba(0, 0, 0, 0)', 'widget'),
+            clipShape('roundedRectangle', 10),
           ]}>
           {/* iOS strips containerBackground on Lock Screen accessories
               (vibrant mode), so the whole-component backing is Apple's
@@ -4972,6 +4984,7 @@ const AthanLockWidgetTimeBelowName = (props: PrayerWidgetProps, environment: Wid
           containerRelativeFrame({ axes: 'horizontal' }),
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
           containerBackground('rgba(0, 0, 0, 0)', 'widget'),
+          clipShape('roundedRectangle', 10),
         ]}>
         {/* iOS strips containerBackground on Lock Screen accessories
             (vibrant mode), so the whole-component backing is Apple's
@@ -6116,6 +6129,7 @@ const AthanLockWidgetCountdownBelowName = (props: PrayerWidgetProps, environment
           containerRelativeFrame({ axes: 'horizontal' }),
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
           containerBackground('rgba(0, 0, 0, 0)', 'widget'),
+          clipShape('roundedRectangle', 10),
         ]}>
         {/* iOS strips containerBackground on Lock Screen accessories
             (vibrant mode), so the whole-component backing is Apple's
@@ -6168,6 +6182,7 @@ const AthanLockWidgetCountdownBelowName = (props: PrayerWidgetProps, environment
             containerRelativeFrame({ axes: 'horizontal' }),
             frame({ maxWidth: Infinity, maxHeight: Infinity }),
             containerBackground('rgba(0, 0, 0, 0)', 'widget'),
+            clipShape('roundedRectangle', 10),
           ]}>
           {/* iOS strips containerBackground on Lock Screen accessories
               (vibrant mode), so the whole-component backing is Apple's
@@ -6224,6 +6239,7 @@ const AthanLockWidgetCountdownBelowName = (props: PrayerWidgetProps, environment
           containerRelativeFrame({ axes: 'horizontal' }),
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
           containerBackground('rgba(0, 0, 0, 0)', 'widget'),
+          clipShape('roundedRectangle', 10),
         ]}>
         {/* iOS strips containerBackground on Lock Screen accessories
             (vibrant mode), so the whole-component backing is Apple's

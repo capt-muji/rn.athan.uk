@@ -62,6 +62,7 @@ const JETPACK = (android: boolean) => ({
 });
 
 const SWIFT_MODIFIER_NAMES = [
+  'clipShape',
   'containerBackground',
   'font',
   'foregroundStyle',
@@ -135,6 +136,7 @@ const loadLock = (): WidgetModule => {
     jest.doMock('@expo/ui/swift-ui/modifiers', () => {
       const modifiers: Record<string, (...args: unknown[]) => { modifier: string; value: unknown }> = {};
       for (const name of [
+        'clipShape',
         'containerBackground',
         'containerRelativeFrame',
         'font',

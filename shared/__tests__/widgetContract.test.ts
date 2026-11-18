@@ -638,6 +638,7 @@ describe('the statics table resolves every neutral and stale site', () => {
       jest.doMock('@expo/ui/swift-ui/modifiers', () => {
         const modifiers: Record<string, (...args: unknown[]) => { modifier: string; value: unknown }> = {};
         for (const name of [
+          'clipShape',
           'containerBackground',
           'containerRelativeFrame',
           'font',

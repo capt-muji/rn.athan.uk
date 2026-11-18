@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "2.54.4",
+    "version": "2.54.5",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -454,7 +454,8 @@
               "displayName": "Next Prayer (Layout 1)",
               "description": "Countdown to the next prayer.",
               "ios": {
-                "supportedFamilies": ["accessoryRectangular", "accessoryInline"]
+                "supportedFamilies": ["accessoryRectangular", "accessoryInline"],
+                "contentMarginsDisabled": true
               },
               "android": null
             },
@@ -463,7 +464,8 @@
               "displayName": "Extra Times (Layout 1)",
               "description": "Countdown to the next extra time.",
               "ios": {
-                "supportedFamilies": ["accessoryRectangular", "accessoryInline"]
+                "supportedFamilies": ["accessoryRectangular", "accessoryInline"],
+                "contentMarginsDisabled": true
               },
               "android": null
             },
@@ -472,7 +474,8 @@
               "displayName": "Next Prayer (Layout 2)",
               "description": "Next prayer time.",
               "ios": {
-                "supportedFamilies": ["accessoryRectangular", "accessoryInline"]
+                "supportedFamilies": ["accessoryRectangular", "accessoryInline"],
+                "contentMarginsDisabled": true
               },
               "android": null
             },
@@ -481,7 +484,8 @@
               "displayName": "Extra Times (Layout 2)",
               "description": "Next extra time.",
               "ios": {
-                "supportedFamilies": ["accessoryRectangular", "accessoryInline"]
+                "supportedFamilies": ["accessoryRectangular", "accessoryInline"],
+                "contentMarginsDisabled": true
               },
               "android": null
             },
@@ -490,7 +494,8 @@
               "displayName": "Next Prayer (Layout 3)",
               "description": "Countdown to the next prayer.",
               "ios": {
-                "supportedFamilies": ["accessoryRectangular", "accessoryInline"]
+                "supportedFamilies": ["accessoryRectangular", "accessoryInline"],
+                "contentMarginsDisabled": true
               },
               "android": null
             },
@@ -499,7 +504,8 @@
               "displayName": "Extra Times (Layout 3)",
               "description": "Countdown to the next extra time.",
               "ios": {
-                "supportedFamilies": ["accessoryRectangular", "accessoryInline"]
+                "supportedFamilies": ["accessoryRectangular", "accessoryInline"],
+                "contentMarginsDisabled": true
               },
               "android": null
             },
@@ -508,7 +514,8 @@
               "displayName": "Next Prayer (Layout 4)",
               "description": "Next prayer time.",
               "ios": {
-                "supportedFamilies": ["accessoryRectangular", "accessoryInline"]
+                "supportedFamilies": ["accessoryRectangular", "accessoryInline"],
+                "contentMarginsDisabled": true
               },
               "android": null
             },
@@ -517,7 +524,8 @@
               "displayName": "Extra Times (Layout 4)",
               "description": "Next extra time.",
               "ios": {
-                "supportedFamilies": ["accessoryRectangular", "accessoryInline"]
+                "supportedFamilies": ["accessoryRectangular", "accessoryInline"],
+                "contentMarginsDisabled": true
               },
               "android": null
             },
@@ -526,7 +534,8 @@
               "displayName": "Next Prayer (Layout 5)",
               "description": "Next prayer time with a countdown.",
               "ios": {
-                "supportedFamilies": ["accessoryRectangular", "accessoryInline"]
+                "supportedFamilies": ["accessoryRectangular", "accessoryInline"],
+                "contentMarginsDisabled": true
               },
               "android": null
             },
@@ -535,7 +544,8 @@
               "displayName": "Extra Times (Layout 5)",
               "description": "Next extra time with a countdown.",
               "ios": {
-                "supportedFamilies": ["accessoryRectangular", "accessoryInline"]
+                "supportedFamilies": ["accessoryRectangular", "accessoryInline"],
+                "contentMarginsDisabled": true
               },
               "android": null
             }

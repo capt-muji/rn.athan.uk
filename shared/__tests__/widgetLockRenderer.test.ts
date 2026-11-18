@@ -30,6 +30,25 @@ const renderTree = (node: unknown): unknown => {
   return { marker: (node.type as { marker?: string }).marker ?? String(node.type), props };
 };
 
+const findFirst = (node: unknown, name: string): MarkerNode | undefined => {
+  const walk = (n: unknown): MarkerNode | undefined => {
+    if (Array.isArray(n)) {
+      for (const child of n) {
+        const hit = walk(child);
+        if (hit) return hit;
+      }
+      return undefined;
+    }
+    if (n !== null && typeof n === 'object' && 'marker' in n) {
+      const markerNode = n as MarkerNode;
+      if (markerNode.marker === name) return markerNode;
+      return walk(markerNode.props.children);
+    }
+    return undefined;
+  };
+  return walk(node);
+};
+
 const marker = (name: string) => {
   const component = (props: Record<string, unknown>): MarkerNode => ({
     marker: name,
@@ -48,6 +67,7 @@ const SWIFT_UI = {
 };
 
 const MODIFIERS = [
+  'clipShape',
   'containerBackground',
   'containerRelativeFrame',
   'fixedSize',
@@ -63,6 +83,14 @@ const MODIFIERS = [
   acc[name] = (value: unknown) => ({ modifier: name, value });
   return acc;
 }, {});
+// clipShape carries a second argument the single-value mock would drop
+(MODIFIERS as Record<string, (...args: unknown[]) => { modifier: string; value: unknown }>).clipShape = (
+  shape: unknown,
+  cornerRadius: unknown
+) => ({
+  modifier: 'clipShape',
+  value: { shape, cornerRadius },
+});
 
 type WidgetModule = Record<string, (props: unknown, environment: unknown) => unknown>;
 
@@ -287,6 +315,13 @@ describe('lock widget renderer', () => {
       expect(rectMarkers).toContain('AccessoryWidgetBackground');
       expect(rectMarkers[0]).toBe('ZStack');
       expect(rectMarkers[1]).toBe('AccessoryWidgetBackground');
+      // the whole component clips rounded, so the material's corners round
+      // with it (owner order 2026-11-18: rounded edges, full coverage)
+      const stack = findFirst(renderPath(LIVE_PROPS, 'accessoryRectangular'), 'ZStack');
+      expect(stack?.props.modifiers).toContainEqual({
+        modifier: 'clipShape',
+        value: { shape: 'roundedRectangle', cornerRadius: 10 },
+      });
       const inlineMarkers = markersOf(renderPath(LIVE_PROPS, 'accessoryInline'));
       expect(inlineMarkers).not.toContain('AccessoryWidgetBackground');
     }
@@ -349,7 +384,7 @@ describe('lock widget renderer', () => {
     [
       'layout 5',
       (p: unknown) => renderTreeFor5(p, 'accessoryRectangular'),
-      [LIVE_PROPS.nextTime, '<countdown>'],
+      ['<countdown>'],
       [LIVE_PROPS.nextName, LIVE_PROPS.nextTime],
     ],
   ])(
