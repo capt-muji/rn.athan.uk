@@ -39,10 +39,12 @@ const marker = (name: string) => {
 };
 
 const SWIFT_UI = {
+  AccessoryWidgetBackground: marker('AccessoryWidgetBackground'),
   HStack: marker('HStack'),
   Image: marker('Image'),
   Text: marker('Text'),
   VStack: marker('VStack'),
+  ZStack: marker('ZStack'),
 };
 
 const MODIFIERS = [
@@ -258,6 +260,36 @@ describe('lock widget renderer', () => {
     expect(all).toContain('15:20');
     expect(all).not.toContain('·');
     expect(tickingIntervalOf(tree)).toBeUndefined();
+  });
+
+  it('layers the system accessory material behind every rectangular live face and never inline', () => {
+    // Owner order 2026-11-18: lock widgets need a background. iOS strips
+    // containerBackground in vibrant mode, so the sanctioned surface is
+    // AccessoryWidgetBackground layered in a ZStack - the system's own
+    // adaptive material, empty for the inline family by design.
+    const markersOf = (node: unknown): string[] => {
+      const found: string[] = [];
+      const walk = (n: unknown): void => {
+        if (Array.isArray(n)) {
+          for (const child of n) walk(child);
+          return;
+        }
+        if (n !== null && typeof n === 'object' && 'marker' in n) {
+          found.push((n as MarkerNode).marker);
+          walk((n as MarkerNode).props.children);
+        }
+      };
+      walk(node);
+      return found;
+    };
+    for (const renderPath of [renderTreeFor, renderTreeFor2, renderTreeFor3, renderTreeFor4, renderTreeFor5]) {
+      const rectMarkers = markersOf(renderPath(LIVE_PROPS, 'accessoryRectangular'));
+      expect(rectMarkers).toContain('AccessoryWidgetBackground');
+      expect(rectMarkers[0]).toBe('ZStack');
+      expect(rectMarkers[1]).toBe('AccessoryWidgetBackground');
+      const inlineMarkers = markersOf(renderPath(LIVE_PROPS, 'accessoryInline'));
+      expect(inlineMarkers).not.toContain('AccessoryWidgetBackground');
+    }
   });
 
   it('stacks the name beside the absolute time over the ticking countdown on layout 5', () => {
@@ -481,7 +513,7 @@ describe('lock widget renderer', () => {
 
   // T-400: the raised lock type scale, pinned per layout and face. Every
   // raised nominal reads no smaller at its floor than today's nominal 14
-  // (17 x 0.83 = 14.11, 16 x 0.88 = 14.08); the inline face stands at 14.
+  // (19 x 0.83 = 15.77, 18 x 0.88 = 15.84); the inline face stands at 14.
   const imagesOf = (tree: unknown): number[] => {
     const sizes: number[] = [];
     const walk = (node: unknown): void => {
@@ -504,41 +536,41 @@ describe('lock widget renderer', () => {
       'layout 1',
       () => renderTreeFor(LIVE_PROPS, 'accessoryRectangular'),
       [
-        { text: 'Asr', size: 16, weight: 'bold', floor: 0.88 },
-        { text: '<countdown>', size: 16, weight: 'medium', floor: 0.88 },
+        { text: 'Asr', size: 18, weight: 'bold', floor: 0.88 },
+        { text: '<countdown>', size: 18, weight: 'medium', floor: 0.88 },
       ],
     ],
     [
       'layout 2',
       () => renderTreeFor2(LIVE_PROPS, 'accessoryRectangular'),
       [
-        { text: 'Asr', size: 16, weight: 'bold', floor: 0.88 },
-        { text: '15:20', size: 16, weight: 'medium', floor: 0.88 },
+        { text: 'Asr', size: 18, weight: 'bold', floor: 0.88 },
+        { text: '15:20', size: 18, weight: 'medium', floor: 0.88 },
       ],
     ],
     [
       'layout 3',
       () => renderTreeFor3(LIVE_PROPS, 'accessoryRectangular'),
       [
-        { text: 'Asr', size: 17, weight: 'bold', floor: 0.6 },
-        { text: '<countdown>', size: 17, weight: 'medium', floor: 0.83 },
+        { text: 'Asr', size: 19, weight: 'bold', floor: 0.6 },
+        { text: '<countdown>', size: 19, weight: 'medium', floor: 0.83 },
       ],
     ],
     [
       'layout 4',
       () => renderTreeFor4(LIVE_PROPS, 'accessoryRectangular'),
       [
-        { text: 'Asr', size: 17, weight: 'bold', floor: 0.6 },
-        { text: '15:20', size: 17, weight: 'medium', floor: 0.83 },
+        { text: 'Asr', size: 19, weight: 'bold', floor: 0.6 },
+        { text: '15:20', size: 19, weight: 'medium', floor: 0.83 },
       ],
     ],
     [
       'layout 5',
       () => renderTreeFor5(LIVE_PROPS, 'accessoryRectangular'),
       [
-        { text: 'Asr', size: 16, weight: 'bold', floor: 0.88 },
-        { text: '15:20', size: 16, weight: 'bold', floor: 0.88 },
-        { text: '<countdown>', size: 16, weight: 'medium', floor: 0.88 },
+        { text: 'Asr', size: 18, weight: 'bold', floor: 0.88 },
+        { text: '15:20', size: 18, weight: 'bold', floor: 0.88 },
+        { text: '<countdown>', size: 18, weight: 'medium', floor: 0.88 },
       ],
     ],
   ] as const)('sizes the live %s readings at their raised nominals and floors', (_label, renderPath, pins) => {

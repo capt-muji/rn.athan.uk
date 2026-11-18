@@ -41,6 +41,7 @@ const marker = (name: string) => {
 };
 
 const SWIFT_UI = {
+  AccessoryWidgetBackground: marker('AccessoryWidgetBackground'),
   HStack: marker('HStack'),
   Image: marker('Image'),
   RoundedRectangle: marker('RoundedRectangle'),

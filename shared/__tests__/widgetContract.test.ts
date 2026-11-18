@@ -280,8 +280,6 @@ describe('palette literals', () => {
       '#ffffff',
       'rgba(255, 255, 255, 0.6)',
       'rgba(0, 0, 0, 0)',
-      // Lock Screen whole-component backing (the rect faces' BG)
-      'rgba(0, 0, 0, 0.4)',
       // Home widget — light Cotton Candy
       'rgba(252, 252, 254, 0.92)',
       '#db2777',
@@ -628,6 +626,7 @@ describe('the statics table resolves every neutral and stale site', () => {
         },
       }));
       jest.doMock('@expo/ui/swift-ui', () => ({
+        AccessoryWidgetBackground: marker('AccessoryWidgetBackground'),
         HStack: marker('HStack'),
         Image: marker('Image'),
         RoundedRectangle: marker('RoundedRectangle'),

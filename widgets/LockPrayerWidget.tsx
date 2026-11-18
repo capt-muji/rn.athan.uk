@@ -1,4 +1,4 @@
-import { HStack, Image, Text, VStack } from '@expo/ui/swift-ui';
+import { AccessoryWidgetBackground, HStack, Image, Text, VStack, ZStack } from '@expo/ui/swift-ui';
 import {
   containerBackground,
   containerRelativeFrame,
@@ -18,7 +18,7 @@ import type { PrayerWidgetProps } from '@/shared/widgetTypes';
 /**
  * Lock Screen widget layouts (accessoryRectangular + accessoryInline).
  * Accessories render in vibrant monochrome, so the system tints whatever
- * these set. The live faces read 17pt on layouts 3-4 and 16pt on layouts 1-2 and 5,
+ * these set. The live faces read 19pt on layouts 3-4 and 18pt on layouts 1-2 and 5,
  * each with a floor holding the worst case at or above the old 14pt nominal;
  * every name is bold, and the SECOND reading on a line is the muted one.
  * Five compositions per schedule, in gallery order: Layout 1 (name above
@@ -46,9 +46,6 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
 
   const WHITE = '#ffffff';
   const WHITE_MUTED = 'rgba(255, 255, 255, 0.6)';
-  // The whole-component backing every rectangular face paints behind the
-  // content; the inline line keeps its system transparency.
-  const BG = 'rgba(0, 0, 0, 0.4)';
 
   // The neutral, stale and catch cards follow the device locale the widget
   // process itself reads (D44): absent props carry no app language. The
@@ -1140,20 +1137,26 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
     }
 
     return (
-      <VStack
-        spacing={1}
+      <ZStack
         modifiers={[
           containerRelativeFrame({ axes: 'horizontal' }),
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
-          containerBackground(BG, 'widget'),
+          containerBackground('rgba(0, 0, 0, 0)', 'widget'),
         ]}>
-        <Text modifiers={[font({ size: 12, weight: 'semibold' }), foregroundStyle(WHITE), lineLimit(1)]}>
-          {staticRow.rectTitle}
-        </Text>
-        <Text modifiers={[font({ size: 18, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
-          {staticRow.rectSubtitle}
-        </Text>
-      </VStack>
+        {/* iOS strips containerBackground on Lock Screen accessories
+            (vibrant mode), so the whole-component backing is Apple's
+            AccessoryWidgetBackground material layered here; it renders
+            empty on the inline family by design. */}
+        <AccessoryWidgetBackground />
+        <VStack spacing={1} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
+          <Text modifiers={[font({ size: 12, weight: 'semibold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+            {staticRow.rectTitle}
+          </Text>
+          <Text modifiers={[font({ size: 18, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+            {staticRow.rectSubtitle}
+          </Text>
+        </VStack>
+      </ZStack>
     );
   };
 
@@ -1179,21 +1182,27 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
       }
 
       return (
-        <VStack
-          spacing={1}
+        <ZStack
           modifiers={[
             containerRelativeFrame({ axes: 'horizontal' }),
             frame({ maxWidth: Infinity, maxHeight: Infinity }),
-            containerBackground(BG, 'widget'),
+            containerBackground('rgba(0, 0, 0, 0)', 'widget'),
           ]}>
-          <Image systemName='moon.stars.fill' size={18} color={WHITE} />
-          <Text modifiers={[font({ size: 18, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
-            {staticRow.staleTitle}
-          </Text>
-          <Text modifiers={[font({ size: 15, weight: 'medium' }), foregroundStyle(WHITE), lineLimit(1)]}>
-            {staticRow.staleBody}
-          </Text>
-        </VStack>
+          {/* iOS strips containerBackground on Lock Screen accessories
+              (vibrant mode), so the whole-component backing is Apple's
+              AccessoryWidgetBackground material layered here; it renders
+              empty on the inline family by design. */}
+          <AccessoryWidgetBackground />
+          <VStack spacing={1} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
+            <Image systemName='moon.stars.fill' size={18} color={WHITE} />
+            <Text modifiers={[font({ size: 18, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+              {staticRow.staleTitle}
+            </Text>
+            <Text modifiers={[font({ size: 15, weight: 'medium' }), foregroundStyle(WHITE), lineLimit(1)]}>
+              {staticRow.staleBody}
+            </Text>
+          </VStack>
+        </ZStack>
       );
     }
 
@@ -1222,42 +1231,49 @@ const AthanLockWidgetCountdownPair = (props: PrayerWidgetProps, environment: Wid
     }
 
     return (
-      <VStack
+      <ZStack
         modifiers={[
           containerRelativeFrame({ axes: 'horizontal' }),
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
-          containerBackground(BG, 'widget'),
+          containerBackground('rgba(0, 0, 0, 0)', 'widget'),
         ]}>
-        {/* A centred row, never two halves: a half-anchored row reads as
+        {/* iOS strips containerBackground on Lock Screen accessories
+            (vibrant mode), so the whole-component backing is Apple's
+            AccessoryWidgetBackground material layered here; it renders
+            empty on the inline family by design. */}
+        <AccessoryWidgetBackground />
+        <VStack modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
+          {/* A centred row, never two halves: a half-anchored row reads as
             left-aligned whenever the name is long enough to fill its share,
             which every Extra times row is. The countdown's reservation is
             capped instead, so the row's own width is the glyphs beside a
             bounded box and the pair centres on the slot whatever the names. */}
-        <HStack spacing={6}>
-          <Text
-            modifiers={[
-              font({ size: 17, weight: 'bold' }),
-              foregroundStyle(WHITE),
-              lineLimit(1),
-              minimumScaleFactor(0.6),
-            ]}>
-            {props.nextName}
-          </Text>
-          <TickingTextEl
-            timerInterval={segment}
-            countsDown
-            modifiers={[
-              font({ size: 17, weight: 'medium' }),
-              monospacedDigit(),
-              multilineTextAlignment('center'),
-              foregroundStyle(WHITE_MUTED),
-              lineLimit(1),
-              minimumScaleFactor(0.83),
-              frame({ maxWidth: 70, alignment: 'center' }),
-            ]}
-          />
-        </HStack>
-      </VStack>
+          <HStack spacing={6}>
+            <Text
+              modifiers={[
+                font({ size: 19, weight: 'bold' }),
+                foregroundStyle(WHITE),
+                lineLimit(1),
+                minimumScaleFactor(0.6),
+              ]}>
+              {props.nextName}
+            </Text>
+            <TickingTextEl
+              timerInterval={segment}
+              countsDown
+              modifiers={[
+                font({ size: 19, weight: 'medium' }),
+                monospacedDigit(),
+                multilineTextAlignment('center'),
+                foregroundStyle(WHITE_MUTED),
+                lineLimit(1),
+                minimumScaleFactor(0.83),
+                frame({ maxWidth: 70, alignment: 'center' }),
+              ]}
+            />
+          </HStack>
+        </VStack>
+      </ZStack>
     );
   } catch {
     return neutralForFamily();
@@ -1273,9 +1289,6 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
 
   const WHITE = '#ffffff';
   const WHITE_MUTED = 'rgba(255, 255, 255, 0.6)';
-  // The whole-component backing every rectangular face paints behind the
-  // content; the inline line keeps its system transparency.
-  const BG = 'rgba(0, 0, 0, 0.4)';
 
   // The neutral, stale and catch cards follow the device locale the widget
   // process itself reads (D44): absent props carry no app language. The
@@ -2367,20 +2380,26 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
     }
 
     return (
-      <VStack
-        spacing={1}
+      <ZStack
         modifiers={[
           containerRelativeFrame({ axes: 'horizontal' }),
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
-          containerBackground(BG, 'widget'),
+          containerBackground('rgba(0, 0, 0, 0)', 'widget'),
         ]}>
-        <Text modifiers={[font({ size: 12, weight: 'semibold' }), foregroundStyle(WHITE), lineLimit(1)]}>
-          {staticRow.rectTitle}
-        </Text>
-        <Text modifiers={[font({ size: 18, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
-          {staticRow.rectSubtitle}
-        </Text>
-      </VStack>
+        {/* iOS strips containerBackground on Lock Screen accessories
+            (vibrant mode), so the whole-component backing is Apple's
+            AccessoryWidgetBackground material layered here; it renders
+            empty on the inline family by design. */}
+        <AccessoryWidgetBackground />
+        <VStack spacing={1} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
+          <Text modifiers={[font({ size: 12, weight: 'semibold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+            {staticRow.rectTitle}
+          </Text>
+          <Text modifiers={[font({ size: 18, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+            {staticRow.rectSubtitle}
+          </Text>
+        </VStack>
+      </ZStack>
     );
   };
 
@@ -2406,21 +2425,27 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
       }
 
       return (
-        <VStack
-          spacing={1}
+        <ZStack
           modifiers={[
             containerRelativeFrame({ axes: 'horizontal' }),
             frame({ maxWidth: Infinity, maxHeight: Infinity }),
-            containerBackground(BG, 'widget'),
+            containerBackground('rgba(0, 0, 0, 0)', 'widget'),
           ]}>
-          <Image systemName='moon.stars.fill' size={18} color={WHITE} />
-          <Text modifiers={[font({ size: 18, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
-            {staticRow.staleTitle}
-          </Text>
-          <Text modifiers={[font({ size: 15, weight: 'medium' }), foregroundStyle(WHITE), lineLimit(1)]}>
-            {staticRow.staleBody}
-          </Text>
-        </VStack>
+          {/* iOS strips containerBackground on Lock Screen accessories
+              (vibrant mode), so the whole-component backing is Apple's
+              AccessoryWidgetBackground material layered here; it renders
+              empty on the inline family by design. */}
+          <AccessoryWidgetBackground />
+          <VStack spacing={1} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
+            <Image systemName='moon.stars.fill' size={18} color={WHITE} />
+            <Text modifiers={[font({ size: 18, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+              {staticRow.staleTitle}
+            </Text>
+            <Text modifiers={[font({ size: 15, weight: 'medium' }), foregroundStyle(WHITE), lineLimit(1)]}>
+              {staticRow.staleBody}
+            </Text>
+          </VStack>
+        </ZStack>
       );
     }
 
@@ -2449,52 +2474,59 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
     }
 
     return (
-      <VStack
+      <ZStack
         modifiers={[
           containerRelativeFrame({ axes: 'horizontal' }),
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
-          containerBackground(BG, 'widget'),
+          containerBackground('rgba(0, 0, 0, 0)', 'widget'),
         ]}>
-        {/* A centred row for the same reason as Layouts 3 and 4: a timer
+        {/* iOS strips containerBackground on Lock Screen accessories
+            (vibrant mode), so the whole-component backing is Apple's
+            AccessoryWidgetBackground material layered here; it renders
+            empty on the inline family by design. */}
+        <AccessoryWidgetBackground />
+        <VStack modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
+          {/* A centred row for the same reason as Layouts 3 and 4: a timer
             Text reports a worst-case width as its intrinsic size, so the
             name and absolute time shrink-wrap as a pair and the stack
             centres them, while the countdown line beneath runs full width
             and centres on the slot. */}
-        <HStack spacing={6}>
-          <Text
+          <HStack spacing={6}>
+            <Text
+              modifiers={[
+                font({ size: 18, weight: 'bold' }),
+                foregroundStyle(WHITE),
+                lineLimit(1),
+                minimumScaleFactor(0.88),
+              ]}>
+              {props.nextName}
+            </Text>
+            <Text
+              modifiers={[
+                font({ size: 18, weight: 'bold' }),
+                monospacedDigit(),
+                foregroundStyle(WHITE_MUTED),
+                lineLimit(1),
+                minimumScaleFactor(0.88),
+              ]}>
+              {props.nextTime}
+            </Text>
+          </HStack>
+          <TickingTextEl
+            timerInterval={segment}
+            countsDown
             modifiers={[
-              font({ size: 16, weight: 'bold' }),
-              foregroundStyle(WHITE),
-              lineLimit(1),
-              minimumScaleFactor(0.88),
-            ]}>
-            {props.nextName}
-          </Text>
-          <Text
-            modifiers={[
-              font({ size: 16, weight: 'bold' }),
+              font({ size: 18, weight: 'medium' }),
               monospacedDigit(),
+              multilineTextAlignment('center'),
               foregroundStyle(WHITE_MUTED),
               lineLimit(1),
               minimumScaleFactor(0.88),
-            ]}>
-            {props.nextTime}
-          </Text>
-        </HStack>
-        <TickingTextEl
-          timerInterval={segment}
-          countsDown
-          modifiers={[
-            font({ size: 16, weight: 'medium' }),
-            monospacedDigit(),
-            multilineTextAlignment('center'),
-            foregroundStyle(WHITE_MUTED),
-            lineLimit(1),
-            minimumScaleFactor(0.88),
-            frame({ maxWidth: Infinity, alignment: 'center' }),
-          ]}
-        />
-      </VStack>
+              frame({ maxWidth: Infinity, alignment: 'center' }),
+            ]}
+          />
+        </VStack>
+      </ZStack>
     );
   } catch {
     return neutralForFamily();
@@ -2511,9 +2543,6 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
 
   const WHITE = '#ffffff';
   const WHITE_MUTED = 'rgba(255, 255, 255, 0.6)';
-  // The whole-component backing every rectangular face paints behind the
-  // content; the inline line keeps its system transparency.
-  const BG = 'rgba(0, 0, 0, 0.4)';
 
   // The neutral, stale and catch cards follow the device locale the widget
   // process itself reads (D44): absent props carry no app language. The
@@ -3605,20 +3634,26 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
     }
 
     return (
-      <VStack
-        spacing={1}
+      <ZStack
         modifiers={[
           containerRelativeFrame({ axes: 'horizontal' }),
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
-          containerBackground(BG, 'widget'),
+          containerBackground('rgba(0, 0, 0, 0)', 'widget'),
         ]}>
-        <Text modifiers={[font({ size: 12, weight: 'semibold' }), foregroundStyle(WHITE), lineLimit(1)]}>
-          {staticRow.rectTitle}
-        </Text>
-        <Text modifiers={[font({ size: 18, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
-          {staticRow.rectSubtitle}
-        </Text>
-      </VStack>
+        {/* iOS strips containerBackground on Lock Screen accessories
+            (vibrant mode), so the whole-component backing is Apple's
+            AccessoryWidgetBackground material layered here; it renders
+            empty on the inline family by design. */}
+        <AccessoryWidgetBackground />
+        <VStack spacing={1} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
+          <Text modifiers={[font({ size: 12, weight: 'semibold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+            {staticRow.rectTitle}
+          </Text>
+          <Text modifiers={[font({ size: 18, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+            {staticRow.rectSubtitle}
+          </Text>
+        </VStack>
+      </ZStack>
     );
   };
 
@@ -3644,21 +3679,27 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
       }
 
       return (
-        <VStack
-          spacing={1}
+        <ZStack
           modifiers={[
             containerRelativeFrame({ axes: 'horizontal' }),
             frame({ maxWidth: Infinity, maxHeight: Infinity }),
-            containerBackground(BG, 'widget'),
+            containerBackground('rgba(0, 0, 0, 0)', 'widget'),
           ]}>
-          <Image systemName='moon.stars.fill' size={18} color={WHITE} />
-          <Text modifiers={[font({ size: 18, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
-            {staticRow.staleTitle}
-          </Text>
-          <Text modifiers={[font({ size: 15, weight: 'medium' }), foregroundStyle(WHITE), lineLimit(1)]}>
-            {staticRow.staleBody}
-          </Text>
-        </VStack>
+          {/* iOS strips containerBackground on Lock Screen accessories
+              (vibrant mode), so the whole-component backing is Apple's
+              AccessoryWidgetBackground material layered here; it renders
+              empty on the inline family by design. */}
+          <AccessoryWidgetBackground />
+          <VStack spacing={1} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
+            <Image systemName='moon.stars.fill' size={18} color={WHITE} />
+            <Text modifiers={[font({ size: 18, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+              {staticRow.staleTitle}
+            </Text>
+            <Text modifiers={[font({ size: 15, weight: 'medium' }), foregroundStyle(WHITE), lineLimit(1)]}>
+              {staticRow.staleBody}
+            </Text>
+          </VStack>
+        </ZStack>
       );
     }
 
@@ -3681,37 +3722,44 @@ const AthanLockWidgetCentred = (props: PrayerWidgetProps, environment: WidgetEnv
     // the name and the absolute time: the dot and
     // the countdown are gone from this layout.
     return (
-      <VStack
+      <ZStack
         modifiers={[
           containerRelativeFrame({ axes: 'horizontal' }),
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
-          containerBackground(BG, 'widget'),
+          containerBackground('rgba(0, 0, 0, 0)', 'widget'),
         ]}>
-        {/* A centred row for the same reason as Layout 3: a long Extra times name
+        {/* iOS strips containerBackground on Lock Screen accessories
+            (vibrant mode), so the whole-component backing is Apple's
+            AccessoryWidgetBackground material layered here; it renders
+            empty on the inline family by design. */}
+        <AccessoryWidgetBackground />
+        <VStack modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
+          {/* A centred row for the same reason as Layout 3: a long Extra times name
             filled its half from the slot's left edge and read as left-aligned,
             so the row is the glyphs side by side and the stack centres it. */}
-        <HStack spacing={6}>
-          <Text
-            modifiers={[
-              font({ size: 17, weight: 'bold' }),
-              foregroundStyle(WHITE),
-              lineLimit(1),
-              minimumScaleFactor(0.6),
-            ]}>
-            {props.nextName}
-          </Text>
-          <Text
-            modifiers={[
-              font({ size: 17, weight: 'medium' }),
-              monospacedDigit(),
-              foregroundStyle(WHITE_MUTED),
-              lineLimit(1),
-              minimumScaleFactor(0.83),
-            ]}>
-            {props.nextTime}
-          </Text>
-        </HStack>
-      </VStack>
+          <HStack spacing={6}>
+            <Text
+              modifiers={[
+                font({ size: 19, weight: 'bold' }),
+                foregroundStyle(WHITE),
+                lineLimit(1),
+                minimumScaleFactor(0.6),
+              ]}>
+              {props.nextName}
+            </Text>
+            <Text
+              modifiers={[
+                font({ size: 19, weight: 'medium' }),
+                monospacedDigit(),
+                foregroundStyle(WHITE_MUTED),
+                lineLimit(1),
+                minimumScaleFactor(0.83),
+              ]}>
+              {props.nextTime}
+            </Text>
+          </HStack>
+        </VStack>
+      </ZStack>
     );
   } catch {
     return neutralForFamily();
@@ -3729,9 +3777,6 @@ const AthanLockWidgetTimeBelowName = (props: PrayerWidgetProps, environment: Wid
   // Only the absolute time recedes; the system tints both in vibrant mode.
   const WHITE = '#ffffff';
   const WHITE_MUTED = 'rgba(255, 255, 255, 0.6)';
-  // The whole-component backing every rectangular face paints behind the
-  // content; the inline line keeps its system transparency.
-  const BG = 'rgba(0, 0, 0, 0.4)';
 
   // The neutral, stale and catch cards follow the device locale the widget
   // process itself reads (D44): absent props carry no app language. The
@@ -4826,20 +4871,26 @@ const AthanLockWidgetTimeBelowName = (props: PrayerWidgetProps, environment: Wid
     }
 
     return (
-      <VStack
-        spacing={1}
+      <ZStack
         modifiers={[
           containerRelativeFrame({ axes: 'horizontal' }),
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
-          containerBackground(BG, 'widget'),
+          containerBackground('rgba(0, 0, 0, 0)', 'widget'),
         ]}>
-        <Text modifiers={[font({ size: 12, weight: 'semibold' }), foregroundStyle(WHITE), lineLimit(1)]}>
-          {staticRow.rectTitle}
-        </Text>
-        <Text modifiers={[font({ size: 18, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
-          {staticRow.rectSubtitle}
-        </Text>
-      </VStack>
+        {/* iOS strips containerBackground on Lock Screen accessories
+            (vibrant mode), so the whole-component backing is Apple's
+            AccessoryWidgetBackground material layered here; it renders
+            empty on the inline family by design. */}
+        <AccessoryWidgetBackground />
+        <VStack spacing={1} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
+          <Text modifiers={[font({ size: 12, weight: 'semibold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+            {staticRow.rectTitle}
+          </Text>
+          <Text modifiers={[font({ size: 18, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+            {staticRow.rectSubtitle}
+          </Text>
+        </VStack>
+      </ZStack>
     );
   };
 
@@ -4872,21 +4923,27 @@ const AthanLockWidgetTimeBelowName = (props: PrayerWidgetProps, environment: Wid
       // stale-card icon, rendered here in the system's vibrant monochrome)
       // above the out-of-date title and refresh call
       return (
-        <VStack
-          spacing={1}
+        <ZStack
           modifiers={[
             containerRelativeFrame({ axes: 'horizontal' }),
             frame({ maxWidth: Infinity, maxHeight: Infinity }),
-            containerBackground(BG, 'widget'),
+            containerBackground('rgba(0, 0, 0, 0)', 'widget'),
           ]}>
-          <Image systemName='moon.stars.fill' size={18} color={WHITE} />
-          <Text modifiers={[font({ size: 18, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
-            {staticRow.staleTitle}
-          </Text>
-          <Text modifiers={[font({ size: 15, weight: 'medium' }), foregroundStyle(WHITE), lineLimit(1)]}>
-            {staticRow.staleBody}
-          </Text>
-        </VStack>
+          {/* iOS strips containerBackground on Lock Screen accessories
+              (vibrant mode), so the whole-component backing is Apple's
+              AccessoryWidgetBackground material layered here; it renders
+              empty on the inline family by design. */}
+          <AccessoryWidgetBackground />
+          <VStack spacing={1} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
+            <Image systemName='moon.stars.fill' size={18} color={WHITE} />
+            <Text modifiers={[font({ size: 18, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+              {staticRow.staleTitle}
+            </Text>
+            <Text modifiers={[font({ size: 15, weight: 'medium' }), foregroundStyle(WHITE), lineLimit(1)]}>
+              {staticRow.staleBody}
+            </Text>
+          </VStack>
+        </ZStack>
       );
     }
 
@@ -4910,37 +4967,43 @@ const AthanLockWidgetTimeBelowName = (props: PrayerWidgetProps, environment: Wid
     // Two centred lines: the prayer name above the absolute time. The
     // countdown is gone, so the second line reads the clock itself.
     return (
-      <VStack
-        spacing={1}
+      <ZStack
         modifiers={[
           containerRelativeFrame({ axes: 'horizontal' }),
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
-          containerBackground(BG, 'widget'),
+          containerBackground('rgba(0, 0, 0, 0)', 'widget'),
         ]}>
-        <Text
-          modifiers={[
-            font({ size: 16, weight: 'bold' }),
-            foregroundStyle(WHITE),
-            multilineTextAlignment('center'),
-            lineLimit(1),
-            minimumScaleFactor(0.88),
-            frame({ maxWidth: Infinity, alignment: 'center' }),
-          ]}>
-          {props.nextName}
-        </Text>
-        <Text
-          modifiers={[
-            font({ size: 16, weight: 'medium' }),
-            monospacedDigit(),
-            foregroundStyle(WHITE_MUTED),
-            multilineTextAlignment('center'),
-            lineLimit(1),
-            minimumScaleFactor(0.88),
-            frame({ maxWidth: Infinity, alignment: 'center' }),
-          ]}>
-          {props.nextTime}
-        </Text>
-      </VStack>
+        {/* iOS strips containerBackground on Lock Screen accessories
+            (vibrant mode), so the whole-component backing is Apple's
+            AccessoryWidgetBackground material layered here; it renders
+            empty on the inline family by design. */}
+        <AccessoryWidgetBackground />
+        <VStack spacing={1} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
+          <Text
+            modifiers={[
+              font({ size: 18, weight: 'bold' }),
+              foregroundStyle(WHITE),
+              multilineTextAlignment('center'),
+              lineLimit(1),
+              minimumScaleFactor(0.88),
+              frame({ maxWidth: Infinity, alignment: 'center' }),
+            ]}>
+            {props.nextName}
+          </Text>
+          <Text
+            modifiers={[
+              font({ size: 18, weight: 'medium' }),
+              monospacedDigit(),
+              foregroundStyle(WHITE_MUTED),
+              multilineTextAlignment('center'),
+              lineLimit(1),
+              minimumScaleFactor(0.88),
+              frame({ maxWidth: Infinity, alignment: 'center' }),
+            ]}>
+            {props.nextTime}
+          </Text>
+        </VStack>
+      </ZStack>
     );
   } catch {
     // Never let a rendering error blank the Lock Surface.
@@ -4954,9 +5017,6 @@ const AthanLockWidgetCountdownBelowName = (props: PrayerWidgetProps, environment
   // Only the countdown recedes; the system tints both in vibrant mode.
   const WHITE = '#ffffff';
   const WHITE_MUTED = 'rgba(255, 255, 255, 0.6)';
-  // The whole-component backing every rectangular face paints behind the
-  // content; the inline line keeps its system transparency.
-  const BG = 'rgba(0, 0, 0, 0.4)';
 
   // The neutral, stale and catch cards follow the device locale the widget
   // process itself reads (D44): absent props carry no app language. The
@@ -6051,20 +6111,26 @@ const AthanLockWidgetCountdownBelowName = (props: PrayerWidgetProps, environment
     }
 
     return (
-      <VStack
-        spacing={1}
+      <ZStack
         modifiers={[
           containerRelativeFrame({ axes: 'horizontal' }),
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
-          containerBackground(BG, 'widget'),
+          containerBackground('rgba(0, 0, 0, 0)', 'widget'),
         ]}>
-        <Text modifiers={[font({ size: 12, weight: 'semibold' }), foregroundStyle(WHITE), lineLimit(1)]}>
-          {staticRow.rectTitle}
-        </Text>
-        <Text modifiers={[font({ size: 18, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
-          {staticRow.rectSubtitle}
-        </Text>
-      </VStack>
+        {/* iOS strips containerBackground on Lock Screen accessories
+            (vibrant mode), so the whole-component backing is Apple's
+            AccessoryWidgetBackground material layered here; it renders
+            empty on the inline family by design. */}
+        <AccessoryWidgetBackground />
+        <VStack spacing={1} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
+          <Text modifiers={[font({ size: 12, weight: 'semibold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+            {staticRow.rectTitle}
+          </Text>
+          <Text modifiers={[font({ size: 18, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+            {staticRow.rectSubtitle}
+          </Text>
+        </VStack>
+      </ZStack>
     );
   };
 
@@ -6097,21 +6163,27 @@ const AthanLockWidgetCountdownBelowName = (props: PrayerWidgetProps, environment
       // stale-card icon, rendered here in the system's vibrant monochrome)
       // above the out-of-date title and refresh call
       return (
-        <VStack
-          spacing={1}
+        <ZStack
           modifiers={[
             containerRelativeFrame({ axes: 'horizontal' }),
             frame({ maxWidth: Infinity, maxHeight: Infinity }),
-            containerBackground(BG, 'widget'),
+            containerBackground('rgba(0, 0, 0, 0)', 'widget'),
           ]}>
-          <Image systemName='moon.stars.fill' size={18} color={WHITE} />
-          <Text modifiers={[font({ size: 18, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
-            {staticRow.staleTitle}
-          </Text>
-          <Text modifiers={[font({ size: 15, weight: 'medium' }), foregroundStyle(WHITE), lineLimit(1)]}>
-            {staticRow.staleBody}
-          </Text>
-        </VStack>
+          {/* iOS strips containerBackground on Lock Screen accessories
+              (vibrant mode), so the whole-component backing is Apple's
+              AccessoryWidgetBackground material layered here; it renders
+              empty on the inline family by design. */}
+          <AccessoryWidgetBackground />
+          <VStack spacing={1} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
+            <Image systemName='moon.stars.fill' size={18} color={WHITE} />
+            <Text modifiers={[font({ size: 18, weight: 'bold' }), foregroundStyle(WHITE), lineLimit(1)]}>
+              {staticRow.staleTitle}
+            </Text>
+            <Text modifiers={[font({ size: 15, weight: 'medium' }), foregroundStyle(WHITE), lineLimit(1)]}>
+              {staticRow.staleBody}
+            </Text>
+          </VStack>
+        </ZStack>
       );
     }
 
@@ -6147,38 +6219,44 @@ const AthanLockWidgetCountdownBelowName = (props: PrayerWidgetProps, environment
     // Two centred lines: the prayer name above the ticking countdown. The
     // absolute time is gone, so the second line is the interval alone.
     return (
-      <VStack
-        spacing={1}
+      <ZStack
         modifiers={[
           containerRelativeFrame({ axes: 'horizontal' }),
           frame({ maxWidth: Infinity, maxHeight: Infinity }),
-          containerBackground(BG, 'widget'),
+          containerBackground('rgba(0, 0, 0, 0)', 'widget'),
         ]}>
-        <Text
-          modifiers={[
-            font({ size: 16, weight: 'bold' }),
-            foregroundStyle(WHITE),
-            multilineTextAlignment('center'),
-            lineLimit(1),
-            minimumScaleFactor(0.88),
-            frame({ maxWidth: Infinity, alignment: 'center' }),
-          ]}>
-          {props.nextName}
-        </Text>
-        <TickingTextEl
-          timerInterval={segment}
-          countsDown
-          modifiers={[
-            font({ size: 16, weight: 'medium' }),
-            monospacedDigit(),
-            multilineTextAlignment('center'),
-            foregroundStyle(WHITE_MUTED),
-            lineLimit(1),
-            minimumScaleFactor(0.88),
-            frame({ maxWidth: Infinity, alignment: 'center' }),
-          ]}
-        />
-      </VStack>
+        {/* iOS strips containerBackground on Lock Screen accessories
+            (vibrant mode), so the whole-component backing is Apple's
+            AccessoryWidgetBackground material layered here; it renders
+            empty on the inline family by design. */}
+        <AccessoryWidgetBackground />
+        <VStack spacing={1} modifiers={[frame({ maxWidth: Infinity, maxHeight: Infinity })]}>
+          <Text
+            modifiers={[
+              font({ size: 18, weight: 'bold' }),
+              foregroundStyle(WHITE),
+              multilineTextAlignment('center'),
+              lineLimit(1),
+              minimumScaleFactor(0.88),
+              frame({ maxWidth: Infinity, alignment: 'center' }),
+            ]}>
+            {props.nextName}
+          </Text>
+          <TickingTextEl
+            timerInterval={segment}
+            countsDown
+            modifiers={[
+              font({ size: 18, weight: 'medium' }),
+              monospacedDigit(),
+              multilineTextAlignment('center'),
+              foregroundStyle(WHITE_MUTED),
+              lineLimit(1),
+              minimumScaleFactor(0.88),
+              frame({ maxWidth: Infinity, alignment: 'center' }),
+            ]}
+          />
+        </VStack>
+      </ZStack>
     );
   } catch {
     // Never let a rendering error blank the Lock Surface.
