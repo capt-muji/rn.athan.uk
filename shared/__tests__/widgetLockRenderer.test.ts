@@ -314,13 +314,21 @@ describe('lock widget renderer', () => {
     ['layout 2', (p: unknown) => renderTreeFor2(p, 'accessoryRectangular'), [LIVE_PROPS.nextTime]],
     ['layout 3', (p: unknown) => renderTreeFor3(p, 'accessoryRectangular'), ['<countdown>']],
     ['layout 4', (p: unknown) => renderTreeFor4(p, 'accessoryRectangular'), [LIVE_PROPS.nextTime]],
-    ['layout 5', (p: unknown) => renderTreeFor5(p, 'accessoryRectangular'), [LIVE_PROPS.nextTime, '<countdown>']],
-  ])('mutes only what recedes on %s and leaves the name bold', (_l, renderPath, muted) => {
-    for (const node of styledTexts(renderPath(LIVE_PROPS))) {
-      expect(node.colour).toBe(muted.includes(node.text) ? MUTED : SOLID);
-      expect(node.weight).toBe(node.text === LIVE_PROPS.nextName ? 'bold' : 'medium');
+    [
+      'layout 5',
+      (p: unknown) => renderTreeFor5(p, 'accessoryRectangular'),
+      [LIVE_PROPS.nextTime, '<countdown>'],
+      [LIVE_PROPS.nextName, LIVE_PROPS.nextTime],
+    ],
+  ])(
+    'mutes only what recedes on %s and leaves the name bold',
+    (_l, renderPath, muted, bold = [LIVE_PROPS.nextName]) => {
+      for (const node of styledTexts(renderPath(LIVE_PROPS))) {
+        expect(node.colour).toBe(muted.includes(node.text) ? MUTED : SOLID);
+        expect(node.weight).toBe(bold.includes(node.text) ? 'bold' : 'medium');
+      }
     }
-  });
+  );
 
   it('never mutes a fallback card, which has no absolute time to recede', () => {
     for (const renderPath of [renderTreeFor, renderTreeFor2, renderTreeFor3, renderTreeFor4, renderTreeFor5]) {
@@ -529,7 +537,7 @@ describe('lock widget renderer', () => {
       () => renderTreeFor5(LIVE_PROPS, 'accessoryRectangular'),
       [
         { text: 'Asr', size: 16, weight: 'bold', floor: 0.88 },
-        { text: '15:20', size: 16, weight: 'medium', floor: 0.88 },
+        { text: '15:20', size: 16, weight: 'bold', floor: 0.88 },
         { text: '<countdown>', size: 16, weight: 'medium', floor: 0.88 },
       ],
     ],

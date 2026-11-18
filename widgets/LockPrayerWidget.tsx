@@ -2472,7 +2472,7 @@ const AthanLockWidgetStacked = (props: PrayerWidgetProps, environment: WidgetEnv
           </Text>
           <Text
             modifiers={[
-              font({ size: 16, weight: 'medium' }),
+              font({ size: 16, weight: 'bold' }),
               monospacedDigit(),
               foregroundStyle(WHITE_MUTED),
               lineLimit(1),
