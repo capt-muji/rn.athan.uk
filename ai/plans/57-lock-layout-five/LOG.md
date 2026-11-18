@@ -44,3 +44,18 @@
   and the suites re-verified green.)
 - Version 2.53.25 (owner order: patch despite the feat type, no What's New
   item - the modal must not trigger).
+- Owner orders later in the session: Android build dropped entirely
+  ("nothing changed there") - the mock APK build was killed mid-Gradle and
+  stays unbuilt, superseding the both-platform standing order for this
+  release. Lock-screen evidence is the OWNER's: no phone navigation, no
+  screenshots, no customize-sheet drive after install; the agent's device
+  work ends at uninstall + install (+ one launch so the timelines push and
+  the widgets have data when the owner places them). The BG value
+  rgba(0,0,0,0.4) therefore ships as the first device-tested-by-owner
+  candidate; the owner's verdict decides any adjustment.
+- What's New triple-check (owner question): shouldShowWhatsNew gates on item
+  stamps only; the archive's newest stamped item is 2.50.0, this release
+  adds none, so no stored-version state at or above 2.50.0 can open the
+  modal - verified by running the real function over stored 2.50.0 /
+  2.53.23 / 2.54.0 (all false) plus a below-2.50.0 catch-up row (true, by
+  design).
