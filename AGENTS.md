@@ -37,10 +37,15 @@ Scripts measure. The `vision` subagent interprets.
 
 The board is the tickets: the owner's self-hosted Multica (API on the home server, `SERVER_LAN_IP:3011`)
 (browser front `https://kan.chabu.me`), driven through the `multica` CLI, which is
-installed, configured and logged in (PAT in `MULTICA_PAT`). Read
+installed and configured entirely by `~/.multica/config.json` (server URL, app URL and
+PAT together; the CLI never needs `MULTICA_PAT`). This repository's tickets live in the
+`athan` workspace (identifier `ATHA-`), and the CLI's default workspace is the OTHER
+repository's: every board command from here passes
+`--workspace-id c2a08125-e1ec-464f-862c-607c1f26fb89`. Read
 `.agents/skills/multica-cli/SKILL.md` and its companion `BOARD-ATHAN.md` before touching
 the board: they hold the eleven columns, their keys and the discipline. Entry to a run is
-`/athan-next`. The self-hosted Multica is the board of record.
+`/athan-next`. The self-hosted Multica is the board of record; the old itsaplan board is
+gone and nothing in this repository speaks to it.
 
 ## Product
 
