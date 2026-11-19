@@ -10,7 +10,7 @@
       "environment": {
         "MOBILEMCP_DISABLE_TELEMETRY": "1"
       },
-      "enabled": false
+      "enabled": true
     },
     "maestro": {
       "type": "local",
@@ -18,30 +18,27 @@
       "environment": {
         "MAESTRO_CLI_NO_ANALYTICS": "1"
       },
-      "enabled": false
+      "enabled": true
     },
     "agent-device": {
       "type": "local",
       "command": ["npx", "-y", "agent-device@latest", "mcp"],
-      "enabled": false
+      "enabled": true
     },
     "xcodebuildmcp": {
       "type": "local",
       "command": ["npx", "-y", "xcodebuildmcp@latest", "mcp"],
-      "enabled": false
+      "enabled": true
     },
     "expo": {
       "type": "remote",
       "url": "https://mcp.expo.dev/mcp",
       "enabled": true
     },
-    "servers": {
-      "codegraph": {
-        "type": "local",
-        "command": ["codegraph", "serve", "--mcp"],
-        "disabled": true,
-        "codemode": false
-      }
+    "codegraph": {
+      "type": "local",
+      "command": ["codegraph", "serve", "--mcp"],
+      "enabled": true
     }
   }
 }

@@ -5,18 +5,30 @@ true about OUR board, not about the CLI.
 
 ## Where
 
-- Server: the API URL the CLI already holds (`multica config show` prints `server_url`);
-  browser front `https://kan.chabu.me`.
-- CLI: `~/.local/bin/multica`, already configured (`server_url` set) and logged in
-  with the owner-minted PAT (`MULTICA_PAT` in `~/.zshrc`). Never print the PAT.
+- Server: the API URL the CLI already holds (`multica config show` prints `server_url`;
+  the config file `~/.multica/config.json` holds `server_url`, `app_url`, `workspace_id`
+  and the owner-minted PAT token together - the CLI reads everything from there,
+  `MULTICA_PAT` in `~/.zshrc` is a leftover export). Always use `server_url`, never
+  `app_url`: the browser front `https://kan.chabu.me` is for the owner's eyes, the
+  API address is what the CLI drives. Never print the PAT.
+- CLI: `~/.local/bin/multica`, already configured and logged in.
 - Two workspaces:
-  - `athan` (identifier `ATHA-`): the app and the board programme.
-  - `mosques`: the research/mosque-database programme. Research tickets never go
-    into `athan`.
+  - `athan` (identifier `ATHA-`; workspace id
+    `c2a08125-e1ec-464f-862c-607c1f26fb89`): the app and the board programme. OUR
+    tickets live here and nowhere else.
+  - `prayer-times` (identifier `PT-`; workspace id
+    `65b4aaa9-e485-4cc5-9948-bd44e78dbd48`): the prayer-times repository's own
+    programme, migrated whole from the old `mosques` workspace on 2026-11-15. Never
+    touched from this repository.
+- THE DEFAULT WORKSPACE IS NOT OURS: `~/.multica/config.json` points the CLI at
+  `prayer-times` (the other repository's default). Every board command run from this
+  repository passes `--workspace-id c2a08125-e1ec-464f-862c-607c1f26fb89`, or it
+  lands on the wrong board. A ticket whose identifier reads `PT-` was created in the
+  wrong workspace: cancel it there, recreate it here.
 
 ## The eleven columns, in board order
 
-| # | Column | Key (athan) | Key (mosques) | Meaning |
+| # | Column | Key (athan) | Key (prayer-times) | Meaning |
 | --- | --- | --- | --- | --- |
 | 1 | Backlog | `backlog` | `backlog` | Deferred by the owner. Parking: assignee set, nothing runs. |
 | 2 | Todo | `todo` | `todo` | Queued for work. |

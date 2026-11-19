@@ -156,14 +156,14 @@ describe('widget function closure', () => {
     });
   }
 
-  it('walks the closure of all four lock layouts', () => {
-    // The lock module holds four layouts; a walk that only reaches the first
-    // leaves the other three unguarded (they drift free silently). Layouts gain
+  it('walks the closure of all five lock layouts', () => {
+    // The lock module holds five layouts; a walk that only reaches the first
+    // leaves the other four unguarded (they drift free silently). Layouts gain
     // no import here: `strings` and `id` arrive as props, and a body importing
     // from @/shared/i18n still fails the walk as a module-scope reference.
     const ast = parseFile(WIDGET_FILES[1].path);
     const layouts = findWidgetFunctions(ast);
-    expect(layouts).toHaveLength(4);
+    expect(layouts).toHaveLength(5);
 
     const runtimeGlobals = collectExpoUiRuntimeGlobals(ast);
     layouts.forEach((layout, index) => {
@@ -280,6 +280,8 @@ describe('palette literals', () => {
       '#ffffff',
       'rgba(255, 255, 255, 0.6)',
       'rgba(0, 0, 0, 0)',
+      // Lock Screen dim over the system accessory material
+      'rgba(0, 0, 0, 0.5)',
       // Home widget — light Cotton Candy
       'rgba(252, 252, 254, 0.92)',
       '#db2777',
@@ -423,7 +425,7 @@ describe('widget directive', () => {
 
       // The home module holds one layout; the lock module holds four (its
       // layouts differ only in composition and share nothing by reference)
-      expect(count).toBe(name === 'PrayerLockWidget' ? 4 : 1);
+      expect(count).toBe(name === 'PrayerLockWidget' ? 5 : 1);
     });
   }
 });
@@ -626,6 +628,7 @@ describe('the statics table resolves every neutral and stale site', () => {
         },
       }));
       jest.doMock('@expo/ui/swift-ui', () => ({
+        AccessoryWidgetBackground: marker('AccessoryWidgetBackground'),
         HStack: marker('HStack'),
         Image: marker('Image'),
         RoundedRectangle: marker('RoundedRectangle'),
@@ -637,6 +640,7 @@ describe('the statics table resolves every neutral and stale site', () => {
       jest.doMock('@expo/ui/swift-ui/modifiers', () => {
         const modifiers: Record<string, (...args: unknown[]) => { modifier: string; value: unknown }> = {};
         for (const name of [
+          'clipShape',
           'containerBackground',
           'containerRelativeFrame',
           'font',
