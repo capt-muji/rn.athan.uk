@@ -30,6 +30,25 @@ const renderTree = (node: unknown): unknown => {
   return { marker: (node.type as { marker?: string }).marker ?? String(node.type), props };
 };
 
+const findFirst = (node: unknown, name: string): MarkerNode | undefined => {
+  const walk = (n: unknown): MarkerNode | undefined => {
+    if (Array.isArray(n)) {
+      for (const child of n) {
+        const hit = walk(child);
+        if (hit) return hit;
+      }
+      return undefined;
+    }
+    if (n !== null && typeof n === 'object' && 'marker' in n) {
+      const markerNode = n as MarkerNode;
+      if (markerNode.marker === name) return markerNode;
+      return walk(markerNode.props.children);
+    }
+    return undefined;
+  };
+  return walk(node);
+};
+
 const marker = (name: string) => {
   const component = (props: Record<string, unknown>): MarkerNode => ({
     marker: name,
@@ -39,13 +58,17 @@ const marker = (name: string) => {
 };
 
 const SWIFT_UI = {
+  AccessoryWidgetBackground: marker('AccessoryWidgetBackground'),
   HStack: marker('HStack'),
   Image: marker('Image'),
+  RoundedRectangle: marker('RoundedRectangle'),
   Text: marker('Text'),
   VStack: marker('VStack'),
+  ZStack: marker('ZStack'),
 };
 
 const MODIFIERS = [
+  'clipShape',
   'containerBackground',
   'containerRelativeFrame',
   'fixedSize',
@@ -61,6 +84,14 @@ const MODIFIERS = [
   acc[name] = (value: unknown) => ({ modifier: name, value });
   return acc;
 }, {});
+// clipShape carries a second argument the single-value mock would drop
+(MODIFIERS as Record<string, (...args: unknown[]) => { modifier: string; value: unknown }>).clipShape = (
+  shape: unknown,
+  cornerRadius: unknown
+) => ({
+  modifier: 'clipShape',
+  value: { shape, cornerRadius },
+});
 
 type WidgetModule = Record<string, (props: unknown, environment: unknown) => unknown>;
 
@@ -131,6 +162,8 @@ describe('lock widget renderer', () => {
     renderTree(layouts.PrayerLockWidget3(props, { colorScheme: 'light', widgetFamily: family }));
   const renderTreeFor4 = (props: unknown, family: string): unknown =>
     renderTree(layouts.PrayerLockWidget4(props, { colorScheme: 'light', widgetFamily: family }));
+  const renderTreeFor5 = (props: unknown, family: string): unknown =>
+    renderTree(layouts.PrayerLockWidget5(props, { colorScheme: 'light', widgetFamily: family }));
   const render = (props: unknown, family: string): string[] => textsOf(renderTreeFor(props, family));
 
   /** Every Text node's font and colour, paired, for hierarchy assertions */
@@ -258,8 +291,63 @@ describe('lock widget renderer', () => {
     expect(tickingIntervalOf(tree)).toBeUndefined();
   });
 
-  it('degrades layouts 3 and 4 to the same fallbacks per family', () => {
-    for (const render of [renderTreeFor3, renderTreeFor4]) {
+  it('layers the system accessory material behind every rectangular live face and never inline', () => {
+    // Owner order 2026-11-18: lock widgets need a background. iOS strips
+    // containerBackground in vibrant mode, so the sanctioned surface is
+    // AccessoryWidgetBackground layered in a ZStack - the system's own
+    // adaptive material, empty for the inline family by design.
+    const markersOf = (node: unknown): string[] => {
+      const found: string[] = [];
+      const walk = (n: unknown): void => {
+        if (Array.isArray(n)) {
+          for (const child of n) walk(child);
+          return;
+        }
+        if (n !== null && typeof n === 'object' && 'marker' in n) {
+          found.push((n as MarkerNode).marker);
+          walk((n as MarkerNode).props.children);
+        }
+      };
+      walk(node);
+      return found;
+    };
+    for (const renderPath of [renderTreeFor, renderTreeFor2, renderTreeFor3, renderTreeFor4, renderTreeFor5]) {
+      const rectMarkers = markersOf(renderPath(LIVE_PROPS, 'accessoryRectangular'));
+      expect(rectMarkers).toContain('AccessoryWidgetBackground');
+      expect(rectMarkers[0]).toBe('ZStack');
+      expect(rectMarkers[1]).toBe('AccessoryWidgetBackground');
+      // the system material renders bright on glass, so a translucent dark
+      // fill dims it (owner order 2026-11-18: darken the background)
+      expect(rectMarkers[2]).toBe('RoundedRectangle');
+      const dim = findFirst(renderPath(LIVE_PROPS, 'accessoryRectangular'), 'RoundedRectangle');
+      expect(dim?.props.cornerRadius).toBe(10);
+      expect(dim?.props.modifiers).toContainEqual({ modifier: 'foregroundStyle', value: 'rgba(0, 0, 0, 0.5)' });
+      // the whole component clips rounded, so the material's corners round
+      // with it (owner order 2026-11-18: rounded edges, full coverage)
+      const stack = findFirst(renderPath(LIVE_PROPS, 'accessoryRectangular'), 'ZStack');
+      expect(stack?.props.modifiers).toContainEqual({
+        modifier: 'clipShape',
+        value: { shape: 'roundedRectangle', cornerRadius: 10 },
+      });
+      const inlineMarkers = markersOf(renderPath(LIVE_PROPS, 'accessoryInline'));
+      expect(inlineMarkers).not.toContain('AccessoryWidgetBackground');
+    }
+  });
+
+  it('stacks the name beside the absolute time over the ticking countdown on layout 5', () => {
+    const tree = renderTreeFor5(LIVE_PROPS, 'accessoryRectangular');
+    const all = textsOf(tree);
+
+    expect(all).toContain('Asr');
+    expect(all).toContain('15:20');
+    expect(tickingIntervalOf(tree)).toEqual({
+      lower: new Date(LIVE_PROPS.prevEpochMs),
+      upper: new Date(LIVE_PROPS.nextEpochMs),
+    });
+  });
+
+  it('degrades layouts 3, 4 and 5 to the same fallbacks per family', () => {
+    for (const render of [renderTreeFor3, renderTreeFor4, renderTreeFor5]) {
       expect(textsOf(render({ ...LIVE_PROPS, stale: true }, 'accessoryRectangular'))).toContain('Out of date');
       expect(textsOf(render({ ...LIVE_PROPS, stale: true }, 'accessoryInline'))).toContain(
         'Athan — open to refresh times'
@@ -279,8 +367,8 @@ describe('lock widget renderer', () => {
     }
   });
 
-  it('falls back to the absolute time on layouts 3 and 4 inline, which cannot tick', () => {
-    for (const render of [renderTreeFor3, renderTreeFor4]) {
+  it('falls back to the absolute time on layouts 3, 4 and 5 inline, which cannot tick', () => {
+    for (const render of [renderTreeFor3, renderTreeFor4, renderTreeFor5]) {
       const tree = render(LIVE_PROPS, 'accessoryInline');
 
       expect(textsOf(tree).join(' ')).toContain('Asr 15:20');
@@ -288,26 +376,36 @@ describe('lock widget renderer', () => {
     }
   });
 
-  // The live faces read 17pt on layouts 3-4 and 16pt on layouts 1-2, each
+  // The live faces read 17pt on layouts 3-4 and 16pt on layouts 1-2 and 5, each
   // floored at or above the old 14pt nominal, so weight and opacity
   // carry the tiers. What recedes is the SECOND reading, which is the
   // countdown beneath the name in layout 1, the time beneath it in layout 2,
-  // the countdown beside the name in layout 3, and the time beside it in
-  // layout 4. The name itself is bold on every layout.
+  // the countdown beside the name in layout 3, the time beside it in layout
+  // 4, and both the time beside the name and the countdown beneath it in
+  // layout 5. The name itself is bold on every layout.
   it.each([
     ['layout 1', (p: unknown) => renderTreeFor(p, 'accessoryRectangular'), ['<countdown>']],
     ['layout 2', (p: unknown) => renderTreeFor2(p, 'accessoryRectangular'), [LIVE_PROPS.nextTime]],
     ['layout 3', (p: unknown) => renderTreeFor3(p, 'accessoryRectangular'), ['<countdown>']],
     ['layout 4', (p: unknown) => renderTreeFor4(p, 'accessoryRectangular'), [LIVE_PROPS.nextTime]],
-  ])('mutes only what recedes on %s and leaves the name bold', (_l, renderPath, muted) => {
-    for (const node of styledTexts(renderPath(LIVE_PROPS))) {
-      expect(node.colour).toBe(muted.includes(node.text) ? MUTED : SOLID);
-      expect(node.weight).toBe(node.text === LIVE_PROPS.nextName ? 'bold' : 'medium');
+    [
+      'layout 5',
+      (p: unknown) => renderTreeFor5(p, 'accessoryRectangular'),
+      ['<countdown>'],
+      [LIVE_PROPS.nextName, LIVE_PROPS.nextTime],
+    ],
+  ])(
+    'mutes only what recedes on %s and leaves the name bold',
+    (_l, renderPath, muted, bold = [LIVE_PROPS.nextName]) => {
+      for (const node of styledTexts(renderPath(LIVE_PROPS))) {
+        expect(node.colour).toBe(muted.includes(node.text) ? MUTED : SOLID);
+        expect(node.weight).toBe(bold.includes(node.text) ? 'bold' : 'medium');
+      }
     }
-  });
+  );
 
   it('never mutes a fallback card, which has no absolute time to recede', () => {
-    for (const renderPath of [renderTreeFor, renderTreeFor2, renderTreeFor3, renderTreeFor4]) {
+    for (const renderPath of [renderTreeFor, renderTreeFor2, renderTreeFor3, renderTreeFor4, renderTreeFor5]) {
       for (const props of [{ ...LIVE_PROPS, stale: true }, null]) {
         for (const node of styledTexts(renderPath(props, 'accessoryRectangular'))) {
           expect(node.colour).toBe(SOLID);
@@ -399,7 +497,7 @@ describe('lock widget renderer', () => {
   });
 
   it('keeps the container-width modifier off the inline faces and centres both live blocks', () => {
-    for (const render of [renderTreeFor, renderTreeFor2, renderTreeFor3, renderTreeFor4]) {
+    for (const render of [renderTreeFor, renderTreeFor2, renderTreeFor3, renderTreeFor4, renderTreeFor5]) {
       const inlineTree = render(LIVE_PROPS, 'accessoryInline') as MarkerNode;
       const inlineModifiers = JSON.stringify(inlineTree.props.modifiers ?? []);
       expect(inlineModifiers).not.toContain('containerRelativeFrame');
@@ -457,7 +555,7 @@ describe('lock widget renderer', () => {
 
   // T-400: the raised lock type scale, pinned per layout and face. Every
   // raised nominal reads no smaller at its floor than today's nominal 14
-  // (17 x 0.83 = 14.11, 16 x 0.88 = 14.08); the inline face stands at 14.
+  // (19 x 0.83 = 15.77, 18 x 0.88 = 15.84); the inline face stands at 14.
   const imagesOf = (tree: unknown): number[] => {
     const sizes: number[] = [];
     const walk = (node: unknown): void => {
@@ -480,32 +578,41 @@ describe('lock widget renderer', () => {
       'layout 1',
       () => renderTreeFor(LIVE_PROPS, 'accessoryRectangular'),
       [
-        { text: 'Asr', size: 16, weight: 'bold', floor: 0.88 },
-        { text: '<countdown>', size: 16, weight: 'medium', floor: 0.88 },
+        { text: 'Asr', size: 18, weight: 'bold', floor: 0.88 },
+        { text: '<countdown>', size: 18, weight: 'medium', floor: 0.88 },
       ],
     ],
     [
       'layout 2',
       () => renderTreeFor2(LIVE_PROPS, 'accessoryRectangular'),
       [
-        { text: 'Asr', size: 16, weight: 'bold', floor: 0.88 },
-        { text: '15:20', size: 16, weight: 'medium', floor: 0.88 },
+        { text: 'Asr', size: 18, weight: 'bold', floor: 0.88 },
+        { text: '15:20', size: 18, weight: 'medium', floor: 0.88 },
       ],
     ],
     [
       'layout 3',
       () => renderTreeFor3(LIVE_PROPS, 'accessoryRectangular'),
       [
-        { text: 'Asr', size: 17, weight: 'bold', floor: 0.6 },
-        { text: '<countdown>', size: 17, weight: 'medium', floor: 0.83 },
+        { text: 'Asr', size: 19, weight: 'bold', floor: 0.6 },
+        { text: '<countdown>', size: 19, weight: 'medium', floor: 0.83 },
       ],
     ],
     [
       'layout 4',
       () => renderTreeFor4(LIVE_PROPS, 'accessoryRectangular'),
       [
-        { text: 'Asr', size: 17, weight: 'bold', floor: 0.6 },
-        { text: '15:20', size: 17, weight: 'medium', floor: 0.83 },
+        { text: 'Asr', size: 19, weight: 'bold', floor: 0.6 },
+        { text: '15:20', size: 19, weight: 'medium', floor: 0.83 },
+      ],
+    ],
+    [
+      'layout 5',
+      () => renderTreeFor5(LIVE_PROPS, 'accessoryRectangular'),
+      [
+        { text: 'Asr', size: 18, weight: 'bold', floor: 0.88 },
+        { text: '15:20', size: 18, weight: 'bold', floor: 0.88 },
+        { text: '<countdown>', size: 18, weight: 'medium', floor: 0.88 },
       ],
     ],
   ] as const)('sizes the live %s readings at their raised nominals and floors', (_label, renderPath, pins) => {
@@ -520,7 +627,7 @@ describe('lock widget renderer', () => {
   });
 
   it('sizes the inline face at the system-chosen 14, unfloored, on every layout', () => {
-    for (const render of [renderTreeFor, renderTreeFor2, renderTreeFor3, renderTreeFor4]) {
+    for (const render of [renderTreeFor, renderTreeFor2, renderTreeFor3, renderTreeFor4, renderTreeFor5]) {
       for (const node of styledTexts(render(LIVE_PROPS, 'accessoryInline'))) {
         expect(node.size).toBe(14);
         expect(node.modifiers.map((entry) => entry.modifier)).not.toContain('minimumScaleFactor');
@@ -529,7 +636,7 @@ describe('lock widget renderer', () => {
   });
 
   it('sizes the stale card one point up on every layout (slot 72pt, branch measured on the XS)', () => {
-    for (const render of [renderTreeFor, renderTreeFor2, renderTreeFor3, renderTreeFor4]) {
+    for (const render of [renderTreeFor, renderTreeFor2, renderTreeFor3, renderTreeFor4, renderTreeFor5]) {
       const tree = render({ ...LIVE_PROPS, stale: true }, 'accessoryRectangular');
       const texts = styledTexts(tree);
       expect(texts.find((node) => node.text === 'Out of date')?.size).toBe(18);
@@ -539,7 +646,7 @@ describe('lock widget renderer', () => {
   });
 
   it('sizes the neutral card one point up on every layout', () => {
-    for (const render of [renderTreeFor, renderTreeFor2, renderTreeFor3, renderTreeFor4]) {
+    for (const render of [renderTreeFor, renderTreeFor2, renderTreeFor3, renderTreeFor4, renderTreeFor5]) {
       const texts = styledTexts(render(null, 'accessoryRectangular'));
       expect(texts.find((node) => node.text === 'ATHAN')?.size).toBe(12);
       expect(texts.find((node) => node.text === 'Open to load times')?.size).toBe(18);

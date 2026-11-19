@@ -21,7 +21,11 @@
       "Next Prayer (Layout 3)": "Next Prayer (Layout 3)",
       "Extra Times (Layout 3)": "Extra Times (Layout 3)",
       "Next Prayer (Layout 4)": "Next Prayer (Layout 4)",
-      "Extra Times (Layout 4)": "Extra Times (Layout 4)"
+      "Extra Times (Layout 4)": "Extra Times (Layout 4)",
+      "Next Prayer (Layout 5)": "Next Prayer (Layout 5)",
+      "Next prayer time with a countdown.": "Next prayer time with a countdown.",
+      "Extra Times (Layout 5)": "Extra Times (Layout 5)",
+      "Next extra time with a countdown.": "Next extra time with a countdown."
     }
   },
   "ar": {
@@ -45,7 +49,11 @@
       "Next Prayer (Layout 3)": "الصلاة التالية (تصميم 3)",
       "Extra Times (Layout 3)": "الأوقات الإضافية (تصميم 3)",
       "Next Prayer (Layout 4)": "الصلاة التالية (تصميم 4)",
-      "Extra Times (Layout 4)": "الأوقات الإضافية (تصميم 4)"
+      "Extra Times (Layout 4)": "الأوقات الإضافية (تصميم 4)",
+      "Next Prayer (Layout 5)": "الصلاة التالية (تصميم 5)",
+      "Next prayer time with a countdown.": "وقت الصلاة التالية مع عد تنازلي.",
+      "Extra Times (Layout 5)": "الأوقات الإضافية (تصميم 5)",
+      "Next extra time with a countdown.": "الوقت الإضافي التالي مع عد تنازلي."
     }
   },
   "ms": {
@@ -69,7 +77,11 @@
       "Next Prayer (Layout 3)": "Solat Seterusnya (Susun atur 3)",
       "Extra Times (Layout 3)": "Masa Tambahan (Susun atur 3)",
       "Next Prayer (Layout 4)": "Solat Seterusnya (Susun atur 4)",
-      "Extra Times (Layout 4)": "Masa Tambahan (Susun atur 4)"
+      "Extra Times (Layout 4)": "Masa Tambahan (Susun atur 4)",
+      "Next Prayer (Layout 5)": "Solat Seterusnya (Susun atur 5)",
+      "Next prayer time with a countdown.": "Waktu solat seterusnya dengan kiraan detik.",
+      "Extra Times (Layout 5)": "Masa Tambahan (Susun atur 5)",
+      "Next extra time with a countdown.": "Masa tambahan seterusnya dengan kiraan detik."
     }
   },
   "so": {
@@ -93,7 +105,11 @@
       "Next Prayer (Layout 3)": "Salaadda Xigta (Hab-rajiska 3)",
       "Extra Times (Layout 3)": "Waqtiyada Dheeriga ah (Hab-rajiska 3)",
       "Next Prayer (Layout 4)": "Salaadda Xigta (Hab-rajiska 4)",
-      "Extra Times (Layout 4)": "Waqtiyada Dheeriga ah (Hab-rajiska 4)"
+      "Extra Times (Layout 4)": "Waqtiyada Dheeriga ah (Hab-rajiska 4)",
+      "Next Prayer (Layout 5)": "Salaadda Xigta (Hab-rajiska 5)",
+      "Next prayer time with a countdown.": "Waqtiga salaadda xigta iyo hoos-u-tiris.",
+      "Extra Times (Layout 5)": "Waqtiyada Dheeriga ah (Hab-rajiska 5)",
+      "Next extra time with a countdown.": "Waqtiga dheeriga ah ee xiga iyo hoos-u-tiris."
     }
   },
   "hi": {
@@ -117,7 +133,11 @@
       "Next Prayer (Layout 3)": "अगली नमाज़ (लेआउट 3)",
       "Extra Times (Layout 3)": "अतिरिक्त समय (लेआउट 3)",
       "Next Prayer (Layout 4)": "अगली नमाज़ (लेआउट 4)",
-      "Extra Times (Layout 4)": "अतिरिक्त समय (लेआउट 4)"
+      "Extra Times (Layout 4)": "अतिरिक्त समय (लेआउट 4)",
+      "Next Prayer (Layout 5)": "अगली नमाज़ (लेआउट 5)",
+      "Next prayer time with a countdown.": "काउंटडाउन के साथ अगली नमाज़ का समय।",
+      "Extra Times (Layout 5)": "अतिरिक्त समय (लेआउट 5)",
+      "Next extra time with a countdown.": "काउंटडाउन के साथ अगला अतिरिक्त समय।"
     }
   },
   "th": {
@@ -141,7 +161,11 @@
       "Next Prayer (Layout 3)": "ละหมาดถัดไป (เลย์เอาต์ 3)",
       "Extra Times (Layout 3)": "เวลาเพิ่มเติม (เลย์เอาต์ 3)",
       "Next Prayer (Layout 4)": "ละหมาดถัดไป (เลย์เอาต์ 4)",
-      "Extra Times (Layout 4)": "เวลาเพิ่มเติม (เลย์เอาต์ 4)"
+      "Extra Times (Layout 4)": "เวลาเพิ่มเติม (เลย์เอาต์ 4)",
+      "Next Prayer (Layout 5)": "ละหมาดถัดไป (เลย์เอาต์ 5)",
+      "Next prayer time with a countdown.": "เวลาละหมาดถัดไปพร้อมนับถอยหลัง",
+      "Extra Times (Layout 5)": "เวลาเพิ่มเติม (เลย์เอาต์ 5)",
+      "Next extra time with a countdown.": "เวลาเพิ่มเติมถัดไปพร้อมนับถอยหลัง"
     }
   },
   "id": {
@@ -165,7 +189,11 @@
       "Next Prayer (Layout 3)": "Salat Berikutnya (Tata Letak 3)",
       "Extra Times (Layout 3)": "Waktu Tambahan (Tata Letak 3)",
       "Next Prayer (Layout 4)": "Salat Berikutnya (Tata Letak 4)",
-      "Extra Times (Layout 4)": "Waktu Tambahan (Tata Letak 4)"
+      "Extra Times (Layout 4)": "Waktu Tambahan (Tata Letak 4)",
+      "Next Prayer (Layout 5)": "Salat Berikutnya (Tata Letak 5)",
+      "Next prayer time with a countdown.": "Waktu salat berikutnya dengan hitung mundur.",
+      "Extra Times (Layout 5)": "Waktu Tambahan (Tata Letak 5)",
+      "Next extra time with a countdown.": "Waktu tambahan berikutnya dengan hitung mundur."
     }
   },
   "tr": {
@@ -189,7 +217,11 @@
       "Next Prayer (Layout 3)": "Sonraki Namaz (Düzen 3)",
       "Extra Times (Layout 3)": "Ek Vakitler (Düzen 3)",
       "Next Prayer (Layout 4)": "Sonraki Namaz (Düzen 4)",
-      "Extra Times (Layout 4)": "Ek Vakitler (Düzen 4)"
+      "Extra Times (Layout 4)": "Ek Vakitler (Düzen 4)",
+      "Next Prayer (Layout 5)": "Sonraki Namaz (Düzen 5)",
+      "Next prayer time with a countdown.": "Geri sayımla sonraki namaz vakti.",
+      "Extra Times (Layout 5)": "Ek Vakitler (Düzen 5)",
+      "Next extra time with a countdown.": "Geri sayımla sonraki ek vakit."
     }
   },
   "fr": {
@@ -213,7 +245,11 @@
       "Next Prayer (Layout 3)": "Prochaine prière (Disposition 3)",
       "Extra Times (Layout 3)": "Horaires supplémentaires (Disposition 3)",
       "Next Prayer (Layout 4)": "Prochaine prière (Disposition 4)",
-      "Extra Times (Layout 4)": "Horaires supplémentaires (Disposition 4)"
+      "Extra Times (Layout 4)": "Horaires supplémentaires (Disposition 4)",
+      "Next Prayer (Layout 5)": "Prochaine prière (Disposition 5)",
+      "Next prayer time with a countdown.": "Heure de la prochaine prière avec compte à rebours.",
+      "Extra Times (Layout 5)": "Horaires supplémentaires (Disposition 5)",
+      "Next extra time with a countdown.": "Prochain horaire supplémentaire avec compte à rebours."
     }
   },
   "uz": {
@@ -237,7 +273,11 @@
       "Next Prayer (Layout 3)": "Keyingi namoz (Joylashuv 3)",
       "Extra Times (Layout 3)": "Qo'shimcha vaqtlar (Joylashuv 3)",
       "Next Prayer (Layout 4)": "Keyingi namoz (Joylashuv 4)",
-      "Extra Times (Layout 4)": "Qo'shimcha vaqtlar (Joylashuv 4)"
+      "Extra Times (Layout 4)": "Qo'shimcha vaqtlar (Joylashuv 4)",
+      "Next Prayer (Layout 5)": "Keyingi namoz (Joylashuv 5)",
+      "Next prayer time with a countdown.": "Teskari sanoq bilan keyingi namoz vaqti.",
+      "Extra Times (Layout 5)": "Qo'shimcha vaqtlar (Joylashuv 5)",
+      "Next extra time with a countdown.": "Teskari sanoq bilan keyingi qo'shimcha vaqt."
     }
   },
   "sw": {
@@ -261,7 +301,11 @@
       "Next Prayer (Layout 3)": "Swala Inayofuata (Mpangilio 3)",
       "Extra Times (Layout 3)": "Nyakati za Ziada (Mpangilio 3)",
       "Next Prayer (Layout 4)": "Swala Inayofuata (Mpangilio 4)",
-      "Extra Times (Layout 4)": "Nyakati za Ziada (Mpangilio 4)"
+      "Extra Times (Layout 4)": "Nyakati za Ziada (Mpangilio 4)",
+      "Next Prayer (Layout 5)": "Swala Inayofuata (Mpangilio 5)",
+      "Next prayer time with a countdown.": "Wakati wa swala linalofuata na kuhesabu muda.",
+      "Extra Times (Layout 5)": "Nyakati za Ziada (Mpangilio 5)",
+      "Next extra time with a countdown.": "Wakati ujao wa ziada na kuhesabu muda."
     }
   },
   "ha": {
@@ -285,7 +329,11 @@
       "Next Prayer (Layout 3)": "Salla Mai Zuwa (Tsari 3)",
       "Extra Times (Layout 3)": "Lokutan Ƙari (Tsari 3)",
       "Next Prayer (Layout 4)": "Salla Mai Zuwa (Tsari 4)",
-      "Extra Times (Layout 4)": "Lokutan Ƙari (Tsari 4)"
+      "Extra Times (Layout 4)": "Lokutan Ƙari (Tsari 4)",
+      "Next Prayer (Layout 5)": "Salla Mai Zuwa (Tsari 5)",
+      "Next prayer time with a countdown.": "Lokacin salla mai zuwa da kirgawa.",
+      "Extra Times (Layout 5)": "Lokutan Ƙari (Tsari 5)",
+      "Next extra time with a countdown.": "Lokacin ƙari mai zuwa da kirgawa."
     }
   },
   "pt": {
@@ -309,7 +357,11 @@
       "Next Prayer (Layout 3)": "Oração Seguinte (Disposição 3)",
       "Extra Times (Layout 3)": "Horários Extra (Disposição 3)",
       "Next Prayer (Layout 4)": "Oração Seguinte (Disposição 4)",
-      "Extra Times (Layout 4)": "Horários Extra (Disposição 4)"
+      "Extra Times (Layout 4)": "Horários Extra (Disposição 4)",
+      "Next Prayer (Layout 5)": "Oração Seguinte (Disposição 5)",
+      "Next prayer time with a countdown.": "Hora da próxima oração com contagem decrescente.",
+      "Extra Times (Layout 5)": "Horários Extra (Disposição 5)",
+      "Next extra time with a countdown.": "Próximo horário extra com contagem decrescente."
     }
   },
   "ur": {
@@ -333,7 +385,11 @@
       "Next Prayer (Layout 3)": "اگلی نماز (خاکہ 3)",
       "Extra Times (Layout 3)": "اضافی اوقات (خاکہ 3)",
       "Next Prayer (Layout 4)": "اگلی نماز (خاکہ 4)",
-      "Extra Times (Layout 4)": "اضافی اوقات (خاکہ 4)"
+      "Extra Times (Layout 4)": "اضافی اوقات (خاکہ 4)",
+      "Next Prayer (Layout 5)": "اگلی نماز (خاکہ 5)",
+      "Next prayer time with a countdown.": "اگلی نماز کا وقت گنتی کے ساتھ۔",
+      "Extra Times (Layout 5)": "اضافی اوقات (خاکہ 5)",
+      "Next extra time with a countdown.": "اگلا اضافی وقت گنتی کے ساتھ۔"
     }
   },
   "fa": {
@@ -357,7 +413,11 @@
       "Next Prayer (Layout 3)": "نماز بعدی (چیدمان ۳)",
       "Extra Times (Layout 3)": "اوقات اضافه (چیدمان ۳)",
       "Next Prayer (Layout 4)": "نماز بعدی (چیدمان ۴)",
-      "Extra Times (Layout 4)": "اوقات اضافه (چیدمان ۴)"
+      "Extra Times (Layout 4)": "اوقات اضافه (چیدمان ۴)",
+      "Next Prayer (Layout 5)": "نماز بعدی (چیدمان ۵)",
+      "Next prayer time with a countdown.": "زمان نماز بعدی با شمارش معکوس.",
+      "Extra Times (Layout 5)": "اوقات اضافه (چیدمان ۵)",
+      "Next extra time with a countdown.": "زمان اضافه بعدی با شمارش معکوس."
     }
   },
   "bn": {
@@ -381,7 +441,11 @@
       "Next Prayer (Layout 3)": "পরবর্তী নামাজ (বিন্যাস ৩)",
       "Extra Times (Layout 3)": "অতিরিক্ত সময় (বিন্যাস ৩)",
       "Next Prayer (Layout 4)": "পরবর্তী নামাজ (বিন্যাস ৪)",
-      "Extra Times (Layout 4)": "অতিরিক্ত সময় (বিন্যাস ৪)"
+      "Extra Times (Layout 4)": "অতিরিক্ত সময় (বিন্যাস ৪)",
+      "Next Prayer (Layout 5)": "পরবর্তী নামাজ (বিন্যাস ৫)",
+      "Next prayer time with a countdown.": "গণনাসহ পরবর্তী নামাজের সময়।",
+      "Extra Times (Layout 5)": "অতিরিক্ত সময় (বিন্যাস ৫)",
+      "Next extra time with a countdown.": "গণনাসহ পরবর্তী অতিরিক্ত সময়।"
     }
   },
   "ru": {
@@ -405,7 +469,11 @@
       "Next Prayer (Layout 3)": "Следующий намаз (Макет 3)",
       "Extra Times (Layout 3)": "Дополнительные времена (Макет 3)",
       "Next Prayer (Layout 4)": "Следующий намаз (Макет 4)",
-      "Extra Times (Layout 4)": "Дополнительные времена (Макет 4)"
+      "Extra Times (Layout 4)": "Дополнительные времена (Макет 4)",
+      "Next Prayer (Layout 5)": "Следующий намаз (Макет 5)",
+      "Next prayer time with a countdown.": "Время следующего намаза с обратным отсчётом.",
+      "Extra Times (Layout 5)": "Дополнительные времена (Макет 5)",
+      "Next extra time with a countdown.": "Время следующего дополнительного времени с обратным отсчётом."
     }
   },
   "az": {
@@ -429,7 +497,11 @@
       "Next Prayer (Layout 3)": "Növbəti namaz (Quruluş 3)",
       "Extra Times (Layout 3)": "Əlavə vaxtlar (Quruluş 3)",
       "Next Prayer (Layout 4)": "Növbəti namaz (Quruluş 4)",
-      "Extra Times (Layout 4)": "Əlavə vaxtlar (Quruluş 4)"
+      "Extra Times (Layout 4)": "Əlavə vaxtlar (Quruluş 4)",
+      "Next Prayer (Layout 5)": "Növbəti namaz (Quruluş 5)",
+      "Next prayer time with a countdown.": "Geri sayımla növbəti namazın vaxtı.",
+      "Extra Times (Layout 5)": "Əlavə vaxtlar (Quruluş 5)",
+      "Next extra time with a countdown.": "Geri sayımla növbəti əlavə vaxt."
     }
   },
   "de": {
@@ -453,7 +525,11 @@
       "Next Prayer (Layout 3)": "Nächstes Gebet (Layout 3)",
       "Extra Times (Layout 3)": "Zusatzzeiten (Layout 3)",
       "Next Prayer (Layout 4)": "Nächstes Gebet (Layout 4)",
-      "Extra Times (Layout 4)": "Zusatzzeiten (Layout 4)"
+      "Extra Times (Layout 4)": "Zusatzzeiten (Layout 4)",
+      "Next Prayer (Layout 5)": "Nächstes Gebet (Layout 5)",
+      "Next prayer time with a countdown.": "Zeit des nächsten Gebets mit Countdown.",
+      "Extra Times (Layout 5)": "Zusatzzeiten (Layout 5)",
+      "Next extra time with a countdown.": "Nächste Zusatzzeit mit Countdown."
     }
   },
   "sq": {
@@ -477,7 +553,11 @@
       "Next Prayer (Layout 3)": "Namazi i ardhshëm (Skema 3)",
       "Extra Times (Layout 3)": "Kohët shtesë (Skema 3)",
       "Next Prayer (Layout 4)": "Namazi i ardhshëm (Skema 4)",
-      "Extra Times (Layout 4)": "Kohët shtesë (Skema 4)"
+      "Extra Times (Layout 4)": "Kohët shtesë (Skema 4)",
+      "Next Prayer (Layout 5)": "Namazi i ardhshëm (Skema 5)",
+      "Next prayer time with a countdown.": "Koha e namazit të ardhshëm me numërim mbrapsht.",
+      "Extra Times (Layout 5)": "Kohët shtesë (Skema 5)",
+      "Next extra time with a countdown.": "Koha shtesë e ardhshme me numërim mbrapsht."
     }
   },
   "bs": {
@@ -501,7 +581,11 @@
       "Next Prayer (Layout 3)": "Sljedeći namaz (Raspored 3)",
       "Extra Times (Layout 3)": "Dodatna vremena (Raspored 3)",
       "Next Prayer (Layout 4)": "Sljedeći namaz (Raspored 4)",
-      "Extra Times (Layout 4)": "Dodatna vremena (Raspored 4)"
+      "Extra Times (Layout 4)": "Dodatna vremena (Raspored 4)",
+      "Next Prayer (Layout 5)": "Sljedeći namaz (Raspored 5)",
+      "Next prayer time with a countdown.": "Vrijeme sljedećeg namaza s odbrojavanjem.",
+      "Extra Times (Layout 5)": "Dodatna vremena (Raspored 5)",
+      "Next extra time with a countdown.": "Sljedeće dodatno vrijeme s odbrojavanjem."
     }
   },
   "ps": {
@@ -525,7 +609,11 @@
       "Next Prayer (Layout 3)": "بل لمونځ (بڼه ۳)",
       "Extra Times (Layout 3)": "اضافي وختونه (بڼه ۳)",
       "Next Prayer (Layout 4)": "بل لمونځ (بڼه ۴)",
-      "Extra Times (Layout 4)": "اضافي وختونه (بڼه ۴)"
+      "Extra Times (Layout 4)": "اضافي وختونه (بڼه ۴)",
+      "Next Prayer (Layout 5)": "بل لمونځ (بڼه ۵)",
+      "Next prayer time with a countdown.": "د بل لمونځ وخت په شمېرنې.",
+      "Extra Times (Layout 5)": "اضافي وختونه (بڼه ۵)",
+      "Next extra time with a countdown.": "بل اضافی وخت په شمېرنې."
     }
   },
   "ta": {
@@ -549,7 +637,11 @@
       "Next Prayer (Layout 3)": "அடுத்த தொழுகை (அமைப்பு 3)",
       "Extra Times (Layout 3)": "கூடுதல் நேரங்கள் (அமைப்பு 3)",
       "Next Prayer (Layout 4)": "அடுத்த தொழுகை (அமைப்பு 4)",
-      "Extra Times (Layout 4)": "கூடுதல் நேரங்கள் (அமைப்பு 4)"
+      "Extra Times (Layout 4)": "கூடுதல் நேரங்கள் (அமைப்பு 4)",
+      "Next Prayer (Layout 5)": "அடுத்த தொழுகை (அமைப்பு 5)",
+      "Next prayer time with a countdown.": "கவுண்டவுனுடன் அடுத்த தொழுகை நேரம்.",
+      "Extra Times (Layout 5)": "கூடுதல் நேரங்கள் (அமைப்பு 5)",
+      "Next extra time with a countdown.": "கவுண்டவுனுடன் அடுத்த கூடுதல் நேரம்."
     }
   },
   "ml": {
@@ -573,7 +665,11 @@
       "Next Prayer (Layout 3)": "അടുത്ത നമസ്കാരം (ലേഔട്ട് 3)",
       "Extra Times (Layout 3)": "അധിക സമയങ്ങൾ (ലേഔട്ട് 3)",
       "Next Prayer (Layout 4)": "അടുത്ത നമസ്കാരം (ലേഔട്ട് 4)",
-      "Extra Times (Layout 4)": "അധിക സമയങ്ങൾ (ലേഔട്ട് 4)"
+      "Extra Times (Layout 4)": "അധിക സമയങ്ങൾ (ലേഔട്ട് 4)",
+      "Next Prayer (Layout 5)": "അടുത്ത നമസ്കാരം (ലേഔട്ട് 5)",
+      "Next prayer time with a countdown.": "കൗണ്ട്ഡൗണിനൊപ്പം അടുത്ത നമസ്കാര സമയം.",
+      "Extra Times (Layout 5)": "അധിക സമയങ്ങൾ (ലേഔട്ട് 5)",
+      "Next extra time with a countdown.": "കൗണ്ട്ഡൗണിനൊപ്പം അടുത്ത അധിക സമയം."
     }
   },
   "zh-Hans": {
@@ -597,7 +693,11 @@
       "Next Prayer (Layout 3)": "下一次礼拜（布局 3）",
       "Extra Times (Layout 3)": "额外时间（布局 3）",
       "Next Prayer (Layout 4)": "下一次礼拜（布局 4）",
-      "Extra Times (Layout 4)": "额外时间（布局 4）"
+      "Extra Times (Layout 4)": "额外时间（布局 4）",
+      "Next Prayer (Layout 5)": "下一次礼拜（布局 5）",
+      "Next prayer time with a countdown.": "带倒计时的下一次礼拜时间。",
+      "Extra Times (Layout 5)": "额外时间（布局 5）",
+      "Next extra time with a countdown.": "带倒计时的下一个额外时间。"
     }
   },
   "es": {
@@ -621,7 +721,11 @@
       "Next Prayer (Layout 3)": "Próxima oración (diseño 3)",
       "Extra Times (Layout 3)": "Horas adicionales (diseño 3)",
       "Next Prayer (Layout 4)": "Próxima oración (diseño 4)",
-      "Extra Times (Layout 4)": "Horas adicionales (diseño 4)"
+      "Extra Times (Layout 4)": "Horas adicionales (diseño 4)",
+      "Next Prayer (Layout 5)": "Próxima oración (diseño 5)",
+      "Next prayer time with a countdown.": "Hora de la próxima oración con cuenta atrás.",
+      "Extra Times (Layout 5)": "Horas adicionales (diseño 5)",
+      "Next extra time with a countdown.": "Próxima hora adicional con cuenta atrás."
     }
   },
   "nl": {
@@ -645,7 +749,11 @@
       "Next Prayer (Layout 3)": "Volgend gebed (indeling 3)",
       "Extra Times (Layout 3)": "Extra tijden (indeling 3)",
       "Next Prayer (Layout 4)": "Volgend gebed (indeling 4)",
-      "Extra Times (Layout 4)": "Extra tijden (indeling 4)"
+      "Extra Times (Layout 4)": "Extra tijden (indeling 4)",
+      "Next Prayer (Layout 5)": "Volgend gebed (indeling 5)",
+      "Next prayer time with a countdown.": "Tijd van het volgende gebed met aftelling.",
+      "Extra Times (Layout 5)": "Extra tijden (indeling 5)",
+      "Next extra time with a countdown.": "Volgende extra tijd met aftelling."
     }
   },
   "kk": {
@@ -669,7 +777,11 @@
       "Next Prayer (Layout 3)": "Келесі намаз (3-өрнек)",
       "Extra Times (Layout 3)": "Қосымша уақыттар (3-өрнек)",
       "Next Prayer (Layout 4)": "Келесі намаз (4-өрнек)",
-      "Extra Times (Layout 4)": "Қосымша уақыттар (4-өрнек)"
+      "Extra Times (Layout 4)": "Қосымша уақыттар (4-өрнек)",
+      "Next Prayer (Layout 5)": "Келесі намаз (5-өрнек)",
+      "Next prayer time with a countdown.": "Кері санақпен келесі намаз уақыты.",
+      "Extra Times (Layout 5)": "Қосымша уақыттар (5-өрнек)",
+      "Next extra time with a countdown.": "Кері санақпен келесі қосымша уақыт."
     }
   },
   "ky": {
@@ -693,7 +805,11 @@
       "Next Prayer (Layout 3)": "Кийинки намаз (3-чийме)",
       "Extra Times (Layout 3)": "Кошумча убакыттар (3-чийме)",
       "Next Prayer (Layout 4)": "Кийинки намаз (4-чийме)",
-      "Extra Times (Layout 4)": "Кошумча убакыттар (4-чийме)"
+      "Extra Times (Layout 4)": "Кошумча убакыттар (4-чийме)",
+      "Next Prayer (Layout 5)": "Кийинки намаз (5-чийме)",
+      "Next prayer time with a countdown.": "Кери эсептөө менен кийинки намаздын убагы.",
+      "Extra Times (Layout 5)": "Кошумча убакыттар (5-чийме)",
+      "Next extra time with a countdown.": "Кери эсептөө менен кийинки кошумча убакыт."
     }
   },
   "tg": {
@@ -717,7 +833,11 @@
       "Next Prayer (Layout 3)": "Намози навбатӣ (тарҳи 3)",
       "Extra Times (Layout 3)": "Вақтҳои иловагӣ (тарҳи 3)",
       "Next Prayer (Layout 4)": "Намози навбатӣ (тарҳи 4)",
-      "Extra Times (Layout 4)": "Вақтҳои иловагӣ (тарҳи 4)"
+      "Extra Times (Layout 4)": "Вақтҳои иловагӣ (тарҳи 4)",
+      "Next Prayer (Layout 5)": "Намози навбатӣ (тарҳи 5)",
+      "Next prayer time with a countdown.": "Вақти намози навбатӣ бо ҳисоби баръакс.",
+      "Extra Times (Layout 5)": "Вақтҳои иловагӣ (тарҳи 5)",
+      "Next extra time with a countdown.": "Вақти иловагии навбатӣ бо ҳисоби баръакс."
     }
   },
   "tk": {
@@ -741,7 +861,11 @@
       "Next Prayer (Layout 3)": "Indiki namaz (3-nji düzüliş)",
       "Extra Times (Layout 3)": "Goşmaça wagtlary (3-nji düzüliş)",
       "Next Prayer (Layout 4)": "Indiki namaz (4-nji düzüliş)",
-      "Extra Times (Layout 4)": "Goşmaça wagtlary (4-nji düzüliş)"
+      "Extra Times (Layout 4)": "Goşmaça wagtlary (4-nji düzüliş)",
+      "Next Prayer (Layout 5)": "Indiki namaz (5-nji düzüliş)",
+      "Next prayer time with a countdown.": "Yzyna hasaplama bilen indiki namazyň wagty.",
+      "Extra Times (Layout 5)": "Goşmaça wagtlary (5-nji düzüliş)",
+      "Next extra time with a countdown.": "Yzyna hasaplama bilen indiki goşmaça wagt."
     }
   },
   "wo": {
@@ -765,7 +889,11 @@
       "Next Prayer (Layout 3)": "Julli bi ñëw (tëraan 3)",
       "Extra Times (Layout 3)": "Waxtu yu yokk (tëraan 3)",
       "Next Prayer (Layout 4)": "Julli bi ñëw (tëraan 4)",
-      "Extra Times (Layout 4)": "Waxtu yu yokk (tëraan 4)"
+      "Extra Times (Layout 4)": "Waxtu yu yokk (tëraan 4)",
+      "Next Prayer (Layout 5)": "Julli bi ñëw (tëraan 5)",
+      "Next prayer time with a countdown.": "Waxtu julli bi ñëw ak kont.",
+      "Extra Times (Layout 5)": "Waxtu yu yokk (tëraan 5)",
+      "Next extra time with a countdown.": "Waxtu bu yokk bi ñëw ak kont."
     }
   },
   "mr": {
@@ -789,7 +917,11 @@
       "Next Prayer (Layout 3)": "पुढील नमाज (रचना 3)",
       "Extra Times (Layout 3)": "अतिरिक्त वेळा (रचना 3)",
       "Next Prayer (Layout 4)": "पुढील नमाज (रचना 4)",
-      "Extra Times (Layout 4)": "अतिरिक्त वेळा (रचना 4)"
+      "Extra Times (Layout 4)": "अतिरिक्त वेळा (रचना 4)",
+      "Next Prayer (Layout 5)": "पुढील नमाज (रचना 5)",
+      "Next prayer time with a countdown.": "उलट्या गणतीसह पुढील नमाजची वेळ.",
+      "Extra Times (Layout 5)": "अतिरिक्त वेळा (रचना 5)",
+      "Next extra time with a countdown.": "उलट्या गणतीसह पुढील अतिरिक्त वेळ."
     }
   },
   "om": {
@@ -813,7 +945,11 @@
       "Next Prayer (Layout 3)": "Salaata Itti Aanu (Bifa 3)",
       "Extra Times (Layout 3)": "Yeroo Dabalataa (Bifa 3)",
       "Next Prayer (Layout 4)": "Salaata Itti Aanu (Bifa 4)",
-      "Extra Times (Layout 4)": "Yeroo Dabalataa (Bifa 4)"
+      "Extra Times (Layout 4)": "Yeroo Dabalataa (Bifa 4)",
+      "Next Prayer (Layout 5)": "Salaata Itti Aanu (Bifa 5)",
+      "Next prayer time with a countdown.": "Yeroo salaata itti aanuutti lakkoofsaan.",
+      "Extra Times (Layout 5)": "Yeroo Dabalataa (Bifa 5)",
+      "Next extra time with a countdown.": "Yeroo dabalataa itti aanuutti lakkoofsaan."
     }
   },
   "bm": {
@@ -837,7 +973,11 @@
       "Next Prayer (Layout 3)": "Seli Nata (Labɛn 3)",
       "Extra Times (Layout 3)": "Waati Dabalataw (Labɛn 3)",
       "Next Prayer (Layout 4)": "Seli Nata (Labɛn 4)",
-      "Extra Times (Layout 4)": "Waati Dabalataw (Labɛn 4)"
+      "Extra Times (Layout 4)": "Waati Dabalataw (Labɛn 4)",
+      "Next Prayer (Layout 5)": "Seli Nata (Labɛn 5)",
+      "Next prayer time with a countdown.": "Seli waati nata ni waati kalanni.",
+      "Extra Times (Layout 5)": "Waati Dabalataw (Labɛn 5)",
+      "Next extra time with a countdown.": "Waati dabalata nata ni waati kalanni."
     }
   },
   "tl": {
@@ -861,7 +1001,11 @@
       "Next Prayer (Layout 3)": "Susunod na Pagdarasal (Layout 3)",
       "Extra Times (Layout 3)": "Karagdagang Oras (Layout 3)",
       "Next Prayer (Layout 4)": "Susunod na Pagdarasal (Layout 4)",
-      "Extra Times (Layout 4)": "Karagdagang Oras (Layout 4)"
+      "Extra Times (Layout 4)": "Karagdagang Oras (Layout 4)",
+      "Next Prayer (Layout 5)": "Susunod na Pagdarasal (Layout 5)",
+      "Next prayer time with a countdown.": "Oras ng susunod na pagdarasal na may countdown.",
+      "Extra Times (Layout 5)": "Karagdagang Oras (Layout 5)",
+      "Next extra time with a countdown.": "Susunod na karagdagang oras na may countdown."
     }
   },
   "ff": {
@@ -885,7 +1029,11 @@
       "Next Prayer (Layout 3)": "Julde Aroori (Mbaadi 3)",
       "Extra Times (Layout 3)": "Waktuuji Ɓeydaani (Mbaadi 3)",
       "Next Prayer (Layout 4)": "Julde Aroori (Mbaadi 4)",
-      "Extra Times (Layout 4)": "Waktuuji Ɓeydaani (Mbaadi 4)"
+      "Extra Times (Layout 4)": "Waktuuji Ɓeydaani (Mbaadi 4)",
+      "Next Prayer (Layout 5)": "Julde Aroori (Mbaadi 5)",
+      "Next prayer time with a countdown.": "Waktu julde aroore e limto.",
+      "Extra Times (Layout 5)": "Waktuuji Ɓeydaani (Mbaadi 5)",
+      "Next extra time with a countdown.": "Waktu ɓeydaangal aroowal e limto."
     }
   },
   "te": {
@@ -909,7 +1057,11 @@
       "Next Prayer (Layout 3)": "తదుపరి ప్రార్థన (లేఅవుట్ 3)",
       "Extra Times (Layout 3)": "అదనపు సమయాలు (లేఅవుట్ 3)",
       "Next Prayer (Layout 4)": "తదుపరి ప్రార్థన (లేఅవుట్ 4)",
-      "Extra Times (Layout 4)": "అదనపు సమయాలు (లేఅవుట్ 4)"
+      "Extra Times (Layout 4)": "అదనపు సమయాలు (లేఅవుట్ 4)",
+      "Next Prayer (Layout 5)": "తదుపరి ప్రార్థన (లేఅవుట్ 5)",
+      "Next prayer time with a countdown.": "కౌంట్‌డౌన్‌తో తదుపరి ప్రార్థన సమయం.",
+      "Extra Times (Layout 5)": "అదనపు సమయాలు (లేఅవుట్ 5)",
+      "Next extra time with a countdown.": "కౌంట్‌డౌన్‌తో తదుపరి అదనపు సమయం."
     }
   },
   "gu": {
@@ -933,7 +1085,11 @@
       "Next Prayer (Layout 3)": "આગલી નમાજ (લેઆઉટ 3)",
       "Extra Times (Layout 3)": "વધારાના સમય (લેઆઉટ 3)",
       "Next Prayer (Layout 4)": "આગલી નમાજ (લેઆઉટ 4)",
-      "Extra Times (Layout 4)": "વધારાના સમય (લેઆઉટ 4)"
+      "Extra Times (Layout 4)": "વધારાના સમય (લેઆઉટ 4)",
+      "Next Prayer (Layout 5)": "આગલી નમાજ (લેઆઉટ 5)",
+      "Next prayer time with a countdown.": "કાઉન્ટડાઉન સાથે આગલી નમાજનો સમય.",
+      "Extra Times (Layout 5)": "વધારાના સમય (લેઆઉટ 5)",
+      "Next extra time with a countdown.": "કાઉન્ટડાઉન સાથે આગલો વધારાનો સમય."
     }
   },
   "kn": {
@@ -957,7 +1113,11 @@
       "Next Prayer (Layout 3)": "ಮುಂದಿನ ನಮಾಜ್ (ಲೇಔಟ್ 3)",
       "Extra Times (Layout 3)": "ಹೆಚ್ಚುವರಿ ಸಮಯಗಳು (ಲೇಔಟ್ 3)",
       "Next Prayer (Layout 4)": "ಮುಂದಿನ ನಮಾಜ್ (ಲೇಔಟ್ 4)",
-      "Extra Times (Layout 4)": "ಹೆಚ್ಚುವರಿ ಸಮಯಗಳು (ಲೇಔಟ್ 4)"
+      "Extra Times (Layout 4)": "ಹೆಚ್ಚುವರಿ ಸಮಯಗಳು (ಲೇಔಟ್ 4)",
+      "Next Prayer (Layout 5)": "ಮುಂದಿನ ನಮಾಜ್ (ಲೇಔಟ್ 5)",
+      "Next prayer time with a countdown.": "ಕೌಂಟ್‌ಡೌನ್‌ನೊಂದಿಗೆ ಮುಂದಿನ ನಮಾಜ್ ಸಮಯ.",
+      "Extra Times (Layout 5)": "ಹೆಚ್ಚುವರಿ ಸಮಯಗಳು (ಲೇಔಟ್ 5)",
+      "Next extra time with a countdown.": "ಕೌಂಟ್‌ಡೌನ್‌ನೊಂದಿಗೆ ಮುಂದಿನ ಹೆಚ್ಚುವರಿ ಸಮಯ."
     }
   },
   "am": {
@@ -981,7 +1141,11 @@
       "Next Prayer (Layout 3)": "ቀጣይ ሶላት (አቀራረብ 3)",
       "Extra Times (Layout 3)": "ተጨማሪ ጊዜዎች (አቀራረብ 3)",
       "Next Prayer (Layout 4)": "ቀጣይ ሶላት (አቀራረብ 4)",
-      "Extra Times (Layout 4)": "ተጨማሪ ጊዜዎች (አቀራረብ 4)"
+      "Extra Times (Layout 4)": "ተጨማሪ ጊዜዎች (አቀራረብ 4)",
+      "Next Prayer (Layout 5)": "ቀጣይ ሶላት (አቀራረብ 5)",
+      "Next prayer time with a countdown.": "ከቆጣሪ ጋር የቀጣዩ ሶላት ጊዜ።",
+      "Extra Times (Layout 5)": "ተጨማሪ ጊዜዎች (አቀራረብ 5)",
+      "Next extra time with a countdown.": "ከቆጣሪ ጋር ቀጣይ ተጨማሪ ጊዜ።"
     }
   },
   "pa-Arab": {
@@ -1005,7 +1169,11 @@
       "Next Prayer (Layout 3)": "اگلا نماز (بݨاوت 3)",
       "Extra Times (Layout 3)": "ودھیرے ویلے (بݨاوت 3)",
       "Next Prayer (Layout 4)": "اگلا نماز (بݨاوت 4)",
-      "Extra Times (Layout 4)": "ودھیرے ویلے (بݨاوت 4)"
+      "Extra Times (Layout 4)": "ودھیرے ویلے (بݨاوت 4)",
+      "Next Prayer (Layout 5)": "اگلا نماز (بݨاوت 5)",
+      "Next prayer time with a countdown.": "اگلے نماز دا ویلا گنتی نال۔",
+      "Extra Times (Layout 5)": "ودھیرے ویلے (بݨاوت 5)",
+      "Next extra time with a countdown.": "اگلے ودھیرے ویلے دی گنتی۔"
     }
   },
   "sd": {
@@ -1029,7 +1197,11 @@
       "Next Prayer (Layout 3)": "اڳيون نماز (ڊزائين 3)",
       "Extra Times (Layout 3)": "وڌيڪ وقت (ڊزائين 3)",
       "Next Prayer (Layout 4)": "اڳيون نماز (ڊزائين 4)",
-      "Extra Times (Layout 4)": "وڌيڪ وقت (ڊزائين 4)"
+      "Extra Times (Layout 4)": "وڌيڪ وقت (ڊزائين 4)",
+      "Next Prayer (Layout 5)": "اڳيون نماز (ڊزائين 5)",
+      "Next prayer time with a countdown.": "اڳئين نماز جو وقت ڳڻپ سان.",
+      "Extra Times (Layout 5)": "وڌيڪ وقت (ڊزائين 5)",
+      "Next extra time with a countdown.": "اڳئين وڌيڪ وقت جي ڳڻپ."
     }
   },
   "ug": {
@@ -1053,7 +1225,11 @@
       "Next Prayer (Layout 3)": "كېيىنكى ناماز (كۆرۈنۈش 3)",
       "Extra Times (Layout 3)": "قوشۇمچە ۋاقىتلار (كۆرۈنۈش 3)",
       "Next Prayer (Layout 4)": "كېيىنكى ناماز (كۆرۈنۈش 4)",
-      "Extra Times (Layout 4)": "قوشۇمچە ۋاقىتلار (كۆرۈنۈش 4)"
+      "Extra Times (Layout 4)": "قوشۇمچە ۋاقىتلار (كۆرۈنۈش 4)",
+      "Next Prayer (Layout 5)": "كېيىنكى ناماز (كۆرۈنۈش 5)",
+      "Next prayer time with a countdown.": "كېيىنكى ناماز ۋاقتى ساناق بىلەن.",
+      "Extra Times (Layout 5)": "قوشۇمچە ۋاقىتلار (كۆرۈنۈش 5)",
+      "Next extra time with a countdown.": "كېيىنكى قوشۇمچە ۋاقىت ساناق بىلەن."
     }
   },
   "ckb": {
@@ -1077,7 +1253,11 @@
       "Next Prayer (Layout 3)": "نوێژی داهاتوو (شێواز 3)",
       "Extra Times (Layout 3)": "کاتە زیادەکان (شێواز 3)",
       "Next Prayer (Layout 4)": "نوێژی داهاتوو (شێواز 4)",
-      "Extra Times (Layout 4)": "کاتە زیادەکان (شێواز 4)"
+      "Extra Times (Layout 4)": "کاتە زیادەکان (شێواز 4)",
+      "Next Prayer (Layout 5)": "نوێژی داهاتوو (شێواز 5)",
+      "Next prayer time with a countdown.": "کاتی نوێژی داهاتوو لەگەڵ ژماردنەوە.",
+      "Extra Times (Layout 5)": "کاتە زیادەکان (شێواز 5)",
+      "Next extra time with a countdown.": "کاتی زیادەی داهاتوو لەگەڵ ژماردنەوە."
     }
   },
   "ku": {
@@ -1101,7 +1281,11 @@
       "Next Prayer (Layout 3)": "Nimêja bê (Sazgeh 3)",
       "Extra Times (Layout 3)": "Demên zêde (Sazgeh 3)",
       "Next Prayer (Layout 4)": "Nimêja bê (Sazgeh 4)",
-      "Extra Times (Layout 4)": "Demên zêde (Sazgeh 4)"
+      "Extra Times (Layout 4)": "Demên zêde (Sazgeh 4)",
+      "Next Prayer (Layout 5)": "Nimêja bê (Sazgeh 5)",
+      "Next prayer time with a countdown.": "Dema nimêja bê bi hejmartinê.",
+      "Extra Times (Layout 5)": "Demên zêde (Sazgeh 5)",
+      "Next extra time with a countdown.": "Dema zêde ya bê bi hejmartinê."
     }
   },
   "yo": {
@@ -1125,7 +1309,11 @@
       "Next Prayer (Layout 3)": "Ìrun tó ń bọ̀ (Ìṣètò 3)",
       "Extra Times (Layout 3)": "Àkókò àfikún (Ìṣètò 3)",
       "Next Prayer (Layout 4)": "Ìrun tó ń bọ̀ (Ìṣètò 4)",
-      "Extra Times (Layout 4)": "Àkókò àfikún (Ìṣètò 4)"
+      "Extra Times (Layout 4)": "Àkókò àfikún (Ìṣètò 4)",
+      "Next Prayer (Layout 5)": "Ìrun tó ń bọ̀ (Ìṣètò 5)",
+      "Next prayer time with a countdown.": "Àkókò ìrun tó ń bọ̀ pẹ̀lú ìkàsí.",
+      "Extra Times (Layout 5)": "Àkókò àfikún (Ìṣètò 5)",
+      "Next extra time with a countdown.": "Àkókò àfikún tó ń bọ̀ pẹ̀lú ìkàsí."
     }
   },
   "jv": {
@@ -1149,7 +1337,11 @@
       "Next Prayer (Layout 3)": "Sholat sabanjuré (Tata 3)",
       "Extra Times (Layout 3)": "Wektu tambahan (Tata 3)",
       "Next Prayer (Layout 4)": "Sholat sabanjuré (Tata 4)",
-      "Extra Times (Layout 4)": "Wektu tambahan (Tata 4)"
+      "Extra Times (Layout 4)": "Wektu tambahan (Tata 4)",
+      "Next Prayer (Layout 5)": "Sholat sabanjuré (Tata 5)",
+      "Next prayer time with a countdown.": "Wektu sholat sabanjuré kanthi cacah mudhun.",
+      "Extra Times (Layout 5)": "Wektu tambahan (Tata 5)",
+      "Next extra time with a countdown.": "Wektu tambahan sabanjuré kanthi cacah mudhun."
     }
   },
   "su": {
@@ -1173,7 +1365,11 @@
       "Next Prayer (Layout 3)": "Solat salajengna (Tata 3)",
       "Extra Times (Layout 3)": "Waktu tambahan (Tata 3)",
       "Next Prayer (Layout 4)": "Solat salajengna (Tata 4)",
-      "Extra Times (Layout 4)": "Waktu tambahan (Tata 4)"
+      "Extra Times (Layout 4)": "Waktu tambahan (Tata 4)",
+      "Next Prayer (Layout 5)": "Solat salajengna (Tata 5)",
+      "Next prayer time with a countdown.": "Waktu solat salajengna kalawan itungan mundur.",
+      "Extra Times (Layout 5)": "Waktu tambahan (Tata 5)",
+      "Next extra time with a countdown.": "Waktu tambahan salajengna kalawan itungan mundur."
     }
   },
   "my": {
@@ -1197,7 +1393,11 @@
       "Next Prayer (Layout 3)": "နောက် နမာဇ် (ပုံစံ 3)",
       "Extra Times (Layout 3)": "အပိုအချိန်များ (ပုံစံ 3)",
       "Next Prayer (Layout 4)": "နောက် နမာဇ် (ပုံစံ 4)",
-      "Extra Times (Layout 4)": "အပိုအချိန်များ (ပုံစံ 4)"
+      "Extra Times (Layout 4)": "အပိုအချိန်များ (ပုံစံ 4)",
+      "Next Prayer (Layout 5)": "နောက် နမာဇ် (ပုံစံ 5)",
+      "Next prayer time with a countdown.": "ပြန်ရေတွက်ချိန်နှင့်တကွ နောက် နမာဇ်အချိန်။",
+      "Extra Times (Layout 5)": "အပိုအချိန်များ (ပုံစံ 5)",
+      "Next extra time with a countdown.": "ပြန်ရေတွက်ချိန်နှင့်တကွ နောက် အပိုအချိန်။"
     }
   },
   "tt": {
@@ -1221,7 +1421,11 @@
       "Next Prayer (Layout 3)": "Киләсе намаз (Кыяфәт 3)",
       "Extra Times (Layout 3)": "Өстәмә вакытлар (Кыяфәт 3)",
       "Next Prayer (Layout 4)": "Киләсе намаз (Кыяфәт 4)",
-      "Extra Times (Layout 4)": "Өстәмә вакытлар (Кыяфәт 4)"
+      "Extra Times (Layout 4)": "Өстәмә вакытлар (Кыяфәт 4)",
+      "Next Prayer (Layout 5)": "Киләсе намаз (Кыяфәт 5)",
+      "Next prayer time with a countdown.": "Санагыч белән киләсе намаз вакыты.",
+      "Extra Times (Layout 5)": "Өстәмә вакытлар (Кыяфәт 5)",
+      "Next extra time with a countdown.": "Санагыч белән киләсе өстәмә вакыт."
     }
   },
   "uk": {
@@ -1245,7 +1449,11 @@
       "Next Prayer (Layout 3)": "Наступний намаз (Вигляд 3)",
       "Extra Times (Layout 3)": "Додаткові часи (Вигляд 3)",
       "Next Prayer (Layout 4)": "Наступний намаз (Вигляд 4)",
-      "Extra Times (Layout 4)": "Додаткові часи (Вигляд 4)"
+      "Extra Times (Layout 4)": "Додаткові часи (Вигляд 4)",
+      "Next Prayer (Layout 5)": "Наступний намаз (Вигляд 5)",
+      "Next prayer time with a countdown.": "Час наступного намазу з відліком.",
+      "Extra Times (Layout 5)": "Додаткові часи (Вигляд 5)",
+      "Next extra time with a countdown.": "Наступний додатковий час з відліком."
     }
   },
   "qu": {
@@ -1269,7 +1477,11 @@
       "Next Prayer (Layout 3)": "Qatiq mañay (Rantiy 3)",
       "Extra Times (Layout 3)": "Yapa pachakuna (Rantiy 3)",
       "Next Prayer (Layout 4)": "Qatiq mañay (Rantiy 4)",
-      "Extra Times (Layout 4)": "Yapa pachakuna (Rantiy 4)"
+      "Extra Times (Layout 4)": "Yapa pachakuna (Rantiy 4)",
+      "Next Prayer (Layout 5)": "Qatiq mañay (Rantiy 5)",
+      "Next prayer time with a countdown.": "Kutichiywan qatiq mañaypa pachan.",
+      "Extra Times (Layout 5)": "Yapa pachakuna (Rantiy 5)",
+      "Next extra time with a countdown.": "Kutichiywan qatiq yapa pacha."
     }
   },
   "min": {
@@ -1293,7 +1505,11 @@
       "Next Prayer (Layout 3)": "Sumbayang barikuiknyo (Bantuak 3)",
       "Extra Times (Layout 3)": "Wakatu tambahan (Bantuak 3)",
       "Next Prayer (Layout 4)": "Sumbayang barikuiknyo (Bantuak 4)",
-      "Extra Times (Layout 4)": "Wakatu tambahan (Bantuak 4)"
+      "Extra Times (Layout 4)": "Wakatu tambahan (Bantuak 4)",
+      "Next Prayer (Layout 5)": "Sumbayang barikuiknyo (Bantuak 5)",
+      "Next prayer time with a countdown.": "Wakatu sumbayang barikuiknyo jo baliwaiknyo.",
+      "Extra Times (Layout 5)": "Wakatu tambahan (Bantuak 5)",
+      "Next extra time with a countdown.": "Wakatu tambahan barikuiknyo jo baliwaiknyo."
     }
   },
   "mad": {
@@ -1317,7 +1533,11 @@
       "Next Prayer (Layout 3)": "Sembahyang saterrossa (Bentuk 3)",
       "Extra Times (Layout 3)": "Bakto tambâ’ân (Bentuk 3)",
       "Next Prayer (Layout 4)": "Sembahyang saterrossa (Bentuk 4)",
-      "Extra Times (Layout 4)": "Bakto tambâ’ân (Bentuk 4)"
+      "Extra Times (Layout 4)": "Bakto tambâ’ân (Bentuk 4)",
+      "Next Prayer (Layout 5)": "Sembahyang saterrossa (Bentuk 5)",
+      "Next prayer time with a countdown.": "Bakto sembahyang saterrossa kalabân pangèbâna.",
+      "Extra Times (Layout 5)": "Bakto tambâ’ân (Bentuk 5)",
+      "Next extra time with a countdown.": "Bakto tambâ’ân saterrossa kalabân pangèbâna."
     }
   },
   "bug": {
@@ -1341,7 +1561,11 @@
       "Next Prayer (Layout 3)": "Sumpajang selaenna (Bentuk 3)",
       "Extra Times (Layout 3)": "Wettu tamba (Bentuk 3)",
       "Next Prayer (Layout 4)": "Sumpajang selaenna (Bentuk 4)",
-      "Extra Times (Layout 4)": "Wettu tamba (Bentuk 4)"
+      "Extra Times (Layout 4)": "Wettu tamba (Bentuk 4)",
+      "Next Prayer (Layout 5)": "Sumpajang selaenna (Bentuk 5)",
+      "Next prayer time with a countdown.": "Wettu sumpajang selaenna ri baro wettu.",
+      "Extra Times (Layout 5)": "Wettu tamba (Bentuk 5)",
+      "Next extra time with a countdown.": "Wettu tamba selaenna ri baro wettu."
     }
   },
   "ja": {
@@ -1365,7 +1589,11 @@
       "Next Prayer (Layout 3)": "次の礼拝（レイアウト 3）",
       "Extra Times (Layout 3)": "追加の時刻（レイアウト 3）",
       "Next Prayer (Layout 4)": "次の礼拝（レイアウト 4）",
-      "Extra Times (Layout 4)": "追加の時刻（レイアウト 4）"
+      "Extra Times (Layout 4)": "追加の時刻（レイアウト 4）",
+      "Next Prayer (Layout 5)": "次の礼拝（レイアウト 5）",
+      "Next prayer time with a countdown.": "カウントダウン付きの次の礼拝時刻。",
+      "Extra Times (Layout 5)": "追加の時刻（レイアウト 5）",
+      "Next extra time with a countdown.": "カウントダウン付きの次の追加時刻。"
     }
   },
   "ko": {
@@ -1389,7 +1617,11 @@
       "Next Prayer (Layout 3)": "다음 예배 (레이아웃 3)",
       "Extra Times (Layout 3)": "추가 시간 (레이아웃 3)",
       "Next Prayer (Layout 4)": "다음 예배 (레이아웃 4)",
-      "Extra Times (Layout 4)": "추가 시간 (레이아웃 4)"
+      "Extra Times (Layout 4)": "추가 시간 (레이아웃 4)",
+      "Next Prayer (Layout 5)": "다음 예배 (레이아웃 5)",
+      "Next prayer time with a countdown.": "카운트다운이 있는 다음 예배 시간입니다.",
+      "Extra Times (Layout 5)": "추가 시간 (레이아웃 5)",
+      "Next extra time with a countdown.": "카운트다운이 있는 다음 추가 시간입니다."
     }
   },
   "it": {
@@ -1413,7 +1645,11 @@
       "Next Prayer (Layout 3)": "Prossima preghiera (Layout 3)",
       "Extra Times (Layout 3)": "Orari extra (Layout 3)",
       "Next Prayer (Layout 4)": "Prossima preghiera (Layout 4)",
-      "Extra Times (Layout 4)": "Orari extra (Layout 4)"
+      "Extra Times (Layout 4)": "Orari extra (Layout 4)",
+      "Next Prayer (Layout 5)": "Prossima preghiera (Layout 5)",
+      "Next prayer time with a countdown.": "Orario della prossima preghiera con conto alla rovescia.",
+      "Extra Times (Layout 5)": "Orari extra (Layout 5)",
+      "Next extra time with a countdown.": "Prossimo orario extra con conto alla rovescia."
     }
   },
   "pl": {
@@ -1437,7 +1673,11 @@
       "Next Prayer (Layout 3)": "Następna modlitwa (Układ 3)",
       "Extra Times (Layout 3)": "Czasy dodatkowe (Układ 3)",
       "Next Prayer (Layout 4)": "Następna modlitwa (Układ 4)",
-      "Extra Times (Layout 4)": "Czasy dodatkowe (Układ 4)"
+      "Extra Times (Layout 4)": "Czasy dodatkowe (Układ 4)",
+      "Next Prayer (Layout 5)": "Następna modlitwa (Układ 5)",
+      "Next prayer time with a countdown.": "Czas następnej modlitwy z odliczaniem.",
+      "Extra Times (Layout 5)": "Czasy dodatkowe (Układ 5)",
+      "Next extra time with a countdown.": "Następny czas dodatkowy z odliczaniem."
     }
   },
   "ro": {
@@ -1461,7 +1701,11 @@
       "Next Prayer (Layout 3)": "Rugăciunea următoare (Aspect 3)",
       "Extra Times (Layout 3)": "Ore suplimentare (Aspect 3)",
       "Next Prayer (Layout 4)": "Rugăciunea următoare (Aspect 4)",
-      "Extra Times (Layout 4)": "Ore suplimentare (Aspect 4)"
+      "Extra Times (Layout 4)": "Ore suplimentare (Aspect 4)",
+      "Next Prayer (Layout 5)": "Rugăciunea următoare (Aspect 5)",
+      "Next prayer time with a countdown.": "Ora următoarei rugăciuni cu numărătoare inversă.",
+      "Extra Times (Layout 5)": "Ore suplimentare (Aspect 5)",
+      "Next extra time with a countdown.": "Următorul moment suplimentar cu numărătoare inversă."
     }
   },
   "ceb": {
@@ -1485,7 +1729,11 @@
       "Next Prayer (Layout 3)": "Sunod nga Pag-ampo (Layout 3)",
       "Extra Times (Layout 3)": "Mga Dugang nga Oras (Layout 3)",
       "Next Prayer (Layout 4)": "Sunod nga Pag-ampo (Layout 4)",
-      "Extra Times (Layout 4)": "Mga Dugang nga Oras (Layout 4)"
+      "Extra Times (Layout 4)": "Mga Dugang nga Oras (Layout 4)",
+      "Next Prayer (Layout 5)": "Sunod nga Pag-ampo (Layout 5)",
+      "Next prayer time with a countdown.": "Oras sa sunod nga pag-ampo uban sa pag-ihap.",
+      "Extra Times (Layout 5)": "Mga Dugang nga Oras (Layout 5)",
+      "Next extra time with a countdown.": "Sunod nga dugang nga oras uban sa pag-ihap."
     }
   },
   "ilo": {
@@ -1509,7 +1757,11 @@
       "Next Prayer (Layout 3)": "Sumarsaruno a Dasal (Layout 3)",
       "Extra Times (Layout 3)": "Dagiti Kanayonan nga Oras (Layout 3)",
       "Next Prayer (Layout 4)": "Sumarsaruno a Dasal (Layout 4)",
-      "Extra Times (Layout 4)": "Dagiti Kanayonan nga Oras (Layout 4)"
+      "Extra Times (Layout 4)": "Dagiti Kanayonan nga Oras (Layout 4)",
+      "Next Prayer (Layout 5)": "Sumarsaruno a Dasal (Layout 5)",
+      "Next prayer time with a countdown.": "Oras ti sumarsaruno a dasal agramit iti panagbilang.",
+      "Extra Times (Layout 5)": "Dagiti Kanayonan nga Oras (Layout 5)",
+      "Next extra time with a countdown.": "Sumarsaruno a kanayonan nga oras agramit iti panagbilang."
     }
   },
   "vi": {
@@ -1533,7 +1785,11 @@
       "Next Prayer (Layout 3)": "Lễ nguyện tiếp theo (Bố cục 3)",
       "Extra Times (Layout 3)": "Giờ bổ sung (Bố cục 3)",
       "Next Prayer (Layout 4)": "Lễ nguyện tiếp theo (Bố cục 4)",
-      "Extra Times (Layout 4)": "Giờ bổ sung (Bố cục 4)"
+      "Extra Times (Layout 4)": "Giờ bổ sung (Bố cục 4)",
+      "Next Prayer (Layout 5)": "Lễ nguyện tiếp theo (Bố cục 5)",
+      "Next prayer time with a countdown.": "Giờ lễ nguyện tiếp theo kèm đếm ngược.",
+      "Extra Times (Layout 5)": "Giờ bổ sung (Bố cục 5)",
+      "Next extra time with a countdown.": "Giờ bổ sung tiếp theo kèm đếm ngược."
     }
   },
   "skr": {
@@ -1557,7 +1813,11 @@
       "Next Prayer (Layout 3)": "اڳلی نماز (ترتیب 3)",
       "Extra Times (Layout 3)": "اضافی ویلھے (ترتیب 3)",
       "Next Prayer (Layout 4)": "اڳلی نماز (ترتیب 4)",
-      "Extra Times (Layout 4)": "اضافی ویلھے (ترتیب 4)"
+      "Extra Times (Layout 4)": "اضافی ویلھے (ترتیب 4)",
+      "Next Prayer (Layout 5)": "اڳلی نماز (ترتیب 5)",
+      "Next prayer time with a countdown.": "کاؤنٹ ڈاؤن نال اڳلی نماز دا ویلھا۔",
+      "Extra Times (Layout 5)": "اضافی ویلھے (ترتیب 5)",
+      "Next extra time with a countdown.": "کاؤنٹ ڈاؤن نال اڳلا اضافی ویلھا۔"
     }
   },
   "bal": {
@@ -1581,7 +1841,11 @@
       "Next Prayer (Layout 3)": "بَعدئے نماز (ترتیب 3)",
       "Extra Times (Layout 3)": "اضافی وختئں (ترتیب 3)",
       "Next Prayer (Layout 4)": "بَعدئے نماز (ترتیب 4)",
-      "Extra Times (Layout 4)": "اضافی وختئں (ترتیب 4)"
+      "Extra Times (Layout 4)": "اضافی وختئں (ترتیب 4)",
+      "Next Prayer (Layout 5)": "بَعدئے نماز (ترتیب 5)",
+      "Next prayer time with a countdown.": "کاؤنٹ ڈاؤنءَ ہمراہ بَعدئے نمازءِ وخت۔",
+      "Extra Times (Layout 5)": "اضافی وختئں (ترتیب 5)",
+      "Next extra time with a countdown.": "کاؤنٹ ڈاؤنءَ ہمراہ بَعدئے اضافی وخت۔"
     }
   },
   "kas": {
@@ -1605,7 +1869,11 @@
       "Next Prayer (Layout 3)": "بیٲنئژئے نؠماز (ترتیب 3)",
       "Extra Times (Layout 3)": "اِضافئے وَقت (ترتیب 3)",
       "Next Prayer (Layout 4)": "بیٲنئژئے نؠماز (ترتیب 4)",
-      "Extra Times (Layout 4)": "اِضافئے وَقت (ترتیب 4)"
+      "Extra Times (Layout 4)": "اِضافئے وَقت (ترتیب 4)",
+      "Next Prayer (Layout 5)": "بیٲنئژئے نؠماز (ترتیب 5)",
+      "Next prayer time with a countdown.": "کاؤنٹ ڈاؤنئس سیتئہ بیٲنئژئے نؠمازُک وَقت۔",
+      "Extra Times (Layout 5)": "اِضافئے وَقت (ترتیب 5)",
+      "Next extra time with a countdown.": "کاؤنٹ ڈاؤنئس سیتئہ بیٲنئژئ اضافئے وَقت۔"
     }
   },
   "mdh": {
@@ -1629,7 +1897,11 @@
       "Next Prayer (Layout 3)": "Susunod na sambayang (Layout 3)",
       "Extra Times (Layout 3)": "Mga Karagdagang Oras (Layout 3)",
       "Next Prayer (Layout 4)": "Susunod na sambayang (Layout 4)",
-      "Extra Times (Layout 4)": "Mga Karagdagang Oras (Layout 4)"
+      "Extra Times (Layout 4)": "Mga Karagdagang Oras (Layout 4)",
+      "Next Prayer (Layout 5)": "Susunod na sambayang (Layout 5)",
+      "Next prayer time with a countdown.": "Oras ng susunod na sambayang na may kawnangdown.",
+      "Extra Times (Layout 5)": "Mga Karagdagang Oras (Layout 5)",
+      "Next extra time with a countdown.": "Susunod na karagdagang oras na may kawnangdown."
     }
   },
   "kr": {
@@ -1653,7 +1925,11 @@
       "Next Prayer (Layout 3)": "Salla libzana (tartiib 3)",
       "Extra Times (Layout 3)": "Loktura tawatsagana (tartiib 3)",
       "Next Prayer (Layout 4)": "Salla libzana (tartiib 4)",
-      "Extra Times (Layout 4)": "Loktura tawatsagana (tartiib 4)"
+      "Extra Times (Layout 4)": "Loktura tawatsagana (tartiib 4)",
+      "Next Prayer (Layout 5)": "Salla libzana (tartiib 5)",
+      "Next prayer time with a countdown.": "Salla libzana loktu nda kauntidaun.",
+      "Extra Times (Layout 5)": "Loktura tawatsagana (tartiib 5)",
+      "Next extra time with a countdown.": "Loktura libzana loktu nda kauntidaun."
     }
   },
   "hil": {
@@ -1677,7 +1953,11 @@
       "Next Prayer (Layout 3)": "Masunod nga Pagpangamuyo (Layout 3)",
       "Extra Times (Layout 3)": "Mga Dugang nga Oras (Layout 3)",
       "Next Prayer (Layout 4)": "Masunod nga Pagpangamuyo (Layout 4)",
-      "Extra Times (Layout 4)": "Mga Dugang nga Oras (Layout 4)"
+      "Extra Times (Layout 4)": "Mga Dugang nga Oras (Layout 4)",
+      "Next Prayer (Layout 5)": "Masunod nga Pagpangamuyo (Layout 5)",
+      "Next prayer time with a countdown.": "Oras sang masunod nga pagpangamuyo nga may kawnangdown.",
+      "Extra Times (Layout 5)": "Mga Dugang nga Oras (Layout 5)",
+      "Next extra time with a countdown.": "Masunod nga dugang nga oras nga may kawnangdown."
     }
   },
   "bcl": {
@@ -1701,7 +1981,11 @@
       "Next Prayer (Layout 3)": "Sunod na Pagpangadyi (Layout 3)",
       "Extra Times (Layout 3)": "Mga Dagdag na Oras (Layout 3)",
       "Next Prayer (Layout 4)": "Sunod na Pagpangadyi (Layout 4)",
-      "Extra Times (Layout 4)": "Mga Dagdag na Oras (Layout 4)"
+      "Extra Times (Layout 4)": "Mga Dagdag na Oras (Layout 4)",
+      "Next Prayer (Layout 5)": "Sunod na Pagpangadyi (Layout 5)",
+      "Next prayer time with a countdown.": "Oras kan sunod na pagpangadyi kaiba an pagbilang pabalik.",
+      "Extra Times (Layout 5)": "Mga Dagdag na Oras (Layout 5)",
+      "Next extra time with a countdown.": "Sunod na dagdag na oras kaiba an pagbilang pabalik."
     }
   },
   "war": {
@@ -1725,7 +2009,11 @@
       "Next Prayer (Layout 3)": "Masunod nga Pangadi (Layout 3)",
       "Extra Times (Layout 3)": "Mga Dugang nga Oras (Layout 3)",
       "Next Prayer (Layout 4)": "Masunod nga Pangadi (Layout 4)",
-      "Extra Times (Layout 4)": "Mga Dugang nga Oras (Layout 4)"
+      "Extra Times (Layout 4)": "Mga Dugang nga Oras (Layout 4)",
+      "Next Prayer (Layout 5)": "Masunod nga Pangadi (Layout 5)",
+      "Next prayer time with a countdown.": "Oras han masunod nga pangadi nga mayda pagbilang.",
+      "Extra Times (Layout 5)": "Mga Dugang nga Oras (Layout 5)",
+      "Next extra time with a countdown.": "Masunod nga dugang nga oras nga mayda pagbilang."
     }
   },
   "ti": {
@@ -1749,7 +2037,11 @@
       "Next Prayer (Layout 3)": "ዝቕጽል ስላት (Layout 3)",
       "Extra Times (Layout 3)": "ተወሳኺ ግዜታት (Layout 3)",
       "Next Prayer (Layout 4)": "ዝቕጽል ስላት (Layout 4)",
-      "Extra Times (Layout 4)": "ተወሳኺ ግዜታት (Layout 4)"
+      "Extra Times (Layout 4)": "ተወሳኺ ግዜታት (Layout 4)",
+      "Next Prayer (Layout 5)": "ዝቕጽል ስላት (Layout 5)",
+      "Next prayer time with a countdown.": "ግዜ ዝቕጽል ስላት ምስ ቆጸራ።",
+      "Extra Times (Layout 5)": "ተወሳኺ ግዜታት (Layout 5)",
+      "Next extra time with a countdown.": "ዝቕጽል ተወሳኺ ግዜ ምስ ቆጸራ።"
     }
   },
   "mrw": {
@@ -1773,7 +2065,11 @@
       "Next Prayer (Layout 3)": "Susunod na sambayang (Layout 3)",
       "Extra Times (Layout 3)": "Mga Karagdagang Oras (Layout 3)",
       "Next Prayer (Layout 4)": "Susunod na sambayang (Layout 4)",
-      "Extra Times (Layout 4)": "Mga Karagdagang Oras (Layout 4)"
+      "Extra Times (Layout 4)": "Mga Karagdagang Oras (Layout 4)",
+      "Next Prayer (Layout 5)": "Susunod na sambayang (Layout 5)",
+      "Next prayer time with a countdown.": "Oras ng susunod na sambayang kaiba ang kawnangdown.",
+      "Extra Times (Layout 5)": "Mga Karagdagang Oras (Layout 5)",
+      "Next extra time with a countdown.": "Susunod na karagdagang oras kaiba ang kawnangdown."
     }
   },
   "mfa": {
@@ -1797,7 +2093,11 @@
       "Next Prayer (Layout 3)": "Sembayang Seterusnya (Susun atur 3)",
       "Extra Times (Layout 3)": "Masa Tambahan (Susun atur 3)",
       "Next Prayer (Layout 4)": "Sembayang Seterusnya (Susun atur 4)",
-      "Extra Times (Layout 4)": "Masa Tambahan (Susun atur 4)"
+      "Extra Times (Layout 4)": "Masa Tambahan (Susun atur 4)",
+      "Next Prayer (Layout 5)": "Sembayang Seterusnya (Susun atur 5)",
+      "Next prayer time with a countdown.": "Waktu sembayang seterusnya dengan kiraan detik.",
+      "Extra Times (Layout 5)": "Masa Tambahan (Susun atur 5)",
+      "Next extra time with a countdown.": "Masa tambahan seterusnya dengan kiraan detik."
     }
   }
 }

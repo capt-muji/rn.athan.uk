@@ -21,7 +21,8 @@ describe('board protocol lines', () => {
     const board = read('.agents/skills/multica-cli/BOARD-ATHAN.md');
     expect(board).toContain('| 3 | Planning | `planning_2` | `planning` |');
     expect(board).toContain('The `planning_2` key is a scar, not a mistake');
-    expect(board).toContain('Research tickets never go');
+    expect(board).toContain('THE DEFAULT WORKSPACE IS NOT OURS');
+    expect(board).toContain('`c2a08125-e1ec-464f-862c-607c1f26fb89`');
   });
 
   it('the official skill file ships verbatim with its side-effect guards', () => {
